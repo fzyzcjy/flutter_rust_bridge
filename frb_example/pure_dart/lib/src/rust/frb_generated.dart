@@ -3611,331 +3611,307 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse that, dynamic hint});
+      {required NonCloneSimpleTwinSse that, dynamic hint});
 
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgMutBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse that, dynamic hint});
+      {required NonCloneSimpleTwinSse that, dynamic hint});
 
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse that, dynamic hint});
+      {required NonCloneSimpleTwinSse that, dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinSse>
+  Future<NonCloneSimpleTwinSse>
       nonCloneSimpleTwinSseInstanceMethodReturnOwnTwinSse(
-          {required RwLockNonCloneSimpleTwinSse that, dynamic hint});
+          {required NonCloneSimpleTwinSse that, dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewCustomNameTwinSse(
+  Future<NonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewCustomNameTwinSse(
       {dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewTwinSse(
-      {dynamic hint});
+  Future<NonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewTwinSse({dynamic hint});
 
   Future<void> nonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint});
+      {required NonCloneSimpleTwinSse arg, dynamic hint});
 
   Future<void> nonCloneSimpleTwinSseStaticMethodArgMutBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint});
+      {required NonCloneSimpleTwinSse arg, dynamic hint});
 
   Future<void> nonCloneSimpleTwinSseStaticMethodArgOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint});
+      {required NonCloneSimpleTwinSse arg, dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinSse>
+  Future<NonCloneSimpleTwinSse>
       nonCloneSimpleTwinSseStaticMethodReturnOwnTwinSse({dynamic hint});
 
   Future<void> rustAutoOpaqueArgBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg,
-      required int expect,
-      dynamic hint});
+      {required NonCloneSimpleTwinSse arg, required int expect, dynamic hint});
 
   Future<void> rustAutoOpaqueArgMutBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg,
+      {required NonCloneSimpleTwinSse arg,
       required int expect,
       required int adder,
       dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinSse> rustAutoOpaqueArgOwnAndReturnOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint});
+  Future<NonCloneSimpleTwinSse> rustAutoOpaqueArgOwnAndReturnOwnTwinSse(
+      {required NonCloneSimpleTwinSse arg, dynamic hint});
 
   Future<void> rustAutoOpaqueArgOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg,
-      required int expect,
-      dynamic hint});
+      {required NonCloneSimpleTwinSse arg, required int expect, dynamic hint});
 
   Future<void> rustAutoOpaqueCallableArgTwinSse(
-      {required RwLockBoxFnStringString arg, dynamic hint});
+      {required BoxFnStringString arg, dynamic hint});
 
-  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinSse(
-      {dynamic hint});
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSse({dynamic hint});
 
   Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSse(
-      {required RwLockNonCloneSimpleTwinSse a,
-      required String b,
-      dynamic hint});
+      {required NonCloneSimpleTwinSse a, required String b, dynamic hint});
 
   Future<void> rustAutoOpaquePlusSignArgTwinSse(
-      {required RwLockBoxMyTraitTwinSse arg, dynamic hint});
+      {required BoxMyTraitTwinSse arg, dynamic hint});
 
-  Future<RwLockBoxMyTraitTwinSse> rustAutoOpaquePlusSignReturnTwinSse(
-      {dynamic hint});
+  Future<BoxMyTraitTwinSse> rustAutoOpaquePlusSignReturnTwinSse({dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinSse> rustAutoOpaqueReturnOwnTwinSse(
+  Future<NonCloneSimpleTwinSse> rustAutoOpaqueReturnOwnTwinSse(
       {required int initial, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint});
 
-  Future<RwLockStructWithGoodAndOpaqueFieldTwinSse>
+  Future<StructWithGoodAndOpaqueFieldTwinSse>
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse(
           {dynamic hint});
 
   Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinSse(
-      {required RwLockBoxHelloTraitTwinSse arg,
+      {required BoxHelloTraitTwinSse arg,
       required String expect,
       dynamic hint});
 
   Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
-      {required RwLockBoxHelloTraitTwinSse arg,
+      {required BoxHelloTraitTwinSse arg,
       required String expect,
       dynamic hint});
 
   Future<void> rustAutoOpaqueTraitObjectArgOwnTwinSse(
-      {required RwLockBoxHelloTraitTwinSse arg,
+      {required BoxHelloTraitTwinSse arg,
       required String expect,
       dynamic hint});
 
-  Future<RwLockBoxHelloTraitTwinSse>
-      rustAutoOpaqueTraitObjectReturnOwnOneTwinSse({dynamic hint});
+  Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnOneTwinSse(
+      {dynamic hint});
 
-  Future<RwLockBoxHelloTraitTwinSse>
-      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse({dynamic hint});
+  Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse(
+      {dynamic hint});
 
   Future<void> rustAutoOpaqueTwoArgsTwinSse(
-      {required RwLockNonCloneSimpleTwinSse a,
-      required RwLockNonCloneSimpleTwinSse b,
+      {required NonCloneSimpleTwinSse a,
+      required NonCloneSimpleTwinSse b,
       dynamic hint});
 
   void nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync that, dynamic hint});
+      {required NonCloneSimpleTwinSync that, dynamic hint});
 
   void nonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync that, dynamic hint});
+      {required NonCloneSimpleTwinSync that, dynamic hint});
 
   void nonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync that, dynamic hint});
+      {required NonCloneSimpleTwinSync that, dynamic hint});
 
-  RwLockNonCloneSimpleTwinSync
-      nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
-          {required RwLockNonCloneSimpleTwinSync that, dynamic hint});
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
+      {required NonCloneSimpleTwinSync that, dynamic hint});
 
-  RwLockNonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewCustomNameTwinSync(
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewCustomNameTwinSync(
       {dynamic hint});
 
-  RwLockNonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewTwinSync(
-      {dynamic hint});
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewTwinSync({dynamic hint});
 
   void nonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint});
+      {required NonCloneSimpleTwinSync arg, dynamic hint});
 
   void nonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint});
+      {required NonCloneSimpleTwinSync arg, dynamic hint});
 
   void nonCloneSimpleTwinSyncStaticMethodArgOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint});
+      {required NonCloneSimpleTwinSync arg, dynamic hint});
 
-  RwLockNonCloneSimpleTwinSync
-      nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync({dynamic hint});
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync(
+      {dynamic hint});
 
   void rustAutoOpaqueArgBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg,
-      required int expect,
-      dynamic hint});
+      {required NonCloneSimpleTwinSync arg, required int expect, dynamic hint});
 
   void rustAutoOpaqueArgMutBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg,
+      {required NonCloneSimpleTwinSync arg,
       required int expect,
       required int adder,
       dynamic hint});
 
-  RwLockNonCloneSimpleTwinSync rustAutoOpaqueArgOwnAndReturnOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint});
+  NonCloneSimpleTwinSync rustAutoOpaqueArgOwnAndReturnOwnTwinSync(
+      {required NonCloneSimpleTwinSync arg, dynamic hint});
 
   void rustAutoOpaqueArgOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg,
-      required int expect,
-      dynamic hint});
+      {required NonCloneSimpleTwinSync arg, required int expect, dynamic hint});
 
   void rustAutoOpaqueCallableArgTwinSync(
-      {required RwLockBoxFnStringString arg, dynamic hint});
+      {required BoxFnStringString arg, dynamic hint});
 
-  RwLockBoxFnStringString rustAutoOpaqueCallableReturnTwinSync({dynamic hint});
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSync({dynamic hint});
 
   void rustAutoOpaqueNormalAndOpaqueArgTwinSync(
-      {required RwLockNonCloneSimpleTwinSync a,
-      required String b,
-      dynamic hint});
+      {required NonCloneSimpleTwinSync a, required String b, dynamic hint});
 
   void rustAutoOpaquePlusSignArgTwinSync(
-      {required RwLockBoxMyTraitTwinSync arg, dynamic hint});
+      {required BoxMyTraitTwinSync arg, dynamic hint});
 
-  RwLockBoxMyTraitTwinSync rustAutoOpaquePlusSignReturnTwinSync({dynamic hint});
+  BoxMyTraitTwinSync rustAutoOpaquePlusSignReturnTwinSync({dynamic hint});
 
-  RwLockNonCloneSimpleTwinSync rustAutoOpaqueReturnOwnTwinSync(
+  NonCloneSimpleTwinSync rustAutoOpaqueReturnOwnTwinSync(
       {required int initial, dynamic hint});
 
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint});
 
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint});
 
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint});
 
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
           {dynamic hint});
 
   void rustAutoOpaqueTraitObjectArgBorrowTwinSync(
-      {required RwLockBoxHelloTraitTwinSync arg,
+      {required BoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint});
 
   void rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-      {required RwLockBoxHelloTraitTwinSync arg,
+      {required BoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint});
 
   void rustAutoOpaqueTraitObjectArgOwnTwinSync(
-      {required RwLockBoxHelloTraitTwinSync arg,
+      {required BoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint});
 
-  RwLockBoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnOneTwinSync(
+  BoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnOneTwinSync(
       {dynamic hint});
 
-  RwLockBoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync(
+  BoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync(
       {dynamic hint});
 
   void rustAutoOpaqueTwoArgsTwinSync(
-      {required RwLockNonCloneSimpleTwinSync a,
-      required RwLockNonCloneSimpleTwinSync b,
+      {required NonCloneSimpleTwinSync a,
+      required NonCloneSimpleTwinSync b,
       dynamic hint});
 
   void nonCloneSimpleTwinSyncSseInstanceMethodArgBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint});
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint});
 
   void nonCloneSimpleTwinSyncSseInstanceMethodArgMutBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint});
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint});
 
   void nonCloneSimpleTwinSyncSseInstanceMethodArgOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint});
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint});
 
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       nonCloneSimpleTwinSyncSseInstanceMethodReturnOwnTwinSyncSse(
-          {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint});
+          {required NonCloneSimpleTwinSyncSse that, dynamic hint});
 
-  RwLockNonCloneSimpleTwinSyncSse
-      nonCloneSimpleTwinSyncSseNewCustomNameTwinSyncSse({dynamic hint});
+  NonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewCustomNameTwinSyncSse(
+      {dynamic hint});
 
-  RwLockNonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewTwinSyncSse(
+  NonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewTwinSyncSse(
       {dynamic hint});
 
   void nonCloneSimpleTwinSyncSseStaticMethodArgBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint});
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint});
 
   void nonCloneSimpleTwinSyncSseStaticMethodArgMutBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint});
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint});
 
   void nonCloneSimpleTwinSyncSseStaticMethodArgOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint});
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint});
 
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       nonCloneSimpleTwinSyncSseStaticMethodReturnOwnTwinSyncSse({dynamic hint});
 
   void rustAutoOpaqueArgBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg,
+      {required NonCloneSimpleTwinSyncSse arg,
       required int expect,
       dynamic hint});
 
   void rustAutoOpaqueArgMutBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg,
+      {required NonCloneSimpleTwinSyncSse arg,
       required int expect,
       required int adder,
       dynamic hint});
 
-  RwLockNonCloneSimpleTwinSyncSse rustAutoOpaqueArgOwnAndReturnOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint});
+  NonCloneSimpleTwinSyncSse rustAutoOpaqueArgOwnAndReturnOwnTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint});
 
   void rustAutoOpaqueArgOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg,
+      {required NonCloneSimpleTwinSyncSse arg,
       required int expect,
       dynamic hint});
 
   void rustAutoOpaqueCallableArgTwinSyncSse(
-      {required RwLockBoxFnStringString arg, dynamic hint});
+      {required BoxFnStringString arg, dynamic hint});
 
-  RwLockBoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSse(
-      {dynamic hint});
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSse({dynamic hint});
 
   void rustAutoOpaqueNormalAndOpaqueArgTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse a,
-      required String b,
-      dynamic hint});
+      {required NonCloneSimpleTwinSyncSse a, required String b, dynamic hint});
 
   void rustAutoOpaquePlusSignArgTwinSyncSse(
-      {required RwLockBoxMyTraitTwinSyncSse arg, dynamic hint});
+      {required BoxMyTraitTwinSyncSse arg, dynamic hint});
 
-  RwLockBoxMyTraitTwinSyncSse rustAutoOpaquePlusSignReturnTwinSyncSse(
-      {dynamic hint});
+  BoxMyTraitTwinSyncSse rustAutoOpaquePlusSignReturnTwinSyncSse({dynamic hint});
 
-  RwLockNonCloneSimpleTwinSyncSse rustAutoOpaqueReturnOwnTwinSyncSse(
+  NonCloneSimpleTwinSyncSse rustAutoOpaqueReturnOwnTwinSyncSse(
       {required int initial, dynamic hint});
 
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSyncSse arg,
-      dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint});
 
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSyncSse arg,
-      dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint});
 
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSyncSse arg,
-      dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint});
 
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSse(
           {dynamic hint});
 
   void rustAutoOpaqueTraitObjectArgBorrowTwinSyncSse(
-      {required RwLockBoxHelloTraitTwinSyncSse arg,
+      {required BoxHelloTraitTwinSyncSse arg,
       required String expect,
       dynamic hint});
 
   void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSse(
-      {required RwLockBoxHelloTraitTwinSyncSse arg,
+      {required BoxHelloTraitTwinSyncSse arg,
       required String expect,
       dynamic hint});
 
   void rustAutoOpaqueTraitObjectArgOwnTwinSyncSse(
-      {required RwLockBoxHelloTraitTwinSyncSse arg,
+      {required BoxHelloTraitTwinSyncSse arg,
       required String expect,
       dynamic hint});
 
-  RwLockBoxHelloTraitTwinSyncSse
-      rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse({dynamic hint});
+  BoxHelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse(
+      {dynamic hint});
 
-  RwLockBoxHelloTraitTwinSyncSse
-      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse({dynamic hint});
+  BoxHelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse(
+      {dynamic hint});
 
   void rustAutoOpaqueTwoArgsTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse a,
-      required RwLockNonCloneSimpleTwinSyncSse b,
+      {required NonCloneSimpleTwinSyncSse a,
+      required NonCloneSimpleTwinSyncSse b,
       dynamic hint});
 
   FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSse({dynamic hint});
@@ -4381,119 +4357,113 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinNormal>
+  Future<NonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
-          {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+          {required NonCloneSimpleTwinNormal that, dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinNormal>
+  Future<NonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalNewCustomNameTwinNormal({dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
       {dynamic hint});
 
   Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewWithResult(
       {dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinNormal>
+  Future<NonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal({dynamic hint});
 
   Future<void> rustAutoOpaqueArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg,
+      {required NonCloneSimpleTwinNormal arg,
       required int expect,
       dynamic hint});
 
   Future<void> rustAutoOpaqueArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg,
+      {required NonCloneSimpleTwinNormal arg,
       required int expect,
       required int adder,
       dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinNormal>
-      rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
-          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg,
+      {required NonCloneSimpleTwinNormal arg,
       required int expect,
       dynamic hint});
 
   Future<void> rustAutoOpaqueCallableArgTwinNormal(
-      {required RwLockBoxFnStringString arg, dynamic hint});
+      {required BoxFnStringString arg, dynamic hint});
 
-  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal(
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal(
       {dynamic hint});
 
   Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal a,
-      required String b,
-      dynamic hint});
+      {required NonCloneSimpleTwinNormal a, required String b, dynamic hint});
 
   Future<void> rustAutoOpaquePlusSignArgTwinNormal(
-      {required RwLockBoxMyTraitTwinNormal arg, dynamic hint});
+      {required BoxMyTraitTwinNormal arg, dynamic hint});
 
-  Future<RwLockBoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal(
+  Future<BoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal(
       {dynamic hint});
 
-  Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
       {required int initial, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
-      dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
-      dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
-      dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
 
-  Future<RwLockStructWithGoodAndOpaqueFieldTwinNormal>
+  Future<StructWithGoodAndOpaqueFieldTwinNormal>
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
           {dynamic hint});
 
   Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
-      {required RwLockBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint});
 
   Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
-      {required RwLockBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint});
 
   Future<void> rustAutoOpaqueTraitObjectArgOwnTwinNormal(
-      {required RwLockBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint});
 
-  Future<RwLockBoxHelloTraitTwinNormal>
+  Future<BoxHelloTraitTwinNormal>
       rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal({dynamic hint});
 
-  Future<RwLockBoxHelloTraitTwinNormal>
+  Future<BoxHelloTraitTwinNormal>
       rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal({dynamic hint});
 
   Future<void> rustAutoOpaqueTwoArgsTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal a,
-      required RwLockNonCloneSimpleTwinNormal b,
+      {required NonCloneSimpleTwinNormal a,
+      required NonCloneSimpleTwinNormal b,
       dynamic hint});
 
   Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
@@ -4733,157 +4703,157 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonSendHideDataPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxFnStringString;
+      get rust_arc_increment_strong_count_BoxFnStringString;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxFnStringString;
+      get rust_arc_decrement_strong_count_BoxFnStringString;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr;
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinNormal;
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormal;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSse;
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSse;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSsePtr;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSync;
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSync;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSync;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncPtr;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSyncSse;
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncSse;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncSsePtr;
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinNormal;
+      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormal;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSse;
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSse;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSsePtr;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSync;
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSync;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSync;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncPtr;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSyncSse;
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncSse;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncSsePtr;
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinNormal;
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormal;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSse;
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSse;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSsePtr;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSync;
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSync;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSync;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncPtr;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSyncSse;
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncSse;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncSsePtr;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal;
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSse;
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSse;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSsePtr;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync;
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSync;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncSsePtr;
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -36329,7 +36299,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse that, dynamic hint}) {
+      {required NonCloneSimpleTwinSse that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36361,7 +36331,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgMutBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse that, dynamic hint}) {
+      {required NonCloneSimpleTwinSse that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36394,7 +36364,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse that, dynamic hint}) {
+      {required NonCloneSimpleTwinSse that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36423,9 +36393,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<RwLockNonCloneSimpleTwinSse>
+  Future<NonCloneSimpleTwinSse>
       nonCloneSimpleTwinSseInstanceMethodReturnOwnTwinSse(
-          {required RwLockNonCloneSimpleTwinSse that, dynamic hint}) {
+          {required NonCloneSimpleTwinSse that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36457,7 +36427,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<RwLockNonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewCustomNameTwinSse(
+  Future<NonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewCustomNameTwinSse(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -36486,7 +36456,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewTwinSse(
+  Future<NonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewTwinSse(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -36516,7 +36486,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36548,7 +36518,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinSseStaticMethodArgMutBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36580,7 +36550,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinSseStaticMethodArgOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36608,7 +36578,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinSse>
+  Future<NonCloneSimpleTwinSse>
       nonCloneSimpleTwinSseStaticMethodReturnOwnTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -36641,9 +36611,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg,
-      required int expect,
-      dynamic hint}) {
+      {required NonCloneSimpleTwinSse arg, required int expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36673,7 +36641,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgMutBorrowTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg,
+      {required NonCloneSimpleTwinSse arg,
       required int expect,
       required int adder,
       dynamic hint}) {
@@ -36706,8 +36674,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinSse> rustAutoOpaqueArgOwnAndReturnOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg, dynamic hint}) {
+  Future<NonCloneSimpleTwinSse> rustAutoOpaqueArgOwnAndReturnOwnTwinSse(
+      {required NonCloneSimpleTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36737,9 +36705,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgOwnTwinSse(
-      {required RwLockNonCloneSimpleTwinSse arg,
-      required int expect,
-      dynamic hint}) {
+      {required NonCloneSimpleTwinSse arg, required int expect, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36769,7 +36735,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueCallableArgTwinSse(
-      {required RwLockBoxFnStringString arg, dynamic hint}) {
+      {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36797,7 +36763,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinSse(
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSse(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -36827,9 +36793,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSse(
-      {required RwLockNonCloneSimpleTwinSse a,
-      required String b,
-      dynamic hint}) {
+      {required NonCloneSimpleTwinSse a, required String b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36859,7 +36823,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaquePlusSignArgTwinSse(
-      {required RwLockBoxMyTraitTwinSse arg, dynamic hint}) {
+      {required BoxMyTraitTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36887,7 +36851,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxMyTraitTwinSse> rustAutoOpaquePlusSignReturnTwinSse(
+  Future<BoxMyTraitTwinSse> rustAutoOpaquePlusSignReturnTwinSse(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -36916,7 +36880,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinSse> rustAutoOpaqueReturnOwnTwinSse(
+  Future<NonCloneSimpleTwinSse> rustAutoOpaqueReturnOwnTwinSse(
       {required int initial, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -36946,7 +36910,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -36979,7 +36943,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -37012,7 +36976,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -37044,7 +37008,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<RwLockStructWithGoodAndOpaqueFieldTwinSse>
+  Future<StructWithGoodAndOpaqueFieldTwinSse>
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse(
           {dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -37079,7 +37043,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinSse(
-      {required RwLockBoxHelloTraitTwinSse arg,
+      {required BoxHelloTraitTwinSse arg,
       required String expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -37111,7 +37075,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinSse(
-      {required RwLockBoxHelloTraitTwinSse arg,
+      {required BoxHelloTraitTwinSse arg,
       required String expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -37143,7 +37107,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTraitObjectArgOwnTwinSse(
-      {required RwLockBoxHelloTraitTwinSse arg,
+      {required BoxHelloTraitTwinSse arg,
       required String expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -37174,8 +37138,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxHelloTraitTwinSse>
-      rustAutoOpaqueTraitObjectReturnOwnOneTwinSse({dynamic hint}) {
+  Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnOneTwinSse(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -37203,8 +37167,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxHelloTraitTwinSse>
-      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse({dynamic hint}) {
+  Future<BoxHelloTraitTwinSse> rustAutoOpaqueTraitObjectReturnOwnTwoTwinSse(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -37233,8 +37197,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTwoArgsTwinSse(
-      {required RwLockNonCloneSimpleTwinSse a,
-      required RwLockNonCloneSimpleTwinSse b,
+      {required NonCloneSimpleTwinSse a,
+      required NonCloneSimpleTwinSse b,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -37266,7 +37230,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
+      {required NonCloneSimpleTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37298,7 +37262,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
+      {required NonCloneSimpleTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37330,7 +37294,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
+      {required NonCloneSimpleTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37360,9 +37324,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockNonCloneSimpleTwinSync
-      nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
-          {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
+      {required NonCloneSimpleTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37394,7 +37357,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockNonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewCustomNameTwinSync(
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewCustomNameTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -37419,8 +37382,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockNonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewTwinSync(
-      {dynamic hint}) {
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_NonCloneSimpleTwinSync_new_twin_sync();
@@ -37445,7 +37407,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37476,7 +37438,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37508,7 +37470,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncStaticMethodArgOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37536,8 +37498,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockNonCloneSimpleTwinSync
-      nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync({dynamic hint}) {
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync(
+      {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire
@@ -37565,7 +37527,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueArgBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg,
+      {required NonCloneSimpleTwinSync arg,
       required int expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -37595,7 +37557,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueArgMutBorrowTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg,
+      {required NonCloneSimpleTwinSync arg,
       required int expect,
       required int adder,
       dynamic hint}) {
@@ -37627,8 +37589,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockNonCloneSimpleTwinSync rustAutoOpaqueArgOwnAndReturnOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
+  NonCloneSimpleTwinSync rustAutoOpaqueArgOwnAndReturnOwnTwinSync(
+      {required NonCloneSimpleTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37657,7 +37619,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueArgOwnTwinSync(
-      {required RwLockNonCloneSimpleTwinSync arg,
+      {required NonCloneSimpleTwinSync arg,
       required int expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -37687,7 +37649,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueCallableArgTwinSync(
-      {required RwLockBoxFnStringString arg, dynamic hint}) {
+      {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37713,7 +37675,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockBoxFnStringString rustAutoOpaqueCallableReturnTwinSync({dynamic hint}) {
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_rust_auto_opaque_callable_return_twin_sync();
@@ -37738,9 +37700,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueNormalAndOpaqueArgTwinSync(
-      {required RwLockNonCloneSimpleTwinSync a,
-      required String b,
-      dynamic hint}) {
+      {required NonCloneSimpleTwinSync a, required String b, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37769,7 +37729,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaquePlusSignArgTwinSync(
-      {required RwLockBoxMyTraitTwinSync arg, dynamic hint}) {
+      {required BoxMyTraitTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37795,8 +37755,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockBoxMyTraitTwinSync rustAutoOpaquePlusSignReturnTwinSync(
-      {dynamic hint}) {
+  BoxMyTraitTwinSync rustAutoOpaquePlusSignReturnTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_rust_auto_opaque_plus_sign_return_twin_sync();
@@ -37820,7 +37779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockNonCloneSimpleTwinSync rustAutoOpaqueReturnOwnTwinSync(
+  NonCloneSimpleTwinSync rustAutoOpaqueReturnOwnTwinSync(
       {required int initial, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -37847,7 +37806,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37879,7 +37838,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37911,7 +37870,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
@@ -37942,7 +37901,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
           {dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -37973,7 +37932,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTraitObjectArgBorrowTwinSync(
-      {required RwLockBoxHelloTraitTwinSync arg,
+      {required BoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38004,7 +37963,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-      {required RwLockBoxHelloTraitTwinSync arg,
+      {required BoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38035,7 +37994,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTraitObjectArgOwnTwinSync(
-      {required RwLockBoxHelloTraitTwinSync arg,
+      {required BoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38065,7 +38024,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockBoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnOneTwinSync(
+  BoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnOneTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -38091,7 +38050,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockBoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync(
+  BoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -38118,8 +38077,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTwoArgsTwinSync(
-      {required RwLockNonCloneSimpleTwinSync a,
-      required RwLockNonCloneSimpleTwinSync b,
+      {required NonCloneSimpleTwinSync a,
+      required NonCloneSimpleTwinSync b,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -38150,7 +38109,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncSseInstanceMethodArgBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint}) {
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38183,7 +38142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncSseInstanceMethodArgMutBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint}) {
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38216,7 +38175,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncSseInstanceMethodArgOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint}) {
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38248,9 +38207,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       nonCloneSimpleTwinSyncSseInstanceMethodReturnOwnTwinSyncSse(
-          {required RwLockNonCloneSimpleTwinSyncSse that, dynamic hint}) {
+          {required NonCloneSimpleTwinSyncSse that, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38283,8 +38242,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockNonCloneSimpleTwinSyncSse
-      nonCloneSimpleTwinSyncSseNewCustomNameTwinSyncSse({dynamic hint}) {
+  NonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewCustomNameTwinSyncSse(
+      {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38315,7 +38274,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockNonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewTwinSyncSse(
+  NonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewTwinSyncSse(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -38345,7 +38304,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncSseStaticMethodArgBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38378,7 +38337,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncSseStaticMethodArgMutBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38411,7 +38370,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void nonCloneSimpleTwinSyncSseStaticMethodArgOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint}) {
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38443,7 +38402,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       nonCloneSimpleTwinSyncSseStaticMethodReturnOwnTwinSyncSse(
           {dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38478,7 +38437,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueArgBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg,
+      {required NonCloneSimpleTwinSyncSse arg,
       required int expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38510,7 +38469,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueArgMutBorrowTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg,
+      {required NonCloneSimpleTwinSyncSse arg,
       required int expect,
       required int adder,
       dynamic hint}) {
@@ -38543,8 +38502,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockNonCloneSimpleTwinSyncSse rustAutoOpaqueArgOwnAndReturnOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg, dynamic hint}) {
+  NonCloneSimpleTwinSyncSse rustAutoOpaqueArgOwnAndReturnOwnTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38574,7 +38533,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueArgOwnTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse arg,
+      {required NonCloneSimpleTwinSyncSse arg,
       required int expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38606,7 +38565,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueCallableArgTwinSyncSse(
-      {required RwLockBoxFnStringString arg, dynamic hint}) {
+      {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38634,8 +38593,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockBoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSse(
-      {dynamic hint}) {
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38664,9 +38622,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueNormalAndOpaqueArgTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse a,
-      required String b,
-      dynamic hint}) {
+      {required NonCloneSimpleTwinSyncSse a, required String b, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38696,7 +38652,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaquePlusSignArgTwinSyncSse(
-      {required RwLockBoxMyTraitTwinSyncSse arg, dynamic hint}) {
+      {required BoxMyTraitTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38724,7 +38680,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockBoxMyTraitTwinSyncSse rustAutoOpaquePlusSignReturnTwinSyncSse(
+  BoxMyTraitTwinSyncSse rustAutoOpaquePlusSignReturnTwinSyncSse(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -38753,7 +38709,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockNonCloneSimpleTwinSyncSse rustAutoOpaqueReturnOwnTwinSyncSse(
+  NonCloneSimpleTwinSyncSse rustAutoOpaqueReturnOwnTwinSyncSse(
       {required int initial, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -38783,8 +38739,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSyncSse arg,
-      dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38817,8 +38772,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSyncSse arg,
-      dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38851,8 +38805,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSse(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinSyncSse arg,
-      dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinSyncSse arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -38884,7 +38837,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSse(
           {dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38919,7 +38872,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTraitObjectArgBorrowTwinSyncSse(
-      {required RwLockBoxHelloTraitTwinSyncSse arg,
+      {required BoxHelloTraitTwinSyncSse arg,
       required String expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38951,7 +38904,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSse(
-      {required RwLockBoxHelloTraitTwinSyncSse arg,
+      {required BoxHelloTraitTwinSyncSse arg,
       required String expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38986,7 +38939,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTraitObjectArgOwnTwinSyncSse(
-      {required RwLockBoxHelloTraitTwinSyncSse arg,
+      {required BoxHelloTraitTwinSyncSse arg,
       required String expect,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -39017,8 +38970,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  RwLockBoxHelloTraitTwinSyncSse
-      rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse({dynamic hint}) {
+  BoxHelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSse(
+      {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -39049,8 +39002,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  RwLockBoxHelloTraitTwinSyncSse
-      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse({dynamic hint}) {
+  BoxHelloTraitTwinSyncSse rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSse(
+      {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -39082,8 +39035,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void rustAutoOpaqueTwoArgsTwinSyncSse(
-      {required RwLockNonCloneSimpleTwinSyncSse a,
-      required RwLockNonCloneSimpleTwinSyncSse b,
+      {required NonCloneSimpleTwinSyncSse a,
+      required NonCloneSimpleTwinSyncSse b,
       dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -43547,7 +43500,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43579,7 +43532,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43611,7 +43564,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43642,9 +43595,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<RwLockNonCloneSimpleTwinNormal>
+  Future<NonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
-          {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+          {required NonCloneSimpleTwinNormal that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43676,7 +43629,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<RwLockNonCloneSimpleTwinNormal>
+  Future<NonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalNewCustomNameTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -43702,7 +43655,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -43753,7 +43706,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43785,7 +43738,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43817,7 +43770,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43847,7 +43800,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<RwLockNonCloneSimpleTwinNormal>
+  Future<NonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -43878,7 +43831,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg,
+      {required NonCloneSimpleTwinNormal arg,
       required int expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -43909,7 +43862,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg,
+      {required NonCloneSimpleTwinNormal arg,
       required int expect,
       required int adder,
       dynamic hint}) {
@@ -43941,9 +43894,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinNormal>
-      rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
-          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -43972,7 +43924,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg,
+      {required NonCloneSimpleTwinNormal arg,
       required int expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -44003,7 +43955,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueCallableArgTwinNormal(
-      {required RwLockBoxFnStringString arg, dynamic hint}) {
+      {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -44029,7 +43981,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal(
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -44055,9 +44007,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal a,
-      required String b,
-      dynamic hint}) {
+      {required NonCloneSimpleTwinNormal a, required String b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -44086,7 +44036,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaquePlusSignArgTwinNormal(
-      {required RwLockBoxMyTraitTwinNormal arg, dynamic hint}) {
+      {required BoxMyTraitTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -44113,7 +44063,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal(
+  Future<BoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -44138,7 +44088,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
       {required int initial, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -44165,8 +44115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
-      dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -44198,8 +44147,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
-      dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -44231,8 +44179,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
-      dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
@@ -44263,7 +44210,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<RwLockStructWithGoodAndOpaqueFieldTwinNormal>
+  Future<StructWithGoodAndOpaqueFieldTwinNormal>
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
           {dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -44295,7 +44242,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
-      {required RwLockBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -44326,7 +44273,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
-      {required RwLockBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -44358,7 +44305,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTraitObjectArgOwnTwinNormal(
-      {required RwLockBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -44388,7 +44335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxHelloTraitTwinNormal>
+  Future<BoxHelloTraitTwinNormal>
       rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -44415,7 +44362,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<RwLockBoxHelloTraitTwinNormal>
+  Future<BoxHelloTraitTwinNormal>
       rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -44443,8 +44390,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTwoArgsTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal a,
-      required RwLockNonCloneSimpleTwinNormal b,
+      {required NonCloneSimpleTwinNormal a,
+      required NonCloneSimpleTwinNormal b,
       dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -45876,139 +45823,139 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxFnStringString => wire
+      get rust_arc_increment_strong_count_BoxFnStringString => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxFnStringString => wire
+      get rust_arc_decrement_strong_count_BoxFnStringString => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinNormal => wire
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormal => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSse => wire
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSse => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSync => wire
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSync => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSync => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSyncSse => wire
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncSse => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinNormal => wire
+      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormal => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSse => wire
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSse => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSync => wire
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSync => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSync => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSyncSse => wire
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncSse => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinNormal => wire
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormal => wire
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSse => wire
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSse => wire
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSync => wire
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSync => wire
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSync => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSyncSse => wire
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncSse => wire
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal =>
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
           wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSse =>
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSse =>
           wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSse =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSse =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync =>
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSync =>
           wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSync =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncSse =>
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse =>
           wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncSse =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   @protected
@@ -46017,290 +45964,290 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
-    return RwLockBoxFnStringString.dcoDecode(raw);
+    return BoxFnStringString.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinNormal.dcoDecode(raw);
+    return BoxMyTraitTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSse.dcoDecode(raw);
+    return BoxMyTraitTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSync.dcoDecode(raw);
+    return BoxMyTraitTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSyncSse.dcoDecode(raw);
+    return BoxMyTraitTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
@@ -46512,117 +46459,117 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
-    return RwLockBoxFnStringString.dcoDecode(raw);
+    return BoxFnStringString.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(dynamic raw) {
-    return RwLockBoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(dynamic raw) {
-    return RwLockBoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return RwLockBoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinNormal.dcoDecode(raw);
+    return BoxMyTraitTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSse.dcoDecode(raw);
+    return BoxMyTraitTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSync.dcoDecode(raw);
+    return BoxMyTraitTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw) {
-    return RwLockBoxMyTraitTwinSyncSse.dcoDecode(raw);
+    return BoxMyTraitTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(dynamic raw) {
-    return RwLockNonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(dynamic raw) {
-    return RwLockNonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(dynamic raw) {
-    return RwLockNonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return RwLockNonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
   }
 
   @protected
@@ -55791,330 +55738,330 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           SseDeserializer deserializer) {
-    return RwLockBoxFnStringString.sseDecode(
+    return BoxFnStringString.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+    return BoxHelloTraitTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSse.sseDecode(
+    return BoxHelloTraitTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSync.sseDecode(
+    return BoxHelloTraitTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSyncSse.sseDecode(
+    return BoxHelloTraitTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinNormal.sseDecode(
+    return BoxMyTraitTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinSse.sseDecode(
+    return BoxMyTraitTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinSync.sseDecode(
+    return BoxMyTraitTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinSyncSse.sseDecode(
+    return BoxMyTraitTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+    return NonCloneSimpleTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSse.sseDecode(
+    return NonCloneSimpleTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSync.sseDecode(
+    return NonCloneSimpleTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSyncSse.sseDecode(
+    return NonCloneSimpleTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+    return BoxHelloTraitTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSse.sseDecode(
+    return BoxHelloTraitTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSync.sseDecode(
+    return BoxHelloTraitTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSyncSse.sseDecode(
+    return BoxHelloTraitTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+    return NonCloneSimpleTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSse.sseDecode(
+    return NonCloneSimpleTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSync.sseDecode(
+    return NonCloneSimpleTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSyncSse.sseDecode(
+    return NonCloneSimpleTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+    return BoxHelloTraitTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSse.sseDecode(
+    return BoxHelloTraitTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSync.sseDecode(
+    return BoxHelloTraitTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSyncSse.sseDecode(
+    return BoxHelloTraitTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+    return NonCloneSimpleTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSse.sseDecode(
+    return NonCloneSimpleTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSync.sseDecode(
+    return NonCloneSimpleTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSyncSse.sseDecode(
+    return NonCloneSimpleTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -56265,138 +56212,138 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           SseDeserializer deserializer) {
-    return RwLockBoxFnStringString.sseDecode(
+    return BoxFnStringString.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinNormal.sseDecode(
+    return BoxHelloTraitTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSse.sseDecode(
+    return BoxHelloTraitTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSync.sseDecode(
+    return BoxHelloTraitTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockBoxHelloTraitTwinSyncSse.sseDecode(
+    return BoxHelloTraitTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinNormal.sseDecode(
+    return BoxMyTraitTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinSse.sseDecode(
+    return BoxMyTraitTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinSync.sseDecode(
+    return BoxMyTraitTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           SseDeserializer deserializer) {
-    return RwLockBoxMyTraitTwinSyncSse.sseDecode(
+    return BoxMyTraitTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinNormal.sseDecode(
+    return NonCloneSimpleTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSse.sseDecode(
+    return NonCloneSimpleTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSync.sseDecode(
+    return NonCloneSimpleTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockNonCloneSimpleTwinSyncSse.sseDecode(
+    return NonCloneSimpleTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSync.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -65777,7 +65724,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString raw) {
+          BoxFnStringString raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65785,7 +65732,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal raw) {
+          BoxHelloTraitTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65793,7 +65740,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-          RwLockBoxHelloTraitTwinSse raw) {
+          BoxHelloTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65801,7 +65748,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-          RwLockBoxHelloTraitTwinSync raw) {
+          BoxHelloTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65809,7 +65756,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw) {
+          BoxHelloTraitTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65817,7 +65764,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          RwLockBoxMyTraitTwinNormal raw) {
+          BoxMyTraitTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65825,7 +65772,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-          RwLockBoxMyTraitTwinSse raw) {
+          BoxMyTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65833,7 +65780,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          RwLockBoxMyTraitTwinSync raw) {
+          BoxMyTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65841,7 +65788,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          RwLockBoxMyTraitTwinSyncSse raw) {
+          BoxMyTraitTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65849,7 +65796,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-          RwLockNonCloneSimpleTwinNormal raw) {
+          NonCloneSimpleTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65857,7 +65804,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-          RwLockNonCloneSimpleTwinSse raw) {
+          NonCloneSimpleTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65865,7 +65812,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-          RwLockNonCloneSimpleTwinSync raw) {
+          NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65873,7 +65820,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-          RwLockNonCloneSimpleTwinSyncSse raw) {
+          NonCloneSimpleTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65881,7 +65828,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+          StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65889,7 +65836,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65897,7 +65844,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+          StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65905,7 +65852,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -65913,7 +65860,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal raw) {
+          BoxHelloTraitTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65921,7 +65868,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-          RwLockBoxHelloTraitTwinSse raw) {
+          BoxHelloTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65929,7 +65876,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-          RwLockBoxHelloTraitTwinSync raw) {
+          BoxHelloTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65937,7 +65884,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw) {
+          BoxHelloTraitTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65945,7 +65892,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-          RwLockNonCloneSimpleTwinNormal raw) {
+          NonCloneSimpleTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65953,7 +65900,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-          RwLockNonCloneSimpleTwinSse raw) {
+          NonCloneSimpleTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65961,7 +65908,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-          RwLockNonCloneSimpleTwinSync raw) {
+          NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65969,7 +65916,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-          RwLockNonCloneSimpleTwinSyncSse raw) {
+          NonCloneSimpleTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65977,7 +65924,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+          StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65985,7 +65932,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -65993,7 +65940,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+          StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66001,7 +65948,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66009,7 +65956,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal raw) {
+          BoxHelloTraitTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66017,7 +65964,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-          RwLockBoxHelloTraitTwinSse raw) {
+          BoxHelloTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66025,7 +65972,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-          RwLockBoxHelloTraitTwinSync raw) {
+          BoxHelloTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66033,7 +65980,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw) {
+          BoxHelloTraitTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66041,7 +65988,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-          RwLockNonCloneSimpleTwinNormal raw) {
+          NonCloneSimpleTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66049,7 +65996,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-          RwLockNonCloneSimpleTwinSse raw) {
+          NonCloneSimpleTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66057,7 +66004,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-          RwLockNonCloneSimpleTwinSync raw) {
+          NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66065,7 +66012,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-          RwLockNonCloneSimpleTwinSyncSse raw) {
+          NonCloneSimpleTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66073,7 +66020,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+          StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66081,7 +66028,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66089,7 +66036,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+          StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66097,7 +66044,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -66320,28 +66267,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString raw) {
+          BoxFnStringString raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal raw) {
+      BoxHelloTraitTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse raw) {
+      BoxHelloTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync raw) {
+      BoxHelloTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66349,7 +66296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw) {
+          BoxHelloTraitTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66357,7 +66304,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          RwLockBoxMyTraitTwinNormal raw) {
+          BoxMyTraitTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66365,7 +66312,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-          RwLockBoxMyTraitTwinSse raw) {
+          BoxMyTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66373,7 +66320,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          RwLockBoxMyTraitTwinSync raw) {
+          BoxMyTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66381,35 +66328,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          RwLockBoxMyTraitTwinSyncSse raw) {
+          BoxMyTraitTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal raw) {
+      NonCloneSimpleTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse raw) {
+      NonCloneSimpleTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync raw) {
+      NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse raw) {
+      NonCloneSimpleTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66417,7 +66364,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+          StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66425,7 +66372,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66433,7 +66380,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+          StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66441,7 +66388,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -66582,91 +66529,91 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString self, SseSerializer serializer) {
+          BoxFnStringString self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+      BoxHelloTraitTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer) {
+      BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+      BoxHelloTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
+          BoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
+          BoxMyTraitTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-          RwLockBoxMyTraitTwinSse self, SseSerializer serializer) {
+          BoxMyTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
+          BoxMyTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          RwLockBoxMyTraitTwinSyncSse self, SseSerializer serializer) {
+          BoxMyTraitTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+      NonCloneSimpleTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+      NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
@@ -66674,23 +66621,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
-          SseSerializer serializer) {
+          StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-          SseSerializer serializer) {
+          StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
@@ -66698,57 +66643,57 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+          BoxHelloTraitTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer) {
+      BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+      BoxHelloTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
+          BoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+      NonCloneSimpleTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+      NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -66756,79 +66701,77 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
-          SseSerializer serializer) {
+          StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-          SseSerializer serializer) {
+          StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+      BoxHelloTraitTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer) {
+      BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+      BoxHelloTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-      RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
+      BoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+      NonCloneSimpleTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+      NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -66836,23 +66779,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
-          SseSerializer serializer) {
+          StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-          SseSerializer serializer) {
+          StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -67129,108 +67070,106 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString self, SseSerializer serializer) {
+          BoxFnStringString self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer) {
+      BoxHelloTraitTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer) {
+      BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer) {
+      BoxHelloTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-      RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
+      BoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-      RwLockBoxMyTraitTwinNormal self, SseSerializer serializer) {
+      BoxMyTraitTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-      RwLockBoxMyTraitTwinSse self, SseSerializer serializer) {
+      BoxMyTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-      RwLockBoxMyTraitTwinSync self, SseSerializer serializer) {
+      BoxMyTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-      RwLockBoxMyTraitTwinSyncSse self, SseSerializer serializer) {
+      BoxMyTraitTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer) {
+      NonCloneSimpleTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer) {
+      NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-      RwLockStructWithGoodAndOpaqueFieldTwinSse self,
-      SseSerializer serializer) {
+      StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-      RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-      SseSerializer serializer) {
+      StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }

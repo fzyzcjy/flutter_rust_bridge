@@ -268,278 +268,278 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr => wire
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormalPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSsePtr => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSsePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSsePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncPtr => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncSsePtr => wire
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSsePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSsePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSsePtr => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSsePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncPtr => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncSsePtr => wire
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSsePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSsePtr => wire
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSsePtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSsePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncPtr => wire
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncSsePtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSsePtr;
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSsePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSsePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSsePtr =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSsePtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSsePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncSsePtr =>
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSsePtr;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw);
 
@@ -679,81 +679,81 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NonSendHideData dco_decode_RustOpaque_non_send_hide_data(dynamic raw);
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(dynamic raw);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw);
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(dynamic raw);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw);
 
@@ -4359,207 +4359,207 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer);
 
@@ -4644,87 +4644,87 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  RwLockBoxFnStringString
+  BoxFnStringString
       sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinNormal
+  BoxHelloTraitTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSse
+  BoxHelloTraitTwinSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSync
+  BoxHelloTraitTwinSync
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxHelloTraitTwinSyncSse
+  BoxHelloTraitTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinNormal
+  BoxMyTraitTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinSse
+  BoxMyTraitTwinSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinSync
+  BoxMyTraitTwinSync
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockBoxMyTraitTwinSyncSse
+  BoxMyTraitTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinNormal
+  NonCloneSimpleTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSse
+  NonCloneSimpleTwinSse
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSync
+  NonCloneSimpleTwinSync
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockNonCloneSimpleTwinSyncSse
+  NonCloneSimpleTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+  StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSse
+  StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSync
+  StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer);
 
   @protected
-  RwLockStructWithGoodAndOpaqueFieldTwinSyncSse
+  StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer);
 
@@ -21066,207 +21066,207 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString raw);
+          BoxFnStringString raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal raw);
+          BoxHelloTraitTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-          RwLockBoxHelloTraitTwinSse raw);
+          BoxHelloTraitTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-          RwLockBoxHelloTraitTwinSync raw);
+          BoxHelloTraitTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw);
+          BoxHelloTraitTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          RwLockBoxMyTraitTwinNormal raw);
+          BoxMyTraitTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-          RwLockBoxMyTraitTwinSse raw);
+          BoxMyTraitTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          RwLockBoxMyTraitTwinSync raw);
+          BoxMyTraitTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          RwLockBoxMyTraitTwinSyncSse raw);
+          BoxMyTraitTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-          RwLockNonCloneSimpleTwinNormal raw);
+          NonCloneSimpleTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-          RwLockNonCloneSimpleTwinSse raw);
+          NonCloneSimpleTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-          RwLockNonCloneSimpleTwinSync raw);
+          NonCloneSimpleTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-          RwLockNonCloneSimpleTwinSyncSse raw);
+          NonCloneSimpleTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+          StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+          StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+          StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal raw);
+          BoxHelloTraitTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-          RwLockBoxHelloTraitTwinSse raw);
+          BoxHelloTraitTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-          RwLockBoxHelloTraitTwinSync raw);
+          BoxHelloTraitTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw);
+          BoxHelloTraitTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-          RwLockNonCloneSimpleTwinNormal raw);
+          NonCloneSimpleTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-          RwLockNonCloneSimpleTwinSse raw);
+          NonCloneSimpleTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-          RwLockNonCloneSimpleTwinSync raw);
+          NonCloneSimpleTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-          RwLockNonCloneSimpleTwinSyncSse raw);
+          NonCloneSimpleTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+          StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+          StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+          StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal raw);
+          BoxHelloTraitTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-          RwLockBoxHelloTraitTwinSse raw);
+          BoxHelloTraitTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-          RwLockBoxHelloTraitTwinSync raw);
+          BoxHelloTraitTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw);
+          BoxHelloTraitTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-          RwLockNonCloneSimpleTwinNormal raw);
+          NonCloneSimpleTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-          RwLockNonCloneSimpleTwinSse raw);
+          NonCloneSimpleTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-          RwLockNonCloneSimpleTwinSync raw);
+          NonCloneSimpleTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-          RwLockNonCloneSimpleTwinSyncSse raw);
+          NonCloneSimpleTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+          StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+          StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+          StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
@@ -21397,80 +21397,80 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString raw);
+          BoxFnStringString raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal raw);
+      BoxHelloTraitTwinNormal raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse raw);
+      BoxHelloTraitTwinSse raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync raw);
+      BoxHelloTraitTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse raw);
+          BoxHelloTraitTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          RwLockBoxMyTraitTwinNormal raw);
+          BoxMyTraitTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-          RwLockBoxMyTraitTwinSse raw);
+          BoxMyTraitTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          RwLockBoxMyTraitTwinSync raw);
+          BoxMyTraitTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          RwLockBoxMyTraitTwinSyncSse raw);
+          BoxMyTraitTwinSyncSse raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal raw);
+      NonCloneSimpleTwinNormal raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse raw);
+      NonCloneSimpleTwinSse raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync raw);
+      NonCloneSimpleTwinSync raw);
 
   @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse raw);
+      NonCloneSimpleTwinSyncSse raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal raw);
+          StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse raw);
+          StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync raw);
+          StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse raw);
+          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
   int cst_encode_application_mode(ApplicationMode raw);
@@ -21555,197 +21555,191 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString self, SseSerializer serializer);
+          BoxFnStringString self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+      BoxHelloTraitTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+      BoxHelloTraitTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+      BoxHelloTraitTwinSync self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+          BoxHelloTraitTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          RwLockBoxMyTraitTwinNormal self, SseSerializer serializer);
+          BoxMyTraitTwinNormal self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-          RwLockBoxMyTraitTwinSse self, SseSerializer serializer);
+          BoxMyTraitTwinSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          RwLockBoxMyTraitTwinSync self, SseSerializer serializer);
+          BoxMyTraitTwinSync self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          RwLockBoxMyTraitTwinSyncSse self, SseSerializer serializer);
+          BoxMyTraitTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+      NonCloneSimpleTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+      NonCloneSimpleTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
-          SseSerializer serializer);
+          StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-          SseSerializer serializer);
+          StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-          RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+          BoxHelloTraitTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+      BoxHelloTraitTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+      BoxHelloTraitTwinSync self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-          RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+          BoxHelloTraitTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+      NonCloneSimpleTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+      NonCloneSimpleTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
-          SseSerializer serializer);
+          StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-          SseSerializer serializer);
+          StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+      BoxHelloTraitTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+      BoxHelloTraitTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+      BoxHelloTraitTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-      RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+      BoxHelloTraitTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+      NonCloneSimpleTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+      NonCloneSimpleTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSse self,
-          SseSerializer serializer);
+          StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-          SseSerializer serializer);
+          StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
 
   @protected
@@ -21913,75 +21907,74 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          RwLockBoxFnStringString self, SseSerializer serializer);
+          BoxFnStringString self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-      RwLockBoxHelloTraitTwinNormal self, SseSerializer serializer);
+      BoxHelloTraitTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
-      RwLockBoxHelloTraitTwinSse self, SseSerializer serializer);
+      BoxHelloTraitTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-      RwLockBoxHelloTraitTwinSync self, SseSerializer serializer);
+      BoxHelloTraitTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
-      RwLockBoxHelloTraitTwinSyncSse self, SseSerializer serializer);
+      BoxHelloTraitTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-      RwLockBoxMyTraitTwinNormal self, SseSerializer serializer);
+      BoxMyTraitTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
-      RwLockBoxMyTraitTwinSse self, SseSerializer serializer);
+      BoxMyTraitTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-      RwLockBoxMyTraitTwinSync self, SseSerializer serializer);
+      BoxMyTraitTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-      RwLockBoxMyTraitTwinSyncSse self, SseSerializer serializer);
+      BoxMyTraitTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-      RwLockNonCloneSimpleTwinNormal self, SseSerializer serializer);
+      NonCloneSimpleTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
-      RwLockNonCloneSimpleTwinSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-      RwLockNonCloneSimpleTwinSync self, SseSerializer serializer);
+      NonCloneSimpleTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
-      RwLockNonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+      NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          RwLockStructWithGoodAndOpaqueFieldTwinNormal self,
+          StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-      RwLockStructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer);
+      StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-      RwLockStructWithGoodAndOpaqueFieldTwinSync self,
-      SseSerializer serializer);
+      StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          RwLockStructWithGoodAndOpaqueFieldTwinSyncSse self,
+          StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
 
   @protected

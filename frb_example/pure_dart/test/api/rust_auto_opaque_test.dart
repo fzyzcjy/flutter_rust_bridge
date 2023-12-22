@@ -188,7 +188,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   group('trait object', () {
-    Future<void> _body(RwLockBoxHelloTraitTwinNormal obj, String expect) async {
+    Future<void> _body(BoxHelloTraitTwinNormal obj, String expect) async {
       await futurizeVoidTwinNormal(rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
           arg: obj, expect: expect));
       await futurizeVoidTwinNormal(
@@ -210,19 +210,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('static method', () async {
     final obj =
-        await RwLockNonCloneSimpleTwinNormal.staticMethodReturnOwnTwinNormal();
+        await NonCloneSimpleTwinNormal.staticMethodReturnOwnTwinNormal();
     await futurizeVoidTwinNormal(
-        RwLockNonCloneSimpleTwinNormal.staticMethodArgBorrowTwinNormal(
-            arg: obj));
+        NonCloneSimpleTwinNormal.staticMethodArgBorrowTwinNormal(arg: obj));
     await futurizeVoidTwinNormal(
-        RwLockNonCloneSimpleTwinNormal.staticMethodArgMutBorrowTwinNormal(
-            arg: obj));
+        NonCloneSimpleTwinNormal.staticMethodArgMutBorrowTwinNormal(arg: obj));
     await futurizeVoidTwinNormal(
-        RwLockNonCloneSimpleTwinNormal.staticMethodArgOwnTwinNormal(arg: obj));
+        NonCloneSimpleTwinNormal.staticMethodArgOwnTwinNormal(arg: obj));
   });
 
   test('instance method', () async {
-    final obj = await RwLockNonCloneSimpleTwinNormal.newTwinNormal();
+    final obj = await NonCloneSimpleTwinNormal.newTwinNormal();
     await futurizeVoidTwinNormal(obj.instanceMethodArgBorrowTwinNormal());
     await futurizeVoidTwinNormal(obj.instanceMethodArgMutBorrowTwinNormal());
     await futurizeVoidTwinNormal(obj.instanceMethodReturnOwnTwinNormal());

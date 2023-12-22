@@ -17,6 +17,9 @@ and here is a brief list:
 * Run performance benchmarks
 * Run `flutter_rust_bridge_codegen`
 * Linters and code formatters
+* Post-release tests (check the released binary)
+* Test steps mentioned in quickstart
+* ...
 
 ## Usage
 
@@ -30,7 +33,13 @@ which is in production and it works quite well.
 If I observe any problems, I will surely fix it in this library,
 but again I have not seen any safety-related issues.
 
-## Unsafe implementation: Carefully limited & encapsulated
+## Safety of unsafe
+
+It is inevitable to write unsafe code, as long as we want to use Rust with another language.
+The thing we can do and have done is,
+make the unsafe blocks carefully limited & encapsulated,
+make the code clear and well designed, use strong checkers in CI, etc.
+I am happy to see that, nobody reported bugs related to this!
 
 The vast majority of the code are written in safe Rust and (safe) Dart.
 The `unsafe` code mainly happens when we need to leak a Rust Vec/Arc/Box into a raw pointer,

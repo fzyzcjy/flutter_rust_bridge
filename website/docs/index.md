@@ -24,30 +24,60 @@ Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/mi
 
 I want to keep it in beta for a while (though CI has all passed), to allow publishing API breaking changes, and hear your thoughts and suggestions about it!
 
+## 🍀 What's this?
+
+* Just write down some ***normal*** Rust code (even with arbitrary types, closure, `&mut`, async, etc)
+* And call it from Flutter, as if Rust code is ***normal*** Flutter code
+* The bridge will generate all needed glues in between
+
+## 📚 Quickstart
+
+Create a working Flutter + Rust app and see it live, by running:
+
+```shell
+cargo install 'flutter_rust_bridge_codegen@^2.0.0-dev.0' && \
+    flutter_rust_bridge_codegen create my_app && cd my_app && flutter run
+```
+
+**(Optional)** Edit `rust/src/api/simple.rs` (e.g. `Hello` -> `Hi`), then see the change by:
+
+```shell
+flutter_rust_bridge_codegen generate && flutter run
+```
+
+For more elaborated quickstart, please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart).
+
 ## 🚀 Advantages
 
-* **In one sentence**
-  * Just write down some normal Rust code (possibly with unencodable types, closure, `&mut`, async, etc), and call it from Flutter as if it is normal Dart(Flutter) code; the bridge will generate all needed glues in between.
-* **Officially `Flutter Favorite`** <img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
-  * This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
-* **Simpleness**
-  * **Rapid setup**: Only a one-liner command to integrate into your project.
-  * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
-  * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
-* **Powerfulness**
-  * **Arbitrary types**: Use arbitrary Rust and Dart types, even if they are not serializable or non-clone.
-  * **Async & sync** x Rust & Dart: Multi modes for various needs - Async Dart to avoid blocking the main thread, sync Dart for places needed (e.g. Widget.build); async Rust for IO bound tasks, thread pools for CPU-heavy computations.
-  * **Two-way road**: Not only can Dart call Rust - Rust can also call Dart.
-  * **Auto-translatable types**: Lots of types can be further translated to Dart native types, e.g. complex `enum`s and `struct`s, zero-copy big arrays, errors (`Result`), and `Stream`s (iterator).
-  * **Auto safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
-  * **Customizable & bare-metal mode**: Provide sensible defaults, but everything (loader, handler, ...) can be customized. You can even throw all away and only use the bare minimum calling.
-  * **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web.
-  * Other features, e.g. support whole folders as input, pure-Dart compatible, instance and static methods, ...
-* **Reliability**
-  * **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform per mode, benchmarking, codecov, etc, all guaranteed by CI.
-  * **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
-  * **Easy to code-review & convince yourself**: This package simply simulates how humans write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to track.
-  * **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
+<img width="400" align="right" src="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/website/misc/advantages.png?raw=true" />
+
+### 1. Officially `Flutter Favorite`
+
+This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
+
+### 2. Simpleness
+
+* **Rapid setup**: Only a one-liner command to integrate into your project.
+* **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
+* **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+
+### 3. Powerfulness
+
+* **Arbitrary types**: Use arbitrary Rust and Dart types, even if they are not serializable or non-clone.
+* **Async & sync** x Rust & Dart: Multi modes for various needs - Async Dart to avoid blocking the main thread, sync Dart for places needed (e.g. Widget.build); async Rust for IO bound tasks, thread pools for CPU-heavy computations.
+* **Two-way road**: Not only can Dart call Rust - Rust can also call Dart.
+* **Auto-translatable types**: Lots of types can be further translated to Dart native types, e.g. complex `enum`s and `struct`s, zero-copy big arrays, errors (`Result`), and `Stream`s (iterator).
+* **Auto safety**: Focus on your code, and forget memory safety, malloc/free, or undefined behavior completely.
+* **Customizable & bare-metal mode**: Provide sensible defaults, but everything (loader, handler, ...) can be customized. You can even throw all away and only use the bare minimum calling.
+* **Cross-platform**: Support Android, iOS, Windows, Linux, MacOS, and Web.
+* Other features, e.g. support whole folders as input, pure-Dart compatible, instance and static methods, ...
+
+### 4. Reliability
+
+* **Solid CI**: Valgrind & sanitizers (ASAN/MSAN/LSAN) for memory/UB-related bugs, testing per platform per mode, benchmarking, test coverage, post-release, etc, all guaranteed by CI.
+* **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
+* **Easy to code-review & convince yourself**: This package simply simulates how humans write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to track.
+* **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
 
 ### Why Flutter + Rust?
 
@@ -86,7 +116,7 @@ fn f(a: String, b: Vec<String>) -> MyStruct { ... }
 print(f(a: 'Hello', b: ['Tom']));
 ```
 
-### Example 2: Fancy
+### Example 2: Show off skills ;)
 
 Let's see how fancy we can support:
 

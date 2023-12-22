@@ -14,6 +14,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -369,11 +370,14 @@ Future<RunCommandOutput> executeFrbCodegen(
     return await exec('flutter_rust_bridge_codegen $cmd',
         relativePwd: relativePwd);
   } else {
-    return await exec(
-      'cargo ${coverage ? "llvm-cov run --lcov --output-path ${getCoverageDir(coverageName)}/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+    final outputCodecovPath = '${getCoverageDir(coverageName)}/codecov.json';
+    final ans = await exec(
+      'cargo ${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
       extraEnv: {'RUST_BACKTRACE': '1'},
     );
+    if (coverage) transformCodecovReport(outputCodecovPath);
+    return ans;
   }
 }
 

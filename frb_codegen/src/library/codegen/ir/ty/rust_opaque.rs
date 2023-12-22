@@ -6,14 +6,16 @@ crate::ir! {
 pub struct IrTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: Box<IrType>,
+    pub brief_name: bool,
 }
 }
 
 impl IrTypeRustOpaque {
-    pub fn new(namespace: Namespace, inner: IrType) -> Self {
+    pub fn new(namespace: Namespace, inner: IrType, brief_name: bool) -> Self {
         Self {
             namespace,
             inner: Box::new(inner),
+            brief_name,
         }
     }
 
