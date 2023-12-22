@@ -212,6 +212,12 @@ List<_Benchmark> _benchmarkVoidFunction() {
     ),
     const _Benchmark(
       task: task,
+      approach: _Approach.frbSse,
+      asynchronous: false,
+      run: 'benchmarkVoidTwinSyncSse();',
+    ),
+    const _Benchmark(
+      task: task,
       approach: _Approach.frbCstSse,
       asynchronous: false,
       run: 'benchmarkVoidSemiSerialize();',
