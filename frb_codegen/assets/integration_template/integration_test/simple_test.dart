@@ -5,7 +5,7 @@ import 'package:REPLACE_ME_PACKAGE_NAME/src/rust/frb_generated.dart';
 import 'package:integration_test/integration_test.dart';
 
 void main() {
-  if (kIsWeb) IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   setUpAll(() async => await RustLib.init());
   testWidgets('Can call rust function', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
