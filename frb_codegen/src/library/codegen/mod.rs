@@ -76,5 +76,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     )?;
     drop(pb);
 
+    println!("Done!");
+
     Ok(())
 }
