@@ -150,3 +150,15 @@ mod chrono_impls {
     impl_into_into_dart_by_self!(chrono::DateTime<Local>);
     impl_into_into_dart_by_self!(chrono::DateTime<Utc>);
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::misc::into_into_dart::IntoIntoDart;
+    use allo_isolate::ZeroCopyBuffer;
+
+    #[test]
+    fn test_zero_copy_buffer() {
+        let raw: ZeroCopyBuffer<Vec<u8>> = ZeroCopyBuffer(vec![10]);
+        assert_eq!(raw.into_into_dart().0, vec![10]);
+    }
+}
