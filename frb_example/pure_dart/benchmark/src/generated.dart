@@ -16,10 +16,10 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 import 'benchmark_utils.dart';
 import 'protobuf_for_benchmark/protobuf_for_benchmark.pb.dart';
 
-class Void_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
-  Void_Async_Benchmark({
+class VoidFunction_Std_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
+  VoidFunction_Std_Async_Benchmark({
     super.emitter,
-  }) : super('Void_Async');
+  }) : super('VoidFunction_Std_Async');
 
   @override
   Future<void> setup() async {}
@@ -30,10 +30,10 @@ class Void_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   }
 }
 
-class Void_Sync_Benchmark extends EnhancedBenchmarkBase {
-  Void_Sync_Benchmark({
+class VoidFunction_Void_Sync_Benchmark extends EnhancedBenchmarkBase {
+  VoidFunction_Void_Sync_Benchmark({
     super.emitter,
-  }) : super('Void_Sync');
+  }) : super('VoidFunction_Void_Sync');
 
   @override
   void setup() {}
@@ -44,10 +44,10 @@ class Void_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class VoidRaw_Sync_Benchmark extends EnhancedBenchmarkBase {
-  VoidRaw_Sync_Benchmark({
+class VoidFunction_Raw_Sync_Benchmark extends EnhancedBenchmarkBase {
+  VoidFunction_Raw_Sync_Benchmark({
     super.emitter,
-  }) : super('VoidRaw_Sync');
+  }) : super('VoidFunction_Raw_Sync');
 
   @override
   void setup() {}
@@ -58,10 +58,10 @@ class VoidRaw_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class VoidRawByIsolate_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
-  VoidRawByIsolate_Async_Benchmark({
+class VoidFunction_Raw_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
+  VoidFunction_Raw_Async_Benchmark({
     super.emitter,
-  }) : super('VoidRawByIsolate_Async');
+  }) : super('VoidFunction_Raw_Async');
 
   @override
   Future<void> setup() async {}
@@ -77,14 +77,14 @@ class VoidRawByIsolate_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   }
 }
 
-class InputBytes_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
+class Bytes_Frb_Input_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   late final Uint8List setupData;
   final int len;
 
-  InputBytes_Async_Benchmark({
+  Bytes_Frb_Input_Async_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('InputBytes_Async_len$len');
+  }) : super('Bytes_Frb_Input_Async_len$len');
 
   @override
   Future<void> setup() async {
@@ -97,14 +97,14 @@ class InputBytes_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   }
 }
 
-class InputBytes_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Bytes_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final Uint8List setupData;
   final int len;
 
-  InputBytes_Sync_Benchmark({
+  Bytes_Frb_Input_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('InputBytes_Sync_len$len');
+  }) : super('Bytes_Frb_Input_Sync_len$len');
 
   @override
   void setup() {
@@ -117,14 +117,14 @@ class InputBytes_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class InputBytesRaw_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Bytes_Raw_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final Uint8List setupData;
   final int len;
 
-  InputBytesRaw_Sync_Benchmark({
+  Bytes_Raw_Input_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('InputBytesRaw_Sync_len$len');
+  }) : super('Bytes_Raw_Input_Sync_len$len');
 
   @override
   void setup() {
@@ -140,13 +140,13 @@ class InputBytesRaw_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class OutputBytes_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
+class Bytes_Frb_Output_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   final int len;
 
-  OutputBytes_Async_Benchmark({
+  Bytes_Frb_Output_Async_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('OutputBytes_Async_len$len');
+  }) : super('Bytes_Frb_Output_Async_len$len');
 
   @override
   Future<void> setup() async {}
@@ -157,13 +157,13 @@ class OutputBytes_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   }
 }
 
-class OutputBytes_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Bytes_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  OutputBytes_Sync_Benchmark({
+  Bytes_Frb_Output_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('OutputBytes_Sync_len$len');
+  }) : super('Bytes_Frb_Output_Sync_len$len');
 
   @override
   void setup() {}
@@ -174,15 +174,15 @@ class OutputBytes_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class OutputBytesRaw_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
+class Bytes_Raw_Output_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   final receivePort = RawReceivePort();
   late final sendPort = receivePort.sendPort.nativePort;
   final int len;
   final completers = <int, Completer<Uint8List>>{};
   var nextId = 1;
 
-  OutputBytesRaw_Async_Benchmark({required this.len, super.emitter})
-      : super('OutputBytesRaw_Async_len$len') {
+  Bytes_Raw_Output_Async_Benchmark({required this.len, super.emitter})
+      : super('Bytes_Raw_Output_Async_len$len') {
     receivePort.handler = (dynamic response) {
       final bytes = response as Uint8List;
       final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
@@ -227,14 +227,14 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
   );
 }
 
-class BinaryTreeInput_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBinaryTreeTwinSync setupData;
   final int depth;
 
-  BinaryTreeInput_Sync_Benchmark({
+  BinaryTree_Frb_Input_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeInput_Sync_depth$depth');
+  }) : super('BinaryTree_Frb_Input_Sync_depth$depth');
 
   @override
   void setup() {
@@ -262,13 +262,13 @@ class BinaryTreeInput_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BinaryTreeOutput_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTreeOutput_Sync_Benchmark({
+  BinaryTree_Frb_Output_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeOutput_Sync_depth$depth');
+  }) : super('BinaryTree_Frb_Output_Sync_depth$depth');
 
   @override
   void setup() {}
@@ -279,14 +279,14 @@ class BinaryTreeOutput_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BinaryTreeInputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_FrbSse_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBinaryTreeTwinSyncSse setupData;
   final int depth;
 
-  BinaryTreeInputSse_Sync_Benchmark({
+  BinaryTree_FrbSse_Input_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeInputSse_Sync_depth$depth');
+  }) : super('BinaryTree_FrbSse_Input_Sync_depth$depth');
 
   @override
   void setup() {
@@ -314,13 +314,13 @@ class BinaryTreeInputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BinaryTreeOutputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_FrbSse_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTreeOutputSse_Sync_Benchmark({
+  BinaryTree_FrbSse_Output_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeOutputSse_Sync_depth$depth');
+  }) : super('BinaryTree_FrbSse_Output_Sync_depth$depth');
 
   @override
   void setup() {}
@@ -331,14 +331,14 @@ class BinaryTreeOutputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BinaryTreeInputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_Protobuf_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BinaryTreeProtobuf setupData;
   final int depth;
 
-  BinaryTreeInputProtobuf_Sync_Benchmark({
+  BinaryTree_Protobuf_Input_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeInputProtobuf_Sync_depth$depth');
+  }) : super('BinaryTree_Protobuf_Input_Sync_depth$depth');
 
   @override
   void setup() {
@@ -351,13 +351,13 @@ class BinaryTreeInputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BinaryTreeOutputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_Protobuf_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTreeOutputProtobuf_Sync_Benchmark({
+  BinaryTree_Protobuf_Output_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeOutputProtobuf_Sync_depth$depth');
+  }) : super('BinaryTree_Protobuf_Output_Sync_depth$depth');
 
   @override
   void setup() {}
@@ -370,18 +370,18 @@ class BinaryTreeOutputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BinaryTreeInputJson_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_Json_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBinaryTreeTwinSync setupData;
   final int depth;
 
-  BinaryTreeInputJson_Sync_Benchmark({
+  BinaryTree_Json_Input_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeInputJson_Sync_depth$depth');
+  }) : super('BinaryTree_Json_Input_Sync_depth$depth');
 
   @override
   void setup() {
-    setupData = BinaryTreeInput_Sync_Benchmark._createTree(depth);
+    setupData = BinaryTree_Frb_Input_Sync_Benchmark._createTree(depth);
   }
 
   @override
@@ -398,13 +398,13 @@ class BinaryTreeInputJson_Sync_Benchmark extends EnhancedBenchmarkBase {
       };
 }
 
-class BinaryTreeOutputJson_Sync_Benchmark extends EnhancedBenchmarkBase {
+class BinaryTree_Json_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTreeOutputJson_Sync_Benchmark({
+  BinaryTree_Json_Output_Sync_Benchmark({
     required this.depth,
     super.emitter,
-  }) : super('BinaryTreeOutputJson_Sync_depth$depth');
+  }) : super('BinaryTree_Json_Output_Sync_depth$depth');
 
   @override
   void setup() {}
@@ -419,14 +419,14 @@ class BinaryTreeOutputJson_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobInput_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBlobTwinSync setupData;
   final int len;
 
-  BlobInput_Sync_Benchmark({
+  Blob_Frb_Input_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobInput_Sync_len$len');
+  }) : super('Blob_Frb_Input_Sync_len$len');
 
   @override
   void setup() {
@@ -443,13 +443,13 @@ class BlobInput_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobOutput_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  BlobOutput_Sync_Benchmark({
+  Blob_Frb_Output_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobOutput_Sync_len$len');
+  }) : super('Blob_Frb_Output_Sync_len$len');
 
   @override
   void setup() {}
@@ -460,14 +460,14 @@ class BlobOutput_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobInputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_FrbSse_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBlobTwinSyncSse setupData;
   final int len;
 
-  BlobInputSse_Sync_Benchmark({
+  Blob_FrbSse_Input_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobInputSse_Sync_len$len');
+  }) : super('Blob_FrbSse_Input_Sync_len$len');
 
   @override
   void setup() {
@@ -484,13 +484,13 @@ class BlobInputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobOutputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_FrbSse_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  BlobOutputSse_Sync_Benchmark({
+  Blob_FrbSse_Output_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobOutputSse_Sync_len$len');
+  }) : super('Blob_FrbSse_Output_Sync_len$len');
 
   @override
   void setup() {}
@@ -501,14 +501,14 @@ class BlobOutputSse_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobInputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_Protobuf_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BlobProtobuf setupData;
   final int len;
 
-  BlobInputProtobuf_Sync_Benchmark({
+  Blob_Protobuf_Input_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobInputProtobuf_Sync_len$len');
+  }) : super('Blob_Protobuf_Input_Sync_len$len');
 
   @override
   void setup() {
@@ -525,13 +525,13 @@ class BlobInputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobOutputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_Protobuf_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  BlobOutputProtobuf_Sync_Benchmark({
+  Blob_Protobuf_Output_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobOutputProtobuf_Sync_len$len');
+  }) : super('Blob_Protobuf_Output_Sync_len$len');
 
   @override
   void setup() {}
@@ -544,14 +544,14 @@ class BlobOutputProtobuf_Sync_Benchmark extends EnhancedBenchmarkBase {
   }
 }
 
-class BlobInputJson_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_Json_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBlobTwinSyncSse setupData;
   final int len;
 
-  BlobInputJson_Sync_Benchmark({
+  Blob_Json_Input_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobInputJson_Sync_len$len');
+  }) : super('Blob_Json_Input_Sync_len$len');
 
   @override
   void setup() {
@@ -576,13 +576,13 @@ class BlobInputJson_Sync_Benchmark extends EnhancedBenchmarkBase {
       };
 }
 
-class BlobOutputJson_Sync_Benchmark extends EnhancedBenchmarkBase {
+class Blob_Json_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  BlobOutputJson_Sync_Benchmark({
+  Blob_Json_Output_Sync_Benchmark({
     required this.len,
     super.emitter,
-  }) : super('BlobOutputJson_Sync_len$len');
+  }) : super('Blob_Json_Output_Sync_len$len');
 
   @override
   void setup() {}
