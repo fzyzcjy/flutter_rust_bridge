@@ -21,7 +21,15 @@ Map<String, dynamic> _transformCodecovReportInner(Map<String, dynamic> raw) {
 
 Map<String, dynamic> _transformFile(
     String filename, Map<String, dynamic> srcData) {
-  final ansData = {...srcData};
+  final ansData = srcData.map((key, rawValue) {
+    // mimic lcov.info feature (lcov.info is used in Dart side)
+    final ansValue = () {
+      if (rawValue is! String || !rawValue.contains('/')) return rawValue;
+      return rawValue.substring(0, rawValue.indexOf('/'));
+    }();
+    return MapEntry(key, ansValue);
+  });
+
   final fileLines = File(filename).readAsStringSync().split('\n');
 
   var ignoring = false;
