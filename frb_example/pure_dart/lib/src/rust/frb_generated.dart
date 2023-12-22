@@ -299,7 +299,7 @@ abstract class RustLibApi extends BaseApi {
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
       {required UserIdTwinNormal userId, dynamic hint});
 
-  Future<void> benchmarkVoidSemiSerialize({dynamic hint});
+  void benchmarkVoidSemiSerialize({dynamic hint});
 
   Future<DateTime> datetimeLocalTwinNormal({required DateTime d, dynamic hint});
 
@@ -5272,10 +5272,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> benchmarkVoidSemiSerialize({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        return wire.wire_benchmark_void_semi_serialize(port_);
+  void benchmarkVoidSemiSerialize({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_benchmark_void_semi_serialize();
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,

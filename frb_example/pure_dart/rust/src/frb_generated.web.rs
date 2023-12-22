@@ -10365,8 +10365,9 @@ pub fn wire_next_user_id_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_benchmark_void_semi_serialize(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_benchmark_void_semi_serialize_impl(port_)
+pub fn wire_benchmark_void_semi_serialize(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_benchmark_void_semi_serialize_impl()
 }
 
 #[wasm_bindgen]

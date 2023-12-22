@@ -26371,19 +26371,16 @@ class RustLibWire implements BaseWire {
       _wire_next_user_id_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_user_id_twin_normal>)>();
 
-  void wire_benchmark_void_semi_serialize(
-    int port_,
-  ) {
-    return _wire_benchmark_void_semi_serialize(
-      port_,
-    );
+  WireSyncRust2DartSse wire_benchmark_void_semi_serialize() {
+    return _wire_benchmark_void_semi_serialize();
   }
 
   late final _wire_benchmark_void_semi_serializePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartSse Function()>>(
           'wire_benchmark_void_semi_serialize');
   late final _wire_benchmark_void_semi_serialize =
-      _wire_benchmark_void_semi_serializePtr.asFunction<void Function(int)>();
+      _wire_benchmark_void_semi_serializePtr
+          .asFunction<WireSyncRust2DartSse Function()>();
 
   void wire_datetime_local_twin_normal(
     int port_,
