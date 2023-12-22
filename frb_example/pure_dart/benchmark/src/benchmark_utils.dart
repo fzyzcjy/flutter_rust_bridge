@@ -41,16 +41,15 @@ abstract class EnhancedAsyncBenchmarkBase extends AsyncBenchmarkBase
 }
 
 class JsonEmitter extends ScoreEmitter {
-  final String Function(String) namer;
   final items = <Map<String, Object?>>[];
 
-  JsonEmitter({required this.namer});
+  JsonEmitter();
 
   @override
   void emit(String testName, double value) {
     const PrintEmitter().emit(testName, value);
     items.add({
-      'name': namer(testName),
+      'name': testName,
       'unit': "Microseconds",
       'value': value,
     });
