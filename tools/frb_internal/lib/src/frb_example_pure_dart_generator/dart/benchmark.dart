@@ -108,8 +108,8 @@ class _Benchmark {
 
     final benchName = jsonEncode({
       'category': category,
-      'approach': approach,
-      'direction': direction,
+      'approach': approach.name,
+      'direction': direction?.name,
       'asynchronous': asynchronous,
       for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
     });
