@@ -7,7 +7,7 @@ use std::collections::HashMap;
 use std::hint::black_box;
 
 pub fn benchmark_void_twin_normal() {}
-  
+
 pub fn benchmark_input_bytes_twin_normal(bytes: Vec<u8>) -> i32 {
     bytes.into_iter().map(|x| x as i32).sum()
 }
@@ -15,7 +15,7 @@ pub fn benchmark_input_bytes_twin_normal(bytes: Vec<u8>) -> i32 {
 pub fn benchmark_output_bytes_twin_normal(size: i32) -> Vec<u8> {
     vec![0; size as usize]
 }
-  
+
 // The `serde` is only used for comparison test
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct BenchmarkBinaryTreeTwinNormal {
@@ -102,7 +102,7 @@ pub fn benchmark_binary_tree_input_json_twin_normal(raw: String) {
 pub fn benchmark_binary_tree_output_json_twin_normal(depth: i32) -> String {
     serde_json::to_string(BINARY_TREES.get(&depth).unwrap()).unwrap()
 }
-  
+
 // The `serde` is only used for comparison test
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct BenchmarkBlobTwinNormal {
@@ -152,5 +152,3 @@ pub fn benchmark_blob_input_json_twin_normal(raw: String) {
 pub fn benchmark_blob_output_json_twin_normal(size: i32) -> String {
     serde_json::to_string(&create_blob(size)).unwrap()
 }
-  
-  
