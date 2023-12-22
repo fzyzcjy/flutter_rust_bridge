@@ -1,11 +1,5 @@
 String generateBenchmark() {
-  return TODO;
-}
-
-const raw = '''
-// Note: This file contains tons of duplicated code! Because it is only for benchmarking
-// and many are ad-hoc code.
-
+  return '''
 #![allow(unused_variables)]
 
 use crate::auxiliary::protobuf_for_benchmark::{BinaryTreeProtobuf, BlobProtobuf};
@@ -14,7 +8,17 @@ use protobuf::Message;
 use std::collections::HashMap;
 use std::hint::black_box;
 
+${_benchmarkVoidFunction()}
+  ''';
+}
+
+String _benchmarkVoidFunction() {
+  return '''
 pub fn benchmark_void_twin_normal() {}
+  ''';
+}
+
+const raw = '''
 
 pub fn benchmark_input_bytes_twin_normal(bytes: Vec<u8>) -> i32 {
     bytes.into_iter().map(|x| x as i32).sum()
