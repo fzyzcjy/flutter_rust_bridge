@@ -72,8 +72,9 @@ pub(super) fn get_serializer_dart_postfix(prim: &IrTypePrimitive) -> &'static st
         IrTypePrimitive::F32 => "Float32",
         IrTypePrimitive::F64 => "Float64",
         IrTypePrimitive::Bool => "Uint8",
-        #[cfg_attr(coverage_nightly, coverage(off))]
+        // frb-coverage:ignore-start
         IrTypePrimitive::Unit => unreachable!(),
+        // frb-coverage:ignore-end
     }
 }
 

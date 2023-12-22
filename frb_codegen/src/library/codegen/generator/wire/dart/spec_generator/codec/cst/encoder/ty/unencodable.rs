@@ -5,10 +5,11 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for UnencodableWireDartCodecCstGenerator<'a> {
-    #[cfg_attr(coverage_nightly, coverage(off))]
+    // frb-coverage:ignore-start
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         unreachable!()
     }
+    // frb-coverage:ignore-end
 
     fn dart_wire_type(&self, target: Target) -> String {
         dart_wire_type_from_rust_wire_type_or_web(self, target, "Object".into())

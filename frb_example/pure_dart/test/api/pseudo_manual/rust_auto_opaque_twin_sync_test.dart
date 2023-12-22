@@ -190,7 +190,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   group('trait object', () {
-    Future<void> _body(RwLockBoxHelloTraitTwinSync obj, String expect) async {
+    Future<void> _body(BoxHelloTraitTwinSync obj, String expect) async {
       await futurizeVoidTwinSync(
           rustAutoOpaqueTraitObjectArgBorrowTwinSync(arg: obj, expect: expect));
       await futurizeVoidTwinSync(rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
@@ -210,19 +210,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('static method', () async {
-    final obj =
-        await RwLockNonCloneSimpleTwinSync.staticMethodReturnOwnTwinSync();
+    final obj = await NonCloneSimpleTwinSync.staticMethodReturnOwnTwinSync();
     await futurizeVoidTwinSync(
-        RwLockNonCloneSimpleTwinSync.staticMethodArgBorrowTwinSync(arg: obj));
+        NonCloneSimpleTwinSync.staticMethodArgBorrowTwinSync(arg: obj));
     await futurizeVoidTwinSync(
-        RwLockNonCloneSimpleTwinSync.staticMethodArgMutBorrowTwinSync(
-            arg: obj));
+        NonCloneSimpleTwinSync.staticMethodArgMutBorrowTwinSync(arg: obj));
     await futurizeVoidTwinSync(
-        RwLockNonCloneSimpleTwinSync.staticMethodArgOwnTwinSync(arg: obj));
+        NonCloneSimpleTwinSync.staticMethodArgOwnTwinSync(arg: obj));
   });
 
   test('instance method', () async {
-    final obj = await RwLockNonCloneSimpleTwinSync.newTwinSync();
+    final obj = await NonCloneSimpleTwinSync.newTwinSync();
     await futurizeVoidTwinSync(obj.instanceMethodArgBorrowTwinSync());
     await futurizeVoidTwinSync(obj.instanceMethodArgMutBorrowTwinSync());
     await futurizeVoidTwinSync(obj.instanceMethodReturnOwnTwinSync());

@@ -3,8 +3,9 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for OwnershipWireRustCodecCstGenerator<'a> {
-    #[cfg_attr(coverage_nightly, coverage(off))]
+    // frb-coverage:ignore-start
     fn rust_wire_type(&self, _target: Target) -> String {
         unreachable!()
     }
+    // frb-coverage:ignore-end
 }

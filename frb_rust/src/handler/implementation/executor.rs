@@ -161,8 +161,9 @@ impl ExecuteNormalOrAsyncUtils {
                     FfiCallMode::Stream => {
                         // nothing - ignore the return value of a Stream-typed function
                     }
-                    #[cfg_attr(coverage_nightly, coverage(off))]
+                    // frb-coverage:ignore-start
                     _ => unreachable!(),
+                    // frb-coverage:ignore-start
                 }
             }
             Err(error) => {

@@ -17,7 +17,7 @@ export default function ShowMeTheCode() {
             }}>
                 ...called from Dart, without manual intervention.</p>
             <CodeBlock language="dart">
-                {"print(f(a: 'Hello', b: ['Tom']));"}
+                {"print(f(a: 'Hello', b: ['World']));"}
             </CodeBlock>
 
             {/*<div style={{*/}
