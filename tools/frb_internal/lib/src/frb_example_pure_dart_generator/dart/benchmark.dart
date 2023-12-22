@@ -29,6 +29,8 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 import 'benchmark_utils.dart';
 import 'protobuf_for_benchmark/protobuf_for_benchmark.pb.dart';
 
+const _kBinaryTreeNodeName = 'HelloWorld';
+
 ${chunks.join("\n")}
   ''';
 }
@@ -40,41 +42,56 @@ class _TypedName {
   const _TypedName(this.type, this.name);
 }
 
-String _generate({
-  required String category,
-  String? direction,
-  required String approach,
-  required bool asynchronous,
-  String? setupDataType,
-  List<_TypedName> args = const [],
-  String setup = '',
-  required String run,
-  String extra = '',
-  String Function(String className, String benchmarkName)? raw,
-}) {
-  final className =
-      '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
-  final benchName = jsonEncode({
-    'category': category,
-    'approach': approach,
-    'direction': direction,
-    'asynchronous': asynchronous,
-    for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
+class _Benchmark {
+  final String category;
+  final String? direction;
+  final String approach;
+  final bool asynchronous;
+  final String? setupDataType;
+  final List<_TypedName> args;
+  final String setup;
+  final String run;
+  final String extra;
+  final String Function(String className, String benchmarkName)? raw;
+
+  const _Benchmark({
+    required this.category,
+    this.direction,
+    required this.approach,
+    required this.asynchronous,
+    this.setupDataType,
+    this.args = const [],
+    this.setup = '',
+    required this.run,
+    this.extra = '',
+    this.raw,
   });
 
-  final String classInside;
-  if (raw != null) {
-    classInside = raw(className, benchName);
-  } else {
-    final functionSetup = asynchronous
-        ? 'Future<void> setup() async { $setup }'
-        : 'void setup() { $setup }';
+  @override
+  String toString() {
+    final className =
+        '${category}_$approach${direction != null ? "_$direction" : ""}_${asynchronous ? "Async" : "Sync"}_Benchmark';
+    final benchName = jsonEncode({
+      'category': category,
+      'approach': approach,
+      'direction': direction,
+      'asynchronous': asynchronous,
+      for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
+    });
 
-    final functionRun = asynchronous
-        ? 'Future<void> run() async { $run }'
-        : 'void run() { $run }';
+    final String classInside;
+    if (raw != null) {
+      classInside = raw!(className, benchName);
+    } else {
+      final functionSetup = asynchronous
+          ? 'Future<void> setup() async { $setup }'
+          : 'void setup() { $setup }';
 
-    classInside = '''
+      final functionRun = asynchronous
+          ? 'Future<void> run() async { $run }'
+          : 'void run() { $run }';
+
+      classInside = '''
       ${setupDataType == null ? "" : "late final $setupDataType setupData;"}
       ${args.map((arg) => 'final ${arg.type} ${arg.name};\n').join('')}
       
@@ -91,32 +108,33 @@ String _generate({
       
       $extra
     ''';
-  }
+    }
 
-  return '''
+    return '''
 class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
   $classInside
 }
   ''';
+  }
 }
 
-List<String> _benchmarkVoidFunction() {
+List<_Benchmark> _benchmarkVoidFunction() {
   const category = 'VoidFunction';
 
   return [
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Std',
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Void',
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Raw',
       asynchronous: false,
@@ -124,7 +142,7 @@ List<String> _benchmarkVoidFunction() {
     ),
     // For example:
     // https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Raw',
       asynchronous: true,
@@ -140,13 +158,13 @@ List<String> _benchmarkVoidFunction() {
   ];
 }
 
-List<String> _benchmarkBytes() {
+List<_Benchmark> _benchmarkBytes() {
   const category = 'Bytes';
   const args = [_TypedName('int', 'len')];
 
   return [
     for (final asynchronous in [true, false])
-      _generate(
+      _Benchmark(
         category: category,
         approach: 'Frb',
         direction: 'Input',
@@ -157,7 +175,7 @@ List<String> _benchmarkBytes() {
         run:
             '${asynchronous ? "await" : ""} benchmarkInputBytesTwin${asynchronous ? "Normal" : "Sync"}(bytes: setupData);',
       ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Raw',
       direction: 'Input',
@@ -173,7 +191,7 @@ List<String> _benchmarkBytes() {
       ''',
     ),
     for (final asynchronous in [true, false])
-      _generate(
+      _Benchmark(
         category: category,
         approach: 'Frb',
         direction: 'Output',
@@ -182,7 +200,7 @@ List<String> _benchmarkBytes() {
         run:
             '${asynchronous ? "await" : ""} benchmarkOutputBytesTwin${asynchronous ? "Normal" : "Sync"}(size: len);',
       ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Raw',
       direction: 'Output',
@@ -228,31 +246,13 @@ List<String> _benchmarkBytes() {
   ];
 }
 
-List<String> _benchmarkBinaryTree() {
+List<_Benchmark> _benchmarkBinaryTree() {
   const category = 'BinaryTree';
   const args = [_TypedName('int', 'depth')];
 
   return [
-    '''
-const _kBinaryTreeNodeName = 'HelloWorld';
-
-BinaryTreeProtobuf _createTreeProtobuf(int depth) {
-  if (depth == 0) {
-    return BinaryTreeProtobuf(
-      name: _kBinaryTreeNodeName,
-      left: null,
-      right: null,
-    );
-  }
-  return BinaryTreeProtobuf(
-    name: _kBinaryTreeNodeName,
-    left: _createTreeProtobuf(depth - 1),
-    right: _createTreeProtobuf(depth - 1),
-  );
-}
-    ''',
     for (final sse in [false, true]) ...[
-      _generate(
+      _Benchmark(
         category: category,
         approach: 'Frb${sse ? "Sse" : ""}',
         direction: 'Input',
@@ -279,7 +279,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
           }
         ''',
       ),
-      _generate(
+      _Benchmark(
         category: category,
         approach: 'Frb${sse ? "Sse" : ""}',
         direction: 'Output',
@@ -289,7 +289,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
             'benchmarkBinaryTreeOutputTwinSync${sse ? "Sse" : ""}(depth: depth);',
       ),
     ],
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Input',
@@ -299,8 +299,24 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
       setup: 'setupData = _createTreeProtobuf(depth);',
       run:
           'benchmarkBinaryTreeInputProtobufTwinSync(raw: setupData.writeToBuffer());',
+      extra: '''
+        static BinaryTreeProtobuf _createTreeProtobuf(int depth) {
+          if (depth == 0) {
+            return BinaryTreeProtobuf(
+              name: _kBinaryTreeNodeName,
+              left: null,
+              right: null,
+            );
+          }
+          return BinaryTreeProtobuf(
+            name: _kBinaryTreeNodeName,
+            left: _createTreeProtobuf(depth - 1),
+            right: _createTreeProtobuf(depth - 1),
+          );
+        }
+      ''',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Output',
@@ -312,7 +328,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
         dummyValue ^= proto.hashCode;
       ''',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Json',
       direction: 'Input',
@@ -332,7 +348,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
             };
       ''',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Json',
       direction: 'Output',
@@ -349,7 +365,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
   ];
 }
 
-List<String> _benchmarkBlob() {
+List<_Benchmark> _benchmarkBlob() {
   const category = 'Blob';
   const args = [_TypedName('int', 'len')];
 
@@ -363,7 +379,7 @@ List<String> _benchmarkBlob() {
 
   return [
     for (final sse in [false, true]) ...[
-      _generate(
+      _Benchmark(
         category: category,
         approach: 'Frb${sse ? "Sse" : ""}',
         direction: 'Input',
@@ -373,7 +389,7 @@ List<String> _benchmarkBlob() {
         setup: setupDataSimple(sse: sse),
         run: 'benchmarkBlobInputTwinSync${sse ? "Sse" : ""}(blob: setupData);',
       ),
-      _generate(
+      _Benchmark(
         category: category,
         approach: 'Frb${sse ? "Sse" : ""}',
         direction: 'Output',
@@ -382,7 +398,7 @@ List<String> _benchmarkBlob() {
         run: 'benchmarkBlobOutputTwinSync${sse ? "Sse" : ""}(size: len);',
       ),
     ],
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Input',
@@ -399,7 +415,7 @@ List<String> _benchmarkBlob() {
       run:
           'benchmarkBlobInputProtobufTwinSync(raw: setupData.writeToBuffer());',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Protobuf',
       direction: 'Output',
@@ -411,7 +427,7 @@ List<String> _benchmarkBlob() {
         dummyValue ^= proto.hashCode;
       ''',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Json',
       direction: 'Input',
@@ -430,7 +446,7 @@ List<String> _benchmarkBlob() {
             };
       ''',
     ),
-    _generate(
+    _Benchmark(
       category: category,
       approach: 'Json',
       direction: 'Output',
