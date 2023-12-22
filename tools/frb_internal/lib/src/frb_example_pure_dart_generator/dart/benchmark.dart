@@ -93,12 +93,12 @@ class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
 }
 
 List<String> _benchmarkVoidFunction() {
-  const category = TODO;
+  const category = 'VoidFunction';
 
   return [
     _generate(
       category: category,
-      stem: 'Void',
+      stem: 'Std',
       asynchronous: true,
       run: 'await benchmarkVoidTwinNormal();',
     ),
@@ -133,7 +133,7 @@ List<String> _benchmarkVoidFunction() {
 }
 
 List<String> _benchmarkBytes() {
-  const category = TODO;
+  const category = 'Bytes';
   const args = [_TypedName('int', 'len')];
 
   return [
@@ -217,7 +217,7 @@ List<String> _benchmarkBytes() {
 }
 
 List<String> _benchmarkBinaryTree() {
-  const category = TODO;
+  const category = 'BinaryTree';
   const args = [_TypedName('int', 'depth')];
 
   return [
@@ -331,7 +331,7 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
 }
 
 List<String> _benchmarkBlob() {
-  const category = TODO;
+  const category = 'Blob';
   const args = [_TypedName('int', 'len')];
 
   String setupDataSimple({required bool sse}) => '''
