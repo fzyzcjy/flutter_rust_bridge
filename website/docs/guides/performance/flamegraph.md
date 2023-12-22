@@ -25,6 +25,6 @@ $DART_SDK/bin/dartaotruntime $DART_SDK/bin/snapshots/gen_kernel_aot.dart.snapsho
 $DART_SDK/bin/utils/gen_snapshot --snapshot-kind=app-aot-assembly --assembly=build/simple_benchmark.S build/simple_benchmark.dill
 gcc -shared -o build/simple_benchmark.so build/simple_benchmark.S
 
-# run flamegraph
-sudo flamegraph -o build/my_flamegraph.svg -- ~/temp/dartaotruntime build/simple_benchmark.so 
+# run flamegraph (example)
+sudo flamegraph -o build/my_flamegraph.svg -- ~/temp/dartaotruntime build/simple_benchmark.so loop build/whatever.out whatever 'VoidFunction.*Frb.*false' 10000000
 ```
