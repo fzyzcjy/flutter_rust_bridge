@@ -65,6 +65,7 @@ class _TypedName {
 enum _Approach {
   frb,
   frbSse,
+  frbCstSse,
   raw,
   protobuf,
   json,
@@ -207,6 +208,12 @@ List<_Benchmark> _benchmarkVoidFunction() {
       approach: _Approach.frb,
       asynchronous: false,
       run: 'benchmarkVoidTwinSync();',
+    ),
+    const _Benchmark(
+      task: task,
+      approach: _Approach.frbCstSse,
+      asynchronous: false,
+      run: 'benchmarkVoidSemiSerialize();',
     ),
     const _Benchmark(
       task: task,
