@@ -245,7 +245,7 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
         ...kEnvEnableRustBacktrace,
       });
 
-  if (config.coverage) transformCodecovReport(outputCodecovPath);
+  if (effectiveEnableCoverage) transformCodecovReport(outputCodecovPath);
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
