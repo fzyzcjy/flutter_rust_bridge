@@ -41,7 +41,7 @@ class _TypedName {
 String _generate({
   required String stem,
   required bool asynchronous,
-  String setupDataType = 'Null',
+  String? setupDataType,
   List<_TypedName> args = const [],
   String setup = '',
   required String run,
@@ -66,7 +66,7 @@ String _generate({
         : 'void run() { $run }';
 
     classInside = '''
-      late final $setupDataType setupData;
+      ${setupDataType == null ? "" : "late final $setupDataType setupData;"}
       ${args.map((arg) => 'final ${arg.type} ${arg.name};\n').join('')}
       
       $className({
