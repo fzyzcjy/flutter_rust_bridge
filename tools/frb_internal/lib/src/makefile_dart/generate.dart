@@ -370,7 +370,7 @@ Future<RunCommandOutput> executeFrbCodegen(
         relativePwd: relativePwd);
   } else {
     return await exec(
-      'cargo ${coverage ? "llvm-cov run --lcov --output-path ${getCoverageDir(coverageName)}/lcov.info" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+      'cargo ${coverage ? "llvm-cov run --codecov --output-path ${getCoverageDir(coverageName)}/codecov.json" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
       extraEnv: {'RUST_BACKTRACE': '1'},
     );

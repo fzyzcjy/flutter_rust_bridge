@@ -258,7 +258,7 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
       config.coverage && config.package == 'frb_codegen';
 
   await exec(
-      'cargo ${effectiveEnableCoverage ? "llvm-cov --lcov --output-path ${getCoverageDir('rust')}/lcov.info" : "test"}',
+      'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path ${getCoverageDir('rust')}/codecov.json" : "test"}',
       relativePwd: config.package,
       extraEnv: {
         'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
@@ -278,7 +278,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   await withLlvmCovReport(
     relativeRustPwd: '${config.package}/rust',
     enable: enableRustCoverage,
-    reportPath: '${getCoverageDir('rust')}/lcov.info',
+    reportPath: '${getCoverageDir('rust')}/codecov.json',
     (rustEnvMap) async {
       await runPubGetIfNotRunYet(config.package);
 
@@ -337,7 +337,7 @@ Future<T> withLlvmCovReport<T>(
   final ans = await inner(envMap);
 
   await exec(
-      'cargo llvm-cov report --lcov '
+      'cargo llvm-cov report --codecov '
       '--output-path $reportPath '
       "--ignore-filename-regex '.*/frb_example/.*' "
       '$cargoLlvmCovCommonArgs',
