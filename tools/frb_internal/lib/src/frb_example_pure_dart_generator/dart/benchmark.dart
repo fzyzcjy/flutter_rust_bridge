@@ -306,121 +306,85 @@ BinaryTreeProtobuf _createTreeProtobuf(int depth) {
 }
 
 List<String> _benchmarkBlob() {
-  return '''
-class BlobInputSyncBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBlobTwinSync blob;
+  const args = [_TypedName('int', 'len')];
 
-  BlobInputSyncBenchmark(int len, {super.emitter})
-      : blob = BenchmarkBlobTwinSync(
+  String setupDataSimple({required bool sse}) => '''
+        setupData = BenchmarkBlobTwinSync${sse ? "Sse" : ""}(
           first: Uint8List(len),
           second: Uint8List(len),
           third: Uint8List(len),
-        ),
-        super('BlobInputSyncBenchmark_Len\$len');
+        );
+      ''';
 
-  @override
-  void run() => benchmarkBlobInputTwinSync(blob: blob);
-}
-
-class BlobOutputSyncBenchmark extends EnhancedBenchmarkBase {
-  final int len;
-
-  BlobOutputSyncBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSync_Len\$len');
-
-  @override
-  void run() => benchmarkBlobOutputTwinSync(size: len);
-}
-
-BenchmarkBlobTwinSyncSse _createBlob(int len) => BenchmarkBlobTwinSyncSse(
-      first: Uint8List(len),
-      second: Uint8List(len),
-      third: Uint8List(len),
-    );
-
-class BlobInputSyncSseBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBlobTwinSyncSse blob;
-
-  BlobInputSyncSseBenchmark(int len, {super.emitter})
-      : blob = _createBlob(len),
-        super('BlobInputSyncSseBenchmark_Len\$len');
-
-  @override
-  void run() => benchmarkBlobInputTwinSyncSse(blob: blob);
-}
-
-class BlobOutputSyncSseBenchmark extends EnhancedBenchmarkBase {
-  final int len;
-
-  BlobOutputSyncSseBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSyncSse_Len\$len');
-
-  @override
-  void run() => benchmarkBlobOutputTwinSyncSse(size: len);
-}
-
-class BlobInputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
-  final BlobProtobuf blob;
-
-  BlobInputSyncProtobufBenchmark(int len, {super.emitter})
-      : blob = BlobProtobuf(
+  return [
+    for (final sse in [false, true]) ...[
+      _generate(
+        stem: 'BlobInput${sse ? "Sse" : ""}',
+        asynchronous: false,
+        args: args,
+        setupDataType: 'BenchmarkBlobTwinSync',
+        setup: setupDataSimple(sse: sse),
+        run: 'benchmarkBlobInputTwinSync${sse ? "Sse" : ""}(blob: blob);',
+      ),
+      _generate(
+        stem: 'BlobOutput${sse ? "Sse" : ""}',
+        asynchronous: false,
+        args: args,
+        run: 'benchmarkBlobOutputTwinSync${sse ? "Sse" : ""}(size: len);',
+      ),
+    ],
+    _generate(
+      stem: 'BlobInputProtobuf',
+      asynchronous: false,
+      args: args,
+      setupDataType: 'BlobProtobuf',
+      setup: '''
+        setupData = BlobProtobuf(
           first: Uint8List(len),
           second: Uint8List(len),
           third: Uint8List(len),
-        ),
-        super('BlobInputSyncProtobufBenchmark_Len\$len');
-
-  @override
-  void run() => benchmarkBlobInputProtobufTwinSync(raw: blob.writeToBuffer());
-}
-
-class BlobOutputSyncProtobufBenchmark extends EnhancedBenchmarkBase {
-  final int len;
-
-  BlobOutputSyncProtobufBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSyncProtobuf_Len\$len');
-
-  @override
-  void run() {
-    final raw = benchmarkBlobOutputProtobufTwinSync(size: len);
-    final proto = BlobProtobuf.fromBuffer(raw);
-    dummyValue ^= proto.hashCode;
-  }
-}
-
-class BlobInputSyncJsonBenchmark extends EnhancedBenchmarkBase {
-  final BenchmarkBlobTwinSyncSse blob;
-
-  BlobInputSyncJsonBenchmark(int len, {super.emitter})
-      : blob = _createBlob(len),
-        super('BlobInputSyncJsonBenchmark_Len\$len');
-
-  // Normally use `json_serializable`, but we only use for benchmark so manually write
-  static Map<String, dynamic> _toJson(dynamic blob) => {
-        'first': blob.first,
-        'second': blob.second,
-        'third': blob.third,
-      };
-
-  @override
-  void run() => benchmarkBlobInputJsonTwinSync(
-      raw: jsonEncode(blob, toEncodable: _toJson));
-}
-
-class BlobOutputSyncJsonBenchmark extends EnhancedBenchmarkBase {
-  final int len;
-
-  BlobOutputSyncJsonBenchmark(this.len, {super.emitter})
-      : super('BlobOutputSyncJson_Len\$len');
-
-  @override
-  void run() {
-    final raw = benchmarkBlobOutputJsonTwinSync(size: len);
-    // TODO: Should use json_serialize to further generate Dart objects
-    // Otherwise this comparison is unfair (JSON does fewer amount of work)
-    final json = jsonDecode(raw);
-    dummyValue ^= json.hashCode;
-  }
-}
-  ''';
+        );
+      ''',
+      run: 'benchmarkBlobInputProtobufTwinSync(raw: blob.writeToBuffer());',
+    ),
+    _generate(
+      stem: 'BlobOutputProtobuf',
+      asynchronous: false,
+      args: args,
+      run: '''
+        final raw = benchmarkBlobOutputProtobufTwinSync(size: len);
+        final proto = BlobProtobuf.fromBuffer(raw);
+        dummyValue ^= proto.hashCode;
+      ''',
+    ),
+    _generate(
+      stem: 'BlobInputJson',
+      asynchronous: false,
+      args: args,
+      setupDataType: 'BenchmarkBlobTwinSync',
+      setup: setupDataSimple(sse: true),
+      run:
+          'benchmarkBlobInputJsonTwinSync(raw: jsonEncode(blob, toEncodable: _toJson));',
+      extra: '''
+        // Normally use `json_serializable`, but we only use for benchmark so manually write
+        static Map<String, dynamic> _toJson(dynamic blob) => {
+              'first': blob.first,
+              'second': blob.second,
+              'third': blob.third,
+            };
+      ''',
+    ),
+    _generate(
+      stem: 'BlobOutputProtobuf',
+      asynchronous: false,
+      args: args,
+      run: '''
+        final raw = benchmarkBlobOutputJsonTwinSync(size: len);
+        // TODO: Should use json_serialize to further generate Dart objects
+        // Otherwise this comparison is unfair (JSON does fewer amount of work)
+        final json = jsonDecode(raw);
+        dummyValue ^= json.hashCode;
+      ''',
+    ),
+  ];
 }
