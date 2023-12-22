@@ -1,7 +1,6 @@
 // NOTE: Currently it still contains a lot of duplicates (because it was
 // migrated from manual code). But when adding more tests, we can refactor and avoid it.
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:recase/recase.dart';
 
@@ -77,8 +76,6 @@ enum _Direction {
   output,
 }
 
-final _platform = ReCase(Platform.operatingSystem).pascalCase;
-
 class _Benchmark {
   final String task;
   final _Direction? direction;
@@ -125,7 +122,7 @@ class _Benchmark {
       'direction': directionName,
       'asynchronous': asynchronous,
       for (final arg in args) 'arg_${arg.name}': '\$${arg.name}',
-      'platform': _platform,
+      'platform': '\$currentPlatformName',
     });
 
     final String classInside;

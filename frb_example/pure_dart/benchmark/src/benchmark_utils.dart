@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
@@ -58,3 +60,10 @@ class JsonEmitter extends ScoreEmitter {
 
 // ignore: invalid_use_of_internal_member, invalid_use_of_protected_member
 late final RustLibWire rawWire = (RustLib.instance.api as RustLibApiImpl).wire;
+
+final String currentPlatformName = () {
+  if (Platform.isWindows) return 'Windows';
+  if (Platform.isMacOS) return 'Macos';
+  if (Platform.isLinux) return 'Linux';
+  throw UnimplementedError();
+}();
