@@ -1,3 +1,5 @@
+// NOTE: Currently it still contains a lot of duplicates (because it was
+// migrated from manual code). But when adding more tests, we can refactor and avoid it.
 String generateBenchmark() {
   return '''
 #![allow(unused_variables)]
