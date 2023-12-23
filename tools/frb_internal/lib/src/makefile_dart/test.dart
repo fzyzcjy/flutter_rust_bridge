@@ -258,7 +258,8 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
   final effectiveEnableCoverage =
       config.coverage && config.package == 'frb_codegen';
 
-  final outputCodecovPath = '${getCoverageDir('rust')}/codecov.json';
+  final outputCodecovPath =
+      '${getCoverageDir('rust_${config.package}')}/codecov.json';
   await exec(
       'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"}',
       relativePwd: config.package,
