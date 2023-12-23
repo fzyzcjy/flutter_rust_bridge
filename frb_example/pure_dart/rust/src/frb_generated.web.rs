@@ -20929,6 +20929,16 @@ pub fn wire_NonCloneSimpleTwinSse_new_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinSse_new_with_result_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_NonCloneSimpleTwinSse_new_with_result_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -21274,6 +21284,12 @@ pub fn wire_NonCloneSimpleTwinSync_new_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinSync_new_with_result_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_NonCloneSimpleTwinSync_new_with_result_twin_sync_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -21516,6 +21532,19 @@ pub fn wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]

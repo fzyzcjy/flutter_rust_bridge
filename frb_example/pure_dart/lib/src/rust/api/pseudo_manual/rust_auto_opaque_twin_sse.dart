@@ -226,6 +226,11 @@ class NonCloneSimpleTwinSse extends RustOpaque {
   static Future<NonCloneSimpleTwinSse> newTwinSse({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseNewTwinSse(hint: hint);
 
+  /// constructor with Result
+  static Future<NonCloneSimpleTwinSse> newWithResultTwinSse({dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinSseNewWithResultTwinSse(hint: hint);
+
   static Future<void> staticMethodArgBorrowTwinSse(
           {required NonCloneSimpleTwinSse arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(

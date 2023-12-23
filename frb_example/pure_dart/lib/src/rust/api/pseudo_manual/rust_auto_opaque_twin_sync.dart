@@ -210,6 +210,11 @@ class NonCloneSimpleTwinSync extends RustOpaque {
   static NonCloneSimpleTwinSync newTwinSync({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSyncNewTwinSync(hint: hint);
 
+  /// constructor with Result
+  static NonCloneSimpleTwinSync newWithResultTwinSync({dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinSyncNewWithResultTwinSync(hint: hint);
+
   static void staticMethodArgBorrowTwinSync(
           {required NonCloneSimpleTwinSync arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
