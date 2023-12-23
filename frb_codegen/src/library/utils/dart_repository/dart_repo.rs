@@ -71,17 +71,23 @@ impl DartRepository {
         debug!("Checking presence of {} in {} at {}", package, manager, at);
         let manifest_file = read_file(at, DartToolchain::manifest_filename())?;
         let manifest_file: PubspecYaml = serde_yaml::from_str(&manifest_file).map_err(|e| {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             anyhow!(
                 "unable to parse {} in {at}: {e:#}",
                 DartToolchain::manifest_filename()
             )
+            // frb-coverage:ignore-end
         })?;
         let deps = match manager {
             DartDependencyMode::Main => manifest_file.dependencies.unwrap_or_default(),
             DartDependencyMode::Dev => manifest_file.dev_dependencies.unwrap_or_default(),
         };
         if !deps.contains_key(package) {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             Err(error_missing_dep(package, manager, requirement))?;
+            // frb-coverage:ignore-end
         }
         Ok(())
     }
@@ -97,17 +103,23 @@ impl DartRepository {
         debug!("Checking presence of {} in {} at {}", package, manager, at);
         let lock_file = read_file(at, DartToolchain::lock_filename())?;
         let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|e| {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             anyhow!(
                 "unable to parse {} in {at}: {e:#}",
                 DartToolchain::lock_filename()
             )
+            // frb-coverage:ignore-end
         })?;
         let dependency = lock_file.packages.get(package);
         let version = match dependency {
             Some(dependency) => {
                 let pm = dependency.installed_in();
                 if pm.as_ref() != Some(&manager) {
+                    // This will stop the whole generator and tell the users, so we do not care about testing it
+                    // frb-coverage:ignore-start
                     return Err(error_invalid_dep(package, manager, requirement));
+                    // frb-coverage:ignore-end
                 }
                 DartPackageVersion::try_from(dependency).map_err(|e| {
                     anyhow::Error::msg(format!(
@@ -118,15 +130,21 @@ impl DartRepository {
                     ))
                 })?
             }
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             None => return Err(error_missing_dep(package, manager, requirement)),
+            // frb-coverage:ignore-end
         };
 
         match version {
             DartPackageVersion::Exact(ref v) if requirement.matches(v) => Ok(()),
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             DartPackageVersion::Range(_) => bail!(
                 "unexpected version range for {package} in {}",
                 DartToolchain::lock_filename()
             ),
+            // frb-coverage:ignore-end
             _ => Err(error_invalid_dep(package, manager, requirement)),
         }
     }
@@ -140,6 +158,8 @@ impl DartRepository {
     }
 }
 
+// This will stop the whole generator and tell the users, so we do not care about testing it
+// frb-coverage:ignore-start
 fn error_missing_dep(
     package: &str,
     manager: DartDependencyMode,
@@ -147,7 +167,10 @@ fn error_missing_dep(
 ) -> anyhow::Error {
     anyhow!("MissingDep: Please add {package} to your {manager}. (version {requirement})")
 }
+// frb-coverage:ignore-end
 
+// This will stop the whole generator and tell the users, so we do not care about testing it
+// frb-coverage:ignore-start
 fn error_invalid_dep(
     package: &str,
     manager: DartDependencyMode,
@@ -157,6 +180,7 @@ fn error_invalid_dep(
         "InvalidDep: Please update version of {package} in your {manager}. (version {requirement})"
     )
 }
+// frb-coverage:ignore-end
 
 #[derive(Debug, Clone, PartialEq, Eq, Copy)]
 pub enum DartDependencyMode {
@@ -199,7 +223,10 @@ impl Display for DartPackageVersion {
 fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
     let file = PathBuf::from(at).join(filename);
     if !file.exists() {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         bail!("missing {filename} in {at}");
+        // frb-coverage:ignore-end
     }
     let content = std::fs::read_to_string(file)
         .with_context(|| format!("unable to read {filename} in {at}"))?;
@@ -213,5 +240,37 @@ impl PubspecLockPackage {
             "direct main" => Some(DartDependencyMode::Main),
             _ => None,
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_display() {
+        assert_eq!(
+            format!("{}", DartDependencyMode::Main),
+            "dependencies".to_owned()
+        );
+        assert_eq!(
+            format!("{}", DartDependencyMode::Dev),
+            "dev_dependencies".to_owned()
+        );
+
+        assert_eq!(
+            format!(
+                "{}",
+                DartPackageVersion::Exact(Version::parse("1.0.0").unwrap())
+            ),
+            "1.0.0".to_owned()
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                DartPackageVersion::Range(VersionReq::parse(">=1.0.0").unwrap())
+            ),
+            ">=1.0.0".to_owned()
+        );
     }
 }
