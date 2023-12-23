@@ -36,7 +36,7 @@ Map<String, dynamic> _transformByMimickingLcovInfo(Map<String, dynamic> raw) {
     // mimic lcov.info feature (lcov.info is used in Dart side)
     final ansValue = () {
       if (rawValue is! String || !rawValue.contains('/')) return rawValue;
-      return rawValue.substring(0, rawValue.indexOf('/'));
+      return int.parse(rawValue.substring(0, rawValue.indexOf('/')));
     }();
     return MapEntry(key, ansValue);
   });
