@@ -149,4 +149,5 @@ pub struct MySizeFreezedTwinSync {
 // }
 
 // To test parsing of `pub(super)`
+#[allow(dead_code)]
 pub(super) fn visibility_restricted_func_twin_sync() {}
