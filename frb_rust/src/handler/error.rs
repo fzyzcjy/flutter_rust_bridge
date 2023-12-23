@@ -28,3 +28,20 @@ pub(crate) fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
     }
     .to_string()
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::handler::error::Error;
+
+    #[test]
+    fn test_error_message() {
+        assert_eq!(
+            Error::CustomError.message(),
+            "Box<dyn BoxIntoDart>".to_owned()
+        );
+        assert_eq!(
+            Error::Panic(Box::new(42)).message(),
+            "Box<dyn Any>".to_owned()
+        );
+    }
+}

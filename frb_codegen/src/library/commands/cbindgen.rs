@@ -24,7 +24,10 @@ pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<String> {
 
 fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<()> {
     debug!(
+        // weirdly this line is not covered, while the `debug!` call is
+        // frb-coverage:ignore-start
         "execute cbindgen rust_crate_dir={rust_crate_dir:?} c_output_path={c_output_path:?}",
+        // frb-coverage:ignore-end
         rust_crate_dir = args.rust_crate_dir
     );
 

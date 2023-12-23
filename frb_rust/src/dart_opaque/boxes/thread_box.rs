@@ -59,6 +59,14 @@ mod tests {
     use std::thread;
 
     #[test]
+    fn test_thread_box_simple() {
+        let b = ThreadBox::new(42);
+        assert!(b.check_context());
+        assert_eq!(*b.as_ref(), 42);
+        assert_eq!(b.into_inner(), 42);
+    }
+
+    #[test]
     fn test_thread_box_should_panic_when_access_on_another_thread() {
         let b = Arc::new(ThreadBox::new(42));
         let b2 = b.clone();

@@ -156,10 +156,13 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     if let Pat::Ident(ref pat_ident) = *pat_type.pat {
         Ok(format!("{}", pat_ident.ident))
     } else {
+        // This branch simply halts the generator with an error message, so we do not test it
+        // frb-coverage:ignore-start
         bail!(
             "Unexpected pattern: {}",
             quote::quote!(#pat_type).to_string(),
         )
+        // frb-coverage:ignore-end
     }
 }
 

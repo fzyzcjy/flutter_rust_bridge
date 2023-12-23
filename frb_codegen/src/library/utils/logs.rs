@@ -35,7 +35,9 @@ pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fe
             .level(LevelFilter::Info)
             .level_for("cbindgen", LevelFilter::Error)
             .chain(std::io::stdout()),
+        // frb-coverage:ignore-start
         _ => panic!("only allow \"debug\" or \"info\""),
+        // frb-coverage:ignore-end
     };
 
     let (max_level, fern_logger) = fern_logger.into_log();
@@ -64,7 +66,9 @@ fn log_level_from_env_var() -> Option<LevelFilter> {
             "warn" => LevelFilter::Warn,
             "error" => LevelFilter::Error,
             "off" => LevelFilter::Off,
+            // frb-coverage:ignore-start
             _ => panic!("{}", "unknown RUST_LOG level: {value}"),
+            // frb-coverage:ignore-end
         })
 }
 
