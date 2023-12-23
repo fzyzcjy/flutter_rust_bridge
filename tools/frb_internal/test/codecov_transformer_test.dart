@@ -13,5 +13,13 @@ void main() {
     // such error handling is implicit and will not even appear in code coverage
     expect(shouldKeepLine('    )?;'), false);
     expect(shouldKeepLine('  )?,'), false);
+
+    // Also ignore pure comments
+    expect(shouldKeepLine('// hello'), false);
+    expect(shouldKeepLine('    // hello'), false);
+
+    // Also ignore pure brackets
+    expect(shouldKeepLine('}'), false);
+    expect(shouldKeepLine('   };'), false);
   });
 }

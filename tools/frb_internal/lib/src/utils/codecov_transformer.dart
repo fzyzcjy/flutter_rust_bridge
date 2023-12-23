@@ -75,7 +75,8 @@ Map<String, dynamic> _transformByCodeComments(
   return ans;
 }
 
-final _kIgnoreLineRegex = RegExp(r'^\s*(#\[derive\(.*\)\]|\)\?.*)\s*$');
+final _kIgnoreLineRegex =
+    RegExp(r'^\s*(#\[derive\(.*\)\]|\)\?.*|//.*|\};?)\s*$');
 
 @visibleForTesting
 bool shouldKeepLine(String line) => !_kIgnoreLineRegex.hasMatch(line);
