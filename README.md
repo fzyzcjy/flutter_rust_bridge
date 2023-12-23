@@ -1,4 +1,4 @@
-# [flutter_rust_bridge v2](https://github.com/fzyzcjy/flutter_rust_bridge): Flutter/Dart <-> Rust, feature-rich, but seamless and simple.
+# [flutter_rust_bridge v2](https://github.com/fzyzcjy/flutter_rust_bridge): Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple.
 
 [![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg?color=blue)](https://crates.io/crates/flutter_rust_bridge)
 [![Flutter Package](https://img.shields.io/pub/v/flutter_rust_bridge.svg?include_prereleases&color=blue)](https://pub.dev/packages/flutter_rust_bridge)
@@ -15,9 +15,22 @@
 
 ## What's new in V2
 
-Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new) for information and update guide.
+<details>
+<summary>Click to expand</summary>
+
+* **Rapid setup**: Only a one-liner command to integrate into your project.
+* **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
+* **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
+* **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
+* **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
+* **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* **New codec**: A new codec, `SSE`, which is several times faster under typical workload.
+
+Please visit [this page](https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new) for more information and update guide.
 
 I want to keep it in beta for a while (though CI has all passed), to allow publishing API breaking changes, and hear your thoughts and suggestions about it!
+
+</details>
 
 ## 🍀 What's this?
 
@@ -58,7 +71,7 @@ This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-
 
 ### 3. Powerfulness
 
-* **Arbitrary types**: Use arbitrary Rust and Dart types, even if they are not serializable or non-clone.
+* **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone.
 * **Async & sync** x Rust & Dart: Multi modes for various needs - Async Dart to avoid blocking the main thread, sync Dart for places needed (e.g. Widget.build); async Rust for IO bound tasks, thread pools for CPU-heavy computations.
 * **Two-way road**: Not only can Dart call Rust - Rust can also call Dart.
 * **Auto-translatable types**: Lots of types can be further translated to Dart native types, e.g. complex `enum`s and `struct`s, zero-copy big arrays, errors (`Result`), and `Stream`s (iterator).
@@ -73,6 +86,7 @@ This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-
 * **Used by many people**: See [here](https://fzyzcjy.github.io/flutter_rust_bridge/guides/users) for an incomplete list.
 * **Easy to code-review & convince yourself**: This package simply simulates how humans write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to track.
 * **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
+* **Hackable**: If (for whatever reason) you want to hack the source, there are contributor guides, code is modular, and the execution logic is intuitive.
 
 ### Why Flutter + Rust?
 

@@ -9,17 +9,13 @@ where there are lists of features (advantages) and a quick show-me-the-code.
 
 ### Primary changes
 
-* Transparently handle arbitrary Rust types, even if they are not serializable or non-clone.
-* Support asynchronous Rust, i.e. `async fn` (e.g. Tokio)
-* Allow Rust to call Dart functions (previously only allow Dart to call Rust)
-* Out-of-the-box usage - setup the whole system within a few clicks.
-    * Add scaffolding commands (apply to existing project or create new project in one command).
-    * Integrate with Cargokit (setup the build environment and hooks automatically).
-    * Provide defaults, while keeping customizability (e.g. auto find and load the dynamic libraries by default, while allowing full manual control).
-* Support multiple input and output files (indeed can generate for a whole crate, preserving file hierarchy)
-* Can directly use `flutter run` for all platforms (including web).
-    * Therefore, support web debugging, firefox, etc.
-* A new codec, `SSE`, which is several times faster under typical workload
+* **Rapid setup**: Only a one-liner command to integrate into your project.
+* **Arbitrary types**: Use arbitrary Rust and Dart types without manual intervention, even if they are not serializable or non-clone (previously need some manual intervention).
+* **Async Rust**: Support asynchronous Rust (`async fn`), in addition to sync Rust / async Dart / sync Dart.
+* **Rust call Dart**: Allow Rust to call Dart functions (previously only allow Dart to call Rust).
+* **Support whole folders as inputs**: Previously only support one single file (e.g. `api.rs`).
+* **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* **New codec**: A new codec, `SSE`, which is several times faster under typical workload.
 
 ### More changes
 
@@ -35,6 +31,10 @@ where there are lists of features (advantages) and a quick show-me-the-code.
     * Automatically triple the tests, e.g. can auto ensure Rust-async works well since it has the same number of tests as the Rust non-async mode.
     * Automatically generate some e2e exhaustive test cases.
     * Add some unit tests for `frb_codegen`.
+* Details of out-of-the-box usage
+  * Add scaffolding commands (apply to existing project or create new project in one command).
+  * Integrate with Cargokit (setup the build environment and hooks automatically).
+  * Provide defaults, while keeping customizability (e.g. auto find and load the dynamic libraries by default, while allowing full manual control).
 * Improve error stack trace of `frb_codegen` (replace `thiserror` with `anyhow`).
 * Generate hashCode/equals for non-freezed structs.
 * Remove global internal thread pool, thus users can arbitrarily customize thread pool easily.

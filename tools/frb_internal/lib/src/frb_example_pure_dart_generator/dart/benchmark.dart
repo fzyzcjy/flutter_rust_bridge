@@ -8,7 +8,7 @@ const _kArea = 'PureDart';
 
 String generateBenchmark() {
   final benchmarks = [
-    ..._benchmarkPrimeNumber(),
+    ..._benchmarkMisc(),
     ..._benchmarkVoidFunction(),
     ..._benchmarkBytes(),
     ..._benchmarkBinaryTree(),
@@ -166,13 +166,11 @@ class $className extends Enhanced${asynchronous ? "Async" : ""}BenchmarkBase {
   }
 }
 
-List<_Benchmark> _benchmarkPrimeNumber() {
-  const task = 'PrimeNumber';
-
+List<_Benchmark> _benchmarkMisc() {
   return [
     // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
     const _Benchmark(
-      task: task,
+      task: 'PrimeNumber',
       approach: _Approach.na,
       asynchronous: false,
       args: [_TypedName('int', 'number')],
@@ -189,6 +187,30 @@ List<_Benchmark> _benchmarkPrimeNumber() {
           }
           return true;
         }
+      ''',
+    ),
+    const _Benchmark(
+      task: 'IntParse',
+      approach: _Approach.na,
+      asynchronous: false,
+      args: [_TypedName('String', 'number')],
+      argValues: ['"0"', '"1000000000"'],
+      run: '''
+        final ans = int.parse(number);
+        dummyValue ^= ans;
+      ''',
+    ),
+    const _Benchmark(
+      task: 'Base64Encode',
+      approach: _Approach.na,
+      asynchronous: false,
+      args: [_TypedName('int', 'len')],
+      argValues: ['0', '10', '100'],
+      setupDataType: 'String',
+      setup: "setupData = 'HelloWorld' * (len ~/ 10);",
+      run: '''
+        final ans = base64Encode(utf8.encode(setupData));
+        dummyValue ^= ans.hashCode;
       ''',
     ),
   ];
