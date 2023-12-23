@@ -99,11 +99,14 @@ fn modify_file(
             return Some((path, [&src, commented_existing_content.as_bytes()].concat()));
         }
 
+        // We do not care about this warning
+        // frb-coverage:ignore-start
         warn!(
             "Skip writing to {path:?} because file already exists. \
             It is suggested to remove that file before running this command to apply the full template."
         );
         return None;
+        // frb-coverage:ignore-end
     }
 
     if path.iter().contains(&OsStr::new("cargokit")) {

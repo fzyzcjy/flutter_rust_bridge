@@ -45,8 +45,11 @@ fn warn_if_fail(r: anyhow::Result<()>, debug_name: &str) -> bool {
     match r {
         Ok(_) => true,
         Err(_) => {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             warn!("Fail to {debug_name}, but continue to run.\nError details: {r:?}");
             false
+            // frb-coverage:ignore-end
         }
     }
 }
