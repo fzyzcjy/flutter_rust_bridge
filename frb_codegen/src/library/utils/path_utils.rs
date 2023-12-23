@@ -62,12 +62,20 @@ pub(crate) fn canonicalize_with_error_message(path: &Path) -> Result<PathBuf> {
 
 #[cfg(test)]
 mod tests {
-    use crate::utils::path_utils::glob_path;
+    use crate::utils::path_utils::{find_parent_dir_with_file, glob_path};
     use anyhow::Result;
     use std::collections::HashSet;
     use std::fs;
     use std::path::PathBuf;
     use tempfile::tempdir;
+
+    #[test]
+    fn test_find_parent_dir_with_file_failure_case() {
+        assert_eq!(
+            find_parent_dir_with_file(&PathBuf::new(), "whatever_not_exist_file"),
+            None
+        );
+    }
 
     #[test]
     fn test_glob_path_simple() -> Result<()> {
