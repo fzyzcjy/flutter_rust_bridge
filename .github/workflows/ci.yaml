@@ -285,7 +285,7 @@ jobs:
   bench_upload:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
-    # Even if some previous jobs failed, we still want partial info
+    # NOTE Even if some previous jobs failed, we still want partial info
     if: ${{ always() && !cancelled() }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
@@ -788,7 +788,7 @@ jobs:
   misc_codecov:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
-    # Even if some previous jobs failed, we still want partial info
+    # NOTE Even if some previous jobs failed, we still want partial info
     if: ${{ always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
