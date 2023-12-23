@@ -28,7 +28,10 @@ impl TryFrom<TargetOrCommon> for Target {
 
     fn try_from(src: TargetOrCommon) -> Result<Self, Self::Error> {
         Ok(match src {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             TargetOrCommon::Common => bail!("Cannot convert TargetOrCommon::Common to Target"),
+            // frb-coverage:ignore-end
             TargetOrCommon::Io => Target::Io,
             TargetOrCommon::Web => Target::Web,
         })

@@ -184,18 +184,12 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let values = self
-            .ir
-            .values
-            .iter()
+        let values = (self.ir.values.iter())
             .map(|ty| ApiDartGenerator::new(ty.clone(), self.context).dart_api_type())
             .collect_vec()
             .join(",");
-        if self.ir.values.len() == 1 {
-            format!("({values},)")
-        } else {
-            format!("({values})")
-        }
+        let extra_comma = if self.ir.values.len() == 1 { "," } else { "" };
+        format!("({values}{extra_comma})")
     }
 }
 
