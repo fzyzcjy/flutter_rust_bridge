@@ -68,7 +68,8 @@ Future<void> precommit(PrecommitConfig config) async {
 
   if (config.mode == PrecommitMode.slow) {
     await generateInternal(
-        const GenerateConfig(setExitIfChanged: false, coverage: false));
+        const GenerateConfig(setExitIfChanged: false, coverage: false),
+        canSkipAllContributor: true);
     await testRust(const TestRustConfig(updateGoldens: true, coverage: false));
     await pubGetAll();
     await cargoFetchAll();

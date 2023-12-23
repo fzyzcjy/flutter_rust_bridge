@@ -110,13 +110,16 @@ class GenerateWebsiteConfig {
   });
 }
 
-Future<void> generateInternal(GenerateConfig config) async {
+Future<void> generateInternal(GenerateConfig config,
+    {bool canSkipAllContributor = false}) async {
   await generateInternalFrbExamplePureDart(config);
   await generateInternalRust(config);
   await generateInternalBookHelp(config);
   await generateInternalDartSource(config);
   await generateInternalBuildRunner(config);
-  await generateInternalContributor(config);
+  await _maybeAllowFailureAndSkip(canSkip: canSkipAllContributor, () async {
+    await generateInternalContributor(config);
+  });
   await generateInternalReadme(config);
 }
 
@@ -490,4 +493,19 @@ Future<void> generateWebsiteMerge() async {
 Future<void> generateWebsiteServe() async {
   await exec('python -m http.server 8765',
       relativePwd: 'website/merged_target');
+}
+
+Future<void> _maybeAllowFailureAndSkip(
+  Future<void> Function() run, {
+  required bool canSkip,
+}) async {
+  try {
+    await run();
+  } catch (e, s) {
+    if (canSkip) {
+      print('See error but ignore it: $e $s');
+    } else {
+      rethrow;
+    }
+  }
 }

@@ -7,7 +7,7 @@ repository:
   name: flutter_rust_bridge
 
   # A short description of the repository that will show up on GitHub
-  description: Flutter/Dart <-> Rust, feature-rich, but seamless and simple.
+  description: Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple.
 
   # A URL with more information about the repository
   homepage: https://fzyzcjy.github.io/flutter_rust_bridge/
