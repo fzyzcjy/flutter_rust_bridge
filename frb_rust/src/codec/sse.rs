@@ -146,3 +146,18 @@ impl SseSerializer {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::for_generated::{Rust2DartMessageSse, SseSerializer};
+
+    #[test]
+    fn test_simplest() {
+        assert_eq!(Rust2DartMessageSse::simplest().0, vec![]);
+    }
+
+    #[test]
+    fn test_serializer_default() {
+        assert_eq!(SseSerializer::default().cursor.into_inner(), vec![]);
+    }
+}
