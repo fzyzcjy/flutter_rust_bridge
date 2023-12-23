@@ -4,9 +4,13 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   test('when load dylib fails, should have nice message', () async {
-    await RustLib.init(
-      // deliberately bad external library
-      externalLibrary: ExternalLibrary.process(),
+    await expectLater(
+      () async => await RustLib.init(
+        // deliberately bad external library
+        externalLibrary: ExternalLibrary.process(),
+      ),
+      throwsA(isA<ArgumentError>().having(
+          (x) => x.message, 'message', contains('This is often because'))),
     );
   });
 }
