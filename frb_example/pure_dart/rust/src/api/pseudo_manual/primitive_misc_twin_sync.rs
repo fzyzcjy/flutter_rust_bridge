@@ -22,12 +22,7 @@ pub fn primitive_u32_twin_sync(my_u32: u32) -> u32 {
     ret
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn primitive_usize_loopback_twin_sync(arg: usize) -> usize {
-    arg
-}
-
-#[flutter_rust_bridge::frb(sync)]
-pub fn primitive_isize_loopback_twin_sync(arg: isize) -> isize {
-    arg
-}
+// TODO how to treat usize (as 32bit or 64bit)
+// #[flutter_rust_bridge::frb(sync)] pub fn get_usize_twin_sync(u: usize) -> usize {
+//     u
+// }

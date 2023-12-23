@@ -25,10 +25,7 @@ pub async fn primitive_u32_twin_rust_async(my_u32: u32) -> u32 {
     ret
 }
 
-pub async fn primitive_usize_loopback_twin_rust_async(arg: usize) -> usize {
-    arg
-}
-
-pub async fn primitive_isize_loopback_twin_rust_async(arg: isize) -> isize {
-    arg
-}
+// TODO how to treat usize (as 32bit or 64bit)
+// pub async fn get_usize_twin_rust_async(u: usize) -> usize {
+//     u
+// }
