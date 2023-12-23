@@ -286,7 +286,7 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # Even if some previous jobs failed, we still want partial info
-    if: ${{ always() }}
+    if: ${{ always() && !cancelled() }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
@@ -789,7 +789,7 @@ jobs:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
     # Even if some previous jobs failed, we still want partial info
-    if: ${{ always() }}
+    if: ${{ always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - generate_run_frb_codegen_command_generate
