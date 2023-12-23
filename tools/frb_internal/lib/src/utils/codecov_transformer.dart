@@ -75,6 +75,7 @@ Map<String, dynamic> _transformByCodeComments(
   return ans;
 }
 
+// see the test file for details of this regex
 final _kIgnoreLineRegex =
     RegExp(r'^\s*(#\[derive\(.*\)\]|\)\?.*|//.*|\};?)\s*$');
 
