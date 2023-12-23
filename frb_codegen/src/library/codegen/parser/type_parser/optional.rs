@@ -41,7 +41,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 }
                 PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Ownership(_)
                 | Unencodable(_) | Delegate(_) => IrTypeOptional::new(inner.clone()),
+                // frb-coverage:ignore-start
                 Optional(_) => unreachable!(),
+                // frb-coverage:ignore-end
             }),
 
             _ => return Ok(None),
