@@ -53,7 +53,10 @@ fn execute_dart_command(
     let status = dart_run(&repo, dart_root, dart_coverage, dart_run_args)?;
 
     if !status.success() {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         bail!("Fail to execute command, please see logs above for details.")
+        // frb-coverage:ignore-end
     }
 
     Ok(())

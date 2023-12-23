@@ -76,9 +76,11 @@ Map<String, dynamic> _transformByCodeComments(
 
 Map<String, dynamic> _transformByPatterns(
     List<String> fileLines, Map<String, dynamic> raw) {
-  // Ignore code coverage for things like `#[derive(Debug)]`,
+  // 1. Ignore code coverage for things like `#[derive(Debug)]`,
   // since this is by Rust compiler and is surely correct
-  final regex = RegExp(r'^\s*#\[derive\(.*\)\]\s*$');
+  // 2. Also ignore the `?` on a single line, since in Dart/Java/...,
+  // such error handling is implicit and will not even appear in code coverage
+  final regex = RegExp(r'^\s*(#\[derive\(.*\)\]|\)\?.*)\s*$');
 
   return raw.map((key, value) {
     final fileLine = fileLines[int.parse(key) - 1];
