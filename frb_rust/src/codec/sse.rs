@@ -153,6 +153,7 @@ mod tests {
 
     #[test]
     fn test_simplest() {
+        use crate::codec::Rust2DartMessageTrait;
         assert_eq!(Rust2DartMessageSse::simplest().0, vec![]);
     }
 
