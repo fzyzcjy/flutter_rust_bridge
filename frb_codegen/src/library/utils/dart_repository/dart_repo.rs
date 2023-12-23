@@ -46,12 +46,15 @@ impl DartRepository {
         self.toolchain.available()
     }
 
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     pub(crate) fn has_specified_and_installed(
         &self,
         package: &str,
         manager: DartDependencyMode,
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
+        // frb-coverage:ignore-end
         self.has_specified(package, manager, requirement)?;
         self.has_installed(package, manager, requirement)?;
         Ok(())
