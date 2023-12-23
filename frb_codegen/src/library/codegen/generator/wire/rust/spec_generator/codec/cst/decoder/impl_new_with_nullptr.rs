@@ -48,7 +48,6 @@ pub(crate) fn generate_impl_new_with_nullptr_code_block(
                 {body}
             }}
         }}
-
         impl Default for {rust_wire_type} {{
             fn default() -> Self {{
                 Self::new_with_null_ptr()
