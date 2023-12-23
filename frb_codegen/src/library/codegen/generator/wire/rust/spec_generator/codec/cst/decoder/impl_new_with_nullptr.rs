@@ -38,7 +38,6 @@ pub(crate) fn generate_impl_new_with_nullptr_code_block(
     ir: impl Into<IrType>,
     context: WireRustCodecCstGeneratorContext,
     body: &str,
-    impl_default: bool,
 ) -> String {
     let rust_wire_type =
         WireRustCodecCstGenerator::new(ir.into(), context).rust_wire_type(Target::Io);
@@ -48,17 +47,12 @@ pub(crate) fn generate_impl_new_with_nullptr_code_block(
             fn new_with_null_ptr() -> Self {{
                 {body}
             }}
+        }}
+
+        impl Default for {rust_wire_type} {{
+            fn default() -> Self {{
+                Self::new_with_null_ptr()
+            }}
         }}"
-    ) + &(if impl_default {
-        format!(
-            "
-            impl Default for {rust_wire_type} {{
-                fn default() -> Self {{
-                    Self::new_with_null_ptr()
-                }}
-            }}"
-        )
-    } else {
-        "".to_string()
-    })
+    )
 }
