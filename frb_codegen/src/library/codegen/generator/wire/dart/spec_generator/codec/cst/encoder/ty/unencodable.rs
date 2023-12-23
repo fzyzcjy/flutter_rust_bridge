@@ -9,9 +9,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for UnencodableWireDartCodecCstGe
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         unreachable!()
     }
-    // frb-coverage:ignore-end
 
-    fn dart_wire_type(&self, target: Target) -> String {
-        dart_wire_type_from_rust_wire_type_or_web(self, target, "Object".into())
+    fn dart_wire_type(&self, _target: Target) -> String {
+        unreachable!()
     }
+    // frb-coverage:ignore-end
 }

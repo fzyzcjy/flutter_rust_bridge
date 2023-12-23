@@ -7,7 +7,10 @@ use crate::codegen::ir::ty::IrType::EnumRef;
 use itertools::Itertools;
 
 impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'a> {
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {
+        // frb-coverage:ignore-end
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
             let src = ir.get(self.context.ir_pack);
             let (name, self_path) =
@@ -38,7 +41,10 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
         None
     }
 
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn generate_access_object_core(&self, obj: String) -> String {
+        // frb-coverage:ignore-end
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
             WireRustCodecDcoGenerator::new(EnumRef(ir.clone()), self.context)
                 .generate_access_object_core(obj)
