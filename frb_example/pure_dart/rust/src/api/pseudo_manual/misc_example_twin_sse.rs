@@ -147,3 +147,6 @@ pub struct MySizeFreezedTwinSse {
 //         height: arg.height + boxed.height,
 //     }
 // }
+
+// To test parsing of `pub(super)`
+pub(super) fn visibility_restricted_func_twin_sse() {}
