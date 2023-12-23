@@ -12,7 +12,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError => "Box<dyn BoxIntoDart>".to_string(),
+            Error::CustomError => "CustomError".to_string(),
             Error::Panic(panic_err) => error_to_string(panic_err),
         }
     }
@@ -35,10 +35,7 @@ mod tests {
 
     #[test]
     fn test_error_message() {
-        assert_eq!(
-            Error::CustomError.message(),
-            "Box<dyn BoxIntoDart>".to_owned()
-        );
+        assert_eq!(Error::CustomError.message(), "CustomError".to_owned());
         assert_eq!(
             Error::Panic(Box::new(42)).message(),
             "Box<dyn Any>".to_owned()
