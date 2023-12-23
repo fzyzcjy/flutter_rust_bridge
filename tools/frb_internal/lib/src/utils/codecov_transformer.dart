@@ -86,6 +86,10 @@ Map<String, dynamic> _transformByPatterns(
     List<String> fileLines, Map<String, dynamic> raw) {
   return raw.map((key, value) {
     final fileLine = fileLines[int.parse(key) - 1];
-    return MapEntry(key, shouldKeepLine(fileLine) ? value : null);
+    return MapEntry(
+        key,
+        ((value is int && value > 0) || shouldKeepLine(fileLine))
+            ? value
+            : null);
   });
 }
