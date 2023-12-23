@@ -12,8 +12,11 @@ impl Config {
         }
         if let Some(config) = Self::from_pubspec_yaml()? {
             return Ok(config);
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
         }
         bail!("Fail to find any configuration file")
+        // frb-coverage:ignore-end
     }
 
     fn from_config_files() -> Result<Option<Self>, Error> {
@@ -59,6 +62,8 @@ impl Config {
         if let Ok(pubspec) = fs::File::open(PUBSPEC_LOCATION) {
             return match serde_yaml::from_reader(pubspec) {
                 Ok(Needle { data: Some(data) }) => Ok(Some(data)),
+                // This will stop the whole generator and tell the users, so we do not care about testing it
+                // frb-coverage:ignore-start
                 Ok(Needle { data: None }) => Ok(None),
                 Err(err) => Err(Error::new(err).context(format!(
                     "Could not parse the 'flutter_rust_bridge' entry in {PUBSPEC_LOCATION}"
@@ -67,6 +72,7 @@ impl Config {
         }
 
         Ok(None)
+        // frb-coverage:ignore-end
     }
 }
 

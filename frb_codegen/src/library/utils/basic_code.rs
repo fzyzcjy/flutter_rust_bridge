@@ -21,11 +21,12 @@ macro_rules! basic_code_partial_impl {
             }
         }
 
-        impl std::iter::FromIterator<$name> for $name {
-            fn from_iter<A: IntoIterator<Item = $name>>(iter: A) -> Self {
-                iter.into_iter().fold(Default::default(), |a, b| a + b)
-            }
-        }
+        // unused now, thus uncomment only when needed
+        // impl std::iter::FromIterator<$name> for $name {
+        //     fn from_iter<A: IntoIterator<Item = $name>>(iter: A) -> Self {
+        //         iter.into_iter().fold(Default::default(), |a, b| a + b)
+        //     }
+        // }
     };
 }
 

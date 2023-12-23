@@ -22,11 +22,14 @@ impl Namespace {
     }
 
     pub fn new_raw(joined_path: String) -> Self {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         assert!(
             !joined_path.contains('\\'),
             "joined_path={:?} seems weird",
             joined_path
         );
+        // frb-coverage:ignore-end
         Self { joined_path }
     }
 

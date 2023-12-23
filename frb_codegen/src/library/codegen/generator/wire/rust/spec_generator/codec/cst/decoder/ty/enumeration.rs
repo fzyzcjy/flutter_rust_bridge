@@ -106,7 +106,6 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
                 self.ir.clone(),
                 self.context,
                 "Self { tag: -1, kind: core::ptr::null_mut() }",
-                true,
             ),
             extern_funcs: inflators,
             ..Default::default()

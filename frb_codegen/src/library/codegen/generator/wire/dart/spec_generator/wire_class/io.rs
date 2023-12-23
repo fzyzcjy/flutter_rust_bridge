@@ -75,8 +75,11 @@ fn sanity_check(
 ) -> anyhow::Result<()> {
     ensure!(
         generated_dart_wire_code.contains(&dart_output_class_name_pack.wire_class_name),
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         "Nothing is generated for dart wire class. \
             Maybe you forget to put code like `mod the_generated_bridge_code;` to your `lib.rs`?",
+        // frb-coverage:ignore-end
     );
     Ok(())
 }

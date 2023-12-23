@@ -65,7 +65,10 @@ impl DartFnHandler {
                 }
             });
             if let Err(err) = catch_unwind_result {
+                // We do not care about details of this warning
+                // frb-coverage:ignore-start
                 warn!("Error when dart_fn_handle_output: {err:?}");
+                // frb-coverage:ignore-end
             }
         });
     }

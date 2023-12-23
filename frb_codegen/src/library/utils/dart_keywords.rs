@@ -13,7 +13,10 @@ pub(crate) fn make_string_keyword_safe(input: String) -> String {
     }
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
+    // frb-coverage:ignore-end
     if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
         bail!("Api name cannot be a dart keyword: {}", s);
     };

@@ -159,10 +159,7 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
     if config.dump_all.unwrap_or(false) {
         return ConfigDumpContent::iter().collect_vec();
     }
-    if let Some(dump) = &config.dump {
-        return dump.to_owned();
-    }
-    vec![]
+    config.dump.clone().unwrap_or_default()
 }
 
 fn compute_default_external_library_loader(
@@ -228,6 +225,8 @@ fn compute_rust_input_path_pack(
 
     let pack = RustInputPathPack { rust_input_paths };
 
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
     ensure!(
         !pack.rust_input_paths.is_empty(),
         "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
@@ -236,6 +235,7 @@ fn compute_rust_input_path_pack(
         !pack.rust_input_paths.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
+    // frb-coverage:ignore-end
 
     Ok(pack)
 }

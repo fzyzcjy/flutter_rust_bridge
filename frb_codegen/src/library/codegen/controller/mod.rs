@@ -34,7 +34,10 @@ fn run_watch(
 
     for _i in 0..max_count {
         if let Err(e) = run_inner() {
+            // We do not care about the warning message
+            // frb-coverage:ignore-start
             warn!("Error when running code generator: {e:?}");
+            // frb-coverage:ignore-end
         }
 
         println!(
@@ -68,7 +71,10 @@ fn create_fs_watcher(
             if is_event_interesting(&event, &exclude_paths) {
                 debug!("See interesting file change: {event:?}");
                 tx.send(()).unwrap()
+                // This bracket is weirdly not covered
+                // frb-coverage:ignore-start
             }
+            // frb-coverage:ignore-end
         },
     )
     .unwrap();

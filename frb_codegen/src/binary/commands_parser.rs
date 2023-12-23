@@ -58,8 +58,8 @@ mod tests {
     use crate::binary::test_utils::set_cwd_test_fixture;
     use clap::Parser;
     use itertools::concat;
-    use lib_flutter_rust_bridge_codegen::codegen;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
+    use lib_flutter_rust_bridge_codegen::{codegen, if_then_some};
     use serial_test::serial;
 
     // need to run serially, otherwise working directory will override each other
@@ -131,10 +131,7 @@ mod tests {
 
     fn run_command_line(args: Vec<&'static str>) -> codegen::Config {
         let cli = Cli::parse_from(args);
-        let args = match cli.command {
-            Commands::Generate(args) => args,
-            _ => panic!(),
-        };
+        let args = if_then_some!(let Commands::Generate(args) = cli.command, args).unwrap();
         compute_codegen_config(args.primary).unwrap()
     }
 }

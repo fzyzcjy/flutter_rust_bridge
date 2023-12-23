@@ -6,8 +6,4 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for BoxedWireRustCodecDcoGenerato
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         WireRustCodecDcoGenerator::new(self.ir.inner.clone(), self.context).intodart_type(ir_pack)
     }
-
-    fn generate_access_object_core(&self, obj: String) -> String {
-        format!("(*{obj})")
-    }
 }

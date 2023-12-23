@@ -74,8 +74,10 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
     case Dart_CObject_Type.Dart_CObject_kNativePointer:
     case Dart_CObject_Type.Dart_CObject_kUnsupported:
     case Dart_CObject_Type.Dart_CObject_kNumberOfTypes:
+    // coverage:ignore-start
     default:
       throw Exception("Can't read invalid data type ${object.type}");
+    // coverage:ignore-end
   }
 }
 
@@ -125,11 +127,13 @@ _TypedData _typedDataIntoDart({
       final view = typedValues.cast<ffi.Double>().asTypedList(nValues);
       return _TypedData<Float64List>(view, Float64List.fromList);
 
+    // coverage:ignore-start
     case Dart_TypedData_Type.Dart_TypedData_kUint8Clamped:
     case Dart_TypedData_Type.Dart_TypedData_kFloat32x4:
     case Dart_TypedData_Type.Dart_TypedData_kInvalid:
     default:
       throw Exception("Can't read invalid typed data type $ty");
+    // coverage:ignore-end
   }
 }
 

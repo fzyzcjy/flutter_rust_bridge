@@ -105,7 +105,6 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                 self.ir.clone(),
                 self.context,
                 &format!("Self {{ {body} }}"),
-                true,
             )
             .into(),
         )

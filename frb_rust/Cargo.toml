@@ -54,6 +54,7 @@ build-target = "0.4.0"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.32"
+cool_asserts = "2.0.3"
 
 [features]
 default = ["chrono", "wasm-start", "rust-async"]

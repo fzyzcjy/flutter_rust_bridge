@@ -64,15 +64,21 @@ macro_rules! codegen_generator_structs {
                 // Because only some of them are used
                 #[allow(dead_code)]
                 pub(crate) fn new(ty: impl Into<IrType>, context: [<$generator_name Context>]<'a>) -> Self {
+                    // This is surely used, seems to be bug of coverage tool
+                    // frb-coverage:ignore-start
                     match ty.into() {
                         $(
                             $name(ir) => Self::$name([<$name $generator_name>]::new(ir, context)),
                         )*
                     }
+                    // frb-coverage:ignore-end
                 }
             }
 
+            // This is surely used, seems to be bug of coverage tool
+            // frb-coverage:ignore-start
             #[enum_dispatch]
+            // frb-coverage:ignore-end
             pub(crate) trait [<$generator_name ImplTrait>] {
                 fn ir_type(&self) -> IrType;
                 fn context(&self) -> [<$generator_name Context>];
