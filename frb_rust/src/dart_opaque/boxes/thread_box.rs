@@ -62,7 +62,7 @@ mod tests {
     fn test_thread_box_should_panic_when_access_on_another_thread() {
         let b = Arc::new(ThreadBox::new(42));
         let b2 = b.clone();
-        thread::spawn(|| {
+        thread::spawn(move || {
             assert_panics!(b2.as_ref());
         })
         .join()
@@ -73,7 +73,7 @@ mod tests {
     #[test]
     fn test_thread_box_should_panic_when_access_and_drop_on_another_thread() {
         let b = ThreadBox::new(42);
-        thread::spawn(|| {
+        thread::spawn(move || {
             assert_panics!(b.as_ref());
         })
         .join()
