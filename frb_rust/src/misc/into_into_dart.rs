@@ -1,7 +1,6 @@
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
 use crate::rust_opaque::{DartSafe, RustOpaque};
-use std::any::TypeId;
 
 /// Basically the Into trait.
 /// We need this separate trait because we need to implement it for Vec<T> etc.
@@ -19,11 +18,7 @@ where
     D: IntoDart,
 {
     fn into_into_dart(self) -> Vec<D> {
-        if TypeId::of::<T>() == TypeId::of::<D>() {
-            self
-        } else {
-            self.into_iter().map(|e| e.into_into_dart()).collect()
-        }
+        self.into_iter().map(|e| e.into_into_dart()).collect()
     }
 }
 
