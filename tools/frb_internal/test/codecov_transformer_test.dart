@@ -13,6 +13,7 @@ void main() {
     // such error handling is implicit and will not even appear in code coverage
     expect(shouldKeepLine('    )?;'), false);
     expect(shouldKeepLine('  )?,'), false);
+    expect(shouldKeepLine('    }?;'), false);
 
     // Also ignore pure comments - they are not real code
     expect(shouldKeepLine('// hello'), false);

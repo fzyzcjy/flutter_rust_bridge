@@ -40,5 +40,9 @@ mod tests {
             Error::Panic(Box::new(42)).message(),
             "Box<dyn Any>".to_owned()
         );
+        assert_eq!(
+            Error::Panic(Box::new("Hello".to_string())).message(),
+            "Hello".to_owned()
+        );
     }
 }

@@ -34,7 +34,10 @@ impl AutoDropDartPersistentHandle {
 }
 
 impl Drop for AutoDropDartPersistentHandle {
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn drop(&mut self) {
+        // frb-coverage:ignore-end
         if let Some(inner) = self.0 {
             unsafe {
                 Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(inner)
