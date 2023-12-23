@@ -227,6 +227,8 @@ fn parse_syn_item_mod_contentless(
             dumper,
         )?))
     } else {
+        // We do not care about the warning
+        // frb-coverage:ignore-start
         warn!(
             "Skipping unresolvable module {} (tried {})",
             &ident,
@@ -237,6 +239,7 @@ fn parse_syn_item_mod_contentless(
                 .join(", ")
         );
         Ok(None)
+        // frb-coverage:ignore-end
     }
 }
 

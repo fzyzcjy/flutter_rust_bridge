@@ -71,8 +71,8 @@ impl DartRepository {
         debug!("Checking presence of {} in {} at {}", package, manager, at);
         let manifest_file = read_file(at, DartToolchain::manifest_filename())?;
         let manifest_file: PubspecYaml = serde_yaml::from_str(&manifest_file).map_err(|e| {
-            // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
+            // This will stop the whole generator and tell the users, so we do not care about testing it
             anyhow!(
                 "unable to parse {} in {at}: {e:#}",
                 DartToolchain::manifest_filename()
@@ -122,12 +122,15 @@ impl DartRepository {
                     // frb-coverage:ignore-end
                 }
                 DartPackageVersion::try_from(dependency).map_err(|e| {
+                    // This will stop the whole generator and tell the users, so we do not care about testing it
+                    // frb-coverage:ignore-start
                     anyhow::Error::msg(format!(
                         "unable to parse {} version in {}: {:#}",
                         package,
                         DartToolchain::lock_filename(),
                         e
                     ))
+                    // frb-coverage:ignore-end
                 })?
             }
             // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -144,8 +147,8 @@ impl DartRepository {
                 "unexpected version range for {package} in {}",
                 DartToolchain::lock_filename()
             ),
-            // frb-coverage:ignore-end
             _ => Err(error_invalid_dep(package, manager, requirement)),
+            // frb-coverage:ignore-end
         }
     }
 

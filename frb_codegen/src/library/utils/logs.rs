@@ -57,19 +57,21 @@ pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fe
 }
 
 fn log_level_from_env_var() -> Option<LevelFilter> {
-    std::env::var("RUST_LOG")
-        .ok()
-        .map(|value| match &value[..] {
-            "trace" => LevelFilter::Trace,
-            "debug" => LevelFilter::Debug,
-            "info" => LevelFilter::Info,
-            "warn" => LevelFilter::Warn,
-            "error" => LevelFilter::Error,
-            "off" => LevelFilter::Off,
-            // frb-coverage:ignore-start
-            _ => panic!("{}", "unknown RUST_LOG level: {value}"),
-            // frb-coverage:ignore-end
-        })
+    (std::env::var("RUST_LOG").ok()).map(|value| log_level_from_str(&value))
+}
+
+fn log_level_from_str(value: &str) -> LevelFilter {
+    match value {
+        "trace" => LevelFilter::Trace,
+        "debug" => LevelFilter::Debug,
+        "info" => LevelFilter::Info,
+        "warn" => LevelFilter::Warn,
+        "error" => LevelFilter::Error,
+        "off" => LevelFilter::Off,
+        // frb-coverage:ignore-start
+        _ => panic!("{}", "unknown RUST_LOG level: {value}"),
+        // frb-coverage:ignore-end
+    }
 }
 
 fn verbose_to_level_filter(verbose: bool) -> LevelFilter {
@@ -117,4 +119,20 @@ pub fn configure_opinionated_test_logging() {
         .level(log_level_from_env_var().unwrap_or(LevelFilter::Debug))
         .chain(fern::Output::call(|record| println!("{}", record.args())))
         .apply();
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::utils::logs::log_level_from_str;
+    use log::LevelFilter;
+
+    #[test]
+    pub fn test_log_level_from_str() {
+        assert_eq!(log_level_from_str("trace"), LevelFilter::Trace);
+        assert_eq!(log_level_from_str("debug"), LevelFilter::Debug);
+        assert_eq!(log_level_from_str("info"), LevelFilter::Info);
+        assert_eq!(log_level_from_str("warn"), LevelFilter::Warn);
+        assert_eq!(log_level_from_str("error"), LevelFilter::Error);
+        assert_eq!(log_level_from_str("off"), LevelFilter::Off);
+    }
 }

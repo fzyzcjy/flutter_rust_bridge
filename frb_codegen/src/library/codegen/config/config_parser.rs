@@ -12,9 +12,9 @@ impl Config {
         }
         if let Some(config) = Self::from_pubspec_yaml()? {
             return Ok(config);
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
         }
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        // frb-coverage:ignore-start
         bail!("Fail to find any configuration file")
         // frb-coverage:ignore-end
     }
