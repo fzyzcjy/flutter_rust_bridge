@@ -301,7 +301,7 @@ More specifically, thanks for all these contributions:
 * [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging.
 * [GregoryConrad](https://github.com/GregoryConrad): Add doc to setup frb inside a Dart/Flutter library.
 * [huang12zheng](https://github.com/huang12zheng): Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache. Remove bridge field in model.
-* [trobanga](https://github.com/trobanga): Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests. Fix fallible list case.
+* [trobanga](https://github.com/trobanga): Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests. Fix fallible list case. Fix test compile.
 * [MnlPhlp](https://github.com/MnlPhlp): Support macros and will auto expand. Allow mirror types in streams.
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types. Refactor post-release CI.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
