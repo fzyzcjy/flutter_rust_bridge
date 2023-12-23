@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   test('when load dylib fails, should have nice message',
-      skip: !(Platform.isMacOS || Platform.isLinux), () async {
+      skip: !Platform.isLinux, () async {
     await expectLater(
       () async => await RustLib.init(
         // deliberately bad external library, on macos/linux
