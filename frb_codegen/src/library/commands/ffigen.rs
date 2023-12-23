@@ -107,9 +107,12 @@ fn handle_output(
         let pat = "Couldn't find dynamic library in default locations.";
         if stderr.contains(pat) || stdout.contains(pat) {
             bail!("ffigen could not find LLVM. {}", hint_link);
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
         }
 
         bail!("ffigen failed. {}", hint_link);
+        // frb-coverage:ignore-end
     }
 
     // This is usually not a problem

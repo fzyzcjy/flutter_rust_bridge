@@ -62,10 +62,13 @@ fn generate_encode_func(
         })
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn generate_encode_api_fill_to_wire_func(
     ty: &IrType,
     context: WireDartCodecCstGeneratorContext,
 ) -> WireDartOutputCode {
+    // frb-coverage:ignore-end
     if let Some(body) =
         WireDartCodecCstGenerator::new(ty.clone(), context).generate_encode_api_fill_to_wire_body()
     {

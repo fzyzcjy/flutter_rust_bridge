@@ -2,7 +2,7 @@
 import 'dart:typed_data' as $data;
 import 'dart:typed_data';
 
-import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -17,6 +17,10 @@ void main() {
     expect(Int64List.fromList([10]) + [20].map((x) => x),
         Int64List.fromList([10, 20]));
     expect(() => Int64List.fromList([10]) + 42, throwsA(isA<ArgumentError>()));
+    expect(() => Int64List.fromList([10]).length = 100,
+        throwsA(isA<UnmodifiableTypedListException>()));
+    expect(() => Int64List.fromList([10]).dart2raw(0.5),
+        throwsA(isA<ArgumentError>()));
   });
 
   test('Uint64List more operations', () {
@@ -30,5 +34,9 @@ void main() {
     expect(Uint64List.fromList([10]) + [20].map((x) => x),
         Uint64List.fromList([10, 20]));
     expect(() => Uint64List.fromList([10]) + 42, throwsA(isA<ArgumentError>()));
+    expect(() => Uint64List.fromList([10]).length = 100,
+        throwsA(isA<UnmodifiableTypedListException>()));
+    expect(() => Uint64List.fromList([10]).dart2raw(0.5),
+        throwsA(isA<ArgumentError>()));
   });
 }
