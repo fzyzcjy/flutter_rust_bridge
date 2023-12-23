@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+import 'package:meta/meta.dart';
 
 void transformCodecovReport(String path) {
   print('transformCodecovReport act on $path');
@@ -74,17 +75,15 @@ Map<String, dynamic> _transformByCodeComments(
   return ans;
 }
 
+final _kIgnoreLineRegex = RegExp(r'^\s*(#\[derive\(.*\)\]|\)\?.*)\s*$');
+
+@visibleForTesting
+bool shouldKeepLine(String line) => !_kIgnoreLineRegex.hasMatch(line);
+
 Map<String, dynamic> _transformByPatterns(
     List<String> fileLines, Map<String, dynamic> raw) {
-  // 1. Ignore code coverage for things like `#[derive(Debug)]`,
-  // since this is by Rust compiler and is surely correct
-  // 2. Also ignore the `?` on a single line, since in Dart/Java/...,
-  // such error handling is implicit and will not even appear in code coverage
-  final regex = RegExp(r'^\s*(#\[derive\(.*\)\]|\)\?.*)\s*$');
-
   return raw.map((key, value) {
     final fileLine = fileLines[int.parse(key) - 1];
-    final shouldKeep = !regex.hasMatch(fileLine);
-    return MapEntry(key, shouldKeep ? value : null);
+    return MapEntry(key, shouldKeepLine(fileLine) ? value : null);
   });
 }
