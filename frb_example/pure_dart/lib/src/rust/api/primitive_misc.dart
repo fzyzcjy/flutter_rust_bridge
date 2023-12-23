@@ -17,3 +17,11 @@ Future<int> primitiveTypesTwinNormal(
 
 Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint}) =>
     RustLib.instance.api.primitiveU32TwinNormal(myU32: myU32, hint: hint);
+
+Future<int> primitiveUsizeLoopbackTwinNormal(
+        {required int arg, dynamic hint}) =>
+    RustLib.instance.api.primitiveUsizeLoopbackTwinNormal(arg: arg, hint: hint);
+
+Future<int> primitiveIsizeLoopbackTwinNormal(
+        {required int arg, dynamic hint}) =>
+    RustLib.instance.api.primitiveIsizeLoopbackTwinNormal(arg: arg, hint: hint);

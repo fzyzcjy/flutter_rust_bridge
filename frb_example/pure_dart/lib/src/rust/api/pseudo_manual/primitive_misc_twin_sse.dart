@@ -17,3 +17,9 @@ Future<int> primitiveTypesTwinSse(
 
 Future<int> primitiveU32TwinSse({required int myU32, dynamic hint}) =>
     RustLib.instance.api.primitiveU32TwinSse(myU32: myU32, hint: hint);
+
+Future<int> primitiveUsizeLoopbackTwinSse({required int arg, dynamic hint}) =>
+    RustLib.instance.api.primitiveUsizeLoopbackTwinSse(arg: arg, hint: hint);
+
+Future<int> primitiveIsizeLoopbackTwinSse({required int arg, dynamic hint}) =>
+    RustLib.instance.api.primitiveIsizeLoopbackTwinSse(arg: arg, hint: hint);
