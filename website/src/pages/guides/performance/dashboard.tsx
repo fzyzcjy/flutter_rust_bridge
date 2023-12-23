@@ -48,14 +48,17 @@ export default class Dashboard extends React.Component<{}, MyComponentState> {
                     <h2>Data for last commit</h2>
                     <table>
                         <thead>
-                        <th>Name</th>
-                        {platforms.map((x) => <td>{x}</td>)}
+                        <tr>
+                            <th>Name</th>
+                            {platforms.map((x) => <td key={x}>{x}</td>)}
+                        </tr>
                         </thead>
                         <tbody>
                         {
                             this.state.summary.map(([name, value]) => <tr key={name}>
-                                <td>{name}</td>
-                                {platforms.map((x) => <td>{value[x] ? value[x][0].benchValue.toFixed(3) : 'no data yet'}</td>)}
+                                <td key="name">{name}</td>
+                                {platforms.map((x) =>
+                                    <td key={x}>{value[x] ? value[x][0].benchValue.toFixed(3) : 'no data yet'}</td>)}
                             </tr>)
                         }
                         </tbody>
