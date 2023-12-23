@@ -34,13 +34,19 @@ pub(crate) fn find_parent_dir_with_file(
 
 pub(crate) fn find_dart_package_dir(dart_file_path: &Path) -> Result<PathBuf> {
     find_parent_dir_with_file(dart_file_path, "pubspec.yaml").with_context(|| {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         format!("Fail to detect dart package from dart_file_path={dart_file_path:?}")
+        // frb-coverage:ignore-end
     })
 }
 
 pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
     find_parent_dir_with_file(rust_file_path, "Cargo.toml").with_context(|| {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         format!("Fail to detect rust crate dir from rust_file_path={rust_file_path:?}")
+        // frb-coverage:ignore-end
     })
 }
 

@@ -53,7 +53,10 @@ struct FfigenToFileArgs<'a> {
 
 fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
     debug!(
+        // weirdly this line is not covered, while the `debug!` call is
+        // frb-coverage:ignore-start
         "execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",
+        // frb-coverage:ignore-end
         c_path = args.c_path,
         dart_path = args.c_path,
         llvm_path = args.llvm_path,

@@ -19,11 +19,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             ("Option", Some(Generic([Optional(_)]))) => bail!(
                 "Nested optionals without indirection are not supported. {}",
                 type_path.to_token_stream()
             ),
-
+            // frb-coverage:ignore-end
             ("Option", Some(Generic([inner]))) => Optional(match inner {
                 StructRef(..)
                 | EnumRef(..)

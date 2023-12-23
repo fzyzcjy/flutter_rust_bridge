@@ -23,11 +23,14 @@ pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
         "--enable-experiment=class-modifiers",
     )?;
     if !out.status.success() {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         bail!(
             "Failed to run build_runner for {:?}: {}",
             dart_root,
             String::from_utf8_lossy(&out.stdout)
         );
+        // frb-coverage:ignore-end
     }
     Ok(())
 }
