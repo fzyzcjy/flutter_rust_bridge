@@ -234,7 +234,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSyncSse(obj.instanceMethodArgOwnTwinSyncSse());
   });
   test('instance newWithResult', () async {
-    final obj = await NonCloneSimpleTwinSyncSse.newWithResult();
+    final obj = await NonCloneSimpleTwinSyncSse.newWithResultTwinSyncSse();
     await futurizeVoidTwinSyncSse(obj.instanceMethodArgBorrowTwinSyncSse());
   });
 
