@@ -1,5 +1,5 @@
 use crate::dart_opaque::DartOpaque;
-use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
+use crate::generalized_isolate::{IntoDart, IntoDartExceptPrimitive, ZeroCopyBuffer};
 use crate::rust_opaque::{DartSafe, RustOpaque};
 
 /// Basically the Into trait.
@@ -19,6 +19,13 @@ where
 {
     fn into_into_dart(self) -> Vec<D> {
         self.into_iter().map(|e| e.into_into_dart()).collect()
+    }
+}
+
+// TODO attempt
+impl IntoIntoDart<Vec<u8>> for Vec<u8> {
+    fn into_into_dart(self) -> Vec<u8> {
+        self
     }
 }
 
