@@ -255,8 +255,8 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
 
   await exec('cargo build', relativePwd: config.package);
 
-  final effectiveEnableCoverage =
-      config.coverage && config.package == 'frb_codegen';
+  final effectiveEnableCoverage = config.coverage &&
+      const ['frb_codegen', 'frb_rust'].contains(config.package);
 
   final outputCodecovPath =
       '${getCoverageDir('test_rust_package_${config.package.replaceAll("/", "_")}')}/codecov.json';
