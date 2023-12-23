@@ -2927,9 +2927,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_i_8(dynamic raw);
 
   @protected
-  int dco_decode_isize(dynamic raw);
-
-  @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
 
   @protected
@@ -7225,9 +7222,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int sse_decode_i_8(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_isize(SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
@@ -21520,9 +21514,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_i_8(int raw);
 
   @protected
-  int cst_encode_isize(int raw);
-
-  @protected
   int cst_encode_my_enum(MyEnum raw);
 
   @protected
@@ -24359,9 +24350,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_i_8(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_isize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_kitchen_sink_twin_normal(
@@ -29011,23 +28999,6 @@ class RustLibWire implements BaseWire {
       _wire_handle_vec_of_primitive_twin_normalPtr
           .asFunction<void Function(int, int)>();
 
-  void wire_primitive_isize_loopback_twin_normal(
-    int port_,
-    int arg,
-  ) {
-    return _wire_primitive_isize_loopback_twin_normal(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_primitive_isize_loopback_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.IntPtr)>>(
-          'wire_primitive_isize_loopback_twin_normal');
-  late final _wire_primitive_isize_loopback_twin_normal =
-      _wire_primitive_isize_loopback_twin_normalPtr
-          .asFunction<void Function(int, int)>();
-
   void wire_primitive_types_twin_normal(
     int port_,
     int my_i32,
@@ -29067,23 +29038,6 @@ class RustLibWire implements BaseWire {
           'wire_primitive_u32_twin_normal');
   late final _wire_primitive_u32_twin_normal =
       _wire_primitive_u32_twin_normalPtr.asFunction<void Function(int, int)>();
-
-  void wire_primitive_usize_loopback_twin_normal(
-    int port_,
-    int arg,
-  ) {
-    return _wire_primitive_usize_loopback_twin_normal(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_primitive_usize_loopback_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
-          'wire_primitive_usize_loopback_twin_normal');
-  late final _wire_primitive_usize_loopback_twin_normal =
-      _wire_primitive_usize_loopback_twin_normalPtr
-          .asFunction<void Function(int, int)>();
 
   void wire_boxed_blob_twin_rust_async(
     int port_,
@@ -47791,23 +47745,6 @@ class RustLibWire implements BaseWire {
       _wire_example_primitive_list_type_u8_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_primitive_isize_loopback_twin_rust_async(
-    int port_,
-    int arg,
-  ) {
-    return _wire_primitive_isize_loopback_twin_rust_async(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_primitive_isize_loopback_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.IntPtr)>>(
-          'wire_primitive_isize_loopback_twin_rust_async');
-  late final _wire_primitive_isize_loopback_twin_rust_async =
-      _wire_primitive_isize_loopback_twin_rust_asyncPtr
-          .asFunction<void Function(int, int)>();
-
   void wire_primitive_types_twin_rust_async(
     int port_,
     int my_i32,
@@ -47848,45 +47785,6 @@ class RustLibWire implements BaseWire {
   late final _wire_primitive_u32_twin_rust_async =
       _wire_primitive_u32_twin_rust_asyncPtr
           .asFunction<void Function(int, int)>();
-
-  void wire_primitive_usize_loopback_twin_rust_async(
-    int port_,
-    int arg,
-  ) {
-    return _wire_primitive_usize_loopback_twin_rust_async(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_primitive_usize_loopback_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
-          'wire_primitive_usize_loopback_twin_rust_async');
-  late final _wire_primitive_usize_loopback_twin_rust_async =
-      _wire_primitive_usize_loopback_twin_rust_asyncPtr
-          .asFunction<void Function(int, int)>();
-
-  void wire_primitive_isize_loopback_twin_rust_async_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_primitive_isize_loopback_twin_rust_async_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_primitive_isize_loopback_twin_rust_async_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_primitive_isize_loopback_twin_rust_async_sse');
-  late final _wire_primitive_isize_loopback_twin_rust_async_sse =
-      _wire_primitive_isize_loopback_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_primitive_types_twin_rust_async_sse(
     int port_,
@@ -47932,50 +47830,6 @@ class RustLibWire implements BaseWire {
       _wire_primitive_u32_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_primitive_usize_loopback_twin_rust_async_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_primitive_usize_loopback_twin_rust_async_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_primitive_usize_loopback_twin_rust_async_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_primitive_usize_loopback_twin_rust_async_sse');
-  late final _wire_primitive_usize_loopback_twin_rust_async_sse =
-      _wire_primitive_usize_loopback_twin_rust_async_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  void wire_primitive_isize_loopback_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_primitive_isize_loopback_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_primitive_isize_loopback_twin_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_primitive_isize_loopback_twin_sse');
-  late final _wire_primitive_isize_loopback_twin_sse =
-      _wire_primitive_isize_loopback_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
   void wire_primitive_types_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -48018,43 +47872,6 @@ class RustLibWire implements BaseWire {
   late final _wire_primitive_u32_twin_sse = _wire_primitive_u32_twin_ssePtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_primitive_usize_loopback_twin_sse(
-    int port_,
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_primitive_usize_loopback_twin_sse(
-      port_,
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_primitive_usize_loopback_twin_ssePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_primitive_usize_loopback_twin_sse');
-  late final _wire_primitive_usize_loopback_twin_sse =
-      _wire_primitive_usize_loopback_twin_ssePtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  WireSyncRust2DartDco wire_primitive_isize_loopback_twin_sync(
-    int arg,
-  ) {
-    return _wire_primitive_isize_loopback_twin_sync(
-      arg,
-    );
-  }
-
-  late final _wire_primitive_isize_loopback_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.IntPtr)>>(
-          'wire_primitive_isize_loopback_twin_sync');
-  late final _wire_primitive_isize_loopback_twin_sync =
-      _wire_primitive_isize_loopback_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(int)>();
-
   WireSyncRust2DartDco wire_primitive_types_twin_sync(
     int my_i32,
     int my_i64,
@@ -48090,41 +47907,6 @@ class RustLibWire implements BaseWire {
           'wire_primitive_u32_twin_sync');
   late final _wire_primitive_u32_twin_sync = _wire_primitive_u32_twin_syncPtr
       .asFunction<WireSyncRust2DartDco Function(int)>();
-
-  WireSyncRust2DartDco wire_primitive_usize_loopback_twin_sync(
-    int arg,
-  ) {
-    return _wire_primitive_usize_loopback_twin_sync(
-      arg,
-    );
-  }
-
-  late final _wire_primitive_usize_loopback_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
-          'wire_primitive_usize_loopback_twin_sync');
-  late final _wire_primitive_usize_loopback_twin_sync =
-      _wire_primitive_usize_loopback_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(int)>();
-
-  WireSyncRust2DartSse wire_primitive_isize_loopback_twin_sync_sse(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_primitive_isize_loopback_twin_sync_sse(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_primitive_isize_loopback_twin_sync_ssePtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_primitive_isize_loopback_twin_sync_sse');
-  late final _wire_primitive_isize_loopback_twin_sync_sse =
-      _wire_primitive_isize_loopback_twin_sync_ssePtr.asFunction<
-          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_primitive_types_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -48164,26 +47946,6 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('wire_primitive_u32_twin_sync_sse');
   late final _wire_primitive_u32_twin_sync_sse =
       _wire_primitive_u32_twin_sync_ssePtr.asFunction<
-          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
-
-  WireSyncRust2DartSse wire_primitive_usize_loopback_twin_sync_sse(
-    ffi.Pointer<ffi.Uint8> ptr_,
-    int rust_vec_len_,
-    int data_len_,
-  ) {
-    return _wire_primitive_usize_loopback_twin_sync_sse(
-      ptr_,
-      rust_vec_len_,
-      data_len_,
-    );
-  }
-
-  late final _wire_primitive_usize_loopback_twin_sync_ssePtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('wire_primitive_usize_loopback_twin_sync_sse');
-  late final _wire_primitive_usize_loopback_twin_sync_sse =
-      _wire_primitive_usize_loopback_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_example_primitive_type_bool_twin_rust_async(

@@ -4605,8 +4605,6 @@ void wire_primitive_optional_types_twin_normal(int64_t port_,
 
 void wire_handle_vec_of_primitive_twin_normal(int64_t port_, int32_t n);
 
-void wire_primitive_isize_loopback_twin_normal(int64_t port_, intptr_t arg);
-
 void wire_primitive_types_twin_normal(int64_t port_,
                                       int32_t my_i32,
                                       int64_t my_i64,
@@ -4614,8 +4612,6 @@ void wire_primitive_types_twin_normal(int64_t port_,
                                       bool my_bool);
 
 void wire_primitive_u32_twin_normal(int64_t port_, uint32_t my_u32);
-
-void wire_primitive_usize_loopback_twin_normal(int64_t port_, uintptr_t arg);
 
 void wire_boxed_blob_twin_rust_async(int64_t port_, struct wire_cst_list_prim_u_8 *blob);
 
@@ -8038,8 +8034,6 @@ WireSyncRust2DartSse wire_example_primitive_list_type_u8_twin_sync_sse(uint8_t *
                                                                        int32_t rust_vec_len_,
                                                                        int32_t data_len_);
 
-void wire_primitive_isize_loopback_twin_rust_async(int64_t port_, intptr_t arg);
-
 void wire_primitive_types_twin_rust_async(int64_t port_,
                                           int32_t my_i32,
                                           int64_t my_i64,
@@ -8048,29 +8042,12 @@ void wire_primitive_types_twin_rust_async(int64_t port_,
 
 void wire_primitive_u32_twin_rust_async(int64_t port_, uint32_t my_u32);
 
-void wire_primitive_usize_loopback_twin_rust_async(int64_t port_, uintptr_t arg);
-
-void wire_primitive_isize_loopback_twin_rust_async_sse(int64_t port_,
-                                                       uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
-
 void wire_primitive_types_twin_rust_async_sse(int64_t port_,
                                               uint8_t *ptr_,
                                               int32_t rust_vec_len_,
                                               int32_t data_len_);
 
 void wire_primitive_u32_twin_rust_async_sse(int64_t port_,
-                                            uint8_t *ptr_,
-                                            int32_t rust_vec_len_,
-                                            int32_t data_len_);
-
-void wire_primitive_usize_loopback_twin_rust_async_sse(int64_t port_,
-                                                       uint8_t *ptr_,
-                                                       int32_t rust_vec_len_,
-                                                       int32_t data_len_);
-
-void wire_primitive_isize_loopback_twin_sse(int64_t port_,
                                             uint8_t *ptr_,
                                             int32_t rust_vec_len_,
                                             int32_t data_len_);
@@ -8085,25 +8062,12 @@ void wire_primitive_u32_twin_sse(int64_t port_,
                                  int32_t rust_vec_len_,
                                  int32_t data_len_);
 
-void wire_primitive_usize_loopback_twin_sse(int64_t port_,
-                                            uint8_t *ptr_,
-                                            int32_t rust_vec_len_,
-                                            int32_t data_len_);
-
-WireSyncRust2DartDco wire_primitive_isize_loopback_twin_sync(intptr_t arg);
-
 WireSyncRust2DartDco wire_primitive_types_twin_sync(int32_t my_i32,
                                                     int64_t my_i64,
                                                     double my_f64,
                                                     bool my_bool);
 
 WireSyncRust2DartDco wire_primitive_u32_twin_sync(uint32_t my_u32);
-
-WireSyncRust2DartDco wire_primitive_usize_loopback_twin_sync(uintptr_t arg);
-
-WireSyncRust2DartSse wire_primitive_isize_loopback_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
 
 WireSyncRust2DartSse wire_primitive_types_twin_sync_sse(uint8_t *ptr_,
                                                         int32_t rust_vec_len_,
@@ -8112,10 +8076,6 @@ WireSyncRust2DartSse wire_primitive_types_twin_sync_sse(uint8_t *ptr_,
 WireSyncRust2DartSse wire_primitive_u32_twin_sync_sse(uint8_t *ptr_,
                                                       int32_t rust_vec_len_,
                                                       int32_t data_len_);
-
-WireSyncRust2DartSse wire_primitive_usize_loopback_twin_sync_sse(uint8_t *ptr_,
-                                                                 int32_t rust_vec_len_,
-                                                                 int32_t data_len_);
 
 void wire_example_primitive_type_bool_twin_rust_async(int64_t port_, bool arg);
 
@@ -12835,12 +12795,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_isize_loopback_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_isize_loopback_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_isize_loopback_twin_rust_async_sse);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_isize_loopback_twin_sse);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_isize_loopback_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_isize_loopback_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types_twin_rust_async_sse);
@@ -12859,12 +12813,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_usize_loopback_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_usize_loopback_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_usize_loopback_twin_rust_async_sse);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_usize_loopback_twin_sse);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_usize_loopback_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_primitive_usize_loopback_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_print_note_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_print_note_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_print_note_twin_rust_async_sse);

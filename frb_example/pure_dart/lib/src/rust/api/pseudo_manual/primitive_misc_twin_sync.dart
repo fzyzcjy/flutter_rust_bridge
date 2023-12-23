@@ -17,9 +17,3 @@ int primitiveTypesTwinSync(
 
 int primitiveU32TwinSync({required int myU32, dynamic hint}) =>
     RustLib.instance.api.primitiveU32TwinSync(myU32: myU32, hint: hint);
-
-int primitiveUsizeLoopbackTwinSync({required int arg, dynamic hint}) =>
-    RustLib.instance.api.primitiveUsizeLoopbackTwinSync(arg: arg, hint: hint);
-
-int primitiveIsizeLoopbackTwinSync({required int arg, dynamic hint}) =>
-    RustLib.instance.api.primitiveIsizeLoopbackTwinSync(arg: arg, hint: hint);
