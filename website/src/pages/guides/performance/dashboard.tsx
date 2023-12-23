@@ -40,7 +40,7 @@ export default class Dashboard extends React.Component<{}, MyComponentState> {
             return <p>Loading</p>
         }
 
-        const platforms = ['Windows', 'Macos', 'Ubuntu'];
+        const platforms = ['Windows', 'Macos', 'Linux'];
 
         return (
             <Layout>
@@ -88,6 +88,6 @@ function collectBenchesPerTestCase(entries) {
 }
 
 function splitBenchName(name: string) {
-    const chunks = name.split('_');
-    return [chunks.slice(0, -1).join('_'), R.last(chunks)];
+    const platform = JSON.parse(name).platform;
+    return [name.replace(platform, "-"), platform];
 }
