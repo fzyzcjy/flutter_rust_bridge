@@ -161,7 +161,6 @@ mod chrono_impls {
 
 #[cfg(test)]
 mod tests {
-    use crate::misc::into_into_dart::IntoIntoDart;
 
     #[cfg(not(target_family = "wasm"))]
     #[test]
