@@ -92,6 +92,7 @@ This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-
 * **Easy to code-review & convince yourself**: This package simply simulates how humans write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to track.
 * **Fast**: It is only a thin (though feature-rich) wrapper, benchmarked on CI, and even has multiple codecs for best performance under different workloads.
 * **Hackable**: If (for whatever reason) you want to hack the source, there are contributor guides, code is modular, and the execution logic is intuitive.
+* **Ask questions**: Feel free to ask questions in the issue tracker, and I usually reply within hours (if not sleeping).
 
 ### Why Flutter + Rust?
 
