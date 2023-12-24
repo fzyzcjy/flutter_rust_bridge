@@ -31,8 +31,4 @@ pub(crate) trait WireRustCodecDcoGeneratorEncoderTrait:
     fn generate_impl_into_dart(&self) -> Option<String> {
         None
     }
-
-    fn generate_access_object_core(&self, obj: String) -> String {
-        obj
-    }
 }

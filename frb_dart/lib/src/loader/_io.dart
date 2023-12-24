@@ -18,6 +18,10 @@ FutureOr<ExternalLibrary> loadExternalLibrary(
   );
 }
 
+// This is tested via `flutter run` (or `flutter test`) under all platforms
+// listed below in the CI, whose coverage is not gathered yet, so we temporarily
+// disable it and re-enable later.
+// coverage:ignore-start
 /// Please see `loadExternalLibrary` for details
 ExternalLibrary loadExternalLibraryRaw({
   Uri? nativeLibDirWhenNonPackaged,
@@ -93,3 +97,4 @@ ExternalLibrary _tryOpen(String name, String debugInfo,
 extension on String {
   Uri toUriDirectory() => Uri.directory(this);
 }
+// coverage:ignore-end

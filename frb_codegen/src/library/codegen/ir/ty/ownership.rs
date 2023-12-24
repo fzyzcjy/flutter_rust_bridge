@@ -31,7 +31,9 @@ impl IrTypeTrait for IrTypeOwnership {
         format!("Ownership{}_{}", self.mode, self.inner.safe_ident())
     }
 
+    // frb-coverage:ignore-start
     fn rust_api_type(&self) -> String {
         unreachable!()
     }
+    // frb-coverage:ignore-end
 }

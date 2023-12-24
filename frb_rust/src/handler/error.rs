@@ -12,7 +12,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::CustomError => "Box<dyn BoxIntoDart>".to_string(),
+            Error::CustomError => "CustomError".to_string(),
             Error::Panic(panic_err) => error_to_string(panic_err),
         }
     }
@@ -27,4 +27,22 @@ pub(crate) fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
         },
     }
     .to_string()
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::handler::error::Error;
+
+    #[test]
+    fn test_error_message() {
+        assert_eq!(Error::CustomError.message(), "CustomError".to_owned());
+        assert_eq!(
+            Error::Panic(Box::new(42)).message(),
+            "Box<dyn Any>".to_owned()
+        );
+        assert_eq!(
+            Error::Panic(Box::new("Hello".to_string())).message(),
+            "Hello".to_owned()
+        );
+    }
 }

@@ -27,7 +27,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // TODO Currently, we treat `FnOnce` same as `Fn`,
             //      but in the future we can optimize this because we no longer need Arc or Clone for this case.
             "FnOnce" | "Fn" => {} // Ok
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             _ => bail!("Unknown ident: {segment_ident}"),
+            // frb-coverage:ignore-end
         }
 
         if let PathArguments::Parenthesized(arguments) = &segment.arguments {
@@ -38,12 +41,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             let output = Box::new(self.parse_dart_fn_output(&arguments.output)?);
 
             return Ok(IrType::DartFn(IrTypeDartFn { inputs, output }));
+
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
         }
 
         bail!("Fail to parse DartFn")
+        // frb-coverage:ignore-end
     }
 
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<IrType> {
+        // frb-coverage:ignore-end
         if let ReturnType::Type(_, ret_ty) = return_type {
             if let Type::Path(TypePath { ref path, .. }) = **ret_ty {
                 if let Some(PathSegment {
@@ -58,6 +68,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                             .unwrap()
                         {
                             return self.parse_type(inner_ty);
+
+                            // This will stop the whole generator and tell the users, so we do not care about testing it
+                            // frb-coverage:ignore-start
                         }
                     }
                 }
@@ -65,6 +78,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }
 
         bail!("DartFn does not support return types except `DartFnFuture<T>` yet")
+        // frb-coverage:ignore-end
     }
 }
 

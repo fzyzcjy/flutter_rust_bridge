@@ -17,6 +17,7 @@ where
     Vec<D>: IntoDart,
     D: IntoDart,
 {
+    #[inline(always)]
     fn into_into_dart(self) -> Vec<D> {
         self.into_iter().map(|e| e.into_into_dart()).collect()
     }
@@ -27,6 +28,7 @@ where
     T: IntoIntoDart<D>,
     D: IntoDart,
 {
+    #[inline(always)]
     fn into_into_dart(self) -> Option<D> {
         self.map(|e| e.into_into_dart())
     }
@@ -36,6 +38,7 @@ impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T>
 where
     T: DartSafe,
 {
+    #[inline(always)]
     fn into_into_dart(self) -> RustOpaque<T> {
         self
     }
@@ -47,6 +50,7 @@ where
     D: IntoDart,
     ZeroCopyBuffer<D>: IntoDart,
 {
+    #[inline(always)]
     fn into_into_dart(self) -> ZeroCopyBuffer<D> {
         ZeroCopyBuffer(self.0.into_into_dart())
     }
@@ -57,6 +61,7 @@ where
     T: IntoDart,
     [T; C]: IntoDart,
 {
+    #[inline(always)]
     fn into_into_dart(self) -> [T; C] {
         self
     }
@@ -66,6 +71,7 @@ impl<T> IntoIntoDart<T> for Box<T>
 where
     T: IntoDart,
 {
+    #[inline(always)]
     fn into_into_dart(self) -> T {
         *self
     }
@@ -78,6 +84,7 @@ macro_rules! impl_into_into_dart_for_tuple {
         where
             $($A: IntoIntoDart<$AD>, $AD: IntoDart),+,
         {
+            #[inline(always)]
             fn into_into_dart(self) -> ($($AD),+,) {
                 (
                     $(
@@ -109,6 +116,7 @@ impl_into_into_dart_for_tuple! {
 macro_rules! impl_into_into_dart_by_self {
     ($t:ty) => {
         impl IntoIntoDart<$t> for $t {
+            #[inline(always)]
             fn into_into_dart(self) -> $t {
                 self
             }
@@ -154,11 +162,11 @@ mod chrono_impls {
 #[cfg(test)]
 mod tests {
     use crate::misc::into_into_dart::IntoIntoDart;
-    use allo_isolate::ZeroCopyBuffer;
 
+    #[cfg(not(target_family = "wasm"))]
     #[test]
     fn test_zero_copy_buffer() {
-        let raw: ZeroCopyBuffer<Vec<u8>> = ZeroCopyBuffer(vec![10]);
+        let raw: allo_isolate::ZeroCopyBuffer<Vec<u8>> = allo_isolate::ZeroCopyBuffer(vec![10]);
         assert_eq!(raw.into_into_dart().0, vec![10]);
     }
 }

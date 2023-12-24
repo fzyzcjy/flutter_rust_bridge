@@ -45,7 +45,10 @@ impl FrbAttributes {
             )
             .collect_vec();
         if candidates.len() > 1 {
+            // We do not care about details of this warning message
+            // frb-coverage:ignore-start
             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
+            // frb-coverage:ignore-end
         }
         candidates.last().map(|item| item.to_ir_default_value())
     }
@@ -292,7 +295,10 @@ impl Parse for FrbAttributeDefaultValue {
         } else if lh.peek(syn::LitInt) {
             input.parse().map(Self::Int)
         } else {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             Err(lh.error())
+            // frb-coverage:ignore-end
         }
     }
 }

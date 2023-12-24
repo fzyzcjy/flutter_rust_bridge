@@ -10,12 +10,17 @@ class _MockBaseCodec<S, E extends Object, WireSyncType> extends Mock
 
 void main() {
   test('task-related', () {
-    const meta = TaskConstMeta(
+    // Deliberately non-const to ensure they are equal but not identical
+    // ignore: prefer_const_constructors
+    final meta = TaskConstMeta(
       debugName: 'my_name',
+      // ignore: prefer_const_literals_to_create_immutables
       argNames: ['k'],
     );
-    const metaTwo = TaskConstMeta(
+    // ignore: prefer_const_constructors
+    final metaTwo = TaskConstMeta(
       debugName: 'my_name',
+      // ignore: prefer_const_literals_to_create_immutables
       argNames: ['k'],
     );
     final task = NormalTask(

@@ -43,7 +43,10 @@ fn get_rust_mod(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<Option<S
     let relative_path = rust_file_path
         .strip_prefix(rust_crate_dir.join("src"))
         .with_context(|| {
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             format!("rust_file_path={rust_file_path:?} rust_crate_dir={rust_crate_dir:?}")
+            // frb-coverage:ignore-end
         })?;
 
     let mut components = relative_path

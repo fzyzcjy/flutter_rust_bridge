@@ -38,31 +38,6 @@ void main() {
       buf[1] += BigInt.one;
       expect(buf[1], i64maxb + BigInt.one, reason: 'i64max+1');
     });
-
-    // TODO
-    // test('Int64List more operations', () {
-    //   expect(Int64List.view(Uint8List(0).buffer).length, 0);
-    //   expect(Int64List.sublistView(Uint8List(0)).length, 0);
-    //   expect(Int64List.fromList([10]) + Int64List.fromList([20]), [10, 20]);
-    //   expect(
-    //       Int64List.fromList([10]) + $data.Int64List.fromList([20]), [10, 20]);
-    //   expect(Int64List.fromList([10]) + [20], [10, 20]);
-    //   expect(Int64List.fromList([10]) + [20].map((x) => x), [10, 20]);
-    //   expect(
-    //       () => Int64List.fromList([10]) + 42, throwsA(isA<ArgumentError>()));
-    // });
-    //
-    // test('Uint64List more operations', () {
-    //   expect(Uint64List.view(Uint8List(0).buffer).length, 0);
-    //   expect(Uint64List.sublistView(Uint8List(0)).length, 0);
-    //   expect(Uint64List.fromList([10]) + Uint64List.fromList([20]), [10, 20]);
-    //   expect(Uint64List.fromList([10]) + $data.Uint64List.fromList([20]),
-    //       [10, 20]);
-    //   expect(Uint64List.fromList([10]) + [20], [10, 20]);
-    //   expect(Uint64List.fromList([10]) + [20].map((x) => x), [10, 20]);
-    //   expect(
-    //       () => Uint64List.fromList([10]) + 42, throwsA(isA<ArgumentError>()));
-    // });
   });
 
   group('read/write ByteData', () {

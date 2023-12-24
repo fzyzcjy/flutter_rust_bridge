@@ -45,7 +45,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         match self.ir.primitive {
+            // frb-coverage:ignore-start
             IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
+            // frb-coverage:ignore-end
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(
                 format!(
                     "let buf = self.dyn_into::<{}>().unwrap();

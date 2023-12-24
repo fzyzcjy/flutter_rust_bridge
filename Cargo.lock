@@ -376,6 +376,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fb4a24b1aaf0fd0ce8b45161144d6f42cd91677fd5940fd431183eb023b3a2b8"
 
 [[package]]
+name = "cool_asserts"
+version = "2.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ee9f254e53f61e2688d3677fa2cbe4e9b950afd56f48819c98817417cf6b28ec"
+dependencies = [
+ "indent_write",
+]
+
+[[package]]
 name = "core-foundation-sys"
 version = "0.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -551,6 +560,7 @@ dependencies = [
  "cc",
  "chrono",
  "console_error_panic_hook",
+ "cool_asserts",
  "dart-sys-fork",
  "delegate-attr",
  "flutter_rust_bridge_macros",
@@ -799,6 +809,12 @@ dependencies = [
  "proc-macro2",
  "quote",
 ]
+
+[[package]]
+name = "indent_write"
+version = "2.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0cfe9645a18782869361d9c8732246be7b410ad4e919d3609ebabdac00ba12c3"
 
 [[package]]
 name = "indexmap"

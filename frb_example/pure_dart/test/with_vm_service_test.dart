@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/primitive_list_misc_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -21,37 +20,38 @@ Future<void> main() async {
   }
   tearDownAll(() => vmService.dispose());
 
-  group('sync return', () {
-    test('allocate a lot of zero copy data to check that it is properly freed',
-        () async {
-      const n = 10000;
-      int calls = 0;
-
-      expect(debugOnExternalTypedDataFinalizer, isNull);
-      debugOnExternalTypedDataFinalizer = expectAsync1(
-        (dataLength) {
-          expect(dataLength, n);
-          calls++;
-        },
-        count: 10,
-        reason:
-            "Finalizer must be called once for each returned packed primitive list",
-      );
-      addTearDown(() => debugOnExternalTypedDataFinalizer = null);
-
-      // it is auto zero-copied
-      VecOfPrimitivePackTwinSync? primitivePack =
-          handleVecOfPrimitiveTwinSync(n: n);
-      await vmService.gc();
-      await Future<void>.delayed(const Duration(milliseconds: 10));
-      expect(primitivePack, isNotNull);
-      expect(calls, 0);
-
-      primitivePack = null;
-      await vmService.gc();
-      await Future<void>.delayed(const Duration(milliseconds: 10));
-    });
-  });
+  // sync zero copy is temporarily disabled to let VM understand external size
+  // group('sync return', () {
+  //   test('allocate a lot of zero copy data to check that it is properly freed',
+  //       () async {
+  //     const n = 10000;
+  //     int calls = 0;
+  //
+  //     expect(debugOnExternalTypedDataFinalizer, isNull);
+  //     debugOnExternalTypedDataFinalizer = expectAsync1(
+  //       (dataLength) {
+  //         expect(dataLength, n);
+  //         calls++;
+  //       },
+  //       count: 10,
+  //       reason:
+  //           "Finalizer must be called once for each returned packed primitive list",
+  //     );
+  //     addTearDown(() => debugOnExternalTypedDataFinalizer = null);
+  //
+  //     // it is auto zero-copied
+  //     VecOfPrimitivePackTwinSync? primitivePack =
+  //         handleVecOfPrimitiveTwinSync(n: n);
+  //     await vmService.gc();
+  //     await Future<void>.delayed(const Duration(milliseconds: 10));
+  //     expect(primitivePack, isNotNull);
+  //     expect(calls, 0);
+  //
+  //     primitivePack = null;
+  //     await vmService.gc();
+  //     await Future<void>.delayed(const Duration(milliseconds: 10));
+  //   });
+  // });
 
   group('dart opaque type', () {
     group('GC', () {

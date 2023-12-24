@@ -11,6 +11,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> anyhow::Result<IrType> {
         match &type_path {
             TypePath { qself: None, path } => self.parse_type_path_core(type_path, path),
+            // This branch simply halts the generator with an error message, so we do not test it
+            // frb-coverage:ignore-start
             TypePath {
                 qself: Some(QSelf { ty, .. }),
                 ..
@@ -19,6 +21,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 ty.to_token_stream(),
                 type_path.to_token_stream()
             ),
+            // frb-coverage:ignore-end
         }
     }
 
@@ -56,7 +59,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(ans) = self.parse_type_path_data_optional(type_path, last_segment)? {
                 return Ok(ans);
             }
+
+            // this bracket is weirdly not covered, while everything else is
+            // frb-coverage:ignore-start
         }
+        // frb-coverage:ignore-end
 
         Ok(parse_path_type_to_unencodable(type_path, &splayed_segments))
     }

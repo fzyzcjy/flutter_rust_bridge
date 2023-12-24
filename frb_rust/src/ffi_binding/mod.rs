@@ -28,7 +28,10 @@ fn vec_resize(vec: &mut Vec<u8>, new_len: i32) {
         vec.reserve_exact(new_len - vec.len());
     }
     vec.resize(new_len, 0);
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
     debug_assert!(vec.len() == new_len);
+    // frb-coverage:ignore-end
 }
 
 #[no_mangle]

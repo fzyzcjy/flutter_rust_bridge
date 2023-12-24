@@ -15,7 +15,10 @@ fn compute_mod_from_path(code_path: &Path, base_dir: &Path) -> anyhow::Result<St
         Ok(path_to_string(&p)?.replace(['/', '\\'], "::"))
     })()
     .with_context(|| {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         format!("When compute_mod_from_rust_path(code_path={code_path:?}, base_dir={base_dir:?})",)
+        // frb-coverage:ignore-end
     })
 }
 

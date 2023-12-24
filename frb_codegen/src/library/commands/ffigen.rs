@@ -53,7 +53,10 @@ struct FfigenToFileArgs<'a> {
 
 fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
     debug!(
+        // weirdly this line is not covered, while the `debug!` call is
+        // frb-coverage:ignore-start
         "execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",
+        // frb-coverage:ignore-end
         c_path = args.c_path,
         dart_path = args.c_path,
         llvm_path = args.llvm_path,
@@ -104,9 +107,12 @@ fn handle_output(
         let pat = "Couldn't find dynamic library in default locations.";
         if stderr.contains(pat) || stdout.contains(pat) {
             bail!("ffigen could not find LLVM. {}", hint_link);
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
         }
 
         bail!("ffigen failed. {}", hint_link);
+        // frb-coverage:ignore-end
     }
 
     // This is usually not a problem
