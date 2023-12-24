@@ -181,7 +181,7 @@ impl NonCloneSimpleTwinNormal {
         Self { inner: 42 }
     }
 
-    /// constructor that returns a Result
+    /// constructor with Result
     pub fn new_with_result_twin_normal() -> anyhow::Result<NonCloneSimpleTwinNormal> {
         Ok(Self { inner: 42 })
     }
