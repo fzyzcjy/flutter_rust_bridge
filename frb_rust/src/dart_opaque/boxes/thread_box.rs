@@ -84,9 +84,9 @@ mod tests {
     fn test_thread_box_should_panic_and_leak_when_access_and_drop_on_another_thread() {
         let b = ThreadBox::new(42);
         thread::spawn(move || {
-            assert_panics!((move || {
+            assert_panics!({
                 let _inner: &i32 = b.as_ref();
-            })());
+            });
         })
         .join()
         .unwrap();
