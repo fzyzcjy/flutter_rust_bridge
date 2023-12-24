@@ -23341,10 +23341,10 @@ pub fn wire_NonCloneSimpleTwinNormal_new_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_new_with_result(
+pub fn wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    wire_NonCloneSimpleTwinNormal_new_with_result_impl(port_)
+    wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]

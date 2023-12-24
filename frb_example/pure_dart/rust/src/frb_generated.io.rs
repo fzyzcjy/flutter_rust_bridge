@@ -28833,8 +28833,8 @@ pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_with_result(port_: i64) {
-    wire_NonCloneSimpleTwinNormal_new_with_result_impl(port_)
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(port_)
 }
 
 #[no_mangle]

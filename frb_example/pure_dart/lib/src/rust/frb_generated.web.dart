@@ -29983,8 +29983,10 @@ class RustLibWire extends BaseWire {
   void wire_NonCloneSimpleTwinNormal_new_twin_normal(NativePortType port_) =>
       wasmModule.wire_NonCloneSimpleTwinNormal_new_twin_normal(port_);
 
-  void wire_NonCloneSimpleTwinNormal_new_with_result(NativePortType port_) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_new_with_result(port_);
+  void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(port_);
 
   void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
           NativePortType port_, Object arg) =>
@@ -36413,7 +36415,7 @@ class RustLibWasmModule implements WasmModule {
   external void wire_NonCloneSimpleTwinNormal_new_twin_normal(
       NativePortType port_);
 
-  external void wire_NonCloneSimpleTwinNormal_new_with_result(
+  external void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
       NativePortType port_);
 
   external void
