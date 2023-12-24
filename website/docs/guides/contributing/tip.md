@@ -52,3 +52,18 @@ A lot of tests reside in `frb_example/pure_dart`, thus it is a bit big and slow 
 Therefore, I (personally) often use `frb_example/dart_minimal` as a testing bed.
 
 For example, I will ad-hoc add one or two functions to dart_minimal when wanting to examine outputs and behavior.
+
+## Draw a flamegraph for performance
+
+If you are not working on improving performance, please ignore this subsection.
+
+I have made some small scripts for me to get flamegraph on MacOS.
+The scripts contain absolute paths, extra pieces for MacOS to work, etc.
+So you can look at the source code and modify to suit your needs.
+
+To execute it:
+
+```shell
+./frb_internal bench-flamegraph-compile
+./frb_internal bench-flamegraph-run --filter 'VoidFunction.*FrbCstSse.*false' --loop-count 10000000
+```

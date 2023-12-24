@@ -22,3 +22,6 @@ _rsync_ubuntu:
             ./ ubuntu:~/flutter_rust_bridge
     }
     run_rsync; fswatch -o ./ | while read f; do run_rsync; done
+
+_port_forward_ubuntu:
+    ssh -L 8181:localhost:8181 ubuntu -N

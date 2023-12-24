@@ -11,5 +11,7 @@ that allows zero copy.
 Therefore, when you are sending `Vec<u8>` (or `Vec<i8>` or friends) from Rust to Dart
 using asynchronous Dart mode or streaming in Android/iOS/Windows/MacOS/Linux, it automatically works.
 
-If you want to make code extra clear that zero copy is utilized,
-you can use the `ZeroCopyBuffer<_>` type (e.g. `ZeroCopyBuffer<Vec<u8>>`).
+In addition to the existing zero-copy scenarios (e.g. Rust to Dart in async mode),
+it is possible to zero-copy at the scenario of Rust to Dart *synchronous* mode,
+using `NativeFinalizer`s, etc.
+If you find it too slow for your scenario, feel free to open an issue about implementing this.
