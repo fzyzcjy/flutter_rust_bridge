@@ -8341,6 +8341,11 @@ void wire_NonCloneSimpleTwinSse_new_twin_sse(int64_t port_,
                                              int32_t rust_vec_len_,
                                              int32_t data_len_);
 
+void wire_NonCloneSimpleTwinSse_new_with_result_twin_sse(int64_t port_,
+                                                         uint8_t *ptr_,
+                                                         int32_t rust_vec_len_,
+                                                         int32_t data_len_);
+
 void wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(int64_t port_,
                                                                   uint8_t *ptr_,
                                                                   int32_t rust_vec_len_,
@@ -8473,6 +8478,8 @@ WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(void)
 
 WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_new_twin_sync(void);
 
+WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_new_with_result_twin_sync(void);
+
 WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(const void *arg);
 
 WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(const void *arg);
@@ -8550,6 +8557,10 @@ WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_ss
 WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(uint8_t *ptr_,
                                                                       int32_t rust_vec_len_,
                                                                       int32_t data_len_);
+
+WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(uint8_t *ptr_,
+                                                                                  int32_t rust_vec_len_,
+                                                                                  int32_t data_len_);
 
 WireSyncRust2DartSse wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(uint8_t *ptr_,
                                                                                            int32_t rust_vec_len_,
@@ -9284,6 +9295,8 @@ void wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(int64_
 void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(int64_t port_);
 
 void wire_NonCloneSimpleTwinNormal_new_twin_normal(int64_t port_);
+
+void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(int64_t port_);
 
 void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(int64_t port_,
                                                                         const void *arg);
@@ -11772,6 +11785,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal);
@@ -11782,6 +11796,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_new_custom_name_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_new_twin_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_new_with_result_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_static_method_arg_mut_borrow_twin_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSse_static_method_arg_own_twin_sse);
@@ -11792,6 +11807,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_new_custom_name_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_static_method_arg_mut_borrow_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSyncSse_static_method_arg_own_twin_sync_sse);
@@ -11802,6 +11818,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_new_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_new_with_result_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync);

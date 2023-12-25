@@ -204,6 +204,12 @@ impl NonCloneSimpleTwinSse {
         Self { inner: 42 }
     }
 
+    /// constructor with Result
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn new_with_result_twin_sse() -> anyhow::Result<NonCloneSimpleTwinSse> {
+        Ok(Self { inner: 42 })
+    }
+
     #[flutter_rust_bridge::frb(serialize)]
     pub fn instance_method_arg_own_twin_sse(self) {
         assert_eq!(self.inner, 42);

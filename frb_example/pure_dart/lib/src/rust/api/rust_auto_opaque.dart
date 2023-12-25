@@ -219,6 +219,12 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
   static Future<NonCloneSimpleTwinNormal> newTwinNormal({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinNormalNewTwinNormal(hint: hint);
 
+  /// constructor with Result
+  static Future<NonCloneSimpleTwinNormal> newWithResultTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalNewWithResultTwinNormal(hint: hint);
+
   static Future<void> staticMethodArgBorrowTwinNormal(
           {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
       RustLib.instance.api

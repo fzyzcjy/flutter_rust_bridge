@@ -161,11 +161,10 @@ mod chrono_impls {
 
 #[cfg(test)]
 mod tests {
-    use crate::misc::into_into_dart::IntoIntoDart;
-
     #[cfg(not(target_family = "wasm"))]
     #[test]
     fn test_zero_copy_buffer() {
+        use crate::misc::into_into_dart::IntoIntoDart;
         let raw: allo_isolate::ZeroCopyBuffer<Vec<u8>> = allo_isolate::ZeroCopyBuffer(vec![10]);
         assert_eq!(raw.into_into_dart().0, vec![10]);
     }

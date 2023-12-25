@@ -181,6 +181,11 @@ impl NonCloneSimpleTwinNormal {
         Self { inner: 42 }
     }
 
+    /// constructor with Result
+    pub fn new_with_result_twin_normal() -> anyhow::Result<NonCloneSimpleTwinNormal> {
+        Ok(Self { inner: 42 })
+    }
+
     pub fn instance_method_arg_own_twin_normal(self) {
         assert_eq!(self.inner, 42);
     }

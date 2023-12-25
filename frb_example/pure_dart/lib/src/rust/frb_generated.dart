@@ -3631,6 +3631,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<NonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewTwinSse({dynamic hint});
 
+  Future<NonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewWithResultTwinSse(
+      {dynamic hint});
+
   Future<void> nonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
       {required NonCloneSimpleTwinSse arg, dynamic hint});
 
@@ -3729,6 +3732,9 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   NonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewTwinSync({dynamic hint});
+
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewWithResultTwinSync(
+      {dynamic hint});
 
   void nonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
       {required NonCloneSimpleTwinSync arg, dynamic hint});
@@ -3829,6 +3835,9 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   NonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewTwinSyncSse(
+      {dynamic hint});
+
+  NonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewWithResultTwinSyncSse(
       {dynamic hint});
 
   void nonCloneSimpleTwinSyncSseStaticMethodArgBorrowTwinSyncSse(
@@ -4377,6 +4386,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
       {dynamic hint});
+
+  Future<NonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalNewWithResultTwinNormal({dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
@@ -36507,6 +36519,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<NonCloneSimpleTwinSse> nonCloneSimpleTwinSseNewWithResultTwinSse(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_NonCloneSimpleTwinSse_new_with_result_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kNonCloneSimpleTwinSseNewWithResultTwinSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinSseNewWithResultTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinSse_new_with_result_twin_sse",
+        argNames: [],
+      );
+
+  @override
   Future<void> nonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
       {required NonCloneSimpleTwinSse arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -37428,6 +37469,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  NonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewWithResultTwinSync(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_NonCloneSimpleTwinSync_new_with_result_twin_sync();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kNonCloneSimpleTwinSyncNewWithResultTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinSyncNewWithResultTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinSync_new_with_result_twin_sync",
+        argNames: [],
+      );
+
+  @override
   void nonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
       {required NonCloneSimpleTwinSync arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -38323,6 +38389,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "NonCloneSimpleTwinSyncSse_new_twin_sync_sse",
         argNames: [],
       );
+
+  @override
+  NonCloneSimpleTwinSyncSse nonCloneSimpleTwinSyncSseNewWithResultTwinSyncSse(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kNonCloneSimpleTwinSyncSseNewWithResultTwinSyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseNewWithResultTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse",
+            argNames: [],
+          );
 
   @override
   void nonCloneSimpleTwinSyncSseStaticMethodArgBorrowTwinSyncSse(
@@ -43698,6 +43796,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kNonCloneSimpleTwinNormalNewTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "NonCloneSimpleTwinNormal_new_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalNewWithResultTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kNonCloneSimpleTwinNormalNewWithResultTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalNewWithResultTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_new_with_result_twin_normal",
         argNames: [],
       );
 

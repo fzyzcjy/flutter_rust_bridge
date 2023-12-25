@@ -26478,6 +26478,16 @@ pub extern "C" fn wire_NonCloneSimpleTwinSse_new_twin_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSse_new_with_result_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_NonCloneSimpleTwinSse_new_with_result_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -26823,6 +26833,12 @@ pub extern "C" fn wire_NonCloneSimpleTwinSync_new_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_new_with_result_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_NonCloneSimpleTwinSync_new_with_result_twin_sync_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
     arg: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -27065,6 +27081,19 @@ pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -28801,6 +28830,11 @@ pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port
 #[no_mangle]
 pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_twin_normal(port_: i64) {
     wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal_impl(port_)
 }
 
 #[no_mangle]

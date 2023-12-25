@@ -49347,6 +49347,29 @@ class RustLibWire implements BaseWire {
       _wire_NonCloneSimpleTwinSse_new_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_NonCloneSimpleTwinSse_new_with_result_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_NonCloneSimpleTwinSse_new_with_result_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinSse_new_with_result_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'wire_NonCloneSimpleTwinSse_new_with_result_twin_sse');
+  late final _wire_NonCloneSimpleTwinSse_new_with_result_twin_sse =
+      _wire_NonCloneSimpleTwinSse_new_with_result_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_NonCloneSimpleTwinSse_static_method_arg_borrow_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -50000,6 +50023,17 @@ class RustLibWire implements BaseWire {
       _wire_NonCloneSimpleTwinSync_new_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
+  WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_new_with_result_twin_sync() {
+    return _wire_NonCloneSimpleTwinSync_new_with_result_twin_sync();
+  }
+
+  late final _wire_NonCloneSimpleTwinSync_new_with_result_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function()>>(
+          'wire_NonCloneSimpleTwinSync_new_with_result_twin_sync');
+  late final _wire_NonCloneSimpleTwinSync_new_with_result_twin_sync =
+      _wire_NonCloneSimpleTwinSync_new_with_result_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function()>();
+
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
     ffi.Pointer<ffi.Void> arg,
@@ -50547,6 +50581,31 @@ class RustLibWire implements BaseWire {
   late final _wire_NonCloneSimpleTwinSyncSse_new_twin_sync_sse =
       _wire_NonCloneSimpleTwinSyncSse_new_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse');
+  late final _wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_sse =
+      _wire_NonCloneSimpleTwinSyncSse_new_with_result_twin_sync_ssePtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse
       wire_NonCloneSimpleTwinSyncSse_static_method_arg_borrow_twin_sync_sse(
@@ -54523,6 +54582,21 @@ class RustLibWire implements BaseWire {
           'wire_NonCloneSimpleTwinNormal_new_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_new_twin_normal =
       _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_new_with_result_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_new_with_result_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_new_with_result_twin_normalPtr
           .asFunction<void Function(int)>();
 
   void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(

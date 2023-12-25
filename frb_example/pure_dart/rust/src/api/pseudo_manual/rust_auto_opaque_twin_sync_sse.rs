@@ -237,6 +237,13 @@ impl NonCloneSimpleTwinSyncSse {
         Self { inner: 42 }
     }
 
+    /// constructor with Result
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_with_result_twin_sync_sse() -> anyhow::Result<NonCloneSimpleTwinSyncSse> {
+        Ok(Self { inner: 42 })
+    }
+
     #[flutter_rust_bridge::frb(serialize)]
     #[flutter_rust_bridge::frb(sync)]
     pub fn instance_method_arg_own_twin_sync_sse(self) {

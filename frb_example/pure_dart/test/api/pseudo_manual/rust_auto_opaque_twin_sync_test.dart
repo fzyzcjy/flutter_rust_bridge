@@ -226,6 +226,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSync(obj.instanceMethodReturnOwnTwinSync());
     await futurizeVoidTwinSync(obj.instanceMethodArgOwnTwinSync());
   });
+  test('instance newWithResult', () async {
+    final obj = await NonCloneSimpleTwinSync.newWithResultTwinSync();
+    await futurizeVoidTwinSync(obj.instanceMethodArgBorrowTwinSync());
+  });
 
   test('types with both encodable and opaque fields', () async {
     final obj =
