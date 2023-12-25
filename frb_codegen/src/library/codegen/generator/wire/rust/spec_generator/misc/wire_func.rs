@@ -242,9 +242,10 @@ fn generate_code_closure(
     code_call_inner_func_result: &str,
 ) -> String {
     let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
-    let mut maybe_result = "".to_string();
-    if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
-        maybe_result = "-> Result::<_,anyhow::Error>".to_string()
+    let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
+        "-> Result::<_,anyhow::Error>".to_string()
+    } else {
+        "".to_string()
     };
     match func.mode {
         IrFuncMode::Sync => {
