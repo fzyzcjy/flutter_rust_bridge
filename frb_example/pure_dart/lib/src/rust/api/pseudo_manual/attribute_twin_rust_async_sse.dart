@@ -15,7 +15,8 @@ Future<void> handleCustomizedStructTwinRustAsyncSse(
         .handleCustomizedStructTwinRustAsyncSse(val: val, hint: hint);
 
 Future<UserIdTwinRustAsyncSse> nextUserIdTwinRustAsyncSse(
-        {required UserIdTwinRustAsyncSse userId, dynamic hint}) =>
+        {UserIdTwinRustAsyncSse userId = const UserIdTwinRustAsyncSse(),
+        dynamic hint}) =>
     RustLib.instance.api.nextUserIdTwinRustAsyncSse(userId: userId, hint: hint);
 
 class CustomizedTwinRustAsyncSse {

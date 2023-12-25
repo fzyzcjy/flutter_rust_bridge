@@ -25,3 +25,7 @@ _rsync_ubuntu:
 
 _port_forward_ubuntu:
     ssh -L 8181:localhost:8181 ubuntu -N
+
+[no-cd]
+expand *args:
+    cargo expand --config 'build.rustflags="--cfg frb_expand"' {{args}}

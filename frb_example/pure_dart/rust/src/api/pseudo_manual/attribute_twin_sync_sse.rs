@@ -40,9 +40,12 @@ pub struct UserIdTwinSyncSse {
     pub value: u32,
 }
 
+#[frb]
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
-pub fn next_user_id_twin_sync_sse(user_id: UserIdTwinSyncSse) -> UserIdTwinSyncSse {
+pub fn next_user_id_twin_sync_sse(
+    #[frb(default = "const UserIdTwinSyncSse()")] user_id: UserIdTwinSyncSse,
+) -> UserIdTwinSyncSse {
     UserIdTwinSyncSse {
         value: user_id.value + 1,
     }

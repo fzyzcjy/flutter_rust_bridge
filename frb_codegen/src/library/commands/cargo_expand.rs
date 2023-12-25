@@ -1,12 +1,15 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
+use crate::command_args;
 use crate::library::commands::command_runner::execute_command;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use log::{debug, info, warn};
+use regex::Regex;
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use std::sync::OnceLock;
 use std::{env, fs};
 
 #[derive(Default)]
@@ -84,12 +87,14 @@ fn run_cargo_expand(
     // let _pb = simple_progress("Run cargo-expand".to_owned(), 1);
     debug!("Running cargo expand in '{rust_crate_dir:?}'");
 
-    let args = vec![
-        PathBuf::from("expand"),
-        PathBuf::from("--lib"),
-        PathBuf::from("--theme=none"),
-        PathBuf::from("--ugly"),
-    ];
+    let args = command_args!(
+        "expand",
+        "--lib",
+        "--theme=none",
+        "--ugly",
+        "--config",
+        "build.rustflags=\"--cfg frb_expand\""
+    );
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir), None)
         .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
@@ -111,7 +116,12 @@ fn run_cargo_expand(
 
     let mut stdout_lines = stdout.lines();
     stdout_lines.next();
-    let ans = stdout_lines.join("\n").replace("/// frb_marker: ", "");
+    let ans = stdout_lines.join("\n");
+    static PATTERN: OnceLock<Regex> = OnceLock::new();
+    let pattern = PATTERN.get_or_init(|| {
+        Regex::new(r####"#\[doc =[\s\n]*r###"frb_marker: ([\s\S]*?)"###]"####).unwrap()
+    });
+    let ans = pattern.replace_all(&ans, "$1").into_owned();
 
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
 

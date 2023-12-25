@@ -14,7 +14,7 @@ Future<void> handleCustomizedStructTwinSse(
     RustLib.instance.api.handleCustomizedStructTwinSse(val: val, hint: hint);
 
 Future<UserIdTwinSse> nextUserIdTwinSse(
-        {required UserIdTwinSse userId, dynamic hint}) =>
+        {UserIdTwinSse userId = const UserIdTwinSse(), dynamic hint}) =>
     RustLib.instance.api.nextUserIdTwinSse(userId: userId, hint: hint);
 
 class CustomizedTwinSse {

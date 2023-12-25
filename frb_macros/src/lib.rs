@@ -10,25 +10,48 @@ use proc_macro::*;
 // frb-coverage:ignore-start
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
-    let item_str = item.to_string();
-    let mut new_str = String::with_capacity(item_str.len());
-    let mut last_end = 0;
-    while let Some(start) = item_str[last_end..].find("#[frb(") {
-        let start = start + last_end;
-        let end = item_str[start..].find(")]").unwrap() + start + 2;
-        new_str.push_str(&item_str[last_end..start]);
-        new_str.push_str("\n/// frb_marker: ");
-        new_str.push_str(&item_str[start..end]);
-        new_str.push('\n');
-        last_end = end;
-    }
-    new_str.push_str(&item_str[last_end..]);
-    let item: TokenStream = new_str.parse().unwrap();
+    let mut attribute = format_frb_attribute(format!("#[frb({attribute})]"));
+    let item = strip_frb_attr(item);
+    attribute.extend(item);
+    attribute
+}
 
-    let attr = attribute.to_string().replace('\n', "");
-    let comment_str = format!("/// frb_marker: #[frb({attr})]");
-    let mut comment: TokenStream = comment_str.parse().unwrap();
-    comment.extend([item]);
-    comment
+fn strip_frb_attr(item: TokenStream) -> TokenStream {
+    item.into_iter()
+        .scan(None, |pound, tok| {
+            use TokenTree as T;
+            match (&pound, &tok) {
+                (None, T::Punct(punct)) if punct.as_char() == '#' => {
+                    *pound = Some(tok);
+                    Some(TokenStream::new())
+                }
+                (Some(_), T::Group(group)) if is_frb_bracket(group) => {
+                    _ = pound.take();
+                    Some(format_frb_attribute(format!("#[{}]", group.stream())))
+                }
+                (_, T::Group(group)) => Some(
+                    pound
+                        .take()
+                        .into_iter()
+                        .chain(Some(T::Group(Group::new(
+                            group.delimiter(),
+                            strip_frb_attr(group.stream()),
+                        ))))
+                        .collect(),
+                ),
+                _ => Some(tok.into()),
+            }
+        })
+        .collect()
+}
+
+fn is_frb_bracket(group: &Group) -> bool {
+    matches!((group.delimiter(), group.stream().into_iter().next()), (Delimiter::Bracket, Some(TokenTree::Ident(ident))) if ident.to_string() == "frb")
+}
+
+fn format_frb_attribute(item: String) -> TokenStream {
+    format!("#[cfg_attr(frb_expand, doc = r###\"frb_marker: {item}\"###)]",)
+        .parse()
+        .unwrap()
 }
 // frb-coverage:ignore-end
