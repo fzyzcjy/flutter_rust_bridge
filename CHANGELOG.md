@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0-dev.4
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix Generated Rust code of `Result<RustOpaque<...>>` is incorrect #1474 (thanks @trobanga)
+* (My (@fzyzcjy's) PRs are not listed here)
+
 ## 2.0.0-dev.3
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
