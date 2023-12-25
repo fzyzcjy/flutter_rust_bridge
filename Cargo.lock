@@ -549,7 +549,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "2.0.0-dev.3"
+version = "2.0.0-dev.4"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -581,7 +581,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "2.0.0-dev.3"
+version = "2.0.0-dev.4"
 dependencies = [
  "anyhow",
  "atty",
@@ -623,7 +623,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "2.0.0-dev.3"
+version = "2.0.0-dev.4"
 
 [[package]]
 name = "fsevent-sys"
