@@ -710,6 +710,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "damywise",
+      "name": "Damien Wise",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25608913?v=4",
+      "profile": "https://github.com/damywise",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
