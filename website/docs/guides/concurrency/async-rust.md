@@ -31,7 +31,7 @@ await f();
 
 ## Customization
 
-Similar to how you customize thread pools for [syncrhonous Rust](sync-rust.md),
+Similar to how you customize thread pools for [synchronous Rust](sync-rust.md),
 we can also provide arbitrary async-runtime implementations.
 This can be done similarly by creating your custom handler instance with custom async runtime.
 
