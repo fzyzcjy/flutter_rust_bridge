@@ -90,13 +90,13 @@ typedef struct wire_cst_EnumDartOpaqueTwinNormal_Opaque {
 } wire_cst_EnumDartOpaqueTwinNormal_Opaque;
 
 typedef union EnumDartOpaqueTwinNormalKind {
-  struct wire_cst_EnumDartOpaqueTwinNormal_Primitive *Primitive;
-  struct wire_cst_EnumDartOpaqueTwinNormal_Opaque *Opaque;
+  struct wire_cst_EnumDartOpaqueTwinNormal_Primitive Primitive;
+  struct wire_cst_EnumDartOpaqueTwinNormal_Opaque Opaque;
 } EnumDartOpaqueTwinNormalKind;
 
 typedef struct wire_cst_enum_dart_opaque_twin_normal {
   int32_t tag;
-  union EnumDartOpaqueTwinNormalKind *kind;
+  union EnumDartOpaqueTwinNormalKind kind;
 } wire_cst_enum_dart_opaque_twin_normal;
 
 typedef struct wire_cst_dart_opaque_nested_twin_normal {
@@ -109,10 +109,6 @@ typedef struct wire_cst_list_DartOpaque {
   int32_t len;
 } wire_cst_list_DartOpaque;
 
-typedef struct wire_cst_EnumWithItemMixedTwinNormal_A {
-
-} wire_cst_EnumWithItemMixedTwinNormal_A;
-
 typedef struct wire_cst_EnumWithItemMixedTwinNormal_B {
   struct wire_cst_list_prim_u_8 *field0;
 } wire_cst_EnumWithItemMixedTwinNormal_B;
@@ -122,14 +118,13 @@ typedef struct wire_cst_EnumWithItemMixedTwinNormal_C {
 } wire_cst_EnumWithItemMixedTwinNormal_C;
 
 typedef union EnumWithItemMixedTwinNormalKind {
-  struct wire_cst_EnumWithItemMixedTwinNormal_A *A;
-  struct wire_cst_EnumWithItemMixedTwinNormal_B *B;
-  struct wire_cst_EnumWithItemMixedTwinNormal_C *C;
+  struct wire_cst_EnumWithItemMixedTwinNormal_B B;
+  struct wire_cst_EnumWithItemMixedTwinNormal_C C;
 } EnumWithItemMixedTwinNormalKind;
 
 typedef struct wire_cst_enum_with_item_mixed_twin_normal {
   int32_t tag;
-  union EnumWithItemMixedTwinNormalKind *kind;
+  union EnumWithItemMixedTwinNormalKind kind;
 } wire_cst_enum_with_item_mixed_twin_normal;
 
 typedef struct wire_cst_EnumWithItemStructTwinNormal_A {
@@ -141,13 +136,13 @@ typedef struct wire_cst_EnumWithItemStructTwinNormal_B {
 } wire_cst_EnumWithItemStructTwinNormal_B;
 
 typedef union EnumWithItemStructTwinNormalKind {
-  struct wire_cst_EnumWithItemStructTwinNormal_A *A;
-  struct wire_cst_EnumWithItemStructTwinNormal_B *B;
+  struct wire_cst_EnumWithItemStructTwinNormal_A A;
+  struct wire_cst_EnumWithItemStructTwinNormal_B B;
 } EnumWithItemStructTwinNormalKind;
 
 typedef struct wire_cst_enum_with_item_struct_twin_normal {
   int32_t tag;
-  union EnumWithItemStructTwinNormalKind *kind;
+  union EnumWithItemStructTwinNormalKind kind;
 } wire_cst_enum_with_item_struct_twin_normal;
 
 typedef struct wire_cst_EnumWithItemTupleTwinNormal_A {
@@ -159,18 +154,14 @@ typedef struct wire_cst_EnumWithItemTupleTwinNormal_B {
 } wire_cst_EnumWithItemTupleTwinNormal_B;
 
 typedef union EnumWithItemTupleTwinNormalKind {
-  struct wire_cst_EnumWithItemTupleTwinNormal_A *A;
-  struct wire_cst_EnumWithItemTupleTwinNormal_B *B;
+  struct wire_cst_EnumWithItemTupleTwinNormal_A A;
+  struct wire_cst_EnumWithItemTupleTwinNormal_B B;
 } EnumWithItemTupleTwinNormalKind;
 
 typedef struct wire_cst_enum_with_item_tuple_twin_normal {
   int32_t tag;
-  union EnumWithItemTupleTwinNormalKind *kind;
+  union EnumWithItemTupleTwinNormalKind kind;
 } wire_cst_enum_with_item_tuple_twin_normal;
-
-typedef struct wire_cst_KitchenSinkTwinNormal_Empty {
-
-} wire_cst_KitchenSinkTwinNormal_Empty;
 
 typedef struct wire_cst_KitchenSinkTwinNormal_Primitives {
   int32_t int32;
@@ -197,57 +188,46 @@ typedef struct wire_cst_KitchenSinkTwinNormal_Enums {
 } wire_cst_KitchenSinkTwinNormal_Enums;
 
 typedef union KitchenSinkTwinNormalKind {
-  struct wire_cst_KitchenSinkTwinNormal_Empty *Empty;
-  struct wire_cst_KitchenSinkTwinNormal_Primitives *Primitives;
-  struct wire_cst_KitchenSinkTwinNormal_Nested *Nested;
-  struct wire_cst_KitchenSinkTwinNormal_Optional *Optional;
-  struct wire_cst_KitchenSinkTwinNormal_Buffer *Buffer;
-  struct wire_cst_KitchenSinkTwinNormal_Enums *Enums;
+  struct wire_cst_KitchenSinkTwinNormal_Primitives Primitives;
+  struct wire_cst_KitchenSinkTwinNormal_Nested Nested;
+  struct wire_cst_KitchenSinkTwinNormal_Optional Optional;
+  struct wire_cst_KitchenSinkTwinNormal_Buffer Buffer;
+  struct wire_cst_KitchenSinkTwinNormal_Enums Enums;
 } KitchenSinkTwinNormalKind;
 
 typedef struct wire_cst_kitchen_sink_twin_normal {
   int32_t tag;
-  union KitchenSinkTwinNormalKind *kind;
+  union KitchenSinkTwinNormalKind kind;
 } wire_cst_kitchen_sink_twin_normal;
-
-typedef struct wire_cst_SpeedTwinNormal_Unknown {
-
-} wire_cst_SpeedTwinNormal_Unknown;
 
 typedef struct wire_cst_SpeedTwinNormal_GPS {
   double field0;
 } wire_cst_SpeedTwinNormal_GPS;
 
 typedef union SpeedTwinNormalKind {
-  struct wire_cst_SpeedTwinNormal_Unknown *Unknown;
-  struct wire_cst_SpeedTwinNormal_GPS *GPS;
+  struct wire_cst_SpeedTwinNormal_GPS GPS;
 } SpeedTwinNormalKind;
 
 typedef struct wire_cst_speed_twin_normal {
   int32_t tag;
-  union SpeedTwinNormalKind *kind;
+  union SpeedTwinNormalKind kind;
 } wire_cst_speed_twin_normal;
 
 typedef struct wire_cst_MeasureTwinNormal_Speed {
   struct wire_cst_speed_twin_normal *field0;
 } wire_cst_MeasureTwinNormal_Speed;
 
-typedef struct wire_cst_DistanceTwinNormal_Unknown {
-
-} wire_cst_DistanceTwinNormal_Unknown;
-
 typedef struct wire_cst_DistanceTwinNormal_Map {
   double field0;
 } wire_cst_DistanceTwinNormal_Map;
 
 typedef union DistanceTwinNormalKind {
-  struct wire_cst_DistanceTwinNormal_Unknown *Unknown;
-  struct wire_cst_DistanceTwinNormal_Map *Map;
+  struct wire_cst_DistanceTwinNormal_Map Map;
 } DistanceTwinNormalKind;
 
 typedef struct wire_cst_distance_twin_normal {
   int32_t tag;
-  union DistanceTwinNormalKind *kind;
+  union DistanceTwinNormalKind kind;
 } wire_cst_distance_twin_normal;
 
 typedef struct wire_cst_MeasureTwinNormal_Distance {
@@ -255,13 +235,13 @@ typedef struct wire_cst_MeasureTwinNormal_Distance {
 } wire_cst_MeasureTwinNormal_Distance;
 
 typedef union MeasureTwinNormalKind {
-  struct wire_cst_MeasureTwinNormal_Speed *Speed;
-  struct wire_cst_MeasureTwinNormal_Distance *Distance;
+  struct wire_cst_MeasureTwinNormal_Speed Speed;
+  struct wire_cst_MeasureTwinNormal_Distance Distance;
 } MeasureTwinNormalKind;
 
 typedef struct wire_cst_measure_twin_normal {
   int32_t tag;
-  union MeasureTwinNormalKind *kind;
+  union MeasureTwinNormalKind kind;
 } wire_cst_measure_twin_normal;
 
 typedef struct wire_cst_note_twin_normal {
@@ -295,13 +275,13 @@ typedef struct wire_cst_CustomNestedErrorInnerTwinNormal_Four {
 } wire_cst_CustomNestedErrorInnerTwinNormal_Four;
 
 typedef union CustomNestedErrorInnerTwinNormalKind {
-  struct wire_cst_CustomNestedErrorInnerTwinNormal_Three *Three;
-  struct wire_cst_CustomNestedErrorInnerTwinNormal_Four *Four;
+  struct wire_cst_CustomNestedErrorInnerTwinNormal_Three Three;
+  struct wire_cst_CustomNestedErrorInnerTwinNormal_Four Four;
 } CustomNestedErrorInnerTwinNormalKind;
 
 typedef struct wire_cst_custom_nested_error_inner_twin_normal {
   int32_t tag;
-  union CustomNestedErrorInnerTwinNormalKind *kind;
+  union CustomNestedErrorInnerTwinNormalKind kind;
 } wire_cst_custom_nested_error_inner_twin_normal;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinNormal_Two {
@@ -309,13 +289,13 @@ typedef struct wire_cst_CustomNestedErrorOuterTwinNormal_Two {
 } wire_cst_CustomNestedErrorOuterTwinNormal_Two;
 
 typedef union CustomNestedErrorOuterTwinNormalKind {
-  struct wire_cst_CustomNestedErrorOuterTwinNormal_One *One;
-  struct wire_cst_CustomNestedErrorOuterTwinNormal_Two *Two;
+  struct wire_cst_CustomNestedErrorOuterTwinNormal_One One;
+  struct wire_cst_CustomNestedErrorOuterTwinNormal_Two Two;
 } CustomNestedErrorOuterTwinNormalKind;
 
 typedef struct wire_cst_custom_nested_error_outer_twin_normal {
   int32_t tag;
-  union CustomNestedErrorOuterTwinNormalKind *kind;
+  union CustomNestedErrorOuterTwinNormalKind kind;
 } wire_cst_custom_nested_error_outer_twin_normal;
 
 typedef struct wire_cst_custom_struct_error_twin_normal {
@@ -424,15 +404,15 @@ typedef struct wire_cst_AbcTwinNormal_JustInt {
 } wire_cst_AbcTwinNormal_JustInt;
 
 typedef union AbcTwinNormalKind {
-  struct wire_cst_AbcTwinNormal_A *A;
-  struct wire_cst_AbcTwinNormal_B *B;
-  struct wire_cst_AbcTwinNormal_C *C;
-  struct wire_cst_AbcTwinNormal_JustInt *JustInt;
+  struct wire_cst_AbcTwinNormal_A A;
+  struct wire_cst_AbcTwinNormal_B B;
+  struct wire_cst_AbcTwinNormal_C C;
+  struct wire_cst_AbcTwinNormal_JustInt JustInt;
 } AbcTwinNormalKind;
 
 typedef struct wire_cst_abc_twin_normal {
   int32_t tag;
-  union AbcTwinNormalKind *kind;
+  union AbcTwinNormalKind kind;
 } wire_cst_abc_twin_normal;
 
 typedef struct wire_cst_struct_with_enum_twin_normal {
@@ -654,13 +634,13 @@ typedef struct wire_cst_EnumDartOpaqueTwinRustAsync_Opaque {
 } wire_cst_EnumDartOpaqueTwinRustAsync_Opaque;
 
 typedef union EnumDartOpaqueTwinRustAsyncKind {
-  struct wire_cst_EnumDartOpaqueTwinRustAsync_Primitive *Primitive;
-  struct wire_cst_EnumDartOpaqueTwinRustAsync_Opaque *Opaque;
+  struct wire_cst_EnumDartOpaqueTwinRustAsync_Primitive Primitive;
+  struct wire_cst_EnumDartOpaqueTwinRustAsync_Opaque Opaque;
 } EnumDartOpaqueTwinRustAsyncKind;
 
 typedef struct wire_cst_enum_dart_opaque_twin_rust_async {
   int32_t tag;
-  union EnumDartOpaqueTwinRustAsyncKind *kind;
+  union EnumDartOpaqueTwinRustAsyncKind kind;
 } wire_cst_enum_dart_opaque_twin_rust_async;
 
 typedef struct wire_cst_dart_opaque_nested_twin_rust_async {
@@ -677,23 +657,19 @@ typedef struct wire_cst_EnumDartOpaqueTwinSync_Opaque {
 } wire_cst_EnumDartOpaqueTwinSync_Opaque;
 
 typedef union EnumDartOpaqueTwinSyncKind {
-  struct wire_cst_EnumDartOpaqueTwinSync_Primitive *Primitive;
-  struct wire_cst_EnumDartOpaqueTwinSync_Opaque *Opaque;
+  struct wire_cst_EnumDartOpaqueTwinSync_Primitive Primitive;
+  struct wire_cst_EnumDartOpaqueTwinSync_Opaque Opaque;
 } EnumDartOpaqueTwinSyncKind;
 
 typedef struct wire_cst_enum_dart_opaque_twin_sync {
   int32_t tag;
-  union EnumDartOpaqueTwinSyncKind *kind;
+  union EnumDartOpaqueTwinSyncKind kind;
 } wire_cst_enum_dart_opaque_twin_sync;
 
 typedef struct wire_cst_dart_opaque_nested_twin_sync {
   const void *first;
   const void *second;
 } wire_cst_dart_opaque_nested_twin_sync;
-
-typedef struct wire_cst_EnumWithItemMixedTwinRustAsync_A {
-
-} wire_cst_EnumWithItemMixedTwinRustAsync_A;
 
 typedef struct wire_cst_EnumWithItemMixedTwinRustAsync_B {
   struct wire_cst_list_prim_u_8 *field0;
@@ -704,14 +680,13 @@ typedef struct wire_cst_EnumWithItemMixedTwinRustAsync_C {
 } wire_cst_EnumWithItemMixedTwinRustAsync_C;
 
 typedef union EnumWithItemMixedTwinRustAsyncKind {
-  struct wire_cst_EnumWithItemMixedTwinRustAsync_A *A;
-  struct wire_cst_EnumWithItemMixedTwinRustAsync_B *B;
-  struct wire_cst_EnumWithItemMixedTwinRustAsync_C *C;
+  struct wire_cst_EnumWithItemMixedTwinRustAsync_B B;
+  struct wire_cst_EnumWithItemMixedTwinRustAsync_C C;
 } EnumWithItemMixedTwinRustAsyncKind;
 
 typedef struct wire_cst_enum_with_item_mixed_twin_rust_async {
   int32_t tag;
-  union EnumWithItemMixedTwinRustAsyncKind *kind;
+  union EnumWithItemMixedTwinRustAsyncKind kind;
 } wire_cst_enum_with_item_mixed_twin_rust_async;
 
 typedef struct wire_cst_EnumWithItemStructTwinRustAsync_A {
@@ -723,13 +698,13 @@ typedef struct wire_cst_EnumWithItemStructTwinRustAsync_B {
 } wire_cst_EnumWithItemStructTwinRustAsync_B;
 
 typedef union EnumWithItemStructTwinRustAsyncKind {
-  struct wire_cst_EnumWithItemStructTwinRustAsync_A *A;
-  struct wire_cst_EnumWithItemStructTwinRustAsync_B *B;
+  struct wire_cst_EnumWithItemStructTwinRustAsync_A A;
+  struct wire_cst_EnumWithItemStructTwinRustAsync_B B;
 } EnumWithItemStructTwinRustAsyncKind;
 
 typedef struct wire_cst_enum_with_item_struct_twin_rust_async {
   int32_t tag;
-  union EnumWithItemStructTwinRustAsyncKind *kind;
+  union EnumWithItemStructTwinRustAsyncKind kind;
 } wire_cst_enum_with_item_struct_twin_rust_async;
 
 typedef struct wire_cst_EnumWithItemTupleTwinRustAsync_A {
@@ -741,18 +716,14 @@ typedef struct wire_cst_EnumWithItemTupleTwinRustAsync_B {
 } wire_cst_EnumWithItemTupleTwinRustAsync_B;
 
 typedef union EnumWithItemTupleTwinRustAsyncKind {
-  struct wire_cst_EnumWithItemTupleTwinRustAsync_A *A;
-  struct wire_cst_EnumWithItemTupleTwinRustAsync_B *B;
+  struct wire_cst_EnumWithItemTupleTwinRustAsync_A A;
+  struct wire_cst_EnumWithItemTupleTwinRustAsync_B B;
 } EnumWithItemTupleTwinRustAsyncKind;
 
 typedef struct wire_cst_enum_with_item_tuple_twin_rust_async {
   int32_t tag;
-  union EnumWithItemTupleTwinRustAsyncKind *kind;
+  union EnumWithItemTupleTwinRustAsyncKind kind;
 } wire_cst_enum_with_item_tuple_twin_rust_async;
-
-typedef struct wire_cst_KitchenSinkTwinRustAsync_Empty {
-
-} wire_cst_KitchenSinkTwinRustAsync_Empty;
 
 typedef struct wire_cst_KitchenSinkTwinRustAsync_Primitives {
   int32_t int32;
@@ -779,57 +750,46 @@ typedef struct wire_cst_KitchenSinkTwinRustAsync_Enums {
 } wire_cst_KitchenSinkTwinRustAsync_Enums;
 
 typedef union KitchenSinkTwinRustAsyncKind {
-  struct wire_cst_KitchenSinkTwinRustAsync_Empty *Empty;
-  struct wire_cst_KitchenSinkTwinRustAsync_Primitives *Primitives;
-  struct wire_cst_KitchenSinkTwinRustAsync_Nested *Nested;
-  struct wire_cst_KitchenSinkTwinRustAsync_Optional *Optional;
-  struct wire_cst_KitchenSinkTwinRustAsync_Buffer *Buffer;
-  struct wire_cst_KitchenSinkTwinRustAsync_Enums *Enums;
+  struct wire_cst_KitchenSinkTwinRustAsync_Primitives Primitives;
+  struct wire_cst_KitchenSinkTwinRustAsync_Nested Nested;
+  struct wire_cst_KitchenSinkTwinRustAsync_Optional Optional;
+  struct wire_cst_KitchenSinkTwinRustAsync_Buffer Buffer;
+  struct wire_cst_KitchenSinkTwinRustAsync_Enums Enums;
 } KitchenSinkTwinRustAsyncKind;
 
 typedef struct wire_cst_kitchen_sink_twin_rust_async {
   int32_t tag;
-  union KitchenSinkTwinRustAsyncKind *kind;
+  union KitchenSinkTwinRustAsyncKind kind;
 } wire_cst_kitchen_sink_twin_rust_async;
-
-typedef struct wire_cst_SpeedTwinRustAsync_Unknown {
-
-} wire_cst_SpeedTwinRustAsync_Unknown;
 
 typedef struct wire_cst_SpeedTwinRustAsync_GPS {
   double field0;
 } wire_cst_SpeedTwinRustAsync_GPS;
 
 typedef union SpeedTwinRustAsyncKind {
-  struct wire_cst_SpeedTwinRustAsync_Unknown *Unknown;
-  struct wire_cst_SpeedTwinRustAsync_GPS *GPS;
+  struct wire_cst_SpeedTwinRustAsync_GPS GPS;
 } SpeedTwinRustAsyncKind;
 
 typedef struct wire_cst_speed_twin_rust_async {
   int32_t tag;
-  union SpeedTwinRustAsyncKind *kind;
+  union SpeedTwinRustAsyncKind kind;
 } wire_cst_speed_twin_rust_async;
 
 typedef struct wire_cst_MeasureTwinRustAsync_Speed {
   struct wire_cst_speed_twin_rust_async *field0;
 } wire_cst_MeasureTwinRustAsync_Speed;
 
-typedef struct wire_cst_DistanceTwinRustAsync_Unknown {
-
-} wire_cst_DistanceTwinRustAsync_Unknown;
-
 typedef struct wire_cst_DistanceTwinRustAsync_Map {
   double field0;
 } wire_cst_DistanceTwinRustAsync_Map;
 
 typedef union DistanceTwinRustAsyncKind {
-  struct wire_cst_DistanceTwinRustAsync_Unknown *Unknown;
-  struct wire_cst_DistanceTwinRustAsync_Map *Map;
+  struct wire_cst_DistanceTwinRustAsync_Map Map;
 } DistanceTwinRustAsyncKind;
 
 typedef struct wire_cst_distance_twin_rust_async {
   int32_t tag;
-  union DistanceTwinRustAsyncKind *kind;
+  union DistanceTwinRustAsyncKind kind;
 } wire_cst_distance_twin_rust_async;
 
 typedef struct wire_cst_MeasureTwinRustAsync_Distance {
@@ -837,23 +797,19 @@ typedef struct wire_cst_MeasureTwinRustAsync_Distance {
 } wire_cst_MeasureTwinRustAsync_Distance;
 
 typedef union MeasureTwinRustAsyncKind {
-  struct wire_cst_MeasureTwinRustAsync_Speed *Speed;
-  struct wire_cst_MeasureTwinRustAsync_Distance *Distance;
+  struct wire_cst_MeasureTwinRustAsync_Speed Speed;
+  struct wire_cst_MeasureTwinRustAsync_Distance Distance;
 } MeasureTwinRustAsyncKind;
 
 typedef struct wire_cst_measure_twin_rust_async {
   int32_t tag;
-  union MeasureTwinRustAsyncKind *kind;
+  union MeasureTwinRustAsyncKind kind;
 } wire_cst_measure_twin_rust_async;
 
 typedef struct wire_cst_note_twin_rust_async {
   int32_t *day;
   struct wire_cst_list_prim_u_8 *body;
 } wire_cst_note_twin_rust_async;
-
-typedef struct wire_cst_EnumWithItemMixedTwinSync_A {
-
-} wire_cst_EnumWithItemMixedTwinSync_A;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSync_B {
   struct wire_cst_list_prim_u_8 *field0;
@@ -864,14 +820,13 @@ typedef struct wire_cst_EnumWithItemMixedTwinSync_C {
 } wire_cst_EnumWithItemMixedTwinSync_C;
 
 typedef union EnumWithItemMixedTwinSyncKind {
-  struct wire_cst_EnumWithItemMixedTwinSync_A *A;
-  struct wire_cst_EnumWithItemMixedTwinSync_B *B;
-  struct wire_cst_EnumWithItemMixedTwinSync_C *C;
+  struct wire_cst_EnumWithItemMixedTwinSync_B B;
+  struct wire_cst_EnumWithItemMixedTwinSync_C C;
 } EnumWithItemMixedTwinSyncKind;
 
 typedef struct wire_cst_enum_with_item_mixed_twin_sync {
   int32_t tag;
-  union EnumWithItemMixedTwinSyncKind *kind;
+  union EnumWithItemMixedTwinSyncKind kind;
 } wire_cst_enum_with_item_mixed_twin_sync;
 
 typedef struct wire_cst_EnumWithItemStructTwinSync_A {
@@ -883,13 +838,13 @@ typedef struct wire_cst_EnumWithItemStructTwinSync_B {
 } wire_cst_EnumWithItemStructTwinSync_B;
 
 typedef union EnumWithItemStructTwinSyncKind {
-  struct wire_cst_EnumWithItemStructTwinSync_A *A;
-  struct wire_cst_EnumWithItemStructTwinSync_B *B;
+  struct wire_cst_EnumWithItemStructTwinSync_A A;
+  struct wire_cst_EnumWithItemStructTwinSync_B B;
 } EnumWithItemStructTwinSyncKind;
 
 typedef struct wire_cst_enum_with_item_struct_twin_sync {
   int32_t tag;
-  union EnumWithItemStructTwinSyncKind *kind;
+  union EnumWithItemStructTwinSyncKind kind;
 } wire_cst_enum_with_item_struct_twin_sync;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSync_A {
@@ -901,18 +856,14 @@ typedef struct wire_cst_EnumWithItemTupleTwinSync_B {
 } wire_cst_EnumWithItemTupleTwinSync_B;
 
 typedef union EnumWithItemTupleTwinSyncKind {
-  struct wire_cst_EnumWithItemTupleTwinSync_A *A;
-  struct wire_cst_EnumWithItemTupleTwinSync_B *B;
+  struct wire_cst_EnumWithItemTupleTwinSync_A A;
+  struct wire_cst_EnumWithItemTupleTwinSync_B B;
 } EnumWithItemTupleTwinSyncKind;
 
 typedef struct wire_cst_enum_with_item_tuple_twin_sync {
   int32_t tag;
-  union EnumWithItemTupleTwinSyncKind *kind;
+  union EnumWithItemTupleTwinSyncKind kind;
 } wire_cst_enum_with_item_tuple_twin_sync;
-
-typedef struct wire_cst_KitchenSinkTwinSync_Empty {
-
-} wire_cst_KitchenSinkTwinSync_Empty;
 
 typedef struct wire_cst_KitchenSinkTwinSync_Primitives {
   int32_t int32;
@@ -939,57 +890,46 @@ typedef struct wire_cst_KitchenSinkTwinSync_Enums {
 } wire_cst_KitchenSinkTwinSync_Enums;
 
 typedef union KitchenSinkTwinSyncKind {
-  struct wire_cst_KitchenSinkTwinSync_Empty *Empty;
-  struct wire_cst_KitchenSinkTwinSync_Primitives *Primitives;
-  struct wire_cst_KitchenSinkTwinSync_Nested *Nested;
-  struct wire_cst_KitchenSinkTwinSync_Optional *Optional;
-  struct wire_cst_KitchenSinkTwinSync_Buffer *Buffer;
-  struct wire_cst_KitchenSinkTwinSync_Enums *Enums;
+  struct wire_cst_KitchenSinkTwinSync_Primitives Primitives;
+  struct wire_cst_KitchenSinkTwinSync_Nested Nested;
+  struct wire_cst_KitchenSinkTwinSync_Optional Optional;
+  struct wire_cst_KitchenSinkTwinSync_Buffer Buffer;
+  struct wire_cst_KitchenSinkTwinSync_Enums Enums;
 } KitchenSinkTwinSyncKind;
 
 typedef struct wire_cst_kitchen_sink_twin_sync {
   int32_t tag;
-  union KitchenSinkTwinSyncKind *kind;
+  union KitchenSinkTwinSyncKind kind;
 } wire_cst_kitchen_sink_twin_sync;
-
-typedef struct wire_cst_SpeedTwinSync_Unknown {
-
-} wire_cst_SpeedTwinSync_Unknown;
 
 typedef struct wire_cst_SpeedTwinSync_GPS {
   double field0;
 } wire_cst_SpeedTwinSync_GPS;
 
 typedef union SpeedTwinSyncKind {
-  struct wire_cst_SpeedTwinSync_Unknown *Unknown;
-  struct wire_cst_SpeedTwinSync_GPS *GPS;
+  struct wire_cst_SpeedTwinSync_GPS GPS;
 } SpeedTwinSyncKind;
 
 typedef struct wire_cst_speed_twin_sync {
   int32_t tag;
-  union SpeedTwinSyncKind *kind;
+  union SpeedTwinSyncKind kind;
 } wire_cst_speed_twin_sync;
 
 typedef struct wire_cst_MeasureTwinSync_Speed {
   struct wire_cst_speed_twin_sync *field0;
 } wire_cst_MeasureTwinSync_Speed;
 
-typedef struct wire_cst_DistanceTwinSync_Unknown {
-
-} wire_cst_DistanceTwinSync_Unknown;
-
 typedef struct wire_cst_DistanceTwinSync_Map {
   double field0;
 } wire_cst_DistanceTwinSync_Map;
 
 typedef union DistanceTwinSyncKind {
-  struct wire_cst_DistanceTwinSync_Unknown *Unknown;
-  struct wire_cst_DistanceTwinSync_Map *Map;
+  struct wire_cst_DistanceTwinSync_Map Map;
 } DistanceTwinSyncKind;
 
 typedef struct wire_cst_distance_twin_sync {
   int32_t tag;
-  union DistanceTwinSyncKind *kind;
+  union DistanceTwinSyncKind kind;
 } wire_cst_distance_twin_sync;
 
 typedef struct wire_cst_MeasureTwinSync_Distance {
@@ -997,13 +937,13 @@ typedef struct wire_cst_MeasureTwinSync_Distance {
 } wire_cst_MeasureTwinSync_Distance;
 
 typedef union MeasureTwinSyncKind {
-  struct wire_cst_MeasureTwinSync_Speed *Speed;
-  struct wire_cst_MeasureTwinSync_Distance *Distance;
+  struct wire_cst_MeasureTwinSync_Speed Speed;
+  struct wire_cst_MeasureTwinSync_Distance Distance;
 } MeasureTwinSyncKind;
 
 typedef struct wire_cst_measure_twin_sync {
   int32_t tag;
-  union MeasureTwinSyncKind *kind;
+  union MeasureTwinSyncKind kind;
 } wire_cst_measure_twin_sync;
 
 typedef struct wire_cst_note_twin_sync {
@@ -1037,13 +977,13 @@ typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Four {
 } wire_cst_CustomNestedErrorInnerTwinRustAsync_Four;
 
 typedef union CustomNestedErrorInnerTwinRustAsyncKind {
-  struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Three *Three;
-  struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Four *Four;
+  struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Three Three;
+  struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Four Four;
 } CustomNestedErrorInnerTwinRustAsyncKind;
 
 typedef struct wire_cst_custom_nested_error_inner_twin_rust_async {
   int32_t tag;
-  union CustomNestedErrorInnerTwinRustAsyncKind *kind;
+  union CustomNestedErrorInnerTwinRustAsyncKind kind;
 } wire_cst_custom_nested_error_inner_twin_rust_async;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsync_Two {
@@ -1051,13 +991,13 @@ typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsync_Two {
 } wire_cst_CustomNestedErrorOuterTwinRustAsync_Two;
 
 typedef union CustomNestedErrorOuterTwinRustAsyncKind {
-  struct wire_cst_CustomNestedErrorOuterTwinRustAsync_One *One;
-  struct wire_cst_CustomNestedErrorOuterTwinRustAsync_Two *Two;
+  struct wire_cst_CustomNestedErrorOuterTwinRustAsync_One One;
+  struct wire_cst_CustomNestedErrorOuterTwinRustAsync_Two Two;
 } CustomNestedErrorOuterTwinRustAsyncKind;
 
 typedef struct wire_cst_custom_nested_error_outer_twin_rust_async {
   int32_t tag;
-  union CustomNestedErrorOuterTwinRustAsyncKind *kind;
+  union CustomNestedErrorOuterTwinRustAsyncKind kind;
 } wire_cst_custom_nested_error_outer_twin_rust_async;
 
 typedef struct wire_cst_custom_struct_error_twin_rust_async {
@@ -1085,13 +1025,13 @@ typedef struct wire_cst_CustomNestedErrorInnerTwinSync_Four {
 } wire_cst_CustomNestedErrorInnerTwinSync_Four;
 
 typedef union CustomNestedErrorInnerTwinSyncKind {
-  struct wire_cst_CustomNestedErrorInnerTwinSync_Three *Three;
-  struct wire_cst_CustomNestedErrorInnerTwinSync_Four *Four;
+  struct wire_cst_CustomNestedErrorInnerTwinSync_Three Three;
+  struct wire_cst_CustomNestedErrorInnerTwinSync_Four Four;
 } CustomNestedErrorInnerTwinSyncKind;
 
 typedef struct wire_cst_custom_nested_error_inner_twin_sync {
   int32_t tag;
-  union CustomNestedErrorInnerTwinSyncKind *kind;
+  union CustomNestedErrorInnerTwinSyncKind kind;
 } wire_cst_custom_nested_error_inner_twin_sync;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSync_Two {
@@ -1099,13 +1039,13 @@ typedef struct wire_cst_CustomNestedErrorOuterTwinSync_Two {
 } wire_cst_CustomNestedErrorOuterTwinSync_Two;
 
 typedef union CustomNestedErrorOuterTwinSyncKind {
-  struct wire_cst_CustomNestedErrorOuterTwinSync_One *One;
-  struct wire_cst_CustomNestedErrorOuterTwinSync_Two *Two;
+  struct wire_cst_CustomNestedErrorOuterTwinSync_One One;
+  struct wire_cst_CustomNestedErrorOuterTwinSync_Two Two;
 } CustomNestedErrorOuterTwinSyncKind;
 
 typedef struct wire_cst_custom_nested_error_outer_twin_sync {
   int32_t tag;
-  union CustomNestedErrorOuterTwinSyncKind *kind;
+  union CustomNestedErrorOuterTwinSyncKind kind;
 } wire_cst_custom_nested_error_outer_twin_sync;
 
 typedef struct wire_cst_custom_struct_error_twin_sync {
@@ -1179,15 +1119,15 @@ typedef struct wire_cst_AbcTwinRustAsync_JustInt {
 } wire_cst_AbcTwinRustAsync_JustInt;
 
 typedef union AbcTwinRustAsyncKind {
-  struct wire_cst_AbcTwinRustAsync_A *A;
-  struct wire_cst_AbcTwinRustAsync_B *B;
-  struct wire_cst_AbcTwinRustAsync_C *C;
-  struct wire_cst_AbcTwinRustAsync_JustInt *JustInt;
+  struct wire_cst_AbcTwinRustAsync_A A;
+  struct wire_cst_AbcTwinRustAsync_B B;
+  struct wire_cst_AbcTwinRustAsync_C C;
+  struct wire_cst_AbcTwinRustAsync_JustInt JustInt;
 } AbcTwinRustAsyncKind;
 
 typedef struct wire_cst_abc_twin_rust_async {
   int32_t tag;
-  union AbcTwinRustAsyncKind *kind;
+  union AbcTwinRustAsyncKind kind;
 } wire_cst_abc_twin_rust_async;
 
 typedef struct wire_cst_struct_with_enum_twin_rust_async {
@@ -1246,15 +1186,15 @@ typedef struct wire_cst_AbcTwinSync_JustInt {
 } wire_cst_AbcTwinSync_JustInt;
 
 typedef union AbcTwinSyncKind {
-  struct wire_cst_AbcTwinSync_A *A;
-  struct wire_cst_AbcTwinSync_B *B;
-  struct wire_cst_AbcTwinSync_C *C;
-  struct wire_cst_AbcTwinSync_JustInt *JustInt;
+  struct wire_cst_AbcTwinSync_A A;
+  struct wire_cst_AbcTwinSync_B B;
+  struct wire_cst_AbcTwinSync_C C;
+  struct wire_cst_AbcTwinSync_JustInt JustInt;
 } AbcTwinSyncKind;
 
 typedef struct wire_cst_abc_twin_sync {
   int32_t tag;
-  union AbcTwinSyncKind *kind;
+  union AbcTwinSyncKind kind;
 } wire_cst_abc_twin_sync;
 
 typedef struct wire_cst_struct_with_enum_twin_sync {
@@ -1422,16 +1362,16 @@ typedef struct wire_cst_EnumOpaqueTwinRustAsync_RwLock {
 } wire_cst_EnumOpaqueTwinRustAsync_RwLock;
 
 typedef union EnumOpaqueTwinRustAsyncKind {
-  struct wire_cst_EnumOpaqueTwinRustAsync_Struct *Struct;
-  struct wire_cst_EnumOpaqueTwinRustAsync_Primitive *Primitive;
-  struct wire_cst_EnumOpaqueTwinRustAsync_TraitObj *TraitObj;
-  struct wire_cst_EnumOpaqueTwinRustAsync_Mutex *Mutex;
-  struct wire_cst_EnumOpaqueTwinRustAsync_RwLock *RwLock;
+  struct wire_cst_EnumOpaqueTwinRustAsync_Struct Struct;
+  struct wire_cst_EnumOpaqueTwinRustAsync_Primitive Primitive;
+  struct wire_cst_EnumOpaqueTwinRustAsync_TraitObj TraitObj;
+  struct wire_cst_EnumOpaqueTwinRustAsync_Mutex Mutex;
+  struct wire_cst_EnumOpaqueTwinRustAsync_RwLock RwLock;
 } EnumOpaqueTwinRustAsyncKind;
 
 typedef struct wire_cst_enum_opaque_twin_rust_async {
   int32_t tag;
-  union EnumOpaqueTwinRustAsyncKind *kind;
+  union EnumOpaqueTwinRustAsyncKind kind;
 } wire_cst_enum_opaque_twin_rust_async;
 
 typedef struct wire_cst_opaque_nested_twin_rust_async {
@@ -1460,16 +1400,16 @@ typedef struct wire_cst_EnumOpaqueTwinSync_RwLock {
 } wire_cst_EnumOpaqueTwinSync_RwLock;
 
 typedef union EnumOpaqueTwinSyncKind {
-  struct wire_cst_EnumOpaqueTwinSync_Struct *Struct;
-  struct wire_cst_EnumOpaqueTwinSync_Primitive *Primitive;
-  struct wire_cst_EnumOpaqueTwinSync_TraitObj *TraitObj;
-  struct wire_cst_EnumOpaqueTwinSync_Mutex *Mutex;
-  struct wire_cst_EnumOpaqueTwinSync_RwLock *RwLock;
+  struct wire_cst_EnumOpaqueTwinSync_Struct Struct;
+  struct wire_cst_EnumOpaqueTwinSync_Primitive Primitive;
+  struct wire_cst_EnumOpaqueTwinSync_TraitObj TraitObj;
+  struct wire_cst_EnumOpaqueTwinSync_Mutex Mutex;
+  struct wire_cst_EnumOpaqueTwinSync_RwLock RwLock;
 } EnumOpaqueTwinSyncKind;
 
 typedef struct wire_cst_enum_opaque_twin_sync {
   int32_t tag;
-  union EnumOpaqueTwinSyncKind *kind;
+  union EnumOpaqueTwinSyncKind kind;
 } wire_cst_enum_opaque_twin_sync;
 
 typedef struct wire_cst_opaque_nested_twin_sync {
@@ -1560,16 +1500,16 @@ typedef struct wire_cst_EnumOpaqueTwinNormal_RwLock {
 } wire_cst_EnumOpaqueTwinNormal_RwLock;
 
 typedef union EnumOpaqueTwinNormalKind {
-  struct wire_cst_EnumOpaqueTwinNormal_Struct *Struct;
-  struct wire_cst_EnumOpaqueTwinNormal_Primitive *Primitive;
-  struct wire_cst_EnumOpaqueTwinNormal_TraitObj *TraitObj;
-  struct wire_cst_EnumOpaqueTwinNormal_Mutex *Mutex;
-  struct wire_cst_EnumOpaqueTwinNormal_RwLock *RwLock;
+  struct wire_cst_EnumOpaqueTwinNormal_Struct Struct;
+  struct wire_cst_EnumOpaqueTwinNormal_Primitive Primitive;
+  struct wire_cst_EnumOpaqueTwinNormal_TraitObj TraitObj;
+  struct wire_cst_EnumOpaqueTwinNormal_Mutex Mutex;
+  struct wire_cst_EnumOpaqueTwinNormal_RwLock RwLock;
 } EnumOpaqueTwinNormalKind;
 
 typedef struct wire_cst_enum_opaque_twin_normal {
   int32_t tag;
-  union EnumOpaqueTwinNormalKind *kind;
+  union EnumOpaqueTwinNormalKind kind;
 } wire_cst_enum_opaque_twin_normal;
 
 typedef struct wire_cst_opaque_nested_twin_normal {
@@ -1640,15 +1580,15 @@ typedef struct wire_cst_AbcTwinRustAsyncSse_JustInt {
 } wire_cst_AbcTwinRustAsyncSse_JustInt;
 
 typedef union AbcTwinRustAsyncSseKind {
-  struct wire_cst_AbcTwinRustAsyncSse_A *A;
-  struct wire_cst_AbcTwinRustAsyncSse_B *B;
-  struct wire_cst_AbcTwinRustAsyncSse_C *C;
-  struct wire_cst_AbcTwinRustAsyncSse_JustInt *JustInt;
+  struct wire_cst_AbcTwinRustAsyncSse_A A;
+  struct wire_cst_AbcTwinRustAsyncSse_B B;
+  struct wire_cst_AbcTwinRustAsyncSse_C C;
+  struct wire_cst_AbcTwinRustAsyncSse_JustInt JustInt;
 } AbcTwinRustAsyncSseKind;
 
 typedef struct wire_cst_abc_twin_rust_async_sse {
   int32_t tag;
-  union AbcTwinRustAsyncSseKind *kind;
+  union AbcTwinRustAsyncSseKind kind;
 } wire_cst_abc_twin_rust_async_sse;
 
 typedef struct wire_cst_AbcTwinSse_A {
@@ -1676,15 +1616,15 @@ typedef struct wire_cst_AbcTwinSse_JustInt {
 } wire_cst_AbcTwinSse_JustInt;
 
 typedef union AbcTwinSseKind {
-  struct wire_cst_AbcTwinSse_A *A;
-  struct wire_cst_AbcTwinSse_B *B;
-  struct wire_cst_AbcTwinSse_C *C;
-  struct wire_cst_AbcTwinSse_JustInt *JustInt;
+  struct wire_cst_AbcTwinSse_A A;
+  struct wire_cst_AbcTwinSse_B B;
+  struct wire_cst_AbcTwinSse_C C;
+  struct wire_cst_AbcTwinSse_JustInt JustInt;
 } AbcTwinSseKind;
 
 typedef struct wire_cst_abc_twin_sse {
   int32_t tag;
-  union AbcTwinSseKind *kind;
+  union AbcTwinSseKind kind;
 } wire_cst_abc_twin_sse;
 
 typedef struct wire_cst_AbcTwinSyncSse_A {
@@ -1712,15 +1652,15 @@ typedef struct wire_cst_AbcTwinSyncSse_JustInt {
 } wire_cst_AbcTwinSyncSse_JustInt;
 
 typedef union AbcTwinSyncSseKind {
-  struct wire_cst_AbcTwinSyncSse_A *A;
-  struct wire_cst_AbcTwinSyncSse_B *B;
-  struct wire_cst_AbcTwinSyncSse_C *C;
-  struct wire_cst_AbcTwinSyncSse_JustInt *JustInt;
+  struct wire_cst_AbcTwinSyncSse_A A;
+  struct wire_cst_AbcTwinSyncSse_B B;
+  struct wire_cst_AbcTwinSyncSse_C C;
+  struct wire_cst_AbcTwinSyncSse_JustInt JustInt;
 } AbcTwinSyncSseKind;
 
 typedef struct wire_cst_abc_twin_sync_sse {
   int32_t tag;
-  union AbcTwinSyncSseKind *kind;
+  union AbcTwinSyncSseKind kind;
 } wire_cst_abc_twin_sync_sse;
 
 typedef struct wire_cst_attribute_twin_rust_async_sse {
@@ -1795,13 +1735,13 @@ typedef struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number {
 } wire_cst_CustomNestedError2TwinNormal_CustomNested2Number;
 
 typedef union CustomNestedError2TwinNormalKind {
-  struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 *CustomNested2;
-  struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number *CustomNested2Number;
+  struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 CustomNested2;
+  struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number CustomNested2Number;
 } CustomNestedError2TwinNormalKind;
 
 typedef struct wire_cst_custom_nested_error_2_twin_normal {
   int32_t tag;
-  union CustomNestedError2TwinNormalKind *kind;
+  union CustomNestedError2TwinNormalKind kind;
 } wire_cst_custom_nested_error_2_twin_normal;
 
 typedef struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 {
@@ -1813,13 +1753,13 @@ typedef struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number {
 } wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number;
 
 typedef union CustomNestedError2TwinRustAsyncKind {
-  struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 *CustomNested2;
-  struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number *CustomNested2Number;
+  struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 CustomNested2;
+  struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number CustomNested2Number;
 } CustomNestedError2TwinRustAsyncKind;
 
 typedef struct wire_cst_custom_nested_error_2_twin_rust_async {
   int32_t tag;
-  union CustomNestedError2TwinRustAsyncKind *kind;
+  union CustomNestedError2TwinRustAsyncKind kind;
 } wire_cst_custom_nested_error_2_twin_rust_async;
 
 typedef struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 {
@@ -1831,13 +1771,13 @@ typedef struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
 } wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number;
 
 typedef union CustomNestedError2TwinRustAsyncSseKind {
-  struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 *CustomNested2;
-  struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number *CustomNested2Number;
+  struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 CustomNested2;
+  struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number CustomNested2Number;
 } CustomNestedError2TwinRustAsyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_2_twin_rust_async_sse {
   int32_t tag;
-  union CustomNestedError2TwinRustAsyncSseKind *kind;
+  union CustomNestedError2TwinRustAsyncSseKind kind;
 } wire_cst_custom_nested_error_2_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomNestedError2TwinSse_CustomNested2 {
@@ -1849,13 +1789,13 @@ typedef struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number {
 } wire_cst_CustomNestedError2TwinSse_CustomNested2Number;
 
 typedef union CustomNestedError2TwinSseKind {
-  struct wire_cst_CustomNestedError2TwinSse_CustomNested2 *CustomNested2;
-  struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number *CustomNested2Number;
+  struct wire_cst_CustomNestedError2TwinSse_CustomNested2 CustomNested2;
+  struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number CustomNested2Number;
 } CustomNestedError2TwinSseKind;
 
 typedef struct wire_cst_custom_nested_error_2_twin_sse {
   int32_t tag;
-  union CustomNestedError2TwinSseKind *kind;
+  union CustomNestedError2TwinSseKind kind;
 } wire_cst_custom_nested_error_2_twin_sse;
 
 typedef struct wire_cst_CustomNestedError2TwinSync_CustomNested2 {
@@ -1867,13 +1807,13 @@ typedef struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number {
 } wire_cst_CustomNestedError2TwinSync_CustomNested2Number;
 
 typedef union CustomNestedError2TwinSyncKind {
-  struct wire_cst_CustomNestedError2TwinSync_CustomNested2 *CustomNested2;
-  struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number *CustomNested2Number;
+  struct wire_cst_CustomNestedError2TwinSync_CustomNested2 CustomNested2;
+  struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number CustomNested2Number;
 } CustomNestedError2TwinSyncKind;
 
 typedef struct wire_cst_custom_nested_error_2_twin_sync {
   int32_t tag;
-  union CustomNestedError2TwinSyncKind *kind;
+  union CustomNestedError2TwinSyncKind kind;
 } wire_cst_custom_nested_error_2_twin_sync;
 
 typedef struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 {
@@ -1885,13 +1825,13 @@ typedef struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number {
 } wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number;
 
 typedef union CustomNestedError2TwinSyncSseKind {
-  struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 *CustomNested2;
-  struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number *CustomNested2Number;
+  struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 CustomNested2;
+  struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number CustomNested2Number;
 } CustomNestedError2TwinSyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_2_twin_sync_sse {
   int32_t tag;
-  union CustomNestedError2TwinSyncSseKind *kind;
+  union CustomNestedError2TwinSyncSseKind kind;
 } wire_cst_custom_nested_error_2_twin_sync_sse;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three {
@@ -1903,13 +1843,13 @@ typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four {
 } wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four;
 
 typedef union CustomNestedErrorInnerTwinRustAsyncSseKind {
-  struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three *Three;
-  struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four *Four;
+  struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three Three;
+  struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four Four;
 } CustomNestedErrorInnerTwinRustAsyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_inner_twin_rust_async_sse {
   int32_t tag;
-  union CustomNestedErrorInnerTwinRustAsyncSseKind *kind;
+  union CustomNestedErrorInnerTwinRustAsyncSseKind kind;
 } wire_cst_custom_nested_error_inner_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSse_Three {
@@ -1921,13 +1861,13 @@ typedef struct wire_cst_CustomNestedErrorInnerTwinSse_Four {
 } wire_cst_CustomNestedErrorInnerTwinSse_Four;
 
 typedef union CustomNestedErrorInnerTwinSseKind {
-  struct wire_cst_CustomNestedErrorInnerTwinSse_Three *Three;
-  struct wire_cst_CustomNestedErrorInnerTwinSse_Four *Four;
+  struct wire_cst_CustomNestedErrorInnerTwinSse_Three Three;
+  struct wire_cst_CustomNestedErrorInnerTwinSse_Four Four;
 } CustomNestedErrorInnerTwinSseKind;
 
 typedef struct wire_cst_custom_nested_error_inner_twin_sse {
   int32_t tag;
-  union CustomNestedErrorInnerTwinSseKind *kind;
+  union CustomNestedErrorInnerTwinSseKind kind;
 } wire_cst_custom_nested_error_inner_twin_sse;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three {
@@ -1939,13 +1879,13 @@ typedef struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Four {
 } wire_cst_CustomNestedErrorInnerTwinSyncSse_Four;
 
 typedef union CustomNestedErrorInnerTwinSyncSseKind {
-  struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three *Three;
-  struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Four *Four;
+  struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three Three;
+  struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Four Four;
 } CustomNestedErrorInnerTwinSyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_inner_twin_sync_sse {
   int32_t tag;
-  union CustomNestedErrorInnerTwinSyncSseKind *kind;
+  union CustomNestedErrorInnerTwinSyncSseKind kind;
 } wire_cst_custom_nested_error_inner_twin_sync_sse;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One {
@@ -1957,13 +1897,13 @@ typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two {
 } wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two;
 
 typedef union CustomNestedErrorOuterTwinRustAsyncSseKind {
-  struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One *One;
-  struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two *Two;
+  struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One One;
+  struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two Two;
 } CustomNestedErrorOuterTwinRustAsyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_outer_twin_rust_async_sse {
   int32_t tag;
-  union CustomNestedErrorOuterTwinRustAsyncSseKind *kind;
+  union CustomNestedErrorOuterTwinRustAsyncSseKind kind;
 } wire_cst_custom_nested_error_outer_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSse_One {
@@ -1975,13 +1915,13 @@ typedef struct wire_cst_CustomNestedErrorOuterTwinSse_Two {
 } wire_cst_CustomNestedErrorOuterTwinSse_Two;
 
 typedef union CustomNestedErrorOuterTwinSseKind {
-  struct wire_cst_CustomNestedErrorOuterTwinSse_One *One;
-  struct wire_cst_CustomNestedErrorOuterTwinSse_Two *Two;
+  struct wire_cst_CustomNestedErrorOuterTwinSse_One One;
+  struct wire_cst_CustomNestedErrorOuterTwinSse_Two Two;
 } CustomNestedErrorOuterTwinSseKind;
 
 typedef struct wire_cst_custom_nested_error_outer_twin_sse {
   int32_t tag;
-  union CustomNestedErrorOuterTwinSseKind *kind;
+  union CustomNestedErrorOuterTwinSseKind kind;
 } wire_cst_custom_nested_error_outer_twin_sse;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One {
@@ -1993,13 +1933,13 @@ typedef struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two {
 } wire_cst_CustomNestedErrorOuterTwinSyncSse_Two;
 
 typedef union CustomNestedErrorOuterTwinSyncSseKind {
-  struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One *One;
-  struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two *Two;
+  struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One One;
+  struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two Two;
 } CustomNestedErrorOuterTwinSyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_outer_twin_sync_sse {
   int32_t tag;
-  union CustomNestedErrorOuterTwinSyncSseKind *kind;
+  union CustomNestedErrorOuterTwinSyncSseKind kind;
 } wire_cst_custom_nested_error_outer_twin_sync_sse;
 
 typedef struct wire_cst_custom_struct_error_twin_rust_async_sse {
@@ -2164,13 +2104,13 @@ typedef struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque {
 } wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque;
 
 typedef union EnumDartOpaqueTwinRustAsyncSseKind {
-  struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Primitive *Primitive;
-  struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque *Opaque;
+  struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Primitive Primitive;
+  struct wire_cst_EnumDartOpaqueTwinRustAsyncSse_Opaque Opaque;
 } EnumDartOpaqueTwinRustAsyncSseKind;
 
 typedef struct wire_cst_enum_dart_opaque_twin_rust_async_sse {
   int32_t tag;
-  union EnumDartOpaqueTwinRustAsyncSseKind *kind;
+  union EnumDartOpaqueTwinRustAsyncSseKind kind;
 } wire_cst_enum_dart_opaque_twin_rust_async_sse;
 
 typedef struct wire_cst_EnumDartOpaqueTwinSse_Primitive {
@@ -2182,13 +2122,13 @@ typedef struct wire_cst_EnumDartOpaqueTwinSse_Opaque {
 } wire_cst_EnumDartOpaqueTwinSse_Opaque;
 
 typedef union EnumDartOpaqueTwinSseKind {
-  struct wire_cst_EnumDartOpaqueTwinSse_Primitive *Primitive;
-  struct wire_cst_EnumDartOpaqueTwinSse_Opaque *Opaque;
+  struct wire_cst_EnumDartOpaqueTwinSse_Primitive Primitive;
+  struct wire_cst_EnumDartOpaqueTwinSse_Opaque Opaque;
 } EnumDartOpaqueTwinSseKind;
 
 typedef struct wire_cst_enum_dart_opaque_twin_sse {
   int32_t tag;
-  union EnumDartOpaqueTwinSseKind *kind;
+  union EnumDartOpaqueTwinSseKind kind;
 } wire_cst_enum_dart_opaque_twin_sse;
 
 typedef struct wire_cst_EnumDartOpaqueTwinSyncSse_Primitive {
@@ -2200,13 +2140,13 @@ typedef struct wire_cst_EnumDartOpaqueTwinSyncSse_Opaque {
 } wire_cst_EnumDartOpaqueTwinSyncSse_Opaque;
 
 typedef union EnumDartOpaqueTwinSyncSseKind {
-  struct wire_cst_EnumDartOpaqueTwinSyncSse_Primitive *Primitive;
-  struct wire_cst_EnumDartOpaqueTwinSyncSse_Opaque *Opaque;
+  struct wire_cst_EnumDartOpaqueTwinSyncSse_Primitive Primitive;
+  struct wire_cst_EnumDartOpaqueTwinSyncSse_Opaque Opaque;
 } EnumDartOpaqueTwinSyncSseKind;
 
 typedef struct wire_cst_enum_dart_opaque_twin_sync_sse {
   int32_t tag;
-  union EnumDartOpaqueTwinSyncSseKind *kind;
+  union EnumDartOpaqueTwinSyncSseKind kind;
 } wire_cst_enum_dart_opaque_twin_sync_sse;
 
 typedef struct wire_cst_EnumOpaqueTwinRustAsyncSse_Struct {
@@ -2230,16 +2170,16 @@ typedef struct wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock {
 } wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock;
 
 typedef union EnumOpaqueTwinRustAsyncSseKind {
-  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Struct *Struct;
-  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive *Primitive;
-  struct wire_cst_EnumOpaqueTwinRustAsyncSse_TraitObj *TraitObj;
-  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex *Mutex;
-  struct wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock *RwLock;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Struct Struct;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive Primitive;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_TraitObj TraitObj;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex Mutex;
+  struct wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock RwLock;
 } EnumOpaqueTwinRustAsyncSseKind;
 
 typedef struct wire_cst_enum_opaque_twin_rust_async_sse {
   int32_t tag;
-  union EnumOpaqueTwinRustAsyncSseKind *kind;
+  union EnumOpaqueTwinRustAsyncSseKind kind;
 } wire_cst_enum_opaque_twin_rust_async_sse;
 
 typedef struct wire_cst_EnumOpaqueTwinSse_Struct {
@@ -2263,16 +2203,16 @@ typedef struct wire_cst_EnumOpaqueTwinSse_RwLock {
 } wire_cst_EnumOpaqueTwinSse_RwLock;
 
 typedef union EnumOpaqueTwinSseKind {
-  struct wire_cst_EnumOpaqueTwinSse_Struct *Struct;
-  struct wire_cst_EnumOpaqueTwinSse_Primitive *Primitive;
-  struct wire_cst_EnumOpaqueTwinSse_TraitObj *TraitObj;
-  struct wire_cst_EnumOpaqueTwinSse_Mutex *Mutex;
-  struct wire_cst_EnumOpaqueTwinSse_RwLock *RwLock;
+  struct wire_cst_EnumOpaqueTwinSse_Struct Struct;
+  struct wire_cst_EnumOpaqueTwinSse_Primitive Primitive;
+  struct wire_cst_EnumOpaqueTwinSse_TraitObj TraitObj;
+  struct wire_cst_EnumOpaqueTwinSse_Mutex Mutex;
+  struct wire_cst_EnumOpaqueTwinSse_RwLock RwLock;
 } EnumOpaqueTwinSseKind;
 
 typedef struct wire_cst_enum_opaque_twin_sse {
   int32_t tag;
-  union EnumOpaqueTwinSseKind *kind;
+  union EnumOpaqueTwinSseKind kind;
 } wire_cst_enum_opaque_twin_sse;
 
 typedef struct wire_cst_EnumOpaqueTwinSyncSse_Struct {
@@ -2296,21 +2236,17 @@ typedef struct wire_cst_EnumOpaqueTwinSyncSse_RwLock {
 } wire_cst_EnumOpaqueTwinSyncSse_RwLock;
 
 typedef union EnumOpaqueTwinSyncSseKind {
-  struct wire_cst_EnumOpaqueTwinSyncSse_Struct *Struct;
-  struct wire_cst_EnumOpaqueTwinSyncSse_Primitive *Primitive;
-  struct wire_cst_EnumOpaqueTwinSyncSse_TraitObj *TraitObj;
-  struct wire_cst_EnumOpaqueTwinSyncSse_Mutex *Mutex;
-  struct wire_cst_EnumOpaqueTwinSyncSse_RwLock *RwLock;
+  struct wire_cst_EnumOpaqueTwinSyncSse_Struct Struct;
+  struct wire_cst_EnumOpaqueTwinSyncSse_Primitive Primitive;
+  struct wire_cst_EnumOpaqueTwinSyncSse_TraitObj TraitObj;
+  struct wire_cst_EnumOpaqueTwinSyncSse_Mutex Mutex;
+  struct wire_cst_EnumOpaqueTwinSyncSse_RwLock RwLock;
 } EnumOpaqueTwinSyncSseKind;
 
 typedef struct wire_cst_enum_opaque_twin_sync_sse {
   int32_t tag;
-  union EnumOpaqueTwinSyncSseKind *kind;
+  union EnumOpaqueTwinSyncSseKind kind;
 } wire_cst_enum_opaque_twin_sync_sse;
-
-typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_A {
-
-} wire_cst_EnumWithItemMixedTwinRustAsyncSse_A;
 
 typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B {
   struct wire_cst_list_prim_u_8 *field0;
@@ -2321,19 +2257,14 @@ typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C {
 } wire_cst_EnumWithItemMixedTwinRustAsyncSse_C;
 
 typedef union EnumWithItemMixedTwinRustAsyncSseKind {
-  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_A *A;
-  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B *B;
-  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C *C;
+  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B B;
+  struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C C;
 } EnumWithItemMixedTwinRustAsyncSseKind;
 
 typedef struct wire_cst_enum_with_item_mixed_twin_rust_async_sse {
   int32_t tag;
-  union EnumWithItemMixedTwinRustAsyncSseKind *kind;
+  union EnumWithItemMixedTwinRustAsyncSseKind kind;
 } wire_cst_enum_with_item_mixed_twin_rust_async_sse;
-
-typedef struct wire_cst_EnumWithItemMixedTwinSse_A {
-
-} wire_cst_EnumWithItemMixedTwinSse_A;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSse_B {
   struct wire_cst_list_prim_u_8 *field0;
@@ -2344,19 +2275,14 @@ typedef struct wire_cst_EnumWithItemMixedTwinSse_C {
 } wire_cst_EnumWithItemMixedTwinSse_C;
 
 typedef union EnumWithItemMixedTwinSseKind {
-  struct wire_cst_EnumWithItemMixedTwinSse_A *A;
-  struct wire_cst_EnumWithItemMixedTwinSse_B *B;
-  struct wire_cst_EnumWithItemMixedTwinSse_C *C;
+  struct wire_cst_EnumWithItemMixedTwinSse_B B;
+  struct wire_cst_EnumWithItemMixedTwinSse_C C;
 } EnumWithItemMixedTwinSseKind;
 
 typedef struct wire_cst_enum_with_item_mixed_twin_sse {
   int32_t tag;
-  union EnumWithItemMixedTwinSseKind *kind;
+  union EnumWithItemMixedTwinSseKind kind;
 } wire_cst_enum_with_item_mixed_twin_sse;
-
-typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_A {
-
-} wire_cst_EnumWithItemMixedTwinSyncSse_A;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_B {
   struct wire_cst_list_prim_u_8 *field0;
@@ -2367,14 +2293,13 @@ typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_C {
 } wire_cst_EnumWithItemMixedTwinSyncSse_C;
 
 typedef union EnumWithItemMixedTwinSyncSseKind {
-  struct wire_cst_EnumWithItemMixedTwinSyncSse_A *A;
-  struct wire_cst_EnumWithItemMixedTwinSyncSse_B *B;
-  struct wire_cst_EnumWithItemMixedTwinSyncSse_C *C;
+  struct wire_cst_EnumWithItemMixedTwinSyncSse_B B;
+  struct wire_cst_EnumWithItemMixedTwinSyncSse_C C;
 } EnumWithItemMixedTwinSyncSseKind;
 
 typedef struct wire_cst_enum_with_item_mixed_twin_sync_sse {
   int32_t tag;
-  union EnumWithItemMixedTwinSyncSseKind *kind;
+  union EnumWithItemMixedTwinSyncSseKind kind;
 } wire_cst_enum_with_item_mixed_twin_sync_sse;
 
 typedef struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A {
@@ -2386,13 +2311,13 @@ typedef struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B {
 } wire_cst_EnumWithItemStructTwinRustAsyncSse_B;
 
 typedef union EnumWithItemStructTwinRustAsyncSseKind {
-  struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A *A;
-  struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B *B;
+  struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A A;
+  struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B B;
 } EnumWithItemStructTwinRustAsyncSseKind;
 
 typedef struct wire_cst_enum_with_item_struct_twin_rust_async_sse {
   int32_t tag;
-  union EnumWithItemStructTwinRustAsyncSseKind *kind;
+  union EnumWithItemStructTwinRustAsyncSseKind kind;
 } wire_cst_enum_with_item_struct_twin_rust_async_sse;
 
 typedef struct wire_cst_EnumWithItemStructTwinSse_A {
@@ -2404,13 +2329,13 @@ typedef struct wire_cst_EnumWithItemStructTwinSse_B {
 } wire_cst_EnumWithItemStructTwinSse_B;
 
 typedef union EnumWithItemStructTwinSseKind {
-  struct wire_cst_EnumWithItemStructTwinSse_A *A;
-  struct wire_cst_EnumWithItemStructTwinSse_B *B;
+  struct wire_cst_EnumWithItemStructTwinSse_A A;
+  struct wire_cst_EnumWithItemStructTwinSse_B B;
 } EnumWithItemStructTwinSseKind;
 
 typedef struct wire_cst_enum_with_item_struct_twin_sse {
   int32_t tag;
-  union EnumWithItemStructTwinSseKind *kind;
+  union EnumWithItemStructTwinSseKind kind;
 } wire_cst_enum_with_item_struct_twin_sse;
 
 typedef struct wire_cst_EnumWithItemStructTwinSyncSse_A {
@@ -2422,13 +2347,13 @@ typedef struct wire_cst_EnumWithItemStructTwinSyncSse_B {
 } wire_cst_EnumWithItemStructTwinSyncSse_B;
 
 typedef union EnumWithItemStructTwinSyncSseKind {
-  struct wire_cst_EnumWithItemStructTwinSyncSse_A *A;
-  struct wire_cst_EnumWithItemStructTwinSyncSse_B *B;
+  struct wire_cst_EnumWithItemStructTwinSyncSse_A A;
+  struct wire_cst_EnumWithItemStructTwinSyncSse_B B;
 } EnumWithItemStructTwinSyncSseKind;
 
 typedef struct wire_cst_enum_with_item_struct_twin_sync_sse {
   int32_t tag;
-  union EnumWithItemStructTwinSyncSseKind *kind;
+  union EnumWithItemStructTwinSyncSseKind kind;
 } wire_cst_enum_with_item_struct_twin_sync_sse;
 
 typedef struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A {
@@ -2440,13 +2365,13 @@ typedef struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B {
 } wire_cst_EnumWithItemTupleTwinRustAsyncSse_B;
 
 typedef union EnumWithItemTupleTwinRustAsyncSseKind {
-  struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A *A;
-  struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B *B;
+  struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A A;
+  struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B B;
 } EnumWithItemTupleTwinRustAsyncSseKind;
 
 typedef struct wire_cst_enum_with_item_tuple_twin_rust_async_sse {
   int32_t tag;
-  union EnumWithItemTupleTwinRustAsyncSseKind *kind;
+  union EnumWithItemTupleTwinRustAsyncSseKind kind;
 } wire_cst_enum_with_item_tuple_twin_rust_async_sse;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSse_A {
@@ -2458,13 +2383,13 @@ typedef struct wire_cst_EnumWithItemTupleTwinSse_B {
 } wire_cst_EnumWithItemTupleTwinSse_B;
 
 typedef union EnumWithItemTupleTwinSseKind {
-  struct wire_cst_EnumWithItemTupleTwinSse_A *A;
-  struct wire_cst_EnumWithItemTupleTwinSse_B *B;
+  struct wire_cst_EnumWithItemTupleTwinSse_A A;
+  struct wire_cst_EnumWithItemTupleTwinSse_B B;
 } EnumWithItemTupleTwinSseKind;
 
 typedef struct wire_cst_enum_with_item_tuple_twin_sse {
   int32_t tag;
-  union EnumWithItemTupleTwinSseKind *kind;
+  union EnumWithItemTupleTwinSseKind kind;
 } wire_cst_enum_with_item_tuple_twin_sse;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSyncSse_A {
@@ -2476,13 +2401,13 @@ typedef struct wire_cst_EnumWithItemTupleTwinSyncSse_B {
 } wire_cst_EnumWithItemTupleTwinSyncSse_B;
 
 typedef union EnumWithItemTupleTwinSyncSseKind {
-  struct wire_cst_EnumWithItemTupleTwinSyncSse_A *A;
-  struct wire_cst_EnumWithItemTupleTwinSyncSse_B *B;
+  struct wire_cst_EnumWithItemTupleTwinSyncSse_A A;
+  struct wire_cst_EnumWithItemTupleTwinSyncSse_B B;
 } EnumWithItemTupleTwinSyncSseKind;
 
 typedef struct wire_cst_enum_with_item_tuple_twin_sync_sse {
   int32_t tag;
-  union EnumWithItemTupleTwinSyncSseKind *kind;
+  union EnumWithItemTupleTwinSyncSseKind kind;
 } wire_cst_enum_with_item_tuple_twin_sync_sse;
 
 typedef struct wire_cst_event_twin_rust_async_sse {
@@ -2585,10 +2510,6 @@ typedef struct wire_cst_feed_id_twin_sync_sse {
   struct wire_cst_list_prim_u_8 *field0;
 } wire_cst_feed_id_twin_sync_sse;
 
-typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Empty {
-
-} wire_cst_KitchenSinkTwinRustAsyncSse_Empty;
-
 typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives {
   int32_t int32;
   double float64;
@@ -2614,22 +2535,17 @@ typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Enums {
 } wire_cst_KitchenSinkTwinRustAsyncSse_Enums;
 
 typedef union KitchenSinkTwinRustAsyncSseKind {
-  struct wire_cst_KitchenSinkTwinRustAsyncSse_Empty *Empty;
-  struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives *Primitives;
-  struct wire_cst_KitchenSinkTwinRustAsyncSse_Nested *Nested;
-  struct wire_cst_KitchenSinkTwinRustAsyncSse_Optional *Optional;
-  struct wire_cst_KitchenSinkTwinRustAsyncSse_Buffer *Buffer;
-  struct wire_cst_KitchenSinkTwinRustAsyncSse_Enums *Enums;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives Primitives;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Nested Nested;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Optional Optional;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Buffer Buffer;
+  struct wire_cst_KitchenSinkTwinRustAsyncSse_Enums Enums;
 } KitchenSinkTwinRustAsyncSseKind;
 
 typedef struct wire_cst_kitchen_sink_twin_rust_async_sse {
   int32_t tag;
-  union KitchenSinkTwinRustAsyncSseKind *kind;
+  union KitchenSinkTwinRustAsyncSseKind kind;
 } wire_cst_kitchen_sink_twin_rust_async_sse;
-
-typedef struct wire_cst_KitchenSinkTwinSse_Empty {
-
-} wire_cst_KitchenSinkTwinSse_Empty;
 
 typedef struct wire_cst_KitchenSinkTwinSse_Primitives {
   int32_t int32;
@@ -2656,22 +2572,17 @@ typedef struct wire_cst_KitchenSinkTwinSse_Enums {
 } wire_cst_KitchenSinkTwinSse_Enums;
 
 typedef union KitchenSinkTwinSseKind {
-  struct wire_cst_KitchenSinkTwinSse_Empty *Empty;
-  struct wire_cst_KitchenSinkTwinSse_Primitives *Primitives;
-  struct wire_cst_KitchenSinkTwinSse_Nested *Nested;
-  struct wire_cst_KitchenSinkTwinSse_Optional *Optional;
-  struct wire_cst_KitchenSinkTwinSse_Buffer *Buffer;
-  struct wire_cst_KitchenSinkTwinSse_Enums *Enums;
+  struct wire_cst_KitchenSinkTwinSse_Primitives Primitives;
+  struct wire_cst_KitchenSinkTwinSse_Nested Nested;
+  struct wire_cst_KitchenSinkTwinSse_Optional Optional;
+  struct wire_cst_KitchenSinkTwinSse_Buffer Buffer;
+  struct wire_cst_KitchenSinkTwinSse_Enums Enums;
 } KitchenSinkTwinSseKind;
 
 typedef struct wire_cst_kitchen_sink_twin_sse {
   int32_t tag;
-  union KitchenSinkTwinSseKind *kind;
+  union KitchenSinkTwinSseKind kind;
 } wire_cst_kitchen_sink_twin_sse;
-
-typedef struct wire_cst_KitchenSinkTwinSyncSse_Empty {
-
-} wire_cst_KitchenSinkTwinSyncSse_Empty;
 
 typedef struct wire_cst_KitchenSinkTwinSyncSse_Primitives {
   int32_t int32;
@@ -2698,17 +2609,16 @@ typedef struct wire_cst_KitchenSinkTwinSyncSse_Enums {
 } wire_cst_KitchenSinkTwinSyncSse_Enums;
 
 typedef union KitchenSinkTwinSyncSseKind {
-  struct wire_cst_KitchenSinkTwinSyncSse_Empty *Empty;
-  struct wire_cst_KitchenSinkTwinSyncSse_Primitives *Primitives;
-  struct wire_cst_KitchenSinkTwinSyncSse_Nested *Nested;
-  struct wire_cst_KitchenSinkTwinSyncSse_Optional *Optional;
-  struct wire_cst_KitchenSinkTwinSyncSse_Buffer *Buffer;
-  struct wire_cst_KitchenSinkTwinSyncSse_Enums *Enums;
+  struct wire_cst_KitchenSinkTwinSyncSse_Primitives Primitives;
+  struct wire_cst_KitchenSinkTwinSyncSse_Nested Nested;
+  struct wire_cst_KitchenSinkTwinSyncSse_Optional Optional;
+  struct wire_cst_KitchenSinkTwinSyncSse_Buffer Buffer;
+  struct wire_cst_KitchenSinkTwinSyncSse_Enums Enums;
 } KitchenSinkTwinSyncSseKind;
 
 typedef struct wire_cst_kitchen_sink_twin_sync_sse {
   int32_t tag;
-  union KitchenSinkTwinSyncSseKind *kind;
+  union KitchenSinkTwinSyncSseKind kind;
 } wire_cst_kitchen_sink_twin_sync_sse;
 
 typedef struct wire_cst_raw_string_mirrored {
@@ -2728,44 +2638,34 @@ typedef struct wire_cst_list_of_nested_raw_string_mirrored {
   struct wire_cst_list_nested_raw_string_mirrored *raw;
 } wire_cst_list_of_nested_raw_string_mirrored;
 
-typedef struct wire_cst_SpeedTwinRustAsyncSse_Unknown {
-
-} wire_cst_SpeedTwinRustAsyncSse_Unknown;
-
 typedef struct wire_cst_SpeedTwinRustAsyncSse_GPS {
   double field0;
 } wire_cst_SpeedTwinRustAsyncSse_GPS;
 
 typedef union SpeedTwinRustAsyncSseKind {
-  struct wire_cst_SpeedTwinRustAsyncSse_Unknown *Unknown;
-  struct wire_cst_SpeedTwinRustAsyncSse_GPS *GPS;
+  struct wire_cst_SpeedTwinRustAsyncSse_GPS GPS;
 } SpeedTwinRustAsyncSseKind;
 
 typedef struct wire_cst_speed_twin_rust_async_sse {
   int32_t tag;
-  union SpeedTwinRustAsyncSseKind *kind;
+  union SpeedTwinRustAsyncSseKind kind;
 } wire_cst_speed_twin_rust_async_sse;
 
 typedef struct wire_cst_MeasureTwinRustAsyncSse_Speed {
   struct wire_cst_speed_twin_rust_async_sse *field0;
 } wire_cst_MeasureTwinRustAsyncSse_Speed;
 
-typedef struct wire_cst_DistanceTwinRustAsyncSse_Unknown {
-
-} wire_cst_DistanceTwinRustAsyncSse_Unknown;
-
 typedef struct wire_cst_DistanceTwinRustAsyncSse_Map {
   double field0;
 } wire_cst_DistanceTwinRustAsyncSse_Map;
 
 typedef union DistanceTwinRustAsyncSseKind {
-  struct wire_cst_DistanceTwinRustAsyncSse_Unknown *Unknown;
-  struct wire_cst_DistanceTwinRustAsyncSse_Map *Map;
+  struct wire_cst_DistanceTwinRustAsyncSse_Map Map;
 } DistanceTwinRustAsyncSseKind;
 
 typedef struct wire_cst_distance_twin_rust_async_sse {
   int32_t tag;
-  union DistanceTwinRustAsyncSseKind *kind;
+  union DistanceTwinRustAsyncSseKind kind;
 } wire_cst_distance_twin_rust_async_sse;
 
 typedef struct wire_cst_MeasureTwinRustAsyncSse_Distance {
@@ -2773,53 +2673,43 @@ typedef struct wire_cst_MeasureTwinRustAsyncSse_Distance {
 } wire_cst_MeasureTwinRustAsyncSse_Distance;
 
 typedef union MeasureTwinRustAsyncSseKind {
-  struct wire_cst_MeasureTwinRustAsyncSse_Speed *Speed;
-  struct wire_cst_MeasureTwinRustAsyncSse_Distance *Distance;
+  struct wire_cst_MeasureTwinRustAsyncSse_Speed Speed;
+  struct wire_cst_MeasureTwinRustAsyncSse_Distance Distance;
 } MeasureTwinRustAsyncSseKind;
 
 typedef struct wire_cst_measure_twin_rust_async_sse {
   int32_t tag;
-  union MeasureTwinRustAsyncSseKind *kind;
+  union MeasureTwinRustAsyncSseKind kind;
 } wire_cst_measure_twin_rust_async_sse;
-
-typedef struct wire_cst_SpeedTwinSse_Unknown {
-
-} wire_cst_SpeedTwinSse_Unknown;
 
 typedef struct wire_cst_SpeedTwinSse_GPS {
   double field0;
 } wire_cst_SpeedTwinSse_GPS;
 
 typedef union SpeedTwinSseKind {
-  struct wire_cst_SpeedTwinSse_Unknown *Unknown;
-  struct wire_cst_SpeedTwinSse_GPS *GPS;
+  struct wire_cst_SpeedTwinSse_GPS GPS;
 } SpeedTwinSseKind;
 
 typedef struct wire_cst_speed_twin_sse {
   int32_t tag;
-  union SpeedTwinSseKind *kind;
+  union SpeedTwinSseKind kind;
 } wire_cst_speed_twin_sse;
 
 typedef struct wire_cst_MeasureTwinSse_Speed {
   struct wire_cst_speed_twin_sse *field0;
 } wire_cst_MeasureTwinSse_Speed;
 
-typedef struct wire_cst_DistanceTwinSse_Unknown {
-
-} wire_cst_DistanceTwinSse_Unknown;
-
 typedef struct wire_cst_DistanceTwinSse_Map {
   double field0;
 } wire_cst_DistanceTwinSse_Map;
 
 typedef union DistanceTwinSseKind {
-  struct wire_cst_DistanceTwinSse_Unknown *Unknown;
-  struct wire_cst_DistanceTwinSse_Map *Map;
+  struct wire_cst_DistanceTwinSse_Map Map;
 } DistanceTwinSseKind;
 
 typedef struct wire_cst_distance_twin_sse {
   int32_t tag;
-  union DistanceTwinSseKind *kind;
+  union DistanceTwinSseKind kind;
 } wire_cst_distance_twin_sse;
 
 typedef struct wire_cst_MeasureTwinSse_Distance {
@@ -2827,53 +2717,43 @@ typedef struct wire_cst_MeasureTwinSse_Distance {
 } wire_cst_MeasureTwinSse_Distance;
 
 typedef union MeasureTwinSseKind {
-  struct wire_cst_MeasureTwinSse_Speed *Speed;
-  struct wire_cst_MeasureTwinSse_Distance *Distance;
+  struct wire_cst_MeasureTwinSse_Speed Speed;
+  struct wire_cst_MeasureTwinSse_Distance Distance;
 } MeasureTwinSseKind;
 
 typedef struct wire_cst_measure_twin_sse {
   int32_t tag;
-  union MeasureTwinSseKind *kind;
+  union MeasureTwinSseKind kind;
 } wire_cst_measure_twin_sse;
-
-typedef struct wire_cst_SpeedTwinSyncSse_Unknown {
-
-} wire_cst_SpeedTwinSyncSse_Unknown;
 
 typedef struct wire_cst_SpeedTwinSyncSse_GPS {
   double field0;
 } wire_cst_SpeedTwinSyncSse_GPS;
 
 typedef union SpeedTwinSyncSseKind {
-  struct wire_cst_SpeedTwinSyncSse_Unknown *Unknown;
-  struct wire_cst_SpeedTwinSyncSse_GPS *GPS;
+  struct wire_cst_SpeedTwinSyncSse_GPS GPS;
 } SpeedTwinSyncSseKind;
 
 typedef struct wire_cst_speed_twin_sync_sse {
   int32_t tag;
-  union SpeedTwinSyncSseKind *kind;
+  union SpeedTwinSyncSseKind kind;
 } wire_cst_speed_twin_sync_sse;
 
 typedef struct wire_cst_MeasureTwinSyncSse_Speed {
   struct wire_cst_speed_twin_sync_sse *field0;
 } wire_cst_MeasureTwinSyncSse_Speed;
 
-typedef struct wire_cst_DistanceTwinSyncSse_Unknown {
-
-} wire_cst_DistanceTwinSyncSse_Unknown;
-
 typedef struct wire_cst_DistanceTwinSyncSse_Map {
   double field0;
 } wire_cst_DistanceTwinSyncSse_Map;
 
 typedef union DistanceTwinSyncSseKind {
-  struct wire_cst_DistanceTwinSyncSse_Unknown *Unknown;
-  struct wire_cst_DistanceTwinSyncSse_Map *Map;
+  struct wire_cst_DistanceTwinSyncSse_Map Map;
 } DistanceTwinSyncSseKind;
 
 typedef struct wire_cst_distance_twin_sync_sse {
   int32_t tag;
-  union DistanceTwinSyncSseKind *kind;
+  union DistanceTwinSyncSseKind kind;
 } wire_cst_distance_twin_sync_sse;
 
 typedef struct wire_cst_MeasureTwinSyncSse_Distance {
@@ -2881,13 +2761,13 @@ typedef struct wire_cst_MeasureTwinSyncSse_Distance {
 } wire_cst_MeasureTwinSyncSse_Distance;
 
 typedef union MeasureTwinSyncSseKind {
-  struct wire_cst_MeasureTwinSyncSse_Speed *Speed;
-  struct wire_cst_MeasureTwinSyncSse_Distance *Distance;
+  struct wire_cst_MeasureTwinSyncSse_Speed Speed;
+  struct wire_cst_MeasureTwinSyncSse_Distance Distance;
 } MeasureTwinSyncSseKind;
 
 typedef struct wire_cst_measure_twin_sync_sse {
   int32_t tag;
-  union MeasureTwinSyncSseKind *kind;
+  union MeasureTwinSyncSseKind kind;
 } wire_cst_measure_twin_sync_sse;
 
 typedef struct wire_cst_message_id_twin_rust_async_sse {
@@ -3290,14 +3170,14 @@ typedef struct wire_cst_RawStringEnumMirrored_ListOfNested {
 } wire_cst_RawStringEnumMirrored_ListOfNested;
 
 typedef union RawStringEnumMirroredKind {
-  struct wire_cst_RawStringEnumMirrored_Raw *Raw;
-  struct wire_cst_RawStringEnumMirrored_Nested *Nested;
-  struct wire_cst_RawStringEnumMirrored_ListOfNested *ListOfNested;
+  struct wire_cst_RawStringEnumMirrored_Raw Raw;
+  struct wire_cst_RawStringEnumMirrored_Nested Nested;
+  struct wire_cst_RawStringEnumMirrored_ListOfNested ListOfNested;
 } RawStringEnumMirroredKind;
 
 typedef struct wire_cst_raw_string_enum_mirrored {
   int32_t tag;
-  union RawStringEnumMirroredKind *kind;
+  union RawStringEnumMirroredKind kind;
 } wire_cst_raw_string_enum_mirrored;
 
 typedef struct wire_cst_list_raw_string_enum_mirrored {
@@ -3370,283 +3250,6 @@ typedef struct wire_cst_list_weekdays_twin_sync_sse {
   int32_t len;
 } wire_cst_list_weekdays_twin_sync_sse;
 
-typedef struct wire_cst_ApplicationMessage_DisplayMessage {
-  struct wire_cst_list_prim_u_8 *field0;
-} wire_cst_ApplicationMessage_DisplayMessage;
-
-typedef struct wire_cst_ApplicationMessage_RenderPixel {
-  int32_t x;
-  int32_t y;
-} wire_cst_ApplicationMessage_RenderPixel;
-
-typedef struct wire_cst_ApplicationMessage_Exit {
-
-} wire_cst_ApplicationMessage_Exit;
-
-typedef union ApplicationMessageKind {
-  struct wire_cst_ApplicationMessage_DisplayMessage *DisplayMessage;
-  struct wire_cst_ApplicationMessage_RenderPixel *RenderPixel;
-  struct wire_cst_ApplicationMessage_Exit *Exit;
-} ApplicationMessageKind;
-
-typedef struct wire_cst_CustomEnumErrorTwinNormal_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinNormal_One;
-
-typedef struct wire_cst_CustomEnumErrorTwinNormal_Two {
-  uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinNormal_Two;
-
-typedef union CustomEnumErrorTwinNormalKind {
-  struct wire_cst_CustomEnumErrorTwinNormal_One *One;
-  struct wire_cst_CustomEnumErrorTwinNormal_Two *Two;
-} CustomEnumErrorTwinNormalKind;
-
-typedef struct wire_cst_CustomEnumErrorTwinRustAsync_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinRustAsync_One;
-
-typedef struct wire_cst_CustomEnumErrorTwinRustAsync_Two {
-  uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinRustAsync_Two;
-
-typedef union CustomEnumErrorTwinRustAsyncKind {
-  struct wire_cst_CustomEnumErrorTwinRustAsync_One *One;
-  struct wire_cst_CustomEnumErrorTwinRustAsync_Two *Two;
-} CustomEnumErrorTwinRustAsyncKind;
-
-typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinRustAsyncSse_One;
-
-typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
-  uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinRustAsyncSse_Two;
-
-typedef union CustomEnumErrorTwinRustAsyncSseKind {
-  struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One *One;
-  struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two *Two;
-} CustomEnumErrorTwinRustAsyncSseKind;
-
-typedef struct wire_cst_CustomEnumErrorTwinSse_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinSse_One;
-
-typedef struct wire_cst_CustomEnumErrorTwinSse_Two {
-  uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinSse_Two;
-
-typedef union CustomEnumErrorTwinSseKind {
-  struct wire_cst_CustomEnumErrorTwinSse_One *One;
-  struct wire_cst_CustomEnumErrorTwinSse_Two *Two;
-} CustomEnumErrorTwinSseKind;
-
-typedef struct wire_cst_CustomEnumErrorTwinSync_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinSync_One;
-
-typedef struct wire_cst_CustomEnumErrorTwinSync_Two {
-  uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinSync_Two;
-
-typedef union CustomEnumErrorTwinSyncKind {
-  struct wire_cst_CustomEnumErrorTwinSync_One *One;
-  struct wire_cst_CustomEnumErrorTwinSync_Two *Two;
-} CustomEnumErrorTwinSyncKind;
-
-typedef struct wire_cst_CustomEnumErrorTwinSyncSse_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinSyncSse_One;
-
-typedef struct wire_cst_CustomEnumErrorTwinSyncSse_Two {
-  uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomEnumErrorTwinSyncSse_Two;
-
-typedef union CustomEnumErrorTwinSyncSseKind {
-  struct wire_cst_CustomEnumErrorTwinSyncSse_One *One;
-  struct wire_cst_CustomEnumErrorTwinSyncSse_Two *Two;
-} CustomEnumErrorTwinSyncSseKind;
-
-typedef struct wire_cst_CustomErrorTwinNormal_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinNormal_Error0;
-
-typedef struct wire_cst_CustomErrorTwinNormal_Error1 {
-  uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinNormal_Error1;
-
-typedef union CustomErrorTwinNormalKind {
-  struct wire_cst_CustomErrorTwinNormal_Error0 *Error0;
-  struct wire_cst_CustomErrorTwinNormal_Error1 *Error1;
-} CustomErrorTwinNormalKind;
-
-typedef struct wire_cst_CustomErrorTwinRustAsync_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinRustAsync_Error0;
-
-typedef struct wire_cst_CustomErrorTwinRustAsync_Error1 {
-  uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinRustAsync_Error1;
-
-typedef union CustomErrorTwinRustAsyncKind {
-  struct wire_cst_CustomErrorTwinRustAsync_Error0 *Error0;
-  struct wire_cst_CustomErrorTwinRustAsync_Error1 *Error1;
-} CustomErrorTwinRustAsyncKind;
-
-typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinRustAsyncSse_Error0;
-
-typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
-  uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinRustAsyncSse_Error1;
-
-typedef union CustomErrorTwinRustAsyncSseKind {
-  struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 *Error0;
-  struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 *Error1;
-} CustomErrorTwinRustAsyncSseKind;
-
-typedef struct wire_cst_CustomErrorTwinSse_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinSse_Error0;
-
-typedef struct wire_cst_CustomErrorTwinSse_Error1 {
-  uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinSse_Error1;
-
-typedef union CustomErrorTwinSseKind {
-  struct wire_cst_CustomErrorTwinSse_Error0 *Error0;
-  struct wire_cst_CustomErrorTwinSse_Error1 *Error1;
-} CustomErrorTwinSseKind;
-
-typedef struct wire_cst_CustomErrorTwinSync_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinSync_Error0;
-
-typedef struct wire_cst_CustomErrorTwinSync_Error1 {
-  uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinSync_Error1;
-
-typedef union CustomErrorTwinSyncKind {
-  struct wire_cst_CustomErrorTwinSync_Error0 *Error0;
-  struct wire_cst_CustomErrorTwinSync_Error1 *Error1;
-} CustomErrorTwinSyncKind;
-
-typedef struct wire_cst_CustomErrorTwinSyncSse_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinSyncSse_Error0;
-
-typedef struct wire_cst_CustomErrorTwinSyncSse_Error1 {
-  uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
-} wire_cst_CustomErrorTwinSyncSse_Error1;
-
-typedef union CustomErrorTwinSyncSseKind {
-  struct wire_cst_CustomErrorTwinSyncSse_Error0 *Error0;
-  struct wire_cst_CustomErrorTwinSyncSse_Error1 *Error1;
-} CustomErrorTwinSyncSseKind;
-
-typedef struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
-} wire_cst_CustomNestedError1TwinNormal_CustomNested1;
-
-typedef struct wire_cst_CustomNestedError1TwinNormal_ErrorNested {
-  struct wire_cst_custom_nested_error_2_twin_normal *field0;
-} wire_cst_CustomNestedError1TwinNormal_ErrorNested;
-
-typedef union CustomNestedError1TwinNormalKind {
-  struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 *CustomNested1;
-  struct wire_cst_CustomNestedError1TwinNormal_ErrorNested *ErrorNested;
-} CustomNestedError1TwinNormalKind;
-
-typedef struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
-} wire_cst_CustomNestedError1TwinRustAsync_CustomNested1;
-
-typedef struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested {
-  struct wire_cst_custom_nested_error_2_twin_rust_async *field0;
-} wire_cst_CustomNestedError1TwinRustAsync_ErrorNested;
-
-typedef union CustomNestedError1TwinRustAsyncKind {
-  struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 *CustomNested1;
-  struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested *ErrorNested;
-} CustomNestedError1TwinRustAsyncKind;
-
-typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
-} wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1;
-
-typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested {
-  struct wire_cst_custom_nested_error_2_twin_rust_async_sse *field0;
-} wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested;
-
-typedef union CustomNestedError1TwinRustAsyncSseKind {
-  struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 *CustomNested1;
-  struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested *ErrorNested;
-} CustomNestedError1TwinRustAsyncSseKind;
-
-typedef struct wire_cst_CustomNestedError1TwinSse_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
-} wire_cst_CustomNestedError1TwinSse_CustomNested1;
-
-typedef struct wire_cst_CustomNestedError1TwinSse_ErrorNested {
-  struct wire_cst_custom_nested_error_2_twin_sse *field0;
-} wire_cst_CustomNestedError1TwinSse_ErrorNested;
-
-typedef union CustomNestedError1TwinSseKind {
-  struct wire_cst_CustomNestedError1TwinSse_CustomNested1 *CustomNested1;
-  struct wire_cst_CustomNestedError1TwinSse_ErrorNested *ErrorNested;
-} CustomNestedError1TwinSseKind;
-
-typedef struct wire_cst_CustomNestedError1TwinSync_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
-} wire_cst_CustomNestedError1TwinSync_CustomNested1;
-
-typedef struct wire_cst_CustomNestedError1TwinSync_ErrorNested {
-  struct wire_cst_custom_nested_error_2_twin_sync *field0;
-} wire_cst_CustomNestedError1TwinSync_ErrorNested;
-
-typedef union CustomNestedError1TwinSyncKind {
-  struct wire_cst_CustomNestedError1TwinSync_CustomNested1 *CustomNested1;
-  struct wire_cst_CustomNestedError1TwinSync_ErrorNested *ErrorNested;
-} CustomNestedError1TwinSyncKind;
-
-typedef struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
-} wire_cst_CustomNestedError1TwinSyncSse_CustomNested1;
-
-typedef struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested {
-  struct wire_cst_custom_nested_error_2_twin_sync_sse *field0;
-} wire_cst_CustomNestedError1TwinSyncSse_ErrorNested;
-
-typedef union CustomNestedError1TwinSyncSseKind {
-  struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 *CustomNested1;
-  struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested *ErrorNested;
-} CustomNestedError1TwinSyncSseKind;
-
 typedef struct wire_cst_another_macro_struct_twin_normal {
   int32_t data;
   int32_t non_final_data;
@@ -3676,9 +3279,23 @@ typedef struct wire_cst_another_twin_sync_sse {
   struct wire_cst_list_prim_u_8 *a;
 } wire_cst_another_twin_sync_sse;
 
+typedef struct wire_cst_ApplicationMessage_DisplayMessage {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_ApplicationMessage_DisplayMessage;
+
+typedef struct wire_cst_ApplicationMessage_RenderPixel {
+  int32_t x;
+  int32_t y;
+} wire_cst_ApplicationMessage_RenderPixel;
+
+typedef union ApplicationMessageKind {
+  struct wire_cst_ApplicationMessage_DisplayMessage DisplayMessage;
+  struct wire_cst_ApplicationMessage_RenderPixel RenderPixel;
+} ApplicationMessageKind;
+
 typedef struct wire_cst_application_message {
   int32_t tag;
-  union ApplicationMessageKind *kind;
+  union ApplicationMessageKind kind;
 } wire_cst_application_message;
 
 typedef struct wire_cst_big_buffers_twin_normal {
@@ -3741,94 +3358,352 @@ typedef struct wire_cst_contains_mirrored_sub_struct_twin_sync_sse {
   struct wire_cst_another_twin_sync_sse test2;
 } wire_cst_contains_mirrored_sub_struct_twin_sync_sse;
 
+typedef struct wire_cst_CustomEnumErrorTwinNormal_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinNormal_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinNormal_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinNormal_Two;
+
+typedef union CustomEnumErrorTwinNormalKind {
+  struct wire_cst_CustomEnumErrorTwinNormal_One One;
+  struct wire_cst_CustomEnumErrorTwinNormal_Two Two;
+} CustomEnumErrorTwinNormalKind;
+
 typedef struct wire_cst_custom_enum_error_twin_normal {
   int32_t tag;
-  union CustomEnumErrorTwinNormalKind *kind;
+  union CustomEnumErrorTwinNormalKind kind;
 } wire_cst_custom_enum_error_twin_normal;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsync_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsync_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsync_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsync_Two;
+
+typedef union CustomEnumErrorTwinRustAsyncKind {
+  struct wire_cst_CustomEnumErrorTwinRustAsync_One One;
+  struct wire_cst_CustomEnumErrorTwinRustAsync_Two Two;
+} CustomEnumErrorTwinRustAsyncKind;
 
 typedef struct wire_cst_custom_enum_error_twin_rust_async {
   int32_t tag;
-  union CustomEnumErrorTwinRustAsyncKind *kind;
+  union CustomEnumErrorTwinRustAsyncKind kind;
 } wire_cst_custom_enum_error_twin_rust_async;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsyncSse_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinRustAsyncSse_Two;
+
+typedef union CustomEnumErrorTwinRustAsyncSseKind {
+  struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One One;
+  struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two Two;
+} CustomEnumErrorTwinRustAsyncSseKind;
 
 typedef struct wire_cst_custom_enum_error_twin_rust_async_sse {
   int32_t tag;
-  union CustomEnumErrorTwinRustAsyncSseKind *kind;
+  union CustomEnumErrorTwinRustAsyncSseKind kind;
 } wire_cst_custom_enum_error_twin_rust_async_sse;
+
+typedef struct wire_cst_CustomEnumErrorTwinSse_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSse_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinSse_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSse_Two;
+
+typedef union CustomEnumErrorTwinSseKind {
+  struct wire_cst_CustomEnumErrorTwinSse_One One;
+  struct wire_cst_CustomEnumErrorTwinSse_Two Two;
+} CustomEnumErrorTwinSseKind;
 
 typedef struct wire_cst_custom_enum_error_twin_sse {
   int32_t tag;
-  union CustomEnumErrorTwinSseKind *kind;
+  union CustomEnumErrorTwinSseKind kind;
 } wire_cst_custom_enum_error_twin_sse;
+
+typedef struct wire_cst_CustomEnumErrorTwinSync_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSync_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinSync_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSync_Two;
+
+typedef union CustomEnumErrorTwinSyncKind {
+  struct wire_cst_CustomEnumErrorTwinSync_One One;
+  struct wire_cst_CustomEnumErrorTwinSync_Two Two;
+} CustomEnumErrorTwinSyncKind;
 
 typedef struct wire_cst_custom_enum_error_twin_sync {
   int32_t tag;
-  union CustomEnumErrorTwinSyncKind *kind;
+  union CustomEnumErrorTwinSyncKind kind;
 } wire_cst_custom_enum_error_twin_sync;
+
+typedef struct wire_cst_CustomEnumErrorTwinSyncSse_One {
+  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSyncSse_One;
+
+typedef struct wire_cst_CustomEnumErrorTwinSyncSse_Two {
+  uint32_t message;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomEnumErrorTwinSyncSse_Two;
+
+typedef union CustomEnumErrorTwinSyncSseKind {
+  struct wire_cst_CustomEnumErrorTwinSyncSse_One One;
+  struct wire_cst_CustomEnumErrorTwinSyncSse_Two Two;
+} CustomEnumErrorTwinSyncSseKind;
 
 typedef struct wire_cst_custom_enum_error_twin_sync_sse {
   int32_t tag;
-  union CustomEnumErrorTwinSyncSseKind *kind;
+  union CustomEnumErrorTwinSyncSseKind kind;
 } wire_cst_custom_enum_error_twin_sync_sse;
+
+typedef struct wire_cst_CustomErrorTwinNormal_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinNormal_Error0;
+
+typedef struct wire_cst_CustomErrorTwinNormal_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinNormal_Error1;
+
+typedef union CustomErrorTwinNormalKind {
+  struct wire_cst_CustomErrorTwinNormal_Error0 Error0;
+  struct wire_cst_CustomErrorTwinNormal_Error1 Error1;
+} CustomErrorTwinNormalKind;
 
 typedef struct wire_cst_custom_error_twin_normal {
   int32_t tag;
-  union CustomErrorTwinNormalKind *kind;
+  union CustomErrorTwinNormalKind kind;
 } wire_cst_custom_error_twin_normal;
+
+typedef struct wire_cst_CustomErrorTwinRustAsync_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsync_Error0;
+
+typedef struct wire_cst_CustomErrorTwinRustAsync_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsync_Error1;
+
+typedef union CustomErrorTwinRustAsyncKind {
+  struct wire_cst_CustomErrorTwinRustAsync_Error0 Error0;
+  struct wire_cst_CustomErrorTwinRustAsync_Error1 Error1;
+} CustomErrorTwinRustAsyncKind;
 
 typedef struct wire_cst_custom_error_twin_rust_async {
   int32_t tag;
-  union CustomErrorTwinRustAsyncKind *kind;
+  union CustomErrorTwinRustAsyncKind kind;
 } wire_cst_custom_error_twin_rust_async;
+
+typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsyncSse_Error0;
+
+typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinRustAsyncSse_Error1;
+
+typedef union CustomErrorTwinRustAsyncSseKind {
+  struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 Error0;
+  struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 Error1;
+} CustomErrorTwinRustAsyncSseKind;
 
 typedef struct wire_cst_custom_error_twin_rust_async_sse {
   int32_t tag;
-  union CustomErrorTwinRustAsyncSseKind *kind;
+  union CustomErrorTwinRustAsyncSseKind kind;
 } wire_cst_custom_error_twin_rust_async_sse;
+
+typedef struct wire_cst_CustomErrorTwinSse_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSse_Error0;
+
+typedef struct wire_cst_CustomErrorTwinSse_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSse_Error1;
+
+typedef union CustomErrorTwinSseKind {
+  struct wire_cst_CustomErrorTwinSse_Error0 Error0;
+  struct wire_cst_CustomErrorTwinSse_Error1 Error1;
+} CustomErrorTwinSseKind;
 
 typedef struct wire_cst_custom_error_twin_sse {
   int32_t tag;
-  union CustomErrorTwinSseKind *kind;
+  union CustomErrorTwinSseKind kind;
 } wire_cst_custom_error_twin_sse;
+
+typedef struct wire_cst_CustomErrorTwinSync_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSync_Error0;
+
+typedef struct wire_cst_CustomErrorTwinSync_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSync_Error1;
+
+typedef union CustomErrorTwinSyncKind {
+  struct wire_cst_CustomErrorTwinSync_Error0 Error0;
+  struct wire_cst_CustomErrorTwinSync_Error1 Error1;
+} CustomErrorTwinSyncKind;
 
 typedef struct wire_cst_custom_error_twin_sync {
   int32_t tag;
-  union CustomErrorTwinSyncKind *kind;
+  union CustomErrorTwinSyncKind kind;
 } wire_cst_custom_error_twin_sync;
+
+typedef struct wire_cst_CustomErrorTwinSyncSse_Error0 {
+  struct wire_cst_list_prim_u_8 *e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSyncSse_Error0;
+
+typedef struct wire_cst_CustomErrorTwinSyncSse_Error1 {
+  uint32_t e;
+  struct wire_cst_list_prim_u_8 *backtrace;
+} wire_cst_CustomErrorTwinSyncSse_Error1;
+
+typedef union CustomErrorTwinSyncSseKind {
+  struct wire_cst_CustomErrorTwinSyncSse_Error0 Error0;
+  struct wire_cst_CustomErrorTwinSyncSse_Error1 Error1;
+} CustomErrorTwinSyncSseKind;
 
 typedef struct wire_cst_custom_error_twin_sync_sse {
   int32_t tag;
-  union CustomErrorTwinSyncSseKind *kind;
+  union CustomErrorTwinSyncSseKind kind;
 } wire_cst_custom_error_twin_sync_sse;
+
+typedef struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinNormal_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinNormal_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_normal *field0;
+} wire_cst_CustomNestedError1TwinNormal_ErrorNested;
+
+typedef union CustomNestedError1TwinNormalKind {
+  struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 CustomNested1;
+  struct wire_cst_CustomNestedError1TwinNormal_ErrorNested ErrorNested;
+} CustomNestedError1TwinNormalKind;
 
 typedef struct wire_cst_custom_nested_error_1_twin_normal {
   int32_t tag;
-  union CustomNestedError1TwinNormalKind *kind;
+  union CustomNestedError1TwinNormalKind kind;
 } wire_cst_custom_nested_error_1_twin_normal;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinRustAsync_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_rust_async *field0;
+} wire_cst_CustomNestedError1TwinRustAsync_ErrorNested;
+
+typedef union CustomNestedError1TwinRustAsyncKind {
+  struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 CustomNested1;
+  struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested ErrorNested;
+} CustomNestedError1TwinRustAsyncKind;
 
 typedef struct wire_cst_custom_nested_error_1_twin_rust_async {
   int32_t tag;
-  union CustomNestedError1TwinRustAsyncKind *kind;
+  union CustomNestedError1TwinRustAsyncKind kind;
 } wire_cst_custom_nested_error_1_twin_rust_async;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_rust_async_sse *field0;
+} wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested;
+
+typedef union CustomNestedError1TwinRustAsyncSseKind {
+  struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 CustomNested1;
+  struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested ErrorNested;
+} CustomNestedError1TwinRustAsyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_1_twin_rust_async_sse {
   int32_t tag;
-  union CustomNestedError1TwinRustAsyncSseKind *kind;
+  union CustomNestedError1TwinRustAsyncSseKind kind;
 } wire_cst_custom_nested_error_1_twin_rust_async_sse;
+
+typedef struct wire_cst_CustomNestedError1TwinSse_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinSse_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinSse_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_sse *field0;
+} wire_cst_CustomNestedError1TwinSse_ErrorNested;
+
+typedef union CustomNestedError1TwinSseKind {
+  struct wire_cst_CustomNestedError1TwinSse_CustomNested1 CustomNested1;
+  struct wire_cst_CustomNestedError1TwinSse_ErrorNested ErrorNested;
+} CustomNestedError1TwinSseKind;
 
 typedef struct wire_cst_custom_nested_error_1_twin_sse {
   int32_t tag;
-  union CustomNestedError1TwinSseKind *kind;
+  union CustomNestedError1TwinSseKind kind;
 } wire_cst_custom_nested_error_1_twin_sse;
+
+typedef struct wire_cst_CustomNestedError1TwinSync_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinSync_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinSync_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_sync *field0;
+} wire_cst_CustomNestedError1TwinSync_ErrorNested;
+
+typedef union CustomNestedError1TwinSyncKind {
+  struct wire_cst_CustomNestedError1TwinSync_CustomNested1 CustomNested1;
+  struct wire_cst_CustomNestedError1TwinSync_ErrorNested ErrorNested;
+} CustomNestedError1TwinSyncKind;
 
 typedef struct wire_cst_custom_nested_error_1_twin_sync {
   int32_t tag;
-  union CustomNestedError1TwinSyncKind *kind;
+  union CustomNestedError1TwinSyncKind kind;
 } wire_cst_custom_nested_error_1_twin_sync;
+
+typedef struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
+  struct wire_cst_list_prim_u_8 *field0;
+} wire_cst_CustomNestedError1TwinSyncSse_CustomNested1;
+
+typedef struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested {
+  struct wire_cst_custom_nested_error_2_twin_sync_sse *field0;
+} wire_cst_CustomNestedError1TwinSyncSse_ErrorNested;
+
+typedef union CustomNestedError1TwinSyncSseKind {
+  struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 CustomNested1;
+  struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested ErrorNested;
+} CustomNestedError1TwinSyncSseKind;
 
 typedef struct wire_cst_custom_nested_error_1_twin_sync_sse {
   int32_t tag;
-  union CustomNestedError1TwinSyncSseKind *kind;
+  union CustomNestedError1TwinSyncSseKind kind;
 } wire_cst_custom_nested_error_1_twin_sync_sse;
 
 typedef struct wire_cst_custom_struct_error_another_twin_normal {
@@ -10484,707 +10359,8 @@ struct wire_cst_list_weekdays_twin_sse *cst_new_list_weekdays_twin_sse(int32_t l
 struct wire_cst_list_weekdays_twin_sync *cst_new_list_weekdays_twin_sync(int32_t len);
 
 struct wire_cst_list_weekdays_twin_sync_sse *cst_new_list_weekdays_twin_sync_sse(int32_t len);
-
-union AbcTwinNormalKind *cst_inflate_AbcTwinNormal_A(void);
-
-union AbcTwinNormalKind *cst_inflate_AbcTwinNormal_B(void);
-
-union AbcTwinNormalKind *cst_inflate_AbcTwinNormal_C(void);
-
-union AbcTwinNormalKind *cst_inflate_AbcTwinNormal_JustInt(void);
-
-union AbcTwinRustAsyncKind *cst_inflate_AbcTwinRustAsync_A(void);
-
-union AbcTwinRustAsyncKind *cst_inflate_AbcTwinRustAsync_B(void);
-
-union AbcTwinRustAsyncKind *cst_inflate_AbcTwinRustAsync_C(void);
-
-union AbcTwinRustAsyncKind *cst_inflate_AbcTwinRustAsync_JustInt(void);
-
-union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_A(void);
-
-union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_B(void);
-
-union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_C(void);
-
-union AbcTwinRustAsyncSseKind *cst_inflate_AbcTwinRustAsyncSse_JustInt(void);
-
-union AbcTwinSseKind *cst_inflate_AbcTwinSse_A(void);
-
-union AbcTwinSseKind *cst_inflate_AbcTwinSse_B(void);
-
-union AbcTwinSseKind *cst_inflate_AbcTwinSse_C(void);
-
-union AbcTwinSseKind *cst_inflate_AbcTwinSse_JustInt(void);
-
-union AbcTwinSyncKind *cst_inflate_AbcTwinSync_A(void);
-
-union AbcTwinSyncKind *cst_inflate_AbcTwinSync_B(void);
-
-union AbcTwinSyncKind *cst_inflate_AbcTwinSync_C(void);
-
-union AbcTwinSyncKind *cst_inflate_AbcTwinSync_JustInt(void);
-
-union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_A(void);
-
-union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_B(void);
-
-union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_C(void);
-
-union AbcTwinSyncSseKind *cst_inflate_AbcTwinSyncSse_JustInt(void);
-
-union ApplicationMessageKind *cst_inflate_ApplicationMessage_DisplayMessage(void);
-
-union ApplicationMessageKind *cst_inflate_ApplicationMessage_RenderPixel(void);
-
-union CustomEnumErrorTwinNormalKind *cst_inflate_CustomEnumErrorTwinNormal_One(void);
-
-union CustomEnumErrorTwinNormalKind *cst_inflate_CustomEnumErrorTwinNormal_Two(void);
-
-union CustomEnumErrorTwinRustAsyncKind *cst_inflate_CustomEnumErrorTwinRustAsync_One(void);
-
-union CustomEnumErrorTwinRustAsyncKind *cst_inflate_CustomEnumErrorTwinRustAsync_Two(void);
-
-union CustomEnumErrorTwinRustAsyncSseKind *cst_inflate_CustomEnumErrorTwinRustAsyncSse_One(void);
-
-union CustomEnumErrorTwinRustAsyncSseKind *cst_inflate_CustomEnumErrorTwinRustAsyncSse_Two(void);
-
-union CustomEnumErrorTwinSseKind *cst_inflate_CustomEnumErrorTwinSse_One(void);
-
-union CustomEnumErrorTwinSseKind *cst_inflate_CustomEnumErrorTwinSse_Two(void);
-
-union CustomEnumErrorTwinSyncKind *cst_inflate_CustomEnumErrorTwinSync_One(void);
-
-union CustomEnumErrorTwinSyncKind *cst_inflate_CustomEnumErrorTwinSync_Two(void);
-
-union CustomEnumErrorTwinSyncSseKind *cst_inflate_CustomEnumErrorTwinSyncSse_One(void);
-
-union CustomEnumErrorTwinSyncSseKind *cst_inflate_CustomEnumErrorTwinSyncSse_Two(void);
-
-union CustomErrorTwinNormalKind *cst_inflate_CustomErrorTwinNormal_Error0(void);
-
-union CustomErrorTwinNormalKind *cst_inflate_CustomErrorTwinNormal_Error1(void);
-
-union CustomErrorTwinRustAsyncKind *cst_inflate_CustomErrorTwinRustAsync_Error0(void);
-
-union CustomErrorTwinRustAsyncKind *cst_inflate_CustomErrorTwinRustAsync_Error1(void);
-
-union CustomErrorTwinRustAsyncSseKind *cst_inflate_CustomErrorTwinRustAsyncSse_Error0(void);
-
-union CustomErrorTwinRustAsyncSseKind *cst_inflate_CustomErrorTwinRustAsyncSse_Error1(void);
-
-union CustomErrorTwinSseKind *cst_inflate_CustomErrorTwinSse_Error0(void);
-
-union CustomErrorTwinSseKind *cst_inflate_CustomErrorTwinSse_Error1(void);
-
-union CustomErrorTwinSyncKind *cst_inflate_CustomErrorTwinSync_Error0(void);
-
-union CustomErrorTwinSyncKind *cst_inflate_CustomErrorTwinSync_Error1(void);
-
-union CustomErrorTwinSyncSseKind *cst_inflate_CustomErrorTwinSyncSse_Error0(void);
-
-union CustomErrorTwinSyncSseKind *cst_inflate_CustomErrorTwinSyncSse_Error1(void);
-
-union CustomNestedError1TwinNormalKind *cst_inflate_CustomNestedError1TwinNormal_CustomNested1(void);
-
-union CustomNestedError1TwinNormalKind *cst_inflate_CustomNestedError1TwinNormal_ErrorNested(void);
-
-union CustomNestedError1TwinRustAsyncKind *cst_inflate_CustomNestedError1TwinRustAsync_CustomNested1(void);
-
-union CustomNestedError1TwinRustAsyncKind *cst_inflate_CustomNestedError1TwinRustAsync_ErrorNested(void);
-
-union CustomNestedError1TwinRustAsyncSseKind *cst_inflate_CustomNestedError1TwinRustAsyncSse_CustomNested1(void);
-
-union CustomNestedError1TwinRustAsyncSseKind *cst_inflate_CustomNestedError1TwinRustAsyncSse_ErrorNested(void);
-
-union CustomNestedError1TwinSseKind *cst_inflate_CustomNestedError1TwinSse_CustomNested1(void);
-
-union CustomNestedError1TwinSseKind *cst_inflate_CustomNestedError1TwinSse_ErrorNested(void);
-
-union CustomNestedError1TwinSyncKind *cst_inflate_CustomNestedError1TwinSync_CustomNested1(void);
-
-union CustomNestedError1TwinSyncKind *cst_inflate_CustomNestedError1TwinSync_ErrorNested(void);
-
-union CustomNestedError1TwinSyncSseKind *cst_inflate_CustomNestedError1TwinSyncSse_CustomNested1(void);
-
-union CustomNestedError1TwinSyncSseKind *cst_inflate_CustomNestedError1TwinSyncSse_ErrorNested(void);
-
-union CustomNestedError2TwinNormalKind *cst_inflate_CustomNestedError2TwinNormal_CustomNested2(void);
-
-union CustomNestedError2TwinNormalKind *cst_inflate_CustomNestedError2TwinNormal_CustomNested2Number(void);
-
-union CustomNestedError2TwinRustAsyncKind *cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2(void);
-
-union CustomNestedError2TwinRustAsyncKind *cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2Number(void);
-
-union CustomNestedError2TwinRustAsyncSseKind *cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2(void);
-
-union CustomNestedError2TwinRustAsyncSseKind *cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2Number(void);
-
-union CustomNestedError2TwinSseKind *cst_inflate_CustomNestedError2TwinSse_CustomNested2(void);
-
-union CustomNestedError2TwinSseKind *cst_inflate_CustomNestedError2TwinSse_CustomNested2Number(void);
-
-union CustomNestedError2TwinSyncKind *cst_inflate_CustomNestedError2TwinSync_CustomNested2(void);
-
-union CustomNestedError2TwinSyncKind *cst_inflate_CustomNestedError2TwinSync_CustomNested2Number(void);
-
-union CustomNestedError2TwinSyncSseKind *cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2(void);
-
-union CustomNestedError2TwinSyncSseKind *cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2Number(void);
-
-union CustomNestedErrorInnerTwinNormalKind *cst_inflate_CustomNestedErrorInnerTwinNormal_Three(void);
-
-union CustomNestedErrorInnerTwinNormalKind *cst_inflate_CustomNestedErrorInnerTwinNormal_Four(void);
-
-union CustomNestedErrorInnerTwinRustAsyncKind *cst_inflate_CustomNestedErrorInnerTwinRustAsync_Three(void);
-
-union CustomNestedErrorInnerTwinRustAsyncKind *cst_inflate_CustomNestedErrorInnerTwinRustAsync_Four(void);
-
-union CustomNestedErrorInnerTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Three(void);
-
-union CustomNestedErrorInnerTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Four(void);
-
-union CustomNestedErrorInnerTwinSseKind *cst_inflate_CustomNestedErrorInnerTwinSse_Three(void);
-
-union CustomNestedErrorInnerTwinSseKind *cst_inflate_CustomNestedErrorInnerTwinSse_Four(void);
-
-union CustomNestedErrorInnerTwinSyncKind *cst_inflate_CustomNestedErrorInnerTwinSync_Three(void);
-
-union CustomNestedErrorInnerTwinSyncKind *cst_inflate_CustomNestedErrorInnerTwinSync_Four(void);
-
-union CustomNestedErrorInnerTwinSyncSseKind *cst_inflate_CustomNestedErrorInnerTwinSyncSse_Three(void);
-
-union CustomNestedErrorInnerTwinSyncSseKind *cst_inflate_CustomNestedErrorInnerTwinSyncSse_Four(void);
-
-union CustomNestedErrorOuterTwinNormalKind *cst_inflate_CustomNestedErrorOuterTwinNormal_One(void);
-
-union CustomNestedErrorOuterTwinNormalKind *cst_inflate_CustomNestedErrorOuterTwinNormal_Two(void);
-
-union CustomNestedErrorOuterTwinRustAsyncKind *cst_inflate_CustomNestedErrorOuterTwinRustAsync_One(void);
-
-union CustomNestedErrorOuterTwinRustAsyncKind *cst_inflate_CustomNestedErrorOuterTwinRustAsync_Two(void);
-
-union CustomNestedErrorOuterTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_One(void);
-
-union CustomNestedErrorOuterTwinRustAsyncSseKind *cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_Two(void);
-
-union CustomNestedErrorOuterTwinSseKind *cst_inflate_CustomNestedErrorOuterTwinSse_One(void);
-
-union CustomNestedErrorOuterTwinSseKind *cst_inflate_CustomNestedErrorOuterTwinSse_Two(void);
-
-union CustomNestedErrorOuterTwinSyncKind *cst_inflate_CustomNestedErrorOuterTwinSync_One(void);
-
-union CustomNestedErrorOuterTwinSyncKind *cst_inflate_CustomNestedErrorOuterTwinSync_Two(void);
-
-union CustomNestedErrorOuterTwinSyncSseKind *cst_inflate_CustomNestedErrorOuterTwinSyncSse_One(void);
-
-union CustomNestedErrorOuterTwinSyncSseKind *cst_inflate_CustomNestedErrorOuterTwinSyncSse_Two(void);
-
-union DistanceTwinNormalKind *cst_inflate_DistanceTwinNormal_Map(void);
-
-union DistanceTwinRustAsyncKind *cst_inflate_DistanceTwinRustAsync_Map(void);
-
-union DistanceTwinRustAsyncSseKind *cst_inflate_DistanceTwinRustAsyncSse_Map(void);
-
-union DistanceTwinSseKind *cst_inflate_DistanceTwinSse_Map(void);
-
-union DistanceTwinSyncKind *cst_inflate_DistanceTwinSync_Map(void);
-
-union DistanceTwinSyncSseKind *cst_inflate_DistanceTwinSyncSse_Map(void);
-
-union EnumDartOpaqueTwinNormalKind *cst_inflate_EnumDartOpaqueTwinNormal_Primitive(void);
-
-union EnumDartOpaqueTwinNormalKind *cst_inflate_EnumDartOpaqueTwinNormal_Opaque(void);
-
-union EnumDartOpaqueTwinRustAsyncKind *cst_inflate_EnumDartOpaqueTwinRustAsync_Primitive(void);
-
-union EnumDartOpaqueTwinRustAsyncKind *cst_inflate_EnumDartOpaqueTwinRustAsync_Opaque(void);
-
-union EnumDartOpaqueTwinRustAsyncSseKind *cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Primitive(void);
-
-union EnumDartOpaqueTwinRustAsyncSseKind *cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Opaque(void);
-
-union EnumDartOpaqueTwinSseKind *cst_inflate_EnumDartOpaqueTwinSse_Primitive(void);
-
-union EnumDartOpaqueTwinSseKind *cst_inflate_EnumDartOpaqueTwinSse_Opaque(void);
-
-union EnumDartOpaqueTwinSyncKind *cst_inflate_EnumDartOpaqueTwinSync_Primitive(void);
-
-union EnumDartOpaqueTwinSyncKind *cst_inflate_EnumDartOpaqueTwinSync_Opaque(void);
-
-union EnumDartOpaqueTwinSyncSseKind *cst_inflate_EnumDartOpaqueTwinSyncSse_Primitive(void);
-
-union EnumDartOpaqueTwinSyncSseKind *cst_inflate_EnumDartOpaqueTwinSyncSse_Opaque(void);
-
-union EnumOpaqueTwinNormalKind *cst_inflate_EnumOpaqueTwinNormal_Struct(void);
-
-union EnumOpaqueTwinNormalKind *cst_inflate_EnumOpaqueTwinNormal_Primitive(void);
-
-union EnumOpaqueTwinNormalKind *cst_inflate_EnumOpaqueTwinNormal_TraitObj(void);
-
-union EnumOpaqueTwinNormalKind *cst_inflate_EnumOpaqueTwinNormal_Mutex(void);
-
-union EnumOpaqueTwinNormalKind *cst_inflate_EnumOpaqueTwinNormal_RwLock(void);
-
-union EnumOpaqueTwinRustAsyncKind *cst_inflate_EnumOpaqueTwinRustAsync_Struct(void);
-
-union EnumOpaqueTwinRustAsyncKind *cst_inflate_EnumOpaqueTwinRustAsync_Primitive(void);
-
-union EnumOpaqueTwinRustAsyncKind *cst_inflate_EnumOpaqueTwinRustAsync_TraitObj(void);
-
-union EnumOpaqueTwinRustAsyncKind *cst_inflate_EnumOpaqueTwinRustAsync_Mutex(void);
-
-union EnumOpaqueTwinRustAsyncKind *cst_inflate_EnumOpaqueTwinRustAsync_RwLock(void);
-
-union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_Struct(void);
-
-union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_Primitive(void);
-
-union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_TraitObj(void);
-
-union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_Mutex(void);
-
-union EnumOpaqueTwinRustAsyncSseKind *cst_inflate_EnumOpaqueTwinRustAsyncSse_RwLock(void);
-
-union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_Struct(void);
-
-union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_Primitive(void);
-
-union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_TraitObj(void);
-
-union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_Mutex(void);
-
-union EnumOpaqueTwinSseKind *cst_inflate_EnumOpaqueTwinSse_RwLock(void);
-
-union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_Struct(void);
-
-union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_Primitive(void);
-
-union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_TraitObj(void);
-
-union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_Mutex(void);
-
-union EnumOpaqueTwinSyncKind *cst_inflate_EnumOpaqueTwinSync_RwLock(void);
-
-union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_Struct(void);
-
-union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_Primitive(void);
-
-union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_TraitObj(void);
-
-union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_Mutex(void);
-
-union EnumOpaqueTwinSyncSseKind *cst_inflate_EnumOpaqueTwinSyncSse_RwLock(void);
-
-union EnumWithItemMixedTwinNormalKind *cst_inflate_EnumWithItemMixedTwinNormal_B(void);
-
-union EnumWithItemMixedTwinNormalKind *cst_inflate_EnumWithItemMixedTwinNormal_C(void);
-
-union EnumWithItemMixedTwinRustAsyncKind *cst_inflate_EnumWithItemMixedTwinRustAsync_B(void);
-
-union EnumWithItemMixedTwinRustAsyncKind *cst_inflate_EnumWithItemMixedTwinRustAsync_C(void);
-
-union EnumWithItemMixedTwinRustAsyncSseKind *cst_inflate_EnumWithItemMixedTwinRustAsyncSse_B(void);
-
-union EnumWithItemMixedTwinRustAsyncSseKind *cst_inflate_EnumWithItemMixedTwinRustAsyncSse_C(void);
-
-union EnumWithItemMixedTwinSseKind *cst_inflate_EnumWithItemMixedTwinSse_B(void);
-
-union EnumWithItemMixedTwinSseKind *cst_inflate_EnumWithItemMixedTwinSse_C(void);
-
-union EnumWithItemMixedTwinSyncKind *cst_inflate_EnumWithItemMixedTwinSync_B(void);
-
-union EnumWithItemMixedTwinSyncKind *cst_inflate_EnumWithItemMixedTwinSync_C(void);
-
-union EnumWithItemMixedTwinSyncSseKind *cst_inflate_EnumWithItemMixedTwinSyncSse_B(void);
-
-union EnumWithItemMixedTwinSyncSseKind *cst_inflate_EnumWithItemMixedTwinSyncSse_C(void);
-
-union EnumWithItemStructTwinNormalKind *cst_inflate_EnumWithItemStructTwinNormal_A(void);
-
-union EnumWithItemStructTwinNormalKind *cst_inflate_EnumWithItemStructTwinNormal_B(void);
-
-union EnumWithItemStructTwinRustAsyncKind *cst_inflate_EnumWithItemStructTwinRustAsync_A(void);
-
-union EnumWithItemStructTwinRustAsyncKind *cst_inflate_EnumWithItemStructTwinRustAsync_B(void);
-
-union EnumWithItemStructTwinRustAsyncSseKind *cst_inflate_EnumWithItemStructTwinRustAsyncSse_A(void);
-
-union EnumWithItemStructTwinRustAsyncSseKind *cst_inflate_EnumWithItemStructTwinRustAsyncSse_B(void);
-
-union EnumWithItemStructTwinSseKind *cst_inflate_EnumWithItemStructTwinSse_A(void);
-
-union EnumWithItemStructTwinSseKind *cst_inflate_EnumWithItemStructTwinSse_B(void);
-
-union EnumWithItemStructTwinSyncKind *cst_inflate_EnumWithItemStructTwinSync_A(void);
-
-union EnumWithItemStructTwinSyncKind *cst_inflate_EnumWithItemStructTwinSync_B(void);
-
-union EnumWithItemStructTwinSyncSseKind *cst_inflate_EnumWithItemStructTwinSyncSse_A(void);
-
-union EnumWithItemStructTwinSyncSseKind *cst_inflate_EnumWithItemStructTwinSyncSse_B(void);
-
-union EnumWithItemTupleTwinNormalKind *cst_inflate_EnumWithItemTupleTwinNormal_A(void);
-
-union EnumWithItemTupleTwinNormalKind *cst_inflate_EnumWithItemTupleTwinNormal_B(void);
-
-union EnumWithItemTupleTwinRustAsyncKind *cst_inflate_EnumWithItemTupleTwinRustAsync_A(void);
-
-union EnumWithItemTupleTwinRustAsyncKind *cst_inflate_EnumWithItemTupleTwinRustAsync_B(void);
-
-union EnumWithItemTupleTwinRustAsyncSseKind *cst_inflate_EnumWithItemTupleTwinRustAsyncSse_A(void);
-
-union EnumWithItemTupleTwinRustAsyncSseKind *cst_inflate_EnumWithItemTupleTwinRustAsyncSse_B(void);
-
-union EnumWithItemTupleTwinSseKind *cst_inflate_EnumWithItemTupleTwinSse_A(void);
-
-union EnumWithItemTupleTwinSseKind *cst_inflate_EnumWithItemTupleTwinSse_B(void);
-
-union EnumWithItemTupleTwinSyncKind *cst_inflate_EnumWithItemTupleTwinSync_A(void);
-
-union EnumWithItemTupleTwinSyncKind *cst_inflate_EnumWithItemTupleTwinSync_B(void);
-
-union EnumWithItemTupleTwinSyncSseKind *cst_inflate_EnumWithItemTupleTwinSyncSse_A(void);
-
-union EnumWithItemTupleTwinSyncSseKind *cst_inflate_EnumWithItemTupleTwinSyncSse_B(void);
-
-union KitchenSinkTwinNormalKind *cst_inflate_KitchenSinkTwinNormal_Primitives(void);
-
-union KitchenSinkTwinNormalKind *cst_inflate_KitchenSinkTwinNormal_Nested(void);
-
-union KitchenSinkTwinNormalKind *cst_inflate_KitchenSinkTwinNormal_Optional(void);
-
-union KitchenSinkTwinNormalKind *cst_inflate_KitchenSinkTwinNormal_Buffer(void);
-
-union KitchenSinkTwinNormalKind *cst_inflate_KitchenSinkTwinNormal_Enums(void);
-
-union KitchenSinkTwinRustAsyncKind *cst_inflate_KitchenSinkTwinRustAsync_Primitives(void);
-
-union KitchenSinkTwinRustAsyncKind *cst_inflate_KitchenSinkTwinRustAsync_Nested(void);
-
-union KitchenSinkTwinRustAsyncKind *cst_inflate_KitchenSinkTwinRustAsync_Optional(void);
-
-union KitchenSinkTwinRustAsyncKind *cst_inflate_KitchenSinkTwinRustAsync_Buffer(void);
-
-union KitchenSinkTwinRustAsyncKind *cst_inflate_KitchenSinkTwinRustAsync_Enums(void);
-
-union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Primitives(void);
-
-union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Nested(void);
-
-union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Optional(void);
-
-union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Buffer(void);
-
-union KitchenSinkTwinRustAsyncSseKind *cst_inflate_KitchenSinkTwinRustAsyncSse_Enums(void);
-
-union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Primitives(void);
-
-union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Nested(void);
-
-union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Optional(void);
-
-union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Buffer(void);
-
-union KitchenSinkTwinSseKind *cst_inflate_KitchenSinkTwinSse_Enums(void);
-
-union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Primitives(void);
-
-union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Nested(void);
-
-union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Optional(void);
-
-union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Buffer(void);
-
-union KitchenSinkTwinSyncKind *cst_inflate_KitchenSinkTwinSync_Enums(void);
-
-union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Primitives(void);
-
-union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Nested(void);
-
-union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Optional(void);
-
-union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Buffer(void);
-
-union KitchenSinkTwinSyncSseKind *cst_inflate_KitchenSinkTwinSyncSse_Enums(void);
-
-union MeasureTwinNormalKind *cst_inflate_MeasureTwinNormal_Speed(void);
-
-union MeasureTwinNormalKind *cst_inflate_MeasureTwinNormal_Distance(void);
-
-union MeasureTwinRustAsyncKind *cst_inflate_MeasureTwinRustAsync_Speed(void);
-
-union MeasureTwinRustAsyncKind *cst_inflate_MeasureTwinRustAsync_Distance(void);
-
-union MeasureTwinRustAsyncSseKind *cst_inflate_MeasureTwinRustAsyncSse_Speed(void);
-
-union MeasureTwinRustAsyncSseKind *cst_inflate_MeasureTwinRustAsyncSse_Distance(void);
-
-union MeasureTwinSseKind *cst_inflate_MeasureTwinSse_Speed(void);
-
-union MeasureTwinSseKind *cst_inflate_MeasureTwinSse_Distance(void);
-
-union MeasureTwinSyncKind *cst_inflate_MeasureTwinSync_Speed(void);
-
-union MeasureTwinSyncKind *cst_inflate_MeasureTwinSync_Distance(void);
-
-union MeasureTwinSyncSseKind *cst_inflate_MeasureTwinSyncSse_Speed(void);
-
-union MeasureTwinSyncSseKind *cst_inflate_MeasureTwinSyncSse_Distance(void);
-
-union RawStringEnumMirroredKind *cst_inflate_RawStringEnumMirrored_Raw(void);
-
-union RawStringEnumMirroredKind *cst_inflate_RawStringEnumMirrored_Nested(void);
-
-union RawStringEnumMirroredKind *cst_inflate_RawStringEnumMirrored_ListOfNested(void);
-
-union SpeedTwinNormalKind *cst_inflate_SpeedTwinNormal_GPS(void);
-
-union SpeedTwinRustAsyncKind *cst_inflate_SpeedTwinRustAsync_GPS(void);
-
-union SpeedTwinRustAsyncSseKind *cst_inflate_SpeedTwinRustAsyncSse_GPS(void);
-
-union SpeedTwinSseKind *cst_inflate_SpeedTwinSse_GPS(void);
-
-union SpeedTwinSyncKind *cst_inflate_SpeedTwinSync_GPS(void);
-
-union SpeedTwinSyncSseKind *cst_inflate_SpeedTwinSyncSse_GPS(void);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinNormal_JustInt);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsyncSse_JustInt);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinRustAsync_JustInt);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSse_JustInt);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSyncSse_JustInt);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_AbcTwinSync_JustInt);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_ApplicationMessage_DisplayMessage);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_ApplicationMessage_RenderPixel);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinNormal_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinNormal_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsyncSse_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsyncSse_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsync_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinRustAsync_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSse_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSse_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSyncSse_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSyncSse_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSync_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomEnumErrorTwinSync_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinNormal_Error0);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinNormal_Error1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsyncSse_Error0);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsyncSse_Error1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsync_Error0);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinRustAsync_Error1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSse_Error0);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSse_Error1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSyncSse_Error0);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSyncSse_Error1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSync_Error0);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomErrorTwinSync_Error1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinNormal_CustomNested1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinNormal_ErrorNested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsyncSse_CustomNested1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsyncSse_ErrorNested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsync_CustomNested1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinRustAsync_ErrorNested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSse_CustomNested1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSse_ErrorNested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSyncSse_CustomNested1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSyncSse_ErrorNested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSync_CustomNested1);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError1TwinSync_ErrorNested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinNormal_CustomNested2);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinNormal_CustomNested2Number);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsyncSse_CustomNested2Number);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinRustAsync_CustomNested2Number);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSse_CustomNested2);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSse_CustomNested2Number);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSyncSse_CustomNested2Number);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSync_CustomNested2);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedError2TwinSync_CustomNested2Number);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinNormal_Four);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinNormal_Three);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Four);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsyncSse_Three);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsync_Four);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinRustAsync_Three);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSse_Four);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSse_Three);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSyncSse_Four);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSyncSse_Three);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSync_Four);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorInnerTwinSync_Three);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinNormal_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinNormal_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsyncSse_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsync_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinRustAsync_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSse_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSse_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSyncSse_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSyncSse_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSync_One);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_CustomNestedErrorOuterTwinSync_Two);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinNormal_Map);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinRustAsyncSse_Map);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinRustAsync_Map);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinSse_Map);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinSyncSse_Map);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_DistanceTwinSync_Map);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinNormal_Opaque);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinNormal_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Opaque);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsyncSse_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsync_Opaque);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinRustAsync_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSse_Opaque);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSse_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSyncSse_Opaque);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSyncSse_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSync_Opaque);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumDartOpaqueTwinSync_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_Mutex);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_RwLock);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_Struct);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinNormal_TraitObj);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_Mutex);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_RwLock);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_Struct);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsyncSse_TraitObj);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_Mutex);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_RwLock);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_Struct);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinRustAsync_TraitObj);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_Mutex);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_RwLock);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_Struct);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSse_TraitObj);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_Mutex);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_RwLock);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_Struct);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSyncSse_TraitObj);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_Mutex);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_Primitive);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_RwLock);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_Struct);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumOpaqueTwinSync_TraitObj);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinNormal_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinNormal_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsyncSse_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinRustAsync_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSse_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSyncSse_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemMixedTwinSync_C);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinNormal_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinNormal_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsyncSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsync_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinRustAsync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSyncSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSync_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemStructTwinSync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinNormal_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinNormal_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsyncSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsync_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinRustAsync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSyncSse_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSyncSse_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSync_A);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_EnumWithItemTupleTwinSync_B);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Buffer);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Enums);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Nested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Optional);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinNormal_Primitives);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Buffer);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Enums);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Nested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Optional);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsyncSse_Primitives);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Buffer);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Enums);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Nested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Optional);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinRustAsync_Primitives);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Buffer);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Enums);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Nested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Optional);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSse_Primitives);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Buffer);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Enums);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Nested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Optional);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSyncSse_Primitives);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Buffer);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Enums);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Nested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Optional);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_KitchenSinkTwinSync_Primitives);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinNormal_Distance);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinNormal_Speed);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsyncSse_Distance);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsyncSse_Speed);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsync_Distance);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinRustAsync_Speed);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSse_Distance);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSse_Speed);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSyncSse_Distance);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSyncSse_Speed);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSync_Distance);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_MeasureTwinSync_Speed);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_RawStringEnumMirrored_ListOfNested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_RawStringEnumMirrored_Nested);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_RawStringEnumMirrored_Raw);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinNormal_GPS);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinRustAsyncSse_GPS);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinRustAsync_GPS);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSse_GPS);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSyncSse_GPS);
-    dummy_var ^= ((int64_t) (void*) cst_inflate_SpeedTwinSync_GPS);
     dummy_var ^= ((int64_t) (void*) cst_new_box_application_env);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_Chrono_Duration);
     dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_Chrono_Naive);

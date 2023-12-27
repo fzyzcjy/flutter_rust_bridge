@@ -363,25 +363,25 @@ pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8
 }
 
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_String {
     ptr: *mut *mut wire_cst_list_prim_u_8,
     len: i32,
 }
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_prim_u_8 {
     ptr: *mut u8,
     len: i32,
 }
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_point {
     x: f64,
     y: f64,
 }
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_size {
     width: i32,
     height: i32,
