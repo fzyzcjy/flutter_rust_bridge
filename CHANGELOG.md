@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-dev.5
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Toggle off default `clap` feature for `cbindgen` #1503 (thanks @CosmicHorrorDev)
+
 ## 2.0.0-dev.4
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
