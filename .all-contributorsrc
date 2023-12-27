@@ -496,6 +496,15 @@
       ]
     },
     {
+      "login": "CosmicHorrorDev",
+      "name": "CosmicHorror",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30302768?v=4",
+      "profile": "http://cosmichorror.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "w1th0utnam3",
       "name": "Fabian Löschner",
       "avatar_url": "https://avatars.githubusercontent.com/u/12967904?v=4",
@@ -718,15 +727,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "CosmicHorrorDev",
-      "name": "CosmicHorror",
-      "avatar_url": "https://avatars.githubusercontent.com/u/30302768?v=4",
-      "profile": "http://cosmichorror.dev",
-      "contributions": [
-        "code"
       ]
     }
   ],
