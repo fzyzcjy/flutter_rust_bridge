@@ -347,8 +347,6 @@ jobs:
   test_rust:
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
-    outputs:
-        FRB_MSRV_RUST_VERSION: ${{ env.FRB_MSRV_RUST_VERSION }}
     strategy:
       fail-fast: false
       matrix:
@@ -366,9 +364,9 @@ jobs:
           - image: ubuntu-latest
             version: nightly-2023-12-16
           # tests the MSRV
-          # run on all rust packages, though only neede for frb_rust and frb_codegen
+          # run on all rust packages, though only needed for frb_rust and frb_codegen
           - image: ubuntu-latest
-          # update this, if a later MSVR is needed
+          # update this, if a later MSRV is needed
             version: 1.74.0
 
     steps:
