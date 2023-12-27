@@ -41,7 +41,7 @@ toml = "0.5.8"
 topological-sort = "0.2.2"
 enum-iterator = "1.4.0"
 clap = { version = "4.4.8", features = ["derive"] }
-cbindgen = "0.24.3"
+cbindgen = { version = "0.24.3", default-features = false }
 serial_test = "2.0.0"
 glob = "0.3.1"
 derivative = "2.2.0"
