@@ -477,6 +477,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "http://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "polypixeldev",
       "name": "polypixeldev",
       "avatar_url": "https://avatars.githubusercontent.com/u/79737178?v=4",
@@ -727,15 +736,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "http://patrick.mukherjee.de",
-      "contributions": [
-        "code"
       ]
     }
   ],
