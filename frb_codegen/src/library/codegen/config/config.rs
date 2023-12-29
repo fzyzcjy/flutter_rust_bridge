@@ -1,10 +1,11 @@
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use serde::{Deserialize, Serialize};
-
+// frb-coverage:ignore-start 
 /// Configuration for code generation
 /// Refer to `GenerateCommandArgs` for documentations
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
+// frb-coverage:ignore-end
 pub struct Config {
     pub base_dir: Option<String>,
     pub rust_input: String,
