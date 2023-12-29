@@ -68,7 +68,7 @@ pub extern "C" fn cst_new_list_prim_u_8(len: i32) -> *mut wire_cst_list_prim_u_8
 }
 
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_prim_u_8 {
     ptr: *mut u8,
     len: i32,
