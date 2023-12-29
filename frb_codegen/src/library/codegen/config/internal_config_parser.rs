@@ -265,11 +265,17 @@ fn compute_dart_output_path_pack(dart_output_dir: &Path) -> DartOutputPathPack {
 }
 
 fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
-    let extension = path_common.extension().unwrap().to_str().unwrap();
+    let extension = path_common.extension()
+        .expect(&format!(
+            "Cannot use the path configuration\n {:?}.\n\
+            A path for input/output needs to include the file name (a glob, like *.rs, can be used).",
+            path_common
+        )).to_str().unwrap();
+
     TargetOrCommonMap {
         common: path_common.to_owned(),
-        io: path_common.with_extension(format!("io.{extension}")),
-        web: path_common.with_extension(format!("web.{extension}")),
+        io: path_common.with_extension(format!("io.{}", extension)),
+        web: path_common.with_extension(format!("web.{}", extension)),
     }
 }
 
@@ -358,6 +364,45 @@ mod tests {
             &create_path_sanitizers(&test_fixture_dir),
         )?;
 
+        Ok(())
+    }
+
+    #[test]
+    #[serial]
+    fn test_compute_path_map() -> anyhow::Result<()> {
+        let result = super::compute_path_map(&PathBuf::from("src/api/api.rs"));
+        assert_eq!(result.common, PathBuf::from("src/api/api.rs"));
+        assert_eq!(result.io, PathBuf::from("src/api/api.io.rs"));
+        assert_eq!(result.web, PathBuf::from("src/api/api.web.rs"));
+        Ok(())
+    }
+    #[test]
+    #[serial]
+    fn test_compute_path_map_with_glob() -> anyhow::Result<()> {
+        let result = super::compute_path_map(&PathBuf::from("src/api/*.rs"));
+        assert_eq!(result.common, PathBuf::from("src/api/*.rs"));
+        assert_eq!(result.io, PathBuf::from("src/api/*.io.rs"));
+        assert_eq!(result.web, PathBuf::from("src/api/*.web.rs"));
+        Ok(())
+    }
+    #[test]
+    #[serial]
+    fn test_compute_path_map_faulty() -> anyhow::Result<()> {
+        // Set a custom panic hook that does not print the panic information
+        let _ = std::panic::take_hook();
+        std::panic::set_hook(Box::new(|_panic_info| {
+            // Custom panic hook: Do nothing
+        }));
+
+        let result = std::panic::catch_unwind(|| {
+            super::compute_path_map(&PathBuf::from("src/api"));
+        });
+
+        // Restore the default panic hook
+        std::panic::set_hook(Box::new(|panic_info| {
+            eprintln!("{}", panic_info);
+        }));
+        assert!(result.is_err());
         Ok(())
     }
 }
