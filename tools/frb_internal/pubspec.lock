@@ -215,7 +215,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "2.0.0-dev.5"
+    version: "2.0.0-dev.6"
   frontend_server_client:
     dependency: transitive
     description:
