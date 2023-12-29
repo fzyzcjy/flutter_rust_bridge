@@ -17,7 +17,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
         if src.mode == IrEnumMode::Simple {
             return None;
         }
-
+        // frb-coverage:ignore-start
+        // This blank line is weirdly reported as non-covered, so we ignore it
+        // frb-coverage:ignore-end
         let variants = src.variants();
 
         let union_fields = variants
