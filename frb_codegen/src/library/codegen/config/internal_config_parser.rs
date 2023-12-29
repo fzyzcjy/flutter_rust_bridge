@@ -249,7 +249,7 @@ fn compute_rust_output_path(
         (config.rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
     );
-    Ok(compute_path_map(&path_common).context("rust_output: is wrong: ")?)
+    compute_path_map(&path_common).context("rust_output: is wrong: ")
 }
 
 struct DartOutputPathPack {
@@ -260,7 +260,8 @@ struct DartOutputPathPack {
 fn compute_dart_output_path_pack(dart_output_dir: &Path) -> anyhow::Result<DartOutputPathPack> {
     Ok(DartOutputPathPack {
         dart_decl_base_output_path: dart_output_dir.to_owned(),
-        dart_impl_output_path: compute_path_map(&dart_output_dir.join("frb_generated.dart")).context("dart_output: is wrong: ")?,
+        dart_impl_output_path: compute_path_map(&dart_output_dir.join("frb_generated.dart"))
+            .context("dart_output: is wrong: ")?,
     })
 }
 
@@ -389,6 +390,24 @@ mod tests {
     fn test_compute_path_map_faulty() -> anyhow::Result<()> {
         let result = super::compute_path_map(&PathBuf::from("src/api"));
         assert!(result.is_err());
+        assert!(result
+            .err()
+            .unwrap()
+            .to_string()
+            .contains("Cannot use the path configuration"));
+        Ok(())
+    }
+
+    #[test]
+    #[serial]
+    fn test_parse_rust_output_faulty() -> anyhow::Result<()> {
+        let result = body("library/codegen/config/internal_config_parser/faulty_rust_output");
+        assert!(result.is_err());
+        assert!(result
+            .err()
+            .unwrap()
+            .to_string()
+            .contains("rust_output: is wrong:"));
         Ok(())
     }
 }
