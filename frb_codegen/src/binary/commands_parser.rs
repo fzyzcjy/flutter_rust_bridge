@@ -116,7 +116,12 @@ mod tests {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/config_file")?;
 
-        let config = run_command_line::<Config, anyhow::Error>(vec!["", "generate", "--config-file", "hello.yaml"])?;
+        let config = run_command_line::<Config, anyhow::Error>(vec![
+            "",
+            "generate",
+            "--config-file",
+            "hello.yaml",
+        ])?;
         assert_eq!(config.rust_input, "hello.rs".to_string());
         assert!(!config.dart3.unwrap());
 
@@ -163,14 +168,8 @@ mod tests {
         ];
         let config = run_command_line::<(), anyhow::Error>(common_args.clone())
             .expect("failed to parse cli args");
-        assert_eq!(
-            config.dart3,
-            Some(true)
-        );
-        assert_eq!(
-            config.rust_input,
-            "hello.rs".to_string()
-        );
+        assert_eq!(config.dart3, Some(true));
+        assert_eq!(config.rust_input, "hello.rs".to_string());
         assert_eq!(
             run_command_line::<Config, anyhow::Error>(concat([
                 common_args.clone(),
@@ -187,5 +186,4 @@ mod tests {
         let args = if_then_some!(let Commands::Generate(args) = cli.command, args).unwrap();
         compute_codegen_config(args.primary)
     }
-
 }
