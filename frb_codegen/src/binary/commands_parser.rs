@@ -133,8 +133,6 @@ mod tests {
     fn test_compute_codegen_config_mode_config_file_faulty_file() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
-        // let result = std::panic::catch_unwind(|| {
-        // expecting serde to panic due to the faulty entry
         let result = run_command_line::<(), anyhow::Error>(vec![
             "",
             "generate",
