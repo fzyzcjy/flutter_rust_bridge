@@ -266,7 +266,7 @@ fn compute_dart_output_path_pack(dart_output_dir: &Path) -> DartOutputPathPack {
 
 fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
     let extension = path_common.extension()
-        .expect(&format!(
+        .unwrap_or_else(|| panic!(
             "Cannot use the path configuration\n {:?}.\n\
             A path for input/output needs to include the file name (a glob, like *.rs, can be used).",
             path_common
