@@ -104,7 +104,7 @@ class _$UserIdTwinRustAsyncImpl implements _UserIdTwinRustAsync {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserIdTwinRustAsyncImpl &&

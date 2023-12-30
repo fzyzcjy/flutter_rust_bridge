@@ -117,7 +117,7 @@ class _$EventTwinRustAsyncImpl extends _EventTwinRustAsync {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EventTwinRustAsyncImpl &&

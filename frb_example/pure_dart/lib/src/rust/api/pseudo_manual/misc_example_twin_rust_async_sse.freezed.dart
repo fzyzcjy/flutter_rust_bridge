@@ -133,7 +133,7 @@ class _$AbcTwinRustAsyncSse_AImpl implements AbcTwinRustAsyncSse_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinRustAsyncSse_AImpl &&
@@ -282,7 +282,7 @@ class _$AbcTwinRustAsyncSse_BImpl implements AbcTwinRustAsyncSse_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinRustAsyncSse_BImpl &&
@@ -431,7 +431,7 @@ class _$AbcTwinRustAsyncSse_CImpl implements AbcTwinRustAsyncSse_C {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinRustAsyncSse_CImpl &&
@@ -582,7 +582,7 @@ class _$AbcTwinRustAsyncSse_JustIntImpl implements AbcTwinRustAsyncSse_JustInt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinRustAsyncSse_JustIntImpl &&

@@ -142,7 +142,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinNormal_StructImpl &&
@@ -300,7 +300,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinNormal_PrimitiveImpl &&
@@ -460,7 +460,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinNormal_TraitObjImpl &&
@@ -620,7 +620,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinNormal_MutexImpl &&
@@ -777,7 +777,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinNormal_RwLockImpl &&
