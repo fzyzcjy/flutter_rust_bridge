@@ -1,10 +1,10 @@
 name: pubspec_yaml_typical_entry
-description: This is for testing the correct parsing
+description: This is for testing the correct parsing of a file with faulty entries
 version: 1.0.0
 
 flutter_rust_bridge:
   rust_input: hello.rs
   dart_output: hello.dart
   c_output: hello.h
-  dart3: false
+  misspelled_dart3: false
 
