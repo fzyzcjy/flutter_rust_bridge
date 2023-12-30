@@ -737,6 +737,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "adsouza",
+      "name": "Antonio D'souza",
+      "avatar_url": "https://avatars.githubusercontent.com/u/275832?v=4",
+      "profile": "http://www.adsouza.net",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
