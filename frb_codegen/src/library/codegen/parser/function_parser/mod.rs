@@ -67,6 +67,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let func_name = parse_name(sig, &owner);
         let attributes = FrbAttributes::parse(func.attrs())?;
 
+        if attributes.ignore() {
+            return Ok(None);
+        }
+
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
