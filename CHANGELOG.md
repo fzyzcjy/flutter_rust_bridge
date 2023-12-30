@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0-dev.6
+## 2.0.0-dev.7
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Improve error message when a file ending is not provided in configuration #1540 (thanks @patmuk)
