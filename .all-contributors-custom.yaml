@@ -44,8 +44,8 @@
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
 - anstadnik: Check keywords.
+- patmuk: Set MSRV. Fail fast. Improve message.
 - aran: Fix pubspec. Bump version.
-- patmuk: Set MSRV. Improve message.
 - syndim: Add a bracket to box.
 - TENX-S: Improve doc. Reproduce a bug.
 - polypixeldev: Improve doc.
