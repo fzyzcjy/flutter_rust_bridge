@@ -45,9 +45,9 @@
 - gutenfries: Bump proc-macros.
 - anstadnik: Check keywords.
 - aran: Fix pubspec. Bump version.
+- patmuk: Set MSRV. Improve message.
 - syndim: Add a bracket to box.
 - TENX-S: Improve doc. Reproduce a bug.
-- patmuk: Set MSRV.
 - polypixeldev: Improve doc.
 - CicadaCinema: Bump version. Improve doc.
 - CosmicHorrorDev: Change deps.

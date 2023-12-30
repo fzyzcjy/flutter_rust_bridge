@@ -459,6 +459,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "syndim",
       "name": "syndim",
       "avatar_url": "https://avatars.githubusercontent.com/u/835035?v=4",
@@ -474,15 +483,6 @@
       "profile": "https://ares.zone (国内)",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
-      "contributions": [
-        "code"
       ]
     },
     {
