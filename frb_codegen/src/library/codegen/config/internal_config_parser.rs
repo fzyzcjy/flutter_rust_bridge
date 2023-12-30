@@ -403,11 +403,9 @@ mod tests {
     fn test_parse_rust_output_faulty() -> anyhow::Result<()> {
         let result = body("library/codegen/config/internal_config_parser/faulty_rust_output");
         assert!(result.is_err());
-        assert!(result
-            .err()
-            .unwrap()
-            .to_string()
-            .contains("rust_output: is wrong:"));
+        let e = result.err().unwrap().to_string();
+        assert!(e.contains("rust_output: is wrong:"));
+        assert!(e.contains("A path for input/output needs to include the file name"));
         Ok(())
     }
 }
