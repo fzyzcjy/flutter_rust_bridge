@@ -114,9 +114,9 @@ impl FrbAttributes {
 
 mod frb_keyword {
     syn::custom_keyword!(mirror);
-    syn::custom_keyword!(ignore);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
+    syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -128,8 +128,8 @@ mod frb_keyword {
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
-    Ignore,
     Sync,
+    Ignore,
     Opaque,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -154,6 +154,10 @@ impl Parse for OptionFrbAttribute {
             input
                 .parse::<frb_keyword::sync>()
                 .map(|_| FrbAttribute::Sync)?
+        } else if lookahead.peek(frb_keyword::ignore) {
+            input
+                .parse::<frb_keyword::ignore>()
+                .map(|_| FrbAttribute::Ignore)?
         } else if lookahead.peek(frb_keyword::opaque) {
             input
                 .parse::<frb_keyword::opaque>()
@@ -172,10 +176,6 @@ impl Parse for OptionFrbAttribute {
             input.parse::<Token![default]>()?;
             input.parse::<Token![=]>()?;
             input.parse().map(FrbAttribute::Default)?
-        } else if lookahead.peek(frb_keyword::ignore) {
-            input
-                .parse::<frb_keyword::ignore>()
-                .map(|_| FrbAttribute::Ignore)?
         } else {
             return Ok(Self(None));
         })))
