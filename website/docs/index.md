@@ -11,7 +11,7 @@ hide_title: true
 [![CI](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![Post-Release](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge/graph/badge.svg?token=Q7EUTZMDIF)](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge)
-[![All Contributors](https://img.shields.io/badge/all_contributors-79-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-80-orange.svg?style=flat-square)](#contributors-)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
 
 [<img src="https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/website/misc/flutter_favorite.png" width="200" />](https://flutter.dev/docs/development/packages-and-plugins/favorites)
@@ -68,7 +68,7 @@ For more elaborated quickstart, please visit [this page](https://fzyzcjy.github.
 
 This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-and-plugins/favorites), and is in the first batch of 7 packages at its [rebooting](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1).
 
-### 2. Simpleness
+### 2. Simplicity
 
 * **Rapid setup**: Only a one-liner command to integrate into your project.
 * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
@@ -271,19 +271,20 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/utilForever"><img src="https://avatars.githubusercontent.com/u/5622661?v=4?s=100" width="100px;" alt="Chris Ohk"/><br /><sub><b>Chris Ohk</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=utilForever" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/not-holar"><img src="https://avatars.githubusercontent.com/u/58831297?v=4?s=100" width="100px;" alt="Vitalii Hurianov"/><br /><sub><b>Vitalii Hurianov</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=not-holar" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Stonks3141"><img src="https://avatars.githubusercontent.com/u/82178396?v=4?s=100" width="100px;" alt="Sam Nystrom"/><br /><sub><b>Sam Nystrom</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Stonks3141" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.adsouza.net"><img src="https://avatars.githubusercontent.com/u/275832?v=4?s=100" width="100px;" alt="Antonio D'souza"/><br /><sub><b>Antonio D'souza</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=adsouza" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/vimaxwell"><img src="https://avatars.githubusercontent.com/u/19898639?v=4?s=100" width="100px;" alt="max"/><br /><sub><b>max</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=vimaxwell" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lker-dev"><img src="https://avatars.githubusercontent.com/u/40730443?v=4?s=100" width="100px;" alt="Jonathan"/><br /><sub><b>Jonathan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=lker-dev" title="Documentation">📖</a></td>
     </tr>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lker-dev"><img src="https://avatars.githubusercontent.com/u/40730443?v=4?s=100" width="100px;" alt="Jonathan"/><br /><sub><b>Jonathan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=lker-dev" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jaiakash"><img src="https://avatars.githubusercontent.com/u/33419526?v=4?s=100" width="100px;" alt="Akash Jaiswal"/><br /><sub><b>Akash Jaiswal</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=jaiakash" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://feber.dev"><img src="https://avatars.githubusercontent.com/u/1727318?v=4?s=100" width="100px;" alt="Febrian Setianto"/><br /><sub><b>Febrian Setianto</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=feber" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://satvikpendem.com"><img src="https://avatars.githubusercontent.com/u/42670561?v=4?s=100" width="100px;" alt="Satvik Pendem"/><br /><sub><b>Satvik Pendem</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=satvikpendem" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/damywise"><img src="https://avatars.githubusercontent.com/u/25608913?v=4?s=100" width="100px;" alt="Damien Wise"/><br /><sub><b>Damien Wise</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=damywise" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/wxitcode"><img src="https://avatars.githubusercontent.com/u/37947163?v=4?s=100" width="100px;" alt="wxitcode"/><br /><sub><b>wxitcode</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=wxitcode" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rustui"><img src="https://avatars.githubusercontent.com/u/90625190?v=4?s=100" width="100px;" alt="rustui"/><br /><sub><b>rustui</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=rustui" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/escwxyz"><img src="https://avatars.githubusercontent.com/u/124119483?v=4?s=100" width="100px;" alt="J"/><br /><sub><b>J</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=escwxyz" title="Documentation">📖</a></td>
     </tr>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/escwxyz"><img src="https://avatars.githubusercontent.com/u/124119483?v=4?s=100" width="100px;" alt="J"/><br /><sub><b>J</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=escwxyz" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=100" width="100px;" alt="Ikko Ashimine"/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=eltociear" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://thesimplekid.com"><img src="https://avatars.githubusercontent.com/u/8606367?v=4?s=100" width="100px;" alt="thesimplekid"/><br /><sub><b>thesimplekid</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=thesimplekid" title="Documentation">📖</a></td>
     </tr>
@@ -366,6 +367,7 @@ More specifically, thanks for all these contributions:
 * [utilForever](https://github.com/utilForever): Fix typos.
 * [not-holar](https://github.com/not-holar): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
+* [adsouza](https://github.com/adsouza): Fix doc grammar.
 * [vimaxwell](https://github.com/vimaxwell): Fix doc link.
 * [lker-dev](https://github.com/lker-dev): Fix doc link.
 * [jaiakash](https://github.com/jaiakash): Fix doc link.

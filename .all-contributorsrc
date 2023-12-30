@@ -640,6 +640,15 @@
       ]
     },
     {
+      "login": "adsouza",
+      "name": "Antonio D'souza",
+      "avatar_url": "https://avatars.githubusercontent.com/u/275832?v=4",
+      "profile": "https://www.adsouza.net",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "vimaxwell",
       "name": "max",
       "avatar_url": "https://avatars.githubusercontent.com/u/19898639?v=4",
@@ -734,15 +743,6 @@
       "name": "thesimplekid",
       "avatar_url": "https://avatars.githubusercontent.com/u/8606367?v=4",
       "profile": "https://thesimplekid.com",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "adsouza",
-      "name": "Antonio D'souza",
-      "avatar_url": "https://avatars.githubusercontent.com/u/275832?v=4",
-      "profile": "http://www.adsouza.net",
       "contributions": [
         "doc"
       ]
