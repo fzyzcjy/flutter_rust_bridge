@@ -406,7 +406,11 @@ mod tests {
         assert!(result.is_err());
         let error = result.err().unwrap();
         assert!(error.to_string().contains("rust_output: is wrong:"));
-        assert!(error.source().unwrap().to_string().contains("A path for input/output needs to include the file name"));
+        assert!(error
+            .source()
+            .unwrap()
+            .to_string()
+            .contains("A path for input/output needs to include the file name"));
         Ok(())
     }
 }
