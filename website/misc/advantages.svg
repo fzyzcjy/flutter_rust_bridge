@@ -7,7 +7,7 @@
    viewBox="0 0 100 60.999999"
    version="1.1"
    id="svg5"
-   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
    sodipodi:docname="advantages.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -26,11 +26,11 @@
      showgrid="false"
      inkscape:zoom="1.829812"
      inkscape:cx="280.08342"
-     inkscape:cy="140.17834"
-     inkscape:window-width="1920"
+     inkscape:cy="140.45159"
+     inkscape:window-width="1913"
      inkscape:window-height="1132"
-     inkscape:window-x="1927"
-     inkscape:window-y="53"
+     inkscape:window-x="2324"
+     inkscape:window-y="81"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -224,48 +224,47 @@
        style="font-weight:bold;font-size:11.3386px;line-height:1;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';white-space:pre;shape-inside:url(#rect3021);display:inline;fill:none;stroke:#2196f3;stroke-width:3.77953;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"
        x="40.080784"
        y="0"><tspan
-         x="390.21418"
-         y="68.438942"
-         id="tspan2"><tspan
+         x="392.96072"
+         y="69.489687"
+         id="tspan46176"><tspan
            style="font-weight:normal;font-family:'Noto Sans SC';-inkscape-font-specification:'Noto Sans SC Bold';text-align:center;text-anchor:middle;fill:#232323;stroke:none"
-           id="tspan1">Flutter Rust
+           id="tspan46174">Flutter Rust
 </tspan></tspan><tspan
-         x="405.23173"
-         y="79.777543"
-         id="tspan4"><tspan
+         x="406.28918"
+         y="81.930216"
+         id="tspan46180"><tspan
            style="font-weight:normal;font-family:'Noto Sans SC';-inkscape-font-specification:'Noto Sans SC Bold';text-align:center;text-anchor:middle;fill:#232323;stroke:none"
-           id="tspan3">Bridge</tspan></tspan></text>
+           id="tspan46178">Bridge</tspan></tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.316972,0,0,0.316972,-68.025303,-9.197507)"
+       transform="matrix(0.316972,0,0,0.316972,-69.083637,-9.197507)"
        id="text2105"
        style="font-weight:bold;font-size:11.3386px;line-height:0;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';white-space:pre;shape-inside:url(#rect2107);display:inline;fill:none;stroke:#2196f3;stroke-width:3.77953;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="343.92969"
-         y="62.769642"
-         id="tspan6"><tspan
+         y="63.820387"
+         id="tspan46184"><tspan
            style="font-weight:normal;font-family:'Noto Sans SC';-inkscape-font-specification:'Noto Sans SC Bold';fill:#388e3c;stroke:none"
-           id="tspan5">Simplicity</tspan></tspan></text>
+           id="tspan46182">Simplicity</tspan></tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.316972,0,0,0.316972,-64.788783,29.143622)"
+       transform="matrix(0.316972,0,0,0.316972,-70.080453,29.143622)"
        id="text2281"
        style="font-weight:bold;font-size:11.3386px;line-height:0;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';white-space:pre;shape-inside:url(#rect2283);display:inline;fill:none;stroke:#2196f3;stroke-width:3.77953;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="343.92969"
-         y="62.769642"
-         id="tspan8"><tspan
+         y="63.820387"
+         id="tspan46188"><tspan
            style="font-weight:normal;font-family:'Noto Sans SC';-inkscape-font-specification:'Noto Sans SC Bold';fill:#f57c00;stroke:none"
-           id="tspan7">Power
-</tspan></tspan></text>
+           id="tspan46186">Powerfulness</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.316972,0,0,0.316972,-37.269397,9.5516117)"
        id="text3013"
        style="font-weight:bold;font-size:11.3386px;line-height:0;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';white-space:pre;shape-inside:url(#rect3015);display:inline;fill:none;stroke:#2196f3;stroke-width:3.77953;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="343.92969"
-         y="62.769642"
-         id="tspan10"><tspan
+         y="63.820387"
+         id="tspan46192"><tspan
            style="font-weight:normal;font-family:'Noto Sans SC';-inkscape-font-specification:'Noto Sans SC Bold';fill:#303f9f;stroke:none"
-           id="tspan9">Reliability</tspan></tspan></text>
+           id="tspan46190">Reliability</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.316972,0,0,0.316972,-137.59503,5.4021479)"
@@ -273,17 +272,17 @@
        style="font-weight:bold;font-size:11.3386px;line-height:1;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';white-space:pre;shape-inside:url(#rect3151);display:inline;fill:none;stroke:#2196f3;stroke-width:3.77953;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"
        x="161.25676"
        y="0"><tspan
-         x="496.65281"
-         y="68.438942"
-         id="tspan12"><tspan
+         x="498.2636"
+         y="69.489687"
+         id="tspan46196"><tspan
            style="font-weight:normal;font-family:'Noto Sans SC';-inkscape-font-specification:'Noto Sans SC Bold';text-align:end;text-anchor:end;fill:#1976d2;stroke:none"
-           id="tspan11">Official
+           id="tspan46194">Official
 </tspan></tspan><tspan
-         x="448.93435"
-         y="79.777543"
-         id="tspan14"><tspan
+         x="455.01839"
+         y="81.930216"
+         id="tspan46200"><tspan
            style="font-weight:normal;font-family:'Noto Sans SC';-inkscape-font-specification:'Noto Sans SC Bold';text-align:end;text-anchor:end;fill:#1976d2;stroke:none"
-           id="tspan13">Flutter Favorite</tspan></tspan></text>
+           id="tspan46198">Flutter Favorite</tspan></tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.359402;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-opacity:1"
        id="rect31932"
