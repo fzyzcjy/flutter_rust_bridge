@@ -42,4 +42,3 @@ A new Flutter FFI plugin project.
     'OTHER_LDFLAGS' => '-force_load ${BUILT_PRODUCTS_DIR}/libREPLACE_ME_RUST_CRATE_NAME.a',
   }
 end
-
