@@ -19,6 +19,8 @@ pub enum IrTypeDelegate {
     // Uuids,// TODO avoid this special case?
     Backtrace,
     AnyhowException,
+    Map(IrTypeDelegateMap),
+    Set(IrTypeDelegateSet),
 }
 
 pub struct IrTypeDelegateArray {
@@ -45,6 +47,10 @@ pub enum IrTypeDelegateTime {
     Naive,
     Duration,
 }
+
+pub struct IrTypeDelegateMap {}
+
+pub struct IrTypeDelegateSet {}
 }
 
 impl IrTypeTrait for IrTypeDelegate {
