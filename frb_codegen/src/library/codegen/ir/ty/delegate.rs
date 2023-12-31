@@ -3,6 +3,7 @@ use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -51,6 +52,7 @@ pub enum IrTypeDelegateTime {
 pub struct IrTypeDelegateMap {
     pub key: Box<IrType>,
     pub value: Box<IrType>,
+    pub delegate: IrTypeRecord,
 }
 
 pub struct IrTypeDelegateSet {
@@ -181,7 +183,7 @@ impl IrTypeDelegate {
             // }),
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Map(ir) => IrType::Record(ir.delegate.clone()),
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned()),
         }
     }

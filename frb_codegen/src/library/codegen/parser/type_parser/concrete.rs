@@ -4,6 +4,7 @@ use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateMap, IrTypeDelegateSet, IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
+use crate::codegen::ir::ty::general_list::ir_list;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic, Unencodable};
@@ -11,7 +12,6 @@ use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
-use crate::codegen::ir::ty::general_list::ir_list;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
@@ -50,6 +50,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
                 key: Box::new(key.clone()),
                 value: Box::new(value.clone()),
+                delegate: TODO,
             })),
             ("HashSet", Some(Generic([inner]))) => Delegate(IrTypeDelegate::Set(IrTypeDelegateSet {
                 inner: Box::new(inner.clone()),
