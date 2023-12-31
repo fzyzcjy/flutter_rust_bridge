@@ -19,6 +19,7 @@ pub(crate) struct FfigenArgs<'a> {
     pub llvm_path: &'a [PathBuf],
     pub llvm_compiler_opts: &'a str,
     pub dart_root: &'a Path,
+    pub function_rename: &'a HashMap<String, String>,
 }
 
 pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
@@ -33,6 +34,7 @@ pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
         llvm_path: args.llvm_path,
         llvm_compiler_opts: args.llvm_compiler_opts,
         dart_root: args.dart_root,
+        function_rename: args.function_rename,
     })?;
     let output_text = fs::read_to_string(temp_dart_file.path())?;
 
@@ -50,6 +52,7 @@ struct FfigenToFileArgs<'a> {
     llvm_path: &'a [PathBuf],
     llvm_compiler_opts: &'a str,
     dart_root: &'a Path,
+    function_rename: &'a HashMap<String, String>,
 }
 
 fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
@@ -164,8 +167,7 @@ fn parse_config(args: &FfigenToFileArgs) -> FfigenCommandConfig {
         llvm_path: args.llvm_path.to_owned(),
         compiler_opts: llvm_compiler_opts_list,
         functions: FfigenCommandConfigFunctions {
-            // TODO just experiment
-            rename: Some([("frbgen_(.*)".to_owned(), "$1".to_owned())].into()),
+            rename: Some(args.function_rename.to_owned()),
         },
     }
 }
