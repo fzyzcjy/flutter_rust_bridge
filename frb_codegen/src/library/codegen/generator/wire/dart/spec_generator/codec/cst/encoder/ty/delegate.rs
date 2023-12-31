@@ -106,6 +106,8 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
+            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Set(ir) => TODO,
         }
     }
 

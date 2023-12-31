@@ -92,6 +92,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 TargetOrCommon::Common => None,
                 TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
+            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Set(ir) => TODO,
         }
     }
 
@@ -121,6 +123,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             )
                 .into(),
             IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
+            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Set(ir) => TODO,
         })
     }
 

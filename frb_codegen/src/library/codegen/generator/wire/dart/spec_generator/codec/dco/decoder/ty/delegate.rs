@@ -78,6 +78,8 @@ impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGener
             //     );
             //     ".to_owned(),
             IrTypeDelegate::AnyhowException => "return AnyhowException(raw as String);".to_owned(),
+            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Set(ir) => TODO,
         }
     }
 }
