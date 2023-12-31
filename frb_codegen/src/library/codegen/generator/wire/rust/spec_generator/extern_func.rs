@@ -62,7 +62,7 @@ impl ExternFunc {
 
     pub(crate) fn func_name(&self, c_symbol_prefix: &str) -> String {
         match self.target {
-            Target::Io => format!("{c_symbol_prefix}{partial_func_name}"),
+            Target::Io => format!("{c_symbol_prefix}{}", self.partial_func_name),
             Target::Web => self.partial_func_name.to_owned(),
         }
     }
