@@ -122,6 +122,7 @@ fn replace_file_content(raw: &[u8], package_name: &str, enable_local_dependency:
     match String::from_utf8(raw.to_owned()) {
         Ok(raw_str) => raw_str
             .replace("REPLACE_ME_DART_PACKAGE_NAME", package_name)
+            .replace("REPLACE_ME_RUST_CRATE_NAME", TODO)
             .replace(
                 "REPLACE_ME_RUST_FRB_DEPENDENCY",
                 &if enable_local_dependency {
