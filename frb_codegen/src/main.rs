@@ -7,7 +7,7 @@ mod binary;
 
 use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs};
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
-use clap::{arg, Parser};
+use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
