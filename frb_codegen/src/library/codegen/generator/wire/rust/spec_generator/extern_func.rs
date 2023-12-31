@@ -91,7 +91,7 @@ impl ExternFuncParam {
 // TODO maybe move
 #[derive(Clone, Debug, Serialize)]
 pub(crate) struct ExternClass {
-    pub partial_name: String,
+    pub name: String,
     pub mode: ExternClassMode,
     pub body: String,
 }
@@ -104,11 +104,7 @@ pub(crate) enum ExternClassMode {
 
 impl ExternClass {
     pub(crate) fn generate(&self, extern_name_prefix: &str) -> String {
-        let ExternClass {
-            partial_name,
-            mode,
-            body,
-        } = self;
+        let ExternClass { name, mode, body } = self;
 
         let mode = match mode {
             ExternClassMode::Struct => "struct",

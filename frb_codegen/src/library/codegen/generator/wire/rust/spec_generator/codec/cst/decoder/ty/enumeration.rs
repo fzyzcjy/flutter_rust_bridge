@@ -42,12 +42,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
 
         let mut extern_classes = vec![
             ExternClass {
-                partial_name: rust_wire_type,
+                name: rust_wire_type,
                 mode: ExternClassMode::Struct,
                 body: format!("tag: i32, kind: {union_kind},"),
             },
             ExternClass {
-                partial_name: union_kind,
+                name: union_kind,
                 mode: ExternClassMode::Union,
                 body: union_fields,
             },
@@ -139,7 +139,7 @@ impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
             })
             .collect::<Vec<_>>();
         ExternClass {
-            partial_name: format!("wire_cst_{}_{}", self.ir.ident.0.name, variant_name),
+            name: format!("wire_cst_{}_{}", self.ir.ident.0.name, variant_name),
             mode: ExternClassMode::Struct,
             body: fields.join("\n"),
         }
