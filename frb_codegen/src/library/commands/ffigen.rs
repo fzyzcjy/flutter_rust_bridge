@@ -197,6 +197,7 @@ pub(crate) struct FfigenCommandConfigHeaders {
 #[derive(Default, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub(crate) struct FfigenCommandConfigFunctions {
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub rename: Option<HashMap<String, String>>,
 }
 
