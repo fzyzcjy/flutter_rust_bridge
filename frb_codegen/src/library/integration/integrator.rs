@@ -144,6 +144,7 @@ fn replace_file_content(
         Ok(raw_str) => raw_str
             .replace("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name)
             .replace("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name)
+            .replace("REPLACE_ME_RUST_CRATE_DIR", TODO)
             .replace(
                 "REPLACE_ME_RUST_FRB_DEPENDENCY",
                 &if enable_local_dependency {
