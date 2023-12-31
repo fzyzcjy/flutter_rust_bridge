@@ -21,7 +21,9 @@ impl WireRustOutputCode {
             (self.extern_funcs.iter())
                 .map(|func| func.generate(extern_name_prefix))
                 .join("\n"),
-            (self.extern_classes.iter().map(|cls| cls.generate())).join("\n"),
+            (self.extern_classes.iter())
+                .map(|cls| cls.generate(extern_name_prefix))
+                .join("\n"),
         )
     }
 }

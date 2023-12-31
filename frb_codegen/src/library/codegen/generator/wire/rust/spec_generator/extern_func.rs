@@ -103,7 +103,7 @@ pub(crate) enum ExternClassMode {
 }
 
 impl ExternClass {
-    pub(crate) fn generate(&self) -> String {
+    pub(crate) fn generate(&self, extern_name_prefix: &str) -> String {
         let ExternClass { name, mode, body } = self;
 
         let mode = match mode {
