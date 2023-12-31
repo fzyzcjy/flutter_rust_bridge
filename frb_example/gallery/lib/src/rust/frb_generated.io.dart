@@ -414,7 +414,7 @@ class RustLibWire implements BaseWire {
   late final _dart_fn_deliver_outputPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('dart_fn_deliver_output');
+              ffi.Int32)>>('frbgen_frb_example_gallery_dart_fn_deliver_output');
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
@@ -441,7 +441,7 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_cst_size>,
               ffi.Pointer<wire_cst_point>,
               ffi.Double,
-              ffi.Int32)>>('wire_draw_mandelbrot');
+              ffi.Int32)>>('frbgen_frb_example_gallery_wire_draw_mandelbrot');
   late final _wire_draw_mandelbrot = _wire_draw_mandelbrotPtr.asFunction<
       void Function(int, ffi.Pointer<wire_cst_size>,
           ffi.Pointer<wire_cst_point>, double, int)>();
@@ -462,7 +462,7 @@ class RustLibWire implements BaseWire {
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
                   ffi.Pointer<wire_cst_list_prim_u_8>)>>(
-      'wire_DataFrame_get_column');
+      'frbgen_frb_example_gallery_wire_DataFrame_get_column');
   late final _wire_DataFrame_get_column =
       _wire_DataFrame_get_columnPtr.asFunction<
           void Function(int, ffi.Pointer<ffi.Void>,
@@ -477,9 +477,9 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_DataFrame_get_column_namesPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(
-              ffi.Pointer<ffi.Void>)>>('wire_DataFrame_get_column_names');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_gallery_wire_DataFrame_get_column_names');
   late final _wire_DataFrame_get_column_names =
       _wire_DataFrame_get_column_namesPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
@@ -493,9 +493,9 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_DataFrame_lazyPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(
-              ffi.Pointer<ffi.Void>)>>('wire_DataFrame_lazy');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_gallery_wire_DataFrame_lazy');
   late final _wire_DataFrame_lazy = _wire_DataFrame_lazyPtr
       .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
 
@@ -510,9 +510,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_Expr_gtPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>('wire_Expr_gt');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_gallery_wire_Expr_gt');
   late final _wire_Expr_gt = _wire_Expr_gtPtr.asFunction<
       WireSyncRust2DartDco Function(
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
@@ -526,9 +527,9 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_Expr_sumPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(
-              ffi.Pointer<ffi.Void>)>>('wire_Expr_sum');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_gallery_wire_Expr_sum');
   late final _wire_Expr_sum = _wire_Expr_sumPtr
       .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
 
@@ -545,7 +546,7 @@ class RustLibWire implements BaseWire {
   late final _wire_LazyFrame_collectPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_LazyFrame_collect');
+      'frbgen_frb_example_gallery_wire_LazyFrame_collect');
   late final _wire_LazyFrame_collect = _wire_LazyFrame_collectPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
@@ -560,9 +561,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_LazyFrame_filterPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>>('wire_LazyFrame_filter');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_gallery_wire_LazyFrame_filter');
   late final _wire_LazyFrame_filter = _wire_LazyFrame_filterPtr.asFunction<
       WireSyncRust2DartDco Function(
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
@@ -578,9 +580,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_LazyFrame_group_byPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>>('wire_LazyFrame_group_by');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_gallery_wire_LazyFrame_group_by');
   late final _wire_LazyFrame_group_by = _wire_LazyFrame_group_byPtr.asFunction<
       WireSyncRust2DartDco Function(
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
@@ -596,9 +599,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_LazyGroupBy_aggPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>>('wire_LazyGroupBy_agg');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_gallery_wire_LazyGroupBy_agg');
   late final _wire_LazyGroupBy_agg = _wire_LazyGroupBy_aggPtr.asFunction<
       WireSyncRust2DartDco Function(
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
@@ -612,9 +616,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_colPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(
-              ffi.Pointer<wire_cst_list_prim_u_8>)>>('wire_col');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'frbgen_frb_example_gallery_wire_col');
   late final _wire_col = _wire_colPtr.asFunction<
       WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
@@ -628,7 +633,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_litPtr =
       _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Double)>>(
-          'wire_lit');
+          'frbgen_frb_example_gallery_wire_lit');
   late final _wire_lit =
       _wire_litPtr.asFunction<WireSyncRust2DartDco Function(double)>();
 
@@ -642,7 +647,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_read_sample_datasetPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_read_sample_dataset');
+          'frbgen_frb_example_gallery_wire_read_sample_dataset');
   late final _wire_read_sample_dataset =
       _wire_read_sample_datasetPtr.asFunction<void Function(int)>();
 
@@ -656,7 +661,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFramePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame');
+          'frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame');
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame =
       _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFramePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -671,7 +676,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFramePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame');
+          'frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFramePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -686,7 +691,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExprPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr');
+          'frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr');
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr =
       _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExprPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -701,7 +706,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExprPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr');
+          'frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExprPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -716,7 +721,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame');
+          'frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame');
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame =
       _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -731,7 +736,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame');
+          'frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFramePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -746,7 +751,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy');
+          'frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy');
   late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy =
       _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -761,7 +766,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy');
+          'frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupByPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -772,7 +777,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_pointPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_point> Function()>>(
-          'cst_new_box_autoadd_point');
+          'frbgen_frb_example_gallery_cst_new_box_autoadd_point');
   late final _cst_new_box_autoadd_point = _cst_new_box_autoadd_pointPtr
       .asFunction<ffi.Pointer<wire_cst_point> Function()>();
 
@@ -782,7 +787,7 @@ class RustLibWire implements BaseWire {
 
   late final _cst_new_box_autoadd_sizePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_size> Function()>>(
-          'cst_new_box_autoadd_size');
+          'frbgen_frb_example_gallery_cst_new_box_autoadd_size');
   late final _cst_new_box_autoadd_size = _cst_new_box_autoadd_sizePtr
       .asFunction<ffi.Pointer<wire_cst_size> Function()>();
 
@@ -797,7 +802,7 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_StringPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<wire_cst_list_String> Function(
-              ffi.Int32)>>('cst_new_list_String');
+              ffi.Int32)>>('frbgen_frb_example_gallery_cst_new_list_String');
   late final _cst_new_list_String = _cst_new_list_StringPtr
       .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
 
@@ -812,7 +817,7 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_prim_u_8Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<wire_cst_list_prim_u_8> Function(
-              ffi.Int32)>>('cst_new_list_prim_u_8');
+              ffi.Int32)>>('frbgen_frb_example_gallery_cst_new_list_prim_u_8');
   late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
       .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
 
