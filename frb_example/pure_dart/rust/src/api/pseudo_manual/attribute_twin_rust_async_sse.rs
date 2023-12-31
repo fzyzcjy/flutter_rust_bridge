@@ -13,6 +13,18 @@ pub struct CustomizedTwinRustAsyncSse {
     pub non_final_field: Option<String>,
 }
 
+#[frb(ignore)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_should_not_exist_in_dart_twin_rust_async_sse() {}
+
+pub struct EmptyTwinRustAsyncSse;
+
+impl EmptyTwinRustAsyncSse {
+    #[frb(ignore)]
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn method_should_not_exist_in_dart_twin_rust_async_sse() {}
+}
+
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn handle_customized_struct_twin_rust_async_sse(val: CustomizedTwinRustAsyncSse) {
     info!("{:#?}", val);

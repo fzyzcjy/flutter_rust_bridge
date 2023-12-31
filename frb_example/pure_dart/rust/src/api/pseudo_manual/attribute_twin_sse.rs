@@ -13,6 +13,18 @@ pub struct CustomizedTwinSse {
     pub non_final_field: Option<String>,
 }
 
+#[frb(ignore)]
+#[flutter_rust_bridge::frb(serialize)]
+pub fn func_should_not_exist_in_dart_twin_sse() {}
+
+pub struct EmptyTwinSse;
+
+impl EmptyTwinSse {
+    #[frb(ignore)]
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn method_should_not_exist_in_dart_twin_sse() {}
+}
+
 #[flutter_rust_bridge::frb(serialize)]
 pub fn handle_customized_struct_twin_sse(val: CustomizedTwinSse) {
     info!("{:#?}", val);

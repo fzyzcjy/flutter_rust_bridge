@@ -9,6 +9,16 @@ pub struct CustomizedTwinNormal {
     pub non_final_field: Option<String>,
 }
 
+#[frb(ignore)]
+pub fn func_should_not_exist_in_dart_twin_normal() {}
+
+pub struct EmptyTwinNormal;
+
+impl EmptyTwinNormal {
+    #[frb(ignore)]
+    pub fn method_should_not_exist_in_dart_twin_normal() {}
+}
+
 pub fn handle_customized_struct_twin_normal(val: CustomizedTwinNormal) {
     info!("{:#?}", val);
 }
