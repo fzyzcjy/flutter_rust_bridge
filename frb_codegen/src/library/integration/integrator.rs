@@ -98,12 +98,7 @@ fn modify_file(
         enable_local_dependency,
     );
 
-    let path =
-        if (path_raw.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
-            path_raw.with_extension("")
-        } else {
-            path_raw.to_owned()
-        };
+    let path = compute_effective_path(path_raw);
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -136,6 +131,14 @@ fn modify_file(
     }
 
     Some((path, src))
+}
+
+fn compute_effective_path(path_raw: &Path) -> PathBuf {
+    if (path_raw.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
+        path_raw.with_extension("")
+    } else {
+        path_raw.to_owned()
+    }
 }
 
 fn replace_file_content(
