@@ -25,7 +25,7 @@ pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<Wir
         ["increment", "decrement"].iter()
             .map(|op|
                      ExternFunc {
-                         func_name: format!("rust_arc_{op}_strong_count_{}", ir.safe_ident()),
+                         partial_func_name: format!("rust_arc_{op}_strong_count_{}", ir.safe_ident()),
                          params: vec![ExternFuncParam {
                              name: "ptr".to_owned(),
                              rust_type: "*const std::ffi::c_void".to_owned(),

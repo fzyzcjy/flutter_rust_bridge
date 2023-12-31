@@ -141,7 +141,7 @@ class _$EnumOpaqueTwinSync_StructImpl implements EnumOpaqueTwinSync_Struct {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSync_StructImpl &&
@@ -299,7 +299,7 @@ class _$EnumOpaqueTwinSync_PrimitiveImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSync_PrimitiveImpl &&
@@ -458,7 +458,7 @@ class _$EnumOpaqueTwinSync_TraitObjImpl implements EnumOpaqueTwinSync_TraitObj {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSync_TraitObjImpl &&
@@ -615,7 +615,7 @@ class _$EnumOpaqueTwinSync_MutexImpl implements EnumOpaqueTwinSync_Mutex {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSync_MutexImpl &&
@@ -772,7 +772,7 @@ class _$EnumOpaqueTwinSync_RwLockImpl implements EnumOpaqueTwinSync_RwLock {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSync_RwLockImpl &&

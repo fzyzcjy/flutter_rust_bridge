@@ -51,6 +51,12 @@ Future<void> precommit(PrecommitConfig config) async {
         generateRunFrbCodegenCommandGenerate(GeneratePackageConfig(
             setExitIfChanged: false, package: package, coverage: false)),
     ]);
+
+    await Future.wait([
+      for (final package in kDartExampleIntegratePackages)
+        generateRunFrbCodegenCommandIntegrate(GeneratePackageConfig(
+            setExitIfChanged: false, package: package, coverage: false)),
+    ]);
   }
 
   // format after clippy, since cargo fix may remove a import line, but leave

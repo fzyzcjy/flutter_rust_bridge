@@ -60,6 +60,9 @@ impl FrbAttributes {
     pub(crate) fn sync(&self) -> bool {
         self.any_eq(&FrbAttribute::Sync)
     }
+    pub(crate) fn ignore(&self) -> bool {
+        self.any_eq(&FrbAttribute::Ignore)
+    }
 
     pub(crate) fn opaque(&self) -> bool {
         self.any_eq(&FrbAttribute::Opaque)
@@ -113,6 +116,7 @@ mod frb_keyword {
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
+    syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
@@ -125,6 +129,7 @@ enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
     Sync,
+    Ignore,
     Opaque,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
@@ -149,6 +154,10 @@ impl Parse for OptionFrbAttribute {
             input
                 .parse::<frb_keyword::sync>()
                 .map(|_| FrbAttribute::Sync)?
+        } else if lookahead.peek(frb_keyword::ignore) {
+            input
+                .parse::<frb_keyword::ignore>()
+                .map(|_| FrbAttribute::Ignore)?
         } else if lookahead.peek(frb_keyword::opaque) {
             input
                 .parse::<frb_keyword::opaque>()
@@ -416,6 +425,12 @@ mod tests {
             parse("#[frb(sync)]")?,
             FrbAttributes(vec![FrbAttribute::Sync]),
         );
+        Ok(())
+    }
+    #[test]
+    fn test_ignore() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(ignore)]")?;
+        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Ignore]));
         Ok(())
     }
 

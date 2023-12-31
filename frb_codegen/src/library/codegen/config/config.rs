@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 /// Configuration for code generation
 /// Refer to `GenerateCommandArgs` for documentations
 #[derive(Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Config {
     pub base_dir: Option<String>,
     pub rust_input: String,

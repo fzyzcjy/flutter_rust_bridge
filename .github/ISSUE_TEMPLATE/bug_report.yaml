@@ -1,16 +1,8 @@
 name: Bug Report
 description: Create a report to help us improve
-title: "[Bug] "
 labels: ["bug"]
 assignees: []
 body:
-  - type: markdown
-    attributes:
-      value: |
-        # Please fill in the blanks below
-
-        many bugs can be solved easily and quickly with the information (especially logs).
-
   - type: textarea
     id: describe-the-bug
     attributes:
@@ -19,11 +11,22 @@ body:
     validations:
       required: true
   - type: textarea
-    id: codegen-logs
     attributes:
-      label: Codegen logs with `RUST_LOG=debug` environment variable
-      description: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`. Alternatively, add `--verbose` to command `flutter_rust_bridge_codegen` would get the same output.
-      placeholder: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`. Alternatively, add `--verbose` to command `flutter_rust_bridge_codegen` would get the same output.
+      label: Steps to reproduce
+      description: A simple way to reproduce is to clone and modify the https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/dart_minimal example package according to your needs.
+      value: |
+        Hint: A simple way to reproduce is to clone and modify the https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/dart_minimal example package according to your needs.
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.
+      placeholder: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.
       render: shell
     validations:
       required: true
@@ -33,15 +36,8 @@ body:
       value: |
         # The following fields are *optional*
 
-        but may be useful for debugging
+        ...but may be useful for debugging
 
-  - type: textarea
-    id: to-reproduce
-    attributes:
-      label: To Reproduce
-      description: Steps to reproduce the behavior.
-    validations:
-      required: false
   - type: textarea
     id: expected-behavior
     attributes:

@@ -44,7 +44,7 @@ pub(crate) fn generate_wire_func(
 
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Web => ExternFunc {
-            func_name: func_name.clone(),
+            partial_func_name: func_name.clone(),
             params: params.clone().get(target),
             return_type: return_type.clone(),
             body: generate_redirect_body(func, &params.common),

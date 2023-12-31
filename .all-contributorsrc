@@ -258,16 +258,6 @@
       ]
     },
     {
-      "login": "alexthe2",
-      "name": "Alex Procelewski",
-      "avatar_url": "https://avatars.githubusercontent.com/u/33789063?v=4",
-      "profile": "https://github.com/alexthe2",
-      "contributions": [
-        "doc",
-        "code"
-      ]
-    },
-    {
       "login": "AlienKevin",
       "name": "Kevin Li",
       "avatar_url": "https://avatars.githubusercontent.com/u/22850071?v=4",
@@ -275,6 +265,16 @@
       "contributions": [
         "code",
         "doc"
+      ]
+    },
+    {
+      "login": "alexthe2",
+      "name": "Alex Procelewski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33789063?v=4",
+      "profile": "https://github.com/alexthe2",
+      "contributions": [
+        "doc",
+        "code"
       ]
     },
     {
@@ -414,6 +414,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "bus710",
       "name": "bus710",
       "avatar_url": "https://avatars.githubusercontent.com/u/8920680?v=4",
@@ -474,15 +483,6 @@
       "profile": "https://ares.zone (国内)",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
-      "contributions": [
-        "code"
       ]
     },
     {
@@ -635,6 +635,24 @@
       "name": "Sam Nystrom",
       "avatar_url": "https://avatars.githubusercontent.com/u/82178396?v=4",
       "profile": "https://github.com/Stonks3141",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "mattiasgronlund",
+      "name": "mattiasgronlund",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7727472?v=4",
+      "profile": "https://github.com/mattiasgronlund",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "adsouza",
+      "name": "Antonio D'souza",
+      "avatar_url": "https://avatars.githubusercontent.com/u/275832?v=4",
+      "profile": "https://www.adsouza.net",
       "contributions": [
         "doc"
       ]

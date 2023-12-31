@@ -1,12 +1,12 @@
 use crate::integration::utils::extract_dir_and_modify;
 use crate::library::commands::flutter::flutter_pub_add;
 use crate::library::commands::format_dart::format_dart;
+use crate::utils::dart_repository::get_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
-use anyhow::{Context, Result};
+use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::{debug, warn};
-use serde_yaml::Value;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
@@ -216,14 +216,4 @@ fn pub_add_dependencies(
     // frb-coverage:ignore-end
 
     Ok(())
-}
-
-fn get_package_name(dart_root: &Path) -> Result<String> {
-    let pubspec_yaml: Value = serde_yaml::from_slice(&fs::read(dart_root.join("pubspec.yaml"))?)?;
-    Ok(pubspec_yaml
-        .get("name")
-        .context("no name field")?
-        .as_str()
-        .context("cannot be str")?
-        .to_owned())
 }

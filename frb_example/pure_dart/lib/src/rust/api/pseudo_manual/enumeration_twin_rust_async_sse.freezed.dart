@@ -106,7 +106,7 @@ class _$DistanceTwinRustAsyncSse_UnknownImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DistanceTwinRustAsyncSse_UnknownImpl);
@@ -233,7 +233,7 @@ class _$DistanceTwinRustAsyncSse_MapImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DistanceTwinRustAsyncSse_MapImpl &&
@@ -426,7 +426,7 @@ class _$EnumWithItemMixedTwinRustAsyncSse_AImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinRustAsyncSse_AImpl);
@@ -559,7 +559,7 @@ class _$EnumWithItemMixedTwinRustAsyncSse_BImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinRustAsyncSse_BImpl &&
@@ -708,7 +708,7 @@ class _$EnumWithItemMixedTwinRustAsyncSse_CImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinRustAsyncSse_CImpl &&
@@ -920,7 +920,7 @@ class _$EnumWithItemStructTwinRustAsyncSse_AImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemStructTwinRustAsyncSse_AImpl &&
@@ -1064,7 +1064,7 @@ class _$EnumWithItemStructTwinRustAsyncSse_BImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemStructTwinRustAsyncSse_BImpl &&
@@ -1272,7 +1272,7 @@ class _$EnumWithItemTupleTwinRustAsyncSse_AImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemTupleTwinRustAsyncSse_AImpl &&
@@ -1416,7 +1416,7 @@ class _$EnumWithItemTupleTwinRustAsyncSse_BImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemTupleTwinRustAsyncSse_BImpl &&
@@ -1633,7 +1633,7 @@ class _$KitchenSinkTwinRustAsyncSse_EmptyImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinRustAsyncSse_EmptyImpl);
@@ -1805,7 +1805,7 @@ class _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl &&
@@ -2003,7 +2003,7 @@ class _$KitchenSinkTwinRustAsyncSse_NestedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinRustAsyncSse_NestedImpl &&
@@ -2186,7 +2186,7 @@ class _$KitchenSinkTwinRustAsyncSse_OptionalImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinRustAsyncSse_OptionalImpl &&
@@ -2360,7 +2360,7 @@ class _$KitchenSinkTwinRustAsyncSse_BufferImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinRustAsyncSse_BufferImpl &&
@@ -2533,7 +2533,7 @@ class _$KitchenSinkTwinRustAsyncSse_EnumsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinRustAsyncSse_EnumsImpl &&
@@ -2776,7 +2776,7 @@ class _$MeasureTwinRustAsyncSse_SpeedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeasureTwinRustAsyncSse_SpeedImpl &&
@@ -2929,7 +2929,7 @@ class _$MeasureTwinRustAsyncSse_DistanceImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeasureTwinRustAsyncSse_DistanceImpl &&
@@ -3116,7 +3116,7 @@ class _$SpeedTwinRustAsyncSse_UnknownImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeedTwinRustAsyncSse_UnknownImpl);
@@ -3241,7 +3241,7 @@ class _$SpeedTwinRustAsyncSse_GPSImpl implements SpeedTwinRustAsyncSse_GPS {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeedTwinRustAsyncSse_GPSImpl &&

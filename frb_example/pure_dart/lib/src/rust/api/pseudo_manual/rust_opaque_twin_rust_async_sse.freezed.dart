@@ -146,7 +146,7 @@ class _$EnumOpaqueTwinRustAsyncSse_StructImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinRustAsyncSse_StructImpl &&
@@ -309,7 +309,7 @@ class _$EnumOpaqueTwinRustAsyncSse_PrimitiveImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinRustAsyncSse_PrimitiveImpl &&
@@ -472,7 +472,7 @@ class _$EnumOpaqueTwinRustAsyncSse_TraitObjImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinRustAsyncSse_TraitObjImpl &&
@@ -636,7 +636,7 @@ class _$EnumOpaqueTwinRustAsyncSse_MutexImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinRustAsyncSse_MutexImpl &&
@@ -799,7 +799,7 @@ class _$EnumOpaqueTwinRustAsyncSse_RwLockImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinRustAsyncSse_RwLockImpl &&

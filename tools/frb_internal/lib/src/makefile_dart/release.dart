@@ -67,6 +67,7 @@ Future<void> releaseUpdateVersion() async {
 Future<void> releaseUpdateCode() async {
   _updateVersionInText();
   await pubGetAll();
+  await miscNormalizePubspec();
   await cargoFetchAll();
 }
 

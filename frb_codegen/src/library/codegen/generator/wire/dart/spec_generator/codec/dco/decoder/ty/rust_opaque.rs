@@ -15,7 +15,7 @@ pub(super) fn generalized_rust_opaque_generate_impl_decode_body(
     context: WireDartCodecDcoGeneratorContext,
 ) -> String {
     format!(
-        "return {}.dcoDecode(raw);",
+        "return {}.dcoDecode(raw as List<dynamic>);",
         ApiDartGenerator::new(ir, context.as_api_dart_context()).dart_api_type()
     )
 }

@@ -130,7 +130,7 @@ class _$ApplicationMessage_DisplayMessageImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationMessage_DisplayMessageImpl &&
@@ -286,7 +286,7 @@ class _$ApplicationMessage_RenderPixelImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationMessage_RenderPixelImpl &&
@@ -418,7 +418,7 @@ class _$ApplicationMessage_ExitImpl implements ApplicationMessage_Exit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplicationMessage_ExitImpl);
@@ -619,7 +619,7 @@ class _$RawStringEnumMirrored_RawImpl implements RawStringEnumMirrored_Raw {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RawStringEnumMirrored_RawImpl &&
@@ -767,7 +767,7 @@ class _$RawStringEnumMirrored_NestedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RawStringEnumMirrored_NestedImpl &&
@@ -918,7 +918,7 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RawStringEnumMirrored_ListOfNestedImpl &&
