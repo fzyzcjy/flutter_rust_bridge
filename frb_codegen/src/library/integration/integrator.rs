@@ -1,7 +1,7 @@
 use crate::integration::utils::extract_dir_and_modify;
 use crate::library::commands::flutter::flutter_pub_add;
 use crate::library::commands::format_dart::format_dart;
-use crate::utils::dart_repository::get_package_name;
+use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
@@ -20,7 +20,7 @@ pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
-    let package_name = get_package_name(&dart_root)?;
+    let dart_package_name = get_dart_package_name(&dart_root)?;
 
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
@@ -30,7 +30,7 @@ pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -
                 path,
                 src_raw,
                 existing_content,
-                &package_name,
+                &dart_package_name,
                 enable_local_dependency,
             )
         },
@@ -73,10 +73,10 @@ fn modify_file(
     path_raw: &Path,
     src_raw: &[u8],
     existing_content: Option<Vec<u8>>,
-    package_name: &str,
+    dart_package_name: &str,
     enable_local_dependency: bool,
 ) -> Option<(PathBuf, Vec<u8>)> {
-    let src = replace_file_content(src_raw, package_name, enable_local_dependency);
+    let src = replace_file_content(src_raw, dart_package_name, enable_local_dependency);
 
     let path =
         if (path_raw.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
@@ -118,10 +118,14 @@ fn modify_file(
     Some((path, src))
 }
 
-fn replace_file_content(raw: &[u8], package_name: &str, enable_local_dependency: bool) -> Vec<u8> {
+fn replace_file_content(
+    raw: &[u8],
+    dart_package_name: &str,
+    enable_local_dependency: bool,
+) -> Vec<u8> {
     match String::from_utf8(raw.to_owned()) {
         Ok(raw_str) => raw_str
-            .replace("REPLACE_ME_DART_PACKAGE_NAME", package_name)
+            .replace("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name)
             .replace("REPLACE_ME_RUST_CRATE_NAME", TODO)
             .replace(
                 "REPLACE_ME_RUST_FRB_DEPENDENCY",
