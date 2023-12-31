@@ -166,6 +166,10 @@ pub(crate) struct CreateOrIntegrateCommandCommonArgs {
     #[arg(long)]
     pub rust_crate_name: Option<String>,
 
+    /// The directory of the generated Rust crate
+    #[arg(long)]
+    pub rust_crate_dir: Option<String>,
+
     /// Use local version instead of the release version
     #[arg(long, hide = true)]
     pub local: bool,

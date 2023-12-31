@@ -32,11 +32,13 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             name: args.name,
             enable_local_dependency: args.common.local,
             rust_crate_name: compute_rust_crate_name(&args.common),
+            rust_crate_dir: compute_rust_crate_dir(&args.common),
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
             enable_integration_test: !args.no_enable_integration_test,
             enable_local_dependency: args.common.local,
             rust_crate_name: compute_rust_crate_name(&args.common),
+            rust_crate_dir: compute_rust_crate_dir(&args.common),
         })?,
         Commands::BuildWeb(args) => {
             build_web::build(args.dart_root, args.dart_coverage, args.args)?
@@ -47,7 +49,11 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
 }
 
 fn compute_rust_crate_name(config: &CreateOrIntegrateCommandCommonArgs) -> String {
-    config.rust_crate_name.unwrap_or("rust".to_owned())
+    config.rust_crate_name.unwrap_or("rust_lib".to_owned())
+}
+
+fn compute_rust_crate_dir(config: &CreateOrIntegrateCommandCommonArgs) -> String {
+    config.rust_crate_dir.unwrap_or("rust".to_owned())
 }
 
 #[cfg(test)]
