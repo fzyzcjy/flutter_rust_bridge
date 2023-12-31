@@ -19,8 +19,9 @@ pub(super) fn extract_dir_and_modify(
 
         match entry {
             DirEntry::Dir(d) => {
-                debug!("Create dir {path_raw:?}");
-                fs::create_dir_all(&path_raw)?;
+                let modified_path = modifier(&path_raw, &vec![], None);
+                debug!("Create dir {modified_path:?}");
+                fs::create_dir_all(&modified_path)?;
                 extract_dir_and_modify(d, base_path, modifier, filter)?;
             }
             DirEntry::File(f) => {
