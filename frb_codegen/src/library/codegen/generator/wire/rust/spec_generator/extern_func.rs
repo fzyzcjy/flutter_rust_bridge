@@ -35,11 +35,7 @@ impl ExternFunc {
             Target::Io => "#[no_mangle]",
             Target::Web => "#[wasm_bindgen]",
         };
-        let ExternFunc {
-            partial_func_name,
-            body,
-            ..
-        } = self;
+        let ExternFunc { body, .. } = self;
 
         let func_name = self.func_name(c_symbol_prefix);
 
