@@ -6,24 +6,5 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> minimalAdder(
-        {required int a, required int b, required MyStruct x, dynamic hint}) =>
-    RustLib.instance.api.minimalAdder(a: a, b: b, x: x, hint: hint);
-
-class MyStruct {
-  final String myField;
-
-  const MyStruct({
-    required this.myField,
-  });
-
-  @override
-  int get hashCode => myField.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyStruct &&
-          runtimeType == other.runtimeType &&
-          myField == other.myField;
-}
+Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
+    RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);

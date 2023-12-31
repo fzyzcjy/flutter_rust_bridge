@@ -18,43 +18,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
-  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw);
-
-  @protected
-  MyStruct dco_decode_my_struct(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
-  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
-
-  @protected
-  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -63,52 +33,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  String cst_encode_String(String raw) {
-    return raw;
-  }
-
-  @protected
-  List<dynamic> cst_encode_box_autoadd_my_struct(MyStruct raw) {
-    return cst_encode_my_struct(raw);
-  }
-
-  @protected
-  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
-    return raw;
-  }
-
-  @protected
-  List<dynamic> cst_encode_my_struct(MyStruct raw) {
-    return [cst_encode_String(raw.myField)];
-  }
-
-  @protected
   int cst_encode_i_32(int raw);
-
-  @protected
-  int cst_encode_u_8(int raw);
 
   @protected
   void cst_encode_unit(void raw);
 
   @protected
-  void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_my_struct(
-      MyStruct self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -127,9 +58,8 @@ class RustLibWire extends BaseWire {
       wasmModule.dart_fn_deliver_output(
           call_id, ptr_, rust_vec_len_, data_len_);
 
-  void wire_minimal_adder(
-          NativePortType port_, int a, int b, List<dynamic> x) =>
-      wasmModule.wire_minimal_adder(port_, a, b, x);
+  void wire_minimal_adder(NativePortType port_, int a, int b) =>
+      wasmModule.wire_minimal_adder(port_, a, b);
 }
 
 @JS('wasm_bindgen')
@@ -147,6 +77,5 @@ class RustLibWasmModule implements WasmModule {
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_minimal_adder(
-      NativePortType port_, int a, int b, List<dynamic> x);
+  external void wire_minimal_adder(NativePortType port_, int a, int b);
 }
