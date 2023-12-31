@@ -18,19 +18,21 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             return Ok(Primitive(IrTypePrimitive::Unit));
         }
 
-        let namespace = self.context.initiated_namespace.clone();
-
-        let values = type_tuple
-            .elems
-            .iter()
+        let values = (type_tuple.elems.iter())
             .map(|elem| self.parse_type(elem))
             .collect::<Result<Vec<_>>>()?;
-        let safe_ident = values
-            .iter()
-            .map(IrType::safe_ident)
-            .collect_vec()
-            .join("_");
-        let safe_ident = format!("__record__{safe_ident}");
+
+        Ok(IrType::Record(self.create_ir_record(values)))
+    }
+
+    pub(crate) fn create_ir_record(&mut self, values: Vec<IrType>) -> IrTypeRecord {
+        let namespace = self.context.initiated_namespace.clone();
+
+        let safe_ident = format!(
+            "__record__{}",
+            (values.iter().map(IrType::safe_ident)).join("_")
+        );
+
         self.inner.struct_parser_info.object_pool.insert(
             IrStructIdent(NamespacedName::new(namespace.clone(), safe_ident.clone())),
             IrStruct {
@@ -53,7 +55,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     .collect(),
             },
         );
-        Ok(IrType::Record(IrTypeRecord {
+
+        IrTypeRecord {
             inner: IrTypeStructRef {
                 // name: safe_ident,
                 // freezed: false,
@@ -62,6 +65,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 is_exception: false,
             },
             values: values.into_boxed_slice(),
-        }))
+        }
     }
 }
