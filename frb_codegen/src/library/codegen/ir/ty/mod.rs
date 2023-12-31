@@ -49,7 +49,11 @@ pub enum IrType {
 }
 
 impl IrType {
-    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_context: &impl IrContext) {
+    pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        ir_context: &impl IrContext,
+    ) {
         if f(self) {
             return;
         }
@@ -76,7 +80,7 @@ impl IrType {
 }
 
 #[enum_dispatch]
-pub trait IrTypeTrait {
+pub(crate) trait IrTypeTrait {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(
         &self,
         f: &mut F,

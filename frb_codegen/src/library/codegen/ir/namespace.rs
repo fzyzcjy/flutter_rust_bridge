@@ -94,7 +94,7 @@ impl NamespacedName {
         format!("{}::{}", self.namespace, self.name)
     }
 
-    pub fn style(&self, lang: &Lang) -> String {
+    pub(crate) fn style(&self, lang: &Lang) -> String {
         match lang {
             Lang::DartLang(_) => self.name.clone(),
             Lang::RustLang(_) => self.rust_style(),

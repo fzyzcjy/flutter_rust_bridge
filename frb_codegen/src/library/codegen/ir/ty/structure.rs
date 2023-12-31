@@ -26,7 +26,7 @@ pub struct IrStruct {
 }
 
 impl IrTypeStructRef {
-    pub fn get<'a>(&self, ir_context: &'a impl IrContext) -> &'a IrStruct {
+    pub(crate) fn get<'a>(&self, ir_context: &'a impl IrContext) -> &'a IrStruct {
         (ir_context.struct_pool().get(&self.ident))
             // frb-coverage:ignore-start
             .unwrap_or_else(|| panic!("no entry found for key={:?}", self.ident))

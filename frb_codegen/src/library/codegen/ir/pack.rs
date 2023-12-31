@@ -10,7 +10,7 @@ pub type IrStructPool = HashMap<IrStructIdent, IrStruct>;
 pub type IrEnumPool = HashMap<IrEnumIdent, IrEnum>;
 
 #[derive(Debug, Clone, serde::Serialize)]
-pub struct IrPack {
+pub(crate) struct IrPack {
     pub funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,

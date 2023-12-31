@@ -28,7 +28,7 @@ impl IrIdent {
         (self.raw.strip_prefix("r#").unwrap_or(self.raw.as_str())).to_case(Case::Camel)
     }
 
-    pub fn style(&self, lang: &Lang) -> String {
+    pub(crate) fn style(&self, lang: &Lang) -> String {
         match lang {
             Lang::DartLang(_) => self.dart_style(),
             Lang::RustLang(_) => self.rust_style().to_string(),

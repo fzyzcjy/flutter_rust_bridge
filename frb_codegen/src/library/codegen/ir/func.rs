@@ -6,7 +6,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType};
 
 crate::ir! {
-pub struct IrFunc {
+pub(crate) struct IrFunc {
     pub name: NamespacedName,
     pub inputs: Vec<IrField>,
     pub output: IrType,
