@@ -1,6 +1,6 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
-use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
+use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
@@ -129,8 +129,12 @@ impl IrTypeTrait for IrTypeDelegate {
             // IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
             IrTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
             IrTypeDelegate::AnyhowException => "anyhow::Error".to_owned(),
-            IrTypeDelegate::Map(ir) => TODO,
-            IrTypeDelegate::Set(ir) => TODO,
+            IrTypeDelegate::Map(ir) => format!(
+                "HashMap<{}, {}>",
+                ir.key.rust_api_type(),
+                ir.value.rust_api_type()
+            ),
+            IrTypeDelegate::Set(ir) => format!("HashSet<{}>", ir.inner.rust_api_type()),
         }
     }
 
@@ -146,8 +150,6 @@ impl IrTypeTrait for IrTypeDelegate {
         match self {
             IrTypeDelegate::PrimitiveEnum(inner) => inner.ir.self_namespace(),
             IrTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
-            IrTypeDelegate::Map(ir) => TODO,
-            IrTypeDelegate::Set(ir) => TODO,
             _ => None,
         }
     }
@@ -180,7 +182,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::Map(ir) => TODO,
-            IrTypeDelegate::Set(ir) => TODO,
+            IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned()),
         }
     }
 }
