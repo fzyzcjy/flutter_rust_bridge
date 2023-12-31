@@ -17,6 +17,7 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
+use crate::utils::dart_repository::get_package_name;
 use crate::utils::path_utils::{
     canonicalize_with_error_message, find_dart_package_dir, find_rust_crate_dir, glob_path,
     path_to_string,
@@ -66,7 +67,7 @@ impl InternalConfig {
                 .unwrap_or(find_dart_package_dir(&dart_output_dir)?),
         )?;
 
-        let c_symbol_prefix = compute_c_symbol_prefix();
+        let c_symbol_prefix = compute_c_symbol_prefix(&dart_root);
 
         let default_external_library_loader =
             compute_default_external_library_loader(&rust_crate_dir, &dart_root, config);
@@ -163,6 +164,11 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
         return ConfigDumpContent::iter().collect_vec();
     }
     config.dump.clone().unwrap_or_default()
+}
+
+fn compute_c_symbol_prefix(dart_root: &Path) -> Result<String> {
+    let package_name = get_package_name(dart_root)?;
+    Ok(format!("frb_{package_name}_"))
 }
 
 fn compute_default_external_library_loader(
