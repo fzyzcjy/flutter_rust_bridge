@@ -7,9 +7,9 @@ use std::{env, fs};
 
 /// Create a new Flutter + Rust project.
 pub fn create(name: &str, enable_local_dependency: bool) -> anyhow::Result<()> {
-    debug!("create name={name}");
-
     let dart_root = env::current_dir()?.join(name);
+    debug!("create name={name} dart_root={dart_root:?}");
+
     ensure!(
         dart_root.exists(),
         "The target folder {:?} already exists. Please use the `integrate` command in this case",
