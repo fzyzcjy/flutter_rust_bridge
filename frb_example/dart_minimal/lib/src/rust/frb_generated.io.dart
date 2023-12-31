@@ -19,13 +19,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  String dco_decode_String(dynamic raw);
+
+  @protected
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8(dynamic raw);
+
+  @protected
+  MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  String sse_decode_String(SseDeserializer deserializer);
+
+  @protected
+  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
+
+  @protected
+  MyStruct sse_decode_my_struct(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -34,13 +64,64 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
+    return cst_encode_list_prim_u_8(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_my_struct> cst_encode_box_autoadd_my_struct(
+      MyStruct raw) {
+    final ptr = wire.cst_new_box_autoadd_my_struct();
+    cst_api_fill_to_wire_my_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
+    final ans = wire.cst_new_list_prim_u_8(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_my_struct(
+      MyStruct apiObj, ffi.Pointer<wire_cst_my_struct> wireObj) {
+    cst_api_fill_to_wire_my_struct(apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_struct(
+      MyStruct apiObj, wire_cst_my_struct wireObj) {
+    wireObj.my_field = cst_encode_String(apiObj.myField);
+  }
+
+  @protected
   int cst_encode_i_32(int raw);
+
+  @protected
+  int cst_encode_u_8(int raw);
 
   @protected
   void cst_encode_unit(void raw);
 
   @protected
+  void sse_encode_String(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct(MyStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -104,21 +185,51 @@ class RustLibWire implements BaseWire {
     int port_,
     int a,
     int b,
+    ffi.Pointer<ffi.Int> x,
   ) {
     return _frbgen_frb_example_dart_minimal_wire_minimal_adder(
       port_,
       a,
       b,
+      x,
     );
   }
 
   late final _frbgen_frb_example_dart_minimal_wire_minimal_adderPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int>)>>(
       'frbgen_frb_example_dart_minimal_wire_minimal_adder');
   late final _frbgen_frb_example_dart_minimal_wire_minimal_adder =
       _frbgen_frb_example_dart_minimal_wire_minimal_adderPtr
-          .asFunction<void Function(int, int, int)>();
+          .asFunction<void Function(int, int, int, ffi.Pointer<ffi.Int>)>();
+
+  ffi.Pointer<ffi.Int>
+      frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct() {
+    return _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct();
+  }
+
+  late final _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>(
+          'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct');
+  late final _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct =
+      _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_structPtr
+          .asFunction<ffi.Pointer<ffi.Int> Function()>();
+
+  ffi.Pointer<ffi.Int> frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8(
+    int len,
+  ) {
+    return _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8(
+      len,
+    );
+  }
+
+  late final _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8');
+  late final _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8 =
+      _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8Ptr
+          .asFunction<ffi.Pointer<ffi.Int> Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();

@@ -15,9 +15,18 @@ void frbgen_frb_example_dart_minimal_dart_fn_deliver_output(int32_t call_id,
                                                             int32_t rust_vec_len_,
                                                             int32_t data_len_);
 
-void frbgen_frb_example_dart_minimal_wire_minimal_adder(int64_t port_, int32_t a, int32_t b);
+void frbgen_frb_example_dart_minimal_wire_minimal_adder(int64_t port_,
+                                                        int32_t a,
+                                                        int32_t b,
+                                                        wire_cst_my_struct *x);
+
+wire_cst_my_struct *frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct(void);
+
+wire_cst_list_prim_u_8 *frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8(int32_t len);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) cst_new_box_autoadd_my_struct);
+    dummy_var ^= ((int64_t) (void*) cst_new_list_prim_u_8);
     dummy_var ^= ((int64_t) (void*) dart_fn_deliver_output);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) get_dart_object);

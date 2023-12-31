@@ -56,7 +56,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<int> minimalAdder({required int a, required int b, dynamic hint});
+  Future<int> minimalAdder(
+      {required int a, required int b, required MyStruct x, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -68,19 +69,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
+  Future<int> minimalAdder(
+      {required int a, required int b, required MyStruct x, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_i_32(a);
         var arg1 = cst_encode_i_32(b);
-        return wire.wire_minimal_adder(port_, arg0, arg1);
+        var arg2 = cst_encode_box_autoadd_my_struct(x);
+        return wire.wire_minimal_adder(port_, arg0, arg1, arg2);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kMinimalAdderConstMeta,
-      argValues: [a, b],
+      argValues: [a, b, x],
       apiImpl: this,
       hint: hint,
     ));
@@ -88,11 +91,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kMinimalAdderConstMeta => const TaskConstMeta(
         debugName: "minimal_adder",
-        argNames: ["a", "b"],
+        argNames: ["a", "b", "x"],
       );
 
   @protected
+  String dco_decode_String(dynamic raw) {
+    return raw as String;
+  }
+
+  @protected
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw) {
+    return dco_decode_my_struct(raw);
+  }
+
+  @protected
   int dco_decode_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8(dynamic raw) {
+    return raw as Uint8List;
+  }
+
+  @protected
+  MyStruct dco_decode_my_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStruct(
+      myField: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  int dco_decode_u_8(dynamic raw) {
     return raw as int;
   }
 
@@ -102,8 +135,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  String sse_decode_String(SseDeserializer deserializer) {
+    var inner = sse_decode_list_prim_u_8(deserializer);
+    return utf8.decoder.convert(inner);
+  }
+
+  @protected
+  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer) {
+    return (sse_decode_my_struct(deserializer));
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint8List(len_);
+  }
+
+  @protected
+  MyStruct sse_decode_my_struct(SseDeserializer deserializer) {
+    var var_myField = sse_decode_String(deserializer);
+    return MyStruct(myField: var_myField);
+  }
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8();
   }
 
   @protected
@@ -120,13 +181,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_u_8(int raw) {
+    return raw;
+  }
+
+  @protected
   void cst_encode_unit(void raw) {
     return raw;
   }
 
   @protected
+  void sse_encode_String(String self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer) {
+    sse_encode_my_struct(self, serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
+    sse_encode_String(self.myField, serializer);
+  }
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self);
   }
 
   @protected

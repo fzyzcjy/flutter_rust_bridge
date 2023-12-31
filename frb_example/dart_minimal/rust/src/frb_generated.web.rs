@@ -20,8 +20,53 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
+impl CstDecode<String> for String {
+    fn cst_decode(self) -> String {
+        self
+    }
+}
+impl CstDecode<Vec<u8>> for Box<[u8]> {
+    fn cst_decode(self) -> Vec<u8> {
+        self.into_vec()
+    }
+}
+impl CstDecode<crate::api::minimal::MyStruct>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::minimal::MyStruct {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::minimal::MyStruct {
+            my_field: self_.get(0).cst_decode(),
+        }
+    }
+}
+impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> String {
+        self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Vec<u8> {
+        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
+            .to_vec()
+            .into()
+    }
+}
+impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> u8 {
         self.unchecked_into_f64() as _
     }
 }
@@ -48,6 +93,7 @@ pub fn frbgen_frb_example_dart_minimal_wire_minimal_adder(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: i32,
     b: i32,
+    x: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_minimal_adder_impl(port_, a, b)
+    wire_minimal_adder_impl(port_, a, b, x)
 }
