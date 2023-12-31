@@ -48,9 +48,14 @@ pub enum IrTypeDelegateTime {
     Duration,
 }
 
-pub struct IrTypeDelegateMap {}
+pub struct IrTypeDelegateMap {
+    pub key: Box<IrType>,
+    pub value: Box<IrType>,
+}
 
-pub struct IrTypeDelegateSet {}
+pub struct IrTypeDelegateSet {
+    pub inner: Box<IrType>,
+}
 }
 
 impl IrTypeTrait for IrTypeDelegate {

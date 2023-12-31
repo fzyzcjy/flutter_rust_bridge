@@ -44,8 +44,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(inner.clone()),
             }),
 
-            ("HashMap", Some(Generic([k, v]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {})),
-            ("HashSet", Some(Generic([ty]))) => Delegate(IrTypeDelegate::Set(IrTypeDelegateSet {})),
+            ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
+                key: Box::new(key.clone()),
+                value: Box::new(value.clone()),
+            })),
+            ("HashSet", Some(Generic([inner]))) => Delegate(IrTypeDelegate::Set(IrTypeDelegateSet {
+                inner: Box::new(inner.clone()),
+            })),
 
             _ => return Ok(None),
         }))
