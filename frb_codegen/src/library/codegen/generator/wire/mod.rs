@@ -6,6 +6,7 @@ pub(crate) mod rust;
 use crate::codegen::config::internal_config::GeneratorWireInternalConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
@@ -44,7 +45,10 @@ pub(crate) fn generate(
 
     let c_output = c::generate(
         &config.c,
-        (rust_output.extern_funcs.iter().map(|x| x.func_name.clone())).collect_vec(),
+        (rust_output.extern_funcs.iter())
+            .filter(|x| x.target == Target::Io)
+            .map(|x| x.func_name(&config.c.c_symbol_prefix))
+            .collect_vec(),
         rust_output.extern_struct_names,
         &rust_output.output_texts,
         dumper,

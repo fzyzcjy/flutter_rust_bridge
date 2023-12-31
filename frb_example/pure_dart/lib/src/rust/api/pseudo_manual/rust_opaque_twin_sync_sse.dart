@@ -71,7 +71,7 @@ FrbOpaqueReturn frbGeneratorTestTwinSyncSse({dynamic hint}) =>
 // Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>>
 @sealed
 class BoxDartDebugTwinSyncSse extends RustOpaque {
-  BoxDartDebugTwinSyncSse.dcoDecode(dynamic wire)
+  BoxDartDebugTwinSyncSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxDartDebugTwinSyncSse.sseDecode(int ptr, int externalSizeOnNative)

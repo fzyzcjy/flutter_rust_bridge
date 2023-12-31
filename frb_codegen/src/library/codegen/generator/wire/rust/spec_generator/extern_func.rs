@@ -11,7 +11,7 @@ use serde::Serialize;
 
 #[derive(Clone, Debug, Serialize)]
 pub(crate) struct ExternFunc {
-    pub(crate) func_name: String,
+    pub(crate) partial_func_name: String,
     pub(crate) params: Vec<ExternFuncParam>,
     pub(crate) return_type: Option<String>,
     pub(crate) body: String,
@@ -26,7 +26,7 @@ pub(crate) struct ExternFuncParam {
 }
 
 impl ExternFunc {
-    pub(crate) fn generate(&self) -> String {
+    pub(crate) fn generate(&self, c_symbol_prefix: &str) -> String {
         let call_convention = match self.target {
             Target::Io => "extern \"C\"",
             Target::Web => "",
@@ -35,9 +35,9 @@ impl ExternFunc {
             Target::Io => "#[no_mangle]",
             Target::Web => "#[wasm_bindgen]",
         };
-        let ExternFunc {
-            func_name, body, ..
-        } = self;
+        let ExternFunc { body, .. } = self;
+
+        let func_name = self.func_name(c_symbol_prefix);
 
         format!(
             r#"
@@ -54,6 +54,13 @@ impl ExternFunc {
                 .as_ref()
                 .map_or("".to_owned(), |r| format!("-> {r}")),
         )
+    }
+
+    pub(crate) fn func_name(&self, c_symbol_prefix: &str) -> String {
+        match self.target {
+            Target::Io => format!("{c_symbol_prefix}{}", self.partial_func_name),
+            Target::Web => self.partial_func_name.to_owned(),
+        }
     }
 }
 

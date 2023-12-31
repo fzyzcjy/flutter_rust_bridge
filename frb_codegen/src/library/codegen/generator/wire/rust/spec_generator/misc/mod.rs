@@ -212,7 +212,7 @@ fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> Extern
     };
 
     ExternFunc {
-        func_name: "dart_fn_deliver_output".into(),
+        partial_func_name: "dart_fn_deliver_output".into(),
         params,
         return_type: None,
         body: format!(

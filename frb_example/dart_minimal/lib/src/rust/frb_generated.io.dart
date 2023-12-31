@@ -91,9 +91,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _dart_fn_deliver_outputPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('dart_fn_deliver_output');
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_dart_minimal_dart_fn_deliver_output');
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
@@ -112,7 +113,7 @@ class RustLibWire implements BaseWire {
   late final _wire_minimal_adderPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_minimal_adder');
+      'frbgen_frb_example_dart_minimal_wire_minimal_adder');
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
 

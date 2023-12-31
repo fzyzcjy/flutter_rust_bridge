@@ -79,7 +79,8 @@ Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) =>
 // Rust type: flutter_rust_bridge::RustOpaque<Mutex < HideData >>
 @sealed
 class MutexHideData extends RustOpaque {
-  MutexHideData.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
+  MutexHideData.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
 
   MutexHideData.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
@@ -97,7 +98,8 @@ class MutexHideData extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<RwLock < HideData >>
 @sealed
 class RwLockHideData extends RustOpaque {
-  RwLockHideData.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
+  RwLockHideData.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
 
   RwLockHideData.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
@@ -115,7 +117,7 @@ class RwLockHideData extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>>
 @sealed
 class BoxDartDebugTwinRustAsync extends RustOpaque {
-  BoxDartDebugTwinRustAsync.dcoDecode(dynamic wire)
+  BoxDartDebugTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxDartDebugTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
@@ -134,7 +136,8 @@ class BoxDartDebugTwinRustAsync extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn>
 @sealed
 class FrbOpaqueReturn extends RustOpaque {
-  FrbOpaqueReturn.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
+  FrbOpaqueReturn.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
 
   FrbOpaqueReturn.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
@@ -167,7 +170,7 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 // Rust type: flutter_rust_bridge::RustOpaque<i32>
 @sealed
 class I32 extends RustOpaque {
-  I32.dcoDecode(dynamic wire) : super.dcoDecode(wire, _kStaticData);
+  I32.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
 
   I32.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
