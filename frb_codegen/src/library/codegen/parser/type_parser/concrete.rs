@@ -1,6 +1,8 @@
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateTime};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegateMap, IrTypeDelegateSet, IrTypeDelegateTime,
+};
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
@@ -41,6 +43,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 exist_in_real_api: true,
                 inner: Box::new(inner.clone()),
             }),
+
+            ("HashMap", Some(Generic([k, v]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {})),
+            ("HashSet", Some(Generic([ty]))) => Delegate(IrTypeDelegate::Set(IrTypeDelegateSet {})),
 
             _ => return Ok(None),
         }))
