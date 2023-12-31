@@ -26,7 +26,7 @@ pub(super) fn generate(
         config,
         &merged_code
             .clone()
-            .map(|code, _| code.all_code(&config.extern_name_prefix)),
+            .map(|code, _| code.all_code(&config.c_symbol_prefix)),
     )?;
     let extern_funcs = compute_extern_funcs(merged_code);
 

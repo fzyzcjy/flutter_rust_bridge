@@ -9,5 +9,5 @@ pub(crate) struct GeneratorWireRustInternalConfig {
     pub rust_crate_dir: PathBuf,
     pub web_enabled: bool,
     pub rust_output_path: TargetOrCommonMap<PathBuf>,
-    pub extern_name_prefix: String,
+    pub c_symbol_prefix: String,
 }

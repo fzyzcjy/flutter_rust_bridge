@@ -132,7 +132,7 @@ impl InternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
                         web_enabled,
                         rust_output_path: rust_output_path.clone(),
-                        extern_name_prefix: c_symbol_prefix.clone(),
+                        c_symbol_prefix: c_symbol_prefix.clone(),
                     },
                     c: GeneratorWireCInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
