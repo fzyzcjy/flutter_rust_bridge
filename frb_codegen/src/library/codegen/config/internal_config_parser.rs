@@ -169,7 +169,7 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
 
 fn compute_c_symbol_prefix(dart_root: &Path) -> Result<String> {
     let package_name = get_package_name(dart_root)?;
-    Ok(format!("frb_{package_name}_"))
+    Ok(format!("frbgen_{package_name}_"))
 }
 
 fn compute_default_external_library_loader(
