@@ -1,5 +1,5 @@
 [package]
-name = "rust_lib"
+name = "REPLACE_ME_RUST_CRATE_NAME"
 version = "0.1.0"
 edition = "2018"
 
