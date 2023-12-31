@@ -2,7 +2,7 @@ use crate::integration::utils::extract_dir_and_modify;
 use crate::library::commands::flutter::flutter_pub_add;
 use crate::library::commands::format_dart::format_dart;
 use crate::utils::dart_repository::get_dart_package_name;
-use crate::utils::path_utils::find_dart_package_dir;
+use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
@@ -98,7 +98,7 @@ fn modify_file(
         enable_local_dependency,
     );
 
-    let path = compute_effective_path(path_raw);
+    let path = compute_effective_path(path_raw)?;
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -133,12 +133,13 @@ fn modify_file(
     Some((path, src))
 }
 
-fn compute_effective_path(path: &Path) -> PathBuf {
+fn compute_effective_path(path: &Path) -> Result<PathBuf> {
     let mut path = path.to_owned();
     if (path.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
         path = path.with_extension("")
     }
-    path
+    path = PathBuf::from(replace_string_content(&path_to_string(&path)?, TODO));
+    Ok(path)
 }
 
 fn replace_file_content(
