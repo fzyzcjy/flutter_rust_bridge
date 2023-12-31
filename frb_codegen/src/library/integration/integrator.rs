@@ -14,9 +14,14 @@ use std::{env, fs};
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
 
+pub struct IntegrateConfig {
+    pub enable_integration_test: bool,
+    pub enable_local_dependency: bool,
+}
+
 /// Integrate Rust into existing Flutter project.
 // ref: https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/
-pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -> Result<()> {
+pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
@@ -31,15 +36,18 @@ pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -
                 src_raw,
                 existing_content,
                 &dart_package_name,
-                enable_local_dependency,
+                config.enable_local_dependency,
             )
         },
-        &|path| filter_file(path, enable_integration_test),
+        &|path| filter_file(path, config.enable_integration_test),
     )?;
 
     modify_permissions(&dart_root)?;
 
-    pub_add_dependencies(enable_integration_test, enable_local_dependency)?;
+    pub_add_dependencies(
+        config.enable_integration_test,
+        config.enable_local_dependency,
+    )?;
 
     format_dart(&[dart_root], 80)?;
 

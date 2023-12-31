@@ -8,6 +8,7 @@ mod binary;
 use crate::binary::commands::{Cli, Commands};
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
 use clap::Parser;
+use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
 use log::debug;
@@ -27,10 +28,14 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             let config = compute_codegen_config(args.primary)?;
             codegen::generate(config, meta_config)?
         }
-        Commands::Create(args) => integration::create(&args.name, args.common.local)?,
-        Commands::Integrate(args) => {
-            integration::integrate(!args.no_enable_integration_test, args.common.local)?
-        }
+        Commands::Create(args) => integration::create(CreateConfig {
+            name: args.name,
+            enable_local_dependency: args.common.local,
+        })?,
+        Commands::Integrate(args) => integration::integrate(IntegrateConfig {
+            enable_integration_test: !args.no_enable_integration_test,
+            enable_local_dependency: args.common.local,
+        })?,
         Commands::BuildWeb(args) => {
             build_web::build(args.dart_root, args.dart_coverage, args.args)?
         }
