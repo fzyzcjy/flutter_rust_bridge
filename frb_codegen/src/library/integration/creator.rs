@@ -1,5 +1,6 @@
 use crate::integration::integrator;
 use crate::library::commands::flutter::flutter_create;
+use anyhow::ensure;
 use log::{debug, info};
 use std::path::Path;
 use std::{env, fs};
@@ -8,9 +9,15 @@ use std::{env, fs};
 pub fn create(name: &str, enable_local_dependency: bool) -> anyhow::Result<()> {
     debug!("create name={name}");
 
+    let dart_root = env::current_dir()?.join(name);
+    ensure!(
+        dart_root.exists(),
+        "The target folder {:?} already exists. Please use the `integrate` command in this case",
+        dart_root,
+    );
+
     flutter_create(name)?;
 
-    let dart_root = env::current_dir()?.join(name);
     env::set_current_dir(&dart_root)?;
 
     remove_unnecessary_files(&dart_root)?;
