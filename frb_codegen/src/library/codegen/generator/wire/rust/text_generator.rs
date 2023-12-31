@@ -24,7 +24,9 @@ pub(super) fn generate(
     let merged_code = generate_merged_code(spec);
     let text = generate_text_from_merged_code(
         config,
-        &merged_code.clone().map(|code, _| code.all_code()),
+        &merged_code
+            .clone()
+            .map(|code, _| code.all_code(config.extern_name_prefix)),
     )?;
     let extern_funcs = compute_extern_funcs(merged_code);
 
