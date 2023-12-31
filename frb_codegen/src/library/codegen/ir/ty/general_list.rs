@@ -29,18 +29,15 @@ impl IrTypeTrait for IrTypeGeneralList {
 
 pub(crate) fn ir_list(inner: IrType) -> IrType {
     match inner {
-        IrType::Primitive(inner) => {
-            // Since Dart doesn't have a boolean primitive list like `Uint8List`,
-            // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
-            if inner == IrTypePrimitive::Bool {
-                GeneralList(IrTypeGeneralList {
-                    inner: Box::new(IrType::Primitive(IrTypePrimitive::Bool)),
-                })
-            } else {
-                PrimitiveList(IrTypePrimitiveList {
-                    primitive: inner.clone(),
-                })
-            }
+        // Since Dart doesn't have a boolean primitive list like `Uint8List`,
+        // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
+        IrType::Primitive(inner) if inner != IrTypePrimitive::Bool => {
+            PrimitiveList(IrTypePrimitiveList {
+                primitive: inner.clone(),
+            })
         }
+        _ => GeneralList(IrTypeGeneralList {
+            inner: Box::new(inner),
+        }),
     }
 }

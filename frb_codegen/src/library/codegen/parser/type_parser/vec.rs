@@ -20,14 +20,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // ("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)]))) => {
             //     Delegate(IrTypeDelegate::Uuids)
             // }
-            ("Vec", Some(Generic([Primitive(primitive)]))) => ir_list(primitive.to_owned()),
+            ("Vec", Some(Generic([Primitive(primitive)]))) => {
+                ir_list(IrType::Primitive(primitive.to_owned()))
+            }
 
             // ("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))]))) => {
             //     Delegate(IrTypeDelegate::TimeList(*time))
             // }
-            ("Vec", Some(Generic([element]))) => GeneralList(IrTypeGeneralList {
-                inner: Box::new(element.clone()),
-            }),
+            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned()),
 
             _ => return Ok(None),
         }))
