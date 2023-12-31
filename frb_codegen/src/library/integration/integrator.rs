@@ -146,21 +146,36 @@ fn replace_file_content(
     enable_local_dependency: bool,
 ) -> Vec<u8> {
     match String::from_utf8(raw.to_owned()) {
-        Ok(raw_str) => raw_str
-            .replace("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name)
-            .replace("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name)
-            .replace("REPLACE_ME_RUST_CRATE_DIR", rust_crate_dir)
-            .replace(
-                "REPLACE_ME_RUST_FRB_DEPENDENCY",
-                &if enable_local_dependency {
-                    r#"{ path = "../../../frb_rust" }"#.to_owned()
-                } else {
-                    format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
-                },
-            )
-            .into_bytes(),
+        Ok(raw_str) => replace_string_content(
+            &raw_str,
+            dart_package_name,
+            rust_crate_name,
+            rust_crate_dir,
+            enable_local_dependency,
+        )
+        .into_bytes(),
         Err(e) => e.into_bytes(),
     }
+}
+
+fn replace_string_content(
+    raw: &str,
+    dart_package_name: &str,
+    rust_crate_name: &str,
+    rust_crate_dir: &str,
+    enable_local_dependency: bool,
+) -> String {
+    raw.replace("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name)
+        .replace("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name)
+        .replace("REPLACE_ME_RUST_CRATE_DIR", rust_crate_dir)
+        .replace(
+            "REPLACE_ME_RUST_FRB_DEPENDENCY",
+            &if enable_local_dependency {
+                r#"{ path = "../../../frb_rust" }"#.to_owned()
+            } else {
+                format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
+            },
+        )
 }
 
 fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
