@@ -1,3 +1,5 @@
+// The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.
+
 // import 'package:flutter/material.dart';
 //
 // void main() {
