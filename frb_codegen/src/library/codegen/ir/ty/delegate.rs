@@ -88,6 +88,10 @@ impl IrTypeTrait for IrTypeDelegate {
             // IrTypeDelegate::Uuids => "Uuids".to_owned(),
             IrTypeDelegate::Backtrace => "Backtrace".to_owned(),
             IrTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
+            IrTypeDelegate::Map(ir) => {
+                format!("Map_{}_{}", ir.key.safe_ident(), ir.value.safe_ident())
+            }
+            IrTypeDelegate::Set(ir) => format!("Set_{}", ir.inner.safe_ident()),
         }
     }
 
@@ -125,6 +129,8 @@ impl IrTypeTrait for IrTypeDelegate {
             // IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
             IrTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
             IrTypeDelegate::AnyhowException => "anyhow::Error".to_owned(),
+            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Set(ir) => TODO,
         }
     }
 
@@ -140,6 +146,8 @@ impl IrTypeTrait for IrTypeDelegate {
         match self {
             IrTypeDelegate::PrimitiveEnum(inner) => inner.ir.self_namespace(),
             IrTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
+            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Set(ir) => TODO,
             _ => None,
         }
     }
@@ -171,6 +179,8 @@ impl IrTypeDelegate {
             // }),
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::Map(ir) => TODO,
+            IrTypeDelegate::Set(ir) => TODO,
         }
     }
 }
