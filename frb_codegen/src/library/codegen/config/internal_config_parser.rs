@@ -125,6 +125,7 @@ impl InternalConfig {
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_output_class_name_pack,
                         default_external_library_loader,
+                        c_symbol_prefix: c_symbol_prefix.clone(),
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
