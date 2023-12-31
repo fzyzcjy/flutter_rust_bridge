@@ -46088,287 +46088,293 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BoxFnStringString
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
-    return BoxFnStringString.dcoDecode(raw);
+    return BoxFnStringString.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return BoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
-    return BoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return BoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinNormal.dcoDecode(raw);
+    return BoxMyTraitTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinSse.dcoDecode(raw);
+    return BoxMyTraitTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinSync.dcoDecode(raw);
+    return BoxMyTraitTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinSyncSse.dcoDecode(raw);
+    return BoxMyTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return NonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
-    return NonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
-    return NonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return BoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
-    return BoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return BoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return NonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
-    return NonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
-    return NonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return BoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
-    return BoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
-    return BoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
-    return NonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
-    return NonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
-    return NonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
@@ -46498,64 +46504,64 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MutexHideData dco_decode_RustOpaque_MutexHideData(dynamic raw) {
-    return MutexHideData.dcoDecode(raw);
+    return MutexHideData.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   RwLockHideData dco_decode_RustOpaque_RwLockHideData(dynamic raw) {
-    return RwLockHideData.dcoDecode(raw);
+    return RwLockHideData.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxDartDebugTwinNormal dco_decode_RustOpaque_box_dynDartDebugTwinNormal(
       dynamic raw) {
-    return BoxDartDebugTwinNormal.dcoDecode(raw);
+    return BoxDartDebugTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxDartDebugTwinRustAsync dco_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
       dynamic raw) {
-    return BoxDartDebugTwinRustAsync.dcoDecode(raw);
+    return BoxDartDebugTwinRustAsync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxDartDebugTwinRustAsyncSse
       dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(dynamic raw) {
-    return BoxDartDebugTwinRustAsyncSse.dcoDecode(raw);
+    return BoxDartDebugTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxDartDebugTwinSse dco_decode_RustOpaque_box_dynDartDebugTwinSse(
       dynamic raw) {
-    return BoxDartDebugTwinSse.dcoDecode(raw);
+    return BoxDartDebugTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxDartDebugTwinSync dco_decode_RustOpaque_box_dynDartDebugTwinSync(
       dynamic raw) {
-    return BoxDartDebugTwinSync.dcoDecode(raw);
+    return BoxDartDebugTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxDartDebugTwinSyncSse dco_decode_RustOpaque_box_dynDartDebugTwinSyncSse(
       dynamic raw) {
-    return BoxDartDebugTwinSyncSse.dcoDecode(raw);
+    return BoxDartDebugTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   FrbOpaqueReturn dco_decode_RustOpaque_frb_opaque_return(dynamic raw) {
-    return FrbOpaqueReturn.dcoDecode(raw);
+    return FrbOpaqueReturn.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   FrbOpaqueSyncReturn dco_decode_RustOpaque_frb_opaque_sync_return(
       dynamic raw) {
-    return FrbOpaqueSyncReturn.dcoDecode(raw);
+    return FrbOpaqueSyncReturn.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   HideData dco_decode_RustOpaque_hide_data(dynamic raw) {
-    return HideData.dcoDecode(raw);
+    return HideData.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -46566,131 +46572,133 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   I32 dco_decode_RustOpaque_i_32(dynamic raw) {
-    return I32.dcoDecode(raw);
+    return I32.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneData dco_decode_RustOpaque_non_clone_data(dynamic raw) {
-    return NonCloneData.dcoDecode(raw);
+    return NonCloneData.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonSendHideData dco_decode_RustOpaque_non_send_hide_data(dynamic raw) {
-    return NonSendHideData.dcoDecode(raw);
+    return NonSendHideData.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxFnStringString
       dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
-    return BoxFnStringString.dcoDecode(raw);
+    return BoxFnStringString.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           dynamic raw) {
-    return BoxHelloTraitTwinNormal.dcoDecode(raw);
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(dynamic raw) {
-    return BoxHelloTraitTwinSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSync
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(dynamic raw) {
-    return BoxHelloTraitTwinSync.dcoDecode(raw);
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxHelloTraitTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
-    return BoxHelloTraitTwinSyncSse.dcoDecode(raw);
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinNormal.dcoDecode(raw);
+    return BoxMyTraitTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinSse.dcoDecode(raw);
+    return BoxMyTraitTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinSync
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinSync.dcoDecode(raw);
+    return BoxMyTraitTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   BoxMyTraitTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw) {
-    return BoxMyTraitTwinSyncSse.dcoDecode(raw);
+    return BoxMyTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(dynamic raw) {
-    return NonCloneSimpleTwinNormal.dcoDecode(raw);
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSse
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(dynamic raw) {
-    return NonCloneSimpleTwinSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSync
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(dynamic raw) {
-    return NonCloneSimpleTwinSync.dcoDecode(raw);
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
-    return NonCloneSimpleTwinSyncSse.dcoDecode(raw);
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(raw);
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
   }
 
   @protected
