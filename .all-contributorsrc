@@ -746,6 +746,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mattiasgronlund",
+      "name": "mattiasgronlund",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7727472?v=4",
+      "profile": "https://github.com/mattiasgronlund",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
