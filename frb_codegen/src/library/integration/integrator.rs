@@ -133,12 +133,12 @@ fn modify_file(
     Some((path, src))
 }
 
-fn compute_effective_path(path_raw: &Path) -> PathBuf {
-    if (path_raw.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
-        path_raw.with_extension("")
-    } else {
-        path_raw.to_owned()
+fn compute_effective_path(path: &Path) -> PathBuf {
+    let mut path = path.to_owned();
+    if (path.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
+        path = path.with_extension("")
     }
+    path
 }
 
 fn replace_file_content(
