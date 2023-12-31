@@ -11,6 +11,7 @@ use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
+use crate::codegen::ir::ty::general_list::ir_list;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
@@ -43,6 +44,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 exist_in_real_api: true,
                 inner: Box::new(inner.clone()),
             }),
+
+            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned()),
 
             ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
                 key: Box::new(key.clone()),
