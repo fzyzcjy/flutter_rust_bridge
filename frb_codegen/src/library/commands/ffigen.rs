@@ -7,6 +7,7 @@ use anyhow::bail;
 use itertools::Itertools;
 use log::{debug, warn};
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
@@ -162,6 +163,10 @@ fn parse_config(args: &FfigenToFileArgs) -> FfigenCommandConfig {
         preamble: "// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names".to_owned(),
         llvm_path: args.llvm_path.to_owned(),
         compiler_opts: llvm_compiler_opts_list,
+        functions: FfigenCommandConfigFunctions {
+            // TODO just experiment
+            rename: Some([("frbgen_(.*)".to_owned(), "$1".to_owned())].into()),
+        },
     }
 }
 
@@ -177,6 +182,7 @@ pub(crate) struct FfigenCommandConfig {
     pub preamble: String,
     pub llvm_path: Vec<PathBuf>,
     pub compiler_opts: Vec<String>,
+    pub functions: FfigenCommandConfigFunctions,
 }
 
 #[derive(Default, Clone, Serialize, Deserialize)]
@@ -184,6 +190,12 @@ pub(crate) struct FfigenCommandConfig {
 pub(crate) struct FfigenCommandConfigHeaders {
     pub entry_points: Vec<PathBuf>,
     pub include_directives: Vec<PathBuf>,
+}
+
+#[derive(Default, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub(crate) struct FfigenCommandConfigFunctions {
+    pub rename: Option<HashMap<String, String>>,
 }
 
 #[cfg(test)]
