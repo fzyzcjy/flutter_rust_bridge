@@ -414,6 +414,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "bus710",
       "name": "bus710",
       "avatar_url": "https://avatars.githubusercontent.com/u/8920680?v=4",
@@ -445,15 +454,6 @@
       "name": "Andrii Stadnik",
       "avatar_url": "https://avatars.githubusercontent.com/u/40110937?v=4",
       "profile": "https://github.com/anstadnik",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
       "contributions": [
         "code"
       ]

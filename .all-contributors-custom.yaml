@@ -40,11 +40,11 @@
 - codercengiz: Fix mirroring bug.
 - Michael-F-Bryan: Detect broken bindings.
 - phlip9: Fix no-serde compilation.
+- patmuk: Set MSRV. Fail fast. Improve message. Add doc.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
 - anstadnik: Check keywords.
-- patmuk: Set MSRV. Fail fast. Improve message.
 - aran: Fix pubspec. Bump version.
 - syndim: Add a bracket to box.
 - TENX-S: Improve doc. Reproduce a bug.
