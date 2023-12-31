@@ -113,6 +113,30 @@ jobs:
       - run: ./frb_internal lint-dart
 
   # ----------------------------------- codegen -----------------------------------
+  # instead of running this explicit test for frb_codegen and frb_rust only, we run the test for
+  # all rust packages in the job "test_rust". While this would not be needed for these other packages,
+  # we avoid a ci dependency to cargo-msrv.
+  # However, the code is left commented here in case this decission changes.
+  # msrv:
+  #   name: 'Test :: FRB Codegen :: MSRV'    
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+
+  #   - name: Install Rust
+  #     uses: actions-rs/toolchain@v1
+  #     with:
+  #       toolchain: stable
+
+  #   - name: Verify MSRV for frb_codegen
+  #     run: |
+  #       cargo install cargo-msrv
+  #       cargo msrv --path frb_codegen verify
+
+  #   - name: Verify MSRV for frb_rust
+  #     run: |
+  #       cargo install cargo-msrv
+  #       cargo msrv --path frb_rust verify
 
   generate_run_frb_codegen_command_generate:
     name: 'Generate :: FRB Codegen :: Command Generate'
@@ -155,7 +179,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - uses: taiki-e/install-action@cargo-llvm-cov
-
+      
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
 
@@ -285,6 +309,8 @@ jobs:
   bench_upload:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
+    # NOTE Even if some previous jobs failed, we still want partial info
+    if: ${{ always() && !cancelled() }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
@@ -377,7 +403,11 @@ jobs:
             version: nightly
           - image: ubuntu-latest
             version: nightly-2023-12-16
-          # TODO(@fzyzcjy, @gutenfries): add MSRV here, as well as other locked versions as needed
+          # tests the MSRV
+          # run on all rust packages, though only needed for frb_rust and frb_codegen
+          - image: ubuntu-latest
+          # update this, if a later MSRV is needed
+            version: 1.74.0
 
     steps:
       # setup
@@ -405,8 +435,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--coverage
-          path: target/coverage
-
+          path: target/coverage  
+    
   test_dart_native:
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
@@ -786,6 +816,8 @@ jobs:
   misc_codecov:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
+    # NOTE Even if some previous jobs failed, we still want partial info
+    if: ${{ always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - generate_run_frb_codegen_command_generate

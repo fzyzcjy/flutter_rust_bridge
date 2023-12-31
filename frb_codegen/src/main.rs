@@ -60,6 +60,8 @@ mod tests {
         body_execute_generate("pure_dart")
     }
 
+    // we do not care about coverage of test themselves
+    // frb-coverage:ignore-start
     fn body_execute_generate(name: &str) -> anyhow::Result<()> {
         // if want verbose log, enable it
         // configure_opinionated_test_logging();
@@ -71,4 +73,5 @@ mod tests {
         set_cwd_test_fixture(&format!("../../frb_example/{name}"))?;
         main_given_cli(Cli::parse_from(vec!["", "generate"]))
     }
+    // frb-coverage:ignore-end
 }

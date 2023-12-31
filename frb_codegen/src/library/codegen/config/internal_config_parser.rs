@@ -41,7 +41,7 @@ impl InternalConfig {
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
 
         let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
-        let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir);
+        let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir)?;
 
         let dart_output_class_name_pack = compute_dart_output_class_name_pack(config);
 
@@ -59,7 +59,7 @@ impl InternalConfig {
                 rust_input_path_pack.one_rust_input_path(),
             )?),
         )?;
-        let rust_output_path = compute_rust_output_path(config, &base_dir, &rust_crate_dir);
+        let rust_output_path = compute_rust_output_path(config, &base_dir, &rust_crate_dir)?;
 
         let dart_root = canonicalize_with_error_message(
             &(config.dart_root.clone().map(PathBuf::from))
@@ -159,10 +159,7 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
     if config.dump_all.unwrap_or(false) {
         return ConfigDumpContent::iter().collect_vec();
     }
-    if let Some(dump) = &config.dump {
-        return dump.to_owned();
-    }
-    vec![]
+    config.dump.clone().unwrap_or_default()
 }
 
 fn compute_default_external_library_loader(
@@ -228,6 +225,8 @@ fn compute_rust_input_path_pack(
 
     let pack = RustInputPathPack { rust_input_paths };
 
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
     ensure!(
         !pack.rust_input_paths.is_empty(),
         "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
@@ -236,6 +235,7 @@ fn compute_rust_input_path_pack(
         !pack.rust_input_paths.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
+    // frb-coverage:ignore-end
 
     Ok(pack)
 }
@@ -244,12 +244,12 @@ fn compute_rust_output_path(
     config: &Config,
     base_dir: &Path,
     rust_crate_dir: &Path,
-) -> TargetOrCommonMap<PathBuf> {
+) -> anyhow::Result<TargetOrCommonMap<PathBuf>> {
     let path_common = base_dir.join(
         (config.rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
     );
-    compute_path_map(&path_common)
+    compute_path_map(&path_common).context("rust_output: is wrong: ")
 }
 
 struct DartOutputPathPack {
@@ -257,20 +257,26 @@ struct DartOutputPathPack {
     dart_impl_output_path: TargetOrCommonMap<PathBuf>,
 }
 
-fn compute_dart_output_path_pack(dart_output_dir: &Path) -> DartOutputPathPack {
-    DartOutputPathPack {
+fn compute_dart_output_path_pack(dart_output_dir: &Path) -> anyhow::Result<DartOutputPathPack> {
+    Ok(DartOutputPathPack {
         dart_decl_base_output_path: dart_output_dir.to_owned(),
-        dart_impl_output_path: compute_path_map(&dart_output_dir.join("frb_generated.dart")),
-    }
+        dart_impl_output_path: compute_path_map(&dart_output_dir.join("frb_generated.dart"))
+            .context("dart_output: is wrong: ")?,
+    })
 }
 
-fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
-    let extension = path_common.extension().unwrap().to_str().unwrap();
-    TargetOrCommonMap {
+fn compute_path_map(path_common: &Path) -> anyhow::Result<TargetOrCommonMap<PathBuf>> {
+    let extension = path_common.extension()
+        .context(format!(
+            "Cannot use the path configuration\n {path_common:?}.\n\
+            A path for input/output needs to include the file name (a glob, like *.rs, can be used)."
+        ))?.to_str().context(format!("Cannot convert path to string for the path {path_common:?}"))?;
+
+    Ok(TargetOrCommonMap {
         common: path_common.to_owned(),
         io: path_common.with_extension(format!("io.{extension}")),
         web: path_common.with_extension(format!("web.{extension}")),
-    }
+    })
 }
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
@@ -358,6 +364,53 @@ mod tests {
             &create_path_sanitizers(&test_fixture_dir),
         )?;
 
+        Ok(())
+    }
+
+    #[test]
+    #[serial]
+    fn test_compute_path_map() -> anyhow::Result<()> {
+        let result = super::compute_path_map(&PathBuf::from("src/api/api.rs"))?;
+        assert_eq!(result.common, PathBuf::from("src/api/api.rs"));
+        assert_eq!(result.io, PathBuf::from("src/api/api.io.rs"));
+        assert_eq!(result.web, PathBuf::from("src/api/api.web.rs"));
+        Ok(())
+    }
+    #[test]
+    #[serial]
+    fn test_compute_path_map_with_glob() -> anyhow::Result<()> {
+        let result = super::compute_path_map(&PathBuf::from("src/api/*.rs"))?;
+        assert_eq!(result.common, PathBuf::from("src/api/*.rs"));
+        assert_eq!(result.io, PathBuf::from("src/api/*.io.rs"));
+        assert_eq!(result.web, PathBuf::from("src/api/*.web.rs"));
+        Ok(())
+    }
+    #[test]
+    #[serial]
+    fn test_compute_path_map_faulty() -> anyhow::Result<()> {
+        let result = super::compute_path_map(&PathBuf::from("src/api"));
+        assert!(result.is_err());
+        assert!(result
+            .err()
+            .unwrap()
+            .to_string()
+            .contains("Cannot use the path configuration"));
+        Ok(())
+    }
+
+    #[test]
+    #[serial]
+    fn test_parse_rust_output_faulty() -> anyhow::Result<()> {
+        let result = body("library/codegen/config/internal_config_parser/faulty_rust_output");
+
+        assert!(result.is_err());
+        let error = result.err().unwrap();
+        assert!(error.to_string().contains("rust_output: is wrong:"));
+        assert!(error
+            .source()
+            .unwrap()
+            .to_string()
+            .contains("A path for input/output needs to include the file name"));
         Ok(())
     }
 }

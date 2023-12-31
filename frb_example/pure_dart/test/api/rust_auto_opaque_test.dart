@@ -226,6 +226,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinNormal(obj.instanceMethodReturnOwnTwinNormal());
     await futurizeVoidTwinNormal(obj.instanceMethodArgOwnTwinNormal());
   });
+  test('instance newWithResult', () async {
+    final obj = await NonCloneSimpleTwinNormal.newWithResultTwinNormal();
+    await futurizeVoidTwinNormal(obj.instanceMethodArgBorrowTwinNormal());
+  });
 
   test('types with both encodable and opaque fields', () async {
     final obj =

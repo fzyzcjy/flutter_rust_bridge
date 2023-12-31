@@ -22,13 +22,14 @@ impl<T> AddAssign for Acc<Vec<T>> {
     }
 }
 
-impl<T> Extend<Acc<T>> for Acc<Vec<T>> {
-    fn extend<A: IntoIterator<Item = Acc<T>>>(&mut self, iter: A) {
-        for i in iter {
-            self.push_acc(i)
-        }
-    }
-}
+// TODO rm? codecov says this is unused
+// impl<T> Extend<Acc<T>> for Acc<Vec<T>> {
+//     fn extend<A: IntoIterator<Item = Acc<T>>>(&mut self, iter: A) {
+//         for i in iter {
+//             self.push_acc(i)
+//         }
+//     }
+// }
 
 impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
     fn from_iter<A: IntoIterator<Item = Acc<T>>>(iter: A) -> Self {

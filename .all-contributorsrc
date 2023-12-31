@@ -414,6 +414,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "bus710",
       "name": "bus710",
       "avatar_url": "https://avatars.githubusercontent.com/u/8920680?v=4",
@@ -493,6 +502,15 @@
       "contributions": [
         "code",
         "doc"
+      ]
+    },
+    {
+      "login": "CosmicHorrorDev",
+      "name": "CosmicHorror",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30302768?v=4",
+      "profile": "https://cosmichorror.dev",
+      "contributions": [
+        "code"
       ]
     },
     {
@@ -622,6 +640,24 @@
       ]
     },
     {
+      "login": "mattiasgronlund",
+      "name": "mattiasgronlund",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7727472?v=4",
+      "profile": "https://github.com/mattiasgronlund",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "adsouza",
+      "name": "Antonio D'souza",
+      "avatar_url": "https://avatars.githubusercontent.com/u/275832?v=4",
+      "profile": "https://www.adsouza.net",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "vimaxwell",
       "name": "max",
       "avatar_url": "https://avatars.githubusercontent.com/u/19898639?v=4",
@@ -664,6 +700,15 @@
       "profile": "https://satvikpendem.com",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "damywise",
+      "name": "Damien Wise",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25608913?v=4",
+      "profile": "https://github.com/damywise",
+      "contributions": [
+        "doc"
       ]
     },
     {

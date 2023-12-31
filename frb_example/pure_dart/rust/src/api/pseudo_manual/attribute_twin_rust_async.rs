@@ -13,6 +13,16 @@ pub struct CustomizedTwinRustAsync {
     pub non_final_field: Option<String>,
 }
 
+#[frb(ignore)]
+pub async fn func_should_not_exist_in_dart_twin_rust_async() {}
+
+pub struct EmptyTwinRustAsync;
+
+impl EmptyTwinRustAsync {
+    #[frb(ignore)]
+    pub async fn method_should_not_exist_in_dart_twin_rust_async() {}
+}
+
 pub async fn handle_customized_struct_twin_rust_async(val: CustomizedTwinRustAsync) {
     info!("{:#?}", val);
 }

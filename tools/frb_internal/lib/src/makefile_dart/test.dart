@@ -255,10 +255,11 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
 
   await exec('cargo build', relativePwd: config.package);
 
-  final effectiveEnableCoverage =
-      config.coverage && config.package == 'frb_codegen';
+  final effectiveEnableCoverage = config.coverage &&
+      const ['frb_codegen', 'frb_rust'].contains(config.package);
 
-  final outputCodecovPath = '${getCoverageDir('rust')}/codecov.json';
+  final outputCodecovPath =
+      '${getCoverageDir('test_rust_package_${config.package.replaceAll("/", "_")}')}/codecov.json';
   await exec(
       'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"}',
       relativePwd: config.package,
@@ -359,7 +360,7 @@ Future<void> _formatDartCoverage({required String package}) async {
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
+    'format_coverage --check-ignore --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }

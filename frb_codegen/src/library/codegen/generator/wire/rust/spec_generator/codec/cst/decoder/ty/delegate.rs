@@ -128,7 +128,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
         Default::default()
     }
 
+    // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+    // frb-coverage:ignore-start
     fn rust_wire_type(&self, target: Target) -> String {
+        // frb-coverage:ignore-end
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Web) => "String".into(),
             // (IrTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),

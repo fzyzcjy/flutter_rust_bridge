@@ -17,9 +17,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let length: usize = match &type_array.len {
             Expr::Lit(lit) => match &lit.lit {
                 syn::Lit::Int(x) => x.base10_parse()?,
+                // This will stop the whole generator and tell the users, so we do not care about testing it
+                // frb-coverage:ignore-start
                 _ => bail!("Cannot parse array length"),
             },
             _ => bail!("Cannot parse array length"),
+            // frb-coverage:ignore-end
         };
 
         let mode = match self.parse_type(&type_array.elem)? {

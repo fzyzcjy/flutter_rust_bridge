@@ -42,6 +42,9 @@ pub enum ModuleSource {
     ModuleInFile(Vec<syn::Item>),
 }
 
+// This struct is surely used many times, but coverage tool thinks it is never used
+// (possibly because of the macro?), so we manually exclude it from coverage report
+// frb-coverage:ignore-start
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct StructOrEnum<Item> {
@@ -54,6 +57,7 @@ pub struct StructOrEnum<Item> {
     pub(crate) path: Vec<String>,
     pub(crate) mirror: bool,
 }
+// frb-coverage:ignore-end
 
 #[derive(Clone, Debug, Serialize)]
 pub struct Struct(pub StructOrEnum<ItemStruct>);

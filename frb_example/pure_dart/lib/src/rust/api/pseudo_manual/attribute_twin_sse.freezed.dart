@@ -104,7 +104,7 @@ class _$UserIdTwinSseImpl implements _UserIdTwinSse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserIdTwinSseImpl &&

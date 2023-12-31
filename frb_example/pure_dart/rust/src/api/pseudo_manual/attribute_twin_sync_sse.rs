@@ -13,6 +13,20 @@ pub struct CustomizedTwinSyncSse {
     pub non_final_field: Option<String>,
 }
 
+#[frb(ignore)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn func_should_not_exist_in_dart_twin_sync_sse() {}
+
+pub struct EmptyTwinSyncSse;
+
+impl EmptyTwinSyncSse {
+    #[frb(ignore)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn method_should_not_exist_in_dart_twin_sync_sse() {}
+}
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn handle_customized_struct_twin_sync_sse(val: CustomizedTwinSyncSse) {

@@ -19,7 +19,10 @@ pub fn create(name: &str, enable_local_dependency: bool) -> anyhow::Result<()> {
     integrator::integrate(true, enable_local_dependency)
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn remove_unnecessary_files(dart_root: &Path) -> anyhow::Result<()> {
+    // frb-coverage:ignore-end
     fs::remove_file(dart_root.join("test").join("widget_test.dart"))?;
     fs::remove_file(dart_root.join("lib").join("main.dart"))?;
     Ok(())

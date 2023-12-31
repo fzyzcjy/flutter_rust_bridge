@@ -1,5 +1,38 @@
 # Changelog
 
+## Unreleased
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support ignoring a function via `#[frb(ignore)]` #1544 (thanks @JustSimplyKyle)
+* Bump dependency to allow building if rust toolchain for esp32 is installed #1498 (thanks @mattiasgronlund)
+
+## 2.0.0-dev.8
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Let codegen report error when provided configuration names are incorrect #1509 (thanks @patmuk)
+
+## 2.0.0-dev.7
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Improve error message when a file ending is not provided in configuration #1540 (thanks @patmuk)
+
+## 2.0.0-dev.6
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Remove double-allocation for enum CST decode #1500 (thanks @Desdaemon)
+
+## 2.0.0-dev.5
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Set the msrv #1463 (thanks @patmuk)
+* Toggle off default `clap` feature for `cbindgen` #1503 (thanks @CosmicHorrorDev)
+
+## 2.0.0-dev.4
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix Generated Rust code of `Result<RustOpaque<...>>` is incorrect #1474 (thanks @trobanga)
+* (My (@fzyzcjy's) PRs are not listed here)
+
 ## 2.0.0-dev.3
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

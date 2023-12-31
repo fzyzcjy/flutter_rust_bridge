@@ -50,6 +50,8 @@ where
     T: Eq + Debug,
     F: Fn(String) -> anyhow::Result<T>,
 {
+    // This is *test* utils, not a part of real codegen, so no need to consider coverage
+    // frb-coverage:ignore-start
     let expect = deserializer(if matcher_path.exists() {
         fs::read_to_string(matcher_path)?
     } else {
@@ -66,6 +68,7 @@ where
     }
 
     Ok(())
+    // frb-coverage:ignore-end
 }
 
 fn enable_update_golden() -> bool {

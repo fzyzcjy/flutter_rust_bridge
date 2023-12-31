@@ -103,7 +103,7 @@ class _$DistanceTwinSync_UnknownImpl implements DistanceTwinSync_Unknown {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DistanceTwinSync_UnknownImpl);
@@ -224,7 +224,7 @@ class _$DistanceTwinSync_MapImpl implements DistanceTwinSync_Map {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DistanceTwinSync_MapImpl &&
@@ -412,7 +412,7 @@ class _$EnumWithItemMixedTwinSync_AImpl implements EnumWithItemMixedTwinSync_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinSync_AImpl);
@@ -544,7 +544,7 @@ class _$EnumWithItemMixedTwinSync_BImpl implements EnumWithItemMixedTwinSync_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinSync_BImpl &&
@@ -690,7 +690,7 @@ class _$EnumWithItemMixedTwinSync_CImpl implements EnumWithItemMixedTwinSync_C {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinSync_CImpl &&
@@ -898,7 +898,7 @@ class _$EnumWithItemStructTwinSync_AImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemStructTwinSync_AImpl &&
@@ -1041,7 +1041,7 @@ class _$EnumWithItemStructTwinSync_BImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemStructTwinSync_BImpl &&
@@ -1245,7 +1245,7 @@ class _$EnumWithItemTupleTwinSync_AImpl implements EnumWithItemTupleTwinSync_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemTupleTwinSync_AImpl &&
@@ -1386,7 +1386,7 @@ class _$EnumWithItemTupleTwinSync_BImpl implements EnumWithItemTupleTwinSync_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemTupleTwinSync_BImpl &&
@@ -1594,7 +1594,7 @@ class _$KitchenSinkTwinSync_EmptyImpl implements KitchenSinkTwinSync_Empty {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSync_EmptyImpl);
@@ -1761,7 +1761,7 @@ class _$KitchenSinkTwinSync_PrimitivesImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSync_PrimitivesImpl &&
@@ -1952,7 +1952,7 @@ class _$KitchenSinkTwinSync_NestedImpl implements KitchenSinkTwinSync_Nested {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSync_NestedImpl &&
@@ -2127,7 +2127,7 @@ class _$KitchenSinkTwinSync_OptionalImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSync_OptionalImpl &&
@@ -2296,7 +2296,7 @@ class _$KitchenSinkTwinSync_BufferImpl implements KitchenSinkTwinSync_Buffer {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSync_BufferImpl &&
@@ -2462,7 +2462,7 @@ class _$KitchenSinkTwinSync_EnumsImpl implements KitchenSinkTwinSync_Enums {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSync_EnumsImpl &&
@@ -2694,7 +2694,7 @@ class _$MeasureTwinSync_SpeedImpl implements MeasureTwinSync_Speed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeasureTwinSync_SpeedImpl &&
@@ -2842,7 +2842,7 @@ class _$MeasureTwinSync_DistanceImpl implements MeasureTwinSync_Distance {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeasureTwinSync_DistanceImpl &&
@@ -3021,7 +3021,7 @@ class _$SpeedTwinSync_UnknownImpl implements SpeedTwinSync_Unknown {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeedTwinSync_UnknownImpl);
@@ -3142,7 +3142,7 @@ class _$SpeedTwinSync_GPSImpl implements SpeedTwinSync_GPS {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeedTwinSync_GPSImpl &&

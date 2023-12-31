@@ -49,3 +49,58 @@ impl GuardedBoxContext for GuardedBoxContextThread {
         Self(std::thread::current().id())
     }
 }
+
+#[cfg(not(wasm))]
+#[cfg(test)]
+mod tests {
+    use crate::dart_opaque::boxes::thread_box::ThreadBox;
+    use cool_asserts::assert_panics;
+    use std::sync::Arc;
+    use std::thread;
+
+    #[test]
+    fn test_thread_box_simple() {
+        let b = ThreadBox::new(42);
+        assert!(b.check_context());
+        assert_eq!(*b.as_ref(), 42);
+        assert_eq!(b.into_inner(), 42);
+    }
+
+    #[test]
+    fn test_thread_box_should_panic_when_access_on_another_thread() {
+        let b = Arc::new(ThreadBox::new(42));
+        let b2 = b.clone();
+        thread::spawn(move || {
+            assert_panics!({
+                let _inner: &i32 = (*b2).as_ref();
+            });
+        })
+        .join()
+        .unwrap();
+        drop(b);
+    }
+
+    #[test]
+    fn test_thread_box_should_panic_and_leak_when_access_and_drop_on_another_thread() {
+        let b = ThreadBox::new(42);
+
+        #[allow(clippy::redundant_closure_call)]
+        thread::spawn(move || {
+            assert_panics!((move || {
+                let _inner: &i32 = b.as_ref();
+            })());
+        })
+        .join()
+        .unwrap();
+    }
+
+    #[test]
+    fn test_thread_box_should_panic_when_drop_on_another_thread() {
+        let b = ThreadBox::new(42);
+        thread::spawn(move || {
+            assert_panics!(drop(b));
+        })
+        .join()
+        .unwrap();
+    }
+}

@@ -67,6 +67,7 @@ Future<void> releaseUpdateVersion() async {
 Future<void> releaseUpdateCode() async {
   _updateVersionInText();
   await pubGetAll();
+  await miscNormalizePubspec();
   await cargoFetchAll();
 }
 
@@ -148,6 +149,9 @@ _VersionInfo _computeVersionInfo() => _extractChangelog().$1;
 
   final newVersion = versions[0];
   final oldVersion = versions[1];
+  if (oldVersion == newVersion) {
+    throw Exception('version in changelog is weird');
+  }
 
   return (
     _VersionInfo(

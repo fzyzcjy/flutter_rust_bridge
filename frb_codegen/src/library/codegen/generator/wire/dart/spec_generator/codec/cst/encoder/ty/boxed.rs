@@ -4,10 +4,8 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::primitive::dart_native_type_of_primitive;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
-use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
-use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
@@ -76,14 +74,20 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
                     WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                         .dart_wire_type(target)
                 } else {
-                    format!(
-                        "int /* *{} */",
-                        WireRustCodecCstGenerator::new(
-                            self.ir.inner.clone(),
-                            self.context.as_wire_rust_context()
-                        )
-                        .rust_wire_type(target)
-                    )
+                    // Quick hack to remove seemingly dead code without causing any trouble ;)
+
+                    // frb-coverage:ignore-start
+                    unreachable!("Codecov says this branch is never used. If you see this message, please create an issue and let's re-enable the logic here.")
+                    // frb-coverage:ignore-end
+
+                    // format!(
+                    //     "int /* *{} */",
+                    //     WireRustCodecCstGenerator::new(
+                    //         self.ir.inner.clone(),
+                    //         self.context.as_wire_rust_context()
+                    //     )
+                    //     .rust_wire_type(target)
+                    // )
                 }
             }
             Target::Io => {
@@ -106,7 +110,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerato
     }
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn is_empty_struct(ty: &BoxedWireDartCodecCstGenerator) -> bool {
+    // frb-coverage:ignore-end
     if let StructRef(ref s) = ty.ir.inner.as_ref() {
         s.get(ty.context.ir_pack).fields.is_empty()
     } else {

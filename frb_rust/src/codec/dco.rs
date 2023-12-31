@@ -73,3 +73,19 @@ where
         Err(raw) => Err(DcoCodec::encode(Rust2DartAction::Error, raw)),
     }
 }
+
+#[cfg(test)]
+mod tests {
+
+    #[cfg(not(wasm))]
+    #[test]
+    fn test_simplest() {
+        use crate::codec::Rust2DartMessageTrait;
+        use crate::for_generated::Rust2DartMessageDco;
+        use allo_isolate::ffi::DartCObjectType;
+        assert_eq!(
+            Rust2DartMessageDco::simplest().0.ty,
+            DartCObjectType::DartNull
+        );
+    }
+}

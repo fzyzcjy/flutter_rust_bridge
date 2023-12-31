@@ -24,7 +24,10 @@ pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<String> {
 
 fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<()> {
     debug!(
+        // weirdly this line is not covered, while the `debug!` call is
+        // frb-coverage:ignore-start
         "execute cbindgen rust_crate_dir={rust_crate_dir:?} c_output_path={c_output_path:?}",
+        // frb-coverage:ignore-end
         rust_crate_dir = args.rust_crate_dir
     );
 
@@ -70,12 +73,15 @@ pub(crate) fn cbindgen_raw(
     debug!("cbindgen parsed_crate_dir={}", parsed_crate_dir);
 
     let bindings = cbindgen::generate_with_config(parsed_crate_dir, config).map_err(|e| {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         if let Error::ParseSyntaxError { src_path, .. } = &e {
             let content =
                 fs::read_to_string(src_path).unwrap_or_else(|_| "CANNOT READ FILE".into());
             info!("More information: src_path={src_path:?} content={content}");
         }
         e
+        // frb-coverage:ignore-end
     })?;
 
     // no need to worry about return value. false just means content not change

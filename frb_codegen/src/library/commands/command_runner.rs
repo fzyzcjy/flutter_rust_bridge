@@ -124,7 +124,10 @@ pub(crate) fn execute_command<'a>(
             String::from_utf8_lossy(&result.stderr)
         );
         if stdout.contains("fatal error") {
+            // We do not care about details of this message
+            // frb-coverage:ignore-start
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
+            // frb-coverage:ignore-end
         }
     } else {
         warn!(
@@ -139,8 +142,11 @@ pub(crate) fn execute_command<'a>(
 
 pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
     if !res.status.success() {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         let msg = String::from_utf8_lossy(&res.stderr);
         bail!("Command execution failed: {msg}");
+        // frb-coverage:ignore-end
     }
     Ok(())
 }

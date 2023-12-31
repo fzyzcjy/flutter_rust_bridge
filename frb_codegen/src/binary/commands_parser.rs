@@ -58,8 +58,9 @@ mod tests {
     use crate::binary::test_utils::set_cwd_test_fixture;
     use clap::Parser;
     use itertools::concat;
-    use lib_flutter_rust_bridge_codegen::codegen;
+    use lib_flutter_rust_bridge_codegen::codegen::Config;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
+    use lib_flutter_rust_bridge_codegen::{codegen, if_then_some};
     use serial_test::serial;
 
     // need to run serially, otherwise working directory will override each other
@@ -70,7 +71,7 @@ mod tests {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
 
-        let config = run_command_line(vec!["", "generate"]);
+        let config = run_command_line::<Config, anyhow::Error>(vec!["", "generate"])?;
         assert_eq!(config.rust_input, "hello.rs".to_string());
         assert!(!config.dart3.unwrap());
 
@@ -83,9 +84,28 @@ mod tests {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/pubspec_yaml")?;
 
-        let config = run_command_line(vec!["", "generate"]);
+        let config = run_command_line::<Config, anyhow::Error>(vec!["", "generate"])?;
         assert_eq!(config.rust_input, "hello.rs".to_string());
         assert!(!config.dart3.unwrap());
+
+        Ok(())
+    }
+
+    #[test]
+    #[serial]
+    fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml_faulty() -> anyhow::Result<()>
+    {
+        configure_opinionated_test_logging();
+        set_cwd_test_fixture("binary/commands_parser/faulty_pubspec_yaml")?;
+
+        let result = run_command_line::<Config, anyhow::Error>(vec!["", "generate"]);
+        assert!(result.is_err());
+        assert!(result
+            .unwrap_err()
+            .source()
+            .unwrap()
+            .to_string()
+            .contains("misspelled_dart3"));
 
         Ok(())
     }
@@ -96,10 +116,36 @@ mod tests {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/config_file")?;
 
-        let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
+        let config = run_command_line::<Config, anyhow::Error>(vec![
+            "",
+            "generate",
+            "--config-file",
+            "hello.yaml",
+        ])?;
         assert_eq!(config.rust_input, "hello.rs".to_string());
         assert!(!config.dart3.unwrap());
 
+        Ok(())
+    }
+
+    #[test]
+    #[serial]
+    fn test_compute_codegen_config_mode_config_file_faulty_file() -> anyhow::Result<()> {
+        configure_opinionated_test_logging();
+        set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
+        let result = run_command_line::<(), anyhow::Error>(vec![
+            "",
+            "generate",
+            "--config-file",
+            "faulty_flutter_rust_bridge.yaml",
+        ]);
+        assert!(result.is_err());
+        assert!(result
+            .unwrap_err()
+            .source()
+            .unwrap()
+            .to_string()
+            .contains("misspelled_dart3"));
         Ok(())
     }
 
@@ -118,23 +164,24 @@ mod tests {
             "--c-output",
             "hello.h",
         ];
-        assert_eq!(run_command_line(common_args.clone()).dart3, Some(true));
+        let config = run_command_line::<(), anyhow::Error>(common_args.clone())
+            .expect("failed to parse cli args");
+        assert_eq!(config.dart3, Some(true));
+        assert_eq!(config.rust_input, "hello.rs".to_string());
         assert_eq!(
-            run_command_line(common_args.clone()).rust_input,
-            "hello.rs".to_string()
-        );
-        assert_eq!(
-            run_command_line(concat([common_args.clone(), vec!["--no-dart3"]])).dart3,
+            run_command_line::<Config, anyhow::Error>(concat([
+                common_args.clone(),
+                vec!["--no-dart3"]
+            ]))
+            .expect("failed to parse cli args")
+            .dart3,
             Some(false)
         );
     }
 
-    fn run_command_line(args: Vec<&'static str>) -> codegen::Config {
+    fn run_command_line<T, E>(args: Vec<&'static str>) -> anyhow::Result<codegen::Config> {
         let cli = Cli::parse_from(args);
-        let args = match cli.command {
-            Commands::Generate(args) => args,
-            _ => panic!(),
-        };
-        compute_codegen_config(args.primary).unwrap()
+        let args = if_then_some!(let Commands::Generate(args) = cli.command, args).unwrap();
+        compute_codegen_config(args.primary)
     }
 }

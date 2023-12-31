@@ -25,11 +25,14 @@ impl CachedCargoExpand {
         let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
 
         if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
+            // We do not care about this warning message
+            // frb-coverage:ignore-start
             warn!(
                 "Skip cargo-expand on {rust_crate_dir:?}, \
              because cargo is already running and would block cargo-expand. \
              This might cause errors if your api contains macros."
             );
+            // frb-coverage:ignore-end
             return Ok(fs::read_to_string(rust_file_path)?);
         }
 
@@ -100,7 +103,10 @@ fn run_cargo_expand(
             install_cargo_expand()?;
             return run_cargo_expand(rust_crate_dir, dumper, false);
         }
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         bail!("cargo expand returned empty output");
+        // frb-coverage:ignore-end
     }
 
     let mut stdout_lines = stdout.lines();

@@ -14,12 +14,18 @@ lazy_static! {
 pub fn ensure_tools_available(dart_root: &Path, enable_deps_check: bool) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
     if !repo.toolchain_available() {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         bail!("Dart/Flutter toolchain not available");
+        // frb-coverage:ignore-end
     }
 
     if enable_deps_check {
         repo.has_specified_and_installed("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
+        // This empty bracket ("}") is weirdly not covered, while lines above and below it are
+        // frb-coverage:ignore-start
     }
+    // frb-coverage:ignore-end
 
     Ok(())
 }

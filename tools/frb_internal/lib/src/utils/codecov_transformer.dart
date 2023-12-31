@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+import 'package:meta/meta.dart';
 
 void transformCodecovReport(String path) {
   print('transformCodecovReport act on $path');
@@ -35,7 +36,7 @@ Map<String, dynamic> _transformByMimickingLcovInfo(Map<String, dynamic> raw) {
     // mimic lcov.info feature (lcov.info is used in Dart side)
     final ansValue = () {
       if (rawValue is! String || !rawValue.contains('/')) return rawValue;
-      return rawValue.substring(0, rawValue.indexOf('/'));
+      return int.parse(rawValue.substring(0, rawValue.indexOf('/')));
     }();
     return MapEntry(key, ansValue);
   });
@@ -74,15 +75,21 @@ Map<String, dynamic> _transformByCodeComments(
   return ans;
 }
 
+// see the test file for details of this regex
+final _kIgnoreLineRegex =
+    RegExp(r'^\s*(#\[derive\(.*\)\]|[)}]\?.*|//.*|\};?)\s*$');
+
+@visibleForTesting
+bool shouldKeepLine(String line) => !_kIgnoreLineRegex.hasMatch(line);
+
 Map<String, dynamic> _transformByPatterns(
     List<String> fileLines, Map<String, dynamic> raw) {
-  // Ignore code coverage for things like `#[derive(Debug)]`,
-  // since this is by Rust compiler and is surely correct
-  final regex = RegExp(r'^\s*#\[derive\(.*\)\]\s*$');
-
   return raw.map((key, value) {
     final fileLine = fileLines[int.parse(key) - 1];
-    final shouldKeep = !regex.hasMatch(fileLine);
-    return MapEntry(key, shouldKeep ? value : null);
+    return MapEntry(
+        key,
+        ((value is int && value > 0) || shouldKeepLine(fileLine))
+            ? value
+            : null);
   });
 }

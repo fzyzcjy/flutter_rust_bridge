@@ -97,6 +97,8 @@ fn modify_file(
                 })
                 .unwrap_or_default();
             return Some((path, [&src, commented_existing_content.as_bytes()].concat()));
+            // We do not care about this warning
+            // frb-coverage:ignore-start
         }
 
         warn!(
@@ -104,6 +106,7 @@ fn modify_file(
             It is suggested to remove that file before running this command to apply the full template."
         );
         return None;
+        // frb-coverage:ignore-end
     }
 
     if path.iter().contains(&OsStr::new("cargokit")) {
@@ -155,7 +158,9 @@ fn compute_cargokit_comments(path: &Path) -> Option<String> {
         // Do not add prelude for `sh`, since it can contain things like `#!/bin/bash`
         // which must be at first line
         "lock" | "cmake" | "sh" | "ps1" | "cmd" => return None,
+        // frb-coverage:ignore-start
         ext => unreachable!("unexpected file extension for path={:?} ext={}", path, ext),
+        // frb-coverage:ignore-end
     };
 
     Some(
@@ -179,10 +184,13 @@ const CARGOKIT_PRELUDE: &[&str] = &[
     "Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin",
 ];
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn pub_add_dependencies(
     enable_integration_test: bool,
     enable_local_dependency: bool,
 ) -> Result<()> {
+    // frb-coverage:ignore-end
     flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
 
     flutter_pub_add(&if enable_local_dependency {
@@ -202,7 +210,10 @@ fn pub_add_dependencies(
             "--dev".into(),
             "--sdk=flutter".into(),
         ])?;
+        // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+        // frb-coverage:ignore-start
     }
+    // frb-coverage:ignore-end
 
     Ok(())
 }

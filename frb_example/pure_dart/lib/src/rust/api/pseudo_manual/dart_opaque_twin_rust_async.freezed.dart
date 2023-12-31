@@ -128,7 +128,7 @@ class _$EnumDartOpaqueTwinRustAsync_PrimitiveImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumDartOpaqueTwinRustAsync_PrimitiveImpl &&
@@ -269,7 +269,7 @@ class _$EnumDartOpaqueTwinRustAsync_OpaqueImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumDartOpaqueTwinRustAsync_OpaqueImpl &&

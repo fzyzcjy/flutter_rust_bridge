@@ -44,7 +44,6 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
 
 impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
     fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &IrVariant) -> String {
-        let ident = &self.ir.ident.0.name;
         let wrapper_name = &variant.wrapper_name;
         let variant_name = &variant.name;
 
@@ -64,19 +63,16 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
                     })
                     .join("\n");
 
-                let stmt_set_kind =
-                    format!("wireObj.kind = wire.cst_inflate_{ident}_{variant_name}();");
-
-                let r = format!("wireObj.kind.ref.{variant_name}.ref");
+                let r = format!("wireObj.kind.{variant_name}");
                 let body = st
                     .fields
                     .iter()
                     .map(|field| {
-                        format!("{r}.{name} = pre_{name};", name = field.name.rust_style(),)
+                        format!("{r}.{name} = pre_{name};", name = field.name.rust_style())
                     })
                     .join("\n");
 
-                (pre_field, stmt_set_kind + &body)
+                (pre_field, body)
             }
         };
 

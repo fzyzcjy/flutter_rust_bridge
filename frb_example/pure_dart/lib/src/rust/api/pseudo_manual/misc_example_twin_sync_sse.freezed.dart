@@ -132,7 +132,7 @@ class _$AbcTwinSyncSse_AImpl implements AbcTwinSyncSse_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinSyncSse_AImpl &&
@@ -280,7 +280,7 @@ class _$AbcTwinSyncSse_BImpl implements AbcTwinSyncSse_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinSyncSse_BImpl &&
@@ -428,7 +428,7 @@ class _$AbcTwinSyncSse_CImpl implements AbcTwinSyncSse_C {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinSyncSse_CImpl &&
@@ -578,7 +578,7 @@ class _$AbcTwinSyncSse_JustIntImpl implements AbcTwinSyncSse_JustInt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinSyncSse_JustIntImpl &&

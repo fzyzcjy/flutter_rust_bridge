@@ -1,4 +1,4 @@
-- Desdaemon: Support not only simple enums but also enums with fields which gets translated to native enum or sealed freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support tuple type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates and optionals. Parameter defaults. Refactor CLI. Refactor codegen errors.
+- Desdaemon: Support not only simple enums but also enums with fields which gets translated to native enum or sealed freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support tuple type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates and optionals. Parameter defaults. Refactor CLI. Refactor codegen errors. Refactor for performance.
 - rogurotus: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers. Also add Dart opaque types, allowing to use any Dart objects in Rust code. Extend `SyncReturn` for more types. Fix generation bug. Fix SyncReturn. Migrate to dart-sys. Update CI. Fix linters. Fix SyncReturn bug.
 - ngasull: Make sync mode support whatever types that classical async mode supports. Bump sdk.
 - SecondFlight: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relevant dir. Fix `store_dart_post_cobject` error with ffigen 6.0.
@@ -11,7 +11,7 @@
 - dbsxdbsx: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging.
 - GregoryConrad: Add doc to setup frb inside a Dart/Flutter library.
 - huang12zheng: Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache. Remove bridge field in model.
-- trobanga: Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests. Fix fallible list case.
+- trobanga: Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests. Fix fallible list case. Fix test compile. Fix Result + RustAutoOpaque.
 - MnlPhlp: Support macros and will auto expand. Allow mirror types in streams.
 - SoLongAndThanksForAllThePizza: Refactor and enhance SyncReturn to support more types. Refactor post-release CI.
 - hsfzxjy: Fix SyncReturn use-after-free bug.
@@ -19,7 +19,7 @@
 - alanlzhang: Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
 - erikas-taroza: Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
 - SiongSng: Finish implementing exception hierarchy. Fix SyncReturn bug.
-- JustSimplyKyle: Also finish implementing exception hierarchy.
+- JustSimplyKyle: Also finish implementing exception hierarchy. Allow ignore function.
 - Zaitam: Fix when method return struct. Partial migration to Dart 3.
 - coder0xff: Discuss binding unmodified Rust. Refactor SupportedInnerType. Extra codegen tester.
 - nitn3lav: Nested `struct`s without `Box`.
@@ -40,6 +40,7 @@
 - codercengiz: Fix mirroring bug.
 - Michael-F-Bryan: Detect broken bindings.
 - phlip9: Fix no-serde compilation.
+- patmuk: Set MSRV. Fail fast. Improve message. Add doc.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
@@ -49,6 +50,7 @@
 - TENX-S: Improve doc. Reproduce a bug.
 - polypixeldev: Improve doc.
 - CicadaCinema: Bump version. Improve doc.
+- CosmicHorrorDev: Change deps.
 - w1th0utnam3: Improve message.
 - vincent-herlemont: Loosen version.
 - zaynetro: Improve doc.
@@ -63,11 +65,14 @@
 - utilForever: Fix typos.
 - not-holar: Fix typos.
 - Stonks3141: Fix doc credit.
+- mattiasgronlund: Bump version.
+- adsouza: Fix doc grammar.
 - vimaxwell: Fix doc link.
 - lker-dev: Fix doc link.
 - jaiakash: Fix doc link.
 - feber: Fix doc link.
 - satvikpendem: 'Little co-work #989.'
+- damywise: Fix a typo.
 - wxitcode: Fix a typo.
 - rustui: Fix a typo.
 - escwxyz: Fix a typo.

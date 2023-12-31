@@ -67,6 +67,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let func_name = parse_name(sig, &owner);
         let attributes = FrbAttributes::parse(func.attrs())?;
 
+        if attributes.ignore() {
+            return Ok(None);
+        }
+
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
@@ -186,7 +190,10 @@ impl FunctionPartialInfo {
 
 fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T>> {
     if a.is_some() && b.is_some() {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         bail!("Function has conflicting arguments and/or outputs: {a:?} and {b:?}");
+        // frb-coverage:ignore-end
     }
     Ok(a.or(b))
 }

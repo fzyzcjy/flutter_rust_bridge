@@ -132,7 +132,7 @@ class _$AbcTwinNormal_AImpl implements AbcTwinNormal_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinNormal_AImpl &&
@@ -280,7 +280,7 @@ class _$AbcTwinNormal_BImpl implements AbcTwinNormal_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinNormal_BImpl &&
@@ -428,7 +428,7 @@ class _$AbcTwinNormal_CImpl implements AbcTwinNormal_C {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinNormal_CImpl &&
@@ -577,7 +577,7 @@ class _$AbcTwinNormal_JustIntImpl implements AbcTwinNormal_JustInt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AbcTwinNormal_JustIntImpl &&

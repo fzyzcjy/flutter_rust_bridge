@@ -23,7 +23,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 let ir_types = self
                     .parse_angle_bracketed_generic_arguments(args)
                     .with_context(|| {
+                        // This will stop the whole generator and tell the users, so we do not care about testing it
+                        // frb-coverage:ignore-start
                         anyhow!("\"{ident}\" of \"{}\" is not valid", path.to_token_stream())
+                        // frb-coverage:ignore-end
                     })?;
                 Some(Args::Generic(ir_types))
             }

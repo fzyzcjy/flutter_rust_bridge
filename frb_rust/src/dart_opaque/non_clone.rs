@@ -82,9 +82,12 @@ fn drop_thread_box_persistent_handle_via_port(
     ];
 
     if !channel.post(msg) {
+        // We do not care about the detailed error message
+        // frb-coverage:ignore-start
         warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
         // In case logs are disabled
         println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+        // frb-coverage:ignore-end
     };
 }
 

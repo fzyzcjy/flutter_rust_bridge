@@ -50,32 +50,57 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
       ).clone();
 
     case Dart_CObject_Type.Dart_CObject_kExternalTypedData:
-      final externalTypedData = _typedDataIntoDart(
+      final converted = _typedDataIntoDart(
         ty: object.value.as_external_typed_data.type,
         typedValues: object.value.as_external_typed_data.data,
         nValues: object.value.as_external_typed_data.length,
-      ).view;
-      _externalTypedDataFinalizer.attach(
-        externalTypedData,
-        // Copy the cleanup info into a finalization token:
-        // `value`'s underlying memory will probably be freed
-        // before the zero-copy finalizer is called.
-        _ExternalTypedDataFinalizerArgs(
-          length: object.value.as_external_typed_data.length,
-          peer: object.value.as_external_typed_data.peer,
-          callback: object.value.as_external_typed_data.callback
-              .cast<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>>(),
-        ),
       );
-      return externalTypedData;
+
+      // Copy the data
+      final ans = converted.clone();
+
+      // And immediately free the original data
+      final callback = object.value.as_external_typed_data.callback
+          .cast<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>>()
+          .asFunction<_DartExternalTypedDataFinalizer>();
+      callback(
+        object.value.as_external_typed_data.length,
+        object.value.as_external_typed_data.peer,
+      );
+
+      return ans;
+
+    // The commented approach enables zero-copy, but it does not tell
+    // Dart VM the external object size, thus Dart VM may choose to GC too
+    // sparsely.
+    //
+    // Later when the current non-zerocopy approach is too slow and we want to
+    // further optimize, we can use the `NativeFinalizer` and tweak a few pointers
+    // and maybe add an adapter function.
+    //
+    // _externalTypedDataFinalizer.attach(
+    //   externalTypedData,
+    //   // Copy the cleanup info into a finalization token:
+    //   // `value`'s underlying memory will probably be freed
+    //   // before the zero-copy finalizer is called.
+    //   _ExternalTypedDataFinalizerArgs(
+    //     length: object.value.as_external_typed_data.length,
+    //     peer: object.value.as_external_typed_data.peer,
+    //     callback: object.value.as_external_typed_data.callback
+    //         .cast<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>>(),
+    //   ),
+    // );
+    // return externalTypedData;
 
     case Dart_CObject_Type.Dart_CObject_kSendPort:
     case Dart_CObject_Type.Dart_CObject_kCapability:
     case Dart_CObject_Type.Dart_CObject_kNativePointer:
     case Dart_CObject_Type.Dart_CObject_kUnsupported:
     case Dart_CObject_Type.Dart_CObject_kNumberOfTypes:
+    // coverage:ignore-start
     default:
       throw Exception("Can't read invalid data type ${object.type}");
+    // coverage:ignore-end
   }
 }
 
@@ -125,25 +150,15 @@ _TypedData _typedDataIntoDart({
       final view = typedValues.cast<ffi.Double>().asTypedList(nValues);
       return _TypedData<Float64List>(view, Float64List.fromList);
 
+    // coverage:ignore-start
     case Dart_TypedData_Type.Dart_TypedData_kUint8Clamped:
     case Dart_TypedData_Type.Dart_TypedData_kFloat32x4:
     case Dart_TypedData_Type.Dart_TypedData_kInvalid:
     default:
       throw Exception("Can't read invalid typed data type $ty");
+    // coverage:ignore-end
   }
 }
-
-final _externalTypedDataFinalizer =
-    Finalizer<_ExternalTypedDataFinalizerArgs>((externalTypedData) {
-  final handleFinalizer =
-      externalTypedData.callback.asFunction<_DartExternalTypedDataFinalizer>();
-  handleFinalizer(externalTypedData.length, externalTypedData.peer);
-
-  debugOnExternalTypedDataFinalizer?.call(externalTypedData.length);
-});
-
-/// {@macro flutter_rust_bridge.internal}
-void Function(int dataLength)? debugOnExternalTypedDataFinalizer;
 
 class _TypedData<T> {
   final T view;
@@ -154,18 +169,30 @@ class _TypedData<T> {
   T clone() => _cloneView(view);
 }
 
-class _ExternalTypedDataFinalizerArgs {
-  final int length;
-  final ffi.Pointer<ffi.Void> peer;
-  final ffi.Pointer<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>>
-      callback;
-
-  _ExternalTypedDataFinalizerArgs({
-    required this.length,
-    required this.peer,
-    required this.callback,
-  });
-}
+// final _externalTypedDataFinalizer =
+//     Finalizer<_ExternalTypedDataFinalizerArgs>((externalTypedData) {
+//   final handleFinalizer =
+//       externalTypedData.callback.asFunction<_DartExternalTypedDataFinalizer>();
+//   handleFinalizer(externalTypedData.length, externalTypedData.peer);
+//
+//   debugOnExternalTypedDataFinalizer?.call(externalTypedData.length);
+// });
+//
+// /// {@macro flutter_rust_bridge.internal}
+// void Function(int dataLength)? debugOnExternalTypedDataFinalizer;
+//
+// class _ExternalTypedDataFinalizerArgs {
+//   final int length;
+//   final ffi.Pointer<ffi.Void> peer;
+//   final ffi.Pointer<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>>
+//       callback;
+//
+//   _ExternalTypedDataFinalizerArgs({
+//     required this.length,
+//     required this.peer,
+//     required this.callback,
+//   });
+// }
 
 typedef _NativeExternalTypedDataFinalizer = ffi.Void Function(
     ffi.IntPtr, ffi.Pointer<ffi.Void>);

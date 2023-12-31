@@ -42,8 +42,10 @@ class DartHandlerPortManager extends BaseLazyPortManager {
             .dartOpaqueDropThreadBoxPersistentHandle(message[1]);
       case _DartHandlerPortAction.dartFnInvoke:
         _handler.dartFnInvoke(message.sublist(1), _generalizedFrbRustBinding);
+      // coverage:ignore-start
       default:
         throw UnimplementedError('Unsupported message: $message');
+      // coverage:ignore-end
     }
   }
 }

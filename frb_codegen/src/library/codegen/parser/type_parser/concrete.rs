@@ -47,13 +47,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
+// the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
+// frb-coverage:ignore-start
 fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
+    // frb-coverage:ignore-end
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
         return Ok(match splay_segments(segments).last().unwrap() {
             ("Utc", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)),
             ("Local", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)),
+            // This will stop the whole generator and tell the users, so we do not care about testing it
+            // frb-coverage:ignore-start
             _ => bail!("Invalid DateTime generic: {args:?}"),
         });
     }
     bail!("Invalid DateTime generic: {args:?}")
+    // frb-coverage:ignore-end
 }

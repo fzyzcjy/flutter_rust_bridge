@@ -37,8 +37,10 @@ abstract class SimpleDecoder<S, E extends Object> {
       case _Rust2DartAction.closeStream:
         throw CloseStreamException();
 
+      // coverage:ignore-start
       default:
         throw Exception('Unsupported message (action=$action)');
+      // coverage:ignore-end
     }
   }
 
