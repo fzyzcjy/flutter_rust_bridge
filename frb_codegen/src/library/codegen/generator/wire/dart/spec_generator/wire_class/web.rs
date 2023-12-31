@@ -76,7 +76,7 @@ struct MethodInfo {
 }
 
 fn generate_method(func: &ExternFunc) -> MethodInfo {
-    let func_name = &func.func_name;
+    let func_name = &func.partial_func_name;
 
     let return_type = (func.return_type.as_ref())
         .map(|x| reconstruct_dart_wire_type_from_raw_repr(x))

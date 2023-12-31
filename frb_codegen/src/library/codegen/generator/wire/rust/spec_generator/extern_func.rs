@@ -11,7 +11,7 @@ use serde::Serialize;
 
 #[derive(Clone, Debug, Serialize)]
 pub(crate) struct ExternFunc {
-    pub(crate) func_name: String,
+    pub(crate) partial_func_name: String,
     pub(crate) params: Vec<ExternFuncParam>,
     pub(crate) return_type: Option<String>,
     pub(crate) body: String,
@@ -36,7 +36,9 @@ impl ExternFunc {
             Target::Web => "#[wasm_bindgen]",
         };
         let ExternFunc {
-            func_name, body, ..
+            partial_func_name,
+            body,
+            ..
         } = self;
 
         format!(

@@ -44,7 +44,11 @@ pub(crate) fn generate(
 
     let c_output = c::generate(
         &config.c,
-        (rust_output.extern_funcs.iter().map(|x| x.func_name.clone())).collect_vec(),
+        (rust_output
+            .extern_funcs
+            .iter()
+            .map(|x| x.partial_func_name.clone()))
+        .collect_vec(),
         rust_output.extern_struct_names,
         &rust_output.output_texts,
         dumper,
