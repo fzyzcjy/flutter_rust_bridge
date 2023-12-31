@@ -105,12 +105,12 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8(
 
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct frbgen_frb_example_dart_minimal_wire_cst_list_prim_u_8 {
+pub struct wire_cst_list_prim_u_8 {
     ptr: *mut u8,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct frbgen_frb_example_dart_minimal_wire_cst_my_struct {
+pub struct wire_cst_my_struct {
     my_field: *mut wire_cst_list_prim_u_8,
 }

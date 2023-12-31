@@ -185,7 +185,7 @@ class RustLibWire implements BaseWire {
     int port_,
     int a,
     int b,
-    ffi.Pointer<ffi.Int> x,
+    ffi.Pointer<wire_cst_my_struct> x,
   ) {
     return _frbgen_frb_example_dart_minimal_wire_minimal_adder(
       port_,
@@ -197,26 +197,27 @@ class RustLibWire implements BaseWire {
 
   late final _frbgen_frb_example_dart_minimal_wire_minimal_adderPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int>)>>(
+              ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32,
+                  ffi.Pointer<wire_cst_my_struct>)>>(
       'frbgen_frb_example_dart_minimal_wire_minimal_adder');
   late final _frbgen_frb_example_dart_minimal_wire_minimal_adder =
-      _frbgen_frb_example_dart_minimal_wire_minimal_adderPtr
-          .asFunction<void Function(int, int, int, ffi.Pointer<ffi.Int>)>();
+      _frbgen_frb_example_dart_minimal_wire_minimal_adderPtr.asFunction<
+          void Function(int, int, int, ffi.Pointer<wire_cst_my_struct>)>();
 
-  ffi.Pointer<ffi.Int>
+  ffi.Pointer<wire_cst_my_struct>
       frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct() {
     return _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct();
   }
 
   late final _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_cst_my_struct> Function()>>(
           'frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct');
   late final _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_struct =
       _frbgen_frb_example_dart_minimal_cst_new_box_autoadd_my_structPtr
-          .asFunction<ffi.Pointer<ffi.Int> Function()>();
+          .asFunction<ffi.Pointer<wire_cst_my_struct> Function()>();
 
-  ffi.Pointer<ffi.Int> frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8(
+  ffi.Pointer<wire_cst_list_prim_u_8>
+      frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8(
     int len,
   ) {
     return _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8(
@@ -225,11 +226,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_cst_list_prim_u_8> Function(ffi.Int32)>>(
           'frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8');
   late final _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8 =
       _frbgen_frb_example_dart_minimal_cst_new_list_prim_u_8Ptr
-          .asFunction<ffi.Pointer<ffi.Int> Function(int)>();
+          .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -240,4 +243,15 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+}
+
+final class wire_cst_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_my_struct extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> my_field;
 }
