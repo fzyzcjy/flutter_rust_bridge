@@ -90,15 +90,15 @@ fn modify_file(
     rust_crate_dir: &str,
     enable_local_dependency: bool,
 ) -> Option<(PathBuf, Vec<u8>)> {
-    let src = replace_file_content(
-        src_raw,
+    let replace_content_config = ReplaceContentConfig {
         dart_package_name,
         rust_crate_name,
         rust_crate_dir,
         enable_local_dependency,
-    );
+    };
+    let src = replace_file_content(src_raw, &replace_content_config);
 
-    let path = compute_effective_path(path_raw)?;
+    let path = compute_effective_path(path_raw, &replace_content_config)?;
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -133,48 +133,36 @@ fn modify_file(
     Some((path, src))
 }
 
-fn compute_effective_path(path: &Path) -> Result<PathBuf> {
+fn compute_effective_path(path: &Path, config: &ReplaceContentConfig) -> Result<PathBuf> {
     let mut path = path.to_owned();
     if (path.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
         path = path.with_extension("")
     }
-    path = PathBuf::from(replace_string_content(&path_to_string(&path)?, TODO));
+    path = PathBuf::from(replace_string_content(&path_to_string(&path)?, config));
     Ok(path)
 }
 
-fn replace_file_content(
-    raw: &[u8],
-    dart_package_name: &str,
-    rust_crate_name: &str,
-    rust_crate_dir: &str,
-    enable_local_dependency: bool,
-) -> Vec<u8> {
+fn replace_file_content(raw: &[u8], config: &ReplaceContentConfig) -> Vec<u8> {
     match String::from_utf8(raw.to_owned()) {
-        Ok(raw_str) => replace_string_content(
-            &raw_str,
-            dart_package_name,
-            rust_crate_name,
-            rust_crate_dir,
-            enable_local_dependency,
-        )
-        .into_bytes(),
+        Ok(raw_str) => replace_string_content(&raw_str, config).into_bytes(),
         Err(e) => e.into_bytes(),
     }
 }
 
-fn replace_string_content(
-    raw: &str,
-    dart_package_name: &str,
-    rust_crate_name: &str,
-    rust_crate_dir: &str,
+struct ReplaceContentConfig<'a> {
+    dart_package_name: &'a str,
+    rust_crate_name: &'a str,
+    rust_crate_dir: &'a str,
     enable_local_dependency: bool,
-) -> String {
-    raw.replace("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name)
-        .replace("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name)
-        .replace("REPLACE_ME_RUST_CRATE_DIR", rust_crate_dir)
+}
+
+fn replace_string_content(raw: &str, config: &ReplaceContentConfig) -> String {
+    raw.replace("REPLACE_ME_DART_PACKAGE_NAME", config.dart_package_name)
+        .replace("REPLACE_ME_RUST_CRATE_NAME", config.rust_crate_name)
+        .replace("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir)
         .replace(
             "REPLACE_ME_RUST_FRB_DEPENDENCY",
-            &if enable_local_dependency {
+            &if config.enable_local_dependency {
                 r#"{ path = "../../../frb_rust" }"#.to_owned()
             } else {
                 format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
