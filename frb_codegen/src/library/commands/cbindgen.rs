@@ -37,6 +37,10 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
         export: cbindgen::ExportConfig {
             include: args.c_struct_names,
             exclude: args.exclude_symbols,
+            prefix: args.export_prefix.clone(),
+            ..Default::default()
+        },
+        function: cbindgen::FunctionConfig {
             prefix: args.export_prefix,
             ..Default::default()
         },
