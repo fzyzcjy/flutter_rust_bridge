@@ -27,7 +27,7 @@ impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
 }
 
 #[wasm_bindgen]
-pub fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
+pub fn dart_fn_deliver_output(
     call_id: i32,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -44,10 +44,6 @@ pub fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
 }
 
 #[wasm_bindgen]
-pub fn frbgen_frb_example_dart_minimal_wire_minimal_adder(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: i32,
-    b: i32,
-) {
+pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }
