@@ -31,6 +31,9 @@ fn execute_ffigen(
         llvm_path: &config.llvm_path,
         llvm_compiler_opts: &config.llvm_compiler_opts,
         dart_root: &config.dart_root,
+        function_rename: Some(
+            &[(format!("{}(.*)", config.c_symbol_prefix), "$1".to_owned())].into(),
+        ),
     })
 }
 

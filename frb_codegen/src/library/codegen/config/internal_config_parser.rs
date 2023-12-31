@@ -17,6 +17,7 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
+use crate::utils::dart_repository::get_package_name;
 use crate::utils::path_utils::{
     canonicalize_with_error_message, find_dart_package_dir, find_rust_crate_dir, glob_path,
     path_to_string,
@@ -65,6 +66,8 @@ impl InternalConfig {
             &(config.dart_root.clone().map(PathBuf::from))
                 .unwrap_or(find_dart_package_dir(&dart_output_dir)?),
         )?;
+
+        let c_symbol_prefix = compute_c_symbol_prefix(&dart_root)?;
 
         let default_external_library_loader =
             compute_default_external_library_loader(&rust_crate_dir, &dart_root, config);
@@ -122,17 +125,20 @@ impl InternalConfig {
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_output_class_name_pack,
                         default_external_library_loader,
+                        c_symbol_prefix: c_symbol_prefix.clone(),
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
                         rust_crate_dir: rust_crate_dir.clone(),
                         web_enabled,
                         rust_output_path: rust_output_path.clone(),
+                        c_symbol_prefix: c_symbol_prefix.clone(),
                     },
                     c: GeneratorWireCInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
                         rust_output_path: rust_output_path.clone(),
                         c_output_path: c_output_path.clone(),
+                        c_symbol_prefix,
                     },
                 },
             },
@@ -160,6 +166,11 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
         return ConfigDumpContent::iter().collect_vec();
     }
     config.dump.clone().unwrap_or_default()
+}
+
+fn compute_c_symbol_prefix(dart_root: &Path) -> Result<String> {
+    let package_name = get_package_name(dart_root)?;
+    Ok(format!("frbgen_{package_name}_"))
 }
 
 fn compute_default_external_library_loader(

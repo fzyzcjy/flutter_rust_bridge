@@ -13,6 +13,7 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub dart_output_class_name_pack: DartOutputClassNamePack,
     pub default_external_library_loader:
         GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
+    pub(crate) c_symbol_prefix: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

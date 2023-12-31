@@ -7,6 +7,7 @@ use anyhow::bail;
 use itertools::Itertools;
 use log::{debug, warn};
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
@@ -18,6 +19,7 @@ pub(crate) struct FfigenArgs<'a> {
     pub llvm_path: &'a [PathBuf],
     pub llvm_compiler_opts: &'a str,
     pub dart_root: &'a Path,
+    pub function_rename: Option<&'a HashMap<String, String>>,
 }
 
 pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
@@ -32,6 +34,7 @@ pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
         llvm_path: args.llvm_path,
         llvm_compiler_opts: args.llvm_compiler_opts,
         dart_root: args.dart_root,
+        function_rename: args.function_rename,
     })?;
     let output_text = fs::read_to_string(temp_dart_file.path())?;
 
@@ -49,6 +52,7 @@ struct FfigenToFileArgs<'a> {
     llvm_path: &'a [PathBuf],
     llvm_compiler_opts: &'a str,
     dart_root: &'a Path,
+    function_rename: Option<&'a HashMap<String, String>>,
 }
 
 fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
@@ -162,6 +166,9 @@ fn parse_config(args: &FfigenToFileArgs) -> FfigenCommandConfig {
         preamble: "// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names".to_owned(),
         llvm_path: args.llvm_path.to_owned(),
         compiler_opts: llvm_compiler_opts_list,
+        functions: FfigenCommandConfigFunctions {
+            rename: args.function_rename.cloned(),
+        },
     }
 }
 
@@ -177,6 +184,7 @@ pub(crate) struct FfigenCommandConfig {
     pub preamble: String,
     pub llvm_path: Vec<PathBuf>,
     pub compiler_opts: Vec<String>,
+    pub functions: FfigenCommandConfigFunctions,
 }
 
 #[derive(Default, Clone, Serialize, Deserialize)]
@@ -184,6 +192,13 @@ pub(crate) struct FfigenCommandConfig {
 pub(crate) struct FfigenCommandConfigHeaders {
     pub entry_points: Vec<PathBuf>,
     pub include_directives: Vec<PathBuf>,
+}
+
+#[derive(Default, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub(crate) struct FfigenCommandConfigFunctions {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rename: Option<HashMap<String, String>>,
 }
 
 #[cfg(test)]

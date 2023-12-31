@@ -129,7 +129,7 @@ class RustLibWire implements BaseWire {
   late final _dart_fn_deliver_outputPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('dart_fn_deliver_output');
+              ffi.Int32)>>('frbgen_flutter_via_create_dart_fn_deliver_output');
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
@@ -142,9 +142,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_greetPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncRust2DartDco Function(
-              ffi.Pointer<wire_cst_list_prim_u_8>)>>('wire_greet');
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+      'frbgen_flutter_via_create_wire_greet');
   late final _wire_greet = _wire_greetPtr.asFunction<
       WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
@@ -159,7 +160,7 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_prim_u_8Ptr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<wire_cst_list_prim_u_8> Function(
-              ffi.Int32)>>('cst_new_list_prim_u_8');
+              ffi.Int32)>>('frbgen_flutter_via_create_cst_new_list_prim_u_8');
   late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
       .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
 

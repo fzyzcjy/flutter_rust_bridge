@@ -21,7 +21,7 @@ impl<T> NewWithNullPtr for *mut T {
 }
 
 #[no_mangle]
-pub extern "C" fn dart_fn_deliver_output(
+pub extern "C" fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
     call_id: i32,
     ptr_: *mut u8,
     rust_vec_len_: i32,
@@ -38,6 +38,6 @@ pub extern "C" fn dart_fn_deliver_output(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }
