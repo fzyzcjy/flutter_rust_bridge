@@ -91,7 +91,7 @@ fn modify_file(
             let commented_existing_content = existing_content
                 .map(|x| {
                     format!(
-                        "\n\n{}",
+                        "{}\n\n",
                         x.split('\n').map(|line| format!("// {line}")).join("\n")
                     )
                 })
