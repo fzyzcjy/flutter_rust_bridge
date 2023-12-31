@@ -1,4 +1,4 @@
-use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
+use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrType;
@@ -22,19 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             // ("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)]))) => {
             //     Delegate(IrTypeDelegate::Uuids)
             // }
-            ("Vec", Some(Generic([Primitive(primitive)]))) => {
-                // Since Dart doesn't have a boolean primitive list like `Uint8List`,
-                // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
-                if primitive == &IrTypePrimitive::Bool {
-                    GeneralList(IrTypeGeneralList {
-                        inner: Box::new(IrType::Primitive(IrTypePrimitive::Bool)),
-                    })
-                } else {
-                    PrimitiveList(IrTypePrimitiveList {
-                        primitive: primitive.clone(),
-                    })
-                }
-            }
+            ("Vec", Some(Generic([Primitive(primitive)]))) => ir_list(primitive.to_owned()),
 
             // ("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))]))) => {
             //     Delegate(IrTypeDelegate::TimeList(*time))
