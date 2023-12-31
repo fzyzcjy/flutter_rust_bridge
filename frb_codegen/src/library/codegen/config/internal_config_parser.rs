@@ -67,7 +67,7 @@ impl InternalConfig {
                 .unwrap_or(find_dart_package_dir(&dart_output_dir)?),
         )?;
 
-        let c_symbol_prefix = compute_c_symbol_prefix(&dart_root);
+        let c_symbol_prefix = compute_c_symbol_prefix(&dart_root)?;
 
         let default_external_library_loader =
             compute_default_external_library_loader(&rust_crate_dir, &dart_root, config);
