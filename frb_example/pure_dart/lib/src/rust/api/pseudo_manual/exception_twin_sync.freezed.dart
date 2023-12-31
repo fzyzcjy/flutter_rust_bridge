@@ -154,7 +154,7 @@ class _$CustomEnumErrorTwinSync_OneImpl implements CustomEnumErrorTwinSync_One {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomEnumErrorTwinSync_OneImpl &&
@@ -310,7 +310,7 @@ class _$CustomEnumErrorTwinSync_TwoImpl implements CustomEnumErrorTwinSync_Two {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomEnumErrorTwinSync_TwoImpl &&
@@ -547,7 +547,7 @@ class _$CustomErrorTwinSync_Error0Impl implements CustomErrorTwinSync_Error0 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomErrorTwinSync_Error0Impl &&
@@ -703,7 +703,7 @@ class _$CustomErrorTwinSync_Error1Impl implements CustomErrorTwinSync_Error1 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomErrorTwinSync_Error1Impl &&
@@ -918,7 +918,7 @@ class _$CustomNestedError1TwinSync_CustomNested1Impl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedError1TwinSync_CustomNested1Impl &&
@@ -1077,7 +1077,7 @@ class _$CustomNestedError1TwinSync_ErrorNestedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedError1TwinSync_ErrorNestedImpl &&
@@ -1297,7 +1297,7 @@ class _$CustomNestedError2TwinSync_CustomNested2Impl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedError2TwinSync_CustomNested2Impl &&
@@ -1451,7 +1451,7 @@ class _$CustomNestedError2TwinSync_CustomNested2NumberImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedError2TwinSync_CustomNested2NumberImpl &&
@@ -1667,7 +1667,7 @@ class _$CustomNestedErrorInnerTwinSync_ThreeImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedErrorInnerTwinSync_ThreeImpl &&
@@ -1810,7 +1810,7 @@ class _$CustomNestedErrorInnerTwinSync_FourImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedErrorInnerTwinSync_FourImpl &&
@@ -2017,7 +2017,7 @@ class _$CustomNestedErrorOuterTwinSync_OneImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedErrorOuterTwinSync_OneImpl &&
@@ -2171,7 +2171,7 @@ class _$CustomNestedErrorOuterTwinSync_TwoImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomNestedErrorOuterTwinSync_TwoImpl &&

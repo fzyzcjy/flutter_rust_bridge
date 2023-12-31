@@ -102,16 +102,11 @@ impl ExternClass {
     pub(crate) fn generate(&self) -> String {
         let ExternClass { name, mode, body } = self;
 
-        let derive = match mode {
-            ExternClassMode::Struct => "#[derive(Clone)]",
-            ExternClassMode::Union => "",
-        };
-
         let mode = match mode {
             ExternClassMode::Struct => "struct",
             ExternClassMode::Union => "union",
         };
 
-        format!("#[repr(C)] {derive} pub {mode} {name} {{ {body} }}")
+        format!("#[repr(C)] #[derive(Clone, Copy)] pub {mode} {name} {{ {body} }}")
     }
 }

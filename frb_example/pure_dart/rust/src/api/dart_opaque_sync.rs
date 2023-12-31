@@ -21,7 +21,7 @@ pub fn sync_accept_dart_opaque_twin_normal(opaque: DartOpaque) -> String {
 /// [DartWrapObject] can be safely retrieved on a dart thread.
 #[frb(sync)]
 pub fn unwrap_dart_opaque_twin_normal(opaque: DartOpaque) -> String {
-    let handle = opaque.into_inner().unwrap();
+    let _handle = opaque.into_inner().unwrap();
     "Test".to_owned()
 }
 

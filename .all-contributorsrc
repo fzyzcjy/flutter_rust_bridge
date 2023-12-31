@@ -450,6 +450,15 @@
       ]
     },
     {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "aran",
       "name": "Aran Donohue",
       "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
@@ -493,6 +502,15 @@
       "contributions": [
         "code",
         "doc"
+      ]
+    },
+    {
+      "login": "CosmicHorrorDev",
+      "name": "CosmicHorror",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30302768?v=4",
+      "profile": "https://cosmichorror.dev",
+      "contributions": [
+        "code"
       ]
     },
     {
@@ -617,6 +635,15 @@
       "name": "Sam Nystrom",
       "avatar_url": "https://avatars.githubusercontent.com/u/82178396?v=4",
       "profile": "https://github.com/Stonks3141",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "adsouza",
+      "name": "Antonio D'souza",
+      "avatar_url": "https://avatars.githubusercontent.com/u/275832?v=4",
+      "profile": "https://www.adsouza.net",
       "contributions": [
         "doc"
       ]

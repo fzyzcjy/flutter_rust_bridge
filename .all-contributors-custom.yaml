@@ -1,4 +1,4 @@
-- Desdaemon: Support not only simple enums but also enums with fields which gets translated to native enum or sealed freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support tuple type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates and optionals. Parameter defaults. Refactor CLI. Refactor codegen errors.
+- Desdaemon: Support not only simple enums but also enums with fields which gets translated to native enum or sealed freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support tuple type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates and optionals. Parameter defaults. Refactor CLI. Refactor codegen errors. Refactor for performance.
 - rogurotus: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers. Also add Dart opaque types, allowing to use any Dart objects in Rust code. Extend `SyncReturn` for more types. Fix generation bug. Fix SyncReturn. Migrate to dart-sys. Update CI. Fix linters. Fix SyncReturn bug.
 - ngasull: Make sync mode support whatever types that classical async mode supports. Bump sdk.
 - SecondFlight: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relevant dir. Fix `store_dart_post_cobject` error with ffigen 6.0.
@@ -44,11 +44,13 @@
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
 - anstadnik: Check keywords.
+- patmuk: Set MSRV. Fail fast. Improve message.
 - aran: Fix pubspec. Bump version.
 - syndim: Add a bracket to box.
 - TENX-S: Improve doc. Reproduce a bug.
 - polypixeldev: Improve doc.
 - CicadaCinema: Bump version. Improve doc.
+- CosmicHorrorDev: Change deps.
 - w1th0utnam3: Improve message.
 - vincent-herlemont: Loosen version.
 - zaynetro: Improve doc.
@@ -63,6 +65,7 @@
 - utilForever: Fix typos.
 - not-holar: Fix typos.
 - Stonks3141: Fix doc credit.
+- adsouza: Fix doc grammar.
 - vimaxwell: Fix doc link.
 - lker-dev: Fix doc link.
 - jaiakash: Fix doc link.

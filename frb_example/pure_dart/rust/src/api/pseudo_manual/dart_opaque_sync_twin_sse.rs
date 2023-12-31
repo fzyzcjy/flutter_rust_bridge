@@ -29,7 +29,7 @@ pub fn sync_accept_dart_opaque_twin_sse(opaque: DartOpaque) -> String {
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
 pub fn unwrap_dart_opaque_twin_sse(opaque: DartOpaque) -> String {
-    let handle = opaque.into_inner().unwrap();
+    let _handle = opaque.into_inner().unwrap();
     "Test".to_owned()
 }
 

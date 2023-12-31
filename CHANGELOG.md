@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.0.0-dev.8
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Let codegen report error when provided configuration names are incorrect #1509 (thanks @patmuk)
+
+## 2.0.0-dev.7
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Improve error message when a file ending is not provided in configuration #1540 (thanks @patmuk)
+
+## 2.0.0-dev.6
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Remove double-allocation for enum CST decode #1500 (thanks @Desdaemon)
+
+## 2.0.0-dev.5
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Set the msrv #1463 (thanks @patmuk)
+* Toggle off default `clap` feature for `cbindgen` #1503 (thanks @CosmicHorrorDev)
+
 ## 2.0.0-dev.4
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
