@@ -14,12 +14,12 @@ pub(crate) struct WireRustOutputCode {
 basic_code_impl!(WireRustOutputCode);
 
 impl WireRustOutputCode {
-    pub(crate) fn all_code(&self, extern_name_prefix: &str) -> String {
+    pub(crate) fn all_code(&self, c_symbol_prefix: &str) -> String {
         format!(
             "{}\n{}\n{}",
             self.body,
             (self.extern_funcs.iter())
-                .map(|func| func.generate(extern_name_prefix))
+                .map(|func| func.generate(c_symbol_prefix))
                 .join("\n"),
             (self.extern_classes.iter().map(|cls| cls.generate())).join("\n"),
         )

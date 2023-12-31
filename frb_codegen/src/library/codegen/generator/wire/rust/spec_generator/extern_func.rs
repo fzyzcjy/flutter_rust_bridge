@@ -26,7 +26,7 @@ pub(crate) struct ExternFuncParam {
 }
 
 impl ExternFunc {
-    pub(crate) fn generate(&self, func_name_prefix: &str) -> String {
+    pub(crate) fn generate(&self, c_symbol_prefix: &str) -> String {
         let call_convention = match self.target {
             Target::Io => "extern \"C\"",
             Target::Web => "",
@@ -41,7 +41,10 @@ impl ExternFunc {
             ..
         } = self;
 
-        let func_name = format!("{func_name_prefix}{partial_func_name}");
+        let func_name = match self.target {
+            Target::Io => format!("{c_symbol_prefix}{partial_func_name}"),
+            Target::Web => partial_func_name.to_owned(),
+        };
 
         format!(
             r#"
