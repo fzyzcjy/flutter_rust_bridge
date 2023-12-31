@@ -27,7 +27,6 @@ pub(crate) fn execute(
         c_struct_names: extern_struct_names,
         exclude_symbols: vec![],
         after_includes: EXTRA_CODE.to_owned(),
-        export_prefix: Some(config.c_symbol_prefix.clone()),
     })?;
 
     drop(changed_file_handles); // do not drop too early

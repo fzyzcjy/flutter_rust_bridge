@@ -9,7 +9,6 @@ pub(crate) struct CbindgenArgs<'a> {
     pub c_struct_names: Vec<String>,
     pub exclude_symbols: Vec<String>,
     pub after_includes: String,
-    pub export_prefix: Option<String>,
 }
 
 pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<String> {
@@ -37,7 +36,6 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
         export: cbindgen::ExportConfig {
             include: args.c_struct_names,
             exclude: args.exclude_symbols,
-            prefix: args.export_prefix,
             ..Default::default()
         },
         after_includes: Some(
