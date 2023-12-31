@@ -71,6 +71,15 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             // IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_string(),
             IrTypeDelegate::AnyhowException => "AnyhowException".to_string(),
+            IrTypeDelegate::Map(ir) => format!(
+                "Map<{}, {}>",
+                ApiDartGenerator::new(*ir.key.clone(), self.context).dart_api_type(),
+                ApiDartGenerator::new(*ir.value.clone(), self.context).dart_api_type(),
+            ),
+            IrTypeDelegate::Set(ir) => format!(
+                "Set<{}>",
+                ApiDartGenerator::new(*ir.inner.clone(), self.context).dart_api_type(),
+            ),
         }
     }
 
