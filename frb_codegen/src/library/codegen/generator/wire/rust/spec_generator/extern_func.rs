@@ -41,10 +41,7 @@ impl ExternFunc {
             ..
         } = self;
 
-        let func_name = match self.target {
-            Target::Io => format!("{c_symbol_prefix}{partial_func_name}"),
-            Target::Web => partial_func_name.to_owned(),
-        };
+        let func_name = self.func_name(c_symbol_prefix);
 
         format!(
             r#"
@@ -61,6 +58,13 @@ impl ExternFunc {
                 .as_ref()
                 .map_or("".to_owned(), |r| format!("-> {r}")),
         )
+    }
+
+    pub(crate) fn func_name(&self, c_symbol_prefix: &str) -> String {
+        match self.target {
+            Target::Io => format!("{c_symbol_prefix}{partial_func_name}"),
+            Target::Web => self.partial_func_name.to_owned(),
+        }
     }
 }
 
