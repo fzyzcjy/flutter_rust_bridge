@@ -26,6 +26,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
           messageOnNative: 'deliberate panic');
     });
 
+    test('when panic, should have stack trace', () async {
+      await expectRustPanic(
+        () async => funcTypeFalliblePanicTwinNormal(),
+        'TwinNormal',
+        messageOnNative: 'TODO',
+      );
+    });
+
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinNormal, [100]);
     test('call customEnumErrorPanicTwinNormal', () async {
       await expectRustPanic(
