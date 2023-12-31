@@ -131,7 +131,7 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
 @sealed
 class BoxHelloTraitTwinNormal extends RustOpaque {
-  BoxHelloTraitTwinNormal.dcoDecode(dynamic wire)
+  BoxHelloTraitTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxHelloTraitTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
@@ -150,7 +150,7 @@ class BoxHelloTraitTwinNormal extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
 @sealed
 class BoxMyTraitTwinNormal extends RustOpaque {
-  BoxMyTraitTwinNormal.dcoDecode(dynamic wire)
+  BoxMyTraitTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxMyTraitTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
@@ -169,7 +169,7 @@ class BoxMyTraitTwinNormal extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>
 @sealed
 class NonCloneSimpleTwinNormal extends RustOpaque {
-  NonCloneSimpleTwinNormal.dcoDecode(dynamic wire)
+  NonCloneSimpleTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   NonCloneSimpleTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
@@ -251,7 +251,7 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
 @sealed
 class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
-  StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(dynamic wire)
+  StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   StructWithGoodAndOpaqueFieldTwinNormal.sseDecode(

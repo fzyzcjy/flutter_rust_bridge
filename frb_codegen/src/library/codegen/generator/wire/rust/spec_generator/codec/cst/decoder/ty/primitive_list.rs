@@ -70,7 +70,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         Acc {
             io: ExternFunc {
-                func_name: format!("cst_new_{}", self.ir.safe_ident()),
+                partial_func_name: format!("cst_new_{}", self.ir.safe_ident()),
                 params: vec![ExternFuncParam {
                     name: "len".to_owned(),
                     rust_type: "i32".to_owned(),

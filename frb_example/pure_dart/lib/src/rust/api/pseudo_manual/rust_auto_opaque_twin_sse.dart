@@ -123,7 +123,7 @@ Future<StructWithGoodAndOpaqueFieldTwinSse>
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
 @sealed
 class BoxFnStringString extends RustOpaque {
-  BoxFnStringString.dcoDecode(dynamic wire)
+  BoxFnStringString.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxFnStringString.sseDecode(int ptr, int externalSizeOnNative)
@@ -142,7 +142,7 @@ class BoxFnStringString extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSse>>>
 @sealed
 class BoxHelloTraitTwinSse extends RustOpaque {
-  BoxHelloTraitTwinSse.dcoDecode(dynamic wire)
+  BoxHelloTraitTwinSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxHelloTraitTwinSse.sseDecode(int ptr, int externalSizeOnNative)
@@ -161,7 +161,7 @@ class BoxHelloTraitTwinSse extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSse + Send + Sync>>>
 @sealed
 class BoxMyTraitTwinSse extends RustOpaque {
-  BoxMyTraitTwinSse.dcoDecode(dynamic wire)
+  BoxMyTraitTwinSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxMyTraitTwinSse.sseDecode(int ptr, int externalSizeOnNative)
@@ -180,7 +180,7 @@ class BoxMyTraitTwinSse extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSse>>
 @sealed
 class NonCloneSimpleTwinSse extends RustOpaque {
-  NonCloneSimpleTwinSse.dcoDecode(dynamic wire)
+  NonCloneSimpleTwinSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   NonCloneSimpleTwinSse.sseDecode(int ptr, int externalSizeOnNative)
@@ -255,7 +255,7 @@ class NonCloneSimpleTwinSse extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSse>>
 @sealed
 class StructWithGoodAndOpaqueFieldTwinSse extends RustOpaque {
-  StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(dynamic wire)
+  StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   StructWithGoodAndOpaqueFieldTwinSse.sseDecode(

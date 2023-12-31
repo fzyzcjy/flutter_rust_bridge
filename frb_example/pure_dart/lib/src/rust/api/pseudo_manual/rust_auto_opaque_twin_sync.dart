@@ -126,7 +126,7 @@ StructWithGoodAndOpaqueFieldTwinSync
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>
 @sealed
 class BoxHelloTraitTwinSync extends RustOpaque {
-  BoxHelloTraitTwinSync.dcoDecode(dynamic wire)
+  BoxHelloTraitTwinSync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxHelloTraitTwinSync.sseDecode(int ptr, int externalSizeOnNative)
@@ -145,7 +145,7 @@ class BoxHelloTraitTwinSync extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
 @sealed
 class BoxMyTraitTwinSync extends RustOpaque {
-  BoxMyTraitTwinSync.dcoDecode(dynamic wire)
+  BoxMyTraitTwinSync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   BoxMyTraitTwinSync.sseDecode(int ptr, int externalSizeOnNative)
@@ -164,7 +164,7 @@ class BoxMyTraitTwinSync extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>
 @sealed
 class NonCloneSimpleTwinSync extends RustOpaque {
-  NonCloneSimpleTwinSync.dcoDecode(dynamic wire)
+  NonCloneSimpleTwinSync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   NonCloneSimpleTwinSync.sseDecode(int ptr, int externalSizeOnNative)
@@ -239,7 +239,7 @@ class NonCloneSimpleTwinSync extends RustOpaque {
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
 @sealed
 class StructWithGoodAndOpaqueFieldTwinSync extends RustOpaque {
-  StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(dynamic wire)
+  StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
   StructWithGoodAndOpaqueFieldTwinSync.sseDecode(

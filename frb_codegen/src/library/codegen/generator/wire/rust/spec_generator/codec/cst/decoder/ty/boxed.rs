@@ -69,7 +69,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
         {
             Acc {
                 io: ExternFunc {
-                    func_name,
+                    partial_func_name: func_name,
                     params: vec![ExternFuncParam::new(
                         "value".to_owned(),
                         Target::Io,
@@ -90,7 +90,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
         } else {
             Acc {
                 io: ExternFunc {
-                    func_name,
+                    partial_func_name: func_name,
                     params: vec![],
                     return_type: Some(
                         [

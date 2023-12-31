@@ -25,6 +25,7 @@
     "wire": {
       "c": {
         "c_output_path": "{the-working-directory}/frb_generated.h",
+        "c_symbol_prefix": "frbgen_fake_dart_package_",
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
@@ -33,6 +34,7 @@
         }
       },
       "dart": {
+        "c_symbol_prefix": "frbgen_fake_dart_package_",
         "dart_impl_output_path": {
           "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
           "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
@@ -71,6 +73,7 @@
         "web_enabled": true
       },
       "rust": {
+        "c_symbol_prefix": "frbgen_fake_dart_package_",
         "rust_crate_dir": "{the-working-directory}",
         "rust_input_path_pack": {
           "rust_input_paths": [

@@ -497,49 +497,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   DataFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockDataFrame(
       dynamic raw) {
-    return DataFrame.dcoDecode(raw);
+    return DataFrame.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   Expr dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockExpr(dynamic raw) {
-    return Expr.dcoDecode(raw);
+    return Expr.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   LazyFrame dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyFrame(
       dynamic raw) {
-    return LazyFrame.dcoDecode(raw);
+    return LazyFrame.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   LazyGroupBy dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockLazyGroupBy(
       dynamic raw) {
-    return LazyGroupBy.dcoDecode(raw);
+    return LazyGroupBy.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   DataFrame dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockDataFrame(dynamic raw) {
-    return DataFrame.dcoDecode(raw);
+    return DataFrame.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   DataFrame dco_decode_RustOpaque_stdsyncRwLockDataFrame(dynamic raw) {
-    return DataFrame.dcoDecode(raw);
+    return DataFrame.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   Expr dco_decode_RustOpaque_stdsyncRwLockExpr(dynamic raw) {
-    return Expr.dcoDecode(raw);
+    return Expr.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   LazyFrame dco_decode_RustOpaque_stdsyncRwLockLazyFrame(dynamic raw) {
-    return LazyFrame.dcoDecode(raw);
+    return LazyFrame.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   LazyGroupBy dco_decode_RustOpaque_stdsyncRwLockLazyGroupBy(dynamic raw) {
-    return LazyGroupBy.dcoDecode(raw);
+    return LazyGroupBy.dcoDecode(raw as List<dynamic>);
   }
 
   @protected

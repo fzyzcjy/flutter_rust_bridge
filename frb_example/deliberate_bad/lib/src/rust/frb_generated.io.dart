@@ -85,9 +85,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _dart_fn_deliver_outputPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('dart_fn_deliver_output');
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_deliberate_bad_dart_fn_deliver_output');
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
@@ -101,7 +102,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_make_data_racePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_make_data_race');
+          'frbgen_frb_example_deliberate_bad_wire_make_data_race');
   late final _wire_make_data_race =
       _wire_make_data_racePtr.asFunction<void Function(int)>();
 
@@ -115,7 +116,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_make_heap_use_after_freePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_make_heap_use_after_free');
+          'frbgen_frb_example_deliberate_bad_wire_make_heap_use_after_free');
   late final _wire_make_heap_use_after_free =
       _wire_make_heap_use_after_freePtr.asFunction<void Function(int)>();
 
@@ -129,7 +130,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_make_memory_leakPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_make_memory_leak');
+          'frbgen_frb_example_deliberate_bad_wire_make_memory_leak');
   late final _wire_make_memory_leak =
       _wire_make_memory_leakPtr.asFunction<void Function(int)>();
 
@@ -143,7 +144,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_make_stack_buffer_overflowPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_make_stack_buffer_overflow');
+          'frbgen_frb_example_deliberate_bad_wire_make_stack_buffer_overflow');
   late final _wire_make_stack_buffer_overflow =
       _wire_make_stack_buffer_overflowPtr.asFunction<void Function(int)>();
 
@@ -155,9 +156,9 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_make_use_of_uninitialized_valuePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_make_use_of_uninitialized_value');
+  late final _wire_make_use_of_uninitialized_valuePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      'frbgen_frb_example_deliberate_bad_wire_make_use_of_uninitialized_value');
   late final _wire_make_use_of_uninitialized_value =
       _wire_make_use_of_uninitialized_valuePtr.asFunction<void Function(int)>();
 
