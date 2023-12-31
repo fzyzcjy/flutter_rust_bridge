@@ -19,7 +19,7 @@ pub(crate) struct FfigenArgs<'a> {
     pub llvm_path: &'a [PathBuf],
     pub llvm_compiler_opts: &'a str,
     pub dart_root: &'a Path,
-    pub function_rename: &'a HashMap<String, String>,
+    pub function_rename: Option<&'a HashMap<String, String>>,
 }
 
 pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
@@ -52,7 +52,7 @@ struct FfigenToFileArgs<'a> {
     llvm_path: &'a [PathBuf],
     llvm_compiler_opts: &'a str,
     dart_root: &'a Path,
-    function_rename: &'a HashMap<String, String>,
+    function_rename: Option<&'a HashMap<String, String>>,
 }
 
 fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
@@ -167,7 +167,7 @@ fn parse_config(args: &FfigenToFileArgs) -> FfigenCommandConfig {
         llvm_path: args.llvm_path.to_owned(),
         compiler_opts: llvm_compiler_opts_list,
         functions: FfigenCommandConfigFunctions {
-            rename: Some(args.function_rename.to_owned()),
+            rename: args.function_rename.cloned(),
         },
     }
 }
