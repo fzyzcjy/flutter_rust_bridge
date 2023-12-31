@@ -76,13 +76,13 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  void dart_fn_deliver_output(
+  void frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
     int call_id,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
-    return _dart_fn_deliver_output(
+    return _frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
       call_id,
       ptr_,
       rust_vec_len_,
@@ -90,31 +90,35 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _dart_fn_deliver_outputPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('dart_fn_deliver_output');
-  late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+  late final _frbgen_frb_example_dart_minimal_dart_fn_deliver_outputPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_dart_minimal_dart_fn_deliver_output');
+  late final _frbgen_frb_example_dart_minimal_dart_fn_deliver_output =
+      _frbgen_frb_example_dart_minimal_dart_fn_deliver_outputPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_minimal_adder(
+  void frbgen_frb_example_dart_minimal_wire_minimal_adder(
     int port_,
     int a,
     int b,
   ) {
-    return _wire_minimal_adder(
+    return _frbgen_frb_example_dart_minimal_wire_minimal_adder(
       port_,
       a,
       b,
     );
   }
 
-  late final _wire_minimal_adderPtr = _lookup<
+  late final _frbgen_frb_example_dart_minimal_wire_minimal_adderPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_minimal_adder');
-  late final _wire_minimal_adder =
-      _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
+      'frbgen_frb_example_dart_minimal_wire_minimal_adder');
+  late final _frbgen_frb_example_dart_minimal_wire_minimal_adder =
+      _frbgen_frb_example_dart_minimal_wire_minimal_adderPtr
+          .asFunction<void Function(int, int, int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
