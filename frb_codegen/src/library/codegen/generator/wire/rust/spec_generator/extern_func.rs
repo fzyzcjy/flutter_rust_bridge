@@ -27,12 +27,6 @@ pub(crate) struct ExternFuncParam {
 
 impl ExternFunc {
     pub(crate) fn generate(&self) -> String {
-        assert!(
-            self.func_name.starts_with("frb_"),
-            "extern functions should be prefixed with `frb_ThePackageName_` (func_name={})",
-            self.func_name
-        );
-
         let call_convention = match self.target {
             Target::Io => "extern \"C\"",
             Target::Web => "",
