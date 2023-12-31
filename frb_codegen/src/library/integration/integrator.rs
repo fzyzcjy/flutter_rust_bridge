@@ -96,7 +96,7 @@ fn modify_file(
                     )
                 })
                 .unwrap_or_default();
-            return Some((path, [&src, commented_existing_content.as_bytes()].concat()));
+            return Some((path, [commented_existing_content.as_bytes(), &src].concat()));
             // We do not care about this warning
             // frb-coverage:ignore-start
         }
