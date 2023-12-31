@@ -322,7 +322,7 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
 * [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
 * [SiongSng](https://github.com/SiongSng): Finish implementing exception hierarchy. Fix SyncReturn bug.
-* [JustSimplyKyle](https://github.com/JustSimplyKyle): Also finish implementing exception hierarchy.
+* [JustSimplyKyle](https://github.com/JustSimplyKyle): Also finish implementing exception hierarchy. Allow ignore function.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct. Partial migration to Dart 3.
 * [coder0xff](https://github.com/coder0xff): Discuss binding unmodified Rust. Refactor SupportedInnerType. Extra codegen tester.
 * [nitn3lav](https://github.com/nitn3lav): Nested `struct`s without `Box`.
