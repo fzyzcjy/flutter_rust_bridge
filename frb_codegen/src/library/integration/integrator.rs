@@ -98,7 +98,7 @@ fn modify_file(
     };
     let src = replace_file_content(src_raw, &replace_content_config);
 
-    let path = compute_effective_path(path_raw, &replace_content_config)?;
+    let path = compute_effective_path(path_raw, &replace_content_config);
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -133,13 +133,13 @@ fn modify_file(
     Some((path, src))
 }
 
-fn compute_effective_path(path: &Path, config: &ReplaceContentConfig) -> Result<PathBuf> {
+fn compute_effective_path(path: &Path, config: &ReplaceContentConfig) -> PathBuf {
     let mut path = path.to_owned();
     if (path.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
         path = path.with_extension("")
     }
-    path = PathBuf::from(replace_string_content(&path_to_string(&path)?, config));
-    Ok(path)
+    path = replace_string_content(&path_to_string(&path).unwrap(), config).into();
+    path
 }
 
 fn replace_file_content(raw: &[u8], config: &ReplaceContentConfig) -> Vec<u8> {

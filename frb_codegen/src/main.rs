@@ -49,11 +49,14 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
 }
 
 fn compute_rust_crate_name(config: &CreateOrIntegrateCommandCommonArgs) -> String {
-    config.rust_crate_name.unwrap_or("rust_lib".to_owned())
+    config
+        .rust_crate_name
+        .clone()
+        .unwrap_or("rust_lib".to_owned())
 }
 
 fn compute_rust_crate_dir(config: &CreateOrIntegrateCommandCommonArgs) -> String {
-    config.rust_crate_dir.unwrap_or("rust".to_owned())
+    config.rust_crate_dir.clone().unwrap_or("rust".to_owned())
 }
 
 #[cfg(test)]
