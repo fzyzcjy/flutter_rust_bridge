@@ -17,7 +17,7 @@ pub(crate) fn generate_class_from_fields(
     let struct_name = WireRustCodecCstGenerator::new(ty.into(), context).rust_wire_type(Target::Io);
     WireRustOutputCode {
         extern_classes: vec![ExternClass {
-            name: struct_name,
+            partial_name: struct_name,
             mode: ExternClassMode::Struct,
             body: fields.join(",\n"),
         }],

@@ -66,7 +66,7 @@ fn generate_extern_struct_names(
         .concat()
         .iter()
         .flat_map(|x| x.extern_classes.clone())
-        .map(|x| x.name)
+        .map(|x| x.partial_name)
         .unique()
         .collect_vec()
 }
