@@ -9,7 +9,7 @@ set(PROJECT_NAME "rust_builder")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 include("../cargokit/cmake/cargokit.cmake")
-apply_cargokit(${PROJECT_NAME} ../../../../../../rust rust_lib "")
+apply_cargokit(${PROJECT_NAME} ../../../../../../REPLACE_ME_RUST_MANIFEST_DIR REPLACE_ME_RUST_LIB_NAME "")
 
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
