@@ -12,21 +12,21 @@ pub(super) fn extract_dir_and_modify(
     filter: &impl Fn(&Path) -> bool,
 ) -> Result<()> {
     for entry in d.entries() {
-        let path = base_path.join(entry.path());
-        if !filter(&path) {
+        let path_raw = base_path.join(entry.path());
+        if !filter(&path_raw) {
             continue;
         }
 
         match entry {
             DirEntry::Dir(d) => {
                 debug!("Create dir {path:?}");
-                fs::create_dir_all(&path)?;
+                fs::create_dir_all(&path_raw)?;
                 extract_dir_and_modify(d, base_path, modifier, filter)?;
             }
             DirEntry::File(f) => {
                 debug!("Write to {path:?}");
                 if let Some((modified_path, modified_data)) =
-                    modifier(&path, f.contents(), fs::read(&path).ok())
+                    modifier(&path_raw, f.contents(), fs::read(&path_raw).ok())
                 {
                     fs::write(&modified_path, modified_data)?;
                 }
