@@ -76,7 +76,7 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  void dart_fn_deliver_output(
+  int dart_fn_deliver_output(
     int call_id,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
@@ -92,12 +92,12 @@ class RustLibWire implements BaseWire {
 
   late final _dart_fn_deliver_outputPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+          ffi.Int Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
               ffi.Int32)>>('dart_fn_deliver_output');
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      .asFunction<int Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_minimal_adder(
+  int wire_minimal_adder(
     int port_,
     int a,
     int b,
@@ -111,10 +111,10 @@ class RustLibWire implements BaseWire {
 
   late final _wire_minimal_adderPtr = _lookup<
           ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
+          .NativeFunction<ffi.Int Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
       'wire_minimal_adder');
   late final _wire_minimal_adder =
-      _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
+      _wire_minimal_adderPtr.asFunction<int Function(int, int, int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
