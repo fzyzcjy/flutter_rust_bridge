@@ -640,6 +640,15 @@
       ]
     },
     {
+      "login": "mattiasgronlund",
+      "name": "mattiasgronlund",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7727472?v=4",
+      "profile": "https://github.com/mattiasgronlund",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "adsouza",
       "name": "Antonio D'souza",
       "avatar_url": "https://avatars.githubusercontent.com/u/275832?v=4",
@@ -745,15 +754,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "mattiasgronlund",
-      "name": "mattiasgronlund",
-      "avatar_url": "https://avatars.githubusercontent.com/u/7727472?v=4",
-      "profile": "https://github.com/mattiasgronlund",
-      "contributions": [
-        "code"
       ]
     }
   ],
