@@ -11,7 +11,7 @@ pub fn create(name: &str, enable_local_dependency: bool) -> anyhow::Result<()> {
     debug!("create name={name} dart_root={dart_root:?}");
 
     ensure!(
-        dart_root.exists(),
+        !dart_root.exists(),
         "The target folder {:?} already exists. Please use the `integrate` command in this case",
         dart_root,
     );
