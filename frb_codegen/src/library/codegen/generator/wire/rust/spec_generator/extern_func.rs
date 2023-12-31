@@ -26,7 +26,7 @@ pub(crate) struct ExternFuncParam {
 }
 
 impl ExternFunc {
-    pub(crate) fn generate(&self, func_name_prefix: &str) -> String {
+    pub(crate) fn generate(&self, name_prefix: &str) -> String {
         let call_convention = match self.target {
             Target::Io => "extern \"C\"",
             Target::Web => "",
@@ -103,7 +103,7 @@ pub(crate) enum ExternClassMode {
 }
 
 impl ExternClass {
-    pub(crate) fn generate(&self, extern_name_prefix: &str) -> String {
+    pub(crate) fn generate(&self, name_prefix: &str) -> String {
         let ExternClass {
             partial_name,
             mode,
@@ -114,6 +114,8 @@ impl ExternClass {
             ExternClassMode::Struct => "struct",
             ExternClassMode::Union => "union",
         };
+
+        let name = format!("{name_prefix}{partial_name}");
 
         format!("#[repr(C)] #[derive(Clone, Copy)] pub {mode} {name} {{ {body} }}")
     }
