@@ -8,6 +8,7 @@ use std::{env, fs};
 pub struct CreateConfig {
     pub name: String,
     pub enable_local_dependency: bool,
+    pub rust_crate_name: String,
 }
 
 /// Create a new Flutter + Rust project.
@@ -25,6 +26,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     integrator::integrate(IntegrateConfig {
         enable_integration_test: true,
         enable_local_dependency: config.enable_local_dependency,
+        rust_crate_name: config.rust_crate_name,
     })
 }
 

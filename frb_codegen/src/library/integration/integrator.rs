@@ -17,6 +17,7 @@ static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
 pub struct IntegrateConfig {
     pub enable_integration_test: bool,
     pub enable_local_dependency: bool,
+    pub rust_crate_name: String,
 }
 
 /// Integrate Rust into existing Flutter project.
@@ -36,6 +37,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
                 src_raw,
                 existing_content,
                 &dart_package_name,
+                &config.rust_crate_name,
                 config.enable_local_dependency,
             )
         },
@@ -82,9 +84,15 @@ fn modify_file(
     src_raw: &[u8],
     existing_content: Option<Vec<u8>>,
     dart_package_name: &str,
+    rust_crate_name: &str,
     enable_local_dependency: bool,
 ) -> Option<(PathBuf, Vec<u8>)> {
-    let src = replace_file_content(src_raw, dart_package_name, enable_local_dependency);
+    let src = replace_file_content(
+        src_raw,
+        dart_package_name,
+        rust_crate_name,
+        enable_local_dependency,
+    );
 
     let path =
         if (path_raw.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
@@ -129,12 +137,13 @@ fn modify_file(
 fn replace_file_content(
     raw: &[u8],
     dart_package_name: &str,
+    rust_crate_name: &str,
     enable_local_dependency: bool,
 ) -> Vec<u8> {
     match String::from_utf8(raw.to_owned()) {
         Ok(raw_str) => raw_str
             .replace("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name)
-            .replace("REPLACE_ME_RUST_CRATE_NAME", TODO)
+            .replace("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name)
             .replace(
                 "REPLACE_ME_RUST_FRB_DEPENDENCY",
                 &if enable_local_dependency {

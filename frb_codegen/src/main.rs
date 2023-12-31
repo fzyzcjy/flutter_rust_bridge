@@ -5,9 +5,9 @@
 
 mod binary;
 
-use crate::binary::commands::{Cli, Commands};
+use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs};
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
-use clap::Parser;
+use clap::{arg, Parser};
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
@@ -31,10 +31,12 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::Create(args) => integration::create(CreateConfig {
             name: args.name,
             enable_local_dependency: args.common.local,
+            rust_crate_name: compute_rust_crate_name(&args.common),
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
             enable_integration_test: !args.no_enable_integration_test,
             enable_local_dependency: args.common.local,
+            rust_crate_name: compute_rust_crate_name(&args.common),
         })?,
         Commands::BuildWeb(args) => {
             build_web::build(args.dart_root, args.dart_coverage, args.args)?
@@ -42,6 +44,10 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::InternalGenerate(_args) => internal::generate()?,
     }
     Ok(())
+}
+
+fn compute_rust_crate_name(config: &CreateOrIntegrateCommandCommonArgs) -> String {
+    config.rust_crate_name.unwrap_or("rust".to_owned())
 }
 
 #[cfg(test)]
