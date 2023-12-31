@@ -406,7 +406,7 @@ jobs:
           # tests the MSRV
           # run on all rust packages, though only needed for frb_rust and frb_codegen
           - image: ubuntu-latest
-            version: 1.70.0 # update this, if a later MSRV is needed
+            version: 1.72.0 # update this, if a later MSRV is needed
 
     steps:
       # setup
