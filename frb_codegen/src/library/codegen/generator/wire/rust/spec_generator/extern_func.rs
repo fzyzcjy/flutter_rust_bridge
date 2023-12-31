@@ -41,7 +41,7 @@ impl ExternFunc {
             ..
         } = self;
 
-        let func_name = format!("{func_name_prefix}{partial_func_name}");
+        let func_name = format!("{name_prefix}{partial_func_name}");
 
         format!(
             r#"
