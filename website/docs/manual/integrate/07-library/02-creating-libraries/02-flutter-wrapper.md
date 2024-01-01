@@ -49,7 +49,7 @@ DynamicLibrary createLibraryImpl() {
   const base = 'library_name';
 
   if (Platform.isIOS || Platform.isMacOS) {
-    return DynamicLibrary.executable();
+    return DynamicLibrary.open('$base.framework/$base');
   } else if (Platform.isWindows) {
     return DynamicLibrary.open('$base.dll');
   } else {
