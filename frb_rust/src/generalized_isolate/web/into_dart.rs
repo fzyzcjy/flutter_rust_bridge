@@ -120,6 +120,13 @@ macro_rules! delegate_buffer {
                 <$buffer>::from(self.as_slice()).into()
             }
         }
+
+        impl IntoDart for HashSet<$ty> {
+            #[inline]
+            fn into_dart(self) -> DartAbi {
+                self.into_iter().collect::<Vec<_>>().into_dart()
+            }
+        }
     )*};
 }
 // Orphan rules disallow blanket implementations, so we have to manually delegate here.
@@ -163,22 +170,21 @@ impl<T: IntoDartExceptPrimitive> IntoDart for Vec<T> {
     }
 }
 
-impl<T> IntoDart for HashSet<T>
-where
-    T: IntoDart,
-{
+impl<T: IntoDartExceptPrimitive> IntoDart for HashSet<T> {
+    #[inline]
     fn into_dart(self) -> DartAbi {
         into_dart_iterator(self.into_iter())
     }
 }
 
-impl<T> IntoDartExceptPrimitive for HashSet<T> where T: IntoDart {}
+impl<T: IntoDartExceptPrimitive> IntoDartExceptPrimitive for HashSet<T> {}
 
 impl<K, V> IntoDart for HashMap<K, V>
 where
     K: IntoDart,
     V: IntoDart,
 {
+    #[inline]
     fn into_dart(self) -> DartAbi {
         into_dart_iterator(self.into_iter())
     }
