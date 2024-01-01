@@ -7,7 +7,6 @@ use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::DartOpaque;
 use std::future::Future;
-use std::panic::UnwindSafe;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
 ///
@@ -29,12 +28,11 @@ pub trait Handler {
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        PrepareFn: FnOnce() -> TaskFn,
         TaskFn: FnOnce(
                 TaskContext<Rust2DartCodec>,
             ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
-            + UnwindSafe
             + 'static,
         Rust2DartCodec: BaseCodec;
 
@@ -46,8 +44,7 @@ pub trait Handler {
         sync_task: SyncTaskFn,
     ) -> <Rust2DartCodec::Message as Rust2DartMessageTrait>::WireSyncRust2DartType
     where
-        SyncTaskFn:
-            FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>,
         Rust2DartCodec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.
@@ -57,11 +54,10 @@ pub trait Handler {
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
+        PrepareFn: FnOnce() -> TaskFn,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
-            + TaskRetFutTrait
-            + UnwindSafe,
+            + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec;
 
     fn dart_fn_invoke(

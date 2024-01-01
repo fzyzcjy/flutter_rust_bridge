@@ -2,11 +2,11 @@ use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::channel::oneshot;
 use std::future::Future;
-use std::panic::{AssertUnwindSafe, RefUnwindSafe};
+use std::panic::AssertUnwindSafe;
 use std::pin::Pin;
 use std::task::{Context, Poll};
 
-pub trait BaseAsyncRuntime: RefUnwindSafe {
+pub trait BaseAsyncRuntime {
     fn spawn<F>(&self, future: F)
     where
         F: Future<Output = ()> + 'static;

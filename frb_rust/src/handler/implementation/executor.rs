@@ -15,7 +15,6 @@ use crate::transfer;
 use futures::FutureExt;
 use std::future::Future;
 use std::panic;
-use std::panic::UnwindSafe;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -50,7 +49,6 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
                 TaskContext<Rust2DartCodec>,
             ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
-            + UnwindSafe
             + 'static,
         Rust2DartCodec: BaseCodec,
     {
@@ -87,8 +85,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         sync_task: SyncTaskFn,
     ) -> Rust2DartCodec::Message
     where
-        SyncTaskFn:
-            FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>,
         Rust2DartCodec: BaseCodec,
     {
         match sync_task() {
@@ -103,10 +100,9 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
     #[cfg(feature = "rust-async")]
     fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut>(&self, task_info: TaskInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
-            + TaskRetFutTrait
-            + UnwindSafe,
+            + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec,
     {
         let el = self.error_listener;
