@@ -120,7 +120,7 @@ Future<StructWithGoodAndOpaqueFieldTwinSse>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse(
                 hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync>>>
 @sealed
 class BoxFnStringString extends RustOpaque {
   BoxFnStringString.dcoDecode(List<dynamic> wire)

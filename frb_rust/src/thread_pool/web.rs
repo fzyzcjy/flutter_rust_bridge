@@ -1,10 +1,9 @@
 pub use crate::third_party::wasm_bindgen::worker_pool::WorkerPool as SimpleThreadPool;
 use crate::web_transfer::transfer_closure::TransferClosure;
-use std::panic::RefUnwindSafe;
 use std::thread::LocalKey;
 use wasm_bindgen::JsValue;
 
-pub trait BaseThreadPool: RefUnwindSafe {
+pub trait BaseThreadPool {
     fn execute(&self, closure: TransferClosure<JsValue>);
 }
 

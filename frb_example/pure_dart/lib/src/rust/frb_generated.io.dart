@@ -270,7 +270,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr;
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
@@ -341,7 +341,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic raw);
 
   @protected
@@ -681,7 +681,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic raw);
 
   @protected
@@ -4364,7 +4364,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
 
   @protected
@@ -4649,7 +4649,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
 
   @protected
@@ -20812,7 +20812,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString raw);
 
   @protected
@@ -21143,7 +21143,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
-      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString raw);
 
   @protected
@@ -21304,7 +21304,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString self, SseSerializer serializer);
 
   @protected
@@ -21655,9 +21655,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonSendHideData self, SseSerializer serializer);
 
   @protected
-  void
-      sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          BoxFnStringString self, SseSerializer serializer);
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
+      BoxFnStringString self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
@@ -56642,35 +56641,35 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void

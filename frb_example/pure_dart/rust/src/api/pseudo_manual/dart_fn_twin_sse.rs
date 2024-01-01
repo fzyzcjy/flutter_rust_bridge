@@ -5,29 +5,26 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "syncSse"]}
 
 use flutter_rust_bridge::{DartFnFuture, DartOpaque};
-use std::panic::UnwindSafe;
 
 pub struct DemoStructForRustCallDartTwinSse {
     pub name: String,
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_call_dart_simple_twin_sse(callback: impl Fn() -> DartFnFuture<()> + UnwindSafe) {
+pub async fn rust_call_dart_simple_twin_sse(callback: impl Fn() -> DartFnFuture<()>) {
     println!("rust_call_dart_simple before");
     callback().await;
     println!("rust_call_dart_simple after");
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_call_dart_one_arg_twin_sse(
-    callback: impl Fn(String) -> DartFnFuture<()> + UnwindSafe,
-) {
+pub async fn rust_call_dart_one_arg_twin_sse(callback: impl Fn(String) -> DartFnFuture<()>) {
     callback("a".to_owned()).await;
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_two_args_twin_sse(
-    callback: impl Fn(String, DemoStructForRustCallDartTwinSse) -> DartFnFuture<()> + UnwindSafe,
+    callback: impl Fn(String, DemoStructForRustCallDartTwinSse) -> DartFnFuture<()>,
 ) {
     callback(
         "a".to_owned(),
@@ -39,17 +36,16 @@ pub async fn rust_call_dart_two_args_twin_sse(
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_call_dart_return_twin_sse(
-    callback: impl Fn() -> DartFnFuture<String> + UnwindSafe,
-) {
+pub async fn rust_call_dart_return_twin_sse(callback: impl Fn() -> DartFnFuture<String>) {
     let result = callback().await;
     assert_eq!(&result, "a");
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_loopback_twin_sse(
-    callback: impl Fn(DemoStructForRustCallDartTwinSse) -> DartFnFuture<DemoStructForRustCallDartTwinSse>
-        + UnwindSafe,
+    callback: impl Fn(
+        DemoStructForRustCallDartTwinSse,
+    ) -> DartFnFuture<DemoStructForRustCallDartTwinSse>,
 ) {
     let result = callback(DemoStructForRustCallDartTwinSse { name: "a".into() }).await;
     assert_eq!(&result.name, "a");
@@ -58,21 +54,21 @@ pub async fn rust_call_dart_loopback_twin_sse(
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_with_dart_opaque_arg_twin_sse(
     input: DartOpaque,
-    callback: impl Fn(DartOpaque) -> DartFnFuture<()> + UnwindSafe,
+    callback: impl Fn(DartOpaque) -> DartFnFuture<()>,
 ) {
     callback(input).await
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_with_dart_opaque_result_twin_sse(
-    callback: impl Fn() -> DartFnFuture<DartOpaque> + UnwindSafe,
+    callback: impl Fn() -> DartFnFuture<DartOpaque>,
 ) -> DartOpaque {
     callback().await
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_multi_times_twin_sse(
-    callback: impl Fn() -> DartFnFuture<()> + UnwindSafe,
+    callback: impl Fn() -> DartFnFuture<()>,
     num_times: i32,
 ) {
     for _ in 0..num_times {

@@ -35,10 +35,10 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire_draw_mandelbrot_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    image_size: impl CstDecode<crate::api::mandelbrot::Size> + core::panic::UnwindSafe,
-    zoom_point: impl CstDecode<crate::api::mandelbrot::Point> + core::panic::UnwindSafe,
-    scale: impl CstDecode<f64> + core::panic::UnwindSafe,
-    num_threads: impl CstDecode<i32> + core::panic::UnwindSafe,
+    image_size: impl CstDecode<crate::api::mandelbrot::Size>,
+    zoom_point: impl CstDecode<crate::api::mandelbrot::Point>,
+    scale: impl CstDecode<f64>,
+    num_threads: impl CstDecode<i32>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -70,9 +70,8 @@ fn wire_draw_mandelbrot_impl(
 }
 fn wire_DataFrame_get_column_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
-        + core::panic::UnwindSafe,
-    name: impl CstDecode<String> + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>,
+    name: impl CstDecode<String>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -93,8 +92,7 @@ fn wire_DataFrame_get_column_impl(
     )
 }
 fn wire_DataFrame_get_column_names_impl(
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -114,8 +112,7 @@ fn wire_DataFrame_get_column_names_impl(
     )
 }
 fn wire_DataFrame_lazy_impl(
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -137,10 +134,8 @@ fn wire_DataFrame_lazy_impl(
     )
 }
 fn wire_Expr_gt_impl(
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
-        + core::panic::UnwindSafe,
-    other: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>,
+    other: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -164,8 +159,7 @@ fn wire_Expr_gt_impl(
     )
 }
 fn wire_Expr_sum_impl(
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -188,8 +182,7 @@ fn wire_Expr_sum_impl(
 }
 fn wire_LazyFrame_collect_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -213,10 +206,8 @@ fn wire_LazyFrame_collect_impl(
     )
 }
 fn wire_LazyFrame_filter_impl(
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
-        + core::panic::UnwindSafe,
-    predicate: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>,
+    predicate: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -240,10 +231,8 @@ fn wire_LazyFrame_filter_impl(
     )
 }
 fn wire_LazyFrame_group_by_impl(
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
-        + core::panic::UnwindSafe,
-    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>,
+    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -267,10 +256,8 @@ fn wire_LazyFrame_group_by_impl(
     )
 }
 fn wire_LazyGroupBy_agg_impl(
-    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>>>
-        + core::panic::UnwindSafe,
-    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
-        + core::panic::UnwindSafe,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>>>,
+    expr: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -294,7 +281,7 @@ fn wire_LazyGroupBy_agg_impl(
     )
 }
 fn wire_col_impl(
-    name: impl CstDecode<String> + core::panic::UnwindSafe,
+    name: impl CstDecode<String>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -313,7 +300,7 @@ fn wire_col_impl(
     )
 }
 fn wire_lit_impl(
-    t: impl CstDecode<f64> + core::panic::UnwindSafe,
+    t: impl CstDecode<f64>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
