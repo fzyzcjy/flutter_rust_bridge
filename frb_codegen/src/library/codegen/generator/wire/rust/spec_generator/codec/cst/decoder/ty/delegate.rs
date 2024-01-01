@@ -78,14 +78,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
             IrTypeDelegate::Array(array) => {
-                let acc = Some(generate_decode_array(array));
-                if is_js_value(&self.ir.get_delegate()) {
-                    return Acc {
-                        io: acc,
-                        ..Default::default()
-                    };
-                }
-                Acc::distribute(acc)
+                self.generate_skip_web_if_jsvalue(generate_decode_array(array))
             },
             IrTypeDelegate::Map(ir) => Acc::distribute(Some(generate_decode_map(ir))),
             IrTypeDelegate::Set(ir) => Acc::distribute(Some(generate_decode_set(ir))),
@@ -140,6 +133,19 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
             .rust_wire_is_pointer(target)
+    }
+}
+
+impl<'a> DelegateWireRustCodecCstGenerator<'a> {
+    fn generate_skip_web_if_jsvalue(&self, acc: String) -> Acc<Option<String>> {
+        if is_js_value(&self.ir.get_delegate()) {
+            Acc {
+                io: Some(acc),
+                ..Default::default()
+            }
+        } else {
+            Acc::distribute(Some(acc))
+        }
     }
 }
 
