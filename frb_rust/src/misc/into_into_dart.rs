@@ -1,6 +1,7 @@
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
 use crate::rust_opaque::{DartSafe, RustOpaque};
+use std::collections::{HashMap, HashSet};
 
 /// Basically the Into trait.
 /// We need this separate trait because we need to implement it for Vec<T> etc.
@@ -74,6 +75,27 @@ where
     #[inline(always)]
     fn into_into_dart(self) -> T {
         *self
+    }
+}
+
+impl<K, V> IntoIntoDart<HashMap<K, V>> for HashMap<K, V>
+where
+    K: IntoDart,
+    V: IntoDart,
+{
+    #[inline(always)]
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+impl<T> IntoIntoDart<HashSet<T>> for HashSet<T>
+where
+    T: IntoDart,
+{
+    #[inline(always)]
+    fn into_into_dart(self) -> Self {
+        self
     }
 }
 
