@@ -12,7 +12,6 @@ use flutter_rust_bridge::spawn_blocking_with;
 use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
-use std::panic::AssertUnwindSafe;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
 /// iterations to decide.
@@ -186,7 +185,7 @@ pub async fn mandelbrot(
         ));
     }
 
-    let bands_arr = AssertUnwindSafe(try_join_all(join_handles)).await?;
+    let bands_arr = try_join_all(join_handles).await?;
     let pixels = bands_arr.concat();
 
     write_image(&colorize(&pixels), bounds)

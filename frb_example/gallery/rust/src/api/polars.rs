@@ -1,17 +1,16 @@
 use crate::ignore_me::polars_related;
 use flutter_rust_bridge::frb;
 use polars_lazy::prelude::*;
-use std::panic::AssertUnwindSafe;
 
 // This demo is a minimal version of https://github.com/Desdaemon/polars_dart
 // Refer to that repository for more details (though may have not migrated to V2 yet)
 
 #[frb(opaque)]
-pub struct DataFrame(AssertUnwindSafe<polars_core::prelude::DataFrame>);
+pub struct DataFrame(polars_core::prelude::DataFrame);
 
 impl DataFrame {
     fn new(inner: polars_core::prelude::DataFrame) -> DataFrame {
-        Self(AssertUnwindSafe(inner))
+        Self(inner)
     }
 
     #[frb(sync)]
@@ -35,11 +34,11 @@ impl DataFrame {
 }
 
 #[frb(opaque)]
-pub struct LazyFrame(AssertUnwindSafe<polars_lazy::prelude::LazyFrame>);
+pub struct LazyFrame(polars_lazy::prelude::LazyFrame);
 
 impl LazyFrame {
     fn new(inner: polars_lazy::prelude::LazyFrame) -> LazyFrame {
-        Self(AssertUnwindSafe(inner))
+        Self(inner)
     }
 
     #[frb(sync)]
@@ -58,11 +57,11 @@ impl LazyFrame {
 }
 
 #[frb(opaque)]
-pub struct LazyGroupBy(AssertUnwindSafe<polars_lazy::prelude::LazyGroupBy>);
+pub struct LazyGroupBy(polars_lazy::prelude::LazyGroupBy);
 
 impl LazyGroupBy {
     fn new(inner: polars_lazy::prelude::LazyGroupBy) -> LazyGroupBy {
-        Self(AssertUnwindSafe(inner))
+        Self(inner)
     }
 
     #[frb(sync)]
@@ -77,11 +76,11 @@ pub fn read_sample_dataset() -> DataFrame {
 
 // Instead of opaque, we can also use the translatable types mode
 #[frb(opaque)]
-pub struct Expr(AssertUnwindSafe<polars_lazy::prelude::Expr>);
+pub struct Expr(polars_lazy::prelude::Expr);
 
 impl Expr {
     fn new(inner: polars_lazy::prelude::Expr) -> Expr {
-        Self(AssertUnwindSafe(inner))
+        Self(inner)
     }
 
     #[frb(sync)]

@@ -1,7 +1,6 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsyncSse"]}
 
 use flutter_rust_bridge::{frb, DartSafe};
-pub use std::panic::{RefUnwindSafe, UnwindSafe};
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -75,14 +74,12 @@ pub fn rust_auto_opaque_plus_sign_return_twin_normal() -> Box<dyn MyTraitTwinNor
     Box::new("hello".to_owned())
 }
 
-pub fn rust_auto_opaque_callable_arg_twin_normal(
-    arg: Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-) {
+pub fn rust_auto_opaque_callable_arg_twin_normal(arg: Box<dyn Fn(String) -> String + Send + Sync>) {
     assert_eq!(&arg("hello".into()), "hellohello");
 }
 
-pub fn rust_auto_opaque_callable_return_twin_normal(
-) -> Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe> {
+pub fn rust_auto_opaque_callable_return_twin_normal() -> Box<dyn Fn(String) -> String + Send + Sync>
+{
     Box::new(|x: String| x.repeat(2))
 }
 
