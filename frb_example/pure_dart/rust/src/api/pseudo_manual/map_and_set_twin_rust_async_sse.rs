@@ -33,18 +33,6 @@ pub async fn func_hash_set_string_twin_rust_async_sse(arg: HashSet<String>) -> H
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn func_hash_map_bytes_bytes_twin_rust_async_sse(
-    arg: HashMap<Vec<u8>, Vec<u8>>,
-) -> HashMap<Vec<u8>, Vec<u8>> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn func_hash_set_bytes_twin_rust_async_sse(arg: HashSet<Vec<u8>>) -> HashSet<Vec<u8>> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(serialize)]
 pub async fn func_hash_map_string_struct_twin_rust_async_sse(
     arg: HashMap<String, MySize>,
 ) -> HashMap<String, MySize> {
