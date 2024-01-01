@@ -107,11 +107,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
             IrTypeDelegate::Map(_) => Acc::distribute(Some(format!(
-                "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList())",
+                "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
                 self.ir.get_delegate().safe_ident()
             ))),
             IrTypeDelegate::Set(_) => Acc::distribute(Some(format!(
-                "return cst_encode_{}(raw.toList())",
+                "return cst_encode_{}(raw.toList());",
                 self.ir.get_delegate().safe_ident()
             ))),
         }
