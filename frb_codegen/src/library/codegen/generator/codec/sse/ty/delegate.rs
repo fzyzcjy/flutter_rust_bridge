@@ -22,8 +22,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
-                IrTypeDelegate::Map(ir) => TODO,
-                IrTypeDelegate::Set(ir) => TODO,
+                IrTypeDelegate::Map(_) => "self.entries.map((e) => (e.key, e.value)).toList()",
+                IrTypeDelegate::Set(_) => "self.toList()",
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -36,8 +36,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
                 IrTypeDelegate::Backtrace => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
-                IrTypeDelegate::Map(ir) => TODO,
-                IrTypeDelegate::Set(ir) => TODO,
+                IrTypeDelegate::Map(_) => "self.into_iter().collect()",
+                IrTypeDelegate::Set(_) => "self.into_iter().collect()",
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -72,8 +72,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::Backtrace => "inner".to_owned(),
                 IrTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
-                IrTypeDelegate::Map(ir) => TODO,
-                IrTypeDelegate::Set(ir) => TODO,
+                IrTypeDelegate::Map(_) => {
+                    "Map.fromEntries((inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));"
+                }
+                IrTypeDelegate::Set(_) => "Set.from(inner as List<dynamic>);",
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -92,8 +94,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
-                IrTypeDelegate::Map(ir) => TODO,
-                IrTypeDelegate::Set(ir) => TODO,
+                IrTypeDelegate::Map(_) => "inner.into_iter().collect()",
+                IrTypeDelegate::Set(_) => "inner.into_iter().collect()",
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
