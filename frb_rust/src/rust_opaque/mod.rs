@@ -45,4 +45,6 @@ pub struct RustOpaque<T: ?Sized> {
 // https://github.com/fzyzcjy/flutter_rust_bridge/pull/1574
 #[deprecated(note = "It is empty trait and can be directly deleted")]
 pub trait DartSafe {}
+
+#[allow(deprecated)]
 impl<T> DartSafe for T {}
