@@ -315,20 +315,40 @@ typedef struct wire_cst_record_i_32_i_32 {
   int32_t field1;
 } wire_cst_record_i_32_i_32;
 
+typedef struct wire_cst_list_record_i_32_i_32 {
+  struct wire_cst_record_i_32_i_32 *ptr;
+  int32_t len;
+} wire_cst_list_record_i_32_i_32;
+
 typedef struct wire_cst_record_string_kitchen_sink_twin_normal {
   struct wire_cst_list_prim_u_8 *field0;
   struct wire_cst_kitchen_sink_twin_normal field1;
 } wire_cst_record_string_kitchen_sink_twin_normal;
+
+typedef struct wire_cst_list_record_string_kitchen_sink_twin_normal {
+  struct wire_cst_record_string_kitchen_sink_twin_normal *ptr;
+  int32_t len;
+} wire_cst_list_record_string_kitchen_sink_twin_normal;
 
 typedef struct wire_cst_record_string_enum_simple_twin_normal {
   struct wire_cst_list_prim_u_8 *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_normal;
 
+typedef struct wire_cst_list_record_string_enum_simple_twin_normal {
+  struct wire_cst_record_string_enum_simple_twin_normal *ptr;
+  int32_t len;
+} wire_cst_list_record_string_enum_simple_twin_normal;
+
 typedef struct wire_cst_record_string_string {
   struct wire_cst_list_prim_u_8 *field0;
   struct wire_cst_list_prim_u_8 *field1;
 } wire_cst_record_string_string;
+
+typedef struct wire_cst_list_record_string_string {
+  struct wire_cst_record_string_string *ptr;
+  int32_t len;
+} wire_cst_list_record_string_string;
 
 typedef struct wire_cst_my_size {
   int32_t width;
@@ -339,6 +359,11 @@ typedef struct wire_cst_record_string_my_size {
   struct wire_cst_list_prim_u_8 *field0;
   struct wire_cst_my_size field1;
 } wire_cst_record_string_my_size;
+
+typedef struct wire_cst_list_record_string_my_size {
+  struct wire_cst_record_string_my_size *ptr;
+  int32_t len;
+} wire_cst_list_record_string_my_size;
 
 typedef struct wire_cst_list_String {
   struct wire_cst_list_prim_u_8 **ptr;
@@ -1082,20 +1107,40 @@ typedef struct wire_cst_record_string_kitchen_sink_twin_rust_async {
   struct wire_cst_kitchen_sink_twin_rust_async field1;
 } wire_cst_record_string_kitchen_sink_twin_rust_async;
 
+typedef struct wire_cst_list_record_string_kitchen_sink_twin_rust_async {
+  struct wire_cst_record_string_kitchen_sink_twin_rust_async *ptr;
+  int32_t len;
+} wire_cst_list_record_string_kitchen_sink_twin_rust_async;
+
 typedef struct wire_cst_record_string_enum_simple_twin_rust_async {
   struct wire_cst_list_prim_u_8 *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_rust_async;
+
+typedef struct wire_cst_list_record_string_enum_simple_twin_rust_async {
+  struct wire_cst_record_string_enum_simple_twin_rust_async *ptr;
+  int32_t len;
+} wire_cst_list_record_string_enum_simple_twin_rust_async;
 
 typedef struct wire_cst_record_string_kitchen_sink_twin_sync {
   struct wire_cst_list_prim_u_8 *field0;
   struct wire_cst_kitchen_sink_twin_sync field1;
 } wire_cst_record_string_kitchen_sink_twin_sync;
 
+typedef struct wire_cst_list_record_string_kitchen_sink_twin_sync {
+  struct wire_cst_record_string_kitchen_sink_twin_sync *ptr;
+  int32_t len;
+} wire_cst_list_record_string_kitchen_sink_twin_sync;
+
 typedef struct wire_cst_record_string_enum_simple_twin_sync {
   struct wire_cst_list_prim_u_8 *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_sync;
+
+typedef struct wire_cst_list_record_string_enum_simple_twin_sync {
+  struct wire_cst_record_string_enum_simple_twin_sync *ptr;
+  int32_t len;
+} wire_cst_list_record_string_enum_simple_twin_sync;
 
 typedef struct wire_cst_concatenate_with_twin_rust_async {
   struct wire_cst_list_prim_u_8 *a;
@@ -3235,6 +3280,66 @@ typedef struct wire_cst_list_raw_string_mirrored {
   int32_t len;
 } wire_cst_list_raw_string_mirrored;
 
+typedef struct wire_cst_record_string_enum_simple_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+  int32_t field1;
+} wire_cst_record_string_enum_simple_twin_rust_async_sse;
+
+typedef struct wire_cst_list_record_string_enum_simple_twin_rust_async_sse {
+  struct wire_cst_record_string_enum_simple_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_record_string_enum_simple_twin_rust_async_sse;
+
+typedef struct wire_cst_record_string_enum_simple_twin_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+  int32_t field1;
+} wire_cst_record_string_enum_simple_twin_sse;
+
+typedef struct wire_cst_list_record_string_enum_simple_twin_sse {
+  struct wire_cst_record_string_enum_simple_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_record_string_enum_simple_twin_sse;
+
+typedef struct wire_cst_record_string_enum_simple_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+  int32_t field1;
+} wire_cst_record_string_enum_simple_twin_sync_sse;
+
+typedef struct wire_cst_list_record_string_enum_simple_twin_sync_sse {
+  struct wire_cst_record_string_enum_simple_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_record_string_enum_simple_twin_sync_sse;
+
+typedef struct wire_cst_record_string_kitchen_sink_twin_rust_async_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_kitchen_sink_twin_rust_async_sse field1;
+} wire_cst_record_string_kitchen_sink_twin_rust_async_sse;
+
+typedef struct wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse {
+  struct wire_cst_record_string_kitchen_sink_twin_rust_async_sse *ptr;
+  int32_t len;
+} wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse;
+
+typedef struct wire_cst_record_string_kitchen_sink_twin_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_kitchen_sink_twin_sse field1;
+} wire_cst_record_string_kitchen_sink_twin_sse;
+
+typedef struct wire_cst_list_record_string_kitchen_sink_twin_sse {
+  struct wire_cst_record_string_kitchen_sink_twin_sse *ptr;
+  int32_t len;
+} wire_cst_list_record_string_kitchen_sink_twin_sse;
+
+typedef struct wire_cst_record_string_kitchen_sink_twin_sync_sse {
+  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_kitchen_sink_twin_sync_sse field1;
+} wire_cst_record_string_kitchen_sink_twin_sync_sse;
+
+typedef struct wire_cst_list_record_string_kitchen_sink_twin_sync_sse {
+  struct wire_cst_record_string_kitchen_sink_twin_sync_sse *ptr;
+  int32_t len;
+} wire_cst_list_record_string_kitchen_sink_twin_sync_sse;
+
 typedef struct wire_cst_list_sum_with_twin_normal {
   struct wire_cst_sum_with_twin_normal *ptr;
   int32_t len;
@@ -3978,36 +4083,6 @@ typedef struct wire_cst_record_application_settings_raw_string_enum_mirrored {
   struct wire_cst_raw_string_enum_mirrored field1;
 } wire_cst_record_application_settings_raw_string_enum_mirrored;
 
-typedef struct wire_cst_record_string_enum_simple_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *field0;
-  int32_t field1;
-} wire_cst_record_string_enum_simple_twin_rust_async_sse;
-
-typedef struct wire_cst_record_string_enum_simple_twin_sse {
-  struct wire_cst_list_prim_u_8 *field0;
-  int32_t field1;
-} wire_cst_record_string_enum_simple_twin_sse;
-
-typedef struct wire_cst_record_string_enum_simple_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *field0;
-  int32_t field1;
-} wire_cst_record_string_enum_simple_twin_sync_sse;
-
-typedef struct wire_cst_record_string_kitchen_sink_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *field0;
-  struct wire_cst_kitchen_sink_twin_rust_async_sse field1;
-} wire_cst_record_string_kitchen_sink_twin_rust_async_sse;
-
-typedef struct wire_cst_record_string_kitchen_sink_twin_sse {
-  struct wire_cst_list_prim_u_8 *field0;
-  struct wire_cst_kitchen_sink_twin_sse field1;
-} wire_cst_record_string_kitchen_sink_twin_sse;
-
-typedef struct wire_cst_record_string_kitchen_sink_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *field0;
-  struct wire_cst_kitchen_sink_twin_sync_sse field1;
-} wire_cst_record_string_kitchen_sink_twin_sync_sse;
-
 typedef struct wire_cst_test_chrono_twin_normal {
   int64_t *dt;
   int64_t *dt2;
@@ -4460,19 +4535,19 @@ void frbgen_frb_example_pure_dart_wire_func_macro_struct_twin_normal(int64_t por
                                                                      struct wire_cst_macro_struct *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_normal(int64_t port_,
-                                                                         struct wire_cst_record_i_32_i_32 arg);
+                                                                         struct wire_cst_list_record_i_32_i_32 *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_normal(int64_t port_,
-                                                                                     struct wire_cst_record_string_kitchen_sink_twin_normal arg);
+                                                                                     struct wire_cst_list_record_string_kitchen_sink_twin_normal *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_normal(int64_t port_,
-                                                                                    struct wire_cst_record_string_enum_simple_twin_normal arg);
+                                                                                    struct wire_cst_list_record_string_enum_simple_twin_normal *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_normal(int64_t port_,
-                                                                               struct wire_cst_record_string_string arg);
+                                                                               struct wire_cst_list_record_string_string *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_normal(int64_t port_,
-                                                                               struct wire_cst_record_string_my_size arg);
+                                                                               struct wire_cst_list_record_string_my_size *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_normal(int64_t port_,
                                                                      struct wire_cst_list_prim_i_32 *arg);
@@ -6643,19 +6718,19 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_use_imported_struct_twin_
                                                                                          int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async(int64_t port_,
-                                                                             struct wire_cst_record_i_32_i_32 arg);
+                                                                             struct wire_cst_list_record_i_32_i_32 *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_rust_async(int64_t port_,
-                                                                                         struct wire_cst_record_string_kitchen_sink_twin_rust_async arg);
+                                                                                         struct wire_cst_list_record_string_kitchen_sink_twin_rust_async *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_rust_async(int64_t port_,
-                                                                                        struct wire_cst_record_string_enum_simple_twin_rust_async arg);
+                                                                                        struct wire_cst_list_record_string_enum_simple_twin_rust_async *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_rust_async(int64_t port_,
-                                                                                   struct wire_cst_record_string_string arg);
+                                                                                   struct wire_cst_list_record_string_string *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_rust_async(int64_t port_,
-                                                                                   struct wire_cst_record_string_my_size arg);
+                                                                                   struct wire_cst_list_record_string_my_size *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async(int64_t port_,
                                                                          struct wire_cst_list_prim_i_32 *arg);
@@ -6733,15 +6808,15 @@ void frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sse(int64_t por
                                                                      int32_t rust_vec_len_,
                                                                      int32_t data_len_);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync(struct wire_cst_record_i_32_i_32 arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync(struct wire_cst_list_record_i_32_i_32 *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_sync(struct wire_cst_record_string_kitchen_sink_twin_sync arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_sync(struct wire_cst_list_record_string_kitchen_sink_twin_sync *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_sync(struct wire_cst_record_string_enum_simple_twin_sync arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_sync(struct wire_cst_list_record_string_enum_simple_twin_sync *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_sync(struct wire_cst_record_string_string arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_sync(struct wire_cst_list_record_string_string *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync(struct wire_cst_record_string_my_size arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync(struct wire_cst_list_record_string_my_size *arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync(struct wire_cst_list_prim_i_32 *arg);
 
@@ -10834,7 +10909,37 @@ struct wire_cst_list_raw_string_enum_mirrored *frbgen_frb_example_pure_dart_cst_
 
 struct wire_cst_list_raw_string_mirrored *frbgen_frb_example_pure_dart_cst_new_list_raw_string_mirrored(int32_t len);
 
+struct wire_cst_list_record_i_32_i_32 *frbgen_frb_example_pure_dart_cst_new_list_record_i_32_i_32(int32_t len);
+
+struct wire_cst_list_record_string_enum_simple_twin_normal *frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_normal(int32_t len);
+
+struct wire_cst_list_record_string_enum_simple_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_rust_async(int32_t len);
+
+struct wire_cst_list_record_string_enum_simple_twin_rust_async_sse *frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_record_string_enum_simple_twin_sse *frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sse(int32_t len);
+
+struct wire_cst_list_record_string_enum_simple_twin_sync *frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync(int32_t len);
+
+struct wire_cst_list_record_string_enum_simple_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync_sse(int32_t len);
+
 struct wire_cst_list_record_string_i_32 *frbgen_frb_example_pure_dart_cst_new_list_record_string_i_32(int32_t len);
+
+struct wire_cst_list_record_string_kitchen_sink_twin_normal *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_normal(int32_t len);
+
+struct wire_cst_list_record_string_kitchen_sink_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_rust_async(int32_t len);
+
+struct wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_rust_async_sse(int32_t len);
+
+struct wire_cst_list_record_string_kitchen_sink_twin_sse *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sse(int32_t len);
+
+struct wire_cst_list_record_string_kitchen_sink_twin_sync *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync(int32_t len);
+
+struct wire_cst_list_record_string_kitchen_sink_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync_sse(int32_t len);
+
+struct wire_cst_list_record_string_my_size *frbgen_frb_example_pure_dart_cst_new_list_record_string_my_size(int32_t len);
+
+struct wire_cst_list_record_string_string *frbgen_frb_example_pure_dart_cst_new_list_record_string_string(int32_t len);
 
 struct wire_cst_list_sum_with_twin_normal *frbgen_frb_example_pure_dart_cst_new_list_sum_with_twin_normal(int32_t len);
 
@@ -11306,7 +11411,22 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_8);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_raw_string_enum_mirrored);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_raw_string_mirrored);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_i_32_i_32);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_i_32);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_my_size);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_string);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_sum_with_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_sum_with_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_sum_with_twin_rust_async_sse);

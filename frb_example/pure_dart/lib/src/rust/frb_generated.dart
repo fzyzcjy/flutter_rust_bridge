@@ -54377,8 +54377,123 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_32).toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinNormal)>
+      dco_decode_list_record_string_enum_simple_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsync)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSse)>
+      dco_decode_list_record_string_enum_simple_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSync)>
+      dco_decode_list_record_string_enum_simple_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
   List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw) {
     return (raw as List<dynamic>).map(dco_decode_record_string_i_32).toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinNormal)>
+      dco_decode_list_record_string_kitchen_sink_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsync)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSync)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_my_size)
+        .toList();
+  }
+
+  @protected
+  List<(String, String)> dco_decode_list_record_string_string(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_string_string).toList();
   }
 
   @protected
@@ -58145,7 +58260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Map<String, String> sse_decode_Map_String_String(
       SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_string(deserializer);
+    var inner = sse_decode_list_record_string_string(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58155,7 +58270,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Map<String, EnumSimpleTwinNormal>
       sse_decode_Map_String_enum_simple_twin_normal(
           SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_enum_simple_twin_normal(deserializer);
+    var inner =
+        sse_decode_list_record_string_enum_simple_twin_normal(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58166,7 +58282,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Map_String_enum_simple_twin_rust_async(
           SseDeserializer deserializer) {
     var inner =
-        sse_decode_record_string_enum_simple_twin_rust_async(deserializer);
+        sse_decode_list_record_string_enum_simple_twin_rust_async(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58176,8 +58292,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Map<String, EnumSimpleTwinRustAsyncSse>
       sse_decode_Map_String_enum_simple_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var inner =
-        sse_decode_record_string_enum_simple_twin_rust_async_sse(deserializer);
+    var inner = sse_decode_list_record_string_enum_simple_twin_rust_async_sse(
+        deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58186,7 +58302,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Map<String, EnumSimpleTwinSse> sse_decode_Map_String_enum_simple_twin_sse(
       SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_enum_simple_twin_sse(deserializer);
+    var inner =
+        sse_decode_list_record_string_enum_simple_twin_sse(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58195,7 +58312,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Map<String, EnumSimpleTwinSync> sse_decode_Map_String_enum_simple_twin_sync(
       SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_enum_simple_twin_sync(deserializer);
+    var inner =
+        sse_decode_list_record_string_enum_simple_twin_sync(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58206,7 +58324,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Map_String_enum_simple_twin_sync_sse(
           SseDeserializer deserializer) {
     var inner =
-        sse_decode_record_string_enum_simple_twin_sync_sse(deserializer);
+        sse_decode_list_record_string_enum_simple_twin_sync_sse(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58216,7 +58334,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Map<String, KitchenSinkTwinNormal>
       sse_decode_Map_String_kitchen_sink_twin_normal(
           SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_kitchen_sink_twin_normal(deserializer);
+    var inner =
+        sse_decode_list_record_string_kitchen_sink_twin_normal(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58226,8 +58345,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Map<String, KitchenSinkTwinRustAsync>
       sse_decode_Map_String_kitchen_sink_twin_rust_async(
           SseDeserializer deserializer) {
-    var inner =
-        sse_decode_record_string_kitchen_sink_twin_rust_async(deserializer);
+    var inner = sse_decode_list_record_string_kitchen_sink_twin_rust_async(
+        deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58237,8 +58356,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Map<String, KitchenSinkTwinRustAsyncSse>
       sse_decode_Map_String_kitchen_sink_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var inner =
-        sse_decode_record_string_kitchen_sink_twin_rust_async_sse(deserializer);
+    var inner = sse_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
+        deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58247,7 +58366,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Map<String, KitchenSinkTwinSse> sse_decode_Map_String_kitchen_sink_twin_sse(
       SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_kitchen_sink_twin_sse(deserializer);
+    var inner =
+        sse_decode_list_record_string_kitchen_sink_twin_sse(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58256,7 +58376,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Map<String, KitchenSinkTwinSync> sse_decode_Map_String_kitchen_sink_twin_sync(
       SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_kitchen_sink_twin_sync(deserializer);
+    var inner =
+        sse_decode_list_record_string_kitchen_sink_twin_sync(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58267,7 +58388,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Map_String_kitchen_sink_twin_sync_sse(
           SseDeserializer deserializer) {
     var inner =
-        sse_decode_record_string_kitchen_sink_twin_sync_sse(deserializer);
+        sse_decode_list_record_string_kitchen_sink_twin_sync_sse(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58276,7 +58397,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Map<String, MySize> sse_decode_Map_String_my_size(
       SseDeserializer deserializer) {
-    var inner = sse_decode_record_string_my_size(deserializer);
+    var inner = sse_decode_list_record_string_my_size(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -58284,7 +58405,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer) {
-    var inner = sse_decode_record_i_32_i_32(deserializer);
+    var inner = sse_decode_list_record_i_32_i_32(deserializer);
     return Map.fromEntries(
         (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
     ;
@@ -64665,12 +64786,195 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(int, int)> sse_decode_list_record_i_32_i_32(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_i_32(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinNormal)>
+      sse_decode_list_record_string_enum_simple_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, EnumSimpleTwinNormal)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_enum_simple_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsync)>
+      sse_decode_list_record_string_enum_simple_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, EnumSimpleTwinRustAsync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_string_enum_simple_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsyncSse)>
+      sse_decode_list_record_string_enum_simple_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, EnumSimpleTwinRustAsyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_enum_simple_twin_rust_async_sse(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSse)>
+      sse_decode_list_record_string_enum_simple_twin_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, EnumSimpleTwinSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_enum_simple_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSync)>
+      sse_decode_list_record_string_enum_simple_twin_sync(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, EnumSimpleTwinSync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_enum_simple_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSyncSse)>
+      sse_decode_list_record_string_enum_simple_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, EnumSimpleTwinSyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_string_enum_simple_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<(String, int)> sse_decode_list_record_string_i_32(
       SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <(String, int)>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(sse_decode_record_string_i_32(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinNormal)>
+      sse_decode_list_record_string_kitchen_sink_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, KitchenSinkTwinNormal)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_kitchen_sink_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsync)>
+      sse_decode_list_record_string_kitchen_sink_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, KitchenSinkTwinRustAsync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_string_kitchen_sink_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsyncSse)>
+      sse_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, KitchenSinkTwinRustAsyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_kitchen_sink_twin_rust_async_sse(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSse)>
+      sse_decode_list_record_string_kitchen_sink_twin_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, KitchenSinkTwinSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_kitchen_sink_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSync)>
+      sse_decode_list_record_string_kitchen_sink_twin_sync(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, KitchenSinkTwinSync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_kitchen_sink_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSyncSse)>
+      sse_decode_list_record_string_kitchen_sink_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, KitchenSinkTwinSyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_string_kitchen_sink_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, MySize)> sse_decode_list_record_string_my_size(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, MySize)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_my_size(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, String)> sse_decode_list_record_string_string(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, String)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_string(deserializer));
     }
     return ans_;
   }
@@ -69315,104 +69619,104 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Map_String_String(
       Map<String, String> self, SseSerializer serializer) {
-    sse_encode_record_string_string(
+    sse_encode_list_record_string_string(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_enum_simple_twin_normal(
       Map<String, EnumSimpleTwinNormal> self, SseSerializer serializer) {
-    sse_encode_record_string_enum_simple_twin_normal(
+    sse_encode_list_record_string_enum_simple_twin_normal(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_enum_simple_twin_rust_async(
       Map<String, EnumSimpleTwinRustAsync> self, SseSerializer serializer) {
-    sse_encode_record_string_enum_simple_twin_rust_async(
+    sse_encode_list_record_string_enum_simple_twin_rust_async(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_enum_simple_twin_rust_async_sse(
       Map<String, EnumSimpleTwinRustAsyncSse> self, SseSerializer serializer) {
-    sse_encode_record_string_enum_simple_twin_rust_async_sse(
+    sse_encode_list_record_string_enum_simple_twin_rust_async_sse(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_enum_simple_twin_sse(
       Map<String, EnumSimpleTwinSse> self, SseSerializer serializer) {
-    sse_encode_record_string_enum_simple_twin_sse(
+    sse_encode_list_record_string_enum_simple_twin_sse(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_enum_simple_twin_sync(
       Map<String, EnumSimpleTwinSync> self, SseSerializer serializer) {
-    sse_encode_record_string_enum_simple_twin_sync(
+    sse_encode_list_record_string_enum_simple_twin_sync(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_enum_simple_twin_sync_sse(
       Map<String, EnumSimpleTwinSyncSse> self, SseSerializer serializer) {
-    sse_encode_record_string_enum_simple_twin_sync_sse(
+    sse_encode_list_record_string_enum_simple_twin_sync_sse(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_normal(
       Map<String, KitchenSinkTwinNormal> self, SseSerializer serializer) {
-    sse_encode_record_string_kitchen_sink_twin_normal(
+    sse_encode_list_record_string_kitchen_sink_twin_normal(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_rust_async(
       Map<String, KitchenSinkTwinRustAsync> self, SseSerializer serializer) {
-    sse_encode_record_string_kitchen_sink_twin_rust_async(
+    sse_encode_list_record_string_kitchen_sink_twin_rust_async(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_rust_async_sse(
       Map<String, KitchenSinkTwinRustAsyncSse> self, SseSerializer serializer) {
-    sse_encode_record_string_kitchen_sink_twin_rust_async_sse(
+    sse_encode_list_record_string_kitchen_sink_twin_rust_async_sse(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_sse(
       Map<String, KitchenSinkTwinSse> self, SseSerializer serializer) {
-    sse_encode_record_string_kitchen_sink_twin_sse(
+    sse_encode_list_record_string_kitchen_sink_twin_sse(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_sync(
       Map<String, KitchenSinkTwinSync> self, SseSerializer serializer) {
-    sse_encode_record_string_kitchen_sink_twin_sync(
+    sse_encode_list_record_string_kitchen_sink_twin_sync(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_sync_sse(
       Map<String, KitchenSinkTwinSyncSse> self, SseSerializer serializer) {
-    sse_encode_record_string_kitchen_sink_twin_sync_sse(
+    sse_encode_list_record_string_kitchen_sink_twin_sync_sse(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_String_my_size(
       Map<String, MySize> self, SseSerializer serializer) {
-    sse_encode_record_string_my_size(
+    sse_encode_list_record_string_my_size(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
   void sse_encode_Map_i_32_i_32(Map<int, int> self, SseSerializer serializer) {
-    sse_encode_record_i_32_i_32(
+    sse_encode_list_record_i_32_i_32(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
@@ -74984,11 +75288,150 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_record_i_32_i_32(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_i_32(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_normal(
+      List<(String, EnumSimpleTwinNormal)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_enum_simple_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_rust_async(
+      List<(String, EnumSimpleTwinRustAsync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_enum_simple_twin_rust_async(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_rust_async_sse(
+      List<(String, EnumSimpleTwinRustAsyncSse)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_enum_simple_twin_rust_async_sse(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_sse(
+      List<(String, EnumSimpleTwinSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_enum_simple_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_sync(
+      List<(String, EnumSimpleTwinSync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_enum_simple_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_sync_sse(
+      List<(String, EnumSimpleTwinSyncSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_enum_simple_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_record_string_i_32(
       List<(String, int)> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       sse_encode_record_string_i_32(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_normal(
+      List<(String, KitchenSinkTwinNormal)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_kitchen_sink_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_rust_async(
+      List<(String, KitchenSinkTwinRustAsync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_kitchen_sink_twin_rust_async(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_rust_async_sse(
+      List<(String, KitchenSinkTwinRustAsyncSse)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_kitchen_sink_twin_rust_async_sse(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_sse(
+      List<(String, KitchenSinkTwinSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_kitchen_sink_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_sync(
+      List<(String, KitchenSinkTwinSync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_kitchen_sink_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_sync_sse(
+      List<(String, KitchenSinkTwinSyncSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_kitchen_sink_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_my_size(
+      List<(String, MySize)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_my_size(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_string(
+      List<(String, String)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_string(item, serializer);
     }
   }
 

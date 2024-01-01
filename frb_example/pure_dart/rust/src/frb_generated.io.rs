@@ -47,14 +47,14 @@ impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_cst_list_Dart
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<HashMap<String, String>> for wire_cst_record_string_string {
+impl CstDecode<HashMap<String, String>> for *mut wire_cst_list_record_string_string {
     fn cst_decode(self) -> HashMap<String, String> {
         let vec: Vec<(String, String)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
-    for wire_cst_record_string_enum_simple_twin_normal
+    for *mut wire_cst_list_record_string_enum_simple_twin_normal
 {
     fn cst_decode(self) -> HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal> {
         let vec: Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> = self.cst_decode();
@@ -67,7 +67,7 @@ impl
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
         >,
-    > for wire_cst_record_string_enum_simple_twin_rust_async
+    > for *mut wire_cst_list_record_string_enum_simple_twin_rust_async
 {
     fn cst_decode(
         self,
@@ -88,7 +88,7 @@ impl
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
         >,
-    > for wire_cst_record_string_enum_simple_twin_rust_async_sse
+    > for *mut wire_cst_list_record_string_enum_simple_twin_rust_async_sse
 {
     fn cst_decode(
         self,
@@ -104,7 +104,7 @@ impl
     }
 }
 impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse>>
-    for wire_cst_record_string_enum_simple_twin_sse
+    for *mut wire_cst_list_record_string_enum_simple_twin_sse
 {
     fn cst_decode(
         self,
@@ -118,7 +118,7 @@ impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::
 }
 impl
     CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync>>
-    for wire_cst_record_string_enum_simple_twin_sync
+    for *mut wire_cst_list_record_string_enum_simple_twin_sync
 {
     fn cst_decode(
         self,
@@ -136,7 +136,7 @@ impl
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
         >,
-    > for wire_cst_record_string_enum_simple_twin_sync_sse
+    > for *mut wire_cst_list_record_string_enum_simple_twin_sync_sse
 {
     fn cst_decode(
         self,
@@ -150,7 +150,7 @@ impl
     }
 }
 impl CstDecode<HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
-    for wire_cst_record_string_kitchen_sink_twin_normal
+    for *mut wire_cst_list_record_string_kitchen_sink_twin_normal
 {
     fn cst_decode(self) -> HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal> {
         let vec: Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> = self.cst_decode();
@@ -163,7 +163,7 @@ impl
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
         >,
-    > for wire_cst_record_string_kitchen_sink_twin_rust_async
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async
 {
     fn cst_decode(
         self,
@@ -184,7 +184,7 @@ impl
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
         >,
-    > for wire_cst_record_string_kitchen_sink_twin_rust_async_sse
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse
 {
     fn cst_decode(
         self,
@@ -200,7 +200,7 @@ impl
     }
 }
 impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse>>
-    for wire_cst_record_string_kitchen_sink_twin_sse
+    for *mut wire_cst_list_record_string_kitchen_sink_twin_sse
 {
     fn cst_decode(
         self,
@@ -215,7 +215,7 @@ impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::
 impl
     CstDecode<
         HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>,
-    > for wire_cst_record_string_kitchen_sink_twin_sync
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_sync
 {
     fn cst_decode(
         self,
@@ -234,7 +234,7 @@ impl
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
         >,
-    > for wire_cst_record_string_kitchen_sink_twin_sync_sse
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_sync_sse
 {
     fn cst_decode(
         self,
@@ -248,14 +248,14 @@ impl
     }
 }
 impl CstDecode<HashMap<String, crate::auxiliary::sample_types::MySize>>
-    for wire_cst_record_string_my_size
+    for *mut wire_cst_list_record_string_my_size
 {
     fn cst_decode(self) -> HashMap<String, crate::auxiliary::sample_types::MySize> {
         let vec: Vec<(String, crate::auxiliary::sample_types::MySize)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<i32, i32>> for wire_cst_record_i_32_i_32 {
+impl CstDecode<HashMap<i32, i32>> for *mut wire_cst_list_record_i_32_i_32 {
     fn cst_decode(self) -> HashMap<i32, i32> {
         let vec: Vec<(i32, i32)> = self.cst_decode();
         vec.into_iter().collect()
@@ -8371,8 +8371,269 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMir
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
+impl CstDecode<Vec<(i32, i32)>> for *mut wire_cst_list_record_i_32_i_32 {
+    fn cst_decode(self) -> Vec<(i32, i32)> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)>>
+    for *mut wire_cst_list_record_string_enum_simple_twin_normal
+{
+    fn cst_decode(self) -> Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
+        )>,
+    > for *mut wire_cst_list_record_string_enum_simple_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
+        )>,
+    > for *mut wire_cst_list_record_string_enum_simple_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+        )>,
+    > for *mut wire_cst_list_record_string_enum_simple_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+        )>,
+    > for *mut wire_cst_list_record_string_enum_simple_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
+        )>,
+    > for *mut wire_cst_list_record_string_enum_simple_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
 impl CstDecode<Vec<(String, i32)>> for *mut wire_cst_list_record_string_i_32 {
     fn cst_decode(self) -> Vec<(String, i32)> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)>>
+    for *mut wire_cst_list_record_string_kitchen_sink_twin_normal
+{
+    fn cst_decode(self) -> Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
+        )>,
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
+        )>,
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+        )>,
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+        )>,
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_sync
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
+        )>,
+    > for *mut wire_cst_list_record_string_kitchen_sink_twin_sync_sse
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
+    )> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
+    for *mut wire_cst_list_record_string_my_size
+{
+    fn cst_decode(self) -> Vec<(String, crate::auxiliary::sample_types::MySize)> {
+        let vec = unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(CstDecode::cst_decode).collect()
+    }
+}
+impl CstDecode<Vec<(String, String)>> for *mut wire_cst_list_record_string_string {
+    fn cst_decode(self) -> Vec<(String, String)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -17471,7 +17732,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_macro_struct_twin_norma
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_normal(
     port_: i64,
-    arg: wire_cst_record_i_32_i_32,
+    arg: *mut wire_cst_list_record_i_32_i_32,
 ) {
     wire_func_hash_map_i32_i32_twin_normal_impl(port_, arg)
 }
@@ -17479,7 +17740,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_n
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_normal(
     port_: i64,
-    arg: wire_cst_record_string_kitchen_sink_twin_normal,
+    arg: *mut wire_cst_list_record_string_kitchen_sink_twin_normal,
 ) {
     wire_func_hash_map_string_complex_enum_twin_normal_impl(port_, arg)
 }
@@ -17487,7 +17748,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_normal(
     port_: i64,
-    arg: wire_cst_record_string_enum_simple_twin_normal,
+    arg: *mut wire_cst_list_record_string_enum_simple_twin_normal,
 ) {
     wire_func_hash_map_string_simple_enum_twin_normal_impl(port_, arg)
 }
@@ -17495,7 +17756,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_normal(
     port_: i64,
-    arg: wire_cst_record_string_string,
+    arg: *mut wire_cst_list_record_string_string,
 ) {
     wire_func_hash_map_string_string_twin_normal_impl(port_, arg)
 }
@@ -17503,7 +17764,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_normal(
     port_: i64,
-    arg: wire_cst_record_string_my_size,
+    arg: *mut wire_cst_list_record_string_my_size,
 ) {
     wire_func_hash_map_string_struct_twin_normal_impl(port_, arg)
 }
@@ -22857,7 +23118,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_use_imported_struct_twin_syn
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async(
     port_: i64,
-    arg: wire_cst_record_i_32_i_32,
+    arg: *mut wire_cst_list_record_i_32_i_32,
 ) {
     wire_func_hash_map_i32_i32_twin_rust_async_impl(port_, arg)
 }
@@ -22865,7 +23126,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_r
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_rust_async(
     port_: i64,
-    arg: wire_cst_record_string_kitchen_sink_twin_rust_async,
+    arg: *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async,
 ) {
     wire_func_hash_map_string_complex_enum_twin_rust_async_impl(port_, arg)
 }
@@ -22873,7 +23134,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_rust_async(
     port_: i64,
-    arg: wire_cst_record_string_enum_simple_twin_rust_async,
+    arg: *mut wire_cst_list_record_string_enum_simple_twin_rust_async,
 ) {
     wire_func_hash_map_string_simple_enum_twin_rust_async_impl(port_, arg)
 }
@@ -22881,7 +23142,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_rust_async(
     port_: i64,
-    arg: wire_cst_record_string_string,
+    arg: *mut wire_cst_list_record_string_string,
 ) {
     wire_func_hash_map_string_string_twin_rust_async_impl(port_, arg)
 }
@@ -22889,7 +23150,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_rust_async(
     port_: i64,
-    arg: wire_cst_record_string_my_size,
+    arg: *mut wire_cst_list_record_string_my_size,
 ) {
     wire_func_hash_map_string_struct_twin_rust_async_impl(port_, arg)
 }
@@ -23062,35 +23323,35 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_ss
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync(
-    arg: wire_cst_record_i_32_i_32,
+    arg: *mut wire_cst_list_record_i_32_i_32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_hash_map_i32_i32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_sync(
-    arg: wire_cst_record_string_kitchen_sink_twin_sync,
+    arg: *mut wire_cst_list_record_string_kitchen_sink_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_hash_map_string_complex_enum_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_sync(
-    arg: wire_cst_record_string_enum_simple_twin_sync,
+    arg: *mut wire_cst_list_record_string_enum_simple_twin_sync,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_hash_map_string_simple_enum_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_sync(
-    arg: wire_cst_record_string_string,
+    arg: *mut wire_cst_list_record_string_string,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_hash_map_string_string_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync(
-    arg: wire_cst_record_string_my_size,
+    arg: *mut wire_cst_list_record_string_my_size,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_hash_map_string_struct_twin_sync_impl(arg)
 }
@@ -35060,12 +35321,222 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_raw_string_mirrored(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_i_32_i_32(
+    len: i32,
+) -> *mut wire_cst_list_record_i_32_i_32 {
+    let wrap = wire_cst_list_record_i_32_i_32 {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_i_32_i_32>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_normal(
+    len: i32,
+) -> *mut wire_cst_list_record_string_enum_simple_twin_normal {
+    let wrap = wire_cst_list_record_string_enum_simple_twin_normal {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_enum_simple_twin_normal>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_rust_async(
+    len: i32,
+) -> *mut wire_cst_list_record_string_enum_simple_twin_rust_async {
+    let wrap = wire_cst_list_record_string_enum_simple_twin_rust_async {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_enum_simple_twin_rust_async>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_rust_async_sse(
+    len: i32,
+) -> *mut wire_cst_list_record_string_enum_simple_twin_rust_async_sse {
+    let wrap = wire_cst_list_record_string_enum_simple_twin_rust_async_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_enum_simple_twin_rust_async_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sse(
+    len: i32,
+) -> *mut wire_cst_list_record_string_enum_simple_twin_sse {
+    let wrap = wire_cst_list_record_string_enum_simple_twin_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_enum_simple_twin_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync(
+    len: i32,
+) -> *mut wire_cst_list_record_string_enum_simple_twin_sync {
+    let wrap = wire_cst_list_record_string_enum_simple_twin_sync {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_enum_simple_twin_sync>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_enum_simple_twin_sync_sse(
+    len: i32,
+) -> *mut wire_cst_list_record_string_enum_simple_twin_sync_sse {
+    let wrap = wire_cst_list_record_string_enum_simple_twin_sync_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_enum_simple_twin_sync_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_i_32(
     len: i32,
 ) -> *mut wire_cst_list_record_string_i_32 {
     let wrap = wire_cst_list_record_string_i_32 {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
             <wire_cst_record_string_i_32>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_normal(
+    len: i32,
+) -> *mut wire_cst_list_record_string_kitchen_sink_twin_normal {
+    let wrap = wire_cst_list_record_string_kitchen_sink_twin_normal {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_kitchen_sink_twin_normal>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_rust_async(
+    len: i32,
+) -> *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async {
+    let wrap = wire_cst_list_record_string_kitchen_sink_twin_rust_async {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_kitchen_sink_twin_rust_async>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_rust_async_sse(
+    len: i32,
+) -> *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse {
+    let wrap = wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_kitchen_sink_twin_rust_async_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sse(
+    len: i32,
+) -> *mut wire_cst_list_record_string_kitchen_sink_twin_sse {
+    let wrap = wire_cst_list_record_string_kitchen_sink_twin_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_kitchen_sink_twin_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync(
+    len: i32,
+) -> *mut wire_cst_list_record_string_kitchen_sink_twin_sync {
+    let wrap = wire_cst_list_record_string_kitchen_sink_twin_sync {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_kitchen_sink_twin_sync>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync_sse(
+    len: i32,
+) -> *mut wire_cst_list_record_string_kitchen_sink_twin_sync_sse {
+    let wrap = wire_cst_list_record_string_kitchen_sink_twin_sync_sse {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_kitchen_sink_twin_sync_sse>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_my_size(
+    len: i32,
+) -> *mut wire_cst_list_record_string_my_size {
+    let wrap = wire_cst_list_record_string_my_size {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_my_size>::new_with_null_ptr(),
+            len,
+        ),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_string(
+    len: i32,
+) -> *mut wire_cst_list_record_string_string {
+    let wrap = wire_cst_list_record_string_string {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
+            <wire_cst_record_string_string>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -38831,8 +39302,98 @@ pub struct wire_cst_list_raw_string_mirrored {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
+pub struct wire_cst_list_record_i_32_i_32 {
+    ptr: *mut wire_cst_record_i_32_i_32,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_enum_simple_twin_normal {
+    ptr: *mut wire_cst_record_string_enum_simple_twin_normal,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_enum_simple_twin_rust_async {
+    ptr: *mut wire_cst_record_string_enum_simple_twin_rust_async,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_enum_simple_twin_rust_async_sse {
+    ptr: *mut wire_cst_record_string_enum_simple_twin_rust_async_sse,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_enum_simple_twin_sse {
+    ptr: *mut wire_cst_record_string_enum_simple_twin_sse,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_enum_simple_twin_sync {
+    ptr: *mut wire_cst_record_string_enum_simple_twin_sync,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_enum_simple_twin_sync_sse {
+    ptr: *mut wire_cst_record_string_enum_simple_twin_sync_sse,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
 pub struct wire_cst_list_record_string_i_32 {
     ptr: *mut wire_cst_record_string_i_32,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_kitchen_sink_twin_normal {
+    ptr: *mut wire_cst_record_string_kitchen_sink_twin_normal,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_kitchen_sink_twin_rust_async {
+    ptr: *mut wire_cst_record_string_kitchen_sink_twin_rust_async,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse {
+    ptr: *mut wire_cst_record_string_kitchen_sink_twin_rust_async_sse,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_kitchen_sink_twin_sse {
+    ptr: *mut wire_cst_record_string_kitchen_sink_twin_sse,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_kitchen_sink_twin_sync {
+    ptr: *mut wire_cst_record_string_kitchen_sink_twin_sync,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_kitchen_sink_twin_sync_sse {
+    ptr: *mut wire_cst_record_string_kitchen_sink_twin_sync_sse,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_my_size {
+    ptr: *mut wire_cst_record_string_my_size,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_record_string_string {
+    ptr: *mut wire_cst_record_string_string,
     len: i32,
 }
 #[repr(C)]

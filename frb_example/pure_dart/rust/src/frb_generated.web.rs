@@ -5244,8 +5244,271 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMir
             .collect()
     }
 }
+impl CstDecode<Vec<(i32, i32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Vec<(i32, i32)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<(String, i32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<(String, i32)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl
+    CstDecode<
+        Vec<(
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
+        )>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> Vec<(
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
+    )> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<(String, crate::auxiliary::sample_types::MySize)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
+impl CstDecode<Vec<(String, String)>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<(String, String)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
