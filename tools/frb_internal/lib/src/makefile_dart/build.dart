@@ -41,7 +41,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
   final outputDir = '${exec.pwd}target/build_flutter_output';
   Directory(outputDir).createSync(recursive: true);
 
-  switch (config.platform) {
+  switch (config.target) {
     case BuildTarget.windows:
       TODO;
 
