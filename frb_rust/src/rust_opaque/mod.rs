@@ -2,7 +2,6 @@ pub(crate) mod dart2rust;
 pub(crate) mod rust2dart;
 pub(crate) mod utils;
 
-use std::panic::{RefUnwindSafe, UnwindSafe};
 use std::sync::Arc;
 
 /// A wrapper to transfer ownership of T to Dart.
