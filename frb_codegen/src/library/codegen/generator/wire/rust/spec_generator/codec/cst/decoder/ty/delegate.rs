@@ -80,8 +80,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::Array(array) => {
                 self.generate_skip_web_if_jsvalue(generate_decode_array(array))
             },
-            IrTypeDelegate::Map(ir) => Acc::distribute(Some(generate_decode_map(ir))),
-            IrTypeDelegate::Set(ir) => Acc::distribute(Some(generate_decode_set(ir))),
+            IrTypeDelegate::Map(ir) => self.generate_skip_web_if_jsvalue(generate_decode_map(ir)),
+            IrTypeDelegate::Set(ir) => self.generate_skip_web_if_jsvalue(generate_decode_set(ir)),
         }
     }
 
