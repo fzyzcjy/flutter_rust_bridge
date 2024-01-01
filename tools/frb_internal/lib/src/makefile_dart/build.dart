@@ -50,8 +50,9 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
   switch (config.target) {
     case BuildTarget.windows:
       // https://docs.flutter.dev/deployment/windows
+      // https://docs.flutter.dev/platform-integration/windows/building#compiling-with-visual-studio
       await exec('flutter build windows --verbose', relativePwd: package);
-      copyArtifacts(['${exec.pwd}TODO']);
+      copyArtifacts(['${exec.pwd}TODO']); // TODO
 
     case BuildTarget.macos:
       // https://docs.flutter.dev/deployment/macos
