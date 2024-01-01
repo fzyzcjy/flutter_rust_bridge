@@ -116,7 +116,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             IrTypeDelegate::Set(ir) => Acc::distribute(Some(format!(
                 "return cst_encode_{}({});",
                 self.ir.get_delegate().safe_ident(),
-                generate_set_to_list(ir, self.context.as_api_dart_context()),
+                generate_set_to_list(ir, self.context.as_api_dart_context(), "raw"),
             ))),
         }
     }
@@ -145,8 +145,9 @@ fn uint8list_safe_ident() -> String {
 pub(crate) fn generate_set_to_list(
     ir: &IrTypeDelegateSet,
     context: ApiDartGeneratorContext,
+    inner: &str,
 ) -> String {
-    let mut ans = "raw.toList()".to_owned();
+    let mut ans = format!("{inner}.toList()");
     if let IrType::Primitive(_) = &*ir.inner {
         ans = format!(
             "{}.fromList({inner})",

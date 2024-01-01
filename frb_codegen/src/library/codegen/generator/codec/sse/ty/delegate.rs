@@ -25,7 +25,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Map(_) => {
                     "self.entries.map((e) => (e.key, e.value)).toList()".to_owned()
                 }
-                IrTypeDelegate::Set(_) => "self.toList()".to_owned(),
+                IrTypeDelegate::Set(ir) => {
+                    generate_set_to_list(ir, self.context.as_api_dart_context(), "self")
+                }
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
