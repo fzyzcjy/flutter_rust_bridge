@@ -22,8 +22,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
-                IrTypeDelegate::Map(_) => "self.entries.map((e) => (e.key, e.value)).toList()",
-                IrTypeDelegate::Set(_) => "self.toList()",
+                IrTypeDelegate::Map(_) => {
+                    "self.entries.map((e) => (e.key, e.value)).toList()".to_owned()
+                }
+                IrTypeDelegate::Set(_) => "self.toList()".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -36,8 +38,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
                 IrTypeDelegate::Backtrace => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
-                IrTypeDelegate::Map(_) => "self.into_iter().collect()",
-                IrTypeDelegate::Set(_) => "self.into_iter().collect()",
+                IrTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
+                IrTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -74,8 +76,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
                 IrTypeDelegate::Map(_) => {
                     "Map.fromEntries((inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));"
+                        .to_owned()
                 }
-                IrTypeDelegate::Set(_) => "Set.from(inner as List<dynamic>);",
+                IrTypeDelegate::Set(_) => "Set.from(inner as List<dynamic>);".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -94,8 +97,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
-                IrTypeDelegate::Map(_) => "inner.into_iter().collect()",
-                IrTypeDelegate::Set(_) => "inner.into_iter().collect()",
+                IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
+                IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
