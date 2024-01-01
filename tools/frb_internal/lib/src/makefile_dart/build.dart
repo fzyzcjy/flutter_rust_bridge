@@ -59,7 +59,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
     case BuildTarget.macos:
       // https://docs.flutter.dev/deployment/macos
       await exec('flutter build macos --verbose', relativePwd: package);
-      copyArtifacts(['Build/Products/Release']);
+      copyArtifacts(['build/macos/Build/Products/Release']);
 
     case BuildTarget.linux:
       // https://docs.flutter.dev/deployment/linux
