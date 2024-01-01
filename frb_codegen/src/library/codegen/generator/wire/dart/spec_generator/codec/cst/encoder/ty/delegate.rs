@@ -117,7 +117,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 let mut inner = "raw.toList()".to_owned();
                 if let IrType::Primitive(_) = &*ir.inner {
                     inner = format!(
-                        "{}.fromList(inner)",
+                        "{}.fromList({inner})",
                         ApiDartGenerator::new(delegate.clone(), self.context.as_api_dart_context())
                             .dart_api_type()
                     );
