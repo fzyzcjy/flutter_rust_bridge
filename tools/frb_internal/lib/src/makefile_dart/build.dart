@@ -25,5 +25,20 @@ class BuildFlutterConfig {
 }
 
 Future<void> buildFlutter(BuildFlutterConfig config) async {
-  TODO;
+  switch (config.platform) {
+    case BuildPlatform.windows:
+      TODO;
+
+    case BuildPlatform.macos:
+      TODO;
+
+    case BuildPlatform.linux:
+      TODO;
+
+    case BuildPlatform.android:
+      TODO;
+
+    case BuildPlatform.ios:
+      TODO;
+  }
 }
