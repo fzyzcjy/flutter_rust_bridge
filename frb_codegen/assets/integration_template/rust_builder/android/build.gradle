@@ -51,6 +51,6 @@ android {
 
 apply from: "../cargokit/gradle/plugin.gradle"
 cargokit {
-    manifestDir = "../../rust"
-    libname = "rust_lib"
+    manifestDir = "../../REPLACE_ME_RUST_CRATE_DIR"
+    libname = "REPLACE_ME_RUST_CRATE_NAME"
 }

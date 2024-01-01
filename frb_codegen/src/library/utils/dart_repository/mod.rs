@@ -14,7 +14,7 @@ pub(crate) mod dart_toolchain;
 pub(crate) mod pubspec;
 pub(crate) mod version_converter;
 
-pub(crate) fn get_package_name(dart_root: &Path) -> anyhow::Result<String> {
+pub(crate) fn get_dart_package_name(dart_root: &Path) -> anyhow::Result<String> {
     let pubspec_yaml: Value = serde_yaml::from_slice(&fs::read(dart_root.join("pubspec.yaml"))?)?;
     Ok(pubspec_yaml
         .get("name")
