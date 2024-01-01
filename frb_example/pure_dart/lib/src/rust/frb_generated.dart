@@ -58261,7 +58261,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Map<String, String> sse_decode_Map_String_String(
       SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_string(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58270,7 +58270,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_normal(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58279,7 +58279,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_rust_async(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58288,7 +58288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_enum_simple_twin_rust_async_sse(
         deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58296,7 +58296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_sse(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58304,7 +58304,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_sync(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58313,7 +58313,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_sync_sse(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58322,7 +58322,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_normal(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58331,7 +58331,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_kitchen_sink_twin_rust_async(
         deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58340,7 +58340,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
         deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58348,7 +58348,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_sse(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58356,7 +58356,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_sync(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -58365,20 +58365,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_sync_sse(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, MySize> sse_decode_Map_String_my_size(
       SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_my_size(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer) {
     var inner = sse_decode_list_record_i_32_i_32(deserializer);
-    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -69891,7 +69891,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer) {
-    sse_encode_list_prim_i_32(self.toList(), serializer);
+    sse_encode_list_prim_i_32(Int32List.fromList(self), serializer);
   }
 
   @protected

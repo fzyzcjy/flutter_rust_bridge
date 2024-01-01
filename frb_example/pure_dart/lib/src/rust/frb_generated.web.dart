@@ -9414,7 +9414,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Int32List cst_encode_Set_i_32(Set<int> raw) {
-    return cst_encode_list_prim_i_32(Int32List.fromList(inner));
+    return cst_encode_list_prim_i_32(Int32List.fromList(raw));
   }
 
   @protected
