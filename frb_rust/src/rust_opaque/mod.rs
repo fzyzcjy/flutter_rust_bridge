@@ -50,8 +50,11 @@ pub struct RustOpaque<T: ?Sized + DartSafe> {
     arc: Arc<T>,
 }
 
-/// Marker trait for types that are safe to share with Dart and can be dropped
-/// safely in case of a panic.
-pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
-
-impl<T: UnwindSafe + RefUnwindSafe> DartSafe for T {}
+// TODO remove it?
+pub trait DartSafe {}
+impl<T> DartSafe for T {}
+// /// Marker trait for types that are safe to share with Dart and can be dropped
+// /// safely in case of a panic.
+// pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
+//
+// impl<T: UnwindSafe + RefUnwindSafe> DartSafe for T {}
