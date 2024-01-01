@@ -48101,104 +48101,116 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, String> dco_decode_Map_String_String(dynamic raw) {
-    return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(dco_decode_list_record_string_string(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, EnumSimpleTwinNormal>
       dco_decode_Map_String_enum_simple_twin_normal(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_enum_simple_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, EnumSimpleTwinRustAsync>
       dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_enum_simple_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, EnumSimpleTwinRustAsyncSse>
       dco_decode_Map_String_enum_simple_twin_rust_async_sse(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_enum_simple_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, EnumSimpleTwinSse> dco_decode_Map_String_enum_simple_twin_sse(
       dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_enum_simple_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
       dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_enum_simple_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, EnumSimpleTwinSyncSse>
       dco_decode_Map_String_enum_simple_twin_sync_sse(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_enum_simple_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, KitchenSinkTwinNormal>
       dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_kitchen_sink_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, KitchenSinkTwinRustAsync>
       dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_kitchen_sink_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, KitchenSinkTwinRustAsyncSse>
       dco_decode_Map_String_kitchen_sink_twin_rust_async_sse(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_kitchen_sink_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, KitchenSinkTwinSse> dco_decode_Map_String_kitchen_sink_twin_sse(
       dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_kitchen_sink_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
       dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_kitchen_sink_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, KitchenSinkTwinSyncSse>
       dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_string_kitchen_sink_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw) {
-    return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+    return Map.fromEntries(dco_decode_list_record_string_my_size(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
   Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw) {
     return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
+        dco_decode_list_record_i_32_i_32(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -48402,12 +48414,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Set<String> dco_decode_Set_String(dynamic raw) {
-    return Set.from(raw as List<dynamic>);
+    return Set.from(dco_decode_list_String(raw));
   }
 
   @protected
   Set<int> dco_decode_Set_i_32(dynamic raw) {
-    return Set.from(raw as List<dynamic>);
+    return Set.from(dco_decode_list_prim_i_32(raw));
   }
 
   @protected
