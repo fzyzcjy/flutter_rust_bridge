@@ -36,8 +36,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
 
   switch (config.platform) {
     case BuildPlatform.windows:
-      await exec('flutter build apk', relativePwd: package);
-      copyPathSync('${exec.pwd}/build/app/outputs/apk/release', outputDir);
+      TODO;
 
     case BuildPlatform.macos:
       TODO;
@@ -46,7 +45,8 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       TODO;
 
     case BuildPlatform.android:
-      TODO;
+      await exec('flutter build apk', relativePwd: package);
+      copyPathSync('${exec.pwd}/build/app/outputs/apk/release', outputDir);
 
     case BuildPlatform.ios:
       TODO;
