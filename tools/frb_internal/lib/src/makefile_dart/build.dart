@@ -45,10 +45,14 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       TODO;
 
     case BuildPlatform.android:
+      // https://docs.flutter.dev/deployment/android
       await exec('flutter build apk', relativePwd: package);
       copyPathSync('${exec.pwd}/build/app/outputs/apk/release', outputDir);
 
     case BuildPlatform.ios:
-      TODO;
+      // https://docs.flutter.dev/deployment/ios
+      await exec('flutter build ipa', relativePwd: package);
+      copyPathSync('${exec.pwd}/build/ios/archive', outputDir);
+      copyPathSync('${exec.pwd}/build/ios/ipa', outputDir);
   }
 }
