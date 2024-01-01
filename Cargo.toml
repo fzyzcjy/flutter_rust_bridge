@@ -25,7 +25,9 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [workspace.dependencies]
-allo-isolate = { version = "0.1.21", features = ["anyhow"] }
+# TODO temporary
+#allo-isolate = { version = "0.1.21", features = ["anyhow"] }
+allo-isolate = { git = "https://github.com/fzyzcjy/allo-isolate", features = ["anyhow"] }
 anyhow = "1.0.64"
 chrono = "0.4.23"
 lazy_static = "1.4.0"
