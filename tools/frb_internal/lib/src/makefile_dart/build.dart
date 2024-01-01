@@ -17,6 +17,7 @@ List<Command<void>> createCommands() {
   ];
 }
 
+// We do not test web, since it is already tested when building the demo on website
 enum BuildTarget {
   windows,
   macos,
@@ -37,6 +38,7 @@ class BuildFlutterConfig {
 
 // ref: https://docs.flutter.dev/deployment
 Future<void> buildFlutter(BuildFlutterConfig config) async {
+  // TODO also consider the gallery?
   const package = 'frb_example/flutter_via_create';
 
   final outputDir = '${exec.pwd}target/build_flutter_output';
@@ -60,7 +62,10 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       copyArtifacts(['${exec.pwd}Build/Products/Release']);
 
     case BuildTarget.linux:
-      TODO;
+      // https://docs.flutter.dev/deployment/linux
+      // https://stackoverflow.com/questions/73278689/how-to-run-a-standalone-linux-app-built-with-flutter
+      await exec('flutter build linux --verbose', relativePwd: package);
+      copyArtifacts(['${exec.pwd}build/linux/release/bundle']);
 
     case BuildTarget.androidAab:
       // https://docs.flutter.dev/deployment/android
