@@ -183,7 +183,7 @@ impl IrTypeDelegate {
             // }),
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::Map(ir) => IrType::Record(ir.element_delegate.clone()),
+            IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone())),
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned()),
         }
     }
