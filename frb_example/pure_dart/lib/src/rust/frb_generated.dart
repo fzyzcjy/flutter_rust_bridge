@@ -69891,7 +69891,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer) {
-    sse_encode_list_prim_i_32(Int32List.fromList(self), serializer);
+    sse_encode_list_prim_i_32(Int32List.fromList(self.toList()), serializer);
   }
 
   @protected

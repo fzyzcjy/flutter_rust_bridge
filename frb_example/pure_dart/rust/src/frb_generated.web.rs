@@ -53,25 +53,27 @@ impl CstDecode<flutter_rust_bridge::DartOpaque>
         unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
     }
 }
-impl CstDecode<HashMap<String, String>>
+impl CstDecode<std::collections::HashMap<String, String>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, String> {
+    fn cst_decode(self) -> std::collections::HashMap<String, String> {
         let vec: Vec<(String, String)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
+impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal> {
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal> {
         let vec: Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
         >,
@@ -79,7 +81,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
     > {
@@ -92,7 +94,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
         >,
@@ -100,7 +102,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
     > {
@@ -111,12 +113,20 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse> {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
@@ -125,12 +135,19 @@ impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::
     }
 }
 impl
-    CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync> {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
@@ -140,7 +157,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
         >,
@@ -148,8 +165,10 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse>
-    {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
@@ -157,17 +176,19 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
+impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal> {
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal> {
         let vec: Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
         >,
@@ -175,7 +196,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
     > {
@@ -188,7 +209,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
         >,
@@ -196,7 +217,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
     > {
@@ -207,12 +228,20 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse> {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
@@ -222,13 +251,18 @@ impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::
 }
 impl
     CstDecode<
-        HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>,
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+        >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
-    {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
@@ -238,7 +272,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
         >,
@@ -246,8 +280,10 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse>
-    {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
@@ -255,28 +291,34 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::auxiliary::sample_types::MySize>>
+impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, crate::auxiliary::sample_types::MySize> {
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<String, crate::auxiliary::sample_types::MySize> {
         let vec: Vec<(String, crate::auxiliary::sample_types::MySize)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<i32, i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> HashMap<i32, i32> {
+impl CstDecode<std::collections::HashMap<i32, i32>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> std::collections::HashMap<i32, i32> {
         let vec: Vec<(i32, i32)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashSet<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> HashSet<String> {
+impl CstDecode<std::collections::HashSet<String>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> std::collections::HashSet<String> {
         let vec: Vec<String> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashSet<i32>> for Box<[i32]> {
-    fn cst_decode(self) -> HashSet<i32> {
+impl CstDecode<std::collections::HashSet<i32>> for Box<[i32]> {
+    fn cst_decode(self) -> std::collections::HashSet<i32> {
         let vec: Vec<i32> = self.cst_decode();
         vec.into_iter().collect()
     }
@@ -9652,25 +9694,27 @@ impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]>
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<HashMap<String, String>>
+impl CstDecode<std::collections::HashMap<String, String>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, String> {
+    fn cst_decode(self) -> std::collections::HashMap<String, String> {
         let vec: Vec<(String, String)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
+impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal> {
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal> {
         let vec: Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
         >,
@@ -9678,7 +9722,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
     > {
@@ -9691,7 +9735,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
         >,
@@ -9699,7 +9743,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
     > {
@@ -9710,12 +9754,20 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse> {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
@@ -9724,12 +9776,19 @@ impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::
     }
 }
 impl
-    CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync> {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
@@ -9739,7 +9798,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
         >,
@@ -9747,8 +9806,10 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse>
-    {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
@@ -9756,17 +9817,19 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
+impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal> {
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal> {
         let vec: Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
         >,
@@ -9774,7 +9837,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
     > {
@@ -9787,7 +9850,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
         >,
@@ -9795,7 +9858,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<
+    ) -> std::collections::HashMap<
         String,
         crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
     > {
@@ -9806,12 +9869,20 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl
+    CstDecode<
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse> {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
@@ -9821,13 +9892,18 @@ impl CstDecode<HashMap<String, crate::api::pseudo_manual::enumeration_twin_sse::
 }
 impl
     CstDecode<
-        HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>,
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+        >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
-    {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
@@ -9837,7 +9913,7 @@ impl
 }
 impl
     CstDecode<
-        HashMap<
+        std::collections::HashMap<
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
         >,
@@ -9845,8 +9921,10 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> HashMap<String, crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse>
-    {
+    ) -> std::collections::HashMap<
+        String,
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
+    > {
         let vec: Vec<(
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
@@ -9854,16 +9932,20 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<String, crate::auxiliary::sample_types::MySize>>
+impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> HashMap<String, crate::auxiliary::sample_types::MySize> {
+    fn cst_decode(
+        self,
+    ) -> std::collections::HashMap<String, crate::auxiliary::sample_types::MySize> {
         let vec: Vec<(String, crate::auxiliary::sample_types::MySize)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashMap<i32, i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> HashMap<i32, i32> {
+impl CstDecode<std::collections::HashMap<i32, i32>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> std::collections::HashMap<i32, i32> {
         let vec: Vec<(i32, i32)> = self.cst_decode();
         vec.into_iter().collect()
     }
@@ -10176,14 +10258,18 @@ impl
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
-impl CstDecode<HashSet<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> HashSet<String> {
+impl CstDecode<std::collections::HashSet<String>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> std::collections::HashSet<String> {
         let vec: Vec<String> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<HashSet<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> HashSet<i32> {
+impl CstDecode<std::collections::HashSet<i32>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> std::collections::HashSet<i32> {
         let vec: Vec<i32> = self.cst_decode();
         vec.into_iter().collect()
     }
