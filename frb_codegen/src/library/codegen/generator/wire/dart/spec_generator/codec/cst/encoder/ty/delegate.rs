@@ -7,6 +7,7 @@ use crate::codegen::ir::ty::delegate::{
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -110,10 +111,23 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
                 self.ir.get_delegate().safe_ident()
             ))),
-            IrTypeDelegate::Set(_) => Acc::distribute(Some(format!(
-                "return cst_encode_{}(raw.toList());",
-                self.ir.get_delegate().safe_ident()
-            ))),
+            IrTypeDelegate::Set(ir) => {
+                let delegate = self.ir.get_delegate();
+
+                let mut inner = "raw.toList()".to_owned();
+                if let IrType::Primitive(primitive) = &ir.inner {
+                    inner = format!(
+                        "{}.fromList(inner)",
+                        ApiDartGenerator::new(delegate, self.context.as_api_dart_context())
+                            .dart_api_type()
+                    );
+                }
+
+                Acc::distribute(Some(format!(
+                    "return cst_encode_{}({inner});",
+                    delegate.safe_ident()
+                )))
+            }
         }
     }
 
