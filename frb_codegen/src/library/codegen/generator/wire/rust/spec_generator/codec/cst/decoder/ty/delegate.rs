@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
@@ -18,13 +18,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(array) => {
-                let acc =
-                    Some(
-                        format!(
-                            "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
-                            array.inner().rust_api_type()
-                        ),
-                    );
+                let acc = Some(generate_decode_array(array));
                 if is_js_value(&array.inner()) {
                     return Acc {
                         io: acc,
@@ -132,10 +126,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
             }
-            IrTypeDelegate::Array(array) => format!(
-                "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
-                array.inner().rust_api_type()
-            )
+            IrTypeDelegate::Array(array) => generate_decode_array(array)
                 .into(),
             IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
             IrTypeDelegate::Map(ir) => TODO,
@@ -164,4 +155,11 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
         WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
             .rust_wire_is_pointer(target)
     }
+}
+
+fn generate_decode_array(array: &IrTypeDelegateArray) -> String {
+    format!(
+        "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
+        array.inner().rust_api_type()
+    )
 }
