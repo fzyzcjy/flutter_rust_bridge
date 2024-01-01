@@ -48,7 +48,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
     case BuildTarget.macos:
       // https://docs.flutter.dev/deployment/macos
       await exec('flutter build macos --verbose', relativePwd: package);
-      copyPathSync(TODO, outputDir);
+      copyPathSync('${exec.pwd}Build/Products/Release', outputDir);
 
     case BuildTarget.linux:
       TODO;
@@ -56,17 +56,17 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
     case BuildTarget.androidAab:
       // https://docs.flutter.dev/deployment/android
       await exec('flutter build appbundle --verbose', relativePwd: package);
-      copyPathSync('${exec.pwd}/build/app/outputs/bundle/release', outputDir);
+      copyPathSync('${exec.pwd}build/app/outputs/bundle/release', outputDir);
 
     case BuildTarget.androidApk:
       // https://docs.flutter.dev/deployment/android
       await exec('flutter build apk --verbose', relativePwd: package);
-      copyPathSync('${exec.pwd}/build/app/outputs/apk/release', outputDir);
+      copyPathSync('${exec.pwd}build/app/outputs/apk/release', outputDir);
 
     case BuildTarget.ios:
       // https://docs.flutter.dev/deployment/ios
       await exec('flutter build ipa --verbose', relativePwd: package);
-      copyPathSync('${exec.pwd}/build/ios/archive', outputDir);
-      copyPathSync('${exec.pwd}/build/ios/ipa', outputDir);
+      copyPathSync('${exec.pwd}build/ios/archive', outputDir);
+      copyPathSync('${exec.pwd}build/ios/ipa', outputDir);
   }
 }
