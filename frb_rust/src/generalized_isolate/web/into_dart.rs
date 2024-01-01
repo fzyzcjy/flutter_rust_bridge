@@ -114,10 +114,17 @@ macro_rules! delegate {
 }
 macro_rules! delegate_buffer {
     ($( $ty:ty => $buffer:ty )*) => {$(
-        impl IntoDart for $ty {
+        impl IntoDart for Vec<$ty> {
             #[inline]
             fn into_dart(self) -> DartAbi {
                 <$buffer>::from(self.as_slice()).into()
+            }
+        }
+
+        impl IntoDart for ZeroCopyBuffer<Vec<$ty>> {
+            #[inline]
+            fn into_dart(self) -> DartAbi {
+                self.0.into_dart()
             }
         }
 
@@ -137,22 +144,14 @@ delegate! {
     &str String JsValue
 }
 delegate_buffer! {
-    Vec<i8> => js_sys::Int8Array
-    Vec<u8> => js_sys::Uint8Array
-    Vec<i16> => js_sys::Int16Array
-    Vec<u16> => js_sys::Uint16Array
-    Vec<i32> => js_sys::Int32Array
-    Vec<u32> => js_sys::Uint32Array
-    Vec<f32> => js_sys::Float32Array
-    Vec<f64> => js_sys::Float64Array
-    ZeroCopyBuffer<Vec<i8>> => js_sys::Int8Array
-    ZeroCopyBuffer<Vec<u8>> => js_sys::Uint8Array
-    ZeroCopyBuffer<Vec<i16>> => js_sys::Int16Array
-    ZeroCopyBuffer<Vec<u16>> => js_sys::Uint16Array
-    ZeroCopyBuffer<Vec<i32>> => js_sys::Int32Array
-    ZeroCopyBuffer<Vec<u32>> => js_sys::Uint32Array
-    ZeroCopyBuffer<Vec<f32>> => js_sys::Float32Array
-    ZeroCopyBuffer<Vec<f64>> => js_sys::Float64Array
+    i8 => js_sys::Int8Array
+    u8 => js_sys::Uint8Array
+    i16 => js_sys::Int16Array
+    u16 => js_sys::Uint16Array
+    i32 => js_sys::Int32Array
+    u32 => js_sys::Uint32Array
+    f32 => js_sys::Float32Array
+    f64 => js_sys::Float64Array
 }
 
 fn into_dart_iterator<T, It>(iter: It) -> DartAbi
