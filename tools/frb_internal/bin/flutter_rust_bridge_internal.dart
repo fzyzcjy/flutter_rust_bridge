@@ -1,6 +1,8 @@
 import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/bench.dart'
     as bench;
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart'
+    as test;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart'
     as generate;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart'
@@ -12,7 +14,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart'
     as release;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart'
-    as test;
+    as build;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 Future<void> main(List<String> args) async {
@@ -23,6 +25,7 @@ Future<void> main(List<String> args) async {
     ..addCommands(bench.createCommands())
     ..addCommands(misc.createCommands())
     ..addCommands(release.createCommands())
-    ..addCommands(post_release.createCommands());
+    ..addCommands(post_release.createCommands())
+    ..addCommands(build.createCommands());
   await runner.run(args);
 }

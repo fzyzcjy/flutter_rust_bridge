@@ -94,13 +94,13 @@ flutter_rust_bridge_codegen integrate
 <TabItem value="Pure dart">
 
 If you want to use Rust with Dart (without Flutter),
-[here](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart)
-is a working example, and
-[here](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/dart_minimal)
-is a minimal sample.
-Indeed, the former contains many tests of this library, and is constantly executed in 
-[the CI](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/ci.yaml).
-Alternatively, [this tutorial](manual/miscellaneous/archived/tutorial-pure-dart) may be helpful.
+one way is to start with
+[this minimal example](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/dart_minimal)
+and modify according to your needs.
+
+Alternatively, 
+[this example](https://github.com/fzyzcjy/flutter_rust_bridge/tree/master/frb_example/pure_dart)
+may be useful (it indeed contains a lot of tests of this library).
 
 </TabItem>
 
