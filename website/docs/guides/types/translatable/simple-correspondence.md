@@ -8,6 +8,8 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | [`Vec<i8>`..`Vec<i64>`](detailed/vec)                      | `Int8List`..`Int64List`                                   |
 | [`Vec<f32>`, `Vec<f64>`](detailed/vec)                     | `Float32List`, `Float64List`                              |
 | [`Vec<T>`](detailed/vec)                                   | `List<T>`                                                 |
+| [`HashMap<K, V>`](detailed/map_set)                        | `Map<K, V>`                                               |
+| [`HashSet<T>`](detailed/map_set)                           | `Set<T>`                                                  |
 | [`[T; N]`](detailed/vec)                                   | `List<T>`                                                 |
 | [`struct { .. }`, `struct( .. )`](detailed/struct)         | `class`                                                   |
 | [`enum { A, B }`](detailed/enum)                           | `enum`                                                    |
