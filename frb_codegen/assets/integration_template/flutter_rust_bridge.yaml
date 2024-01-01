@@ -1,2 +1,2 @@
-rust_input: rust/src/api/**/*.rs
+rust_input: REPLACE_ME_RUST_CRATE_DIR/src/api/**/*.rs
 dart_output: lib/src/rust
