@@ -24,6 +24,10 @@ Set<String> funcHashSetStringTwinSync(
         {required Set<String> arg, dynamic hint}) =>
     RustLib.instance.api.funcHashSetStringTwinSync(arg: arg, hint: hint);
 
+Map<String, Uint8List> funcHashMapStringBytesTwinSync(
+        {required Map<String, Uint8List> arg, dynamic hint}) =>
+    RustLib.instance.api.funcHashMapStringBytesTwinSync(arg: arg, hint: hint);
+
 Map<String, MySize> funcHashMapStringStructTwinSync(
         {required Map<String, MySize> arg, dynamic hint}) =>
     RustLib.instance.api.funcHashMapStringStructTwinSync(arg: arg, hint: hint);

@@ -5272,6 +5272,17 @@ impl
             .collect()
     }
 }
+impl CstDecode<Vec<(String, Vec<u8>)>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> Vec<(String, Vec<u8>)> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -7694,6 +7705,20 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
+impl CstDecode<(String, Vec<u8>)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> (String, Vec<u8>) {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
+    }
+}
 impl CstDecode<(String, crate::auxiliary::sample_types::MySize)>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -9665,6 +9690,14 @@ impl
             String,
             crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
         )> = self.cst_decode();
+        vec.into_iter().collect()
+    }
+}
+impl CstDecode<std::collections::HashMap<String, Vec<u8>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> std::collections::HashMap<String, Vec<u8>> {
+        let vec: Vec<(String, Vec<u8>)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
@@ -11944,6 +11977,14 @@ pub fn wire_func_hash_map_i32_i32_twin_normal(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_func_hash_map_i32_i32_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_hash_map_string_bytes_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_func_hash_map_string_bytes_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -17342,6 +17383,14 @@ pub fn wire_func_hash_map_i32_i32_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_hash_map_string_bytes_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_func_hash_map_string_bytes_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_hash_map_string_complex_enum_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -17397,6 +17446,16 @@ pub fn wire_func_hash_map_i32_i32_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_func_hash_map_i32_i32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_hash_map_string_bytes_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_func_hash_map_string_bytes_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -17480,6 +17539,16 @@ pub fn wire_func_hash_map_i32_i32_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_hash_map_string_bytes_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_func_hash_map_string_bytes_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_hash_map_string_complex_enum_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -17547,6 +17616,13 @@ pub fn wire_func_hash_map_i32_i32_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_hash_map_string_bytes_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_func_hash_map_string_bytes_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_hash_map_string_complex_enum_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -17595,6 +17671,15 @@ pub fn wire_func_hash_map_i32_i32_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_hash_map_i32_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_hash_map_string_bytes_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_func_hash_map_string_bytes_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

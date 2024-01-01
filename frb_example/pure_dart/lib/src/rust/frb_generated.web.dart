@@ -685,6 +685,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8(dynamic raw);
+
+  @protected
   Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw);
 
   @protected
@@ -3313,6 +3316,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
+  List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8(
+      dynamic raw);
+
+  @protected
   List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw);
 
   @protected
@@ -4118,6 +4125,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
+  (String, Uint8List) dco_decode_record_string_list_prim_u_8(dynamic raw);
+
+  @protected
   (String, MySize) dco_decode_record_string_my_size(dynamic raw);
 
   @protected
@@ -4831,6 +4841,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Map<String, KitchenSinkTwinSyncSse>
       sse_decode_Map_String_kitchen_sink_twin_sync_sse(
           SseDeserializer deserializer);
+
+  @protected
+  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8(
+      SseDeserializer deserializer);
 
   @protected
   Map<String, MySize> sse_decode_Map_String_my_size(
@@ -7849,6 +7863,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<(String, Uint8List)> sse_decode_list_record_string_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
   List<(String, MySize)> sse_decode_list_record_string_my_size(
       SseDeserializer deserializer);
 
@@ -8772,6 +8790,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  (String, Uint8List) sse_decode_record_string_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
   (String, MySize) sse_decode_record_string_my_size(
       SseDeserializer deserializer);
 
@@ -9387,6 +9409,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_Map_String_kitchen_sink_twin_sync_sse(
       Map<String, KitchenSinkTwinSyncSse> raw) {
     return cst_encode_list_record_string_kitchen_sink_twin_sync_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_list_prim_u_8(
+      Map<String, Uint8List> raw) {
+    return cst_encode_list_record_string_list_prim_u_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
@@ -14546,6 +14575,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_record_string_list_prim_u_8(
+      List<(String, Uint8List)> raw) {
+    return raw.map(cst_encode_record_string_list_prim_u_8).toList();
+  }
+
+  @protected
   List<dynamic> cst_encode_list_record_string_my_size(
       List<(String, MySize)> raw) {
     return raw.map(cst_encode_record_string_my_size).toList();
@@ -16202,6 +16237,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_record_string_list_prim_u_8(
+      (String, Uint8List) raw) {
+    return [cst_encode_String(raw.$1), cst_encode_list_prim_u_8(raw.$2)];
+  }
+
+  @protected
   List<dynamic> cst_encode_record_string_my_size((String, MySize) raw) {
     return [cst_encode_String(raw.$1), cst_encode_my_size(raw.$2)];
   }
@@ -17848,6 +17889,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_sync_sse(
       Map<String, KitchenSinkTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_list_prim_u_8(
+      Map<String, Uint8List> self, SseSerializer serializer);
 
   @protected
   void sse_encode_Map_String_my_size(
@@ -20716,6 +20761,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, KitchenSinkTwinSyncSse)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_record_string_list_prim_u_8(
+      List<(String, Uint8List)> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_record_string_my_size(
       List<(String, MySize)> self, SseSerializer serializer);
 
@@ -21614,6 +21663,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_record_string_kitchen_sink_twin_sync_sse(
       (String, KitchenSinkTwinSyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_list_prim_u_8(
+      (String, Uint8List) self, SseSerializer serializer);
 
   @protected
   void sse_encode_record_string_my_size(
@@ -22543,6 +22596,10 @@ class RustLibWire extends BaseWire {
   void wire_func_hash_map_i32_i32_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
       wasmModule.wire_func_hash_map_i32_i32_twin_normal(port_, arg);
+
+  void wire_func_hash_map_string_bytes_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_normal(port_, arg);
 
   void wire_func_hash_map_string_complex_enum_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
@@ -26163,6 +26220,10 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> arg) =>
       wasmModule.wire_func_hash_map_i32_i32_twin_rust_async(port_, arg);
 
+  void wire_func_hash_map_string_bytes_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_rust_async(port_, arg);
+
   void wire_func_hash_map_string_complex_enum_twin_rust_async(
           NativePortType port_, List<dynamic> arg) =>
       wasmModule.wire_func_hash_map_string_complex_enum_twin_rust_async(
@@ -26195,6 +26256,14 @@ class RustLibWire extends BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_func_hash_map_i32_i32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_bytes_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_func_hash_map_string_complex_enum_twin_rust_async_sse(
@@ -26253,6 +26322,14 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_func_hash_map_i32_i32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_func_hash_map_string_bytes_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_func_hash_map_string_complex_enum_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -26306,6 +26383,10 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_func_hash_map_i32_i32_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_bytes_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_map_string_bytes_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_func_hash_map_string_complex_enum_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_hash_map_string_complex_enum_twin_sync(arg);
 
@@ -26335,6 +26416,14 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_func_hash_map_i32_i32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_bytes_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_map_string_bytes_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -32190,6 +32279,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_func_hash_map_i32_i32_twin_normal(
       NativePortType port_, List<dynamic> arg);
 
+  external void wire_func_hash_map_string_bytes_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
   external void wire_func_hash_map_string_complex_enum_twin_normal(
       NativePortType port_, List<dynamic> arg);
 
@@ -34555,6 +34647,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_func_hash_map_i32_i32_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
 
+  external void wire_func_hash_map_string_bytes_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
   external void wire_func_hash_map_string_complex_enum_twin_rust_async(
       NativePortType port_, List<dynamic> arg);
 
@@ -34574,6 +34669,12 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> arg);
 
   external void wire_func_hash_map_i32_i32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_bytes_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
@@ -34615,6 +34716,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_func_hash_map_i32_i32_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_func_hash_map_string_bytes_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
   external void wire_func_hash_map_string_complex_enum_twin_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -34643,6 +34747,9 @@ class RustLibWasmModule implements WasmModule {
       wire_func_hash_map_i32_i32_twin_sync(List<dynamic> arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_bytes_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_func_hash_map_string_complex_enum_twin_sync(List<dynamic> arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -34662,6 +34769,12 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_func_hash_map_i32_i32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_bytes_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

@@ -686,6 +686,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8(dynamic raw);
+
+  @protected
   Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw);
 
   @protected
@@ -3314,6 +3317,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
+  List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8(
+      dynamic raw);
+
+  @protected
   List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw);
 
   @protected
@@ -4119,6 +4126,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
+  (String, Uint8List) dco_decode_record_string_list_prim_u_8(dynamic raw);
+
+  @protected
   (String, MySize) dco_decode_record_string_my_size(dynamic raw);
 
   @protected
@@ -4832,6 +4842,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Map<String, KitchenSinkTwinSyncSse>
       sse_decode_Map_String_kitchen_sink_twin_sync_sse(
           SseDeserializer deserializer);
+
+  @protected
+  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8(
+      SseDeserializer deserializer);
 
   @protected
   Map<String, MySize> sse_decode_Map_String_my_size(
@@ -7850,6 +7864,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  List<(String, Uint8List)> sse_decode_list_record_string_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
   List<(String, MySize)> sse_decode_list_record_string_my_size(
       SseDeserializer deserializer);
 
@@ -8773,6 +8791,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  (String, Uint8List) sse_decode_record_string_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
   (String, MySize) sse_decode_record_string_my_size(
       SseDeserializer deserializer);
 
@@ -9403,6 +9425,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Map_String_kitchen_sink_twin_sync_sse(
           Map<String, KitchenSinkTwinSyncSse> raw) {
     return cst_encode_list_record_string_kitchen_sink_twin_sync_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>
+      cst_encode_Map_String_list_prim_u_8(Map<String, Uint8List> raw) {
+    return cst_encode_list_record_string_list_prim_u_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
@@ -13465,6 +13494,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     for (var i = 0; i < raw.length; ++i) {
       cst_api_fill_to_wire_record_string_kitchen_sink_twin_sync_sse(
           raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>
+      cst_encode_list_record_string_list_prim_u_8(
+          List<(String, Uint8List)> raw) {
+    final ans = wire.cst_new_list_record_string_list_prim_u_8(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_record_string_list_prim_u_8(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -20897,6 +20937,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_record_string_list_prim_u_8(
+      (String, Uint8List) apiObj,
+      wire_cst_record_string_list_prim_u_8 wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_list_prim_u_8(apiObj.$2);
+  }
+
+  @protected
   void cst_api_fill_to_wire_record_string_my_size(
       (String, MySize) apiObj, wire_cst_record_string_my_size wireObj) {
     wireObj.field0 = cst_encode_String(apiObj.$1);
@@ -22477,6 +22525,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_Map_String_kitchen_sink_twin_sync_sse(
       Map<String, KitchenSinkTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_list_prim_u_8(
+      Map<String, Uint8List> self, SseSerializer serializer);
 
   @protected
   void sse_encode_Map_String_my_size(
@@ -25345,6 +25397,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, KitchenSinkTwinSyncSse)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_record_string_list_prim_u_8(
+      List<(String, Uint8List)> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_record_string_my_size(
       List<(String, MySize)> self, SseSerializer serializer);
 
@@ -26243,6 +26299,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_record_string_kitchen_sink_twin_sync_sse(
       (String, KitchenSinkTwinSyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_list_prim_u_8(
+      (String, Uint8List) self, SseSerializer serializer);
 
   @protected
   void sse_encode_record_string_my_size(
@@ -28791,6 +28851,26 @@ class RustLibWire implements BaseWire {
   late final _wire_func_hash_map_i32_i32_twin_normal =
       _wire_func_hash_map_i32_i32_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_record_i_32_i_32>)>();
+
+  void wire_func_hash_map_string_bytes_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_record_string_list_prim_u_8> arg,
+  ) {
+    return _wire_func_hash_map_string_bytes_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_bytes_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_normal');
+  late final _wire_func_hash_map_string_bytes_twin_normal =
+      _wire_func_hash_map_string_bytes_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>)>();
 
   void wire_func_hash_map_string_complex_enum_twin_normal(
     int port_,
@@ -40748,6 +40828,26 @@ class RustLibWire implements BaseWire {
       _wire_func_hash_map_i32_i32_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_cst_list_record_i_32_i_32>)>();
 
+  void wire_func_hash_map_string_bytes_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_record_string_list_prim_u_8> arg,
+  ) {
+    return _wire_func_hash_map_string_bytes_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_bytes_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_rust_async');
+  late final _wire_func_hash_map_string_bytes_twin_rust_async =
+      _wire_func_hash_map_string_bytes_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>)>();
+
   void wire_func_hash_map_string_complex_enum_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_list_record_string_kitchen_sink_twin_rust_async> arg,
@@ -40894,6 +40994,29 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async_sse');
   late final _wire_func_hash_map_i32_i32_twin_rust_async_sse =
       _wire_func_hash_map_i32_i32_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_bytes_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_bytes_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_bytes_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_rust_async_sse');
+  late final _wire_func_hash_map_string_bytes_twin_rust_async_sse =
+      _wire_func_hash_map_string_bytes_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_func_hash_map_string_complex_enum_twin_rust_async_sse(
@@ -41059,6 +41182,29 @@ class RustLibWire implements BaseWire {
       _wire_func_hash_map_i32_i32_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_func_hash_map_string_bytes_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_bytes_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_bytes_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_sse');
+  late final _wire_func_hash_map_string_bytes_twin_sse =
+      _wire_func_hash_map_string_bytes_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_func_hash_map_string_complex_enum_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -41215,6 +41361,24 @@ class RustLibWire implements BaseWire {
           WireSyncRust2DartDco Function(
               ffi.Pointer<wire_cst_list_record_i_32_i_32>)>();
 
+  WireSyncRust2DartDco wire_func_hash_map_string_bytes_twin_sync(
+    ffi.Pointer<wire_cst_list_record_string_list_prim_u_8> arg,
+  ) {
+    return _wire_func_hash_map_string_bytes_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_bytes_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_sync');
+  late final _wire_func_hash_map_string_bytes_twin_sync =
+      _wire_func_hash_map_string_bytes_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>)>();
+
   WireSyncRust2DartDco wire_func_hash_map_string_complex_enum_twin_sync(
     ffi.Pointer<wire_cst_list_record_string_kitchen_sink_twin_sync> arg,
   ) {
@@ -41345,6 +41509,27 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync_sse');
   late final _wire_func_hash_map_i32_i32_twin_sync_sse =
       _wire_func_hash_map_i32_i32_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_map_string_bytes_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_bytes_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_bytes_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_sync_sse');
+  late final _wire_func_hash_map_string_bytes_twin_sync_sse =
+      _wire_func_hash_map_string_bytes_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_func_hash_map_string_complex_enum_twin_sync_sse(
@@ -65486,6 +65671,25 @@ class RustLibWire implements BaseWire {
           ffi.Pointer<wire_cst_list_record_string_kitchen_sink_twin_sync_sse>
               Function(int)>();
 
+  ffi.Pointer<wire_cst_list_record_string_list_prim_u_8>
+      cst_new_list_record_string_list_prim_u_8(
+    int len,
+  ) {
+    return _cst_new_list_record_string_list_prim_u_8(
+      len,
+    );
+  }
+
+  late final _cst_new_list_record_string_list_prim_u_8Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_record_string_list_prim_u_8> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_record_string_list_prim_u_8');
+  late final _cst_new_list_record_string_list_prim_u_8 =
+      _cst_new_list_record_string_list_prim_u_8Ptr.asFunction<
+          ffi.Pointer<wire_cst_list_record_string_list_prim_u_8> Function(
+              int)>();
+
   ffi.Pointer<wire_cst_list_record_string_my_size>
       cst_new_list_record_string_my_size(
     int len,
@@ -66238,6 +66442,19 @@ final class wire_cst_record_i_32_i_32 extends ffi.Struct {
 
 final class wire_cst_list_record_i_32_i_32 extends ffi.Struct {
   external ffi.Pointer<wire_cst_record_i_32_i_32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_record_string_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> field1;
+}
+
+final class wire_cst_list_record_string_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<wire_cst_record_string_list_prim_u_8> ptr;
 
   @ffi.Int32()
   external int len;
