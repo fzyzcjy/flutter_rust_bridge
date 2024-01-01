@@ -10,11 +10,14 @@ pub fn create(name: &str, enable_local_dependency: bool) -> anyhow::Result<()> {
     let dart_root = env::current_dir()?.join(name);
     debug!("create name={name} dart_root={dart_root:?}");
 
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
     ensure!(
         !dart_root.exists(),
         "The target folder {:?} already exists. Please use the `integrate` command in this case",
         dart_root,
     );
+    // frb-coverage:ignore-end
 
     flutter_create(name)?;
 
