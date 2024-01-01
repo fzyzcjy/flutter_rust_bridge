@@ -75,10 +75,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace => "inner".to_owned(),
                 IrTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
                 IrTypeDelegate::Map(_) => {
-                    "Map.fromEntries((inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));"
-                        .to_owned()
+                    "Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])))".to_owned()
                 }
-                IrTypeDelegate::Set(_) => "Set.from(inner as List<dynamic>);".to_owned(),
+                IrTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
