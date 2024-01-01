@@ -1,9 +1,11 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet,
+    IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
@@ -111,23 +113,11 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
                 self.ir.get_delegate().safe_ident()
             ))),
-            IrTypeDelegate::Set(ir) => {
-                let delegate = self.ir.get_delegate();
-
-                let mut inner = "raw.toList()".to_owned();
-                if let IrType::Primitive(_) = &*ir.inner {
-                    inner = format!(
-                        "{}.fromList({inner})",
-                        ApiDartGenerator::new(delegate.clone(), self.context.as_api_dart_context())
-                            .dart_api_type()
-                    );
-                }
-
-                Acc::distribute(Some(format!(
-                    "return cst_encode_{}({inner});",
-                    delegate.safe_ident()
-                )))
-            }
+            IrTypeDelegate::Set(ir) => Acc::distribute(Some(format!(
+                "return cst_encode_{}({});",
+                self.ir.get_delegate().safe_ident(),
+                generate_set_to_list(ir, self.context.as_api_dart_context()),
+            ))),
         }
     }
 
@@ -150,4 +140,22 @@ fn uint8list_safe_ident() -> String {
         primitive: IrTypePrimitive::U8,
     }
     .safe_ident()
+}
+
+pub(crate) fn generate_set_to_list(
+    ir: &IrTypeDelegateSet,
+    context: ApiDartGeneratorContext,
+) -> String {
+    let mut ans = "raw.toList()".to_owned();
+    if let IrType::Primitive(_) = &*ir.inner {
+        ans = format!(
+            "{}.fromList({inner})",
+            ApiDartGenerator::new(
+                IrTypeDelegate::Set(ir.to_owned()).get_delegate().clone(),
+                context
+            )
+            .dart_api_type()
+        );
+    }
+    ans
 }
