@@ -19,6 +19,7 @@ import 'api/event_listener.dart';
 import 'api/exception.dart';
 import 'api/external_type_in_crate.dart';
 import 'api/inside_macro.dart';
+import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
@@ -81,6 +82,11 @@ import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_sse.dart';
+import 'api/pseudo_manual/map_and_set_twin_rust_async.dart';
+import 'api/pseudo_manual/map_and_set_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/map_and_set_twin_sse.dart';
+import 'api/pseudo_manual/map_and_set_twin_sync.dart';
+import 'api/pseudo_manual/map_and_set_twin_sync_sse.dart';
 import 'api/pseudo_manual/method_twin_rust_async.dart';
 import 'api/pseudo_manual/method_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/method_twin_sse.dart';
@@ -629,6 +635,67 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ObjectArray1 dco_decode_DartOpaque_array_1(dynamic raw);
 
   @protected
+  Map<String, String> dco_decode_Map_String_String(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinNormal>
+      dco_decode_Map_String_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsync>
+      dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsyncSse>
+      dco_decode_Map_String_enum_simple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSse> dco_decode_Map_String_enum_simple_twin_sse(
+      dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
+      dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSyncSse>
+      dco_decode_Map_String_enum_simple_twin_sync_sse(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinNormal>
+      dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsync>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSse> dco_decode_Map_String_kitchen_sink_twin_sse(
+      dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw);
+
+  @protected
+  Map<Uint8List, Uint8List> dco_decode_Map_list_prim_u_8_list_prim_u_8(
+      dynamic raw);
+
+  @protected
   MutexHideData dco_decode_RustOpaque_MutexHideData(dynamic raw);
 
   @protected
@@ -757,6 +824,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw);
+
+  @protected
+  Set<String> dco_decode_Set_String(dynamic raw);
+
+  @protected
+  Set<int> dco_decode_Set_i_32(dynamic raw);
+
+  @protected
+  Set<Uint8List> dco_decode_Set_list_prim_u_8(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -3039,6 +3115,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<Uint8List> dco_decode_list_list_prim_u_8(dynamic raw);
+
+  @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw);
 
   @protected
@@ -3937,7 +4016,68 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  (int, int) dco_decode_record_i_32_i_32(dynamic raw);
+
+  @protected
+  (Uint8List, Uint8List) dco_decode_record_list_prim_u_8_list_prim_u_8(
+      dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinNormal)
+      dco_decode_record_string_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinRustAsync)
+      dco_decode_record_string_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinRustAsyncSse)
+      dco_decode_record_string_enum_simple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSse) dco_decode_record_string_enum_simple_twin_sse(
+      dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSync) dco_decode_record_string_enum_simple_twin_sync(
+      dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSyncSse)
+      dco_decode_record_string_enum_simple_twin_sync_sse(dynamic raw);
+
+  @protected
   (String, int) dco_decode_record_string_i_32(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinNormal)
+      dco_decode_record_string_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinRustAsync)
+      dco_decode_record_string_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinRustAsyncSse)
+      dco_decode_record_string_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSse) dco_decode_record_string_kitchen_sink_twin_sse(
+      dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSync) dco_decode_record_string_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSyncSse)
+      dco_decode_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  (String, MySize) dco_decode_record_string_my_size(dynamic raw);
+
+  @protected
+  (String, String) dco_decode_record_string_string(dynamic raw);
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
@@ -4589,6 +4729,77 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ObjectArray1 sse_decode_DartOpaque_array_1(SseDeserializer deserializer);
 
   @protected
+  Map<String, String> sse_decode_Map_String_String(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinNormal>
+      sse_decode_Map_String_enum_simple_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsync>
+      sse_decode_Map_String_enum_simple_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsyncSse>
+      sse_decode_Map_String_enum_simple_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinSse> sse_decode_Map_String_enum_simple_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinSync> sse_decode_Map_String_enum_simple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinSyncSse>
+      sse_decode_Map_String_enum_simple_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinNormal>
+      sse_decode_Map_String_kitchen_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsync>
+      sse_decode_Map_String_kitchen_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsyncSse>
+      sse_decode_Map_String_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinSse> sse_decode_Map_String_kitchen_sink_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinSync> sse_decode_Map_String_kitchen_sink_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinSyncSse>
+      sse_decode_Map_String_kitchen_sink_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, MySize> sse_decode_Map_String_my_size(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer);
+
+  @protected
+  Map<Uint8List, Uint8List> sse_decode_Map_list_prim_u_8_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
   MutexHideData sse_decode_RustOpaque_MutexHideData(
       SseDeserializer deserializer);
 
@@ -4731,6 +4942,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer);
+
+  @protected
+  Set<String> sse_decode_Set_String(SseDeserializer deserializer);
+
+  @protected
+  Set<int> sse_decode_Set_i_32(SseDeserializer deserializer);
+
+  @protected
+  Set<Uint8List> sse_decode_Set_list_prim_u_8(SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -7357,6 +7577,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<Uint8List> sse_decode_list_list_prim_u_8(SseDeserializer deserializer);
+
+  @protected
   List<MyEnum> sse_decode_list_my_enum(SseDeserializer deserializer);
 
   @protected
@@ -8381,7 +8604,78 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  (int, int) sse_decode_record_i_32_i_32(SseDeserializer deserializer);
+
+  @protected
+  (Uint8List, Uint8List) sse_decode_record_list_prim_u_8_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinNormal)
+      sse_decode_record_string_enum_simple_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinRustAsync)
+      sse_decode_record_string_enum_simple_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinRustAsyncSse)
+      sse_decode_record_string_enum_simple_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinSse) sse_decode_record_string_enum_simple_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinSync) sse_decode_record_string_enum_simple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinSyncSse)
+      sse_decode_record_string_enum_simple_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   (String, int) sse_decode_record_string_i_32(SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinNormal)
+      sse_decode_record_string_kitchen_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinRustAsync)
+      sse_decode_record_string_kitchen_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinRustAsyncSse)
+      sse_decode_record_string_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinSse) sse_decode_record_string_kitchen_sink_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinSync) sse_decode_record_string_kitchen_sink_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinSyncSse)
+      sse_decode_record_string_kitchen_sink_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, MySize) sse_decode_record_string_my_size(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, String) sse_decode_record_string_string(
+      SseDeserializer deserializer);
 
   @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer);
@@ -8907,9 +9201,149 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  wire_cst_record_string_string cst_encode_Map_String_String(
+      Map<String, String> raw) {
+    return cst_encode_record_string_string(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_enum_simple_twin_normal
+      cst_encode_Map_String_enum_simple_twin_normal(
+          Map<String, EnumSimpleTwinNormal> raw) {
+    return cst_encode_record_string_enum_simple_twin_normal(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_enum_simple_twin_rust_async
+      cst_encode_Map_String_enum_simple_twin_rust_async(
+          Map<String, EnumSimpleTwinRustAsync> raw) {
+    return cst_encode_record_string_enum_simple_twin_rust_async(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_enum_simple_twin_rust_async_sse
+      cst_encode_Map_String_enum_simple_twin_rust_async_sse(
+          Map<String, EnumSimpleTwinRustAsyncSse> raw) {
+    return cst_encode_record_string_enum_simple_twin_rust_async_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_enum_simple_twin_sse
+      cst_encode_Map_String_enum_simple_twin_sse(
+          Map<String, EnumSimpleTwinSse> raw) {
+    return cst_encode_record_string_enum_simple_twin_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_enum_simple_twin_sync
+      cst_encode_Map_String_enum_simple_twin_sync(
+          Map<String, EnumSimpleTwinSync> raw) {
+    return cst_encode_record_string_enum_simple_twin_sync(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_enum_simple_twin_sync_sse
+      cst_encode_Map_String_enum_simple_twin_sync_sse(
+          Map<String, EnumSimpleTwinSyncSse> raw) {
+    return cst_encode_record_string_enum_simple_twin_sync_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_kitchen_sink_twin_normal
+      cst_encode_Map_String_kitchen_sink_twin_normal(
+          Map<String, KitchenSinkTwinNormal> raw) {
+    return cst_encode_record_string_kitchen_sink_twin_normal(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_kitchen_sink_twin_rust_async
+      cst_encode_Map_String_kitchen_sink_twin_rust_async(
+          Map<String, KitchenSinkTwinRustAsync> raw) {
+    return cst_encode_record_string_kitchen_sink_twin_rust_async(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_kitchen_sink_twin_rust_async_sse
+      cst_encode_Map_String_kitchen_sink_twin_rust_async_sse(
+          Map<String, KitchenSinkTwinRustAsyncSse> raw) {
+    return cst_encode_record_string_kitchen_sink_twin_rust_async_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_kitchen_sink_twin_sse
+      cst_encode_Map_String_kitchen_sink_twin_sse(
+          Map<String, KitchenSinkTwinSse> raw) {
+    return cst_encode_record_string_kitchen_sink_twin_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_kitchen_sink_twin_sync
+      cst_encode_Map_String_kitchen_sink_twin_sync(
+          Map<String, KitchenSinkTwinSync> raw) {
+    return cst_encode_record_string_kitchen_sink_twin_sync(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_kitchen_sink_twin_sync_sse
+      cst_encode_Map_String_kitchen_sink_twin_sync_sse(
+          Map<String, KitchenSinkTwinSyncSse> raw) {
+    return cst_encode_record_string_kitchen_sink_twin_sync_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_string_my_size cst_encode_Map_String_my_size(
+      Map<String, MySize> raw) {
+    return cst_encode_record_string_my_size(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_i_32_i_32 cst_encode_Map_i_32_i_32(Map<int, int> raw) {
+    return cst_encode_record_i_32_i_32(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  wire_cst_record_list_prim_u_8_list_prim_u_8
+      cst_encode_Map_list_prim_u_8_list_prim_u_8(
+          Map<Uint8List, Uint8List> raw) {
+    return cst_encode_record_list_prim_u_8_list_prim_u_8(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
   ffi.Pointer<wire_cst_list_RustOpaque_hide_data>
       cst_encode_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
     return cst_encode_list_RustOpaque_hide_data(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_String> cst_encode_Set_String(Set<String> raw) {
+    return cst_encode_list_String(raw.toList());
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_prim_i_32> cst_encode_Set_i_32(Set<int> raw) {
+    return cst_encode_list_prim_i_32(raw.toList());
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_list_prim_u_8> cst_encode_Set_list_prim_u_8(
+      Set<Uint8List> raw) {
+    return cst_encode_list_list_prim_u_8(raw.toList());
   }
 
   @protected
@@ -12332,6 +12766,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_enum_opaque_twin_sync_sse(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       cst_api_fill_to_wire_enum_opaque_twin_sync_sse(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_list_prim_u_8> cst_encode_list_list_prim_u_8(
+      List<Uint8List> raw) {
+    final ans = wire.cst_new_list_list_prim_u_8(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      cst_api_fill_to_wire_list_prim_u_8(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -20074,10 +20518,137 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_record_i_32_i_32(
+      (int, int) apiObj, wire_cst_record_i_32_i_32 wireObj) {
+    wireObj.field0 = cst_encode_i_32(apiObj.$1);
+    wireObj.field1 = cst_encode_i_32(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_list_prim_u_8_list_prim_u_8(
+      (Uint8List, Uint8List) apiObj,
+      wire_cst_record_list_prim_u_8_list_prim_u_8 wireObj) {
+    wireObj.field0 = cst_encode_list_prim_u_8(apiObj.$1);
+    wireObj.field1 = cst_encode_list_prim_u_8(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_enum_simple_twin_normal(
+      (String, EnumSimpleTwinNormal) apiObj,
+      wire_cst_record_string_enum_simple_twin_normal wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_enum_simple_twin_normal(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_enum_simple_twin_rust_async(
+      (String, EnumSimpleTwinRustAsync) apiObj,
+      wire_cst_record_string_enum_simple_twin_rust_async wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_enum_simple_twin_rust_async(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_enum_simple_twin_rust_async_sse(
+      (String, EnumSimpleTwinRustAsyncSse) apiObj,
+      wire_cst_record_string_enum_simple_twin_rust_async_sse wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_enum_simple_twin_rust_async_sse(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_enum_simple_twin_sse(
+      (String, EnumSimpleTwinSse) apiObj,
+      wire_cst_record_string_enum_simple_twin_sse wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_enum_simple_twin_sse(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_enum_simple_twin_sync(
+      (String, EnumSimpleTwinSync) apiObj,
+      wire_cst_record_string_enum_simple_twin_sync wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_enum_simple_twin_sync(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_enum_simple_twin_sync_sse(
+      (String, EnumSimpleTwinSyncSse) apiObj,
+      wire_cst_record_string_enum_simple_twin_sync_sse wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_enum_simple_twin_sync_sse(apiObj.$2);
+  }
+
+  @protected
   void cst_api_fill_to_wire_record_string_i_32(
       (String, int) apiObj, wire_cst_record_string_i_32 wireObj) {
     wireObj.field0 = cst_encode_String(apiObj.$1);
     wireObj.field1 = cst_encode_i_32(apiObj.$2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_kitchen_sink_twin_normal(
+      (String, KitchenSinkTwinNormal) apiObj,
+      wire_cst_record_string_kitchen_sink_twin_normal wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_kitchen_sink_twin_normal(apiObj.$2, wireObj.field1);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_kitchen_sink_twin_rust_async(
+      (String, KitchenSinkTwinRustAsync) apiObj,
+      wire_cst_record_string_kitchen_sink_twin_rust_async wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async(
+        apiObj.$2, wireObj.field1);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_kitchen_sink_twin_rust_async_sse(
+      (String, KitchenSinkTwinRustAsyncSse) apiObj,
+      wire_cst_record_string_kitchen_sink_twin_rust_async_sse wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_kitchen_sink_twin_rust_async_sse(
+        apiObj.$2, wireObj.field1);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_kitchen_sink_twin_sse(
+      (String, KitchenSinkTwinSse) apiObj,
+      wire_cst_record_string_kitchen_sink_twin_sse wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_kitchen_sink_twin_sse(apiObj.$2, wireObj.field1);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_kitchen_sink_twin_sync(
+      (String, KitchenSinkTwinSync) apiObj,
+      wire_cst_record_string_kitchen_sink_twin_sync wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync(apiObj.$2, wireObj.field1);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_kitchen_sink_twin_sync_sse(
+      (String, KitchenSinkTwinSyncSse) apiObj,
+      wire_cst_record_string_kitchen_sink_twin_sync_sse wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_kitchen_sink_twin_sync_sse(apiObj.$2, wireObj.field1);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_my_size(
+      (String, MySize) apiObj, wire_cst_record_string_my_size wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    cst_api_fill_to_wire_my_size(apiObj.$2, wireObj.field1);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_record_string_string(
+      (String, String) apiObj, wire_cst_record_string_string wireObj) {
+    wireObj.field0 = cst_encode_String(apiObj.$1);
+    wireObj.field1 = cst_encode_String(apiObj.$2);
   }
 
   @protected
@@ -21597,6 +22168,69 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ObjectArray1 self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Map_String_String(
+      Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_normal(
+      Map<String, EnumSimpleTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_rust_async(
+      Map<String, EnumSimpleTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_rust_async_sse(
+      Map<String, EnumSimpleTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_sse(
+      Map<String, EnumSimpleTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_sync(
+      Map<String, EnumSimpleTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_sync_sse(
+      Map<String, EnumSimpleTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_normal(
+      Map<String, KitchenSinkTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_rust_async(
+      Map<String, KitchenSinkTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_rust_async_sse(
+      Map<String, KitchenSinkTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_sse(
+      Map<String, KitchenSinkTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_sync(
+      Map<String, KitchenSinkTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_sync_sse(
+      Map<String, KitchenSinkTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_my_size(
+      Map<String, MySize> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_i_32_i_32(Map<int, int> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_list_prim_u_8_list_prim_u_8(
+      Map<Uint8List, Uint8List> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_MutexHideData(
       MutexHideData self, SseSerializer serializer);
 
@@ -21726,6 +22360,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
+
+  @protected
+  void sse_encode_Set_String(Set<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Set_list_prim_u_8(
+      Set<Uint8List> self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -24233,6 +24877,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<EnumOpaqueTwinSyncSse> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_list_prim_u_8(
+      List<Uint8List> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer);
 
   @protected
@@ -25233,8 +25881,71 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseSerializer serializer);
 
   @protected
+  void sse_encode_record_i_32_i_32((int, int) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_list_prim_u_8_list_prim_u_8(
+      (Uint8List, Uint8List) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_normal(
+      (String, EnumSimpleTwinNormal) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_rust_async(
+      (String, EnumSimpleTwinRustAsync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_rust_async_sse(
+      (String, EnumSimpleTwinRustAsyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_sse(
+      (String, EnumSimpleTwinSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_sync(
+      (String, EnumSimpleTwinSync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_sync_sse(
+      (String, EnumSimpleTwinSyncSse) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_record_string_i_32(
       (String, int) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_normal(
+      (String, KitchenSinkTwinNormal) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_rust_async(
+      (String, KitchenSinkTwinRustAsync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_rust_async_sse(
+      (String, KitchenSinkTwinRustAsyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_sse(
+      (String, KitchenSinkTwinSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_sync(
+      (String, KitchenSinkTwinSync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_sync_sse(
+      (String, KitchenSinkTwinSyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_my_size(
+      (String, MySize) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_string(
+      (String, String) self, SseSerializer serializer);
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
@@ -27756,6 +28467,174 @@ class RustLibWire implements BaseWire {
   late final _wire_func_macro_struct_twin_normal =
       _wire_func_macro_struct_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_macro_struct>)>();
+
+  void wire_func_hash_map_bytes_bytes_twin_normal(
+    int port_,
+    wire_cst_record_list_prim_u_8_list_prim_u_8 arg,
+  ) {
+    return _wire_func_hash_map_bytes_bytes_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_bytes_bytes_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, wire_cst_record_list_prim_u_8_list_prim_u_8)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_normal');
+  late final _wire_func_hash_map_bytes_bytes_twin_normal =
+      _wire_func_hash_map_bytes_bytes_twin_normalPtr.asFunction<
+          void Function(int, wire_cst_record_list_prim_u_8_list_prim_u_8)>();
+
+  void wire_func_hash_map_i32_i32_twin_normal(
+    int port_,
+    wire_cst_record_i_32_i_32 arg,
+  ) {
+    return _wire_func_hash_map_i32_i32_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_i32_i32_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, wire_cst_record_i_32_i_32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_normal');
+  late final _wire_func_hash_map_i32_i32_twin_normal =
+      _wire_func_hash_map_i32_i32_twin_normalPtr
+          .asFunction<void Function(int, wire_cst_record_i_32_i_32)>();
+
+  void wire_func_hash_map_string_complex_enum_twin_normal(
+    int port_,
+    wire_cst_record_string_kitchen_sink_twin_normal arg,
+  ) {
+    return _wire_func_hash_map_string_complex_enum_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_complex_enum_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, wire_cst_record_string_kitchen_sink_twin_normal)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_normal');
+  late final _wire_func_hash_map_string_complex_enum_twin_normal =
+      _wire_func_hash_map_string_complex_enum_twin_normalPtr.asFunction<
+          void Function(
+              int, wire_cst_record_string_kitchen_sink_twin_normal)>();
+
+  void wire_func_hash_map_string_simple_enum_twin_normal(
+    int port_,
+    wire_cst_record_string_enum_simple_twin_normal arg,
+  ) {
+    return _wire_func_hash_map_string_simple_enum_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_simple_enum_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, wire_cst_record_string_enum_simple_twin_normal)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_normal');
+  late final _wire_func_hash_map_string_simple_enum_twin_normal =
+      _wire_func_hash_map_string_simple_enum_twin_normalPtr.asFunction<
+          void Function(int, wire_cst_record_string_enum_simple_twin_normal)>();
+
+  void wire_func_hash_map_string_string_twin_normal(
+    int port_,
+    wire_cst_record_string_string arg,
+  ) {
+    return _wire_func_hash_map_string_string_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_string_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, wire_cst_record_string_string)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_normal');
+  late final _wire_func_hash_map_string_string_twin_normal =
+      _wire_func_hash_map_string_string_twin_normalPtr
+          .asFunction<void Function(int, wire_cst_record_string_string)>();
+
+  void wire_func_hash_map_string_struct_twin_normal(
+    int port_,
+    wire_cst_record_string_my_size arg,
+  ) {
+    return _wire_func_hash_map_string_struct_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, wire_cst_record_string_my_size)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_normal');
+  late final _wire_func_hash_map_string_struct_twin_normal =
+      _wire_func_hash_map_string_struct_twin_normalPtr
+          .asFunction<void Function(int, wire_cst_record_string_my_size)>();
+
+  void wire_func_hash_set_bytes_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_list_prim_u_8> arg,
+  ) {
+    return _wire_func_hash_set_bytes_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_bytes_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_list_prim_u_8>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_normal');
+  late final _wire_func_hash_set_bytes_twin_normal =
+      _wire_func_hash_set_bytes_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_list_prim_u_8>)>();
+
+  void wire_func_hash_set_i32_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_i_32> arg,
+  ) {
+    return _wire_func_hash_set_i32_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_i32_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_i_32>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_normal');
+  late final _wire_func_hash_set_i32_twin_normal =
+      _wire_func_hash_set_i32_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_i_32>)>();
+
+  void wire_func_hash_set_string_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_String> arg,
+  ) {
+    return _wire_func_hash_set_string_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_string_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_String>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_normal');
+  late final _wire_func_hash_set_string_twin_normal =
+      _wire_func_hash_set_string_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_cst_list_String>)>();
 
   void wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
     int port_,
@@ -39567,6 +40446,935 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_use_imported_struct_twin_sync_sse');
   late final _wire_use_imported_struct_twin_sync_sse =
       _wire_use_imported_struct_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_bytes_bytes_twin_rust_async(
+    int port_,
+    wire_cst_record_list_prim_u_8_list_prim_u_8 arg,
+  ) {
+    return _wire_func_hash_map_bytes_bytes_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_bytes_bytes_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, wire_cst_record_list_prim_u_8_list_prim_u_8)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_rust_async');
+  late final _wire_func_hash_map_bytes_bytes_twin_rust_async =
+      _wire_func_hash_map_bytes_bytes_twin_rust_asyncPtr.asFunction<
+          void Function(int, wire_cst_record_list_prim_u_8_list_prim_u_8)>();
+
+  void wire_func_hash_map_i32_i32_twin_rust_async(
+    int port_,
+    wire_cst_record_i_32_i_32 arg,
+  ) {
+    return _wire_func_hash_map_i32_i32_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_i32_i32_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, wire_cst_record_i_32_i_32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async');
+  late final _wire_func_hash_map_i32_i32_twin_rust_async =
+      _wire_func_hash_map_i32_i32_twin_rust_asyncPtr
+          .asFunction<void Function(int, wire_cst_record_i_32_i_32)>();
+
+  void wire_func_hash_map_string_complex_enum_twin_rust_async(
+    int port_,
+    wire_cst_record_string_kitchen_sink_twin_rust_async arg,
+  ) {
+    return _wire_func_hash_map_string_complex_enum_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_complex_enum_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  wire_cst_record_string_kitchen_sink_twin_rust_async)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_rust_async');
+  late final _wire_func_hash_map_string_complex_enum_twin_rust_async =
+      _wire_func_hash_map_string_complex_enum_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, wire_cst_record_string_kitchen_sink_twin_rust_async)>();
+
+  void wire_func_hash_map_string_simple_enum_twin_rust_async(
+    int port_,
+    wire_cst_record_string_enum_simple_twin_rust_async arg,
+  ) {
+    return _wire_func_hash_map_string_simple_enum_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_simple_enum_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  wire_cst_record_string_enum_simple_twin_rust_async)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_rust_async');
+  late final _wire_func_hash_map_string_simple_enum_twin_rust_async =
+      _wire_func_hash_map_string_simple_enum_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, wire_cst_record_string_enum_simple_twin_rust_async)>();
+
+  void wire_func_hash_map_string_string_twin_rust_async(
+    int port_,
+    wire_cst_record_string_string arg,
+  ) {
+    return _wire_func_hash_map_string_string_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_string_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, wire_cst_record_string_string)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_rust_async');
+  late final _wire_func_hash_map_string_string_twin_rust_async =
+      _wire_func_hash_map_string_string_twin_rust_asyncPtr
+          .asFunction<void Function(int, wire_cst_record_string_string)>();
+
+  void wire_func_hash_map_string_struct_twin_rust_async(
+    int port_,
+    wire_cst_record_string_my_size arg,
+  ) {
+    return _wire_func_hash_map_string_struct_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_struct_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, wire_cst_record_string_my_size)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_rust_async');
+  late final _wire_func_hash_map_string_struct_twin_rust_async =
+      _wire_func_hash_map_string_struct_twin_rust_asyncPtr
+          .asFunction<void Function(int, wire_cst_record_string_my_size)>();
+
+  void wire_func_hash_set_bytes_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_list_prim_u_8> arg,
+  ) {
+    return _wire_func_hash_set_bytes_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_bytes_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_list_prim_u_8>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_rust_async');
+  late final _wire_func_hash_set_bytes_twin_rust_async =
+      _wire_func_hash_set_bytes_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_list_prim_u_8>)>();
+
+  void wire_func_hash_set_i32_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_i_32> arg,
+  ) {
+    return _wire_func_hash_set_i32_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_i32_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_i_32>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async');
+  late final _wire_func_hash_set_i32_twin_rust_async =
+      _wire_func_hash_set_i32_twin_rust_asyncPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_i_32>)>();
+
+  void wire_func_hash_set_string_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_String> arg,
+  ) {
+    return _wire_func_hash_set_string_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_string_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_cst_list_String>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_rust_async');
+  late final _wire_func_hash_set_string_twin_rust_async =
+      _wire_func_hash_set_string_twin_rust_asyncPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_cst_list_String>)>();
+
+  void wire_func_hash_map_bytes_bytes_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_bytes_bytes_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_bytes_bytes_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_rust_async_sse');
+  late final _wire_func_hash_map_bytes_bytes_twin_rust_async_sse =
+      _wire_func_hash_map_bytes_bytes_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_i32_i32_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_i32_i32_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_i32_i32_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async_sse');
+  late final _wire_func_hash_map_i32_i32_twin_rust_async_sse =
+      _wire_func_hash_map_i32_i32_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_complex_enum_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_complex_enum_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_complex_enum_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_rust_async_sse');
+  late final _wire_func_hash_map_string_complex_enum_twin_rust_async_sse =
+      _wire_func_hash_map_string_complex_enum_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_simple_enum_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_simple_enum_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_simple_enum_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_rust_async_sse');
+  late final _wire_func_hash_map_string_simple_enum_twin_rust_async_sse =
+      _wire_func_hash_map_string_simple_enum_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_string_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_string_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_string_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_rust_async_sse');
+  late final _wire_func_hash_map_string_string_twin_rust_async_sse =
+      _wire_func_hash_map_string_string_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_struct_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_struct_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_struct_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_rust_async_sse');
+  late final _wire_func_hash_map_string_struct_twin_rust_async_sse =
+      _wire_func_hash_map_string_struct_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_set_bytes_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_bytes_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_bytes_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_rust_async_sse');
+  late final _wire_func_hash_set_bytes_twin_rust_async_sse =
+      _wire_func_hash_set_bytes_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_set_i32_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_i32_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_i32_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async_sse');
+  late final _wire_func_hash_set_i32_twin_rust_async_sse =
+      _wire_func_hash_set_i32_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_set_string_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_string_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_string_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_rust_async_sse');
+  late final _wire_func_hash_set_string_twin_rust_async_sse =
+      _wire_func_hash_set_string_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_bytes_bytes_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_bytes_bytes_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_bytes_bytes_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sse');
+  late final _wire_func_hash_map_bytes_bytes_twin_sse =
+      _wire_func_hash_map_bytes_bytes_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_i32_i32_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_i32_i32_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_i32_i32_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sse');
+  late final _wire_func_hash_map_i32_i32_twin_sse =
+      _wire_func_hash_map_i32_i32_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_complex_enum_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_complex_enum_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_complex_enum_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_sse');
+  late final _wire_func_hash_map_string_complex_enum_twin_sse =
+      _wire_func_hash_map_string_complex_enum_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_simple_enum_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_simple_enum_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_simple_enum_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_sse');
+  late final _wire_func_hash_map_string_simple_enum_twin_sse =
+      _wire_func_hash_map_string_simple_enum_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_string_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_string_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_string_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_sse');
+  late final _wire_func_hash_map_string_string_twin_sse =
+      _wire_func_hash_map_string_string_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_map_string_struct_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_struct_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_struct_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sse');
+  late final _wire_func_hash_map_string_struct_twin_sse =
+      _wire_func_hash_map_string_struct_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_set_bytes_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_bytes_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_bytes_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sse');
+  late final _wire_func_hash_set_bytes_twin_sse =
+      _wire_func_hash_set_bytes_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_set_i32_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_i32_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_i32_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sse');
+  late final _wire_func_hash_set_i32_twin_sse =
+      _wire_func_hash_set_i32_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_hash_set_string_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_string_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_string_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sse');
+  late final _wire_func_hash_set_string_twin_sse =
+      _wire_func_hash_set_string_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartDco wire_func_hash_map_bytes_bytes_twin_sync(
+    wire_cst_record_list_prim_u_8_list_prim_u_8 arg,
+  ) {
+    return _wire_func_hash_map_bytes_bytes_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_bytes_bytes_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  wire_cst_record_list_prim_u_8_list_prim_u_8)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sync');
+  late final _wire_func_hash_map_bytes_bytes_twin_sync =
+      _wire_func_hash_map_bytes_bytes_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              wire_cst_record_list_prim_u_8_list_prim_u_8)>();
+
+  WireSyncRust2DartDco wire_func_hash_map_i32_i32_twin_sync(
+    wire_cst_record_i_32_i_32 arg,
+  ) {
+    return _wire_func_hash_map_i32_i32_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_i32_i32_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(wire_cst_record_i_32_i_32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync');
+  late final _wire_func_hash_map_i32_i32_twin_sync =
+      _wire_func_hash_map_i32_i32_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(wire_cst_record_i_32_i_32)>();
+
+  WireSyncRust2DartDco wire_func_hash_map_string_complex_enum_twin_sync(
+    wire_cst_record_string_kitchen_sink_twin_sync arg,
+  ) {
+    return _wire_func_hash_map_string_complex_enum_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_complex_enum_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  wire_cst_record_string_kitchen_sink_twin_sync)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_sync');
+  late final _wire_func_hash_map_string_complex_enum_twin_sync =
+      _wire_func_hash_map_string_complex_enum_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              wire_cst_record_string_kitchen_sink_twin_sync)>();
+
+  WireSyncRust2DartDco wire_func_hash_map_string_simple_enum_twin_sync(
+    wire_cst_record_string_enum_simple_twin_sync arg,
+  ) {
+    return _wire_func_hash_map_string_simple_enum_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_simple_enum_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  wire_cst_record_string_enum_simple_twin_sync)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_sync');
+  late final _wire_func_hash_map_string_simple_enum_twin_sync =
+      _wire_func_hash_map_string_simple_enum_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              wire_cst_record_string_enum_simple_twin_sync)>();
+
+  WireSyncRust2DartDco wire_func_hash_map_string_string_twin_sync(
+    wire_cst_record_string_string arg,
+  ) {
+    return _wire_func_hash_map_string_string_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_string_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(wire_cst_record_string_string)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_sync');
+  late final _wire_func_hash_map_string_string_twin_sync =
+      _wire_func_hash_map_string_string_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(wire_cst_record_string_string)>();
+
+  WireSyncRust2DartDco wire_func_hash_map_string_struct_twin_sync(
+    wire_cst_record_string_my_size arg,
+  ) {
+    return _wire_func_hash_map_string_struct_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_map_string_struct_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(wire_cst_record_string_my_size)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync');
+  late final _wire_func_hash_map_string_struct_twin_sync =
+      _wire_func_hash_map_string_struct_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(wire_cst_record_string_my_size)>();
+
+  WireSyncRust2DartDco wire_func_hash_set_bytes_twin_sync(
+    ffi.Pointer<wire_cst_list_list_prim_u_8> arg,
+  ) {
+    return _wire_func_hash_set_bytes_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_bytes_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_list_prim_u_8>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sync');
+  late final _wire_func_hash_set_bytes_twin_sync =
+      _wire_func_hash_set_bytes_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_list_prim_u_8>)>();
+
+  WireSyncRust2DartDco wire_func_hash_set_i32_twin_sync(
+    ffi.Pointer<wire_cst_list_prim_i_32> arg,
+  ) {
+    return _wire_func_hash_set_i32_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_i32_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_prim_i_32>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync');
+  late final _wire_func_hash_set_i32_twin_sync =
+      _wire_func_hash_set_i32_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_prim_i_32>)>();
+
+  WireSyncRust2DartDco wire_func_hash_set_string_twin_sync(
+    ffi.Pointer<wire_cst_list_String> arg,
+  ) {
+    return _wire_func_hash_set_string_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_hash_set_string_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_String>)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sync');
+  late final _wire_func_hash_set_string_twin_sync =
+      _wire_func_hash_set_string_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_String>)>();
+
+  WireSyncRust2DartSse wire_func_hash_map_bytes_bytes_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_bytes_bytes_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_bytes_bytes_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sync_sse');
+  late final _wire_func_hash_map_bytes_bytes_twin_sync_sse =
+      _wire_func_hash_map_bytes_bytes_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_map_i32_i32_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_i32_i32_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_i32_i32_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync_sse');
+  late final _wire_func_hash_map_i32_i32_twin_sync_sse =
+      _wire_func_hash_map_i32_i32_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_map_string_complex_enum_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_complex_enum_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_complex_enum_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_sync_sse');
+  late final _wire_func_hash_map_string_complex_enum_twin_sync_sse =
+      _wire_func_hash_map_string_complex_enum_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_map_string_simple_enum_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_simple_enum_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_simple_enum_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_simple_enum_twin_sync_sse');
+  late final _wire_func_hash_map_string_simple_enum_twin_sync_sse =
+      _wire_func_hash_map_string_simple_enum_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_map_string_string_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_string_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_string_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_sync_sse');
+  late final _wire_func_hash_map_string_string_twin_sync_sse =
+      _wire_func_hash_map_string_string_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_map_string_struct_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_map_string_struct_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_map_string_struct_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync_sse');
+  late final _wire_func_hash_map_string_struct_twin_sync_sse =
+      _wire_func_hash_map_string_struct_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_set_bytes_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_bytes_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_bytes_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sync_sse');
+  late final _wire_func_hash_set_bytes_twin_sync_sse =
+      _wire_func_hash_set_bytes_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_set_i32_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_i32_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_i32_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync_sse');
+  late final _wire_func_hash_set_i32_twin_sync_sse =
+      _wire_func_hash_set_i32_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_hash_set_string_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_hash_set_string_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_hash_set_string_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sync_sse');
+  late final _wire_func_hash_set_string_twin_sync_sse =
+      _wire_func_hash_set_string_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
@@ -62584,6 +64392,21 @@ class RustLibWire implements BaseWire {
       _cst_new_list_enum_opaque_twin_sync_ssePtr.asFunction<
           ffi.Pointer<wire_cst_list_enum_opaque_twin_sync_sse> Function(int)>();
 
+  ffi.Pointer<wire_cst_list_list_prim_u_8> cst_new_list_list_prim_u_8(
+    int len,
+  ) {
+    return _cst_new_list_list_prim_u_8(
+      len,
+    );
+  }
+
+  late final _cst_new_list_list_prim_u_8Ptr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_list_prim_u_8> Function(ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_list_prim_u_8');
+  late final _cst_new_list_list_prim_u_8 = _cst_new_list_list_prim_u_8Ptr
+      .asFunction<ffi.Pointer<wire_cst_list_list_prim_u_8> Function(int)>();
+
   ffi.Pointer<wire_cst_list_my_enum> cst_new_list_my_enum(
     int len,
   ) {
@@ -64038,6 +65861,67 @@ final class wire_cst_macro_struct extends ffi.Struct {
   external int data;
 }
 
+final class wire_cst_record_list_prim_u_8_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> field1;
+}
+
+final class wire_cst_record_i_32_i_32 extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_cst_record_string_kitchen_sink_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external wire_cst_kitchen_sink_twin_normal field1;
+}
+
+final class wire_cst_record_string_enum_simple_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_cst_record_string_string extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external ffi.Pointer<wire_cst_list_prim_u_8> field1;
+}
+
+final class wire_cst_my_size extends ffi.Struct {
+  @ffi.Int32()
+  external int width;
+
+  @ffi.Int32()
+  external int height;
+}
+
+final class wire_cst_record_string_my_size extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external wire_cst_my_size field1;
+}
+
+final class wire_cst_list_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_list_String extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 final class wire_cst_concatenate_with_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> a;
 }
@@ -64112,14 +65996,6 @@ final class wire_cst_my_nested_struct_twin_normal extends ffi.Struct {
   external int weekday;
 }
 
-final class wire_cst_my_size extends ffi.Struct {
-  @ffi.Int32()
-  external int width;
-
-  @ffi.Int32()
-  external int height;
-}
-
 final class wire_cst_list_weekdays_twin_normal extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
@@ -64185,13 +66061,6 @@ final class wire_cst_empty_twin_normal extends ffi.Opaque {}
 
 final class wire_cst_list_my_size extends ffi.Struct {
   external ffi.Pointer<wire_cst_my_size> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-final class wire_cst_list_String extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8>> ptr;
 
   @ffi.Int32()
   external int len;
@@ -64990,6 +66859,34 @@ final class wire_cst_custom_nested_error_outer_twin_sync extends ffi.Struct {
 
 final class wire_cst_custom_struct_error_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8> a;
+}
+
+final class wire_cst_record_string_kitchen_sink_twin_rust_async
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external wire_cst_kitchen_sink_twin_rust_async field1;
+}
+
+final class wire_cst_record_string_enum_simple_twin_rust_async
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_cst_record_string_kitchen_sink_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external wire_cst_kitchen_sink_twin_sync field1;
+}
+
+final class wire_cst_record_string_enum_simple_twin_sync extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  @ffi.Int32()
+  external int field1;
 }
 
 final class wire_cst_concatenate_with_twin_rust_async extends ffi.Struct {
@@ -68764,6 +70661,49 @@ final class wire_cst_record_application_settings_raw_string_enum_mirrored
   external wire_cst_application_settings field0;
 
   external wire_cst_raw_string_enum_mirrored field1;
+}
+
+final class wire_cst_record_string_enum_simple_twin_rust_async_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_cst_record_string_enum_simple_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_cst_record_string_enum_simple_twin_sync_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_cst_record_string_kitchen_sink_twin_rust_async_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external wire_cst_kitchen_sink_twin_rust_async_sse field1;
+}
+
+final class wire_cst_record_string_kitchen_sink_twin_sse extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external wire_cst_kitchen_sink_twin_sse field1;
+}
+
+final class wire_cst_record_string_kitchen_sink_twin_sync_sse
+    extends ffi.Struct {
+  external ffi.Pointer<wire_cst_list_prim_u_8> field0;
+
+  external wire_cst_kitchen_sink_twin_sync_sse field1;
 }
 
 final class wire_cst_test_chrono_twin_normal extends ffi.Struct {
