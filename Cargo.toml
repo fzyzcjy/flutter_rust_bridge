@@ -27,7 +27,7 @@ categories = ["development-tools::ffi"]
 [workspace.dependencies]
 # TODO temporary
 #allo-isolate = { version = "0.1.21", features = ["anyhow"] }
-allo-isolate = { git = "https://github.com/fzyzcjy/allo-isolate", features = ["anyhow"] }
+allo-isolate = { git = "https://github.com/fzyzcjy/allo-isolate", rev = "384757c945d3869ed8ee259122d382436a44f6cb", features = ["anyhow"] }
 anyhow = "1.0.64"
 chrono = "0.4.23"
 lazy_static = "1.4.0"
