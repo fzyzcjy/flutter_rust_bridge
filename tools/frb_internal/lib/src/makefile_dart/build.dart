@@ -65,7 +65,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       // https://docs.flutter.dev/deployment/linux
       // https://stackoverflow.com/questions/73278689/how-to-run-a-standalone-linux-app-built-with-flutter
       await exec('flutter build linux --verbose', relativePwd: package);
-      copyArtifacts(['build/linux/release/bundle']);
+      copyArtifacts(['build/linux/x64/release/bundle']);
 
     case BuildTarget.androidAab:
       // https://docs.flutter.dev/deployment/android
