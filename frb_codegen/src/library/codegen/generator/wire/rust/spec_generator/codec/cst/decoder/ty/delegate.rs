@@ -18,16 +18,6 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match &self.ir {
-            IrTypeDelegate::Array(array) => {
-                let acc = Some(generate_decode_array(array));
-                if is_js_value(&array.inner()) {
-                    return Acc {
-                        io: acc,
-                        ..Default::default()
-                    };
-                }
-                Acc::distribute(acc)
-            },
             IrTypeDelegate::String => {
                 Acc {
                     web: Some("self".into()),
@@ -87,6 +77,16 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 TargetOrCommon::Common => None,
                 TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
+            IrTypeDelegate::Array(array) => {
+                let acc = Some(generate_decode_array(array));
+                if is_js_value(&array.inner()) {
+                    return Acc {
+                        io: acc,
+                        ..Default::default()
+                    };
+                }
+                Acc::distribute(acc)
+            },
             IrTypeDelegate::Map(ir) => Acc::distribute(Some(generate_decode_map(ir))),
             IrTypeDelegate::Set(ir) => Acc::distribute(Some(generate_decode_set(ir))),
         }
@@ -112,9 +112,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
             }
+            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
             IrTypeDelegate::Array(array) => generate_decode_array(array)
                 .into(),
-            IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
             IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
             IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
         })
