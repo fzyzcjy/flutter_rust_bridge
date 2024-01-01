@@ -45,7 +45,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
   Directory(outputDir).createSync(recursive: true);
   void copyArtifacts(List<String> paths) {
     for (final path in paths) {
-      copyPath(path, outputDir);
+      copyPath('${exec.pwd}$package/$path', outputDir);
     }
   }
 
@@ -54,33 +54,32 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       // https://docs.flutter.dev/deployment/windows
       // https://docs.flutter.dev/platform-integration/windows/building#compiling-with-visual-studio
       await exec('flutter build windows --verbose', relativePwd: package);
-      copyArtifacts(['${exec.pwd}TODO']); // TODO
+      copyArtifacts(['TODO']); // TODO
 
     case BuildTarget.macos:
       // https://docs.flutter.dev/deployment/macos
       await exec('flutter build macos --verbose', relativePwd: package);
-      copyArtifacts(['${exec.pwd}Build/Products/Release']);
+      copyArtifacts(['Build/Products/Release']);
 
     case BuildTarget.linux:
       // https://docs.flutter.dev/deployment/linux
       // https://stackoverflow.com/questions/73278689/how-to-run-a-standalone-linux-app-built-with-flutter
       await exec('flutter build linux --verbose', relativePwd: package);
-      copyArtifacts(['${exec.pwd}build/linux/release/bundle']);
+      copyArtifacts(['build/linux/release/bundle']);
 
     case BuildTarget.androidAab:
       // https://docs.flutter.dev/deployment/android
       await exec('flutter build appbundle --verbose', relativePwd: package);
-      copyArtifacts(['${exec.pwd}build/app/outputs/bundle/release']);
+      copyArtifacts(['build/app/outputs/bundle/release']);
 
     case BuildTarget.androidApk:
       // https://docs.flutter.dev/deployment/android
       await exec('flutter build apk --verbose', relativePwd: package);
-      copyArtifacts(['${exec.pwd}build/app/outputs/apk/release']);
+      copyArtifacts(['build/app/outputs/apk/release']);
 
     case BuildTarget.ios:
       // https://docs.flutter.dev/deployment/ios
       await exec('flutter build ipa --verbose', relativePwd: package);
-      copyArtifacts(
-          ['${exec.pwd}build/ios/archive', '${exec.pwd}build/ios/ipa']);
+      copyArtifacts(['build/ios/archive', 'build/ios/ipa']);
   }
 }
