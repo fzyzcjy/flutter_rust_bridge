@@ -91,7 +91,7 @@ where
 
 impl<T> IntoIntoDart<HashSet<T>> for HashSet<T>
 where
-    T: IntoDart,
+    HashSet<T>: IntoDart,
 {
     #[inline(always)]
     fn into_into_dart(self) -> Self {
