@@ -1,5 +1,6 @@
 use crate::auxiliary::sample_types::MySize;
 use log::info;
+use crate::EmptyTwinNormal;
 
 pub fn func_string_twin_normal(arg: String) -> String {
     arg
