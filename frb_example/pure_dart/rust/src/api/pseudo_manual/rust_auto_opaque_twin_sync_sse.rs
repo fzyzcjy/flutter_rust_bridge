@@ -4,7 +4,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsyncSse"]}
 
-use flutter_rust_bridge::{frb, DartSafe};
+use flutter_rust_bridge::frb;
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -77,7 +77,7 @@ pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse(
 
 // ==================================== complex type signatures =======================================
 
-pub trait MyTraitTwinSyncSse: DartSafe {
+pub trait MyTraitTwinSyncSse {
     fn f(&self) -> &str;
 }
 impl MyTraitTwinSyncSse for String {
@@ -119,7 +119,7 @@ pub fn rust_auto_opaque_callable_return_twin_sync_sse(
 
 // ==================================== trait object =======================================
 
-pub trait HelloTraitTwinSyncSse: DartSafe + Send + Sync {
+pub trait HelloTraitTwinSyncSse: Send + Sync {
     fn func_hello(&self) -> &str;
 }
 
