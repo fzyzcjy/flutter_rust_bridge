@@ -1,6 +1,7 @@
 use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
+use anyhow::ensure;
 use log::{debug, info};
 use std::path::Path;
 use std::{env, fs};
@@ -14,11 +15,20 @@ pub struct CreateConfig {
 
 /// Create a new Flutter + Rust project.
 pub fn create(config: CreateConfig) -> anyhow::Result<()> {
-    debug!("create name={}", config.name);
+    let dart_root = env::current_dir()?.join(&config.name);
+    debug!("create name={} dart_root={dart_root:?}", config.name);
+
+    // This will stop the whole generator and tell the users, so we do not care about testing it
+    // frb-coverage:ignore-start
+    ensure!(
+        !dart_root.exists(),
+        "The target folder {:?} already exists. Please use the `integrate` command in this case",
+        dart_root,
+    );
+    // frb-coverage:ignore-end
 
     flutter_create(&config.name)?;
 
-    let dart_root = env::current_dir()?.join(&config.name);
     env::set_current_dir(&dart_root)?;
 
     remove_unnecessary_files(&dart_root)?;

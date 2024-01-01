@@ -106,12 +106,12 @@ fn modify_file(
             let commented_existing_content = existing_content
                 .map(|x| {
                     format!(
-                        "\n\n{}",
+                        "// The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
                         x.split('\n').map(|line| format!("// {line}")).join("\n")
                     )
                 })
                 .unwrap_or_default();
-            return Some((path, [&src, commented_existing_content.as_bytes()].concat()));
+            return Some((path, [commented_existing_content.as_bytes(), &src].concat()));
             // We do not care about this warning
             // frb-coverage:ignore-start
         }
