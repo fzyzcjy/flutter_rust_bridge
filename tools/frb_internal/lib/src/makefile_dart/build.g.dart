@@ -21,24 +21,25 @@ T _$enumValueHelper<T>(Map<T, String> enumValues, String source) =>
 
 BuildFlutterConfig _$parseBuildFlutterConfigResult(ArgResults result) =>
     BuildFlutterConfig(
-      platform: _$enumValueHelper(
-        _$BuildPlatformEnumMapBuildCli,
-        result['platform'] as String,
+      target: _$enumValueHelper(
+        _$BuildTargetEnumMapBuildCli,
+        result['target'] as String,
       ),
     );
 
-const _$BuildPlatformEnumMapBuildCli = <BuildPlatform, String>{
-  BuildPlatform.windows: 'windows',
-  BuildPlatform.macos: 'macos',
-  BuildPlatform.linux: 'linux',
-  BuildPlatform.android: 'android',
-  BuildPlatform.ios: 'ios'
+const _$BuildTargetEnumMapBuildCli = <BuildTarget, String>{
+  BuildTarget.windows: 'windows',
+  BuildTarget.macos: 'macos',
+  BuildTarget.linux: 'linux',
+  BuildTarget.androidAab: 'android-aab',
+  BuildTarget.androidApk: 'android-apk',
+  BuildTarget.ios: 'ios'
 };
 
 ArgParser _$populateBuildFlutterConfigParser(ArgParser parser) => parser
   ..addOption(
-    'platform',
-    allowed: ['windows', 'macos', 'linux', 'android', 'ios'],
+    'target',
+    allowed: ['windows', 'macos', 'linux', 'android-aab', 'android-apk', 'ios'],
   );
 
 final _$parserForBuildFlutterConfig =

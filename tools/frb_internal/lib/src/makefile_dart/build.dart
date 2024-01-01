@@ -17,20 +17,21 @@ List<Command<void>> createCommands() {
   ];
 }
 
-enum BuildPlatform {
+enum BuildTarget {
   windows,
   macos,
   linux,
-  android,
+  androidAab,
+  androidApk,
   ios,
 }
 
 @CliOptions()
 class BuildFlutterConfig {
-  final BuildPlatform platform;
+  final BuildTarget target;
 
   const BuildFlutterConfig({
-    required this.platform,
+    required this.target,
   });
 }
 
@@ -41,23 +42,23 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
   Directory(outputDir).createSync(recursive: true);
 
   switch (config.platform) {
-    case BuildPlatform.windows:
+    case BuildTarget.windows:
       TODO;
 
-    case BuildPlatform.macos:
+    case BuildTarget.macos:
       // https://docs.flutter.dev/deployment/macos
       await exec('flutter build macos --verbose', relativePwd: package);
       copyPathSync(TODO, outputDir);
 
-    case BuildPlatform.linux:
+    case BuildTarget.linux:
       TODO;
 
-    case BuildPlatform.android:
+    case BuildTarget.android:
       // https://docs.flutter.dev/deployment/android
       await exec('flutter build apk --verbose', relativePwd: package);
       copyPathSync('${exec.pwd}/build/app/outputs/apk/release', outputDir);
 
-    case BuildPlatform.ios:
+    case BuildTarget.ios:
       // https://docs.flutter.dev/deployment/ios
       await exec('flutter build ipa --verbose', relativePwd: package);
       copyPathSync('${exec.pwd}/build/ios/archive', outputDir);
