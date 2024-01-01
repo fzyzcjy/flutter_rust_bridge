@@ -170,7 +170,7 @@ pub(crate) fn generate_set_to_list(
     let mut ans = format!("{inner}.toList()");
     if let Primitive(_) = &*ir.inner {
         ans = format!(
-            "{}.fromList({inner})",
+            "{}.fromList({ans})",
             ApiDartGenerator::new(
                 IrTypeDelegate::Set(ir.to_owned()).get_delegate().clone(),
                 context
