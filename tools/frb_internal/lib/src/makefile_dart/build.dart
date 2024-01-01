@@ -1,8 +1,12 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:io/io.dart';
 
 part 'build.g.dart';
 
@@ -24,10 +28,16 @@ class BuildFlutterConfig {
   });
 }
 
+// ref: https://docs.flutter.dev/deployment
 Future<void> buildFlutter(BuildFlutterConfig config) async {
+  const package = 'frb_example/flutter_via_create';
+  final outputDir = '${exec.pwd}target/build_flutter_output';
+  Directory(outputDir).createSync(recursive: true);
+
   switch (config.platform) {
     case BuildPlatform.windows:
-      TODO;
+      await exec('flutter build apk', relativePwd: package);
+      copyPathSync('${exec.pwd}/build/app/outputs/apk/release', outputDir);
 
     case BuildPlatform.macos:
       TODO;
