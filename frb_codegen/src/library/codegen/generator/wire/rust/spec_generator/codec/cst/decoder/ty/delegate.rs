@@ -79,7 +79,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             }),
             IrTypeDelegate::Array(array) => {
                 let acc = Some(generate_decode_array(array));
-                if is_js_value(&array.inner()) {
+                if is_js_value(&self.ir.get_delegate()) {
                     return Acc {
                         io: acc,
                         ..Default::default()
