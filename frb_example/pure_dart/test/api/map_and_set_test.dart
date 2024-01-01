@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
+import 'package:frb_example_pure_dart/src/rust/api/enumeration.dart';
 import 'package:frb_example_pure_dart/src/rust/api/map_and_set.dart';
+import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 
 import '../test_utils.dart';
@@ -30,4 +32,36 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {'a'},
     {'a', 'b'},
   ]);
+
+  addTestsIdentityFunctionCall(
+      funcHashMapStringStructTwinNormal, <Map<String, MySize>>[
+    {},
+    {'a': MySize(width: 1, height: 2)},
+    {
+      'a': MySize(width: 1, height: 2),
+      'b': MySize(width: 3, height: 4),
+    },
+  ]);
+
+  addTestsIdentityFunctionCall(
+      funcHashMapStringSimpleEnumTwinNormal,
+      <Map<String, EnumSimpleTwinNormal>>[
+        {},
+        {'a': EnumSimpleTwinNormal.a},
+        {
+          'a': EnumSimpleTwinNormal.a,
+          'b': EnumSimpleTwinNormal.b,
+        },
+      ]);
+
+  addTestsIdentityFunctionCall(
+      funcHashMapStringComplexEnumTwinNormal,
+      <Map<String, KitchenSinkTwinNormal>>[
+        {},
+        {'a': KitchenSinkTwinNormal.empty()},
+        {
+          'a': KitchenSinkTwinNormal.buffer(Uint8List.fromList([10, 20])),
+          'b': KitchenSinkTwinNormal.nested(42),
+        },
+      ]);
 }
