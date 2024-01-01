@@ -43,12 +43,12 @@ impl LazyFrame {
 
     #[frb(sync)]
     pub fn filter(self, predicate: Expr) -> LazyFrame {
-        Self::new(self.0 .0.filter(predicate.0 .0))
+        Self::new(self.0.filter(predicate.0))
     }
 
     #[frb(sync)]
     pub fn group_by(self, expr: Expr) -> LazyGroupBy {
-        LazyGroupBy::new(self.0 .0.group_by(vec![expr.0 .0]))
+        LazyGroupBy::new(self.0.group_by(vec![expr.0]))
     }
 
     pub fn collect(self) -> DataFrame {
@@ -66,7 +66,7 @@ impl LazyGroupBy {
 
     #[frb(sync)]
     pub fn agg(self, expr: Expr) -> LazyFrame {
-        LazyFrame::new(self.0 .0.agg(vec![expr.0 .0]))
+        LazyFrame::new(self.0.agg(vec![expr.0]))
     }
 }
 
@@ -85,12 +85,12 @@ impl Expr {
 
     #[frb(sync)]
     pub fn gt(self, other: Expr) -> Expr {
-        Expr::new(self.0 .0.gt(other.0 .0))
+        Expr::new(self.0.gt(other.0))
     }
 
     #[frb(sync)]
     pub fn sum(self) -> Expr {
-        Expr::new(self.0 .0.sum())
+        Expr::new(self.0.sum())
     }
 }
 
