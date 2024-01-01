@@ -92,8 +92,23 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 TargetOrCommon::Common => None,
                 TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
-            IrTypeDelegate::Map(ir) => TODO,
-            IrTypeDelegate::Set(ir) => TODO,
+            IrTypeDelegate::Map(ir) => Acc::distribute(
+                Some(
+                    format!(
+                        "let vec: Vec<({}, {})> = self.cst_decode(); vec.into_iter().collect()",
+                        ir.key.rust_api_type(),
+                        ir.value.rust_api_type(),
+                    )
+                )
+            ),
+            IrTypeDelegate::Set(ir) => Acc::distribute(
+                Some(
+                    format!(
+                        "let vec: Vec<{}> = self.cst_decode(); vec.into_iter().collect()",
+                        ir.inner.rust_api_type()
+                    )
+                )
+            ),
         }
     }
 
