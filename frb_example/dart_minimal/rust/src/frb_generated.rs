@@ -34,8 +34,8 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<i32> + core::panic::UnwindSafe,
-    b: impl CstDecode<i32> + core::panic::UnwindSafe,
+    a: impl CstDecode<i32>,
+    b: impl CstDecode<i32>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
