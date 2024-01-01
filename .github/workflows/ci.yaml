@@ -354,15 +354,15 @@ jobs:
       matrix:
         info:
           - image: windows-2019
-            platform: windows
+            target: windows
           - image: macos-13
-            platform: macos
+            target: macos
           - image: ubuntu-latest
-            platform: linux
+            target: linux
           - image: ubuntu-latest
-            platform: android
+            target: android-apk
           - image: macos-13
-            platform: ios
+            target: ios
 
     steps:
       # setup
@@ -382,7 +382,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal build-flutter --platform ${{ matrix.info.platform }}
+      - run: ./frb_internal build-flutter --target ${{ matrix.info.target }}
 
 
   # ----------------------------------- test -----------------------------------
