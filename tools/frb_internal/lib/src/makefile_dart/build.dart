@@ -53,7 +53,12 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
     case BuildTarget.linux:
       TODO;
 
-    case BuildTarget.android:
+    case BuildTarget.androidAab:
+      // https://docs.flutter.dev/deployment/android
+      await exec('flutter build appbundle --verbose', relativePwd: package);
+      copyPathSync('${exec.pwd}/build/app/outputs/bundle/release', outputDir);
+
+    case BuildTarget.androidApk:
       // https://docs.flutter.dev/deployment/android
       await exec('flutter build apk --verbose', relativePwd: package);
       copyPathSync('${exec.pwd}/build/app/outputs/apk/release', outputDir);
