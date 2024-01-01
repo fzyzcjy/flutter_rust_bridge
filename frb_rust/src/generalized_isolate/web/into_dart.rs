@@ -3,6 +3,7 @@ use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
 use crate::rust_opaque::{DartSafe, RustOpaque};
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
+use std::collections::{HashMap, HashSet};
 use std::iter::FromIterator;
 use wasm_bindgen::JsValue;
 
@@ -166,7 +167,7 @@ impl<T> IntoDart for HashSet<T>
 where
     T: IntoDart,
 {
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         into_dart_iterator(self.into_iter())
     }
 }
@@ -178,7 +179,7 @@ where
     K: IntoDart,
     V: IntoDart,
 {
-    fn into_dart(self) -> DartCObject {
+    fn into_dart(self) -> DartAbi {
         into_dart_iterator(self.into_iter())
     }
 }
