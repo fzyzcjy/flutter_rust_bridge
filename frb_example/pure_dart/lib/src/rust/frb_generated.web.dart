@@ -2926,6 +2926,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_i_8(dynamic raw);
 
   @protected
+  int dco_decode_isize(dynamic raw);
+
+  @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
 
   @protected
@@ -7221,6 +7224,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int sse_decode_i_8(SseDeserializer deserializer);
+
+  @protected
+  int sse_decode_isize(SseDeserializer deserializer);
 
   @protected
   KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
@@ -16727,6 +16733,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_i_8(int raw);
 
   @protected
+  int cst_encode_isize(int raw);
+
+  @protected
   int cst_encode_my_enum(MyEnum raw);
 
   @protected
@@ -19565,6 +19574,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_i_8(int self, SseSerializer serializer);
 
   @protected
+  void sse_encode_isize(int self, SseSerializer serializer);
+
+  @protected
   void sse_encode_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal self, SseSerializer serializer);
 
@@ -21826,6 +21838,10 @@ class RustLibWire extends BaseWire {
   void wire_handle_vec_of_primitive_twin_normal(NativePortType port_, int n) =>
       wasmModule.wire_handle_vec_of_primitive_twin_normal(port_, n);
 
+  void wire_primitive_isize_loopback_twin_normal(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_primitive_isize_loopback_twin_normal(port_, arg);
+
   void wire_primitive_types_twin_normal(NativePortType port_, int my_i32,
           Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types_twin_normal(
@@ -21833,6 +21849,10 @@ class RustLibWire extends BaseWire {
 
   void wire_primitive_u32_twin_normal(NativePortType port_, int my_u32) =>
       wasmModule.wire_primitive_u32_twin_normal(port_, my_u32);
+
+  void wire_primitive_usize_loopback_twin_normal(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_primitive_usize_loopback_twin_normal(port_, arg);
 
   void wire_boxed_blob_twin_rust_async(NativePortType port_, Uint8List blob) =>
       wasmModule.wire_boxed_blob_twin_rust_async(port_, blob);
@@ -27742,6 +27762,10 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_example_primitive_list_type_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
+  void wire_primitive_isize_loopback_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_primitive_isize_loopback_twin_rust_async(port_, arg);
+
   void wire_primitive_types_twin_rust_async(NativePortType port_, int my_i32,
           Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types_twin_rust_async(
@@ -27749,6 +27773,18 @@ class RustLibWire extends BaseWire {
 
   void wire_primitive_u32_twin_rust_async(NativePortType port_, int my_u32) =>
       wasmModule.wire_primitive_u32_twin_rust_async(port_, my_u32);
+
+  void wire_primitive_usize_loopback_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_primitive_usize_loopback_twin_rust_async(port_, arg);
+
+  void wire_primitive_isize_loopback_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_primitive_isize_loopback_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_primitive_types_twin_rust_async_sse(
           NativePortType port_,
@@ -27764,6 +27800,22 @@ class RustLibWire extends BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_primitive_u32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_primitive_usize_loopback_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_primitive_usize_loopback_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_primitive_isize_loopback_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_primitive_isize_loopback_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_primitive_types_twin_sse(
@@ -27782,6 +27834,18 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_primitive_u32_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_primitive_usize_loopback_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_primitive_usize_loopback_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_primitive_isize_loopback_twin_sync(int arg) =>
+          wasmModule.wire_primitive_isize_loopback_twin_sync(arg);
+
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_primitive_types_twin_sync(
               int my_i32, Object my_i64, double my_f64, bool my_bool) =>
@@ -27791,6 +27855,18 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_primitive_u32_twin_sync(int my_u32) =>
           wasmModule.wire_primitive_u32_twin_sync(my_u32);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_primitive_usize_loopback_twin_sync(int arg) =>
+          wasmModule.wire_primitive_usize_loopback_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_primitive_isize_loopback_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_primitive_isize_loopback_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_primitive_types_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
@@ -27802,6 +27878,14 @@ class RustLibWire extends BaseWire {
       wire_primitive_u32_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_, int data_len_) =>
           wasmModule.wire_primitive_u32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_primitive_usize_loopback_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_primitive_usize_loopback_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_example_primitive_type_bool_twin_rust_async(
@@ -31092,11 +31176,17 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_vec_of_primitive_twin_normal(
       NativePortType port_, int n);
 
+  external void wire_primitive_isize_loopback_twin_normal(
+      NativePortType port_, int arg);
+
   external void wire_primitive_types_twin_normal(NativePortType port_,
       int my_i32, Object my_i64, double my_f64, bool my_bool);
 
   external void wire_primitive_u32_twin_normal(
       NativePortType port_, int my_u32);
+
+  external void wire_primitive_usize_loopback_twin_normal(
+      NativePortType port_, int arg);
 
   external void wire_boxed_blob_twin_rust_async(
       NativePortType port_, Uint8List blob);
@@ -34969,16 +35059,37 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_,
           int data_len_);
 
+  external void wire_primitive_isize_loopback_twin_rust_async(
+      NativePortType port_, int arg);
+
   external void wire_primitive_types_twin_rust_async(NativePortType port_,
       int my_i32, Object my_i64, double my_f64, bool my_bool);
 
   external void wire_primitive_u32_twin_rust_async(
       NativePortType port_, int my_u32);
 
+  external void wire_primitive_usize_loopback_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_primitive_isize_loopback_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_primitive_types_twin_rust_async_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_primitive_u32_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_primitive_usize_loopback_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_primitive_isize_loopback_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_primitive_types_twin_sse(NativePortType port_,
@@ -34987,12 +35098,27 @@ class RustLibWasmModule implements WasmModule {
   external void wire_primitive_u32_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_primitive_usize_loopback_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_primitive_isize_loopback_twin_sync(int arg);
+
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_primitive_types_twin_sync(
           int my_i32, Object my_i64, double my_f64, bool my_bool);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_primitive_u32_twin_sync(int my_u32);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_primitive_usize_loopback_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_primitive_isize_loopback_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_primitive_types_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
@@ -35001,6 +35127,12 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_primitive_u32_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_primitive_usize_loopback_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire_example_primitive_type_bool_twin_rust_async(
       NativePortType port_, bool arg);

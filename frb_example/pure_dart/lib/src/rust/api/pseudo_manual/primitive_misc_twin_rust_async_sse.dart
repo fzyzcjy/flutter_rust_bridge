@@ -17,3 +17,13 @@ Future<int> primitiveTypesTwinRustAsyncSse(
 
 Future<int> primitiveU32TwinRustAsyncSse({required int myU32, dynamic hint}) =>
     RustLib.instance.api.primitiveU32TwinRustAsyncSse(myU32: myU32, hint: hint);
+
+Future<int> primitiveUsizeLoopbackTwinRustAsyncSse(
+        {required int arg, dynamic hint}) =>
+    RustLib.instance.api
+        .primitiveUsizeLoopbackTwinRustAsyncSse(arg: arg, hint: hint);
+
+Future<int> primitiveIsizeLoopbackTwinRustAsyncSse(
+        {required int arg, dynamic hint}) =>
+    RustLib.instance.api
+        .primitiveIsizeLoopbackTwinRustAsyncSse(arg: arg, hint: hint);

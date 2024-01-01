@@ -9808,6 +9808,11 @@ impl CstDecode<i8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
         self.unchecked_into_f64() as _
     }
 }
+impl CstDecode<isize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> isize {
+        self.unchecked_into_f64() as _
+    }
+}
 impl CstDecode<Vec<f32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<f32> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Float32Array>()
@@ -11490,6 +11495,14 @@ pub fn wire_handle_vec_of_primitive_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_isize_loopback_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: isize,
+) {
+    wire_primitive_isize_loopback_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: i32,
@@ -11506,6 +11519,14 @@ pub fn wire_primitive_u32_twin_normal(
     my_u32: u32,
 ) {
     wire_primitive_u32_twin_normal_impl(port_, my_u32)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_usize_loopback_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: usize,
+) {
+    wire_primitive_usize_loopback_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -20173,6 +20194,14 @@ pub fn wire_example_primitive_list_type_u8_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_isize_loopback_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: isize,
+) {
+    wire_primitive_isize_loopback_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: i32,
@@ -20189,6 +20218,24 @@ pub fn wire_primitive_u32_twin_rust_async(
     my_u32: u32,
 ) {
     wire_primitive_u32_twin_rust_async_impl(port_, my_u32)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_usize_loopback_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: usize,
+) {
+    wire_primitive_usize_loopback_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_isize_loopback_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_isize_loopback_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -20212,6 +20259,26 @@ pub fn wire_primitive_u32_twin_rust_async_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_usize_loopback_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_usize_loopback_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_isize_loopback_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_isize_loopback_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -20232,6 +20299,23 @@ pub fn wire_primitive_u32_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_usize_loopback_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_usize_loopback_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_isize_loopback_twin_sync(
+    arg: isize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_primitive_isize_loopback_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types_twin_sync(
     my_i32: i32,
     my_i64: i64,
@@ -20246,6 +20330,22 @@ pub fn wire_primitive_u32_twin_sync(
     my_u32: u32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_primitive_u32_twin_sync_impl(my_u32)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_usize_loopback_twin_sync(
+    arg: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_primitive_usize_loopback_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_isize_loopback_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_primitive_isize_loopback_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -20264,6 +20364,15 @@ pub fn wire_primitive_u32_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_primitive_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_usize_loopback_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_primitive_usize_loopback_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

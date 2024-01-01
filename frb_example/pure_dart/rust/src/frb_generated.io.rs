@@ -17274,6 +17274,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_vec_of_primitive_twin
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_isize_loopback_twin_normal(
+    port_: i64,
+    arg: isize,
+) {
+    wire_primitive_isize_loopback_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_types_twin_normal(
     port_: i64,
     my_i32: i32,
@@ -17290,6 +17298,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_u32_twin_normal(
     my_u32: u32,
 ) {
     wire_primitive_u32_twin_normal_impl(port_, my_u32)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twin_normal(
+    port_: i64,
+    arg: usize,
+) {
+    wire_primitive_usize_loopback_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -25948,6 +25964,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_isize_loopback_twin_rust_async(
+    port_: i64,
+    arg: isize,
+) {
+    wire_primitive_isize_loopback_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_types_twin_rust_async(
     port_: i64,
     my_i32: i32,
@@ -25964,6 +25988,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_u32_twin_rust_asyn
     my_u32: u32,
 ) {
     wire_primitive_u32_twin_rust_async_impl(port_, my_u32)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twin_rust_async(
+    port_: i64,
+    arg: usize,
+) {
+    wire_primitive_usize_loopback_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_isize_loopback_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_isize_loopback_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -25987,6 +26029,26 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_u32_twin_rust_asyn
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_usize_loopback_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_isize_loopback_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_isize_loopback_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_types_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -26007,6 +26069,23 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_u32_twin_sse(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_primitive_usize_loopback_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_isize_loopback_twin_sync(
+    arg: isize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_primitive_isize_loopback_twin_sync_impl(arg)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_types_twin_sync(
     my_i32: i32,
     my_i64: i64,
@@ -26021,6 +26100,22 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_u32_twin_sync(
     my_u32: u32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_primitive_u32_twin_sync_impl(my_u32)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twin_sync(
+    arg: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_primitive_usize_loopback_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_isize_loopback_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_primitive_isize_loopback_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -26039,6 +26134,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_u32_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_primitive_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_primitive_usize_loopback_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]

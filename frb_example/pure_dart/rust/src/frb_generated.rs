@@ -3309,6 +3309,28 @@ fn wire_handle_vec_of_primitive_twin_normal_impl(
         },
     )
 }
+fn wire_primitive_isize_loopback_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<isize> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "primitive_isize_loopback_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::primitive_misc::primitive_isize_loopback_twin_normal(api_arg),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_primitive_types_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: impl CstDecode<i32> + core::panic::UnwindSafe,
@@ -3357,6 +3379,28 @@ fn wire_primitive_u32_twin_normal_impl(
                     Result::<_, ()>::Ok(crate::api::primitive_misc::primitive_u32_twin_normal(
                         api_my_u32,
                     ))
+                })())
+            }
+        },
+    )
+}
+fn wire_primitive_usize_loopback_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<usize> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "primitive_usize_loopback_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::primitive_misc::primitive_usize_loopback_twin_normal(api_arg),
+                    )
                 })())
             }
         },
@@ -17309,6 +17353,16 @@ fn wire_example_primitive_list_type_u8_twin_sync_sse_impl(
                      Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_twin_sync_sse::example_primitive_list_type_u8_twin_sync_sse(api_arg))
                 })()) })
 }
+fn wire_primitive_isize_loopback_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<isize> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_isize_loopback_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
+                    transform_result_dco((move ||  async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_isize_loopback_twin_rust_async(api_arg).await)
+                    })().await)
+                } })
+}
 fn wire_primitive_types_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_i32: impl CstDecode<i32> + core::panic::UnwindSafe,
@@ -17329,6 +17383,31 @@ fn wire_primitive_u32_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_u32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_my_u32 = my_u32.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_u32_twin_rust_async(api_my_u32).await)
+                    })().await)
+                } })
+}
+fn wire_primitive_usize_loopback_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<usize> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_usize_loopback_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
+                    transform_result_dco((move ||  async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async::primitive_usize_loopback_twin_rust_async(api_arg).await)
+                    })().await)
+                } })
+}
+fn wire_primitive_isize_loopback_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_isize_loopback_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <isize>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move ||  async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async_sse::primitive_isize_loopback_twin_rust_async_sse(api_arg).await)
                     })().await)
                 } })
 }
@@ -17363,6 +17442,36 @@ fn wire_primitive_u32_twin_rust_async_sse_impl(
                     transform_result_sse((move ||  async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async_sse::primitive_u32_twin_rust_async_sse(api_my_u32).await)
                     })().await)
+                } })
+}
+fn wire_primitive_usize_loopback_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_usize_loopback_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <usize>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move ||  async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_rust_async_sse::primitive_usize_loopback_twin_rust_async_sse(api_arg).await)
+                    })().await)
+                } })
+}
+fn wire_primitive_isize_loopback_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_isize_loopback_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <isize>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||   {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_sse::primitive_isize_loopback_twin_sse(api_arg))
+                    })())
                 } })
 }
 fn wire_primitive_types_twin_sse_impl(
@@ -17419,6 +17528,29 @@ fn wire_primitive_u32_twin_sse_impl(
         },
     )
 }
+fn wire_primitive_usize_loopback_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_usize_loopback_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <usize>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||   {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_sse::primitive_usize_loopback_twin_sse(api_arg))
+                    })())
+                } })
+}
+fn wire_primitive_isize_loopback_twin_sync_impl(
+    arg: impl CstDecode<isize> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_isize_loopback_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
+                transform_result_dco((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_sync::primitive_isize_loopback_twin_sync(api_arg))
+                })()) })
+}
 fn wire_primitive_types_twin_sync_impl(
     my_i32: impl CstDecode<i32> + core::panic::UnwindSafe,
     my_i64: impl CstDecode<i64> + core::panic::UnwindSafe,
@@ -17470,6 +17602,27 @@ fn wire_primitive_u32_twin_sync_impl(
         },
     )
 }
+fn wire_primitive_usize_loopback_twin_sync_impl(
+    arg: impl CstDecode<usize> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_usize_loopback_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
+                transform_result_dco((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_sync::primitive_usize_loopback_twin_sync(api_arg))
+                })()) })
+}
+fn wire_primitive_isize_loopback_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_isize_loopback_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <isize>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_sync_sse::primitive_isize_loopback_twin_sync_sse(api_arg))
+                })()) })
+}
 fn wire_primitive_types_twin_sync_sse_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -17497,6 +17650,19 @@ fn wire_primitive_u32_twin_sync_sse_impl(
             let api_my_u32 = <u32>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move ||  {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_sync_sse::primitive_u32_twin_sync_sse(api_my_u32))
+                })()) })
+}
+fn wire_primitive_usize_loopback_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "primitive_usize_loopback_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <usize>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_misc_twin_sync_sse::primitive_usize_loopback_twin_sync_sse(api_arg))
                 })()) })
 }
 fn wire_example_primitive_type_bool_twin_rust_async_impl(
@@ -24278,6 +24444,11 @@ impl CstDecode<i8> for i8 {
         self
     }
 }
+impl CstDecode<isize> for isize {
+    fn cst_decode(self) -> isize {
+        self
+    }
+}
 impl CstDecode<crate::auxiliary::sample_types::MyEnum> for i32 {
     fn cst_decode(self) -> crate::auxiliary::sample_types::MyEnum {
         match self {
@@ -28766,6 +28937,12 @@ impl SseDecode for i64 {
 impl SseDecode for i8 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i8().unwrap()
+    }
+}
+
+impl SseDecode for isize {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_i64::<NativeEndian>().unwrap() as _
     }
 }
 
@@ -47548,6 +47725,15 @@ impl SseEncode for i64 {
 impl SseEncode for i8 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i8(self).unwrap();
+    }
+}
+
+impl SseEncode for isize {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer
+            .cursor
+            .write_i64::<NativeEndian>(self as _)
+            .unwrap();
     }
 }
 

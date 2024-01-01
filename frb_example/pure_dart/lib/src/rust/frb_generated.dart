@@ -720,6 +720,9 @@ abstract class RustLibApi extends BaseApi {
   Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
       {required int n, dynamic hint});
 
+  Future<int> primitiveIsizeLoopbackTwinNormal(
+      {required int arg, dynamic hint});
+
   Future<int> primitiveTypesTwinNormal(
       {required int myI32,
       required int myI64,
@@ -728,6 +731,9 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint});
+
+  Future<int> primitiveUsizeLoopbackTwinNormal(
+      {required int arg, dynamic hint});
 
   Future<BlobTwinRustAsync> boxedBlobTwinRustAsync(
       {required U8Array1600 blob, dynamic hint});
@@ -3402,6 +3408,9 @@ abstract class RustLibApi extends BaseApi {
   Uint8List examplePrimitiveListTypeU8TwinSyncSse(
       {required Uint8List arg, dynamic hint});
 
+  Future<int> primitiveIsizeLoopbackTwinRustAsync(
+      {required int arg, dynamic hint});
+
   Future<int> primitiveTypesTwinRustAsync(
       {required int myI32,
       required int myI64,
@@ -3410,6 +3419,12 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<int> primitiveU32TwinRustAsync({required int myU32, dynamic hint});
+
+  Future<int> primitiveUsizeLoopbackTwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<int> primitiveIsizeLoopbackTwinRustAsyncSse(
+      {required int arg, dynamic hint});
 
   Future<int> primitiveTypesTwinRustAsyncSse(
       {required int myI32,
@@ -3420,6 +3435,11 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> primitiveU32TwinRustAsyncSse({required int myU32, dynamic hint});
 
+  Future<int> primitiveUsizeLoopbackTwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> primitiveIsizeLoopbackTwinSse({required int arg, dynamic hint});
+
   Future<int> primitiveTypesTwinSse(
       {required int myI32,
       required int myI64,
@@ -3428,6 +3448,10 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<int> primitiveU32TwinSse({required int myU32, dynamic hint});
+
+  Future<int> primitiveUsizeLoopbackTwinSse({required int arg, dynamic hint});
+
+  int primitiveIsizeLoopbackTwinSync({required int arg, dynamic hint});
 
   int primitiveTypesTwinSync(
       {required int myI32,
@@ -3438,6 +3462,10 @@ abstract class RustLibApi extends BaseApi {
 
   int primitiveU32TwinSync({required int myU32, dynamic hint});
 
+  int primitiveUsizeLoopbackTwinSync({required int arg, dynamic hint});
+
+  int primitiveIsizeLoopbackTwinSyncSse({required int arg, dynamic hint});
+
   int primitiveTypesTwinSyncSse(
       {required int myI32,
       required int myI64,
@@ -3446,6 +3474,8 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   int primitiveU32TwinSyncSse({required int myU32, dynamic hint});
+
+  int primitiveUsizeLoopbackTwinSyncSse({required int arg, dynamic hint});
 
   Future<bool> examplePrimitiveTypeBoolTwinRustAsync(
       {required bool arg, dynamic hint});
@@ -8966,6 +8996,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> primitiveIsizeLoopbackTwinNormal(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_isize(arg);
+        return wire.wire_primitive_isize_loopback_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveIsizeLoopbackTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveIsizeLoopbackTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_isize_loopback_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> primitiveTypesTwinNormal(
       {required int myI32,
       required int myI64,
@@ -9018,6 +9073,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinNormalConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_normal",
         argNames: ["myU32"],
+      );
+
+  @override
+  Future<int> primitiveUsizeLoopbackTwinNormal(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_usize(arg);
+        return wire.wire_primitive_usize_loopback_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveUsizeLoopbackTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveUsizeLoopbackTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_usize_loopback_twin_normal",
+        argNames: ["arg"],
       );
 
   @override
@@ -34310,6 +34390,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> primitiveIsizeLoopbackTwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_isize(arg);
+        return wire.wire_primitive_isize_loopback_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveIsizeLoopbackTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveIsizeLoopbackTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_isize_loopback_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> primitiveTypesTwinRustAsync(
       {required int myI32,
       required int myI64,
@@ -34363,6 +34468,59 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinRustAsyncConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_rust_async",
         argNames: ["myU32"],
+      );
+
+  @override
+  Future<int> primitiveUsizeLoopbackTwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_usize(arg);
+        return wire.wire_primitive_usize_loopback_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveUsizeLoopbackTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveUsizeLoopbackTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_usize_loopback_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> primitiveIsizeLoopbackTwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_primitive_isize_loopback_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveIsizeLoopbackTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveIsizeLoopbackTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_isize_loopback_twin_rust_async_sse",
+        argNames: ["arg"],
       );
 
   @override
@@ -34428,6 +34586,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> primitiveUsizeLoopbackTwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_primitive_usize_loopback_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveUsizeLoopbackTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveUsizeLoopbackTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_usize_loopback_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> primitiveIsizeLoopbackTwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_primitive_isize_loopback_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveIsizeLoopbackTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveIsizeLoopbackTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_isize_loopback_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> primitiveTypesTwinSse(
       {required int myI32,
       required int myI64,
@@ -34488,6 +34701,57 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> primitiveUsizeLoopbackTwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_primitive_usize_loopback_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveUsizeLoopbackTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveUsizeLoopbackTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_usize_loopback_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int primitiveIsizeLoopbackTwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_isize(arg);
+        return wire.wire_primitive_isize_loopback_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveIsizeLoopbackTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveIsizeLoopbackTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_isize_loopback_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   int primitiveTypesTwinSync(
       {required int myI32,
       required int myI64,
@@ -34539,6 +34803,57 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinSyncConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_sync",
         argNames: ["myU32"],
+      );
+
+  @override
+  int primitiveUsizeLoopbackTwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_usize(arg);
+        return wire.wire_primitive_usize_loopback_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveUsizeLoopbackTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveUsizeLoopbackTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_usize_loopback_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int primitiveIsizeLoopbackTwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_primitive_isize_loopback_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveIsizeLoopbackTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveIsizeLoopbackTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_isize_loopback_twin_sync_sse",
+        argNames: ["arg"],
       );
 
   @override
@@ -34599,6 +34914,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinSyncSseConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_sync_sse",
         argNames: ["myU32"],
+      );
+
+  @override
+  int primitiveUsizeLoopbackTwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_primitive_usize_loopback_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kPrimitiveUsizeLoopbackTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveUsizeLoopbackTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_usize_loopback_twin_sync_sse",
+        argNames: ["arg"],
       );
 
   @override
@@ -52003,6 +52345,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int dco_decode_isize(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
   KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
@@ -61675,6 +62022,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int sse_decode_isize(SseDeserializer deserializer) {
+    return deserializer.buffer.getInt64();
+  }
+
+  @protected
   KitchenSinkTwinNormal sse_decode_kitchen_sink_twin_normal(
       SseDeserializer deserializer) {
     var tag_ = sse_decode_i_32(deserializer);
@@ -66585,6 +66937,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   int cst_encode_i_8(int raw) {
+    return raw;
+  }
+
+  @protected
+  int cst_encode_isize(int raw) {
     return raw;
   }
 
@@ -71836,6 +72193,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_i_8(int self, SseSerializer serializer) {
     serializer.buffer.putInt8(self);
+  }
+
+  @protected
+  void sse_encode_isize(int self, SseSerializer serializer) {
+    serializer.buffer.putInt64(self);
   }
 
   @protected
