@@ -2,7 +2,6 @@ use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::channel::oneshot;
 use std::future::Future;
-use std::panic::AssertUnwindSafe;
 use std::pin::Pin;
 use std::task::{Context, Poll};
 
@@ -61,12 +60,12 @@ where
 
 // ref: async-std's implementation
 // https://github.com/async-rs/async-std/blob/8fea0500990c9d8977cbeef55bc9003cca39abc8/src/task/join_handle.rs#L23
-pub struct JoinHandle<T>(AssertUnwindSafe<oneshot::Receiver<T>>);
+pub struct JoinHandle<T>(oneshot::Receiver<T>);
 
 impl<T> JoinHandle<T> {
     fn create_pair() -> (oneshot::Sender<T>, Self) {
         let (sender, receiver) = oneshot::channel::<T>();
-        (sender, Self(AssertUnwindSafe(receiver)))
+        (sender, Self(receiver))
     }
 }
 
