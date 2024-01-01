@@ -2215,28 +2215,6 @@ fn wire_func_macro_struct_twin_normal_impl(
         },
     )
 }
-fn wire_func_hash_map_bytes_bytes_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<HashMap<Vec<u8>, Vec<u8>>> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_hash_map_bytes_bytes_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_arg = arg.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    Result::<_, ()>::Ok(
-                        crate::api::map_and_set::func_hash_map_bytes_bytes_twin_normal(api_arg),
-                    )
-                })())
-            }
-        },
-    )
-}
 fn wire_func_hash_map_i32_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<HashMap<i32, i32>> + core::panic::UnwindSafe,
@@ -2349,28 +2327,6 @@ fn wire_func_hash_map_string_struct_twin_normal_impl(
                     Result::<_, ()>::Ok(
                         crate::api::map_and_set::func_hash_map_string_struct_twin_normal(api_arg),
                     )
-                })())
-            }
-        },
-    )
-}
-fn wire_func_hash_set_bytes_twin_normal_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<HashSet<Vec<u8>>> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_hash_set_bytes_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_arg = arg.cst_decode();
-            move |context| {
-                transform_result_dco((move || {
-                    Result::<_, ()>::Ok(crate::api::map_and_set::func_hash_set_bytes_twin_normal(
-                        api_arg,
-                    ))
                 })())
             }
         },
@@ -11501,16 +11457,6 @@ fn wire_use_imported_struct_twin_sync_sse_impl(
                      Result::<_,()>::Ok(crate::api::pseudo_manual::external_type_in_crate_twin_sync_sse::use_imported_struct_twin_sync_sse(api_my_struct))
                 })()) })
 }
-fn wire_func_hash_map_bytes_bytes_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<HashMap<Vec<u8>, Vec<u8>>> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_bytes_bytes_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
-                    transform_result_dco((move ||  async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_map_bytes_bytes_twin_rust_async(api_arg).await)
-                    })().await)
-                } })
-}
 fn wire_func_hash_map_i32_i32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<HashMap<i32, i32>> + core::panic::UnwindSafe,
@@ -11572,16 +11518,6 @@ fn wire_func_hash_map_string_struct_twin_rust_async_impl(
                     })().await)
                 } })
 }
-fn wire_func_hash_set_bytes_twin_rust_async_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<HashSet<Vec<u8>>> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_bytes_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
-                    transform_result_dco((move ||  async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_bytes_twin_rust_async(api_arg).await)
-                    })().await)
-                } })
-}
 fn wire_func_hash_set_i32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<HashSet<i32>> + core::panic::UnwindSafe,
@@ -11599,21 +11535,6 @@ fn wire_func_hash_set_string_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_string_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async::func_hash_set_string_twin_rust_async(api_arg).await)
-                    })().await)
-                } })
-}
-fn wire_func_hash_map_bytes_bytes_twin_rust_async_sse_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_bytes_bytes_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <HashMap<Vec<u8>, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse((move ||  async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async_sse::func_hash_map_bytes_bytes_twin_rust_async_sse(api_arg).await)
                     })().await)
                 } })
 }
@@ -11692,21 +11613,6 @@ fn wire_func_hash_map_string_struct_twin_rust_async_sse_impl(
                     })().await)
                 } })
 }
-fn wire_func_hash_set_bytes_twin_rust_async_sse_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_bytes_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <HashSet<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
-                    transform_result_sse((move ||  async move {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async_sse::func_hash_set_bytes_twin_rust_async_sse(api_arg).await)
-                    })().await)
-                } })
-}
 fn wire_func_hash_set_i32_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -11735,21 +11641,6 @@ fn wire_func_hash_set_string_twin_rust_async_sse_impl(
                     transform_result_sse((move ||  async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_rust_async_sse::func_hash_set_string_twin_rust_async_sse(api_arg).await)
                     })().await)
-                } })
-}
-fn wire_func_hash_map_bytes_bytes_twin_sse_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_bytes_bytes_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <HashMap<Vec<u8>, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||   {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sse::func_hash_map_bytes_bytes_twin_sse(api_arg))
-                    })())
                 } })
 }
 fn wire_func_hash_map_i32_i32_twin_sse_impl(
@@ -11827,21 +11718,6 @@ fn wire_func_hash_map_string_struct_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_func_hash_set_bytes_twin_sse_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_bytes_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <HashSet<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
-                    transform_result_sse((move ||   {
-                         Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sse::func_hash_set_bytes_twin_sse(api_arg))
-                    })())
-                } })
-}
 fn wire_func_hash_set_i32_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -11893,14 +11769,6 @@ fn wire_func_hash_set_string_twin_sse_impl(
                     })())
                 } })
 }
-fn wire_func_hash_map_bytes_bytes_twin_sync_impl(
-    arg: impl CstDecode<HashMap<Vec<u8>, Vec<u8>>> + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_bytes_bytes_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
-                transform_result_dco((move ||  {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_bytes_bytes_twin_sync(api_arg))
-                })()) })
-}
 fn wire_func_hash_map_i32_i32_twin_sync_impl(
     arg: impl CstDecode<HashMap<i32, i32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -11946,27 +11814,6 @@ fn wire_func_hash_map_string_struct_twin_sync_impl(
                      Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_map_string_struct_twin_sync(api_arg))
                 })()) })
 }
-fn wire_func_hash_set_bytes_twin_sync_impl(
-    arg: impl CstDecode<HashSet<Vec<u8>>> + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_hash_set_bytes_twin_sync",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let api_arg = arg.cst_decode();
-            transform_result_dco((move || {
-                Result::<_, ()>::Ok(
-                    crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_set_bytes_twin_sync(
-                        api_arg,
-                    ),
-                )
-            })())
-        },
-    )
-}
 fn wire_func_hash_set_i32_twin_sync_impl(
     arg: impl CstDecode<HashSet<i32>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -11994,19 +11841,6 @@ fn wire_func_hash_set_string_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_string_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync::func_hash_set_string_twin_sync(api_arg))
-                })()) })
-}
-fn wire_func_hash_map_bytes_bytes_twin_sync_sse_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_bytes_bytes_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <HashMap<Vec<u8>, Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end();
-                transform_result_sse((move ||  {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync_sse::func_hash_map_bytes_bytes_twin_sync_sse(api_arg))
                 })()) })
 }
 fn wire_func_hash_map_i32_i32_twin_sync_sse_impl(
@@ -12072,19 +11906,6 @@ fn wire_func_hash_map_string_struct_twin_sync_sse_impl(
             let api_arg = <HashMap<String, crate::auxiliary::sample_types::MySize>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move ||  {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync_sse::func_hash_map_string_struct_twin_sync_sse(api_arg))
-                })()) })
-}
-fn wire_func_hash_set_bytes_twin_sync_sse_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_bytes_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
-            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
-            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <HashSet<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end();
-                transform_result_sse((move ||  {
-                     Result::<_,()>::Ok(crate::api::pseudo_manual::map_and_set_twin_sync_sse::func_hash_set_bytes_twin_sync_sse(api_arg))
                 })()) })
 }
 fn wire_func_hash_set_i32_twin_sync_sse_impl(
@@ -25618,13 +25439,6 @@ impl SseDecode for HashMap<i32, i32> {
     }
 }
 
-impl SseDecode for HashMap<Vec<u8>, Vec<u8>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <(Vec<u8>, Vec<u8>)>::sse_decode(deserializer);
-        return inner.into_iter().collect();
-    }
-}
-
 impl SseDecode for flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -25893,13 +25707,6 @@ impl SseDecode for HashSet<String> {
 impl SseDecode for HashSet<i32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<i32>>::sse_decode(deserializer);
-        return inner.into_iter().collect();
-    }
-}
-
-impl SseDecode for HashSet<Vec<u8>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <Vec<Vec<u8>>>::sse_decode(deserializer);
         return inner.into_iter().collect();
     }
 }
@@ -30574,17 +30381,6 @@ impl SseDecode
     }
 }
 
-impl SseDecode for Vec<Vec<u8>> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
-        for idx_ in 0..len_ {
-            ans_.push(<Vec<u8>>::sse_decode(deserializer));
-        }
-        return ans_;
-    }
-}
-
 impl SseDecode for Vec<crate::auxiliary::sample_types::MyEnum> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
@@ -33874,14 +33670,6 @@ impl SseDecode for (i32, i32) {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_field0 = <i32>::sse_decode(deserializer);
         let mut var_field1 = <i32>::sse_decode(deserializer);
-        return (var_field0, var_field1);
-    }
-}
-
-impl SseDecode for (Vec<u8>, Vec<u8>) {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_field0 = <Vec<u8>>::sse_decode(deserializer);
-        let mut var_field1 = <Vec<u8>>::sse_decode(deserializer);
         return (var_field0, var_field1);
     }
 }
@@ -45808,12 +45596,6 @@ impl SseEncode for HashMap<i32, i32> {
     }
 }
 
-impl SseEncode for HashMap<Vec<u8>, Vec<u8>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <(Vec<u8>, Vec<u8>)>::sse_encode(self.into_iter().collect(), serializer);
-    }
-}
-
 impl SseEncode for flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
@@ -46109,12 +45891,6 @@ impl SseEncode for HashSet<String> {
 impl SseEncode for HashSet<i32> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<i32>>::sse_encode(self.into_iter().collect(), serializer);
-    }
-}
-
-impl SseEncode for HashSet<Vec<u8>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<Vec<u8>>>::sse_encode(self.into_iter().collect(), serializer);
     }
 }
 
@@ -49628,15 +49404,6 @@ impl SseEncode
     }
 }
 
-impl SseEncode for Vec<Vec<u8>> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <i32>::sse_encode(self.len() as _, serializer);
-        for item in self {
-            <Vec<u8>>::sse_encode(item, serializer);
-        }
-    }
-}
-
 impl SseEncode for Vec<crate::auxiliary::sample_types::MyEnum> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.len() as _, serializer);
@@ -52226,13 +51993,6 @@ impl SseEncode for (i32, i32) {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.0, serializer);
         <i32>::sse_encode(self.1, serializer);
-    }
-}
-
-impl SseEncode for (Vec<u8>, Vec<u8>) {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<u8>>::sse_encode(self.0, serializer);
-        <Vec<u8>>::sse_encode(self.1, serializer);
     }
 }
 

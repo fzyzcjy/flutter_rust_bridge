@@ -566,9 +566,6 @@ abstract class RustLibApi extends BaseApi {
   Future<MacroStruct> funcMacroStructTwinNormal(
       {required MacroStruct arg, dynamic hint});
 
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinNormal(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint});
-
   Future<Map<int, int>> funcHashMapI32I32TwinNormal(
       {required Map<int, int> arg, dynamic hint});
 
@@ -585,9 +582,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Map<String, MySize>> funcHashMapStringStructTwinNormal(
       {required Map<String, MySize> arg, dynamic hint});
-
-  Future<Set<Uint8List>> funcHashSetBytesTwinNormal(
-      {required Set<Uint8List> arg, dynamic hint});
 
   Future<Set<int>> funcHashSetI32TwinNormal(
       {required Set<int> arg, dynamic hint});
@@ -2237,9 +2231,6 @@ abstract class RustLibApi extends BaseApi {
 
   bool useImportedStructTwinSyncSse({required MyStruct myStruct, dynamic hint});
 
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinRustAsync(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint});
-
   Future<Map<int, int>> funcHashMapI32I32TwinRustAsync(
       {required Map<int, int> arg, dynamic hint});
 
@@ -2257,17 +2248,11 @@ abstract class RustLibApi extends BaseApi {
   Future<Map<String, MySize>> funcHashMapStringStructTwinRustAsync(
       {required Map<String, MySize> arg, dynamic hint});
 
-  Future<Set<Uint8List>> funcHashSetBytesTwinRustAsync(
-      {required Set<Uint8List> arg, dynamic hint});
-
   Future<Set<int>> funcHashSetI32TwinRustAsync(
       {required Set<int> arg, dynamic hint});
 
   Future<Set<String>> funcHashSetStringTwinRustAsync(
       {required Set<String> arg, dynamic hint});
-
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinRustAsyncSse(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint});
 
   Future<Map<int, int>> funcHashMapI32I32TwinRustAsyncSse(
       {required Map<int, int> arg, dynamic hint});
@@ -2287,17 +2272,11 @@ abstract class RustLibApi extends BaseApi {
   Future<Map<String, MySize>> funcHashMapStringStructTwinRustAsyncSse(
       {required Map<String, MySize> arg, dynamic hint});
 
-  Future<Set<Uint8List>> funcHashSetBytesTwinRustAsyncSse(
-      {required Set<Uint8List> arg, dynamic hint});
-
   Future<Set<int>> funcHashSetI32TwinRustAsyncSse(
       {required Set<int> arg, dynamic hint});
 
   Future<Set<String>> funcHashSetStringTwinRustAsyncSse(
       {required Set<String> arg, dynamic hint});
-
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinSse(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint});
 
   Future<Map<int, int>> funcHashMapI32I32TwinSse(
       {required Map<int, int> arg, dynamic hint});
@@ -2314,16 +2293,10 @@ abstract class RustLibApi extends BaseApi {
   Future<Map<String, MySize>> funcHashMapStringStructTwinSse(
       {required Map<String, MySize> arg, dynamic hint});
 
-  Future<Set<Uint8List>> funcHashSetBytesTwinSse(
-      {required Set<Uint8List> arg, dynamic hint});
-
   Future<Set<int>> funcHashSetI32TwinSse({required Set<int> arg, dynamic hint});
 
   Future<Set<String>> funcHashSetStringTwinSse(
       {required Set<String> arg, dynamic hint});
-
-  Map<Uint8List, Uint8List> funcHashMapBytesBytesTwinSync(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint});
 
   Map<int, int> funcHashMapI32I32TwinSync(
       {required Map<int, int> arg, dynamic hint});
@@ -2340,16 +2313,10 @@ abstract class RustLibApi extends BaseApi {
   Map<String, MySize> funcHashMapStringStructTwinSync(
       {required Map<String, MySize> arg, dynamic hint});
 
-  Set<Uint8List> funcHashSetBytesTwinSync(
-      {required Set<Uint8List> arg, dynamic hint});
-
   Set<int> funcHashSetI32TwinSync({required Set<int> arg, dynamic hint});
 
   Set<String> funcHashSetStringTwinSync(
       {required Set<String> arg, dynamic hint});
-
-  Map<Uint8List, Uint8List> funcHashMapBytesBytesTwinSyncSse(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint});
 
   Map<int, int> funcHashMapI32I32TwinSyncSse(
       {required Map<int, int> arg, dynamic hint});
@@ -2365,9 +2332,6 @@ abstract class RustLibApi extends BaseApi {
 
   Map<String, MySize> funcHashMapStringStructTwinSyncSse(
       {required Map<String, MySize> arg, dynamic hint});
-
-  Set<Uint8List> funcHashSetBytesTwinSyncSse(
-      {required Set<Uint8List> arg, dynamic hint});
 
   Set<int> funcHashSetI32TwinSyncSse({required Set<int> arg, dynamic hint});
 
@@ -7836,31 +7800,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinNormal(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_Map_list_prim_u_8_list_prim_u_8(arg);
-        return wire.wire_func_hash_map_bytes_bytes_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_Map_list_prim_u_8_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashMapBytesBytesTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashMapBytesBytesTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_map_bytes_bytes_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<Map<int, int>> funcHashMapI32I32TwinNormal(
       {required Map<int, int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -7986,30 +7925,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncHashMapStringStructTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "func_hash_map_string_struct_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Set<Uint8List>> funcHashSetBytesTwinNormal(
-      {required Set<Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_Set_list_prim_u_8(arg);
-        return wire.wire_func_hash_set_bytes_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_Set_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashSetBytesTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashSetBytesTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "func_hash_set_bytes_twin_normal",
         argNames: ["arg"],
       );
 
@@ -23798,31 +23713,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinRustAsync(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_Map_list_prim_u_8_list_prim_u_8(arg);
-        return wire.wire_func_hash_map_bytes_bytes_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_Map_list_prim_u_8_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashMapBytesBytesTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashMapBytesBytesTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_map_bytes_bytes_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<Map<int, int>> funcHashMapI32I32TwinRustAsync(
       {required Map<int, int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -23954,31 +23844,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Set<Uint8List>> funcHashSetBytesTwinRustAsync(
-      {required Set<Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_Set_list_prim_u_8(arg);
-        return wire.wire_func_hash_set_bytes_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_Set_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashSetBytesTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashSetBytesTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_set_bytes_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<Set<int>> funcHashSetI32TwinRustAsync(
       {required Set<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -24025,34 +23890,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncHashSetStringTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "func_hash_set_string_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinRustAsyncSse(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_list_prim_u_8_list_prim_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_hash_map_bytes_bytes_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_list_prim_u_8_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashMapBytesBytesTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashMapBytesBytesTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_map_bytes_bytes_twin_rust_async_sse",
         argNames: ["arg"],
       );
 
@@ -24203,34 +24040,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Set<Uint8List>> funcHashSetBytesTwinRustAsyncSse(
-      {required Set<Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_list_prim_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_hash_set_bytes_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashSetBytesTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashSetBytesTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_set_bytes_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<Set<int>> funcHashSetI32TwinRustAsyncSse(
       {required Set<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -24283,34 +24092,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncHashSetStringTwinRustAsyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "func_hash_set_string_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinSse(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_list_prim_u_8_list_prim_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_hash_map_bytes_bytes_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_list_prim_u_8_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashMapBytesBytesTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashMapBytesBytesTwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_map_bytes_bytes_twin_sse",
         argNames: ["arg"],
       );
 
@@ -24454,33 +24235,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Set<Uint8List>> funcHashSetBytesTwinSse(
-      {required Set<Uint8List> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_list_prim_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_hash_set_bytes_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashSetBytesTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashSetBytesTwinSseConstMeta => const TaskConstMeta(
-        debugName: "func_hash_set_bytes_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<Set<int>> funcHashSetI32TwinSse(
       {required Set<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -24531,31 +24285,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kFuncHashSetStringTwinSseConstMeta => const TaskConstMeta(
         debugName: "func_hash_set_string_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Map<Uint8List, Uint8List> funcHashMapBytesBytesTwinSync(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_Map_list_prim_u_8_list_prim_u_8(arg);
-        return wire.wire_func_hash_map_bytes_bytes_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_Map_list_prim_u_8_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashMapBytesBytesTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashMapBytesBytesTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_map_bytes_bytes_twin_sync",
         argNames: ["arg"],
       );
 
@@ -24684,30 +24413,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Set<Uint8List> funcHashSetBytesTwinSync(
-      {required Set<Uint8List> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_Set_list_prim_u_8(arg);
-        return wire.wire_func_hash_set_bytes_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_Set_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashSetBytesTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashSetBytesTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "func_hash_set_bytes_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
   Set<int> funcHashSetI32TwinSync({required Set<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -24751,34 +24456,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kFuncHashSetStringTwinSyncConstMeta => const TaskConstMeta(
         debugName: "func_hash_set_string_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Map<Uint8List, Uint8List> funcHashMapBytesBytesTwinSyncSse(
-      {required Map<Uint8List, Uint8List> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_list_prim_u_8_list_prim_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_hash_map_bytes_bytes_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_list_prim_u_8_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashMapBytesBytesTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashMapBytesBytesTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_map_bytes_bytes_twin_sync_sse",
         argNames: ["arg"],
       );
 
@@ -24919,34 +24596,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncHashMapStringStructTwinSyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "func_hash_map_string_struct_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Set<Uint8List> funcHashSetBytesTwinSyncSse(
-      {required Set<Uint8List> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_list_prim_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_hash_set_bytes_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_list_prim_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncHashSetBytesTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncHashSetBytesTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_hash_set_bytes_twin_sync_sse",
         argNames: ["arg"],
       );
 
@@ -48553,13 +48202,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<Uint8List, Uint8List> dco_decode_Map_list_prim_u_8_list_prim_u_8(
-      dynamic raw) {
-    return Map.fromEntries(
-        (raw as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-  }
-
-  @protected
   MutexHideData dco_decode_RustOpaque_MutexHideData(dynamic raw) {
     return MutexHideData.dcoDecode(raw as List<dynamic>);
   }
@@ -48765,11 +48407,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Set<int> dco_decode_Set_i_32(dynamic raw) {
-    return Set.from(raw as List<dynamic>);
-  }
-
-  @protected
-  Set<Uint8List> dco_decode_Set_list_prim_u_8(dynamic raw) {
     return Set.from(raw as List<dynamic>);
   }
 
@@ -54454,11 +54091,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<Uint8List> dco_decode_list_list_prim_u_8(dynamic raw) {
-    return (raw as List<dynamic>).map(dco_decode_list_prim_u_8).toList();
-  }
-
-  @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw) {
     return (raw as List<dynamic>).map(dco_decode_my_enum).toList();
   }
@@ -56697,19 +56329,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  (Uint8List, Uint8List) dco_decode_record_list_prim_u_8_list_prim_u_8(
-      dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2) {
-      throw Exception('Expected 2 elements, got ${arr.length}');
-    }
-    return (
-      dco_decode_list_prim_u_8(arr[0]),
-      dco_decode_list_prim_u_8(arr[1]),
-    );
-  }
-
-  @protected
   (String, EnumSimpleTwinNormal)
       dco_decode_record_string_enum_simple_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -58672,15 +58291,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<Uint8List, Uint8List> sse_decode_Map_list_prim_u_8_list_prim_u_8(
-      SseDeserializer deserializer) {
-    var inner = sse_decode_record_list_prim_u_8_list_prim_u_8(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
-  }
-
-  @protected
   MutexHideData sse_decode_RustOpaque_MutexHideData(
       SseDeserializer deserializer) {
     return MutexHideData.sseDecode(
@@ -58930,13 +58540,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Set<int> sse_decode_Set_i_32(SseDeserializer deserializer) {
     var inner = sse_decode_list_prim_i_32(deserializer);
-    return Set.from(inner as List<dynamic>);
-    ;
-  }
-
-  @protected
-  Set<Uint8List> sse_decode_Set_list_prim_u_8(SseDeserializer deserializer) {
-    var inner = sse_decode_list_list_prim_u_8(deserializer);
     return Set.from(inner as List<dynamic>);
     ;
   }
@@ -64632,16 +64235,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<Uint8List> sse_decode_list_list_prim_u_8(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    var ans_ = <Uint8List>[];
-    for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_list_prim_u_8(deserializer));
-    }
-    return ans_;
-  }
-
-  @protected
   List<MyEnum> sse_decode_list_my_enum(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <MyEnum>[];
@@ -67239,14 +66832,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  (Uint8List, Uint8List) sse_decode_record_list_prim_u_8_list_prim_u_8(
-      SseDeserializer deserializer) {
-    var var_field0 = sse_decode_list_prim_u_8(deserializer);
-    var var_field1 = sse_decode_list_prim_u_8(deserializer);
-    return (var_field0, var_field1);
-  }
-
-  @protected
   (String, EnumSimpleTwinNormal)
       sse_decode_record_string_enum_simple_twin_normal(
           SseDeserializer deserializer) {
@@ -69832,13 +69417,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_list_prim_u_8_list_prim_u_8(
-      Map<Uint8List, Uint8List> self, SseSerializer serializer) {
-    sse_encode_record_list_prim_u_8_list_prim_u_8(
-        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
-  }
-
-  @protected
   void sse_encode_RustOpaque_MutexHideData(
       MutexHideData self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -70042,12 +69620,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer) {
     sse_encode_list_prim_i_32(self.toList(), serializer);
-  }
-
-  @protected
-  void sse_encode_Set_list_prim_u_8(
-      Set<Uint8List> self, SseSerializer serializer) {
-    sse_encode_list_list_prim_u_8(self.toList(), serializer);
   }
 
   @protected
@@ -75059,15 +74631,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_list_list_prim_u_8(
-      List<Uint8List> self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    for (final item in self) {
-      sse_encode_list_prim_u_8(item, serializer);
-    }
-  }
-
-  @protected
   void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
@@ -77219,13 +76782,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_record_i_32_i_32((int, int) self, SseSerializer serializer) {
     sse_encode_i_32(self.$1, serializer);
     sse_encode_i_32(self.$2, serializer);
-  }
-
-  @protected
-  void sse_encode_record_list_prim_u_8_list_prim_u_8(
-      (Uint8List, Uint8List) self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8(self.$1, serializer);
-    sse_encode_list_prim_u_8(self.$2, serializer);
   }
 
   @protected

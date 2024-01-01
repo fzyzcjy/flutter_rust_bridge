@@ -310,11 +310,6 @@ typedef struct wire_cst_macro_struct {
   int32_t data;
 } wire_cst_macro_struct;
 
-typedef struct wire_cst_record_list_prim_u_8_list_prim_u_8 {
-  struct wire_cst_list_prim_u_8 *field0;
-  struct wire_cst_list_prim_u_8 *field1;
-} wire_cst_record_list_prim_u_8_list_prim_u_8;
-
 typedef struct wire_cst_record_i_32_i_32 {
   int32_t field0;
   int32_t field1;
@@ -344,11 +339,6 @@ typedef struct wire_cst_record_string_my_size {
   struct wire_cst_list_prim_u_8 *field0;
   struct wire_cst_my_size field1;
 } wire_cst_record_string_my_size;
-
-typedef struct wire_cst_list_list_prim_u_8 {
-  struct wire_cst_list_prim_u_8 *ptr;
-  int32_t len;
-} wire_cst_list_list_prim_u_8;
 
 typedef struct wire_cst_list_String {
   struct wire_cst_list_prim_u_8 **ptr;
@@ -4469,9 +4459,6 @@ void frbgen_frb_example_pure_dart_wire_another_macro_struct_twin_normal(int64_t 
 void frbgen_frb_example_pure_dart_wire_func_macro_struct_twin_normal(int64_t port_,
                                                                      struct wire_cst_macro_struct *arg);
 
-void frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_normal(int64_t port_,
-                                                                             struct wire_cst_record_list_prim_u_8_list_prim_u_8 arg);
-
 void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_normal(int64_t port_,
                                                                          struct wire_cst_record_i_32_i_32 arg);
 
@@ -4486,9 +4473,6 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_normal(i
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_normal(int64_t port_,
                                                                                struct wire_cst_record_string_my_size arg);
-
-void frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_normal(int64_t port_,
-                                                                       struct wire_cst_list_list_prim_u_8 *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_normal(int64_t port_,
                                                                      struct wire_cst_list_prim_i_32 *arg);
@@ -6658,9 +6642,6 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_use_imported_struct_twin_
                                                                                          int32_t rust_vec_len_,
                                                                                          int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_rust_async(int64_t port_,
-                                                                                 struct wire_cst_record_list_prim_u_8_list_prim_u_8 arg);
-
 void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async(int64_t port_,
                                                                              struct wire_cst_record_i_32_i_32 arg);
 
@@ -6676,19 +6657,11 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_string_string_twin_rust_asy
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_rust_async(int64_t port_,
                                                                                    struct wire_cst_record_string_my_size arg);
 
-void frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_rust_async(int64_t port_,
-                                                                           struct wire_cst_list_list_prim_u_8 *arg);
-
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async(int64_t port_,
                                                                          struct wire_cst_list_prim_i_32 *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_rust_async(int64_t port_,
                                                                             struct wire_cst_list_String *arg);
-
-void frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_rust_async_sse(int64_t port_,
-                                                                                     uint8_t *ptr_,
-                                                                                     int32_t rust_vec_len_,
-                                                                                     int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async_sse(int64_t port_,
                                                                                  uint8_t *ptr_,
@@ -6715,11 +6688,6 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_rust_asy
                                                                                        int32_t rust_vec_len_,
                                                                                        int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_rust_async_sse(int64_t port_,
-                                                                               uint8_t *ptr_,
-                                                                               int32_t rust_vec_len_,
-                                                                               int32_t data_len_);
-
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async_sse(int64_t port_,
                                                                              uint8_t *ptr_,
                                                                              int32_t rust_vec_len_,
@@ -6729,11 +6697,6 @@ void frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_rust_async_sse(
                                                                                 uint8_t *ptr_,
                                                                                 int32_t rust_vec_len_,
                                                                                 int32_t data_len_);
-
-void frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sse(int64_t port_,
-                                                                          uint8_t *ptr_,
-                                                                          int32_t rust_vec_len_,
-                                                                          int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sse(int64_t port_,
                                                                       uint8_t *ptr_,
@@ -6760,11 +6723,6 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sse(int6
                                                                             int32_t rust_vec_len_,
                                                                             int32_t data_len_);
 
-void frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sse(int64_t port_,
-                                                                    uint8_t *ptr_,
-                                                                    int32_t rust_vec_len_,
-                                                                    int32_t data_len_);
-
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sse(int64_t port_,
                                                                   uint8_t *ptr_,
                                                                   int32_t rust_vec_len_,
@@ -6774,8 +6732,6 @@ void frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sse(int64_t por
                                                                      uint8_t *ptr_,
                                                                      int32_t rust_vec_len_,
                                                                      int32_t data_len_);
-
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sync(struct wire_cst_record_list_prim_u_8_list_prim_u_8 arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync(struct wire_cst_record_i_32_i_32 arg);
 
@@ -6787,15 +6743,9 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_stri
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync(struct wire_cst_record_string_my_size arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sync(struct wire_cst_list_list_prim_u_8 *arg);
-
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync(struct wire_cst_list_prim_i_32 *arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sync(struct wire_cst_list_String *arg);
-
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sync_sse(uint8_t *ptr_,
-                                                                                               int32_t rust_vec_len_,
-                                                                                               int32_t data_len_);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync_sse(uint8_t *ptr_,
                                                                                            int32_t rust_vec_len_,
@@ -6816,10 +6766,6 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_hash_map_string_stri
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync_sse(uint8_t *ptr_,
                                                                                                  int32_t rust_vec_len_,
                                                                                                  int32_t data_len_);
-
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sync_sse(uint8_t *ptr_,
-                                                                                         int32_t rust_vec_len_,
-                                                                                         int32_t data_len_);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync_sse(uint8_t *ptr_,
                                                                                        int32_t rust_vec_len_,
@@ -10804,8 +10750,6 @@ struct wire_cst_list_enum_opaque_twin_sync *frbgen_frb_example_pure_dart_cst_new
 
 struct wire_cst_list_enum_opaque_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_list_enum_opaque_twin_sync_sse(int32_t len);
 
-struct wire_cst_list_list_prim_u_8 *frbgen_frb_example_pure_dart_cst_new_list_list_prim_u_8(int32_t len);
-
 struct wire_cst_list_my_enum *frbgen_frb_example_pure_dart_cst_new_list_my_enum(int32_t len);
 
 struct wire_cst_list_my_size *frbgen_frb_example_pure_dart_cst_new_list_my_size(int32_t len);
@@ -11320,7 +11264,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_enum_opaque_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_enum_opaque_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_enum_opaque_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_list_prim_u_8);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_my_enum);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_my_size);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_my_tree_node_twin_normal);
@@ -12094,12 +12037,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_item_tuple_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_item_tuple_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_item_tuple_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_normal);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_rust_async_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sync);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_bytes_bytes_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async_sse);
@@ -12130,12 +12067,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_normal);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_rust_async_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sync);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_bytes_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async_sse);

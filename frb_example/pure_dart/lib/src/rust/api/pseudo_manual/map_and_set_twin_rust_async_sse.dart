@@ -28,15 +28,6 @@ Future<Set<String>> funcHashSetStringTwinRustAsyncSse(
     RustLib.instance.api
         .funcHashSetStringTwinRustAsyncSse(arg: arg, hint: hint);
 
-Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinRustAsyncSse(
-        {required Map<Uint8List, Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcHashMapBytesBytesTwinRustAsyncSse(arg: arg, hint: hint);
-
-Future<Set<Uint8List>> funcHashSetBytesTwinRustAsyncSse(
-        {required Set<Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashSetBytesTwinRustAsyncSse(arg: arg, hint: hint);
-
 Future<Map<String, MySize>> funcHashMapStringStructTwinRustAsyncSse(
         {required Map<String, MySize> arg, dynamic hint}) =>
     RustLib.instance.api

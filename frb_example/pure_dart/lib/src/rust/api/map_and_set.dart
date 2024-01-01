@@ -26,14 +26,6 @@ Future<Set<String>> funcHashSetStringTwinNormal(
         {required Set<String> arg, dynamic hint}) =>
     RustLib.instance.api.funcHashSetStringTwinNormal(arg: arg, hint: hint);
 
-Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinNormal(
-        {required Map<Uint8List, Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashMapBytesBytesTwinNormal(arg: arg, hint: hint);
-
-Future<Set<Uint8List>> funcHashSetBytesTwinNormal(
-        {required Set<Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashSetBytesTwinNormal(arg: arg, hint: hint);
-
 Future<Map<String, MySize>> funcHashMapStringStructTwinNormal(
         {required Map<String, MySize> arg, dynamic hint}) =>
     RustLib.instance.api

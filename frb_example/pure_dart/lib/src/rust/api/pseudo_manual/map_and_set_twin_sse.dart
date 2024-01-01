@@ -24,14 +24,6 @@ Future<Set<String>> funcHashSetStringTwinSse(
         {required Set<String> arg, dynamic hint}) =>
     RustLib.instance.api.funcHashSetStringTwinSse(arg: arg, hint: hint);
 
-Future<Map<Uint8List, Uint8List>> funcHashMapBytesBytesTwinSse(
-        {required Map<Uint8List, Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashMapBytesBytesTwinSse(arg: arg, hint: hint);
-
-Future<Set<Uint8List>> funcHashSetBytesTwinSse(
-        {required Set<Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api.funcHashSetBytesTwinSse(arg: arg, hint: hint);
-
 Future<Map<String, MySize>> funcHashMapStringStructTwinSse(
         {required Map<String, MySize> arg, dynamic hint}) =>
     RustLib.instance.api.funcHashMapStringStructTwinSse(arg: arg, hint: hint);
