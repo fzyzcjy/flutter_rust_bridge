@@ -15,6 +15,7 @@ use crate::transfer;
 use futures::FutureExt;
 use std::future::Future;
 use std::panic;
+use std::panic::AssertUnwindSafe;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -61,7 +62,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         self.thread_pool.execute(transfer!(|port: MessagePort| {
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
-            let thread_result = panic::catch_unwind(|| {
+            let thread_result = panic::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
@@ -71,7 +72,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
                 ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(
                     ret, mode, sender, el2, port2,
                 );
-            });
+            }));
 
             if let Err(error) = thread_result {
                 handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
@@ -114,7 +115,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
 
-            let async_result = async {
+            let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
@@ -124,7 +125,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
                 ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(
                     ret, mode, sender, el2, port2,
                 );
-            }
+            })
             .catch_unwind()
             .await;
 
