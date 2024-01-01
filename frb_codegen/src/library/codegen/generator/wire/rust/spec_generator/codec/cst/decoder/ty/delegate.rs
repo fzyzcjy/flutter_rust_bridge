@@ -115,8 +115,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::Array(array) => generate_decode_array(array)
                 .into(),
             IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
-            IrTypeDelegate::Map(ir) => TODO,
-            IrTypeDelegate::Set(ir) => TODO,
+            IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
+            IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
         })
     }
 
