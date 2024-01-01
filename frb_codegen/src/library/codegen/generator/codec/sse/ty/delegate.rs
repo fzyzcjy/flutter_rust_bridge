@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::ir::ty::delegate::IrTypeDelegatePrimitiveEnum;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet};
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
@@ -161,3 +161,22 @@ pub(crate) fn rust_decode_primitive_enum(
 
 const UNIMPLEMENTED_MESSAGE: &str =
     "not yet supported in serialized mode, feel free to create an issue";
+
+pub(crate) fn generate_set_to_list(
+    ir: &IrTypeDelegateSet,
+    context: ApiDartGeneratorContext,
+    inner: &str,
+) -> String {
+    let mut ans = format!("{inner}.toList()");
+    if let Primitive(_) = &*ir.inner {
+        ans = format!(
+            "{}.fromList({inner})",
+            ApiDartGenerator::new(
+                IrTypeDelegate::Set(ir.to_owned()).get_delegate().clone(),
+                context
+            )
+            .dart_api_type()
+        );
+    }
+    ans
+}

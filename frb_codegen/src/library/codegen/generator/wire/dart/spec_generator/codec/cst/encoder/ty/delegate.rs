@@ -1,15 +1,13 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
+use crate::codegen::generator::codec::sse::ty::delegate::generate_set_to_list;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet,
-    IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -140,23 +138,4 @@ fn uint8list_safe_ident() -> String {
         primitive: IrTypePrimitive::U8,
     }
     .safe_ident()
-}
-
-pub(crate) fn generate_set_to_list(
-    ir: &IrTypeDelegateSet,
-    context: ApiDartGeneratorContext,
-    inner: &str,
-) -> String {
-    let mut ans = format!("{inner}.toList()");
-    if let IrType::Primitive(_) = &*ir.inner {
-        ans = format!(
-            "{}.fromList({inner})",
-            ApiDartGenerator::new(
-                IrTypeDelegate::Set(ir.to_owned()).get_delegate().clone(),
-                context
-            )
-            .dart_api_type()
-        );
-    }
-    ans
 }
