@@ -15,19 +15,19 @@ impl DataFrame {
 
     #[frb(sync)]
     pub fn lazy(self) -> LazyFrame {
-        LazyFrame::new(self.0 .0.lazy())
+        LazyFrame::new(self.0.lazy())
     }
 
     #[frb(sync)]
     pub fn get_column_names(&self) -> Vec<String> {
-        (self.0 .0.get_column_names().into_iter())
+        (self.0.get_column_names().into_iter())
             .map(|x| x.to_owned())
             .collect()
     }
 
     // TODO: Can use `DartDynamic` instead
     pub fn get_column(&self, name: String) -> anyhow::Result<Vec<String>> {
-        Ok((self.0 .0.column(&name)?.iter())
+        Ok((self.0.column(&name)?.iter())
             .map(|value| value.to_string())
             .collect())
     }
@@ -52,7 +52,7 @@ impl LazyFrame {
     }
 
     pub fn collect(self) -> DataFrame {
-        DataFrame::new(self.0 .0.collect().unwrap())
+        DataFrame::new(self.0.collect().unwrap())
     }
 }
 
