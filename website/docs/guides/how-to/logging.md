@@ -7,10 +7,10 @@ Since I have seen some questions asking how logging can be implemented with a Fl
 ```rust
 fn setup_the_logger() {
     #[cfg(target_os = "android")]
-    android_logger::init_once(android_logger::Config::default());
+    android_logger::init_once(android_logger::Config::default().with_max_level(LevelFilter::Trace));
 
     #[cfg(target_os = "ios")]
-    oslog::OsLogger::new("com.example.test").init().unwrap();
+    oslog::OsLogger::new("com.example.test").level_filter(LevelFilter::Trace).init().unwrap();
 }
 ```
 
