@@ -20,6 +20,12 @@ pub fn func_hash_set_string_twin_normal(arg: HashSet<String>) -> HashSet<String>
     arg
 }
 
+pub fn func_hash_map_string_bytes_twin_normal(
+    arg: HashMap<String, Vec<u8>>,
+) -> HashMap<String, Vec<u8>> {
+    arg
+}
+
 pub fn func_hash_map_string_struct_twin_normal(
     arg: HashMap<String, MySize>,
 ) -> HashMap<String, MySize> {
