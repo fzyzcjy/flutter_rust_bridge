@@ -147,11 +147,47 @@ delegate_buffer! {
     ZeroCopyBuffer<Vec<f64>> => js_sys::Float64Array
 }
 
+fn into_dart_iterator<T, It>(iter: It) -> DartAbi
+where
+    T: IntoDart,
+    It: Iterator<Item = T>,
+{
+    Array::from_iter(iter.map(IntoDart::into_dart)).into()
+}
+
 impl<T: IntoDartExceptPrimitive> IntoDart for Vec<T> {
     #[inline]
     fn into_dart(self) -> DartAbi {
-        Array::from_iter(self.into_iter().map(IntoDart::into_dart)).into()
+        into_dart_iterator(self.into_iter())
     }
+}
+
+impl<T> IntoDart for HashSet<T>
+where
+    T: IntoDart,
+{
+    fn into_dart(self) -> DartCObject {
+        into_dart_iterator(self.into_iter())
+    }
+}
+
+impl<T> IntoDartExceptPrimitive for HashSet<T> where T: IntoDart {}
+
+impl<K, V> IntoDart for HashMap<K, V>
+where
+    K: IntoDart,
+    V: IntoDart,
+{
+    fn into_dart(self) -> DartCObject {
+        into_dart_iterator(self.into_iter())
+    }
+}
+
+impl<K, V> IntoDartExceptPrimitive for HashMap<K, V>
+where
+    K: IntoDart,
+    V: IntoDart,
+{
 }
 
 impl<T: IntoDart> IntoDart for Option<T> {
