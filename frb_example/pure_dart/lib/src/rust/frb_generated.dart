@@ -37144,7 +37144,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
             arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_rust_auto_opaque_callable_arg_twin_sse(
@@ -37180,7 +37180,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync,
         decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableReturnTwinSseConstMeta,
@@ -38083,7 +38083,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 =
-            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
                 arg);
         return wire.wire_rust_auto_opaque_callable_arg_twin_sync(arg0);
       },
@@ -38112,7 +38112,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: DcoCodec(
         decodeSuccessData:
-            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync,
         decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableReturnTwinSyncConstMeta,
@@ -39031,7 +39031,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
             arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_rust_auto_opaque_callable_arg_twin_sync_sse(
@@ -39066,7 +39066,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync,
         decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableReturnTwinSyncSseConstMeta,
@@ -44422,7 +44422,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
-            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
                 arg);
         return wire.wire_rust_auto_opaque_callable_arg_twin_normal(port_, arg0);
       },
@@ -44452,7 +44452,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: DcoCodec(
         decodeSuccessData:
-            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync,
         decodeErrorData: null,
       ),
       constMeta: kRustAutoOpaqueCallableReturnTwinNormalConstMeta,
@@ -46287,11 +46287,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxFnStringString => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxFnStringString => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
@@ -46428,7 +46428,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BoxFnStringString
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic raw) {
     return BoxFnStringString.dcoDecode(raw as List<dynamic>);
   }
@@ -46929,7 +46929,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BoxFnStringString
-      dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic raw) {
     return BoxFnStringString.dcoDecode(raw as List<dynamic>);
   }
@@ -56215,7 +56215,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BoxFnStringString
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           SseDeserializer deserializer) {
     return BoxFnStringString.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
@@ -56689,7 +56689,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BoxFnStringString
-      sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           SseDeserializer deserializer) {
     return BoxFnStringString.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
@@ -66204,7 +66204,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
@@ -66747,7 +66747,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
-      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
@@ -67014,7 +67014,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
@@ -67554,9 +67554,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void
-      sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          BoxFnStringString self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
+      BoxFnStringString self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
