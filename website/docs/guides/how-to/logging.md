@@ -2,13 +2,28 @@
 
 Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
 
-## Example: Logger in production
+## Example 1: Print logs to console
+
+```rust
+fn setup_the_logger() {
+    #[cfg(target_os = "android")]
+    android_logger::init_once(Config::default());
+
+    #[cfg(target_os = "ios")]
+    oslog::OsLogger::new("com.example.test").init().unwrap();
+}
+```
+
+In other words, use the corresponding platform logger
+(https://crates.io/crates/android_logger and https://crates.io/crates/oslog).
+
+## Example 2: Logger in production
 
 In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as `info!` and `debug!` macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process are using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).
 
 The *full* code related to logging in my app can be seen here: [#486](https://github.com/fzyzcjy/flutter_rust_bridge/issues/486).
 
-## Example: Send Rust logs to Dart
+## Example 3: Send Rust logs to Dart
 
 Let us implement a simple logging system (adapted from the logging system I use with `flutter_rust_bridge` in my app in production), where Rust code can send logs to Dart code.
 
