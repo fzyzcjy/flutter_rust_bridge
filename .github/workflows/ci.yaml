@@ -386,6 +386,11 @@ jobs:
       # execute
       - run: ./frb_internal build-flutter --target ${{ matrix.info.target }}
 
+      # report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.job }}--${{ matrix.info.target }}--output
+          path: target/build_flutter_output
 
   # ----------------------------------- test -----------------------------------
 
