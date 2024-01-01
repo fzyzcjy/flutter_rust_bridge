@@ -49,11 +49,7 @@ pub struct RustOpaque<T: ?Sized + DartSafe> {
     arc: Arc<T>,
 }
 
-// TODO remove it?
+// https://github.com/fzyzcjy/flutter_rust_bridge/pull/1574
+#[deprecated(note = "It is empty trait and can be directly deleted")]
 pub trait DartSafe {}
 impl<T> DartSafe for T {}
-// /// Marker trait for types that are safe to share with Dart and can be dropped
-// /// safely in case of a panic.
-// pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
-//
-// impl<T: UnwindSafe + RefUnwindSafe> DartSafe for T {}
