@@ -26,6 +26,12 @@ pub async fn func_hash_set_string_twin_rust_async(arg: HashSet<String>) -> HashS
     arg
 }
 
+pub async fn func_hash_map_string_bytes_twin_rust_async(
+    arg: HashMap<String, Vec<u8>>,
+) -> HashMap<String, Vec<u8>> {
+    arg
+}
+
 pub async fn func_hash_map_string_struct_twin_rust_async(
     arg: HashMap<String, MySize>,
 ) -> HashMap<String, MySize> {

@@ -38,6 +38,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
+      funcHashMapStringBytesTwinSse, <Map<String, Uint8List>>[
+    {},
+    {
+      'a': Uint8List.fromList([10, 20])
+    },
+    {
+      'a': Uint8List.fromList([10, 20]),
+      'b': Uint8List.fromList([30, 40, 50]),
+    },
+  ]);
+
+  addTestsIdentityFunctionCall(
       funcHashMapStringStructTwinSse, <Map<String, MySize>>[
     {},
     {'a': MySize(width: 1, height: 2)},
