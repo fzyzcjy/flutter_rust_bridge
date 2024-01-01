@@ -81,6 +81,6 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       // https://docs.flutter.dev/deployment/ios
       await exec('flutter build ipa --no-codesign --verbose',
           relativePwd: package);
-      copyArtifacts(['build/ios/archive', 'build/ios/ipa']);
+      copyArtifacts(['build/ios/archive']);
   }
 }
