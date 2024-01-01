@@ -344,6 +344,47 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
 
+  # ----------------------------------- build -----------------------------------
+
+  build_flutter:
+    name: 'Build :: Flutter'
+    runs-on: ${{ matrix.info.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        info:
+          - image: windows-2019
+            platform: windows
+          - image: macos-13
+            platform: macos
+          - image: ubuntu-latest
+            platform: linux
+          - image: ubuntu-latest
+            platform: android
+          - image: macos-13
+            platform: ios
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
+      - if: runner.os == 'Linux'
+        run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal build-flutter --platform ${{ matrix.info.platform }}
+
+
   # ----------------------------------- test -----------------------------------
 
   test_mimic_quickstart:
