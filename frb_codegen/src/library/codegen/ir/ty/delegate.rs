@@ -52,7 +52,7 @@ pub enum IrTypeDelegateTime {
 pub struct IrTypeDelegateMap {
     pub key: Box<IrType>,
     pub value: Box<IrType>,
-    pub delegate: IrTypeRecord,
+    pub element_delegate: IrTypeRecord,
 }
 
 pub struct IrTypeDelegateSet {
@@ -183,7 +183,7 @@ impl IrTypeDelegate {
             // }),
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::Map(ir) => IrType::Record(ir.delegate.clone()),
+            IrTypeDelegate::Map(ir) => IrType::Record(ir.element_delegate.clone()),
             IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned()),
         }
     }
