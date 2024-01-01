@@ -6,6 +6,8 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/primitive_misc_
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 // NOTE majority of tests are in `pseudo_manual/*`
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
@@ -24,8 +26,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await primitiveU32TwinSyncSse(myU32: 0xff112233), 0xfe112233);
   });
 
-  // temporarily disable, re-enable later
-  // test('dart call getUsize', () async {
-  //   expect(await getUsize(u: 2), 2);
-  // });
+  addTestsIdentityFunctionCall(
+      primitiveUsizeLoopbackTwinSyncSse, <int>[0, 100]);
+  addTestsIdentityFunctionCall(
+      primitiveIsizeLoopbackTwinSyncSse, <int>[0, 100, -100]);
 }

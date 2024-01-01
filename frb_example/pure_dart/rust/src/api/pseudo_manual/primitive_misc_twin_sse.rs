@@ -22,7 +22,12 @@ pub fn primitive_u32_twin_sse(my_u32: u32) -> u32 {
     ret
 }
 
-// TODO how to treat usize (as 32bit or 64bit)
-// #[flutter_rust_bridge::frb(serialize)] pub fn get_usize_twin_sse(u: usize) -> usize {
-//     u
-// }
+#[flutter_rust_bridge::frb(serialize)]
+pub fn primitive_usize_loopback_twin_sse(arg: usize) -> usize {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn primitive_isize_loopback_twin_sse(arg: isize) -> isize {
+    arg
+}
