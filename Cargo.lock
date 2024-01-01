@@ -29,7 +29,7 @@ dependencies = [
 [[package]]
 name = "allo-isolate"
 version = "0.1.21"
-source = "git+https://github.com/fzyzcjy/allo-isolate#34e978a8c6ac6740febfd811487eec966e5641cc"
+source = "git+https://github.com/fzyzcjy/allo-isolate?rev=384757c945d3869ed8ee259122d382436a44f6cb#384757c945d3869ed8ee259122d382436a44f6cb"
 dependencies = [
  "anyhow",
  "atomic",
