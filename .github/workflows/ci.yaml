@@ -360,6 +360,8 @@ jobs:
           - image: ubuntu-latest
             target: linux
           - image: ubuntu-latest
+            target: android-aab
+          - image: ubuntu-latest
             target: android-apk
           - image: macos-13
             target: ios
