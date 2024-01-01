@@ -54,7 +54,7 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       // https://docs.flutter.dev/deployment/windows
       // https://docs.flutter.dev/platform-integration/windows/building#compiling-with-visual-studio
       await exec('flutter build windows --verbose', relativePwd: package);
-      copyArtifacts(['build/windows']);
+      copyArtifacts(['build/windows/x64/runner/Release']);
 
     case BuildTarget.macos:
       // https://docs.flutter.dev/deployment/macos
