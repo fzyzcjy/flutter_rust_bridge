@@ -58261,9 +58261,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Map<String, String> sse_decode_Map_String_String(
       SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_string(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58272,9 +58270,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_normal(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58283,9 +58279,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_rust_async(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58294,9 +58288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_enum_simple_twin_rust_async_sse(
         deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58304,9 +58296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_sse(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58314,9 +58304,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_sync(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58325,9 +58313,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_enum_simple_twin_sync_sse(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58336,9 +58322,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_normal(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58347,9 +58331,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_kitchen_sink_twin_rust_async(
         deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58358,9 +58340,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
         deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58368,9 +58348,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_sse(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58378,9 +58356,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_sync(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58389,26 +58365,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_sync_sse(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
   Map<String, MySize> sse_decode_Map_String_my_size(
       SseDeserializer deserializer) {
     var inner = sse_decode_list_record_string_my_size(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
   Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer) {
     var inner = sse_decode_list_record_i_32_i_32(deserializer);
-    return Map.fromEntries(
-        (inner as List<dynamic>).map((e) => MapEntry(e[0], e[1])));
-    ;
+    return Map.fromEntries(inner.map((e) => MapEntry(e[0], e[1])));
   }
 
   @protected
@@ -58654,15 +58624,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   Set<String> sse_decode_Set_String(SseDeserializer deserializer) {
     var inner = sse_decode_list_String(deserializer);
-    return Set.from(inner as List<dynamic>);
-    ;
+    return Set.from(inner);
   }
 
   @protected
   Set<int> sse_decode_Set_i_32(SseDeserializer deserializer) {
     var inner = sse_decode_list_prim_i_32(deserializer);
-    return Set.from(inner as List<dynamic>);
-    ;
+    return Set.from(inner);
   }
 
   @protected
