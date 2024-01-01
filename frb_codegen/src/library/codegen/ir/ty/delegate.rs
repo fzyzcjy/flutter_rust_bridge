@@ -132,11 +132,13 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
             IrTypeDelegate::AnyhowException => "anyhow::Error".to_owned(),
             IrTypeDelegate::Map(ir) => format!(
-                "HashMap<{}, {}>",
+                "std::collections::HashMap<{}, {}>",
                 ir.key.rust_api_type(),
                 ir.value.rust_api_type()
             ),
-            IrTypeDelegate::Set(ir) => format!("HashSet<{}>", ir.inner.rust_api_type()),
+            IrTypeDelegate::Set(ir) => {
+                format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
+            }
         }
     }
 
