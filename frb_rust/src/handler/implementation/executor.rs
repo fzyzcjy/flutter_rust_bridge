@@ -6,6 +6,7 @@ use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
+use crate::misc::panic_backtrace::PanicBacktrace;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
@@ -62,7 +63,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         self.thread_pool.execute(transfer!(|port: MessagePort| {
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
-            let thread_result = panic::catch_unwind(AssertUnwindSafe(|| {
+            let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
