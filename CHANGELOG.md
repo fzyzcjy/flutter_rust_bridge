@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.0.0-dev.10
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Let integrate update .gitignore #1552
+* Fix linter errors when some extra linter rules are enabled #1560
+* Add prefix for generated C symbols #1558
+* Support isize (mimic existing usize) #1482
+* Let flutter_rust_bridge create/integrate support customizing rust crate name and directory #1567
+* Improve flutter_rust_bridge_codegen integrate #1566
+* Add CI for release mode and generate final artifacts #1572
+* No need to let user write AssertUnwindSafe everywhere #1574
+* Allow users to quickly define Rust initialization functions (via `#[frb(init)]`) #1580
+* Wrap allo-isolate post to return Result instead of bool for better error checking #1584
+* Provide setup for logging, backtrace, etc, by default, but allow easy customization #1581
+* Fix awaiting DartFn, i.e. Rust callback to Dart #1585
+
 ## 2.0.0-dev.9
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
