@@ -1,6 +1,6 @@
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
-use crate::rust_opaque::{DartSafe, RustOpaque};
+use crate::rust_opaque::{RustOpaque};
 use std::collections::{HashMap, HashSet};
 
 /// Basically the Into trait.

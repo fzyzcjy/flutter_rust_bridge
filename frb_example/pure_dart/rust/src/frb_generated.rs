@@ -2270,7 +2270,7 @@ fn wire_func_macro_struct_twin_normal_impl(
 }
 fn wire_func_hash_map_i32_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<i32, i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<i32, i32>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -2292,7 +2292,7 @@ fn wire_func_hash_map_i32_i32_twin_normal_impl(
 }
 fn wire_func_hash_map_string_bytes_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, Vec<u8>>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, Vec<u8>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -2314,8 +2314,9 @@ fn wire_func_hash_map_string_bytes_twin_normal_impl(
 }
 fn wire_func_hash_map_string_complex_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<
+        std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -2339,8 +2340,9 @@ fn wire_func_hash_map_string_complex_enum_twin_normal_impl(
 }
 fn wire_func_hash_map_string_simple_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<
+        std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -2364,7 +2366,7 @@ fn wire_func_hash_map_string_simple_enum_twin_normal_impl(
 }
 fn wire_func_hash_map_string_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, String>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, String>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -2386,8 +2388,7 @@ fn wire_func_hash_map_string_string_twin_normal_impl(
 }
 fn wire_func_hash_map_string_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -2409,7 +2410,7 @@ fn wire_func_hash_map_string_struct_twin_normal_impl(
 }
 fn wire_func_hash_set_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashSet<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashSet<i32>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -2431,7 +2432,7 @@ fn wire_func_hash_set_i32_twin_normal_impl(
 }
 fn wire_func_hash_set_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashSet<String>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashSet<String>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -11498,7 +11499,7 @@ fn wire_use_imported_struct_twin_sync_sse_impl(
 }
 fn wire_func_hash_map_i32_i32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<i32, i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<i32, i32>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_i32_i32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11508,7 +11509,7 @@ fn wire_func_hash_map_i32_i32_twin_rust_async_impl(
 }
 fn wire_func_hash_map_string_bytes_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, Vec<u8>>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, Vec<u8>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_bytes_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11519,11 +11520,11 @@ fn wire_func_hash_map_string_bytes_twin_rust_async_impl(
 fn wire_func_hash_map_string_complex_enum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<
-            std::collections::HashMap<
-                String,
-                crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
-            >,
-        > + core::panic::UnwindSafe,
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_complex_enum_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11534,11 +11535,11 @@ fn wire_func_hash_map_string_complex_enum_twin_rust_async_impl(
 fn wire_func_hash_map_string_simple_enum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<
-            std::collections::HashMap<
-                String,
-                crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
-            >,
-        > + core::panic::UnwindSafe,
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_simple_enum_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11548,7 +11549,7 @@ fn wire_func_hash_map_string_simple_enum_twin_rust_async_impl(
 }
 fn wire_func_hash_map_string_string_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, String>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, String>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_string_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11558,8 +11559,7 @@ fn wire_func_hash_map_string_string_twin_rust_async_impl(
 }
 fn wire_func_hash_map_string_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11569,7 +11569,7 @@ fn wire_func_hash_map_string_struct_twin_rust_async_impl(
 }
 fn wire_func_hash_set_i32_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashSet<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashSet<i32>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_i32_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11579,7 +11579,7 @@ fn wire_func_hash_set_i32_twin_rust_async_impl(
 }
 fn wire_func_hash_set_string_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<std::collections::HashSet<String>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashSet<String>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_string_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move ||  async move {
@@ -11849,7 +11849,7 @@ fn wire_func_hash_set_string_twin_sse_impl(
                 } })
 }
 fn wire_func_hash_map_i32_i32_twin_sync_impl(
-    arg: impl CstDecode<std::collections::HashMap<i32, i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<i32, i32>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_i32_i32_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
@@ -11857,7 +11857,7 @@ fn wire_func_hash_map_i32_i32_twin_sync_impl(
                 })()) })
 }
 fn wire_func_hash_map_string_bytes_twin_sync_impl(
-    arg: impl CstDecode<std::collections::HashMap<String, Vec<u8>>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, Vec<u8>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_bytes_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
@@ -11866,11 +11866,11 @@ fn wire_func_hash_map_string_bytes_twin_sync_impl(
 }
 fn wire_func_hash_map_string_complex_enum_twin_sync_impl(
     arg: impl CstDecode<
-            std::collections::HashMap<
-                String,
-                crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
-            >,
-        > + core::panic::UnwindSafe,
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
+        >,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_complex_enum_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
@@ -11879,11 +11879,11 @@ fn wire_func_hash_map_string_complex_enum_twin_sync_impl(
 }
 fn wire_func_hash_map_string_simple_enum_twin_sync_impl(
     arg: impl CstDecode<
-            std::collections::HashMap<
-                String,
-                crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
-            >,
-        > + core::panic::UnwindSafe,
+        std::collections::HashMap<
+            String,
+            crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
+        >,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_simple_enum_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
@@ -11891,7 +11891,7 @@ fn wire_func_hash_map_string_simple_enum_twin_sync_impl(
                 })()) })
 }
 fn wire_func_hash_map_string_string_twin_sync_impl(
-    arg: impl CstDecode<std::collections::HashMap<String, String>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, String>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_string_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
@@ -11899,8 +11899,7 @@ fn wire_func_hash_map_string_string_twin_sync_impl(
                 })()) })
 }
 fn wire_func_hash_map_string_struct_twin_sync_impl(
-    arg: impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>
-        + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_map_string_struct_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
@@ -11908,7 +11907,7 @@ fn wire_func_hash_map_string_struct_twin_sync_impl(
                 })()) })
 }
 fn wire_func_hash_set_i32_twin_sync_impl(
-    arg: impl CstDecode<std::collections::HashSet<i32>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashSet<i32>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -11929,7 +11928,7 @@ fn wire_func_hash_set_i32_twin_sync_impl(
     )
 }
 fn wire_func_hash_set_string_twin_sync_impl(
-    arg: impl CstDecode<std::collections::HashSet<String>> + core::panic::UnwindSafe,
+    arg: impl CstDecode<std::collections::HashSet<String>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_hash_set_string_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
                 transform_result_dco((move ||  {
