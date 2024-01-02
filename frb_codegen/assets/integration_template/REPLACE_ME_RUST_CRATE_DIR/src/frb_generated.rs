@@ -49,6 +49,22 @@ fn wire_greet_impl(
         },
     )
 }
+fn wire_init_app_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "init_app",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| {
+                transform_result_dco(
+                    (move || Result::<_, ()>::Ok(crate::api::simple::init_app()))(),
+                )
+            }
+        },
+    )
+}
 
 // Section: dart2rust
 

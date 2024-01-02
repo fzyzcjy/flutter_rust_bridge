@@ -694,6 +694,22 @@ fn wire_check_init_done_impl(port_: flutter_rust_bridge::for_generated::MessageP
         },
     )
 }
+fn wire_init_app_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "init_app",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(crate::api::customization::init_app())
+                })())
+            }
+        },
+    )
+}
 fn wire_my_init_one_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "my_init_one", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {
                     transform_result_dco((move ||   {

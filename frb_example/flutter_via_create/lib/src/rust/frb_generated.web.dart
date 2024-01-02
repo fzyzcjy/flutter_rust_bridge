@@ -94,6 +94,8 @@ class RustLibWire extends BaseWire {
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_greet(String name) => wasmModule.wire_greet(name);
+
+  void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
 }
 
 @JS('wasm_bindgen')
@@ -113,4 +115,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_greet(String name);
+
+  external void wire_init_app(NativePortType port_);
 }

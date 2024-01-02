@@ -6,5 +6,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<void> initApp({dynamic hint}) =>
+    RustLib.instance.api.initApp(hint: hint);
+
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);

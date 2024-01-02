@@ -58,6 +58,8 @@ class RustLibWire extends BaseWire {
       wasmModule.dart_fn_deliver_output(
           call_id, ptr_, rust_vec_len_, data_len_);
 
+  void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
+
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
 }
@@ -76,6 +78,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_init_app(NativePortType port_);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }

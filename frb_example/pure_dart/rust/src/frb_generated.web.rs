@@ -10492,6 +10492,11 @@ pub fn wire_check_init_done(port_: flutter_rust_bridge::for_generated::MessagePo
 }
 
 #[wasm_bindgen]
+pub fn wire_init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_init_app_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_my_init_one(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_my_init_one_impl(port_)
 }
