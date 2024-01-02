@@ -16287,6 +16287,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_check_init_done(port_: i64) 
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_init_app(port_: i64) {
+    wire_init_app_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_my_init_one(port_: i64) {
     wire_my_init_one_impl(port_)
 }

@@ -21319,6 +21319,8 @@ class RustLibWire extends BaseWire {
   void wire_check_init_done(NativePortType port_) =>
       wasmModule.wire_check_init_done(port_);
 
+  void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
+
   void wire_my_init_one(NativePortType port_) =>
       wasmModule.wire_my_init_one(port_);
 
@@ -30804,6 +30806,8 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_);
 
   external void wire_check_init_done(NativePortType port_);
+
+  external void wire_init_app(NativePortType port_);
 
   external void wire_my_init_one(NativePortType port_);
 

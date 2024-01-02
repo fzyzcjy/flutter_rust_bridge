@@ -69,3 +69,8 @@ pub fn dart_fn_deliver_output(
 pub fn wire_greet(name: String) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_greet_impl(name)
 }
+
+#[wasm_bindgen]
+pub fn wire_init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_init_app_impl(port_)
+}

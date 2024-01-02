@@ -68,6 +68,7 @@ This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-
 * **Rapid setup**: Only a one-liner command to integrate into your project.
 * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
 * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* **Battery included**: Even small things like logging and enable backtraces are configured in the starter kit.
 
 ### 3. Powerfulness
 

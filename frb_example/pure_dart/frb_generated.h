@@ -4180,6 +4180,8 @@ void frbgen_frb_example_pure_dart_wire_function_with_comments_triple_slash_singl
 
 void frbgen_frb_example_pure_dart_wire_check_init_done(int64_t port_);
 
+void frbgen_frb_example_pure_dart_wire_init_app(int64_t port_);
+
 void frbgen_frb_example_pure_dart_wire_my_init_one(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_my_init_two(int64_t port_);
@@ -12137,6 +12139,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_how_long_does_it_take_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_how_long_does_it_take_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_how_long_does_it_take_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_init_app);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_is_app_embedded_twin_rust_async_sse);

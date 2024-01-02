@@ -10,6 +10,11 @@ lazy_static! {
 }
 
 #[frb(init)]
+pub fn init_app() {
+    flutter_rust_bridge::setup_default_user_utils();
+}
+
+#[frb(init)]
 pub fn my_init_one() -> anyhow::Result<()> {
     *INIT_ONE_DONE.lock().unwrap() = true;
     Ok(())

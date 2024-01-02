@@ -242,6 +242,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   Future<void> executeRustInitializers() async {
+    await api.initApp();
     await api.myInitOne();
     await api.myInitTwo();
   }
@@ -351,6 +352,8 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<bool> checkInitDone({dynamic hint});
+
+  Future<void> initApp({dynamic hint});
 
   Future<void> myInitOne({dynamic hint});
 
@@ -5746,6 +5749,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCheckInitDoneConstMeta => const TaskConstMeta(
         debugName: "check_init_done",
+        argNames: [],
+      );
+
+  @override
+  Future<void> initApp({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_init_app(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kInitAppConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kInitAppConstMeta => const TaskConstMeta(
+        debugName: "init_app",
         argNames: [],
       );
 
