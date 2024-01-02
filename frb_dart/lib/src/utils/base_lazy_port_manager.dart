@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
@@ -15,6 +17,8 @@ abstract class BaseLazyPortManager {
     port.handler = (response) {
       print('hi BaseLazyPortManager port.handler called (and hacked!)');
     };
+    print(
+        'hi BaseLazyPortManager.port=${port.sendPort.nativePort} zone=${Zone.current}');
     return port;
 
     // print('hi BaseLazyPortManager._initPort start');
