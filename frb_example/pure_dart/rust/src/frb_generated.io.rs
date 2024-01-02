@@ -16282,6 +16282,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_function_with_comments_tripl
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_check_init_done(port_: i64) {
+    wire_check_init_done_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_my_init_one(port_: i64) {
+    wire_my_init_one_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_my_init_two(port_: i64) {
+    wire_my_init_two_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_return_dart_dynamic_twin_normal(port_: i64) {
     wire_return_dart_dynamic_twin_normal_impl(port_)
 }

@@ -8,6 +8,9 @@ class MockRustLibApi extends Mock implements RustLibApi {}
 
 Future<void> main() async {
   final mockApi = MockRustLibApi();
+  when(() => mockApi.myInitOne()).thenAnswer((_) async => null);
+  when(() => mockApi.myInitTwo()).thenAnswer((_) async => null);
+
   await RustLib.init(api: mockApi);
 
   test('can mock Rust calls', () async {

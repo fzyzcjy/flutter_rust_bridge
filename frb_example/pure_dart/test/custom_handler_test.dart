@@ -8,9 +8,16 @@ Future<void> main() async {
   await RustLib.init(handler: customHandler);
 
   test('can use custom handler', () async {
-    expect(customHandler.logs, <String>[]);
+    expect(customHandler.logs, <String>[
+      'executeNormal my_init_one',
+      'executeNormal my_init_two',
+    ]);
     expect(await simpleAdderTwinNormal(a: 1, b: 2), 3);
-    expect(customHandler.logs, ['executeNormal called']);
+    expect(customHandler.logs, [
+      'executeNormal my_init_one',
+      'executeNormal my_init_two',
+      'executeNormal simple_adder_twin_normal',
+    ]);
   });
 }
 
@@ -19,7 +26,7 @@ class _MyHandler extends BaseHandler {
 
   @override
   Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
-    logs.add('executeNormal called');
+    logs.add('executeNormal ${task.constMeta.debugName}');
     return super.executeNormal(task);
   }
 }

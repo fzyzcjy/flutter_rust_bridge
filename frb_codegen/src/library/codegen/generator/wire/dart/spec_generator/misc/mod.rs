@@ -15,6 +15,7 @@ use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::Wi
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use serde::Serialize;
@@ -87,6 +88,11 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
+    let execute_rust_initializers = (context.ir_pack.funcs.iter())
+        .filter(|f| f.initializer)
+        .map(|f| format!("await api.{}();\n", f.name.name.to_case(Case::Camel)))
+        .join("");
+
     Ok(Acc {
         common: vec![WireDartOutputCode {
             header: DartBasicHeaderCode {
@@ -133,6 +139,11 @@ fn generate_boilerplate(
 
                   @override
                   WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.fromExternalLibrary;
+                  
+                  @override
+                  Future<void> executeRustInitializers() async {{
+                    {execute_rust_initializers}
+                  }}
 
                   @override
                   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => kDefaultExternalLibraryLoaderConfig;

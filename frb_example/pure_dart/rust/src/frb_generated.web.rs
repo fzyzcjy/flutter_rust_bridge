@@ -10485,6 +10485,21 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_check_init_done(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_check_init_done_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_my_init_one(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_my_init_one_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_my_init_two(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_my_init_two_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_return_dart_dynamic_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {

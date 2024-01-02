@@ -44,6 +44,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       RustLibWire.fromExternalLibrary;
 
   @override
+  Future<void> executeRustInitializers() async {}
+
+  @override
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
       kDefaultExternalLibraryLoaderConfig;
 

@@ -10,6 +10,7 @@ import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
+import 'api/customization.dart';
 import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
@@ -26388,6 +26389,48 @@ class RustLibWire implements BaseWire {
   late final _wire_function_with_comments_triple_slash_single_line_twin_normal =
       _wire_function_with_comments_triple_slash_single_line_twin_normalPtr
           .asFunction<void Function(int)>();
+
+  void wire_check_init_done(
+    int port_,
+  ) {
+    return _wire_check_init_done(
+      port_,
+    );
+  }
+
+  late final _wire_check_init_donePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_check_init_done');
+  late final _wire_check_init_done =
+      _wire_check_init_donePtr.asFunction<void Function(int)>();
+
+  void wire_my_init_one(
+    int port_,
+  ) {
+    return _wire_my_init_one(
+      port_,
+    );
+  }
+
+  late final _wire_my_init_onePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_my_init_one');
+  late final _wire_my_init_one =
+      _wire_my_init_onePtr.asFunction<void Function(int)>();
+
+  void wire_my_init_two(
+    int port_,
+  ) {
+    return _wire_my_init_two(
+      port_,
+    );
+  }
+
+  late final _wire_my_init_twoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_pure_dart_wire_my_init_two');
+  late final _wire_my_init_two =
+      _wire_my_init_twoPtr.asFunction<void Function(int)>();
 
   void wire_return_dart_dynamic_twin_normal(
     int port_,

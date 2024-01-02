@@ -10,6 +10,7 @@ import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
+import 'api/customization.dart';
 import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
@@ -240,6 +241,12 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       RustLibWire.fromExternalLibrary;
 
   @override
+  Future<void> executeRustInitializers() async {
+    await api.myInitOne();
+    await api.myInitTwo();
+  }
+
+  @override
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
       kDefaultExternalLibraryLoaderConfig;
 
@@ -342,6 +349,12 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
       {dynamic hint});
+
+  Future<bool> checkInitDone({dynamic hint});
+
+  Future<void> myInitOne({dynamic hint});
+
+  Future<void> myInitTwo({dynamic hint});
 
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint});
 
@@ -5713,6 +5726,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 "function_with_comments_triple_slash_single_line_twin_normal",
             argNames: [],
           );
+
+  @override
+  Future<bool> checkInitDone({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_check_init_done(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kCheckInitDoneConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCheckInitDoneConstMeta => const TaskConstMeta(
+        debugName: "check_init_done",
+        argNames: [],
+      );
+
+  @override
+  Future<void> myInitOne({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_my_init_one(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kMyInitOneConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMyInitOneConstMeta => const TaskConstMeta(
+        debugName: "my_init_one",
+        argNames: [],
+      );
+
+  @override
+  Future<void> myInitTwo({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_my_init_two(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kMyInitTwoConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMyInitTwoConstMeta => const TaskConstMeta(
+        debugName: "my_init_two",
+        argNames: [],
+      );
 
   @override
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint}) {

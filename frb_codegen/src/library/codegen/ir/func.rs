@@ -14,6 +14,7 @@ pub struct IrFunc {
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub rust_async: bool,
+    pub initializer: bool,
     pub comments: Vec<IrComment>,
     pub codec_mode_pack: CodecModePack,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison

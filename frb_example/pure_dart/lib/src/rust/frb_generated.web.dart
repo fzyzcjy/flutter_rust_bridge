@@ -10,6 +10,7 @@ import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
+import 'api/customization.dart';
 import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
@@ -21315,6 +21316,15 @@ class RustLibWire extends BaseWire {
           .wire_function_with_comments_triple_slash_single_line_twin_normal(
               port_);
 
+  void wire_check_init_done(NativePortType port_) =>
+      wasmModule.wire_check_init_done(port_);
+
+  void wire_my_init_one(NativePortType port_) =>
+      wasmModule.wire_my_init_one(port_);
+
+  void wire_my_init_two(NativePortType port_) =>
+      wasmModule.wire_my_init_two(port_);
+
   void wire_return_dart_dynamic_twin_normal(NativePortType port_) =>
       wasmModule.wire_return_dart_dynamic_twin_normal(port_);
 
@@ -30792,6 +30802,12 @@ class RustLibWasmModule implements WasmModule {
   external void
       wire_function_with_comments_triple_slash_single_line_twin_normal(
           NativePortType port_);
+
+  external void wire_check_init_done(NativePortType port_);
+
+  external void wire_my_init_one(NativePortType port_);
+
+  external void wire_my_init_two(NativePortType port_);
 
   external void wire_return_dart_dynamic_twin_normal(NativePortType port_);
 
