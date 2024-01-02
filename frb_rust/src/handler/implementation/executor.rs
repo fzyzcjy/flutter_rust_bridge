@@ -153,7 +153,7 @@ impl ExecuteNormalOrAsyncUtils {
             Ok(result) => {
                 match mode {
                     FfiCallMode::Normal => {
-                        sender.send(result.into_dart_abi());
+                        sender.send_or_warn(result.into_dart_abi());
                     }
                     FfiCallMode::Stream => {
                         // nothing - ignore the return value of a Stream-typed function
@@ -165,7 +165,7 @@ impl ExecuteNormalOrAsyncUtils {
             }
             Err(error) => {
                 el.on_error(Error::CustomError);
-                sender.send(error.into_dart_abi());
+                sender.send_or_warn(error.into_dart_abi());
             }
         };
     }
