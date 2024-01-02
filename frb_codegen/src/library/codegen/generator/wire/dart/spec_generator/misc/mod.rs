@@ -87,6 +87,11 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
+    let execute_rust_initializers = (context.ir_pack.funcs.iter())
+        .filter(|f| f.initializer)
+        .map(|f| format!("await api.{}();\n", f.name))
+        .join("");
+
     Ok(Acc {
         common: vec![WireDartOutputCode {
             header: DartBasicHeaderCode {
@@ -136,7 +141,7 @@ fn generate_boilerplate(
                   
                   @override
                   Future<void> executeRustInitializers() async {{
-                    await {TODO};
+                    {execute_rust_initializers}
                   }}
 
                   @override
