@@ -13,7 +13,7 @@ fn setup_backtrace() {
     if env::var("RUST_BACKTRACE").err() == Some(VarError::NotPresent) {
         env::set_var("RUST_BACKTRACE", "1");
     } else {
-        debug!("Skip setup RUST_BACKTRACE because there is already environment variable");
+        log::debug!("Skip setup RUST_BACKTRACE because there is already environment variable");
     }
 }
 
