@@ -11,13 +11,19 @@ abstract class BaseLazyPortManager {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   ReceivePort _initPort() {
+    print('hi BaseLazyPortManager._initPort start');
     final port = broadcastPort(BaseLazyPortIdGenerator.create());
     port.listen(onData);
+    print(
+        'hi BaseLazyPortManager._initPort end port=${port.sendPort.nativePort}');
     return port;
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dispose() => _port.close();
+  void dispose() {
+    print('hi BaseLazyPortManager.dispose');
+    _port.close();
+  }
 
   /// {@macro flutter_rust_bridge.internal}
   @protected
