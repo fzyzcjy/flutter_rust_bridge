@@ -4,7 +4,7 @@ use std::cell::RefCell;
 use std::panic::UnwindSafe;
 
 thread_local! {
-    static backtrace: RefCell<Option<Backtrace>> = RefCell::new(None);
+    static BACKTRACE: RefCell<Option<Backtrace>> = RefCell::new(None);
 }
 
 pub(crate) struct PanicBacktrace;
@@ -14,7 +14,7 @@ impl PanicBacktrace {
         let old_hook = std::panic::take_hook();
         std::panic::set_hook(Box::new(move |arg| {
             let trace = Backtrace::new();
-            backtrace.with(move |b| b.borrow_mut().replace(trace));
+            BACKTRACE.with(move |b| b.borrow_mut().replace(trace));
 
             old_hook(arg);
         }));
@@ -30,7 +30,7 @@ impl PanicBacktrace {
     }
 
     pub(crate) fn take_last() -> Option<Backtrace> {
-        backtrace.with(|b| b.borrow_mut().take())
+        BACKTRACE.with(|b| b.borrow_mut().take())
     }
 }
 
@@ -40,7 +40,7 @@ pub(crate) struct CatchUnwindWithBacktrace {
 }
 
 impl CatchUnwindWithBacktrace {
-    pub fn new(err: Box<dyn Any + Send + 'static>, b: Option<Backtrace>) -> Self {
-        Self { err, backtrace: b }
+    pub fn new(err: Box<dyn Any + Send + 'static>, backtrace: Option<Backtrace>) -> Self {
+        Self { err, backtrace }
     }
 }
