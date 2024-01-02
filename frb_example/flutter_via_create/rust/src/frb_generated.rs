@@ -49,10 +49,7 @@ fn wire_async_greet_with_callback_impl(
             move |context| async move {
                 transform_result_dco(
                     (move || async move {
-                        Result::<_, ()>::Ok(
-                            crate::api::simple::async_greet_with_callback(api_name, api_logger)
-                                .await,
-                        )
+                        crate::api::simple::async_greet_with_callback(api_name, api_logger).await
                     })()
                     .await,
                 )
@@ -102,10 +99,12 @@ fn decode_DartFn_Inputs_String_Output_unit(
     use flutter_rust_bridge::IntoDart;
 
     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: String) -> () {
+        log::warn!("hi rust decode_DartFn_Inputs_String_Output_unit.body start");
         let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
+        log::warn!("hi rust decode_DartFn_Inputs_String_Output_unit.body after await");
         <()>::sse_decode_single(message)
     }
 
@@ -129,6 +128,12 @@ impl CstDecode<usize> for usize {
         self
     }
 }
+impl SseDecode for anyhow::Error {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        unimplemented!("not yet supported in serialized mode, feel free to create an issue");
+    }
+}
+
 impl SseDecode for flutter_rust_bridge::DartOpaque {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -183,6 +188,12 @@ impl SseDecode for bool {
 }
 
 // Section: rust2dart
+
+impl SseEncode for anyhow::Error {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(format!("{:?}", self), serializer);
+    }
+}
 
 impl SseEncode for flutter_rust_bridge::DartOpaque {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {

@@ -20,6 +20,11 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
+impl CstDecode<anyhow::Error> for String {
+    fn cst_decode(self) -> anyhow::Error {
+        unimplemented!()
+    }
+}
 impl CstDecode<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -35,6 +40,11 @@ impl CstDecode<String> for String {
 impl CstDecode<Vec<u8>> for Box<[u8]> {
     fn cst_decode(self) -> Vec<u8> {
         self.into_vec()
+    }
+}
+impl CstDecode<anyhow::Error> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> anyhow::Error {
+        unimplemented!()
     }
 }
 impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {

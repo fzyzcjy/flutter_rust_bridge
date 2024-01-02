@@ -10,6 +10,11 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
+impl CstDecode<anyhow::Error> for *mut wire_cst_list_prim_u_8 {
+    fn cst_decode(self) -> anyhow::Error {
+        unimplemented!()
+    }
+}
 impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
