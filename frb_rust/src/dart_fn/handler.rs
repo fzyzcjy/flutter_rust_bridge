@@ -48,7 +48,7 @@ impl DartFnHandler {
             ans.extend(args);
             ans
         };
-        sender.send(msg);
+        sender.send_or_warn(msg);
 
         Box::pin(receiver.then(|x| async move { x.unwrap() }))
     }
