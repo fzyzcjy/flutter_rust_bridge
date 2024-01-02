@@ -51,7 +51,8 @@ impl DartFnHandler {
             ans.extend(args);
             ans
         };
-        sender.send(msg);
+        let ret = sender.send(msg);
+        log::warn!("ret={ret:?}");
 
         log::warn!("hi DartFnHandler.invoke 3");
         Box::pin(receiver.then(|x| async move { x.unwrap() }))
