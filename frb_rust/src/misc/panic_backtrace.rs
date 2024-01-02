@@ -1,5 +1,7 @@
 use backtrace::Backtrace;
+use std::any::Any;
 use std::cell::RefCell;
+use std::panic::UnwindSafe;
 
 thread_local! {
     static backtrace: RefCell<Option<Backtrace>> = RefCell::new(None);
@@ -20,7 +22,7 @@ impl PanicBacktrace {
 
     pub(crate) fn catch_unwind<F: FnOnce() -> R + UnwindSafe, R>(
         f: F,
-    ) -> Result<T, CatchUnwindWithBacktrace> {
+    ) -> Result<R, CatchUnwindWithBacktrace> {
         std::panic::catch_unwind(f).map_err(|err| CatchUnwindWithBacktrace {
             err,
             backtrace: Self::take_last(),
