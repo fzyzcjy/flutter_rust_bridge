@@ -77,9 +77,9 @@ labels:
   - name: good first issue
     color: '#7057ff'
     description: Good for newcomers
-  - name: await response
+  - name: awaiting
     color: '#bbdefb'
-    description: Waiting for responses
+    description: Waiting for responses, PR, further discussions, upstream release, etc
   - name: pass triage
     color: '#c8e6c9'
     description: Pass the triage
