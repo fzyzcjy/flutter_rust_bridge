@@ -88,15 +88,8 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let initializers = (context.ir_pack.funcs.iter())
+    let execute_rust_initializers = (context.ir_pack.funcs.iter())
         .filter(|f| f.initializer)
-        .collect_vec();
-    let initializer_imports = initializers
-        .iter()
-        .map(|f| format!(r#"import '{TODO}';"#))
-        .join("");
-    let execute_rust_initializers = initializers
-        .iter()
         .map(|f| format!("await api.{}();\n", f.name.name.to_case(Case::Camel)))
         .join("");
 
@@ -106,7 +99,7 @@ fn generate_boilerplate(
                 file_top: file_top.clone(),
                 import: format!(
                     "
-                    {universal_imports}{initializer_imports}
+                    {universal_imports}
                     import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
                     import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
                     "
