@@ -77,13 +77,13 @@ macro_rules! frb_generated_boilerplate {
                 Self { base }
             }
 
-            pub fn close(&self) -> anyhow::Result<()> {
+            pub fn close(&self) -> $crate::for_generated::anyhow::Result<()> {
                 self.base.close()
             }
         }
 
         impl<T> StreamSink<T, $crate::for_generated::DcoCodec> {
-            pub fn add<T2>(&self, value: T) -> anyhow::Result<()>
+            pub fn add<T2>(&self, value: T) -> $crate::for_generated::anyhow::Result<()>
             where
                 T: $crate::IntoIntoDart<T2>,
                 T2: $crate::IntoDart,
@@ -99,7 +99,7 @@ macro_rules! frb_generated_boilerplate {
         where
             T: SseEncode,
         {
-            pub fn add(&self, value: T) -> anyhow::Result<()> {
+            pub fn add(&self, value: T) -> $crate::for_generated::anyhow::Result<()> {
                 self.base.add($crate::for_generated::SseCodec::encode(
                     $crate::for_generated::Rust2DartAction::Success,
                     |serializer| value.sse_encode(serializer),
