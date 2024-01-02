@@ -55,6 +55,8 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
       portManager: portManager,
       api: api,
     );
+
+    await executeRustInitializers();
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -84,6 +86,10 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @protected
+  Future<void> executeRustInitializers();
 
   Future<ExternalLibrary> _loadDefaultExternalLibrary() async =>
       await loadExternalLibrary(defaultExternalLibraryLoaderConfig);
