@@ -23,7 +23,7 @@ impl Rust2DartSender {
 
     pub fn send_or_warn(&self, msg: impl IntoDart) {
         if let Err(e) = self.send(msg) {
-            log_warn_or_println(TODO);
+            log_warn_or_println(&format!("{e:?}"));
         }
     }
 }
