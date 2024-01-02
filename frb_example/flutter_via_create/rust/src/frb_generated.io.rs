@@ -10,16 +10,6 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<anyhow::Error> for *mut wire_cst_list_prim_u_8 {
-    fn cst_decode(self) -> anyhow::Error {
-        unimplemented!()
-    }
-}
-impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
-    fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
-    }
-}
 impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
     fn cst_decode(self) -> String {
         let vec: Vec<u8> = self.cst_decode();
@@ -59,15 +49,6 @@ pub extern "C" fn frbgen_flutter_via_create_dart_fn_deliver_output(
         )
     };
     FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_flutter_via_create_wire_async_greet_with_callback(
-    port_: i64,
-    name: *mut wire_cst_list_prim_u_8,
-    logger: *const std::ffi::c_void,
-) {
-    wire_async_greet_with_callback_impl(port_, name, logger)
 }
 
 #[no_mangle]
