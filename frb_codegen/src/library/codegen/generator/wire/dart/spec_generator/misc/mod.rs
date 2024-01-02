@@ -133,6 +133,11 @@ fn generate_boilerplate(
 
                   @override
                   WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.fromExternalLibrary;
+                  
+                  @override
+                  Future<void> executeRustInitializers() async {{
+                    await {TODO};
+                  }}
 
                   @override
                   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => kDefaultExternalLibraryLoaderConfig;
