@@ -5,6 +5,7 @@ use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::IntoDart;
+use crate::misc::logs::log_warn_or_println;
 use crate::platform_types::{handle_to_message_port, SendableMessagePortHandle};
 use log::warn;
 #[cfg(wasm)]
@@ -84,9 +85,9 @@ fn drop_thread_box_persistent_handle_via_port(
     if !channel.post(msg) {
         // We do not care about the detailed error message
         // frb-coverage:ignore-start
-        warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
-        // In case logs are disabled
-        println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+        log_warn_or_println(
+            "Drop DartOpaque after closing the port, thus the object will be leaked forever.",
+        );
         // frb-coverage:ignore-end
     };
 }

@@ -1,3 +1,4 @@
+use crate::misc::logs::log_warn_or_println;
 use log::warn;
 use std::fmt::Debug;
 
@@ -58,11 +59,11 @@ impl<T: Debug, C: GuardedBoxContext> Drop for GuardedBox<T, C> {
     fn drop(&mut self) {
         if self.inner.is_some() && !self.check_context() {
             if std::thread::panicking() {
-                let msg = "GuardedBox.drop cannot drop data because the context is different. \
+                log_warn_or_println(
+                    "GuardedBox.drop cannot drop data because the context is different. \
 However, system is already panicking so we cannot panic twice. \
-Therefore, we have to make a memory leak for the data.";
-                warn!("{}", msg);
-                println!("{}", msg);
+Therefore, we have to make a memory leak for the data.",
+                );
 
                 std::mem::forget(self.inner.take());
             } else {
