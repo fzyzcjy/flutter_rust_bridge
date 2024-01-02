@@ -11,6 +11,9 @@ Future<void> main() async {
   await RustLib.init(api: mockApi);
 
   test('can mock Rust calls', () async {
+    when(() => mockApi.myInitOne()).thenAnswer((_) async => null);
+    when(() => mockApi.myInitTwo()).thenAnswer((_) async => null);
+
     when(() => mockApi.simpleAdderTwinNormal(a: 1, b: 2))
         .thenAnswer((_) async => 123456789);
     final actualResult = await simpleAdderTwinNormal(a: 1, b: 2);
