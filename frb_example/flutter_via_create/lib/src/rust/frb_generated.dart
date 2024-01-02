@@ -276,8 +276,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer cst_encode_DartOpaque(Object raw) {
-    print(
-        'hi cst_encode_DartOpaque portManager.dartHandlerPort=${portManager.dartHandlerPort}');
     return encodeDartOpaque(
         raw, portManager.dartHandlerPort, generalizedFrbRustBinding);
   }
