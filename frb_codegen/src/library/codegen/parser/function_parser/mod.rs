@@ -89,6 +89,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
             mode,
             rust_async: sig.asyncness.is_some(),
+            initializer: attributes.init(),
             comments: parse_comments(func.attrs()),
             codec_mode_pack,
             src_lineno,
