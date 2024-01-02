@@ -1,7 +1,8 @@
 # Stack Traces
 
-:::info
-This is a Rust langauge feature, and flutter_rust_bridge just keeps the default configuration by default.
+:::tip
+If using the template by `flutter_rust_bridge_codegen create/integrate`, this is already configured by default,
+via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
 :::
 
 To pass Rust stack traces to flutter, you need to set `RUST_BACKTRACE` in the running application. For that simply add `env::set_var("RUST_BACKTRACE", "1");` before initialising the bridge.

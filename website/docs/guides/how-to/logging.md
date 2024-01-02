@@ -1,5 +1,10 @@
 # Logging
 
+:::tip
+If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
+via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
+:::
+
 Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
 
 ## Example 1: Print logs to console
