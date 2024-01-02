@@ -18,7 +18,21 @@ impl PanicBacktrace {
         }));
     }
 
-    pub(crate) fn take_last() -> Option<Backtrace> {
+    pub(crate) fn catch_unwind<F: FnOnce() -> R + UnwindSafe, R>(
+        f: F,
+    ) -> Result<T, CatchUnwindWithBacktrace> {
+        std::panic::catch_unwind(f).map_err(|err| CatchUnwindWithBacktrace {
+            err,
+            backtrace: Self::take_last(),
+        })
+    }
+
+    fn take_last() -> Option<Backtrace> {
         backtrace.with(|b| b.borrow_mut().take())
     }
+}
+
+pub(crate) struct CatchUnwindWithBacktrace {
+    err: Box<dyn Any + Send + 'static>,
+    backtrace: Option<Backtrace>,
 }
