@@ -11,6 +11,7 @@ pub fn setup_default_user_utils() {
 }
 
 fn setup_backtrace() {
+    #[cfg(not(wasm))]
     if env::var("RUST_BACKTRACE").err() == Some(VarError::NotPresent) {
         env::set_var("RUST_BACKTRACE", "1");
     } else {
