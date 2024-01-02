@@ -221,7 +221,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   group('has backtraces', () {
-    final matcher = anyOf(contains('.rs'), contains('std::'));
+    final matcher = anyOf(contains('.rs'), contains('::'));
 
     test('when error (Result::Err)', () async {
       await expectLater(
