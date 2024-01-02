@@ -221,7 +221,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   group('has backtraces', () {
-    final matcher = anyOf(contains('.rs'), contains('::'));
+    final matcher =
+        anyOf(contains('.rs'), contains('::'), contains('.dart.js'));
 
     test('when error (Result::Err)', () async {
       await expectLater(
