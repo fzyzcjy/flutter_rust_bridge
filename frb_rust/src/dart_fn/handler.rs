@@ -40,7 +40,10 @@ impl DartFnHandler {
         let (sender, receiver) = oneshot::channel::<Dart2RustMessageSse>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
-        log::warn!("hi DartFnHandler.invoke 2");
+        log::warn!(
+            "hi DartFnHandler.invoke 2 dart_handler_port={}",
+            dart_handler_port
+        );
         let sender = Rust2DartSender::new(Channel::new(handle_to_message_port(dart_handler_port)));
         let msg = {
             let mut ans = vec![

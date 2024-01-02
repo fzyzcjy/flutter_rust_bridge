@@ -57,6 +57,11 @@ pub extern "C" fn frbgen_flutter_via_create_dart_fn_deliver_output(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_flutter_via_create_wire_async_func(port_: i64) {
+    wire_async_func_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_flutter_via_create_wire_async_greet_with_callback(
     port_: i64,
     name: *mut wire_cst_list_prim_u_8,

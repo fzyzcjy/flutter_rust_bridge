@@ -12,6 +12,9 @@ impl Rust2DartSender {
     }
 
     pub fn send(&self, msg: impl IntoDart) -> bool {
-        self.channel.post(msg)
+        log::warn!("hi Rust2DartSender.send BEFORE");
+        let ans = self.channel.post(msg);
+        log::warn!("hi Rust2DartSender.send AFTER ans={ans}");
+        ans
     }
 }

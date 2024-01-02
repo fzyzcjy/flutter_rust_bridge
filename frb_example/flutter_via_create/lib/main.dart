@@ -24,14 +24,23 @@ class MyApp extends StatelessWidget {
             TextButton(
               onPressed: () async {
                 print('hi dart onPressed start');
+                await asyncFunc();
+                print('hi dart onPressed end');
+              },
+              child: Text('asyncFunc'),
+            ),
+            TextButton(
+              onPressed: () async {
+                print('hi dart onPressed start');
                 await asyncGreetWithCallback(
                   name: 'arg-value-of-name',
                   logger: (String s) {
                     print('hi dart onPressed inside callback $s');
                   },
                 );
+                print('hi dart onPressed end');
               },
-              child: Text('tap'),
+              child: Text('asyncGreetWithCallback'),
             ),
           ],
         ),

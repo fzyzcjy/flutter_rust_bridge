@@ -12,6 +12,10 @@ pub fn init_app() {
     flutter_rust_bridge::setup_default_user_utils();
 }
 
+pub async fn async_func() {
+    log::warn!("hi rust async_func executing");
+}
+
 pub async fn async_greet_with_callback(
     name: String,
     logger: impl Fn(String) -> DartFnFuture<()> + UnwindSafe,

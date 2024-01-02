@@ -169,6 +169,20 @@ class RustLibWire implements BaseWire {
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_async_func(
+    int port_,
+  ) {
+    return _wire_async_func(
+      port_,
+    );
+  }
+
+  late final _wire_async_funcPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_flutter_via_create_wire_async_func');
+  late final _wire_async_func =
+      _wire_async_funcPtr.asFunction<void Function(int)>();
+
   void wire_async_greet_with_callback(
     int port_,
     ffi.Pointer<wire_cst_list_prim_u_8> name,

@@ -32,6 +32,22 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
+fn wire_async_func_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "async_func",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| async move {
+                transform_result_dco((move ||  async move {
+                         Result::<_,()>::Ok(crate::api::simple::async_func().await)
+                    })().await)
+            }
+        },
+    )
+}
 fn wire_async_greet_with_callback_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     name: impl CstDecode<String>,
