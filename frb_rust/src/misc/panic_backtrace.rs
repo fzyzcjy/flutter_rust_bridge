@@ -12,7 +12,7 @@ pub(crate) struct PanicBacktrace;
 impl PanicBacktrace {
     pub(crate) fn setup() {
         let old_hook = std::panic::take_hook();
-        std::panic::set_hook(Box::new(|arg| {
+        std::panic::set_hook(Box::new(move |arg| {
             let trace = Backtrace::new();
             backtrace.with(move |b| b.borrow_mut().replace(trace));
 
@@ -40,7 +40,7 @@ pub(crate) struct CatchUnwindWithBacktrace {
 }
 
 impl CatchUnwindWithBacktrace {
-    pub fn new(err: Box<dyn Any + Send + 'static>, backtrace: Option<Backtrace>) -> Self {
-        Self { err, backtrace }
+    pub fn new(err: Box<dyn Any + Send + 'static>, b: Option<Backtrace>) -> Self {
+        Self { err, backtrace: b }
     }
 }

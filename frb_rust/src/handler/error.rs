@@ -31,7 +31,10 @@ pub(crate) fn error_to_string(
         },
     }
     .to_string();
-    let backtrace_string = backtrace.map(|b| format!("{:?}", b)).unwrap_or_default();
+    let backtrace_string = backtrace
+        .as_ref()
+        .map(|b| format!("{:?}", b))
+        .unwrap_or_default();
     err_string + &backtrace_string
 }
 
