@@ -5,6 +5,7 @@ use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::sender::Rust2DartSender;
+use backtrace::Backtrace;
 use std::any::Any;
 
 /// The default one.
@@ -21,8 +22,9 @@ pub(crate) fn handle_non_sync_panic_error<Rust2DartCodec: BaseCodec>(
     error_listener: impl ErrorListener,
     port: MessagePort,
     error: Box<dyn Any + Send>,
+    backtrace: &Option<Backtrace>,
 ) {
-    let message = Rust2DartCodec::encode_panic(&error).into_dart_abi();
+    let message = Rust2DartCodec::encode_panic(&error, backtrace).into_dart_abi();
     error_listener.on_error(Error::Panic(error));
     Rust2DartSender::new(Channel::new(port))
         .send(message)

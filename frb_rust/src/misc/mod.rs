@@ -2,7 +2,7 @@ pub(crate) mod dart_dynamic;
 pub(crate) mod into_into_dart;
 pub(crate) mod logs;
 pub(crate) mod manual_impl;
-mod panic_backtrace;
+pub(crate) mod panic_backtrace;
 pub(crate) mod rust_arc;
 pub(crate) mod rust_auto_opaque;
 #[cfg(feature = "user-utils")]
