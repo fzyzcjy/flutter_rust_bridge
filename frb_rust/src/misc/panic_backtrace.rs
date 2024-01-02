@@ -29,7 +29,7 @@ impl PanicBacktrace {
         })
     }
 
-    fn take_last() -> Option<Backtrace> {
+    pub(crate) fn take_last() -> Option<Backtrace> {
         backtrace.with(|b| b.borrow_mut().take())
     }
 }
@@ -37,4 +37,10 @@ impl PanicBacktrace {
 pub(crate) struct CatchUnwindWithBacktrace {
     pub err: Box<dyn Any + Send + 'static>,
     pub backtrace: Option<Backtrace>,
+}
+
+impl CatchUnwindWithBacktrace {
+    pub fn new(err: Box<dyn Any + Send + 'static>, backtrace: Option<Backtrace>) -> Self {
+        Self { err, backtrace }
+    }
 }

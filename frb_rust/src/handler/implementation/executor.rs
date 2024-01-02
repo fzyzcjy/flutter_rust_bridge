@@ -6,7 +6,7 @@ use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
-use crate::misc::panic_backtrace::PanicBacktrace;
+use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
@@ -130,8 +130,9 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             .catch_unwind()
             .await;
 
-            if let Err(error) = async_result {
-                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
+            if let Err(err) = async_result {
+                let err = CatchUnwindWithBacktrace::new(err, PanicBacktrace::take_last());
+                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, err);
             }
         });
     }
