@@ -13,17 +13,19 @@ impl Rust2DartSender {
         Rust2DartSender { channel }
     }
 
-    pub fn send(&self, msg: impl IntoDart) -> anyhow::Result<()> {
+    pub fn send(&self, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
         if self.channel.post(msg) {
             Ok(())
         } else {
-            Err(anyhow!("Fail to post message to Dart"))
+            Err(Rust2DartSendError)
         }
     }
 
     pub fn send_or_warn(&self, msg: impl IntoDart) {
-        if let Err(e) = self.send(msg) {
+        if let Err(_) = self.send(msg) {
             log_warn_or_println(TODO);
         }
     }
 }
+
+pub struct Rust2DartSendError;
