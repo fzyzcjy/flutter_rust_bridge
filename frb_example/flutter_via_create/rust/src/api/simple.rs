@@ -16,8 +16,6 @@ pub async fn async_greet_with_callback(
     name: String,
     logger: impl Fn(String) -> DartFnFuture<()> + UnwindSafe,
 ) -> anyhow::Result<String> {
-    log::warn!("hi rust async_greet_with_callback start");
     logger(format!("this is arg of rust->dart call")).await;
-    log::warn!("hi rust async_greet_with_callback after await");
     Ok(format!("async_greet_with_callback: Hello, {name}!"))
 }

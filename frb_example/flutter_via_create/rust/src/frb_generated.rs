@@ -99,12 +99,10 @@ fn decode_DartFn_Inputs_String_Output_unit(
     use flutter_rust_bridge::IntoDart;
 
     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: String) -> () {
-        log::warn!("hi rust decode_DartFn_Inputs_String_Output_unit.body start");
         let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
-        log::warn!("hi rust decode_DartFn_Inputs_String_Output_unit.body after await");
         <()>::sse_decode_single(message)
     }
 
