@@ -207,4 +207,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
     });
   });
+
+  // TODO add tests for web (may need different name matchers)
+  group('has backtraces', skip: kIsWeb, () {
+    test('when error (Result::Err)', () async {
+      await expectLater(
+          () async => funcReturnErrorTwinSse(),
+          throwsA(isA<AnyhowException>()
+              .having((x) => x.message, 'message', contains('.rs'))));
+    });
+
+    test('when panic', () async {
+      await expectRustPanic(
+          () async => funcTypeFalliblePanicTwinSse(), 'TwinSse',
+          messageMatcherOnNative: contains('.rs'));
+    });
+  });
 }
