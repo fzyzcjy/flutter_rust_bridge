@@ -98,6 +98,20 @@ class RustLibWire implements BaseWire {
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_init_app(
+    int port_,
+  ) {
+    return _wire_init_app(
+      port_,
+    );
+  }
+
+  late final _wire_init_appPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_frb_example_dart_minimal_wire_init_app');
+  late final _wire_init_app =
+      _wire_init_appPtr.asFunction<void Function(int)>();
+
   void wire_minimal_adder(
     int port_,
     int a,

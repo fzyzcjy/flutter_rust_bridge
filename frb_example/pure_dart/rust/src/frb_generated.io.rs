@@ -425,16 +425,14 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::N
 impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >,
     > for *const std::ffi::c_void
 {
     fn cst_decode(
         self,
     ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>,
+        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
     > {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
@@ -17222,6 +17220,26 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_function_with_comments_tripl
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_check_init_done(port_: i64) {
+    wire_check_init_done_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_init_app(port_: i64) {
+    wire_init_app_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_my_init_one(port_: i64) {
+    wire_my_init_one_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_my_init_two(port_: i64) {
+    wire_my_init_two_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_return_dart_dynamic_twin_normal(port_: i64) {
     wire_return_dart_dynamic_twin_normal_impl(port_)
 }
@@ -31403,27 +31421,23 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >(ptr);
     }
 }

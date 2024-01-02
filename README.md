@@ -2,7 +2,7 @@
 
 [![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg?color=blue)](https://crates.io/crates/flutter_rust_bridge)
 [![Flutter Package](https://img.shields.io/pub/v/flutter_rust_bridge.svg?include_prereleases&color=blue)](https://pub.dev/packages/flutter_rust_bridge)
-[![Stars](https://img.shields.io/github/stars/fzyzcjy/flutter_rust_bridge?logo=github)](https://github.com/fzyzcjy/flutter_rust_bridge)
+[![Stars](https://img.shields.io/github/stars/fzyzcjy/flutter_rust_bridge?logo=github&style=flat)](https://github.com/fzyzcjy/flutter_rust_bridge)
 [![CI](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![Post-Release](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge/graph/badge.svg?token=Q7EUTZMDIF)](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge)
@@ -68,6 +68,7 @@ This package is [officially Flutter Favorite](https://docs.flutter.dev/packages-
 * **Rapid setup**: Only a one-liner command to integrate into your project.
 * **Write your code naturally**: Use your intuition and write the code you want. The bridge understands many advanced grammars (see below), allowing seamless calling Rust from Dart.
 * **Use libraries/tools in Flutter/Rust**: All existing libraries, Flutter debuggers, ... Nothing to stop you from using them.
+* **Battery included**: Even small things like logging and enable backtraces are configured in the starter kit.
 
 ### 3. Powerfulness
 

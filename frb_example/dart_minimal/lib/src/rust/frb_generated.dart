@@ -44,6 +44,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       RustLibWire.fromExternalLibrary;
 
   @override
+  Future<void> executeRustInitializers() async {
+    await api.initApp();
+  }
+
+  @override
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
       kDefaultExternalLibraryLoaderConfig;
 
@@ -56,6 +61,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<void> initApp({dynamic hint});
+
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 }
 
@@ -66,6 +73,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  Future<void> initApp({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_init_app(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kInitAppConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kInitAppConstMeta => const TaskConstMeta(
+        debugName: "init_app",
+        argNames: [],
+      );
 
   @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {

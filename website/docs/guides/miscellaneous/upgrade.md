@@ -30,6 +30,7 @@ just find the corresponding counterparts in V2 and rename things.
 * Initialize the system via `RustLib.init()` when starting app.
 * `flutter_rust_bridge_codegen` -> `flutter_rust_bridge_codegen generate`
 * `flutter_rust_bridge_serve` -> `flutter_rust_bridge_codegen build-web` + standard `flutter run` (or run in IDE)
+* `DartSafe` -> simply remove it
 
 Some flags are removed,
 when, for example, they exist mainly for compatibility of later V1 with earlier V1 versions.

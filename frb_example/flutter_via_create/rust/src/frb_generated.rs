@@ -33,7 +33,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 // Section: wire_funcs
 
 fn wire_greet_impl(
-    name: impl CstDecode<String> + core::panic::UnwindSafe,
+    name: impl CstDecode<String>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -46,6 +46,22 @@ fn wire_greet_impl(
             transform_result_dco((move || {
                 Result::<_, ()>::Ok(crate::api::simple::greet(api_name))
             })())
+        },
+    )
+}
+fn wire_init_app_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "init_app",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| {
+                transform_result_dco(
+                    (move || Result::<_, ()>::Ok(crate::api::simple::init_app()))(),
+                )
+            }
         },
     )
 }

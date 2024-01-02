@@ -38,6 +38,11 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire_init_app(port_: i64) {
+    wire_init_app_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }

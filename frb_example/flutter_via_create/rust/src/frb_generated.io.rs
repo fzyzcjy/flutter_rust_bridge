@@ -59,6 +59,11 @@ pub extern "C" fn frbgen_flutter_via_create_wire_greet(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_flutter_via_create_wire_init_app(port_: i64) {
+    wire_init_app_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_flutter_via_create_cst_new_list_prim_u_8(
     len: i32,
 ) -> *mut wire_cst_list_prim_u_8 {

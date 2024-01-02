@@ -11,7 +11,6 @@ use futures::FutureExt;
 use log::warn;
 use std::collections::HashMap;
 use std::panic;
-use std::panic::AssertUnwindSafe;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 
@@ -49,11 +48,9 @@ impl DartFnHandler {
             ans.extend(args);
             ans
         };
-        sender.send(msg);
+        sender.send_or_warn(msg);
 
-        Box::pin(AssertUnwindSafe(
-            receiver.then(|x| async move { x.unwrap() }),
-        ))
+        Box::pin(receiver.then(|x| async move { x.unwrap() }))
     }
 
     pub(crate) fn handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {

@@ -150,6 +150,20 @@ class RustLibWire implements BaseWire {
   late final _wire_greet = _wire_greetPtr.asFunction<
       WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
 
+  void wire_init_app(
+    int port_,
+  ) {
+    return _wire_init_app(
+      port_,
+    );
+  }
+
+  late final _wire_init_appPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'frbgen_flutter_via_integrate_wire_init_app');
+  late final _wire_init_app =
+      _wire_init_appPtr.asFunction<void Function(int)>();
+
   ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
     int len,
   ) {

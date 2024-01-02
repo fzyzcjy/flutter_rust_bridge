@@ -9,6 +9,10 @@ all Flutter utilities can be used as normal (for both native and web platform).
 
 ## Debugging by printing
 
-Just use normal `println!()` (Rust) and `print` (Dart)
+Just use normal logging 
 to [debug](https://stackoverflow.com/questions/189562/what-is-the-proper-name-for-doing-debugging-by-adding-print-statements) -
 there is nothing special.
+
+As for how to do logging:
+For Dart, it is `print()`.
+For Rust, it is `info!() / warn!() / ...` after [configuring the loggers](./logging).

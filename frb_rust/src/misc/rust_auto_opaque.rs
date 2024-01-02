@@ -1,8 +1,8 @@
-use crate::{DartSafe, RustOpaque};
+use crate::RustOpaque;
 use anyhow::{anyhow, Context, Result};
 use std::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 
-impl<T: DartSafe> RustOpaque<RwLock<T>> {
+impl<T> RustOpaque<RwLock<T>> {
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
     pub fn rust_auto_opaque_decode_owned(self) -> Result<T> {

@@ -1,10 +1,10 @@
 use std::future::Future;
-use std::panic::{AssertUnwindSafe, RefUnwindSafe};
+use std::panic::AssertUnwindSafe;
 pub use tokio::spawn;
 pub use tokio::task::spawn_local;
 pub use tokio::task::JoinHandle;
 
-pub trait BaseAsyncRuntime: RefUnwindSafe {
+pub trait BaseAsyncRuntime {
     fn spawn<F>(&self, future: F) -> JoinHandle<F::Output>
     where
         F: Future + Send + 'static,

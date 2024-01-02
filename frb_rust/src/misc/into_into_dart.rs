@@ -35,10 +35,7 @@ where
     }
 }
 
-impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T>
-where
-    T: DartSafe,
-{
+impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T> {
     #[inline(always)]
     fn into_into_dart(self) -> RustOpaque<T> {
         self

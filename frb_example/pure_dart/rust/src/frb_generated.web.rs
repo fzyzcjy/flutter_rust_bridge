@@ -9841,16 +9841,14 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::N
 impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
     ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>,
+        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
     > {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
@@ -11374,6 +11372,26 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_function_with_comments_triple_slash_single_line_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_check_init_done(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_check_init_done_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_init_app_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_my_init_one(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_my_init_one_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_my_init_two(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_my_init_two_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -25560,27 +25578,23 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr: *const
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >(ptr);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >(ptr);
     }
 }

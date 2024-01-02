@@ -13,6 +13,7 @@ import 'api/async_spawn_test.dart' as async_spawn_test;
 import 'api/attribute_test.dart' as attribute_test;
 import 'api/chrono_type_test.dart' as chrono_type_test;
 import 'api/comment_test.dart' as comment_test;
+import 'api/customization_test.dart' as customization_test;
 import 'api/dart_dynamic_test.dart' as dart_dynamic_test;
 import 'api/dart_fn_test.dart' as dart_fn_test;
 import 'api/dart_opaque_sync_test.dart' as dart_opaque_sync_test;
@@ -363,6 +364,7 @@ Future<void> callFileEntrypoints() async {
   await attribute_test.main(skipRustLibInit: true);
   await chrono_type_test.main(skipRustLibInit: true);
   await comment_test.main(skipRustLibInit: true);
+  await customization_test.main(skipRustLibInit: true);
   await dart_dynamic_test.main(skipRustLibInit: true);
   await dart_fn_test.main(skipRustLibInit: true);
   await dart_opaque_sync_test.main(skipRustLibInit: true);
