@@ -15,7 +15,6 @@ use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::FutureExt;
 use std::future::Future;
-use std::panic;
 use std::panic::AssertUnwindSafe;
 
 /// The default executor used.

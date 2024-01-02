@@ -6,8 +6,6 @@ use crate::handler::error_listener::ErrorListener;
 use crate::misc::panic_backtrace::CatchUnwindWithBacktrace;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::sender::Rust2DartSender;
-use backtrace::Backtrace;
-use std::any::Any;
 
 /// The default one.
 #[derive(Clone, Copy)]
