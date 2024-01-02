@@ -10,7 +10,7 @@ Future<void> main() async {
     await expectLater(
       () async => await RustLib.init(
         // deliberately bad external library, on macos/linux
-        externalLibrary: ExternalLibrary.process(),
+        externalLibrary: ExternalLibrary.process(iKnowHowToUseIt: true),
       ),
       throwsA(isA<ArgumentError>().having(
           (x) => x.message, 'message', contains('This is often because'))),
