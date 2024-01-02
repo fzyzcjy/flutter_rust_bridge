@@ -14,7 +14,7 @@ impl Error {
     pub fn message(&self) -> String {
         match self {
             Error::CustomError => "CustomError".to_string(),
-            Error::Panic(panic_err) => error_to_string(panic_err, None),
+            Error::Panic(panic_err) => error_to_string(panic_err, &None),
         }
     }
 }
