@@ -5,6 +5,7 @@ pub mod attribute;
 pub mod benchmark_misc;
 pub mod chrono_type;
 pub mod comment;
+pub mod customization;
 pub mod dart_dynamic;
 pub mod dart_fn;
 pub mod dart_opaque;
