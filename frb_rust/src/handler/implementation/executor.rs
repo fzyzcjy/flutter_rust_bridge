@@ -122,6 +122,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
 
                 let ret = task(task_context).await;
 
+                log::warn!("hi call ExecuteNormalOrAsyncUtils::handle_result port2={port2:?}");
                 ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _>(
                     ret, mode, sender, el2, port2,
                 );
