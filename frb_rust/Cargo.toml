@@ -64,8 +64,9 @@ wasm-bindgen-test = "0.3.32"
 cool_asserts = "2.0.3"
 
 [features]
-default = ["chrono", "wasm-start", "rust-async"]
+default = ["chrono", "wasm-start", "rust-async", "user-utils"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
 wasm-start = ["console_error_panic_hook"]
 rust-async = ["dep:tokio", "dep:futures"]
+user-utils = ["dep:android_logger", "dep:oslog"]
