@@ -15,6 +15,7 @@ use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::Wi
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use serde::Serialize;
@@ -87,9 +88,16 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let execute_rust_initializers = (context.ir_pack.funcs.iter())
+    let initializers = (context.ir_pack.funcs.iter())
         .filter(|f| f.initializer)
-        .map(|f| format!("await api.{}();\n", f.name))
+        .collect_vec();
+    let initializer_imports = initializers
+        .iter()
+        .map(|f| format!(r#"import '{TODO}';"#))
+        .join("");
+    let execute_rust_initializers = initializers
+        .iter()
+        .map(|f| format!("await api.{}();\n", f.name.name.to_case(Case::Camel)))
         .join("");
 
     Ok(Acc {
@@ -98,7 +106,7 @@ fn generate_boilerplate(
                 file_top: file_top.clone(),
                 import: format!(
                     "
-                    {universal_imports}
+                    {universal_imports}{initializer_imports}
                     import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
                     import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
                     "
