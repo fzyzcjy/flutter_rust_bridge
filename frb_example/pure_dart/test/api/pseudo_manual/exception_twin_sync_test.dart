@@ -209,19 +209,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  // TODO add tests for web (may need different name matchers)
-  group('has backtraces', skip: kIsWeb, () {
+  group('has backtraces', () {
+    final matcher = any(contains('.rs'), contains('std::'));
+
     test('when error (Result::Err)', () async {
       await expectLater(
           () async => funcReturnErrorTwinSync(),
           throwsA(isA<AnyhowException>()
-              .having((x) => x.message, 'message', contains('.rs'))));
+              .having((x) => x.message, 'message', matcher)));
     });
 
     test('when panic', () async {
       await expectRustPanic(
           () async => funcTypeFalliblePanicTwinSync(), 'TwinSync',
-          messageMatcherOnNative: contains('.rs'));
+          messageMatcherOnNative: matcher);
     });
   });
 }
