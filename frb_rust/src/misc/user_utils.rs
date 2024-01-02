@@ -1,3 +1,4 @@
+use crate::misc::panic_backtrace::PanicBacktrace;
 use std::env;
 use std::env::VarError;
 
@@ -15,6 +16,8 @@ fn setup_backtrace() {
     } else {
         log::debug!("Skip setup RUST_BACKTRACE because there is already environment variable");
     }
+
+    PanicBacktrace::setup();
 }
 
 fn setup_log_to_console() {
