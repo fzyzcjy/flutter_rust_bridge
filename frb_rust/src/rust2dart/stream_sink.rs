@@ -26,7 +26,6 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
         Rust2DartSender::new(handle_to_channel(&self.sendable_channel_handle))
     }
 
-    // TODO about StreamSink vs StreamSinkRaw
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
     pub fn add(&self, value: Rust2DartCodec::Message) -> anyhow::Result<()> {
