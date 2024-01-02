@@ -75,8 +75,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             }));
 
             if let Err(error) = thread_result {
-                let backtrace = PanicBacktrace::take_last();
-                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error, &backtrace);
+                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
             }
         }));
     }

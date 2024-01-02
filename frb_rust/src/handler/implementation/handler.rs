@@ -11,7 +11,6 @@ use crate::handler::implementation::error_listener::{
     handle_non_sync_panic_error, NoOpErrorListener,
 };
 use crate::handler::implementation::executor::SimpleExecutor;
-use crate::misc::panic_backtrace::PanicBacktrace;
 use crate::platform_types::DartAbi;
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
@@ -96,8 +95,7 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
             }));
             catch_unwind_result
                 .unwrap_or_else(|error| {
-                    let backtrace = PanicBacktrace::take_last();
-                    let message = Rust2DartCodec::encode_panic(&error, &backtrace);
+                    let message = Rust2DartCodec::encode_panic(&error);
                     self.error_listener.on_error(Error::Panic(error));
                     message
                 })
@@ -170,12 +168,10 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
                 let task = prepare();
                 execute(task_info2, task);
             })) {
-                let backtrace = PanicBacktrace::take_last();
                 handle_non_sync_panic_error::<Rust2DartCodec>(
                     self.error_listener,
                     task_info.port.unwrap(),
                     error,
-                    &backtrace,
                 );
             }
         }));
