@@ -72,7 +72,7 @@ pub async fn handle_stream_sink_at_3_twin_rust_async(
 
 fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
     for i in 0..max {
-        let _ = sink.add(LogTwinRustAsync { key, value: i }).unwrap();
+        sink.add(LogTwinRustAsync { key, value: i }).unwrap();
     }
     sink.close().unwrap();
 }
