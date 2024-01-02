@@ -598,7 +598,7 @@ final class WireSyncRust2DartSse extends ffi.Struct {
   external int len;
 }
 
-typedef MessagePort = ffi.Int;
+typedef MessagePort = ffi.Int64;
 typedef DartMessagePort = int;
 typedef WireSyncRust2DartDco = ffi.Pointer<Dart_CObject>;
 
