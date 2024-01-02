@@ -8,6 +8,21 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
+  group('has backtraces', () {
+    test('when error (Result::Err)', () async {
+      await expectLater(
+          () async => funcReturnErrorTwinNormal(),
+          throwsA(isA<AnyhowException>()
+              .having((x) => x.message, 'message', contains('TODO'))));
+    });
+
+    test('when panic', () async {
+      await expectRustPanic(
+          () async => funcTypeFalliblePanicTwinNormal(), 'TwinNormal',
+          messageMatcherOnNative: contains('TODO'));
+    });
+  });
+
   group('systematic test', () {
     test('call funcReturnErrorTwinNormal', () async {
       await expectLater(
