@@ -6,14 +6,5 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> initApp({dynamic hint}) =>
-    RustLib.instance.api.initApp(hint: hint);
-
-Future<void> myInitOne({dynamic hint}) =>
-    RustLib.instance.api.myInitOne(hint: hint);
-
-Future<void> myInitTwo({dynamic hint}) =>
-    RustLib.instance.api.myInitTwo(hint: hint);
-
 Future<bool> checkInitDone({dynamic hint}) =>
     RustLib.instance.api.checkInitDone(hint: hint);
