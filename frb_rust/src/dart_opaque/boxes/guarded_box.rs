@@ -1,5 +1,4 @@
 use crate::misc::logs::log_warn_or_println;
-use log::warn;
 use std::fmt::Debug;
 
 /// Only allows manipulation of [inner] value when the [context] is the same
