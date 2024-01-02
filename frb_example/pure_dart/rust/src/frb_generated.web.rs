@@ -8967,16 +8967,14 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::N
 impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
     ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>,
+        std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
     > {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
@@ -24264,27 +24262,23 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr: *const
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >(ptr);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
+            std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync>>,
         >(ptr);
     }
 }

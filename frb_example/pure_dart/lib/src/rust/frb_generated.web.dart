@@ -270,7 +270,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
@@ -341,7 +341,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic raw);
 
   @protected
@@ -681,7 +681,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic raw);
 
   @protected
@@ -4364,7 +4364,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
 
   @protected
@@ -4649,7 +4649,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BoxFnStringString
-      sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           SseDeserializer deserializer);
 
   @protected
@@ -16286,7 +16286,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString raw);
 
   @protected
@@ -16617,7 +16617,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
-      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString raw);
 
   @protected
@@ -16778,7 +16778,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           BoxFnStringString self, SseSerializer serializer);
 
   @protected
@@ -17129,9 +17129,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonSendHideData self, SseSerializer serializer);
 
   @protected
-  void
-      sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          BoxFnStringString self, SseSerializer serializer);
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
+      BoxFnStringString self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
@@ -30497,16 +30496,16 @@ class RustLibWire extends BaseWire {
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
@@ -36865,11 +36864,11 @@ class RustLibWasmModule implements WasmModule {
       dynamic ptr);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
           dynamic ptr);
 
   external void

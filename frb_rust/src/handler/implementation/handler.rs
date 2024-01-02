@@ -17,7 +17,7 @@ use crate::thread_pool::BaseThreadPool;
 use crate::DartOpaque;
 use std::future::Future;
 use std::panic;
-use std::panic::UnwindSafe;
+use std::panic::AssertUnwindSafe;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler<TP> =
@@ -60,12 +60,11 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        PrepareFn: FnOnce() -> TaskFn,
         TaskFn: FnOnce(
                 TaskContext<Rust2DartCodec>,
             ) -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>
             + Send
-            + UnwindSafe
             + 'static,
         Rust2DartCodec: BaseCodec,
     {
@@ -85,16 +84,15 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         sync_task: SyncTaskFn,
     ) -> <Rust2DartCodec::Message as Rust2DartMessageTrait>::WireSyncRust2DartType
     where
-        SyncTaskFn:
-            FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<Rust2DartCodec::Message, Rust2DartCodec::Message>,
         Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
-        panic::catch_unwind(move || {
-            let catch_unwind_result = panic::catch_unwind(move || {
+        panic::catch_unwind(AssertUnwindSafe(move || {
+            let catch_unwind_result = panic::catch_unwind(AssertUnwindSafe(move || {
                 (self.executor).execute_sync::<Rust2DartCodec, _>(task_info, sync_task)
-            });
+            }));
             catch_unwind_result
                 .unwrap_or_else(|error| {
                     let message = Rust2DartCodec::encode_panic(&error);
@@ -102,7 +100,7 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
                     message
                 })
                 .into_raw_wire_sync()
-        })
+        }))
         // Deliberately construct simplest possible WireSyncRust2Dart object
         // instead of more realistic things like `WireSyncRust2DartSrc::new(Panic, ...)`.
         // See comments in [wrap] for why.
@@ -115,11 +113,10 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
+        PrepareFn: FnOnce() -> TaskFn,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + 'static,
         TaskRetFut: Future<Output = Result<Rust2DartCodec::Message, Rust2DartCodec::Message>>
-            + TaskRetFutTrait
-            + UnwindSafe,
+            + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(
@@ -152,9 +149,9 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
         prepare: PrepareFn,
         execute: ExecuteFn,
     ) where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        PrepareFn: FnOnce() -> TaskFn,
         TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskFnRet,
-        ExecuteFn: FnOnce(TaskInfo, TaskFn) + UnwindSafe,
+        ExecuteFn: FnOnce(TaskInfo, TaskFn),
         Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -165,18 +162,18 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
         // catches something: Because if we report error, that line of code itself can cause panic
         // as well. Then that new panic will go across language boundary and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
-        let _ = panic::catch_unwind(move || {
+        let _ = panic::catch_unwind(AssertUnwindSafe(move || {
             let task_info2 = task_info.clone();
-            if let Err(error) = panic::catch_unwind(move || {
+            if let Err(error) = panic::catch_unwind(AssertUnwindSafe(move || {
                 let task = prepare();
                 execute(task_info2, task);
-            }) {
+            })) {
                 handle_non_sync_panic_error::<Rust2DartCodec>(
                     self.error_listener,
                     task_info.port.unwrap(),
                     error,
                 );
             }
-        });
+        }));
     }
 }

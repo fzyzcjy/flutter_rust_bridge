@@ -235,6 +235,7 @@ class MimicQuickstartTester {
       relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
       coverage: false,
       coverageName: 'MimicQuickstartStepGenerate',
+      postRelease: postRelease,
     );
   }
 }
