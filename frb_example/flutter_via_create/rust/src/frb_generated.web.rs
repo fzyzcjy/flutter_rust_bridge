@@ -78,11 +78,6 @@ pub fn dart_fn_deliver_output(
 }
 
 #[wasm_bindgen]
-pub fn wire_async_func(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_async_func_impl(port_)
-}
-
-#[wasm_bindgen]
 pub fn wire_async_greet_with_callback(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     name: String,
