@@ -14,7 +14,6 @@
     --ifm-color-primary-lighter: #48a9f5;
     --ifm-color-primary-lightest: #70bbf7;
     --docusaurus-highlighted-code-line-bg: rgb(230, 230, 230);
-    --logo-image: url('../../misc/logo.png');
 }
 
 [data-theme='dark'] {
@@ -26,7 +25,6 @@
     --ifm-color-primary-lighter: #48a9f5;
     --ifm-color-primary-lightest: #70bbf7;
     --docusaurus-highlighted-code-line-bg: rgb(100, 100, 100);
-    --logo-image: url('../../misc/logo_dark.png');
 }
 
 /* https://dev.to/sajclarke_62/using-tailwindcss-v3-in-docusaurus-in-5-steps-5c26 */
@@ -36,8 +34,4 @@
 
 .my-hide-nav nav {
     display: none;
-}
-
-img#flutter_rust_bridge_logo {
-    content: var(--logo-image);
 }
