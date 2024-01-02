@@ -20,12 +20,12 @@ fn setup_backtrace() {
 fn setup_log_to_console() {
     #[cfg(target_os = "android")]
     let _ = android_logger::init_once(
-        android_logger::Config::default().with_max_level(LevelFilter::Trace),
+        android_logger::Config::default().with_max_level(log::LevelFilter::Trace),
     );
 
     #[cfg(target_os = "ios")]
     let _ = oslog::OsLogger::new("frb_user")
-        .level_filter(LevelFilter::Trace)
+        .level_filter(log::LevelFilter::Trace)
         .init();
 
     // TODO add more platforms, e.g. web, ...
