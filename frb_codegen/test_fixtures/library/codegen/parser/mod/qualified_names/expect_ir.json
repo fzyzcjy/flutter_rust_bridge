@@ -8,6 +8,7 @@
       },
       "comments": [],
       "error_output": null,
+      "initializer": false,
       "inputs": [
         {
           "comments": [],
@@ -61,6 +62,7 @@
         "safe_ident": "String",
         "type": "Delegate"
       },
+      "initializer": false,
       "inputs": [],
       "mode": "Normal",
       "name": "crate::api/func_anyhow_result",
@@ -83,6 +85,7 @@
         "safe_ident": "String",
         "type": "Delegate"
       },
+      "initializer": false,
       "inputs": [],
       "mode": "Normal",
       "name": "crate::api/func_result",
@@ -105,6 +108,7 @@
         "safe_ident": "String",
         "type": "Delegate"
       },
+      "initializer": false,
       "inputs": [],
       "mode": "Normal",
       "name": "crate::api/func_std_result_result",

@@ -29,6 +29,7 @@
       },
       "comments": [],
       "error_output": null,
+      "initializer": false,
       "inputs": [
         {
           "comments": [],
@@ -76,6 +77,7 @@
       },
       "comments": [],
       "error_output": null,
+      "initializer": false,
       "inputs": [],
       "mode": "Normal",
       "name": "crate::api/MyEnum_example_static_method",
@@ -100,6 +102,7 @@
       },
       "comments": [],
       "error_output": null,
+      "initializer": false,
       "inputs": [
         {
           "comments": [],
@@ -149,6 +152,7 @@
       },
       "comments": [],
       "error_output": null,
+      "initializer": false,
       "inputs": [],
       "mode": "Normal",
       "name": "crate::api/MyStruct_example_static_method",
