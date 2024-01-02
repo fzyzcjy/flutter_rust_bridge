@@ -12,6 +12,7 @@ lazy_static! {
 #[frb(init)]
 pub fn my_init_one() -> anyhow::Result<()> {
     *INIT_ONE_DONE.lock().unwrap() = true;
+    Ok(())
 }
 
 #[frb(init)]
