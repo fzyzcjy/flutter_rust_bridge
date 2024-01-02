@@ -3,13 +3,11 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables
 
+import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-import 'api/simple.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -156,21 +154,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> Function(int, dynamic) encode_DartFn_Inputs_String_Output_unit(
       FutureOr<void> Function(String) raw) {
     return (callId, rawArg0) async {
-      print('hi dart encode_DartFn_Inputs_String_Output_unit.closure start');
       final arg0 = dco_decode_String(rawArg0);
 
-      print('hi dart encode_DartFn_Inputs_String_Output_unit.closure 1');
       final rawOutput = await raw(arg0);
 
-      print('hi dart encode_DartFn_Inputs_String_Output_unit.closure 2');
       final serializer = SseSerializer(generalizedFrbRustBinding);
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      print('hi dart encode_DartFn_Inputs_String_Output_unit.closure 3');
       wire.dart_fn_deliver_output(
           callId, output.ptr, output.rustVecLen, output.dataLen);
-      print('hi dart encode_DartFn_Inputs_String_Output_unit.closure 4');
     };
   }
 
