@@ -79,10 +79,14 @@ Future<void> expectRustPanic(
   String? messageOnNative,
   Matcher? messageMatcherOnNative,
 }) async {
+  if (messageOnNative != null) {
+    assert(messageMatcherOnNative == null);
+    messageMatcherOnNative = startsWith(messageOnNative);
+  }
+
   var inner = isA<PanicException>();
-  if (!kIsWeb && messageOnNative != null) {
-    inner = inner.having((x) => x.message, 'message',
-        messageMatcherOnNative ?? startsWith(messageOnNative));
+  if (!kIsWeb && messageMatcherOnNative != null) {
+    inner = inner.having((x) => x.message, 'message', messageMatcherOnNative);
   }
   await expectRustPanicRaw(body, mode, throwsA(inner));
 }

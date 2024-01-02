@@ -8,21 +8,6 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  group('has backtraces', () {
-    test('when error (Result::Err)', () async {
-      await expectLater(
-          () async => funcReturnErrorTwinNormal(),
-          throwsA(isA<AnyhowException>()
-              .having((x) => x.message, 'message', contains('TODO'))));
-    });
-
-    test('when panic', () async {
-      await expectRustPanic(
-          () async => funcTypeFalliblePanicTwinNormal(), 'TwinNormal',
-          messageMatcherOnNative: contains('TODO'));
-    });
-  });
-
   group('systematic test', () {
     test('call funcReturnErrorTwinNormal', () async {
       await expectLater(
@@ -221,6 +206,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
               startsWith('AnyhowException(anyhow error'))),
         );
       });
+    });
+  });
+
+  // TODO add tests for web (may need different name matchers)
+  group('has backtraces', skip: kIsWeb, () {
+    test('when error (Result::Err)', () async {
+      await expectLater(
+          () async => funcReturnErrorTwinNormal(),
+          throwsA(isA<AnyhowException>()
+              .having((x) => x.message, 'message', contains('.rs'))));
+    });
+
+    test('when panic', () async {
+      await expectRustPanic(
+          () async => funcTypeFalliblePanicTwinNormal(), 'TwinNormal',
+          messageMatcherOnNative: contains('.rs'));
     });
   });
 }
