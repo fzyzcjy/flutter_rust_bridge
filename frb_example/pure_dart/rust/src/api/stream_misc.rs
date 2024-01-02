@@ -42,6 +42,6 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
     }
 
     if cnt.load(Ordering::SeqCst) == 10 {
-        sink.close();
+        sink.close().unwrap();
     }
 }

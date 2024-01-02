@@ -50,6 +50,6 @@ pub fn func_stream_realistic_twin_sse(
     }
 
     if cnt.load(Ordering::SeqCst) == 10 {
-        sink.close();
+        sink.close().unwrap();
     }
 }
