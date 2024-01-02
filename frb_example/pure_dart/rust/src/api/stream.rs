@@ -50,7 +50,7 @@ pub fn handle_stream_sink_at_3_twin_normal(sink: StreamSink<LogTwinNormal>, key:
 
 fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
     for i in 0..max {
-        let _ = sink.add(LogTwinNormal { key, value: i });
+        let _ = sink.add(LogTwinNormal { key, value: i }).unwrap();
     }
-    sink.close();
+    sink.close().unwrap();
 }

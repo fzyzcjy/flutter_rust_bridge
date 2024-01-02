@@ -66,8 +66,8 @@ pub async fn app_settings_stream_twin_rust_async_sse(
     sink: StreamSink<ApplicationSettings, flutter_rust_bridge::SseCodec>,
 ) {
     let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
-    sink.add(app_settings);
-    sink.close();
+    sink.add(app_settings).unwrap();
+    sink.close().unwrap();
 }
 
 // use a stream of a vec of mirrored type
@@ -79,8 +79,8 @@ pub async fn app_settings_vec_stream_twin_rust_async_sse(
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
     ];
-    sink.add(app_settings);
-    sink.close();
+    sink.add(app_settings).unwrap();
+    sink.close().unwrap();
 }
 
 pub struct MirrorStructTwinRustAsyncSse {
@@ -104,8 +104,8 @@ pub async fn mirror_struct_stream_twin_rust_async_sse(
             frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         ],
     };
-    sink.add(val);
-    sink.close();
+    sink.add(val).unwrap();
+    sink.close().unwrap();
 }
 
 // usa a tuple of Mirror types for a StreamSink
@@ -119,8 +119,8 @@ pub async fn mirror_tuple_stream_twin_rust_async_sse(
             value: String::from("test"),
         }),
     );
-    sink.add(tuple);
-    sink.close();
+    sink.add(tuple).unwrap();
+    sink.close().unwrap();
 }
 
 #[frb(mirror(ApplicationMessage))]

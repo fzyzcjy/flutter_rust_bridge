@@ -46,9 +46,10 @@ impl ConcatenateWithTwinSync {
                 sink.add(Log2TwinSync {
                     key,
                     value: format!("{a}{i}"),
-                });
+                })
+                .unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -56,9 +57,9 @@ impl ConcatenateWithTwinSync {
     pub fn handle_some_stream_sink_at_1_twin_sync(&self, sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
-                sink.add(i);
+                sink.add(i).unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -73,9 +74,10 @@ impl ConcatenateWithTwinSync {
                 sink.add(Log2TwinSync {
                     key,
                     value: i.to_string(),
-                });
+                })
+                .unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -83,9 +85,9 @@ impl ConcatenateWithTwinSync {
     pub fn handle_some_static_stream_sink_single_arg_twin_sync(sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
-                sink.add(i);
+                sink.add(i).unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 }

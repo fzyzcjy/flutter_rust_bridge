@@ -46,9 +46,10 @@ impl ConcatenateWithTwinSse {
                 sink.add(Log2TwinSse {
                     key,
                     value: format!("{a}{i}"),
-                });
+                })
+                .unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -59,9 +60,9 @@ impl ConcatenateWithTwinSse {
     ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
-                sink.add(i);
+                sink.add(i).unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -76,9 +77,10 @@ impl ConcatenateWithTwinSse {
                 sink.add(Log2TwinSse {
                     key,
                     value: i.to_string(),
-                });
+                })
+                .unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -88,9 +90,9 @@ impl ConcatenateWithTwinSse {
     ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
-                sink.add(i);
+                sink.add(i).unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 }

@@ -88,7 +88,7 @@ fn handle_stream_inner(
     sink: StreamSink<LogTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
 ) {
     for i in 0..max {
-        let _ = sink.add(LogTwinRustAsyncSse { key, value: i });
+        let _ = sink.add(LogTwinRustAsyncSse { key, value: i }).unwrap();
     }
-    sink.close();
+    sink.close().unwrap();
 }

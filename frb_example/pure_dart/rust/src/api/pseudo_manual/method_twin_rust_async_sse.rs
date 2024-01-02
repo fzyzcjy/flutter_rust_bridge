@@ -46,9 +46,10 @@ impl ConcatenateWithTwinRustAsyncSse {
                 sink.add(Log2TwinRustAsyncSse {
                     key,
                     value: format!("{a}{i}"),
-                });
+                })
+                .unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -59,9 +60,9 @@ impl ConcatenateWithTwinRustAsyncSse {
     ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
-                sink.add(i);
+                sink.add(i).unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -76,9 +77,10 @@ impl ConcatenateWithTwinRustAsyncSse {
                 sink.add(Log2TwinRustAsyncSse {
                     key,
                     value: i.to_string(),
-                });
+                })
+                .unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 
@@ -88,9 +90,9 @@ impl ConcatenateWithTwinRustAsyncSse {
     ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
-                sink.add(i);
+                sink.add(i).unwrap();
             }
-            sink.close();
+            sink.close().unwrap();
         }));
     }
 }
