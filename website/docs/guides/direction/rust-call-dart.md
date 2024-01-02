@@ -25,7 +25,7 @@ To make it compile, we need a bit of boilerplate, and here is the real code.
 No worries, they are just syntax noise and does not carry anything special.
 
 ```rust
-pub async fn rust_function(dart_callback: impl Fn(String) -> DartFnFuture<String> + UnwindSafe) {
+pub async fn rust_function(dart_callback: impl Fn(String) -> DartFnFuture<String>) {
     dart_callback("Tom".to_owned()).await; // Will get `Hello, Tom!`
 }
 ```
