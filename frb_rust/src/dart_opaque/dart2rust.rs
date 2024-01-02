@@ -59,5 +59,9 @@ unsafe fn dart_opaque_dart2rust_encode_inner(
     handle: GeneralizedDartHandle,
     dart_handler_port: MessagePort,
 ) -> *const std::ffi::c_void {
+    log::warn!(
+        "hi rust dart_opaque_dart2rust_encode_inner dart_handler_port={:?}",
+        dart_handler_port
+    );
     DartOpaque::new(handle, message_port_to_handle(&dart_handler_port)).into_raw()
 }

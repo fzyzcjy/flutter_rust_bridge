@@ -25,6 +25,10 @@ impl DartOpaqueNonClone {
         handle: GeneralizedDartHandle,
         dart_handler_port: SendableMessagePortHandle,
     ) -> Self {
+        log::warn!(
+            "hi DartOpaqueNonClone.new dart_handler_port={:?}",
+            dart_handler_port
+        );
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
