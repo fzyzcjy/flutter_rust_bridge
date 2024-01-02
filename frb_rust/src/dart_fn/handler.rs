@@ -32,12 +32,15 @@ impl DartFnHandler {
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
     ) -> DartFnFuture<Dart2RustMessageSse> {
+        log::warn!("hi DartFnHandler.invoke start");
         let dart_handler_port = dart_fn.dart_handler_port();
 
+        log::warn!("hi DartFnHandler.invoke 1");
         let call_id = self.next_call_id.fetch_add(1, Ordering::Relaxed);
         let (sender, receiver) = oneshot::channel::<Dart2RustMessageSse>();
         (self.completers.lock().unwrap()).insert(call_id, sender);
 
+        log::warn!("hi DartFnHandler.invoke 2");
         let sender = Rust2DartSender::new(Channel::new(handle_to_message_port(dart_handler_port)));
         let msg = {
             let mut ans = vec![
@@ -50,10 +53,13 @@ impl DartFnHandler {
         };
         sender.send(msg);
 
+        log::warn!("hi DartFnHandler.invoke 3");
         Box::pin(receiver.then(|x| async move { x.unwrap() }))
     }
 
     pub(crate) fn handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
+        log::warn!("hi DartFnHandler.handle_output start");
+
         // NOTE This [catch_unwind] should also be put outside **ALL** code, see comments above for reasonk
         let _ = panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {

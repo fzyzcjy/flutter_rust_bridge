@@ -61,7 +61,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<String> asyncGreetWithCallback(
+  Future<void> asyncGreetWithCallback(
       {required String name,
       required FutureOr<void> Function(String) logger,
       dynamic hint});
@@ -80,7 +80,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<String> asyncGreetWithCallback(
+  Future<void> asyncGreetWithCallback(
       {required String name,
       required FutureOr<void> Function(String) logger,
       dynamic hint}) {
@@ -91,8 +91,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_async_greet_with_callback(port_, arg0, arg1);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_String,
-        decodeErrorData: dco_decode_AnyhowException,
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
       ),
       constMeta: kAsyncGreetWithCallbackConstMeta,
       argValues: [name, logger],
@@ -168,11 +168,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AnyhowException dco_decode_AnyhowException(dynamic raw) {
-    return AnyhowException(raw as String);
-  }
-
-  @protected
   FutureOr<void> Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
       dynamic raw) {
     throw UnimplementedError('');
@@ -206,12 +201,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_usize(dynamic raw) {
     return dcoDecodeI64OrU64(raw);
-  }
-
-  @protected
-  AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer) {
-    var inner = sse_decode_String(deserializer);
-    return AnyhowException(inner);
   }
 
   @protected
@@ -280,13 +269,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int cst_encode_usize(int raw) {
     return raw;
-  }
-
-  @protected
-  void sse_encode_AnyhowException(
-      AnyhowException self, SseSerializer serializer) {
-    throw UnimplementedError(
-        'not yet supported in serialized mode, feel free to create an issue');
   }
 
   @protected

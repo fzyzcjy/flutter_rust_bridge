@@ -19,9 +19,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  AnyhowException dco_decode_AnyhowException(dynamic raw);
-
-  @protected
   FutureOr<void> Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
       dynamic raw);
 
@@ -42,9 +39,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int dco_decode_usize(dynamic raw);
-
-  @protected
-  AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected
   Object sse_decode_DartOpaque(SseDeserializer deserializer);
@@ -69,12 +63,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer);
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_AnyhowException(
-      AnyhowException raw) {
-    throw UnimplementedError();
-  }
 
   @protected
   ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
@@ -103,10 +91,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int cst_encode_usize(int raw);
-
-  @protected
-  void sse_encode_AnyhowException(
-      AnyhowException self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit(
