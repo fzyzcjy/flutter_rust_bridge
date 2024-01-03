@@ -197,6 +197,7 @@ const sidebars = {
                             },
                             items: [
                                 'guides/miscellaneous/upgrade/v2',
+                                'guides/miscellaneous/upgrade/regular',
                             ],
                         },
                     ],
