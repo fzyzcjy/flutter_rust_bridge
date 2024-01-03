@@ -18,62 +18,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AnotherOpaqueTypePtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueTypePtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueTypePtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueTypePtr;
-
-  @protected
-  AnotherOpaqueType
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-          dynamic raw);
-
-  @protected
-  MyOpaqueTypeAnotherOpaqueType
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          dynamic raw);
-
-  @protected
-  AnotherOpaqueType
-      dco_decode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-          dynamic raw);
-
-  @protected
-  MyOpaqueTypeAnotherOpaqueType
-      dco_decode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          dynamic raw);
-
   @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
-
-  @protected
-  int dco_decode_usize(dynamic raw);
-
-  @protected
-  AnotherOpaqueType
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-          SseDeserializer deserializer);
-
-  @protected
-  MyOpaqueTypeAnotherOpaqueType
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          SseDeserializer deserializer);
-
-  @protected
-  AnotherOpaqueType
-      sse_decode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-          SseDeserializer deserializer);
-
-  @protected
-  MyOpaqueTypeAnotherOpaqueType
-      sse_decode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -82,30 +31,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_decode_unit(SseDeserializer deserializer);
 
   @protected
-  int sse_decode_usize(SseDeserializer deserializer);
-
-  @protected
   bool sse_decode_bool(SseDeserializer deserializer);
-
-  @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-          AnotherOpaqueType raw);
-
-  @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          MyOpaqueTypeAnotherOpaqueType raw);
-
-  @protected
-  PlatformPointer
-      cst_encode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-          AnotherOpaqueType raw);
-
-  @protected
-  PlatformPointer
-      cst_encode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          MyOpaqueTypeAnotherOpaqueType raw);
 
   @protected
   int cst_encode_i_32(int raw);
@@ -114,35 +40,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void cst_encode_unit(void raw);
 
   @protected
-  int cst_encode_usize(int raw);
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-          AnotherOpaqueType self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-      AnotherOpaqueType self, SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_usize(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -197,32 +98,6 @@ class RustLibWire implements BaseWire {
   late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void wire_bar(
-    int port_,
-  ) {
-    return _wire_bar(
-      port_,
-    );
-  }
-
-  late final _wire_barPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_dart_minimal_wire_bar');
-  late final _wire_bar = _wire_barPtr.asFunction<void Function(int)>();
-
-  void wire_foo(
-    int port_,
-  ) {
-    return _wire_foo(
-      port_,
-    );
-  }
-
-  late final _wire_fooPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'frbgen_frb_example_dart_minimal_wire_foo');
-  late final _wire_foo = _wire_fooPtr.asFunction<void Function(int)>();
-
   void wire_init_app(
     int port_,
   ) {
@@ -255,70 +130,6 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_dart_minimal_wire_minimal_adder');
   late final _wire_minimal_adder =
       _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueTypePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueTypePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueTypePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueTypePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueTypePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueTypePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueTypePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueTypePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();

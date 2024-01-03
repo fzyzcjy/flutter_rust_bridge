@@ -4,46 +4,12 @@
 // Section: imports
 
 use super::*;
-use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>,
-    > for *const std::ffi::c_void
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>
-    {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<(
-                crate::api::minimal::MyOpaqueType,
-                crate::api::minimal::AnotherOpaqueType,
-            )>,
-        >,
-    > for *const std::ffi::c_void
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<(
-            crate::api::minimal::MyOpaqueType,
-            crate::api::minimal::AnotherOpaqueType,
-        )>,
-    > {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -72,16 +38,6 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_wire_bar(port_: i64) {
-    wire_bar_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_wire_foo(port_: i64) {
-    wire_foo_impl(port_)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire_init_app(port_: i64) {
     wire_init_app_impl(port_)
 }
@@ -89,54 +45,4 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_wire_init_app(port_: i64) {
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<(
-                crate::api::minimal::MyOpaqueType,
-                crate::api::minimal::AnotherOpaqueType,
-            )>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<(
-                crate::api::minimal::MyOpaqueType,
-                crate::api::minimal::AnotherOpaqueType,
-            )>,
-        >(ptr);
-    }
 }

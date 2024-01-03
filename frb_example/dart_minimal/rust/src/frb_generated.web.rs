@@ -4,7 +4,6 @@
 // Section: imports
 
 use super::*;
-use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::for_generated::wasm_bindgen;
@@ -21,46 +20,8 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>
-    {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<(
-                crate::api::minimal::MyOpaqueType,
-                crate::api::minimal::AnotherOpaqueType,
-            )>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<(
-            crate::api::minimal::MyOpaqueType,
-            crate::api::minimal::AnotherOpaqueType,
-        )>,
-    > {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> i32 {
-        self.unchecked_into_f64() as _
-    }
-}
-impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> usize {
         self.unchecked_into_f64() as _
     }
 }
@@ -83,16 +44,6 @@ pub fn dart_fn_deliver_output(
 }
 
 #[wasm_bindgen]
-pub fn wire_bar(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_bar_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_foo(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_foo_impl(port_)
-}
-
-#[wasm_bindgen]
 pub fn wire_init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_init_app_impl(port_)
 }
@@ -100,54 +51,4 @@ pub fn wire_init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
 #[wasm_bindgen]
 pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<(
-                crate::api::minimal::MyOpaqueType,
-                crate::api::minimal::AnotherOpaqueType,
-            )>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<(
-                crate::api::minimal::MyOpaqueType,
-                crate::api::minimal::AnotherOpaqueType,
-            )>,
-        >(ptr);
-    }
 }
