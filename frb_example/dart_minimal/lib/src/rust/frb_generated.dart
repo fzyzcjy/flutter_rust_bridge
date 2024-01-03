@@ -63,7 +63,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<AnotherOpaqueType> bar({dynamic hint});
 
-  Future<AnotherOpaqueType> foo({dynamic hint});
+  Future<MyOpaqueTypeAnotherOpaqueType> foo({dynamic hint});
 
   Future<void> initApp({dynamic hint});
 
@@ -79,13 +79,13 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_AnotherOpaqueTypePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AnotherOpaqueType;
+      get rust_arc_increment_strong_count_MyOpaqueTypeAnotherOpaqueType;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AnotherOpaqueType;
+      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueType;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AnotherOpaqueTypePtr;
+      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueTypePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -120,7 +120,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<AnotherOpaqueType> foo({dynamic hint}) {
+  Future<MyOpaqueTypeAnotherOpaqueType> foo({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_foo(port_);
@@ -197,11 +197,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AnotherOpaqueType => wire
+      get rust_arc_increment_strong_count_MyOpaqueTypeAnotherOpaqueType => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AnotherOpaqueType => wire
+      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueType => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType;
 
   @protected
@@ -212,10 +212,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AnotherOpaqueType
+  MyOpaqueTypeAnotherOpaqueType
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic raw) {
-    return AnotherOpaqueType.dcoDecode(raw as List<dynamic>);
+    return MyOpaqueTypeAnotherOpaqueType.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -226,10 +226,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AnotherOpaqueType
+  MyOpaqueTypeAnotherOpaqueType
       dco_decode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic raw) {
-    return AnotherOpaqueType.dcoDecode(raw as List<dynamic>);
+    return MyOpaqueTypeAnotherOpaqueType.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -256,10 +256,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AnotherOpaqueType
+  MyOpaqueTypeAnotherOpaqueType
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           SseDeserializer deserializer) {
-    return AnotherOpaqueType.sseDecode(
+    return MyOpaqueTypeAnotherOpaqueType.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -272,10 +272,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  AnotherOpaqueType
+  MyOpaqueTypeAnotherOpaqueType
       sse_decode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           SseDeserializer deserializer) {
-    return AnotherOpaqueType.sseDecode(
+    return MyOpaqueTypeAnotherOpaqueType.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -308,7 +308,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          AnotherOpaqueType raw) {
+          MyOpaqueTypeAnotherOpaqueType raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -324,7 +324,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          AnotherOpaqueType raw) {
+          MyOpaqueTypeAnotherOpaqueType raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -354,7 +354,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          AnotherOpaqueType self, SseSerializer serializer) {
+          MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -367,7 +367,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
-          AnotherOpaqueType self, SseSerializer serializer) {
+          MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
