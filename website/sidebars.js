@@ -187,7 +187,18 @@ const sidebars = {
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/deployment',
                         'guides/miscellaneous/whats-new',
-                        'guides/miscellaneous/upgrade',
+                        {
+                            type: 'category',
+                            label: 'Upgrade',
+                            collapsed: true,
+                            link: {
+                                type: 'doc',
+                                id: 'guides/miscellaneous/upgrade/index',
+                            },
+                            items: [
+                                'guides/miscellaneous/upgrade/v2',
+                            ],
+                        },
                     ],
                 },
                 {
