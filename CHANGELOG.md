@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0-dev.11
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support map and set #1565
+* Pass Rust stack traces to Dart side during a panic #1586
+* Fix the Dart naming of rust opaque types when using records #1593
+* Fix utilities cannot set environment variables on web #1590
+
 ## 2.0.0-dev.10
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
