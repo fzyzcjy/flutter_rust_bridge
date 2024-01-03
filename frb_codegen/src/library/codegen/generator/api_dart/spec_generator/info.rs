@@ -234,11 +234,10 @@ impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
 
 fn rust_type_to_dart_type(rust: &str, brief_name: bool) -> String {
     lazy_static! {
-        static ref OPAQUE_FILTER: Regex =Regex::new(r"(\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b").unwrap();
+        static ref OPAQUE_FILTER: Regex =Regex::new(r"((\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b)|([a-zA-Z0-9_]+::)").unwrap();
         static ref OPAQUE_BRIEF_NAME_FILTER: Regex =Regex::new(r"(\bRwLock)\b").unwrap();
     }
 
-    let rust = rust.split("::").last().unwrap();
     let mut rust = OPAQUE_FILTER.replace_all(rust, "").to_string();
     if brief_name {
         rust = OPAQUE_BRIEF_NAME_FILTER.replace_all(&rust, "").to_string();
@@ -249,4 +248,22 @@ fn rust_type_to_dart_type(rust: &str, brief_name: bool) -> String {
 
 fn char_not_alphanumeric(c: char) -> bool {
     !c.is_alphanumeric()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_rust_type_to_dart_type() {
+        assert_eq!(&rust_type_to_dart_type("SomeType", true), "SomeType");
+        assert_eq!(
+            &rust_type_to_dart_type(
+                "std::sync::RwLock<crate::api::simple::AnotherOpaqueType>",
+                true
+            ),
+            "AnotherOpaqueType"
+        );
+        assert_eq!(&rust_type_to_dart_type("std::sync::RwLock<(crate::api::simple::MyOpaqueType,crate::api::simple::AnotherOpaqueType,)>", true), "MyOpaqueTypeAnotherOpaqueType");
+    }
 }

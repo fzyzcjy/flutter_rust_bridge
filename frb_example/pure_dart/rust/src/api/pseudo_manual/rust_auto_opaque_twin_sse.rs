@@ -5,6 +5,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsyncSse"]}
 
 use flutter_rust_bridge::frb;
+use std::path::PathBuf;
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -266,4 +267,19 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSse { inner: 42 },
     }
+}
+
+// ================ misc ===================
+
+// #1577 - this should generate valid Dart code without name collisions
+pub struct OpaqueOneTwinSse(PathBuf);
+pub struct OpaqueTwoTwinSse(PathBuf);
+#[flutter_rust_bridge::frb(serialize)]
+pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sse() -> (OpaqueOneTwinSse, OpaqueTwoTwinSse)
+{
+    unimplemented!()
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub fn rust_auto_opaque_return_opaque_two_twin_sse() -> OpaqueTwoTwinSse {
+    unimplemented!()
 }
