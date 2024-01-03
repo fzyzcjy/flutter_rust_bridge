@@ -124,7 +124,9 @@ impl CstDecode<usize> for usize {
         self
     }
 }
-impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<AnotherOpaqueType>> {
+impl SseDecode
+    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>
+{
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) };
@@ -132,7 +134,12 @@ impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<AnotherOpaq
 }
 
 impl SseDecode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<(MyOpaqueType, AnotherOpaqueType)>>
+    for flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<(
+            crate::api::minimal::MyOpaqueType,
+            crate::api::minimal::AnotherOpaqueType,
+        )>,
+    >
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -164,7 +171,9 @@ impl SseDecode for bool {
 
 // Section: rust2dart
 
-impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<AnotherOpaqueType>> {
+impl SseEncode
+    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>
+{
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -173,7 +182,12 @@ impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<AnotherOpaq
 }
 
 impl SseEncode
-    for flutter_rust_bridge::RustOpaque<std::sync::RwLock<(MyOpaqueType, AnotherOpaqueType)>>
+    for flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<(
+            crate::api::minimal::MyOpaqueType,
+            crate::api::minimal::AnotherOpaqueType,
+        )>,
+    >
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();

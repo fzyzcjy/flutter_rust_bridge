@@ -21,20 +21,36 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<AnotherOpaqueType>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<AnotherOpaqueType>> {
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>
+    {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
 impl
-    CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<(MyOpaqueType, AnotherOpaqueType)>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<(
+                crate::api::minimal::MyOpaqueType,
+                crate::api::minimal::AnotherOpaqueType,
+            )>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<(MyOpaqueType, AnotherOpaqueType)>> {
+    ) -> flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<(
+            crate::api::minimal::MyOpaqueType,
+            crate::api::minimal::AnotherOpaqueType,
+        )>,
+    > {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
@@ -87,45 +103,51 @@ pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<AnotherOpaqueType>,
+            std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>,
         >(ptr);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<AnotherOpaqueType>,
+            std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>,
         >(ptr);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<(MyOpaqueType, AnotherOpaqueType)>,
+            std::sync::RwLock<(
+                crate::api::minimal::MyOpaqueType,
+                crate::api::minimal::AnotherOpaqueType,
+            )>,
         >(ptr);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<(MyOpaqueType, AnotherOpaqueType)>,
+            std::sync::RwLock<(
+                crate::api::minimal::MyOpaqueType,
+                crate::api::minimal::AnotherOpaqueType,
+            )>,
         >(ptr);
     }
 }

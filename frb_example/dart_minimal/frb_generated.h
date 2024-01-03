@@ -23,21 +23,21 @@ void frbgen_frb_example_dart_minimal_wire_init_app(int64_t port_);
 
 void frbgen_frb_example_dart_minimal_wire_minimal_adder(int64_t port_, int32_t a, int32_t b);
 
-void frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(const void *ptr);
+void frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(const void *ptr);
 
-void frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(const void *ptr);
+void frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(const void *ptr);
 
-void frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(const void *ptr);
+void frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(const void *ptr);
 
-void frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(const void *ptr);
+void frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(const void *ptr);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_dart_fn_deliver_output);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire_bar);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire_foo);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_dart_minimal_wire_init_app);

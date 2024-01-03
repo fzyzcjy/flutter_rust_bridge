@@ -9,13 +9,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
     RustLib.instance.api.minimalAdder(a: a, b: b, hint: hint);
 
-Future<MyOpaqueTypeAnotherOpaqueType> foo({dynamic hint}) =>
+Future<AnotherOpaqueType> foo({dynamic hint}) =>
     RustLib.instance.api.foo(hint: hint);
 
 Future<AnotherOpaqueType> bar({dynamic hint}) =>
     RustLib.instance.api.bar(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<AnotherOpaqueType>>
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::minimal::AnotherOpaqueType>>
 @sealed
 class AnotherOpaqueType extends RustOpaque {
   AnotherOpaqueType.dcoDecode(List<dynamic> wire)
@@ -34,21 +34,21 @@ class AnotherOpaqueType extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<(MyOpaqueType,AnotherOpaqueType,)>>
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<(crate::api::minimal::MyOpaqueType,crate::api::minimal::AnotherOpaqueType,)>>
 @sealed
-class MyOpaqueTypeAnotherOpaqueType extends RustOpaque {
-  MyOpaqueTypeAnotherOpaqueType.dcoDecode(List<dynamic> wire)
+class AnotherOpaqueType extends RustOpaque {
+  AnotherOpaqueType.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  MyOpaqueTypeAnotherOpaqueType.sseDecode(int ptr, int externalSizeOnNative)
+  AnotherOpaqueType.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_MyOpaqueTypeAnotherOpaqueType,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueType,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueTypePtr,
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_AnotherOpaqueType,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_AnotherOpaqueType,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_AnotherOpaqueTypePtr,
   );
 }

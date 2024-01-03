@@ -19,29 +19,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_AnotherOpaqueTypePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType;
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueTypePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType;
+      get rust_arc_decrement_strong_count_AnotherOpaqueTypePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType;
 
   @protected
   AnotherOpaqueType
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
           dynamic raw);
 
   @protected
-  MyOpaqueTypeAnotherOpaqueType
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+  AnotherOpaqueType
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic raw);
 
   @protected
-  AnotherOpaqueType dco_decode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
-      dynamic raw);
+  AnotherOpaqueType
+      dco_decode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
+          dynamic raw);
 
   @protected
-  MyOpaqueTypeAnotherOpaqueType
-      dco_decode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+  AnotherOpaqueType
+      dco_decode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic raw);
 
   @protected
@@ -55,21 +56,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AnotherOpaqueType
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
           SseDeserializer deserializer);
 
   @protected
-  MyOpaqueTypeAnotherOpaqueType
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+  AnotherOpaqueType
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           SseDeserializer deserializer);
 
   @protected
-  AnotherOpaqueType sse_decode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
-      SseDeserializer deserializer);
+  AnotherOpaqueType
+      sse_decode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
+          SseDeserializer deserializer);
 
   @protected
-  MyOpaqueTypeAnotherOpaqueType
-      sse_decode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+  AnotherOpaqueType
+      sse_decode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           SseDeserializer deserializer);
 
   @protected
@@ -86,22 +88,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
           AnotherOpaqueType raw);
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
-          MyOpaqueTypeAnotherOpaqueType raw);
-
-  @protected
-  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
-      AnotherOpaqueType raw);
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
+          AnotherOpaqueType raw);
 
   @protected
   PlatformPointer
-      cst_encode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
-          MyOpaqueTypeAnotherOpaqueType raw);
+      cst_encode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
+          AnotherOpaqueType raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
+          AnotherOpaqueType raw);
 
   @protected
   int cst_encode_i_32(int raw);
@@ -113,21 +116,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_usize(int raw);
 
   @protected
-  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
+          AnotherOpaqueType self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
+          AnotherOpaqueType self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
       AnotherOpaqueType self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
-          MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
-      AnotherOpaqueType self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
-      MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer);
+      sse_encode_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
+          AnotherOpaqueType self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
@@ -161,28 +166,28 @@ class RustLibWire extends BaseWire {
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
 
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
               ptr);
 }
 
@@ -210,18 +215,18 @@ class RustLibWasmModule implements WasmModule {
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
           dynamic ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalAnotherOpaqueType(
           dynamic ptr);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapiminimalMyOpaqueTypecrateapiminimalAnotherOpaqueType(
           dynamic ptr);
 }
