@@ -44,4 +44,4 @@ where there are lists of features (advantages) and a quick show-me-the-code.
 
 ## Upgrade guide
 
-To upgrade, please refer to [the upgrade guide](upgrade).
+To upgrade, please refer to [the upgrade guide](upgrade/v2).
