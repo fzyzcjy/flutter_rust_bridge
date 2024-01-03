@@ -250,3 +250,15 @@ fn rust_type_to_dart_type(rust: &str, brief_name: bool) -> String {
 fn char_not_alphanumeric(c: char) -> bool {
     !c.is_alphanumeric()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_rust_type_to_dart_type() {
+        assert_eq!(&rust_type_to_dart_type("SomeType", true), "SomeType");
+        assert_eq!(&rust_type_to_dart_type("flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::simple::AnotherOpaqueType>>", true), "AnotherOpaqueType");
+        assert_eq!(&rust_type_to_dart_type("flutter_rust_bridge::RustOpaque<std::sync::RwLock<(crate::api::simple::MyOpaqueType,crate::api::simple::AnotherOpaqueType,)>>", true), "MyOpaqueTypeAnotherOpaqueType");
+    }
+}
