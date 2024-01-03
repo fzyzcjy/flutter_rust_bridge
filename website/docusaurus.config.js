@@ -12,7 +12,7 @@ const config = {
     baseUrl: '/flutter_rust_bridge/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-    favicon: 'img/favicon.ico', // TODO
+    staticDirectories: ['static'],
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
@@ -77,7 +77,8 @@ const config = {
                 title: 'Flutter Rust Bridge',
                 logo: {
                     alt: 'Logo',
-                    src: 'https://raw.githubusercontent.com/fzyzcjy/flutter_rust_bridge/master/website/misc/logo.png',
+                    src: 'logo.png',
+                    srcDark:'logo_dark.png',
                 },
                 items: [
                     // TODO
