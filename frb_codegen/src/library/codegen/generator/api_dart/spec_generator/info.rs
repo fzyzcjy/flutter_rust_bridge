@@ -234,7 +234,7 @@ impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
 
 fn rust_type_to_dart_type(rust: &str, brief_name: bool) -> String {
     lazy_static! {
-        static ref OPAQUE_FILTER: Regex =Regex::new(r"(\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b|([a-zA-Z0-9_]+::(?=\w))").unwrap();
+        static ref OPAQUE_FILTER: Regex =Regex::new(r"((\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b)|([a-zA-Z0-9_]+::)").unwrap();
         static ref OPAQUE_BRIEF_NAME_FILTER: Regex =Regex::new(r"(\bRwLock)\b").unwrap();
     }
 
