@@ -70,6 +70,7 @@ const sidebars = {
                                         'guides/types/translatable/detailed/tuple',
                                         'guides/types/translatable/detailed/option',
                                         'guides/types/translatable/detailed/alias',
+                                        'guides/types/translatable/detailed/map_set',
                                         'guides/types/translatable/detailed/chrono',
                                         'guides/types/translatable/detailed/uuid',
                                     ],

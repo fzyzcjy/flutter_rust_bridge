@@ -1,7 +1,10 @@
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateTime};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegateMap, IrTypeDelegateSet, IrTypeDelegateTime,
+};
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
+use crate::codegen::ir::ty::general_list::ir_list;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic, Unencodable};
@@ -41,6 +44,20 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 exist_in_real_api: true,
                 inner: Box::new(inner.clone()),
             }),
+
+            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned()),
+
+            ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
+                key: Box::new(key.clone()),
+                value: Box::new(value.clone()),
+                element_delegate: self.create_ir_record(vec![
+                    key.clone(),
+                    value.clone(),
+                ]),
+            })),
+            ("HashSet", Some(Generic([inner]))) => Delegate(IrTypeDelegate::Set(IrTypeDelegateSet {
+                inner: Box::new(inner.clone()),
+            })),
 
             _ => return Ok(None),
         }))

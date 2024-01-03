@@ -1,8 +1,9 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
-use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
+use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -19,6 +20,8 @@ pub enum IrTypeDelegate {
     // Uuids,// TODO avoid this special case?
     Backtrace,
     AnyhowException,
+    Map(IrTypeDelegateMap),
+    Set(IrTypeDelegateSet),
 }
 
 pub struct IrTypeDelegateArray {
@@ -44,6 +47,16 @@ pub enum IrTypeDelegateTime {
     Utc,
     Naive,
     Duration,
+}
+
+pub struct IrTypeDelegateMap {
+    pub key: Box<IrType>,
+    pub value: Box<IrType>,
+    pub element_delegate: IrTypeRecord,
+}
+
+pub struct IrTypeDelegateSet {
+    pub inner: Box<IrType>,
 }
 }
 
@@ -77,6 +90,10 @@ impl IrTypeTrait for IrTypeDelegate {
             // IrTypeDelegate::Uuids => "Uuids".to_owned(),
             IrTypeDelegate::Backtrace => "Backtrace".to_owned(),
             IrTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
+            IrTypeDelegate::Map(ir) => {
+                format!("Map_{}_{}", ir.key.safe_ident(), ir.value.safe_ident())
+            }
+            IrTypeDelegate::Set(ir) => format!("Set_{}", ir.inner.safe_ident()),
         }
     }
 
@@ -114,6 +131,14 @@ impl IrTypeTrait for IrTypeDelegate {
             // IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
             IrTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
             IrTypeDelegate::AnyhowException => "anyhow::Error".to_owned(),
+            IrTypeDelegate::Map(ir) => format!(
+                "std::collections::HashMap<{}, {}>",
+                ir.key.rust_api_type(),
+                ir.value.rust_api_type()
+            ),
+            IrTypeDelegate::Set(ir) => {
+                format!("std::collections::HashSet<{}>", ir.inner.rust_api_type())
+            }
         }
     }
 
@@ -160,6 +185,8 @@ impl IrTypeDelegate {
             // }),
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone())),
+            IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned()),
         }
     }
 }

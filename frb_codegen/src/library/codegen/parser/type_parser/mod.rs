@@ -15,7 +15,6 @@ pub(crate) mod structure;
 pub(crate) mod tuple;
 pub(crate) mod ty;
 pub(crate) mod unencodable;
-pub(crate) mod vec;
 
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};

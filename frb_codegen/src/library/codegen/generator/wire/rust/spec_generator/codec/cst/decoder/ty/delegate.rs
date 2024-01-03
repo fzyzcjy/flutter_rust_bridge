@@ -6,7 +6,8 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateMap, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegateSet, IrTypeDelegateTime,
 };
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
@@ -17,22 +18,6 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match &self.ir {
-            IrTypeDelegate::Array(array) => {
-                let acc =
-                    Some(
-                        format!(
-                            "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
-                            array.inner().rust_api_type()
-                        ),
-                    );
-                if is_js_value(&array.inner()) {
-                    return Acc {
-                        io: acc,
-                        ..Default::default()
-                    };
-                }
-                Acc::distribute(acc)
-            },
             IrTypeDelegate::String => {
                 Acc {
                     web: Some("self".into()),
@@ -92,6 +77,11 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 TargetOrCommon::Common => None,
                 TargetOrCommon::Io | TargetOrCommon::Web => Some("unimplemented!()".into()),
             }),
+            IrTypeDelegate::Array(array) => {
+                self.generate_skip_web_if_jsvalue(generate_decode_array(array))
+            },
+            IrTypeDelegate::Map(ir) => self.generate_skip_web_if_jsvalue(generate_decode_map(ir)),
+            IrTypeDelegate::Set(ir) => self.generate_skip_web_if_jsvalue(generate_decode_set(ir)),
         }
     }
 
@@ -115,12 +105,11 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
             }
-            IrTypeDelegate::Array(array) => format!(
-                "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
-                array.inner().rust_api_type()
-            )
-                .into(),
             IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => "unimplemented!()".into(),
+            IrTypeDelegate::Array(array) => generate_decode_array(array)
+                .into(),
+            IrTypeDelegate::Map(ir) => generate_decode_map(ir).into(),
+            IrTypeDelegate::Set(ir) => generate_decode_set(ir).into(),
         })
     }
 
@@ -145,4 +134,39 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
         WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context)
             .rust_wire_is_pointer(target)
     }
+}
+
+impl<'a> DelegateWireRustCodecCstGenerator<'a> {
+    fn generate_skip_web_if_jsvalue(&self, acc: String) -> Acc<Option<String>> {
+        if is_js_value(&self.ir.get_delegate()) {
+            Acc {
+                io: Some(acc),
+                ..Default::default()
+            }
+        } else {
+            Acc::distribute(Some(acc))
+        }
+    }
+}
+
+fn generate_decode_array(array: &IrTypeDelegateArray) -> String {
+    format!(
+        "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
+        array.inner().rust_api_type()
+    )
+}
+
+fn generate_decode_map(ir: &IrTypeDelegateMap) -> String {
+    format!(
+        "let vec: Vec<({}, {})> = self.cst_decode(); vec.into_iter().collect()",
+        ir.key.rust_api_type(),
+        ir.value.rust_api_type(),
+    )
+}
+
+fn generate_decode_set(ir: &IrTypeDelegateSet) -> String {
+    format!(
+        "let vec: Vec<{}> = self.cst_decode(); vec.into_iter().collect()",
+        ir.inner.rust_api_type()
+    )
 }

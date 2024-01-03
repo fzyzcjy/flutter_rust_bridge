@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::ty::delegate::generate_set_to_list;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
@@ -106,6 +107,15 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
                 Acc::distribute(Some("throw UnimplementedError();".to_string()))
             }
+            IrTypeDelegate::Map(_) => Acc::distribute(Some(format!(
+                "return cst_encode_{}(raw.entries.map((e) => (e.key, e.value)).toList());",
+                self.ir.get_delegate().safe_ident()
+            ))),
+            IrTypeDelegate::Set(ir) => Acc::distribute(Some(format!(
+                "return cst_encode_{}({});",
+                self.ir.get_delegate().safe_ident(),
+                generate_set_to_list(ir, self.context.as_api_dart_context(), "raw"),
+            ))),
         }
     }
 

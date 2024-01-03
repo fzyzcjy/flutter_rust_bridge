@@ -1,3 +1,6 @@
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::ir::ty::IrType::{GeneralList, PrimitiveList};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -21,5 +24,20 @@ impl IrTypeTrait for IrTypeGeneralList {
 
     fn rust_api_type(&self) -> String {
         format!("Vec<{}>", self.inner.rust_api_type())
+    }
+}
+
+pub(crate) fn ir_list(inner: IrType) -> IrType {
+    match inner {
+        // Since Dart doesn't have a boolean primitive list like `Uint8List`,
+        // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
+        IrType::Primitive(inner) if inner != IrTypePrimitive::Bool => {
+            PrimitiveList(IrTypePrimitiveList {
+                primitive: inner.clone(),
+            })
+        }
+        _ => GeneralList(IrTypeGeneralList {
+            inner: Box::new(inner),
+        }),
     }
 }

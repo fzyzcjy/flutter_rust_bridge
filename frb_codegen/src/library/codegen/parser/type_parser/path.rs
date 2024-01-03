@@ -53,9 +53,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(ans) = self.parse_type_path_data_concrete(last_segment)? {
                 return Ok(ans);
             }
-            if let Some(ans) = self.parse_type_path_data_vec(type_path, last_segment)? {
-                return Ok(ans);
-            }
             if let Some(ans) = self.parse_type_path_data_optional(type_path, last_segment)? {
                 return Ok(ans);
             }

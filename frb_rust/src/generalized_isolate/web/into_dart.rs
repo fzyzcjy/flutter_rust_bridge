@@ -3,6 +3,7 @@ use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
 use crate::rust_opaque::RustOpaque;
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
+use std::collections::{HashMap, HashSet};
 use std::iter::FromIterator;
 use wasm_bindgen::JsValue;
 
@@ -113,10 +114,24 @@ macro_rules! delegate {
 }
 macro_rules! delegate_buffer {
     ($( $ty:ty => $buffer:ty )*) => {$(
-        impl IntoDart for $ty {
+        impl IntoDart for Vec<$ty> {
             #[inline]
             fn into_dart(self) -> DartAbi {
                 <$buffer>::from(self.as_slice()).into()
+            }
+        }
+
+        impl IntoDart for ZeroCopyBuffer<Vec<$ty>> {
+            #[inline]
+            fn into_dart(self) -> DartAbi {
+                self.0.into_dart()
+            }
+        }
+
+        impl IntoDart for HashSet<$ty> {
+            #[inline]
+            fn into_dart(self) -> DartAbi {
+                self.into_iter().collect::<Vec<_>>().into_dart()
             }
         }
     )*};
@@ -129,29 +144,56 @@ delegate! {
     &str String JsValue
 }
 delegate_buffer! {
-    Vec<i8> => js_sys::Int8Array
-    Vec<u8> => js_sys::Uint8Array
-    Vec<i16> => js_sys::Int16Array
-    Vec<u16> => js_sys::Uint16Array
-    Vec<i32> => js_sys::Int32Array
-    Vec<u32> => js_sys::Uint32Array
-    Vec<f32> => js_sys::Float32Array
-    Vec<f64> => js_sys::Float64Array
-    ZeroCopyBuffer<Vec<i8>> => js_sys::Int8Array
-    ZeroCopyBuffer<Vec<u8>> => js_sys::Uint8Array
-    ZeroCopyBuffer<Vec<i16>> => js_sys::Int16Array
-    ZeroCopyBuffer<Vec<u16>> => js_sys::Uint16Array
-    ZeroCopyBuffer<Vec<i32>> => js_sys::Int32Array
-    ZeroCopyBuffer<Vec<u32>> => js_sys::Uint32Array
-    ZeroCopyBuffer<Vec<f32>> => js_sys::Float32Array
-    ZeroCopyBuffer<Vec<f64>> => js_sys::Float64Array
+    i8 => js_sys::Int8Array
+    u8 => js_sys::Uint8Array
+    i16 => js_sys::Int16Array
+    u16 => js_sys::Uint16Array
+    i32 => js_sys::Int32Array
+    u32 => js_sys::Uint32Array
+    f32 => js_sys::Float32Array
+    f64 => js_sys::Float64Array
+}
+
+fn into_dart_iterator<T, It>(iter: It) -> DartAbi
+where
+    T: IntoDart,
+    It: Iterator<Item = T>,
+{
+    Array::from_iter(iter.map(IntoDart::into_dart)).into()
 }
 
 impl<T: IntoDartExceptPrimitive> IntoDart for Vec<T> {
     #[inline]
     fn into_dart(self) -> DartAbi {
-        Array::from_iter(self.into_iter().map(IntoDart::into_dart)).into()
+        into_dart_iterator(self.into_iter())
     }
+}
+
+impl<T: IntoDartExceptPrimitive> IntoDart for HashSet<T> {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        into_dart_iterator(self.into_iter())
+    }
+}
+
+impl<T: IntoDartExceptPrimitive> IntoDartExceptPrimitive for HashSet<T> {}
+
+impl<K, V> IntoDart for HashMap<K, V>
+where
+    K: IntoDart,
+    V: IntoDart,
+{
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        into_dart_iterator(self.into_iter())
+    }
+}
+
+impl<K, V> IntoDartExceptPrimitive for HashMap<K, V>
+where
+    K: IntoDart,
+    V: IntoDart,
+{
 }
 
 impl<T: IntoDart> IntoDart for Option<T> {

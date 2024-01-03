@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::*;
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::ir::ty::delegate::IrTypeDelegatePrimitiveEnum;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegatePrimitiveEnum, IrTypeDelegateSet};
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
@@ -22,6 +22,12 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
+                IrTypeDelegate::Map(_) => {
+                    "self.entries.map((e) => (e.key, e.value)).toList()".to_owned()
+                }
+                IrTypeDelegate::Set(ir) => {
+                    generate_set_to_list(ir, self.context.as_api_dart_context(), "self")
+                }
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -34,6 +40,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::PrimitiveEnum(_) => "self as _".to_owned(),
                 IrTypeDelegate::Backtrace => r#"format!("{:?}", self)"#.to_owned(),
                 IrTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
+                IrTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
+                IrTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -68,6 +76,10 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::Backtrace => "inner".to_owned(),
                 IrTypeDelegate::AnyhowException => "AnyhowException(inner)".to_owned(),
+                IrTypeDelegate::Map(_) => {
+                    "Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)))".to_owned()
+                }
+                IrTypeDelegate::Set(_) => "Set.from(inner)".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -86,6 +98,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                         lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
                     ));
                 }
+                IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
+                IrTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 // frb-coverage:ignore-start
                 _ => unreachable!(),
                 // frb-coverage:ignore-end
@@ -147,3 +161,22 @@ pub(crate) fn rust_decode_primitive_enum(
 
 const UNIMPLEMENTED_MESSAGE: &str =
     "not yet supported in serialized mode, feel free to create an issue";
+
+pub(crate) fn generate_set_to_list(
+    ir: &IrTypeDelegateSet,
+    context: ApiDartGeneratorContext,
+    inner: &str,
+) -> String {
+    let mut ans = format!("{inner}.toList()");
+    if let Primitive(_) = &*ir.inner {
+        ans = format!(
+            "{}.fromList({ans})",
+            ApiDartGenerator::new(
+                IrTypeDelegate::Set(ir.to_owned()).get_delegate().clone(),
+                context
+            )
+            .dart_api_type()
+        );
+    }
+    ans
+}

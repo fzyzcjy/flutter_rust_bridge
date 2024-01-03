@@ -20,6 +20,7 @@ import 'api/event_listener.dart';
 import 'api/exception.dart';
 import 'api/external_type_in_crate.dart';
 import 'api/inside_macro.dart';
+import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
@@ -82,6 +83,11 @@ import 'api/pseudo_manual/external_type_in_crate_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sse.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_sse.dart';
+import 'api/pseudo_manual/map_and_set_twin_rust_async.dart';
+import 'api/pseudo_manual/map_and_set_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/map_and_set_twin_sse.dart';
+import 'api/pseudo_manual/map_and_set_twin_sync.dart';
+import 'api/pseudo_manual/map_and_set_twin_sync_sse.dart';
 import 'api/pseudo_manual/method_twin_rust_async.dart';
 import 'api/pseudo_manual/method_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/method_twin_sse.dart';
@@ -701,6 +707,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ObjectArray1 dco_decode_DartOpaque_array_1(dynamic raw);
 
   @protected
+  Map<String, String> dco_decode_Map_String_String(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinNormal>
+      dco_decode_Map_String_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsync>
+      dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsyncSse>
+      dco_decode_Map_String_enum_simple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSse> dco_decode_Map_String_enum_simple_twin_sse(
+      dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
+      dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSyncSse>
+      dco_decode_Map_String_enum_simple_twin_sync_sse(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinNormal>
+      dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsync>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSse> dco_decode_Map_String_kitchen_sink_twin_sse(
+      dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8(dynamic raw);
+
+  @protected
+  Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw);
+
+  @protected
   MutexHideData dco_decode_RustOpaque_MutexHideData(dynamic raw);
 
   @protected
@@ -869,6 +935,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   OpaqueTwoTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
           dynamic raw);
+
+  @protected
+  Set<String> dco_decode_Set_String(dynamic raw);
+
+  @protected
+  Set<int> dco_decode_Set_i_32(dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -3301,7 +3373,70 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<RawStringMirrored> dco_decode_list_raw_string_mirrored(dynamic raw);
 
   @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_32(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinNormal)>
+      dco_decode_list_record_string_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsync)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinSse)>
+      dco_decode_list_record_string_enum_simple_twin_sse(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinSync)>
+      dco_decode_list_record_string_enum_simple_twin_sync(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinSyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_sync_sse(dynamic raw);
+
+  @protected
   List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinNormal)>
+      dco_decode_list_record_string_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsync)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinSync)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinSyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8(
+      dynamic raw);
+
+  @protected
+  List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw);
+
+  @protected
+  List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
 
   @protected
   List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw);
@@ -4049,7 +4184,67 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  (int, int) dco_decode_record_i_32_i_32(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinNormal)
+      dco_decode_record_string_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinRustAsync)
+      dco_decode_record_string_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinRustAsyncSse)
+      dco_decode_record_string_enum_simple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSse) dco_decode_record_string_enum_simple_twin_sse(
+      dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSync) dco_decode_record_string_enum_simple_twin_sync(
+      dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSyncSse)
+      dco_decode_record_string_enum_simple_twin_sync_sse(dynamic raw);
+
+  @protected
   (String, int) dco_decode_record_string_i_32(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinNormal)
+      dco_decode_record_string_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinRustAsync)
+      dco_decode_record_string_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinRustAsyncSse)
+      dco_decode_record_string_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSse) dco_decode_record_string_kitchen_sink_twin_sse(
+      dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSync) dco_decode_record_string_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSyncSse)
+      dco_decode_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
+
+  @protected
+  (String, Uint8List) dco_decode_record_string_list_prim_u_8(dynamic raw);
+
+  @protected
+  (String, MySize) dco_decode_record_string_my_size(dynamic raw);
+
+  @protected
+  (String, String) dco_decode_record_string_string(dynamic raw);
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
@@ -4741,6 +4936,77 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ObjectArray1 sse_decode_DartOpaque_array_1(SseDeserializer deserializer);
 
   @protected
+  Map<String, String> sse_decode_Map_String_String(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinNormal>
+      sse_decode_Map_String_enum_simple_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsync>
+      sse_decode_Map_String_enum_simple_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsyncSse>
+      sse_decode_Map_String_enum_simple_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinSse> sse_decode_Map_String_enum_simple_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinSync> sse_decode_Map_String_enum_simple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, EnumSimpleTwinSyncSse>
+      sse_decode_Map_String_enum_simple_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinNormal>
+      sse_decode_Map_String_kitchen_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsync>
+      sse_decode_Map_String_kitchen_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsyncSse>
+      sse_decode_Map_String_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinSse> sse_decode_Map_String_kitchen_sink_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinSync> sse_decode_Map_String_kitchen_sink_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, KitchenSinkTwinSyncSse>
+      sse_decode_Map_String_kitchen_sink_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, MySize> sse_decode_Map_String_my_size(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer);
+
+  @protected
   MutexHideData sse_decode_RustOpaque_MutexHideData(
       SseDeserializer deserializer);
 
@@ -4923,6 +5189,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   OpaqueTwoTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
           SseDeserializer deserializer);
+
+  @protected
+  Set<String> sse_decode_Set_String(SseDeserializer deserializer);
+
+  @protected
+  Set<int> sse_decode_Set_i_32(SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -7716,7 +7988,83 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<(int, int)> sse_decode_list_record_i_32_i_32(
+      SseDeserializer deserializer);
+
+  @protected
+  List<(String, EnumSimpleTwinNormal)>
+      sse_decode_list_record_string_enum_simple_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsync)>
+      sse_decode_list_record_string_enum_simple_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsyncSse)>
+      sse_decode_list_record_string_enum_simple_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, EnumSimpleTwinSse)>
+      sse_decode_list_record_string_enum_simple_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, EnumSimpleTwinSync)>
+      sse_decode_list_record_string_enum_simple_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, EnumSimpleTwinSyncSse)>
+      sse_decode_list_record_string_enum_simple_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   List<(String, int)> sse_decode_list_record_string_i_32(
+      SseDeserializer deserializer);
+
+  @protected
+  List<(String, KitchenSinkTwinNormal)>
+      sse_decode_list_record_string_kitchen_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsync)>
+      sse_decode_list_record_string_kitchen_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsyncSse)>
+      sse_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, KitchenSinkTwinSse)>
+      sse_decode_list_record_string_kitchen_sink_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, KitchenSinkTwinSync)>
+      sse_decode_list_record_string_kitchen_sink_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, KitchenSinkTwinSyncSse)>
+      sse_decode_list_record_string_kitchen_sink_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  List<(String, Uint8List)> sse_decode_list_record_string_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
+  List<(String, MySize)> sse_decode_list_record_string_my_size(
+      SseDeserializer deserializer);
+
+  @protected
+  List<(String, String)> sse_decode_list_record_string_string(
       SseDeserializer deserializer);
 
   @protected
@@ -8573,7 +8921,78 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  (int, int) sse_decode_record_i_32_i_32(SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinNormal)
+      sse_decode_record_string_enum_simple_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinRustAsync)
+      sse_decode_record_string_enum_simple_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinRustAsyncSse)
+      sse_decode_record_string_enum_simple_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinSse) sse_decode_record_string_enum_simple_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinSync) sse_decode_record_string_enum_simple_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, EnumSimpleTwinSyncSse)
+      sse_decode_record_string_enum_simple_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   (String, int) sse_decode_record_string_i_32(SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinNormal)
+      sse_decode_record_string_kitchen_sink_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinRustAsync)
+      sse_decode_record_string_kitchen_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinRustAsyncSse)
+      sse_decode_record_string_kitchen_sink_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinSse) sse_decode_record_string_kitchen_sink_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinSync) sse_decode_record_string_kitchen_sink_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, KitchenSinkTwinSyncSse)
+      sse_decode_record_string_kitchen_sink_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  (String, Uint8List) sse_decode_record_string_list_prim_u_8(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, MySize) sse_decode_record_string_my_size(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, String) sse_decode_record_string_string(
+      SseDeserializer deserializer);
 
   @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer);
@@ -9097,8 +9516,127 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_Map_String_String(Map<String, String> raw) {
+    return cst_encode_list_record_string_string(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_enum_simple_twin_normal(
+      Map<String, EnumSimpleTwinNormal> raw) {
+    return cst_encode_list_record_string_enum_simple_twin_normal(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_enum_simple_twin_rust_async(
+      Map<String, EnumSimpleTwinRustAsync> raw) {
+    return cst_encode_list_record_string_enum_simple_twin_rust_async(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_enum_simple_twin_rust_async_sse(
+      Map<String, EnumSimpleTwinRustAsyncSse> raw) {
+    return cst_encode_list_record_string_enum_simple_twin_rust_async_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_enum_simple_twin_sse(
+      Map<String, EnumSimpleTwinSse> raw) {
+    return cst_encode_list_record_string_enum_simple_twin_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_enum_simple_twin_sync(
+      Map<String, EnumSimpleTwinSync> raw) {
+    return cst_encode_list_record_string_enum_simple_twin_sync(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_enum_simple_twin_sync_sse(
+      Map<String, EnumSimpleTwinSyncSse> raw) {
+    return cst_encode_list_record_string_enum_simple_twin_sync_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_normal(
+      Map<String, KitchenSinkTwinNormal> raw) {
+    return cst_encode_list_record_string_kitchen_sink_twin_normal(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_rust_async(
+      Map<String, KitchenSinkTwinRustAsync> raw) {
+    return cst_encode_list_record_string_kitchen_sink_twin_rust_async(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_rust_async_sse(
+      Map<String, KitchenSinkTwinRustAsyncSse> raw) {
+    return cst_encode_list_record_string_kitchen_sink_twin_rust_async_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_sse(
+      Map<String, KitchenSinkTwinSse> raw) {
+    return cst_encode_list_record_string_kitchen_sink_twin_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_sync(
+      Map<String, KitchenSinkTwinSync> raw) {
+    return cst_encode_list_record_string_kitchen_sink_twin_sync(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_kitchen_sink_twin_sync_sse(
+      Map<String, KitchenSinkTwinSyncSse> raw) {
+    return cst_encode_list_record_string_kitchen_sink_twin_sync_sse(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_list_prim_u_8(
+      Map<String, Uint8List> raw) {
+    return cst_encode_list_record_string_list_prim_u_8(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_String_my_size(Map<String, MySize> raw) {
+    return cst_encode_list_record_string_my_size(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  List<dynamic> cst_encode_Map_i_32_i_32(Map<int, int> raw) {
+    return cst_encode_list_record_i_32_i_32(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
   List<dynamic> cst_encode_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
     return cst_encode_list_RustOpaque_hide_data(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_Set_String(Set<String> raw) {
+    return cst_encode_list_String(raw.toList());
+  }
+
+  @protected
+  Int32List cst_encode_Set_i_32(Set<int> raw) {
+    return cst_encode_list_prim_i_32(Int32List.fromList(raw.toList()));
   }
 
   @protected
@@ -14138,8 +14676,113 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_list_record_i_32_i_32(List<(int, int)> raw) {
+    return raw.map(cst_encode_record_i_32_i_32).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_enum_simple_twin_normal(
+      List<(String, EnumSimpleTwinNormal)> raw) {
+    return raw.map(cst_encode_record_string_enum_simple_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_enum_simple_twin_rust_async(
+      List<(String, EnumSimpleTwinRustAsync)> raw) {
+    return raw
+        .map(cst_encode_record_string_enum_simple_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_enum_simple_twin_rust_async_sse(
+      List<(String, EnumSimpleTwinRustAsyncSse)> raw) {
+    return raw
+        .map(cst_encode_record_string_enum_simple_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_enum_simple_twin_sse(
+      List<(String, EnumSimpleTwinSse)> raw) {
+    return raw.map(cst_encode_record_string_enum_simple_twin_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_enum_simple_twin_sync(
+      List<(String, EnumSimpleTwinSync)> raw) {
+    return raw.map(cst_encode_record_string_enum_simple_twin_sync).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_enum_simple_twin_sync_sse(
+      List<(String, EnumSimpleTwinSyncSse)> raw) {
+    return raw.map(cst_encode_record_string_enum_simple_twin_sync_sse).toList();
+  }
+
+  @protected
   List<dynamic> cst_encode_list_record_string_i_32(List<(String, int)> raw) {
     return raw.map(cst_encode_record_string_i_32).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_normal(
+      List<(String, KitchenSinkTwinNormal)> raw) {
+    return raw.map(cst_encode_record_string_kitchen_sink_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_rust_async(
+      List<(String, KitchenSinkTwinRustAsync)> raw) {
+    return raw
+        .map(cst_encode_record_string_kitchen_sink_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_rust_async_sse(
+      List<(String, KitchenSinkTwinRustAsyncSse)> raw) {
+    return raw
+        .map(cst_encode_record_string_kitchen_sink_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_sse(
+      List<(String, KitchenSinkTwinSse)> raw) {
+    return raw.map(cst_encode_record_string_kitchen_sink_twin_sse).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_sync(
+      List<(String, KitchenSinkTwinSync)> raw) {
+    return raw.map(cst_encode_record_string_kitchen_sink_twin_sync).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_sync_sse(
+      List<(String, KitchenSinkTwinSyncSse)> raw) {
+    return raw
+        .map(cst_encode_record_string_kitchen_sink_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_list_prim_u_8(
+      List<(String, Uint8List)> raw) {
+    return raw.map(cst_encode_record_string_list_prim_u_8).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_my_size(
+      List<(String, MySize)> raw) {
+    return raw.map(cst_encode_record_string_my_size).toList();
+  }
+
+  @protected
+  List<dynamic> cst_encode_list_record_string_string(
+      List<(String, String)> raw) {
+    return raw.map(cst_encode_record_string_string).toList();
   }
 
   @protected
@@ -15672,8 +16315,134 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_record_i_32_i_32((int, int) raw) {
+    return [cst_encode_i_32(raw.$1), cst_encode_i_32(raw.$2)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_enum_simple_twin_normal(
+      (String, EnumSimpleTwinNormal) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_enum_simple_twin_normal(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_enum_simple_twin_rust_async(
+      (String, EnumSimpleTwinRustAsync) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_enum_simple_twin_rust_async(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_enum_simple_twin_rust_async_sse(
+      (String, EnumSimpleTwinRustAsyncSse) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_enum_simple_twin_rust_async_sse(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_enum_simple_twin_sse(
+      (String, EnumSimpleTwinSse) raw) {
+    return [cst_encode_String(raw.$1), cst_encode_enum_simple_twin_sse(raw.$2)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_enum_simple_twin_sync(
+      (String, EnumSimpleTwinSync) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_enum_simple_twin_sync(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_enum_simple_twin_sync_sse(
+      (String, EnumSimpleTwinSyncSse) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_enum_simple_twin_sync_sse(raw.$2)
+    ];
+  }
+
+  @protected
   List<dynamic> cst_encode_record_string_i_32((String, int) raw) {
     return [cst_encode_String(raw.$1), cst_encode_i_32(raw.$2)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_kitchen_sink_twin_normal(
+      (String, KitchenSinkTwinNormal) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_kitchen_sink_twin_normal(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_kitchen_sink_twin_rust_async(
+      (String, KitchenSinkTwinRustAsync) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_kitchen_sink_twin_rust_async(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_kitchen_sink_twin_rust_async_sse(
+      (String, KitchenSinkTwinRustAsyncSse) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_kitchen_sink_twin_rust_async_sse(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_kitchen_sink_twin_sse(
+      (String, KitchenSinkTwinSse) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_kitchen_sink_twin_sse(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_kitchen_sink_twin_sync(
+      (String, KitchenSinkTwinSync) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_kitchen_sink_twin_sync(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_kitchen_sink_twin_sync_sse(
+      (String, KitchenSinkTwinSyncSse) raw) {
+    return [
+      cst_encode_String(raw.$1),
+      cst_encode_kitchen_sink_twin_sync_sse(raw.$2)
+    ];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_list_prim_u_8(
+      (String, Uint8List) raw) {
+    return [cst_encode_String(raw.$1), cst_encode_list_prim_u_8(raw.$2)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_my_size((String, MySize) raw) {
+    return [cst_encode_String(raw.$1), cst_encode_my_size(raw.$2)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_record_string_string((String, String) raw) {
+    return [cst_encode_String(raw.$1), cst_encode_String(raw.$2)];
   }
 
   @protected
@@ -17385,6 +18154,69 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ObjectArray1 self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Map_String_String(
+      Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_normal(
+      Map<String, EnumSimpleTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_rust_async(
+      Map<String, EnumSimpleTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_rust_async_sse(
+      Map<String, EnumSimpleTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_sse(
+      Map<String, EnumSimpleTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_sync(
+      Map<String, EnumSimpleTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_enum_simple_twin_sync_sse(
+      Map<String, EnumSimpleTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_normal(
+      Map<String, KitchenSinkTwinNormal> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_rust_async(
+      Map<String, KitchenSinkTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_rust_async_sse(
+      Map<String, KitchenSinkTwinRustAsyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_sse(
+      Map<String, KitchenSinkTwinSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_sync(
+      Map<String, KitchenSinkTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_kitchen_sink_twin_sync_sse(
+      Map<String, KitchenSinkTwinSyncSse> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_list_prim_u_8(
+      Map<String, Uint8List> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_my_size(
+      Map<String, MySize> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_i_32_i_32(Map<int, int> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_RustOpaque_MutexHideData(
       MutexHideData self, SseSerializer serializer);
 
@@ -17555,6 +18387,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_stdsyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
           OpaqueTwoTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Set_String(Set<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -20221,8 +21059,74 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<RawStringMirrored> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_record_i_32_i_32(
+      List<(int, int)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_normal(
+      List<(String, EnumSimpleTwinNormal)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_rust_async(
+      List<(String, EnumSimpleTwinRustAsync)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_rust_async_sse(
+      List<(String, EnumSimpleTwinRustAsyncSse)> self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_sse(
+      List<(String, EnumSimpleTwinSse)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_sync(
+      List<(String, EnumSimpleTwinSync)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_enum_simple_twin_sync_sse(
+      List<(String, EnumSimpleTwinSyncSse)> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_record_string_i_32(
       List<(String, int)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_normal(
+      List<(String, KitchenSinkTwinNormal)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_rust_async(
+      List<(String, KitchenSinkTwinRustAsync)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_rust_async_sse(
+      List<(String, KitchenSinkTwinRustAsyncSse)> self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_sse(
+      List<(String, KitchenSinkTwinSse)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_sync(
+      List<(String, KitchenSinkTwinSync)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_kitchen_sink_twin_sync_sse(
+      List<(String, KitchenSinkTwinSyncSse)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_list_prim_u_8(
+      List<(String, Uint8List)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_my_size(
+      List<(String, MySize)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_string(
+      List<(String, String)> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_sum_with_twin_normal(
@@ -21062,8 +21966,71 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseSerializer serializer);
 
   @protected
+  void sse_encode_record_i_32_i_32((int, int) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_normal(
+      (String, EnumSimpleTwinNormal) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_rust_async(
+      (String, EnumSimpleTwinRustAsync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_rust_async_sse(
+      (String, EnumSimpleTwinRustAsyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_sse(
+      (String, EnumSimpleTwinSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_sync(
+      (String, EnumSimpleTwinSync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_enum_simple_twin_sync_sse(
+      (String, EnumSimpleTwinSyncSse) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_record_string_i_32(
       (String, int) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_normal(
+      (String, KitchenSinkTwinNormal) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_rust_async(
+      (String, KitchenSinkTwinRustAsync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_rust_async_sse(
+      (String, KitchenSinkTwinRustAsyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_sse(
+      (String, KitchenSinkTwinSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_sync(
+      (String, KitchenSinkTwinSync) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_kitchen_sink_twin_sync_sse(
+      (String, KitchenSinkTwinSyncSse) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_list_prim_u_8(
+      (String, Uint8List) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_my_size(
+      (String, MySize) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_string(
+      (String, String) self, SseSerializer serializer);
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
@@ -21992,6 +22959,38 @@ class RustLibWire extends BaseWire {
   void wire_func_macro_struct_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
       wasmModule.wire_func_macro_struct_twin_normal(port_, arg);
+
+  void wire_func_hash_map_i32_i32_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_i32_i32_twin_normal(port_, arg);
+
+  void wire_func_hash_map_string_bytes_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_normal(port_, arg);
+
+  void wire_func_hash_map_string_complex_enum_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_complex_enum_twin_normal(port_, arg);
+
+  void wire_func_hash_map_string_simple_enum_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_simple_enum_twin_normal(port_, arg);
+
+  void wire_func_hash_map_string_string_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_string_twin_normal(port_, arg);
+
+  void wire_func_hash_map_string_struct_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_struct_twin_normal(port_, arg);
+
+  void wire_func_hash_set_i32_twin_normal(
+          NativePortType port_, Int32List arg) =>
+      wasmModule.wire_func_hash_set_i32_twin_normal(port_, arg);
+
+  void wire_func_hash_set_string_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_set_string_twin_normal(port_, arg);
 
   void wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
           NativePortType port_, String a, String b) =>
@@ -25582,6 +26581,262 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_use_imported_struct_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_i32_i32_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_i32_i32_twin_rust_async(port_, arg);
+
+  void wire_func_hash_map_string_bytes_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_rust_async(port_, arg);
+
+  void wire_func_hash_map_string_complex_enum_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_complex_enum_twin_rust_async(
+          port_, arg);
+
+  void wire_func_hash_map_string_simple_enum_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_simple_enum_twin_rust_async(
+          port_, arg);
+
+  void wire_func_hash_map_string_string_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_string_twin_rust_async(port_, arg);
+
+  void wire_func_hash_map_string_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_map_string_struct_twin_rust_async(port_, arg);
+
+  void wire_func_hash_set_i32_twin_rust_async(
+          NativePortType port_, Int32List arg) =>
+      wasmModule.wire_func_hash_set_i32_twin_rust_async(port_, arg);
+
+  void wire_func_hash_set_string_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_hash_set_string_twin_rust_async(port_, arg);
+
+  void wire_func_hash_map_i32_i32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_i32_i32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_bytes_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_complex_enum_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_complex_enum_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_simple_enum_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_simple_enum_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_string_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_string_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_struct_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_struct_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_set_i32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_set_i32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_set_string_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_set_string_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_i32_i32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_i32_i32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_bytes_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_bytes_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_complex_enum_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_complex_enum_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_simple_enum_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_simple_enum_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_string_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_string_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_map_string_struct_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_map_string_struct_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_set_i32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_set_i32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_func_hash_set_string_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_func_hash_set_string_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_i32_i32_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_map_i32_i32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_bytes_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_map_string_bytes_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_complex_enum_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_map_string_complex_enum_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_simple_enum_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_map_string_simple_enum_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_string_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_map_string_string_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_struct_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_map_string_struct_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_set_i32_twin_sync(Int32List arg) =>
+          wasmModule.wire_func_hash_set_i32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_set_string_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_func_hash_set_string_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_i32_i32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_map_i32_i32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_bytes_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_map_string_bytes_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_complex_enum_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_map_string_complex_enum_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_simple_enum_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_map_string_simple_enum_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_string_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_map_string_string_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_struct_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_map_string_struct_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_set_i32_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_, int data_len_) =>
+          wasmModule.wire_func_hash_set_i32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_set_string_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_func_hash_set_string_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
@@ -31542,6 +32797,30 @@ class RustLibWasmModule implements WasmModule {
   external void wire_func_macro_struct_twin_normal(
       NativePortType port_, List<dynamic> arg);
 
+  external void wire_func_hash_map_i32_i32_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_bytes_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_complex_enum_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_simple_enum_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_string_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_struct_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_set_i32_twin_normal(
+      NativePortType port_, Int32List arg);
+
+  external void wire_func_hash_set_string_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
   external void wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
       NativePortType port_, String a, String b);
 
@@ -33882,6 +35161,175 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_use_imported_struct_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire_func_hash_map_i32_i32_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_bytes_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_complex_enum_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_simple_enum_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_string_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_string_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_set_i32_twin_rust_async(
+      NativePortType port_, Int32List arg);
+
+  external void wire_func_hash_set_string_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_hash_map_i32_i32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_bytes_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_complex_enum_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_simple_enum_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_string_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_struct_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_set_i32_twin_rust_async_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_func_hash_set_string_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_i32_i32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_func_hash_map_string_bytes_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_func_hash_map_string_complex_enum_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_simple_enum_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_func_hash_map_string_string_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_func_hash_map_string_struct_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_func_hash_set_i32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_func_hash_set_string_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_i32_i32_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_bytes_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_complex_enum_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_simple_enum_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_string_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_map_string_struct_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_set_i32_twin_sync(Int32List arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_func_hash_set_string_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_i32_i32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_bytes_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_complex_enum_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_simple_enum_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_string_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_map_string_struct_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_set_i32_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_func_hash_set_string_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
