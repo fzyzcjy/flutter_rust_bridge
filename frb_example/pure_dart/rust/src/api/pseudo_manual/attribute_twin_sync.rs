@@ -13,6 +13,18 @@ pub struct CustomizedTwinSync {
     pub non_final_field: Option<String>,
 }
 
+#[frb(ignore)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn func_should_not_exist_in_dart_twin_sync() {}
+
+pub struct EmptyTwinSync;
+
+impl EmptyTwinSync {
+    #[frb(ignore)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn method_should_not_exist_in_dart_twin_sync() {}
+}
+
 #[flutter_rust_bridge::frb(sync)]
 pub fn handle_customized_struct_twin_sync(val: CustomizedTwinSync) {
     info!("{:#?}", val);

@@ -6,14 +6,14 @@ pub use crate::auxiliary::sample_types::{
     FrbOpaqueReturn, HideData, NonCloneData, NonSendHideData,
 };
 use anyhow::Result;
-use flutter_rust_bridge::{opaque_dyn, DartSafe, RustOpaque};
+use flutter_rust_bridge::{opaque_dyn, RustOpaque};
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
 
 /// Opaque types
-pub trait DartDebugTwinSync: DartSafe + Debug + Send + Sync {}
-impl<T: DartSafe + Debug + Send + Sync> DartDebugTwinSync for T {}
+pub trait DartDebugTwinSync: Debug + Send + Sync {}
+impl<T: Debug + Send + Sync> DartDebugTwinSync for T {}
 
 pub enum EnumOpaqueTwinSync {
     Struct(RustOpaque<HideData>),

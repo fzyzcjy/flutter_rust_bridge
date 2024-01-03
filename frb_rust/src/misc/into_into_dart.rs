@@ -1,6 +1,6 @@
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
-use crate::rust_opaque::{DartSafe, RustOpaque};
+use crate::rust_opaque::RustOpaque;
 
 /// Basically the Into trait.
 /// We need this separate trait because we need to implement it for Vec<T> etc.
@@ -34,10 +34,7 @@ where
     }
 }
 
-impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T>
-where
-    T: DartSafe,
-{
+impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T> {
     #[inline(always)]
     fn into_into_dart(self) -> RustOpaque<T> {
         self
@@ -139,6 +136,7 @@ impl_into_into_dart_by_self!(f64);
 impl_into_into_dart_by_self!(bool);
 impl_into_into_dart_by_self!(());
 impl_into_into_dart_by_self!(usize);
+impl_into_into_dart_by_self!(isize);
 impl_into_into_dart_by_self!(String);
 impl_into_into_dart_by_self!(DartOpaque);
 #[cfg(not(target_family = "wasm"))]

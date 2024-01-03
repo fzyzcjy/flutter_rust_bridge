@@ -7,8 +7,10 @@ pub type WireSyncRust2DartDco = wasm_bindgen::JsValue;
 /// cbindgen:ignore
 pub type WireSyncRust2DartSse = wasm_bindgen::JsValue;
 
+/// cbindgen:ignore
 pub type MessagePort = crate::generalized_isolate::PortLike;
 
+/// cbindgen:ignore
 pub type DartAbi = wasm_bindgen::JsValue;
 
 #[derive(Clone, Debug)]

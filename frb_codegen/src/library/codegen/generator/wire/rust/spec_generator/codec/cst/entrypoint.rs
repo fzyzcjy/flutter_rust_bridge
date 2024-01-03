@@ -61,7 +61,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
                     TargetOrCommon::Common => ExternFuncParam {
                         name: name.clone(),
                         rust_type: format!(
-                            "impl CstDecode<{}> + core::panic::UnwindSafe",
+                            "impl CstDecode<{}>",
                             WireRustCodecCstGenerator::new(
                                 field.ty.clone(),
                                 context.as_wire_rust_codec_cst_context()

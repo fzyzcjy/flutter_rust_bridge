@@ -235,6 +235,7 @@ class MimicQuickstartTester {
       relativePwd: 'frb_example/$_kMimicQuickstartPackageName',
       coverage: false,
       coverageName: 'MimicQuickstartStepGenerate',
+      postRelease: postRelease,
     );
   }
 }
@@ -301,7 +302,8 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
         '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
         relativePwd: config.package,
         extraEnv: {
-          ...kEnvEnableRustBacktrace,
+          // Deliberately do not provide backtrace env to see whether the test_utils work
+          // ...kEnvEnableRustBacktrace,
           ...rustEnvMap,
         },
       );
@@ -380,13 +382,17 @@ Future<void> testDartWeb(TestDartConfig config) async {
 
   final package = config.package;
   if (package == 'frb_dart') {
-    await exec('dart test -p chrome',
-        relativePwd: package, extraEnv: kEnvEnableRustBacktrace);
+    await exec(
+      'dart test -p chrome',
+      relativePwd: package,
+      // extraEnv: kEnvEnableRustBacktrace,
+    );
   } else {
     await exec(
-        'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
-        relativePwd: 'frb_utils',
-        extraEnv: kEnvEnableRustBacktrace);
+      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
+      relativePwd: 'frb_utils',
+      // extraEnv: kEnvEnableRustBacktrace,
+    );
   }
 }
 

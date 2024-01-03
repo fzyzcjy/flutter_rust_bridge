@@ -94,7 +94,7 @@ pub(crate) fn generate_list_generate_allocate_func(
 
     // let web = false;
     ExternFunc {
-        func_name: format!("cst_new_{safe_ident}"),
+        partial_func_name: format!("cst_new_{safe_ident}"),
         params: vec![ExternFuncParam {
             name: "len".to_owned(),
             rust_type: "i32".to_owned(),

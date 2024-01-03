@@ -113,6 +113,30 @@ jobs:
       - run: ./frb_internal lint-dart
 
   # ----------------------------------- codegen -----------------------------------
+  # instead of running this explicit test for frb_codegen and frb_rust only, we run the test for
+  # all rust packages in the job "test_rust". While this would not be needed for these other packages,
+  # we avoid a ci dependency to cargo-msrv.
+  # However, the code is left commented here in case this decission changes.
+  # msrv:
+  #   name: 'Test :: FRB Codegen :: MSRV'    
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+
+  #   - name: Install Rust
+  #     uses: actions-rs/toolchain@v1
+  #     with:
+  #       toolchain: stable
+
+  #   - name: Verify MSRV for frb_codegen
+  #     run: |
+  #       cargo install cargo-msrv
+  #       cargo msrv --path frb_codegen verify
+
+  #   - name: Verify MSRV for frb_rust
+  #     run: |
+  #       cargo install cargo-msrv
+  #       cargo msrv --path frb_rust verify
 
   generate_run_frb_codegen_command_generate:
     name: 'Generate :: FRB Codegen :: Command Generate'
@@ -155,7 +179,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - uses: taiki-e/install-action@cargo-llvm-cov
-
+      
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
 
@@ -320,6 +344,54 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
 
+  # ----------------------------------- build -----------------------------------
+
+  build_flutter:
+    name: 'Build :: Flutter'
+    runs-on: ${{ matrix.info.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        info:
+          - image: windows-2019
+            target: windows
+          - image: macos-13
+            target: macos
+          - image: ubuntu-latest
+            target: linux
+          - image: ubuntu-latest
+            target: android-aab
+          - image: ubuntu-latest
+            target: android-apk
+          - image: macos-13
+            target: ios
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
+      - if: runner.os == 'Linux'
+        run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal build-flutter --target ${{ matrix.info.target }}
+
+      # report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.job }}--${{ matrix.info.target }}--output
+          path: target/build_flutter_output
+
   # ----------------------------------- test -----------------------------------
 
   test_mimic_quickstart:
@@ -379,7 +451,11 @@ jobs:
             version: nightly
           - image: ubuntu-latest
             version: nightly-2023-12-16
-          # TODO(@fzyzcjy, @gutenfries): add MSRV here, as well as other locked versions as needed
+          # tests the MSRV
+          # run on all rust packages, though only needed for frb_rust and frb_codegen
+          - image: ubuntu-latest
+          # update this, if a later MSRV is needed
+            version: 1.74.0
 
     steps:
       # setup
@@ -407,8 +483,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--coverage
-          path: target/coverage
-
+          path: target/coverage  
+    
   test_dart_native:
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}

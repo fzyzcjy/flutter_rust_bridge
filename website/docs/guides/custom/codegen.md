@@ -26,9 +26,16 @@ because it matches the Flutter convention, the "`pubspec.yaml`"):
 
 </details>
 
-
 The `flutter_rust_bridge_codegen create/integrate` already creates a configuration file for you,
 which is often sufficient.
+
+The parameter names are the same as the one shown in command line help,
+except that there are no `no_` negations here.
+You can also refer to the fields of
+[this struct](https://docs.rs/flutter_rust_bridge_codegen/2.0.0-dev.0/lib_flutter_rust_bridge_codegen/codegen/struct.Config.html)
+(may need to switch to latest version)
+for parameter names.
+Anyway, if a wrong name is provided, it will be immediately recognized and reported.
 
 ### Command line arguments
 

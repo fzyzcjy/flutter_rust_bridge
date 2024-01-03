@@ -103,7 +103,7 @@ fn generate_item(
         .map(|funcs| {
             funcs
                 .iter()
-                .filter(|f| f.owner == IrFuncOwnerInfo::Function)
+                .filter(|f| (f.owner == IrFuncOwnerInfo::Function) && !f.initializer)
                 .map(|f| function::generate(f, context))
                 .collect::<Result<Vec<_>>>()
         })

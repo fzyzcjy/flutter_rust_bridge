@@ -1,12 +1,11 @@
 use crate::platform_types::DartAbi;
 use std::any::Any;
-use std::panic::{RefUnwindSafe, UnwindSafe};
 
 pub(crate) mod cst;
 pub(crate) mod dco;
 pub(crate) mod sse;
 
-pub trait BaseCodec: Clone + Copy + UnwindSafe + RefUnwindSafe + Send {
+pub trait BaseCodec: Clone + Copy + Send {
     type Message: Rust2DartMessageTrait;
 
     fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message;

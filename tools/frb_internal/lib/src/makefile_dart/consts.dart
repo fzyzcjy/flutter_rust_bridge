@@ -22,12 +22,16 @@ const kRustPackages = [
   ...kRustPackagesDisallowWeb,
 ];
 
+const kDartExampleIntegratePackages = [
+  'frb_example/flutter_via_create',
+  'frb_example/flutter_via_integrate',
+];
+
 const kDartExamplePackages = [
   'frb_example/dart_minimal',
   'frb_example/pure_dart',
   'frb_example/deliberate_bad',
-  'frb_example/flutter_via_create',
-  'frb_example/flutter_via_integrate',
+  ...kDartExampleIntegratePackages,
   'frb_example/gallery',
 ];
 

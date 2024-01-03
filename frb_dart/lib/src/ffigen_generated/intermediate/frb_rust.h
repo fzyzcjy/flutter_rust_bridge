@@ -9,8 +9,6 @@ typedef struct Result_JsValue Result_JsValue;
 
 typedef Dart_Handle GeneralizedDartHandle;
 
-typedef PortLike MessagePort;
-
 typedef int64_t MessagePort;
 
 typedef Dart_CObject *WireSyncRust2DartDco;

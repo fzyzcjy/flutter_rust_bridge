@@ -29,6 +29,7 @@ pub use crate::rust_opaque::dart2rust::{cst_decode_rust_opaque, sse_decode_rust_
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;
+pub use anyhow;
 pub use byteorder;
 pub use cast::*;
 #[cfg(not(wasm))]

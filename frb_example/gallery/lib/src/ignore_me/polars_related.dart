@@ -8,8 +8,7 @@ class SimpleTable {
   const SimpleTable({required this.names, required this.data});
 }
 
-// TODO remove this "RwLock" prefix
-Future<SimpleTable> convertToSimpleTable(RwLockDataFrame df) async {
+Future<SimpleTable> convertToSimpleTable(DataFrame df) async {
   final columnNames = df.getColumnNames();
   return SimpleTable(
     names: columnNames,

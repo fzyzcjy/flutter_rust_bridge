@@ -1,4 +1,4 @@
-- Desdaemon: Support not only simple enums but also enums with fields which gets translated to native enum or sealed freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support tuple type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates and optionals. Parameter defaults. Refactor CLI. Refactor codegen errors.
+- Desdaemon: Support not only simple enums but also enums with fields which gets translated to native enum or sealed freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support tuple type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates and optionals. Parameter defaults. Refactor CLI. Refactor codegen errors. Refactor for performance.
 - rogurotus: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers. Also add Dart opaque types, allowing to use any Dart objects in Rust code. Extend `SyncReturn` for more types. Fix generation bug. Fix SyncReturn. Migrate to dart-sys. Update CI. Fix linters. Fix SyncReturn bug.
 - ngasull: Make sync mode support whatever types that classical async mode supports. Bump sdk.
 - SecondFlight: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relevant dir. Fix `store_dart_post_cobject` error with ffigen 6.0.
@@ -19,12 +19,12 @@
 - alanlzhang: Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
 - erikas-taroza: Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
 - SiongSng: Finish implementing exception hierarchy. Fix SyncReturn bug.
-- JustSimplyKyle: Also finish implementing exception hierarchy.
+- JustSimplyKyle: Also finish implementing exception hierarchy. Allow ignore function.
 - Zaitam: Fix when method return struct. Partial migration to Dart 3.
 - coder0xff: Discuss binding unmodified Rust. Refactor SupportedInnerType. Extra codegen tester.
 - nitn3lav: Nested `struct`s without `Box`.
+- AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
-- AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - anlumo: Fix freezed + methods. Non-clone RustOpaque.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
@@ -40,6 +40,7 @@
 - codercengiz: Fix mirroring bug.
 - Michael-F-Bryan: Detect broken bindings.
 - phlip9: Fix no-serde compilation.
+- patmuk: Set MSRV. Fail fast. Improve message. Add doc.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
@@ -49,6 +50,7 @@
 - TENX-S: Improve doc. Reproduce a bug.
 - polypixeldev: Improve doc.
 - CicadaCinema: Bump version. Improve doc.
+- CosmicHorrorDev: Change deps.
 - w1th0utnam3: Improve message.
 - vincent-herlemont: Loosen version.
 - zaynetro: Improve doc.
@@ -63,6 +65,8 @@
 - utilForever: Fix typos.
 - not-holar: Fix typos.
 - Stonks3141: Fix doc credit.
+- mattiasgronlund: Bump version.
+- adsouza: Fix doc grammar.
 - vimaxwell: Fix doc link.
 - lker-dev: Fix doc link.
 - jaiakash: Fix doc link.

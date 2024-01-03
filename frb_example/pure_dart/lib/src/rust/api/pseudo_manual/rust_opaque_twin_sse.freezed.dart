@@ -141,7 +141,7 @@ class _$EnumOpaqueTwinSse_StructImpl implements EnumOpaqueTwinSse_Struct {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSse_StructImpl &&
@@ -298,7 +298,7 @@ class _$EnumOpaqueTwinSse_PrimitiveImpl implements EnumOpaqueTwinSse_Primitive {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSse_PrimitiveImpl &&
@@ -455,7 +455,7 @@ class _$EnumOpaqueTwinSse_TraitObjImpl implements EnumOpaqueTwinSse_TraitObj {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSse_TraitObjImpl &&
@@ -611,7 +611,7 @@ class _$EnumOpaqueTwinSse_MutexImpl implements EnumOpaqueTwinSse_Mutex {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSse_MutexImpl &&
@@ -768,7 +768,7 @@ class _$EnumOpaqueTwinSse_RwLockImpl implements EnumOpaqueTwinSse_RwLock {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumOpaqueTwinSse_RwLockImpl &&

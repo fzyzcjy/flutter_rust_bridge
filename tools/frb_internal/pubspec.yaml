@@ -19,6 +19,7 @@ dependencies:
   meta: ^1.8.0
   yaml: ^3.1.2
   retry: ^3.1.2
+  io: ^1.0.4
 
 dev_dependencies:
   build_runner: ^2.2.0

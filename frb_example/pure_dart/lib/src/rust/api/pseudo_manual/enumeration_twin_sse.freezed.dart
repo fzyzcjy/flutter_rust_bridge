@@ -103,7 +103,7 @@ class _$DistanceTwinSse_UnknownImpl implements DistanceTwinSse_Unknown {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DistanceTwinSse_UnknownImpl);
@@ -224,7 +224,7 @@ class _$DistanceTwinSse_MapImpl implements DistanceTwinSse_Map {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DistanceTwinSse_MapImpl &&
@@ -411,7 +411,7 @@ class _$EnumWithItemMixedTwinSse_AImpl implements EnumWithItemMixedTwinSse_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinSse_AImpl);
@@ -541,7 +541,7 @@ class _$EnumWithItemMixedTwinSse_BImpl implements EnumWithItemMixedTwinSse_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinSse_BImpl &&
@@ -686,7 +686,7 @@ class _$EnumWithItemMixedTwinSse_CImpl implements EnumWithItemMixedTwinSse_C {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemMixedTwinSse_CImpl &&
@@ -891,7 +891,7 @@ class _$EnumWithItemStructTwinSse_AImpl implements EnumWithItemStructTwinSse_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemStructTwinSse_AImpl &&
@@ -1031,7 +1031,7 @@ class _$EnumWithItemStructTwinSse_BImpl implements EnumWithItemStructTwinSse_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemStructTwinSse_BImpl &&
@@ -1233,7 +1233,7 @@ class _$EnumWithItemTupleTwinSse_AImpl implements EnumWithItemTupleTwinSse_A {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemTupleTwinSse_AImpl &&
@@ -1373,7 +1373,7 @@ class _$EnumWithItemTupleTwinSse_BImpl implements EnumWithItemTupleTwinSse_B {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemTupleTwinSse_BImpl &&
@@ -1580,7 +1580,7 @@ class _$KitchenSinkTwinSse_EmptyImpl implements KitchenSinkTwinSse_Empty {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSse_EmptyImpl);
@@ -1747,7 +1747,7 @@ class _$KitchenSinkTwinSse_PrimitivesImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSse_PrimitivesImpl &&
@@ -1938,7 +1938,7 @@ class _$KitchenSinkTwinSse_NestedImpl implements KitchenSinkTwinSse_Nested {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSse_NestedImpl &&
@@ -2112,7 +2112,7 @@ class _$KitchenSinkTwinSse_OptionalImpl implements KitchenSinkTwinSse_Optional {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSse_OptionalImpl &&
@@ -2279,7 +2279,7 @@ class _$KitchenSinkTwinSse_BufferImpl implements KitchenSinkTwinSse_Buffer {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSse_BufferImpl &&
@@ -2444,7 +2444,7 @@ class _$KitchenSinkTwinSse_EnumsImpl implements KitchenSinkTwinSse_Enums {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$KitchenSinkTwinSse_EnumsImpl &&
@@ -2675,7 +2675,7 @@ class _$MeasureTwinSse_SpeedImpl implements MeasureTwinSse_Speed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeasureTwinSse_SpeedImpl &&
@@ -2824,7 +2824,7 @@ class _$MeasureTwinSse_DistanceImpl implements MeasureTwinSse_Distance {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MeasureTwinSse_DistanceImpl &&
@@ -3002,7 +3002,7 @@ class _$SpeedTwinSse_UnknownImpl implements SpeedTwinSse_Unknown {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeedTwinSse_UnknownImpl);
@@ -3123,7 +3123,7 @@ class _$SpeedTwinSse_GPSImpl implements SpeedTwinSse_GPS {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpeedTwinSse_GPSImpl &&

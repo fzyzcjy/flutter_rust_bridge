@@ -8,6 +8,7 @@
       },
       "comments": [],
       "error_output": null,
+      "initializer": false,
       "inputs": [],
       "mode": "Normal",
       "name": "crate::api/first_function",

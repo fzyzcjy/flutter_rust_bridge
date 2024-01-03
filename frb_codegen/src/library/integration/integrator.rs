@@ -1,12 +1,12 @@
 use crate::integration::utils::extract_dir_and_modify;
 use crate::library::commands::flutter::flutter_pub_add;
 use crate::library::commands::format_dart::format_dart;
-use crate::utils::path_utils::find_dart_package_dir;
-use anyhow::{Context, Result};
+use crate::utils::dart_repository::get_dart_package_name;
+use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
+use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::{debug, warn};
-use serde_yaml::Value;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
@@ -14,13 +14,20 @@ use std::{env, fs};
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
 
+pub struct IntegrateConfig {
+    pub enable_integration_test: bool,
+    pub enable_local_dependency: bool,
+    pub rust_crate_name: String,
+    pub rust_crate_dir: String,
+}
+
 /// Integrate Rust into existing Flutter project.
 // ref: https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/
-pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -> Result<()> {
+pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
-    let package_name = get_package_name(&dart_root)?;
+    let dart_package_name = get_dart_package_name(&dart_root)?;
 
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
@@ -30,16 +37,21 @@ pub fn integrate(enable_integration_test: bool, enable_local_dependency: bool) -
                 path,
                 src_raw,
                 existing_content,
-                &package_name,
-                enable_local_dependency,
+                &dart_package_name,
+                &config.rust_crate_name,
+                &config.rust_crate_dir,
+                config.enable_local_dependency,
             )
         },
-        &|path| filter_file(path, enable_integration_test),
+        &|path| filter_file(path, config.enable_integration_test),
     )?;
 
     modify_permissions(&dart_root)?;
 
-    pub_add_dependencies(enable_integration_test, enable_local_dependency)?;
+    pub_add_dependencies(
+        config.enable_integration_test,
+        config.enable_local_dependency,
+    )?;
 
     format_dart(&[dart_root], 80)?;
 
@@ -73,17 +85,20 @@ fn modify_file(
     path_raw: &Path,
     src_raw: &[u8],
     existing_content: Option<Vec<u8>>,
-    package_name: &str,
+    dart_package_name: &str,
+    rust_crate_name: &str,
+    rust_crate_dir: &str,
     enable_local_dependency: bool,
 ) -> Option<(PathBuf, Vec<u8>)> {
-    let src = replace_file_content(src_raw, package_name, enable_local_dependency);
+    let replace_content_config = ReplaceContentConfig {
+        dart_package_name,
+        rust_crate_name,
+        rust_crate_dir,
+        enable_local_dependency,
+    };
+    let src = replace_file_content(src_raw, &replace_content_config);
 
-    let path =
-        if (path_raw.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
-            path_raw.with_extension("")
-        } else {
-            path_raw.to_owned()
-        };
+    let path = compute_effective_path(path_raw, &replace_content_config);
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -91,12 +106,12 @@ fn modify_file(
             let commented_existing_content = existing_content
                 .map(|x| {
                     format!(
-                        "\n\n{}",
+                        "// The original content is temporarily commented out to allow generating a self-contained demo - feel free to uncomment later.\n\n{}\n\n",
                         x.split('\n').map(|line| format!("// {line}")).join("\n")
                     )
                 })
                 .unwrap_or_default();
-            return Some((path, [&src, commented_existing_content.as_bytes()].concat()));
+            return Some((path, [commented_existing_content.as_bytes(), &src].concat()));
             // We do not care about this warning
             // frb-coverage:ignore-start
         }
@@ -118,21 +133,41 @@ fn modify_file(
     Some((path, src))
 }
 
-fn replace_file_content(raw: &[u8], package_name: &str, enable_local_dependency: bool) -> Vec<u8> {
+fn compute_effective_path(path: &Path, config: &ReplaceContentConfig) -> PathBuf {
+    let mut path = path.to_owned();
+    if (path.extension().unwrap_or_default().to_str()).unwrap_or_default() == "template" {
+        path = path.with_extension("")
+    }
+    path = replace_string_content(&path_to_string(&path).unwrap(), config).into();
+    path
+}
+
+fn replace_file_content(raw: &[u8], config: &ReplaceContentConfig) -> Vec<u8> {
     match String::from_utf8(raw.to_owned()) {
-        Ok(raw_str) => raw_str
-            .replace("REPLACE_ME_PACKAGE_NAME", package_name)
-            .replace(
-                "REPLACE_ME_RUST_FRB_DEPENDENCY",
-                &if enable_local_dependency {
-                    r#"{ path = "../../../frb_rust" }"#.to_owned()
-                } else {
-                    format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
-                },
-            )
-            .into_bytes(),
+        Ok(raw_str) => replace_string_content(&raw_str, config).into_bytes(),
         Err(e) => e.into_bytes(),
     }
+}
+
+struct ReplaceContentConfig<'a> {
+    dart_package_name: &'a str,
+    rust_crate_name: &'a str,
+    rust_crate_dir: &'a str,
+    enable_local_dependency: bool,
+}
+
+fn replace_string_content(raw: &str, config: &ReplaceContentConfig) -> String {
+    raw.replace("REPLACE_ME_DART_PACKAGE_NAME", config.dart_package_name)
+        .replace("REPLACE_ME_RUST_CRATE_NAME", config.rust_crate_name)
+        .replace("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir)
+        .replace(
+            "REPLACE_ME_RUST_FRB_DEPENDENCY",
+            &if config.enable_local_dependency {
+                r#"{ path = "../../../frb_rust" }"#.to_owned()
+            } else {
+                format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
+            },
+        )
 }
 
 fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
@@ -216,14 +251,4 @@ fn pub_add_dependencies(
     // frb-coverage:ignore-end
 
     Ok(())
-}
-
-fn get_package_name(dart_root: &Path) -> Result<String> {
-    let pubspec_yaml: Value = serde_yaml::from_slice(&fs::read(dart_root.join("pubspec.yaml"))?)?;
-    Ok(pubspec_yaml
-        .get("name")
-        .context("no name field")?
-        .as_str()
-        .context("cannot be str")?
-        .to_owned())
 }
