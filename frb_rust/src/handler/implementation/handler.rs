@@ -11,6 +11,7 @@ use crate::handler::implementation::error_listener::{
     handle_non_sync_panic_error, NoOpErrorListener,
 };
 use crate::handler::implementation::executor::SimpleExecutor;
+use crate::misc::panic_backtrace::PanicBacktrace;
 use crate::platform_types::DartAbi;
 use crate::rust_async::SimpleAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
@@ -90,13 +91,13 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
         panic::catch_unwind(AssertUnwindSafe(move || {
-            let catch_unwind_result = panic::catch_unwind(AssertUnwindSafe(move || {
+            let catch_unwind_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(move || {
                 (self.executor).execute_sync::<Rust2DartCodec, _>(task_info, sync_task)
             }));
             catch_unwind_result
                 .unwrap_or_else(|error| {
-                    let message = Rust2DartCodec::encode_panic(&error);
-                    self.error_listener.on_error(Error::Panic(error));
+                    let message = Rust2DartCodec::encode_panic(&error.err, &error.backtrace);
+                    self.error_listener.on_error(Error::Panic(error.err));
                     message
                 })
                 .into_raw_wire_sync()
@@ -164,7 +165,7 @@ impl<E: Executor, EL: ErrorListener> SimpleHandler<E, EL> {
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         let _ = panic::catch_unwind(AssertUnwindSafe(move || {
             let task_info2 = task_info.clone();
-            if let Err(error) = panic::catch_unwind(AssertUnwindSafe(move || {
+            if let Err(error) = PanicBacktrace::catch_unwind(AssertUnwindSafe(move || {
                 let task = prepare();
                 execute(task_info2, task);
             })) {

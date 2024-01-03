@@ -1,4 +1,5 @@
 use crate::platform_types::DartAbi;
+use backtrace::Backtrace;
 use std::any::Any;
 
 pub(crate) mod cst;
@@ -8,7 +9,7 @@ pub(crate) mod sse;
 pub trait BaseCodec: Clone + Copy + Send {
     type Message: Rust2DartMessageTrait;
 
-    fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message;
+    fn encode_panic(error: &Box<dyn Any + Send>, backtrace: &Option<Backtrace>) -> Self::Message;
 
     fn encode_close_stream() -> Self::Message;
 }

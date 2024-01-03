@@ -1,3 +1,5 @@
+use crate::misc::panic_backtrace::PanicBacktrace;
+
 /// Setup defaults that is usually useful for a new project.
 /// Surely, you are free to customize everything.
 pub fn setup_default_user_utils() {
@@ -13,6 +15,8 @@ fn setup_backtrace() {
     } else {
         log::debug!("Skip setup RUST_BACKTRACE because there is already environment variable");
     }
+
+    PanicBacktrace::setup();
 }
 
 fn setup_log_to_console() {

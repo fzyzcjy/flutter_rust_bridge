@@ -1,3 +1,4 @@
+use backtrace::Backtrace;
 use std::any::Any;
 
 /// Errors that occur from normal code execution.
@@ -13,20 +14,28 @@ impl Error {
     pub fn message(&self) -> String {
         match self {
             Error::CustomError => "CustomError".to_string(),
-            Error::Panic(panic_err) => error_to_string(panic_err),
+            Error::Panic(panic_err) => error_to_string(panic_err, &None),
         }
     }
 }
 
-pub(crate) fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
-    match panic_err.downcast_ref::<&'static str>() {
+pub(crate) fn error_to_string(
+    panic_err: &Box<dyn Any + Send>,
+    backtrace: &Option<Backtrace>,
+) -> String {
+    let err_string = match panic_err.downcast_ref::<&'static str>() {
         Some(s) => *s,
         None => match panic_err.downcast_ref::<String>() {
             Some(s) => &s[..],
             None => "Box<dyn Any>",
         },
     }
-    .to_string()
+    .to_string();
+    let backtrace_string = backtrace
+        .as_ref()
+        .map(|b| format!("{:?}", b))
+        .unwrap_or_default();
+    err_string + &backtrace_string
 }
 
 #[cfg(test)]

@@ -128,6 +128,15 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
                 hint: hint);
 
+Future<OpaqueOneTwinNormalOpaqueTwoTwinNormal>
+    rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal(hint: hint);
+
+Future<OpaqueTwoTwinNormal> rustAutoOpaqueReturnOpaqueTwoTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinNormal(hint: hint);
+
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>
 @sealed
 class BoxHelloTraitTwinNormal extends RustOpaque {
@@ -265,5 +274,44 @@ class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr,
+  );
+}
+
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<(crate::api::rust_auto_opaque::OpaqueOneTwinNormal,crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,)>>
+@sealed
+class OpaqueOneTwinNormalOpaqueTwoTwinNormal extends RustOpaque {
+  OpaqueOneTwinNormalOpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueOneTwinNormalOpaqueTwoTwinNormal.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormalPtr,
+  );
+}
+
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::rust_auto_opaque::OpaqueTwoTwinNormal>>
+@sealed
+class OpaqueTwoTwinNormal extends RustOpaque {
+  OpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueTwoTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr,
   );
 }

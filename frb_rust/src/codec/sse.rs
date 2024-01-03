@@ -3,6 +3,7 @@ use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
 use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartSse};
 use crate::rust2dart::action::Rust2DartAction;
+use backtrace::Backtrace;
 use byteorder::NativeEndian;
 use byteorder::WriteBytesExt;
 use std::any::Any;
@@ -15,8 +16,8 @@ pub struct SseCodec;
 impl BaseCodec for SseCodec {
     type Message = Rust2DartMessageSse;
 
-    fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
-        let msg = error_to_string(error);
+    fn encode_panic(error: &Box<dyn Any + Send>, backtrace: &Option<Backtrace>) -> Self::Message {
+        let msg = error_to_string(error, backtrace);
         Self::encode(Rust2DartAction::Panic, |serializer| {
             // NOTE roughly copied from the auto-generated serialization of String
             let bytes = msg.into_bytes();

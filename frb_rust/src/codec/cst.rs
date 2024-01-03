@@ -1,5 +1,6 @@
 use super::{BaseCodec, Rust2DartMessageTrait};
 use crate::platform_types::DartAbi;
+use backtrace::Backtrace;
 use std::any::Any;
 
 // frb-coverage:ignore-start
@@ -11,7 +12,7 @@ impl BaseCodec for CstCodec {
     type Message = Rust2DartMessageCst;
 
     // frb-coverage:ignore-start
-    fn encode_panic(_error: &Box<dyn Any + Send>) -> Self::Message {
+    fn encode_panic(_error: &Box<dyn Any + Send>, _backtrace: &Option<Backtrace>) -> Self::Message {
         unreachable!()
     }
 
