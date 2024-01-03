@@ -9,16 +9,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-use std::path::PathBuf;
-
-pub struct MyOpaqueType(PathBuf);
-pub struct AnotherOpaqueType(PathBuf);
-
-pub fn foo() -> (MyOpaqueType, AnotherOpaqueType) {
-    todo!()
-}
-
-pub fn bar() -> AnotherOpaqueType {
-    todo!()
-}
