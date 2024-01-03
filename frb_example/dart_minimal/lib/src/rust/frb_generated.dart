@@ -61,9 +61,31 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<AnotherOpaqueType> bar({dynamic hint});
+
+  Future<MyOpaqueTypeAnotherOpaqueType> foo({dynamic hint});
+
   Future<void> initApp({dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_AnotherOpaqueType;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_AnotherOpaqueType;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_AnotherOpaqueTypePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MyOpaqueTypeAnotherOpaqueType;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueType;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueTypePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -73,6 +95,52 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
+
+  @override
+  Future<AnotherOpaqueType> bar({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_bar(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType,
+        decodeErrorData: null,
+      ),
+      constMeta: kBarConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBarConstMeta => const TaskConstMeta(
+        debugName: "bar",
+        argNames: [],
+      );
+
+  @override
+  Future<MyOpaqueTypeAnotherOpaqueType> foo({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_foo(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType,
+        decodeErrorData: null,
+      ),
+      constMeta: kFooConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFooConstMeta => const TaskConstMeta(
+        debugName: "foo",
+        argNames: [],
+      );
 
   @override
   Future<void> initApp({dynamic hint}) {
@@ -120,6 +188,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_AnotherOpaqueType => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_AnotherOpaqueType => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAnotherOpaqueType;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MyOpaqueTypeAnotherOpaqueType => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MyOpaqueTypeAnotherOpaqueType => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType;
+
+  @protected
+  AnotherOpaqueType
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+          dynamic raw) {
+    return AnotherOpaqueType.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MyOpaqueTypeAnotherOpaqueType
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          dynamic raw) {
+    return MyOpaqueTypeAnotherOpaqueType.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  AnotherOpaqueType dco_decode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      dynamic raw) {
+    return AnotherOpaqueType.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MyOpaqueTypeAnotherOpaqueType
+      dco_decode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          dynamic raw) {
+    return MyOpaqueTypeAnotherOpaqueType.dcoDecode(raw as List<dynamic>);
+  }
+
   @protected
   int dco_decode_i_32(dynamic raw) {
     return raw as int;
@@ -131,6 +242,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int dco_decode_usize(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  @protected
+  AnotherOpaqueType
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+          SseDeserializer deserializer) {
+    return AnotherOpaqueType.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MyOpaqueTypeAnotherOpaqueType
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          SseDeserializer deserializer) {
+    return MyOpaqueTypeAnotherOpaqueType.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  AnotherOpaqueType sse_decode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      SseDeserializer deserializer) {
+    return AnotherOpaqueType.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MyOpaqueTypeAnotherOpaqueType
+      sse_decode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          SseDeserializer deserializer) {
+    return MyOpaqueTypeAnotherOpaqueType.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
@@ -139,8 +286,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_decode_unit(SseDeserializer deserializer) {}
 
   @protected
+  int sse_decode_usize(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint64();
+  }
+
+  @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+          AnotherOpaqueType raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          MyOpaqueTypeAnotherOpaqueType raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      AnotherOpaqueType raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          MyOpaqueTypeAnotherOpaqueType raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
   }
 
   @protected
@@ -154,12 +337,47 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_usize(int raw) {
+    return raw;
+  }
+
+  @protected
+  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      AnotherOpaqueType self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+          MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockAnotherOpaqueType(
+      AnotherOpaqueType self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockMyOpaqueTypeAnotherOpaqueType(
+      MyOpaqueTypeAnotherOpaqueType self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer) {}
+
+  @protected
+  void sse_encode_usize(int self, SseSerializer serializer) {
+    serializer.buffer.putUint64(self);
+  }
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {
