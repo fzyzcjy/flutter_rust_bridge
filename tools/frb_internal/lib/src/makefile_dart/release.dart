@@ -76,7 +76,7 @@ void _updateVersionInText() {
 
   for (final package in ['flutter_rust_bridge', 'flutter_rust_bridge_macros']) {
     simpleReplaceFile(
-      '${exec.pwd}frb_codegen/assets/integration_template/rust/Cargo.lock.template',
+      '${exec.pwd}frb_codegen/assets/integration_template/REPLACE_ME_RUST_CRATE_DIR/Cargo.lock.template',
       '[[package]]\nname = "$package"\nversion = "${versionInfo.oldVersion}"',
       '[[package]]\nname = "$package"\nversion = "${versionInfo.newVersion}"',
     );
