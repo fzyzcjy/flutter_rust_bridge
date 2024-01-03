@@ -4,6 +4,7 @@ use crate::handler::error::error_to_string;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{DartAbi, WireSyncRust2DartDco};
 use crate::rust2dart::action::Rust2DartAction;
+use backtrace::Backtrace;
 use std::any::Any;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -12,8 +13,8 @@ pub struct DcoCodec;
 impl BaseCodec for DcoCodec {
     type Message = Rust2DartMessageDco;
 
-    fn encode_panic(error: &Box<dyn Any + Send>) -> Self::Message {
-        Self::encode(Rust2DartAction::Panic, error_to_string(error))
+    fn encode_panic(error: &Box<dyn Any + Send>, backtrace: &Option<Backtrace>) -> Self::Message {
+        Self::encode(Rust2DartAction::Panic, error_to_string(error, backtrace))
     }
 
     fn encode_close_stream() -> Self::Message {

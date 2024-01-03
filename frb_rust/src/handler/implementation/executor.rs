@@ -6,6 +6,7 @@ use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_listener::handle_non_sync_panic_error;
+use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
@@ -14,7 +15,6 @@ use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::FutureExt;
 use std::future::Future;
-use std::panic;
 use std::panic::AssertUnwindSafe;
 
 /// The default executor used.
@@ -62,7 +62,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         self.thread_pool.execute(transfer!(|port: MessagePort| {
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
-            let thread_result = panic::catch_unwind(AssertUnwindSafe(|| {
+            let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
@@ -129,8 +129,9 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             .catch_unwind()
             .await;
 
-            if let Err(error) = async_result {
-                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, error);
+            if let Err(err) = async_result {
+                let err = CatchUnwindWithBacktrace::new(err, PanicBacktrace::take_last());
+                handle_non_sync_panic_error::<Rust2DartCodec>(el, port, err);
             }
         });
     }

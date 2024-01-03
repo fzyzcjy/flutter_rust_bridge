@@ -73,12 +73,20 @@ bool get releaseMode {
   return ans;
 }
 
-Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
-    {String? messageOnNative}) async {
+Future<void> expectRustPanic(
+  FutureOr<void> Function() body,
+  String mode, {
+  String? messageOnNative,
+  Matcher? messageMatcherOnNative,
+}) async {
+  if (messageOnNative != null) {
+    assert(messageMatcherOnNative == null);
+    messageMatcherOnNative = startsWith(messageOnNative);
+  }
+
   var inner = isA<PanicException>();
-  if (!kIsWeb && messageOnNative != null) {
-    inner =
-        inner.having((x) => x.message, 'message', startsWith(messageOnNative));
+  if (!kIsWeb && messageMatcherOnNative != null) {
+    inner = inner.having((x) => x.message, 'message', messageMatcherOnNative);
   }
   await expectRustPanicRaw(body, mode, throwsA(inner));
 }

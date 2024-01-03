@@ -219,4 +219,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
     });
   });
+
+  group('has backtraces', skip: kIsWeb, () {
+    final matcher =
+        anyOf(contains('.rs'), contains('::'), contains('<unknown>'));
+
+    test('when error (Result::Err)', () async {
+      await expectLater(
+          () async => funcReturnErrorTwinRustAsync(),
+          throwsA(isA<AnyhowException>()
+              .having((x) => x.message, 'message', matcher)));
+    });
+
+    test('when panic', () async {
+      await expectRustPanic(
+          () async => funcTypeFalliblePanicTwinRustAsync(), 'TwinRustAsync',
+          messageMatcherOnNative: matcher);
+    });
+  });
 }
