@@ -264,6 +264,8 @@ title: Introduction
 hide_title: true
 ---
 
+<!-- AUTO-GENERATED FILE - DO NOT EDIT -->
+
 ''';
 
 //       const kShowMeTheCode = '''
