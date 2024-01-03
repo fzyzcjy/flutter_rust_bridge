@@ -12,8 +12,7 @@ const config = {
     baseUrl: '/flutter_rust_bridge/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-    favicon: 'favicon.ico',
-    staticDirectories: ['misc'],
+    staticDirectories: ['static'],
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
