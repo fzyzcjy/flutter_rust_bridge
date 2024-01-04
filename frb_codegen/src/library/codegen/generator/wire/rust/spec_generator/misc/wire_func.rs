@@ -27,7 +27,7 @@ pub(crate) fn generate_wire_func(
 
     let ir_pack = context.ir_pack;
     let params = dart2rust_codec.generate_func_params(func, context);
-    let inner_func_args = generate_inner_func_args(func);
+    let inner_func_args = generate_inner_func_args(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
@@ -69,7 +69,11 @@ pub(crate) fn generate_wire_func(
     })
 }
 
-fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
+fn generate_inner_func_args(
+    func: &IrFunc,
+    ir_pack: &IrPack,
+    context: WireRustGeneratorContext,
+) -> Vec<String> {
     let mut ans = func
         .inputs
         .iter()
@@ -90,7 +94,17 @@ fn generate_inner_func_args(func: &IrFunc) -> Vec<String> {
         .collect_vec();
 
     if let IrFuncMode::Stream { argument_index } = func.mode {
-        ans.insert(argument_index, "stream_sink_.clone()".to_owned());
+        ans.insert(
+            argument_index,
+            format!(
+                "StreamSink::new(context.rust2dart_context().stream_sink::<_,{}>())",
+                WireRustCodecDcoGenerator::new(
+                    func.output.clone(),
+                    context.as_wire_rust_codec_dco_context()
+                )
+                .intodart_type(ir_pack)
+            ),
+        );
     }
 
     ans
@@ -109,11 +123,7 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
     )
 }
 
-fn generate_code_inner_decode(
-    func: &IrFunc,
-    ir_pack: &IrPack,
-    context: WireRustGeneratorContext,
-) -> String {
+fn generate_code_inner_decode(func: &IrFunc) -> String {
     func.inputs
         .iter()
         .filter_map(|field| {
@@ -127,16 +137,6 @@ fn generate_code_inner_decode(
                 Some(format!(
                     "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}()?;\n",
                     name = field.name.rust_style()
-                ))
-            } else if let IrFuncMode::Stream { .. } = func.mode {
-                // NOTE: Put this stream sink object here, such that it will be dropped late enough
-                Some(format!(
-                    "let stream_sink_ = StreamSink::new(context.rust2dart_context().stream_sink::<_,{}>());",
-                    WireRustCodecDcoGenerator::new(
-                        func.output.clone(),
-                        context.as_wire_rust_codec_dco_context()
-                    )
-                        .intodart_type(ir_pack)
                 ))
             } else {
                 None
