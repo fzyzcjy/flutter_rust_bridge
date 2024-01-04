@@ -72,7 +72,11 @@ fn generate_allo_isolate_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
                 ..Default::default()
             },
             after_includes: Some(
-                default_config.after_includes.unwrap() + "\n" + r#"#include "dart_api.h""#,
+                default_config.after_includes.unwrap()
+                    + "\n"
+                    + "struct DartCObject;\ntypedef struct DartCObject DartCObject;"
+                    + "\n"
+                    + r#"#include "dart_api.h""#,
             ),
             ..default_config
         },
