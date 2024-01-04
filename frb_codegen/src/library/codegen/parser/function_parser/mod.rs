@@ -54,11 +54,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let sig = func.sig();
         let namespace = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
+        let context = TypeParserParsingContext::new(namespace.clone(), TODO);
 
-        let owner = if let Some(owner) = self.parse_owner(
-            func,
-            &TypeParserParsingContext::new(namespace.clone(), TODO),
-        )? {
+        let owner = if let Some(owner) = self.parse_owner(func, &context)? {
             owner
         } else {
             return Ok(None);
@@ -73,20 +71,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
-            info = info.merge(self.parse_fn_arg(
-                i,
-                sig_input,
-                &owner,
-                &TypeParserParsingContext::new(namespace.clone(), TODO),
-            )?)?;
+            info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
         }
-        info = info.merge(
-            self.parse_fn_output(sig, &TypeParserParsingContext::new(namespace.clone(), TODO))?,
-        )?;
-        info = self.transform_fn_info(
-            info,
-            &TypeParserParsingContext::new(namespace.clone(), TODO),
-        );
+        info = info.merge(self.parse_fn_output(sig, &context)?)?;
+        info = self.transform_fn_info(info, &context);
 
         let codec_mode_pack = attributes.codec_mode_pack();
         let mode = compute_func_mode(&attributes, &info);
