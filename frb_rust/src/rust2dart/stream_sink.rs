@@ -31,11 +31,4 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn add(&self, value: Rust2DartCodec::Message) -> anyhow::Result<()> {
         self.sender().send(value.into_dart_abi())
     }
-
-    /// Close the stream and ignore further messages. Returns false when
-    /// the stream could not be closed, or when it has already been closed.
-    pub fn close(&self) -> anyhow::Result<()> {
-        self.sender()
-            .send(Rust2DartCodec::encode_close_stream().into_dart_abi())
-    }
 }

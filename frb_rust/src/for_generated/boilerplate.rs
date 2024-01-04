@@ -76,10 +76,6 @@ macro_rules! frb_generated_boilerplate {
             pub fn new(base: $crate::for_generated::StreamSinkBase<T, Rust2DartCodec>) -> Self {
                 Self { base }
             }
-
-            pub fn close(&self) -> $crate::for_generated::anyhow::Result<()> {
-                self.base.close()
-            }
         }
 
         impl<T> StreamSink<T, $crate::for_generated::DcoCodec> {
