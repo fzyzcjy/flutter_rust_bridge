@@ -34,7 +34,7 @@ impl<Rust2DartCodec: BaseCodec> TaskRust2DartContext<Rust2DartCodec> {
     {
         StreamSinkBase::<T, Rust2DartCodec>::new(
             self.sender.clone(),
-            self.stream_sink_closer.unwrap(),
+            self.stream_sink_closer.clone().unwrap(),
         )
     }
 }
