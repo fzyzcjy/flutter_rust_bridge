@@ -1,3 +1,4 @@
+/// cbindgen:ignore
 #[cfg(wasm)]
 mod web;
 #[cfg(wasm)]

@@ -3,7 +3,6 @@ use crate::dart_opaque::boxes::thread_box::ThreadBox;
 #[derive(Debug, Clone)]
 pub struct GeneralizedAutoDropDartPersistentHandle(wasm_bindgen::JsValue);
 pub type GeneralizedDartHandleBox<T> = ThreadBox<T>;
-/// cbindgen:ignore
 pub type GeneralizedDartHandle = wasm_bindgen::JsValue;
 
 impl GeneralizedAutoDropDartPersistentHandle {
