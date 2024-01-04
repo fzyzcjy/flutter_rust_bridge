@@ -189,6 +189,7 @@ fn maybe_create_stream_sink_closer<Rust2DartCodec: BaseCodec>(
     mode: FfiCallMode,
 ) -> Option<Arc<StreamSinkCloser<Rust2DartCodec>>> {
     (mode == FfiCallMode::Stream).then(|| {
+        #[allow(clippy::clone_on_copy)]
         let handle = channel_to_handle(&Channel::new(port.clone()));
         Arc::new(StreamSinkCloser::new(handle))
     })
