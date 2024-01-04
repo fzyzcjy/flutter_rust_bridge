@@ -1,4 +1,5 @@
 use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
@@ -13,7 +14,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())
                 .map(|x| IrField {
-                    ty: self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x.ty, context),
+                    ty: transform_primitive_list_param(
+                        self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x.ty, context),
+                    ),
                     ..x
                 })
                 .collect_vec(),
@@ -32,5 +35,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> IrType {
         self.type_parser
             .transform_type_rust_auto_opaque(&ty, context)
+    }
+}
+
+fn transform_primitive_list_param(ty: IrType) -> IrType {
+    if let IrType::PrimitiveList(inner) = ty {
+        IrType::PrimitiveList(IrTypePrimitiveList {
+            strict_dart_type: false,
+            ..inner
+        })
+    } else {
+        ty
     }
 }
