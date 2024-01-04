@@ -4601,7 +4601,8 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_handle_some_str
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal(int64_t port_,
                                                                                  struct wire_cst_list_prim_u_8 *a);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(struct wire_cst_concatenate_with_twin_normal *that);
+void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(int64_t port_,
+                                                                                           struct wire_cst_concatenate_with_twin_normal *that);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinNormal_sum_twin_normal(int64_t port_,
                                                                          struct wire_cst_sum_with_twin_normal *that,
@@ -6917,7 +6918,8 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_handle_some_
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(int64_t port_,
                                                                                         struct wire_cst_list_prim_u_8 *a);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async(struct wire_cst_concatenate_with_twin_rust_async *that);
+void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async(int64_t port_,
+                                                                                                  struct wire_cst_concatenate_with_twin_rust_async *that);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinRustAsync_sum_twin_rust_async(int64_t port_,
                                                                                 struct wire_cst_sum_with_twin_rust_async *that,
@@ -6966,9 +6968,10 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_new_twin_
                                                                                                int32_t rust_vec_len_,
                                                                                                int32_t data_len_);
 
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse(uint8_t *ptr_,
-                                                                                                                         int32_t rust_vec_len_,
-                                                                                                                         int32_t data_len_);
+void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse(int64_t port_,
+                                                                                                         uint8_t *ptr_,
+                                                                                                         int32_t rust_vec_len_,
+                                                                                                         int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse(int64_t port_,
                                                                                        uint8_t *ptr_,
@@ -7020,9 +7023,10 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_new_twin_sse(int64
                                                                            int32_t rust_vec_len_,
                                                                            int32_t data_len_);
 
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_simple_getter_twin_sse(uint8_t *ptr_,
-                                                                                                     int32_t rust_vec_len_,
-                                                                                                     int32_t data_len_);
+void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_simple_getter_twin_sse(int64_t port_,
+                                                                                     uint8_t *ptr_,
+                                                                                     int32_t rust_vec_len_,
+                                                                                     int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinSse_sum_twin_sse(int64_t port_,
                                                                    uint8_t *ptr_,
@@ -8793,9 +8797,10 @@ void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instance_method_arg
                                                                                               int32_t rust_vec_len_,
                                                                                               int32_t data_len_);
 
-WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse(uint8_t *ptr_,
-                                                                                                             int32_t rust_vec_len_,
-                                                                                                             int32_t data_len_);
+void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse(int64_t port_,
+                                                                                             uint8_t *ptr_,
+                                                                                             int32_t rust_vec_len_,
+                                                                                             int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(int64_t port_,
                                                                                                  uint8_t *ptr_,
@@ -9811,7 +9816,8 @@ void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_
 void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(int64_t port_,
                                                                                                     const void *that);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(const void *that);
+void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(int64_t port_,
+                                                                                                   const void *that);
 
 void frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(int64_t port_,
                                                                                                        const void *that);

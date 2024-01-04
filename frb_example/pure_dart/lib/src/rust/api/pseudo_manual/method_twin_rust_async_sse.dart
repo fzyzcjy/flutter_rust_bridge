@@ -69,7 +69,7 @@ class ConcatenateWithTwinRustAsyncSse {
       RustLib.instance.api
           .concatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(a: a, hint: hint);
 
-  String get simpleGetterTwinRustAsyncSse => RustLib.instance.api
+  Future<String> get simpleGetterTwinRustAsyncSse => RustLib.instance.api
           .concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
         that: this,
       );

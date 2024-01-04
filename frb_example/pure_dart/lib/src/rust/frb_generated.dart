@@ -637,7 +637,7 @@ abstract class RustLibApi extends BaseApi {
   Future<ConcatenateWithTwinNormal> concatenateWithTwinNormalNewTwinNormal(
       {required String a, dynamic hint});
 
-  String concatenateWithTwinNormalSimpleGetterTwinNormal(
+  Future<String> concatenateWithTwinNormalSimpleGetterTwinNormal(
       {required ConcatenateWithTwinNormal that, dynamic hint});
 
   Future<int> sumWithTwinNormalSumTwinNormal(
@@ -2405,7 +2405,7 @@ abstract class RustLibApi extends BaseApi {
       concatenateWithTwinRustAsyncNewTwinRustAsync(
           {required String a, dynamic hint});
 
-  String concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
+  Future<String> concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
       {required ConcatenateWithTwinRustAsync that, dynamic hint});
 
   Future<int> sumWithTwinRustAsyncSumTwinRustAsync(
@@ -2451,7 +2451,7 @@ abstract class RustLibApi extends BaseApi {
       concatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(
           {required String a, dynamic hint});
 
-  String concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
+  Future<String> concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
       {required ConcatenateWithTwinRustAsyncSse that, dynamic hint});
 
   Future<int> sumWithTwinRustAsyncSseSumTwinRustAsyncSse(
@@ -2489,7 +2489,7 @@ abstract class RustLibApi extends BaseApi {
   Future<ConcatenateWithTwinSse> concatenateWithTwinSseNewTwinSse(
       {required String a, dynamic hint});
 
-  String concatenateWithTwinSseSimpleGetterTwinSse(
+  Future<String> concatenateWithTwinSseSimpleGetterTwinSse(
       {required ConcatenateWithTwinSse that, dynamic hint});
 
   Future<int> sumWithTwinSseSumTwinSse(
@@ -3840,7 +3840,7 @@ abstract class RustLibApi extends BaseApi {
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgOwnTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint});
 
-  int nonCloneSimpleTwinSseInstanceMethodGetterTwinSse(
+  Future<int> nonCloneSimpleTwinSseInstanceMethodGetterTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint});
 
   Future<NonCloneSimpleTwinSse>
@@ -4619,7 +4619,7 @@ abstract class RustLibApi extends BaseApi {
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
       {required NonCloneSimpleTwinNormal that, dynamic hint});
 
-  int nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
+  Future<int> nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
       {required NonCloneSimpleTwinNormal that, dynamic hint});
 
   Future<NonCloneSimpleTwinNormal>
@@ -8460,13 +8460,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String concatenateWithTwinNormalSimpleGetterTwinNormal(
+  Future<String> concatenateWithTwinNormalSimpleGetterTwinNormal(
       {required ConcatenateWithTwinNormal that, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
-        return wire
-            .wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(arg0);
+        return wire.wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
+            port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -25306,15 +25306,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
+  Future<String> concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
       {required ConcatenateWithTwinRustAsync that, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         var arg0 =
             cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
         return wire
             .wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async(
-                arg0);
+                port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_String,
@@ -25658,17 +25658,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  String concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
+  Future<String> concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
       {required ConcatenateWithTwinRustAsyncSse that, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_rust_async_sse(
             that, serializer);
         final raw_ = serializer.intoRaw();
         return wire
             .wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse(
-                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -25999,15 +25999,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String concatenateWithTwinSseSimpleGetterTwinSse(
+  Future<String> concatenateWithTwinSseSimpleGetterTwinSse(
       {required ConcatenateWithTwinSse that, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_concatenate_with_twin_sse(that, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_ConcatenateWithTwinSse_simple_getter_twin_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -38601,16 +38601,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  int nonCloneSimpleTwinSseInstanceMethodGetterTwinSse(
+  Future<int> nonCloneSimpleTwinSseInstanceMethodGetterTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
             that, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -46148,16 +46148,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  int nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
+  Future<int> nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
       {required NonCloneSimpleTwinNormal that, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
         var arg0 =
             cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
                 that);
         return wire
             .wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(
-                arg0);
+                port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_i_32,

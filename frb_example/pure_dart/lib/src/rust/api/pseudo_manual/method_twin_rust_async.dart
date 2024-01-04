@@ -65,7 +65,7 @@ class ConcatenateWithTwinRustAsync {
       RustLib.instance.api
           .concatenateWithTwinRustAsyncNewTwinRustAsync(a: a, hint: hint);
 
-  String get simpleGetterTwinRustAsync => RustLib.instance.api
+  Future<String> get simpleGetterTwinRustAsync => RustLib.instance.api
           .concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
         that: this,
       );

@@ -18100,9 +18100,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_ne
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
+    port_: i64,
     that: *mut wire_cst_concatenate_with_twin_normal,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_ConcatenateWithTwinNormal_simple_getter_twin_normal_impl(that)
+) {
+    wire_ConcatenateWithTwinNormal_simple_getter_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]
@@ -23805,9 +23806,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async(
+    port_: i64,
     that: *mut wire_cst_concatenate_with_twin_rust_async,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async_impl(that)
+) {
+    wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async_impl(port_, that)
 }
 
 #[no_mangle]
@@ -23937,11 +23939,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse(
+    port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+) {
     wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse_impl(
+        port_,
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -24075,11 +24079,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_new_t
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_simple_getter_twin_sse(
+    port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_ConcatenateWithTwinSse_simple_getter_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
+) {
+    wire_ConcatenateWithTwinSse_simple_getter_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -28360,11 +28365,17 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instan
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse(
+    port_: i64,
     ptr_: *mut u8,
     rust_vec_len_: i32,
     data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse_impl(ptr_, rust_vec_len_, data_len_)
+) {
+    wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -30872,9 +30883,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_ins
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(
+    port_: i64,
     that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(that)
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]

@@ -61,7 +61,7 @@ class ConcatenateWithTwinSse {
           {required String a, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSseNewTwinSse(a: a, hint: hint);
 
-  String get simpleGetterTwinSse =>
+  Future<String> get simpleGetterTwinSse =>
       RustLib.instance.api.concatenateWithTwinSseSimpleGetterTwinSse(
         that: this,
       );

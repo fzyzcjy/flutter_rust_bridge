@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EnumOpaqueTwinSse {
-  Object get field0 => throw _privateConstructorUsedError;
+  RustOpaque get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
