@@ -5,8 +5,6 @@ typedef struct _Dart_Handle* Dart_Handle;
 #include "dart_api.h"
 #include "dart_native_api.h"
 
-typedef struct Result_JsValue Result_JsValue;
-
 typedef Dart_Handle GeneralizedDartHandle;
 
 typedef int64_t MessagePort;
@@ -17,10 +15,6 @@ typedef struct WireSyncRust2DartSse {
   uint8_t *ptr;
   int32_t len;
 } WireSyncRust2DartSse;
-
-extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);
-
-extern struct Result_JsValue close(const PortLike *this_);
 
 extern void js_console_error(const str *msg);
 

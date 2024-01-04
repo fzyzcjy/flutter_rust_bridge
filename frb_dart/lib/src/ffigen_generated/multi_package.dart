@@ -580,8 +580,6 @@ typedef DartPostCObjectFnType = ffi.Pointer<
 /// A port is used to send or receive inter-isolate messages
 typedef DartPort = ffi.Int64;
 
-final class Result_JsValue extends ffi.Opaque {}
-
 final class WireSyncRust2DartSse extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
