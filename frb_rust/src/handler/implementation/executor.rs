@@ -62,7 +62,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
-            let stream_sink_closer = Arc::new(StreamSinkCloser::new(Channel::new(port.clone())));
+            let stream_sink_closer = maybe_create_stream_sink_closer(&port, mode);
 
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
@@ -122,7 +122,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
 
-            let stream_sink_closer = Arc::new(StreamSinkCloser::new(Channel::new(port.clone())));
+            let stream_sink_closer = maybe_create_stream_sink_closer(&port, mode);
 
             let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
@@ -182,4 +182,12 @@ impl ExecuteNormalOrAsyncUtils {
             }
         };
     }
+}
+
+fn maybe_create_stream_sink_closer<Rust2DartCodec: BaseCodec>(
+    port: &MessagePort,
+    mode: FfiCallMode,
+) -> Option<Arc<StreamSinkCloser<Rust2DartCodec>>> {
+    (mode == FfiCallMode::Stream)
+        .then(|| Arc::new(StreamSinkCloser::new(Channel::new(port.clone()))))
 }
