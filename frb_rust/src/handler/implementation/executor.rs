@@ -1,6 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::Channel;
+use crate::generalized_isolate::{channel_to_handle, Channel};
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -188,6 +188,8 @@ fn maybe_create_stream_sink_closer<Rust2DartCodec: BaseCodec>(
     port: &MessagePort,
     mode: FfiCallMode,
 ) -> Option<Arc<StreamSinkCloser<Rust2DartCodec>>> {
-    (mode == FfiCallMode::Stream)
-        .then(|| Arc::new(StreamSinkCloser::new(Channel::new(port.clone()))))
+    (mode == FfiCallMode::Stream).then(|| {
+        let handle = channel_to_handle(&Channel::new(port.clone()));
+        Arc::new(StreamSinkCloser::new(handle))
+    })
 }
