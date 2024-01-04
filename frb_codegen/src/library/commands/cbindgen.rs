@@ -52,10 +52,7 @@ pub(crate) fn default_cbindgen_config() -> cbindgen::Config {
     cbindgen::Config {
         // copied from: dart-sdk/dart_api.h
         // used to convert Dart_Handle to Object.
-        after_includes: Some(
-            "typedef struct _Dart_Handle* Dart_Handle;\ntypedef struct Dart_CObject DartCObject;"
-                .to_owned(),
-        ),
+        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
         language: cbindgen::Language::C,
         sys_includes: vec![
             "stdbool.h".to_string(),
