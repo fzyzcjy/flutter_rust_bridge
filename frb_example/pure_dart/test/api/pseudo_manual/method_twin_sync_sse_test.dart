@@ -87,6 +87,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('getter', () async {
     final concatenateWith = ConcatenateWithTwinSyncSse(a: "apple");
-    expect(concatenateWith.simpleGetterTwinSyncSse, equals("apple"));
+    expect(await concatenateWith.simpleGetterTwinSyncSse, equals("apple"));
   });
 }

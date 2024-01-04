@@ -233,7 +233,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('getter', () async {
     final obj = await NonCloneSimpleTwinSync.newTwinSync();
-    expect(obj.instanceMethodGetterTwinSync, 42);
+    expect(await obj.instanceMethodGetterTwinSync, 42);
   });
 
   test('types with both encodable and opaque fields', () async {
