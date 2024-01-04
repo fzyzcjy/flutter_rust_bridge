@@ -419,6 +419,13 @@ mod tests {
     use syn::ItemFn;
 
     #[test]
+    fn test_error() -> anyhow::Result<()> {
+        let result = parse("#[frb(what_is_this)]");
+        assert_eq!(result.err().is_some(), true);
+        Ok(())
+    }
+
+    #[test]
     fn test_multiple_via_comma() -> anyhow::Result<()> {
         let parsed = parse("#[frb(sync, non_final)]")?;
         assert_eq!(parsed.0, vec![FrbAttribute::Sync, FrbAttribute::NonFinal]);
