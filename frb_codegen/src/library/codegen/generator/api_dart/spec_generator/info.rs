@@ -1,4 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
+use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
     IrTypeDelegateTime,
@@ -13,7 +14,7 @@ use regex::Regex;
 
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorInfoTrait {
-    fn dart_api_type(&self) -> String;
+    fn dart_api_type(&self, direction: Direction) -> String;
 
     fn dart_import(&self) -> Option<String> {
         None
