@@ -61,6 +61,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Sync)
     }
 
+    pub(crate) fn getter(&self) -> bool {
+        self.any_eq(&FrbAttribute::Getter)
+    }
+
     pub(crate) fn init(&self) -> bool {
         self.any_eq(&FrbAttribute::Init)
     }
@@ -121,6 +125,7 @@ mod frb_keyword {
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
+    syn::custom_keyword!(getter);
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
@@ -147,6 +152,7 @@ enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
     Sync,
+    Getter,
     Init,
     Ignore,
     Opaque,
@@ -171,6 +177,10 @@ impl Parse for FrbAttribute {
             input
                 .parse::<frb_keyword::sync>()
                 .map(|_| FrbAttribute::Sync)?
+        } else if lookahead.peek(frb_keyword::getter) {
+            input
+                .parse::<frb_keyword::getter>()
+                .map(|_| FrbAttribute::Getter)?
         } else if lookahead.peek(frb_keyword::init) {
             input
                 .parse::<frb_keyword::init>()
@@ -459,6 +469,15 @@ mod tests {
         assert_eq!(
             parse("#[frb(sync)]")?,
             FrbAttributes(vec![FrbAttribute::Sync]),
+        );
+        Ok(())
+    }
+
+    #[test]
+    fn test_getter() -> anyhow::Result<()> {
+        assert_eq!(
+            parse("#[frb(getter)]")?,
+            FrbAttributes(vec![FrbAttribute::Getter]),
         );
         Ok(())
     }
