@@ -8,7 +8,7 @@ use std::sync::Arc;
 /// Represented as a Dart
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
-pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec = DcoCodec> {
+pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
     sendable_channel_handle: SendableChannelHandle,
     closer: Arc<StreamSinkCloser<Rust2DartCodec>>,
     _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
