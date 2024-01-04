@@ -21,8 +21,8 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecode<anyhow::Error> for String {
-    fn cst_decode(self) -> anyhow::Error {
+impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error> for String {
+    fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
     }
 }
@@ -83,8 +83,10 @@ impl CstDecode<crate::api::mandelbrot::Size>
         }
     }
 }
-impl CstDecode<anyhow::Error> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> anyhow::Error {
+impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
     }
 }

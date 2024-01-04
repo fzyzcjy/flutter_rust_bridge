@@ -104,9 +104,9 @@ fn wire_DataFrame_get_column_names_impl(
             let api_that = that.cst_decode();
             transform_result_dco((move || {
                 let api_that = api_that.rust_auto_opaque_decode_ref()?;
-                Result::<_, anyhow::Error>::Ok(crate::api::polars::DataFrame::get_column_names(
-                    &api_that,
-                ))
+                Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
+                    crate::api::polars::DataFrame::get_column_names(&api_that),
+                )
             })())
         },
     )
@@ -124,7 +124,7 @@ fn wire_DataFrame_lazy_impl(
             let api_that = that.cst_decode();
             transform_result_dco((move || {
                 let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
                     flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
                         crate::api::polars::DataFrame::lazy(api_that),
                     ),
@@ -149,7 +149,7 @@ fn wire_Expr_gt_impl(
             transform_result_dco((move || {
                 let api_that = api_that.rust_auto_opaque_decode_owned()?;
                 let api_other = api_other.rust_auto_opaque_decode_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
                     flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
                         crate::api::polars::Expr::gt(api_that, api_other),
                     ),
@@ -171,7 +171,7 @@ fn wire_Expr_sum_impl(
             let api_that = that.cst_decode();
             transform_result_dco((move || {
                 let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
                     flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
                         crate::api::polars::Expr::sum(api_that),
                     ),
@@ -195,7 +195,7 @@ fn wire_LazyFrame_collect_impl(
             move |context| {
                 transform_result_dco((move || {
                     let api_that = api_that.rust_auto_opaque_decode_owned()?;
-                    Result::<_, anyhow::Error>::Ok(
+                    Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
                         flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
                             crate::api::polars::LazyFrame::collect(api_that),
                         ),
@@ -221,7 +221,7 @@ fn wire_LazyFrame_filter_impl(
             transform_result_dco((move || {
                 let api_that = api_that.rust_auto_opaque_decode_owned()?;
                 let api_predicate = api_predicate.rust_auto_opaque_decode_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
                     flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
                         crate::api::polars::LazyFrame::filter(api_that, api_predicate),
                     ),
@@ -246,7 +246,7 @@ fn wire_LazyFrame_group_by_impl(
             transform_result_dco((move || {
                 let api_that = api_that.rust_auto_opaque_decode_owned()?;
                 let api_expr = api_expr.rust_auto_opaque_decode_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
                     flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
                         crate::api::polars::LazyFrame::group_by(api_that, api_expr),
                     ),
@@ -271,7 +271,7 @@ fn wire_LazyGroupBy_agg_impl(
             transform_result_dco((move || {
                 let api_that = api_that.rust_auto_opaque_decode_owned()?;
                 let api_expr = api_expr.rust_auto_opaque_decode_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
                     flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
                         crate::api::polars::LazyGroupBy::agg(api_that, api_expr),
                     ),
@@ -361,7 +361,7 @@ impl CstDecode<usize> for usize {
         self
     }
 }
-impl SseDecode for anyhow::Error {
+impl SseDecode for flutter_rust_bridge::for_generated::anyhow::Error {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         unimplemented!("not yet supported in serialized mode, feel free to create an issue");
     }
@@ -514,7 +514,7 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::mandelbrot::Size>
     }
 }
 
-impl SseEncode for anyhow::Error {
+impl SseEncode for flutter_rust_bridge::for_generated::anyhow::Error {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(format!("{:?}", self), serializer);
     }

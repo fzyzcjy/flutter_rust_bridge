@@ -31,8 +31,8 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl CstDecode<anyhow::Error> for String {
-    fn cst_decode(self) -> anyhow::Error {
+impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error> for String {
+    fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
     }
 }
@@ -9411,8 +9411,10 @@ impl
         crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse{int8list:  self_.get(0).cst_decode(),uint8list:  self_.get(1).cst_decode(),int16list:  self_.get(2).cst_decode(),uint16list:  self_.get(3).cst_decode(),uint32list:  self_.get(4).cst_decode(),int32list:  self_.get(5).cst_decode(),uint64list:  self_.get(6).cst_decode(),int64list:  self_.get(7).cst_decode(),float32list:  self_.get(8).cst_decode(),float64list:  self_.get(9).cst_decode(),bool_list:  self_.get(10).cst_decode()}
     }
 }
-impl CstDecode<anyhow::Error> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> anyhow::Error {
+impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
     }
 }
