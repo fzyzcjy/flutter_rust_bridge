@@ -26,12 +26,12 @@ impl FrbAttributes {
                         && !matches!(attr.meta, Meta::Path(_))
                 })
                 .map(|attr| {
-                    attr.parse_args::<OptionFrbAttribute>()
+                    attr.parse_args::<FrbAttributesInner>()
                         .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
-                .filter_map(|x| x.0)
+                .flat_map(|x| x.0)
                 .collect(),
         ))
     }
@@ -130,6 +130,18 @@ mod frb_keyword {
     syn::custom_keyword!(import);
 }
 
+struct FrbAttributesInner(Vec<FrbAttribute>);
+
+impl Parse for FrbAttributesInner {
+    fn parse(input: ParseStream) -> Result<Self> {
+        Ok(Self(
+            Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
+                .into_iter()
+                .collect(),
+        ))
+    }
+}
+
 #[derive(Eq, PartialEq, Debug)]
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
@@ -145,12 +157,10 @@ enum FrbAttribute {
     Default(FrbAttributeDefaultValue),
 }
 
-struct OptionFrbAttribute(Option<FrbAttribute>);
-
-impl Parse for OptionFrbAttribute {
+impl Parse for FrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let lookahead = input.lookahead1();
-        Ok(Self(Some(if lookahead.peek(frb_keyword::mirror) {
+        Ok(if lookahead.peek(frb_keyword::mirror) {
             input.parse::<frb_keyword::mirror>()?;
             input.parse().map(FrbAttribute::Mirror)?
         } else if lookahead.peek(frb_keyword::non_final) {
@@ -188,8 +198,8 @@ impl Parse for OptionFrbAttribute {
             input.parse::<Token![=]>()?;
             input.parse().map(FrbAttribute::Default)?
         } else {
-            return Ok(Self(None));
-        })))
+            return Err(lookahead.error());
+        })
     }
 }
 
@@ -397,6 +407,20 @@ mod tests {
     use crate::if_then_some;
     use quote::quote;
     use syn::ItemFn;
+
+    #[test]
+    fn test_multiple_via_comma() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(sync, non_final)]")?;
+        assert_eq!(parsed.0, vec![FrbAttribute::Sync, FrbAttribute::NonFinal]);
+        Ok(())
+    }
+
+    #[test]
+    fn test_multiple_via_hash() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(sync)]\n#[frb(non_final)]")?;
+        assert_eq!(parsed.0, vec![FrbAttribute::Sync, FrbAttribute::NonFinal]);
+        Ok(())
+    }
 
     #[test]
     fn test_empty() -> anyhow::Result<()> {
