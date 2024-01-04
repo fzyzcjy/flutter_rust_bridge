@@ -7,7 +7,7 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
-        Some(match lang {
+        match lang {
             Lang::DartLang(_) => {
                 let type_converter = if self.ir.strict_dart_type {
                     "self".to_owned()
@@ -18,12 +18,12 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                     )
                 };
 
-                format!(
+                Some(format!(
                     "{};
                     serializer.buffer.put{}List({type_converter});",
                     lang.call_encode(&LEN_TYPE, &format!("self.{}", list_len_method(lang))),
                     get_serializer_dart_postfix(&self.ir.primitive)
-                )
+                ))
             }
             Lang::RustLang(_) => {
                 // TODO do not use naive loop
@@ -34,18 +34,18 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                     )
                 })
             }
-        })
+        }
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         let var_decl = lang.var_decl();
-        Some(match lang {
-            Lang::DartLang(_) => format!(
+        match lang {
+            Lang::DartLang(_) => Some(format!(
                 "{var_decl} len_ = {};
                 return deserializer.buffer.get{}List(len_);",
                 lang.call_decode(&LEN_TYPE),
                 get_serializer_dart_postfix(&self.ir.primitive)
-            ),
+            )),
             Lang::RustLang(_) => {
                 // TODO do not use naive loop
                 self.ir.strict_dart_type.then(|| {
@@ -56,6 +56,6 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
                     )
                 })
             }
-        })
+        }
     }
 }
