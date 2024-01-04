@@ -12,7 +12,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::codegen::parser::type_parser::{ParsingLocation, TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
@@ -57,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let owner = if let Some(owner) = self.parse_owner(
             func,
-            &TypeParserParsingContext::new(namespace.clone(), TODO),
+            &TypeParserParsingContext::new(namespace.clone(), ParsingLocation::Misc),
         )? {
             owner
         } else {
@@ -77,15 +77,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 i,
                 sig_input,
                 &owner,
-                &TypeParserParsingContext::new(namespace.clone(), TODO),
+                &TypeParserParsingContext::new(namespace.clone(), ParsingLocation::Param),
             )?)?;
         }
-        info = info.merge(
-            self.parse_fn_output(sig, &TypeParserParsingContext::new(namespace.clone(), TODO))?,
-        )?;
+        info = info.merge(self.parse_fn_output(
+            sig,
+            &TypeParserParsingContext::new(namespace.clone(), ParsingLocation::Return),
+        )?)?;
         info = self.transform_fn_info(
             info,
-            &TypeParserParsingContext::new(namespace.clone(), TODO),
+            &TypeParserParsingContext::new(namespace.clone(), ParsingLocation::Misc),
         );
 
         let codec_mode_pack = attributes.codec_mode_pack();
