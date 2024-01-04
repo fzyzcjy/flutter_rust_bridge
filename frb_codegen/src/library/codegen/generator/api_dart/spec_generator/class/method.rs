@@ -4,7 +4,6 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::{
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
-use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
@@ -65,8 +64,7 @@ fn generate_params(
         .map(|input| {
             let required = generate_field_required_modifier(input);
             let default = generate_field_default(input, false, context.config.dart_enums_style);
-            let type_str = ApiDartGenerator::new(input.ty.clone(), context)
-                .dart_api_type(Direction::Dart2Rust);
+            let type_str = ApiDartGenerator::new(input.ty.clone(), context).dart_api_type();
             let name_str = input.name.dart_style();
             format!("{required}{type_str} {name_str} {default}")
         })
@@ -88,7 +86,7 @@ fn generate_signature(
     let maybe_static = if is_static_method { "static" } else { "" };
     let return_type = generate_function_dart_return_type(
         &func.mode,
-        &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(Direction::Rust2Dart),
+        &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
     let method_name = if is_static_method && method_info.actual_method_name == "new" {
         format!("new{}", generalized_class_name)
