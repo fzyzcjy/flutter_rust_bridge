@@ -95,6 +95,7 @@
       },
       "comments": [],
       "error_output": null,
+      "getter": false,
       "initializer": false,
       "inputs": [
         {
@@ -144,6 +145,7 @@
       },
       "comments": [],
       "error_output": null,
+      "getter": false,
       "initializer": false,
       "inputs": [
         {
@@ -193,6 +195,7 @@
       },
       "comments": [],
       "error_output": null,
+      "getter": false,
       "initializer": false,
       "inputs": [
         {
@@ -242,6 +245,7 @@
       },
       "comments": [],
       "error_output": null,
+      "getter": false,
       "initializer": false,
       "inputs": [
         {
@@ -291,6 +295,7 @@
       },
       "comments": [],
       "error_output": null,
+      "getter": false,
       "initializer": false,
       "inputs": [
         {
