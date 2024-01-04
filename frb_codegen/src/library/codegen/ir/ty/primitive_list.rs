@@ -4,7 +4,7 @@ use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 crate::ir! {
 pub struct IrTypePrimitiveList {
     pub primitive: IrTypePrimitive,
-    pub location: PrimitveListLocation,
+    pub direction: PrimitveListLocation,
 }
 
 #[derive(Copy, strum_macros::Display)]
@@ -27,7 +27,7 @@ impl IrTypeTrait for IrTypePrimitiveList {
         format!(
             "list_prim_{}_{}",
             self.primitive.safe_ident(),
-            self.location
+            self.direction
         )
     }
 

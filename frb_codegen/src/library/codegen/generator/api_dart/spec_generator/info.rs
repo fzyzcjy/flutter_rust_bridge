@@ -174,7 +174,7 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        match self.ir.location {
+        match self.ir.direction {
             PrimitveListLocation::Rust2Dart => match &self.ir.primitive {
                 IrTypePrimitive::U8 => "Uint8List",
                 IrTypePrimitive::I8 => "Int8List",
