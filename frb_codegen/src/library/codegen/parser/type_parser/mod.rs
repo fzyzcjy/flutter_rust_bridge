@@ -106,9 +106,11 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) location: ParsingLocation,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum ParsingLocation {
     Param,
     Return,
+    Misc,
 }
 
 impl IrContext for TypeParser<'_> {
