@@ -60,7 +60,6 @@ pub async fn is_app_embedded_twin_rust_async(app_settings: ApplicationSettings) 
 pub async fn app_settings_stream_twin_rust_async(sink: StreamSink<ApplicationSettings>) {
     let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
     sink.add(app_settings).unwrap();
-    sink.close().unwrap();
 }
 
 // use a stream of a vec of mirrored type
@@ -70,7 +69,6 @@ pub async fn app_settings_vec_stream_twin_rust_async(sink: StreamSink<Vec<Applic
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
     ];
     sink.add(app_settings).unwrap();
-    sink.close().unwrap();
 }
 
 pub struct MirrorStructTwinRustAsync {
@@ -92,7 +90,6 @@ pub async fn mirror_struct_stream_twin_rust_async(sink: StreamSink<MirrorStructT
         ],
     };
     sink.add(val).unwrap();
-    sink.close().unwrap();
 }
 
 // usa a tuple of Mirror types for a StreamSink
@@ -106,7 +103,6 @@ pub async fn mirror_tuple_stream_twin_rust_async(
         }),
     );
     sink.add(tuple).unwrap();
-    sink.close().unwrap();
 }
 
 #[frb(mirror(ApplicationMessage))]

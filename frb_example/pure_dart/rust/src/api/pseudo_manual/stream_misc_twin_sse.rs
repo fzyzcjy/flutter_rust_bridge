@@ -35,10 +35,6 @@ pub fn func_stream_realistic_twin_sse(
             sink2.add(msg).unwrap();
             sleep(Duration::from_millis(100));
         }
-
-        if cnt2.load(Ordering::SeqCst) == 10 {
-            sink2.close().unwrap();
-        }
     }));
 
     for i in 0..5 {
@@ -47,9 +43,5 @@ pub fn func_stream_realistic_twin_sse(
         format!("send data to sink msg={msg}");
         sink.add(msg).unwrap();
         sleep(Duration::from_millis(50));
-    }
-
-    if cnt.load(Ordering::SeqCst) == 10 {
-        sink.close().unwrap();
     }
 }

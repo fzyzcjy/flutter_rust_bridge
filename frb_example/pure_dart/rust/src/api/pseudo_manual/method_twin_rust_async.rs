@@ -45,7 +45,6 @@ impl ConcatenateWithTwinRustAsync {
                 })
                 .unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -54,7 +53,6 @@ impl ConcatenateWithTwinRustAsync {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -71,7 +69,6 @@ impl ConcatenateWithTwinRustAsync {
                 })
                 .unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -80,7 +77,6 @@ impl ConcatenateWithTwinRustAsync {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 }

@@ -49,7 +49,6 @@ impl ConcatenateWithTwinSse {
                 })
                 .unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -62,7 +61,6 @@ impl ConcatenateWithTwinSse {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -80,7 +78,6 @@ impl ConcatenateWithTwinSse {
                 })
                 .unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -92,7 +89,6 @@ impl ConcatenateWithTwinSse {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 }
