@@ -49209,7 +49209,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   UuidValue dco_decode_Uuid(dynamic raw) {
-    return UuidValue.fromByteList(dco_decode_list_prim_u_8(raw));
+    return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));
   }
 
   @protected
@@ -76493,7 +76493,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_f_32_loose(
       List<double> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putFloat32List(self);
+    serializer.buffer.putFloat32List(
+        self is Float32List ? self : Float32List.fromList(self));
   }
 
   @protected
@@ -76507,7 +76508,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_f_64_loose(
       List<double> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putFloat64List(self);
+    serializer.buffer.putFloat64List(
+        self is Float64List ? self : Float64List.fromList(self));
   }
 
   @protected
@@ -76521,7 +76523,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_i_16_loose(
       List<int> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt16List(self);
+    serializer.buffer
+        .putInt16List(self is Int16List ? self : Int16List.fromList(self));
   }
 
   @protected
@@ -76535,7 +76538,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_i_32_loose(
       List<int> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt32List(self);
+    serializer.buffer
+        .putInt32List(self is Int32List ? self : Int32List.fromList(self));
   }
 
   @protected
@@ -76556,7 +76560,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_i_8_loose(
       List<int> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt8List(self);
+    serializer.buffer
+        .putInt8List(self is Int8List ? self : Int8List.fromList(self));
   }
 
   @protected
@@ -76570,7 +76575,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_u_16_loose(
       List<int> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint16List(self);
+    serializer.buffer
+        .putUint16List(self is Uint16List ? self : Uint16List.fromList(self));
   }
 
   @protected
@@ -76584,7 +76590,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_u_32_loose(
       List<int> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint32List(self);
+    serializer.buffer
+        .putUint32List(self is Uint32List ? self : Uint32List.fromList(self));
   }
 
   @protected
@@ -76605,7 +76612,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_list_prim_u_8_loose(
       List<int> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint8List(self);
+    serializer.buffer
+        .putUint8List(self is Uint8List ? self : Uint8List.fromList(self));
   }
 
   @protected
