@@ -17,7 +17,10 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     /// Create a new sink from a port wrapper.
-    pub fn new(sender: Rust2DartSender, closer: Arc<StreamSinkCloser<Rust2DartCodec>>) -> Self {
+    pub(crate) fn new(
+        sender: Rust2DartSender,
+        closer: Arc<StreamSinkCloser<Rust2DartCodec>>,
+    ) -> Self {
         Self {
             sendable_channel_handle: channel_to_handle(&sender.channel),
             _closer: closer,
