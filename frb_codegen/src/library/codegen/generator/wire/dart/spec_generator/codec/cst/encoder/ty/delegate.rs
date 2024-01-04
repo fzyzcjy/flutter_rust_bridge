@@ -43,7 +43,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             IrTypeDelegate::String => Acc {
                 io: Some(format!(
                     "return cst_encode_{}(utf8.encoder.convert(raw));",
-                    uint8list_safe_ident()
+                    uint8list_safe_ident(true)
                 )),
                 web: Some("return raw;".into()),
                 ..Default::default()
@@ -94,7 +94,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
             // ))),
             IrTypeDelegate::Uuid => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw.toBytes());",
-                uint8list_safe_ident()
+                uint8list_safe_ident(true)
             ))),
             // IrTypeDelegate::Uuids => Acc::distribute(Some(format!(
             //     "final builder = BytesBuilder();
