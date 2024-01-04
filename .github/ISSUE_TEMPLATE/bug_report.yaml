@@ -89,13 +89,6 @@ body:
       placeholder: ex. 12
     validations:
       required: false
-  - type: input
-    id: env-ffigen
-    attributes:
-      label: Version of `ffigen`
-      placeholder: ex. 0.4
-    validations:
-      required: false
 
   - type: textarea
     id: additional-context
