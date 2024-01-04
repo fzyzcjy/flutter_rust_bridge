@@ -4,6 +4,13 @@ use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 crate::ir! {
 pub struct IrTypePrimitiveList {
     pub primitive: IrTypePrimitive,
+    pub location: PrimitveListLocation,
+}
+
+#[derive(Copy, strum_macros::Display)]
+pub(crate) enum PrimitveListLocation {
+    Rust2Dart,
+    Dart2Rust,
 }
 }
 
@@ -17,7 +24,11 @@ impl IrTypeTrait for IrTypePrimitiveList {
     }
 
     fn safe_ident(&self) -> String {
-        format!("list_prim_{}", self.primitive.safe_ident())
+        format!(
+            "list_prim_{}_{}",
+            self.primitive.safe_ident(),
+            self.location
+        )
     }
 
     fn rust_api_type(&self) -> String {
