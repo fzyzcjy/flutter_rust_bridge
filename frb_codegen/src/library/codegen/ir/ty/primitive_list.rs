@@ -1,11 +1,10 @@
-use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypePrimitiveList {
     pub primitive: IrTypePrimitive,
-    pub direction: Direction,
+    pub strict_dart_type: bool,
 }
 }
 
@@ -22,7 +21,11 @@ impl IrTypeTrait for IrTypePrimitiveList {
         format!(
             "list_prim_{}_{}",
             self.primitive.safe_ident(),
-            self.direction
+            if self.strict_dart_type {
+                "strict"
+            } else {
+                "loose"
+            }
         )
     }
 

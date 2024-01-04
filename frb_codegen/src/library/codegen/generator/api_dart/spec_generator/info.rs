@@ -1,5 +1,4 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
-use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
     IrTypeDelegateTime,
@@ -174,8 +173,8 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        match self.ir.direction {
-            Direction::Rust2Dart => match &self.ir.primitive {
+        if self.ir.strict_dart_type {
+            match &self.ir.primitive {
                 IrTypePrimitive::U8 => "Uint8List",
                 IrTypePrimitive::I8 => "Int8List",
                 IrTypePrimitive::U16 => "Uint16List",
@@ -190,14 +189,15 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
                 _ => panic!("does not support {:?} yet", &self.ir.primitive),
                 // frb-coverage:ignore-end
             }
-            .to_string(),
-            Direction::Dart2Rust => ApiDartGenerator::new(
+            .to_string()
+        } else {
+            ApiDartGenerator::new(
                 IrTypeGeneralList {
                     inner: Box::new(IrType::Primitive(self.ir.primitive.clone())),
                 },
                 self.context,
             )
-            .dart_api_type(),
+            .dart_api_type()
         }
     }
 }

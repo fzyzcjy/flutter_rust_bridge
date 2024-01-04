@@ -1,4 +1,3 @@
-use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::{ir_list, IrTypeGeneralList};
@@ -166,7 +165,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Array(array) => array.get_delegate(),
             IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
-                direction: Direction::Rust2Dart,
+                strict_dart_type: true,
             }),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
             //     IrType::PrimitiveList(IrTypePrimitiveList {
@@ -181,7 +180,7 @@ impl IrTypeDelegate {
             // }),
             IrTypeDelegate::Uuid => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
-                direction: Direction::Rust2Dart,
+                strict_dart_type: true,
             }),
             // IrTypeDelegate::Uuids => IrType::PrimitiveList(IrTypePrimitiveList {
             //     primitive: IrTypePrimitive::U8,
@@ -203,7 +202,7 @@ impl IrTypeDelegateArray {
             IrTypeDelegateArrayMode::Primitive(primitive) => {
                 IrType::PrimitiveList(IrTypePrimitiveList {
                     primitive: primitive.clone(),
-                    direction: Direction::Rust2Dart,
+                    strict_dart_type: true,
                 })
             }
         }
