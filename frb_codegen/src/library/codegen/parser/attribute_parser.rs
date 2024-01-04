@@ -26,12 +26,12 @@ impl FrbAttributes {
                         && !matches!(attr.meta, Meta::Path(_))
                 })
                 .map(|attr| {
-                    attr.parse_args::<OptionFrbAttribute>()
+                    attr.parse_args::<FrbAttributesInner>()
                         .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?
                 .into_iter()
-                .filter_map(|x| x.0)
+                .flat_map(|x| x.0)
                 .collect(),
         ))
     }
@@ -143,6 +143,19 @@ enum FrbAttribute {
     SemiSerialize,
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
+}
+
+struct FrbAttributesInner(Vec<FrbAttribute>);
+
+impl Parse for FrbAttributesInner {
+    fn parse(input: ParseStream) -> Result<Self> {
+        Ok(Self(
+            Punctuated::<OptionFrbAttribute, Token![,]>::parse_terminated(&input)?
+                .into_iter()
+                .map(|x| x.0.unwrap())
+                .collect(),
+        ))
+    }
 }
 
 struct OptionFrbAttribute(Option<FrbAttribute>);
