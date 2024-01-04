@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 void benchmarkVoidTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.benchmarkVoidTwinSyncSse(hint: hint);
 
-int benchmarkInputBytesTwinSyncSse({required Uint8List bytes, dynamic hint}) =>
+int benchmarkInputBytesTwinSyncSse({required List<int> bytes, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkInputBytesTwinSyncSse(bytes: bytes, hint: hint);
 
@@ -28,7 +28,7 @@ BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse(
         .benchmarkBinaryTreeOutputTwinSyncSse(depth: depth, hint: hint);
 
 void benchmarkBinaryTreeInputProtobufTwinSyncSse(
-        {required Uint8List raw, dynamic hint}) =>
+        {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkBinaryTreeInputProtobufTwinSyncSse(raw: raw, hint: hint);
 
@@ -56,7 +56,7 @@ BenchmarkBlobTwinSyncSse benchmarkBlobOutputTwinSyncSse(
     RustLib.instance.api.benchmarkBlobOutputTwinSyncSse(size: size, hint: hint);
 
 void benchmarkBlobInputProtobufTwinSyncSse(
-        {required Uint8List raw, dynamic hint}) =>
+        {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkBlobInputProtobufTwinSyncSse(raw: raw, hint: hint);
 

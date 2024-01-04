@@ -39,7 +39,7 @@ Future<String> handleStringTwinRustAsyncSse(
     RustLib.instance.api.handleStringTwinRustAsyncSse(s: s, hint: hint);
 
 Future<Uint8List> handleVecU8TwinRustAsyncSse(
-        {required Uint8List v, dynamic hint}) =>
+        {required List<int> v, dynamic hint}) =>
     RustLib.instance.api.handleVecU8TwinRustAsyncSse(v: v, hint: hint);
 
 Future<MySize> handleStructTwinRustAsyncSse(

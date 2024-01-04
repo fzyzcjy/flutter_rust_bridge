@@ -36,7 +36,7 @@ StructWithEnumTwinSyncSse testStructWithEnumTwinSyncSse(
 String handleStringTwinSyncSse({required String s, dynamic hint}) =>
     RustLib.instance.api.handleStringTwinSyncSse(s: s, hint: hint);
 
-Uint8List handleVecU8TwinSyncSse({required Uint8List v, dynamic hint}) =>
+Uint8List handleVecU8TwinSyncSse({required List<int> v, dynamic hint}) =>
     RustLib.instance.api.handleVecU8TwinSyncSse(v: v, hint: hint);
 
 MySize handleStructTwinSyncSse(

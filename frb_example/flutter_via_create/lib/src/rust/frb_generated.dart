@@ -125,7 +125,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw) {
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
     return raw as Uint8List;
   }
 
@@ -141,12 +141,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   String sse_decode_String(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_u_8(deserializer);
+    var inner = sse_decode_list_prim_u_8_strict(deserializer);
     return utf8.decoder.convert(inner);
   }
 
   @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer) {
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
   }
@@ -181,11 +181,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
+    sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
   }
 
   @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
   }

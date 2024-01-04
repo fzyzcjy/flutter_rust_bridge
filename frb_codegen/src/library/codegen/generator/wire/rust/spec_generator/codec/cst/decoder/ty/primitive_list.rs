@@ -31,7 +31,8 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            web: Some("self.into_vec()".into()),
+            // for non-strict case, let the strict counterpart generate code
+            web: self.ir.strict_dart_type.then(|| "self.into_vec()".into()),
             io: Some(
                 "unsafe {
                     let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -44,6 +45,10 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCst
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+        if !self.ir.strict_dart_type {
+            return None;
+        }
+
         match self.ir.primitive {
             // frb-coverage:ignore-start
             IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),

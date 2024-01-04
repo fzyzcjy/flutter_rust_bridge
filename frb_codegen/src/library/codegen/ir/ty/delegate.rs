@@ -165,6 +165,7 @@ impl IrTypeDelegate {
             IrTypeDelegate::Array(array) => array.get_delegate(),
             IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
+                strict_dart_type: true,
             }),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
             //     IrType::PrimitiveList(IrTypePrimitiveList {
@@ -179,14 +180,15 @@ impl IrTypeDelegate {
             // }),
             IrTypeDelegate::Uuid => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
+                strict_dart_type: true,
             }),
             // IrTypeDelegate::Uuids => IrType::PrimitiveList(IrTypePrimitiveList {
             //     primitive: IrTypePrimitive::U8,
             // }),
             IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::AnyhowException => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone())),
-            IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned()),
+            IrTypeDelegate::Map(ir) => ir_list(IrType::Record(ir.element_delegate.clone()), true),
+            IrTypeDelegate::Set(ir) => ir_list(*ir.inner.to_owned(), true),
         }
     }
 }
@@ -200,6 +202,7 @@ impl IrTypeDelegateArray {
             IrTypeDelegateArrayMode::Primitive(primitive) => {
                 IrType::PrimitiveList(IrTypePrimitiveList {
                     primitive: primitive.clone(),
+                    strict_dart_type: true,
                 })
             }
         }

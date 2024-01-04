@@ -83,7 +83,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw);
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
   Point dco_decode_point(dynamic raw);
@@ -157,7 +157,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
   Point sse_decode_point(SseDeserializer deserializer);
@@ -203,7 +203,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
+  Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
     return raw;
   }
 
@@ -323,7 +323,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer);
 
   @protected
   void sse_encode_point(Point self, SseSerializer serializer);

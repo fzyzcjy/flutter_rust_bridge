@@ -84,7 +84,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> dco_decode_list_String(dynamic raw);
 
   @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw);
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
   Point dco_decode_point(dynamic raw);
@@ -158,7 +158,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<String> sse_decode_list_String(SseDeserializer deserializer);
 
   @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
   Point sse_decode_point(SseDeserializer deserializer);
@@ -179,14 +179,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_AnyhowException(
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_AnyhowException(
       AnyhowException raw) {
     throw UnimplementedError();
   }
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
-    return cst_encode_list_prim_u_8(utf8.encoder.convert(raw));
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_String(String raw) {
+    return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));
   }
 
   @protected
@@ -213,8 +213,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
-    final ans = wire.cst_new_list_prim_u_8(raw.length);
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_list_prim_u_8_strict(
+      Uint8List raw) {
+    final ans = wire.cst_new_list_prim_u_8_strict(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
@@ -349,7 +350,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer);
 
   @protected
   void sse_encode_point(Point self, SseSerializer serializer);
@@ -449,7 +451,7 @@ class RustLibWire implements BaseWire {
   void wire_DataFrame_get_column(
     int port_,
     ffi.Pointer<ffi.Void> that,
-    ffi.Pointer<wire_cst_list_prim_u_8> name,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> name,
   ) {
     return _wire_DataFrame_get_column(
       port_,
@@ -461,12 +463,12 @@ class RustLibWire implements BaseWire {
   late final _wire_DataFrame_get_columnPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_gallery_wire_DataFrame_get_column');
   late final _wire_DataFrame_get_column =
       _wire_DataFrame_get_columnPtr.asFunction<
           void Function(int, ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8>)>();
+              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_DataFrame_get_column_names(
     ffi.Pointer<ffi.Void> that,
@@ -608,7 +610,7 @@ class RustLibWire implements BaseWire {
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   WireSyncRust2DartDco wire_col(
-    ffi.Pointer<wire_cst_list_prim_u_8> name,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> name,
   ) {
     return _wire_col(
       name,
@@ -618,10 +620,11 @@ class RustLibWire implements BaseWire {
   late final _wire_colPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartDco Function(
-                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_gallery_wire_col');
   late final _wire_col = _wire_colPtr.asFunction<
-      WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+      WireSyncRust2DartDco Function(
+          ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_lit(
     double t,
@@ -806,20 +809,20 @@ class RustLibWire implements BaseWire {
   late final _cst_new_list_String = _cst_new_list_StringPtr
       .asFunction<ffi.Pointer<wire_cst_list_String> Function(int)>();
 
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_new_list_prim_u_8_strict(
     int len,
   ) {
-    return _cst_new_list_prim_u_8(
+    return _cst_new_list_prim_u_8_strict(
       len,
     );
   }
 
-  late final _cst_new_list_prim_u_8Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_cst_list_prim_u_8> Function(
-              ffi.Int32)>>('frbgen_frb_example_gallery_cst_new_list_prim_u_8');
-  late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
+  late final _cst_new_list_prim_u_8_strictPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(ffi.Int32)>>(
+      'frbgen_frb_example_gallery_cst_new_list_prim_u_8_strict');
+  late final _cst_new_list_prim_u_8_strict = _cst_new_list_prim_u_8_strictPtr
+      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -848,7 +851,7 @@ final class wire_cst_point extends ffi.Struct {
   external double y;
 }
 
-final class wire_cst_list_prim_u_8 extends ffi.Struct {
+final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
@@ -856,7 +859,7 @@ final class wire_cst_list_prim_u_8 extends ffi.Struct {
 }
 
 final class wire_cst_list_String extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8>> ptr;
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
 
   @ffi.Int32()
   external int len;

@@ -21,12 +21,12 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<anyhow::Error> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<anyhow::Error> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> anyhow::Error {
         unimplemented!()
     }
 }
-impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> backtrace::Backtrace {
         unimplemented!()
     }
@@ -286,7 +286,7 @@ impl
     }
 }
 impl CstDecode<std::collections::HashMap<String, Vec<u8>>>
-    for *mut wire_cst_list_record_string_list_prim_u_8
+    for *mut wire_cst_list_record_string_list_prim_u_8_strict
 {
     fn cst_decode(self) -> std::collections::HashMap<String, Vec<u8>> {
         let vec: Vec<(String, Vec<u8>)> = self.cst_decode();
@@ -767,19 +767,19 @@ impl CstDecode<std::collections::HashSet<String>> for *mut wire_cst_list_String 
         vec.into_iter().collect()
     }
 }
-impl CstDecode<std::collections::HashSet<i32>> for *mut wire_cst_list_prim_i_32 {
+impl CstDecode<std::collections::HashSet<i32>> for *mut wire_cst_list_prim_i_32_strict {
     fn cst_decode(self) -> std::collections::HashSet<i32> {
         let vec: Vec<i32> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
-impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> String {
         let vec: Vec<u8> = self.cst_decode();
         String::from_utf8(vec).unwrap()
     }
 }
-impl CstDecode<uuid::Uuid> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<uuid::Uuid> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> uuid::Uuid {
         let single: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::decode_uuid(single)
@@ -4904,12 +4904,12 @@ impl CstDecode<Box<u8>> for *mut u8 {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
-impl CstDecode<Box<[u8; 1600]>> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<Box<[u8; 1600]>> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> Box<[u8; 1600]> {
         CstDecode::<[u8; 1600]>::cst_decode(self).into()
     }
 }
-impl CstDecode<Box<[u8; 8]>> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<Box<[u8; 8]>> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> Box<[u8; 8]> {
         CstDecode::<[u8; 8]>::cst_decode(self).into()
     }
@@ -7406,7 +7406,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::ExoticOptional
         }
     }
 }
-impl CstDecode<[f64; 16]> for *mut wire_cst_list_prim_f_64 {
+impl CstDecode<[f64; 16]> for *mut wire_cst_list_prim_f_64_strict {
     fn cst_decode(self) -> [f64; 16] {
         let vec: Vec<f64> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -7523,7 +7523,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse
         crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse(self.field0.cst_decode())
     }
 }
-impl CstDecode<[i32; 2]> for *mut wire_cst_list_prim_i_32 {
+impl CstDecode<[i32; 2]> for *mut wire_cst_list_prim_i_32_strict {
     fn cst_decode(self) -> [i32; 2] {
         let vec: Vec<i32> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -8388,7 +8388,7 @@ impl
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<Option<Vec<i32>>>> for *mut wire_cst_list_opt_list_prim_i_32 {
+impl CstDecode<Vec<Option<Vec<i32>>>> for *mut wire_cst_list_opt_list_prim_i_32_strict {
     fn cst_decode(self) -> Vec<Option<Vec<i32>>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8465,7 +8465,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSync
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32 {
+impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32_loose {
     fn cst_decode(self) -> Vec<f32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8473,7 +8473,15 @@ impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32 {
         }
     }
 }
-impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64 {
+impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32_strict {
+    fn cst_decode(self) -> Vec<f32> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64_loose {
     fn cst_decode(self) -> Vec<f64> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8481,7 +8489,15 @@ impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64 {
         }
     }
 }
-impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16 {
+impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64_strict {
+    fn cst_decode(self) -> Vec<f64> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16_loose {
     fn cst_decode(self) -> Vec<i16> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8489,7 +8505,15 @@ impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16 {
         }
     }
 }
-impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32 {
+impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16_strict {
+    fn cst_decode(self) -> Vec<i16> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32_loose {
     fn cst_decode(self) -> Vec<i32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8497,7 +8521,15 @@ impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32 {
         }
     }
 }
-impl CstDecode<Vec<i64>> for *mut wire_cst_list_prim_i_64 {
+impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32_strict {
+    fn cst_decode(self) -> Vec<i32> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<i64>> for *mut wire_cst_list_prim_i_64_strict {
     fn cst_decode(self) -> Vec<i64> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8505,7 +8537,7 @@ impl CstDecode<Vec<i64>> for *mut wire_cst_list_prim_i_64 {
         }
     }
 }
-impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8 {
+impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8_loose {
     fn cst_decode(self) -> Vec<i8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8513,7 +8545,15 @@ impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8 {
         }
     }
 }
-impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16 {
+impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8_strict {
+    fn cst_decode(self) -> Vec<i8> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16_loose {
     fn cst_decode(self) -> Vec<u16> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8521,7 +8561,15 @@ impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16 {
         }
     }
 }
-impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32 {
+impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16_strict {
+    fn cst_decode(self) -> Vec<u16> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32_loose {
     fn cst_decode(self) -> Vec<u32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8529,7 +8577,15 @@ impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32 {
         }
     }
 }
-impl CstDecode<Vec<u64>> for *mut wire_cst_list_prim_u_64 {
+impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32_strict {
+    fn cst_decode(self) -> Vec<u32> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<u64>> for *mut wire_cst_list_prim_u_64_strict {
     fn cst_decode(self) -> Vec<u64> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8537,7 +8593,15 @@ impl CstDecode<Vec<u64>> for *mut wire_cst_list_prim_u_64 {
         }
     }
 }
-impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_loose {
+    fn cst_decode(self) -> Vec<u8> {
+        unsafe {
+            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> Vec<u8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -8819,7 +8883,7 @@ impl
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl CstDecode<Vec<(String, Vec<u8>)>> for *mut wire_cst_list_record_string_list_prim_u_8 {
+impl CstDecode<Vec<(String, Vec<u8>)>> for *mut wire_cst_list_record_string_list_prim_u_8_strict {
     fn cst_decode(self) -> Vec<(String, Vec<u8>)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -10382,7 +10446,7 @@ impl
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
-impl CstDecode<(String, Vec<u8>)> for wire_cst_record_string_list_prim_u_8 {
+impl CstDecode<(String, Vec<u8>)> for wire_cst_record_string_list_prim_u_8_strict {
     fn cst_decode(self) -> (String, Vec<u8>) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -11377,25 +11441,25 @@ impl
         )
     }
 }
-impl CstDecode<[u8; 1600]> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<[u8; 1600]> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[u8; 32]> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<[u8; 32]> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> [u8; 32] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[u8; 5]> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<[u8; 5]> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> [u8; 5] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[u8; 8]> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<[u8; 8]> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> [u8; 8] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -15928,7 +15992,7 @@ impl Default for wire_cst_record_string_kitchen_sink_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_cst_record_string_list_prim_u_8 {
+impl NewWithNullPtr for wire_cst_record_string_list_prim_u_8_strict {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -15936,7 +16000,7 @@ impl NewWithNullPtr for wire_cst_record_string_list_prim_u_8 {
         }
     }
 }
-impl Default for wire_cst_record_string_list_prim_u_8 {
+impl Default for wire_cst_record_string_list_prim_u_8_strict {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -17140,7 +17204,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_dart_fn_deliver_output(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_boxed_blob_twin_normal(
     port_: i64,
-    blob: *mut wire_cst_list_prim_u_8,
+    blob: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_boxed_blob_twin_normal_impl(port_, blob)
 }
@@ -17166,7 +17230,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_get_complex_array_twin_norma
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_last_number_twin_normal(
     port_: i64,
-    array: *mut wire_cst_list_prim_f_64,
+    array: *mut wire_cst_list_prim_f_64_strict,
 ) {
     wire_last_number_twin_normal_impl(port_, array)
 }
@@ -17182,7 +17246,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_nested_id_twin_normal(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_new_msgid_twin_normal(
     port_: i64,
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_new_msgid_twin_normal_impl(port_, id)
 }
@@ -17190,7 +17254,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_new_msgid_twin_normal(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_return_boxed_feed_id_twin_normal(
     port_: i64,
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_return_boxed_feed_id_twin_normal_impl(port_, id)
 }
@@ -17236,7 +17300,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_async_void_twin_normal(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_use_async_spawn(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_simple_use_async_spawn_impl(port_, arg)
 }
@@ -17244,7 +17308,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_use_async_spawn(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_blocking(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_simple_use_async_spawn_blocking_impl(port_, arg)
 }
@@ -17678,7 +17742,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_enum_struct_twin_norm
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_return_enum_twin_normal(
     port_: i64,
-    input: *mut wire_cst_list_prim_u_8,
+    input: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_return_enum_twin_normal_impl(port_, input)
 }
@@ -17715,8 +17779,8 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_close_event_listener_twin_no
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_create_event_twin_normal(
     port_: i64,
-    address: *mut wire_cst_list_prim_u_8,
-    payload: *mut wire_cst_list_prim_u_8,
+    address: *mut wire_cst_list_prim_u_8_strict,
+    payload: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_create_event_twin_normal_impl(port_, address, payload)
 }
@@ -17731,7 +17795,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_register_event_listener_twin
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new_twin_normal(
     port_: i64,
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_CustomStructTwinNormal_new_twin_normal_impl(port_, message)
 }
@@ -17985,7 +18049,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_n
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_record_string_list_prim_u_8,
+    arg: *mut wire_cst_list_record_string_list_prim_u_8_strict,
 ) {
     wire_func_hash_map_string_bytes_twin_normal_impl(port_, arg)
 }
@@ -18025,7 +18089,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_32,
+    arg: *mut wire_cst_list_prim_i_32_strict,
 ) {
     wire_func_hash_set_i32_twin_normal_impl(port_, arg)
 }
@@ -18041,8 +18105,8 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_no
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
     port_: i64,
-    a: *mut wire_cst_list_prim_u_8,
-    b: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal_impl(port_, a, b)
 }
@@ -18051,7 +18115,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_co
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_concatenate_twin_normal(
     port_: i64,
     that: *mut wire_cst_concatenate_with_twin_normal,
-    b: *mut wire_cst_list_prim_u_8,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_ConcatenateWithTwinNormal_concatenate_twin_normal_impl(port_, that, b)
 }
@@ -18093,7 +18157,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_ha
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal(
     port_: i64,
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_ConcatenateWithTwinNormal_new_twin_normal_impl(port_, a)
 }
@@ -18286,7 +18350,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_struct_twin_no
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_string_twin_normal(
     port_: i64,
-    s: *mut wire_cst_list_prim_u_8,
+    s: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_string_twin_normal_impl(port_, s)
 }
@@ -18303,7 +18367,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_struct_twin_normal(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_vec_u8_twin_normal(
     port_: i64,
-    v: *mut wire_cst_list_prim_u_8,
+    v: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_handle_vec_u8_twin_normal_impl(port_, v)
 }
@@ -18348,7 +18412,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_return_unit_twin_normal
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_string_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_func_string_twin_normal_impl(port_, arg)
 }
@@ -18421,7 +18485,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_optional_return_twin_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_optional_struct_twin_normal(
     port_: i64,
-    document: *mut wire_cst_list_prim_u_8,
+    document: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_optional_struct_twin_normal_impl(port_, document)
 }
@@ -18491,7 +18555,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twi
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_boxed_blob_twin_rust_async(
     port_: i64,
-    blob: *mut wire_cst_list_prim_u_8,
+    blob: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_boxed_blob_twin_rust_async_impl(port_, blob)
 }
@@ -18517,7 +18581,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_get_complex_array_twin_rust_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_last_number_twin_rust_async(
     port_: i64,
-    array: *mut wire_cst_list_prim_f_64,
+    array: *mut wire_cst_list_prim_f_64_strict,
 ) {
     wire_last_number_twin_rust_async_impl(port_, array)
 }
@@ -18533,7 +18597,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_nested_id_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_new_msgid_twin_rust_async(
     port_: i64,
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_new_msgid_twin_rust_async_impl(port_, id)
 }
@@ -18541,7 +18605,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_new_msgid_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_return_boxed_feed_id_twin_rust_async(
     port_: i64,
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_return_boxed_feed_id_twin_rust_async_impl(port_, id)
 }
@@ -18792,7 +18856,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_use_msgid_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_boxed_blob_twin_sync(
-    blob: *mut wire_cst_list_prim_u_8,
+    blob: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_boxed_blob_twin_sync_impl(blob)
 }
@@ -18818,7 +18882,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_get_complex_array_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_last_number_twin_sync(
-    array: *mut wire_cst_list_prim_f_64,
+    array: *mut wire_cst_list_prim_f_64_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_last_number_twin_sync_impl(array)
 }
@@ -18832,14 +18896,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_nested_id_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_new_msgid_twin_sync(
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_new_msgid_twin_sync_impl(id)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_return_boxed_feed_id_twin_sync(
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_return_boxed_feed_id_twin_sync_impl(id)
 }
@@ -19075,7 +19139,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_next_user_id_twin_sync_sse(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_json_twin_normal(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_benchmark_binary_tree_input_json_twin_normal_impl(port_, raw)
 }
@@ -19083,7 +19147,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_protobuf_twin_normal(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_benchmark_binary_tree_input_protobuf_twin_normal_impl(port_, raw)
 }
@@ -19123,7 +19187,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_output
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_twin_normal(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_benchmark_blob_input_json_twin_normal_impl(port_, raw)
 }
@@ -19131,7 +19195,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_tw
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_protobuf_twin_normal(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_benchmark_blob_input_protobuf_twin_normal_impl(port_, raw)
 }
@@ -19171,7 +19235,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_output_twin_n
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_input_bytes_twin_normal(
     port_: i64,
-    bytes: *mut wire_cst_list_prim_u_8,
+    bytes: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_benchmark_input_bytes_twin_normal_impl(port_, bytes)
 }
@@ -19192,7 +19256,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_void_twin_normal(p
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_json_twin_rust_async(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_benchmark_binary_tree_input_json_twin_rust_async_impl(port_, raw)
 }
@@ -19200,7 +19264,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_benchmark_binary_tree_input_protobuf_twin_rust_async_impl(port_, raw)
 }
@@ -19240,7 +19304,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_output
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_twin_rust_async(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_benchmark_blob_input_json_twin_rust_async_impl(port_, raw)
 }
@@ -19248,7 +19312,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_tw
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_protobuf_twin_rust_async(
     port_: i64,
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_benchmark_blob_input_protobuf_twin_rust_async_impl(port_, raw)
 }
@@ -19288,7 +19352,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_output_twin_r
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_input_bytes_twin_rust_async(
     port_: i64,
-    bytes: *mut wire_cst_list_prim_u_8,
+    bytes: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_benchmark_input_bytes_twin_rust_async_impl(port_, bytes)
 }
@@ -19643,14 +19707,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_void_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_json_twin_sync(
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_binary_tree_input_json_twin_sync_impl(raw)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_protobuf_twin_sync(
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_binary_tree_input_protobuf_twin_sync_impl(raw)
 }
@@ -19685,14 +19749,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_output
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_twin_sync(
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_blob_input_json_twin_sync_impl(raw)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_input_protobuf_twin_sync(
-    raw: *mut wire_cst_list_prim_u_8,
+    raw: *mut wire_cst_list_prim_u_8_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_blob_input_protobuf_twin_sync_impl(raw)
 }
@@ -19727,7 +19791,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_blob_output_twin_s
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_benchmark_input_bytes_twin_sync(
-    bytes: *mut wire_cst_list_prim_u_8,
+    bytes: *mut wire_cst_list_prim_u_8_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_benchmark_input_bytes_twin_sync_impl(bytes)
 }
@@ -21351,7 +21415,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_enum_struct_twin_rust
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_return_enum_twin_rust_async(
     port_: i64,
-    input: *mut wire_cst_list_prim_u_8,
+    input: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_return_enum_twin_rust_async_impl(port_, input)
 }
@@ -21596,7 +21660,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_enum_struct_twin_sync
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_return_enum_twin_sync(
-    input: *mut wire_cst_list_prim_u_8,
+    input: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_return_enum_twin_sync_impl(input)
 }
@@ -21714,8 +21778,8 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_close_event_listener_twin_ru
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_create_event_twin_rust_async(
     port_: i64,
-    address: *mut wire_cst_list_prim_u_8,
-    payload: *mut wire_cst_list_prim_u_8,
+    address: *mut wire_cst_list_prim_u_8_strict,
+    payload: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_create_event_twin_rust_async_impl(port_, address, payload)
 }
@@ -21815,7 +21879,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_register_event_listener_twin
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_CustomStructTwinRustAsync_new_twin_rust_async(
     port_: i64,
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_CustomStructTwinRustAsync_new_twin_rust_async_impl(port_, message)
 }
@@ -22729,7 +22793,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_throw_anyhow_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_CustomStructTwinSync_new_twin_sync(
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_CustomStructTwinSync_new_twin_sync_impl(message)
 }
@@ -23387,7 +23451,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_r
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_record_string_list_prim_u_8,
+    arg: *mut wire_cst_list_record_string_list_prim_u_8_strict,
 ) {
     wire_func_hash_map_string_bytes_twin_rust_async_impl(port_, arg)
 }
@@ -23427,7 +23491,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_32,
+    arg: *mut wire_cst_list_prim_i_32_strict,
 ) {
     wire_func_hash_set_i32_twin_rust_async_impl(port_, arg)
 }
@@ -23619,7 +23683,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_s
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_sync(
-    arg: *mut wire_cst_list_record_string_list_prim_u_8,
+    arg: *mut wire_cst_list_record_string_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_hash_map_string_bytes_twin_sync_impl(arg)
 }
@@ -23654,7 +23718,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync(
-    arg: *mut wire_cst_list_prim_i_32,
+    arg: *mut wire_cst_list_prim_i_32_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_hash_set_i32_twin_sync_impl(arg)
 }
@@ -23741,8 +23805,8 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sy
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
     port_: i64,
-    a: *mut wire_cst_list_prim_u_8,
-    b: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async_impl(port_, a, b)
 }
@@ -23751,7 +23815,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
     port_: i64,
     that: *mut wire_cst_concatenate_with_twin_rust_async,
-    b: *mut wire_cst_list_prim_u_8,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async_impl(port_, that, b)
 }
@@ -23799,7 +23863,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(
     port_: i64,
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_ConcatenateWithTwinRustAsync_new_twin_rust_async_impl(port_, a)
 }
@@ -24119,8 +24183,8 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_get_sum_struct_twin_sse(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
-    a: *mut wire_cst_list_prim_u_8,
-    b: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_concatenate_static_twin_sync_impl(a, b)
 }
@@ -24128,7 +24192,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_conc
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_concatenate_twin_sync(
     that: *mut wire_cst_concatenate_with_twin_sync,
-    b: *mut wire_cst_list_prim_u_8,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_concatenate_twin_sync_impl(that, b)
 }
@@ -24169,7 +24233,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_hand
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_new_twin_sync(
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_new_twin_sync_impl(a)
 }
@@ -25201,7 +25265,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_struct_twin_ru
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_string_twin_rust_async(
     port_: i64,
-    s: *mut wire_cst_list_prim_u_8,
+    s: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_string_twin_rust_async_impl(port_, s)
 }
@@ -25218,7 +25282,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_struct_twin_rust_asyn
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_vec_u8_twin_rust_async(
     port_: i64,
-    v: *mut wire_cst_list_prim_u_8,
+    v: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_handle_vec_u8_twin_rust_async_impl(port_, v)
 }
@@ -25449,7 +25513,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_struct_twin_sy
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_string_twin_sync(
-    s: *mut wire_cst_list_prim_u_8,
+    s: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_string_twin_sync_impl(s)
 }
@@ -25464,7 +25528,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_struct_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_vec_u8_twin_sync(
-    v: *mut wire_cst_list_prim_u_8,
+    v: *mut wire_cst_list_prim_u_8_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_vec_u8_twin_sync_impl(v)
 }
@@ -25587,7 +25651,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_return_unit_twin_rust_a
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_string_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_func_string_twin_rust_async_impl(port_, arg)
 }
@@ -25723,7 +25787,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_return_unit_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_string_twin_sync(
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_func_string_twin_sync_impl(arg)
 }
@@ -26552,7 +26616,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_optional_return_twin_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_optional_struct_twin_rust_async(
     port_: i64,
-    document: *mut wire_cst_list_prim_u_8,
+    document: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_optional_struct_twin_rust_async_impl(port_, document)
 }
@@ -26729,7 +26793,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_optional_return_twin_
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_optional_struct_twin_sync(
-    document: *mut wire_cst_list_prim_u_8,
+    document: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_optional_struct_twin_sync_impl(document)
 }
@@ -26894,7 +26958,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f32_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_f_32,
+    arg: *mut wire_cst_list_prim_f_32_loose,
 ) {
     wire_example_primitive_list_type_f32_twin_normal_impl(port_, arg)
 }
@@ -26902,7 +26966,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f64_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_f_64,
+    arg: *mut wire_cst_list_prim_f_64_loose,
 ) {
     wire_example_primitive_list_type_f64_twin_normal_impl(port_, arg)
 }
@@ -26910,7 +26974,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i16_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_16,
+    arg: *mut wire_cst_list_prim_i_16_loose,
 ) {
     wire_example_primitive_list_type_i16_twin_normal_impl(port_, arg)
 }
@@ -26918,7 +26982,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i32_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_32,
+    arg: *mut wire_cst_list_prim_i_32_loose,
 ) {
     wire_example_primitive_list_type_i32_twin_normal_impl(port_, arg)
 }
@@ -26926,7 +26990,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i64_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_64,
+    arg: *mut wire_cst_list_prim_i_64_strict,
 ) {
     wire_example_primitive_list_type_i64_twin_normal_impl(port_, arg)
 }
@@ -26934,7 +26998,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i8_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_8,
+    arg: *mut wire_cst_list_prim_i_8_loose,
 ) {
     wire_example_primitive_list_type_i8_twin_normal_impl(port_, arg)
 }
@@ -26942,7 +27006,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u16_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_16,
+    arg: *mut wire_cst_list_prim_u_16_loose,
 ) {
     wire_example_primitive_list_type_u16_twin_normal_impl(port_, arg)
 }
@@ -26950,7 +27014,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u32_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_32,
+    arg: *mut wire_cst_list_prim_u_32_loose,
 ) {
     wire_example_primitive_list_type_u32_twin_normal_impl(port_, arg)
 }
@@ -26958,7 +27022,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u64_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_64,
+    arg: *mut wire_cst_list_prim_u_64_strict,
 ) {
     wire_example_primitive_list_type_u64_twin_normal_impl(port_, arg)
 }
@@ -26966,7 +27030,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_example_primitive_list_type_u8_twin_normal_impl(port_, arg)
 }
@@ -27026,7 +27090,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f32_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_f_32,
+    arg: *mut wire_cst_list_prim_f_32_loose,
 ) {
     wire_example_primitive_list_type_f32_twin_rust_async_impl(port_, arg)
 }
@@ -27034,7 +27098,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f64_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_f_64,
+    arg: *mut wire_cst_list_prim_f_64_loose,
 ) {
     wire_example_primitive_list_type_f64_twin_rust_async_impl(port_, arg)
 }
@@ -27042,7 +27106,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i16_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_16,
+    arg: *mut wire_cst_list_prim_i_16_loose,
 ) {
     wire_example_primitive_list_type_i16_twin_rust_async_impl(port_, arg)
 }
@@ -27050,7 +27114,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i32_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_32,
+    arg: *mut wire_cst_list_prim_i_32_loose,
 ) {
     wire_example_primitive_list_type_i32_twin_rust_async_impl(port_, arg)
 }
@@ -27058,7 +27122,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i64_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_64,
+    arg: *mut wire_cst_list_prim_i_64_strict,
 ) {
     wire_example_primitive_list_type_i64_twin_rust_async_impl(port_, arg)
 }
@@ -27066,7 +27130,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i8_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_i_8,
+    arg: *mut wire_cst_list_prim_i_8_loose,
 ) {
     wire_example_primitive_list_type_i8_twin_rust_async_impl(port_, arg)
 }
@@ -27074,7 +27138,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u16_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_16,
+    arg: *mut wire_cst_list_prim_u_16_loose,
 ) {
     wire_example_primitive_list_type_u16_twin_rust_async_impl(port_, arg)
 }
@@ -27082,7 +27146,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u32_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_32,
+    arg: *mut wire_cst_list_prim_u_32_loose,
 ) {
     wire_example_primitive_list_type_u32_twin_rust_async_impl(port_, arg)
 }
@@ -27090,7 +27154,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u64_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_64,
+    arg: *mut wire_cst_list_prim_u_64_strict,
 ) {
     wire_example_primitive_list_type_u64_twin_rust_async_impl(port_, arg)
 }
@@ -27098,7 +27162,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_rust_async(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_loose,
 ) {
     wire_example_primitive_list_type_u8_twin_rust_async_impl(port_, arg)
 }
@@ -27387,70 +27451,70 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f32_twin_sync(
-    arg: *mut wire_cst_list_prim_f_32,
+    arg: *mut wire_cst_list_prim_f_32_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_f32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f64_twin_sync(
-    arg: *mut wire_cst_list_prim_f_64,
+    arg: *mut wire_cst_list_prim_f_64_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_f64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i16_twin_sync(
-    arg: *mut wire_cst_list_prim_i_16,
+    arg: *mut wire_cst_list_prim_i_16_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i32_twin_sync(
-    arg: *mut wire_cst_list_prim_i_32,
+    arg: *mut wire_cst_list_prim_i_32_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i64_twin_sync(
-    arg: *mut wire_cst_list_prim_i_64,
+    arg: *mut wire_cst_list_prim_i_64_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i8_twin_sync(
-    arg: *mut wire_cst_list_prim_i_8,
+    arg: *mut wire_cst_list_prim_i_8_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_i8_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u16_twin_sync(
-    arg: *mut wire_cst_list_prim_u_16,
+    arg: *mut wire_cst_list_prim_u_16_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u16_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u32_twin_sync(
-    arg: *mut wire_cst_list_prim_u_32,
+    arg: *mut wire_cst_list_prim_u_32_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u32_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u64_twin_sync(
-    arg: *mut wire_cst_list_prim_u_64,
+    arg: *mut wire_cst_list_prim_u_64_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u64_twin_sync_impl(arg)
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_sync(
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_loose,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_example_primitive_list_type_u8_twin_sync_impl(arg)
 }
@@ -28881,7 +28945,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_re
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
     a: *const std::ffi::c_void,
-    b: *mut wire_cst_list_prim_u_8,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(a, b)
 }
@@ -28948,7 +29012,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
     arg: *const std::ffi::c_void,
-    expect: *mut wire_cst_list_prim_u_8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_impl(arg, expect)
 }
@@ -28956,7 +29020,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_objec
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
     arg: *const std::ffi::c_void,
-    expect: *mut wire_cst_list_prim_u_8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_impl(arg, expect)
 }
@@ -28964,7 +29028,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_objec
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
     arg: *const std::ffi::c_void,
-    expect: *mut wire_cst_list_prim_u_8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_trait_object_arg_own_twin_sync_impl(arg, expect)
 }
@@ -30824,7 +30888,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_rus
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_rust_async(
     port_: i64,
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_uuid_twin_rust_async_impl(port_, id)
 }
@@ -30838,7 +30902,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_syn
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_sync(
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_handle_uuid_twin_sync_impl(id)
 }
@@ -31004,7 +31068,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_re
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
     port_: i64,
     a: *const std::ffi::c_void,
-    b: *mut wire_cst_list_prim_u_8,
+    b: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port_, a, b)
 }
@@ -31083,7 +31147,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
-    expect: *mut wire_cst_list_prim_u_8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(port_, arg, expect)
 }
@@ -31092,7 +31156,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_objec
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
-    expect: *mut wire_cst_list_prim_u_8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(port_, arg, expect)
 }
@@ -31101,7 +31165,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_objec
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
-    expect: *mut wire_cst_list_prim_u_8,
+    expect: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(port_, arg, expect)
 }
@@ -31344,7 +31408,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_func_stream_realistic_twin_normal(
     port_: i64,
-    arg: *mut wire_cst_list_prim_u_8,
+    arg: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_func_stream_realistic_twin_normal_impl(port_, arg)
 }
@@ -31440,7 +31504,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_nor
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_handle_uuid_twin_normal(
     port_: i64,
-    id: *mut wire_cst_list_prim_u_8,
+    id: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_handle_uuid_twin_normal_impl(port_, id)
 }
@@ -35189,7 +35253,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_String(
 ) -> *mut wire_cst_list_String {
     let wrap = wire_cst_list_String {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <*mut wire_cst_list_prim_u_8>::new_with_null_ptr(),
+            <*mut wire_cst_list_prim_u_8_strict>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -35766,10 +35830,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_opt_box_autoadd_week
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_opt_list_prim_i_32(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_opt_list_prim_i_32_strict(
     len: i32,
-) -> *mut wire_cst_list_opt_list_prim_i_32 {
-    let wrap = wire_cst_list_opt_list_prim_i_32 {
+) -> *mut wire_cst_list_opt_list_prim_i_32_strict {
+    let wrap = wire_cst_list_opt_list_prim_i_32_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(core::ptr::null_mut(), len),
         len,
     };
@@ -35861,10 +35925,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_point_twin_sync_sse(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_32(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_32_loose(
     len: i32,
-) -> *mut wire_cst_list_prim_f_32 {
-    let ans = wire_cst_list_prim_f_32 {
+) -> *mut wire_cst_list_prim_f_32_loose {
+    let ans = wire_cst_list_prim_f_32_loose {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35872,10 +35936,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_32(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_64(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_32_strict(
     len: i32,
-) -> *mut wire_cst_list_prim_f_64 {
-    let ans = wire_cst_list_prim_f_64 {
+) -> *mut wire_cst_list_prim_f_32_strict {
+    let ans = wire_cst_list_prim_f_32_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35883,10 +35947,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_64(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_16(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_64_loose(
     len: i32,
-) -> *mut wire_cst_list_prim_i_16 {
-    let ans = wire_cst_list_prim_i_16 {
+) -> *mut wire_cst_list_prim_f_64_loose {
+    let ans = wire_cst_list_prim_f_64_loose {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35894,10 +35958,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_16(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_32(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_f_64_strict(
     len: i32,
-) -> *mut wire_cst_list_prim_i_32 {
-    let ans = wire_cst_list_prim_i_32 {
+) -> *mut wire_cst_list_prim_f_64_strict {
+    let ans = wire_cst_list_prim_f_64_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35905,10 +35969,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_32(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_64(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_16_loose(
     len: i32,
-) -> *mut wire_cst_list_prim_i_64 {
-    let ans = wire_cst_list_prim_i_64 {
+) -> *mut wire_cst_list_prim_i_16_loose {
+    let ans = wire_cst_list_prim_i_16_loose {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35916,10 +35980,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_64(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_8(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_16_strict(
     len: i32,
-) -> *mut wire_cst_list_prim_i_8 {
-    let ans = wire_cst_list_prim_i_8 {
+) -> *mut wire_cst_list_prim_i_16_strict {
+    let ans = wire_cst_list_prim_i_16_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35927,10 +35991,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_8(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_16(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_32_loose(
     len: i32,
-) -> *mut wire_cst_list_prim_u_16 {
-    let ans = wire_cst_list_prim_u_16 {
+) -> *mut wire_cst_list_prim_i_32_loose {
+    let ans = wire_cst_list_prim_i_32_loose {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35938,10 +36002,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_16(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_32(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_32_strict(
     len: i32,
-) -> *mut wire_cst_list_prim_u_32 {
-    let ans = wire_cst_list_prim_u_32 {
+) -> *mut wire_cst_list_prim_i_32_strict {
+    let ans = wire_cst_list_prim_i_32_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35949,10 +36013,10 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_32(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_64(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_64_strict(
     len: i32,
-) -> *mut wire_cst_list_prim_u_64 {
-    let ans = wire_cst_list_prim_u_64 {
+) -> *mut wire_cst_list_prim_i_64_strict {
+    let ans = wire_cst_list_prim_i_64_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -35960,10 +36024,98 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_64(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_8(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_8_loose(
     len: i32,
-) -> *mut wire_cst_list_prim_u_8 {
-    let ans = wire_cst_list_prim_u_8 {
+) -> *mut wire_cst_list_prim_i_8_loose {
+    let ans = wire_cst_list_prim_i_8_loose {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_i_8_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_i_8_strict {
+    let ans = wire_cst_list_prim_i_8_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_16_loose(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_16_loose {
+    let ans = wire_cst_list_prim_u_16_loose {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_16_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_16_strict {
+    let ans = wire_cst_list_prim_u_16_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_32_loose(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_32_loose {
+    let ans = wire_cst_list_prim_u_32_loose {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_32_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_32_strict {
+    let ans = wire_cst_list_prim_u_32_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_64_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_64_strict {
+    let ans = wire_cst_list_prim_u_64_strict {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_8_loose(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_8_loose {
+    let ans = wire_cst_list_prim_u_8_loose {
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_prim_u_8_strict(
+    len: i32,
+) -> *mut wire_cst_list_prim_u_8_strict {
+    let ans = wire_cst_list_prim_u_8_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -36195,12 +36347,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_kitche
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_list_prim_u_8(
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_record_string_list_prim_u_8_strict(
     len: i32,
-) -> *mut wire_cst_list_record_string_list_prim_u_8 {
-    let wrap = wire_cst_list_record_string_list_prim_u_8 {
+) -> *mut wire_cst_list_record_string_list_prim_u_8_strict {
+    let wrap = wire_cst_list_record_string_list_prim_u_8_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <wire_cst_record_string_list_prim_u_8>::new_with_null_ptr(),
+            <wire_cst_record_string_list_prim_u_8_strict>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -36473,32 +36625,32 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_weekdays_twin_sync_s
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_a_twin_normal {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_a_twin_rust_async {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_a_twin_rust_async_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_a_twin_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_a_twin_sync {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_a_twin_sync_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -36719,32 +36871,32 @@ pub struct wire_cst_another_macro_struct_twin_normal {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_another_twin_normal {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_another_twin_rust_async {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_another_twin_rust_async_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_another_twin_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_another_twin_sync {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_another_twin_sync_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -36754,7 +36906,7 @@ pub struct wire_cst_application_env {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_application_env_var {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: bool,
 }
 #[repr(C)]
@@ -36773,7 +36925,7 @@ pub union ApplicationMessageKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_ApplicationMessage_DisplayMessage {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -36784,8 +36936,8 @@ pub struct wire_cst_ApplicationMessage_RenderPixel {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_application_settings {
-    name: *mut wire_cst_list_prim_u_8,
-    version: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
+    version: *mut wire_cst_list_prim_u_8_strict,
     mode: i32,
     env: *mut wire_cst_application_env,
     env_optional: *mut wire_cst_application_env,
@@ -36793,38 +36945,38 @@ pub struct wire_cst_application_settings {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_attribute_twin_normal {
-    key: *mut wire_cst_list_prim_u_8,
-    value: *mut wire_cst_list_prim_u_8,
+    key: *mut wire_cst_list_prim_u_8_strict,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_attribute_twin_rust_async {
-    key: *mut wire_cst_list_prim_u_8,
-    value: *mut wire_cst_list_prim_u_8,
+    key: *mut wire_cst_list_prim_u_8_strict,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_attribute_twin_rust_async_sse {
-    key: *mut wire_cst_list_prim_u_8,
-    value: *mut wire_cst_list_prim_u_8,
+    key: *mut wire_cst_list_prim_u_8_strict,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_attribute_twin_sse {
-    key: *mut wire_cst_list_prim_u_8,
-    value: *mut wire_cst_list_prim_u_8,
+    key: *mut wire_cst_list_prim_u_8_strict,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_attribute_twin_sync {
-    key: *mut wire_cst_list_prim_u_8,
-    value: *mut wire_cst_list_prim_u_8,
+    key: *mut wire_cst_list_prim_u_8_strict,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_attribute_twin_sync_sse {
-    key: *mut wire_cst_list_prim_u_8,
-    value: *mut wire_cst_list_prim_u_8,
+    key: *mut wire_cst_list_prim_u_8_strict,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -36859,152 +37011,152 @@ pub struct wire_cst_b_twin_sync_sse {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_binary_tree_twin_normal {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     left: *mut wire_cst_benchmark_binary_tree_twin_normal,
     right: *mut wire_cst_benchmark_binary_tree_twin_normal,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_binary_tree_twin_rust_async {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     left: *mut wire_cst_benchmark_binary_tree_twin_rust_async,
     right: *mut wire_cst_benchmark_binary_tree_twin_rust_async,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_binary_tree_twin_rust_async_sse {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     left: *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse,
     right: *mut wire_cst_benchmark_binary_tree_twin_rust_async_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_binary_tree_twin_sse {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     left: *mut wire_cst_benchmark_binary_tree_twin_sse,
     right: *mut wire_cst_benchmark_binary_tree_twin_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_binary_tree_twin_sync {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     left: *mut wire_cst_benchmark_binary_tree_twin_sync,
     right: *mut wire_cst_benchmark_binary_tree_twin_sync,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_binary_tree_twin_sync_sse {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     left: *mut wire_cst_benchmark_binary_tree_twin_sync_sse,
     right: *mut wire_cst_benchmark_binary_tree_twin_sync_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_blob_twin_normal {
-    first: *mut wire_cst_list_prim_u_8,
-    second: *mut wire_cst_list_prim_u_8,
-    third: *mut wire_cst_list_prim_u_8,
+    first: *mut wire_cst_list_prim_u_8_strict,
+    second: *mut wire_cst_list_prim_u_8_strict,
+    third: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_blob_twin_rust_async {
-    first: *mut wire_cst_list_prim_u_8,
-    second: *mut wire_cst_list_prim_u_8,
-    third: *mut wire_cst_list_prim_u_8,
+    first: *mut wire_cst_list_prim_u_8_strict,
+    second: *mut wire_cst_list_prim_u_8_strict,
+    third: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_blob_twin_rust_async_sse {
-    first: *mut wire_cst_list_prim_u_8,
-    second: *mut wire_cst_list_prim_u_8,
-    third: *mut wire_cst_list_prim_u_8,
+    first: *mut wire_cst_list_prim_u_8_strict,
+    second: *mut wire_cst_list_prim_u_8_strict,
+    third: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_blob_twin_sse {
-    first: *mut wire_cst_list_prim_u_8,
-    second: *mut wire_cst_list_prim_u_8,
-    third: *mut wire_cst_list_prim_u_8,
+    first: *mut wire_cst_list_prim_u_8_strict,
+    second: *mut wire_cst_list_prim_u_8_strict,
+    third: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_blob_twin_sync {
-    first: *mut wire_cst_list_prim_u_8,
-    second: *mut wire_cst_list_prim_u_8,
-    third: *mut wire_cst_list_prim_u_8,
+    first: *mut wire_cst_list_prim_u_8_strict,
+    second: *mut wire_cst_list_prim_u_8_strict,
+    third: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_benchmark_blob_twin_sync_sse {
-    first: *mut wire_cst_list_prim_u_8,
-    second: *mut wire_cst_list_prim_u_8,
-    third: *mut wire_cst_list_prim_u_8,
+    first: *mut wire_cst_list_prim_u_8_strict,
+    second: *mut wire_cst_list_prim_u_8_strict,
+    third: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_big_buffers_twin_normal {
-    int64: *mut wire_cst_list_prim_i_64,
-    uint64: *mut wire_cst_list_prim_u_64,
+    int64: *mut wire_cst_list_prim_i_64_strict,
+    uint64: *mut wire_cst_list_prim_u_64_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_big_buffers_twin_rust_async {
-    int64: *mut wire_cst_list_prim_i_64,
-    uint64: *mut wire_cst_list_prim_u_64,
+    int64: *mut wire_cst_list_prim_i_64_strict,
+    uint64: *mut wire_cst_list_prim_u_64_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_big_buffers_twin_rust_async_sse {
-    int64: *mut wire_cst_list_prim_i_64,
-    uint64: *mut wire_cst_list_prim_u_64,
+    int64: *mut wire_cst_list_prim_i_64_strict,
+    uint64: *mut wire_cst_list_prim_u_64_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_big_buffers_twin_sse {
-    int64: *mut wire_cst_list_prim_i_64,
-    uint64: *mut wire_cst_list_prim_u_64,
+    int64: *mut wire_cst_list_prim_i_64_strict,
+    uint64: *mut wire_cst_list_prim_u_64_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_big_buffers_twin_sync {
-    int64: *mut wire_cst_list_prim_i_64,
-    uint64: *mut wire_cst_list_prim_u_64,
+    int64: *mut wire_cst_list_prim_i_64_strict,
+    uint64: *mut wire_cst_list_prim_u_64_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_big_buffers_twin_sync_sse {
-    int64: *mut wire_cst_list_prim_i_64,
-    uint64: *mut wire_cst_list_prim_u_64,
+    int64: *mut wire_cst_list_prim_i_64_strict,
+    uint64: *mut wire_cst_list_prim_u_64_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_blob_twin_normal {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_blob_twin_rust_async {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_blob_twin_rust_async_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_blob_twin_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_blob_twin_sync {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_blob_twin_sync_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37039,32 +37191,32 @@ pub struct wire_cst_c_twin_sync_sse {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_concatenate_with_twin_normal {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_concatenate_with_twin_rust_async {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_concatenate_with_twin_rust_async_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_concatenate_with_twin_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_concatenate_with_twin_sync {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_concatenate_with_twin_sync_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37118,14 +37270,14 @@ pub union CustomEnumErrorTwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinNormal_One {
-    message: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinNormal_Two {
     message: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37143,14 +37295,14 @@ pub union CustomEnumErrorTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsync_One {
-    message: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsync_Two {
     message: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37168,14 +37320,14 @@ pub union CustomEnumErrorTwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
-    message: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
     message: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37193,14 +37345,14 @@ pub union CustomEnumErrorTwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinSse_One {
-    message: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinSse_Two {
     message: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37218,14 +37370,14 @@ pub union CustomEnumErrorTwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinSync_One {
-    message: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinSync_Two {
     message: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37243,14 +37395,14 @@ pub union CustomEnumErrorTwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinSyncSse_One {
-    message: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomEnumErrorTwinSyncSse_Two {
     message: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37268,14 +37420,14 @@ pub union CustomErrorTwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinNormal_Error0 {
-    e: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    e: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinNormal_Error1 {
     e: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37293,14 +37445,14 @@ pub union CustomErrorTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinRustAsync_Error0 {
-    e: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    e: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinRustAsync_Error1 {
     e: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37318,14 +37470,14 @@ pub union CustomErrorTwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
-    e: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    e: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
     e: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37343,14 +37495,14 @@ pub union CustomErrorTwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinSse_Error0 {
-    e: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    e: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinSse_Error1 {
     e: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37368,14 +37520,14 @@ pub union CustomErrorTwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinSync_Error0 {
-    e: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    e: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinSync_Error1 {
     e: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37393,14 +37545,14 @@ pub union CustomErrorTwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinSyncSse_Error0 {
-    e: *mut wire_cst_list_prim_u_8,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    e: *mut wire_cst_list_prim_u_8_strict,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomErrorTwinSyncSse_Error1 {
     e: u32,
-    backtrace: *mut wire_cst_list_prim_u_8,
+    backtrace: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37418,7 +37570,7 @@ pub union CustomNestedError1TwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37441,7 +37593,7 @@ pub union CustomNestedError1TwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37464,7 +37616,7 @@ pub union CustomNestedError1TwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37487,7 +37639,7 @@ pub union CustomNestedError1TwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError1TwinSse_CustomNested1 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37510,7 +37662,7 @@ pub union CustomNestedError1TwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError1TwinSync_CustomNested1 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37533,7 +37685,7 @@ pub union CustomNestedError1TwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37556,7 +37708,7 @@ pub union CustomNestedError2TwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37579,7 +37731,7 @@ pub union CustomNestedError2TwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37602,7 +37754,7 @@ pub union CustomNestedError2TwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37625,7 +37777,7 @@ pub union CustomNestedError2TwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError2TwinSse_CustomNested2 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37648,7 +37800,7 @@ pub union CustomNestedError2TwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError2TwinSync_CustomNested2 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37671,7 +37823,7 @@ pub union CustomNestedError2TwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37694,7 +37846,7 @@ pub union CustomNestedErrorInnerTwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorInnerTwinNormal_Three {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37717,7 +37869,7 @@ pub union CustomNestedErrorInnerTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Three {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37740,7 +37892,7 @@ pub union CustomNestedErrorInnerTwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37763,7 +37915,7 @@ pub union CustomNestedErrorInnerTwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSse_Three {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37786,7 +37938,7 @@ pub union CustomNestedErrorInnerTwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSync_Three {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37809,7 +37961,7 @@ pub union CustomNestedErrorInnerTwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37832,7 +37984,7 @@ pub union CustomNestedErrorOuterTwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorOuterTwinNormal_One {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37855,7 +38007,7 @@ pub union CustomNestedErrorOuterTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorOuterTwinRustAsync_One {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37878,7 +38030,7 @@ pub union CustomNestedErrorOuterTwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37901,7 +38053,7 @@ pub union CustomNestedErrorOuterTwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSse_One {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37924,7 +38076,7 @@ pub union CustomNestedErrorOuterTwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSync_One {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37947,7 +38099,7 @@ pub union CustomNestedErrorOuterTwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -37957,128 +38109,128 @@ pub struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_another_twin_normal {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_another_twin_rust_async {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_another_twin_rust_async_sse {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_another_twin_sse {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_another_twin_sync {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_another_twin_sync_sse {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_twin_normal {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_twin_rust_async {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_twin_rust_async_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_twin_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_twin_sync {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_error_twin_sync_sse {
-    a: *mut wire_cst_list_prim_u_8,
+    a: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_twin_normal {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_twin_rust_async {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_twin_rust_async_sse {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_twin_sse {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_twin_sync {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_custom_struct_twin_sync_sse {
-    message: *mut wire_cst_list_prim_u_8,
+    message: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_customized_twin_normal {
-    final_field: *mut wire_cst_list_prim_u_8,
-    non_final_field: *mut wire_cst_list_prim_u_8,
+    final_field: *mut wire_cst_list_prim_u_8_strict,
+    non_final_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_customized_twin_rust_async {
-    final_field: *mut wire_cst_list_prim_u_8,
-    non_final_field: *mut wire_cst_list_prim_u_8,
+    final_field: *mut wire_cst_list_prim_u_8_strict,
+    non_final_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_customized_twin_rust_async_sse {
-    final_field: *mut wire_cst_list_prim_u_8,
-    non_final_field: *mut wire_cst_list_prim_u_8,
+    final_field: *mut wire_cst_list_prim_u_8_strict,
+    non_final_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_customized_twin_sse {
-    final_field: *mut wire_cst_list_prim_u_8,
-    non_final_field: *mut wire_cst_list_prim_u_8,
+    final_field: *mut wire_cst_list_prim_u_8_strict,
+    non_final_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_customized_twin_sync {
-    final_field: *mut wire_cst_list_prim_u_8,
-    non_final_field: *mut wire_cst_list_prim_u_8,
+    final_field: *mut wire_cst_list_prim_u_8_strict,
+    non_final_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_customized_twin_sync_sse {
-    final_field: *mut wire_cst_list_prim_u_8,
-    non_final_field: *mut wire_cst_list_prim_u_8,
+    final_field: *mut wire_cst_list_prim_u_8_strict,
+    non_final_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38119,22 +38271,22 @@ pub struct wire_cst_dart_opaque_nested_twin_sync_sse {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_demo_struct_for_rust_call_dart_twin_normal {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_demo_struct_for_rust_call_dart_twin_rust_async {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_demo_struct_for_rust_call_dart_twin_rust_async_sse {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_demo_struct_for_rust_call_dart_twin_sse {
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38241,48 +38393,48 @@ pub struct wire_cst_DistanceTwinSyncSse_Map {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_element_twin_normal {
-    tag: *mut wire_cst_list_prim_u_8,
-    text: *mut wire_cst_list_prim_u_8,
+    tag: *mut wire_cst_list_prim_u_8_strict,
+    text: *mut wire_cst_list_prim_u_8_strict,
     attributes: *mut wire_cst_list_attribute_twin_normal,
     children: *mut wire_cst_list_element_twin_normal,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_element_twin_rust_async {
-    tag: *mut wire_cst_list_prim_u_8,
-    text: *mut wire_cst_list_prim_u_8,
+    tag: *mut wire_cst_list_prim_u_8_strict,
+    text: *mut wire_cst_list_prim_u_8_strict,
     attributes: *mut wire_cst_list_attribute_twin_rust_async,
     children: *mut wire_cst_list_element_twin_rust_async,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_element_twin_rust_async_sse {
-    tag: *mut wire_cst_list_prim_u_8,
-    text: *mut wire_cst_list_prim_u_8,
+    tag: *mut wire_cst_list_prim_u_8_strict,
+    text: *mut wire_cst_list_prim_u_8_strict,
     attributes: *mut wire_cst_list_attribute_twin_rust_async_sse,
     children: *mut wire_cst_list_element_twin_rust_async_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_element_twin_sse {
-    tag: *mut wire_cst_list_prim_u_8,
-    text: *mut wire_cst_list_prim_u_8,
+    tag: *mut wire_cst_list_prim_u_8_strict,
+    text: *mut wire_cst_list_prim_u_8_strict,
     attributes: *mut wire_cst_list_attribute_twin_sse,
     children: *mut wire_cst_list_element_twin_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_element_twin_sync {
-    tag: *mut wire_cst_list_prim_u_8,
-    text: *mut wire_cst_list_prim_u_8,
+    tag: *mut wire_cst_list_prim_u_8_strict,
+    text: *mut wire_cst_list_prim_u_8_strict,
     attributes: *mut wire_cst_list_attribute_twin_sync,
     children: *mut wire_cst_list_element_twin_sync,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_element_twin_sync_sse {
-    tag: *mut wire_cst_list_prim_u_8,
-    text: *mut wire_cst_list_prim_u_8,
+    tag: *mut wire_cst_list_prim_u_8_strict,
+    text: *mut wire_cst_list_prim_u_8_strict,
     attributes: *mut wire_cst_list_attribute_twin_sync_sse,
     children: *mut wire_cst_list_element_twin_sync_sse,
 }
@@ -38704,12 +38856,12 @@ pub union EnumWithItemMixedTwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinNormal_B {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinNormal_C {
-    c_field: *mut wire_cst_list_prim_u_8,
+    c_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38727,12 +38879,12 @@ pub union EnumWithItemMixedTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsync_B {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsync_C {
-    c_field: *mut wire_cst_list_prim_u_8,
+    c_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38750,12 +38902,12 @@ pub union EnumWithItemMixedTwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C {
-    c_field: *mut wire_cst_list_prim_u_8,
+    c_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38773,12 +38925,12 @@ pub union EnumWithItemMixedTwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinSse_B {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinSse_C {
-    c_field: *mut wire_cst_list_prim_u_8,
+    c_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38796,12 +38948,12 @@ pub union EnumWithItemMixedTwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinSync_B {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinSync_C {
-    c_field: *mut wire_cst_list_prim_u_8,
+    c_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38819,12 +38971,12 @@ pub union EnumWithItemMixedTwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinSyncSse_B {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemMixedTwinSyncSse_C {
-    c_field: *mut wire_cst_list_prim_u_8,
+    c_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38842,12 +38994,12 @@ pub union EnumWithItemStructTwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinNormal_A {
-    a_field: *mut wire_cst_list_prim_u_8,
+    a_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinNormal_B {
-    b_field: *mut wire_cst_list_prim_i_32,
+    b_field: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38865,12 +39017,12 @@ pub union EnumWithItemStructTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsync_A {
-    a_field: *mut wire_cst_list_prim_u_8,
+    a_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsync_B {
-    b_field: *mut wire_cst_list_prim_i_32,
+    b_field: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38888,12 +39040,12 @@ pub union EnumWithItemStructTwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A {
-    a_field: *mut wire_cst_list_prim_u_8,
+    a_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B {
-    b_field: *mut wire_cst_list_prim_i_32,
+    b_field: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38911,12 +39063,12 @@ pub union EnumWithItemStructTwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinSse_A {
-    a_field: *mut wire_cst_list_prim_u_8,
+    a_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinSse_B {
-    b_field: *mut wire_cst_list_prim_i_32,
+    b_field: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38934,12 +39086,12 @@ pub union EnumWithItemStructTwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinSync_A {
-    a_field: *mut wire_cst_list_prim_u_8,
+    a_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinSync_B {
-    b_field: *mut wire_cst_list_prim_i_32,
+    b_field: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38957,12 +39109,12 @@ pub union EnumWithItemStructTwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinSyncSse_A {
-    a_field: *mut wire_cst_list_prim_u_8,
+    a_field: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemStructTwinSyncSse_B {
-    b_field: *mut wire_cst_list_prim_i_32,
+    b_field: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -38980,12 +39132,12 @@ pub union EnumWithItemTupleTwinNormalKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinNormal_A {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinNormal_B {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39003,12 +39155,12 @@ pub union EnumWithItemTupleTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsync_A {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsync_B {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39026,12 +39178,12 @@ pub union EnumWithItemTupleTwinRustAsyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39049,12 +39201,12 @@ pub union EnumWithItemTupleTwinSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinSse_A {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinSse_B {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39072,12 +39224,12 @@ pub union EnumWithItemTupleTwinSyncKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinSync_A {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinSync_B {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39095,36 +39247,36 @@ pub union EnumWithItemTupleTwinSyncSseKind {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinSyncSse_A {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_EnumWithItemTupleTwinSyncSse_B {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_event_twin_normal {
-    address: *mut wire_cst_list_prim_u_8,
-    payload: *mut wire_cst_list_prim_u_8,
+    address: *mut wire_cst_list_prim_u_8_strict,
+    payload: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_event_twin_rust_async {
-    address: *mut wire_cst_list_prim_u_8,
-    payload: *mut wire_cst_list_prim_u_8,
+    address: *mut wire_cst_list_prim_u_8_strict,
+    payload: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_event_twin_rust_async_sse {
-    address: *mut wire_cst_list_prim_u_8,
-    payload: *mut wire_cst_list_prim_u_8,
+    address: *mut wire_cst_list_prim_u_8_strict,
+    payload: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_event_twin_sse {
-    address: *mut wire_cst_list_prim_u_8,
-    payload: *mut wire_cst_list_prim_u_8,
+    address: *mut wire_cst_list_prim_u_8_strict,
+    payload: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39133,12 +39285,12 @@ pub struct wire_cst_exotic_optionals_twin_normal {
     int64: *mut i64,
     float64: *mut f64,
     boolean: *mut bool,
-    zerocopy: *mut wire_cst_list_prim_u_8,
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int32list: *mut wire_cst_list_prim_i_32,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    zerocopy: *mut wire_cst_list_prim_u_8_strict,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     attributes: *mut wire_cst_list_attribute_twin_normal,
     attributes_nullable: *mut wire_cst_list_opt_box_autoadd_attribute_twin_normal,
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_normal,
@@ -39151,12 +39303,12 @@ pub struct wire_cst_exotic_optionals_twin_rust_async {
     int64: *mut i64,
     float64: *mut f64,
     boolean: *mut bool,
-    zerocopy: *mut wire_cst_list_prim_u_8,
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int32list: *mut wire_cst_list_prim_i_32,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    zerocopy: *mut wire_cst_list_prim_u_8_strict,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     attributes: *mut wire_cst_list_attribute_twin_rust_async,
     attributes_nullable: *mut wire_cst_list_opt_box_autoadd_attribute_twin_rust_async,
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_rust_async,
@@ -39169,12 +39321,12 @@ pub struct wire_cst_exotic_optionals_twin_rust_async_sse {
     int64: *mut i64,
     float64: *mut f64,
     boolean: *mut bool,
-    zerocopy: *mut wire_cst_list_prim_u_8,
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int32list: *mut wire_cst_list_prim_i_32,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    zerocopy: *mut wire_cst_list_prim_u_8_strict,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     attributes: *mut wire_cst_list_attribute_twin_rust_async_sse,
     attributes_nullable: *mut wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse,
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse,
@@ -39187,12 +39339,12 @@ pub struct wire_cst_exotic_optionals_twin_sse {
     int64: *mut i64,
     float64: *mut f64,
     boolean: *mut bool,
-    zerocopy: *mut wire_cst_list_prim_u_8,
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int32list: *mut wire_cst_list_prim_i_32,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    zerocopy: *mut wire_cst_list_prim_u_8_strict,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     attributes: *mut wire_cst_list_attribute_twin_sse,
     attributes_nullable: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sse,
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sse,
@@ -39205,12 +39357,12 @@ pub struct wire_cst_exotic_optionals_twin_sync {
     int64: *mut i64,
     float64: *mut f64,
     boolean: *mut bool,
-    zerocopy: *mut wire_cst_list_prim_u_8,
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int32list: *mut wire_cst_list_prim_i_32,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    zerocopy: *mut wire_cst_list_prim_u_8_strict,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     attributes: *mut wire_cst_list_attribute_twin_sync,
     attributes_nullable: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sync,
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sync,
@@ -39223,12 +39375,12 @@ pub struct wire_cst_exotic_optionals_twin_sync_sse {
     int64: *mut i64,
     float64: *mut f64,
     boolean: *mut bool,
-    zerocopy: *mut wire_cst_list_prim_u_8,
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int32list: *mut wire_cst_list_prim_i_32,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    zerocopy: *mut wire_cst_list_prim_u_8_strict,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     attributes: *mut wire_cst_list_attribute_twin_sync_sse,
     attributes_nullable: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse,
     nullable_attributes: *mut wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse,
@@ -39261,47 +39413,47 @@ pub struct wire_cst_feature_chrono_twin_sync {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feature_uuid_twin_normal {
-    one: *mut wire_cst_list_prim_u_8,
+    one: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feature_uuid_twin_rust_async {
-    one: *mut wire_cst_list_prim_u_8,
+    one: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feature_uuid_twin_sync {
-    one: *mut wire_cst_list_prim_u_8,
+    one: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feed_id_twin_normal {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feed_id_twin_rust_async {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feed_id_twin_rust_async_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feed_id_twin_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feed_id_twin_sync {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_feed_id_twin_sync_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39341,7 +39493,7 @@ pub struct wire_cst_KitchenSinkTwinNormal_Optional {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_KitchenSinkTwinNormal_Buffer {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39386,7 +39538,7 @@ pub struct wire_cst_KitchenSinkTwinRustAsync_Optional {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_KitchenSinkTwinRustAsync_Buffer {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39431,7 +39583,7 @@ pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Optional {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_KitchenSinkTwinRustAsyncSse_Buffer {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39476,7 +39628,7 @@ pub struct wire_cst_KitchenSinkTwinSse_Optional {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_KitchenSinkTwinSse_Buffer {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39521,7 +39673,7 @@ pub struct wire_cst_KitchenSinkTwinSync_Optional {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_KitchenSinkTwinSync_Buffer {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39566,7 +39718,7 @@ pub struct wire_cst_KitchenSinkTwinSyncSse_Optional {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_KitchenSinkTwinSyncSse_Buffer {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -39606,7 +39758,7 @@ pub struct wire_cst_list_RustOpaque_hide_data {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_String {
-    ptr: *mut *mut wire_cst_list_prim_u_8,
+    ptr: *mut *mut wire_cst_list_prim_u_8_strict,
     len: i32,
 }
 #[repr(C)]
@@ -39797,7 +39949,7 @@ pub struct wire_cst_list_of_nested_raw_string_mirrored {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_opt_String {
-    ptr: *mut *mut wire_cst_list_prim_u_8,
+    ptr: *mut *mut wire_cst_list_prim_u_8_strict,
     len: i32,
 }
 #[repr(C)]
@@ -39880,8 +40032,8 @@ pub struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_opt_list_prim_i_32 {
-    ptr: *mut *mut wire_cst_list_prim_i_32,
+pub struct wire_cst_list_opt_list_prim_i_32_strict {
+    ptr: *mut *mut wire_cst_list_prim_i_32_strict,
     len: i32,
 }
 #[repr(C)]
@@ -39922,61 +40074,109 @@ pub struct wire_cst_list_point_twin_sync_sse {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_f_32 {
+pub struct wire_cst_list_prim_f_32_loose {
     ptr: *mut f32,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_f_64 {
+pub struct wire_cst_list_prim_f_32_strict {
+    ptr: *mut f32,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_f_64_loose {
     ptr: *mut f64,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_i_16 {
+pub struct wire_cst_list_prim_f_64_strict {
+    ptr: *mut f64,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_i_16_loose {
     ptr: *mut i16,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_i_32 {
+pub struct wire_cst_list_prim_i_16_strict {
+    ptr: *mut i16,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_i_32_loose {
     ptr: *mut i32,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_i_64 {
+pub struct wire_cst_list_prim_i_32_strict {
+    ptr: *mut i32,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_i_64_strict {
     ptr: *mut i64,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_i_8 {
+pub struct wire_cst_list_prim_i_8_loose {
     ptr: *mut i8,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_u_16 {
+pub struct wire_cst_list_prim_i_8_strict {
+    ptr: *mut i8,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_u_16_loose {
     ptr: *mut u16,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_u_32 {
+pub struct wire_cst_list_prim_u_16_strict {
+    ptr: *mut u16,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_u_32_loose {
     ptr: *mut u32,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_u_64 {
+pub struct wire_cst_list_prim_u_32_strict {
+    ptr: *mut u32,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_u_64_strict {
     ptr: *mut u64,
     len: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_u_8 {
+pub struct wire_cst_list_prim_u_8_loose {
+    ptr: *mut u8,
+    len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_list_prim_u_8_strict {
     ptr: *mut u8,
     len: i32,
 }
@@ -40078,8 +40278,8 @@ pub struct wire_cst_list_record_string_kitchen_sink_twin_sync_sse {
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_record_string_list_prim_u_8 {
-    ptr: *mut wire_cst_record_string_list_prim_u_8,
+pub struct wire_cst_list_record_string_list_prim_u_8_strict {
+    ptr: *mut wire_cst_record_string_list_prim_u_8_strict,
     len: i32,
 }
 #[repr(C)]
@@ -40206,37 +40406,37 @@ pub struct wire_cst_list_weekdays_twin_sync_sse {
 #[derive(Clone, Copy)]
 pub struct wire_cst_log_2_twin_normal {
     key: u32,
-    value: *mut wire_cst_list_prim_u_8,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_log_2_twin_rust_async {
     key: u32,
-    value: *mut wire_cst_list_prim_u_8,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_log_2_twin_rust_async_sse {
     key: u32,
-    value: *mut wire_cst_list_prim_u_8,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_log_2_twin_sse {
     key: u32,
-    value: *mut wire_cst_list_prim_u_8,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_log_2_twin_sync {
     key: u32,
-    value: *mut wire_cst_list_prim_u_8,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_log_2_twin_sync_sse {
     key: u32,
-    value: *mut wire_cst_list_prim_u_8,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40408,32 +40608,32 @@ pub struct wire_cst_MeasureTwinSyncSse_Distance {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_message_id_twin_normal {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_message_id_twin_rust_async {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_message_id_twin_rust_async_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_message_id_twin_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_message_id_twin_sync {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_message_id_twin_sync_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40486,50 +40686,50 @@ pub struct wire_cst_mirror_struct_twin_sync_sse {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_normal {
-    regular: *mut wire_cst_list_prim_u_8,
-    r#type: *mut wire_cst_list_prim_u_8,
+    regular: *mut wire_cst_list_prim_u_8_strict,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
     r#async: bool,
-    another: *mut wire_cst_list_prim_u_8,
+    another: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
-    regular: *mut wire_cst_list_prim_u_8,
-    r#type: *mut wire_cst_list_prim_u_8,
+    regular: *mut wire_cst_list_prim_u_8_strict,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
     r#async: bool,
-    another: *mut wire_cst_list_prim_u_8,
+    another: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
-    regular: *mut wire_cst_list_prim_u_8,
-    r#type: *mut wire_cst_list_prim_u_8,
+    regular: *mut wire_cst_list_prim_u_8_strict,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
     r#async: bool,
-    another: *mut wire_cst_list_prim_u_8,
+    another: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sse {
-    regular: *mut wire_cst_list_prim_u_8,
-    r#type: *mut wire_cst_list_prim_u_8,
+    regular: *mut wire_cst_list_prim_u_8_strict,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
     r#async: bool,
-    another: *mut wire_cst_list_prim_u_8,
+    another: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync {
-    regular: *mut wire_cst_list_prim_u_8,
-    r#type: *mut wire_cst_list_prim_u_8,
+    regular: *mut wire_cst_list_prim_u_8_strict,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
     r#async: bool,
-    another: *mut wire_cst_list_prim_u_8,
+    another: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
-    regular: *mut wire_cst_list_prim_u_8,
-    r#type: *mut wire_cst_list_prim_u_8,
+    regular: *mut wire_cst_list_prim_u_8_strict,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
     r#async: bool,
-    another: *mut wire_cst_list_prim_u_8,
+    another: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40576,22 +40776,22 @@ pub struct wire_cst_my_size {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_stream_entry_twin_normal {
-    hello: *mut wire_cst_list_prim_u_8,
+    hello: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_stream_entry_twin_rust_async {
-    hello: *mut wire_cst_list_prim_u_8,
+    hello: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_stream_entry_twin_rust_async_sse {
-    hello: *mut wire_cst_list_prim_u_8,
+    hello: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_stream_entry_twin_sse {
-    hello: *mut wire_cst_list_prim_u_8,
+    hello: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40602,7 +40802,7 @@ pub struct wire_cst_my_struct {
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_tree_node_twin_normal {
     value_i32: i32,
-    value_vec_u8: *mut wire_cst_list_prim_u_8,
+    value_vec_u8: *mut wire_cst_list_prim_u_8_strict,
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_normal,
 }
@@ -40610,7 +40810,7 @@ pub struct wire_cst_my_tree_node_twin_normal {
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_tree_node_twin_rust_async {
     value_i32: i32,
-    value_vec_u8: *mut wire_cst_list_prim_u_8,
+    value_vec_u8: *mut wire_cst_list_prim_u_8_strict,
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_rust_async,
 }
@@ -40618,7 +40818,7 @@ pub struct wire_cst_my_tree_node_twin_rust_async {
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_tree_node_twin_rust_async_sse {
     value_i32: i32,
-    value_vec_u8: *mut wire_cst_list_prim_u_8,
+    value_vec_u8: *mut wire_cst_list_prim_u_8_strict,
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_rust_async_sse,
 }
@@ -40626,7 +40826,7 @@ pub struct wire_cst_my_tree_node_twin_rust_async_sse {
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_tree_node_twin_sse {
     value_i32: i32,
-    value_vec_u8: *mut wire_cst_list_prim_u_8,
+    value_vec_u8: *mut wire_cst_list_prim_u_8_strict,
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_sse,
 }
@@ -40634,7 +40834,7 @@ pub struct wire_cst_my_tree_node_twin_sse {
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_tree_node_twin_sync {
     value_i32: i32,
-    value_vec_u8: *mut wire_cst_list_prim_u_8,
+    value_vec_u8: *mut wire_cst_list_prim_u_8_strict,
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_sync,
 }
@@ -40642,7 +40842,7 @@ pub struct wire_cst_my_tree_node_twin_sync {
 #[derive(Clone, Copy)]
 pub struct wire_cst_my_tree_node_twin_sync_sse {
     value_i32: i32,
-    value_vec_u8: *mut wire_cst_list_prim_u_8,
+    value_vec_u8: *mut wire_cst_list_prim_u_8_strict,
     value_boolean: bool,
     children: *mut wire_cst_list_my_tree_node_twin_sync_sse,
 }
@@ -40690,42 +40890,42 @@ pub struct wire_cst_new_type_int_twin_sync_sse {
 #[derive(Clone, Copy)]
 pub struct wire_cst_note_twin_normal {
     day: *mut i32,
-    body: *mut wire_cst_list_prim_u_8,
+    body: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_note_twin_rust_async {
     day: *mut i32,
-    body: *mut wire_cst_list_prim_u_8,
+    body: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_note_twin_rust_async_sse {
     day: *mut i32,
-    body: *mut wire_cst_list_prim_u_8,
+    body: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_note_twin_sse {
     day: *mut i32,
-    body: *mut wire_cst_list_prim_u_8,
+    body: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_note_twin_sync {
     day: *mut i32,
-    body: *mut wire_cst_list_prim_u_8,
+    body: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_note_twin_sync_sse {
     day: *mut i32,
-    body: *mut wire_cst_list_prim_u_8,
+    body: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_numbers {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40774,7 +40974,7 @@ pub struct wire_cst_opt_vecs_twin_normal {
     i32: *mut wire_cst_list_opt_box_autoadd_i_32,
     enums: *mut wire_cst_list_opt_box_autoadd_weekdays_twin_normal,
     strings: *mut wire_cst_list_opt_String,
-    buffers: *mut wire_cst_list_opt_list_prim_i_32,
+    buffers: *mut wire_cst_list_opt_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40782,7 +40982,7 @@ pub struct wire_cst_opt_vecs_twin_rust_async {
     i32: *mut wire_cst_list_opt_box_autoadd_i_32,
     enums: *mut wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async,
     strings: *mut wire_cst_list_opt_String,
-    buffers: *mut wire_cst_list_opt_list_prim_i_32,
+    buffers: *mut wire_cst_list_opt_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40790,7 +40990,7 @@ pub struct wire_cst_opt_vecs_twin_rust_async_sse {
     i32: *mut wire_cst_list_opt_box_autoadd_i_32,
     enums: *mut wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse,
     strings: *mut wire_cst_list_opt_String,
-    buffers: *mut wire_cst_list_opt_list_prim_i_32,
+    buffers: *mut wire_cst_list_opt_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40798,7 +40998,7 @@ pub struct wire_cst_opt_vecs_twin_sse {
     i32: *mut wire_cst_list_opt_box_autoadd_i_32,
     enums: *mut wire_cst_list_opt_box_autoadd_weekdays_twin_sse,
     strings: *mut wire_cst_list_opt_String,
-    buffers: *mut wire_cst_list_opt_list_prim_i_32,
+    buffers: *mut wire_cst_list_opt_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40806,7 +41006,7 @@ pub struct wire_cst_opt_vecs_twin_sync {
     i32: *mut wire_cst_list_opt_box_autoadd_i_32,
     enums: *mut wire_cst_list_opt_box_autoadd_weekdays_twin_sync,
     strings: *mut wire_cst_list_opt_String,
-    buffers: *mut wire_cst_list_opt_list_prim_i_32,
+    buffers: *mut wire_cst_list_opt_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40814,7 +41014,7 @@ pub struct wire_cst_opt_vecs_twin_sync_sse {
     i32: *mut wire_cst_list_opt_box_autoadd_i_32,
     enums: *mut wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse,
     strings: *mut wire_cst_list_opt_String,
-    buffers: *mut wire_cst_list_opt_list_prim_i_32,
+    buffers: *mut wire_cst_list_opt_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40884,37 +41084,37 @@ pub struct wire_cst_RawStringEnumMirrored_ListOfNested {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_raw_string_item_struct_twin_normal {
-    r#type: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_raw_string_item_struct_twin_rust_async {
-    r#type: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_raw_string_item_struct_twin_rust_async_sse {
-    r#type: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_raw_string_item_struct_twin_sse {
-    r#type: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_raw_string_item_struct_twin_sync {
-    r#type: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_raw_string_item_struct_twin_sync_sse {
-    r#type: *mut wire_cst_list_prim_u_8,
+    r#type: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_raw_string_mirrored {
-    value: *mut wire_cst_list_prim_u_8,
+    value: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40931,103 +41131,103 @@ pub struct wire_cst_record_i_32_i_32 {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_enum_simple_twin_normal {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_enum_simple_twin_rust_async {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_enum_simple_twin_rust_async_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_enum_simple_twin_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_enum_simple_twin_sync {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_enum_simple_twin_sync_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_i_32 {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_kitchen_sink_twin_normal {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: wire_cst_kitchen_sink_twin_normal,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_kitchen_sink_twin_rust_async {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: wire_cst_kitchen_sink_twin_rust_async,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_kitchen_sink_twin_rust_async_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: wire_cst_kitchen_sink_twin_rust_async_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_kitchen_sink_twin_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: wire_cst_kitchen_sink_twin_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_kitchen_sink_twin_sync {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: wire_cst_kitchen_sink_twin_sync,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_kitchen_sink_twin_sync_sse {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: wire_cst_kitchen_sink_twin_sync_sse,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_record_string_list_prim_u_8 {
-    field0: *mut wire_cst_list_prim_u_8,
-    field1: *mut wire_cst_list_prim_u_8,
+pub struct wire_cst_record_string_list_prim_u_8_strict {
+    field0: *mut wire_cst_list_prim_u_8_strict,
+    field1: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_my_size {
-    field0: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
     field1: wire_cst_my_size,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_record_string_string {
-    field0: *mut wire_cst_list_prim_u_8,
-    field1: *mut wire_cst_list_prim_u_8,
+    field0: *mut wire_cst_list_prim_u_8_strict,
+    field1: *mut wire_cst_list_prim_u_8_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_sequences {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -41365,38 +41565,38 @@ pub struct wire_cst_test_chrono_twin_sync {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_id_twin_normal {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_id_twin_rust_async {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_id_twin_rust_async_sse {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_id_twin_sse {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_id_twin_sync {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_id_twin_sync_sse {
-    field0: *mut wire_cst_list_prim_i_32,
+    field0: *mut wire_cst_list_prim_i_32_strict,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_model_twin_normal {
     id: u64,
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
@@ -41404,7 +41604,7 @@ pub struct wire_cst_test_model_twin_normal {
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_model_twin_rust_async {
     id: u64,
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
@@ -41412,7 +41612,7 @@ pub struct wire_cst_test_model_twin_rust_async {
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_model_twin_rust_async_sse {
     id: u64,
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
@@ -41420,7 +41620,7 @@ pub struct wire_cst_test_model_twin_rust_async_sse {
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_model_twin_sse {
     id: u64,
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
@@ -41428,7 +41628,7 @@ pub struct wire_cst_test_model_twin_sse {
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_model_twin_sync {
     id: u64,
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
@@ -41436,7 +41636,7 @@ pub struct wire_cst_test_model_twin_sync {
 #[derive(Clone, Copy)]
 pub struct wire_cst_test_model_twin_sync_sse {
     id: u64,
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
     alias_enum: i32,
     alias_struct: wire_cst_my_struct,
 }
@@ -41539,90 +41739,90 @@ pub struct wire_cst_user_id_twin_sync_sse {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_vec_of_primitive_pack_twin_normal {
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int16list: *mut wire_cst_list_prim_i_16,
-    uint16list: *mut wire_cst_list_prim_u_16,
-    uint32list: *mut wire_cst_list_prim_u_32,
-    int32list: *mut wire_cst_list_prim_i_32,
-    uint64list: *mut wire_cst_list_prim_u_64,
-    int64list: *mut wire_cst_list_prim_i_64,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int16list: *mut wire_cst_list_prim_i_16_strict,
+    uint16list: *mut wire_cst_list_prim_u_16_strict,
+    uint32list: *mut wire_cst_list_prim_u_32_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    uint64list: *mut wire_cst_list_prim_u_64_strict,
+    int64list: *mut wire_cst_list_prim_i_64_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     bool_list: *mut wire_cst_list_bool,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_vec_of_primitive_pack_twin_rust_async {
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int16list: *mut wire_cst_list_prim_i_16,
-    uint16list: *mut wire_cst_list_prim_u_16,
-    uint32list: *mut wire_cst_list_prim_u_32,
-    int32list: *mut wire_cst_list_prim_i_32,
-    uint64list: *mut wire_cst_list_prim_u_64,
-    int64list: *mut wire_cst_list_prim_i_64,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int16list: *mut wire_cst_list_prim_i_16_strict,
+    uint16list: *mut wire_cst_list_prim_u_16_strict,
+    uint32list: *mut wire_cst_list_prim_u_32_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    uint64list: *mut wire_cst_list_prim_u_64_strict,
+    int64list: *mut wire_cst_list_prim_i_64_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     bool_list: *mut wire_cst_list_bool,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int16list: *mut wire_cst_list_prim_i_16,
-    uint16list: *mut wire_cst_list_prim_u_16,
-    uint32list: *mut wire_cst_list_prim_u_32,
-    int32list: *mut wire_cst_list_prim_i_32,
-    uint64list: *mut wire_cst_list_prim_u_64,
-    int64list: *mut wire_cst_list_prim_i_64,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int16list: *mut wire_cst_list_prim_i_16_strict,
+    uint16list: *mut wire_cst_list_prim_u_16_strict,
+    uint32list: *mut wire_cst_list_prim_u_32_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    uint64list: *mut wire_cst_list_prim_u_64_strict,
+    int64list: *mut wire_cst_list_prim_i_64_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     bool_list: *mut wire_cst_list_bool,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_vec_of_primitive_pack_twin_sse {
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int16list: *mut wire_cst_list_prim_i_16,
-    uint16list: *mut wire_cst_list_prim_u_16,
-    uint32list: *mut wire_cst_list_prim_u_32,
-    int32list: *mut wire_cst_list_prim_i_32,
-    uint64list: *mut wire_cst_list_prim_u_64,
-    int64list: *mut wire_cst_list_prim_i_64,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int16list: *mut wire_cst_list_prim_i_16_strict,
+    uint16list: *mut wire_cst_list_prim_u_16_strict,
+    uint32list: *mut wire_cst_list_prim_u_32_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    uint64list: *mut wire_cst_list_prim_u_64_strict,
+    int64list: *mut wire_cst_list_prim_i_64_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     bool_list: *mut wire_cst_list_bool,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_vec_of_primitive_pack_twin_sync {
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int16list: *mut wire_cst_list_prim_i_16,
-    uint16list: *mut wire_cst_list_prim_u_16,
-    uint32list: *mut wire_cst_list_prim_u_32,
-    int32list: *mut wire_cst_list_prim_i_32,
-    uint64list: *mut wire_cst_list_prim_u_64,
-    int64list: *mut wire_cst_list_prim_i_64,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int16list: *mut wire_cst_list_prim_i_16_strict,
+    uint16list: *mut wire_cst_list_prim_u_16_strict,
+    uint32list: *mut wire_cst_list_prim_u_32_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    uint64list: *mut wire_cst_list_prim_u_64_strict,
+    int64list: *mut wire_cst_list_prim_i_64_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     bool_list: *mut wire_cst_list_bool,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_vec_of_primitive_pack_twin_sync_sse {
-    int8list: *mut wire_cst_list_prim_i_8,
-    uint8list: *mut wire_cst_list_prim_u_8,
-    int16list: *mut wire_cst_list_prim_i_16,
-    uint16list: *mut wire_cst_list_prim_u_16,
-    uint32list: *mut wire_cst_list_prim_u_32,
-    int32list: *mut wire_cst_list_prim_i_32,
-    uint64list: *mut wire_cst_list_prim_u_64,
-    int64list: *mut wire_cst_list_prim_i_64,
-    float32list: *mut wire_cst_list_prim_f_32,
-    float64list: *mut wire_cst_list_prim_f_64,
+    int8list: *mut wire_cst_list_prim_i_8_strict,
+    uint8list: *mut wire_cst_list_prim_u_8_strict,
+    int16list: *mut wire_cst_list_prim_i_16_strict,
+    uint16list: *mut wire_cst_list_prim_u_16_strict,
+    uint32list: *mut wire_cst_list_prim_u_32_strict,
+    int32list: *mut wire_cst_list_prim_i_32_strict,
+    uint64list: *mut wire_cst_list_prim_u_64_strict,
+    int64list: *mut wire_cst_list_prim_i_64_strict,
+    float32list: *mut wire_cst_list_prim_f_32_strict,
+    float64list: *mut wire_cst_list_prim_f_64_strict,
     bool_list: *mut wire_cst_list_bool,
 }
