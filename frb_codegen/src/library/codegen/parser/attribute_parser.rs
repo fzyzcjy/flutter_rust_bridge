@@ -399,6 +399,20 @@ mod tests {
     use syn::ItemFn;
 
     #[test]
+    fn test_multiple_via_comma() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(sync, non_final)]")?;
+        assert_eq!(parsed.0, vec![FrbAttribute::Sync, FrbAttribute::NonFinal]);
+        Ok(())
+    }
+
+    #[test]
+    fn test_multiple_via_hash() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(sync)]\n#[frb(non_final)]")?;
+        assert_eq!(parsed.0, vec![FrbAttribute::Sync, FrbAttribute::NonFinal]);
+        Ok(())
+    }
+
+    #[test]
     fn test_empty() -> anyhow::Result<()> {
         let parsed = parse("#[frb]")?;
         assert_eq!(parsed.0, vec![]);
