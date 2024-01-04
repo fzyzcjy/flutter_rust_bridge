@@ -4953,16 +4953,6 @@ impl CstDecode<Vec<f32>> for Box<[f32]> {
         self.into_vec()
     }
 }
-impl CstDecode<Vec<f32>> for Box<[f32]> {
-    fn cst_decode(self) -> Vec<f32> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<f64>> for Box<[f64]> {
-    fn cst_decode(self) -> Vec<f64> {
-        self.into_vec()
-    }
-}
 impl CstDecode<Vec<f64>> for Box<[f64]> {
     fn cst_decode(self) -> Vec<f64> {
         self.into_vec()
@@ -4970,16 +4960,6 @@ impl CstDecode<Vec<f64>> for Box<[f64]> {
 }
 impl CstDecode<Vec<i16>> for Box<[i16]> {
     fn cst_decode(self) -> Vec<i16> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<i16>> for Box<[i16]> {
-    fn cst_decode(self) -> Vec<i16> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<i32>> for Box<[i32]> {
-    fn cst_decode(self) -> Vec<i32> {
         self.into_vec()
     }
 }
@@ -4998,23 +4978,8 @@ impl CstDecode<Vec<i8>> for Box<[i8]> {
         self.into_vec()
     }
 }
-impl CstDecode<Vec<i8>> for Box<[i8]> {
-    fn cst_decode(self) -> Vec<i8> {
-        self.into_vec()
-    }
-}
 impl CstDecode<Vec<u16>> for Box<[u16]> {
     fn cst_decode(self) -> Vec<u16> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<u16>> for Box<[u16]> {
-    fn cst_decode(self) -> Vec<u16> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<u32>> for Box<[u32]> {
-    fn cst_decode(self) -> Vec<u32> {
         self.into_vec()
     }
 }
@@ -5025,11 +4990,6 @@ impl CstDecode<Vec<u32>> for Box<[u32]> {
 }
 impl CstDecode<Vec<u64>> for Box<[u64]> {
     fn cst_decode(self) -> Vec<u64> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<u8>> for Box<[u8]> {
-    fn cst_decode(self) -> Vec<u8> {
         self.into_vec()
     }
 }
