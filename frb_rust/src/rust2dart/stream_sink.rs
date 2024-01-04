@@ -2,6 +2,7 @@ use crate::codec::BaseCodec;
 use crate::generalized_isolate::{channel_to_handle, handle_to_channel, SendableChannelHandle};
 use crate::rust2dart::sender::Rust2DartSender;
 use std::marker::PhantomData;
+use std::sync::Arc;
 
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
@@ -9,14 +10,16 @@ use std::marker::PhantomData;
 #[derive(Clone)]
 pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec = DcoCodec> {
     sendable_channel_handle: SendableChannelHandle,
+    closer: Arc<StreamSinkCloser<Rust2DartCodec>>,
     _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
 
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     /// Create a new sink from a port wrapper.
-    pub fn new(sender: Rust2DartSender) -> Self {
+    pub fn new(sender: Rust2DartSender, closer: Arc<StreamSinkCloser<Rust2DartCodec>>) -> Self {
         Self {
             sendable_channel_handle: channel_to_handle(&sender.channel),
+            closer,
             _phantom_data: Default::default(),
         }
     }
@@ -28,6 +31,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     }
 }
 
+// *NOT* cloneable, since it invokes stream-close when dropped
 pub(crate) struct StreamSinkCloser<Rust2DartCodec: BaseCodec> {
     sendable_channel_handle: SendableChannelHandle,
     _phantom_data: PhantomData<Rust2DartCodec>,
