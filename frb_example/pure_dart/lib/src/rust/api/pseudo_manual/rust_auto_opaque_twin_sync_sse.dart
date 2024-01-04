@@ -207,6 +207,11 @@ class NonCloneSimpleTwinSyncSse extends RustOpaque {
         that: this,
       );
 
+  int get instanceMethodGetterTwinSyncSse => RustLib.instance.api
+          .nonCloneSimpleTwinSyncSseInstanceMethodGetterTwinSyncSse(
+        that: this,
+      );
+
   NonCloneSimpleTwinSyncSse instanceMethodReturnOwnTwinSyncSse(
           {dynamic hint}) =>
       RustLib.instance.api

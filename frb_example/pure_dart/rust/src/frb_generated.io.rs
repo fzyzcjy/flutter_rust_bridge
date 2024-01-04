@@ -18163,6 +18163,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_ne
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(
+    port_: i64,
+    that: *mut wire_cst_concatenate_with_twin_normal,
+) {
+    wire_ConcatenateWithTwinNormal_simple_getter_twin_normal_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_SumWithTwinNormal_sum_twin_normal(
     port_: i64,
     that: *mut wire_cst_sum_with_twin_normal,
@@ -23861,6 +23869,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async(
+    port_: i64,
+    that: *mut wire_cst_concatenate_with_twin_rust_async,
+) {
+    wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_SumWithTwinRustAsync_sum_twin_rust_async(
     port_: i64,
     that: *mut wire_cst_sum_with_twin_rust_async,
@@ -23978,6 +23994,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync
     data_len_: i32,
 ) {
     wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -24111,6 +24142,16 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_new_t
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSse_simple_getter_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_ConcatenateWithTwinSse_simple_getter_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_SumWithTwinSse_sum_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -24195,6 +24236,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_new_
     a: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_ConcatenateWithTwinSync_new_twin_sync_impl(a)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_simple_getter_twin_sync(
+    that: *mut wire_cst_concatenate_with_twin_sync,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_ConcatenateWithTwinSync_simple_getter_twin_sync_impl(that)
 }
 
 #[no_mangle]
@@ -24310,6 +24358,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSyncSse_n
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -28371,6 +28428,21 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instan
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -28767,6 +28839,13 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_insta
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync(
+    that: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync_impl(that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
     that: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -29007,6 +29086,19 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSyncSse_in
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse_impl(
         ptr_,
         rust_vec_len_,
         data_len_,
@@ -30851,6 +30943,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_ins
     that: *const std::ffi::c_void,
 ) {
     wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]

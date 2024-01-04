@@ -226,6 +226,12 @@ impl NonCloneSimpleTwinSync {
     pub fn instance_method_return_own_twin_sync(&self) -> NonCloneSimpleTwinSync {
         Self { inner: 42 }
     }
+
+    #[frb(getter)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_getter_twin_sync(&self) -> i32 {
+        self.inner
+    }
 }
 
 // ================ types with both encodable and opaque fields ===================

@@ -199,6 +199,11 @@ impl NonCloneSimpleTwinNormal {
     pub fn instance_method_return_own_twin_normal(&self) -> NonCloneSimpleTwinNormal {
         Self { inner: 42 }
     }
+
+    #[frb(getter)]
+    pub fn instance_method_getter_twin_normal(&self) -> i32 {
+        self.inner
+    }
 }
 
 // ================ types with both encodable and opaque fields ===================

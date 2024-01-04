@@ -65,6 +65,11 @@ class ConcatenateWithTwinSyncSse {
       RustLib.instance.api
           .concatenateWithTwinSyncSseNewTwinSyncSse(a: a, hint: hint);
 
+  String get simpleGetterTwinSyncSse =>
+      RustLib.instance.api.concatenateWithTwinSyncSseSimpleGetterTwinSyncSse(
+        that: this,
+      );
+
   @override
   int get hashCode => a.hashCode;
 

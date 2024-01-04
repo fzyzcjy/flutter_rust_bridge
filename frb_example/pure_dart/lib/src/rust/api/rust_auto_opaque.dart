@@ -211,6 +211,11 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
         that: this,
       );
 
+  Future<int> get instanceMethodGetterTwinNormal => RustLib.instance.api
+          .nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
+        that: this,
+      );
+
   Future<NonCloneSimpleTwinNormal> instanceMethodReturnOwnTwinNormal(
           {dynamic hint}) =>
       RustLib.instance.api

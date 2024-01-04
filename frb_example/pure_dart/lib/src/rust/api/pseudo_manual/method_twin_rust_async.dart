@@ -65,6 +65,11 @@ class ConcatenateWithTwinRustAsync {
       RustLib.instance.api
           .concatenateWithTwinRustAsyncNewTwinRustAsync(a: a, hint: hint);
 
+  Future<String> get simpleGetterTwinRustAsync => RustLib.instance.api
+          .concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
+        that: this,
+      );
+
   @override
   int get hashCode => a.hashCode;
 

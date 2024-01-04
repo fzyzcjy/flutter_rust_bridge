@@ -23,6 +23,7 @@
       },
       "comments": [],
       "error_output": null,
+      "getter": false,
       "initializer": false,
       "inputs": [
         {

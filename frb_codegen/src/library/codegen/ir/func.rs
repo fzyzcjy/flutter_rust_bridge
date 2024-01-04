@@ -15,6 +15,8 @@ pub struct IrFunc {
     pub mode: IrFuncMode,
     pub rust_async: bool,
     pub initializer: bool,
+    // When later we support setter, etc, we should refactor it into an enum
+    pub getter: bool,
     pub comments: Vec<IrComment>,
     pub codec_mode_pack: CodecModePack,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison

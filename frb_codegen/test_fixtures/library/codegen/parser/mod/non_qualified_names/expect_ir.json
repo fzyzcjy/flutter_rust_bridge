@@ -8,6 +8,7 @@
       },
       "comments": [],
       "error_output": null,
+      "getter": false,
       "initializer": false,
       "inputs": [
         {
@@ -62,6 +63,7 @@
         "safe_ident": "String",
         "type": "Delegate"
       },
+      "getter": false,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
