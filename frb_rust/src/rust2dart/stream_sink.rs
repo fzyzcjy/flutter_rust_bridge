@@ -38,6 +38,15 @@ pub(crate) struct StreamSinkCloser<Rust2DartCodec: BaseCodec> {
     _phantom_data: PhantomData<Rust2DartCodec>,
 }
 
+impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
+    pub fn new(sendable_channel_handle: SendableChannelHandle) -> Self {
+        Self {
+            sendable_channel_handle,
+            _phantom_data: PhantomData,
+        }
+    }
+}
+
 impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
     fn drop(&mut self) {
         sender(&self.sendable_channel_handle)

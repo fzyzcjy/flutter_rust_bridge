@@ -10,6 +10,7 @@ use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
+use crate::rust2dart::stream_sink::StreamSinkCloser;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
@@ -60,12 +61,17 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
+            let stream_sink_closer = StreamSinkCloser::new();
+
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
             let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(
+                    sender.clone(),
+                    stream_sink_closer.clone(),
+                ));
 
                 let ret = task(task_context);
 
@@ -110,6 +116,8 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let el2 = self.error_listener;
 
         self.async_runtime.spawn(async move {
+            let stream_sink_closer = StreamSinkCloser::new();
+
             let TaskInfo { port, mode, .. } = task_info;
             let port = port.unwrap();
             #[allow(clippy::clone_on_copy)]
@@ -118,7 +126,10 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(
+                    sender.clone(),
+                    stream_sink_closer.clone(),
+                ));
 
                 let ret = task(task_context).await;
 
