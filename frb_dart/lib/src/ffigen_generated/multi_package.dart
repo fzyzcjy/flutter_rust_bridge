@@ -220,20 +220,6 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void js_console_error(
-    ffi.Pointer<ffi.Int> msg,
-  ) {
-    return _js_console_error(
-      msg,
-    );
-  }
-
-  late final _js_console_errorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int>)>>(
-          'js_console_error');
-  late final _js_console_error =
-      _js_console_errorPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
-
   /// # Safety
   ///
   /// This should never be called manually.

@@ -16,8 +16,6 @@ typedef struct WireSyncRust2DartSse {
   int32_t len;
 } WireSyncRust2DartSse;
 
-extern void js_console_error(const str *msg);
-
 /**
  * # Safety
  *
