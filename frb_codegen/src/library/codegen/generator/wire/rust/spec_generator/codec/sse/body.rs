@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 
 pub(super) fn generate_encode_or_decode(
     context: WireRustCodecSseGeneratorContext,
@@ -20,6 +21,7 @@ pub(super) fn generate_encode_or_decode(
 
     let mut inner = Default::default();
     inner += (types.iter())
+        .unique_by(|ty| ty.rust_api_type())
         .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
         .collect();
     WireRustCodecOutputSpec { inner }
