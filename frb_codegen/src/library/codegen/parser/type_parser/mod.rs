@@ -103,6 +103,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
+    pub(crate) location: ParsingLocation,
+}
+
+pub(crate) enum ParsingLocation {
+    Param,
+    Return,
 }
 
 impl IrContext for TypeParser<'_> {

@@ -10,7 +10,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic, Unencodable};
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
-use crate::codegen::parser::type_parser::TypeParserWithContext;
+use crate::codegen::parser::type_parser::{ParsingLocation, TypeParserWithContext};
 use anyhow::bail;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -45,7 +45,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(inner.clone()),
             }),
 
-            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned()),
+            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned(), self.context.location == ParsingLocation::Return),
 
             ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
                 key: Box::new(key.clone()),
