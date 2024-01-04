@@ -47,7 +47,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("Vec", Some(Generic([element]))) => {
                 let strict_dart_type = match self.context.location {
-                    ParsingLocation::Param => false,
+                    ParsingLocation::Param => TODO,
                     ParsingLocation::Return => true,
                     // frb-coverage:ignore-start
                     ParsingLocation::Misc => unreachable!(),
