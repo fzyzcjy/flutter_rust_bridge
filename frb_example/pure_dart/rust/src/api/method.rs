@@ -41,7 +41,6 @@ impl ConcatenateWithTwinNormal {
                 })
                 .unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -50,7 +49,6 @@ impl ConcatenateWithTwinNormal {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -67,7 +65,6 @@ impl ConcatenateWithTwinNormal {
                 })
                 .unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 
@@ -76,7 +73,6 @@ impl ConcatenateWithTwinNormal {
             for i in 0..5 {
                 sink.add(i).unwrap();
             }
-            sink.close().unwrap();
         }));
     }
 }

@@ -56,7 +56,6 @@ pub fn is_app_embedded_twin_normal(app_settings: ApplicationSettings) -> bool {
 pub fn app_settings_stream_twin_normal(sink: StreamSink<ApplicationSettings>) {
     let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
     sink.add(app_settings).unwrap();
-    sink.close().unwrap();
 }
 
 // use a stream of a vec of mirrored type
@@ -66,7 +65,6 @@ pub fn app_settings_vec_stream_twin_normal(sink: StreamSink<Vec<ApplicationSetti
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
     ];
     sink.add(app_settings).unwrap();
-    sink.close().unwrap();
 }
 
 pub struct MirrorStructTwinNormal {
@@ -88,7 +86,6 @@ pub fn mirror_struct_stream_twin_normal(sink: StreamSink<MirrorStructTwinNormal>
         ],
     };
     sink.add(val).unwrap();
-    sink.close().unwrap();
 }
 
 // usa a tuple of Mirror types for a StreamSink
@@ -102,7 +99,6 @@ pub fn mirror_tuple_stream_twin_normal(
         }),
     );
     sink.add(tuple).unwrap();
-    sink.close().unwrap();
 }
 
 #[frb(mirror(ApplicationMessage))]
