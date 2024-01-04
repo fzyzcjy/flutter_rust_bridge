@@ -127,3 +127,9 @@ impl StructOrRecord {
         }
     }
 }
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub(crate) enum Direction {
+    Rust2Dart,
+    Dart2Rust,
+}
