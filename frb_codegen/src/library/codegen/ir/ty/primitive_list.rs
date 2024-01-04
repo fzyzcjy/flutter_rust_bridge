@@ -18,7 +18,15 @@ impl IrTypeTrait for IrTypePrimitiveList {
     }
 
     fn safe_ident(&self) -> String {
-        format!("list_prim_{}", self.primitive.safe_ident())
+        format!(
+            "list_prim_{}_{}",
+            self.primitive.safe_ident(),
+            if self.strict_dart_type {
+                "strict"
+            } else {
+                "loose"
+            }
+        )
     }
 
     fn rust_api_type(&self) -> String {
