@@ -1,16 +1,11 @@
+use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypePrimitiveList {
     pub primitive: IrTypePrimitive,
-    pub direction: PrimitveListLocation,
-}
-
-#[derive(Copy, strum_macros::Display)]
-pub(crate) enum PrimitveListLocation {
-    Rust2Dart,
-    Dart2Rust,
+    pub direction: Direction,
 }
 }
 

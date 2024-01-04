@@ -1,11 +1,11 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
+use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
     IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::primitive_list::PrimitveListLocation;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
@@ -175,7 +175,7 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match self.ir.direction {
-            PrimitveListLocation::Rust2Dart => match &self.ir.primitive {
+            Direction::Rust2Dart => match &self.ir.primitive {
                 IrTypePrimitive::U8 => "Uint8List",
                 IrTypePrimitive::I8 => "Int8List",
                 IrTypePrimitive::U16 => "Uint16List",
@@ -191,7 +191,7 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
                 // frb-coverage:ignore-end
             }
             .to_string(),
-            PrimitveListLocation::Dart2Rust => ApiDartGenerator::new(
+            Direction::Dart2Rust => ApiDartGenerator::new(
                 IrTypeGeneralList {
                     inner: Box::new(IrType::Primitive(self.ir.primitive.clone())),
                 },
