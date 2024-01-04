@@ -17,6 +17,7 @@ use crate::transfer;
 use futures::FutureExt;
 use std::future::Future;
 use std::panic::AssertUnwindSafe;
+use std::sync::Arc;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -61,7 +62,7 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
-            let stream_sink_closer = StreamSinkCloser::new();
+            let stream_sink_closer = Arc::new(StreamSinkCloser::new(Channel::new(port.clone())));
 
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
@@ -116,12 +117,12 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let el2 = self.error_listener;
 
         self.async_runtime.spawn(async move {
-            let stream_sink_closer = StreamSinkCloser::new();
-
             let TaskInfo { port, mode, .. } = task_info;
             let port = port.unwrap();
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
+
+            let stream_sink_closer = Arc::new(StreamSinkCloser::new(Channel::new(port.clone())));
 
             let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
