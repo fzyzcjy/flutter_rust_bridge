@@ -27,7 +27,12 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
             }
             Lang::RustLang(_) => {
                 // TODO do not use naive loop
-                general_list_generate_encode(lang, &IrType::Primitive(self.ir.primitive.clone()))
+                self.ir.strict_dart_type.then(|| {
+                    general_list_generate_encode(
+                        lang,
+                        &IrType::Primitive(self.ir.primitive.clone()),
+                    )
+                })
             }
         })
     }
@@ -43,11 +48,13 @@ impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
             ),
             Lang::RustLang(_) => {
                 // TODO do not use naive loop
-                general_list_generate_decode(
-                    lang,
-                    &IrType::Primitive(self.ir.primitive.clone()),
-                    self.context,
-                )
+                self.ir.strict_dart_type.then(|| {
+                    general_list_generate_decode(
+                        lang,
+                        &IrType::Primitive(self.ir.primitive.clone()),
+                        self.context,
+                    )
+                })
             }
         })
     }
