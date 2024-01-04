@@ -41,7 +41,7 @@ pub(crate) struct StreamSinkCloser<Rust2DartCodec: BaseCodec> {
 impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
     fn drop(&mut self) {
         sender(&self.sendable_channel_handle)
-            .send(Rust2DartCodec::encode_close_stream().into_dart_abi())
+            .send_or_warn(Rust2DartCodec::encode_close_stream().into_dart_abi())
     }
 }
 
