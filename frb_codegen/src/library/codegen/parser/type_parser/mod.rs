@@ -106,6 +106,15 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) location: ParsingLocation,
 }
 
+impl TypeParserParsingContext {
+    pub fn new(initiated_namespace: Namespace, location: ParsingLocation) -> Self {
+        Self {
+            initiated_namespace,
+            location,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum ParsingLocation {
     Param,
