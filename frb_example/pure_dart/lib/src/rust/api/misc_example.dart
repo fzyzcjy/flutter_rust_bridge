@@ -36,7 +36,7 @@ Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
 Future<String> handleStringTwinNormal({required String s, dynamic hint}) =>
     RustLib.instance.api.handleStringTwinNormal(s: s, hint: hint);
 
-Future<Uint8List> handleVecU8TwinNormal({required Uint8List v, dynamic hint}) =>
+Future<Uint8List> handleVecU8TwinNormal({required List<int> v, dynamic hint}) =>
     RustLib.instance.api.handleVecU8TwinNormal(v: v, hint: hint);
 
 Future<MySize> handleStructTwinNormal(

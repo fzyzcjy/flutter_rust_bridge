@@ -15,24 +15,24 @@ typedef struct benchmark_raw_list_prim_u_8 {
   int32_t len;
 } benchmark_raw_list_prim_u_8;
 
-typedef struct wire_cst_list_prim_u_8 {
+typedef struct wire_cst_list_prim_u_8_strict {
   uint8_t *ptr;
   int32_t len;
-} wire_cst_list_prim_u_8;
+} wire_cst_list_prim_u_8_strict;
 
-typedef struct wire_cst_list_prim_i_32 {
+typedef struct wire_cst_list_prim_i_32_strict {
   int32_t *ptr;
   int32_t len;
-} wire_cst_list_prim_i_32;
+} wire_cst_list_prim_i_32_strict;
 
 typedef struct wire_cst_test_id_twin_normal {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_test_id_twin_normal;
 
-typedef struct wire_cst_list_prim_f_64 {
+typedef struct wire_cst_list_prim_f_64_strict {
   double *ptr;
   int32_t len;
-} wire_cst_list_prim_f_64;
+} wire_cst_list_prim_f_64_strict;
 
 typedef struct wire_cst_list_test_id_twin_normal {
   struct wire_cst_test_id_twin_normal *ptr;
@@ -40,20 +40,20 @@ typedef struct wire_cst_list_test_id_twin_normal {
 } wire_cst_list_test_id_twin_normal;
 
 typedef struct wire_cst_feed_id_twin_normal {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_feed_id_twin_normal;
 
 typedef struct wire_cst_blob_twin_normal {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_blob_twin_normal;
 
 typedef struct wire_cst_message_id_twin_normal {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_message_id_twin_normal;
 
 typedef struct wire_cst_customized_twin_normal {
-  struct wire_cst_list_prim_u_8 *final_field;
-  struct wire_cst_list_prim_u_8 *non_final_field;
+  struct wire_cst_list_prim_u_8_strict *final_field;
+  struct wire_cst_list_prim_u_8_strict *non_final_field;
 } wire_cst_customized_twin_normal;
 
 typedef struct wire_cst_user_id_twin_normal {
@@ -110,11 +110,11 @@ typedef struct wire_cst_list_DartOpaque {
 } wire_cst_list_DartOpaque;
 
 typedef struct wire_cst_EnumWithItemMixedTwinNormal_B {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinNormal_B;
 
 typedef struct wire_cst_EnumWithItemMixedTwinNormal_C {
-  struct wire_cst_list_prim_u_8 *c_field;
+  struct wire_cst_list_prim_u_8_strict *c_field;
 } wire_cst_EnumWithItemMixedTwinNormal_C;
 
 typedef union EnumWithItemMixedTwinNormalKind {
@@ -128,11 +128,11 @@ typedef struct wire_cst_enum_with_item_mixed_twin_normal {
 } wire_cst_enum_with_item_mixed_twin_normal;
 
 typedef struct wire_cst_EnumWithItemStructTwinNormal_A {
-  struct wire_cst_list_prim_u_8 *a_field;
+  struct wire_cst_list_prim_u_8_strict *a_field;
 } wire_cst_EnumWithItemStructTwinNormal_A;
 
 typedef struct wire_cst_EnumWithItemStructTwinNormal_B {
-  struct wire_cst_list_prim_i_32 *b_field;
+  struct wire_cst_list_prim_i_32_strict *b_field;
 } wire_cst_EnumWithItemStructTwinNormal_B;
 
 typedef union EnumWithItemStructTwinNormalKind {
@@ -146,11 +146,11 @@ typedef struct wire_cst_enum_with_item_struct_twin_normal {
 } wire_cst_enum_with_item_struct_twin_normal;
 
 typedef struct wire_cst_EnumWithItemTupleTwinNormal_A {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemTupleTwinNormal_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinNormal_B {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_EnumWithItemTupleTwinNormal_B;
 
 typedef union EnumWithItemTupleTwinNormalKind {
@@ -180,7 +180,7 @@ typedef struct wire_cst_KitchenSinkTwinNormal_Optional {
 } wire_cst_KitchenSinkTwinNormal_Optional;
 
 typedef struct wire_cst_KitchenSinkTwinNormal_Buffer {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_KitchenSinkTwinNormal_Buffer;
 
 typedef struct wire_cst_KitchenSinkTwinNormal_Enums {
@@ -246,16 +246,16 @@ typedef struct wire_cst_measure_twin_normal {
 
 typedef struct wire_cst_note_twin_normal {
   int32_t *day;
-  struct wire_cst_list_prim_u_8 *body;
+  struct wire_cst_list_prim_u_8_strict *body;
 } wire_cst_note_twin_normal;
 
 typedef struct wire_cst_event_twin_normal {
-  struct wire_cst_list_prim_u_8 *address;
-  struct wire_cst_list_prim_u_8 *payload;
+  struct wire_cst_list_prim_u_8_strict *address;
+  struct wire_cst_list_prim_u_8_strict *payload;
 } wire_cst_event_twin_normal;
 
 typedef struct wire_cst_custom_struct_twin_normal {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_twin_normal;
 
 typedef struct wire_cst_some_struct_twin_normal {
@@ -263,11 +263,11 @@ typedef struct wire_cst_some_struct_twin_normal {
 } wire_cst_some_struct_twin_normal;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinNormal_One {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorOuterTwinNormal_One;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinNormal_Three {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorInnerTwinNormal_Three;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinNormal_Four {
@@ -299,7 +299,7 @@ typedef struct wire_cst_custom_nested_error_outer_twin_normal {
 } wire_cst_custom_nested_error_outer_twin_normal;
 
 typedef struct wire_cst_custom_struct_error_twin_normal {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_custom_struct_error_twin_normal;
 
 typedef struct wire_cst_my_struct {
@@ -320,18 +320,18 @@ typedef struct wire_cst_list_record_i_32_i_32 {
   int32_t len;
 } wire_cst_list_record_i_32_i_32;
 
-typedef struct wire_cst_record_string_list_prim_u_8 {
-  struct wire_cst_list_prim_u_8 *field0;
-  struct wire_cst_list_prim_u_8 *field1;
-} wire_cst_record_string_list_prim_u_8;
+typedef struct wire_cst_record_string_list_prim_u_8_strict {
+  struct wire_cst_list_prim_u_8_strict *field0;
+  struct wire_cst_list_prim_u_8_strict *field1;
+} wire_cst_record_string_list_prim_u_8_strict;
 
-typedef struct wire_cst_list_record_string_list_prim_u_8 {
-  struct wire_cst_record_string_list_prim_u_8 *ptr;
+typedef struct wire_cst_list_record_string_list_prim_u_8_strict {
+  struct wire_cst_record_string_list_prim_u_8_strict *ptr;
   int32_t len;
-} wire_cst_list_record_string_list_prim_u_8;
+} wire_cst_list_record_string_list_prim_u_8_strict;
 
 typedef struct wire_cst_record_string_kitchen_sink_twin_normal {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   struct wire_cst_kitchen_sink_twin_normal field1;
 } wire_cst_record_string_kitchen_sink_twin_normal;
 
@@ -341,7 +341,7 @@ typedef struct wire_cst_list_record_string_kitchen_sink_twin_normal {
 } wire_cst_list_record_string_kitchen_sink_twin_normal;
 
 typedef struct wire_cst_record_string_enum_simple_twin_normal {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_normal;
 
@@ -351,8 +351,8 @@ typedef struct wire_cst_list_record_string_enum_simple_twin_normal {
 } wire_cst_list_record_string_enum_simple_twin_normal;
 
 typedef struct wire_cst_record_string_string {
-  struct wire_cst_list_prim_u_8 *field0;
-  struct wire_cst_list_prim_u_8 *field1;
+  struct wire_cst_list_prim_u_8_strict *field0;
+  struct wire_cst_list_prim_u_8_strict *field1;
 } wire_cst_record_string_string;
 
 typedef struct wire_cst_list_record_string_string {
@@ -366,7 +366,7 @@ typedef struct wire_cst_my_size {
 } wire_cst_my_size;
 
 typedef struct wire_cst_record_string_my_size {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   struct wire_cst_my_size field1;
 } wire_cst_record_string_my_size;
 
@@ -376,12 +376,12 @@ typedef struct wire_cst_list_record_string_my_size {
 } wire_cst_list_record_string_my_size;
 
 typedef struct wire_cst_list_String {
-  struct wire_cst_list_prim_u_8 **ptr;
+  struct wire_cst_list_prim_u_8_strict **ptr;
   int32_t len;
 } wire_cst_list_String;
 
 typedef struct wire_cst_concatenate_with_twin_normal {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_concatenate_with_twin_normal;
 
 typedef struct wire_cst_sum_with_twin_normal {
@@ -389,15 +389,15 @@ typedef struct wire_cst_sum_with_twin_normal {
 } wire_cst_sum_with_twin_normal;
 
 typedef struct wire_cst_numbers {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_numbers;
 
 typedef struct wire_cst_sequences {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_sequences;
 
 typedef struct wire_cst_application_env_var {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   bool field1;
 } wire_cst_application_env_var;
 
@@ -411,8 +411,8 @@ typedef struct wire_cst_application_env {
 } wire_cst_application_env;
 
 typedef struct wire_cst_application_settings {
-  struct wire_cst_list_prim_u_8 *name;
-  struct wire_cst_list_prim_u_8 *version;
+  struct wire_cst_list_prim_u_8_strict *name;
+  struct wire_cst_list_prim_u_8_strict *version;
   int32_t mode;
   struct wire_cst_application_env *env;
   struct wire_cst_application_env *env_optional;
@@ -425,7 +425,7 @@ typedef struct wire_cst_list_my_tree_node_twin_normal {
 
 typedef struct wire_cst_my_tree_node_twin_normal {
   int32_t value_i32;
-  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  struct wire_cst_list_prim_u_8_strict *value_vec_u8;
   bool value_boolean;
   struct wire_cst_list_my_tree_node_twin_normal *children;
 } wire_cst_my_tree_node_twin_normal;
@@ -435,13 +435,18 @@ typedef struct wire_cst_my_nested_struct_twin_normal {
   int32_t weekday;
 } wire_cst_my_nested_struct_twin_normal;
 
+typedef struct wire_cst_list_prim_u_8_loose {
+  uint8_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_u_8_loose;
+
 typedef struct wire_cst_list_weekdays_twin_normal {
   int32_t *ptr;
   int32_t len;
 } wire_cst_list_weekdays_twin_normal;
 
 typedef struct wire_cst_a_twin_normal {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_a_twin_normal;
 
 typedef struct wire_cst_AbcTwinNormal_A {
@@ -498,19 +503,19 @@ typedef struct wire_cst_new_type_int_twin_normal {
   int64_t field0;
 } wire_cst_new_type_int_twin_normal;
 
-typedef struct wire_cst_list_prim_i_8 {
+typedef struct wire_cst_list_prim_i_8_strict {
   int8_t *ptr;
   int32_t len;
-} wire_cst_list_prim_i_8;
+} wire_cst_list_prim_i_8_strict;
 
-typedef struct wire_cst_list_prim_f_32 {
+typedef struct wire_cst_list_prim_f_32_strict {
   float *ptr;
   int32_t len;
-} wire_cst_list_prim_f_32;
+} wire_cst_list_prim_f_32_strict;
 
 typedef struct wire_cst_attribute_twin_normal {
-  struct wire_cst_list_prim_u_8 *key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *key;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_attribute_twin_normal;
 
 typedef struct wire_cst_list_attribute_twin_normal {
@@ -528,12 +533,12 @@ typedef struct wire_cst_exotic_optionals_twin_normal {
   int64_t *int64;
   double *float64;
   bool *boolean;
-  struct wire_cst_list_prim_u_8 *zerocopy;
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_u_8_strict *zerocopy;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_attribute_twin_normal *attributes;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_normal *attributes_nullable;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_normal *nullable_attributes;
@@ -551,24 +556,24 @@ typedef struct wire_cst_list_opt_box_autoadd_weekdays_twin_normal {
 } wire_cst_list_opt_box_autoadd_weekdays_twin_normal;
 
 typedef struct wire_cst_list_opt_String {
-  struct wire_cst_list_prim_u_8 **ptr;
+  struct wire_cst_list_prim_u_8_strict **ptr;
   int32_t len;
 } wire_cst_list_opt_String;
 
-typedef struct wire_cst_list_opt_list_prim_i_32 {
-  struct wire_cst_list_prim_i_32 **ptr;
+typedef struct wire_cst_list_opt_list_prim_i_32_strict {
+  struct wire_cst_list_prim_i_32_strict **ptr;
   int32_t len;
-} wire_cst_list_opt_list_prim_i_32;
+} wire_cst_list_opt_list_prim_i_32_strict;
 
 typedef struct wire_cst_opt_vecs_twin_normal {
   struct wire_cst_list_opt_box_autoadd_i_32 *i32;
   struct wire_cst_list_opt_box_autoadd_weekdays_twin_normal *enums;
   struct wire_cst_list_opt_String *strings;
-  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+  struct wire_cst_list_opt_list_prim_i_32_strict *buffers;
 } wire_cst_opt_vecs_twin_normal;
 
 typedef struct wire_cst_test_id_twin_rust_async {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_test_id_twin_rust_async;
 
 typedef struct wire_cst_list_test_id_twin_rust_async {
@@ -577,19 +582,19 @@ typedef struct wire_cst_list_test_id_twin_rust_async {
 } wire_cst_list_test_id_twin_rust_async;
 
 typedef struct wire_cst_feed_id_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_feed_id_twin_rust_async;
 
 typedef struct wire_cst_blob_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_blob_twin_rust_async;
 
 typedef struct wire_cst_message_id_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_message_id_twin_rust_async;
 
 typedef struct wire_cst_test_id_twin_sync {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_test_id_twin_sync;
 
 typedef struct wire_cst_list_test_id_twin_sync {
@@ -598,20 +603,20 @@ typedef struct wire_cst_list_test_id_twin_sync {
 } wire_cst_list_test_id_twin_sync;
 
 typedef struct wire_cst_feed_id_twin_sync {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_feed_id_twin_sync;
 
 typedef struct wire_cst_blob_twin_sync {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_blob_twin_sync;
 
 typedef struct wire_cst_message_id_twin_sync {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_message_id_twin_sync;
 
 typedef struct wire_cst_customized_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *final_field;
-  struct wire_cst_list_prim_u_8 *non_final_field;
+  struct wire_cst_list_prim_u_8_strict *final_field;
+  struct wire_cst_list_prim_u_8_strict *non_final_field;
 } wire_cst_customized_twin_rust_async;
 
 typedef struct wire_cst_user_id_twin_rust_async {
@@ -619,8 +624,8 @@ typedef struct wire_cst_user_id_twin_rust_async {
 } wire_cst_user_id_twin_rust_async;
 
 typedef struct wire_cst_customized_twin_sync {
-  struct wire_cst_list_prim_u_8 *final_field;
-  struct wire_cst_list_prim_u_8 *non_final_field;
+  struct wire_cst_list_prim_u_8_strict *final_field;
+  struct wire_cst_list_prim_u_8_strict *non_final_field;
 } wire_cst_customized_twin_sync;
 
 typedef struct wire_cst_user_id_twin_sync {
@@ -628,39 +633,39 @@ typedef struct wire_cst_user_id_twin_sync {
 } wire_cst_user_id_twin_sync;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_normal {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   struct wire_cst_benchmark_binary_tree_twin_normal *left;
   struct wire_cst_benchmark_binary_tree_twin_normal *right;
 } wire_cst_benchmark_binary_tree_twin_normal;
 
 typedef struct wire_cst_benchmark_blob_twin_normal {
-  struct wire_cst_list_prim_u_8 *first;
-  struct wire_cst_list_prim_u_8 *second;
-  struct wire_cst_list_prim_u_8 *third;
+  struct wire_cst_list_prim_u_8_strict *first;
+  struct wire_cst_list_prim_u_8_strict *second;
+  struct wire_cst_list_prim_u_8_strict *third;
 } wire_cst_benchmark_blob_twin_normal;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   struct wire_cst_benchmark_binary_tree_twin_rust_async *left;
   struct wire_cst_benchmark_binary_tree_twin_rust_async *right;
 } wire_cst_benchmark_binary_tree_twin_rust_async;
 
 typedef struct wire_cst_benchmark_blob_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *first;
-  struct wire_cst_list_prim_u_8 *second;
-  struct wire_cst_list_prim_u_8 *third;
+  struct wire_cst_list_prim_u_8_strict *first;
+  struct wire_cst_list_prim_u_8_strict *second;
+  struct wire_cst_list_prim_u_8_strict *third;
 } wire_cst_benchmark_blob_twin_rust_async;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_sync {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   struct wire_cst_benchmark_binary_tree_twin_sync *left;
   struct wire_cst_benchmark_binary_tree_twin_sync *right;
 } wire_cst_benchmark_binary_tree_twin_sync;
 
 typedef struct wire_cst_benchmark_blob_twin_sync {
-  struct wire_cst_list_prim_u_8 *first;
-  struct wire_cst_list_prim_u_8 *second;
-  struct wire_cst_list_prim_u_8 *third;
+  struct wire_cst_list_prim_u_8_strict *first;
+  struct wire_cst_list_prim_u_8_strict *second;
+  struct wire_cst_list_prim_u_8_strict *third;
 } wire_cst_benchmark_blob_twin_sync;
 
 typedef struct wire_cst_feature_chrono_twin_rust_async {
@@ -732,11 +737,11 @@ typedef struct wire_cst_dart_opaque_nested_twin_sync {
 } wire_cst_dart_opaque_nested_twin_sync;
 
 typedef struct wire_cst_EnumWithItemMixedTwinRustAsync_B {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinRustAsync_B;
 
 typedef struct wire_cst_EnumWithItemMixedTwinRustAsync_C {
-  struct wire_cst_list_prim_u_8 *c_field;
+  struct wire_cst_list_prim_u_8_strict *c_field;
 } wire_cst_EnumWithItemMixedTwinRustAsync_C;
 
 typedef union EnumWithItemMixedTwinRustAsyncKind {
@@ -750,11 +755,11 @@ typedef struct wire_cst_enum_with_item_mixed_twin_rust_async {
 } wire_cst_enum_with_item_mixed_twin_rust_async;
 
 typedef struct wire_cst_EnumWithItemStructTwinRustAsync_A {
-  struct wire_cst_list_prim_u_8 *a_field;
+  struct wire_cst_list_prim_u_8_strict *a_field;
 } wire_cst_EnumWithItemStructTwinRustAsync_A;
 
 typedef struct wire_cst_EnumWithItemStructTwinRustAsync_B {
-  struct wire_cst_list_prim_i_32 *b_field;
+  struct wire_cst_list_prim_i_32_strict *b_field;
 } wire_cst_EnumWithItemStructTwinRustAsync_B;
 
 typedef union EnumWithItemStructTwinRustAsyncKind {
@@ -768,11 +773,11 @@ typedef struct wire_cst_enum_with_item_struct_twin_rust_async {
 } wire_cst_enum_with_item_struct_twin_rust_async;
 
 typedef struct wire_cst_EnumWithItemTupleTwinRustAsync_A {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemTupleTwinRustAsync_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinRustAsync_B {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_EnumWithItemTupleTwinRustAsync_B;
 
 typedef union EnumWithItemTupleTwinRustAsyncKind {
@@ -802,7 +807,7 @@ typedef struct wire_cst_KitchenSinkTwinRustAsync_Optional {
 } wire_cst_KitchenSinkTwinRustAsync_Optional;
 
 typedef struct wire_cst_KitchenSinkTwinRustAsync_Buffer {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_KitchenSinkTwinRustAsync_Buffer;
 
 typedef struct wire_cst_KitchenSinkTwinRustAsync_Enums {
@@ -868,15 +873,15 @@ typedef struct wire_cst_measure_twin_rust_async {
 
 typedef struct wire_cst_note_twin_rust_async {
   int32_t *day;
-  struct wire_cst_list_prim_u_8 *body;
+  struct wire_cst_list_prim_u_8_strict *body;
 } wire_cst_note_twin_rust_async;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSync_B {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinSync_B;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSync_C {
-  struct wire_cst_list_prim_u_8 *c_field;
+  struct wire_cst_list_prim_u_8_strict *c_field;
 } wire_cst_EnumWithItemMixedTwinSync_C;
 
 typedef union EnumWithItemMixedTwinSyncKind {
@@ -890,11 +895,11 @@ typedef struct wire_cst_enum_with_item_mixed_twin_sync {
 } wire_cst_enum_with_item_mixed_twin_sync;
 
 typedef struct wire_cst_EnumWithItemStructTwinSync_A {
-  struct wire_cst_list_prim_u_8 *a_field;
+  struct wire_cst_list_prim_u_8_strict *a_field;
 } wire_cst_EnumWithItemStructTwinSync_A;
 
 typedef struct wire_cst_EnumWithItemStructTwinSync_B {
-  struct wire_cst_list_prim_i_32 *b_field;
+  struct wire_cst_list_prim_i_32_strict *b_field;
 } wire_cst_EnumWithItemStructTwinSync_B;
 
 typedef union EnumWithItemStructTwinSyncKind {
@@ -908,11 +913,11 @@ typedef struct wire_cst_enum_with_item_struct_twin_sync {
 } wire_cst_enum_with_item_struct_twin_sync;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSync_A {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemTupleTwinSync_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSync_B {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_EnumWithItemTupleTwinSync_B;
 
 typedef union EnumWithItemTupleTwinSyncKind {
@@ -942,7 +947,7 @@ typedef struct wire_cst_KitchenSinkTwinSync_Optional {
 } wire_cst_KitchenSinkTwinSync_Optional;
 
 typedef struct wire_cst_KitchenSinkTwinSync_Buffer {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_KitchenSinkTwinSync_Buffer;
 
 typedef struct wire_cst_KitchenSinkTwinSync_Enums {
@@ -1008,16 +1013,16 @@ typedef struct wire_cst_measure_twin_sync {
 
 typedef struct wire_cst_note_twin_sync {
   int32_t *day;
-  struct wire_cst_list_prim_u_8 *body;
+  struct wire_cst_list_prim_u_8_strict *body;
 } wire_cst_note_twin_sync;
 
 typedef struct wire_cst_event_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *address;
-  struct wire_cst_list_prim_u_8 *payload;
+  struct wire_cst_list_prim_u_8_strict *address;
+  struct wire_cst_list_prim_u_8_strict *payload;
 } wire_cst_event_twin_rust_async;
 
 typedef struct wire_cst_custom_struct_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_twin_rust_async;
 
 typedef struct wire_cst_some_struct_twin_rust_async {
@@ -1025,11 +1030,11 @@ typedef struct wire_cst_some_struct_twin_rust_async {
 } wire_cst_some_struct_twin_rust_async;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsync_One {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorOuterTwinRustAsync_One;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Three {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorInnerTwinRustAsync_Three;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsync_Four {
@@ -1061,11 +1066,11 @@ typedef struct wire_cst_custom_nested_error_outer_twin_rust_async {
 } wire_cst_custom_nested_error_outer_twin_rust_async;
 
 typedef struct wire_cst_custom_struct_error_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_custom_struct_error_twin_rust_async;
 
 typedef struct wire_cst_custom_struct_twin_sync {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_twin_sync;
 
 typedef struct wire_cst_some_struct_twin_sync {
@@ -1073,11 +1078,11 @@ typedef struct wire_cst_some_struct_twin_sync {
 } wire_cst_some_struct_twin_sync;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSync_One {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorOuterTwinSync_One;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSync_Three {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorInnerTwinSync_Three;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSync_Four {
@@ -1109,11 +1114,11 @@ typedef struct wire_cst_custom_nested_error_outer_twin_sync {
 } wire_cst_custom_nested_error_outer_twin_sync;
 
 typedef struct wire_cst_custom_struct_error_twin_sync {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_custom_struct_error_twin_sync;
 
 typedef struct wire_cst_record_string_kitchen_sink_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   struct wire_cst_kitchen_sink_twin_rust_async field1;
 } wire_cst_record_string_kitchen_sink_twin_rust_async;
 
@@ -1123,7 +1128,7 @@ typedef struct wire_cst_list_record_string_kitchen_sink_twin_rust_async {
 } wire_cst_list_record_string_kitchen_sink_twin_rust_async;
 
 typedef struct wire_cst_record_string_enum_simple_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_rust_async;
 
@@ -1133,7 +1138,7 @@ typedef struct wire_cst_list_record_string_enum_simple_twin_rust_async {
 } wire_cst_list_record_string_enum_simple_twin_rust_async;
 
 typedef struct wire_cst_record_string_kitchen_sink_twin_sync {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   struct wire_cst_kitchen_sink_twin_sync field1;
 } wire_cst_record_string_kitchen_sink_twin_sync;
 
@@ -1143,7 +1148,7 @@ typedef struct wire_cst_list_record_string_kitchen_sink_twin_sync {
 } wire_cst_list_record_string_kitchen_sink_twin_sync;
 
 typedef struct wire_cst_record_string_enum_simple_twin_sync {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_sync;
 
@@ -1153,7 +1158,7 @@ typedef struct wire_cst_list_record_string_enum_simple_twin_sync {
 } wire_cst_list_record_string_enum_simple_twin_sync;
 
 typedef struct wire_cst_concatenate_with_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_concatenate_with_twin_rust_async;
 
 typedef struct wire_cst_sum_with_twin_rust_async {
@@ -1161,7 +1166,7 @@ typedef struct wire_cst_sum_with_twin_rust_async {
 } wire_cst_sum_with_twin_rust_async;
 
 typedef struct wire_cst_concatenate_with_twin_sync {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_concatenate_with_twin_sync;
 
 typedef struct wire_cst_sum_with_twin_sync {
@@ -1175,7 +1180,7 @@ typedef struct wire_cst_list_my_tree_node_twin_rust_async {
 
 typedef struct wire_cst_my_tree_node_twin_rust_async {
   int32_t value_i32;
-  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  struct wire_cst_list_prim_u_8_strict *value_vec_u8;
   bool value_boolean;
   struct wire_cst_list_my_tree_node_twin_rust_async *children;
 } wire_cst_my_tree_node_twin_rust_async;
@@ -1191,7 +1196,7 @@ typedef struct wire_cst_list_weekdays_twin_rust_async {
 } wire_cst_list_weekdays_twin_rust_async;
 
 typedef struct wire_cst_a_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_a_twin_rust_async;
 
 typedef struct wire_cst_AbcTwinRustAsync_A {
@@ -1242,7 +1247,7 @@ typedef struct wire_cst_list_my_tree_node_twin_sync {
 
 typedef struct wire_cst_my_tree_node_twin_sync {
   int32_t value_i32;
-  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  struct wire_cst_list_prim_u_8_strict *value_vec_u8;
   bool value_boolean;
   struct wire_cst_list_my_tree_node_twin_sync *children;
 } wire_cst_my_tree_node_twin_sync;
@@ -1258,7 +1263,7 @@ typedef struct wire_cst_list_weekdays_twin_sync {
 } wire_cst_list_weekdays_twin_sync;
 
 typedef struct wire_cst_a_twin_sync {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_a_twin_sync;
 
 typedef struct wire_cst_AbcTwinSync_A {
@@ -1319,8 +1324,8 @@ typedef struct wire_cst_new_type_int_twin_sync {
 } wire_cst_new_type_int_twin_sync;
 
 typedef struct wire_cst_attribute_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *key;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_attribute_twin_rust_async;
 
 typedef struct wire_cst_list_attribute_twin_rust_async {
@@ -1338,12 +1343,12 @@ typedef struct wire_cst_exotic_optionals_twin_rust_async {
   int64_t *int64;
   double *float64;
   bool *boolean;
-  struct wire_cst_list_prim_u_8 *zerocopy;
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_u_8_strict *zerocopy;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_attribute_twin_rust_async *attributes;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async *attributes_nullable;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async *nullable_attributes;
@@ -1359,12 +1364,12 @@ typedef struct wire_cst_opt_vecs_twin_rust_async {
   struct wire_cst_list_opt_box_autoadd_i_32 *i32;
   struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async *enums;
   struct wire_cst_list_opt_String *strings;
-  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+  struct wire_cst_list_opt_list_prim_i_32_strict *buffers;
 } wire_cst_opt_vecs_twin_rust_async;
 
 typedef struct wire_cst_attribute_twin_sync {
-  struct wire_cst_list_prim_u_8 *key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *key;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_attribute_twin_sync;
 
 typedef struct wire_cst_list_attribute_twin_sync {
@@ -1382,12 +1387,12 @@ typedef struct wire_cst_exotic_optionals_twin_sync {
   int64_t *int64;
   double *float64;
   bool *boolean;
-  struct wire_cst_list_prim_u_8 *zerocopy;
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_u_8_strict *zerocopy;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_attribute_twin_sync *attributes;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_sync *attributes_nullable;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_sync *nullable_attributes;
@@ -1403,7 +1408,7 @@ typedef struct wire_cst_opt_vecs_twin_sync {
   struct wire_cst_list_opt_box_autoadd_i_32 *i32;
   struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync *enums;
   struct wire_cst_list_opt_String *strings;
-  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+  struct wire_cst_list_opt_list_prim_i_32_strict *buffers;
 } wire_cst_opt_vecs_twin_sync;
 
 typedef struct wire_cst_list_bool {
@@ -1411,30 +1416,50 @@ typedef struct wire_cst_list_bool {
   int32_t len;
 } wire_cst_list_bool;
 
-typedef struct wire_cst_list_prim_i_16 {
+typedef struct wire_cst_list_prim_f_32_loose {
+  float *ptr;
+  int32_t len;
+} wire_cst_list_prim_f_32_loose;
+
+typedef struct wire_cst_list_prim_f_64_loose {
+  double *ptr;
+  int32_t len;
+} wire_cst_list_prim_f_64_loose;
+
+typedef struct wire_cst_list_prim_i_16_loose {
   int16_t *ptr;
   int32_t len;
-} wire_cst_list_prim_i_16;
+} wire_cst_list_prim_i_16_loose;
 
-typedef struct wire_cst_list_prim_i_64 {
+typedef struct wire_cst_list_prim_i_32_loose {
+  int32_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_i_32_loose;
+
+typedef struct wire_cst_list_prim_i_64_loose {
   int64_t *ptr;
   int32_t len;
-} wire_cst_list_prim_i_64;
+} wire_cst_list_prim_i_64_loose;
 
-typedef struct wire_cst_list_prim_u_16 {
+typedef struct wire_cst_list_prim_i_8_loose {
+  int8_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_i_8_loose;
+
+typedef struct wire_cst_list_prim_u_16_loose {
   uint16_t *ptr;
   int32_t len;
-} wire_cst_list_prim_u_16;
+} wire_cst_list_prim_u_16_loose;
 
-typedef struct wire_cst_list_prim_u_32 {
+typedef struct wire_cst_list_prim_u_32_loose {
   uint32_t *ptr;
   int32_t len;
-} wire_cst_list_prim_u_32;
+} wire_cst_list_prim_u_32_loose;
 
-typedef struct wire_cst_list_prim_u_64 {
+typedef struct wire_cst_list_prim_u_64_loose {
   uint64_t *ptr;
   int32_t len;
-} wire_cst_list_prim_u_64;
+} wire_cst_list_prim_u_64_loose;
 
 typedef struct wire_cst_list_RustOpaque_hide_data {
   const void **ptr;
@@ -1562,7 +1587,7 @@ typedef struct wire_cst_tuple_struct_with_two_field_twin_sync {
 } wire_cst_tuple_struct_with_two_field_twin_sync;
 
 typedef struct wire_cst_record_string_i_32 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   int32_t field1;
 } wire_cst_record_string_i_32;
 
@@ -1572,11 +1597,11 @@ typedef struct wire_cst_list_record_string_i_32 {
 } wire_cst_list_record_string_i_32;
 
 typedef struct wire_cst_feature_uuid_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *one;
+  struct wire_cst_list_prim_u_8_strict *one;
 } wire_cst_feature_uuid_twin_rust_async;
 
 typedef struct wire_cst_feature_uuid_twin_sync {
-  struct wire_cst_list_prim_u_8 *one;
+  struct wire_cst_list_prim_u_8_strict *one;
 } wire_cst_feature_uuid_twin_sync;
 
 typedef struct wire_cst_EnumOpaqueTwinNormal_Struct {
@@ -1640,19 +1665,19 @@ typedef struct wire_cst_tuple_struct_with_two_field_twin_normal {
 } wire_cst_tuple_struct_with_two_field_twin_normal;
 
 typedef struct wire_cst_feature_uuid_twin_normal {
-  struct wire_cst_list_prim_u_8 *one;
+  struct wire_cst_list_prim_u_8_strict *one;
 } wire_cst_feature_uuid_twin_normal;
 
 typedef struct wire_cst_a_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_a_twin_rust_async_sse;
 
 typedef struct wire_cst_a_twin_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_a_twin_sse;
 
 typedef struct wire_cst_a_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_a_twin_sync_sse;
 
 typedef struct wire_cst_AbcTwinRustAsyncSse_A {
@@ -1764,70 +1789,70 @@ typedef struct wire_cst_abc_twin_sync_sse {
 } wire_cst_abc_twin_sync_sse;
 
 typedef struct wire_cst_attribute_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *key;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_attribute_twin_rust_async_sse;
 
 typedef struct wire_cst_attribute_twin_sse {
-  struct wire_cst_list_prim_u_8 *key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *key;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_attribute_twin_sse;
 
 typedef struct wire_cst_attribute_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *key;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_attribute_twin_sync_sse;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   struct wire_cst_benchmark_binary_tree_twin_rust_async_sse *left;
   struct wire_cst_benchmark_binary_tree_twin_rust_async_sse *right;
 } wire_cst_benchmark_binary_tree_twin_rust_async_sse;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_sse {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   struct wire_cst_benchmark_binary_tree_twin_sse *left;
   struct wire_cst_benchmark_binary_tree_twin_sse *right;
 } wire_cst_benchmark_binary_tree_twin_sse;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   struct wire_cst_benchmark_binary_tree_twin_sync_sse *left;
   struct wire_cst_benchmark_binary_tree_twin_sync_sse *right;
 } wire_cst_benchmark_binary_tree_twin_sync_sse;
 
 typedef struct wire_cst_benchmark_blob_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *first;
-  struct wire_cst_list_prim_u_8 *second;
-  struct wire_cst_list_prim_u_8 *third;
+  struct wire_cst_list_prim_u_8_strict *first;
+  struct wire_cst_list_prim_u_8_strict *second;
+  struct wire_cst_list_prim_u_8_strict *third;
 } wire_cst_benchmark_blob_twin_rust_async_sse;
 
 typedef struct wire_cst_benchmark_blob_twin_sse {
-  struct wire_cst_list_prim_u_8 *first;
-  struct wire_cst_list_prim_u_8 *second;
-  struct wire_cst_list_prim_u_8 *third;
+  struct wire_cst_list_prim_u_8_strict *first;
+  struct wire_cst_list_prim_u_8_strict *second;
+  struct wire_cst_list_prim_u_8_strict *third;
 } wire_cst_benchmark_blob_twin_sse;
 
 typedef struct wire_cst_benchmark_blob_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *first;
-  struct wire_cst_list_prim_u_8 *second;
-  struct wire_cst_list_prim_u_8 *third;
+  struct wire_cst_list_prim_u_8_strict *first;
+  struct wire_cst_list_prim_u_8_strict *second;
+  struct wire_cst_list_prim_u_8_strict *third;
 } wire_cst_benchmark_blob_twin_sync_sse;
 
 typedef struct wire_cst_concatenate_with_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_concatenate_with_twin_rust_async_sse;
 
 typedef struct wire_cst_concatenate_with_twin_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_concatenate_with_twin_sse;
 
 typedef struct wire_cst_concatenate_with_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_concatenate_with_twin_sync_sse;
 
 typedef struct wire_cst_CustomNestedError2TwinNormal_CustomNested2 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError2TwinNormal_CustomNested2;
 
 typedef struct wire_cst_CustomNestedError2TwinNormal_CustomNested2Number {
@@ -1845,7 +1870,7 @@ typedef struct wire_cst_custom_nested_error_2_twin_normal {
 } wire_cst_custom_nested_error_2_twin_normal;
 
 typedef struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError2TwinRustAsync_CustomNested2;
 
 typedef struct wire_cst_CustomNestedError2TwinRustAsync_CustomNested2Number {
@@ -1863,7 +1888,7 @@ typedef struct wire_cst_custom_nested_error_2_twin_rust_async {
 } wire_cst_custom_nested_error_2_twin_rust_async;
 
 typedef struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2;
 
 typedef struct wire_cst_CustomNestedError2TwinRustAsyncSse_CustomNested2Number {
@@ -1881,7 +1906,7 @@ typedef struct wire_cst_custom_nested_error_2_twin_rust_async_sse {
 } wire_cst_custom_nested_error_2_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomNestedError2TwinSse_CustomNested2 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError2TwinSse_CustomNested2;
 
 typedef struct wire_cst_CustomNestedError2TwinSse_CustomNested2Number {
@@ -1899,7 +1924,7 @@ typedef struct wire_cst_custom_nested_error_2_twin_sse {
 } wire_cst_custom_nested_error_2_twin_sse;
 
 typedef struct wire_cst_CustomNestedError2TwinSync_CustomNested2 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError2TwinSync_CustomNested2;
 
 typedef struct wire_cst_CustomNestedError2TwinSync_CustomNested2Number {
@@ -1917,7 +1942,7 @@ typedef struct wire_cst_custom_nested_error_2_twin_sync {
 } wire_cst_custom_nested_error_2_twin_sync;
 
 typedef struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError2TwinSyncSse_CustomNested2;
 
 typedef struct wire_cst_CustomNestedError2TwinSyncSse_CustomNested2Number {
@@ -1935,7 +1960,7 @@ typedef struct wire_cst_custom_nested_error_2_twin_sync_sse {
 } wire_cst_custom_nested_error_2_twin_sync_sse;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Three;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinRustAsyncSse_Four {
@@ -1953,7 +1978,7 @@ typedef struct wire_cst_custom_nested_error_inner_twin_rust_async_sse {
 } wire_cst_custom_nested_error_inner_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSse_Three {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorInnerTwinSse_Three;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSse_Four {
@@ -1971,7 +1996,7 @@ typedef struct wire_cst_custom_nested_error_inner_twin_sse {
 } wire_cst_custom_nested_error_inner_twin_sse;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Three {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorInnerTwinSyncSse_Three;
 
 typedef struct wire_cst_CustomNestedErrorInnerTwinSyncSse_Four {
@@ -1989,7 +2014,7 @@ typedef struct wire_cst_custom_nested_error_inner_twin_sync_sse {
 } wire_cst_custom_nested_error_inner_twin_sync_sse;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_One;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinRustAsyncSse_Two {
@@ -2007,7 +2032,7 @@ typedef struct wire_cst_custom_nested_error_outer_twin_rust_async_sse {
 } wire_cst_custom_nested_error_outer_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSse_One {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorOuterTwinSse_One;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSse_Two {
@@ -2025,7 +2050,7 @@ typedef struct wire_cst_custom_nested_error_outer_twin_sse {
 } wire_cst_custom_nested_error_outer_twin_sse;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSyncSse_One {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedErrorOuterTwinSyncSse_One;
 
 typedef struct wire_cst_CustomNestedErrorOuterTwinSyncSse_Two {
@@ -2043,42 +2068,42 @@ typedef struct wire_cst_custom_nested_error_outer_twin_sync_sse {
 } wire_cst_custom_nested_error_outer_twin_sync_sse;
 
 typedef struct wire_cst_custom_struct_error_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_custom_struct_error_twin_rust_async_sse;
 
 typedef struct wire_cst_custom_struct_error_twin_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_custom_struct_error_twin_sse;
 
 typedef struct wire_cst_custom_struct_error_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_custom_struct_error_twin_sync_sse;
 
 typedef struct wire_cst_custom_struct_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_twin_rust_async_sse;
 
 typedef struct wire_cst_custom_struct_twin_sse {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_twin_sse;
 
 typedef struct wire_cst_custom_struct_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_twin_sync_sse;
 
 typedef struct wire_cst_customized_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *final_field;
-  struct wire_cst_list_prim_u_8 *non_final_field;
+  struct wire_cst_list_prim_u_8_strict *final_field;
+  struct wire_cst_list_prim_u_8_strict *non_final_field;
 } wire_cst_customized_twin_rust_async_sse;
 
 typedef struct wire_cst_customized_twin_sse {
-  struct wire_cst_list_prim_u_8 *final_field;
-  struct wire_cst_list_prim_u_8 *non_final_field;
+  struct wire_cst_list_prim_u_8_strict *final_field;
+  struct wire_cst_list_prim_u_8_strict *non_final_field;
 } wire_cst_customized_twin_sse;
 
 typedef struct wire_cst_customized_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *final_field;
-  struct wire_cst_list_prim_u_8 *non_final_field;
+  struct wire_cst_list_prim_u_8_strict *final_field;
+  struct wire_cst_list_prim_u_8_strict *non_final_field;
 } wire_cst_customized_twin_sync_sse;
 
 typedef struct wire_cst_dart_opaque_nested_twin_rust_async_sse {
@@ -2102,8 +2127,8 @@ typedef struct wire_cst_list_element_twin_normal {
 } wire_cst_list_element_twin_normal;
 
 typedef struct wire_cst_element_twin_normal {
-  struct wire_cst_list_prim_u_8 *tag;
-  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_prim_u_8_strict *tag;
+  struct wire_cst_list_prim_u_8_strict *text;
   struct wire_cst_list_attribute_twin_normal *attributes;
   struct wire_cst_list_element_twin_normal *children;
 } wire_cst_element_twin_normal;
@@ -2114,8 +2139,8 @@ typedef struct wire_cst_list_element_twin_rust_async {
 } wire_cst_list_element_twin_rust_async;
 
 typedef struct wire_cst_element_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *tag;
-  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_prim_u_8_strict *tag;
+  struct wire_cst_list_prim_u_8_strict *text;
   struct wire_cst_list_attribute_twin_rust_async *attributes;
   struct wire_cst_list_element_twin_rust_async *children;
 } wire_cst_element_twin_rust_async;
@@ -2131,8 +2156,8 @@ typedef struct wire_cst_list_element_twin_rust_async_sse {
 } wire_cst_list_element_twin_rust_async_sse;
 
 typedef struct wire_cst_element_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *tag;
-  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_prim_u_8_strict *tag;
+  struct wire_cst_list_prim_u_8_strict *text;
   struct wire_cst_list_attribute_twin_rust_async_sse *attributes;
   struct wire_cst_list_element_twin_rust_async_sse *children;
 } wire_cst_element_twin_rust_async_sse;
@@ -2148,8 +2173,8 @@ typedef struct wire_cst_list_element_twin_sse {
 } wire_cst_list_element_twin_sse;
 
 typedef struct wire_cst_element_twin_sse {
-  struct wire_cst_list_prim_u_8 *tag;
-  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_prim_u_8_strict *tag;
+  struct wire_cst_list_prim_u_8_strict *text;
   struct wire_cst_list_attribute_twin_sse *attributes;
   struct wire_cst_list_element_twin_sse *children;
 } wire_cst_element_twin_sse;
@@ -2160,8 +2185,8 @@ typedef struct wire_cst_list_element_twin_sync {
 } wire_cst_list_element_twin_sync;
 
 typedef struct wire_cst_element_twin_sync {
-  struct wire_cst_list_prim_u_8 *tag;
-  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_prim_u_8_strict *tag;
+  struct wire_cst_list_prim_u_8_strict *text;
   struct wire_cst_list_attribute_twin_sync *attributes;
   struct wire_cst_list_element_twin_sync *children;
 } wire_cst_element_twin_sync;
@@ -2177,8 +2202,8 @@ typedef struct wire_cst_list_element_twin_sync_sse {
 } wire_cst_list_element_twin_sync_sse;
 
 typedef struct wire_cst_element_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *tag;
-  struct wire_cst_list_prim_u_8 *text;
+  struct wire_cst_list_prim_u_8_strict *tag;
+  struct wire_cst_list_prim_u_8_strict *text;
   struct wire_cst_list_attribute_twin_sync_sse *attributes;
   struct wire_cst_list_element_twin_sync_sse *children;
 } wire_cst_element_twin_sync_sse;
@@ -2349,11 +2374,11 @@ typedef struct wire_cst_enum_opaque_twin_sync_sse {
 } wire_cst_enum_opaque_twin_sync_sse;
 
 typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_B {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinRustAsyncSse_B;
 
 typedef struct wire_cst_EnumWithItemMixedTwinRustAsyncSse_C {
-  struct wire_cst_list_prim_u_8 *c_field;
+  struct wire_cst_list_prim_u_8_strict *c_field;
 } wire_cst_EnumWithItemMixedTwinRustAsyncSse_C;
 
 typedef union EnumWithItemMixedTwinRustAsyncSseKind {
@@ -2367,11 +2392,11 @@ typedef struct wire_cst_enum_with_item_mixed_twin_rust_async_sse {
 } wire_cst_enum_with_item_mixed_twin_rust_async_sse;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSse_B {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinSse_B;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSse_C {
-  struct wire_cst_list_prim_u_8 *c_field;
+  struct wire_cst_list_prim_u_8_strict *c_field;
 } wire_cst_EnumWithItemMixedTwinSse_C;
 
 typedef union EnumWithItemMixedTwinSseKind {
@@ -2385,11 +2410,11 @@ typedef struct wire_cst_enum_with_item_mixed_twin_sse {
 } wire_cst_enum_with_item_mixed_twin_sse;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_B {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinSyncSse_B;
 
 typedef struct wire_cst_EnumWithItemMixedTwinSyncSse_C {
-  struct wire_cst_list_prim_u_8 *c_field;
+  struct wire_cst_list_prim_u_8_strict *c_field;
 } wire_cst_EnumWithItemMixedTwinSyncSse_C;
 
 typedef union EnumWithItemMixedTwinSyncSseKind {
@@ -2403,11 +2428,11 @@ typedef struct wire_cst_enum_with_item_mixed_twin_sync_sse {
 } wire_cst_enum_with_item_mixed_twin_sync_sse;
 
 typedef struct wire_cst_EnumWithItemStructTwinRustAsyncSse_A {
-  struct wire_cst_list_prim_u_8 *a_field;
+  struct wire_cst_list_prim_u_8_strict *a_field;
 } wire_cst_EnumWithItemStructTwinRustAsyncSse_A;
 
 typedef struct wire_cst_EnumWithItemStructTwinRustAsyncSse_B {
-  struct wire_cst_list_prim_i_32 *b_field;
+  struct wire_cst_list_prim_i_32_strict *b_field;
 } wire_cst_EnumWithItemStructTwinRustAsyncSse_B;
 
 typedef union EnumWithItemStructTwinRustAsyncSseKind {
@@ -2421,11 +2446,11 @@ typedef struct wire_cst_enum_with_item_struct_twin_rust_async_sse {
 } wire_cst_enum_with_item_struct_twin_rust_async_sse;
 
 typedef struct wire_cst_EnumWithItemStructTwinSse_A {
-  struct wire_cst_list_prim_u_8 *a_field;
+  struct wire_cst_list_prim_u_8_strict *a_field;
 } wire_cst_EnumWithItemStructTwinSse_A;
 
 typedef struct wire_cst_EnumWithItemStructTwinSse_B {
-  struct wire_cst_list_prim_i_32 *b_field;
+  struct wire_cst_list_prim_i_32_strict *b_field;
 } wire_cst_EnumWithItemStructTwinSse_B;
 
 typedef union EnumWithItemStructTwinSseKind {
@@ -2439,11 +2464,11 @@ typedef struct wire_cst_enum_with_item_struct_twin_sse {
 } wire_cst_enum_with_item_struct_twin_sse;
 
 typedef struct wire_cst_EnumWithItemStructTwinSyncSse_A {
-  struct wire_cst_list_prim_u_8 *a_field;
+  struct wire_cst_list_prim_u_8_strict *a_field;
 } wire_cst_EnumWithItemStructTwinSyncSse_A;
 
 typedef struct wire_cst_EnumWithItemStructTwinSyncSse_B {
-  struct wire_cst_list_prim_i_32 *b_field;
+  struct wire_cst_list_prim_i_32_strict *b_field;
 } wire_cst_EnumWithItemStructTwinSyncSse_B;
 
 typedef union EnumWithItemStructTwinSyncSseKind {
@@ -2457,11 +2482,11 @@ typedef struct wire_cst_enum_with_item_struct_twin_sync_sse {
 } wire_cst_enum_with_item_struct_twin_sync_sse;
 
 typedef struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_A {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemTupleTwinRustAsyncSse_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinRustAsyncSse_B {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_EnumWithItemTupleTwinRustAsyncSse_B;
 
 typedef union EnumWithItemTupleTwinRustAsyncSseKind {
@@ -2475,11 +2500,11 @@ typedef struct wire_cst_enum_with_item_tuple_twin_rust_async_sse {
 } wire_cst_enum_with_item_tuple_twin_rust_async_sse;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSse_A {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemTupleTwinSse_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSse_B {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_EnumWithItemTupleTwinSse_B;
 
 typedef union EnumWithItemTupleTwinSseKind {
@@ -2493,11 +2518,11 @@ typedef struct wire_cst_enum_with_item_tuple_twin_sse {
 } wire_cst_enum_with_item_tuple_twin_sse;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSyncSse_A {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemTupleTwinSyncSse_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSyncSse_B {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_EnumWithItemTupleTwinSyncSse_B;
 
 typedef union EnumWithItemTupleTwinSyncSseKind {
@@ -2511,13 +2536,13 @@ typedef struct wire_cst_enum_with_item_tuple_twin_sync_sse {
 } wire_cst_enum_with_item_tuple_twin_sync_sse;
 
 typedef struct wire_cst_event_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *address;
-  struct wire_cst_list_prim_u_8 *payload;
+  struct wire_cst_list_prim_u_8_strict *address;
+  struct wire_cst_list_prim_u_8_strict *payload;
 } wire_cst_event_twin_rust_async_sse;
 
 typedef struct wire_cst_event_twin_sse {
-  struct wire_cst_list_prim_u_8 *address;
-  struct wire_cst_list_prim_u_8 *payload;
+  struct wire_cst_list_prim_u_8_strict *address;
+  struct wire_cst_list_prim_u_8_strict *payload;
 } wire_cst_event_twin_sse;
 
 typedef struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse {
@@ -2534,12 +2559,12 @@ typedef struct wire_cst_exotic_optionals_twin_rust_async_sse {
   int64_t *int64;
   double *float64;
   bool *boolean;
-  struct wire_cst_list_prim_u_8 *zerocopy;
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_u_8_strict *zerocopy;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_attribute_twin_rust_async_sse *attributes;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse *attributes_nullable;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_rust_async_sse *nullable_attributes;
@@ -2560,12 +2585,12 @@ typedef struct wire_cst_exotic_optionals_twin_sse {
   int64_t *int64;
   double *float64;
   bool *boolean;
-  struct wire_cst_list_prim_u_8 *zerocopy;
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_u_8_strict *zerocopy;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_attribute_twin_sse *attributes;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_sse *attributes_nullable;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_sse *nullable_attributes;
@@ -2586,12 +2611,12 @@ typedef struct wire_cst_exotic_optionals_twin_sync_sse {
   int64_t *int64;
   double *float64;
   bool *boolean;
-  struct wire_cst_list_prim_u_8 *zerocopy;
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_u_8_strict *zerocopy;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_attribute_twin_sync_sse *attributes;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse *attributes_nullable;
   struct wire_cst_list_opt_box_autoadd_attribute_twin_sync_sse *nullable_attributes;
@@ -2599,15 +2624,15 @@ typedef struct wire_cst_exotic_optionals_twin_sync_sse {
 } wire_cst_exotic_optionals_twin_sync_sse;
 
 typedef struct wire_cst_feed_id_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_feed_id_twin_rust_async_sse;
 
 typedef struct wire_cst_feed_id_twin_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_feed_id_twin_sse;
 
 typedef struct wire_cst_feed_id_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_feed_id_twin_sync_sse;
 
 typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Primitives {
@@ -2627,7 +2652,7 @@ typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Optional {
 } wire_cst_KitchenSinkTwinRustAsyncSse_Optional;
 
 typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Buffer {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_KitchenSinkTwinRustAsyncSse_Buffer;
 
 typedef struct wire_cst_KitchenSinkTwinRustAsyncSse_Enums {
@@ -2664,7 +2689,7 @@ typedef struct wire_cst_KitchenSinkTwinSse_Optional {
 } wire_cst_KitchenSinkTwinSse_Optional;
 
 typedef struct wire_cst_KitchenSinkTwinSse_Buffer {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_KitchenSinkTwinSse_Buffer;
 
 typedef struct wire_cst_KitchenSinkTwinSse_Enums {
@@ -2701,7 +2726,7 @@ typedef struct wire_cst_KitchenSinkTwinSyncSse_Optional {
 } wire_cst_KitchenSinkTwinSyncSse_Optional;
 
 typedef struct wire_cst_KitchenSinkTwinSyncSse_Buffer {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_KitchenSinkTwinSyncSse_Buffer;
 
 typedef struct wire_cst_KitchenSinkTwinSyncSse_Enums {
@@ -2722,7 +2747,7 @@ typedef struct wire_cst_kitchen_sink_twin_sync_sse {
 } wire_cst_kitchen_sink_twin_sync_sse;
 
 typedef struct wire_cst_raw_string_mirrored {
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_raw_string_mirrored;
 
 typedef struct wire_cst_nested_raw_string_mirrored {
@@ -2871,15 +2896,15 @@ typedef struct wire_cst_measure_twin_sync_sse {
 } wire_cst_measure_twin_sync_sse;
 
 typedef struct wire_cst_message_id_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_message_id_twin_rust_async_sse;
 
 typedef struct wire_cst_message_id_twin_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_message_id_twin_sse;
 
 typedef struct wire_cst_message_id_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_message_id_twin_sync_sse;
 
 typedef struct wire_cst_list_my_tree_node_twin_rust_async_sse {
@@ -2889,7 +2914,7 @@ typedef struct wire_cst_list_my_tree_node_twin_rust_async_sse {
 
 typedef struct wire_cst_my_tree_node_twin_rust_async_sse {
   int32_t value_i32;
-  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  struct wire_cst_list_prim_u_8_strict *value_vec_u8;
   bool value_boolean;
   struct wire_cst_list_my_tree_node_twin_rust_async_sse *children;
 } wire_cst_my_tree_node_twin_rust_async_sse;
@@ -2906,7 +2931,7 @@ typedef struct wire_cst_list_my_tree_node_twin_sse {
 
 typedef struct wire_cst_my_tree_node_twin_sse {
   int32_t value_i32;
-  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  struct wire_cst_list_prim_u_8_strict *value_vec_u8;
   bool value_boolean;
   struct wire_cst_list_my_tree_node_twin_sse *children;
 } wire_cst_my_tree_node_twin_sse;
@@ -2923,7 +2948,7 @@ typedef struct wire_cst_list_my_tree_node_twin_sync_sse {
 
 typedef struct wire_cst_my_tree_node_twin_sync_sse {
   int32_t value_i32;
-  struct wire_cst_list_prim_u_8 *value_vec_u8;
+  struct wire_cst_list_prim_u_8_strict *value_vec_u8;
   bool value_boolean;
   struct wire_cst_list_my_tree_node_twin_sync_sse *children;
 } wire_cst_my_tree_node_twin_sync_sse;
@@ -2935,17 +2960,17 @@ typedef struct wire_cst_my_nested_struct_twin_sync_sse {
 
 typedef struct wire_cst_note_twin_rust_async_sse {
   int32_t *day;
-  struct wire_cst_list_prim_u_8 *body;
+  struct wire_cst_list_prim_u_8_strict *body;
 } wire_cst_note_twin_rust_async_sse;
 
 typedef struct wire_cst_note_twin_sse {
   int32_t *day;
-  struct wire_cst_list_prim_u_8 *body;
+  struct wire_cst_list_prim_u_8_strict *body;
 } wire_cst_note_twin_sse;
 
 typedef struct wire_cst_note_twin_sync_sse {
   int32_t *day;
-  struct wire_cst_list_prim_u_8 *body;
+  struct wire_cst_list_prim_u_8_strict *body;
 } wire_cst_note_twin_sync_sse;
 
 typedef struct wire_cst_opaque_nested_twin_rust_async_sse {
@@ -2972,7 +2997,7 @@ typedef struct wire_cst_opt_vecs_twin_rust_async_sse {
   struct wire_cst_list_opt_box_autoadd_i_32 *i32;
   struct wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse *enums;
   struct wire_cst_list_opt_String *strings;
-  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+  struct wire_cst_list_opt_list_prim_i_32_strict *buffers;
 } wire_cst_opt_vecs_twin_rust_async_sse;
 
 typedef struct wire_cst_list_opt_box_autoadd_weekdays_twin_sse {
@@ -2984,7 +3009,7 @@ typedef struct wire_cst_opt_vecs_twin_sse {
   struct wire_cst_list_opt_box_autoadd_i_32 *i32;
   struct wire_cst_list_opt_box_autoadd_weekdays_twin_sse *enums;
   struct wire_cst_list_opt_String *strings;
-  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+  struct wire_cst_list_opt_list_prim_i_32_strict *buffers;
 } wire_cst_opt_vecs_twin_sse;
 
 typedef struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse {
@@ -2996,7 +3021,7 @@ typedef struct wire_cst_opt_vecs_twin_sync_sse {
   struct wire_cst_list_opt_box_autoadd_i_32 *i32;
   struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse *enums;
   struct wire_cst_list_opt_String *strings;
-  struct wire_cst_list_opt_list_prim_i_32 *buffers;
+  struct wire_cst_list_opt_list_prim_i_32_strict *buffers;
 } wire_cst_opt_vecs_twin_sync_sse;
 
 typedef struct wire_cst_some_struct_twin_rust_async_sse {
@@ -3090,15 +3115,15 @@ typedef struct wire_cst_sum_with_twin_sync_sse {
 } wire_cst_sum_with_twin_sync_sse;
 
 typedef struct wire_cst_test_id_twin_rust_async_sse {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_test_id_twin_rust_async_sse;
 
 typedef struct wire_cst_test_id_twin_sse {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_test_id_twin_sse;
 
 typedef struct wire_cst_test_id_twin_sync_sse {
-  struct wire_cst_list_prim_i_32 *field0;
+  struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_test_id_twin_sync_sse;
 
 typedef struct wire_cst_tuple_struct_with_one_field_twin_rust_async_sse {
@@ -3141,15 +3166,15 @@ typedef struct wire_cst_user_id_twin_sync_sse {
 } wire_cst_user_id_twin_sync_sse;
 
 typedef struct wire_cst_blob_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_blob_twin_rust_async_sse;
 
 typedef struct wire_cst_blob_twin_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_blob_twin_sse;
 
 typedef struct wire_cst_blob_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_blob_twin_sync_sse;
 
 typedef struct wire_cst_list_Chrono_Local {
@@ -3257,6 +3282,31 @@ typedef struct wire_cst_list_point_twin_sync_sse {
   int32_t len;
 } wire_cst_list_point_twin_sync_sse;
 
+typedef struct wire_cst_list_prim_i_16_strict {
+  int16_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_i_16_strict;
+
+typedef struct wire_cst_list_prim_i_64_strict {
+  int64_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_i_64_strict;
+
+typedef struct wire_cst_list_prim_u_16_strict {
+  uint16_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_u_16_strict;
+
+typedef struct wire_cst_list_prim_u_32_strict {
+  uint32_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_u_32_strict;
+
+typedef struct wire_cst_list_prim_u_64_strict {
+  uint64_t *ptr;
+  int32_t len;
+} wire_cst_list_prim_u_64_strict;
+
 typedef struct wire_cst_RawStringEnumMirrored_Raw {
   struct wire_cst_raw_string_mirrored *field0;
 } wire_cst_RawStringEnumMirrored_Raw;
@@ -3291,7 +3341,7 @@ typedef struct wire_cst_list_raw_string_mirrored {
 } wire_cst_list_raw_string_mirrored;
 
 typedef struct wire_cst_record_string_enum_simple_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_rust_async_sse;
 
@@ -3301,7 +3351,7 @@ typedef struct wire_cst_list_record_string_enum_simple_twin_rust_async_sse {
 } wire_cst_list_record_string_enum_simple_twin_rust_async_sse;
 
 typedef struct wire_cst_record_string_enum_simple_twin_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_sse;
 
@@ -3311,7 +3361,7 @@ typedef struct wire_cst_list_record_string_enum_simple_twin_sse {
 } wire_cst_list_record_string_enum_simple_twin_sse;
 
 typedef struct wire_cst_record_string_enum_simple_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   int32_t field1;
 } wire_cst_record_string_enum_simple_twin_sync_sse;
 
@@ -3321,7 +3371,7 @@ typedef struct wire_cst_list_record_string_enum_simple_twin_sync_sse {
 } wire_cst_list_record_string_enum_simple_twin_sync_sse;
 
 typedef struct wire_cst_record_string_kitchen_sink_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   struct wire_cst_kitchen_sink_twin_rust_async_sse field1;
 } wire_cst_record_string_kitchen_sink_twin_rust_async_sse;
 
@@ -3331,7 +3381,7 @@ typedef struct wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse {
 } wire_cst_list_record_string_kitchen_sink_twin_rust_async_sse;
 
 typedef struct wire_cst_record_string_kitchen_sink_twin_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   struct wire_cst_kitchen_sink_twin_sse field1;
 } wire_cst_record_string_kitchen_sink_twin_sse;
 
@@ -3341,7 +3391,7 @@ typedef struct wire_cst_list_record_string_kitchen_sink_twin_sse {
 } wire_cst_list_record_string_kitchen_sink_twin_sse;
 
 typedef struct wire_cst_record_string_kitchen_sink_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
   struct wire_cst_kitchen_sink_twin_sync_sse field1;
 } wire_cst_record_string_kitchen_sink_twin_sync_sse;
 
@@ -3416,31 +3466,31 @@ typedef struct wire_cst_another_macro_struct_twin_normal {
 } wire_cst_another_macro_struct_twin_normal;
 
 typedef struct wire_cst_another_twin_normal {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_another_twin_normal;
 
 typedef struct wire_cst_another_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_another_twin_rust_async;
 
 typedef struct wire_cst_another_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_another_twin_rust_async_sse;
 
 typedef struct wire_cst_another_twin_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_another_twin_sse;
 
 typedef struct wire_cst_another_twin_sync {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_another_twin_sync;
 
 typedef struct wire_cst_another_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *a;
+  struct wire_cst_list_prim_u_8_strict *a;
 } wire_cst_another_twin_sync_sse;
 
 typedef struct wire_cst_ApplicationMessage_DisplayMessage {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_ApplicationMessage_DisplayMessage;
 
 typedef struct wire_cst_ApplicationMessage_RenderPixel {
@@ -3459,33 +3509,33 @@ typedef struct wire_cst_application_message {
 } wire_cst_application_message;
 
 typedef struct wire_cst_big_buffers_twin_normal {
-  struct wire_cst_list_prim_i_64 *int64;
-  struct wire_cst_list_prim_u_64 *uint64;
+  struct wire_cst_list_prim_i_64_strict *int64;
+  struct wire_cst_list_prim_u_64_strict *uint64;
 } wire_cst_big_buffers_twin_normal;
 
 typedef struct wire_cst_big_buffers_twin_rust_async {
-  struct wire_cst_list_prim_i_64 *int64;
-  struct wire_cst_list_prim_u_64 *uint64;
+  struct wire_cst_list_prim_i_64_strict *int64;
+  struct wire_cst_list_prim_u_64_strict *uint64;
 } wire_cst_big_buffers_twin_rust_async;
 
 typedef struct wire_cst_big_buffers_twin_rust_async_sse {
-  struct wire_cst_list_prim_i_64 *int64;
-  struct wire_cst_list_prim_u_64 *uint64;
+  struct wire_cst_list_prim_i_64_strict *int64;
+  struct wire_cst_list_prim_u_64_strict *uint64;
 } wire_cst_big_buffers_twin_rust_async_sse;
 
 typedef struct wire_cst_big_buffers_twin_sse {
-  struct wire_cst_list_prim_i_64 *int64;
-  struct wire_cst_list_prim_u_64 *uint64;
+  struct wire_cst_list_prim_i_64_strict *int64;
+  struct wire_cst_list_prim_u_64_strict *uint64;
 } wire_cst_big_buffers_twin_sse;
 
 typedef struct wire_cst_big_buffers_twin_sync {
-  struct wire_cst_list_prim_i_64 *int64;
-  struct wire_cst_list_prim_u_64 *uint64;
+  struct wire_cst_list_prim_i_64_strict *int64;
+  struct wire_cst_list_prim_u_64_strict *uint64;
 } wire_cst_big_buffers_twin_sync;
 
 typedef struct wire_cst_big_buffers_twin_sync_sse {
-  struct wire_cst_list_prim_i_64 *int64;
-  struct wire_cst_list_prim_u_64 *uint64;
+  struct wire_cst_list_prim_i_64_strict *int64;
+  struct wire_cst_list_prim_u_64_strict *uint64;
 } wire_cst_big_buffers_twin_sync_sse;
 
 typedef struct wire_cst_contains_mirrored_sub_struct_twin_normal {
@@ -3519,13 +3569,13 @@ typedef struct wire_cst_contains_mirrored_sub_struct_twin_sync_sse {
 } wire_cst_contains_mirrored_sub_struct_twin_sync_sse;
 
 typedef struct wire_cst_CustomEnumErrorTwinNormal_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *message;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinNormal_One;
 
 typedef struct wire_cst_CustomEnumErrorTwinNormal_Two {
   uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinNormal_Two;
 
 typedef union CustomEnumErrorTwinNormalKind {
@@ -3539,13 +3589,13 @@ typedef struct wire_cst_custom_enum_error_twin_normal {
 } wire_cst_custom_enum_error_twin_normal;
 
 typedef struct wire_cst_CustomEnumErrorTwinRustAsync_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *message;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinRustAsync_One;
 
 typedef struct wire_cst_CustomEnumErrorTwinRustAsync_Two {
   uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinRustAsync_Two;
 
 typedef union CustomEnumErrorTwinRustAsyncKind {
@@ -3559,13 +3609,13 @@ typedef struct wire_cst_custom_enum_error_twin_rust_async {
 } wire_cst_custom_enum_error_twin_rust_async;
 
 typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *message;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinRustAsyncSse_One;
 
 typedef struct wire_cst_CustomEnumErrorTwinRustAsyncSse_Two {
   uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinRustAsyncSse_Two;
 
 typedef union CustomEnumErrorTwinRustAsyncSseKind {
@@ -3579,13 +3629,13 @@ typedef struct wire_cst_custom_enum_error_twin_rust_async_sse {
 } wire_cst_custom_enum_error_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomEnumErrorTwinSse_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *message;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinSse_One;
 
 typedef struct wire_cst_CustomEnumErrorTwinSse_Two {
   uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinSse_Two;
 
 typedef union CustomEnumErrorTwinSseKind {
@@ -3599,13 +3649,13 @@ typedef struct wire_cst_custom_enum_error_twin_sse {
 } wire_cst_custom_enum_error_twin_sse;
 
 typedef struct wire_cst_CustomEnumErrorTwinSync_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *message;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinSync_One;
 
 typedef struct wire_cst_CustomEnumErrorTwinSync_Two {
   uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinSync_Two;
 
 typedef union CustomEnumErrorTwinSyncKind {
@@ -3619,13 +3669,13 @@ typedef struct wire_cst_custom_enum_error_twin_sync {
 } wire_cst_custom_enum_error_twin_sync;
 
 typedef struct wire_cst_CustomEnumErrorTwinSyncSse_One {
-  struct wire_cst_list_prim_u_8 *message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *message;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinSyncSse_One;
 
 typedef struct wire_cst_CustomEnumErrorTwinSyncSse_Two {
   uint32_t message;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomEnumErrorTwinSyncSse_Two;
 
 typedef union CustomEnumErrorTwinSyncSseKind {
@@ -3639,13 +3689,13 @@ typedef struct wire_cst_custom_enum_error_twin_sync_sse {
 } wire_cst_custom_enum_error_twin_sync_sse;
 
 typedef struct wire_cst_CustomErrorTwinNormal_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *e;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinNormal_Error0;
 
 typedef struct wire_cst_CustomErrorTwinNormal_Error1 {
   uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinNormal_Error1;
 
 typedef union CustomErrorTwinNormalKind {
@@ -3659,13 +3709,13 @@ typedef struct wire_cst_custom_error_twin_normal {
 } wire_cst_custom_error_twin_normal;
 
 typedef struct wire_cst_CustomErrorTwinRustAsync_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *e;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinRustAsync_Error0;
 
 typedef struct wire_cst_CustomErrorTwinRustAsync_Error1 {
   uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinRustAsync_Error1;
 
 typedef union CustomErrorTwinRustAsyncKind {
@@ -3679,13 +3729,13 @@ typedef struct wire_cst_custom_error_twin_rust_async {
 } wire_cst_custom_error_twin_rust_async;
 
 typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *e;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinRustAsyncSse_Error0;
 
 typedef struct wire_cst_CustomErrorTwinRustAsyncSse_Error1 {
   uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinRustAsyncSse_Error1;
 
 typedef union CustomErrorTwinRustAsyncSseKind {
@@ -3699,13 +3749,13 @@ typedef struct wire_cst_custom_error_twin_rust_async_sse {
 } wire_cst_custom_error_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomErrorTwinSse_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *e;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinSse_Error0;
 
 typedef struct wire_cst_CustomErrorTwinSse_Error1 {
   uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinSse_Error1;
 
 typedef union CustomErrorTwinSseKind {
@@ -3719,13 +3769,13 @@ typedef struct wire_cst_custom_error_twin_sse {
 } wire_cst_custom_error_twin_sse;
 
 typedef struct wire_cst_CustomErrorTwinSync_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *e;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinSync_Error0;
 
 typedef struct wire_cst_CustomErrorTwinSync_Error1 {
   uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinSync_Error1;
 
 typedef union CustomErrorTwinSyncKind {
@@ -3739,13 +3789,13 @@ typedef struct wire_cst_custom_error_twin_sync {
 } wire_cst_custom_error_twin_sync;
 
 typedef struct wire_cst_CustomErrorTwinSyncSse_Error0 {
-  struct wire_cst_list_prim_u_8 *e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *e;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinSyncSse_Error0;
 
 typedef struct wire_cst_CustomErrorTwinSyncSse_Error1 {
   uint32_t e;
-  struct wire_cst_list_prim_u_8 *backtrace;
+  struct wire_cst_list_prim_u_8_strict *backtrace;
 } wire_cst_CustomErrorTwinSyncSse_Error1;
 
 typedef union CustomErrorTwinSyncSseKind {
@@ -3759,7 +3809,7 @@ typedef struct wire_cst_custom_error_twin_sync_sse {
 } wire_cst_custom_error_twin_sync_sse;
 
 typedef struct wire_cst_CustomNestedError1TwinNormal_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError1TwinNormal_CustomNested1;
 
 typedef struct wire_cst_CustomNestedError1TwinNormal_ErrorNested {
@@ -3777,7 +3827,7 @@ typedef struct wire_cst_custom_nested_error_1_twin_normal {
 } wire_cst_custom_nested_error_1_twin_normal;
 
 typedef struct wire_cst_CustomNestedError1TwinRustAsync_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError1TwinRustAsync_CustomNested1;
 
 typedef struct wire_cst_CustomNestedError1TwinRustAsync_ErrorNested {
@@ -3795,7 +3845,7 @@ typedef struct wire_cst_custom_nested_error_1_twin_rust_async {
 } wire_cst_custom_nested_error_1_twin_rust_async;
 
 typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError1TwinRustAsyncSse_CustomNested1;
 
 typedef struct wire_cst_CustomNestedError1TwinRustAsyncSse_ErrorNested {
@@ -3813,7 +3863,7 @@ typedef struct wire_cst_custom_nested_error_1_twin_rust_async_sse {
 } wire_cst_custom_nested_error_1_twin_rust_async_sse;
 
 typedef struct wire_cst_CustomNestedError1TwinSse_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError1TwinSse_CustomNested1;
 
 typedef struct wire_cst_CustomNestedError1TwinSse_ErrorNested {
@@ -3831,7 +3881,7 @@ typedef struct wire_cst_custom_nested_error_1_twin_sse {
 } wire_cst_custom_nested_error_1_twin_sse;
 
 typedef struct wire_cst_CustomNestedError1TwinSync_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError1TwinSync_CustomNested1;
 
 typedef struct wire_cst_CustomNestedError1TwinSync_ErrorNested {
@@ -3849,7 +3899,7 @@ typedef struct wire_cst_custom_nested_error_1_twin_sync {
 } wire_cst_custom_nested_error_1_twin_sync;
 
 typedef struct wire_cst_CustomNestedError1TwinSyncSse_CustomNested1 {
-  struct wire_cst_list_prim_u_8 *field0;
+  struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_CustomNestedError1TwinSyncSse_CustomNested1;
 
 typedef struct wire_cst_CustomNestedError1TwinSyncSse_ErrorNested {
@@ -3867,73 +3917,73 @@ typedef struct wire_cst_custom_nested_error_1_twin_sync_sse {
 } wire_cst_custom_nested_error_1_twin_sync_sse;
 
 typedef struct wire_cst_custom_struct_error_another_twin_normal {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_error_another_twin_normal;
 
 typedef struct wire_cst_custom_struct_error_another_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_error_another_twin_rust_async;
 
 typedef struct wire_cst_custom_struct_error_another_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_error_another_twin_rust_async_sse;
 
 typedef struct wire_cst_custom_struct_error_another_twin_sse {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_error_another_twin_sse;
 
 typedef struct wire_cst_custom_struct_error_another_twin_sync {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_error_another_twin_sync;
 
 typedef struct wire_cst_custom_struct_error_another_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *message;
+  struct wire_cst_list_prim_u_8_strict *message;
 } wire_cst_custom_struct_error_another_twin_sync_sse;
 
 typedef struct wire_cst_demo_struct_for_rust_call_dart_twin_normal {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
 } wire_cst_demo_struct_for_rust_call_dart_twin_normal;
 
 typedef struct wire_cst_demo_struct_for_rust_call_dart_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
 } wire_cst_demo_struct_for_rust_call_dart_twin_rust_async;
 
 typedef struct wire_cst_demo_struct_for_rust_call_dart_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
 } wire_cst_demo_struct_for_rust_call_dart_twin_rust_async_sse;
 
 typedef struct wire_cst_demo_struct_for_rust_call_dart_twin_sse {
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
 } wire_cst_demo_struct_for_rust_call_dart_twin_sse;
 
 typedef struct wire_cst_log_2_twin_normal {
   uint32_t key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_log_2_twin_normal;
 
 typedef struct wire_cst_log_2_twin_rust_async {
   uint32_t key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_log_2_twin_rust_async;
 
 typedef struct wire_cst_log_2_twin_rust_async_sse {
   uint32_t key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_log_2_twin_rust_async_sse;
 
 typedef struct wire_cst_log_2_twin_sse {
   uint32_t key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_log_2_twin_sse;
 
 typedef struct wire_cst_log_2_twin_sync {
   uint32_t key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_log_2_twin_sync;
 
 typedef struct wire_cst_log_2_twin_sync_sse {
   uint32_t key;
-  struct wire_cst_list_prim_u_8 *value;
+  struct wire_cst_list_prim_u_8_strict *value;
 } wire_cst_log_2_twin_sync_sse;
 
 typedef struct wire_cst_log_twin_normal {
@@ -3999,61 +4049,61 @@ typedef struct wire_cst_mirror_struct_twin_sync_sse {
 } wire_cst_mirror_struct_twin_sync_sse;
 
 typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_normal {
-  struct wire_cst_list_prim_u_8 *regular;
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *regular;
+  struct wire_cst_list_prim_u_8_strict *type;
   bool async;
-  struct wire_cst_list_prim_u_8 *another;
+  struct wire_cst_list_prim_u_8_strict *another;
 } wire_cst_more_than_just_one_raw_string_struct_twin_normal;
 
 typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *regular;
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *regular;
+  struct wire_cst_list_prim_u_8_strict *type;
   bool async;
-  struct wire_cst_list_prim_u_8 *another;
+  struct wire_cst_list_prim_u_8_strict *another;
 } wire_cst_more_than_just_one_raw_string_struct_twin_rust_async;
 
 typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *regular;
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *regular;
+  struct wire_cst_list_prim_u_8_strict *type;
   bool async;
-  struct wire_cst_list_prim_u_8 *another;
+  struct wire_cst_list_prim_u_8_strict *another;
 } wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse;
 
 typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_sse {
-  struct wire_cst_list_prim_u_8 *regular;
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *regular;
+  struct wire_cst_list_prim_u_8_strict *type;
   bool async;
-  struct wire_cst_list_prim_u_8 *another;
+  struct wire_cst_list_prim_u_8_strict *another;
 } wire_cst_more_than_just_one_raw_string_struct_twin_sse;
 
 typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_sync {
-  struct wire_cst_list_prim_u_8 *regular;
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *regular;
+  struct wire_cst_list_prim_u_8_strict *type;
   bool async;
-  struct wire_cst_list_prim_u_8 *another;
+  struct wire_cst_list_prim_u_8_strict *another;
 } wire_cst_more_than_just_one_raw_string_struct_twin_sync;
 
 typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *regular;
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *regular;
+  struct wire_cst_list_prim_u_8_strict *type;
   bool async;
-  struct wire_cst_list_prim_u_8 *another;
+  struct wire_cst_list_prim_u_8_strict *another;
 } wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse;
 
 typedef struct wire_cst_my_stream_entry_twin_normal {
-  struct wire_cst_list_prim_u_8 *hello;
+  struct wire_cst_list_prim_u_8_strict *hello;
 } wire_cst_my_stream_entry_twin_normal;
 
 typedef struct wire_cst_my_stream_entry_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *hello;
+  struct wire_cst_list_prim_u_8_strict *hello;
 } wire_cst_my_stream_entry_twin_rust_async;
 
 typedef struct wire_cst_my_stream_entry_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *hello;
+  struct wire_cst_list_prim_u_8_strict *hello;
 } wire_cst_my_stream_entry_twin_rust_async_sse;
 
 typedef struct wire_cst_my_stream_entry_twin_sse {
-  struct wire_cst_list_prim_u_8 *hello;
+  struct wire_cst_list_prim_u_8_strict *hello;
 } wire_cst_my_stream_entry_twin_sse;
 
 typedef struct wire_cst_new_simple_struct {
@@ -4065,27 +4115,27 @@ typedef struct wire_cst_old_simple_struct {
 } wire_cst_old_simple_struct;
 
 typedef struct wire_cst_raw_string_item_struct_twin_normal {
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *type;
 } wire_cst_raw_string_item_struct_twin_normal;
 
 typedef struct wire_cst_raw_string_item_struct_twin_rust_async {
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *type;
 } wire_cst_raw_string_item_struct_twin_rust_async;
 
 typedef struct wire_cst_raw_string_item_struct_twin_rust_async_sse {
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *type;
 } wire_cst_raw_string_item_struct_twin_rust_async_sse;
 
 typedef struct wire_cst_raw_string_item_struct_twin_sse {
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *type;
 } wire_cst_raw_string_item_struct_twin_sse;
 
 typedef struct wire_cst_raw_string_item_struct_twin_sync {
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *type;
 } wire_cst_raw_string_item_struct_twin_sync;
 
 typedef struct wire_cst_raw_string_item_struct_twin_sync_sse {
-  struct wire_cst_list_prim_u_8 *type;
+  struct wire_cst_list_prim_u_8_strict *type;
 } wire_cst_raw_string_item_struct_twin_sync_sse;
 
 typedef struct wire_cst_record_application_settings_raw_string_enum_mirrored {
@@ -4113,127 +4163,127 @@ typedef struct wire_cst_test_chrono_twin_sync {
 
 typedef struct wire_cst_test_model_twin_normal {
   uint64_t id;
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   int32_t alias_enum;
   struct wire_cst_my_struct alias_struct;
 } wire_cst_test_model_twin_normal;
 
 typedef struct wire_cst_test_model_twin_rust_async {
   uint64_t id;
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   int32_t alias_enum;
   struct wire_cst_my_struct alias_struct;
 } wire_cst_test_model_twin_rust_async;
 
 typedef struct wire_cst_test_model_twin_rust_async_sse {
   uint64_t id;
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   int32_t alias_enum;
   struct wire_cst_my_struct alias_struct;
 } wire_cst_test_model_twin_rust_async_sse;
 
 typedef struct wire_cst_test_model_twin_sse {
   uint64_t id;
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   int32_t alias_enum;
   struct wire_cst_my_struct alias_struct;
 } wire_cst_test_model_twin_sse;
 
 typedef struct wire_cst_test_model_twin_sync {
   uint64_t id;
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   int32_t alias_enum;
   struct wire_cst_my_struct alias_struct;
 } wire_cst_test_model_twin_sync;
 
 typedef struct wire_cst_test_model_twin_sync_sse {
   uint64_t id;
-  struct wire_cst_list_prim_u_8 *name;
+  struct wire_cst_list_prim_u_8_strict *name;
   int32_t alias_enum;
   struct wire_cst_my_struct alias_struct;
 } wire_cst_test_model_twin_sync_sse;
 
 typedef struct wire_cst_vec_of_primitive_pack_twin_normal {
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_16 *int16list;
-  struct wire_cst_list_prim_u_16 *uint16list;
-  struct wire_cst_list_prim_u_32 *uint32list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_u_64 *uint64list;
-  struct wire_cst_list_prim_i_64 *int64list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_16_strict *int16list;
+  struct wire_cst_list_prim_u_16_strict *uint16list;
+  struct wire_cst_list_prim_u_32_strict *uint32list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_u_64_strict *uint64list;
+  struct wire_cst_list_prim_i_64_strict *int64list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_normal;
 
 typedef struct wire_cst_vec_of_primitive_pack_twin_rust_async {
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_16 *int16list;
-  struct wire_cst_list_prim_u_16 *uint16list;
-  struct wire_cst_list_prim_u_32 *uint32list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_u_64 *uint64list;
-  struct wire_cst_list_prim_i_64 *int64list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_16_strict *int16list;
+  struct wire_cst_list_prim_u_16_strict *uint16list;
+  struct wire_cst_list_prim_u_32_strict *uint32list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_u_64_strict *uint64list;
+  struct wire_cst_list_prim_i_64_strict *int64list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_rust_async;
 
 typedef struct wire_cst_vec_of_primitive_pack_twin_rust_async_sse {
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_16 *int16list;
-  struct wire_cst_list_prim_u_16 *uint16list;
-  struct wire_cst_list_prim_u_32 *uint32list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_u_64 *uint64list;
-  struct wire_cst_list_prim_i_64 *int64list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_16_strict *int16list;
+  struct wire_cst_list_prim_u_16_strict *uint16list;
+  struct wire_cst_list_prim_u_32_strict *uint32list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_u_64_strict *uint64list;
+  struct wire_cst_list_prim_i_64_strict *int64list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_rust_async_sse;
 
 typedef struct wire_cst_vec_of_primitive_pack_twin_sse {
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_16 *int16list;
-  struct wire_cst_list_prim_u_16 *uint16list;
-  struct wire_cst_list_prim_u_32 *uint32list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_u_64 *uint64list;
-  struct wire_cst_list_prim_i_64 *int64list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_16_strict *int16list;
+  struct wire_cst_list_prim_u_16_strict *uint16list;
+  struct wire_cst_list_prim_u_32_strict *uint32list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_u_64_strict *uint64list;
+  struct wire_cst_list_prim_i_64_strict *int64list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_sse;
 
 typedef struct wire_cst_vec_of_primitive_pack_twin_sync {
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_16 *int16list;
-  struct wire_cst_list_prim_u_16 *uint16list;
-  struct wire_cst_list_prim_u_32 *uint32list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_u_64 *uint64list;
-  struct wire_cst_list_prim_i_64 *int64list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_16_strict *int16list;
+  struct wire_cst_list_prim_u_16_strict *uint16list;
+  struct wire_cst_list_prim_u_32_strict *uint32list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_u_64_strict *uint64list;
+  struct wire_cst_list_prim_i_64_strict *int64list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_sync;
 
 typedef struct wire_cst_vec_of_primitive_pack_twin_sync_sse {
-  struct wire_cst_list_prim_i_8 *int8list;
-  struct wire_cst_list_prim_u_8 *uint8list;
-  struct wire_cst_list_prim_i_16 *int16list;
-  struct wire_cst_list_prim_u_16 *uint16list;
-  struct wire_cst_list_prim_u_32 *uint32list;
-  struct wire_cst_list_prim_i_32 *int32list;
-  struct wire_cst_list_prim_u_64 *uint64list;
-  struct wire_cst_list_prim_i_64 *int64list;
-  struct wire_cst_list_prim_f_32 *float32list;
-  struct wire_cst_list_prim_f_64 *float64list;
+  struct wire_cst_list_prim_i_8_strict *int8list;
+  struct wire_cst_list_prim_u_8_strict *uint8list;
+  struct wire_cst_list_prim_i_16_strict *int16list;
+  struct wire_cst_list_prim_u_16_strict *uint16list;
+  struct wire_cst_list_prim_u_32_strict *uint32list;
+  struct wire_cst_list_prim_i_32_strict *int32list;
+  struct wire_cst_list_prim_u_64_strict *uint64list;
+  struct wire_cst_list_prim_i_64_strict *int64list;
+  struct wire_cst_list_prim_f_32_strict *float32list;
+  struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_sync_sse;
 
@@ -4251,7 +4301,7 @@ void frbgen_frb_example_pure_dart_dart_fn_deliver_output(int32_t call_id,
                                                          int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_boxed_blob_twin_normal(int64_t port_,
-                                                              struct wire_cst_list_prim_u_8 *blob);
+                                                              struct wire_cst_list_prim_u_8_strict *blob);
 
 void frbgen_frb_example_pure_dart_wire_func_test_id_twin_normal(int64_t port_,
                                                                 struct wire_cst_test_id_twin_normal *id);
@@ -4261,16 +4311,16 @@ void frbgen_frb_example_pure_dart_wire_get_array_twin_normal(int64_t port_);
 void frbgen_frb_example_pure_dart_wire_get_complex_array_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_last_number_twin_normal(int64_t port_,
-                                                               struct wire_cst_list_prim_f_64 *array);
+                                                               struct wire_cst_list_prim_f_64_strict *array);
 
 void frbgen_frb_example_pure_dart_wire_nested_id_twin_normal(int64_t port_,
                                                              struct wire_cst_list_test_id_twin_normal *id);
 
 void frbgen_frb_example_pure_dart_wire_new_msgid_twin_normal(int64_t port_,
-                                                             struct wire_cst_list_prim_u_8 *id);
+                                                             struct wire_cst_list_prim_u_8_strict *id);
 
 void frbgen_frb_example_pure_dart_wire_return_boxed_feed_id_twin_normal(int64_t port_,
-                                                                        struct wire_cst_list_prim_u_8 *id);
+                                                                        struct wire_cst_list_prim_u_8_strict *id);
 
 void frbgen_frb_example_pure_dart_wire_return_boxed_raw_feed_id_twin_normal(int64_t port_,
                                                                             struct wire_cst_feed_id_twin_normal *id);
@@ -4288,10 +4338,10 @@ void frbgen_frb_example_pure_dart_wire_func_async_simple_add_twin_normal(int64_t
 void frbgen_frb_example_pure_dart_wire_func_async_void_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_simple_use_async_spawn(int64_t port_,
-                                                              struct wire_cst_list_prim_u_8 *arg);
+                                                              struct wire_cst_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_simple_use_async_spawn_blocking(int64_t port_,
-                                                                       struct wire_cst_list_prim_u_8 *arg);
+                                                                       struct wire_cst_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_handle_customized_struct_twin_normal(int64_t port_,
                                                                             struct wire_cst_customized_twin_normal *val);
@@ -4450,7 +4500,7 @@ void frbgen_frb_example_pure_dart_wire_handle_enum_struct_twin_normal(int64_t po
                                                                       struct wire_cst_kitchen_sink_twin_normal *val);
 
 void frbgen_frb_example_pure_dart_wire_handle_return_enum_twin_normal(int64_t port_,
-                                                                      struct wire_cst_list_prim_u_8 *input);
+                                                                      struct wire_cst_list_prim_u_8_strict *input);
 
 void frbgen_frb_example_pure_dart_wire_multiply_by_ten_twin_normal(int64_t port_,
                                                                    struct wire_cst_measure_twin_normal *measure);
@@ -4464,13 +4514,13 @@ void frbgen_frb_example_pure_dart_wire_EventTwinNormal_as_string_twin_normal(int
 void frbgen_frb_example_pure_dart_wire_close_event_listener_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_create_event_twin_normal(int64_t port_,
-                                                                struct wire_cst_list_prim_u_8 *address,
-                                                                struct wire_cst_list_prim_u_8 *payload);
+                                                                struct wire_cst_list_prim_u_8_strict *address,
+                                                                struct wire_cst_list_prim_u_8_strict *payload);
 
 void frbgen_frb_example_pure_dart_wire_register_event_listener_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_new_twin_normal(int64_t port_,
-                                                                              struct wire_cst_list_prim_u_8 *message);
+                                                                              struct wire_cst_list_prim_u_8_strict *message);
 
 void frbgen_frb_example_pure_dart_wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal(int64_t port_,
                                                                                                                struct wire_cst_custom_struct_twin_normal *that);
@@ -4556,7 +4606,7 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_normal(int64_t
                                                                          struct wire_cst_list_record_i_32_i_32 *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_normal(int64_t port_,
-                                                                              struct wire_cst_list_record_string_list_prim_u_8 *arg);
+                                                                              struct wire_cst_list_record_string_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_normal(int64_t port_,
                                                                                      struct wire_cst_list_record_string_kitchen_sink_twin_normal *arg);
@@ -4571,18 +4621,18 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_normal(i
                                                                                struct wire_cst_list_record_string_my_size *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_normal(int64_t port_,
-                                                                     struct wire_cst_list_prim_i_32 *arg);
+                                                                     struct wire_cst_list_prim_i_32_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_normal(int64_t port_,
                                                                         struct wire_cst_list_String *arg);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(int64_t port_,
-                                                                                                struct wire_cst_list_prim_u_8 *a,
-                                                                                                struct wire_cst_list_prim_u_8 *b);
+                                                                                                struct wire_cst_list_prim_u_8_strict *a,
+                                                                                                struct wire_cst_list_prim_u_8_strict *b);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_concatenate_twin_normal(int64_t port_,
                                                                                          struct wire_cst_concatenate_with_twin_normal *that,
-                                                                                         struct wire_cst_list_prim_u_8 *b);
+                                                                                         struct wire_cst_list_prim_u_8_strict *b);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal(int64_t port_);
 
@@ -4599,7 +4649,7 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_handle_some_str
                                                                                                      uint32_t max);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinNormal_new_twin_normal(int64_t port_,
-                                                                                 struct wire_cst_list_prim_u_8 *a);
+                                                                                 struct wire_cst_list_prim_u_8_strict *a);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinNormal_sum_twin_normal(int64_t port_,
                                                                          struct wire_cst_sum_with_twin_normal *that,
@@ -4668,14 +4718,14 @@ void frbgen_frb_example_pure_dart_wire_handle_nested_struct_twin_normal(int64_t 
                                                                         struct wire_cst_my_nested_struct_twin_normal *s);
 
 void frbgen_frb_example_pure_dart_wire_handle_string_twin_normal(int64_t port_,
-                                                                 struct wire_cst_list_prim_u_8 *s);
+                                                                 struct wire_cst_list_prim_u_8_strict *s);
 
 void frbgen_frb_example_pure_dart_wire_handle_struct_twin_normal(int64_t port_,
                                                                  struct wire_cst_my_size *arg,
                                                                  struct wire_cst_my_size *boxed);
 
 void frbgen_frb_example_pure_dart_wire_handle_vec_u8_twin_normal(int64_t port_,
-                                                                 struct wire_cst_list_prim_u_8 *v);
+                                                                 struct wire_cst_list_prim_u_8_loose *v);
 
 void frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin_normal(int64_t port_,
                                                                            struct wire_cst_list_weekdays_twin_normal *weekdays);
@@ -4692,7 +4742,7 @@ void frbgen_frb_example_pure_dart_wire_empty_struct_twin_normal(int64_t port_,
 void frbgen_frb_example_pure_dart_wire_func_return_unit_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_func_string_twin_normal(int64_t port_,
-                                                               struct wire_cst_list_prim_u_8 *arg);
+                                                               struct wire_cst_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_handle_list_of_struct_twin_normal(int64_t port_,
                                                                          struct wire_cst_list_my_size *l);
@@ -4723,7 +4773,7 @@ void frbgen_frb_example_pure_dart_wire_handle_optional_return_twin_normal(int64_
                                                                           double right);
 
 void frbgen_frb_example_pure_dart_wire_handle_optional_struct_twin_normal(int64_t port_,
-                                                                          struct wire_cst_list_prim_u_8 *document);
+                                                                          struct wire_cst_list_prim_u_8_strict *document);
 
 void frbgen_frb_example_pure_dart_wire_handle_vec_of_opts_twin_normal(int64_t port_,
                                                                       struct wire_cst_opt_vecs_twin_normal *opt);
@@ -4752,7 +4802,7 @@ void frbgen_frb_example_pure_dart_wire_primitive_usize_loopback_twin_normal(int6
                                                                             uintptr_t arg);
 
 void frbgen_frb_example_pure_dart_wire_boxed_blob_twin_rust_async(int64_t port_,
-                                                                  struct wire_cst_list_prim_u_8 *blob);
+                                                                  struct wire_cst_list_prim_u_8_strict *blob);
 
 void frbgen_frb_example_pure_dart_wire_func_test_id_twin_rust_async(int64_t port_,
                                                                     struct wire_cst_test_id_twin_rust_async *id);
@@ -4762,16 +4812,16 @@ void frbgen_frb_example_pure_dart_wire_get_array_twin_rust_async(int64_t port_);
 void frbgen_frb_example_pure_dart_wire_get_complex_array_twin_rust_async(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_last_number_twin_rust_async(int64_t port_,
-                                                                   struct wire_cst_list_prim_f_64 *array);
+                                                                   struct wire_cst_list_prim_f_64_strict *array);
 
 void frbgen_frb_example_pure_dart_wire_nested_id_twin_rust_async(int64_t port_,
                                                                  struct wire_cst_list_test_id_twin_rust_async *id);
 
 void frbgen_frb_example_pure_dart_wire_new_msgid_twin_rust_async(int64_t port_,
-                                                                 struct wire_cst_list_prim_u_8 *id);
+                                                                 struct wire_cst_list_prim_u_8_strict *id);
 
 void frbgen_frb_example_pure_dart_wire_return_boxed_feed_id_twin_rust_async(int64_t port_,
-                                                                            struct wire_cst_list_prim_u_8 *id);
+                                                                            struct wire_cst_list_prim_u_8_strict *id);
 
 void frbgen_frb_example_pure_dart_wire_return_boxed_raw_feed_id_twin_rust_async(int64_t port_,
                                                                                 struct wire_cst_feed_id_twin_rust_async *id);
@@ -4892,7 +4942,7 @@ void frbgen_frb_example_pure_dart_wire_use_msgid_twin_sse(int64_t port_,
                                                           int32_t rust_vec_len_,
                                                           int32_t data_len_);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_boxed_blob_twin_sync(struct wire_cst_list_prim_u_8 *blob);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_boxed_blob_twin_sync(struct wire_cst_list_prim_u_8_strict *blob);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_test_id_twin_sync(struct wire_cst_test_id_twin_sync *id);
 
@@ -4900,13 +4950,13 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_get_array_twin_sync(void)
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_get_complex_array_twin_sync(void);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_last_number_twin_sync(struct wire_cst_list_prim_f_64 *array);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_last_number_twin_sync(struct wire_cst_list_prim_f_64_strict *array);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_nested_id_twin_sync(struct wire_cst_list_test_id_twin_sync *id);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_new_msgid_twin_sync(struct wire_cst_list_prim_u_8 *id);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_new_msgid_twin_sync(struct wire_cst_list_prim_u_8_strict *id);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_return_boxed_feed_id_twin_sync(struct wire_cst_list_prim_u_8 *id);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_return_boxed_feed_id_twin_sync(struct wire_cst_list_prim_u_8_strict *id);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_return_boxed_raw_feed_id_twin_sync(struct wire_cst_feed_id_twin_sync *id);
 
@@ -5007,10 +5057,10 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_next_user_id_twin_sync_ss
                                                                                   int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_json_twin_normal(int64_t port_,
-                                                                                    struct wire_cst_list_prim_u_8 *raw);
+                                                                                    struct wire_cst_list_prim_u_8_strict *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_protobuf_twin_normal(int64_t port_,
-                                                                                        struct wire_cst_list_prim_u_8 *raw);
+                                                                                        struct wire_cst_list_prim_u_8_loose *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_twin_normal(int64_t port_,
                                                                                struct wire_cst_benchmark_binary_tree_twin_normal *tree);
@@ -5025,10 +5075,10 @@ void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_output_twin_normal(
                                                                                 int32_t depth);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_twin_normal(int64_t port_,
-                                                                             struct wire_cst_list_prim_u_8 *raw);
+                                                                             struct wire_cst_list_prim_u_8_strict *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_blob_input_protobuf_twin_normal(int64_t port_,
-                                                                                 struct wire_cst_list_prim_u_8 *raw);
+                                                                                 struct wire_cst_list_prim_u_8_loose *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_blob_input_twin_normal(int64_t port_,
                                                                         struct wire_cst_benchmark_blob_twin_normal *blob);
@@ -5043,7 +5093,7 @@ void frbgen_frb_example_pure_dart_wire_benchmark_blob_output_twin_normal(int64_t
                                                                          int32_t size);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_input_bytes_twin_normal(int64_t port_,
-                                                                         struct wire_cst_list_prim_u_8 *bytes);
+                                                                         struct wire_cst_list_prim_u_8_loose *bytes);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_output_bytes_twin_normal(int64_t port_,
                                                                           int32_t size);
@@ -5051,10 +5101,10 @@ void frbgen_frb_example_pure_dart_wire_benchmark_output_bytes_twin_normal(int64_
 void frbgen_frb_example_pure_dart_wire_benchmark_void_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_json_twin_rust_async(int64_t port_,
-                                                                                        struct wire_cst_list_prim_u_8 *raw);
+                                                                                        struct wire_cst_list_prim_u_8_strict *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_protobuf_twin_rust_async(int64_t port_,
-                                                                                            struct wire_cst_list_prim_u_8 *raw);
+                                                                                            struct wire_cst_list_prim_u_8_loose *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_twin_rust_async(int64_t port_,
                                                                                    struct wire_cst_benchmark_binary_tree_twin_rust_async *tree);
@@ -5069,10 +5119,10 @@ void frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_output_twin_rust_as
                                                                                     int32_t depth);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_twin_rust_async(int64_t port_,
-                                                                                 struct wire_cst_list_prim_u_8 *raw);
+                                                                                 struct wire_cst_list_prim_u_8_strict *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_blob_input_protobuf_twin_rust_async(int64_t port_,
-                                                                                     struct wire_cst_list_prim_u_8 *raw);
+                                                                                     struct wire_cst_list_prim_u_8_loose *raw);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_blob_input_twin_rust_async(int64_t port_,
                                                                             struct wire_cst_benchmark_blob_twin_rust_async *blob);
@@ -5087,7 +5137,7 @@ void frbgen_frb_example_pure_dart_wire_benchmark_blob_output_twin_rust_async(int
                                                                              int32_t size);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_input_bytes_twin_rust_async(int64_t port_,
-                                                                             struct wire_cst_list_prim_u_8 *bytes);
+                                                                             struct wire_cst_list_prim_u_8_loose *bytes);
 
 void frbgen_frb_example_pure_dart_wire_benchmark_output_bytes_twin_rust_async(int64_t port_,
                                                                               int32_t size);
@@ -5244,9 +5294,9 @@ void frbgen_frb_example_pure_dart_wire_benchmark_void_twin_sse(int64_t port_,
                                                                int32_t rust_vec_len_,
                                                                int32_t data_len_);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_json_twin_sync(struct wire_cst_list_prim_u_8 *raw);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_json_twin_sync(struct wire_cst_list_prim_u_8_strict *raw);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_protobuf_twin_sync(struct wire_cst_list_prim_u_8 *raw);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_protobuf_twin_sync(struct wire_cst_list_prim_u_8_loose *raw);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_input_twin_sync(struct wire_cst_benchmark_binary_tree_twin_sync *tree);
 
@@ -5256,9 +5306,9 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_out
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_binary_tree_output_twin_sync(int32_t depth);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_twin_sync(struct wire_cst_list_prim_u_8 *raw);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_blob_input_json_twin_sync(struct wire_cst_list_prim_u_8_strict *raw);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_blob_input_protobuf_twin_sync(struct wire_cst_list_prim_u_8 *raw);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_blob_input_protobuf_twin_sync(struct wire_cst_list_prim_u_8_loose *raw);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_blob_input_twin_sync(struct wire_cst_benchmark_blob_twin_sync *blob);
 
@@ -5268,7 +5318,7 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_blob_output_pro
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_blob_output_twin_sync(int32_t size);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_input_bytes_twin_sync(struct wire_cst_list_prim_u_8 *bytes);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_input_bytes_twin_sync(struct wire_cst_list_prim_u_8_loose *bytes);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_benchmark_output_bytes_twin_sync(int32_t size);
 
@@ -5928,7 +5978,7 @@ void frbgen_frb_example_pure_dart_wire_handle_enum_struct_twin_rust_async(int64_
                                                                           struct wire_cst_kitchen_sink_twin_rust_async *val);
 
 void frbgen_frb_example_pure_dart_wire_handle_return_enum_twin_rust_async(int64_t port_,
-                                                                          struct wire_cst_list_prim_u_8 *input);
+                                                                          struct wire_cst_list_prim_u_8_strict *input);
 
 void frbgen_frb_example_pure_dart_wire_multiply_by_ten_twin_rust_async(int64_t port_,
                                                                        struct wire_cst_measure_twin_rust_async *measure);
@@ -6038,7 +6088,7 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_enum_parameter_twi
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_enum_struct_twin_sync(struct wire_cst_kitchen_sink_twin_sync *val);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_return_enum_twin_sync(struct wire_cst_list_prim_u_8 *input);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_return_enum_twin_sync(struct wire_cst_list_prim_u_8_strict *input);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_multiply_by_ten_twin_sync(struct wire_cst_measure_twin_sync *measure);
 
@@ -6086,8 +6136,8 @@ void frbgen_frb_example_pure_dart_wire_EventTwinRustAsync_as_string_twin_rust_as
 void frbgen_frb_example_pure_dart_wire_close_event_listener_twin_rust_async(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_create_event_twin_rust_async(int64_t port_,
-                                                                    struct wire_cst_list_prim_u_8 *address,
-                                                                    struct wire_cst_list_prim_u_8 *payload);
+                                                                    struct wire_cst_list_prim_u_8_strict *address,
+                                                                    struct wire_cst_list_prim_u_8_strict *payload);
 
 void frbgen_frb_example_pure_dart_wire_register_event_listener_twin_rust_async(int64_t port_);
 
@@ -6132,7 +6182,7 @@ void frbgen_frb_example_pure_dart_wire_register_event_listener_twin_sse(int64_t 
                                                                         int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_CustomStructTwinRustAsync_new_twin_rust_async(int64_t port_,
-                                                                                     struct wire_cst_list_prim_u_8 *message);
+                                                                                     struct wire_cst_list_prim_u_8_strict *message);
 
 void frbgen_frb_example_pure_dart_wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(int64_t port_,
                                                                                                                       struct wire_cst_custom_struct_twin_rust_async *that);
@@ -6489,7 +6539,7 @@ void frbgen_frb_example_pure_dart_wire_throw_anyhow_twin_sse(int64_t port_,
                                                              int32_t rust_vec_len_,
                                                              int32_t data_len_);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_CustomStructTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8 *message);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_CustomStructTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8_strict *message);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(struct wire_cst_custom_struct_twin_sync *that);
 
@@ -6742,7 +6792,7 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_rust_async(int
                                                                              struct wire_cst_list_record_i_32_i_32 *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_rust_async(int64_t port_,
-                                                                                  struct wire_cst_list_record_string_list_prim_u_8 *arg);
+                                                                                  struct wire_cst_list_record_string_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_rust_async(int64_t port_,
                                                                                          struct wire_cst_list_record_string_kitchen_sink_twin_rust_async *arg);
@@ -6757,7 +6807,7 @@ void frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_rust_asy
                                                                                    struct wire_cst_list_record_string_my_size *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_rust_async(int64_t port_,
-                                                                         struct wire_cst_list_prim_i_32 *arg);
+                                                                         struct wire_cst_list_prim_i_32_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_rust_async(int64_t port_,
                                                                             struct wire_cst_list_String *arg);
@@ -6844,7 +6894,7 @@ void frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sse(int64_t por
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_i32_i32_twin_sync(struct wire_cst_list_record_i_32_i_32 *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_sync(struct wire_cst_list_record_string_list_prim_u_8 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_bytes_twin_sync(struct wire_cst_list_record_string_list_prim_u_8_strict *arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_complex_enum_twin_sync(struct wire_cst_list_record_string_kitchen_sink_twin_sync *arg);
 
@@ -6854,7 +6904,7 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_stri
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_map_string_struct_twin_sync(struct wire_cst_list_record_string_my_size *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync(struct wire_cst_list_prim_i_32 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_set_i32_twin_sync(struct wire_cst_list_prim_i_32_strict *arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin_sync(struct wire_cst_list_String *arg);
 
@@ -6891,12 +6941,12 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_hash_set_string_twin
                                                                                           int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(int64_t port_,
-                                                                                                       struct wire_cst_list_prim_u_8 *a,
-                                                                                                       struct wire_cst_list_prim_u_8 *b);
+                                                                                                       struct wire_cst_list_prim_u_8_strict *a,
+                                                                                                       struct wire_cst_list_prim_u_8_strict *b);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(int64_t port_,
                                                                                                 struct wire_cst_concatenate_with_twin_rust_async *that,
-                                                                                                struct wire_cst_list_prim_u_8 *b);
+                                                                                                struct wire_cst_list_prim_u_8_strict *b);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(int64_t port_);
 
@@ -6913,7 +6963,7 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_handle_some_
                                                                                                             uint32_t max);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(int64_t port_,
-                                                                                        struct wire_cst_list_prim_u_8 *a);
+                                                                                        struct wire_cst_list_prim_u_8_strict *a);
 
 void frbgen_frb_example_pure_dart_wire_SumWithTwinRustAsync_sum_twin_rust_async(int64_t port_,
                                                                                 struct wire_cst_sum_with_twin_rust_async *that,
@@ -7027,11 +7077,11 @@ void frbgen_frb_example_pure_dart_wire_get_sum_struct_twin_sse(int64_t port_,
                                                                int32_t rust_vec_len_,
                                                                int32_t data_len_);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(struct wire_cst_list_prim_u_8 *a,
-                                                                                                            struct wire_cst_list_prim_u_8 *b);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(struct wire_cst_list_prim_u_8_strict *a,
+                                                                                                            struct wire_cst_list_prim_u_8_strict *b);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_concatenate_twin_sync(struct wire_cst_concatenate_with_twin_sync *that,
-                                                                                                     struct wire_cst_list_prim_u_8 *b);
+                                                                                                     struct wire_cst_list_prim_u_8_strict *b);
 
 void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync(int64_t port_);
 
@@ -7047,7 +7097,7 @@ void frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_handle_some_strea
                                                                                                  uint32_t key,
                                                                                                  uint32_t max);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8 *a);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_ConcatenateWithTwinSync_new_twin_sync(struct wire_cst_list_prim_u_8_strict *a);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_SumWithTwinSync_sum_twin_sync(struct wire_cst_sum_with_twin_sync *that,
                                                                                      uint32_t y,
@@ -7468,14 +7518,14 @@ void frbgen_frb_example_pure_dart_wire_handle_nested_struct_twin_rust_async(int6
                                                                             struct wire_cst_my_nested_struct_twin_rust_async *s);
 
 void frbgen_frb_example_pure_dart_wire_handle_string_twin_rust_async(int64_t port_,
-                                                                     struct wire_cst_list_prim_u_8 *s);
+                                                                     struct wire_cst_list_prim_u_8_strict *s);
 
 void frbgen_frb_example_pure_dart_wire_handle_struct_twin_rust_async(int64_t port_,
                                                                      struct wire_cst_my_size *arg,
                                                                      struct wire_cst_my_size *boxed);
 
 void frbgen_frb_example_pure_dart_wire_handle_vec_u8_twin_rust_async(int64_t port_,
-                                                                     struct wire_cst_list_prim_u_8 *v);
+                                                                     struct wire_cst_list_prim_u_8_loose *v);
 
 void frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin_rust_async(int64_t port_,
                                                                                struct wire_cst_list_weekdays_twin_rust_async *weekdays);
@@ -7582,12 +7632,12 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_complex_struct_twi
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_nested_struct_twin_sync(struct wire_cst_my_nested_struct_twin_sync *s);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_string_twin_sync(struct wire_cst_list_prim_u_8 *s);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_string_twin_sync(struct wire_cst_list_prim_u_8_strict *s);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_struct_twin_sync(struct wire_cst_my_size *arg,
                                                                                struct wire_cst_my_size *boxed);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_vec_u8_twin_sync(struct wire_cst_list_prim_u_8 *v);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_vec_u8_twin_sync(struct wire_cst_list_prim_u_8_loose *v);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_list_of_primitive_enums_twin_sync(struct wire_cst_list_weekdays_twin_sync *weekdays);
 
@@ -7637,7 +7687,7 @@ void frbgen_frb_example_pure_dart_wire_empty_struct_twin_rust_async(int64_t port
 void frbgen_frb_example_pure_dart_wire_func_return_unit_twin_rust_async(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire_func_string_twin_rust_async(int64_t port_,
-                                                                   struct wire_cst_list_prim_u_8 *arg);
+                                                                   struct wire_cst_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_handle_list_of_struct_twin_rust_async(int64_t port_,
                                                                              struct wire_cst_list_my_size *l);
@@ -7699,7 +7749,7 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_empty_struct_twin_sync(st
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_return_unit_twin_sync(void);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_string_twin_sync(struct wire_cst_list_prim_u_8 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_string_twin_sync(struct wire_cst_list_prim_u_8_strict *arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_list_of_struct_twin_sync(struct wire_cst_list_my_size *l);
 
@@ -8031,7 +8081,7 @@ void frbgen_frb_example_pure_dart_wire_handle_optional_return_twin_rust_async(in
                                                                               double right);
 
 void frbgen_frb_example_pure_dart_wire_handle_optional_struct_twin_rust_async(int64_t port_,
-                                                                              struct wire_cst_list_prim_u_8 *document);
+                                                                              struct wire_cst_list_prim_u_8_strict *document);
 
 void frbgen_frb_example_pure_dart_wire_handle_vec_of_opts_twin_rust_async(int64_t port_,
                                                                           struct wire_cst_opt_vecs_twin_rust_async *opt);
@@ -8111,7 +8161,7 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_optional_increment
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_optional_return_twin_sync(double left,
                                                                                         double right);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_optional_struct_twin_sync(struct wire_cst_list_prim_u_8 *document);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_optional_struct_twin_sync(struct wire_cst_list_prim_u_8_strict *document);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_vec_of_opts_twin_sync(struct wire_cst_opt_vecs_twin_sync *opt);
 
@@ -8176,34 +8226,34 @@ void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_bool_twin_nor
                                                                                     struct wire_cst_list_bool *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f32_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_f_32 *arg);
+                                                                                   struct wire_cst_list_prim_f_32_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f64_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_f_64 *arg);
+                                                                                   struct wire_cst_list_prim_f_64_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i16_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_i_16 *arg);
+                                                                                   struct wire_cst_list_prim_i_16_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i32_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_i_32 *arg);
+                                                                                   struct wire_cst_list_prim_i_32_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i64_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_i_64 *arg);
+                                                                                   struct wire_cst_list_prim_i_64_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i8_twin_normal(int64_t port_,
-                                                                                  struct wire_cst_list_prim_i_8 *arg);
+                                                                                  struct wire_cst_list_prim_i_8_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u16_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_u_16 *arg);
+                                                                                   struct wire_cst_list_prim_u_16_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u32_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_u_32 *arg);
+                                                                                   struct wire_cst_list_prim_u_32_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u64_twin_normal(int64_t port_,
-                                                                                   struct wire_cst_list_prim_u_64 *arg);
+                                                                                   struct wire_cst_list_prim_u_64_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_normal(int64_t port_,
-                                                                                  struct wire_cst_list_prim_u_8 *arg);
+                                                                                  struct wire_cst_list_prim_u_8_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_handle_vec_of_primitive_twin_rust_async(int64_t port_,
                                                                                int32_t n);
@@ -8228,34 +8278,34 @@ void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_bool_twin_rus
                                                                                         struct wire_cst_list_bool *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f32_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_f_32 *arg);
+                                                                                       struct wire_cst_list_prim_f_32_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f64_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_f_64 *arg);
+                                                                                       struct wire_cst_list_prim_f_64_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i16_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_i_16 *arg);
+                                                                                       struct wire_cst_list_prim_i_16_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i32_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_i_32 *arg);
+                                                                                       struct wire_cst_list_prim_i_32_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i64_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_i_64 *arg);
+                                                                                       struct wire_cst_list_prim_i_64_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i8_twin_rust_async(int64_t port_,
-                                                                                      struct wire_cst_list_prim_i_8 *arg);
+                                                                                      struct wire_cst_list_prim_i_8_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u16_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_u_16 *arg);
+                                                                                       struct wire_cst_list_prim_u_16_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u32_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_u_32 *arg);
+                                                                                       struct wire_cst_list_prim_u_32_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u64_twin_rust_async(int64_t port_,
-                                                                                       struct wire_cst_list_prim_u_64 *arg);
+                                                                                       struct wire_cst_list_prim_u_64_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_rust_async(int64_t port_,
-                                                                                      struct wire_cst_list_prim_u_8 *arg);
+                                                                                      struct wire_cst_list_prim_u_8_loose *arg);
 
 void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_bool_twin_rust_async_sse(int64_t port_,
                                                                                             uint8_t *ptr_,
@@ -8369,25 +8419,25 @@ void frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_sse(i
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_bool_twin_sync(struct wire_cst_list_bool *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f32_twin_sync(struct wire_cst_list_prim_f_32 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f32_twin_sync(struct wire_cst_list_prim_f_32_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f64_twin_sync(struct wire_cst_list_prim_f_64 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_f64_twin_sync(struct wire_cst_list_prim_f_64_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i16_twin_sync(struct wire_cst_list_prim_i_16 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i16_twin_sync(struct wire_cst_list_prim_i_16_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i32_twin_sync(struct wire_cst_list_prim_i_32 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i32_twin_sync(struct wire_cst_list_prim_i_32_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i64_twin_sync(struct wire_cst_list_prim_i_64 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i64_twin_sync(struct wire_cst_list_prim_i_64_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i8_twin_sync(struct wire_cst_list_prim_i_8 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_i8_twin_sync(struct wire_cst_list_prim_i_8_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u16_twin_sync(struct wire_cst_list_prim_u_16 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u16_twin_sync(struct wire_cst_list_prim_u_16_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u32_twin_sync(struct wire_cst_list_prim_u_32 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u32_twin_sync(struct wire_cst_list_prim_u_32_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u64_twin_sync(struct wire_cst_list_prim_u_64 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u64_twin_sync(struct wire_cst_list_prim_u_64_loose *arg);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_sync(struct wire_cst_list_prim_u_8 *arg);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_example_primitive_list_type_u8_twin_sync(struct wire_cst_list_prim_u_8_loose *arg);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_example_primitive_list_type_bool_twin_sync_sse(uint8_t *ptr_,
                                                                                                       int32_t rust_vec_len_,
@@ -8964,7 +9014,7 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_sync(void);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(const void *a,
-                                                                                                        struct wire_cst_list_prim_u_8 *b);
+                                                                                                        struct wire_cst_list_prim_u_8_strict *b);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_plus_sign_arg_twin_sync(const void *arg);
 
@@ -8985,13 +9035,13 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_w
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(void);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(const void *arg,
-                                                                                                          struct wire_cst_list_prim_u_8 *expect);
+                                                                                                          struct wire_cst_list_prim_u_8_strict *expect);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(const void *arg,
-                                                                                                              struct wire_cst_list_prim_u_8 *expect);
+                                                                                                              struct wire_cst_list_prim_u_8_strict *expect);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_own_twin_sync(const void *arg,
-                                                                                                       struct wire_cst_list_prim_u_8 *expect);
+                                                                                                       struct wire_cst_list_prim_u_8_strict *expect);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(void);
 
@@ -9764,11 +9814,11 @@ void frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_rust_async(int64
                                                                            struct wire_cst_feature_uuid_twin_rust_async *ids);
 
 void frbgen_frb_example_pure_dart_wire_handle_uuid_twin_rust_async(int64_t port_,
-                                                                   struct wire_cst_list_prim_u_8 *id);
+                                                                   struct wire_cst_list_prim_u_8_strict *id);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_sync(struct wire_cst_feature_uuid_twin_sync *ids);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_uuid_twin_sync(struct wire_cst_list_prim_u_8 *id);
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_handle_uuid_twin_sync(struct wire_cst_list_prim_u_8_strict *id);
 
 void frbgen_frb_example_pure_dart_wire_test_more_than_just_one_raw_string_struct_twin_normal(int64_t port_);
 
@@ -9826,7 +9876,7 @@ void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_nor
 
 void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(int64_t port_,
                                                                                           const void *a,
-                                                                                          struct wire_cst_list_prim_u_8 *b);
+                                                                                          struct wire_cst_list_prim_u_8_strict *b);
 
 void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_plus_sign_arg_twin_normal(int64_t port_,
                                                                                   const void *arg);
@@ -9853,15 +9903,15 @@ void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opa
 
 void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(int64_t port_,
                                                                                             const void *arg,
-                                                                                            struct wire_cst_list_prim_u_8 *expect);
+                                                                                            struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(int64_t port_,
                                                                                                 const void *arg,
-                                                                                                struct wire_cst_list_prim_u_8 *expect);
+                                                                                                struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_own_twin_normal(int64_t port_,
                                                                                          const void *arg,
-                                                                                         struct wire_cst_list_prim_u_8 *expect);
+                                                                                         struct wire_cst_list_prim_u_8_strict *expect);
 
 void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(int64_t port_);
 
@@ -9949,7 +9999,7 @@ void frbgen_frb_example_pure_dart_wire_handle_stream_sink_at_3_twin_normal(int64
                                                                            uint32_t max);
 
 void frbgen_frb_example_pure_dart_wire_func_stream_realistic_twin_normal(int64_t port_,
-                                                                         struct wire_cst_list_prim_u_8 *arg);
+                                                                         struct wire_cst_list_prim_u_8_strict *arg);
 
 void frbgen_frb_example_pure_dart_wire_func_struct_with_one_field_twin_normal(int64_t port_,
                                                                               struct wire_cst_struct_with_one_field_twin_normal *arg);
@@ -9985,7 +10035,7 @@ void frbgen_frb_example_pure_dart_wire_handle_nested_uuids_twin_normal(int64_t p
                                                                        struct wire_cst_feature_uuid_twin_normal *ids);
 
 void frbgen_frb_example_pure_dart_wire_handle_uuid_twin_normal(int64_t port_,
-                                                               struct wire_cst_list_prim_u_8 *id);
+                                                               struct wire_cst_list_prim_u_8_strict *id);
 
 void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
@@ -10969,7 +11019,7 @@ struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync *frbgen_frb_example_pure
 
 struct wire_cst_list_opt_box_autoadd_weekdays_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_list_opt_box_autoadd_weekdays_twin_sync_sse(int32_t len);
 
-struct wire_cst_list_opt_list_prim_i_32 *frbgen_frb_example_pure_dart_cst_new_list_opt_list_prim_i_32(int32_t len);
+struct wire_cst_list_opt_list_prim_i_32_strict *frbgen_frb_example_pure_dart_cst_new_list_opt_list_prim_i_32_strict(int32_t len);
 
 struct wire_cst_list_point_twin_normal *frbgen_frb_example_pure_dart_cst_new_list_point_twin_normal(int32_t len);
 
@@ -10983,25 +11033,45 @@ struct wire_cst_list_point_twin_sync *frbgen_frb_example_pure_dart_cst_new_list_
 
 struct wire_cst_list_point_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_list_point_twin_sync_sse(int32_t len);
 
-struct wire_cst_list_prim_f_32 *frbgen_frb_example_pure_dart_cst_new_list_prim_f_32(int32_t len);
+struct wire_cst_list_prim_f_32_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_f_32_loose(int32_t len);
 
-struct wire_cst_list_prim_f_64 *frbgen_frb_example_pure_dart_cst_new_list_prim_f_64(int32_t len);
+struct wire_cst_list_prim_f_32_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_f_32_strict(int32_t len);
 
-struct wire_cst_list_prim_i_16 *frbgen_frb_example_pure_dart_cst_new_list_prim_i_16(int32_t len);
+struct wire_cst_list_prim_f_64_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_f_64_loose(int32_t len);
 
-struct wire_cst_list_prim_i_32 *frbgen_frb_example_pure_dart_cst_new_list_prim_i_32(int32_t len);
+struct wire_cst_list_prim_f_64_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_f_64_strict(int32_t len);
 
-struct wire_cst_list_prim_i_64 *frbgen_frb_example_pure_dart_cst_new_list_prim_i_64(int32_t len);
+struct wire_cst_list_prim_i_16_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_i_16_loose(int32_t len);
 
-struct wire_cst_list_prim_i_8 *frbgen_frb_example_pure_dart_cst_new_list_prim_i_8(int32_t len);
+struct wire_cst_list_prim_i_16_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_i_16_strict(int32_t len);
 
-struct wire_cst_list_prim_u_16 *frbgen_frb_example_pure_dart_cst_new_list_prim_u_16(int32_t len);
+struct wire_cst_list_prim_i_32_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_i_32_loose(int32_t len);
 
-struct wire_cst_list_prim_u_32 *frbgen_frb_example_pure_dart_cst_new_list_prim_u_32(int32_t len);
+struct wire_cst_list_prim_i_32_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_i_32_strict(int32_t len);
 
-struct wire_cst_list_prim_u_64 *frbgen_frb_example_pure_dart_cst_new_list_prim_u_64(int32_t len);
+struct wire_cst_list_prim_i_64_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_i_64_loose(int32_t len);
 
-struct wire_cst_list_prim_u_8 *frbgen_frb_example_pure_dart_cst_new_list_prim_u_8(int32_t len);
+struct wire_cst_list_prim_i_64_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_i_64_strict(int32_t len);
+
+struct wire_cst_list_prim_i_8_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_i_8_loose(int32_t len);
+
+struct wire_cst_list_prim_i_8_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_i_8_strict(int32_t len);
+
+struct wire_cst_list_prim_u_16_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_u_16_loose(int32_t len);
+
+struct wire_cst_list_prim_u_16_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_u_16_strict(int32_t len);
+
+struct wire_cst_list_prim_u_32_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_u_32_loose(int32_t len);
+
+struct wire_cst_list_prim_u_32_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_u_32_strict(int32_t len);
+
+struct wire_cst_list_prim_u_64_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_u_64_loose(int32_t len);
+
+struct wire_cst_list_prim_u_64_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_u_64_strict(int32_t len);
+
+struct wire_cst_list_prim_u_8_loose *frbgen_frb_example_pure_dart_cst_new_list_prim_u_8_loose(int32_t len);
+
+struct wire_cst_list_prim_u_8_strict *frbgen_frb_example_pure_dart_cst_new_list_prim_u_8_strict(int32_t len);
 
 struct wire_cst_list_raw_string_enum_mirrored *frbgen_frb_example_pure_dart_cst_new_list_raw_string_enum_mirrored(int32_t len);
 
@@ -11035,7 +11105,7 @@ struct wire_cst_list_record_string_kitchen_sink_twin_sync *frbgen_frb_example_pu
 
 struct wire_cst_list_record_string_kitchen_sink_twin_sync_sse *frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync_sse(int32_t len);
 
-struct wire_cst_list_record_string_list_prim_u_8 *frbgen_frb_example_pure_dart_cst_new_list_record_string_list_prim_u_8(int32_t len);
+struct wire_cst_list_record_string_list_prim_u_8_strict *frbgen_frb_example_pure_dart_cst_new_list_record_string_list_prim_u_8_strict(int32_t len);
 
 struct wire_cst_list_record_string_my_size *frbgen_frb_example_pure_dart_cst_new_list_record_string_my_size(int32_t len);
 
@@ -11492,23 +11562,33 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_opt_box_autoadd_weekdays_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_opt_box_autoadd_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_opt_box_autoadd_weekdays_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_opt_list_prim_i_32);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_opt_list_prim_i_32_strict);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_point_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_point_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_point_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_point_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_point_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_point_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_f_32);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_f_64);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_16);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_32);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_64);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_8);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_16);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_32);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_64);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_8);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_f_32_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_f_32_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_f_64_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_f_64_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_16_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_16_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_32_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_32_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_64_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_64_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_8_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_i_8_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_16_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_16_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_32_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_32_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_64_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_64_strict);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_8_loose);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_prim_u_8_strict);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_raw_string_enum_mirrored);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_i_32_i_32);
@@ -11525,7 +11605,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_kitchen_sink_twin_sync_sse);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_list_prim_u_8);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_list_prim_u_8_strict);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_my_size);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_record_string_string);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_sum_with_twin_normal);
