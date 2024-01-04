@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0-dev.12
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support property getters #1600
+* Automatically close streams when it is dropped #1601
+* Allow to accept more Dart types for `Vec<primitive>` #1597
+* Improve `frb_dart/ffigen_generated` #1598
+* Allow `#[frb(one, two)]` (originally only allow `#[frb(one)] #[frb(two)]`) #1599
+
 ## 2.0.0-dev.11
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
