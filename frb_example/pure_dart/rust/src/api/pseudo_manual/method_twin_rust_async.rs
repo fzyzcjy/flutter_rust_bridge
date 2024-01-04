@@ -32,7 +32,7 @@ impl ConcatenateWithTwinRustAsync {
 
     #[frb(getter)]
     pub async fn simple_getter_twin_rust_async(&self) -> String {
-        self.a
+        self.a.clone()
     }
 
     pub async fn handle_some_stream_sink_twin_rust_async(

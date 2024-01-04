@@ -28,7 +28,7 @@ impl ConcatenateWithTwinNormal {
 
     #[frb(getter)]
     pub fn simple_getter_twin_normal(&self) -> String {
-        self.a
+        self.a.clone()
     }
 
     pub fn handle_some_stream_sink_twin_normal(

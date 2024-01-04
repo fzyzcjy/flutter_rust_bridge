@@ -36,7 +36,7 @@ impl ConcatenateWithTwinSse {
     #[frb(getter)]
     #[flutter_rust_bridge::frb(serialize)]
     pub fn simple_getter_twin_sse(&self) -> String {
-        self.a
+        self.a.clone()
     }
 
     #[flutter_rust_bridge::frb(serialize)]
