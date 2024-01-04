@@ -140,7 +140,7 @@ struct FrbAttributesInner(Vec<FrbAttribute>);
 impl Parse for FrbAttributesInner {
     fn parse(input: ParseStream) -> Result<Self> {
         Ok(Self(
-            Punctuated::<FrbAttribute, Token![,]>::parse_terminated(&input)?
+            Punctuated::<FrbAttribute, Token![,]>::parse_terminated(input)?
                 .into_iter()
                 .collect(),
         ))
