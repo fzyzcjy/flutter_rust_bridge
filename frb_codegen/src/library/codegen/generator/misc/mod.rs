@@ -9,7 +9,6 @@ use itertools::Itertools;
 use std::ops::Add;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
-use strum_macros::EnumIter;
 
 pub(crate) mod structs_macro;
 pub(crate) mod target;
@@ -129,7 +128,7 @@ impl StructOrRecord {
     }
 }
 
-#[derive(Clone, Copy, PartialEq, Eq, Debug, Hash, EnumIter)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub(crate) enum Direction {
     Rust2Dart,
     Dart2Rust,

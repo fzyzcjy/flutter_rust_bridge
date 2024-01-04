@@ -1,14 +1,10 @@
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
-use crate::codegen::generator::misc::Direction;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use fern::HashMap;
 use serde::Serialize;
-use std::collections::HashMap;
-use strum::IntoEnumIterator;
 
 #[derive(Serialize)]
 pub(crate) struct ApiDartDumpInfo {
@@ -18,7 +14,7 @@ pub(crate) struct ApiDartDumpInfo {
 #[derive(Serialize)]
 pub(crate) struct ApiDartDumpInfoType {
     safe_ident: String,
-    dart_api_type: HashMap<Direction, String>,
+    dart_api_type: String,
 }
 
 pub(super) fn generate_dump_info(
@@ -33,9 +29,7 @@ pub(super) fn generate_dump_info(
                 let gen = ApiDartGenerator::new(ty.clone(), context);
                 ApiDartDumpInfoType {
                     safe_ident: ty.safe_ident(),
-                    dart_api_type: Direction::iter()
-                        .map(|d| (d, gen.dart_api_type(d)))
-                        .collect(),
+                    dart_api_type: gen.dart_api_type(),
                 }
             })
             .collect(),
