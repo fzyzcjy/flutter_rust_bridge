@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::ty::delegate::generate_set_to_list;
 use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::misc::Direction;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::ty::delegate::{
@@ -133,9 +134,10 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
     }
 }
 
-fn uint8list_safe_ident() -> String {
+fn uint8list_safe_ident(direction: Direction) -> String {
     IrTypePrimitiveList {
         primitive: IrTypePrimitive::U8,
+        direction,
     }
     .safe_ident()
 }
