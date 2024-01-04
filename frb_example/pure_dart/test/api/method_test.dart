@@ -80,4 +80,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         .handleSomeStaticStreamSinkSingleArgTwinNormal();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
+
+  test('getter', () async {
+    final concatenateWith = ConcatenateWithTwinNormal(a: "apple");
+    expect(concatenateWith.simpleGetterTwinNormal, equals("apple"));
+  });
 }

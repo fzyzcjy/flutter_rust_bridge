@@ -231,6 +231,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinNormal(obj.instanceMethodArgBorrowTwinNormal());
   });
 
+  test('getter', () async {
+    final obj = await NonCloneSimpleTwinNormal.newTwinNormal();
+    expect(obj.instanceMethodGetterTwinNormal, 42);
+  });
+
   test('types with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
