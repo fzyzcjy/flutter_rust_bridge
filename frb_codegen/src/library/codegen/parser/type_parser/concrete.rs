@@ -45,7 +45,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(inner.clone()),
             }),
 
-            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned()),
+            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned(), true),
 
             ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
                 key: Box::new(key.clone()),

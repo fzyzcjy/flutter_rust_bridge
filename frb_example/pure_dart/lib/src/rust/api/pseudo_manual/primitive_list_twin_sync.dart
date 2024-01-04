@@ -7,17 +7,17 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Int8List examplePrimitiveListTypeI8TwinSync(
-        {required Int8List arg, dynamic hint}) =>
+        {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeI8TwinSync(arg: arg, hint: hint);
 
 Int16List examplePrimitiveListTypeI16TwinSync(
-        {required Int16List arg, dynamic hint}) =>
+        {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeI16TwinSync(arg: arg, hint: hint);
 
 Int32List examplePrimitiveListTypeI32TwinSync(
-        {required Int32List arg, dynamic hint}) =>
+        {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeI32TwinSync(arg: arg, hint: hint);
 
@@ -27,17 +27,17 @@ Int64List examplePrimitiveListTypeI64TwinSync(
         .examplePrimitiveListTypeI64TwinSync(arg: arg, hint: hint);
 
 Uint8List examplePrimitiveListTypeU8TwinSync(
-        {required Uint8List arg, dynamic hint}) =>
+        {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeU8TwinSync(arg: arg, hint: hint);
 
 Uint16List examplePrimitiveListTypeU16TwinSync(
-        {required Uint16List arg, dynamic hint}) =>
+        {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeU16TwinSync(arg: arg, hint: hint);
 
 Uint32List examplePrimitiveListTypeU32TwinSync(
-        {required Uint32List arg, dynamic hint}) =>
+        {required List<int> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeU32TwinSync(arg: arg, hint: hint);
 
@@ -47,12 +47,12 @@ Uint64List examplePrimitiveListTypeU64TwinSync(
         .examplePrimitiveListTypeU64TwinSync(arg: arg, hint: hint);
 
 Float32List examplePrimitiveListTypeF32TwinSync(
-        {required Float32List arg, dynamic hint}) =>
+        {required List<double> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeF32TwinSync(arg: arg, hint: hint);
 
 Float64List examplePrimitiveListTypeF64TwinSync(
-        {required Float64List arg, dynamic hint}) =>
+        {required List<double> arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeF64TwinSync(arg: arg, hint: hint);
 

@@ -10,7 +10,7 @@ Future<void> benchmarkVoidTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.benchmarkVoidTwinRustAsync(hint: hint);
 
 Future<int> benchmarkInputBytesTwinRustAsync(
-        {required Uint8List bytes, dynamic hint}) =>
+        {required List<int> bytes, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkInputBytesTwinRustAsync(bytes: bytes, hint: hint);
 
@@ -30,7 +30,7 @@ Future<BenchmarkBinaryTreeTwinRustAsync> benchmarkBinaryTreeOutputTwinRustAsync(
         .benchmarkBinaryTreeOutputTwinRustAsync(depth: depth, hint: hint);
 
 Future<void> benchmarkBinaryTreeInputProtobufTwinRustAsync(
-        {required Uint8List raw, dynamic hint}) =>
+        {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkBinaryTreeInputProtobufTwinRustAsync(raw: raw, hint: hint);
 
@@ -60,7 +60,7 @@ Future<BenchmarkBlobTwinRustAsync> benchmarkBlobOutputTwinRustAsync(
         .benchmarkBlobOutputTwinRustAsync(size: size, hint: hint);
 
 Future<void> benchmarkBlobInputProtobufTwinRustAsync(
-        {required Uint8List raw, dynamic hint}) =>
+        {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkBlobInputProtobufTwinRustAsync(raw: raw, hint: hint);
 

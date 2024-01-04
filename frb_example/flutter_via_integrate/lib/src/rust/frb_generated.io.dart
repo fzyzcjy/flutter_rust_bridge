@@ -22,7 +22,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
-  Uint8List dco_decode_list_prim_u_8(dynamic raw);
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -34,7 +34,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
-  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer);
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -49,13 +49,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
-    return cst_encode_list_prim_u_8(utf8.encoder.convert(raw));
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_String(String raw) {
+    return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));
   }
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
-    final ans = wire.cst_new_list_prim_u_8(raw.length);
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_list_prim_u_8_strict(
+      Uint8List raw) {
+    final ans = wire.cst_new_list_prim_u_8_strict(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
@@ -70,7 +71,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer);
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -135,7 +137,7 @@ class RustLibWire implements BaseWire {
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartDco wire_greet(
-    ffi.Pointer<wire_cst_list_prim_u_8> name,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> name,
   ) {
     return _wire_greet(
       name,
@@ -145,10 +147,11 @@ class RustLibWire implements BaseWire {
   late final _wire_greetPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartDco Function(
-                  ffi.Pointer<wire_cst_list_prim_u_8>)>>(
+                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_flutter_via_integrate_wire_greet');
   late final _wire_greet = _wire_greetPtr.asFunction<
-      WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_prim_u_8>)>();
+      WireSyncRust2DartDco Function(
+          ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_init_app(
     int port_,
@@ -164,20 +167,20 @@ class RustLibWire implements BaseWire {
   late final _wire_init_app =
       _wire_init_appPtr.asFunction<void Function(int)>();
 
-  ffi.Pointer<wire_cst_list_prim_u_8> cst_new_list_prim_u_8(
+  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_new_list_prim_u_8_strict(
     int len,
   ) {
-    return _cst_new_list_prim_u_8(
+    return _cst_new_list_prim_u_8_strict(
       len,
     );
   }
 
-  late final _cst_new_list_prim_u_8Ptr = _lookup<
+  late final _cst_new_list_prim_u_8_strictPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Pointer<wire_cst_list_prim_u_8> Function(ffi.Int32)>>(
-      'frbgen_flutter_via_integrate_cst_new_list_prim_u_8');
-  late final _cst_new_list_prim_u_8 = _cst_new_list_prim_u_8Ptr
-      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8> Function(int)>();
+              ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(ffi.Int32)>>(
+      'frbgen_flutter_via_integrate_cst_new_list_prim_u_8_strict');
+  late final _cst_new_list_prim_u_8_strict = _cst_new_list_prim_u_8_strictPtr
+      .asFunction<ffi.Pointer<wire_cst_list_prim_u_8_strict> Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -190,7 +193,7 @@ class RustLibWire implements BaseWire {
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
 }
 
-final class wire_cst_list_prim_u_8 extends ffi.Struct {
+final class wire_cst_list_prim_u_8_strict extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()

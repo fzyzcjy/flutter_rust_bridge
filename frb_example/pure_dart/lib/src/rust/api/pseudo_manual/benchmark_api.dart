@@ -10,7 +10,7 @@ Future<void> benchmarkVoidTwinNormal({dynamic hint}) =>
     RustLib.instance.api.benchmarkVoidTwinNormal(hint: hint);
 
 Future<int> benchmarkInputBytesTwinNormal(
-        {required Uint8List bytes, dynamic hint}) =>
+        {required List<int> bytes, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkInputBytesTwinNormal(bytes: bytes, hint: hint);
 
@@ -29,7 +29,7 @@ Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
         .benchmarkBinaryTreeOutputTwinNormal(depth: depth, hint: hint);
 
 Future<void> benchmarkBinaryTreeInputProtobufTwinNormal(
-        {required Uint8List raw, dynamic hint}) =>
+        {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkBinaryTreeInputProtobufTwinNormal(raw: raw, hint: hint);
 
@@ -57,7 +57,7 @@ Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
     RustLib.instance.api.benchmarkBlobOutputTwinNormal(size: size, hint: hint);
 
 Future<void> benchmarkBlobInputProtobufTwinNormal(
-        {required Uint8List raw, dynamic hint}) =>
+        {required List<int> raw, dynamic hint}) =>
     RustLib.instance.api
         .benchmarkBlobInputProtobufTwinNormal(raw: raw, hint: hint);
 

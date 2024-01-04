@@ -36,7 +36,7 @@ Future<StructWithEnumTwinSse> testStructWithEnumTwinSse(
 Future<String> handleStringTwinSse({required String s, dynamic hint}) =>
     RustLib.instance.api.handleStringTwinSse(s: s, hint: hint);
 
-Future<Uint8List> handleVecU8TwinSse({required Uint8List v, dynamic hint}) =>
+Future<Uint8List> handleVecU8TwinSse({required List<int> v, dynamic hint}) =>
     RustLib.instance.api.handleVecU8TwinSse(v: v, hint: hint);
 
 Future<MySize> handleStructTwinSse(

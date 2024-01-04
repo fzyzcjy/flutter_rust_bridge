@@ -10,13 +10,13 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<String> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> String {
         let vec: Vec<u8> = self.cst_decode();
         String::from_utf8(vec).unwrap()
     }
 }
-impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8 {
+impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> Vec<u8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -53,7 +53,7 @@ pub extern "C" fn frbgen_flutter_via_create_dart_fn_deliver_output(
 
 #[no_mangle]
 pub extern "C" fn frbgen_flutter_via_create_wire_greet(
-    name: *mut wire_cst_list_prim_u_8,
+    name: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_greet_impl(name)
 }
@@ -64,10 +64,10 @@ pub extern "C" fn frbgen_flutter_via_create_wire_init_app(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_flutter_via_create_cst_new_list_prim_u_8(
+pub extern "C" fn frbgen_flutter_via_create_cst_new_list_prim_u_8_strict(
     len: i32,
-) -> *mut wire_cst_list_prim_u_8 {
-    let ans = wire_cst_list_prim_u_8 {
+) -> *mut wire_cst_list_prim_u_8_strict {
+    let ans = wire_cst_list_prim_u_8_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -76,7 +76,7 @@ pub extern "C" fn frbgen_flutter_via_create_cst_new_list_prim_u_8(
 
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub struct wire_cst_list_prim_u_8 {
+pub struct wire_cst_list_prim_u_8_strict {
     ptr: *mut u8,
     len: i32,
 }
