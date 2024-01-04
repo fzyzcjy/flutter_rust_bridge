@@ -32,7 +32,7 @@ struct StreamSinkNonClone<T, Rust2DartCodec: BaseCodec> {
     _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
 
-impl<T, Rust2DartCodec: BaseCodec> crate::for_generated::StreamSinkNonClone<T, Rust2DartCodec> {
+impl<T, Rust2DartCodec: BaseCodec> StreamSinkNonClone<T, Rust2DartCodec> {
     fn new(sender: Rust2DartSender) -> Self {
         Self {
             sendable_channel_handle: channel_to_handle(&sender.channel),
@@ -46,5 +46,12 @@ impl<T, Rust2DartCodec: BaseCodec> crate::for_generated::StreamSinkNonClone<T, R
 
     fn sender(&self) -> Rust2DartSender {
         Rust2DartSender::new(handle_to_channel(&self.sendable_channel_handle))
+    }
+}
+
+impl<T, Rust2DartCodec: BaseCodec> Drop for StreamSinkNonClone<T, Rust2DartCodec> {
+    fn drop(&mut self) {
+        self.sender()
+            .send_or_warn(Rust2DartCodec::encode_close_stream().into_dart_abi())
     }
 }
