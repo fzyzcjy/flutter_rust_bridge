@@ -231,6 +231,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSse(obj.instanceMethodArgBorrowTwinSse());
   });
 
+  test('getter', () async {
+    final obj = await NonCloneSimpleTwinSse.newTwinSse();
+    expect(obj.instanceMethodGetterTwinSse, 42);
+  });
+
   test('types with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse();

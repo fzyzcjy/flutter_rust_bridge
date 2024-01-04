@@ -83,4 +83,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ConcatenateWithTwinSse.handleSomeStaticStreamSinkSingleArgTwinSse();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
+
+  test('getter', () async {
+    final concatenateWith = ConcatenateWithTwinSse(a: "apple");
+    expect(concatenateWith.simpleGetterTwinSse, equals("apple"));
+  });
 }

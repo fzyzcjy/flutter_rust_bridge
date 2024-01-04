@@ -5,7 +5,7 @@
 use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
+use flutter_rust_bridge::{frb, transfer};
 
 #[derive(Debug, Clone)]
 pub struct Log2TwinRustAsync {
@@ -28,6 +28,11 @@ impl ConcatenateWithTwinRustAsync {
 
     pub async fn concatenate_static_twin_rust_async(a: String, b: String) -> String {
         format!("{a}{b}")
+    }
+
+    #[frb(getter)]
+    pub async fn simple_getter_twin_rust_async(&self) -> String {
+        self.a
     }
 
     pub async fn handle_some_stream_sink_twin_rust_async(

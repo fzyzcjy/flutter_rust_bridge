@@ -87,4 +87,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         .handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
+
+  test('getter', () async {
+    final concatenateWith = ConcatenateWithTwinRustAsyncSse(a: "apple");
+    expect(concatenateWith.simpleGetterTwinRustAsyncSse, equals("apple"));
+  });
 }

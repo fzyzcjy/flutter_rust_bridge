@@ -5,7 +5,7 @@
 use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
+use flutter_rust_bridge::{frb, transfer};
 
 #[derive(Debug, Clone)]
 pub struct Log2TwinSse {
@@ -31,6 +31,12 @@ impl ConcatenateWithTwinSse {
     #[flutter_rust_bridge::frb(serialize)]
     pub fn concatenate_static_twin_sse(a: String, b: String) -> String {
         format!("{a}{b}")
+    }
+
+    #[frb(getter)]
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn simple_getter_twin_sse(&self) -> String {
+        self.a
     }
 
     #[flutter_rust_bridge::frb(serialize)]

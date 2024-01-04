@@ -83,4 +83,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ConcatenateWithTwinSync.handleSomeStaticStreamSinkSingleArgTwinSync();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
+
+  test('getter', () async {
+    final concatenateWith = ConcatenateWithTwinSync(a: "apple");
+    expect(concatenateWith.simpleGetterTwinSync, equals("apple"));
+  });
 }
