@@ -56,7 +56,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let src_lineno = func.span().start().line;
         let context = TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
-            location: TODO,
         };
 
         let owner = if let Some(owner) = self.parse_owner(func, &context)? {
