@@ -1,6 +1,7 @@
 use crate::platform_types::SendableMessagePortHandle;
 use std::sync::Arc;
 
+/// cbindgen:ignore
 #[cfg(wasm)]
 mod web;
 #[cfg(wasm)]
