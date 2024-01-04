@@ -36,10 +36,12 @@ pub fn register_event_listener_twin_normal(listener: StreamSink<EventTwinNormal>
 }
 
 pub fn close_event_listener_twin_normal() {
+    // TODO refactor this
     let _ = EVENTS.lock().map(|mut guard| guard.take());
 }
 
 pub fn create_event_twin_normal(address: String, payload: String) {
+    // TODO refactor this
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
             sink.add(EventTwinNormal { address, payload }).unwrap();
