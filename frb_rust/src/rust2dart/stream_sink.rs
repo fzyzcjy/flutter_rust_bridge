@@ -8,6 +8,10 @@ use std::sync::Arc;
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
+///
+/// When it is dropped, the Dart stream will be closed automatically.
+///
+/// If it is cloned, then the stream is closed when all instances are dropped.
 #[derive(Clone)]
 pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec = DcoCodec>(
     Arc<StreamSinkNonClone<T, Rust2DartCodec>>,
