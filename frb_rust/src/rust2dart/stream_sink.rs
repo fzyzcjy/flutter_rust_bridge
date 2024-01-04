@@ -1,3 +1,4 @@
+use crate::codec::BaseCodec;
 use crate::generalized_isolate::{channel_to_handle, handle_to_channel, SendableChannelHandle};
 use crate::rust2dart::sender::Rust2DartSender;
 use std::marker::PhantomData;
@@ -27,11 +28,12 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     }
 }
 
-pub(crate) struct StreamSinkCloser {
+pub(crate) struct StreamSinkCloser<Rust2DartCodec: BaseCodec> {
     sendable_channel_handle: SendableChannelHandle,
+    _phantom_data: PhantomData<Rust2DartCodec>,
 }
 
-impl Drop for StreamSinkCloser {
+impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
     fn drop(&mut self) {
         sender(self.sendable_channel_handle)
             .send(Rust2DartCodec::encode_close_stream().into_dart_abi())
