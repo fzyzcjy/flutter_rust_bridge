@@ -93,9 +93,13 @@ fn generate_signature(
     } else {
         method_info.actual_method_name.to_case(Case::Camel)
     };
-    let func_params = func_params.join(",");
+    let (func_params, maybe_getter) = if func.getter {
+        ("".to_owned(), "get")
+    } else {
+        (format!("({{ {} }})", func_params.join(",")), "")
+    };
 
-    format!("{maybe_static} {return_type} {method_name}({{ {func_params} }})")
+    format!("{maybe_static} {return_type} {maybe_getter} {method_name}{func_params}")
 }
 
 fn generate_arg_names(func: &IrFunc, is_static_method: bool, skip_count: usize) -> Vec<String> {
