@@ -3381,7 +3381,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
-      {required List<int> arg, dynamic hint});
+      {required Int64List arg, dynamic hint});
 
   Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
       {required List<int> arg, dynamic hint});
@@ -3393,7 +3393,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
-      {required List<int> arg, dynamic hint});
+      {required Uint64List arg, dynamic hint});
 
   Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
       {required List<int> arg, dynamic hint});
@@ -3429,7 +3429,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Int64List> examplePrimitiveListTypeI64TwinRustAsync(
-      {required List<int> arg, dynamic hint});
+      {required Int64List arg, dynamic hint});
 
   Future<Int8List> examplePrimitiveListTypeI8TwinRustAsync(
       {required List<int> arg, dynamic hint});
@@ -3441,7 +3441,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsync(
-      {required List<int> arg, dynamic hint});
+      {required Uint64List arg, dynamic hint});
 
   Future<Uint8List> examplePrimitiveListTypeU8TwinRustAsync(
       {required List<int> arg, dynamic hint});
@@ -3462,7 +3462,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Int64List> examplePrimitiveListTypeI64TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
+      {required Int64List arg, dynamic hint});
 
   Future<Int8List> examplePrimitiveListTypeI8TwinRustAsyncSse(
       {required List<int> arg, dynamic hint});
@@ -3474,7 +3474,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
+      {required Uint64List arg, dynamic hint});
 
   Future<Uint8List> examplePrimitiveListTypeU8TwinRustAsyncSse(
       {required List<int> arg, dynamic hint});
@@ -3495,7 +3495,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Int64List> examplePrimitiveListTypeI64TwinSse(
-      {required List<int> arg, dynamic hint});
+      {required Int64List arg, dynamic hint});
 
   Future<Int8List> examplePrimitiveListTypeI8TwinSse(
       {required List<int> arg, dynamic hint});
@@ -3507,7 +3507,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Future<Uint64List> examplePrimitiveListTypeU64TwinSse(
-      {required List<int> arg, dynamic hint});
+      {required Uint64List arg, dynamic hint});
 
   Future<Uint8List> examplePrimitiveListTypeU8TwinSse(
       {required List<int> arg, dynamic hint});
@@ -3528,7 +3528,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Int64List examplePrimitiveListTypeI64TwinSync(
-      {required List<int> arg, dynamic hint});
+      {required Int64List arg, dynamic hint});
 
   Int8List examplePrimitiveListTypeI8TwinSync(
       {required List<int> arg, dynamic hint});
@@ -3540,7 +3540,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Uint64List examplePrimitiveListTypeU64TwinSync(
-      {required List<int> arg, dynamic hint});
+      {required Uint64List arg, dynamic hint});
 
   Uint8List examplePrimitiveListTypeU8TwinSync(
       {required List<int> arg, dynamic hint});
@@ -3561,7 +3561,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Int64List examplePrimitiveListTypeI64TwinSyncSse(
-      {required List<int> arg, dynamic hint});
+      {required Int64List arg, dynamic hint});
 
   Int8List examplePrimitiveListTypeI8TwinSyncSse(
       {required List<int> arg, dynamic hint});
@@ -3573,7 +3573,7 @@ abstract class RustLibApi extends BaseApi {
       {required List<int> arg, dynamic hint});
 
   Uint64List examplePrimitiveListTypeU64TwinSyncSse(
-      {required List<int> arg, dynamic hint});
+      {required Uint64List arg, dynamic hint});
 
   Uint8List examplePrimitiveListTypeU8TwinSyncSse(
       {required List<int> arg, dynamic hint});
@@ -34246,7 +34246,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
-      {required List<int> arg, dynamic hint}) {
+      {required Int64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_list_prim_i_64(arg);
@@ -34350,7 +34350,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
-      {required List<int> arg, dynamic hint}) {
+      {required Uint64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_list_prim_u_64(arg);
@@ -34666,7 +34666,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Int64List> examplePrimitiveListTypeI64TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
+      {required Int64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_list_prim_i_64(arg);
@@ -34770,7 +34770,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
+      {required Uint64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_list_prim_u_64(arg);
@@ -34962,7 +34962,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Int64List> examplePrimitiveListTypeI64TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
+      {required Int64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -35074,7 +35074,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
+      {required Uint64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -35270,7 +35270,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Int64List> examplePrimitiveListTypeI64TwinSse(
-      {required List<int> arg, dynamic hint}) {
+      {required Int64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -35382,7 +35382,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Uint64List> examplePrimitiveListTypeU64TwinSse(
-      {required List<int> arg, dynamic hint}) {
+      {required Uint64List arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -35563,7 +35563,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Int64List examplePrimitiveListTypeI64TwinSync(
-      {required List<int> arg, dynamic hint}) {
+      {required Int64List arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_list_prim_i_64(arg);
@@ -35663,7 +35663,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Uint64List examplePrimitiveListTypeU64TwinSync(
-      {required List<int> arg, dynamic hint}) {
+      {required Uint64List arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         var arg0 = cst_encode_list_prim_u_64(arg);
@@ -35853,7 +35853,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Int64List examplePrimitiveListTypeI64TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
+      {required Int64List arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -35965,7 +35965,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Uint64List examplePrimitiveListTypeU64TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
+      {required Uint64List arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);

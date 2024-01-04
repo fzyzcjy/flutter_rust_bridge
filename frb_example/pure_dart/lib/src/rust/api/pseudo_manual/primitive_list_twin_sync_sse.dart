@@ -22,7 +22,7 @@ Int32List examplePrimitiveListTypeI32TwinSyncSse(
         .examplePrimitiveListTypeI32TwinSyncSse(arg: arg, hint: hint);
 
 Int64List examplePrimitiveListTypeI64TwinSyncSse(
-        {required List<int> arg, dynamic hint}) =>
+        {required Int64List arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeI64TwinSyncSse(arg: arg, hint: hint);
 
@@ -42,7 +42,7 @@ Uint32List examplePrimitiveListTypeU32TwinSyncSse(
         .examplePrimitiveListTypeU32TwinSyncSse(arg: arg, hint: hint);
 
 Uint64List examplePrimitiveListTypeU64TwinSyncSse(
-        {required List<int> arg, dynamic hint}) =>
+        {required Uint64List arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeU64TwinSyncSse(arg: arg, hint: hint);
 

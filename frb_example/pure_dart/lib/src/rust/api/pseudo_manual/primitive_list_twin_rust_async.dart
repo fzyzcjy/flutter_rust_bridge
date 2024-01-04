@@ -22,7 +22,7 @@ Future<Int32List> examplePrimitiveListTypeI32TwinRustAsync(
         .examplePrimitiveListTypeI32TwinRustAsync(arg: arg, hint: hint);
 
 Future<Int64List> examplePrimitiveListTypeI64TwinRustAsync(
-        {required List<int> arg, dynamic hint}) =>
+        {required Int64List arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeI64TwinRustAsync(arg: arg, hint: hint);
 
@@ -42,7 +42,7 @@ Future<Uint32List> examplePrimitiveListTypeU32TwinRustAsync(
         .examplePrimitiveListTypeU32TwinRustAsync(arg: arg, hint: hint);
 
 Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsync(
-        {required List<int> arg, dynamic hint}) =>
+        {required Uint64List arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveListTypeU64TwinRustAsync(arg: arg, hint: hint);
 
