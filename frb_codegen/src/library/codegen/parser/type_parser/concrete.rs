@@ -45,16 +45,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(inner.clone()),
             }),
 
-            ("Vec", Some(Generic([element]))) => {
-                let strict_dart_type = match self.context.location {
-                    ParsingLocation::Param => false,
-                    ParsingLocation::Return => true,
-                    // frb-coverage:ignore-start
-                    ParsingLocation::Misc => unreachable!(),
-                    // frb-coverage:ignore-end
-                };
-                ir_list(element.to_owned(), strict_dart_type)
-            }
+            ("Vec", Some(Generic([element]))) => ir_list(element.to_owned(), self.context.location == ParsingLocation::Return),
 
             ("HashMap", Some(Generic([key, value]))) => Delegate(IrTypeDelegate::Map(IrTypeDelegateMap {
                 key: Box::new(key.clone()),
