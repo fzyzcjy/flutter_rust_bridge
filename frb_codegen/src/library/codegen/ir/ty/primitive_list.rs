@@ -15,6 +15,14 @@ impl IrTypeTrait for IrTypePrimitiveList {
         ir_context: &impl IrContext,
     ) {
         IrType::Primitive(self.primitive.clone()).visit_types(f, ir_context);
+
+        if !self.strict_dart_type {
+            IrType::PrimitiveList(IrTypePrimitiveList {
+                strict_dart_type: true,
+                ..self.clone()
+            })
+            .visit_types(f, ir_context);
+        }
     }
 
     fn safe_ident(&self) -> String {
