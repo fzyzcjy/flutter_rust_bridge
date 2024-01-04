@@ -151,11 +151,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 }
 
 fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> IrFuncMode {
-    info.mode.unwrap_or(if attributes.sync() {
-        IrFuncMode::Sync
-    } else {
-        IrFuncMode::Normal
-    })
+    info.mode
+        .unwrap_or(if attributes.sync() || attributes.getter() {
+            IrFuncMode::Sync
+        } else {
+            IrFuncMode::Normal
+        })
 }
 
 fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
