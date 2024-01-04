@@ -637,6 +637,9 @@ abstract class RustLibApi extends BaseApi {
   Future<ConcatenateWithTwinNormal> concatenateWithTwinNormalNewTwinNormal(
       {required String a, dynamic hint});
 
+  String concatenateWithTwinNormalSimpleGetterTwinNormal(
+      {required ConcatenateWithTwinNormal that, dynamic hint});
+
   Future<int> sumWithTwinNormalSumTwinNormal(
       {required SumWithTwinNormal that,
       required int y,
@@ -2402,6 +2405,9 @@ abstract class RustLibApi extends BaseApi {
       concatenateWithTwinRustAsyncNewTwinRustAsync(
           {required String a, dynamic hint});
 
+  String concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
+      {required ConcatenateWithTwinRustAsync that, dynamic hint});
+
   Future<int> sumWithTwinRustAsyncSumTwinRustAsync(
       {required SumWithTwinRustAsync that,
       required int y,
@@ -2445,6 +2451,9 @@ abstract class RustLibApi extends BaseApi {
       concatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(
           {required String a, dynamic hint});
 
+  String concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
+      {required ConcatenateWithTwinRustAsyncSse that, dynamic hint});
+
   Future<int> sumWithTwinRustAsyncSseSumTwinRustAsyncSse(
       {required SumWithTwinRustAsyncSse that,
       required int y,
@@ -2479,6 +2488,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<ConcatenateWithTwinSse> concatenateWithTwinSseNewTwinSse(
       {required String a, dynamic hint});
+
+  String concatenateWithTwinSseSimpleGetterTwinSse(
+      {required ConcatenateWithTwinSse that, dynamic hint});
 
   Future<int> sumWithTwinSseSumTwinSse(
       {required SumWithTwinSse that,
@@ -2516,6 +2528,9 @@ abstract class RustLibApi extends BaseApi {
 
   ConcatenateWithTwinSync concatenateWithTwinSyncNewTwinSync(
       {required String a, dynamic hint});
+
+  String concatenateWithTwinSyncSimpleGetterTwinSync(
+      {required ConcatenateWithTwinSync that, dynamic hint});
 
   int sumWithTwinSyncSumTwinSync(
       {required SumWithTwinSync that,
@@ -2556,6 +2571,9 @@ abstract class RustLibApi extends BaseApi {
 
   ConcatenateWithTwinSyncSse concatenateWithTwinSyncSseNewTwinSyncSse(
       {required String a, dynamic hint});
+
+  String concatenateWithTwinSyncSseSimpleGetterTwinSyncSse(
+      {required ConcatenateWithTwinSyncSse that, dynamic hint});
 
   int sumWithTwinSyncSseSumTwinSyncSse(
       {required SumWithTwinSyncSse that,
@@ -3822,6 +3840,9 @@ abstract class RustLibApi extends BaseApi {
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgOwnTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint});
 
+  int nonCloneSimpleTwinSseInstanceMethodGetterTwinSse(
+      {required NonCloneSimpleTwinSse that, dynamic hint});
+
   Future<NonCloneSimpleTwinSse>
       nonCloneSimpleTwinSseInstanceMethodReturnOwnTwinSse(
           {required NonCloneSimpleTwinSse that, dynamic hint});
@@ -3930,6 +3951,9 @@ abstract class RustLibApi extends BaseApi {
   void nonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
       {required NonCloneSimpleTwinSync that, dynamic hint});
 
+  int nonCloneSimpleTwinSyncInstanceMethodGetterTwinSync(
+      {required NonCloneSimpleTwinSync that, dynamic hint});
+
   NonCloneSimpleTwinSync nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
       {required NonCloneSimpleTwinSync that, dynamic hint});
 
@@ -4035,6 +4059,9 @@ abstract class RustLibApi extends BaseApi {
       {required NonCloneSimpleTwinSyncSse that, dynamic hint});
 
   void nonCloneSimpleTwinSyncSseInstanceMethodArgOwnTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint});
+
+  int nonCloneSimpleTwinSyncSseInstanceMethodGetterTwinSyncSse(
       {required NonCloneSimpleTwinSyncSse that, dynamic hint});
 
   NonCloneSimpleTwinSyncSse
@@ -4590,6 +4617,9 @@ abstract class RustLibApi extends BaseApi {
       {required NonCloneSimpleTwinNormal that, dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
+
+  int nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
       {required NonCloneSimpleTwinNormal that, dynamic hint});
 
   Future<NonCloneSimpleTwinNormal>
@@ -8427,6 +8457,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "ConcatenateWithTwinNormal_new_twin_normal",
         argNames: ["a"],
+      );
+
+  @override
+  String concatenateWithTwinNormalSimpleGetterTwinNormal(
+      {required ConcatenateWithTwinNormal that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
+        return wire
+            .wire_ConcatenateWithTwinNormal_simple_getter_twin_normal(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kConcatenateWithTwinNormalSimpleGetterTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithTwinNormalSimpleGetterTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWithTwinNormal_simple_getter_twin_normal",
+        argNames: ["that"],
       );
 
   @override
@@ -25250,6 +25306,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  String concatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
+      {required ConcatenateWithTwinRustAsync that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
+        return wire
+            .wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kConcatenateWithTwinRustAsyncSimpleGetterTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinRustAsyncSimpleGetterTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
   Future<int> sumWithTwinRustAsyncSumTwinRustAsync(
       {required SumWithTwinRustAsync that,
       required int y,
@@ -25571,6 +25658,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  String concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
+      {required ConcatenateWithTwinRustAsyncSse that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_concatenate_with_twin_rust_async_sse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kConcatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse",
+            argNames: ["that"],
+          );
+
+  @override
   Future<int> sumWithTwinRustAsyncSseSumTwinRustAsyncSse(
       {required SumWithTwinRustAsyncSse that,
       required int y,
@@ -25879,6 +25999,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  String concatenateWithTwinSseSimpleGetterTwinSse(
+      {required ConcatenateWithTwinSse that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_concatenate_with_twin_sse(that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_ConcatenateWithTwinSse_simple_getter_twin_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kConcatenateWithTwinSseSimpleGetterTwinSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithTwinSseSimpleGetterTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWithTwinSse_simple_getter_twin_sse",
+        argNames: ["that"],
+      );
+
+  @override
   Future<int> sumWithTwinSseSumTwinSse(
       {required SumWithTwinSse that,
       required int y,
@@ -26171,6 +26319,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "ConcatenateWithTwinSync_new_twin_sync",
         argNames: ["a"],
+      );
+
+  @override
+  String concatenateWithTwinSyncSimpleGetterTwinSync(
+      {required ConcatenateWithTwinSync that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_sync(that);
+        return wire.wire_ConcatenateWithTwinSync_simple_getter_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kConcatenateWithTwinSyncSimpleGetterTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithTwinSyncSimpleGetterTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWithTwinSync_simple_getter_twin_sync",
+        argNames: ["that"],
       );
 
   @override
@@ -26479,6 +26652,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "ConcatenateWithTwinSyncSse_new_twin_sync_sse",
         argNames: ["a"],
       );
+
+  @override
+  String concatenateWithTwinSyncSseSimpleGetterTwinSyncSse(
+      {required ConcatenateWithTwinSyncSse that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_concatenate_with_twin_sync_sse(that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kConcatenateWithTwinSyncSseSimpleGetterTwinSyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinSyncSseSimpleGetterTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse",
+            argNames: ["that"],
+          );
 
   @override
   int sumWithTwinSyncSseSumTwinSyncSse(
@@ -38399,6 +38601,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  int nonCloneSimpleTwinSseInstanceMethodGetterTwinSse(
+      {required NonCloneSimpleTwinSse that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSseInstanceMethodGetterTwinSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseInstanceMethodGetterTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "NonCloneSimpleTwinSse_instance_method_getter_twin_sse",
+            argNames: ["that"],
+          );
+
+  @override
   Future<NonCloneSimpleTwinSse>
       nonCloneSimpleTwinSseInstanceMethodReturnOwnTwinSse(
           {required NonCloneSimpleTwinSse that, dynamic hint}) {
@@ -39417,6 +39649,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  int nonCloneSimpleTwinSyncInstanceMethodGetterTwinSync(
+      {required NonCloneSimpleTwinSync that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSyncInstanceMethodGetterTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncInstanceMethodGetterTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSync_instance_method_getter_twin_sync",
+            argNames: ["that"],
+          );
+
+  @override
   NonCloneSimpleTwinSync nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
       {required NonCloneSimpleTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -40370,6 +40632,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  int nonCloneSimpleTwinSyncSseInstanceMethodGetterTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseInstanceMethodGetterTwinSyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseInstanceMethodGetterTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse",
             argNames: ["that"],
           );
 
@@ -45849,6 +46144,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           const TaskConstMeta(
             debugName:
                 "NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal",
+            argNames: ["that"],
+          );
+
+  @override
+  int nonCloneSimpleTwinNormalInstanceMethodGetterTwinNormal(
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinNormalInstanceMethodGetterTwinNormalConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinNormalInstanceMethodGetterTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinNormal_instance_method_getter_twin_normal",
             argNames: ["that"],
           );
 

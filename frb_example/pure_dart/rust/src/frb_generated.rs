@@ -2553,6 +2553,27 @@ fn wire_ConcatenateWithTwinNormal_new_twin_normal_impl(
         },
     )
 }
+fn wire_ConcatenateWithTwinNormal_simple_getter_twin_normal_impl(
+    that: impl CstDecode<crate::api::method::ConcatenateWithTwinNormal>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "ConcatenateWithTwinNormal_simple_getter_twin_normal",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let api_that = that.cst_decode();
+            transform_result_dco((move || {
+                Result::<_, ()>::Ok(
+                    crate::api::method::ConcatenateWithTwinNormal::simple_getter_twin_normal(
+                        &api_that,
+                    ),
+                )
+            })())
+        },
+    )
+}
 fn wire_SumWithTwinNormal_sum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<crate::api::method::SumWithTwinNormal>,
@@ -12119,6 +12140,16 @@ fn wire_ConcatenateWithTwinRustAsync_new_twin_rust_async_impl(
                     })().await)
                 } })
 }
+fn wire_ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async_impl(
+    that: impl CstDecode<
+        crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync,
+    >,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsync_simple_getter_twin_rust_async", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();
+                transform_result_dco((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync::simple_getter_twin_rust_async(&api_that).await)
+                })()) })
+}
 fn wire_SumWithTwinRustAsync_sum_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>,
@@ -12261,6 +12292,19 @@ fn wire_ConcatenateWithTwinRustAsyncSse_new_twin_rust_async_sse_impl(
                          Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async_sse::ConcatenateWithTwinRustAsyncSse::new_twin_rust_async_sse(api_a).await)
                     })().await)
                 } })
+}
+fn wire_ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinRustAsyncSse_simple_getter_twin_rust_async_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <crate::api::pseudo_manual::method_twin_rust_async_sse::ConcatenateWithTwinRustAsyncSse>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_rust_async_sse::ConcatenateWithTwinRustAsyncSse::simple_getter_twin_rust_async_sse(&api_that).await)
+                })()) })
 }
 fn wire_SumWithTwinRustAsyncSse_sum_twin_rust_async_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -12420,6 +12464,19 @@ fn wire_ConcatenateWithTwinSse_new_twin_sse_impl(
                          Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sse::ConcatenateWithTwinSse::new_twin_sse(api_a))
                     })())
                 } })
+}
+fn wire_ConcatenateWithTwinSse_simple_getter_twin_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSse_simple_getter_twin_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <crate::api::pseudo_manual::method_twin_sse::ConcatenateWithTwinSse>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sse::ConcatenateWithTwinSse::simple_getter_twin_sse(&api_that))
+                })()) })
 }
 fn wire_SumWithTwinSse_sum_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -12600,6 +12657,14 @@ fn wire_ConcatenateWithTwinSync_new_twin_sync_impl(
                      Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::new_twin_sync(api_a))
                 })()) })
 }
+fn wire_ConcatenateWithTwinSync_simple_getter_twin_sync_impl(
+    that: impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_simple_getter_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();
+                transform_result_dco((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::simple_getter_twin_sync(&api_that))
+                })()) })
+}
 fn wire_SumWithTwinSync_sum_twin_sync_impl(
     that: impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>,
     y: impl CstDecode<u32>,
@@ -12769,6 +12834,19 @@ fn wire_ConcatenateWithTwinSyncSse_new_twin_sync_sse_impl(
             let api_a = <String>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move ||  {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse::new_twin_sync_sse(api_a))
+                })()) })
+}
+fn wire_ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSyncSse_simple_getter_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move ||  {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse::simple_getter_twin_sync_sse(&api_that))
                 })()) })
 }
 fn wire_SumWithTwinSyncSse_sum_twin_sync_sse_impl(
@@ -19226,6 +19304,20 @@ fn wire_NonCloneSimpleTwinSse_instance_method_arg_own_twin_sse_impl(
                     })())
                 } })
 }
+fn wire_NonCloneSimpleTwinSse_instance_method_getter_twin_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSse_instance_method_getter_twin_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSse>>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move ||  {
+                    let api_that = api_that.rust_auto_opaque_decode_ref()?;
+ Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sse::NonCloneSimpleTwinSse::instance_method_getter_twin_sse(&api_that))
+                })()) })
+}
 fn wire_NonCloneSimpleTwinSse_instance_method_return_own_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -19731,6 +19823,15 @@ fn wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(
  Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_arg_own_twin_sync(api_that))
                 })()) })
 }
+fn wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync_impl(
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSync_instance_method_getter_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();
+                transform_result_dco((move ||  {
+                    let api_that = api_that.rust_auto_opaque_decode_ref()?;
+ Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::NonCloneSimpleTwinSync::instance_method_getter_twin_sync(&api_that))
+                })()) })
+}
 fn wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(
     that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -20040,6 +20141,20 @@ fn wire_NonCloneSimpleTwinSyncSse_instance_method_arg_own_twin_sync_sse_impl(
                 transform_result_sse((move ||  {
                     let api_that = api_that.rust_auto_opaque_decode_owned()?;
  Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::NonCloneSimpleTwinSyncSse::instance_method_arg_own_twin_sync_sse(api_that))
+                })()) })
+}
+fn wire_NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinSyncSse_instance_method_getter_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSyncSse>>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move ||  {
+                    let api_that = api_that.rust_auto_opaque_decode_ref()?;
+ Result::<_,anyhow::Error>::Ok(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::NonCloneSimpleTwinSyncSse::instance_method_getter_twin_sync_sse(&api_that))
                 })()) })
 }
 fn wire_NonCloneSimpleTwinSyncSse_instance_method_return_own_twin_sync_sse_impl(
@@ -23228,6 +23343,15 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_own_twin_normal(api_that))
                     })())
                 } })
+}
+fn wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal_impl(
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_getter_twin_normal", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_that = that.cst_decode();
+                transform_result_dco((move ||  {
+                    let api_that = api_that.rust_auto_opaque_decode_ref()?;
+ Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_getter_twin_normal(&api_that))
+                })()) })
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,

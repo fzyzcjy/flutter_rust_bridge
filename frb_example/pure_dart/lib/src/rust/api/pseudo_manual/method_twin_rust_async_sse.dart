@@ -69,6 +69,11 @@ class ConcatenateWithTwinRustAsyncSse {
       RustLib.instance.api
           .concatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(a: a, hint: hint);
 
+  String get simpleGetterTwinRustAsyncSse => RustLib.instance.api
+          .concatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
+        that: this,
+      );
+
   @override
   int get hashCode => a.hashCode;
 

@@ -62,6 +62,11 @@ class ConcatenateWithTwinSync {
           {required String a, dynamic hint}) =>
       RustLib.instance.api.concatenateWithTwinSyncNewTwinSync(a: a, hint: hint);
 
+  String get simpleGetterTwinSync =>
+      RustLib.instance.api.concatenateWithTwinSyncSimpleGetterTwinSync(
+        that: this,
+      );
+
   @override
   int get hashCode => a.hashCode;
 

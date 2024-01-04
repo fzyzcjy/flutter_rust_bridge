@@ -64,6 +64,11 @@ class ConcatenateWithTwinNormal {
       RustLib.instance.api
           .concatenateWithTwinNormalNewTwinNormal(a: a, hint: hint);
 
+  String get simpleGetterTwinNormal =>
+      RustLib.instance.api.concatenateWithTwinNormalSimpleGetterTwinNormal(
+        that: this,
+      );
+
   @override
   int get hashCode => a.hashCode;
 
