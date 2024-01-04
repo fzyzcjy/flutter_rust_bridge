@@ -189,15 +189,16 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
                 // frb-coverage:ignore-start
                 _ => panic!("does not support {:?} yet", &self.ir.primitive),
                 // frb-coverage:ignore-end
-            },
+            }
+            .to_string(),
             PrimitveListLocation::Dart2Rust => ApiDartGenerator::new(
                 IrTypeGeneralList {
                     inner: Box::new(IrType::Primitive(self.ir.primitive.clone())),
                 },
                 self.context,
-            ),
+            )
+            .dart_api_type(),
         }
-        .to_string()
     }
 }
 
