@@ -52,5 +52,4 @@ fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
     for i in 0..max {
         sink.add(LogTwinNormal { key, value: i }).unwrap();
     }
-    sink.close().unwrap();
 }

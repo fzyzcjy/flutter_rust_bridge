@@ -46,13 +46,13 @@ pub async fn register_event_listener_twin_rust_async_sse(
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn close_event_listener_twin_rust_async_sse() {
-    if let Ok(Some(sink)) = EVENTS.lock().map(|mut guard| guard.take()) {
-        sink.close().unwrap();
-    }
+    // TODO refactor this
+    let _ = EVENTS.lock().map(|mut guard| guard.take());
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn create_event_twin_rust_async_sse(address: String, payload: String) {
+    // TODO refactor this
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
             sink.add(EventTwinRustAsyncSse { address, payload })

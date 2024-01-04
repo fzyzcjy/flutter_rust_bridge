@@ -74,5 +74,4 @@ fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
     for i in 0..max {
         sink.add(LogTwinRustAsync { key, value: i }).unwrap();
     }
-    sink.close().unwrap();
 }

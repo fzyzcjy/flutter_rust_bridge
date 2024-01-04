@@ -90,5 +90,4 @@ fn handle_stream_inner(
     for i in 0..max {
         sink.add(LogTwinSse { key, value: i }).unwrap();
     }
-    sink.close().unwrap();
 }

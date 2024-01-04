@@ -1,6 +1,6 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::generalized_isolate::Channel;
+use crate::generalized_isolate::{channel_to_handle, Channel};
 use crate::handler::error::Error;
 use crate::handler::error_listener::ErrorListener;
 use crate::handler::executor::Executor;
@@ -10,12 +10,14 @@ use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
+use crate::rust2dart::stream_sink::StreamSinkCloser;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::FutureExt;
 use std::future::Future;
 use std::panic::AssertUnwindSafe;
+use std::sync::Arc;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -60,12 +62,17 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
         let port = port.unwrap();
 
         self.thread_pool.execute(transfer!(|port: MessagePort| {
+            let stream_sink_closer = maybe_create_stream_sink_closer(&port, mode);
+
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
             let thread_result = PanicBacktrace::catch_unwind(AssertUnwindSafe(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(
+                    sender.clone(),
+                    stream_sink_closer.clone(),
+                ));
 
                 let ret = task(task_context);
 
@@ -115,10 +122,15 @@ impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executo
             #[allow(clippy::clone_on_copy)]
             let port2 = port.clone();
 
+            let stream_sink_closer = maybe_create_stream_sink_closer(&port, mode);
+
             let async_result = AssertUnwindSafe(async {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(
+                    sender.clone(),
+                    stream_sink_closer.clone(),
+                ));
 
                 let ret = task(task_context).await;
 
@@ -170,4 +182,15 @@ impl ExecuteNormalOrAsyncUtils {
             }
         };
     }
+}
+
+fn maybe_create_stream_sink_closer<Rust2DartCodec: BaseCodec>(
+    port: &MessagePort,
+    mode: FfiCallMode,
+) -> Option<Arc<StreamSinkCloser<Rust2DartCodec>>> {
+    (mode == FfiCallMode::Stream).then(|| {
+        #[allow(clippy::clone_on_copy)]
+        let handle = channel_to_handle(&Channel::new(port.clone()));
+        Arc::new(StreamSinkCloser::new(handle))
+    })
 }

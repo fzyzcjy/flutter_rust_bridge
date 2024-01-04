@@ -42,12 +42,12 @@ pub async fn register_event_listener_twin_rust_async(
 }
 
 pub async fn close_event_listener_twin_rust_async() {
-    if let Ok(Some(sink)) = EVENTS.lock().map(|mut guard| guard.take()) {
-        sink.close().unwrap();
-    }
+    // TODO refactor this
+    let _ = EVENTS.lock().map(|mut guard| guard.take());
 }
 
 pub async fn create_event_twin_rust_async(address: String, payload: String) {
+    // TODO refactor this
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
             sink.add(EventTwinRustAsync { address, payload }).unwrap();

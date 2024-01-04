@@ -6,7 +6,7 @@ pub(crate) mod cst;
 pub(crate) mod dco;
 pub(crate) mod sse;
 
-pub trait BaseCodec: Clone + Copy + Send {
+pub trait BaseCodec: Clone + Copy + Send + Sync {
     type Message: Rust2DartMessageTrait;
 
     fn encode_panic(error: &Box<dyn Any + Send>, backtrace: &Option<Backtrace>) -> Self::Message;

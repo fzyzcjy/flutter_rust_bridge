@@ -81,7 +81,7 @@ pub struct TaskInfo {
 }
 
 /// The types of return values for a particular Rust function.
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq)]
 pub enum FfiCallMode {
     /// The default mode, returns a Dart `Future<T>`.
     Normal,
