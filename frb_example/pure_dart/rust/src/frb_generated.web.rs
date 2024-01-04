@@ -4953,23 +4953,8 @@ impl CstDecode<Vec<f32>> for Box<[f32]> {
         self.into_vec()
     }
 }
-impl CstDecode<Vec<f32>> for Box<[f32]> {
-    fn cst_decode(self) -> Vec<f32> {
-        self.into_vec()
-    }
-}
 impl CstDecode<Vec<f64>> for Box<[f64]> {
     fn cst_decode(self) -> Vec<f64> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<f64>> for Box<[f64]> {
-    fn cst_decode(self) -> Vec<f64> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<i16>> for Box<[i16]> {
-    fn cst_decode(self) -> Vec<i16> {
         self.into_vec()
     }
 }
@@ -4983,23 +4968,8 @@ impl CstDecode<Vec<i32>> for Box<[i32]> {
         self.into_vec()
     }
 }
-impl CstDecode<Vec<i32>> for Box<[i32]> {
-    fn cst_decode(self) -> Vec<i32> {
-        self.into_vec()
-    }
-}
 impl CstDecode<Vec<i64>> for Box<[i64]> {
     fn cst_decode(self) -> Vec<i64> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<i64>> for Box<[i64]> {
-    fn cst_decode(self) -> Vec<i64> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<i8>> for Box<[i8]> {
-    fn cst_decode(self) -> Vec<i8> {
         self.into_vec()
     }
 }
@@ -5013,16 +4983,6 @@ impl CstDecode<Vec<u16>> for Box<[u16]> {
         self.into_vec()
     }
 }
-impl CstDecode<Vec<u16>> for Box<[u16]> {
-    fn cst_decode(self) -> Vec<u16> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<u32>> for Box<[u32]> {
-    fn cst_decode(self) -> Vec<u32> {
-        self.into_vec()
-    }
-}
 impl CstDecode<Vec<u32>> for Box<[u32]> {
     fn cst_decode(self) -> Vec<u32> {
         self.into_vec()
@@ -5030,16 +4990,6 @@ impl CstDecode<Vec<u32>> for Box<[u32]> {
 }
 impl CstDecode<Vec<u64>> for Box<[u64]> {
     fn cst_decode(self) -> Vec<u64> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<u64>> for Box<[u64]> {
-    fn cst_decode(self) -> Vec<u64> {
-        self.into_vec()
-    }
-}
-impl CstDecode<Vec<u8>> for Box<[u8]> {
-    fn cst_decode(self) -> Vec<u8> {
         self.into_vec()
     }
 }
@@ -10910,20 +10860,6 @@ impl CstDecode<Vec<f32>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
             .into()
     }
 }
-impl CstDecode<Vec<f32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<f32> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Float32Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<Vec<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<f64> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Float64Array>()
-            .to_vec()
-            .into()
-    }
-}
 impl CstDecode<Vec<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<f64> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Float64Array>()
@@ -10934,20 +10870,6 @@ impl CstDecode<Vec<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
 impl CstDecode<Vec<i16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<i16> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int16Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<Vec<i16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<i16> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int16Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<Vec<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<i32> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int32Array>()
             .to_vec()
             .into()
     }
@@ -10968,32 +10890,9 @@ impl CstDecode<Vec<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
         flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
-impl CstDecode<Vec<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<i64> {
-        let buf = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
-            .unwrap();
-        let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
-        flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
-    }
-}
 impl CstDecode<Vec<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<i8> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int8Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<Vec<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<i8> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int8Array>()
-            .to_vec()
-            .into()
-    }
-}
-impl CstDecode<Vec<u16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<u16> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint16Array>()
             .to_vec()
             .into()
     }
@@ -11012,13 +10911,6 @@ impl CstDecode<Vec<u32>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
             .into()
     }
 }
-impl CstDecode<Vec<u32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<u32> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint32Array>()
-            .to_vec()
-            .into()
-    }
-}
 impl CstDecode<Vec<u64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> Vec<u64> {
         let buf = self
@@ -11026,22 +10918,6 @@ impl CstDecode<Vec<u64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
             .unwrap();
         let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
         flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
-    }
-}
-impl CstDecode<Vec<u64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<u64> {
-        let buf = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigUint64Array>()
-            .unwrap();
-        let buf = flutter_rust_bridge::for_generated::js_sys::Uint8Array::new(&buf.buffer());
-        flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()
-    }
-}
-impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn cst_decode(self) -> Vec<u8> {
-        self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
-            .to_vec()
-            .into()
     }
 }
 impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {

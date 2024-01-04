@@ -7027,7 +7027,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_print_note_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinNormalConstMeta,
@@ -8044,11 +8044,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required Map<String, Uint8List> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Map_String_list_prim_u_8_strict(arg);
+        var arg0 = cst_encode_Map_String_list_prim_u_8(arg);
         return wire.wire_func_hash_map_string_bytes_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_Map_String_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kFuncHashMapStringBytesTwinNormalConstMeta,
@@ -9086,11 +9086,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> v, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(v);
+        var arg0 = cst_encode_list_prim_u_8(v);
         return wire.wire_handle_vec_u8_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinNormalConstMeta,
@@ -11413,7 +11413,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> raw, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(raw);
+        var arg0 = cst_encode_list_prim_u_8(raw);
         return wire.wire_benchmark_binary_tree_input_protobuf_twin_normal(
             port_, arg0);
       },
@@ -11496,7 +11496,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBinaryTreeOutputProtobufTwinNormalConstMeta,
@@ -11567,7 +11567,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> raw, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(raw);
+        var arg0 = cst_encode_list_prim_u_8(raw);
         return wire.wire_benchmark_blob_input_protobuf_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -11647,7 +11647,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBlobOutputProtobufTwinNormalConstMeta,
@@ -11693,7 +11693,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> bytes, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(bytes);
+        var arg0 = cst_encode_list_prim_u_8(bytes);
         return wire.wire_benchmark_input_bytes_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -11722,7 +11722,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_output_bytes_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinNormalConstMeta,
@@ -11791,7 +11791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> raw, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(raw);
+        var arg0 = cst_encode_list_prim_u_8(raw);
         return wire.wire_benchmark_binary_tree_input_protobuf_twin_rust_async(
             port_, arg0);
       },
@@ -11875,7 +11875,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBinaryTreeOutputProtobufTwinRustAsyncConstMeta,
@@ -11948,7 +11948,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> raw, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(raw);
+        var arg0 = cst_encode_list_prim_u_8(raw);
         return wire.wire_benchmark_blob_input_protobuf_twin_rust_async(
             port_, arg0);
       },
@@ -12030,7 +12030,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBlobOutputProtobufTwinRustAsyncConstMeta,
@@ -12076,7 +12076,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> bytes, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(bytes);
+        var arg0 = cst_encode_list_prim_u_8(bytes);
         return wire.wire_benchmark_input_bytes_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
@@ -12105,7 +12105,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_output_bytes_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinRustAsyncConstMeta,
@@ -12177,7 +12177,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
+        sse_encode_list_prim_u_8(raw, serializer);
         final raw_ = serializer.intoRaw();
         return wire
             .wire_benchmark_binary_tree_input_protobuf_twin_rust_async_sse(
@@ -12272,7 +12272,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBinaryTreeOutputProtobufTwinRustAsyncSseConstMeta,
@@ -12353,7 +12353,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
+        sse_encode_list_prim_u_8(raw, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_blob_input_protobuf_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -12444,7 +12444,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBlobOutputProtobufTwinRustAsyncSseConstMeta,
@@ -12494,7 +12494,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(bytes, serializer);
+        sse_encode_list_prim_u_8(bytes, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_input_bytes_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -12528,7 +12528,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinRustAsyncSseConstMeta,
@@ -12605,7 +12605,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
+        sse_encode_list_prim_u_8(raw, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_binary_tree_input_protobuf_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -12695,7 +12695,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBinaryTreeOutputProtobufTwinSseConstMeta,
@@ -12773,7 +12773,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
+        sse_encode_list_prim_u_8(raw, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_blob_input_protobuf_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -12862,7 +12862,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBlobOutputProtobufTwinSseConstMeta,
@@ -12911,7 +12911,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(bytes, serializer);
+        sse_encode_list_prim_u_8(bytes, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_input_bytes_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -12944,7 +12944,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinSseConstMeta,
@@ -13016,7 +13016,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> raw, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_8_loose(raw);
+        var arg0 = cst_encode_list_prim_u_8(raw);
         return wire.wire_benchmark_binary_tree_input_protobuf_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -13095,7 +13095,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_binary_tree_output_protobuf_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBinaryTreeOutputProtobufTwinSyncConstMeta,
@@ -13165,7 +13165,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> raw, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_8_loose(raw);
+        var arg0 = cst_encode_list_prim_u_8(raw);
         return wire.wire_benchmark_blob_input_protobuf_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -13242,7 +13242,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_blob_output_protobuf_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBlobOutputProtobufTwinSyncConstMeta,
@@ -13287,7 +13287,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int benchmarkInputBytesTwinSync({required List<int> bytes, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_8_loose(bytes);
+        var arg0 = cst_encode_list_prim_u_8(bytes);
         return wire.wire_benchmark_input_bytes_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -13315,7 +13315,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_benchmark_output_bytes_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinSyncConstMeta,
@@ -13387,7 +13387,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
+        sse_encode_list_prim_u_8(raw, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_binary_tree_input_protobuf_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -13478,7 +13478,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBinaryTreeOutputProtobufTwinSyncSseConstMeta,
@@ -13555,7 +13555,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(raw, serializer);
+        sse_encode_list_prim_u_8(raw, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_blob_input_protobuf_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -13644,7 +13644,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkBlobOutputProtobufTwinSyncSseConstMeta,
@@ -13693,7 +13693,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(bytes, serializer);
+        sse_encode_list_prim_u_8(bytes, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_benchmark_input_bytes_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -13726,7 +13726,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kBenchmarkOutputBytesTwinSyncSseConstMeta,
@@ -18167,7 +18167,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_print_note_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinRustAsyncConstMeta,
@@ -18427,7 +18427,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinRustAsyncSseConstMeta,
@@ -18673,7 +18673,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinSseConstMeta,
@@ -18892,7 +18892,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_print_note_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinSyncConstMeta,
@@ -19144,7 +19144,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kPrintNoteTwinSyncSseConstMeta,
@@ -23982,12 +23982,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required Map<String, Uint8List> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_Map_String_list_prim_u_8_strict(arg);
+        var arg0 = cst_encode_Map_String_list_prim_u_8(arg);
         return wire.wire_func_hash_map_string_bytes_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_Map_String_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kFuncHashMapStringBytesTwinRustAsyncConstMeta,
@@ -24193,13 +24193,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_String_list_prim_u_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_func_hash_map_string_bytes_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_String_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kFuncHashMapStringBytesTwinRustAsyncSseConstMeta,
@@ -24422,13 +24422,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_String_list_prim_u_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_func_hash_map_string_bytes_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_String_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kFuncHashMapStringBytesTwinSseConstMeta,
@@ -24639,11 +24639,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required Map<String, Uint8List> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_Map_String_list_prim_u_8_strict(arg);
+        var arg0 = cst_encode_Map_String_list_prim_u_8(arg);
         return wire.wire_func_hash_map_string_bytes_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_Map_String_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kFuncHashMapStringBytesTwinSyncConstMeta,
@@ -24840,13 +24840,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_String_list_prim_u_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_func_hash_map_string_bytes_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_String_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kFuncHashMapStringBytesTwinSyncSseConstMeta,
@@ -29179,11 +29179,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> v, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(v);
+        var arg0 = cst_encode_list_prim_u_8(v);
         return wire.wire_handle_vec_u8_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinRustAsyncConstMeta,
@@ -29420,13 +29420,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(v, serializer);
+        sse_encode_list_prim_u_8(v, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_handle_vec_u8_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinRustAsyncSseConstMeta,
@@ -29666,13 +29666,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(v, serializer);
+        sse_encode_list_prim_u_8(v, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_handle_vec_u8_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinSseConstMeta,
@@ -29892,11 +29892,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Uint8List handleVecU8TwinSync({required List<int> v, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_8_loose(v);
+        var arg0 = cst_encode_list_prim_u_8(v);
         return wire.wire_handle_vec_u8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinSyncConstMeta,
@@ -30125,13 +30125,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(v, serializer);
+        sse_encode_list_prim_u_8(v, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_handle_vec_u8_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kHandleVecU8TwinSyncSseConstMeta,
@@ -34145,12 +34145,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<double> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_32_loose(arg);
+        var arg0 = cst_encode_list_prim_f_32(arg);
         return wire.wire_example_primitive_list_type_f32_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_32_strict,
+        decodeSuccessData: dco_decode_list_prim_f_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
@@ -34171,12 +34171,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<double> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_64_loose(arg);
+        var arg0 = cst_encode_list_prim_f_64(arg);
         return wire.wire_example_primitive_list_type_f64_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_64_strict,
+        decodeSuccessData: dco_decode_list_prim_f_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
@@ -34197,12 +34197,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_16_loose(arg);
+        var arg0 = cst_encode_list_prim_i_16(arg);
         return wire.wire_example_primitive_list_type_i16_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_16_strict,
+        decodeSuccessData: dco_decode_list_prim_i_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
@@ -34223,12 +34223,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_32_loose(arg);
+        var arg0 = cst_encode_list_prim_i_32(arg);
         return wire.wire_example_primitive_list_type_i32_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_32_strict,
+        decodeSuccessData: dco_decode_list_prim_i_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
@@ -34249,12 +34249,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_64_loose(arg);
+        var arg0 = cst_encode_list_prim_i_64(arg);
         return wire.wire_example_primitive_list_type_i64_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_64_strict,
+        decodeSuccessData: dco_decode_list_prim_i_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
@@ -34275,12 +34275,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_8_loose(arg);
+        var arg0 = cst_encode_list_prim_i_8(arg);
         return wire.wire_example_primitive_list_type_i8_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_8_strict,
+        decodeSuccessData: dco_decode_list_prim_i_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
@@ -34301,12 +34301,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_16_loose(arg);
+        var arg0 = cst_encode_list_prim_u_16(arg);
         return wire.wire_example_primitive_list_type_u16_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_16_strict,
+        decodeSuccessData: dco_decode_list_prim_u_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
@@ -34327,12 +34327,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_32_loose(arg);
+        var arg0 = cst_encode_list_prim_u_32(arg);
         return wire.wire_example_primitive_list_type_u32_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_32_strict,
+        decodeSuccessData: dco_decode_list_prim_u_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
@@ -34353,12 +34353,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_64_loose(arg);
+        var arg0 = cst_encode_list_prim_u_64(arg);
         return wire.wire_example_primitive_list_type_u64_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_64_strict,
+        decodeSuccessData: dco_decode_list_prim_u_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
@@ -34379,12 +34379,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        var arg0 = cst_encode_list_prim_u_8(arg);
         return wire.wire_example_primitive_list_type_u8_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
@@ -34565,12 +34565,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<double> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_32_loose(arg);
+        var arg0 = cst_encode_list_prim_f_32(arg);
         return wire.wire_example_primitive_list_type_f32_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_32_strict,
+        decodeSuccessData: dco_decode_list_prim_f_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinRustAsyncConstMeta,
@@ -34591,12 +34591,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<double> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_64_loose(arg);
+        var arg0 = cst_encode_list_prim_f_64(arg);
         return wire.wire_example_primitive_list_type_f64_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_64_strict,
+        decodeSuccessData: dco_decode_list_prim_f_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinRustAsyncConstMeta,
@@ -34617,12 +34617,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_16_loose(arg);
+        var arg0 = cst_encode_list_prim_i_16(arg);
         return wire.wire_example_primitive_list_type_i16_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_16_strict,
+        decodeSuccessData: dco_decode_list_prim_i_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinRustAsyncConstMeta,
@@ -34643,12 +34643,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_32_loose(arg);
+        var arg0 = cst_encode_list_prim_i_32(arg);
         return wire.wire_example_primitive_list_type_i32_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_32_strict,
+        decodeSuccessData: dco_decode_list_prim_i_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinRustAsyncConstMeta,
@@ -34669,12 +34669,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_64_loose(arg);
+        var arg0 = cst_encode_list_prim_i_64(arg);
         return wire.wire_example_primitive_list_type_i64_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_64_strict,
+        decodeSuccessData: dco_decode_list_prim_i_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinRustAsyncConstMeta,
@@ -34695,12 +34695,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_8_loose(arg);
+        var arg0 = cst_encode_list_prim_i_8(arg);
         return wire.wire_example_primitive_list_type_i8_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_8_strict,
+        decodeSuccessData: dco_decode_list_prim_i_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinRustAsyncConstMeta,
@@ -34721,12 +34721,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_16_loose(arg);
+        var arg0 = cst_encode_list_prim_u_16(arg);
         return wire.wire_example_primitive_list_type_u16_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_16_strict,
+        decodeSuccessData: dco_decode_list_prim_u_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinRustAsyncConstMeta,
@@ -34747,12 +34747,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_32_loose(arg);
+        var arg0 = cst_encode_list_prim_u_32(arg);
         return wire.wire_example_primitive_list_type_u32_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_32_strict,
+        decodeSuccessData: dco_decode_list_prim_u_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinRustAsyncConstMeta,
@@ -34773,12 +34773,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_64_loose(arg);
+        var arg0 = cst_encode_list_prim_u_64(arg);
         return wire.wire_example_primitive_list_type_u64_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_64_strict,
+        decodeSuccessData: dco_decode_list_prim_u_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinRustAsyncConstMeta,
@@ -34799,12 +34799,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        var arg0 = cst_encode_list_prim_u_8(arg);
         return wire.wire_example_primitive_list_type_u8_twin_rust_async(
             port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinRustAsyncConstMeta,
@@ -34854,13 +34854,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
+        sse_encode_list_prim_f_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_f32_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
+        decodeSuccessData: sse_decode_list_prim_f_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinRustAsyncSseConstMeta,
@@ -34882,13 +34882,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
+        sse_encode_list_prim_f_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_f64_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
+        decodeSuccessData: sse_decode_list_prim_f_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinRustAsyncSseConstMeta,
@@ -34910,13 +34910,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
+        sse_encode_list_prim_i_16(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i16_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
+        decodeSuccessData: sse_decode_list_prim_i_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinRustAsyncSseConstMeta,
@@ -34938,13 +34938,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
+        sse_encode_list_prim_i_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i32_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeSuccessData: sse_decode_list_prim_i_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinRustAsyncSseConstMeta,
@@ -34966,13 +34966,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_loose(arg, serializer);
+        sse_encode_list_prim_i_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i64_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
+        decodeSuccessData: sse_decode_list_prim_i_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinRustAsyncSseConstMeta,
@@ -34994,13 +34994,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
+        sse_encode_list_prim_i_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i8_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
+        decodeSuccessData: sse_decode_list_prim_i_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinRustAsyncSseConstMeta,
@@ -35022,13 +35022,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
+        sse_encode_list_prim_u_16(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u16_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
+        decodeSuccessData: sse_decode_list_prim_u_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinRustAsyncSseConstMeta,
@@ -35050,13 +35050,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
+        sse_encode_list_prim_u_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u32_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
+        decodeSuccessData: sse_decode_list_prim_u_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinRustAsyncSseConstMeta,
@@ -35078,13 +35078,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_loose(arg, serializer);
+        sse_encode_list_prim_u_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u64_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
+        decodeSuccessData: sse_decode_list_prim_u_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinRustAsyncSseConstMeta,
@@ -35106,13 +35106,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
+        sse_encode_list_prim_u_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u8_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinRustAsyncSseConstMeta,
@@ -35162,13 +35162,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
+        sse_encode_list_prim_f_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_f32_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
+        decodeSuccessData: sse_decode_list_prim_f_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinSseConstMeta,
@@ -35190,13 +35190,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
+        sse_encode_list_prim_f_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_f64_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
+        decodeSuccessData: sse_decode_list_prim_f_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinSseConstMeta,
@@ -35218,13 +35218,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
+        sse_encode_list_prim_i_16(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i16_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
+        decodeSuccessData: sse_decode_list_prim_i_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinSseConstMeta,
@@ -35246,13 +35246,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
+        sse_encode_list_prim_i_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i32_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeSuccessData: sse_decode_list_prim_i_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinSseConstMeta,
@@ -35274,13 +35274,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_loose(arg, serializer);
+        sse_encode_list_prim_i_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i64_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
+        decodeSuccessData: sse_decode_list_prim_i_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinSseConstMeta,
@@ -35302,13 +35302,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
+        sse_encode_list_prim_i_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i8_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
+        decodeSuccessData: sse_decode_list_prim_i_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinSseConstMeta,
@@ -35330,13 +35330,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
+        sse_encode_list_prim_u_16(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u16_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
+        decodeSuccessData: sse_decode_list_prim_u_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinSseConstMeta,
@@ -35358,13 +35358,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
+        sse_encode_list_prim_u_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u32_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
+        decodeSuccessData: sse_decode_list_prim_u_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinSseConstMeta,
@@ -35386,13 +35386,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_loose(arg, serializer);
+        sse_encode_list_prim_u_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u64_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
+        decodeSuccessData: sse_decode_list_prim_u_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinSseConstMeta,
@@ -35414,13 +35414,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
+        sse_encode_list_prim_u_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u8_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinSseConstMeta,
@@ -35466,11 +35466,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<double> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_f_32_loose(arg);
+        var arg0 = cst_encode_list_prim_f_32(arg);
         return wire.wire_example_primitive_list_type_f32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_32_strict,
+        decodeSuccessData: dco_decode_list_prim_f_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
@@ -35491,11 +35491,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<double> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_f_64_loose(arg);
+        var arg0 = cst_encode_list_prim_f_64(arg);
         return wire.wire_example_primitive_list_type_f64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_64_strict,
+        decodeSuccessData: dco_decode_list_prim_f_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
@@ -35516,11 +35516,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_i_16_loose(arg);
+        var arg0 = cst_encode_list_prim_i_16(arg);
         return wire.wire_example_primitive_list_type_i16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_16_strict,
+        decodeSuccessData: dco_decode_list_prim_i_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
@@ -35541,11 +35541,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_i_32_loose(arg);
+        var arg0 = cst_encode_list_prim_i_32(arg);
         return wire.wire_example_primitive_list_type_i32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_32_strict,
+        decodeSuccessData: dco_decode_list_prim_i_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
@@ -35566,11 +35566,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_i_64_loose(arg);
+        var arg0 = cst_encode_list_prim_i_64(arg);
         return wire.wire_example_primitive_list_type_i64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_64_strict,
+        decodeSuccessData: dco_decode_list_prim_i_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
@@ -35591,11 +35591,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_i_8_loose(arg);
+        var arg0 = cst_encode_list_prim_i_8(arg);
         return wire.wire_example_primitive_list_type_i8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_8_strict,
+        decodeSuccessData: dco_decode_list_prim_i_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
@@ -35616,11 +35616,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_16_loose(arg);
+        var arg0 = cst_encode_list_prim_u_16(arg);
         return wire.wire_example_primitive_list_type_u16_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_16_strict,
+        decodeSuccessData: dco_decode_list_prim_u_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
@@ -35641,11 +35641,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_32_loose(arg);
+        var arg0 = cst_encode_list_prim_u_32(arg);
         return wire.wire_example_primitive_list_type_u32_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_32_strict,
+        decodeSuccessData: dco_decode_list_prim_u_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
@@ -35666,11 +35666,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_64_loose(arg);
+        var arg0 = cst_encode_list_prim_u_64(arg);
         return wire.wire_example_primitive_list_type_u64_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_64_strict,
+        decodeSuccessData: dco_decode_list_prim_u_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
@@ -35691,11 +35691,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        var arg0 = cst_encode_list_prim_u_8(arg);
         return wire.wire_example_primitive_list_type_u8_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeSuccessData: dco_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
@@ -35745,13 +35745,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
+        sse_encode_list_prim_f_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_f32_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
+        decodeSuccessData: sse_decode_list_prim_f_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF32TwinSyncSseConstMeta,
@@ -35773,13 +35773,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
+        sse_encode_list_prim_f_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_f64_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
+        decodeSuccessData: sse_decode_list_prim_f_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeF64TwinSyncSseConstMeta,
@@ -35801,13 +35801,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
+        sse_encode_list_prim_i_16(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i16_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
+        decodeSuccessData: sse_decode_list_prim_i_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI16TwinSyncSseConstMeta,
@@ -35829,13 +35829,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
+        sse_encode_list_prim_i_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i32_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeSuccessData: sse_decode_list_prim_i_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI32TwinSyncSseConstMeta,
@@ -35857,13 +35857,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_loose(arg, serializer);
+        sse_encode_list_prim_i_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i64_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
+        decodeSuccessData: sse_decode_list_prim_i_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI64TwinSyncSseConstMeta,
@@ -35885,13 +35885,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
+        sse_encode_list_prim_i_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_i8_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
+        decodeSuccessData: sse_decode_list_prim_i_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeI8TwinSyncSseConstMeta,
@@ -35913,13 +35913,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
+        sse_encode_list_prim_u_16(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u16_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
+        decodeSuccessData: sse_decode_list_prim_u_16,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU16TwinSyncSseConstMeta,
@@ -35941,13 +35941,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
+        sse_encode_list_prim_u_32(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u32_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
+        decodeSuccessData: sse_decode_list_prim_u_32,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU32TwinSyncSseConstMeta,
@@ -35969,13 +35969,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_loose(arg, serializer);
+        sse_encode_list_prim_u_64(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u64_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
+        decodeSuccessData: sse_decode_list_prim_u_64,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU64TwinSyncSseConstMeta,
@@ -35997,13 +35997,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
+        sse_encode_list_prim_u_8(arg, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_example_primitive_list_type_u8_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_list_prim_u_8,
         decodeErrorData: null,
       ),
       constMeta: kExamplePrimitiveListTypeU8TwinSyncSseConstMeta,
@@ -48916,11 +48916,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict(
-      dynamic raw) {
-    return Map.fromEntries(
-        dco_decode_list_record_string_list_prim_u_8_strict(raw)
-            .map((e) => MapEntry(e.$1, e.$2)));
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_string_list_prim_u_8(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -49199,7 +49197,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Set<int> dco_decode_Set_i_32(dynamic raw) {
-    return Set.from(dco_decode_list_prim_i_32_strict(raw));
+    return Set.from(dco_decode_list_prim_i_32(raw));
   }
 
   @protected
@@ -49760,9 +49758,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinNormal(
-      first: dco_decode_list_prim_u_8_strict(arr[0]),
-      second: dco_decode_list_prim_u_8_strict(arr[1]),
-      third: dco_decode_list_prim_u_8_strict(arr[2]),
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
     );
   }
 
@@ -49773,9 +49771,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinRustAsync(
-      first: dco_decode_list_prim_u_8_strict(arr[0]),
-      second: dco_decode_list_prim_u_8_strict(arr[1]),
-      third: dco_decode_list_prim_u_8_strict(arr[2]),
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
     );
   }
 
@@ -49786,9 +49784,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinRustAsyncSse(
-      first: dco_decode_list_prim_u_8_strict(arr[0]),
-      second: dco_decode_list_prim_u_8_strict(arr[1]),
-      third: dco_decode_list_prim_u_8_strict(arr[2]),
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
     );
   }
 
@@ -49798,9 +49796,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinSse(
-      first: dco_decode_list_prim_u_8_strict(arr[0]),
-      second: dco_decode_list_prim_u_8_strict(arr[1]),
-      third: dco_decode_list_prim_u_8_strict(arr[2]),
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
     );
   }
 
@@ -49810,9 +49808,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinSync(
-      first: dco_decode_list_prim_u_8_strict(arr[0]),
-      second: dco_decode_list_prim_u_8_strict(arr[1]),
-      third: dco_decode_list_prim_u_8_strict(arr[2]),
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
     );
   }
 
@@ -49823,9 +49821,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return BenchmarkBlobTwinSyncSse(
-      first: dco_decode_list_prim_u_8_strict(arr[0]),
-      second: dco_decode_list_prim_u_8_strict(arr[1]),
-      third: dco_decode_list_prim_u_8_strict(arr[2]),
+      first: dco_decode_list_prim_u_8(arr[0]),
+      second: dco_decode_list_prim_u_8(arr[1]),
+      third: dco_decode_list_prim_u_8(arr[2]),
     );
   }
 
@@ -49835,8 +49833,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinNormal(
-      int64: dco_decode_list_prim_i_64_strict(arr[0]),
-      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+      int64: dco_decode_list_prim_i_64(arr[0]),
+      uint64: dco_decode_list_prim_u_64(arr[1]),
     );
   }
 
@@ -49846,8 +49844,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinRustAsync(
-      int64: dco_decode_list_prim_i_64_strict(arr[0]),
-      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+      int64: dco_decode_list_prim_i_64(arr[0]),
+      uint64: dco_decode_list_prim_u_64(arr[1]),
     );
   }
 
@@ -49858,8 +49856,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinRustAsyncSse(
-      int64: dco_decode_list_prim_i_64_strict(arr[0]),
-      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+      int64: dco_decode_list_prim_i_64(arr[0]),
+      uint64: dco_decode_list_prim_u_64(arr[1]),
     );
   }
 
@@ -49869,8 +49867,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinSse(
-      int64: dco_decode_list_prim_i_64_strict(arr[0]),
-      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+      int64: dco_decode_list_prim_i_64(arr[0]),
+      uint64: dco_decode_list_prim_u_64(arr[1]),
     );
   }
 
@@ -49880,8 +49878,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinSync(
-      int64: dco_decode_list_prim_i_64_strict(arr[0]),
-      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+      int64: dco_decode_list_prim_i_64(arr[0]),
+      uint64: dco_decode_list_prim_u_64(arr[1]),
     );
   }
 
@@ -49891,8 +49889,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BigBuffersTwinSyncSse(
-      int64: dco_decode_list_prim_i_64_strict(arr[0]),
-      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+      int64: dco_decode_list_prim_i_64(arr[0]),
+      uint64: dco_decode_list_prim_u_64(arr[1]),
     );
   }
 
@@ -53818,7 +53816,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumWithItemMixedTwinNormal_A();
       case 1:
         return EnumWithItemMixedTwinNormal_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 2:
         return EnumWithItemMixedTwinNormal_C(
@@ -53837,7 +53835,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumWithItemMixedTwinRustAsync_A();
       case 1:
         return EnumWithItemMixedTwinRustAsync_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 2:
         return EnumWithItemMixedTwinRustAsync_C(
@@ -53856,7 +53854,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumWithItemMixedTwinRustAsyncSse_A();
       case 1:
         return EnumWithItemMixedTwinRustAsyncSse_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 2:
         return EnumWithItemMixedTwinRustAsyncSse_C(
@@ -53875,7 +53873,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumWithItemMixedTwinSse_A();
       case 1:
         return EnumWithItemMixedTwinSse_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 2:
         return EnumWithItemMixedTwinSse_C(
@@ -53894,7 +53892,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumWithItemMixedTwinSync_A();
       case 1:
         return EnumWithItemMixedTwinSync_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 2:
         return EnumWithItemMixedTwinSync_C(
@@ -53913,7 +53911,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return EnumWithItemMixedTwinSyncSse_A();
       case 1:
         return EnumWithItemMixedTwinSyncSse_B(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 2:
         return EnumWithItemMixedTwinSyncSse_C(
@@ -53930,11 +53928,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemStructTwinNormal_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemStructTwinNormal_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -53947,11 +53945,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemStructTwinRustAsync_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemStructTwinRustAsync_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -53964,11 +53962,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemStructTwinRustAsyncSse_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemStructTwinRustAsyncSse_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -53981,11 +53979,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemStructTwinSse_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemStructTwinSse_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -53998,11 +53996,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemStructTwinSync_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemStructTwinSync_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54015,11 +54013,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemStructTwinSyncSse_A(
-          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+          aField: dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemStructTwinSyncSse_B(
-          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+          bField: dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54032,11 +54030,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemTupleTwinNormal_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemTupleTwinNormal_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54049,11 +54047,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemTupleTwinRustAsync_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemTupleTwinRustAsync_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54066,11 +54064,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemTupleTwinRustAsyncSse_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemTupleTwinRustAsyncSse_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54083,11 +54081,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemTupleTwinSse_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemTupleTwinSse_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54100,11 +54098,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemTupleTwinSync_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemTupleTwinSync_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54117,11 +54115,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumWithItemTupleTwinSyncSse_A(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 1:
         return EnumWithItemTupleTwinSyncSse_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_list_prim_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -54183,12 +54181,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
-      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
-      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
-      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
-      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      zerocopy: dco_decode_opt_list_prim_u_8(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64(arr[9]),
       attributes: dco_decode_opt_list_attribute_twin_normal(arr[10]),
       attributesNullable:
           dco_decode_list_opt_box_autoadd_attribute_twin_normal(arr[11]),
@@ -54209,12 +54207,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
-      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
-      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
-      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
-      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      zerocopy: dco_decode_opt_list_prim_u_8(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64(arr[9]),
       attributes: dco_decode_opt_list_attribute_twin_rust_async(arr[10]),
       attributesNullable:
           dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(arr[11]),
@@ -54237,12 +54235,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
-      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
-      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
-      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
-      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      zerocopy: dco_decode_opt_list_prim_u_8(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64(arr[9]),
       attributes: dco_decode_opt_list_attribute_twin_rust_async_sse(arr[10]),
       attributesNullable:
           dco_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
@@ -54265,12 +54263,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
-      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
-      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
-      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
-      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      zerocopy: dco_decode_opt_list_prim_u_8(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64(arr[9]),
       attributes: dco_decode_opt_list_attribute_twin_sse(arr[10]),
       attributesNullable:
           dco_decode_list_opt_box_autoadd_attribute_twin_sse(arr[11]),
@@ -54290,12 +54288,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
-      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
-      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
-      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
-      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      zerocopy: dco_decode_opt_list_prim_u_8(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64(arr[9]),
       attributes: dco_decode_opt_list_attribute_twin_sync(arr[10]),
       attributesNullable:
           dco_decode_list_opt_box_autoadd_attribute_twin_sync(arr[11]),
@@ -54316,12 +54314,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
       float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
       boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
-      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
-      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
-      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
-      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
-      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      zerocopy: dco_decode_opt_list_prim_u_8(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64(arr[9]),
       attributes: dco_decode_opt_list_attribute_twin_sync_sse(arr[10]),
       attributesNullable:
           dco_decode_list_opt_box_autoadd_attribute_twin_sync_sse(arr[11]),
@@ -54344,7 +54342,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   F64Array16 dco_decode_f_64_array_16(dynamic raw) {
-    return F64Array16(dco_decode_list_prim_f_64_strict(raw));
+    return F64Array16(dco_decode_list_prim_f_64(raw));
   }
 
   @protected
@@ -54490,7 +54488,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   I32Array2 dco_decode_i_32_array_2(dynamic raw) {
-    return I32Array2(dco_decode_list_prim_i_32_strict(raw));
+    return I32Array2(dco_decode_list_prim_i_32(raw));
   }
 
   @protected
@@ -54531,7 +54529,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinNormal_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinNormal_Enums(
@@ -54566,7 +54564,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinRustAsync_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinRustAsync_Enums(
@@ -54601,7 +54599,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinRustAsyncSse_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinRustAsyncSse_Enums(
@@ -54635,7 +54633,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinSse_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinSse_Enums(
@@ -54669,7 +54667,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinSync_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinSync_Enums(
@@ -54703,7 +54701,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 4:
         return KitchenSinkTwinSyncSse_Buffer(
-          dco_decode_list_prim_u_8_strict(raw[1]),
+          dco_decode_list_prim_u_8(raw[1]),
         );
       case 5:
         return KitchenSinkTwinSyncSse_Enums(
@@ -55066,10 +55064,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<Int32List?> dco_decode_list_opt_list_prim_i_32_strict(dynamic raw) {
-    return (raw as List<dynamic>)
-        .map(dco_decode_opt_list_prim_i_32_strict)
-        .toList();
+  List<Int32List?> dco_decode_list_opt_list_prim_i_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_opt_list_prim_i_32).toList();
   }
 
   @protected
@@ -55108,102 +55104,52 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<double> dco_decode_list_prim_f_32_loose(dynamic raw) {
-    return raw as List<double>;
-  }
-
-  @protected
-  Float32List dco_decode_list_prim_f_32_strict(dynamic raw) {
+  Float32List dco_decode_list_prim_f_32(dynamic raw) {
     return raw as Float32List;
   }
 
   @protected
-  List<double> dco_decode_list_prim_f_64_loose(dynamic raw) {
-    return raw as List<double>;
-  }
-
-  @protected
-  Float64List dco_decode_list_prim_f_64_strict(dynamic raw) {
+  Float64List dco_decode_list_prim_f_64(dynamic raw) {
     return raw as Float64List;
   }
 
   @protected
-  List<int> dco_decode_list_prim_i_16_loose(dynamic raw) {
-    return raw as List<int>;
-  }
-
-  @protected
-  Int16List dco_decode_list_prim_i_16_strict(dynamic raw) {
+  Int16List dco_decode_list_prim_i_16(dynamic raw) {
     return raw as Int16List;
   }
 
   @protected
-  List<int> dco_decode_list_prim_i_32_loose(dynamic raw) {
-    return raw as List<int>;
-  }
-
-  @protected
-  Int32List dco_decode_list_prim_i_32_strict(dynamic raw) {
+  Int32List dco_decode_list_prim_i_32(dynamic raw) {
     return raw as Int32List;
   }
 
   @protected
-  List<int> dco_decode_list_prim_i_64_loose(dynamic raw) {
+  Int64List dco_decode_list_prim_i_64(dynamic raw) {
     return Int64List.from(raw);
   }
 
   @protected
-  Int64List dco_decode_list_prim_i_64_strict(dynamic raw) {
-    return Int64List.from(raw);
-  }
-
-  @protected
-  List<int> dco_decode_list_prim_i_8_loose(dynamic raw) {
-    return raw as List<int>;
-  }
-
-  @protected
-  Int8List dco_decode_list_prim_i_8_strict(dynamic raw) {
+  Int8List dco_decode_list_prim_i_8(dynamic raw) {
     return raw as Int8List;
   }
 
   @protected
-  List<int> dco_decode_list_prim_u_16_loose(dynamic raw) {
-    return raw as List<int>;
-  }
-
-  @protected
-  Uint16List dco_decode_list_prim_u_16_strict(dynamic raw) {
+  Uint16List dco_decode_list_prim_u_16(dynamic raw) {
     return raw as Uint16List;
   }
 
   @protected
-  List<int> dco_decode_list_prim_u_32_loose(dynamic raw) {
-    return raw as List<int>;
-  }
-
-  @protected
-  Uint32List dco_decode_list_prim_u_32_strict(dynamic raw) {
+  Uint32List dco_decode_list_prim_u_32(dynamic raw) {
     return raw as Uint32List;
   }
 
   @protected
-  List<int> dco_decode_list_prim_u_64_loose(dynamic raw) {
+  Uint64List dco_decode_list_prim_u_64(dynamic raw) {
     return Uint64List.from(raw);
   }
 
   @protected
-  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw) {
-    return Uint64List.from(raw);
-  }
-
-  @protected
-  List<int> dco_decode_list_prim_u_8_loose(dynamic raw) {
-    return raw as List<int>;
-  }
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
+  Uint8List dco_decode_list_prim_u_8(dynamic raw) {
     return raw as Uint8List;
   }
 
@@ -55329,10 +55275,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8_strict(
+  List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8(
       dynamic raw) {
     return (raw as List<dynamic>)
-        .map(dco_decode_record_string_list_prim_u_8_strict)
+        .map(dco_decode_record_string_list_prim_u_8)
         .toList();
   }
 
@@ -56052,7 +55998,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinNormal(
       valueI32: dco_decode_i_32(arr[0]),
-      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueVecU8: dco_decode_list_prim_u_8(arr[1]),
       valueBoolean: dco_decode_bool(arr[2]),
       children: dco_decode_list_my_tree_node_twin_normal(arr[3]),
     );
@@ -56065,7 +56011,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinRustAsync(
       valueI32: dco_decode_i_32(arr[0]),
-      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueVecU8: dco_decode_list_prim_u_8(arr[1]),
       valueBoolean: dco_decode_bool(arr[2]),
       children: dco_decode_list_my_tree_node_twin_rust_async(arr[3]),
     );
@@ -56079,7 +56025,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinRustAsyncSse(
       valueI32: dco_decode_i_32(arr[0]),
-      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueVecU8: dco_decode_list_prim_u_8(arr[1]),
       valueBoolean: dco_decode_bool(arr[2]),
       children: dco_decode_list_my_tree_node_twin_rust_async_sse(arr[3]),
     );
@@ -56092,7 +56038,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinSse(
       valueI32: dco_decode_i_32(arr[0]),
-      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueVecU8: dco_decode_list_prim_u_8(arr[1]),
       valueBoolean: dco_decode_bool(arr[2]),
       children: dco_decode_list_my_tree_node_twin_sse(arr[3]),
     );
@@ -56105,7 +56051,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinSync(
       valueI32: dco_decode_i_32(arr[0]),
-      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueVecU8: dco_decode_list_prim_u_8(arr[1]),
       valueBoolean: dco_decode_bool(arr[2]),
       children: dco_decode_list_my_tree_node_twin_sync(arr[3]),
     );
@@ -56118,7 +56064,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MyTreeNodeTwinSyncSse(
       valueI32: dco_decode_i_32(arr[0]),
-      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueVecU8: dco_decode_list_prim_u_8(arr[1]),
       valueBoolean: dco_decode_bool(arr[2]),
       children: dco_decode_list_my_tree_node_twin_sync_sse(arr[3]),
     );
@@ -56277,7 +56223,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Numbers(
-      field0: dco_decode_list_prim_i_32_strict(arr[0]),
+      field0: dco_decode_list_prim_i_32(arr[0]),
     );
   }
 
@@ -56965,28 +56911,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Float32List? dco_decode_opt_list_prim_f_32_strict(dynamic raw) {
-    return raw == null ? null : dco_decode_list_prim_f_32_strict(raw);
+  Float32List? dco_decode_opt_list_prim_f_32(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_f_32(raw);
   }
 
   @protected
-  Float64List? dco_decode_opt_list_prim_f_64_strict(dynamic raw) {
-    return raw == null ? null : dco_decode_list_prim_f_64_strict(raw);
+  Float64List? dco_decode_opt_list_prim_f_64(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_f_64(raw);
   }
 
   @protected
-  Int32List? dco_decode_opt_list_prim_i_32_strict(dynamic raw) {
-    return raw == null ? null : dco_decode_list_prim_i_32_strict(raw);
+  Int32List? dco_decode_opt_list_prim_i_32(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_i_32(raw);
   }
 
   @protected
-  Int8List? dco_decode_opt_list_prim_i_8_strict(dynamic raw) {
-    return raw == null ? null : dco_decode_list_prim_i_8_strict(raw);
+  Int8List? dco_decode_opt_list_prim_i_8(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_i_8(raw);
   }
 
   @protected
-  Uint8List? dco_decode_opt_list_prim_u_8_strict(dynamic raw) {
-    return raw == null ? null : dco_decode_list_prim_u_8_strict(raw);
+  Uint8List? dco_decode_opt_list_prim_u_8(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_u_8(raw);
   }
 
   @protected
@@ -56998,7 +56944,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
       enums: dco_decode_list_opt_box_autoadd_weekdays_twin_normal(arr[1]),
       strings: dco_decode_list_opt_String(arr[2]),
-      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+      buffers: dco_decode_list_opt_list_prim_i_32(arr[3]),
     );
   }
 
@@ -57011,7 +56957,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
       enums: dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(arr[1]),
       strings: dco_decode_list_opt_String(arr[2]),
-      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+      buffers: dco_decode_list_opt_list_prim_i_32(arr[3]),
     );
   }
 
@@ -57025,7 +56971,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       enums:
           dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(arr[1]),
       strings: dco_decode_list_opt_String(arr[2]),
-      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+      buffers: dco_decode_list_opt_list_prim_i_32(arr[3]),
     );
   }
 
@@ -57038,7 +56984,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
       enums: dco_decode_list_opt_box_autoadd_weekdays_twin_sse(arr[1]),
       strings: dco_decode_list_opt_String(arr[2]),
-      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+      buffers: dco_decode_list_opt_list_prim_i_32(arr[3]),
     );
   }
 
@@ -57051,7 +56997,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
       enums: dco_decode_list_opt_box_autoadd_weekdays_twin_sync(arr[1]),
       strings: dco_decode_list_opt_String(arr[2]),
-      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+      buffers: dco_decode_list_opt_list_prim_i_32(arr[3]),
     );
   }
 
@@ -57064,7 +57010,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
       enums: dco_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(arr[1]),
       strings: dco_decode_list_opt_String(arr[2]),
-      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+      buffers: dco_decode_list_opt_list_prim_i_32(arr[3]),
     );
   }
 
@@ -57464,15 +57410,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  (String, Uint8List) dco_decode_record_string_list_prim_u_8_strict(
-      dynamic raw) {
+  (String, Uint8List) dco_decode_record_string_list_prim_u_8(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
     return (
       dco_decode_String(arr[0]),
-      dco_decode_list_prim_u_8_strict(arr[1]),
+      dco_decode_list_prim_u_8(arr[1]),
     );
   }
 
@@ -57506,7 +57451,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Sequences(
-      field0: dco_decode_list_prim_i_32_strict(arr[0]),
+      field0: dco_decode_list_prim_i_32(arr[0]),
     );
   }
 
@@ -58501,22 +58446,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   U8Array1600 dco_decode_u_8_array_1600(dynamic raw) {
-    return U8Array1600(dco_decode_list_prim_u_8_strict(raw));
+    return U8Array1600(dco_decode_list_prim_u_8(raw));
   }
 
   @protected
   U8Array32 dco_decode_u_8_array_32(dynamic raw) {
-    return U8Array32(dco_decode_list_prim_u_8_strict(raw));
+    return U8Array32(dco_decode_list_prim_u_8(raw));
   }
 
   @protected
   U8Array5 dco_decode_u_8_array_5(dynamic raw) {
-    return U8Array5(dco_decode_list_prim_u_8_strict(raw));
+    return U8Array5(dco_decode_list_prim_u_8(raw));
   }
 
   @protected
   U8Array8 dco_decode_u_8_array_8(dynamic raw) {
-    return U8Array8(dco_decode_list_prim_u_8_strict(raw));
+    return U8Array8(dco_decode_list_prim_u_8(raw));
   }
 
   @protected
@@ -58596,16 +58541,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinNormal(
-      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
-      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
-      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
-      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
-      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
-      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
-      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
-      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
-      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      int8List: dco_decode_list_prim_i_8(arr[0]),
+      uint8List: dco_decode_list_prim_u_8(arr[1]),
+      int16List: dco_decode_list_prim_i_16(arr[2]),
+      uint16List: dco_decode_list_prim_u_16(arr[3]),
+      uint32List: dco_decode_list_prim_u_32(arr[4]),
+      int32List: dco_decode_list_prim_i_32(arr[5]),
+      uint64List: dco_decode_list_prim_u_64(arr[6]),
+      int64List: dco_decode_list_prim_i_64(arr[7]),
+      float32List: dco_decode_list_prim_f_32(arr[8]),
+      float64List: dco_decode_list_prim_f_64(arr[9]),
       boolList: dco_decode_list_bool(arr[10]),
     );
   }
@@ -58617,16 +58562,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinRustAsync(
-      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
-      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
-      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
-      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
-      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
-      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
-      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
-      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
-      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      int8List: dco_decode_list_prim_i_8(arr[0]),
+      uint8List: dco_decode_list_prim_u_8(arr[1]),
+      int16List: dco_decode_list_prim_i_16(arr[2]),
+      uint16List: dco_decode_list_prim_u_16(arr[3]),
+      uint32List: dco_decode_list_prim_u_32(arr[4]),
+      int32List: dco_decode_list_prim_i_32(arr[5]),
+      uint64List: dco_decode_list_prim_u_64(arr[6]),
+      int64List: dco_decode_list_prim_i_64(arr[7]),
+      float32List: dco_decode_list_prim_f_32(arr[8]),
+      float64List: dco_decode_list_prim_f_64(arr[9]),
       boolList: dco_decode_list_bool(arr[10]),
     );
   }
@@ -58638,16 +58583,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinRustAsyncSse(
-      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
-      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
-      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
-      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
-      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
-      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
-      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
-      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
-      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      int8List: dco_decode_list_prim_i_8(arr[0]),
+      uint8List: dco_decode_list_prim_u_8(arr[1]),
+      int16List: dco_decode_list_prim_i_16(arr[2]),
+      uint16List: dco_decode_list_prim_u_16(arr[3]),
+      uint32List: dco_decode_list_prim_u_32(arr[4]),
+      int32List: dco_decode_list_prim_i_32(arr[5]),
+      uint64List: dco_decode_list_prim_u_64(arr[6]),
+      int64List: dco_decode_list_prim_i_64(arr[7]),
+      float32List: dco_decode_list_prim_f_32(arr[8]),
+      float64List: dco_decode_list_prim_f_64(arr[9]),
       boolList: dco_decode_list_bool(arr[10]),
     );
   }
@@ -58659,16 +58604,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinSse(
-      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
-      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
-      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
-      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
-      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
-      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
-      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
-      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
-      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      int8List: dco_decode_list_prim_i_8(arr[0]),
+      uint8List: dco_decode_list_prim_u_8(arr[1]),
+      int16List: dco_decode_list_prim_i_16(arr[2]),
+      uint16List: dco_decode_list_prim_u_16(arr[3]),
+      uint32List: dco_decode_list_prim_u_32(arr[4]),
+      int32List: dco_decode_list_prim_i_32(arr[5]),
+      uint64List: dco_decode_list_prim_u_64(arr[6]),
+      int64List: dco_decode_list_prim_i_64(arr[7]),
+      float32List: dco_decode_list_prim_f_32(arr[8]),
+      float64List: dco_decode_list_prim_f_64(arr[9]),
       boolList: dco_decode_list_bool(arr[10]),
     );
   }
@@ -58680,16 +58625,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinSync(
-      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
-      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
-      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
-      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
-      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
-      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
-      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
-      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
-      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      int8List: dco_decode_list_prim_i_8(arr[0]),
+      uint8List: dco_decode_list_prim_u_8(arr[1]),
+      int16List: dco_decode_list_prim_i_16(arr[2]),
+      uint16List: dco_decode_list_prim_u_16(arr[3]),
+      uint32List: dco_decode_list_prim_u_32(arr[4]),
+      int32List: dco_decode_list_prim_i_32(arr[5]),
+      uint64List: dco_decode_list_prim_u_64(arr[6]),
+      int64List: dco_decode_list_prim_i_64(arr[7]),
+      float32List: dco_decode_list_prim_f_32(arr[8]),
+      float64List: dco_decode_list_prim_f_64(arr[9]),
       boolList: dco_decode_list_bool(arr[10]),
     );
   }
@@ -58701,16 +58646,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePackTwinSyncSse(
-      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
-      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
-      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
-      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
-      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
-      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
-      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
-      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
-      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
-      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      int8List: dco_decode_list_prim_i_8(arr[0]),
+      uint8List: dco_decode_list_prim_u_8(arr[1]),
+      int16List: dco_decode_list_prim_i_16(arr[2]),
+      uint16List: dco_decode_list_prim_u_16(arr[3]),
+      uint32List: dco_decode_list_prim_u_32(arr[4]),
+      int32List: dco_decode_list_prim_i_32(arr[5]),
+      uint64List: dco_decode_list_prim_u_64(arr[6]),
+      int64List: dco_decode_list_prim_i_64(arr[7]),
+      float32List: dco_decode_list_prim_f_32(arr[8]),
+      float64List: dco_decode_list_prim_f_64(arr[9]),
       boolList: dco_decode_list_bool(arr[10]),
     );
   }
@@ -59298,10 +59243,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8_strict(
+  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8(
       SseDeserializer deserializer) {
-    var inner =
-        sse_decode_list_record_string_list_prim_u_8_strict(deserializer);
+    var inner = sse_decode_list_record_string_list_prim_u_8(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
@@ -59630,13 +59574,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Set<int> sse_decode_Set_i_32(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_i_32_strict(deserializer);
+    var inner = sse_decode_list_prim_i_32(deserializer);
     return Set.from(inner);
   }
 
   @protected
   String sse_decode_String(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    var inner = sse_decode_list_prim_u_8(deserializer);
     return utf8.decoder.convert(inner);
   }
 
@@ -60081,9 +60025,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinNormal sse_decode_benchmark_blob_twin_normal(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_second = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_third = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
     return BenchmarkBlobTwinNormal(
         first: var_first, second: var_second, third: var_third);
   }
@@ -60091,9 +60035,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinRustAsync sse_decode_benchmark_blob_twin_rust_async(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_second = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_third = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
     return BenchmarkBlobTwinRustAsync(
         first: var_first, second: var_second, third: var_third);
   }
@@ -60101,9 +60045,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinRustAsyncSse sse_decode_benchmark_blob_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_second = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_third = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
     return BenchmarkBlobTwinRustAsyncSse(
         first: var_first, second: var_second, third: var_third);
   }
@@ -60111,9 +60055,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinSse sse_decode_benchmark_blob_twin_sse(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_second = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_third = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
     return BenchmarkBlobTwinSse(
         first: var_first, second: var_second, third: var_third);
   }
@@ -60121,9 +60065,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinSync sse_decode_benchmark_blob_twin_sync(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_second = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_third = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
     return BenchmarkBlobTwinSync(
         first: var_first, second: var_second, third: var_third);
   }
@@ -60131,9 +60075,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BenchmarkBlobTwinSyncSse sse_decode_benchmark_blob_twin_sync_sse(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_second = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_third = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_first = sse_decode_list_prim_u_8(deserializer);
+    var var_second = sse_decode_list_prim_u_8(deserializer);
+    var var_third = sse_decode_list_prim_u_8(deserializer);
     return BenchmarkBlobTwinSyncSse(
         first: var_first, second: var_second, third: var_third);
   }
@@ -60141,48 +60085,48 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BigBuffersTwinNormal sse_decode_big_buffers_twin_normal(
       SseDeserializer deserializer) {
-    var var_int64 = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_uint64 = sse_decode_list_prim_u_64_strict(deserializer);
+    var var_int64 = sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = sse_decode_list_prim_u_64(deserializer);
     return BigBuffersTwinNormal(int64: var_int64, uint64: var_uint64);
   }
 
   @protected
   BigBuffersTwinRustAsync sse_decode_big_buffers_twin_rust_async(
       SseDeserializer deserializer) {
-    var var_int64 = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_uint64 = sse_decode_list_prim_u_64_strict(deserializer);
+    var var_int64 = sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = sse_decode_list_prim_u_64(deserializer);
     return BigBuffersTwinRustAsync(int64: var_int64, uint64: var_uint64);
   }
 
   @protected
   BigBuffersTwinRustAsyncSse sse_decode_big_buffers_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var var_int64 = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_uint64 = sse_decode_list_prim_u_64_strict(deserializer);
+    var var_int64 = sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = sse_decode_list_prim_u_64(deserializer);
     return BigBuffersTwinRustAsyncSse(int64: var_int64, uint64: var_uint64);
   }
 
   @protected
   BigBuffersTwinSse sse_decode_big_buffers_twin_sse(
       SseDeserializer deserializer) {
-    var var_int64 = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_uint64 = sse_decode_list_prim_u_64_strict(deserializer);
+    var var_int64 = sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = sse_decode_list_prim_u_64(deserializer);
     return BigBuffersTwinSse(int64: var_int64, uint64: var_uint64);
   }
 
   @protected
   BigBuffersTwinSync sse_decode_big_buffers_twin_sync(
       SseDeserializer deserializer) {
-    var var_int64 = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_uint64 = sse_decode_list_prim_u_64_strict(deserializer);
+    var var_int64 = sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = sse_decode_list_prim_u_64(deserializer);
     return BigBuffersTwinSync(int64: var_int64, uint64: var_uint64);
   }
 
   @protected
   BigBuffersTwinSyncSse sse_decode_big_buffers_twin_sync_sse(
       SseDeserializer deserializer) {
-    var var_int64 = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_uint64 = sse_decode_list_prim_u_64_strict(deserializer);
+    var var_int64 = sse_decode_list_prim_i_64(deserializer);
+    var var_uint64 = sse_decode_list_prim_u_64(deserializer);
     return BigBuffersTwinSyncSse(int64: var_int64, uint64: var_uint64);
   }
 
@@ -64127,7 +64071,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinNormal_A();
       case 1:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemMixedTwinNormal_B(var_field0);
       case 2:
         var var_cField = sse_decode_String(deserializer);
@@ -64146,7 +64090,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinRustAsync_A();
       case 1:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemMixedTwinRustAsync_B(var_field0);
       case 2:
         var var_cField = sse_decode_String(deserializer);
@@ -64165,7 +64109,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinRustAsyncSse_A();
       case 1:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemMixedTwinRustAsyncSse_B(var_field0);
       case 2:
         var var_cField = sse_decode_String(deserializer);
@@ -64183,7 +64127,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinSse_A();
       case 1:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemMixedTwinSse_B(var_field0);
       case 2:
         var var_cField = sse_decode_String(deserializer);
@@ -64201,7 +64145,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinSync_A();
       case 1:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemMixedTwinSync_B(var_field0);
       case 2:
         var var_cField = sse_decode_String(deserializer);
@@ -64219,7 +64163,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         return EnumWithItemMixedTwinSyncSse_A();
       case 1:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemMixedTwinSyncSse_B(var_field0);
       case 2:
         var var_cField = sse_decode_String(deserializer);
@@ -64235,10 +64179,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_aField = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_aField = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemStructTwinNormal_A(aField: var_aField);
       case 1:
-        var var_bField = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_bField = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemStructTwinNormal_B(bField: var_bField);
       default:
         throw UnimplementedError('');
@@ -64252,10 +64196,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_aField = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_aField = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemStructTwinRustAsync_A(aField: var_aField);
       case 1:
-        var var_bField = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_bField = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemStructTwinRustAsync_B(bField: var_bField);
       default:
         throw UnimplementedError('');
@@ -64269,10 +64213,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_aField = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_aField = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemStructTwinRustAsyncSse_A(aField: var_aField);
       case 1:
-        var var_bField = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_bField = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemStructTwinRustAsyncSse_B(bField: var_bField);
       default:
         throw UnimplementedError('');
@@ -64285,10 +64229,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_aField = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_aField = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemStructTwinSse_A(aField: var_aField);
       case 1:
-        var var_bField = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_bField = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemStructTwinSse_B(bField: var_bField);
       default:
         throw UnimplementedError('');
@@ -64301,10 +64245,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_aField = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_aField = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemStructTwinSync_A(aField: var_aField);
       case 1:
-        var var_bField = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_bField = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemStructTwinSync_B(bField: var_bField);
       default:
         throw UnimplementedError('');
@@ -64317,10 +64261,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_aField = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_aField = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemStructTwinSyncSse_A(aField: var_aField);
       case 1:
-        var var_bField = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_bField = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemStructTwinSyncSse_B(bField: var_bField);
       default:
         throw UnimplementedError('');
@@ -64333,10 +64277,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemTupleTwinNormal_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemTupleTwinNormal_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -64350,10 +64294,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemTupleTwinRustAsync_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemTupleTwinRustAsync_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -64367,10 +64311,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemTupleTwinRustAsyncSse_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemTupleTwinRustAsyncSse_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -64383,10 +64327,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemTupleTwinSse_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemTupleTwinSse_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -64399,10 +64343,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemTupleTwinSync_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemTupleTwinSync_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -64415,10 +64359,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return EnumWithItemTupleTwinSyncSse_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_i_32(deserializer);
         return EnumWithItemTupleTwinSyncSse_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -64462,12 +64406,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_int64 = sse_decode_opt_box_autoadd_i_64(deserializer);
     var var_float64 = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_boolean = sse_decode_opt_box_autoadd_bool(deserializer);
-    var var_zerocopy = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int8List = sse_decode_opt_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int32List = sse_decode_opt_list_prim_i_32_strict(deserializer);
-    var var_float32List = sse_decode_opt_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_opt_list_prim_f_64_strict(deserializer);
+    var var_zerocopy = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_opt_list_prim_f_64(deserializer);
     var var_attributes =
         sse_decode_opt_list_attribute_twin_normal(deserializer);
     var var_attributesNullable =
@@ -64500,12 +64444,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_int64 = sse_decode_opt_box_autoadd_i_64(deserializer);
     var var_float64 = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_boolean = sse_decode_opt_box_autoadd_bool(deserializer);
-    var var_zerocopy = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int8List = sse_decode_opt_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int32List = sse_decode_opt_list_prim_i_32_strict(deserializer);
-    var var_float32List = sse_decode_opt_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_opt_list_prim_f_64_strict(deserializer);
+    var var_zerocopy = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_opt_list_prim_f_64(deserializer);
     var var_attributes =
         sse_decode_opt_list_attribute_twin_rust_async(deserializer);
     var var_attributesNullable =
@@ -64540,12 +64484,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_int64 = sse_decode_opt_box_autoadd_i_64(deserializer);
     var var_float64 = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_boolean = sse_decode_opt_box_autoadd_bool(deserializer);
-    var var_zerocopy = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int8List = sse_decode_opt_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int32List = sse_decode_opt_list_prim_i_32_strict(deserializer);
-    var var_float32List = sse_decode_opt_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_opt_list_prim_f_64_strict(deserializer);
+    var var_zerocopy = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_opt_list_prim_f_64(deserializer);
     var var_attributes =
         sse_decode_opt_list_attribute_twin_rust_async_sse(deserializer);
     var var_attributesNullable =
@@ -64581,12 +64525,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_int64 = sse_decode_opt_box_autoadd_i_64(deserializer);
     var var_float64 = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_boolean = sse_decode_opt_box_autoadd_bool(deserializer);
-    var var_zerocopy = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int8List = sse_decode_opt_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int32List = sse_decode_opt_list_prim_i_32_strict(deserializer);
-    var var_float32List = sse_decode_opt_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_opt_list_prim_f_64_strict(deserializer);
+    var var_zerocopy = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_opt_list_prim_f_64(deserializer);
     var var_attributes = sse_decode_opt_list_attribute_twin_sse(deserializer);
     var var_attributesNullable =
         sse_decode_list_opt_box_autoadd_attribute_twin_sse(deserializer);
@@ -64618,12 +64562,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_int64 = sse_decode_opt_box_autoadd_i_64(deserializer);
     var var_float64 = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_boolean = sse_decode_opt_box_autoadd_bool(deserializer);
-    var var_zerocopy = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int8List = sse_decode_opt_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int32List = sse_decode_opt_list_prim_i_32_strict(deserializer);
-    var var_float32List = sse_decode_opt_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_opt_list_prim_f_64_strict(deserializer);
+    var var_zerocopy = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_opt_list_prim_f_64(deserializer);
     var var_attributes = sse_decode_opt_list_attribute_twin_sync(deserializer);
     var var_attributesNullable =
         sse_decode_list_opt_box_autoadd_attribute_twin_sync(deserializer);
@@ -64655,12 +64599,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_int64 = sse_decode_opt_box_autoadd_i_64(deserializer);
     var var_float64 = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_boolean = sse_decode_opt_box_autoadd_bool(deserializer);
-    var var_zerocopy = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int8List = sse_decode_opt_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_opt_list_prim_u_8_strict(deserializer);
-    var var_int32List = sse_decode_opt_list_prim_i_32_strict(deserializer);
-    var var_float32List = sse_decode_opt_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_opt_list_prim_f_64_strict(deserializer);
+    var var_zerocopy = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int8List = sse_decode_opt_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_opt_list_prim_u_8(deserializer);
+    var var_int32List = sse_decode_opt_list_prim_i_32(deserializer);
+    var var_float32List = sse_decode_opt_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_opt_list_prim_f_64(deserializer);
     var var_attributes =
         sse_decode_opt_list_attribute_twin_sync_sse(deserializer);
     var var_attributesNullable =
@@ -64699,7 +64643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   F64Array16 sse_decode_f_64_array_16(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_f_64_strict(deserializer);
+    var inner = sse_decode_list_prim_f_64(deserializer);
     return F64Array16(inner);
   }
 
@@ -64818,7 +64762,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   I32Array2 sse_decode_i_32_array_2(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_i_32_strict(deserializer);
+    var inner = sse_decode_list_prim_i_32(deserializer);
     return I32Array2(inner);
   }
 
@@ -64859,7 +64803,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field1 = sse_decode_opt_box_autoadd_i_32(deserializer);
         return KitchenSinkTwinNormal_Optional(var_field0, var_field1);
       case 4:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return KitchenSinkTwinNormal_Buffer(var_field0);
       case 5:
         var var_field0 = sse_decode_weekdays_twin_normal(deserializer);
@@ -64892,7 +64836,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field1 = sse_decode_opt_box_autoadd_i_32(deserializer);
         return KitchenSinkTwinRustAsync_Optional(var_field0, var_field1);
       case 4:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return KitchenSinkTwinRustAsync_Buffer(var_field0);
       case 5:
         var var_field0 = sse_decode_weekdays_twin_rust_async(deserializer);
@@ -64925,7 +64869,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field1 = sse_decode_opt_box_autoadd_i_32(deserializer);
         return KitchenSinkTwinRustAsyncSse_Optional(var_field0, var_field1);
       case 4:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return KitchenSinkTwinRustAsyncSse_Buffer(var_field0);
       case 5:
         var var_field0 = sse_decode_weekdays_twin_rust_async_sse(deserializer);
@@ -64957,7 +64901,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field1 = sse_decode_opt_box_autoadd_i_32(deserializer);
         return KitchenSinkTwinSse_Optional(var_field0, var_field1);
       case 4:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return KitchenSinkTwinSse_Buffer(var_field0);
       case 5:
         var var_field0 = sse_decode_weekdays_twin_sse(deserializer);
@@ -64989,7 +64933,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field1 = sse_decode_opt_box_autoadd_i_32(deserializer);
         return KitchenSinkTwinSync_Optional(var_field0, var_field1);
       case 4:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return KitchenSinkTwinSync_Buffer(var_field0);
       case 5:
         var var_field0 = sse_decode_weekdays_twin_sync(deserializer);
@@ -65022,7 +64966,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field1 = sse_decode_opt_box_autoadd_i_32(deserializer);
         return KitchenSinkTwinSyncSse_Optional(var_field0, var_field1);
       case 4:
-        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        var var_field0 = sse_decode_list_prim_u_8(deserializer);
         return KitchenSinkTwinSyncSse_Buffer(var_field0);
       case 5:
         var var_field0 = sse_decode_weekdays_twin_sync_sse(deserializer);
@@ -65596,12 +65540,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<Int32List?> sse_decode_list_opt_list_prim_i_32_strict(
+  List<Int32List?> sse_decode_list_opt_list_prim_i_32(
       SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <Int32List?>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_opt_list_prim_i_32_strict(deserializer));
+      ans_.add(sse_decode_opt_list_prim_i_32(deserializer));
     }
     return ans_;
   }
@@ -65673,121 +65617,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<double> sse_decode_list_prim_f_32_loose(SseDeserializer deserializer) {
+  Float32List sse_decode_list_prim_f_32(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getFloat32List(len_);
   }
 
   @protected
-  Float32List sse_decode_list_prim_f_32_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getFloat32List(len_);
-  }
-
-  @protected
-  List<double> sse_decode_list_prim_f_64_loose(SseDeserializer deserializer) {
+  Float64List sse_decode_list_prim_f_64(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getFloat64List(len_);
   }
 
   @protected
-  Float64List sse_decode_list_prim_f_64_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getFloat64List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_i_16_loose(SseDeserializer deserializer) {
+  Int16List sse_decode_list_prim_i_16(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getInt16List(len_);
   }
 
   @protected
-  Int16List sse_decode_list_prim_i_16_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getInt16List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_i_32_loose(SseDeserializer deserializer) {
+  Int32List sse_decode_list_prim_i_32(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getInt32List(len_);
   }
 
   @protected
-  Int32List sse_decode_list_prim_i_32_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getInt32List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_i_64_loose(SseDeserializer deserializer) {
+  Int64List sse_decode_list_prim_i_64(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getInt64List(len_);
   }
 
   @protected
-  Int64List sse_decode_list_prim_i_64_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getInt64List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_i_8_loose(SseDeserializer deserializer) {
+  Int8List sse_decode_list_prim_i_8(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getInt8List(len_);
   }
 
   @protected
-  Int8List sse_decode_list_prim_i_8_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getInt8List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_u_16_loose(SseDeserializer deserializer) {
+  Uint16List sse_decode_list_prim_u_16(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint16List(len_);
   }
 
   @protected
-  Uint16List sse_decode_list_prim_u_16_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint16List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_u_32_loose(SseDeserializer deserializer) {
+  Uint32List sse_decode_list_prim_u_32(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint32List(len_);
   }
 
   @protected
-  Uint32List sse_decode_list_prim_u_32_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint32List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_u_64_loose(SseDeserializer deserializer) {
+  Uint64List sse_decode_list_prim_u_64(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint64List(len_);
   }
 
   @protected
-  Uint64List sse_decode_list_prim_u_64_strict(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint64List(len_);
-  }
-
-  @protected
-  List<int> sse_decode_list_prim_u_8_loose(SseDeserializer deserializer) {
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint8List(len_);
-  }
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
+  Uint8List sse_decode_list_prim_u_8(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
   }
@@ -65987,12 +65871,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<(String, Uint8List)> sse_decode_list_record_string_list_prim_u_8_strict(
+  List<(String, Uint8List)> sse_decode_list_record_string_list_prim_u_8(
       SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <(String, Uint8List)>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_record_string_list_prim_u_8_strict(deserializer));
+      ans_.add(sse_decode_record_string_list_prim_u_8(deserializer));
     }
     return ans_;
   }
@@ -66689,7 +66573,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
       SseDeserializer deserializer) {
     var var_valueI32 = sse_decode_i_32(deserializer);
-    var var_valueVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_valueVecU8 = sse_decode_list_prim_u_8(deserializer);
     var var_valueBoolean = sse_decode_bool(deserializer);
     var var_children = sse_decode_list_my_tree_node_twin_normal(deserializer);
     return MyTreeNodeTwinNormal(
@@ -66703,7 +66587,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyTreeNodeTwinRustAsync sse_decode_my_tree_node_twin_rust_async(
       SseDeserializer deserializer) {
     var var_valueI32 = sse_decode_i_32(deserializer);
-    var var_valueVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_valueVecU8 = sse_decode_list_prim_u_8(deserializer);
     var var_valueBoolean = sse_decode_bool(deserializer);
     var var_children =
         sse_decode_list_my_tree_node_twin_rust_async(deserializer);
@@ -66718,7 +66602,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyTreeNodeTwinRustAsyncSse sse_decode_my_tree_node_twin_rust_async_sse(
       SseDeserializer deserializer) {
     var var_valueI32 = sse_decode_i_32(deserializer);
-    var var_valueVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_valueVecU8 = sse_decode_list_prim_u_8(deserializer);
     var var_valueBoolean = sse_decode_bool(deserializer);
     var var_children =
         sse_decode_list_my_tree_node_twin_rust_async_sse(deserializer);
@@ -66733,7 +66617,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyTreeNodeTwinSse sse_decode_my_tree_node_twin_sse(
       SseDeserializer deserializer) {
     var var_valueI32 = sse_decode_i_32(deserializer);
-    var var_valueVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_valueVecU8 = sse_decode_list_prim_u_8(deserializer);
     var var_valueBoolean = sse_decode_bool(deserializer);
     var var_children = sse_decode_list_my_tree_node_twin_sse(deserializer);
     return MyTreeNodeTwinSse(
@@ -66747,7 +66631,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyTreeNodeTwinSync sse_decode_my_tree_node_twin_sync(
       SseDeserializer deserializer) {
     var var_valueI32 = sse_decode_i_32(deserializer);
-    var var_valueVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_valueVecU8 = sse_decode_list_prim_u_8(deserializer);
     var var_valueBoolean = sse_decode_bool(deserializer);
     var var_children = sse_decode_list_my_tree_node_twin_sync(deserializer);
     return MyTreeNodeTwinSync(
@@ -66761,7 +66645,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MyTreeNodeTwinSyncSse sse_decode_my_tree_node_twin_sync_sse(
       SseDeserializer deserializer) {
     var var_valueI32 = sse_decode_i_32(deserializer);
-    var var_valueVecU8 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_valueVecU8 = sse_decode_list_prim_u_8(deserializer);
     var var_valueBoolean = sse_decode_bool(deserializer);
     var var_children = sse_decode_list_my_tree_node_twin_sync_sse(deserializer);
     return MyTreeNodeTwinSyncSse(
@@ -66872,7 +66756,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Numbers sse_decode_numbers(SseDeserializer deserializer) {
-    var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+    var var_field0 = sse_decode_list_prim_i_32(deserializer);
     return Numbers(field0: var_field0);
   }
 
@@ -67864,48 +67748,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Float32List? sse_decode_opt_list_prim_f_32_strict(
-      SseDeserializer deserializer) {
+  Float32List? sse_decode_opt_list_prim_f_32(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_list_prim_f_32_strict(deserializer));
+      return (sse_decode_list_prim_f_32(deserializer));
     } else {
       return null;
     }
   }
 
   @protected
-  Float64List? sse_decode_opt_list_prim_f_64_strict(
-      SseDeserializer deserializer) {
+  Float64List? sse_decode_opt_list_prim_f_64(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_list_prim_f_64_strict(deserializer));
+      return (sse_decode_list_prim_f_64(deserializer));
     } else {
       return null;
     }
   }
 
   @protected
-  Int32List? sse_decode_opt_list_prim_i_32_strict(
-      SseDeserializer deserializer) {
+  Int32List? sse_decode_opt_list_prim_i_32(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_list_prim_i_32_strict(deserializer));
+      return (sse_decode_list_prim_i_32(deserializer));
     } else {
       return null;
     }
   }
 
   @protected
-  Int8List? sse_decode_opt_list_prim_i_8_strict(SseDeserializer deserializer) {
+  Int8List? sse_decode_opt_list_prim_i_8(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_list_prim_i_8_strict(deserializer));
+      return (sse_decode_list_prim_i_8(deserializer));
     } else {
       return null;
     }
   }
 
   @protected
-  Uint8List? sse_decode_opt_list_prim_u_8_strict(SseDeserializer deserializer) {
+  Uint8List? sse_decode_opt_list_prim_u_8(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_list_prim_u_8_strict(deserializer));
+      return (sse_decode_list_prim_u_8(deserializer));
     } else {
       return null;
     }
@@ -67918,7 +67799,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_enums =
         sse_decode_list_opt_box_autoadd_weekdays_twin_normal(deserializer);
     var var_strings = sse_decode_list_opt_String(deserializer);
-    var var_buffers = sse_decode_list_opt_list_prim_i_32_strict(deserializer);
+    var var_buffers = sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinNormal(
         i32: var_i32,
         enums: var_enums,
@@ -67933,7 +67814,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_enums =
         sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async(deserializer);
     var var_strings = sse_decode_list_opt_String(deserializer);
-    var var_buffers = sse_decode_list_opt_list_prim_i_32_strict(deserializer);
+    var var_buffers = sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinRustAsync(
         i32: var_i32,
         enums: var_enums,
@@ -67949,7 +67830,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(
             deserializer);
     var var_strings = sse_decode_list_opt_String(deserializer);
-    var var_buffers = sse_decode_list_opt_list_prim_i_32_strict(deserializer);
+    var var_buffers = sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinRustAsyncSse(
         i32: var_i32,
         enums: var_enums,
@@ -67963,7 +67844,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_enums =
         sse_decode_list_opt_box_autoadd_weekdays_twin_sse(deserializer);
     var var_strings = sse_decode_list_opt_String(deserializer);
-    var var_buffers = sse_decode_list_opt_list_prim_i_32_strict(deserializer);
+    var var_buffers = sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinSse(
         i32: var_i32,
         enums: var_enums,
@@ -67977,7 +67858,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_enums =
         sse_decode_list_opt_box_autoadd_weekdays_twin_sync(deserializer);
     var var_strings = sse_decode_list_opt_String(deserializer);
-    var var_buffers = sse_decode_list_opt_list_prim_i_32_strict(deserializer);
+    var var_buffers = sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinSync(
         i32: var_i32,
         enums: var_enums,
@@ -67992,7 +67873,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_enums =
         sse_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(deserializer);
     var var_strings = sse_decode_list_opt_String(deserializer);
-    var var_buffers = sse_decode_list_opt_list_prim_i_32_strict(deserializer);
+    var var_buffers = sse_decode_list_opt_list_prim_i_32(deserializer);
     return OptVecsTwinSyncSse(
         i32: var_i32,
         enums: var_enums,
@@ -68290,10 +68171,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  (String, Uint8List) sse_decode_record_string_list_prim_u_8_strict(
+  (String, Uint8List) sse_decode_record_string_list_prim_u_8(
       SseDeserializer deserializer) {
     var var_field0 = sse_decode_String(deserializer);
-    var var_field1 = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_field1 = sse_decode_list_prim_u_8(deserializer);
     return (var_field0, var_field1);
   }
 
@@ -68315,7 +68196,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer) {
-    var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+    var var_field0 = sse_decode_list_prim_i_32(deserializer);
     return Sequences(field0: var_field0);
   }
 
@@ -69125,25 +69006,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   U8Array1600 sse_decode_u_8_array_1600(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    var inner = sse_decode_list_prim_u_8(deserializer);
     return U8Array1600(inner);
   }
 
   @protected
   U8Array32 sse_decode_u_8_array_32(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    var inner = sse_decode_list_prim_u_8(deserializer);
     return U8Array32(inner);
   }
 
   @protected
   U8Array5 sse_decode_u_8_array_5(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    var inner = sse_decode_list_prim_u_8(deserializer);
     return U8Array5(inner);
   }
 
   @protected
   U8Array8 sse_decode_u_8_array_8(SseDeserializer deserializer) {
-    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    var inner = sse_decode_list_prim_u_8(deserializer);
     return U8Array8(inner);
   }
 
@@ -69198,16 +69079,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   VecOfPrimitivePackTwinNormal sse_decode_vec_of_primitive_pack_twin_normal(
       SseDeserializer deserializer) {
-    var var_int8List = sse_decode_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_int16List = sse_decode_list_prim_i_16_strict(deserializer);
-    var var_uint16List = sse_decode_list_prim_u_16_strict(deserializer);
-    var var_uint32List = sse_decode_list_prim_u_32_strict(deserializer);
-    var var_int32List = sse_decode_list_prim_i_32_strict(deserializer);
-    var var_uint64List = sse_decode_list_prim_u_64_strict(deserializer);
-    var var_int64List = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_float32List = sse_decode_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_list_prim_f_64_strict(deserializer);
+    var var_int8List = sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_list_prim_f_64(deserializer);
     var var_boolList = sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinNormal(
         int8List: var_int8List,
@@ -69227,16 +69108,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VecOfPrimitivePackTwinRustAsync
       sse_decode_vec_of_primitive_pack_twin_rust_async(
           SseDeserializer deserializer) {
-    var var_int8List = sse_decode_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_int16List = sse_decode_list_prim_i_16_strict(deserializer);
-    var var_uint16List = sse_decode_list_prim_u_16_strict(deserializer);
-    var var_uint32List = sse_decode_list_prim_u_32_strict(deserializer);
-    var var_int32List = sse_decode_list_prim_i_32_strict(deserializer);
-    var var_uint64List = sse_decode_list_prim_u_64_strict(deserializer);
-    var var_int64List = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_float32List = sse_decode_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_list_prim_f_64_strict(deserializer);
+    var var_int8List = sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_list_prim_f_64(deserializer);
     var var_boolList = sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinRustAsync(
         int8List: var_int8List,
@@ -69256,16 +69137,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   VecOfPrimitivePackTwinRustAsyncSse
       sse_decode_vec_of_primitive_pack_twin_rust_async_sse(
           SseDeserializer deserializer) {
-    var var_int8List = sse_decode_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_int16List = sse_decode_list_prim_i_16_strict(deserializer);
-    var var_uint16List = sse_decode_list_prim_u_16_strict(deserializer);
-    var var_uint32List = sse_decode_list_prim_u_32_strict(deserializer);
-    var var_int32List = sse_decode_list_prim_i_32_strict(deserializer);
-    var var_uint64List = sse_decode_list_prim_u_64_strict(deserializer);
-    var var_int64List = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_float32List = sse_decode_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_list_prim_f_64_strict(deserializer);
+    var var_int8List = sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_list_prim_f_64(deserializer);
     var var_boolList = sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinRustAsyncSse(
         int8List: var_int8List,
@@ -69284,16 +69165,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   VecOfPrimitivePackTwinSse sse_decode_vec_of_primitive_pack_twin_sse(
       SseDeserializer deserializer) {
-    var var_int8List = sse_decode_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_int16List = sse_decode_list_prim_i_16_strict(deserializer);
-    var var_uint16List = sse_decode_list_prim_u_16_strict(deserializer);
-    var var_uint32List = sse_decode_list_prim_u_32_strict(deserializer);
-    var var_int32List = sse_decode_list_prim_i_32_strict(deserializer);
-    var var_uint64List = sse_decode_list_prim_u_64_strict(deserializer);
-    var var_int64List = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_float32List = sse_decode_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_list_prim_f_64_strict(deserializer);
+    var var_int8List = sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_list_prim_f_64(deserializer);
     var var_boolList = sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinSse(
         int8List: var_int8List,
@@ -69312,16 +69193,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   VecOfPrimitivePackTwinSync sse_decode_vec_of_primitive_pack_twin_sync(
       SseDeserializer deserializer) {
-    var var_int8List = sse_decode_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_int16List = sse_decode_list_prim_i_16_strict(deserializer);
-    var var_uint16List = sse_decode_list_prim_u_16_strict(deserializer);
-    var var_uint32List = sse_decode_list_prim_u_32_strict(deserializer);
-    var var_int32List = sse_decode_list_prim_i_32_strict(deserializer);
-    var var_uint64List = sse_decode_list_prim_u_64_strict(deserializer);
-    var var_int64List = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_float32List = sse_decode_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_list_prim_f_64_strict(deserializer);
+    var var_int8List = sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_list_prim_f_64(deserializer);
     var var_boolList = sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinSync(
         int8List: var_int8List,
@@ -69340,16 +69221,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   VecOfPrimitivePackTwinSyncSse sse_decode_vec_of_primitive_pack_twin_sync_sse(
       SseDeserializer deserializer) {
-    var var_int8List = sse_decode_list_prim_i_8_strict(deserializer);
-    var var_uint8List = sse_decode_list_prim_u_8_strict(deserializer);
-    var var_int16List = sse_decode_list_prim_i_16_strict(deserializer);
-    var var_uint16List = sse_decode_list_prim_u_16_strict(deserializer);
-    var var_uint32List = sse_decode_list_prim_u_32_strict(deserializer);
-    var var_int32List = sse_decode_list_prim_i_32_strict(deserializer);
-    var var_uint64List = sse_decode_list_prim_u_64_strict(deserializer);
-    var var_int64List = sse_decode_list_prim_i_64_strict(deserializer);
-    var var_float32List = sse_decode_list_prim_f_32_strict(deserializer);
-    var var_float64List = sse_decode_list_prim_f_64_strict(deserializer);
+    var var_int8List = sse_decode_list_prim_i_8(deserializer);
+    var var_uint8List = sse_decode_list_prim_u_8(deserializer);
+    var var_int16List = sse_decode_list_prim_i_16(deserializer);
+    var var_uint16List = sse_decode_list_prim_u_16(deserializer);
+    var var_uint32List = sse_decode_list_prim_u_32(deserializer);
+    var var_int32List = sse_decode_list_prim_i_32(deserializer);
+    var var_uint64List = sse_decode_list_prim_u_64(deserializer);
+    var var_int64List = sse_decode_list_prim_i_64(deserializer);
+    var var_float32List = sse_decode_list_prim_f_32(deserializer);
+    var var_float64List = sse_decode_list_prim_f_64(deserializer);
     var var_boolList = sse_decode_list_bool(deserializer);
     return VecOfPrimitivePackTwinSyncSse(
         int8List: var_int8List,
@@ -70945,9 +70826,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_list_prim_u_8_strict(
+  void sse_encode_Map_String_list_prim_u_8(
       Map<String, Uint8List> self, SseSerializer serializer) {
-    sse_encode_list_record_string_list_prim_u_8_strict(
+    sse_encode_list_record_string_list_prim_u_8(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
@@ -71224,13 +71105,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer) {
-    sse_encode_list_prim_i_32_strict(
-        Int32List.fromList(self.toList()), serializer);
+    sse_encode_list_prim_i_32(Int32List.fromList(self.toList()), serializer);
   }
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
+    sse_encode_list_prim_u_8(utf8.encoder.convert(self), serializer);
   }
 
   @protected
@@ -71603,91 +71483,91 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_benchmark_blob_twin_normal(
       BenchmarkBlobTwinNormal self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.first, serializer);
-    sse_encode_list_prim_u_8_strict(self.second, serializer);
-    sse_encode_list_prim_u_8_strict(self.third, serializer);
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
   }
 
   @protected
   void sse_encode_benchmark_blob_twin_rust_async(
       BenchmarkBlobTwinRustAsync self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.first, serializer);
-    sse_encode_list_prim_u_8_strict(self.second, serializer);
-    sse_encode_list_prim_u_8_strict(self.third, serializer);
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
   }
 
   @protected
   void sse_encode_benchmark_blob_twin_rust_async_sse(
       BenchmarkBlobTwinRustAsyncSse self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.first, serializer);
-    sse_encode_list_prim_u_8_strict(self.second, serializer);
-    sse_encode_list_prim_u_8_strict(self.third, serializer);
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
   }
 
   @protected
   void sse_encode_benchmark_blob_twin_sse(
       BenchmarkBlobTwinSse self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.first, serializer);
-    sse_encode_list_prim_u_8_strict(self.second, serializer);
-    sse_encode_list_prim_u_8_strict(self.third, serializer);
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
   }
 
   @protected
   void sse_encode_benchmark_blob_twin_sync(
       BenchmarkBlobTwinSync self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.first, serializer);
-    sse_encode_list_prim_u_8_strict(self.second, serializer);
-    sse_encode_list_prim_u_8_strict(self.third, serializer);
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
   }
 
   @protected
   void sse_encode_benchmark_blob_twin_sync_sse(
       BenchmarkBlobTwinSyncSse self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.first, serializer);
-    sse_encode_list_prim_u_8_strict(self.second, serializer);
-    sse_encode_list_prim_u_8_strict(self.third, serializer);
+    sse_encode_list_prim_u_8(self.first, serializer);
+    sse_encode_list_prim_u_8(self.second, serializer);
+    sse_encode_list_prim_u_8(self.third, serializer);
   }
 
   @protected
   void sse_encode_big_buffers_twin_normal(
       BigBuffersTwinNormal self, SseSerializer serializer) {
-    sse_encode_list_prim_i_64_strict(self.int64, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64, serializer);
+    sse_encode_list_prim_i_64(self.int64, serializer);
+    sse_encode_list_prim_u_64(self.uint64, serializer);
   }
 
   @protected
   void sse_encode_big_buffers_twin_rust_async(
       BigBuffersTwinRustAsync self, SseSerializer serializer) {
-    sse_encode_list_prim_i_64_strict(self.int64, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64, serializer);
+    sse_encode_list_prim_i_64(self.int64, serializer);
+    sse_encode_list_prim_u_64(self.uint64, serializer);
   }
 
   @protected
   void sse_encode_big_buffers_twin_rust_async_sse(
       BigBuffersTwinRustAsyncSse self, SseSerializer serializer) {
-    sse_encode_list_prim_i_64_strict(self.int64, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64, serializer);
+    sse_encode_list_prim_i_64(self.int64, serializer);
+    sse_encode_list_prim_u_64(self.uint64, serializer);
   }
 
   @protected
   void sse_encode_big_buffers_twin_sse(
       BigBuffersTwinSse self, SseSerializer serializer) {
-    sse_encode_list_prim_i_64_strict(self.int64, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64, serializer);
+    sse_encode_list_prim_i_64(self.int64, serializer);
+    sse_encode_list_prim_u_64(self.uint64, serializer);
   }
 
   @protected
   void sse_encode_big_buffers_twin_sync(
       BigBuffersTwinSync self, SseSerializer serializer) {
-    sse_encode_list_prim_i_64_strict(self.int64, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64, serializer);
+    sse_encode_list_prim_i_64(self.int64, serializer);
+    sse_encode_list_prim_u_64(self.uint64, serializer);
   }
 
   @protected
   void sse_encode_big_buffers_twin_sync_sse(
       BigBuffersTwinSyncSse self, SseSerializer serializer) {
-    sse_encode_list_prim_i_64_strict(self.int64, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64, serializer);
+    sse_encode_list_prim_i_64(self.int64, serializer);
+    sse_encode_list_prim_u_64(self.uint64, serializer);
   }
 
   @protected
@@ -75244,7 +75124,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(0, serializer);
       case EnumWithItemMixedTwinNormal_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemMixedTwinNormal_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
@@ -75259,7 +75139,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(0, serializer);
       case EnumWithItemMixedTwinRustAsync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemMixedTwinRustAsync_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
@@ -75274,7 +75154,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(0, serializer);
       case EnumWithItemMixedTwinRustAsyncSse_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemMixedTwinRustAsyncSse_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
@@ -75289,7 +75169,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(0, serializer);
       case EnumWithItemMixedTwinSse_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemMixedTwinSse_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
@@ -75304,7 +75184,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(0, serializer);
       case EnumWithItemMixedTwinSync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemMixedTwinSync_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
@@ -75319,7 +75199,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(0, serializer);
       case EnumWithItemMixedTwinSyncSse_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemMixedTwinSyncSse_C(cField: final cField):
         sse_encode_i_32(2, serializer);
         sse_encode_String(cField, serializer);
@@ -75332,10 +75212,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemStructTwinNormal_A(aField: final aField):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(aField, serializer);
+        sse_encode_list_prim_u_8(aField, serializer);
       case EnumWithItemStructTwinNormal_B(bField: final bField):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(bField, serializer);
+        sse_encode_list_prim_i_32(bField, serializer);
     }
   }
 
@@ -75345,10 +75225,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemStructTwinRustAsync_A(aField: final aField):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(aField, serializer);
+        sse_encode_list_prim_u_8(aField, serializer);
       case EnumWithItemStructTwinRustAsync_B(bField: final bField):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(bField, serializer);
+        sse_encode_list_prim_i_32(bField, serializer);
     }
   }
 
@@ -75358,10 +75238,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemStructTwinRustAsyncSse_A(aField: final aField):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(aField, serializer);
+        sse_encode_list_prim_u_8(aField, serializer);
       case EnumWithItemStructTwinRustAsyncSse_B(bField: final bField):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(bField, serializer);
+        sse_encode_list_prim_i_32(bField, serializer);
     }
   }
 
@@ -75371,10 +75251,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemStructTwinSse_A(aField: final aField):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(aField, serializer);
+        sse_encode_list_prim_u_8(aField, serializer);
       case EnumWithItemStructTwinSse_B(bField: final bField):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(bField, serializer);
+        sse_encode_list_prim_i_32(bField, serializer);
     }
   }
 
@@ -75384,10 +75264,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemStructTwinSync_A(aField: final aField):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(aField, serializer);
+        sse_encode_list_prim_u_8(aField, serializer);
       case EnumWithItemStructTwinSync_B(bField: final bField):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(bField, serializer);
+        sse_encode_list_prim_i_32(bField, serializer);
     }
   }
 
@@ -75397,10 +75277,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemStructTwinSyncSse_A(aField: final aField):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(aField, serializer);
+        sse_encode_list_prim_u_8(aField, serializer);
       case EnumWithItemStructTwinSyncSse_B(bField: final bField):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(bField, serializer);
+        sse_encode_list_prim_i_32(bField, serializer);
     }
   }
 
@@ -75410,10 +75290,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemTupleTwinNormal_A(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemTupleTwinNormal_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_list_prim_i_32(field0, serializer);
     }
   }
 
@@ -75423,10 +75303,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemTupleTwinRustAsync_A(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemTupleTwinRustAsync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_list_prim_i_32(field0, serializer);
     }
   }
 
@@ -75436,10 +75316,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemTupleTwinRustAsyncSse_A(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemTupleTwinRustAsyncSse_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_list_prim_i_32(field0, serializer);
     }
   }
 
@@ -75449,10 +75329,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemTupleTwinSse_A(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemTupleTwinSse_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_list_prim_i_32(field0, serializer);
     }
   }
 
@@ -75462,10 +75342,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemTupleTwinSync_A(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemTupleTwinSync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_list_prim_i_32(field0, serializer);
     }
   }
 
@@ -75475,10 +75355,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumWithItemTupleTwinSyncSse_A(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case EnumWithItemTupleTwinSyncSse_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_list_prim_i_32(field0, serializer);
     }
   }
 
@@ -75516,12 +75396,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
     sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
     sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.zerocopy, serializer);
-    sse_encode_opt_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_opt_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_opt_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_opt_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    sse_encode_opt_list_prim_f_64(self.float64List, serializer);
     sse_encode_opt_list_attribute_twin_normal(self.attributes, serializer);
     sse_encode_list_opt_box_autoadd_attribute_twin_normal(
         self.attributesNullable, serializer);
@@ -75538,12 +75418,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
     sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
     sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.zerocopy, serializer);
-    sse_encode_opt_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_opt_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_opt_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_opt_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    sse_encode_opt_list_prim_f_64(self.float64List, serializer);
     sse_encode_opt_list_attribute_twin_rust_async(self.attributes, serializer);
     sse_encode_list_opt_box_autoadd_attribute_twin_rust_async(
         self.attributesNullable, serializer);
@@ -75560,12 +75440,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
     sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
     sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.zerocopy, serializer);
-    sse_encode_opt_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_opt_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_opt_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_opt_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    sse_encode_opt_list_prim_f_64(self.float64List, serializer);
     sse_encode_opt_list_attribute_twin_rust_async_sse(
         self.attributes, serializer);
     sse_encode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
@@ -75583,12 +75463,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
     sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
     sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.zerocopy, serializer);
-    sse_encode_opt_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_opt_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_opt_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_opt_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    sse_encode_opt_list_prim_f_64(self.float64List, serializer);
     sse_encode_opt_list_attribute_twin_sse(self.attributes, serializer);
     sse_encode_list_opt_box_autoadd_attribute_twin_sse(
         self.attributesNullable, serializer);
@@ -75605,12 +75485,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
     sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
     sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.zerocopy, serializer);
-    sse_encode_opt_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_opt_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_opt_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_opt_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    sse_encode_opt_list_prim_f_64(self.float64List, serializer);
     sse_encode_opt_list_attribute_twin_sync(self.attributes, serializer);
     sse_encode_list_opt_box_autoadd_attribute_twin_sync(
         self.attributesNullable, serializer);
@@ -75627,12 +75507,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_box_autoadd_i_64(self.int64, serializer);
     sse_encode_opt_box_autoadd_f_64(self.float64, serializer);
     sse_encode_opt_box_autoadd_bool(self.boolean, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.zerocopy, serializer);
-    sse_encode_opt_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_opt_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_opt_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_opt_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_opt_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_opt_list_prim_u_8(self.zerocopy, serializer);
+    sse_encode_opt_list_prim_i_8(self.int8List, serializer);
+    sse_encode_opt_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_opt_list_prim_i_32(self.int32List, serializer);
+    sse_encode_opt_list_prim_f_32(self.float32List, serializer);
+    sse_encode_opt_list_prim_f_64(self.float64List, serializer);
     sse_encode_opt_list_attribute_twin_sync_sse(self.attributes, serializer);
     sse_encode_list_opt_box_autoadd_attribute_twin_sync_sse(
         self.attributesNullable, serializer);
@@ -75654,7 +75534,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_f_64_array_16(F64Array16 self, SseSerializer serializer) {
-    sse_encode_list_prim_f_64_strict(self.inner, serializer);
+    sse_encode_list_prim_f_64(self.inner, serializer);
   }
 
   @protected
@@ -75750,7 +75630,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_i_32_array_2(I32Array2 self, SseSerializer serializer) {
-    sse_encode_list_prim_i_32_strict(self.inner, serializer);
+    sse_encode_list_prim_i_32(self.inner, serializer);
   }
 
   @protected
@@ -75799,7 +75679,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_i_32(field1, serializer);
       case KitchenSinkTwinNormal_Buffer(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case KitchenSinkTwinNormal_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_normal(field0, serializer);
@@ -75837,7 +75717,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_i_32(field1, serializer);
       case KitchenSinkTwinRustAsync_Buffer(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case KitchenSinkTwinRustAsync_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_rust_async(field0, serializer);
@@ -75875,7 +75755,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_i_32(field1, serializer);
       case KitchenSinkTwinRustAsyncSse_Buffer(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case KitchenSinkTwinRustAsyncSse_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_rust_async_sse(field0, serializer);
@@ -75913,7 +75793,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_i_32(field1, serializer);
       case KitchenSinkTwinSse_Buffer(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case KitchenSinkTwinSse_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_sse(field0, serializer);
@@ -75951,7 +75831,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_i_32(field1, serializer);
       case KitchenSinkTwinSync_Buffer(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case KitchenSinkTwinSync_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_sync(field0, serializer);
@@ -75989,7 +75869,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_opt_box_autoadd_i_32(field1, serializer);
       case KitchenSinkTwinSyncSse_Buffer(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_list_prim_u_8_strict(field0, serializer);
+        sse_encode_list_prim_u_8(field0, serializer);
       case KitchenSinkTwinSyncSse_Enums(field0: final field0):
         sse_encode_i_32(5, serializer);
         sse_encode_weekdays_twin_sync_sse(field0, serializer);
@@ -76449,11 +76329,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_list_opt_list_prim_i_32_strict(
+  void sse_encode_list_opt_list_prim_i_32(
       List<Int32List?> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
-      sse_encode_opt_list_prim_i_32_strict(item, serializer);
+      sse_encode_opt_list_prim_i_32(item, serializer);
     }
   }
 
@@ -76512,141 +76392,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_list_prim_f_32_loose(
-      List<double> self, SseSerializer serializer) {
+  void sse_encode_list_prim_f_32(Float32List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putFloat32List(self);
   }
 
   @protected
-  void sse_encode_list_prim_f_32_strict(
-      Float32List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putFloat32List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_f_64_loose(
-      List<double> self, SseSerializer serializer) {
+  void sse_encode_list_prim_f_64(Float64List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putFloat64List(self);
   }
 
   @protected
-  void sse_encode_list_prim_f_64_strict(
-      Float64List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putFloat64List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_i_16_loose(
-      List<int> self, SseSerializer serializer) {
+  void sse_encode_list_prim_i_16(Int16List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putInt16List(self);
   }
 
   @protected
-  void sse_encode_list_prim_i_16_strict(
-      Int16List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt16List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_i_32_loose(
-      List<int> self, SseSerializer serializer) {
+  void sse_encode_list_prim_i_32(Int32List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putInt32List(self);
   }
 
   @protected
-  void sse_encode_list_prim_i_32_strict(
-      Int32List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt32List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_i_64_loose(
-      List<int> self, SseSerializer serializer) {
+  void sse_encode_list_prim_i_64(Int64List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putInt64List(self);
   }
 
   @protected
-  void sse_encode_list_prim_i_64_strict(
-      Int64List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt64List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_i_8_loose(
-      List<int> self, SseSerializer serializer) {
+  void sse_encode_list_prim_i_8(Int8List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putInt8List(self);
   }
 
   @protected
-  void sse_encode_list_prim_i_8_strict(
-      Int8List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putInt8List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_u_16_loose(
-      List<int> self, SseSerializer serializer) {
+  void sse_encode_list_prim_u_16(Uint16List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint16List(self);
   }
 
   @protected
-  void sse_encode_list_prim_u_16_strict(
-      Uint16List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint16List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_u_32_loose(
-      List<int> self, SseSerializer serializer) {
+  void sse_encode_list_prim_u_32(Uint32List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint32List(self);
   }
 
   @protected
-  void sse_encode_list_prim_u_32_strict(
-      Uint32List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint32List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_u_64_loose(
-      List<int> self, SseSerializer serializer) {
+  void sse_encode_list_prim_u_64(Uint64List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint64List(self);
   }
 
   @protected
-  void sse_encode_list_prim_u_64_strict(
-      Uint64List self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint64List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_u_8_loose(
-      List<int> self, SseSerializer serializer) {
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint8List(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer) {
+  void sse_encode_list_prim_u_8(Uint8List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
   }
@@ -76800,11 +76600,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_list_record_string_list_prim_u_8_strict(
+  void sse_encode_list_record_string_list_prim_u_8(
       List<(String, Uint8List)> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
-      sse_encode_record_string_list_prim_u_8_strict(item, serializer);
+      sse_encode_record_string_list_prim_u_8(item, serializer);
     }
   }
 
@@ -77371,7 +77171,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal self, SseSerializer serializer) {
     sse_encode_i_32(self.valueI32, serializer);
-    sse_encode_list_prim_u_8_strict(self.valueVecU8, serializer);
+    sse_encode_list_prim_u_8(self.valueVecU8, serializer);
     sse_encode_bool(self.valueBoolean, serializer);
     sse_encode_list_my_tree_node_twin_normal(self.children, serializer);
   }
@@ -77380,7 +77180,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync self, SseSerializer serializer) {
     sse_encode_i_32(self.valueI32, serializer);
-    sse_encode_list_prim_u_8_strict(self.valueVecU8, serializer);
+    sse_encode_list_prim_u_8(self.valueVecU8, serializer);
     sse_encode_bool(self.valueBoolean, serializer);
     sse_encode_list_my_tree_node_twin_rust_async(self.children, serializer);
   }
@@ -77389,7 +77189,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_my_tree_node_twin_rust_async_sse(
       MyTreeNodeTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_i_32(self.valueI32, serializer);
-    sse_encode_list_prim_u_8_strict(self.valueVecU8, serializer);
+    sse_encode_list_prim_u_8(self.valueVecU8, serializer);
     sse_encode_bool(self.valueBoolean, serializer);
     sse_encode_list_my_tree_node_twin_rust_async_sse(self.children, serializer);
   }
@@ -77398,7 +77198,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_my_tree_node_twin_sse(
       MyTreeNodeTwinSse self, SseSerializer serializer) {
     sse_encode_i_32(self.valueI32, serializer);
-    sse_encode_list_prim_u_8_strict(self.valueVecU8, serializer);
+    sse_encode_list_prim_u_8(self.valueVecU8, serializer);
     sse_encode_bool(self.valueBoolean, serializer);
     sse_encode_list_my_tree_node_twin_sse(self.children, serializer);
   }
@@ -77407,7 +77207,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_my_tree_node_twin_sync(
       MyTreeNodeTwinSync self, SseSerializer serializer) {
     sse_encode_i_32(self.valueI32, serializer);
-    sse_encode_list_prim_u_8_strict(self.valueVecU8, serializer);
+    sse_encode_list_prim_u_8(self.valueVecU8, serializer);
     sse_encode_bool(self.valueBoolean, serializer);
     sse_encode_list_my_tree_node_twin_sync(self.children, serializer);
   }
@@ -77416,7 +77216,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_my_tree_node_twin_sync_sse(
       MyTreeNodeTwinSyncSse self, SseSerializer serializer) {
     sse_encode_i_32(self.valueI32, serializer);
-    sse_encode_list_prim_u_8_strict(self.valueVecU8, serializer);
+    sse_encode_list_prim_u_8(self.valueVecU8, serializer);
     sse_encode_bool(self.valueBoolean, serializer);
     sse_encode_list_my_tree_node_twin_sync_sse(self.children, serializer);
   }
@@ -77511,7 +77311,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_numbers(Numbers self, SseSerializer serializer) {
-    sse_encode_list_prim_i_32_strict(self.field0, serializer);
+    sse_encode_list_prim_i_32(self.field0, serializer);
   }
 
   @protected
@@ -78368,47 +78168,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_opt_list_prim_f_32_strict(
+  void sse_encode_opt_list_prim_f_32(
       Float32List? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_list_prim_f_32_strict(self, serializer);
+      sse_encode_list_prim_f_32(self, serializer);
     }
   }
 
   @protected
-  void sse_encode_opt_list_prim_f_64_strict(
+  void sse_encode_opt_list_prim_f_64(
       Float64List? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_list_prim_f_64_strict(self, serializer);
+      sse_encode_list_prim_f_64(self, serializer);
     }
   }
 
   @protected
-  void sse_encode_opt_list_prim_i_32_strict(
+  void sse_encode_opt_list_prim_i_32(
       Int32List? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_list_prim_i_32_strict(self, serializer);
+      sse_encode_list_prim_i_32(self, serializer);
     }
   }
 
   @protected
-  void sse_encode_opt_list_prim_i_8_strict(
-      Int8List? self, SseSerializer serializer) {
+  void sse_encode_opt_list_prim_i_8(Int8List? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_list_prim_i_8_strict(self, serializer);
+      sse_encode_list_prim_i_8(self, serializer);
     }
   }
 
   @protected
-  void sse_encode_opt_list_prim_u_8_strict(
-      Uint8List? self, SseSerializer serializer) {
+  void sse_encode_opt_list_prim_u_8(Uint8List? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_list_prim_u_8_strict(self, serializer);
+      sse_encode_list_prim_u_8(self, serializer);
     }
   }
 
@@ -78419,7 +78217,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_list_opt_box_autoadd_weekdays_twin_normal(
         self.enums, serializer);
     sse_encode_list_opt_String(self.strings, serializer);
-    sse_encode_list_opt_list_prim_i_32_strict(self.buffers, serializer);
+    sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
   }
 
   @protected
@@ -78429,7 +78227,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
         self.enums, serializer);
     sse_encode_list_opt_String(self.strings, serializer);
-    sse_encode_list_opt_list_prim_i_32_strict(self.buffers, serializer);
+    sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
   }
 
   @protected
@@ -78439,7 +78237,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(
         self.enums, serializer);
     sse_encode_list_opt_String(self.strings, serializer);
-    sse_encode_list_opt_list_prim_i_32_strict(self.buffers, serializer);
+    sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
   }
 
   @protected
@@ -78448,7 +78246,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
     sse_encode_list_opt_box_autoadd_weekdays_twin_sse(self.enums, serializer);
     sse_encode_list_opt_String(self.strings, serializer);
-    sse_encode_list_opt_list_prim_i_32_strict(self.buffers, serializer);
+    sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
   }
 
   @protected
@@ -78457,7 +78255,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_list_opt_box_autoadd_i_32(self.i32, serializer);
     sse_encode_list_opt_box_autoadd_weekdays_twin_sync(self.enums, serializer);
     sse_encode_list_opt_String(self.strings, serializer);
-    sse_encode_list_opt_list_prim_i_32_strict(self.buffers, serializer);
+    sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
   }
 
   @protected
@@ -78467,7 +78265,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_list_opt_box_autoadd_weekdays_twin_sync_sse(
         self.enums, serializer);
     sse_encode_list_opt_String(self.strings, serializer);
-    sse_encode_list_opt_list_prim_i_32_strict(self.buffers, serializer);
+    sse_encode_list_opt_list_prim_i_32(self.buffers, serializer);
   }
 
   @protected
@@ -78712,10 +78510,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_record_string_list_prim_u_8_strict(
+  void sse_encode_record_string_list_prim_u_8(
       (String, Uint8List) self, SseSerializer serializer) {
     sse_encode_String(self.$1, serializer);
-    sse_encode_list_prim_u_8_strict(self.$2, serializer);
+    sse_encode_list_prim_u_8(self.$2, serializer);
   }
 
   @protected
@@ -78734,7 +78532,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer) {
-    sse_encode_list_prim_i_32_strict(self.field0, serializer);
+    sse_encode_list_prim_i_32(self.field0, serializer);
   }
 
   @protected
@@ -79382,22 +79180,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_u_8_array_1600(U8Array1600 self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.inner, serializer);
+    sse_encode_list_prim_u_8(self.inner, serializer);
   }
 
   @protected
   void sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.inner, serializer);
+    sse_encode_list_prim_u_8(self.inner, serializer);
   }
 
   @protected
   void sse_encode_u_8_array_5(U8Array5 self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.inner, serializer);
+    sse_encode_list_prim_u_8(self.inner, serializer);
   }
 
   @protected
   void sse_encode_u_8_array_8(U8Array8 self, SseSerializer serializer) {
-    sse_encode_list_prim_u_8_strict(self.inner, serializer);
+    sse_encode_list_prim_u_8(self.inner, serializer);
   }
 
   @protected
@@ -79447,96 +79245,96 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_vec_of_primitive_pack_twin_normal(
       VecOfPrimitivePackTwinNormal self, SseSerializer serializer) {
-    sse_encode_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_list_prim_i_16_strict(self.int16List, serializer);
-    sse_encode_list_prim_u_16_strict(self.uint16List, serializer);
-    sse_encode_list_prim_u_32_strict(self.uint32List, serializer);
-    sse_encode_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64List, serializer);
-    sse_encode_list_prim_i_64_strict(self.int64List, serializer);
-    sse_encode_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_list_prim_i_8(self.int8List, serializer);
+    sse_encode_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_list_prim_i_16(self.int16List, serializer);
+    sse_encode_list_prim_u_16(self.uint16List, serializer);
+    sse_encode_list_prim_u_32(self.uint32List, serializer);
+    sse_encode_list_prim_i_32(self.int32List, serializer);
+    sse_encode_list_prim_u_64(self.uint64List, serializer);
+    sse_encode_list_prim_i_64(self.int64List, serializer);
+    sse_encode_list_prim_f_32(self.float32List, serializer);
+    sse_encode_list_prim_f_64(self.float64List, serializer);
     sse_encode_list_bool(self.boolList, serializer);
   }
 
   @protected
   void sse_encode_vec_of_primitive_pack_twin_rust_async(
       VecOfPrimitivePackTwinRustAsync self, SseSerializer serializer) {
-    sse_encode_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_list_prim_i_16_strict(self.int16List, serializer);
-    sse_encode_list_prim_u_16_strict(self.uint16List, serializer);
-    sse_encode_list_prim_u_32_strict(self.uint32List, serializer);
-    sse_encode_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64List, serializer);
-    sse_encode_list_prim_i_64_strict(self.int64List, serializer);
-    sse_encode_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_list_prim_i_8(self.int8List, serializer);
+    sse_encode_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_list_prim_i_16(self.int16List, serializer);
+    sse_encode_list_prim_u_16(self.uint16List, serializer);
+    sse_encode_list_prim_u_32(self.uint32List, serializer);
+    sse_encode_list_prim_i_32(self.int32List, serializer);
+    sse_encode_list_prim_u_64(self.uint64List, serializer);
+    sse_encode_list_prim_i_64(self.int64List, serializer);
+    sse_encode_list_prim_f_32(self.float32List, serializer);
+    sse_encode_list_prim_f_64(self.float64List, serializer);
     sse_encode_list_bool(self.boolList, serializer);
   }
 
   @protected
   void sse_encode_vec_of_primitive_pack_twin_rust_async_sse(
       VecOfPrimitivePackTwinRustAsyncSse self, SseSerializer serializer) {
-    sse_encode_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_list_prim_i_16_strict(self.int16List, serializer);
-    sse_encode_list_prim_u_16_strict(self.uint16List, serializer);
-    sse_encode_list_prim_u_32_strict(self.uint32List, serializer);
-    sse_encode_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64List, serializer);
-    sse_encode_list_prim_i_64_strict(self.int64List, serializer);
-    sse_encode_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_list_prim_i_8(self.int8List, serializer);
+    sse_encode_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_list_prim_i_16(self.int16List, serializer);
+    sse_encode_list_prim_u_16(self.uint16List, serializer);
+    sse_encode_list_prim_u_32(self.uint32List, serializer);
+    sse_encode_list_prim_i_32(self.int32List, serializer);
+    sse_encode_list_prim_u_64(self.uint64List, serializer);
+    sse_encode_list_prim_i_64(self.int64List, serializer);
+    sse_encode_list_prim_f_32(self.float32List, serializer);
+    sse_encode_list_prim_f_64(self.float64List, serializer);
     sse_encode_list_bool(self.boolList, serializer);
   }
 
   @protected
   void sse_encode_vec_of_primitive_pack_twin_sse(
       VecOfPrimitivePackTwinSse self, SseSerializer serializer) {
-    sse_encode_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_list_prim_i_16_strict(self.int16List, serializer);
-    sse_encode_list_prim_u_16_strict(self.uint16List, serializer);
-    sse_encode_list_prim_u_32_strict(self.uint32List, serializer);
-    sse_encode_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64List, serializer);
-    sse_encode_list_prim_i_64_strict(self.int64List, serializer);
-    sse_encode_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_list_prim_i_8(self.int8List, serializer);
+    sse_encode_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_list_prim_i_16(self.int16List, serializer);
+    sse_encode_list_prim_u_16(self.uint16List, serializer);
+    sse_encode_list_prim_u_32(self.uint32List, serializer);
+    sse_encode_list_prim_i_32(self.int32List, serializer);
+    sse_encode_list_prim_u_64(self.uint64List, serializer);
+    sse_encode_list_prim_i_64(self.int64List, serializer);
+    sse_encode_list_prim_f_32(self.float32List, serializer);
+    sse_encode_list_prim_f_64(self.float64List, serializer);
     sse_encode_list_bool(self.boolList, serializer);
   }
 
   @protected
   void sse_encode_vec_of_primitive_pack_twin_sync(
       VecOfPrimitivePackTwinSync self, SseSerializer serializer) {
-    sse_encode_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_list_prim_i_16_strict(self.int16List, serializer);
-    sse_encode_list_prim_u_16_strict(self.uint16List, serializer);
-    sse_encode_list_prim_u_32_strict(self.uint32List, serializer);
-    sse_encode_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64List, serializer);
-    sse_encode_list_prim_i_64_strict(self.int64List, serializer);
-    sse_encode_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_list_prim_i_8(self.int8List, serializer);
+    sse_encode_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_list_prim_i_16(self.int16List, serializer);
+    sse_encode_list_prim_u_16(self.uint16List, serializer);
+    sse_encode_list_prim_u_32(self.uint32List, serializer);
+    sse_encode_list_prim_i_32(self.int32List, serializer);
+    sse_encode_list_prim_u_64(self.uint64List, serializer);
+    sse_encode_list_prim_i_64(self.int64List, serializer);
+    sse_encode_list_prim_f_32(self.float32List, serializer);
+    sse_encode_list_prim_f_64(self.float64List, serializer);
     sse_encode_list_bool(self.boolList, serializer);
   }
 
   @protected
   void sse_encode_vec_of_primitive_pack_twin_sync_sse(
       VecOfPrimitivePackTwinSyncSse self, SseSerializer serializer) {
-    sse_encode_list_prim_i_8_strict(self.int8List, serializer);
-    sse_encode_list_prim_u_8_strict(self.uint8List, serializer);
-    sse_encode_list_prim_i_16_strict(self.int16List, serializer);
-    sse_encode_list_prim_u_16_strict(self.uint16List, serializer);
-    sse_encode_list_prim_u_32_strict(self.uint32List, serializer);
-    sse_encode_list_prim_i_32_strict(self.int32List, serializer);
-    sse_encode_list_prim_u_64_strict(self.uint64List, serializer);
-    sse_encode_list_prim_i_64_strict(self.int64List, serializer);
-    sse_encode_list_prim_f_32_strict(self.float32List, serializer);
-    sse_encode_list_prim_f_64_strict(self.float64List, serializer);
+    sse_encode_list_prim_i_8(self.int8List, serializer);
+    sse_encode_list_prim_u_8(self.uint8List, serializer);
+    sse_encode_list_prim_i_16(self.int16List, serializer);
+    sse_encode_list_prim_u_16(self.uint16List, serializer);
+    sse_encode_list_prim_u_32(self.uint32List, serializer);
+    sse_encode_list_prim_i_32(self.int32List, serializer);
+    sse_encode_list_prim_u_64(self.uint64List, serializer);
+    sse_encode_list_prim_i_64(self.int64List, serializer);
+    sse_encode_list_prim_f_32(self.float32List, serializer);
+    sse_encode_list_prim_f_64(self.float64List, serializer);
     sse_encode_list_bool(self.boolList, serializer);
   }
 
