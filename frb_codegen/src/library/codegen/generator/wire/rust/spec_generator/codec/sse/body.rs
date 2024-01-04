@@ -21,9 +21,8 @@ pub(super) fn generate_encode_or_decode(
 
     let mut inner = Default::default();
     inner += (types.iter())
-        .filter_map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
-        .unique_by(|(rust_api_type, _)| rust_api_type.to_owned())
-        .map(|(_, ans)| ans)
+        .unique_by(|ty| ty.rust_api_type())
+        .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
         .collect();
     WireRustCodecOutputSpec { inner }
 }
@@ -32,7 +31,7 @@ fn generate_encode_or_decode_for_type(
     ty: &IrType,
     context: WireRustCodecSseGeneratorContext,
     mode: EncodeOrDecode,
-) -> Option<(String, Acc<WireRustOutputCode>)> {
+) -> Acc<WireRustOutputCode> {
     let rust_api_type = ty.rust_api_type();
     let body = CodecSseTy::new(
         ty.clone(),
@@ -59,8 +58,8 @@ fn generate_encode_or_decode_for_type(
             ),
         };
 
-        Some((rust_api_type, Acc::new_common(code.into())))
+        Acc::new_common(code.into())
     } else {
-        None
+        Acc::default()
     }
 }
