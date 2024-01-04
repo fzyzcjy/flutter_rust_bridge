@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 typedef struct _Dart_Handle* Dart_Handle;
+typedef struct Dart_CObject DartCObject;
 #include "dart_api.h"
 #include "dart_native_api.h"
 

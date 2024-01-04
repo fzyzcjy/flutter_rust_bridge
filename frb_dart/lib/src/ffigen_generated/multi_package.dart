@@ -546,6 +546,8 @@ typedef Dart_NativeMessageHandler = ffi.Pointer<
 
 final class _Dart_Handle extends ffi.Opaque {}
 
+final class Dart_CObject1 extends ffi.Opaque {}
+
 /// Posts a message on some port. The message will contain the
 /// Dart_CObject object graph rooted in 'message'.
 ///
@@ -561,10 +563,11 @@ final class _Dart_Handle extends ffi.Opaque {}
 /// return true if the message was posted.
 typedef DartPostCObjectFnType = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Bool Function(DartPort port_id, ffi.Pointer<ffi.Int> message)>>;
+        ffi.Bool Function(DartPort port_id, ffi.Pointer<DartCObject> message)>>;
 
 /// A port is used to send or receive inter-isolate messages
 typedef DartPort = ffi.Int64;
+typedef DartCObject = Dart_CObject1;
 
 final class WireSyncRust2DartSse extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
