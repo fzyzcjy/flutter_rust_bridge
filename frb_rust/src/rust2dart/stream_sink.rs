@@ -20,7 +20,7 @@ pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec = DcoCodec>(
 impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     /// Create a new sink from a port wrapper.
     pub fn new(sender: Rust2DartSender) -> Self {
-        Self(StreamSinkNonClone::new(sender))
+        Self(Arc::new(StreamSinkNonClone::new(sender)))
     }
 
     /// Add data to the stream. Returns false when data could not be sent,
