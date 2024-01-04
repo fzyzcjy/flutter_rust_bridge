@@ -1,7 +1,7 @@
 use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use flutter_rust_bridge::for_generated::BaseThreadPool;
-use flutter_rust_bridge::transfer;
+use flutter_rust_bridge::{frb, transfer};
 
 #[derive(Debug, Clone)]
 pub struct Log2TwinNormal {
@@ -24,6 +24,11 @@ impl ConcatenateWithTwinNormal {
 
     pub fn concatenate_static_twin_normal(a: String, b: String) -> String {
         format!("{a}{b}")
+    }
+
+    #[frb(getter)]
+    pub fn simple_getter_twin_normal(&self) -> String {
+        self.a
     }
 
     pub fn handle_some_stream_sink_twin_normal(
