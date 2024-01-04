@@ -130,6 +130,18 @@ mod frb_keyword {
     syn::custom_keyword!(import);
 }
 
+struct FrbAttributesInner(Vec<FrbAttribute>);
+
+impl Parse for FrbAttributesInner {
+    fn parse(input: ParseStream) -> Result<Self> {
+        Ok(Self(
+            Punctuated::<FrbAttribute, Token![,]>::parse_terminated(&input)?
+                .into_iter()
+                .collect(),
+        ))
+    }
+}
+
 #[derive(Eq, PartialEq, Debug)]
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
@@ -145,25 +157,10 @@ enum FrbAttribute {
     Default(FrbAttributeDefaultValue),
 }
 
-struct FrbAttributesInner(Vec<FrbAttribute>);
-
-impl Parse for FrbAttributesInner {
-    fn parse(input: ParseStream) -> Result<Self> {
-        Ok(Self(
-            Punctuated::<OptionFrbAttribute, Token![,]>::parse_terminated(&input)?
-                .into_iter()
-                .map(|x| x.0.unwrap())
-                .collect(),
-        ))
-    }
-}
-
-struct OptionFrbAttribute(Option<FrbAttribute>);
-
-impl Parse for OptionFrbAttribute {
+impl Parse for FrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let lookahead = input.lookahead1();
-        Ok(Self(Some(if lookahead.peek(frb_keyword::mirror) {
+        Ok(if lookahead.peek(frb_keyword::mirror) {
             input.parse::<frb_keyword::mirror>()?;
             input.parse().map(FrbAttribute::Mirror)?
         } else if lookahead.peek(frb_keyword::non_final) {
@@ -201,8 +198,8 @@ impl Parse for OptionFrbAttribute {
             input.parse::<Token![=]>()?;
             input.parse().map(FrbAttribute::Default)?
         } else {
-            return Ok(Self(None));
-        })))
+            return Err(lookahead.error());
+        })
     }
 }
 
