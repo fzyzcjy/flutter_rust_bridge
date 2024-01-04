@@ -15,7 +15,7 @@ pub struct TaskRust2DartContext<Rust2DartCodec: BaseCodec> {
 
 impl<Rust2DartCodec: BaseCodec> TaskRust2DartContext<Rust2DartCodec> {
     /// Create a new context.
-    pub fn new(
+    pub(crate) fn new(
         sender: Rust2DartSender,
         stream_sink_closer: Option<Arc<StreamSinkCloser<Rust2DartCodec>>>,
     ) -> Self {

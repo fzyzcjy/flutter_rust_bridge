@@ -11,7 +11,7 @@ use std::sync::Arc;
 #[derive(Clone)]
 pub struct StreamSinkBase<T, Rust2DartCodec: BaseCodec> {
     sendable_channel_handle: SendableChannelHandle,
-    closer: Arc<StreamSinkCloser<Rust2DartCodec>>,
+    _closer: Arc<StreamSinkCloser<Rust2DartCodec>>,
     _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
 
@@ -20,7 +20,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
     pub fn new(sender: Rust2DartSender, closer: Arc<StreamSinkCloser<Rust2DartCodec>>) -> Self {
         Self {
             sendable_channel_handle: channel_to_handle(&sender.channel),
-            closer,
+            _closer: closer,
             _phantom_data: Default::default(),
         }
     }
