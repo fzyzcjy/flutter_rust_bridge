@@ -166,7 +166,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
 
     if matches!(&func.output, IrType::RustAutoOpaque(_)) {
         if func.fallible() {
-            ans = format!("Result::<_,anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans}?))");
+            ans = format!("Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans}?))");
         } else {
             ans = format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans})");
         }
@@ -175,7 +175,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
     if !func.fallible() {
         let error_type = if (func.inputs.iter()).any(|x| matches!(x.ty, IrType::RustAutoOpaque(_)))
         {
-            "anyhow::Error"
+            "flutter_rust_bridge::for_generated::anyhow::Error"
         } else {
             "()"
         };
@@ -243,7 +243,7 @@ fn generate_code_closure(
 ) -> String {
     let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
     let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
-        "-> Result::<_,anyhow::Error>".to_string()
+        "-> Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>".to_string()
     } else {
         "".to_string()
     };

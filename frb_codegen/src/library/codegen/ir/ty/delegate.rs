@@ -130,7 +130,9 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             // IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
             IrTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
-            IrTypeDelegate::AnyhowException => "anyhow::Error".to_owned(),
+            IrTypeDelegate::AnyhowException => {
+                "flutter_rust_bridge::for_generated::anyhow::Error".to_owned()
+            }
             IrTypeDelegate::Map(ir) => format!(
                 "std::collections::HashMap<{}, {}>",
                 ir.key.rust_api_type(),
