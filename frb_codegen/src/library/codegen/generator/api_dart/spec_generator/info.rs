@@ -22,14 +22,14 @@ pub(crate) trait ApiDartGeneratorInfoTrait {
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         inner.dart_api_type()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         format!(
             "FutureOr<{}> Function({})",
             ApiDartGenerator::new(self.ir.output.clone(), self.context).dart_api_type(),
@@ -41,13 +41,13 @@ impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for DartOpaqueApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         "Object".to_owned()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         match &self.ir {
             IrTypeDelegate::Array(array) => array.dart_api_type(self.context),
             IrTypeDelegate::String => "String".to_string(),
@@ -115,26 +115,26 @@ impl IrTypeDelegateArray {
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for DynamicApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         "dynamic".to_owned()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for EnumRefApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         self.ir.ident.0.name.to_string()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for GeneralListApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         format!("List<{}>", inner.dart_api_type())
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         format!("{}?", inner.dart_api_type())
     }
@@ -142,7 +142,7 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for OwnershipApiDartGenerator<'a> {
     // frb-coverage:ignore-start
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         unreachable!()
         // let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         // format!("{}_{}", self.ir.mode, inner.dart_api_type())
@@ -151,7 +151,7 @@ impl<'a> ApiDartGeneratorInfoTrait for OwnershipApiDartGenerator<'a> {
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         match &self.ir {
             IrTypePrimitive::U8
             | IrTypePrimitive::I8
@@ -172,7 +172,7 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         match &self.ir.primitive {
             IrTypePrimitive::U8 => "Uint8List",
             IrTypePrimitive::I8 => "Int8List",
@@ -193,7 +193,7 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveListApiDartGenerator<'a> {
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         let values = (self.ir.values.iter())
             .map(|ty| ApiDartGenerator::new(ty.clone(), self.context).dart_api_type())
             .collect_vec()
@@ -204,20 +204,20 @@ impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         inner.dart_api_type()
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         rust_type_to_dart_type(&self.ir.inner.rust_api_type(), self.ir.brief_name)
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         self.ir.ident.0.name.to_string()
     }
 
@@ -235,7 +235,7 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
     // frb-coverage:ignore-start
-    fn dart_api_type(&self, _direction: Direction) -> String {
+    fn dart_api_type(&self) -> String {
         // Do not throw error, since when dumping we may call this function
         "NOT_IMPLEMENTED".into()
     }
