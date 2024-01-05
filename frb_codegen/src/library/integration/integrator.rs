@@ -1,5 +1,5 @@
 use crate::integration::utils::extract_dir_and_modify;
-use crate::library::commands::flutter::flutter_pub_add;
+use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
 use crate::library::commands::format_dart::format_dart;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
@@ -53,6 +53,8 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         config.enable_local_dependency,
     )?;
 
+    setup_cargokit_dependencies(&dart_root)?;
+
     format_dart(&[dart_root], 80)?;
 
     Ok(())
@@ -69,6 +71,15 @@ fn modify_permissions(dart_root: &Path) -> Result<()> {
     }
 
     Ok(())
+}
+
+fn setup_cargokit_dependencies(dart_root: &Path) -> Result<()> {
+    let build_tool_dir = dart_root
+        .join("rust_builder")
+        .join("cargokit")
+        .join("build_tool");
+
+    flutter_pub_get(&build_tool_dir)
 }
 
 #[cfg(not(windows))]

@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
@@ -19,4 +21,9 @@ pub fn flutter_pub_add(items: &[String]) -> anyhow::Result<()> {
         "add",
         *items
     )?)
+}
+
+pub fn flutter_pub_get(path: &PathBuf) -> anyhow::Result<()> {
+    info!("Execute `flutter pub get` inside {path:?}");
+    check_exit_code(&command_run!(call_shell[None, None], "flutter", "pub", "get", path)?)
 }
