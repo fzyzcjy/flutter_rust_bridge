@@ -36,11 +36,6 @@ Image credit: [Simpsons contributor](https://en.wikipedia.org/wiki/User:Simpsons
 
 ## Demo
 
-:::caution
-Expect the demo to be slow to load, ugly on small devices, etc.
-Since the focus is the library instead of the demo, the demo code is super naive and minimal.
-:::
-
 import FrbExampleGallery from "@site/src/components/FrbExampleGallery";
 
 <FrbExampleGallery />
