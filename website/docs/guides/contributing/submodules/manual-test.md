@@ -14,6 +14,7 @@ Try to test on as many browsers as possible, e.g.
 
 * Chrome
 * Firefox
+* Safari
 
 ### Testing procedure
 
@@ -28,3 +29,4 @@ Try to test on as many browsers as possible, e.g.
 * Do "clear browser cache"
   * Chrome: `F12` - `Network` - right-click - Clear Cache
   * Firefox: Settings - Privacy&Security - Cookies and Site Data - Clear Data - Clear
+  * Safari: Develop (menu) - Empty cache
