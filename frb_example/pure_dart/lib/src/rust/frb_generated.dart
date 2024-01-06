@@ -156,6 +156,8 @@ import 'api/pseudo_manual/raw_string_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/raw_string_twin_sse.dart';
 import 'api/pseudo_manual/raw_string_twin_sync.dart';
 import 'api/pseudo_manual/raw_string_twin_sync_sse.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sse.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync_sse.dart';
@@ -3831,6 +3833,269 @@ abstract class RustLibApi extends BaseApi {
   RawStringItemStructTwinSyncSse testRawStringItemStructTwinSyncSse(
       {dynamic hint});
 
+  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync that, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsync(
+          {required NonCloneSimpleTwinRustAsync that, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync that, dynamic hint});
+
+  Future<int> nonCloneSimpleTwinRustAsyncInstanceMethodGetterTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsync(
+          {required NonCloneSimpleTwinRustAsync that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncNewTwinRustAsync({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsync({dynamic hint});
+
+  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsync>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync(
+          {required NonCloneSimpleTwinRustAsync arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsync(
+      {required BoxFnStringString arg, dynamic hint});
+
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsync(
+      {dynamic hint});
+
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync a,
+      required String b,
+      dynamic hint});
+
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsync(
+      {required BoxMyTraitTwinRustAsync arg, dynamic hint});
+
+  Future<BoxMyTraitTwinRustAsync> rustAutoOpaquePlusSignReturnTwinRustAsync(
+      {dynamic hint});
+
+  Future<OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync({dynamic hint});
+
+  Future<OpaqueTwoTwinRustAsync> rustAutoOpaqueReturnOpaqueTwoTwinRustAsync(
+      {dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsync> rustAutoOpaqueReturnOwnTwinRustAsync(
+      {required int initial, dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsync(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsync arg, dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsync(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsync arg,
+          dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsync arg, dynamic hint});
+
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsync>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsync(
+      {required BoxHelloTraitTwinRustAsync arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsync(
+      {required BoxHelloTraitTwinRustAsync arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsync(
+      {required BoxHelloTraitTwinRustAsync arg,
+      required String expect,
+      dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsync>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsync({dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsync>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsync({dynamic hint});
+
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync a,
+      required NonCloneSimpleTwinRustAsync b,
+      dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodArgBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodArgMutBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodArgOwnTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint});
+
+  Future<int>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodGetterTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodReturnOwnTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseNewCustomNameTwinRustAsyncSse(
+          {dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseNewTwinRustAsyncSse({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseNewWithResultTwinRustAsyncSse(
+          {dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseStaticMethodArgBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseStaticMethodArgMutBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinRustAsyncSseStaticMethodArgOwnTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseStaticMethodReturnOwnTwinRustAsyncSse(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSse(
+      {required BoxFnStringString arg, dynamic hint});
+
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncSse(
+      {dynamic hint});
+
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse a,
+      required String b,
+      dynamic hint});
+
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncSse(
+      {required BoxMyTraitTwinRustAsyncSse arg, dynamic hint});
+
+  Future<BoxMyTraitTwinRustAsyncSse>
+      rustAutoOpaquePlusSignReturnTwinRustAsyncSse({dynamic hint});
+
+  Future<OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSse({dynamic hint});
+
+  Future<OpaqueTwoTwinRustAsyncSse>
+      rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSse({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      rustAutoOpaqueReturnOwnTwinRustAsyncSse(
+          {required int initial, dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSse(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSse arg,
+          dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSse(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSse arg,
+          dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSse(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsyncSse arg,
+      dynamic hint});
+
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSse>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSse(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSse(
+      {required BoxHelloTraitTwinRustAsyncSse arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSse(
+      {required BoxHelloTraitTwinRustAsyncSse arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSse(
+      {required BoxHelloTraitTwinRustAsyncSse arg,
+      required String expect,
+      dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsyncSse>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSse({dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsyncSse>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSse({dynamic hint});
+
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse a,
+      required NonCloneSimpleTwinRustAsyncSse b,
+      dynamic hint});
+
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgBorrowTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint});
 
@@ -4984,6 +5249,24 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSse;
 
   RustArcDecrementStrongCountFnType
@@ -5018,6 +5301,24 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSsePtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSse;
@@ -5056,6 +5357,24 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSse;
 
   RustArcDecrementStrongCountFnType
@@ -5092,6 +5411,24 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSse;
 
   RustArcDecrementStrongCountFnType
@@ -5117,6 +5454,42 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSsePtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse;
@@ -38506,6 +38879,2164 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsync(
+          {required NonCloneSimpleTwinRustAsync that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<int> nonCloneSimpleTwinRustAsyncInstanceMethodGetterTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncInstanceMethodGetterTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncInstanceMethodGetterTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsync(
+          {required NonCloneSimpleTwinRustAsync that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncNewTwinRustAsync({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinRustAsyncNewTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinRustAsyncNewTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinRustAsync_new_twin_rust_async",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsync({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_new_with_result_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_new_with_result_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsync>
+      nonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgBorrowTwinRustAsyncConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow_twin_rust_async",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        var arg2 = cst_encode_i_32(adder);
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(
+            port_, arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgMutBorrowTwinRustAsyncConstMeta,
+      argValues: [arg, expect, adder],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow_twin_rust_async",
+        argNames: ["arg", "expect", "adder"],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsync>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync(
+          {required NonCloneSimpleTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_and_return_own_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_own_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnTwinRustAsyncConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_twin_rust_async",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsync(
+      {required BoxFnStringString arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_callable_arg_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableArgTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsync(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_callable_return_twin_rust_async(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableReturnTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return_twin_rust_async",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync a,
+      required String b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                a);
+        var arg1 = cst_encode_String(b);
+        return wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_normal_and_opaque_arg_twin_rust_async",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsync(
+      {required BoxMyTraitTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignArgTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxMyTraitTwinRustAsync> rustAutoOpaquePlusSignReturnTwinRustAsync(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_plus_sign_return_twin_rust_async(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignReturnTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return_twin_rust_async",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_return_opaque_one_and_two_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_return_opaque_one_and_two_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<OpaqueTwoTwinRustAsync> rustAutoOpaqueReturnOpaqueTwoTwinRustAsync(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_return_opaque_two_twin_rust_async(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_two_twin_rust_async",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsync> rustAutoOpaqueReturnOwnTwinRustAsync(
+      {required int initial, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(initial);
+        return wire.wire_rust_auto_opaque_return_own_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOwnTwinRustAsyncConstMeta,
+      argValues: [initial],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own_twin_rust_async",
+        argNames: ["initial"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsync(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsync(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsync arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsync>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsync(
+      {required BoxHelloTraitTwinRustAsync arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_borrow_twin_rust_async",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsync(
+      {required BoxHelloTraitTwinRustAsync arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsync(
+      {required BoxHelloTraitTwinRustAsync arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own_twin_rust_async",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsync>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsync({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_one_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsync>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsync({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_two_twin_rust_async",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync a,
+      required NonCloneSimpleTwinRustAsync b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                a);
+        var arg1 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+                b);
+        return wire.wire_rust_auto_opaque_two_args_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTwoArgsTwinRustAsyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args_twin_rust_async",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodArgBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_instance_method_arg_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseInstanceMethodArgBorrowTwinRustAsyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseInstanceMethodArgBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_instance_method_arg_borrow_twin_rust_async_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodArgMutBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_instance_method_arg_mut_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseInstanceMethodArgMutBorrowTwinRustAsyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseInstanceMethodArgMutBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_instance_method_arg_mut_borrow_twin_rust_async_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodArgOwnTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_instance_method_arg_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseInstanceMethodArgOwnTwinRustAsyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseInstanceMethodArgOwnTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_instance_method_arg_own_twin_rust_async_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<int>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodGetterTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_instance_method_getter_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseInstanceMethodGetterTwinRustAsyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseInstanceMethodGetterTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_instance_method_getter_twin_rust_async_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseInstanceMethodReturnOwnTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_instance_method_return_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseInstanceMethodReturnOwnTwinRustAsyncSseConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseInstanceMethodReturnOwnTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_instance_method_return_own_twin_rust_async_sse",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseNewCustomNameTwinRustAsyncSse(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_new_custom_name_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseNewCustomNameTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseNewCustomNameTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_new_custom_name_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseNewTwinRustAsyncSse({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_NonCloneSimpleTwinRustAsyncSse_new_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinRustAsyncSseNewTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseNewTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName: "NonCloneSimpleTwinRustAsyncSse_new_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseNewWithResultTwinRustAsyncSse(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_new_with_result_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseNewWithResultTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseNewWithResultTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_new_with_result_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseStaticMethodArgBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_static_method_arg_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseStaticMethodArgBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseStaticMethodArgBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_static_method_arg_borrow_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseStaticMethodArgMutBorrowTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_static_method_arg_mut_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseStaticMethodArgMutBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseStaticMethodArgMutBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_static_method_arg_mut_borrow_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinRustAsyncSseStaticMethodArgOwnTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_static_method_arg_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseStaticMethodArgOwnTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseStaticMethodArgOwnTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_static_method_arg_own_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      nonCloneSimpleTwinRustAsyncSseStaticMethodReturnOwnTwinRustAsyncSse(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSse_static_method_return_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseStaticMethodReturnOwnTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseStaticMethodReturnOwnTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSse_static_method_return_own_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow_twin_rust_async_sse",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        sse_encode_i_32(adder, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgMutBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg, expect, adder],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow_twin_rust_async_sse",
+        argNames: ["arg", "expect", "adder"],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSse(
+          {required NonCloneSimpleTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_arg_own_and_return_own_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_own_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnTwinRustAsyncSseConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_twin_rust_async_sse",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSse(
+      {required BoxFnStringString arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_callable_arg_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableArgTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncSse(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_callable_return_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableReturnTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return_twin_rust_async_sse",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse a,
+      required String b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            a, serializer);
+        sse_encode_String(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse",
+            argNames: ["a", "b"],
+          );
+
+  @override
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncSse(
+      {required BoxMyTraitTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignArgTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxMyTraitTwinRustAsyncSse>
+      rustAutoOpaquePlusSignReturnTwinRustAsyncSse({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_plus_sign_return_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignReturnTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return_twin_rust_async_sse",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSse({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<OpaqueTwoTwinRustAsyncSse>
+      rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSse({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_return_opaque_two_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_two_twin_rust_async_sse",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSse>
+      rustAutoOpaqueReturnOwnTwinRustAsyncSse(
+          {required int initial, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(initial, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_return_own_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOwnTwinRustAsyncSseConstMeta,
+      argValues: [initial],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own_twin_rust_async_sse",
+        argNames: ["initial"],
+      );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSse(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSse arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSse(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSse arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSse(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsyncSse arg,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSse>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSse(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSse(
+      {required BoxHelloTraitTwinRustAsyncSse arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_sse",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSse(
+      {required BoxHelloTraitTwinRustAsyncSse arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_sse",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSse(
+      {required BoxHelloTraitTwinRustAsyncSse arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own_twin_rust_async_sse",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsyncSse>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSse({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_one_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsyncSse>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSse({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_two_twin_rust_async_sse",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse a,
+      required NonCloneSimpleTwinRustAsyncSse b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            a, serializer);
+        sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_two_args_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTwoArgsTwinRustAsyncSseConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args_twin_rust_async_sse",
+        argNames: ["a", "b"],
+      );
+
+  @override
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgBorrowTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -48476,6 +51007,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse;
 
@@ -48506,6 +51053,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSse => wire
@@ -48540,6 +51103,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse;
 
@@ -48572,6 +51151,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsync =>
+          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsync =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSse =>
+          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSse =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSse =>
           wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse;
 
@@ -48594,6 +51189,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync =>
+          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse =>
+          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse => wire
@@ -48679,6 +51306,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
@@ -48707,6 +51348,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxMyTraitTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
           dynamic raw) {
@@ -48732,6 +51387,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
     return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -48764,6 +51433,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
@@ -48783,6 +51468,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -48851,6 +51566,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
@@ -48879,6 +51608,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSse
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
@@ -48904,6 +51647,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -48937,6 +51696,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           dynamic raw) {
@@ -48965,6 +51738,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           dynamic raw) {
@@ -48990,6 +51777,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -49360,6 +52163,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSse
       dco_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(dynamic raw) {
     return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
@@ -49383,6 +52200,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
     return BoxMyTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsync
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      dco_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -49413,6 +52244,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSse
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(dynamic raw) {
     return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
@@ -49440,6 +52285,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           dynamic raw) {
@@ -49459,6 +52320,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      dco_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      dco_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      dco_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      dco_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -59086,6 +61977,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer) {
@@ -59114,6 +62021,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59150,6 +62073,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer) {
@@ -59182,6 +62121,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer) {
@@ -59202,6 +62157,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59278,6 +62265,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsync
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer) {
@@ -59306,6 +62309,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59342,6 +62361,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer) {
@@ -59370,6 +62405,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59406,6 +62457,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsync
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer) {
@@ -59434,6 +62501,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59756,6 +62839,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsync
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSse
       sse_decode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           SseDeserializer deserializer) {
@@ -59784,6 +62883,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsync
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      sse_decode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59820,6 +62935,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsync
+      sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSse
       sse_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           SseDeserializer deserializer) {
@@ -59852,6 +62983,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           SseDeserializer deserializer) {
@@ -59872,6 +63019,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      sse_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      sse_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      sse_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      sse_decode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsyncSse.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -69728,6 +72907,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          BoxHelloTraitTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          BoxHelloTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           BoxHelloTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -69754,6 +72949,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           BoxMyTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          BoxMyTraitTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          BoxMyTraitTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -69792,6 +73003,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           NonCloneSimpleTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -69824,6 +73051,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           StructWithGoodAndOpaqueFieldTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -69842,6 +73085,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueTwoTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -69920,6 +73195,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          BoxHelloTraitTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          BoxHelloTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
           BoxHelloTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -69946,6 +73237,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           NonCloneSimpleTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -69984,6 +73291,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           StructWithGoodAndOpaqueFieldTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -70010,6 +73333,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
           BoxHelloTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          BoxHelloTraitTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          BoxHelloTraitTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -70048,6 +73387,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
           NonCloneSimpleTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -70074,6 +73429,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -70333,6 +73704,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          BoxHelloTraitTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          BoxHelloTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
       BoxHelloTraitTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -70358,6 +73745,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           BoxMyTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          BoxMyTraitTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          BoxMyTraitTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -70394,6 +73797,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
       NonCloneSimpleTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -70424,6 +73843,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           StructWithGoodAndOpaqueFieldTwinSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -70442,6 +73877,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueTwoTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -70662,6 +74129,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          BoxHelloTraitTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
       BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
@@ -70684,6 +74165,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           BoxMyTraitTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          BoxMyTraitTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          BoxMyTraitTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -70715,6 +74210,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
   void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
       NonCloneSimpleTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
@@ -70742,6 +74251,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
           StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
@@ -70759,6 +74284,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueTwoTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -70828,6 +74383,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          BoxHelloTraitTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
       BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -70853,6 +74422,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          NonCloneSimpleTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
   void sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSse(
       NonCloneSimpleTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -70874,6 +74457,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -70907,6 +74506,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          BoxHelloTraitTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
       BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -70927,6 +74540,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
       NonCloneSimpleTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+      NonCloneSimpleTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -70952,6 +74578,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -71371,6 +75013,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+      BoxHelloTraitTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+      BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSse(
       BoxHelloTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -71395,6 +75049,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+      BoxMyTraitTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+      BoxMyTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSseSendSync(
       BoxMyTraitTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -71415,6 +75081,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
       NonCloneSimpleTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+      NonCloneSimpleTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsyncSse(
+      NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -71445,6 +75123,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          StructWithGoodAndOpaqueFieldTwinRustAsync self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
       StructWithGoodAndOpaqueFieldTwinSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -71461,6 +75155,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          OpaqueTwoTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          OpaqueTwoTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
