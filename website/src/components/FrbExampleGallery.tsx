@@ -3,10 +3,10 @@ import React from 'react';
 // noinspection JSUnusedGlobalSymbols
 export default function FrbExampleGallery() {
     return (
-        <>
+        <div style={{position: 'relative'}}>
             <div id="flutter_host" style={{height: '500px', border: '1px solid #ccc'}}></div>
             <FlutterInitializer/>
-        </>
+        </div>
     )
 }
 
@@ -51,7 +51,20 @@ class FlutterInitializer extends React.Component {
     }
 
     render() {
-        return this.state.loading ? <span>Loading</span> : <></>
+        return this.state.loading
+            ? <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'absolute',
+                top: '0px',
+                left: '0px',
+                right: '0px',
+                bottom: '0px',
+            }}>
+                <div>Loading...</div>
+            </div>
+            : <></>
     }
 }
 
