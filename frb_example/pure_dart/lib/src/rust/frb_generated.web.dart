@@ -24,7 +24,6 @@ import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
-import 'api/misc_no_twin_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
@@ -344,10 +343,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithArcFieldPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSsePtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse;
 
@@ -628,11 +623,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  StructWithArcField
-      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          dynamic raw);
-
-  @protected
   String dco_decode_Backtrace(dynamic raw);
 
   @protected
@@ -905,11 +895,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          dynamic raw);
-
-  @protected
-  StructWithArcField
-      dco_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           dynamic raw);
 
   @protected
@@ -4956,11 +4941,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StructWithArcField
-      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          SseDeserializer deserializer);
-
-  @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
 
   @protected
@@ -5194,11 +5174,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          SseDeserializer deserializer);
-
-  @protected
-  StructWithArcField
-      sse_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           SseDeserializer deserializer);
 
   @protected
@@ -17609,11 +17584,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          StructWithArcField raw);
-
-  @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw);
 
@@ -17816,11 +17786,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw);
-
-  @protected
-  PlatformPointer
-      cst_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          StructWithArcField raw);
 
   @protected
   PlatformPointer
@@ -18178,11 +18143,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseSerializer serializer);
 
   @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          StructWithArcField self, SseSerializer serializer);
-
-  @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
 
   @protected
@@ -18478,11 +18438,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
-
-  @protected
-  void
-      sse_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          StructWithArcField self, SseSerializer serializer);
 
   @protected
   void
@@ -23326,9 +23281,6 @@ class RustLibWire extends BaseWire {
   void wire_test_struct_with_enum_twin_normal(
           NativePortType port_, List<dynamic> se) =>
       wasmModule.wire_test_struct_with_enum_twin_normal(port_, se);
-
-  void wire_StructWithArcField_func_async(NativePortType port_, Object that) =>
-      wasmModule.wire_StructWithArcField_func_async(port_, that);
 
   void wire_empty_struct_twin_normal(
           NativePortType port_, List<dynamic> empty) =>
@@ -32616,18 +32568,6 @@ class RustLibWire extends BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
               ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
           dynamic ptr) =>
       wasmModule
@@ -33198,9 +33138,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_struct_with_enum_twin_normal(
       NativePortType port_, List<dynamic> se);
-
-  external void wire_StructWithArcField_func_async(
-      NativePortType port_, Object that);
 
   external void wire_empty_struct_twin_normal(
       NativePortType port_, List<dynamic> empty);
@@ -39300,14 +39237,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           dynamic ptr);
 
   external void
