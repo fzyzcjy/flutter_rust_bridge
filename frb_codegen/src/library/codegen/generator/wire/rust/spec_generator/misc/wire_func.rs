@@ -135,7 +135,7 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
                     ""
                 };
                 Some(format!(
-                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}()?;\n",
+                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}().unwrap();\n",
                     name = field.name.rust_style()
                 ))
             } else {
