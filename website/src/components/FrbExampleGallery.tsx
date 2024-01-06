@@ -62,7 +62,22 @@ class FlutterInitializer extends React.Component {
                 right: '0px',
                 bottom: '0px',
             }}>
-                <div>Loading...</div>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                }}>
+                    <span>Loading...</span>
+                    <div style={{
+                        marginLeft: '8px',
+                        border: '1px solid #f3f3f3',
+                        borderTop: '1px solid #2196f3',
+                        borderRadius: '50%',
+                        width: '12px',
+                        height: '12px',
+                        animation: 'my-simple-spin 1.2s linear infinite',
+                    }}></div>
+                </div>
             </div>
             : <></>
     }
