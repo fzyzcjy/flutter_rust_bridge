@@ -1,5 +1,3 @@
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync", "rustAsyncSse"]}
-
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
 
