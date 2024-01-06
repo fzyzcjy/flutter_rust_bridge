@@ -141,7 +141,7 @@ Future<OpaqueTwoTwinRustAsync> rustAutoOpaqueReturnOpaqueTwoTwinRustAsync(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinRustAsync(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync>>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync>>>
 @sealed
 class BoxFnStringString extends RustOpaque {
   BoxFnStringString.dcoDecode(List<dynamic> wire)
@@ -160,7 +160,7 @@ class BoxFnStringString extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>>
 @sealed
 class BoxHelloTraitTwinRustAsync extends RustOpaque {
   BoxHelloTraitTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -179,7 +179,7 @@ class BoxHelloTraitTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>>
 @sealed
 class BoxMyTraitTwinRustAsync extends RustOpaque {
   BoxMyTraitTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -198,7 +198,7 @@ class BoxMyTraitTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinRustAsync>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>>
 @sealed
 class NonCloneSimpleTwinRustAsync extends RustOpaque {
   NonCloneSimpleTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -288,7 +288,7 @@ class NonCloneSimpleTwinRustAsync extends RustOpaque {
               hint: hint);
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>>
 @sealed
 class StructWithGoodAndOpaqueFieldTwinRustAsync extends RustOpaque {
   StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -308,7 +308,7 @@ class StructWithGoodAndOpaqueFieldTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,)>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,)>>
 @sealed
 class OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync extends RustOpaque {
   OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -328,7 +328,7 @@ class OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync>>
 @sealed
 class OpaqueTwoTwinRustAsync extends RustOpaque {
   OpaqueTwoTwinRustAsync.dcoDecode(List<dynamic> wire)
