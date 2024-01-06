@@ -12,7 +12,7 @@ use std::sync::Arc;
 #[frb(opaque)]
 // Do *NOT* make it Clone or serializable
 pub struct NonCloneSimpleTwinSync {
-    // There is *NO* need to use Arc here. It is merely used to reproduce #1613
+    // Arc: to reproduce #1613
     inner: Arc<i32>,
 }
 
@@ -34,8 +34,8 @@ pub fn rust_auto_opaque_arg_mut_borrow_twin_sync(
     expect: i32,
     adder: i32,
 ) {
-    assert_eq!(*arg.inner, expect);
-    arg.inner = Arc::new(*arg.inner + adder);
+    assert_eq!(arg.inner, expect);
+    *arg.inner += adder;
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -51,19 +51,19 @@ pub fn rust_auto_opaque_return_own_twin_sync(initial: i32) -> NonCloneSimpleTwin
 pub fn rust_auto_opaque_arg_own_and_return_own_twin_sync(
     arg: NonCloneSimpleTwinSync,
 ) -> NonCloneSimpleTwinSync {
-    assert_eq!(*arg.inner, 42);
+    assert_eq!(arg.inner, 42);
     arg
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_two_args_twin_sync(a: NonCloneSimpleTwinSync, b: NonCloneSimpleTwinSync) {
-    assert_eq!(*a.inner, 10);
-    assert_eq!(*b.inner, 20);
+    assert_eq!(a.inner, 10);
+    assert_eq!(b.inner, 20);
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sync(a: NonCloneSimpleTwinSync, b: String) {
-    assert_eq!(*a.inner, 42);
+    assert_eq!(a.inner, 42);
     assert_eq!(b, "hello");
 }
 
@@ -171,17 +171,17 @@ pub fn rust_auto_opaque_trait_object_return_own_two_twin_sync() -> Box<dyn Hello
 impl NonCloneSimpleTwinSync {
     #[flutter_rust_bridge::frb(sync)]
     pub fn static_method_arg_own_twin_sync(arg: NonCloneSimpleTwinSync) {
-        assert_eq!(*arg.inner, 42);
+        assert_eq!(arg.inner, 42);
     }
 
     #[flutter_rust_bridge::frb(sync)]
     pub fn static_method_arg_borrow_twin_sync(arg: &NonCloneSimpleTwinSync) {
-        assert_eq!(*arg.inner, 42);
+        assert_eq!(arg.inner, 42);
     }
 
     #[flutter_rust_bridge::frb(sync)]
     pub fn static_method_arg_mut_borrow_twin_sync(arg: &mut NonCloneSimpleTwinSync) {
-        assert_eq!(*arg.inner, 42);
+        assert_eq!(arg.inner, 42);
     }
 
     #[flutter_rust_bridge::frb(sync)]
@@ -261,7 +261,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
     arg: StructWithGoodAndOpaqueFieldTwinSync,
 ) {
     assert_eq!(&arg.good, "hello");
-    assert_eq!(*arg.opaque.inner, 42);
+    assert_eq!(arg.opaque.inner, 42);
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -269,7 +269,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
     arg: &StructWithGoodAndOpaqueFieldTwinSync,
 ) {
     assert_eq!(&arg.good, "hello");
-    assert_eq!(*arg.opaque.inner, 42);
+    assert_eq!(arg.opaque.inner, 42);
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -277,7 +277,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sy
     arg: &mut StructWithGoodAndOpaqueFieldTwinSync,
 ) {
     assert_eq!(&arg.good, "hello");
-    assert_eq!(*arg.opaque.inner, 42);
+    assert_eq!(arg.opaque.inner, 42);
 }
 
 #[flutter_rust_bridge::frb(sync)]
