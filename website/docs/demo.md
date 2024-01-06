@@ -9,6 +9,8 @@ Rust makes it easy to write multi-thread code, algorithms, data-intensive operat
 * **Logic in Rust, UI in Dart**: 
 When you want a UI framework (Flutter) for your Rust system.
 
+## Introduction
+
 We demonstrate a simple example here.
 In this demo,
 let us draw a [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set)
@@ -31,6 +33,8 @@ that reveals progressively ever-finer recursive detail at increasing magnificati
 Image credit: [Simpsons contributor](https://en.wikipedia.org/wiki/User:Simpsons_contributor)
 
 </details>
+
+## Demo
 
 :::caution
 Expect the demo to be slow to load, ugly on small devices, etc.
