@@ -29,7 +29,9 @@ Future<String> runServer(ServeWebConfig config,
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
         // TODO add back this flag `shouldRelaxCoep` after refactor
-        'Cross-Origin-Embedder-Policy': 'credentialless',
+        // 'Cross-Origin-Embedder-Policy': 'credentialless',
+        // TODO temp
+        'Cross-Origin-Embedder-Policy': 'require-corp',
         // shouldRelaxCoep ? 'credentialless' : 'require-corp',
         // TODO rm
         // // Disable CORS since this server (hosting JS/WASM) is different from
