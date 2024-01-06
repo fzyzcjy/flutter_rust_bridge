@@ -3,6 +3,7 @@ use crate::transfer;
 use futures::channel::oneshot;
 use std::future::Future;
 use std::pin::Pin;
+pub use std::sync::RwLock;
 use std::task::{Context, Poll};
 
 pub trait BaseAsyncRuntime {
