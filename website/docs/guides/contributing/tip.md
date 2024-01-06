@@ -67,3 +67,40 @@ To execute it:
 ./frb_internal bench-flamegraph-compile
 ./frb_internal bench-flamegraph-run --filter 'VoidFunction.*FrbCstSse.*false' --loop-count 10000000
 ```
+
+## Debug in Safari (or other browsers)
+
+Given [this Flutter issue](https://github.com/flutter/flutter/issues/55323),
+it seems that we cannot use things similar to `flutter run -d chrome` for Safari.
+Here is a brief command to achieve similar results.
+
+Note that we need `--profile` to get stack traces.
+
+```shell
+(cd frb_example/flutter_via_create && just codegen build-web && flutter build web --profile)
+(cd frb_utils && dart run flutter_rust_bridge_utils serve-web --web-root ../frb_example/flutter_via_create/build/web)
+```
+
+## Print missing stack traces
+
+This script quickly print out every uncaught exception with stack traces.
+For example, when working on Safari, the stack traces are missing without this.
+
+```dart
+Future<void> main() async {
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details);
+    print('FlutterError.onError $details');
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    print('PlatformDispatcher.instance.onError $error $stack');
+    return true;
+  };
+  await runZonedGuarded(
+    () async {
+      YOUR_ORIGINAL_CODE_HERE;
+    },
+    (error, stackTrace) => print('runZonedGuarded error $error $stackTrace'),
+  );
+}
+```

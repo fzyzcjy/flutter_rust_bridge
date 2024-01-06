@@ -6,7 +6,7 @@ When using Rust (WASM) and Flutter on the web platform,
 the web server needs to respond with the following headers:
 
 - `Cross-Origin-Opener-Policy`: `same-origin`
-- `Cross-Origin-Embedder-Policy`: `credentialless` OR `require-corp`
+- `Cross-Origin-Embedder-Policy`: `credentialless` OR `require-corp` (Safari seems to need `require-corp`)
 
 ## When `flutter run`
 
