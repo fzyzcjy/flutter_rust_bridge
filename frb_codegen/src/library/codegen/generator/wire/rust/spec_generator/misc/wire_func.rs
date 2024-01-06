@@ -242,16 +242,19 @@ fn generate_code_closure(
     code_call_inner_func_result: &str,
 ) -> String {
     let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
-    let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
-        "-> Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>".to_string()
-    } else {
-        "".to_string()
-    };
+
+    // TODO rm
+    // let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
+    //     "-> Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>".to_string()
+    // } else {
+    //     "".to_string()
+    // };
+
     match func.mode {
         IrFuncMode::Sync => {
             format!(
                 "{code_decode}
-                transform_result_{codec}((move || {maybe_result} {{
+                transform_result_{codec}((move || {{
                     {code_inner_decode} {code_call_inner_func_result}
                 }})())"
             )
@@ -261,7 +264,7 @@ fn generate_code_closure(
             let maybe_await = if func.rust_async { ".await" } else { "" };
             format!(
                 "{code_decode} move |context| {maybe_async_move} {{
-                    transform_result_{codec}((move || {maybe_result} {maybe_async_move} {{
+                    transform_result_{codec}((move || {maybe_async_move} {{
                         {code_inner_decode} {code_call_inner_func_result}
                     }})(){maybe_await})
                 }}"
