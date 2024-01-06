@@ -4732,9 +4732,6 @@ void frbgen_frb_example_pure_dart_wire_test_struct_with_enum_twin_normal(int64_t
 void frbgen_frb_example_pure_dart_wire_StructWithArcField_func_async(int64_t port_,
                                                                      const void *that);
 
-void frbgen_frb_example_pure_dart_wire_StructWithArcField_new(int64_t port_,
-                                                              struct wire_cst_list_prim_u_8_strict *s);
-
 void frbgen_frb_example_pure_dart_wire_empty_struct_twin_normal(int64_t port_,
                                                                 struct wire_cst_empty_twin_normal *empty);
 
@@ -11898,7 +11895,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithArcField_func_async);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithArcField_new);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithCommentsTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse);
