@@ -14,11 +14,13 @@ impl<T> RustOpaque<RwLock<T>> {
     }
 
     pub fn rust_auto_opaque_decode_ref(&self) -> Result<RwLockReadGuard<'_, T>> {
-        self.read().map_err(|_| anyhow!("lock is poisioned"))
+        self.blocking_read()
+            .map_err(|_| anyhow!("lock is poisioned"))
     }
 
     pub fn rust_auto_opaque_decode_ref_mut(&self) -> Result<RwLockWriteGuard<'_, T>> {
-        self.write().map_err(|_| anyhow!("lock is poisioned"))
+        self.blocking_write()
+            .map_err(|_| anyhow!("lock is poisioned"))
     }
 }
 
