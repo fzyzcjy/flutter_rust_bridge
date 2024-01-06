@@ -41,9 +41,11 @@ pub(crate) fn script_path() -> Option<String> {
 #[derive(Clone, Copy)]
 pub(crate) struct WebConsoleLogger;
 
+static WEB_CONSOLE_LOGGER: WebConsoleLogger = WebConsoleLogger;
+
 impl WebConsoleLogger {
     pub(crate) fn init() -> Result<(), log::SetLoggerError> {
-        log::set_logger(Self).map(|()| log::set_max_level(LevelFilter::Trace))
+        log::set_logger(&WEB_CONSOLE_LOGGER).map(|()| log::set_max_level(log::LevelFilter::Trace))
     }
 }
 
@@ -54,7 +56,7 @@ impl log::Log for WebConsoleLogger {
 
     fn log(&self, record: &Record) {
         if self.enabled(record.metadata()) {
-            js_console_log!(&format!("{} - {}", record.level(), record.args()));
+            js_console_log(&format!("{} - {}", record.level(), record.args()));
         }
     }
 
