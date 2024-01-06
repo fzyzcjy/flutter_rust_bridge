@@ -1,5 +1,5 @@
 use crate::RustOpaque;
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result};
 use tokio::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 
 impl<T> RustOpaque<RwLock<T>> {
