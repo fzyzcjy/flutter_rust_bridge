@@ -30,5 +30,8 @@ fn setup_log_to_console() {
         .level_filter(log::LevelFilter::Trace)
         .init();
 
-    // TODO add more platforms, e.g. web, ...
+    #[cfg(wasm)]
+    let _ = crate::misc::web_utils::WebConsoleLogger::init();
+
+    // TODO add more platforms
 }
