@@ -4,7 +4,6 @@
 // Section: imports
 
 use super::*;
-use crate::api::polars::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -16,34 +15,6 @@ impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error>
 {
     fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>>>
-    for *const std::ffi::c_void
-{
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<DataFrame>> {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>>>
-    for *const std::ffi::c_void
-{
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Expr>> {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>>>
-    for *const std::ffi::c_void
-{
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyFrame>> {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>>>
-    for *const std::ffi::c_void
-{
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<LazyGroupBy>> {
-        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
 }
 impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
@@ -62,15 +33,6 @@ impl CstDecode<crate::api::mandelbrot::Size> for *mut wire_cst_size {
     fn cst_decode(self) -> crate::api::mandelbrot::Size {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::mandelbrot::Size>::cst_decode(*wrap).into()
-    }
-}
-impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
-    fn cst_decode(self) -> Vec<String> {
-        let vec = unsafe {
-            let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
-            flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
 impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
@@ -162,183 +124,6 @@ pub extern "C" fn frbgen_frb_example_gallery_wire_draw_mandelbrot(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_DataFrame_get_column(
-    port_: i64,
-    that: *const std::ffi::c_void,
-    name: *mut wire_cst_list_prim_u_8_strict,
-) {
-    wire_DataFrame_get_column_impl(port_, that, name)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_DataFrame_get_column_names(
-    that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_DataFrame_get_column_names_impl(that)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_DataFrame_lazy(
-    that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_DataFrame_lazy_impl(that)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_Expr_gt(
-    that: *const std::ffi::c_void,
-    other: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_Expr_gt_impl(that, other)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_Expr_sum(
-    that: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_Expr_sum_impl(that)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_LazyFrame_collect(
-    port_: i64,
-    that: *const std::ffi::c_void,
-) {
-    wire_LazyFrame_collect_impl(port_, that)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_LazyFrame_filter(
-    that: *const std::ffi::c_void,
-    predicate: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_LazyFrame_filter_impl(that, predicate)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_LazyFrame_group_by(
-    that: *const std::ffi::c_void,
-    expr: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_LazyFrame_group_by_impl(that, expr)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_LazyGroupBy_agg(
-    that: *const std::ffi::c_void,
-    expr: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_LazyGroupBy_agg_impl(that, expr)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_col(
-    name: *mut wire_cst_list_prim_u_8_strict,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_col_impl(name)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_lit(
-    t: f64,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_lit_impl(t)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_wire_read_sample_dataset(port_: i64) {
-    wire_read_sample_dataset_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockDataFrame(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<DataFrame>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockDataFrame(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<DataFrame>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockExpr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<Expr>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockExpr(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<Expr>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<LazyFrame>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyFrame(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<LazyFrame>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<LazyGroupBy>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockLazyGroupBy(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<LazyGroupBy>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_gallery_cst_new_box_autoadd_point() -> *mut wire_cst_point {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_point::new_with_null_ptr())
 }
@@ -346,20 +131,6 @@ pub extern "C" fn frbgen_frb_example_gallery_cst_new_box_autoadd_point() -> *mut
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_gallery_cst_new_box_autoadd_size() -> *mut wire_cst_size {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_size::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_gallery_cst_new_list_String(
-    len: i32,
-) -> *mut wire_cst_list_String {
-    let wrap = wire_cst_list_String {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <*mut wire_cst_list_prim_u_8_strict>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
@@ -373,12 +144,6 @@ pub extern "C" fn frbgen_frb_example_gallery_cst_new_list_prim_u_8_strict(
     flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)
 }
 
-#[repr(C)]
-#[derive(Clone, Copy)]
-pub struct wire_cst_list_String {
-    ptr: *mut *mut wire_cst_list_prim_u_8_strict,
-    len: i32,
-}
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_prim_u_8_strict {

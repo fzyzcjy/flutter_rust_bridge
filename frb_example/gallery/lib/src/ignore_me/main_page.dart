@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
-import 'package:frb_example_gallery/src/examples/polars.dart';
 import 'package:frb_example_gallery/src/ignore_me/example_page.dart';
 
 class MainPageWidget extends StatelessWidget {
@@ -103,15 +102,5 @@ const _kPages = [
       color: Colors.green,
     ),
     body: MandelbrotPageBody(),
-  ),
-  ExamplePage(
-    name: 'polars',
-    title: 'Polars',
-    subtitle: 'Example: Use well-developed Rust libraries in Dart',
-    icon: Icon(
-      Icons.subject_outlined,
-      color: Colors.blue,
-    ),
-    body: PolarsPageBody(),
   ),
 ];
