@@ -52,7 +52,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     // TODO when all usages of a type do not require `&mut`, can drop this Mutex
                     // TODO similarly, can use std instead of `tokio`'s lock
                     string: format!(
-                        "flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<{}>",
+                        "flutter_rust_bridge::for_generated::rust_async::RwLock<{}>",
                         inner.rust_api_type()
                     ),
                     segments: vec![],

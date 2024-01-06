@@ -24,6 +24,7 @@ pub use crate::platform_types::{
 };
 pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust2dart::stream_sink::StreamSinkBase;
+pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 pub use crate::rust_opaque::dart2rust::{cst_decode_rust_opaque, sse_decode_rust_opaque};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
@@ -40,7 +41,5 @@ pub use js_sys;
 pub use lazy_static::lazy_static;
 pub use misc::*;
 pub use pointer::*;
-// TODO web
-pub use tokio as generalized_tokio;
 #[cfg(wasm)]
 pub use wasm_bindgen;

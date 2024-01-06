@@ -279,11 +279,11 @@ mod tests {
         assert_eq!(&rust_type_to_dart_type("SomeType", true), "SomeType");
         assert_eq!(
             &rust_type_to_dart_type(
-                "flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<crate::api::simple::AnotherOpaqueType>",
+                "flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::simple::AnotherOpaqueType>",
                 true
             ),
             "AnotherOpaqueType"
         );
-        assert_eq!(&rust_type_to_dart_type("flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<(crate::api::simple::MyOpaqueType,crate::api::simple::AnotherOpaqueType,)>", true), "MyOpaqueTypeAnotherOpaqueType");
+        assert_eq!(&rust_type_to_dart_type("flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::simple::MyOpaqueType,crate::api::simple::AnotherOpaqueType,)>", true), "MyOpaqueTypeAnotherOpaqueType");
     }
 }

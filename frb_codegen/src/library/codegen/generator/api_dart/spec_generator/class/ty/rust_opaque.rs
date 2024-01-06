@@ -57,10 +57,8 @@ fn compute_api_method_query_name(
     _context: ApiDartGeneratorContext,
 ) -> String {
     lazy_static! {
-        static ref FILTER: Regex = Regex::new(
-            r"^flutter_rust_bridge::for_generated::generalized_tokio::sync::RwLock<(.*)>$"
-        )
-        .unwrap();
+        static ref FILTER: Regex =
+            Regex::new(r"^flutter_rust_bridge::for_generated::rust_async::RwLock<(.*)>$").unwrap();
     }
 
     let inner_dart_api_type: String = ir.inner.rust_api_type();
