@@ -5090,15 +5090,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructWithArcField;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructWithArcField;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithArcFieldPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcDecrementStrongCountFnType
@@ -5133,6 +5124,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithArcField;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithArcField;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithArcFieldPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse;
@@ -9257,7 +9257,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
-            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
                 that);
         return wire.wire_StructWithArcField_func_async(port_, arg0);
       },
@@ -9288,7 +9288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: DcoCodec(
         decodeSuccessData:
-            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField,
+            dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField,
         decodeErrorData: null,
       ),
       constMeta: kStructWithArcFieldNewConstMeta,
@@ -48632,14 +48632,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructWithArcField => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithArcField;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructWithArcField => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcField;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
           wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
 
@@ -48670,6 +48662,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithArcField => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithArcField => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse => wire
@@ -48832,13 +48832,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithArcField
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-          dynamic raw) {
-    return StructWithArcField.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
@@ -48866,6 +48859,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithArcField
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          dynamic raw) {
+    return StructWithArcField.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -49069,13 +49069,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithArcField
-      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-          dynamic raw) {
-    return StructWithArcField.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
@@ -49103,6 +49096,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithArcField
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          dynamic raw) {
+    return StructWithArcField.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -49522,12 +49522,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithArcField dco_decode_RustOpaque_stdsyncRwLockStructWithArcField(
-      dynamic raw) {
-    return StructWithArcField.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
@@ -49555,6 +49549,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithArcField
+      dco_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          dynamic raw) {
+    return StructWithArcField.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -59270,14 +59271,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithArcField
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-          SseDeserializer deserializer) {
-    return StructWithArcField.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
@@ -59306,6 +59299,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithArcField
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          SseDeserializer deserializer) {
+    return StructWithArcField.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59534,14 +59535,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithArcField
-      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-          SseDeserializer deserializer) {
-    return StructWithArcField.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
@@ -59570,6 +59563,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithArcField
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          SseDeserializer deserializer) {
+    return StructWithArcField.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -59956,13 +59957,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithArcField sse_decode_RustOpaque_stdsyncRwLockStructWithArcField(
-      SseDeserializer deserializer) {
-    return StructWithArcField.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
@@ -59991,6 +59985,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithArcField
+      sse_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          SseDeserializer deserializer) {
+    return StructWithArcField.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -69935,14 +69937,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-          StructWithArcField raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode(move: true);
-  }
-
-  @protected
-  PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
@@ -69969,6 +69963,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -70199,14 +70201,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-          StructWithArcField raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode(move: false);
-  }
-
-  @protected
-  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
@@ -70233,6 +70227,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -70550,13 +70552,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode();
-  }
-
-  @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw) {
@@ -70584,6 +70579,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -70875,12 +70878,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: true), serializer);
-  }
-
-  @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
@@ -70907,6 +70904,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -71097,12 +71101,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: false), serializer);
-  }
-
-  @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
@@ -71129,6 +71127,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -71591,12 +71596,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
-
-  @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
@@ -71621,6 +71620,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 

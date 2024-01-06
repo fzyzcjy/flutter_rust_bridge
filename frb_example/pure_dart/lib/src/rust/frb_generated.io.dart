@@ -329,10 +329,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSsePtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithArcFieldPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcFieldPtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
 
@@ -347,6 +343,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSsePtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithArcFieldPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcFieldPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSsePtr =>
@@ -449,11 +449,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  StructWithArcField
-      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-          dynamic raw);
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw);
@@ -471,6 +466,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithArcField
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           dynamic raw);
 
   @protected
@@ -614,11 +614,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  StructWithArcField
-      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-          dynamic raw);
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw);
@@ -636,6 +631,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithArcField
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           dynamic raw);
 
   @protected
@@ -894,10 +894,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncSse(dynamic raw);
 
   @protected
-  StructWithArcField dco_decode_RustOpaque_stdsyncRwLockStructWithArcField(
-      dynamic raw);
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw);
@@ -915,6 +911,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithArcField
+      dco_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           dynamic raw);
 
   @protected
@@ -4781,11 +4782,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StructWithArcField
-      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-          SseDeserializer deserializer);
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer);
@@ -4803,6 +4799,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithArcField
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           SseDeserializer deserializer);
 
   @protected
@@ -4946,11 +4947,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StructWithArcField
-      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-          SseDeserializer deserializer);
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer);
@@ -4968,6 +4964,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithArcField
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           SseDeserializer deserializer);
 
   @protected
@@ -5187,10 +5188,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  StructWithArcField sse_decode_RustOpaque_stdsyncRwLockStructWithArcField(
-      SseDeserializer deserializer);
-
-  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer);
@@ -5208,6 +5205,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithArcField
+      sse_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           SseDeserializer deserializer);
 
   @protected
@@ -22120,11 +22122,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-          StructWithArcField raw);
-
-  @protected
-  PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw);
 
@@ -22142,6 +22139,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw);
 
   @protected
   PlatformPointer
@@ -22285,11 +22287,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-          StructWithArcField raw);
-
-  @protected
-  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw);
 
@@ -22307,6 +22304,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw);
 
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
@@ -22493,10 +22495,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinSyncSse raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField raw);
-
-  @protected
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw);
@@ -22515,6 +22513,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw);
 
   @protected
   PlatformPointer
@@ -22698,10 +22701,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField self, SseSerializer serializer);
-
-  @protected
   void
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
@@ -22722,6 +22721,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer);
 
   @protected
   void
@@ -22854,10 +22858,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField self, SseSerializer serializer);
-
-  @protected
   void
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
@@ -22878,6 +22878,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer);
 
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
@@ -23157,10 +23162,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
-  void sse_encode_RustOpaque_stdsyncRwLockStructWithArcField(
-      StructWithArcField self, SseSerializer serializer);
-
-  @protected
   void
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
@@ -23179,6 +23180,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer);
 
   @protected
   void
@@ -60233,38 +60239,6 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithArcField(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithArcField(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithArcFieldPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithArcField');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithArcField =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithArcFieldPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcField(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcField(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcFieldPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcField');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcField =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithArcFieldPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
       rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -60390,6 +60364,38 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSsePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcFieldPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcFieldPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcFieldPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcFieldPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void

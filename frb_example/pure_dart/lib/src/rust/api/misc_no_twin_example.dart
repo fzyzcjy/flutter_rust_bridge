@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithArcField>>
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>>
 @sealed
 class StructWithArcField extends RustOpaque {
   StructWithArcField.dcoDecode(List<dynamic> wire)
@@ -23,13 +23,4 @@ class StructWithArcField extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_StructWithArcFieldPtr,
   );
-
-  Future<int> funcAsync({dynamic hint}) =>
-      RustLib.instance.api.structWithArcFieldFuncAsync(
-        that: this,
-      );
-
-  static Future<StructWithArcField> newStructWithArcField(
-          {required String s, dynamic hint}) =>
-      RustLib.instance.api.structWithArcFieldNew(s: s, hint: hint);
 }
