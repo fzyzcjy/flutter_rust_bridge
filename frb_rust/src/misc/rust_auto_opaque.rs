@@ -7,17 +7,17 @@ impl<T> RustOpaque<RwLock<T>> {
     // frb-coverage:ignore-start
     pub fn rust_auto_opaque_decode_sync_owned(self) -> T {
         // frb-coverage:ignore-end
-        Ok(self.into_inner()
+        self.into_inner()
             .context("Cannot convert RustOpaque to inner value. This is probably because you are having more than one references to it.")?
-            .into_inner())
+            .into_inner()
     }
 
     pub fn rust_auto_opaque_decode_sync_ref(&self) -> RwLockReadGuard<'_, T> {
-        Ok(self.blocking_read())
+        self.blocking_read()
     }
 
     pub fn rust_auto_opaque_decode_sync_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        Ok(self.blocking_write())
+        self.blocking_write()
     }
 
     pub async fn rust_auto_opaque_decode_async_owned(self) -> T {
@@ -25,11 +25,11 @@ impl<T> RustOpaque<RwLock<T>> {
     }
 
     pub async fn rust_auto_opaque_decode_async_ref(&self) -> RwLockReadGuard<'_, T> {
-        Ok(self.read().await)
+        self.read().await
     }
 
     pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        Ok(self.write().await)
+        self.write().await
     }
 }
 
