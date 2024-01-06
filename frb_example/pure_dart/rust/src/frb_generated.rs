@@ -3236,11 +3236,7 @@ fn wire_test_struct_with_enum_twin_normal_impl(
 }
 fn wire_StructWithArcField_func_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>,
-        >,
-    >,
+    that: impl CstDecode<flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithArcField>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -25993,6 +25989,13 @@ impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSim
     }
 }
 
+impl SseDecode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithArcField>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) };
+    }
+}
+
 impl SseDecode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
 {
@@ -26022,17 +26025,6 @@ impl SseDecode
 
 impl SseDecode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSyncSse>>
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) };
-    }
-}
-
-impl SseDecode
-    for flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>,
-    >
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
@@ -46576,6 +46568,14 @@ impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSim
     }
 }
 
+impl SseEncode for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithArcField>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
 impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
 {
@@ -46608,18 +46608,6 @@ impl SseEncode
 
 impl SseEncode
     for flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSyncSse>>
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>,
-    >
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
