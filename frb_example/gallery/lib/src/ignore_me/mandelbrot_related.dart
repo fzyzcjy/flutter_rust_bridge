@@ -146,7 +146,7 @@ class MandelbrotPageUI extends StatelessWidget {
                     value: size,
                     onChanged: setSize,
                     min: 100,
-                    max: 1000,
+                    max: 400,
                   ),
                   const SizedBox(height: 32),
                   Row(
