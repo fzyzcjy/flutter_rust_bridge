@@ -171,14 +171,19 @@ class MandelbrotPageUI extends StatelessWidget {
                     ? AnimatedReplaceableImage(
                         image: MemoryImage(image!),
                       )
-                    : Container(
+                    : Material(
                         color: Colors.grey.shade100,
-                        padding: const EdgeInsets.all(16),
-                        child: const Center(
-                          child: Text(
-                            'Use buttons on the left to start animation',
-                            style: TextStyle(color: Colors.grey),
-                            textAlign: TextAlign.center,
+                        child: InkWell(
+                          onTap: start,
+                          child: const Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Center(
+                              child: Text(
+                                'Tap to start',
+                                style: TextStyle(color: Colors.grey),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                           ),
                         ),
                       ),
