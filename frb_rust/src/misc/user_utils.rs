@@ -6,9 +6,6 @@ pub fn setup_default_user_utils() {
     // setup log before others, such that we can see logs in other setup functions
     setup_log_to_console();
     setup_backtrace();
-
-    log::debug!("hi debug");
-    log::info!("hi info");
 }
 
 fn setup_backtrace() {
