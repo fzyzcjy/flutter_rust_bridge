@@ -8,7 +8,7 @@ use std::sync::Arc;
 #[frb(opaque)]
 // Do *NOT* make it Clone or serializable
 pub struct NonCloneSimpleTwinNormal {
-    // Arc: to reproduce #1613
+    // There is *NO* need to use Arc here. It is merely used to reproduce #1613
     inner: Arc<i32>,
 }
 
@@ -27,8 +27,8 @@ pub fn rust_auto_opaque_arg_mut_borrow_twin_normal(
     expect: i32,
     adder: i32,
 ) {
-    assert_eq!(arg.inner, expect);
-    *arg.inner += adder;
+    assert_eq!(*arg.inner, expect);
+    arg.inner = Arc::new(*arg.inner + adder);
 }
 
 pub fn rust_auto_opaque_return_own_twin_normal(initial: i32) -> NonCloneSimpleTwinNormal {
@@ -42,7 +42,7 @@ pub fn rust_auto_opaque_return_own_twin_normal(initial: i32) -> NonCloneSimpleTw
 pub fn rust_auto_opaque_arg_own_and_return_own_twin_normal(
     arg: NonCloneSimpleTwinNormal,
 ) -> NonCloneSimpleTwinNormal {
-    assert_eq!(arg.inner, 42);
+    assert_eq!(*arg.inner, 42);
     arg
 }
 
@@ -50,12 +50,12 @@ pub fn rust_auto_opaque_two_args_twin_normal(
     a: NonCloneSimpleTwinNormal,
     b: NonCloneSimpleTwinNormal,
 ) {
-    assert_eq!(a.inner, 10);
-    assert_eq!(b.inner, 20);
+    assert_eq!(*a.inner, 10);
+    assert_eq!(*b.inner, 20);
 }
 
 pub fn rust_auto_opaque_normal_and_opaque_arg_twin_normal(a: NonCloneSimpleTwinNormal, b: String) {
-    assert_eq!(a.inner, 42);
+    assert_eq!(*a.inner, 42);
     assert_eq!(b, "hello");
 }
 
@@ -154,15 +154,15 @@ pub fn rust_auto_opaque_trait_object_return_own_two_twin_normal() -> Box<dyn Hel
 
 impl NonCloneSimpleTwinNormal {
     pub fn static_method_arg_own_twin_normal(arg: NonCloneSimpleTwinNormal) {
-        assert_eq!(arg.inner, 42);
+        assert_eq!(*arg.inner, 42);
     }
 
     pub fn static_method_arg_borrow_twin_normal(arg: &NonCloneSimpleTwinNormal) {
-        assert_eq!(arg.inner, 42);
+        assert_eq!(*arg.inner, 42);
     }
 
     pub fn static_method_arg_mut_borrow_twin_normal(arg: &mut NonCloneSimpleTwinNormal) {
-        assert_eq!(arg.inner, 42);
+        assert_eq!(*arg.inner, 42);
     }
 
     pub fn static_method_return_own_twin_normal() -> NonCloneSimpleTwinNormal {
@@ -232,21 +232,21 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
     arg: StructWithGoodAndOpaqueFieldTwinNormal,
 ) {
     assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
+    assert_eq!(*arg.opaque.inner, 42);
 }
 
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
     arg: &StructWithGoodAndOpaqueFieldTwinNormal,
 ) {
     assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
+    assert_eq!(*arg.opaque.inner, 42);
 }
 
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
     arg: &mut StructWithGoodAndOpaqueFieldTwinNormal,
 ) {
     assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
+    assert_eq!(*arg.opaque.inner, 42);
 }
 
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
