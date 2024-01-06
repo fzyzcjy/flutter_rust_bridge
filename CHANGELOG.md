@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0-dev.13
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Let rust-auto-opaque support rust async #1617
+* Let setup_default_user_utils setup logging in web #1616
+* Fix compile error when the user crate does not have anyhow as direct dependency #1603
+* Add test when parsing non-existing attribute name #1602
+
 ## 2.0.0-dev.12
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

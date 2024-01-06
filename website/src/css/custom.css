@@ -35,3 +35,22 @@
 .my-hide-nav nav {
     display: none;
 }
+
+.my-simple-spin {
+    margin-left: 8px;
+    border: 1px solid #f3f3f3;
+    border-top: 1px solid #2196f3;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    animation: my-simple-spin-keyframes 1.2s linear infinite;
+}
+
+@keyframes my-simple-spin-keyframes {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

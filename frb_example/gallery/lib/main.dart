@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frb_example_gallery/src/ignore_me/main_page.dart';
+import 'package:frb_example_gallery/src/examples/mandelbrot.dart';
 import 'package:frb_example_gallery/src/rust/frb_generated.dart';
 
 Future<void> main() async {
@@ -12,6 +12,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MainPageWidget();
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: const ColorScheme.light(
+          background: Colors.white,
+          primary: Colors.blue,
+        ),
+      ),
+      home: const Scaffold(
+        body: MandelbrotPageBody(),
+      ),
+    );
   }
 }

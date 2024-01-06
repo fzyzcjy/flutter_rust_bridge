@@ -1,5 +1,4 @@
-import 'dart:typed_data';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frb_example_gallery/src/rust/api/mandelbrot.dart';
 
@@ -114,78 +113,85 @@ class MandelbrotPageUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 64),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _buildSlider(
-                    label: 'Num threads',
-                    value: numThreads.toDouble(),
-                    onChanged: (newValue) => setNumThreads(newValue.round()),
-                    min: 1,
-                    max: 4,
-                    divisions: 3,
-                  ),
-                  _buildSlider(
-                    label: 'Image size',
-                    value: size,
-                    onChanged: setSize,
-                    min: 100,
-                    max: 1000,
-                  ),
-                  const SizedBox(height: 32),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextButton(onPressed: start, child: const Text('Start')),
-                      const SizedBox(width: 32),
-                      TextButton(onPressed: stop, child: const Text('Stop')),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Align(
-            alignment: Alignment.centerLeft,
+    return Center(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 64),
             child: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                if (computeTime != null)
-                  Text('Time: ${computeTime!.inMilliseconds}ms'),
-                const SizedBox(height: 8),
-                SizedBox.square(
-                  dimension: size,
-                  child: image != null
-                      ? AnimatedReplaceableImage(
-                          image: MemoryImage(image!),
-                        )
-                      : Container(
-                          color: Colors.grey.shade100,
-                          padding: const EdgeInsets.all(16),
-                          child: const Center(
-                            child: Text(
-                              'Use buttons on the left to start animation',
-                              style: TextStyle(color: Colors.grey),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
+                if (kDebugMode)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      '(NOTE: Please use release build for fast Rust)',
+                      style: TextStyle(
+                          color: Colors.orange.shade700, fontSize: 11),
+                    ),
+                  ),
+                _buildSlider(
+                  label: 'Num threads',
+                  value: numThreads.toDouble(),
+                  onChanged: (newValue) => setNumThreads(newValue.round()),
+                  min: 1,
+                  max: 4,
+                  divisions: 3,
+                ),
+                _buildSlider(
+                  label: 'Image size',
+                  value: size,
+                  onChanged: setSize,
+                  min: 100,
+                  max: 400,
+                ),
+                const SizedBox(height: 32),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextButton(onPressed: start, child: const Text('Start')),
+                    const SizedBox(width: 32),
+                    TextButton(onPressed: stop, child: const Text('Stop')),
+                  ],
                 ),
               ],
             ),
           ),
-        ),
-      ],
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (computeTime != null)
+                Text('Time: ${computeTime!.inMilliseconds}ms'),
+              const SizedBox(height: 8),
+              SizedBox.square(
+                dimension: size,
+                child: image != null
+                    ? AnimatedReplaceableImage(
+                        image: MemoryImage(image!),
+                      )
+                    : Material(
+                        color: Colors.grey.shade100,
+                        child: InkWell(
+                          onTap: start,
+                          child: const Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Center(
+                              child: Text(
+                                'Tap to start',
+                                style: TextStyle(color: Colors.grey),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 

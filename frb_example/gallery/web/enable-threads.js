@@ -37,7 +37,8 @@ if(typeof window === 'undefined') {
         }
 
         const headers = new Headers(r.headers);
-        headers.set("Cross-Origin-Embedder-Policy", "credentialless"); // or: require-corp
+        // NOTE https://github.com/fzyzcjy/flutter_rust_bridge/issues/1618 changes to require-corp
+        headers.set("Cross-Origin-Embedder-Policy", "require-corp"); // credentialless or require-corp
         headers.set("Cross-Origin-Opener-Policy", "same-origin");
 
         return new Response(r.body, { status: r.status, statusText: r.statusText, headers });

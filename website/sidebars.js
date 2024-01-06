@@ -275,6 +275,7 @@ const sidebars = {
                                 'guides/contributing/submodules/sse-codec',
                                 'guides/contributing/submodules/rust-opaque',
                                 'guides/contributing/submodules/dart-opaque',
+                                'guides/contributing/submodules/manual-test',
                             ],
                         },
                     ],
