@@ -1,3 +1,4 @@
+use log::{Level, Metadata, Record};
 use wasm_bindgen::prelude::*;
 
 #[macro_export]
@@ -12,6 +13,9 @@ macro_rules! console_error {
 
 #[wasm_bindgen]
 extern "C" {
+    #[wasm_bindgen(js_namespace = console, js_name = "log")]
+    pub fn js_console_log(msg: &str);
+
     #[wasm_bindgen(js_namespace = console, js_name = "error")]
     pub fn js_console_error(msg: &str);
 }
@@ -32,4 +36,20 @@ pub(crate) fn script_path() -> Option<String> {
     )
     .ok()?
     .as_string()
+}
+
+struct WebConsoleLogger;
+
+impl log::Log for WebConsoleLogger {
+    fn enabled(&self, metadata: &Metadata) -> bool {
+        true
+    }
+
+    fn log(&self, record: &Record) {
+        if self.enabled(record.metadata()) {
+            js_console_log!(&format!("{} - {}", record.level(), record.args()));
+        }
+    }
+
+    fn flush(&self) {}
 }
