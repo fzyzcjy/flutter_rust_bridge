@@ -4729,6 +4729,9 @@ void frbgen_frb_example_pure_dart_wire_test_abc_enum_twin_normal(int64_t port_,
 void frbgen_frb_example_pure_dart_wire_test_struct_with_enum_twin_normal(int64_t port_,
                                                                          struct wire_cst_struct_with_enum_twin_normal *se);
 
+void frbgen_frb_example_pure_dart_wire_StructWithArcField_func_async(int64_t port_,
+                                                                     const void *that);
+
 void frbgen_frb_example_pure_dart_wire_empty_struct_twin_normal(int64_t port_,
                                                                 struct wire_cst_empty_twin_normal *empty);
 
@@ -10187,6 +10190,10 @@ void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_std
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(const void *ptr);
 
+void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(const void *ptr);
+
+void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(const void *ptr);
+
 void frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(const void *ptr);
 
 void frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(const void *ptr);
@@ -11678,6 +11685,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync);
@@ -11717,6 +11725,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync);
@@ -11885,6 +11894,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithArcField_func_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithCommentsTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_StructWithCommentsTwinRustAsyncSse_instance_method_twin_rust_async_sse);

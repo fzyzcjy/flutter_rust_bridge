@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::misc_no_twin_example::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sse::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::*;
@@ -10030,6 +10031,21 @@ impl
 impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<
             std::sync::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
@@ -12505,6 +12521,14 @@ pub fn wire_test_struct_with_enum_twin_normal(
     se: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_test_struct_with_enum_twin_normal_impl(port_, se)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructWithArcField_func_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructWithArcField_func_async_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -26274,6 +26298,28 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAnd
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSyncSse>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<crate::api::misc_no_twin_example::StructWithArcField>,
         >(ptr);
     }
 }

@@ -24,6 +24,7 @@ import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
+import 'api/misc_no_twin_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
@@ -723,6 +724,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
       {required StructWithEnumTwinNormal se, dynamic hint});
+
+  Future<int> structWithArcFieldFuncAsync(
+      {required StructWithArcField that, dynamic hint});
 
   Future<EmptyTwinNormal> emptyStructTwinNormal(
       {required EmptyTwinNormal empty, dynamic hint});
@@ -5119,6 +5123,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithArcField;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithArcField;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithArcFieldPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse;
 
   RustArcDecrementStrongCountFnType
@@ -9233,6 +9246,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "test_struct_with_enum_twin_normal",
         argNames: ["se"],
+      );
+
+  @override
+  Future<int> structWithArcFieldFuncAsync(
+      {required StructWithArcField that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+                that);
+        return wire.wire_StructWithArcField_func_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kStructWithArcFieldFuncAsyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructWithArcFieldFuncAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructWithArcField_func_async",
+        argNames: ["that"],
       );
 
   @override
@@ -48596,6 +48636,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithArcField => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithArcField => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse;
 
@@ -49013,6 +49061,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithArcField
+      dco_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          dynamic raw) {
+    return StructWithArcField.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -49459,6 +49514,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithArcField
+      dco_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          dynamic raw) {
+    return StructWithArcField.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -59462,6 +59524,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithArcField
+      sse_decode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          SseDeserializer deserializer) {
+    return StructWithArcField.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   String sse_decode_Backtrace(SseDeserializer deserializer) {
     var inner = sse_decode_String(deserializer);
     return inner;
@@ -59872,6 +59942,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithArcField
+      sse_decode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          SseDeserializer deserializer) {
+    return StructWithArcField.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -70103,6 +70181,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw) {
     return cst_encode_DartOpaque(
@@ -70442,6 +70528,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -70979,6 +71073,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer) {
     throw UnimplementedError(
         'not yet supported in serialized mode, feel free to create an issue');
@@ -71461,6 +71562,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
