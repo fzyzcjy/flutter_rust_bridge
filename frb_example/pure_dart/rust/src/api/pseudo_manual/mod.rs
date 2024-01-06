@@ -124,6 +124,8 @@ pub mod raw_string_twin_rust_async_sse;
 pub mod raw_string_twin_sse;
 pub mod raw_string_twin_sync;
 pub mod raw_string_twin_sync_sse;
+pub mod rust_auto_opaque_twin_rust_async;
+pub mod rust_auto_opaque_twin_rust_async_sse;
 pub mod rust_auto_opaque_twin_sse;
 pub mod rust_auto_opaque_twin_sync;
 pub mod rust_auto_opaque_twin_sync_sse;

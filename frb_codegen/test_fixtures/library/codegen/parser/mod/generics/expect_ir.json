@@ -114,16 +114,16 @@
                   "data": {
                     "namespace": null,
                     "segments": [],
-                    "string": "std::sync::RwLock<crate::api::MyGenericEnum>"
+                    "string": "flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::MyGenericEnum>"
                   },
-                  "safe_ident": "stdsyncRwLockcrateapiMyGenericEnum",
+                  "safe_ident": "flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericEnum",
                   "type": "Unencodable"
                 },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned"
             },
-            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericEnum",
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericEnum",
             "type": "RustAutoOpaque"
           }
         }
@@ -164,16 +164,16 @@
                   "data": {
                     "namespace": null,
                     "segments": [],
-                    "string": "std::sync::RwLock<crate::api::MyGenericEnum>"
+                    "string": "flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::MyGenericEnum>"
                   },
-                  "safe_ident": "stdsyncRwLockcrateapiMyGenericEnum",
+                  "safe_ident": "flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericEnum",
                   "type": "Unencodable"
                 },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned"
             },
-            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericEnum",
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericEnum",
             "type": "RustAutoOpaque"
           }
         }
@@ -214,16 +214,16 @@
                   "data": {
                     "namespace": null,
                     "segments": [],
-                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                    "string": "flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::MyGenericStruct>"
                   },
-                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "safe_ident": "flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericStruct",
                   "type": "Unencodable"
                 },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned"
             },
-            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericStruct",
             "type": "RustAutoOpaque"
           }
         }
@@ -264,16 +264,16 @@
                   "data": {
                     "namespace": null,
                     "segments": [],
-                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                    "string": "flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::MyGenericStruct>"
                   },
-                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "safe_ident": "flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericStruct",
                   "type": "Unencodable"
                 },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned"
             },
-            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericStruct",
             "type": "RustAutoOpaque"
           }
         }
@@ -314,16 +314,16 @@
                   "data": {
                     "namespace": null,
                     "segments": [],
-                    "string": "std::sync::RwLock<crate::api::MyGenericStruct>"
+                    "string": "flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::MyGenericStruct>"
                   },
-                  "safe_ident": "stdsyncRwLockcrateapiMyGenericStruct",
+                  "safe_ident": "flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericStruct",
                   "type": "Unencodable"
                 },
                 "namespace": "crate::api"
               },
               "ownership_mode": "Owned"
             },
-            "safe_ident": "Auto_Owned_RustOpaque_stdsyncRwLockcrateapiMyGenericStruct",
+            "safe_ident": "Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapiMyGenericStruct",
             "type": "RustAutoOpaque"
           }
         }
