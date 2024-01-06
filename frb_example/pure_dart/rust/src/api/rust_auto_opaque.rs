@@ -2,24 +2,22 @@
 
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
-use std::sync::Arc;
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
 // Do *NOT* make it Clone or serializable
 pub struct NonCloneSimpleTwinNormal {
-    // Arc: to reproduce #1613
-    inner: Arc<i32>,
+    inner: i32,
 }
 
 // ==================================== simple =======================================
 
 pub fn rust_auto_opaque_arg_own_twin_normal(arg: NonCloneSimpleTwinNormal, expect: i32) {
-    assert_eq!(*arg.inner, expect);
+    assert_eq!(arg.inner, expect);
 }
 
 pub fn rust_auto_opaque_arg_borrow_twin_normal(arg: &NonCloneSimpleTwinNormal, expect: i32) {
-    assert_eq!(*arg.inner, expect);
+    assert_eq!(arg.inner, expect);
 }
 
 pub fn rust_auto_opaque_arg_mut_borrow_twin_normal(
@@ -28,13 +26,11 @@ pub fn rust_auto_opaque_arg_mut_borrow_twin_normal(
     adder: i32,
 ) {
     assert_eq!(arg.inner, expect);
-    *arg.inner += adder;
+    arg.inner += adder;
 }
 
 pub fn rust_auto_opaque_return_own_twin_normal(initial: i32) -> NonCloneSimpleTwinNormal {
-    NonCloneSimpleTwinNormal {
-        inner: Arc::new(initial),
-    }
+    NonCloneSimpleTwinNormal { inner: initial }
 }
 
 // ==================================== with other args =======================================
@@ -166,9 +162,7 @@ impl NonCloneSimpleTwinNormal {
     }
 
     pub fn static_method_return_own_twin_normal() -> NonCloneSimpleTwinNormal {
-        NonCloneSimpleTwinNormal {
-            inner: Arc::new(42),
-        }
+        NonCloneSimpleTwinNormal { inner: 42 }
     }
 }
 
@@ -177,46 +171,38 @@ impl NonCloneSimpleTwinNormal {
 impl NonCloneSimpleTwinNormal {
     /// unnamed constructor
     pub fn new_twin_normal() -> NonCloneSimpleTwinNormal {
-        Self {
-            inner: Arc::new(42),
-        }
+        Self { inner: 42 }
     }
 
     /// named constructor
     pub fn new_custom_name_twin_normal() -> NonCloneSimpleTwinNormal {
-        Self {
-            inner: Arc::new(42),
-        }
+        Self { inner: 42 }
     }
 
     /// constructor with Result
     pub fn new_with_result_twin_normal() -> anyhow::Result<NonCloneSimpleTwinNormal> {
-        Ok(Self {
-            inner: Arc::new(42),
-        })
+        Ok(Self { inner: 42 })
     }
 
     pub fn instance_method_arg_own_twin_normal(self) {
-        assert_eq!(*self.inner, 42);
+        assert_eq!(self.inner, 42);
     }
 
     pub fn instance_method_arg_borrow_twin_normal(&self) {
-        assert_eq!(*self.inner, 42);
+        assert_eq!(self.inner, 42);
     }
 
     pub fn instance_method_arg_mut_borrow_twin_normal(&mut self) {
-        assert_eq!(*self.inner, 42);
+        assert_eq!(self.inner, 42);
     }
 
     pub fn instance_method_return_own_twin_normal(&self) -> NonCloneSimpleTwinNormal {
-        Self {
-            inner: Arc::new(42),
-        }
+        Self { inner: 42 }
     }
 
     #[frb(getter)]
     pub fn instance_method_getter_twin_normal(&self) -> i32 {
-        *self.inner
+        self.inner
     }
 }
 
@@ -253,9 +239,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal
 ) -> StructWithGoodAndOpaqueFieldTwinNormal {
     StructWithGoodAndOpaqueFieldTwinNormal {
         good: "hello".to_string(),
-        opaque: NonCloneSimpleTwinNormal {
-            inner: Arc::new(42),
-        },
+        opaque: NonCloneSimpleTwinNormal { inner: 42 },
     }
 }
 
