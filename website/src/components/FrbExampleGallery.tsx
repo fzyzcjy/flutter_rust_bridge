@@ -4,16 +4,20 @@ import React from 'react';
 export default function FrbExampleGallery() {
     return (
         <>
-            <div id="flutter_host" style={{height: '500px', border: '1px solid #ccc'}}>Loading Flutter web app...
-            </div>
+            <div id="flutter_host" style={{height: '500px', border: '1px solid #ccc'}}></div>
             <FlutterInitializer/>
         </>
     )
 }
 
 class FlutterInitializer extends React.Component {
-    componentDidMount() {
+    state = {
+        loading: true,
+    };
+
+    componentDidMount = () => {
         console.log('FrbExampleGallery.FlutterInitializer componentDidMount');
+        const that = this;
 
         {
             console.log('FrbExampleGallery.FlutterInitializer add enable-threads.js script');
@@ -40,13 +44,14 @@ class FlutterInitializer extends React.Component {
                         hostElement: document.querySelector("#flutter_host")
                     });
                     await appRunner.runApp();
+                    that.setState({loading: false})
                 }
             });
         });
     }
 
     render() {
-        return <span></span>
+        return this.state.loading ? <span>Loading</span> : <></>
     }
 }
 
