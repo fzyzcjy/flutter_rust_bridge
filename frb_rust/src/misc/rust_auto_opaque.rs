@@ -8,7 +8,7 @@ impl<T> RustOpaque<RwLock<T>> {
     pub fn rust_auto_opaque_decode_sync_owned(self) -> T {
         // frb-coverage:ignore-end
         self.into_inner()
-            .context("Cannot convert RustOpaque to inner value. This is probably because you are having more than one references to it.")?
+            .expect("Cannot convert RustOpaque to inner value. This is probably because you are having more than one references to it.")
             .into_inner()
     }
 
