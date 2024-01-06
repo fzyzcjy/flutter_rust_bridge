@@ -1,4 +1,4 @@
-use log::{Level, Metadata, Record};
+use log::{Metadata, Record};
 use wasm_bindgen::prelude::*;
 
 #[macro_export]
@@ -50,7 +50,7 @@ impl WebConsoleLogger {
 }
 
 impl log::Log for WebConsoleLogger {
-    fn enabled(&self, metadata: &Metadata) -> bool {
+    fn enabled(&self, _metadata: &Metadata) -> bool {
         true
     }
 
