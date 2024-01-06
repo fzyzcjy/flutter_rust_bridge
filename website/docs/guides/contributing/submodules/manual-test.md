@@ -14,7 +14,6 @@ Try to test on as many browsers as possible, e.g.
 
 * Chrome
 * Firefox
-* Safari
 
 ### Testing procedure
 
@@ -25,4 +24,7 @@ Try to test on as many browsers as possible, e.g.
 ### Appendix: Prepare cold-start environment
 
 * Remove service workers: `navigator.serviceWorker.getRegistrations().then(function(registrations) { for(let registration of registrations) { registration.unregister(); }});`
+  * Chrome/Firefox: `F12` - paste the code - enter
 * Do "clear browser cache"
+  * Chrome: `F12` - `Network` - right-click - Clear Cache
+  * Firefox: Settings - Privacy&Security - Cookies and Site Data - Clear Data - Clear
