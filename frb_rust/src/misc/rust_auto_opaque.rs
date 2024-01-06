@@ -1,6 +1,5 @@
 use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 use crate::RustOpaque;
-use anyhow::{Context, Result};
 
 impl<T> RustOpaque<RwLock<T>> {
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
