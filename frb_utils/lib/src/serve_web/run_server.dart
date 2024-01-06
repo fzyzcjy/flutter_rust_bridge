@@ -29,8 +29,7 @@ Future<String> runServer(ServeWebConfig config,
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
         // TODO add back this flag `shouldRelaxCoep` after refactor
-        // 'Cross-Origin-Embedder-Policy': 'credentialless',
-        // TODO temp
+        // See https://github.com/fzyzcjy/flutter_rust_bridge/issues/1618 for details
         'Cross-Origin-Embedder-Policy': 'require-corp',
         // shouldRelaxCoep ? 'credentialless' : 'require-corp',
         // TODO rm
