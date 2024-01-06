@@ -8,6 +8,10 @@ pub struct StructWithArcField {
 }
 
 impl StructWithArcField {
+    pub fn new(s: String) -> StructWithArcField {
+        Self { inner: Arc::new(s) }
+    }
+
     pub async fn func_async(&self) -> usize {
         self.inner.len()
     }
