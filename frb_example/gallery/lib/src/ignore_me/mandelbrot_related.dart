@@ -1,5 +1,4 @@
-import 'dart:typed_data';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frb_example_gallery/src/rust/api/mandelbrot.dart';
 
@@ -125,6 +124,15 @@ class MandelbrotPageUI extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  if (kDebugMode)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        '(NOTE: Please use release build for fast Rust)',
+                        style: TextStyle(
+                            color: Colors.orange.shade700, fontSize: 11),
+                      ),
+                    ),
                   _buildSlider(
                     label: 'Num threads',
                     value: numThreads.toDouble(),
