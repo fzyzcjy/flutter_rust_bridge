@@ -36,6 +36,9 @@ Image credit: [Simpsons contributor](https://en.wikipedia.org/wiki/User:Simpsons
 
 ## Demo
 
+Due to [the limitation](https://github.com/orgs/community/discussions/13309#discussioncomment-3844940) of GitHub Pages
+which hosts this documentation, this page will be auto refreshed once.
+
 import FrbExampleGallery from "@site/src/components/FrbExampleGallery";
 
 <FrbExampleGallery />
