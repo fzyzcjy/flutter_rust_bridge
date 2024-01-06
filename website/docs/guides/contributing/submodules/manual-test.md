@@ -24,5 +24,5 @@ Try to test on as many browsers as possible, e.g.
 
 ### Appendix: Prepare cold-start environment
 
-TODO
-
+* Remove service workers: `navigator.serviceWorker.getRegistrations().then(function(registrations) { for(let registration of registrations) { registration.unregister(); }});`
+* Do "clear browser cache"
