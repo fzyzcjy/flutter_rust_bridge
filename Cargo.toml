@@ -14,6 +14,7 @@ exclude = [
   "frb_example/flutter_via_integrate/rust",
   "frb_example/gallery/rust",
 ]
+resolver = "2"
 
 [workspace.package]
 version = "2.0.0-dev.12"
