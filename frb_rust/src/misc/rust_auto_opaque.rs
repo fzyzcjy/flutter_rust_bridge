@@ -25,11 +25,17 @@ impl<T> RustOpaque<RwLock<T>> {
     }
 
     pub async fn rust_auto_opaque_decode_async_ref(&self) -> Result<RwLockReadGuard<'_, T>> {
-        Ok(self.read().await)
+        #[cfg(wasm)]
+        return Ok(self.read());
+        #[cfg(not(wasm))]
+        return Ok(self.read().await);
     }
 
     pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> Result<RwLockWriteGuard<'_, T>> {
-        Ok(self.write().await)
+        #[cfg(wasm)]
+        return Ok(self.write());
+        #[cfg(not(wasm))]
+        return Ok(self.write().await);
     }
 }
 
