@@ -3267,6 +3267,30 @@ fn wire_StructWithArcField_func_async_impl(
         },
     )
 }
+fn wire_StructWithArcField_new_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    s: impl CstDecode<String>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "StructWithArcField_new",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
+                            crate::api::misc_no_twin_example::StructWithArcField::new(api_s),
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_empty_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     empty: impl CstDecode<crate::api::misc_type::EmptyTwinNormal>,

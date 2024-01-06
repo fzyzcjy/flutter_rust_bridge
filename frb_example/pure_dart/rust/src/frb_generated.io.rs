@@ -18423,6 +18423,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructWithArcField_func_asyn
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructWithArcField_new(
+    port_: i64,
+    s: *mut wire_cst_list_prim_u_8_strict,
+) {
+    wire_StructWithArcField_new_impl(port_, s)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_empty_struct_twin_normal(
     port_: i64,
     empty: *mut wire_cst_empty_twin_normal,

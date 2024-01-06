@@ -12532,6 +12532,14 @@ pub fn wire_StructWithArcField_func_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_StructWithArcField_new(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    s: String,
+) {
+    wire_StructWithArcField_new_impl(port_, s)
+}
+
+#[wasm_bindgen]
 pub fn wire_empty_struct_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     empty: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,

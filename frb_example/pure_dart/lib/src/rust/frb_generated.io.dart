@@ -469,6 +469,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithArcField
+      dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          dynamic raw);
+
+  @protected
   OpaqueOneTwinSseOpaqueTwoTwinSse
       dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
           dynamic raw);
@@ -4794,6 +4799,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithArcField
+      sse_decode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
           SseDeserializer deserializer);
 
   @protected
@@ -22132,6 +22142,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField raw);
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
           OpaqueOneTwinSseOpaqueTwoTwinSse raw);
 
@@ -22706,6 +22721,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_stdsyncRwLockcrateapimisc_no_twin_exampleStructWithArcField(
+          StructWithArcField self, SseSerializer serializer);
 
   @protected
   void
@@ -30379,6 +30399,25 @@ class RustLibWire implements BaseWire {
   late final _wire_StructWithArcField_func_async =
       _wire_StructWithArcField_func_asyncPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_StructWithArcField_new(
+    int port_,
+    ffi.Pointer<wire_cst_list_prim_u_8_strict> s,
+  ) {
+    return _wire_StructWithArcField_new(
+      port_,
+      s,
+    );
+  }
+
+  late final _wire_StructWithArcField_newPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_StructWithArcField_new');
+  late final _wire_StructWithArcField_new =
+      _wire_StructWithArcField_newPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_empty_struct_twin_normal(
     int port_,
