@@ -30,19 +30,6 @@ impl CstDecode<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
-impl CstDecode<crate::api::simple::MyEnum>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::simple::MyEnum {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::simple::MyEnum::One {
-                a: self_.get(1).cst_decode(),
-            },
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
@@ -81,14 +68,6 @@ pub fn dart_fn_deliver_output(
 #[wasm_bindgen]
 pub fn wire_greet(name: String) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_greet_impl(name)
-}
-
-#[wasm_bindgen]
-pub fn wire_hi(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_hi_impl(port_, a)
 }
 
 #[wasm_bindgen]

@@ -21,13 +21,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
-  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw);
-
-  @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  MyEnum dco_decode_my_enum(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -39,13 +33,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
-  MyEnum sse_decode_box_autoadd_my_enum(SseDeserializer deserializer);
-
-  @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  MyEnum sse_decode_my_enum(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -65,22 +53,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> cst_encode_box_autoadd_my_enum(MyEnum raw) {
-    return cst_encode_my_enum(raw);
-  }
-
-  @protected
   Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
     return raw;
-  }
-
-  @protected
-  List<dynamic> cst_encode_my_enum(MyEnum raw) {
-    if (raw is MyEnum_One) {
-      return [0, cst_encode_String(raw.a)];
-    }
-
-    throw Exception('unreachable');
   }
 
   @protected
@@ -93,14 +67,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_my_enum(MyEnum self, SseSerializer serializer);
-
-  @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -128,9 +96,6 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_greet(String name) => wasmModule.wire_greet(name);
 
-  void wire_hi(NativePortType port_, List<dynamic> a) =>
-      wasmModule.wire_hi(port_, a);
-
   void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
 }
 
@@ -151,8 +116,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_greet(String name);
-
-  external void wire_hi(NativePortType port_, List<dynamic> a);
 
   external void wire_init_app(NativePortType port_);
 }
