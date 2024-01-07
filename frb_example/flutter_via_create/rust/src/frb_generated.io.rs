@@ -16,11 +16,30 @@ impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
         String::from_utf8(vec).unwrap()
     }
 }
+impl CstDecode<crate::api::simple::MyEnum> for *mut wire_cst_my_enum {
+    fn cst_decode(self) -> crate::api::simple::MyEnum {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::simple::MyEnum>::cst_decode(*wrap).into()
+    }
+}
 impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> Vec<u8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl CstDecode<crate::api::simple::MyEnum> for wire_cst_my_enum {
+    fn cst_decode(self) -> crate::api::simple::MyEnum {
+        match self.tag {
+            0 => {
+                let ans = unsafe { self.kind.One };
+                crate::api::simple::MyEnum::One {
+                    a: ans.a.cst_decode(),
+                }
+            }
+            _ => unreachable!(),
         }
     }
 }
@@ -31,6 +50,19 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+impl NewWithNullPtr for wire_cst_my_enum {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: MyEnumKind { nil__: () },
+        }
+    }
+}
+impl Default for wire_cst_my_enum {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -59,8 +91,18 @@ pub extern "C" fn frbgen_flutter_via_create_wire_greet(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_flutter_via_create_wire_hi(port_: i64, a: *mut wire_cst_my_enum) {
+    wire_hi_impl(port_, a)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_flutter_via_create_wire_init_app(port_: i64) {
     wire_init_app_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_flutter_via_create_cst_new_box_autoadd_my_enum() -> *mut wire_cst_my_enum {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_cst_my_enum::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -79,4 +121,21 @@ pub extern "C" fn frbgen_flutter_via_create_cst_new_list_prim_u_8_strict(
 pub struct wire_cst_list_prim_u_8_strict {
     ptr: *mut u8,
     len: i32,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_my_enum {
+    tag: i32,
+    kind: MyEnumKind,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub union MyEnumKind {
+    One: wire_cst_MyEnum_One,
+    nil__: (),
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_MyEnum_One {
+    a: *mut wire_cst_list_prim_u_8_strict,
 }

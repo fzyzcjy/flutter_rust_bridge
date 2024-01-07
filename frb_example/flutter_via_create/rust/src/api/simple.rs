@@ -8,3 +8,11 @@ pub fn init_app() {
     // Default utilities - feel free to customize
     flutter_rust_bridge::setup_default_user_utils();
 }
+
+pub enum MyEnum {
+    One { a: String },
+}
+
+pub fn hi(a: MyEnum) {
+    todo!()
+}

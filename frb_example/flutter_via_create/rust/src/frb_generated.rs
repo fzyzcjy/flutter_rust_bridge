@@ -49,6 +49,24 @@ fn wire_greet_impl(
         },
     )
 }
+fn wire_hi_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: impl CstDecode<crate::api::simple::MyEnum>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "hi",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.cst_decode();
+            move |context| {
+                transform_result_dco((move || Result::<_, ()>::Ok(crate::api::simple::hi(api_a)))())
+            }
+        },
+    )
+}
 fn wire_init_app_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -91,6 +109,21 @@ impl SseDecode for Vec<u8> {
     }
 }
 
+impl SseDecode for crate::api::simple::MyEnum {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_a = <String>::sse_decode(deserializer);
+                return crate::api::simple::MyEnum::One { a: var_a };
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for u8 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_u8().unwrap()
@@ -115,6 +148,23 @@ impl SseDecode for bool {
 
 // Section: rust2dart
 
+impl flutter_rust_bridge::IntoDart for crate::api::simple::MyEnum {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            crate::api::simple::MyEnum::One { a } => {
+                vec![0.into_dart(), a.into_into_dart().into_dart()]
+            }
+        }
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::simple::MyEnum {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::simple::MyEnum> for crate::api::simple::MyEnum {
+    fn into_into_dart(self) -> crate::api::simple::MyEnum {
+        self
+    }
+}
+
 impl SseEncode for String {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
@@ -126,6 +176,17 @@ impl SseEncode for Vec<u8> {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
             <u8>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for crate::api::simple::MyEnum {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::api::simple::MyEnum::One { a } => {
+                <i32>::sse_encode(0, serializer);
+                <String>::sse_encode(a, serializer);
+            }
         }
     }
 }

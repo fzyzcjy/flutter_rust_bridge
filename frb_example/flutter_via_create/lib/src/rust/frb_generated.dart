@@ -63,6 +63,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   String greet({required String name, dynamic hint});
 
+  Future<void> hi({required MyEnum a, dynamic hint});
+
   Future<void> initApp({dynamic hint});
 }
 
@@ -98,6 +100,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> hi({required MyEnum a, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_enum(a);
+        return wire.wire_hi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kHiConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHiConstMeta => const TaskConstMeta(
+        debugName: "hi",
+        argNames: ["a"],
+      );
+
+  @override
   Future<void> initApp({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -125,8 +150,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw) {
+    return dco_decode_my_enum(raw);
+  }
+
+  @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
     return raw as Uint8List;
+  }
+
+  @protected
+  MyEnum dco_decode_my_enum(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MyEnum_One(
+          a: dco_decode_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   @protected
@@ -146,9 +188,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyEnum sse_decode_box_autoadd_my_enum(SseDeserializer deserializer) {
+    return (sse_decode_my_enum(deserializer));
+  }
+
+  @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
+  }
+
+  @protected
+  MyEnum sse_decode_my_enum(SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_a = sse_decode_String(deserializer);
+        return MyEnum_One(a: var_a);
+      default:
+        throw UnimplementedError('');
+    }
   }
 
   @protected
@@ -185,10 +244,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_my_enum(MyEnum self, SseSerializer serializer) {
+    sse_encode_my_enum(self, serializer);
+  }
+
+  @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_my_enum(MyEnum self, SseSerializer serializer) {
+    switch (self) {
+      case MyEnum_One(a: final a):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(a, serializer);
+    }
   }
 
   @protected
