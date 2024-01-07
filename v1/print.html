@@ -2871,6 +2871,7 @@ rm -rf ios-sim-lipo mac-lipo $FRAMEWORK
 Instead, its sole purpose is to download &amp; extract our Android binaries
 in a cross-platform friendly way. Here is our android <code>CMakeLists.txt</code>:</p>
 <pre><code class="language-cmake">set(LibraryVersion &quot;library_name-v0.0.0&quot;) # generated; do not edit
+set(PROJECT_NAME &quot;project_name&quot;)
 
 # Unlike the Windows &amp; Linux CMakeLists.txt, this Android equivalent is just here
 # to download the Android binaries into src/main/jniLibs/ and does not build anything.
@@ -2881,6 +2882,8 @@ in a cross-platform friendly way. Here is our android <code>CMakeLists.txt</code
 # installed. You should not increase this version, as doing so will cause
 # the plugin to fail to compile for some customers of the plugin.
 cmake_minimum_required(VERSION 3.10)
+
+project(PROJECT_NAME)
 
 # Download the binaries if they are not already present.
 set(LibRoot &quot;${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs&quot;)
