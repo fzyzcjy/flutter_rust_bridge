@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0-dev.14
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix compilation error when using custom error type + rust auto opaque #1622
+* Fix wrong HTTP headers which causes Rust cannot run on Safari #1620
+
 ## 2.0.0-dev.13
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

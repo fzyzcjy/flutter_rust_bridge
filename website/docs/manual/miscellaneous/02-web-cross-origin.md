@@ -39,7 +39,7 @@ And *add* a few lines about headers near it:
  
 +    print('Temporary hack Flutter framework to add headers');
 +    httpServer!.defaultResponseHeaders.add('cross-origin-opener-policy', 'same-origin');
-+    httpServer!.defaultResponseHeaders.add('cross-origin-embedder-policy', 'credentialless');
++    httpServer!.defaultResponseHeaders.add('cross-origin-embedder-policy', 'require-corp');
 +
      final PackageConfig packageConfig = buildInfo.packageConfig;
 ```
