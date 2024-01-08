@@ -30946,7 +30946,7 @@ class RustLibWire implements BaseWire {
 
   void wire_test_raw_string_enum_mirrored_twin_normal(
     int port_,
-    bool nested,
+    int nested,
   ) {
     return _wire_test_raw_string_enum_mirrored_twin_normal(
       port_,
@@ -30955,11 +30955,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_raw_string_enum_mirrored_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_test_raw_string_enum_mirrored_twin_normal');
   late final _wire_test_raw_string_enum_mirrored_twin_normal =
       _wire_test_raw_string_enum_mirrored_twin_normalPtr
-          .asFunction<void Function(int, bool)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_test_raw_string_mirrored_twin_normal(
     int port_,
@@ -31281,7 +31281,7 @@ class RustLibWire implements BaseWire {
     ffi.Pointer<ffi.Int32> i32box,
     ffi.Pointer<ffi.Int64> i64box,
     ffi.Pointer<ffi.Double> f64box,
-    ffi.Pointer<ffi.Bool> boolbox,
+    ffi.Pointer<ffi.Int> boolbox,
     ffi.Pointer<wire_cst_exotic_optionals_twin_normal> structbox,
   ) {
     return _wire_handle_option_box_arguments_twin_normal(
@@ -31305,7 +31305,7 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<ffi.Int32>,
                   ffi.Pointer<ffi.Int64>,
                   ffi.Pointer<ffi.Double>,
-                  ffi.Pointer<ffi.Bool>,
+                  ffi.Pointer<ffi.Int>,
                   ffi.Pointer<wire_cst_exotic_optionals_twin_normal>)>>(
       'frbgen_frb_example_pure_dart_wire_handle_option_box_arguments_twin_normal');
   late final _wire_handle_option_box_arguments_twin_normal =
@@ -31317,7 +31317,7 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<ffi.Int32>,
               ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>,
-              ffi.Pointer<ffi.Bool>,
+              ffi.Pointer<ffi.Int>,
               ffi.Pointer<wire_cst_exotic_optionals_twin_normal>)>();
 
   void wire_handle_optional_increment_twin_normal(
@@ -31403,7 +31403,7 @@ class RustLibWire implements BaseWire {
     ffi.Pointer<ffi.Int32> my_i32,
     ffi.Pointer<ffi.Int64> my_i64,
     ffi.Pointer<ffi.Double> my_f64,
-    ffi.Pointer<ffi.Bool> my_bool,
+    ffi.Pointer<ffi.Int> my_bool,
   ) {
     return _wire_primitive_optional_types_twin_normal(
       port_,
@@ -31421,12 +31421,12 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<ffi.Int32>,
                   ffi.Pointer<ffi.Int64>,
                   ffi.Pointer<ffi.Double>,
-                  ffi.Pointer<ffi.Bool>)>>(
+                  ffi.Pointer<ffi.Int>)>>(
       'frbgen_frb_example_pure_dart_wire_primitive_optional_types_twin_normal');
   late final _wire_primitive_optional_types_twin_normal =
       _wire_primitive_optional_types_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
-              ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>)>();
+              ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Int>)>();
 
   void wire_handle_vec_of_primitive_twin_normal(
     int port_,
@@ -31467,7 +31467,7 @@ class RustLibWire implements BaseWire {
     int my_i32,
     int my_i64,
     double my_f64,
-    bool my_bool,
+    int my_bool,
   ) {
     return _wire_primitive_types_twin_normal(
       port_,
@@ -31481,11 +31481,11 @@ class RustLibWire implements BaseWire {
   late final _wire_primitive_types_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
+                  ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_primitive_types_twin_normal');
   late final _wire_primitive_types_twin_normal =
       _wire_primitive_types_twin_normalPtr
-          .asFunction<void Function(int, int, int, double, bool)>();
+          .asFunction<void Function(int, int, int, double, int)>();
 
   void wire_primitive_u32_twin_normal(
     int port_,
@@ -44660,7 +44660,7 @@ class RustLibWire implements BaseWire {
 
   void wire_test_raw_string_enum_mirrored_twin_rust_async(
     int port_,
-    bool nested,
+    int nested,
   ) {
     return _wire_test_raw_string_enum_mirrored_twin_rust_async(
       port_,
@@ -44669,11 +44669,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_raw_string_enum_mirrored_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_test_raw_string_enum_mirrored_twin_rust_async');
   late final _wire_test_raw_string_enum_mirrored_twin_rust_async =
       _wire_test_raw_string_enum_mirrored_twin_rust_asyncPtr
-          .asFunction<void Function(int, bool)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_test_raw_string_mirrored_twin_rust_async(
     int port_,
@@ -45793,7 +45793,7 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_test_raw_string_enum_mirrored_twin_sync(
-    bool nested,
+    int nested,
   ) {
     return _wire_test_raw_string_enum_mirrored_twin_sync(
       nested,
@@ -45801,11 +45801,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_raw_string_enum_mirrored_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Bool)>>(
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_test_raw_string_enum_mirrored_twin_sync');
   late final _wire_test_raw_string_enum_mirrored_twin_sync =
       _wire_test_raw_string_enum_mirrored_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(bool)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_test_raw_string_mirrored_twin_sync() {
     return _wire_test_raw_string_mirrored_twin_sync();
@@ -47766,7 +47766,7 @@ class RustLibWire implements BaseWire {
 
   void wire_example_optional_primitive_type_bool_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Bool> arg,
+    ffi.Pointer<ffi.Int> arg,
   ) {
     return _wire_example_optional_primitive_type_bool_twin_normal(
       port_,
@@ -47776,11 +47776,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_bool_twin_normalPtr = _lookup<
           ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Bool>)>>(
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int>)>>(
       'frbgen_frb_example_pure_dart_wire_example_optional_primitive_type_bool_twin_normal');
   late final _wire_example_optional_primitive_type_bool_twin_normal =
       _wire_example_optional_primitive_type_bool_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Bool>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Int>)>();
 
   void wire_example_optional_primitive_type_f32_twin_normal(
     int port_,
@@ -47967,7 +47967,7 @@ class RustLibWire implements BaseWire {
     ffi.Pointer<ffi.Int32> my_i32,
     ffi.Pointer<ffi.Int64> my_i64,
     ffi.Pointer<ffi.Double> my_f64,
-    ffi.Pointer<ffi.Bool> my_bool,
+    ffi.Pointer<ffi.Int> my_bool,
   ) {
     return _wire_primitive_optional_types_twin_rust_async(
       port_,
@@ -47985,12 +47985,12 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<ffi.Int32>,
                   ffi.Pointer<ffi.Int64>,
                   ffi.Pointer<ffi.Double>,
-                  ffi.Pointer<ffi.Bool>)>>(
+                  ffi.Pointer<ffi.Int>)>>(
       'frbgen_frb_example_pure_dart_wire_primitive_optional_types_twin_rust_async');
   late final _wire_primitive_optional_types_twin_rust_async =
       _wire_primitive_optional_types_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
-              ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>)>();
+              ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Int>)>();
 
   void wire_primitive_optional_types_twin_rust_async_sse(
     int port_,
@@ -48042,7 +48042,7 @@ class RustLibWire implements BaseWire {
     ffi.Pointer<ffi.Int32> my_i32,
     ffi.Pointer<ffi.Int64> my_i64,
     ffi.Pointer<ffi.Double> my_f64,
-    ffi.Pointer<ffi.Bool> my_bool,
+    ffi.Pointer<ffi.Int> my_bool,
   ) {
     return _wire_primitive_optional_types_twin_sync(
       my_i32,
@@ -48058,7 +48058,7 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<ffi.Int32>,
                   ffi.Pointer<ffi.Int64>,
                   ffi.Pointer<ffi.Double>,
-                  ffi.Pointer<ffi.Bool>)>>(
+                  ffi.Pointer<ffi.Int>)>>(
       'frbgen_frb_example_pure_dart_wire_primitive_optional_types_twin_sync');
   late final _wire_primitive_optional_types_twin_sync =
       _wire_primitive_optional_types_twin_syncPtr.asFunction<
@@ -48066,7 +48066,7 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<ffi.Int32>,
               ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>,
-              ffi.Pointer<ffi.Bool>)>();
+              ffi.Pointer<ffi.Int>)>();
 
   WireSyncRust2DartSse wire_primitive_optional_types_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -48091,7 +48091,7 @@ class RustLibWire implements BaseWire {
 
   void wire_example_optional_primitive_type_bool_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Bool> arg,
+    ffi.Pointer<ffi.Int> arg,
   ) {
     return _wire_example_optional_primitive_type_bool_twin_rust_async(
       port_,
@@ -48102,11 +48102,11 @@ class RustLibWire implements BaseWire {
   late final _wire_example_optional_primitive_type_bool_twin_rust_asyncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Bool>)>>(
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int>)>>(
           'frbgen_frb_example_pure_dart_wire_example_optional_primitive_type_bool_twin_rust_async');
   late final _wire_example_optional_primitive_type_bool_twin_rust_async =
       _wire_example_optional_primitive_type_bool_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Bool>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Int>)>();
 
   void wire_example_optional_primitive_type_f32_twin_rust_async(
     int port_,
@@ -48806,7 +48806,7 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartDco wire_example_optional_primitive_type_bool_twin_sync(
-    ffi.Pointer<ffi.Bool> arg,
+    ffi.Pointer<ffi.Int> arg,
   ) {
     return _wire_example_optional_primitive_type_bool_twin_sync(
       arg,
@@ -48814,12 +48814,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_bool_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Bool>)>>(
+          ffi
+          .NativeFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Int>)>>(
       'frbgen_frb_example_pure_dart_wire_example_optional_primitive_type_bool_twin_sync');
   late final _wire_example_optional_primitive_type_bool_twin_sync =
       _wire_example_optional_primitive_type_bool_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Bool>)>();
+          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Int>)>();
 
   WireSyncRust2DartDco wire_example_optional_primitive_type_f32_twin_sync(
     ffi.Pointer<ffi.Float> arg,
@@ -49237,7 +49237,7 @@ class RustLibWire implements BaseWire {
     ffi.Pointer<ffi.Int32> i32box,
     ffi.Pointer<ffi.Int64> i64box,
     ffi.Pointer<ffi.Double> f64box,
-    ffi.Pointer<ffi.Bool> boolbox,
+    ffi.Pointer<ffi.Int> boolbox,
     ffi.Pointer<wire_cst_exotic_optionals_twin_rust_async> structbox,
   ) {
     return _wire_handle_option_box_arguments_twin_rust_async(
@@ -49261,7 +49261,7 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<ffi.Int32>,
                   ffi.Pointer<ffi.Int64>,
                   ffi.Pointer<ffi.Double>,
-                  ffi.Pointer<ffi.Bool>,
+                  ffi.Pointer<ffi.Int>,
                   ffi.Pointer<wire_cst_exotic_optionals_twin_rust_async>)>>(
       'frbgen_frb_example_pure_dart_wire_handle_option_box_arguments_twin_rust_async');
   late final _wire_handle_option_box_arguments_twin_rust_async =
@@ -49273,7 +49273,7 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<ffi.Int32>,
               ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>,
-              ffi.Pointer<ffi.Bool>,
+              ffi.Pointer<ffi.Int>,
               ffi.Pointer<wire_cst_exotic_optionals_twin_rust_async>)>();
 
   void wire_handle_optional_increment_twin_rust_async(
@@ -49652,7 +49652,7 @@ class RustLibWire implements BaseWire {
     ffi.Pointer<ffi.Int32> i32box,
     ffi.Pointer<ffi.Int64> i64box,
     ffi.Pointer<ffi.Double> f64box,
-    ffi.Pointer<ffi.Bool> boolbox,
+    ffi.Pointer<ffi.Int> boolbox,
     ffi.Pointer<wire_cst_exotic_optionals_twin_sync> structbox,
   ) {
     return _wire_handle_option_box_arguments_twin_sync(
@@ -49674,7 +49674,7 @@ class RustLibWire implements BaseWire {
                   ffi.Pointer<ffi.Int32>,
                   ffi.Pointer<ffi.Int64>,
                   ffi.Pointer<ffi.Double>,
-                  ffi.Pointer<ffi.Bool>,
+                  ffi.Pointer<ffi.Int>,
                   ffi.Pointer<wire_cst_exotic_optionals_twin_sync>)>>(
       'frbgen_frb_example_pure_dart_wire_handle_option_box_arguments_twin_sync');
   late final _wire_handle_option_box_arguments_twin_sync =
@@ -49685,7 +49685,7 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<ffi.Int32>,
               ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>,
-              ffi.Pointer<ffi.Bool>,
+              ffi.Pointer<ffi.Int>,
               ffi.Pointer<wire_cst_exotic_optionals_twin_sync>)>();
 
   WireSyncRust2DartDco wire_handle_optional_increment_twin_sync(
@@ -49888,7 +49888,7 @@ class RustLibWire implements BaseWire {
 
   void wire_example_primitive_type_bool_twin_normal(
     int port_,
-    bool arg,
+    int arg,
   ) {
     return _wire_example_primitive_type_bool_twin_normal(
       port_,
@@ -49897,11 +49897,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_bool_twin_normalPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_example_primitive_type_bool_twin_normal');
   late final _wire_example_primitive_type_bool_twin_normal =
       _wire_example_primitive_type_bool_twin_normalPtr
-          .asFunction<void Function(int, bool)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_example_primitive_type_f32_twin_normal(
     int port_,
@@ -51544,7 +51544,7 @@ class RustLibWire implements BaseWire {
     int my_i32,
     int my_i64,
     double my_f64,
-    bool my_bool,
+    int my_bool,
   ) {
     return _wire_primitive_types_twin_rust_async(
       port_,
@@ -51558,11 +51558,11 @@ class RustLibWire implements BaseWire {
   late final _wire_primitive_types_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
+                  ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_primitive_types_twin_rust_async');
   late final _wire_primitive_types_twin_rust_async =
       _wire_primitive_types_twin_rust_asyncPtr
-          .asFunction<void Function(int, int, int, double, bool)>();
+          .asFunction<void Function(int, int, int, double, int)>();
 
   void wire_primitive_u32_twin_rust_async(
     int port_,
@@ -51799,7 +51799,7 @@ class RustLibWire implements BaseWire {
     int my_i32,
     int my_i64,
     double my_f64,
-    bool my_bool,
+    int my_bool,
   ) {
     return _wire_primitive_types_twin_sync(
       my_i32,
@@ -51812,11 +51812,11 @@ class RustLibWire implements BaseWire {
   late final _wire_primitive_types_twin_syncPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartDco Function(
-                  ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
+                  ffi.Int32, ffi.Int64, ffi.Double, ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_primitive_types_twin_sync');
   late final _wire_primitive_types_twin_sync =
       _wire_primitive_types_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(int, int, double, bool)>();
+          .asFunction<WireSyncRust2DartDco Function(int, int, double, int)>();
 
   WireSyncRust2DartDco wire_primitive_u32_twin_sync(
     int my_u32,
@@ -51933,7 +51933,7 @@ class RustLibWire implements BaseWire {
 
   void wire_example_primitive_type_bool_twin_rust_async(
     int port_,
-    bool arg,
+    int arg,
   ) {
     return _wire_example_primitive_type_bool_twin_rust_async(
       port_,
@@ -51942,11 +51942,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_bool_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_example_primitive_type_bool_twin_rust_async');
   late final _wire_example_primitive_type_bool_twin_rust_async =
       _wire_example_primitive_type_bool_twin_rust_asyncPtr
-          .asFunction<void Function(int, bool)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_example_primitive_type_f32_twin_rust_async(
     int port_,
@@ -52625,7 +52625,7 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartDco wire_example_primitive_type_bool_twin_sync(
-    bool arg,
+    int arg,
   ) {
     return _wire_example_primitive_type_bool_twin_sync(
       arg,
@@ -52633,11 +52633,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_bool_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Bool)>>(
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int)>>(
       'frbgen_frb_example_pure_dart_wire_example_primitive_type_bool_twin_sync');
   late final _wire_example_primitive_type_bool_twin_sync =
       _wire_example_primitive_type_bool_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(bool)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_example_primitive_type_f32_twin_sync(
     double arg,
@@ -63765,8 +63765,8 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_benchmark_blob_twin_sync_ssePtr.asFunction<
           ffi.Pointer<wire_cst_benchmark_blob_twin_sync_sse> Function()>();
 
-  ffi.Pointer<ffi.Bool> cst_new_box_autoadd_bool(
-    bool value,
+  ffi.Pointer<ffi.Int> cst_new_box_autoadd_bool(
+    int value,
   ) {
     return _cst_new_box_autoadd_bool(
       value,
@@ -63774,10 +63774,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _cst_new_box_autoadd_boolPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int)>>(
           'frbgen_frb_example_pure_dart_cst_new_box_autoadd_bool');
   late final _cst_new_box_autoadd_bool = _cst_new_box_autoadd_boolPtr
-      .asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
+      .asFunction<ffi.Pointer<ffi.Int> Function(int)>();
 
   ffi.Pointer<wire_cst_c_twin_normal> cst_new_box_autoadd_c_twin_normal() {
     return _cst_new_box_autoadd_c_twin_normal();
@@ -67564,8 +67564,8 @@ class RustLibWire implements BaseWire {
       _cst_new_box_blob_twin_sync_ssePtr
           .asFunction<ffi.Pointer<wire_cst_blob_twin_sync_sse> Function()>();
 
-  ffi.Pointer<ffi.Bool> cst_new_box_bool(
-    bool value,
+  ffi.Pointer<ffi.Int> cst_new_box_bool(
+    int value,
   ) {
     return _cst_new_box_bool(
       value,
@@ -67573,10 +67573,10 @@ class RustLibWire implements BaseWire {
   }
 
   late final _cst_new_box_boolPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int)>>(
           'frbgen_frb_example_pure_dart_cst_new_box_bool');
   late final _cst_new_box_bool =
-      _cst_new_box_boolPtr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
+      _cst_new_box_boolPtr.asFunction<ffi.Pointer<ffi.Int> Function(int)>();
 
   ffi.Pointer<wire_cst_distance_twin_normal>
       cst_new_box_distance_twin_normal() {
@@ -70295,8 +70295,8 @@ final class wire_cst_KitchenSinkTwinNormal_Primitives extends ffi.Struct {
   @ffi.Double()
   external double float64;
 
-  @ffi.Bool()
-  external bool boolean;
+  @ffi.Int()
+  external int boolean;
 }
 
 final class wire_cst_KitchenSinkTwinNormal_Nested extends ffi.Struct {
@@ -70462,8 +70462,8 @@ final class wire_cst_custom_struct_error_twin_normal extends ffi.Struct {
 }
 
 final class wire_cst_my_struct extends ffi.Struct {
-  @ffi.Bool()
-  external bool content;
+  @ffi.Int()
+  external int content;
 }
 
 final class wire_cst_macro_struct extends ffi.Struct {
@@ -70590,8 +70590,8 @@ final class wire_cst_sequences extends ffi.Struct {
 final class wire_cst_application_env_var extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
 
-  @ffi.Bool()
-  external bool field1;
+  @ffi.Int()
+  external int field1;
 }
 
 final class wire_cst_list_application_env_var extends ffi.Struct {
@@ -70631,8 +70631,8 @@ final class wire_cst_my_tree_node_twin_normal extends ffi.Struct {
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> value_vec_u8;
 
-  @ffi.Bool()
-  external bool value_boolean;
+  @ffi.Int()
+  external int value_boolean;
 
   external ffi.Pointer<wire_cst_list_my_tree_node_twin_normal> children;
 }
@@ -70676,8 +70676,8 @@ final class wire_cst_AbcTwinNormal_B extends ffi.Struct {
 }
 
 final class wire_cst_c_twin_normal extends ffi.Struct {
-  @ffi.Bool()
-  external bool c;
+  @ffi.Int()
+  external int c;
 }
 
 final class wire_cst_AbcTwinNormal_C extends ffi.Struct {
@@ -70768,7 +70768,7 @@ final class wire_cst_exotic_optionals_twin_normal extends ffi.Struct {
 
   external ffi.Pointer<ffi.Double> float64;
 
-  external ffi.Pointer<ffi.Bool> boolean;
+  external ffi.Pointer<ffi.Int> boolean;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> zerocopy;
 
@@ -71113,8 +71113,8 @@ final class wire_cst_KitchenSinkTwinRustAsync_Primitives extends ffi.Struct {
   @ffi.Double()
   external double float64;
 
-  @ffi.Bool()
-  external bool boolean;
+  @ffi.Int()
+  external int boolean;
 }
 
 final class wire_cst_KitchenSinkTwinRustAsync_Nested extends ffi.Struct {
@@ -71287,8 +71287,8 @@ final class wire_cst_KitchenSinkTwinSync_Primitives extends ffi.Struct {
   @ffi.Double()
   external double float64;
 
-  @ffi.Bool()
-  external bool boolean;
+  @ffi.Int()
+  external int boolean;
 }
 
 final class wire_cst_KitchenSinkTwinSync_Nested extends ffi.Struct {
@@ -71607,8 +71607,8 @@ final class wire_cst_my_tree_node_twin_rust_async extends ffi.Struct {
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> value_vec_u8;
 
-  @ffi.Bool()
-  external bool value_boolean;
+  @ffi.Int()
+  external int value_boolean;
 
   external ffi.Pointer<wire_cst_list_my_tree_node_twin_rust_async> children;
 }
@@ -71645,8 +71645,8 @@ final class wire_cst_AbcTwinRustAsync_B extends ffi.Struct {
 }
 
 final class wire_cst_c_twin_rust_async extends ffi.Struct {
-  @ffi.Bool()
-  external bool c;
+  @ffi.Int()
+  external int c;
 }
 
 final class wire_cst_AbcTwinRustAsync_C extends ffi.Struct {
@@ -71694,8 +71694,8 @@ final class wire_cst_my_tree_node_twin_sync extends ffi.Struct {
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> value_vec_u8;
 
-  @ffi.Bool()
-  external bool value_boolean;
+  @ffi.Int()
+  external int value_boolean;
 
   external ffi.Pointer<wire_cst_list_my_tree_node_twin_sync> children;
 }
@@ -71732,8 +71732,8 @@ final class wire_cst_AbcTwinSync_B extends ffi.Struct {
 }
 
 final class wire_cst_c_twin_sync extends ffi.Struct {
-  @ffi.Bool()
-  external bool c;
+  @ffi.Int()
+  external int c;
 }
 
 final class wire_cst_AbcTwinSync_C extends ffi.Struct {
@@ -71810,7 +71810,7 @@ final class wire_cst_exotic_optionals_twin_rust_async extends ffi.Struct {
 
   external ffi.Pointer<ffi.Double> float64;
 
-  external ffi.Pointer<ffi.Bool> boolean;
+  external ffi.Pointer<ffi.Int> boolean;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> zerocopy;
 
@@ -71882,7 +71882,7 @@ final class wire_cst_exotic_optionals_twin_sync extends ffi.Struct {
 
   external ffi.Pointer<ffi.Double> float64;
 
-  external ffi.Pointer<ffi.Bool> boolean;
+  external ffi.Pointer<ffi.Int> boolean;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> zerocopy;
 
@@ -71926,7 +71926,7 @@ final class wire_cst_opt_vecs_twin_sync extends ffi.Struct {
 }
 
 final class wire_cst_list_bool extends ffi.Struct {
-  external ffi.Pointer<ffi.Bool> ptr;
+  external ffi.Pointer<ffi.Int> ptr;
 
   @ffi.Int32()
   external int len;
@@ -72278,8 +72278,8 @@ final class wire_cst_AbcTwinRustAsyncSse_B extends ffi.Struct {
 }
 
 final class wire_cst_c_twin_rust_async_sse extends ffi.Struct {
-  @ffi.Bool()
-  external bool c;
+  @ffi.Int()
+  external int c;
 }
 
 final class wire_cst_AbcTwinRustAsyncSse_C extends ffi.Struct {
@@ -72322,8 +72322,8 @@ final class wire_cst_AbcTwinSse_B extends ffi.Struct {
 }
 
 final class wire_cst_c_twin_sse extends ffi.Struct {
-  @ffi.Bool()
-  external bool c;
+  @ffi.Int()
+  external int c;
 }
 
 final class wire_cst_AbcTwinSse_C extends ffi.Struct {
@@ -72366,8 +72366,8 @@ final class wire_cst_AbcTwinSyncSse_B extends ffi.Struct {
 }
 
 final class wire_cst_c_twin_sync_sse extends ffi.Struct {
-  @ffi.Bool()
-  external bool c;
+  @ffi.Int()
+  external int c;
 }
 
 final class wire_cst_AbcTwinSyncSse_C extends ffi.Struct {
@@ -73365,7 +73365,7 @@ final class wire_cst_exotic_optionals_twin_rust_async_sse extends ffi.Struct {
 
   external ffi.Pointer<ffi.Double> float64;
 
-  external ffi.Pointer<ffi.Bool> boolean;
+  external ffi.Pointer<ffi.Int> boolean;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> zerocopy;
 
@@ -73412,7 +73412,7 @@ final class wire_cst_exotic_optionals_twin_sse extends ffi.Struct {
 
   external ffi.Pointer<ffi.Double> float64;
 
-  external ffi.Pointer<ffi.Bool> boolean;
+  external ffi.Pointer<ffi.Int> boolean;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> zerocopy;
 
@@ -73457,7 +73457,7 @@ final class wire_cst_exotic_optionals_twin_sync_sse extends ffi.Struct {
 
   external ffi.Pointer<ffi.Double> float64;
 
-  external ffi.Pointer<ffi.Bool> boolean;
+  external ffi.Pointer<ffi.Int> boolean;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> zerocopy;
 
@@ -73501,8 +73501,8 @@ final class wire_cst_KitchenSinkTwinRustAsyncSse_Primitives extends ffi.Struct {
   @ffi.Double()
   external double float64;
 
-  @ffi.Bool()
-  external bool boolean;
+  @ffi.Int()
+  external int boolean;
 }
 
 final class wire_cst_KitchenSinkTwinRustAsyncSse_Nested extends ffi.Struct {
@@ -73553,8 +73553,8 @@ final class wire_cst_KitchenSinkTwinSse_Primitives extends ffi.Struct {
   @ffi.Double()
   external double float64;
 
-  @ffi.Bool()
-  external bool boolean;
+  @ffi.Int()
+  external int boolean;
 }
 
 final class wire_cst_KitchenSinkTwinSse_Nested extends ffi.Struct {
@@ -73605,8 +73605,8 @@ final class wire_cst_KitchenSinkTwinSyncSse_Primitives extends ffi.Struct {
   @ffi.Double()
   external double float64;
 
-  @ffi.Bool()
-  external bool boolean;
+  @ffi.Int()
+  external int boolean;
 }
 
 final class wire_cst_KitchenSinkTwinSyncSse_Nested extends ffi.Struct {
@@ -73853,8 +73853,8 @@ final class wire_cst_my_tree_node_twin_rust_async_sse extends ffi.Struct {
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> value_vec_u8;
 
-  @ffi.Bool()
-  external bool value_boolean;
+  @ffi.Int()
+  external int value_boolean;
 
   external ffi.Pointer<wire_cst_list_my_tree_node_twin_rust_async_sse> children;
 }
@@ -73879,8 +73879,8 @@ final class wire_cst_my_tree_node_twin_sse extends ffi.Struct {
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> value_vec_u8;
 
-  @ffi.Bool()
-  external bool value_boolean;
+  @ffi.Int()
+  external int value_boolean;
 
   external ffi.Pointer<wire_cst_list_my_tree_node_twin_sse> children;
 }
@@ -73905,8 +73905,8 @@ final class wire_cst_my_tree_node_twin_sync_sse extends ffi.Struct {
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> value_vec_u8;
 
-  @ffi.Bool()
-  external bool value_boolean;
+  @ffi.Int()
+  external int value_boolean;
 
   external ffi.Pointer<wire_cst_list_my_tree_node_twin_sync_sse> children;
 }
@@ -75368,8 +75368,8 @@ final class wire_cst_more_than_just_one_raw_string_struct_twin_normal
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> type;
 
-  @ffi.Bool()
-  external bool async1;
+  @ffi.Int()
+  external int async1;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> another;
 }
@@ -75380,8 +75380,8 @@ final class wire_cst_more_than_just_one_raw_string_struct_twin_rust_async
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> type;
 
-  @ffi.Bool()
-  external bool async1;
+  @ffi.Int()
+  external int async1;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> another;
 }
@@ -75392,8 +75392,8 @@ final class wire_cst_more_than_just_one_raw_string_struct_twin_rust_async_sse
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> type;
 
-  @ffi.Bool()
-  external bool async1;
+  @ffi.Int()
+  external int async1;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> another;
 }
@@ -75404,8 +75404,8 @@ final class wire_cst_more_than_just_one_raw_string_struct_twin_sse
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> type;
 
-  @ffi.Bool()
-  external bool async1;
+  @ffi.Int()
+  external int async1;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> another;
 }
@@ -75416,8 +75416,8 @@ final class wire_cst_more_than_just_one_raw_string_struct_twin_sync
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> type;
 
-  @ffi.Bool()
-  external bool async1;
+  @ffi.Int()
+  external int async1;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> another;
 }
@@ -75428,8 +75428,8 @@ final class wire_cst_more_than_just_one_raw_string_struct_twin_sync_sse
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> type;
 
-  @ffi.Bool()
-  external bool async1;
+  @ffi.Int()
+  external int async1;
 
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> another;
 }
