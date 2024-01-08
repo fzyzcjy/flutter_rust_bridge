@@ -20,6 +20,7 @@ Instead, its sole purpose is to download & extract our Android binaries
 in a cross-platform friendly way. Here is our android `CMakeLists.txt`:
 ```cmake
 set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
+set(PROJECT_NAME "project_name")
 
 # Unlike the Windows & Linux CMakeLists.txt, this Android equivalent is just here
 # to download the Android binaries into src/main/jniLibs/ and does not build anything.
@@ -30,6 +31,8 @@ set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
 # installed. You should not increase this version, as doing so will cause
 # the plugin to fail to compile for some customers of the plugin.
 cmake_minimum_required(VERSION 3.10)
+
+project(PROJECT_NAME)
 
 # Download the binaries if they are not already present.
 set(LibRoot "${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs")

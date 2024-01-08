@@ -5,11 +5,16 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::format_dart::format_dart;
+use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
+use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
+use cargo_metadata::VersionReq;
 use itertools::Itertools;
+use lazy_static::lazy_static;
 use log::warn;
 use std::fs;
 use std::path::PathBuf;
+use std::str::FromStr;
 
 pub(crate) mod add_mod_to_lib;
 pub(crate) mod internal_config;
@@ -22,6 +27,7 @@ pub(super) fn polish(
 ) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
+    ensure_dependency_freezed(config, needs_freezed)?;
 
     warn_if_fail(
         execute_build_runner(needs_freezed, config, progress_bar_pack),
@@ -38,6 +44,26 @@ pub(super) fn polish(
         "execute_rust_format",
     );
 
+    Ok(())
+}
+
+fn ensure_dependency_freezed(
+    config: &PolisherInternalConfig,
+    needs_freezed: bool,
+) -> anyhow::Result<()> {
+    lazy_static! {
+        pub(crate) static ref ANY_REQUIREMENT: VersionReq = VersionReq::parse(">= 1.0.0").unwrap();
+    }
+
+    if needs_freezed {
+        let repo = DartRepository::from_str(&path_to_string(&config.dart_root)?)?;
+        repo.has_specified_and_installed("freezed", DartDependencyMode::Dev, &ANY_REQUIREMENT)?;
+        repo.has_specified_and_installed(
+            "freezed_annotation",
+            DartDependencyMode::Main,
+            &ANY_REQUIREMENT,
+        )?;
+    }
     Ok(())
 }
 
