@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-dev.15
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Execute flutter pub get inside build_tool from cargokit on integrate and on create #1614 (thanks @MateusHBR)
+
 ## 2.0.0-dev.14
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
