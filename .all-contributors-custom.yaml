@@ -37,6 +37,7 @@
 - sccheruku: Prevent double-generating utility.
 - upsuper: Refactor delegate-attr.
 - jsonmona: Add import.
+- MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
 - Michael-F-Bryan: Detect broken bindings.
 - phlip9: Fix no-serde compilation.
