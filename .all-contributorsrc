@@ -782,6 +782,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "MateusHBR",
+      "name": "mtz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13079483?v=4",
+      "profile": "https://github.com/MateusHBR",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
