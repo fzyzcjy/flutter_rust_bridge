@@ -23,5 +23,6 @@ export 'src/main_components/handler.dart';
 export 'src/main_components/wire.dart';
 export 'src/manual_impl/_common.dart';
 export 'src/rust_arc/_common.dart';
+export 'src/rust_opaque/rust_opaque_moi.dart';
 export 'src/rust_opaque/rust_opaque_nom.dart';
 export 'src/task.dart';
