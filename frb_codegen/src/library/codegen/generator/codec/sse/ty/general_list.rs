@@ -49,7 +49,7 @@ pub(super) fn general_list_generate_decode(
             "<{}>[]",
             ApiDartGenerator::new(ir_inner.clone(), context.as_api_dart_context()).dart_api_type()
         ),
-        Lang::RustLang(_) => "[]".to_owned(),
+        Lang::RustLang(_) => "vec![]".to_owned(),
     };
     let list_push = match lang {
         Lang::DartLang(_) => "add",
