@@ -39,12 +39,12 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
             parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
         let vec = if src.is_empty() {
-            "Vec::<u8>::new()".to_string()
+            "Vec::<u8>::new().into_dart()".to_string()
         } else {
             format!(
-                "vec![
+                "[
                     {body}
-                ]"
+                ].into_dart()"
             )
         };
 
@@ -52,7 +52,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
         Some(format!(
             "impl flutter_rust_bridge::IntoDart for {name} {{
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    {vec}.into_dart()
+                    {vec}
                 }}
             }}
             impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
