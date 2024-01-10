@@ -20,6 +20,6 @@ impl<T> RustOpaque<T> {
 impl<T> From<RustOpaque<T>> for DartAbi {
     fn from(value: RustOpaque<T>) -> Self {
         let (ptr, size) = value.encode();
-        vec![ptr.into_dart(), size.into_dart()].into_dart()
+        [ptr.into_dart(), size.into_dart()].into_dart()
     }
 }
