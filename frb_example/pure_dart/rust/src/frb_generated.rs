@@ -3252,6 +3252,21 @@ fn wire_StructInMiscNoTwinExampleA_sample_function_a_impl(
                     })().await)
                 } })
 }
+fn wire_StructWithImplBlockInMultiFile_method_in_a_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: impl CstDecode<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+        >,
+    >,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructWithImplBlockInMultiFile_method_in_a", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  {
+                    transform_result_dco((move ||  {
+                        let api_that = api_that.rust_auto_opaque_decode_sync_ref();
+ Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok(crate::api::misc_no_twin_example_a::StructWithImplBlockInMultiFile::method_in_a(&api_that))
+                    })())
+                } })
+}
 fn wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<
@@ -3280,6 +3295,21 @@ fn wire_StructInMiscNoTwinExampleB_sample_function_b_impl(
                         let api_that = api_that.rust_auto_opaque_decode_async_ref().await;
  Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok(crate::api::misc_no_twin_example_b::StructInMiscNoTwinExampleB::sample_function_b(&api_that).await)
                     })().await)
+                } })
+}
+fn wire_StructWithImplBlockInMultiFile_method_in_b_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: impl CstDecode<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+        >,
+    >,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "StructWithImplBlockInMultiFile_method_in_b", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.cst_decode(); move |context|  {
+                    transform_result_dco((move ||  {
+                        let api_that = api_that.rust_auto_opaque_decode_sync_ref();
+ Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok(crate::api::misc_no_twin_example_a::StructWithImplBlockInMultiFile::method_in_b(&api_that))
+                    })())
                 } })
 }
 fn wire_empty_struct_twin_normal_impl(
@@ -27324,6 +27354,17 @@ impl SseDecode
 
 impl SseDecode
     for flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { flutter_rust_bridge::for_generated::sse_decode_rust_opaque(inner) };
+    }
+}
+
+impl SseDecode
+    for flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -48115,6 +48156,18 @@ impl SseEncode
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSyncSse,
         >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
     >
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
