@@ -26065,7 +26065,7 @@ fn decode_DartFn_Inputs_DartOpaque_Output_unit(
         dart_opaque: flutter_rust_bridge::DartOpaque,
         arg0: flutter_rust_bridge::DartOpaque,
     ) -> () {
-        let args = [arg0.into_into_dart().into_dart()];
+        let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26085,7 +26085,7 @@ fn decode_DartFn_Inputs_String_Output_unit(
     use flutter_rust_bridge::IntoDart;
 
     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: String) -> () {
-        let args = [arg0.into_into_dart().into_dart()];
+        let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26112,7 +26112,7 @@ fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output
         arg0: String,
         arg1: crate::api::dart_fn::DemoStructForRustCallDartTwinNormal,
     ) -> () {
-        let args = [
+        let args = vec![
             arg0.into_into_dart().into_dart(),
             arg1.into_into_dart().into_dart(),
         ];
@@ -26143,7 +26143,7 @@ fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Ou
         arg0: String,
         arg1: crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
     ) -> () {
-        let args = [
+        let args = vec![
             arg0.into_into_dart().into_dart(),
             arg1.into_into_dart().into_dart(),
         ];
@@ -26168,7 +26168,7 @@ fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Ou
         arg0: String,
         arg1: crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse,
     ) -> () {
-        let args = [
+        let args = vec![
             arg0.into_into_dart().into_dart(),
             arg1.into_into_dart().into_dart(),
         ];
@@ -26197,7 +26197,7 @@ fn decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_un
         arg0: String,
         arg1: crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
     ) -> () {
-        let args = [
+        let args = vec![
             arg0.into_into_dart().into_dart(),
             arg1.into_into_dart().into_dart(),
         ];
@@ -26222,7 +26222,7 @@ fn decode_DartFn_Inputs__Output_DartOpaque(
     use flutter_rust_bridge::IntoDart;
 
     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque) -> flutter_rust_bridge::DartOpaque {
-        let args = [];
+        let args = vec![];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26239,7 +26239,7 @@ fn decode_DartFn_Inputs__Output_String(
     use flutter_rust_bridge::IntoDart;
 
     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque) -> String {
-        let args = [];
+        let args = vec![];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26256,7 +26256,7 @@ fn decode_DartFn_Inputs__Output_unit(
     use flutter_rust_bridge::IntoDart;
 
     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque) -> () {
-        let args = [];
+        let args = vec![];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26280,7 +26280,7 @@ fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_s
         dart_opaque: flutter_rust_bridge::DartOpaque,
         arg0: crate::api::dart_fn::DemoStructForRustCallDartTwinNormal,
     ) -> crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
-        let args = [arg0.into_into_dart().into_dart()];
+        let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26308,7 +26308,7 @@ fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_de
         arg0: crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
     ) -> crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
     {
-        let args = [arg0.into_into_dart().into_dart()];
+        let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26326,7 +26326,7 @@ fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_de
     use flutter_rust_bridge::IntoDart;
 
     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, arg0: crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse) -> crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse{
-        let args = [arg0.into_into_dart().into_dart()];
+        let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
@@ -26352,7 +26352,7 @@ fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_stru
         dart_opaque: flutter_rust_bridge::DartOpaque,
         arg0: crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse,
     ) -> crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
-        let args = [arg0.into_into_dart().into_dart()];
+        let args = vec![arg0.into_into_dart().into_dart()];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
             .await;
