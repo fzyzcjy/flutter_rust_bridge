@@ -728,8 +728,8 @@ abstract class RustLibApi extends BaseApi {
   Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
       {required StructWithEnumTwinNormal se, dynamic hint});
 
-  Future<void> structInMiscNoTwinExampleBSampleFunctionA(
-      {required StructInMiscNoTwinExampleB that, dynamic hint});
+  Future<void> structInMiscNoTwinExampleASampleFunctionA(
+      {required StructInMiscNoTwinExampleA that, dynamic hint});
 
   Future<StructInMiscNoTwinExampleA>
       structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
@@ -9639,30 +9639,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> structInMiscNoTwinExampleBSampleFunctionA(
-      {required StructInMiscNoTwinExampleB that, dynamic hint}) {
+  Future<void> structInMiscNoTwinExampleASampleFunctionA(
+      {required StructInMiscNoTwinExampleA that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 =
-            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
                 that);
-        return wire.wire_StructInMiscNoTwinExampleB_sample_function_a(
+        return wire.wire_StructInMiscNoTwinExampleA_sample_function_a(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kStructInMiscNoTwinExampleBSampleFunctionAConstMeta,
+      constMeta: kStructInMiscNoTwinExampleASampleFunctionAConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kStructInMiscNoTwinExampleBSampleFunctionAConstMeta =>
+  TaskConstMeta get kStructInMiscNoTwinExampleASampleFunctionAConstMeta =>
       const TaskConstMeta(
-        debugName: "StructInMiscNoTwinExampleB_sample_function_a",
+        debugName: "StructInMiscNoTwinExampleA_sample_function_a",
         argNames: ["that"],
       );
 
@@ -51916,6 +51916,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleA.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   StructInMiscNoTwinExampleB
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
           dynamic raw) {
@@ -62670,6 +62677,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          SseDeserializer deserializer) {
+    return StructInMiscNoTwinExampleA.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -73636,6 +73651,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
           StructInMiscNoTwinExampleB raw) {
     // ignore: invalid_use_of_internal_member
@@ -74840,6 +74863,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 

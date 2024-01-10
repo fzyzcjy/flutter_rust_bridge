@@ -12842,11 +12842,11 @@ pub fn wire_test_struct_with_enum_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_StructInMiscNoTwinExampleB_sample_function_a(
+pub fn wire_StructInMiscNoTwinExampleA_sample_function_a(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_StructInMiscNoTwinExampleB_sample_function_a_impl(port_, that)
+    wire_StructInMiscNoTwinExampleA_sample_function_a_impl(port_, that)
 }
 
 #[wasm_bindgen]

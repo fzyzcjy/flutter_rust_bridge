@@ -18733,11 +18733,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_struct_with_enum_twin_n
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_sample_function_a(
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleA_sample_function_a(
     port_: i64,
     that: *const std::ffi::c_void,
 ) {
-    wire_StructInMiscNoTwinExampleB_sample_function_a_impl(port_, that)
+    wire_StructInMiscNoTwinExampleA_sample_function_a_impl(port_, that)
 }
 
 #[no_mangle]

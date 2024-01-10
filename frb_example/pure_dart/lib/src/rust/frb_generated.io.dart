@@ -779,6 +779,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw);
+
+  @protected
   StructInMiscNoTwinExampleB
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
           dynamic raw);
@@ -5300,6 +5305,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructInMiscNoTwinExampleA
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
           SseDeserializer deserializer);
 
   @protected
@@ -22828,6 +22838,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw);
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
           StructInMiscNoTwinExampleB raw);
 
@@ -23616,6 +23631,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA self, SseSerializer serializer);
 
   @protected
   void
@@ -31238,22 +31258,22 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_struct_with_enum_twin_normal>)>();
 
-  void wire_StructInMiscNoTwinExampleB_sample_function_a(
+  void wire_StructInMiscNoTwinExampleA_sample_function_a(
     int port_,
     ffi.Pointer<ffi.Void> that,
   ) {
-    return _wire_StructInMiscNoTwinExampleB_sample_function_a(
+    return _wire_StructInMiscNoTwinExampleA_sample_function_a(
       port_,
       that,
     );
   }
 
-  late final _wire_StructInMiscNoTwinExampleB_sample_function_aPtr = _lookup<
+  late final _wire_StructInMiscNoTwinExampleA_sample_function_aPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_sample_function_a');
-  late final _wire_StructInMiscNoTwinExampleB_sample_function_a =
-      _wire_StructInMiscNoTwinExampleB_sample_function_aPtr
+      'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleA_sample_function_a');
+  late final _wire_StructInMiscNoTwinExampleA_sample_function_a =
+      _wire_StructInMiscNoTwinExampleA_sample_function_aPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
