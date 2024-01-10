@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::misc_no_twin_example_a::*;
 use crate::api::misc_no_twin_example_b::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::*;
@@ -12841,11 +12842,27 @@ pub fn wire_test_struct_with_enum_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_StructInMiscNoTwinExampleB_sample_function_a(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructInMiscNoTwinExampleB_sample_function_a_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructInMiscNoTwinExampleB_sample_function_b(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructInMiscNoTwinExampleB_sample_function_b_impl(port_, that)
 }
 
 #[wasm_bindgen]

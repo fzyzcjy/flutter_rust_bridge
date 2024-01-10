@@ -24,6 +24,7 @@ import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
+import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
@@ -31237,6 +31238,24 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_cst_struct_with_enum_twin_normal>)>();
 
+  void wire_StructInMiscNoTwinExampleB_sample_function_a(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_StructInMiscNoTwinExampleB_sample_function_a(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_StructInMiscNoTwinExampleB_sample_function_aPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_sample_function_a');
+  late final _wire_StructInMiscNoTwinExampleB_sample_function_a =
+      _wire_StructInMiscNoTwinExampleB_sample_function_aPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
   void wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
     int port_,
     ffi.Pointer<ffi.Void> that,
@@ -31254,6 +31273,24 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a');
   late final _wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a =
       _wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_aPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_StructInMiscNoTwinExampleB_sample_function_b(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_StructInMiscNoTwinExampleB_sample_function_b(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_StructInMiscNoTwinExampleB_sample_function_bPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_sample_function_b');
+  late final _wire_StructInMiscNoTwinExampleB_sample_function_b =
+      _wire_StructInMiscNoTwinExampleB_sample_function_bPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_empty_struct_twin_normal(

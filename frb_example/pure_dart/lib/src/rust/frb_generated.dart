@@ -24,6 +24,7 @@ import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
+import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
@@ -727,9 +728,15 @@ abstract class RustLibApi extends BaseApi {
   Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
       {required StructWithEnumTwinNormal se, dynamic hint});
 
+  Future<void> structInMiscNoTwinExampleBSampleFunctionA(
+      {required StructInMiscNoTwinExampleB that, dynamic hint});
+
   Future<StructInMiscNoTwinExampleA>
       structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
           {required StructInMiscNoTwinExampleB that, dynamic hint});
+
+  Future<void> structInMiscNoTwinExampleBSampleFunctionB(
+      {required StructInMiscNoTwinExampleB that, dynamic hint});
 
   Future<EmptyTwinNormal> emptyStructTwinNormal(
       {required EmptyTwinNormal empty, dynamic hint});
@@ -9632,6 +9639,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> structInMiscNoTwinExampleBSampleFunctionA(
+      {required StructInMiscNoTwinExampleB that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+                that);
+        return wire.wire_StructInMiscNoTwinExampleB_sample_function_a(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStructInMiscNoTwinExampleBSampleFunctionAConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructInMiscNoTwinExampleBSampleFunctionAConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructInMiscNoTwinExampleB_sample_function_a",
+        argNames: ["that"],
+      );
+
+  @override
   Future<StructInMiscNoTwinExampleA>
       structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
           {required StructInMiscNoTwinExampleB that, dynamic hint}) {
@@ -9664,6 +9699,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 "StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a",
             argNames: ["that"],
           );
+
+  @override
+  Future<void> structInMiscNoTwinExampleBSampleFunctionB(
+      {required StructInMiscNoTwinExampleB that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+                that);
+        return wire.wire_StructInMiscNoTwinExampleB_sample_function_b(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStructInMiscNoTwinExampleBSampleFunctionBConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructInMiscNoTwinExampleBSampleFunctionBConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructInMiscNoTwinExampleB_sample_function_b",
+        argNames: ["that"],
+      );
 
   @override
   Future<EmptyTwinNormal> emptyStructTwinNormal(

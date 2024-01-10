@@ -24,6 +24,7 @@ import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
+import 'api/misc_no_twin_example_a.dart';
 import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
@@ -24202,11 +24203,19 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> se) =>
       wasmModule.wire_test_struct_with_enum_twin_normal(port_, se);
 
+  void wire_StructInMiscNoTwinExampleB_sample_function_a(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_StructInMiscNoTwinExampleB_sample_function_a(port_, that);
+
   void wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
           NativePortType port_, Object that) =>
       wasmModule
           .wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
               port_, that);
+
+  void wire_StructInMiscNoTwinExampleB_sample_function_b(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_StructInMiscNoTwinExampleB_sample_function_b(port_, that);
 
   void wire_empty_struct_twin_normal(
           NativePortType port_, List<dynamic> empty) =>
@@ -34710,9 +34719,15 @@ class RustLibWasmModule implements WasmModule {
   external void wire_test_struct_with_enum_twin_normal(
       NativePortType port_, List<dynamic> se);
 
+  external void wire_StructInMiscNoTwinExampleB_sample_function_a(
+      NativePortType port_, Object that);
+
   external void
       wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
           NativePortType port_, Object that);
+
+  external void wire_StructInMiscNoTwinExampleB_sample_function_b(
+      NativePortType port_, Object that);
 
   external void wire_empty_struct_twin_normal(
       NativePortType port_, List<dynamic> empty);
