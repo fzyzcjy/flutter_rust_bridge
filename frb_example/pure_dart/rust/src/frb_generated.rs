@@ -31789,7 +31789,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync_sse::Kitchen
 impl SseDecode for Vec<chrono::Duration> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<chrono::Duration>::sse_decode(deserializer));
         }
@@ -31800,7 +31800,7 @@ impl SseDecode for Vec<chrono::Duration> {
 impl SseDecode for Vec<chrono::DateTime<chrono::Local>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<chrono::DateTime<chrono::Local>>::sse_decode(deserializer));
         }
@@ -31811,7 +31811,7 @@ impl SseDecode for Vec<chrono::DateTime<chrono::Local>> {
 impl SseDecode for Vec<chrono::NaiveDateTime> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<chrono::NaiveDateTime>::sse_decode(deserializer));
         }
@@ -31822,7 +31822,7 @@ impl SseDecode for Vec<chrono::NaiveDateTime> {
 impl SseDecode for Vec<flutter_rust_bridge::DartOpaque> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<flutter_rust_bridge::DartOpaque>::sse_decode(deserializer));
         }
@@ -31833,7 +31833,7 @@ impl SseDecode for Vec<flutter_rust_bridge::DartOpaque> {
 impl SseDecode for Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<flutter_rust_bridge::RustOpaque<
                 crate::auxiliary::sample_types::HideData,
@@ -31846,7 +31846,7 @@ impl SseDecode for Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_
 impl SseDecode for Vec<String> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<String>::sse_decode(deserializer));
         }
@@ -31857,7 +31857,7 @@ impl SseDecode for Vec<String> {
 impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>::sse_decode(
@@ -31872,7 +31872,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::Applicat
 impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>::sse_decode(
@@ -31887,7 +31887,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::Applicat
 impl SseDecode for Vec<crate::api::optional::AttributeTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::optional::AttributeTwinNormal>::sse_decode(
                 deserializer,
@@ -31902,7 +31902,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>::sse_decode(deserializer));
         }
@@ -31915,7 +31915,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -31926,7 +31926,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse>::sse_decode(
@@ -31941,7 +31941,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sse::AttributeTw
 impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>::sse_decode(
@@ -31956,7 +31956,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeT
 impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse>::sse_decode(deserializer));
         }
@@ -31967,7 +31967,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync_sse::Attrib
 impl SseDecode for Vec<bool> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<bool>::sse_decode(deserializer));
         }
@@ -31978,7 +31978,7 @@ impl SseDecode for Vec<bool> {
 impl SseDecode for Vec<crate::api::optional::ElementTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::optional::ElementTwinNormal>::sse_decode(
                 deserializer,
@@ -31991,7 +31991,7 @@ impl SseDecode for Vec<crate::api::optional::ElementTwinNormal> {
 impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>::sse_decode(deserializer));
         }
@@ -32004,7 +32004,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -32015,7 +32015,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>::sse_decode(
@@ -32030,7 +32030,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwin
 impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>::sse_decode(
@@ -32045,7 +32045,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwi
 impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>::sse_decode(
@@ -32060,7 +32060,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync_sse::Elemen
 impl SseDecode for Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::rust_opaque::EnumOpaqueTwinNormal>::sse_decode(
                 deserializer,
@@ -32075,7 +32075,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>::sse_decode(deserializer));
         }
@@ -32088,7 +32088,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -32099,7 +32099,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse>::sse_decode(
@@ -32114,7 +32114,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaq
 impl SseDecode for Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>::sse_decode(
@@ -32131,7 +32131,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse>::sse_decode(deserializer));
         }
@@ -32142,7 +32142,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::auxiliary::sample_types::MyEnum> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::auxiliary::sample_types::MyEnum>::sse_decode(
                 deserializer,
@@ -32155,7 +32155,7 @@ impl SseDecode for Vec<crate::auxiliary::sample_types::MyEnum> {
 impl SseDecode for Vec<crate::auxiliary::sample_types::MySize> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::auxiliary::sample_types::MySize>::sse_decode(
                 deserializer,
@@ -32168,7 +32168,7 @@ impl SseDecode for Vec<crate::auxiliary::sample_types::MySize> {
 impl SseDecode for Vec<crate::api::misc_example::MyTreeNodeTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::misc_example::MyTreeNodeTwinNormal>::sse_decode(deserializer));
         }
@@ -32181,7 +32181,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>::sse_decode(deserializer));
         }
@@ -32194,7 +32194,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyTreeNodeTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -32205,7 +32205,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sse::MyTreeNodeTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::misc_example_twin_sse::MyTreeNodeTwinSse>::sse_decode(
@@ -32220,7 +32220,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sse::MyTreeN
 impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>::sse_decode(
@@ -32237,7 +32237,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNodeTwinSyncSse>::sse_decode(deserializer));
         }
@@ -32248,7 +32248,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>::sse_decode(deserializer));
         }
@@ -32270,7 +32270,7 @@ impl SseDecode for crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNested
 impl SseDecode for Vec<Option<String>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<String>>::sse_decode(deserializer));
         }
@@ -32281,7 +32281,7 @@ impl SseDecode for Vec<Option<String>> {
 impl SseDecode for Vec<Option<crate::api::optional::AttributeTwinNormal>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <Option<crate::api::optional::AttributeTwinNormal>>::sse_decode(deserializer),
@@ -32296,7 +32296,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync,
@@ -32313,7 +32313,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse,
@@ -32326,7 +32326,7 @@ impl SseDecode
 impl SseDecode for Vec<Option<crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse,
@@ -32339,7 +32339,7 @@ impl SseDecode for Vec<Option<crate::api::pseudo_manual::optional_twin_sse::Attr
 impl SseDecode for Vec<Option<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync,
@@ -32354,7 +32354,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse,
@@ -32367,7 +32367,7 @@ impl SseDecode
 impl SseDecode for Vec<Option<i32>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<i32>>::sse_decode(deserializer));
         }
@@ -32378,7 +32378,7 @@ impl SseDecode for Vec<Option<i32>> {
 impl SseDecode for Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <Option<crate::api::misc_example::WeekdaysTwinNormal>>::sse_decode(deserializer),
@@ -32393,7 +32393,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync,
@@ -32412,7 +32412,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>>::sse_decode(deserializer));
         }
@@ -32423,7 +32423,7 @@ impl SseDecode
 impl SseDecode for Vec<Option<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse,
@@ -32438,7 +32438,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync,
@@ -32453,7 +32453,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse,
@@ -32466,7 +32466,7 @@ impl SseDecode
 impl SseDecode for Vec<Option<Vec<i32>>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<Option<Vec<i32>>>::sse_decode(deserializer));
         }
@@ -32477,7 +32477,7 @@ impl SseDecode for Vec<Option<Vec<i32>>> {
 impl SseDecode for Vec<crate::api::array::PointTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::array::PointTwinNormal>::sse_decode(
                 deserializer,
@@ -32490,7 +32490,7 @@ impl SseDecode for Vec<crate::api::array::PointTwinNormal> {
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>::sse_decode(
@@ -32507,7 +32507,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -32518,7 +32518,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sse::PointTwinSse>::sse_decode(deserializer),
@@ -32531,7 +32531,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> 
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sync::PointTwinSync>::sse_decode(
@@ -32546,7 +32546,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse>::sse_decode(
@@ -32561,7 +32561,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwin
 impl SseDecode for Vec<f32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<f32>::sse_decode(deserializer));
         }
@@ -32572,7 +32572,7 @@ impl SseDecode for Vec<f32> {
 impl SseDecode for Vec<f64> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<f64>::sse_decode(deserializer));
         }
@@ -32583,7 +32583,7 @@ impl SseDecode for Vec<f64> {
 impl SseDecode for Vec<i16> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<i16>::sse_decode(deserializer));
         }
@@ -32594,7 +32594,7 @@ impl SseDecode for Vec<i16> {
 impl SseDecode for Vec<i32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<i32>::sse_decode(deserializer));
         }
@@ -32605,7 +32605,7 @@ impl SseDecode for Vec<i32> {
 impl SseDecode for Vec<i64> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<i64>::sse_decode(deserializer));
         }
@@ -32616,7 +32616,7 @@ impl SseDecode for Vec<i64> {
 impl SseDecode for Vec<i8> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<i8>::sse_decode(deserializer));
         }
@@ -32627,7 +32627,7 @@ impl SseDecode for Vec<i8> {
 impl SseDecode for Vec<u16> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<u16>::sse_decode(deserializer));
         }
@@ -32638,7 +32638,7 @@ impl SseDecode for Vec<u16> {
 impl SseDecode for Vec<u32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<u32>::sse_decode(deserializer));
         }
@@ -32649,7 +32649,7 @@ impl SseDecode for Vec<u32> {
 impl SseDecode for Vec<u64> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<u64>::sse_decode(deserializer));
         }
@@ -32660,7 +32660,7 @@ impl SseDecode for Vec<u64> {
 impl SseDecode for Vec<u8> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<u8>::sse_decode(deserializer));
         }
@@ -32671,7 +32671,7 @@ impl SseDecode for Vec<u8> {
 impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>::sse_decode(deserializer));
         }
@@ -32682,7 +32682,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStrin
 impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>::sse_decode(
@@ -32697,7 +32697,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStrin
 impl SseDecode for Vec<(i32, i32)> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(i32, i32)>::sse_decode(deserializer));
         }
@@ -32708,7 +32708,7 @@ impl SseDecode for Vec<(i32, i32)> {
 impl SseDecode for Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <(String, crate::api::enumeration::EnumSimpleTwinNormal)>::sse_decode(deserializer),
@@ -32726,7 +32726,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32745,7 +32745,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(String,crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,)>::sse_decode(deserializer));
         }
@@ -32761,7 +32761,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32780,7 +32780,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32799,7 +32799,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32813,7 +32813,7 @@ impl SseDecode
 impl SseDecode for Vec<(String, i32)> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(String, i32)>::sse_decode(deserializer));
         }
@@ -32824,7 +32824,7 @@ impl SseDecode for Vec<(String, i32)> {
 impl SseDecode for Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <(String, crate::api::enumeration::KitchenSinkTwinNormal)>::sse_decode(
@@ -32844,7 +32844,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32863,7 +32863,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(String,crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,)>::sse_decode(deserializer));
         }
@@ -32879,7 +32879,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32898,7 +32898,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32917,7 +32917,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -32931,7 +32931,7 @@ impl SseDecode
 impl SseDecode for Vec<(String, Vec<u8>)> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(String, Vec<u8>)>::sse_decode(deserializer));
         }
@@ -32942,7 +32942,7 @@ impl SseDecode for Vec<(String, Vec<u8>)> {
 impl SseDecode for Vec<(String, crate::auxiliary::sample_types::MySize)> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(String, crate::auxiliary::sample_types::MySize)>::sse_decode(deserializer));
         }
@@ -32953,7 +32953,7 @@ impl SseDecode for Vec<(String, crate::auxiliary::sample_types::MySize)> {
 impl SseDecode for Vec<(String, String)> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<(String, String)>::sse_decode(deserializer));
         }
@@ -32964,7 +32964,7 @@ impl SseDecode for Vec<(String, String)> {
 impl SseDecode for Vec<crate::api::method::SumWithTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::method::SumWithTwinNormal>::sse_decode(
                 deserializer,
@@ -32977,7 +32977,7 @@ impl SseDecode for Vec<crate::api::method::SumWithTwinNormal> {
 impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>::sse_decode(deserializer));
         }
@@ -32990,7 +32990,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -33001,7 +33001,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse>::sse_decode(
@@ -33016,7 +33016,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSs
 impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>::sse_decode(
@@ -33031,7 +33031,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinS
 impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse>::sse_decode(
@@ -33046,7 +33046,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithT
 impl SseDecode for Vec<crate::api::array::TestIdTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::array::TestIdTwinNormal>::sse_decode(
                 deserializer,
@@ -33059,7 +33059,7 @@ impl SseDecode for Vec<crate::api::array::TestIdTwinNormal> {
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>::sse_decode(
@@ -33076,7 +33076,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -33087,7 +33087,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse>::sse_decode(
@@ -33102,7 +33102,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse>
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>::sse_decode(
@@ -33117,7 +33117,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSyn
 impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse>::sse_decode(
@@ -33132,7 +33132,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwi
 impl SseDecode for Vec<crate::api::misc_example::WeekdaysTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::misc_example::WeekdaysTwinNormal>::sse_decode(
                 deserializer,
@@ -33147,7 +33147,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>::sse_decode(deserializer));
         }
@@ -33160,7 +33160,7 @@ impl SseDecode
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>::sse_decode(deserializer));
         }
@@ -33171,7 +33171,7 @@ impl SseDecode
 impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse>::sse_decode(
@@ -33186,7 +33186,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sse::Weekday
 impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::sse_decode(
@@ -33201,7 +33201,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
 impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = [];
+        let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>::sse_decode(deserializer));
         }
@@ -37289,19 +37289,18 @@ impl flutter_rust_bridge::IntoDart for crate::api::misc_example::AbcTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::misc_example::AbcTwinNormal::A(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::misc_example::AbcTwinNormal::B(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::misc_example::AbcTwinNormal::C(field0) => {
-                [2.into_dart(), field0.into_into_dart().into_dart()]
+                [2.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::misc_example::AbcTwinNormal::JustInt(field0) => {
-                [3.into_dart(), field0.into_into_dart().into_dart()]
+                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -37322,18 +37321,17 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::A(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::B(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::C(
                 field0,
-            ) => [2.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [2.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::JustInt(
                 field0,
-            ) => [3.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [3.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -37356,14 +37354,14 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::A(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::B(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::C(field0) => { [2.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::JustInt(field0) => { [3.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -37387,19 +37385,18 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::A(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::B(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::C(field0) => {
-                [2.into_dart(), field0.into_into_dart().into_dart()]
+                [2.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::JustInt(field0) => {
-                [3.into_dart(), field0.into_into_dart().into_dart()]
+                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -37419,19 +37416,18 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync::A(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync::B(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync::C(field0) => {
-                [2.into_dart(), field0.into_into_dart().into_dart()]
+                [2.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync::JustInt(field0) => {
-                [3.into_dart(), field0.into_into_dart().into_dart()]
+                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -37453,19 +37449,18 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::A(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::B(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::C(field0) => {
-                [2.into_dart(), field0.into_into_dart().into_dart()]
+                [2.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::JustInt(
                 field0,
-            ) => [3.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [3.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -37652,7 +37647,7 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationMessage {
         match self.0 {
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::DisplayMessage(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::RenderPixel {
                 x,
                 y,
@@ -37660,12 +37655,12 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationMessage {
                 1.into_dart(),
                 x.into_into_dart().into_dart(),
                 y.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage::Exit => {
-                [2.into_dart()]
+                [2.into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
@@ -37679,10 +37674,13 @@ impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationMessage>
 impl flutter_rust_bridge::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode::Standalone => 0,
-            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode::Embedded => 1,
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode::Standalone => {
+                0.into_dart()
+            }
+            crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode::Embedded => {
+                1.into_dart()
+            }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationMode {}
@@ -38933,14 +38931,15 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomEnumErrorTwi
                 0.into_dart(),
                 message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::exception::CustomEnumErrorTwinNormal::Two { message, backtrace } => [
                 1.into_dart(),
                 message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -38960,11 +38959,11 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::One{message,backtrace} => { [0.into_dart(),
 message.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
+backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::Two{message,backtrace} => { [1.into_dart(),
 message.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
- }.into_dart()
+backtrace.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -38988,11 +38987,11 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::One{message,backtrace} => { [0.into_dart(),
 message.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
+backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::Two{message,backtrace} => { [1.into_dart(),
 message.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
- }.into_dart()
+backtrace.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39024,7 +39023,8 @@ impl flutter_rust_bridge::IntoDart
                 0.into_dart(),
                 message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse::Two {
                 message,
                 backtrace,
@@ -39032,9 +39032,9 @@ impl flutter_rust_bridge::IntoDart
                 1.into_dart(),
                 message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39064,7 +39064,8 @@ impl flutter_rust_bridge::IntoDart
                 0.into_dart(),
                 message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync::Two {
                 message,
                 backtrace,
@@ -39072,9 +39073,9 @@ impl flutter_rust_bridge::IntoDart
                 1.into_dart(),
                 message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39098,11 +39099,11 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::One{message,backtrace} => { [0.into_dart(),
 message.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
+backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::Two{message,backtrace} => { [1.into_dart(),
 message.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
- }.into_dart()
+backtrace.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39127,14 +39128,15 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomErrorTwinNor
                 0.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::exception::CustomErrorTwinNormal::Error1 { e, backtrace } => [
                 1.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39154,11 +39156,11 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error0{e,backtrace} => { [0.into_dart(),
 e.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
+backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error1{e,backtrace} => { [1.into_dart(),
 e.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
- }.into_dart()
+backtrace.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39182,11 +39184,11 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error0{e,backtrace} => { [0.into_dart(),
 e.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
+backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error1{e,backtrace} => { [1.into_dart(),
 e.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
- }.into_dart()
+backtrace.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39216,7 +39218,8 @@ impl flutter_rust_bridge::IntoDart
                 0.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse::Error1 {
                 e,
                 backtrace,
@@ -39224,9 +39227,9 @@ impl flutter_rust_bridge::IntoDart
                 1.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39254,7 +39257,8 @@ impl flutter_rust_bridge::IntoDart
                 0.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync::Error1 {
                 e,
                 backtrace,
@@ -39262,9 +39266,9 @@ impl flutter_rust_bridge::IntoDart
                 1.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39286,11 +39290,11 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error0{e,backtrace} => { [0.into_dart(),
 e.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
+backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error1{e,backtrace} => { [1.into_dart(),
 e.into_into_dart().into_dart(),
-backtrace.into_into_dart().into_dart()] }
- }.into_dart()
+backtrace.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39312,13 +39316,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedError1
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::exception::CustomNestedError1TwinNormal::CustomNested1(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::exception::CustomNestedError1TwinNormal::ErrorNested(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39337,10 +39340,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::CustomNested1(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::ErrorNested(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39363,10 +39366,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::CustomNested1(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::ErrorNested(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39383,10 +39386,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::CustomNested1(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::ErrorNested(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39409,10 +39412,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::CustomNested1(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::ErrorNested(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39435,10 +39438,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::CustomNested1(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::ErrorNested(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39460,13 +39463,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedError2
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::exception::CustomNestedError2TwinNormal::CustomNested2(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::exception::CustomNestedError2TwinNormal::CustomNested2Number(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39485,10 +39487,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2Number(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39511,10 +39513,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2Number(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39531,10 +39533,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2Number(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39557,10 +39559,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2Number(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39583,10 +39585,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2Number(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39608,13 +39610,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedErrorI
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::exception::CustomNestedErrorInnerTwinNormal::Three(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::exception::CustomNestedErrorInnerTwinNormal::Four(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39633,10 +39634,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Three(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Four(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39659,10 +39660,10 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse {
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     match self {crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse::Three(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse::Four(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse {}
@@ -39678,12 +39679,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorInnerTwinSse::Three(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorInnerTwinSse::Four(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39706,10 +39706,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Three(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Four(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39732,10 +39732,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorInnerTwinSyncSse::Three(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorInnerTwinSyncSse::Four(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39757,13 +39757,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedErrorO
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::exception::CustomNestedErrorOuterTwinNormal::One(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::exception::CustomNestedErrorOuterTwinNormal::Two(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39782,10 +39781,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::One(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::Two(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39808,10 +39807,10 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse {
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     match self {crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse::One(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse::Two(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse {}
@@ -39827,12 +39826,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorOuterTwinSse::One(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorOuterTwinSse::Two(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39857,12 +39855,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::One(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::Two(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -39885,10 +39882,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse::One(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse::Two(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -40647,12 +40644,11 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::enumeration::DistanceTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            crate::api::enumeration::DistanceTwinNormal::Unknown => [0.into_dart()],
+            crate::api::enumeration::DistanceTwinNormal::Unknown => [0.into_dart()].into_dart(),
             crate::api::enumeration::DistanceTwinNormal::Map(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -40670,10 +40666,10 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Unknown => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Unknown => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Map(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -40695,10 +40691,10 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse::Unknown => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse::Unknown => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse::Map(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -40722,13 +40718,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse::Unknown => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse::Map(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -40750,13 +40745,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync::Unknown => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync::Map(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -40778,13 +40772,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse::Unknown => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse::Map(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41079,13 +41072,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::dart_opaque::EnumDartOpaqueTw
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::dart_opaque::EnumDartOpaqueTwinNormal::Primitive(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::dart_opaque::EnumDartOpaqueTwinNormal::Opaque(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41104,10 +41096,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Primitive(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Opaque(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41130,10 +41122,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::EnumDartOpaqueTwinRustAsyncSse::Primitive(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::EnumDartOpaqueTwinRustAsyncSse::Opaque(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41160,12 +41152,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::dart_opaque_twin_sse::EnumDartOpaqueTwinSse::Primitive(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::dart_opaque_twin_sse::EnumDartOpaqueTwinSse::Opaque(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41190,12 +41181,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync::Primitive(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync::Opaque(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41218,10 +41208,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::dart_opaque_twin_sync_sse::EnumDartOpaqueTwinSyncSse::Primitive(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::dart_opaque_twin_sync_sse::EnumDartOpaqueTwinSyncSse::Opaque(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41243,22 +41233,21 @@ impl flutter_rust_bridge::IntoDart for crate::api::rust_opaque::EnumOpaqueTwinNo
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::rust_opaque::EnumOpaqueTwinNormal::Struct(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::rust_opaque::EnumOpaqueTwinNormal::Primitive(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::rust_opaque::EnumOpaqueTwinNormal::TraitObj(field0) => {
-                [2.into_dart(), field0.into_into_dart().into_dart()]
+                [2.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::rust_opaque::EnumOpaqueTwinNormal::Mutex(field0) => {
-                [3.into_dart(), field0.into_into_dart().into_dart()]
+                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(field0) => {
-                [4.into_dart(), field0.into_into_dart().into_dart()]
+                [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41277,16 +41266,16 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Primitive(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj(field0) => { [2.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex(field0) => { [3.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0) => { [4.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41309,16 +41298,16 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Struct(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Primitive(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::TraitObj(field0) => { [2.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Mutex(field0) => { [3.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock(field0) => { [4.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41343,22 +41332,21 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Struct(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Primitive(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::TraitObj(
                 field0,
-            ) => [2.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [2.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Mutex(field0) => {
-                [3.into_dart(), field0.into_into_dart().into_dart()]
+                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::RwLock(field0) => {
-                [4.into_dart(), field0.into_into_dart().into_dart()]
+                [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41381,21 +41369,20 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Struct(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Primitive(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::TraitObj(
                 field0,
-            ) => [2.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [2.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Mutex(field0) => {
-                [3.into_dart(), field0.into_into_dart().into_dart()]
+                [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(
                 field0,
-            ) => [4.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [4.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41418,16 +41405,16 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Struct(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Primitive(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::TraitObj(field0) => { [2.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Mutex(field0) => { [3.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock(field0) => { [4.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41448,10 +41435,9 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumSimpleTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::A => 0,
-            Self::B => 1,
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41470,10 +41456,9 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::A => 0,
-            Self::B => 1,
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41496,10 +41481,9 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::A => 0,
-            Self::B => 1,
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41523,10 +41507,9 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::A => 0,
-            Self::B => 1,
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41547,10 +41530,9 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::A => 0,
-            Self::B => 1,
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41573,10 +41555,9 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::A => 0,
-            Self::B => 1,
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41597,15 +41578,14 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemMixedTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            crate::api::enumeration::EnumWithItemMixedTwinNormal::A => [0.into_dart()],
+            crate::api::enumeration::EnumWithItemMixedTwinNormal::A => [0.into_dart()].into_dart(),
             crate::api::enumeration::EnumWithItemMixedTwinNormal::B(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::enumeration::EnumWithItemMixedTwinNormal::C { c_field } => {
-                [2.into_dart(), c_field.into_into_dart().into_dart()]
+                [2.into_dart(), c_field.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41623,12 +41603,12 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::A => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::A => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::B(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::C{c_field} => { [2.into_dart(),
-c_field.into_into_dart().into_dart()] }
- }.into_dart()
+c_field.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41649,12 +41629,12 @@ impl
 }
 impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse {
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                    match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse::A => { [0.into_dart()] }
+                    match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse::A => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse::B(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse::C{c_field} => { [2.into_dart(),
-c_field.into_into_dart().into_dart()] }
- }.into_dart()
+c_field.into_into_dart().into_dart()].into_dart() }
+ }
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse {}
@@ -41669,16 +41649,15 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse::A => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse::B(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse::C {
                 c_field,
-            } => [2.into_dart(), c_field.into_into_dart().into_dart()],
+            } => [2.into_dart(), c_field.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41702,16 +41681,15 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::A => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::B(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::C {
                 c_field,
-            } => [2.into_dart(), c_field.into_into_dart().into_dart()],
+            } => [2.into_dart(), c_field.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41733,12 +41711,12 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse::A => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse::A => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse::B(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse::C{c_field} => { [2.into_dart(),
-c_field.into_into_dart().into_dart()] }
- }.into_dart()
+c_field.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41760,13 +41738,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemStru
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::enumeration::EnumWithItemStructTwinNormal::A { a_field } => {
-                [0.into_dart(), a_field.into_into_dart().into_dart()]
+                [0.into_dart(), a_field.into_into_dart().into_dart()].into_dart()
             }
             crate::api::enumeration::EnumWithItemStructTwinNormal::B { b_field } => {
-                [1.into_dart(), b_field.into_into_dart().into_dart()]
+                [1.into_dart(), b_field.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41785,10 +41762,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::A{a_field} => { [0.into_dart(),
-a_field.into_into_dart().into_dart()] }
+a_field.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::B{b_field} => { [1.into_dart(),
-b_field.into_into_dart().into_dart()] }
- }.into_dart()
+b_field.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41810,10 +41787,10 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse {
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse::A{a_field} => { [0.into_dart(),
-a_field.into_into_dart().into_dart()] }
+a_field.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse::B{b_field} => { [1.into_dart(),
-b_field.into_into_dart().into_dart()] }
- }.into_dart()
+b_field.into_into_dart().into_dart()].into_dart() }
+ }
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse {}
@@ -41829,12 +41806,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemStructTwinSse::A {
                 a_field,
-            } => [0.into_dart(), a_field.into_into_dart().into_dart()],
+            } => [0.into_dart(), a_field.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemStructTwinSse::B {
                 b_field,
-            } => [1.into_dart(), b_field.into_into_dart().into_dart()],
+            } => [1.into_dart(), b_field.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41859,12 +41835,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::A {
                 a_field,
-            } => [0.into_dart(), a_field.into_into_dart().into_dart()],
+            } => [0.into_dart(), a_field.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::B {
                 b_field,
-            } => [1.into_dart(), b_field.into_into_dart().into_dart()],
+            } => [1.into_dart(), b_field.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41887,10 +41862,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemStructTwinSyncSse::A{a_field} => { [0.into_dart(),
-a_field.into_into_dart().into_dart()] }
+a_field.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemStructTwinSyncSse::B{b_field} => { [1.into_dart(),
-b_field.into_into_dart().into_dart()] }
- }.into_dart()
+b_field.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41912,13 +41887,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemTupl
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::enumeration::EnumWithItemTupleTwinNormal::A(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::enumeration::EnumWithItemTupleTwinNormal::B(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41937,10 +41911,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::A(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -41962,10 +41936,10 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse {
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse::A(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse::B(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse {}
@@ -41981,12 +41955,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemTupleTwinSse::A(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemTupleTwinSse::B(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42011,12 +41984,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::A(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::B(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42039,10 +42011,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemTupleTwinSyncSse::A(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemTupleTwinSyncSse::B(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42630,7 +42602,7 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::enumeration::KitchenSinkTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            crate::api::enumeration::KitchenSinkTwinNormal::Empty => [0.into_dart()],
+            crate::api::enumeration::KitchenSinkTwinNormal::Empty => [0.into_dart()].into_dart(),
             crate::api::enumeration::KitchenSinkTwinNormal::Primitives {
                 int32,
                 float64,
@@ -42640,25 +42612,27 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::KitchenSinkTwinN
                 int32.into_into_dart().into_dart(),
                 float64.into_into_dart().into_dart(),
                 boolean.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::enumeration::KitchenSinkTwinNormal::Nested(field0, field1) => [
                 2.into_dart(),
                 field0.into_into_dart().into_dart(),
                 field1.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::enumeration::KitchenSinkTwinNormal::Optional(field0, field1) => [
                 3.into_dart(),
                 field0.into_into_dart().into_dart(),
                 field1.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::enumeration::KitchenSinkTwinNormal::Buffer(field0) => {
-                [4.into_dart(), field0.into_into_dart().into_dart()]
+                [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::enumeration::KitchenSinkTwinNormal::Enums(field0) => {
-                [5.into_dart(), field0.into_into_dart().into_dart()]
+                [5.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42676,22 +42650,22 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Empty => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Empty => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Primitives{int32,float64,boolean} => { [1.into_dart(),
 int32.into_into_dart().into_dart(),
 float64.into_into_dart().into_dart(),
-boolean.into_into_dart().into_dart()] }
+boolean.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Nested(field0,field1) => { [2.into_dart(),
 field0.into_into_dart().into_dart(),
-field1.into_into_dart().into_dart()] }
+field1.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Optional(field0,field1) => { [3.into_dart(),
 field0.into_into_dart().into_dart(),
-field1.into_into_dart().into_dart()] }
+field1.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Buffer(field0) => { [4.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Enums(field0) => { [5.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42713,22 +42687,22 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Empty => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Empty => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Primitives{int32,float64,boolean} => { [1.into_dart(),
 int32.into_into_dart().into_dart(),
 float64.into_into_dart().into_dart(),
-boolean.into_into_dart().into_dart()] }
+boolean.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Nested(field0,field1) => { [2.into_dart(),
 field0.into_into_dart().into_dart(),
-field1.into_into_dart().into_dart()] }
+field1.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Optional(field0,field1) => { [3.into_dart(),
 field0.into_into_dart().into_dart(),
-field1.into_into_dart().into_dart()] }
+field1.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Buffer(field0) => { [4.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Enums(field0) => { [5.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42753,7 +42727,7 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Empty => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Primitives {
                 int32,
@@ -42764,7 +42738,8 @@ impl flutter_rust_bridge::IntoDart
                 int32.into_into_dart().into_dart(),
                 float64.into_into_dart().into_dart(),
                 boolean.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Nested(
                 field0,
                 field1,
@@ -42772,7 +42747,8 @@ impl flutter_rust_bridge::IntoDart
                 2.into_dart(),
                 field0.into_into_dart().into_dart(),
                 field1.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Optional(
                 field0,
                 field1,
@@ -42780,15 +42756,15 @@ impl flutter_rust_bridge::IntoDart
                 3.into_dart(),
                 field0.into_into_dart().into_dart(),
                 field1.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Buffer(field0) => {
-                [4.into_dart(), field0.into_into_dart().into_dart()]
+                [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Enums(field0) => {
-                [5.into_dart(), field0.into_into_dart().into_dart()]
+                [5.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42810,7 +42786,7 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Empty => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Primitives {
                 int32,
@@ -42821,7 +42797,8 @@ impl flutter_rust_bridge::IntoDart
                 int32.into_into_dart().into_dart(),
                 float64.into_into_dart().into_dart(),
                 boolean.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Nested(
                 field0,
                 field1,
@@ -42829,7 +42806,8 @@ impl flutter_rust_bridge::IntoDart
                 2.into_dart(),
                 field0.into_into_dart().into_dart(),
                 field1.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Optional(
                 field0,
                 field1,
@@ -42837,15 +42815,15 @@ impl flutter_rust_bridge::IntoDart
                 3.into_dart(),
                 field0.into_into_dart().into_dart(),
                 field1.into_into_dart().into_dart(),
-            ],
+            ]
+            .into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Buffer(
                 field0,
-            ) => [4.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [4.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Enums(
                 field0,
-            ) => [5.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [5.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -42867,22 +42845,22 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Empty => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Empty => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Primitives{int32,float64,boolean} => { [1.into_dart(),
 int32.into_into_dart().into_dart(),
 float64.into_into_dart().into_dart(),
-boolean.into_into_dart().into_dart()] }
+boolean.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Nested(field0,field1) => { [2.into_dart(),
 field0.into_into_dart().into_dart(),
-field1.into_into_dart().into_dart()] }
+field1.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Optional(field0,field1) => { [3.into_dart(),
 field0.into_into_dart().into_dart(),
-field1.into_into_dart().into_dart()] }
+field1.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Buffer(field0) => { [4.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Enums(field0) => { [5.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -43162,13 +43140,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::MeasureTwinNorma
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::enumeration::MeasureTwinNormal::Speed(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::enumeration::MeasureTwinNormal::Distance(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -43187,10 +43164,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Speed(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Distance(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -43213,10 +43190,10 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::MeasureTwinRustAsyncSse::Speed(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::MeasureTwinRustAsyncSse::Distance(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -43240,13 +43217,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sse::MeasureTwinSse::Speed(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sse::MeasureTwinSse::Distance(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -43268,13 +43244,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync::Speed(field0) => {
-                [0.into_dart(), field0.into_into_dart().into_dart()]
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync::Distance(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -43297,12 +43272,11 @@ impl flutter_rust_bridge::IntoDart
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync_sse::MeasureTwinSyncSse::Speed(
                 field0,
-            ) => [0.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::enumeration_twin_sync_sse::MeasureTwinSyncSse::Distance(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -43729,10 +43703,9 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::raw_string_twi
 impl flutter_rust_bridge::IntoDart for crate::auxiliary::sample_types::MyEnum {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::False => 0,
-            Self::True => 1,
+            Self::False => 0.into_dart(),
+            Self::True => 1.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -44962,12 +44935,12 @@ impl
 impl flutter_rust_bridge::IntoDart for mirror_RawStringEnumMirrored {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self.0 {crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Raw(field0) => { [0.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::Nested(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
+field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored::ListOfNested(field0) => { [2.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
@@ -45247,12 +45220,11 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::enumeration::SpeedTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            crate::api::enumeration::SpeedTwinNormal::Unknown => [0.into_dart()],
+            crate::api::enumeration::SpeedTwinNormal::Unknown => [0.into_dart()].into_dart(),
             crate::api::enumeration::SpeedTwinNormal::GPS(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45272,13 +45244,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync::Unknown => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync::GPS(
                 field0,
-            ) => [1.into_dart(), field0.into_into_dart().into_dart()],
+            ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45300,10 +45271,10 @@ impl flutter_rust_bridge::IntoDart
     for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse::Unknown => { [0.into_dart()] }
+        match self {crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse::Unknown => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse::GPS(field0) => { [1.into_dart(),
-field0.into_into_dart().into_dart()] }
- }.into_dart()
+field0.into_into_dart().into_dart()].into_dart() }
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45327,13 +45298,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse::Unknown => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse::GPS(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45354,13 +45324,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync::Unknown => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync::GPS(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45382,13 +45351,12 @@ impl flutter_rust_bridge::IntoDart
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
             crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse::Unknown => {
-                [0.into_dart()]
+                [0.into_dart()].into_dart()
             }
             crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse::GPS(field0) => {
-                [1.into_dart(), field0.into_into_dart().into_dart()]
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47094,15 +47062,14 @@ impl
 impl flutter_rust_bridge::IntoDart for crate::api::misc_example::WeekdaysTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::Monday => 0,
-            Self::Tuesday => 1,
-            Self::Wednesday => 2,
-            Self::Thursday => 3,
-            Self::Friday => 4,
-            Self::Saturday => 5,
-            Self::Sunday => 6,
+            Self::Monday => 0.into_dart(),
+            Self::Tuesday => 1.into_dart(),
+            Self::Wednesday => 2.into_dart(),
+            Self::Thursday => 3.into_dart(),
+            Self::Friday => 4.into_dart(),
+            Self::Saturday => 5.into_dart(),
+            Self::Sunday => 6.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47121,15 +47088,14 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::Monday => 0,
-            Self::Tuesday => 1,
-            Self::Wednesday => 2,
-            Self::Thursday => 3,
-            Self::Friday => 4,
-            Self::Saturday => 5,
-            Self::Sunday => 6,
+            Self::Monday => 0.into_dart(),
+            Self::Tuesday => 1.into_dart(),
+            Self::Wednesday => 2.into_dart(),
+            Self::Thursday => 3.into_dart(),
+            Self::Friday => 4.into_dart(),
+            Self::Saturday => 5.into_dart(),
+            Self::Sunday => 6.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47152,15 +47118,14 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::Monday => 0,
-            Self::Tuesday => 1,
-            Self::Wednesday => 2,
-            Self::Thursday => 3,
-            Self::Friday => 4,
-            Self::Saturday => 5,
-            Self::Sunday => 6,
+            Self::Monday => 0.into_dart(),
+            Self::Tuesday => 1.into_dart(),
+            Self::Wednesday => 2.into_dart(),
+            Self::Thursday => 3.into_dart(),
+            Self::Friday => 4.into_dart(),
+            Self::Saturday => 5.into_dart(),
+            Self::Sunday => 6.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47183,15 +47148,14 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::Monday => 0,
-            Self::Tuesday => 1,
-            Self::Wednesday => 2,
-            Self::Thursday => 3,
-            Self::Friday => 4,
-            Self::Saturday => 5,
-            Self::Sunday => 6,
+            Self::Monday => 0.into_dart(),
+            Self::Tuesday => 1.into_dart(),
+            Self::Wednesday => 2.into_dart(),
+            Self::Thursday => 3.into_dart(),
+            Self::Friday => 4.into_dart(),
+            Self::Saturday => 5.into_dart(),
+            Self::Sunday => 6.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47212,15 +47176,14 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::Monday => 0,
-            Self::Tuesday => 1,
-            Self::Wednesday => 2,
-            Self::Thursday => 3,
-            Self::Friday => 4,
-            Self::Saturday => 5,
-            Self::Sunday => 6,
+            Self::Monday => 0.into_dart(),
+            Self::Tuesday => 1.into_dart(),
+            Self::Wednesday => 2.into_dart(),
+            Self::Thursday => 3.into_dart(),
+            Self::Friday => 4.into_dart(),
+            Self::Saturday => 5.into_dart(),
+            Self::Sunday => 6.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47241,15 +47204,14 @@ impl flutter_rust_bridge::IntoDart
 {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            Self::Monday => 0,
-            Self::Tuesday => 1,
-            Self::Wednesday => 2,
-            Self::Thursday => 3,
-            Self::Friday => 4,
-            Self::Saturday => 5,
-            Self::Sunday => 6,
+            Self::Monday => 0.into_dart(),
+            Self::Tuesday => 1.into_dart(),
+            Self::Wednesday => 2.into_dart(),
+            Self::Thursday => 3.into_dart(),
+            Self::Friday => 4.into_dart(),
+            Self::Saturday => 5.into_dart(),
+            Self::Sunday => 6.into_dart(),
         }
-        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
