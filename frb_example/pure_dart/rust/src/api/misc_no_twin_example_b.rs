@@ -11,4 +11,6 @@ impl StructInMiscNoTwinExampleB {
     pub async fn get_struct_in_misc_no_twin_example_a(&self) -> StructInMiscNoTwinExampleA {
         StructInMiscNoTwinExampleA
     }
+
+    pub async fn sample_function_b(&self) {}
 }
