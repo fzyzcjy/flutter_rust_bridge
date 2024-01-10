@@ -4,8 +4,8 @@
 /// {@endtemplate}
 library;
 
-export 'dart:typed_data' hide Int64List, Uint64List;
 export 'dart:async' show FutureOr;
+export 'dart:typed_data' hide Int64List, Uint64List;
 
 export 'package:meta/meta.dart' show internal, protected, sealed;
 
@@ -22,6 +22,6 @@ export 'src/main_components/entrypoint.dart';
 export 'src/main_components/handler.dart';
 export 'src/main_components/wire.dart';
 export 'src/manual_impl/_common.dart';
-export 'src/misc/rust_opaque.dart';
 export 'src/rust_arc/_common.dart';
+export 'src/rust_opaque/rust_opaque_nom.dart';
 export 'src/task.dart';
