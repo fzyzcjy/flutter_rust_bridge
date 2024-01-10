@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 /// An opaque pointer to a native arbitrary Rust type.
 /// TODO: link to the doc talking about "dispose"/GC semantics
-abstract class RustOpaque {
+abstract class RustOpaqueNom {
   final RustArc _arc;
 
   /// If true, when sending this object to Rust, the ownership of this object
@@ -15,7 +15,7 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  RustOpaque.dcoDecode(List<dynamic> wire, RustArcStaticData staticData)
+  RustOpaqueNom.dcoDecode(List<dynamic> wire, RustArcStaticData staticData)
       : this._fromRaw(
           ptr: wire[0],
           externalSizeOnNative: wire[1],
@@ -24,7 +24,7 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  RustOpaque.sseDecode(
+  RustOpaqueNom.sseDecode(
       int ptr, int externalSizeOnNative, RustArcStaticData staticData)
       : this._fromRaw(
           ptr: ptr,
@@ -32,7 +32,7 @@ abstract class RustOpaque {
           staticData: staticData,
         );
 
-  RustOpaque._fromRaw({
+  RustOpaqueNom._fromRaw({
     required int ptr,
     required int externalSizeOnNative,
     required RustArcStaticData staticData,
@@ -64,3 +64,7 @@ abstract class RustOpaque {
   /// Whether the underlying `Arc` is disposed.
   bool get isDisposed => _arc.isDisposed;
 }
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+@Deprecated('Please use `RustOpaqueNom`. This is only for old generated code')
+typedef RustOpaque = RustOpaqueNom;
