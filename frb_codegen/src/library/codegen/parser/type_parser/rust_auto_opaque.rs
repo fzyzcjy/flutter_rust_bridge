@@ -4,7 +4,7 @@ use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
+use crate::codegen::parser::type_parser::rust_opaque::SimpleNamespaceMap;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use log::debug;
@@ -67,4 +67,4 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustAutoOpaque>;
+pub(super) type RustAutoOpaqueParserInfo = SimpleNamespaceMap;
