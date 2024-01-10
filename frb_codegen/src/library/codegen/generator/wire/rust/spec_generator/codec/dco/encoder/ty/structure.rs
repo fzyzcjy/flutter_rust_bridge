@@ -44,7 +44,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
             format!(
                 "[
                     {body}
-                ]"
+                ].into_dart()"
             )
         };
 
@@ -52,7 +52,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
         Some(format!(
             "impl flutter_rust_bridge::IntoDart for {name} {{
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    {vec}.into_dart()
+                    {vec}
                 }}
             }}
             impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
