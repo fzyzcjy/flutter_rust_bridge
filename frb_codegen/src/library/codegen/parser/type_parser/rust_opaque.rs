@@ -23,7 +23,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
         let namespace = (self.inner.rust_opaque_parser_info)
-            .get_or_insert(ty.safe_ident(), self.context.initiated_namespace.clone());
+            .get_or_insert(ty, self.context.initiated_namespace.clone());
         RustOpaque(IrTypeRustOpaque::new(namespace, ty.clone(), false))
     }
 }
@@ -34,7 +34,7 @@ pub(super) type RustOpaqueParserInfo = SimpleNamespaceMap;
 pub(super) struct SimpleNamespaceMap(HashMap<String, Namespace>);
 
 impl SimpleNamespaceMap {
-    pub fn get_or_insert(&mut self, ty: IrType, insert_namespace: Namespace) -> Namespace {
+    pub fn get_or_insert(&mut self, ty: &IrType, insert_namespace: Namespace) -> Namespace {
         (self.0.entry(ty.safe_ident()).or_insert(insert_namespace)).clone()
     }
 }

@@ -48,7 +48,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ownership_mode,
             inner: IrTypeRustOpaque {
                 namespace: (self.inner.rust_auto_opaque_parser_info)
-                    .get_or_insert(ty.safe_ident(), self.context.initiated_namespace.clone()),
+                    .get_or_insert(ty, self.context.initiated_namespace.clone()),
                 inner: Box::new(IrType::Unencodable(IrTypeUnencodable {
                     namespace: None,
                     // TODO when all usages of a type do not require `&mut`, can drop this Mutex
