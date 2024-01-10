@@ -42,7 +42,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
             "Vec::<u8>::new()".to_string()
         } else {
             format!(
-                "vec![
+                "[
                     {body}
                 ]"
             )
