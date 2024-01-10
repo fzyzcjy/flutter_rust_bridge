@@ -3,4 +3,6 @@ use super::BaseRustOpaqueCodec;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct MoiRustOpaqueCodec;
 
-impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {}
+impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {
+    type Data<T> = i64;
+}
