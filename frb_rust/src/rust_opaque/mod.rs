@@ -42,7 +42,7 @@ use std::sync::Arc;
 #[repr(transparent)]
 #[derive(Debug)]
 pub struct RustOpaque<T: ?Sized, Codec: BaseRustOpaqueCodec = NomRustOpaqueCodec> {
-    arc: Arc<T>,
+    data: Codec::Data<T>,
 }
 
 // https://github.com/fzyzcjy/flutter_rust_bridge/pull/1574
