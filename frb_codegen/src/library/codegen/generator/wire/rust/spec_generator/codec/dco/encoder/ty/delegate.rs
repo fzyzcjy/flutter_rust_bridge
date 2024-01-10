@@ -22,7 +22,9 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
                 .variants()
                 .iter()
                 .enumerate()
-                .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name, idx))
+                .map(|(idx, variant)| {
+                    format!("{}::{} => {}.into_dart(),", self_path, variant.name, idx)
+                })
                 .collect_vec()
                 .join("\n");
             let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
@@ -31,7 +33,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGener
                     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
                         match {self_ref} {{
                             {variants}
-                        }}.into_dart()
+                        }}
                     }}
                 }}
                 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}
