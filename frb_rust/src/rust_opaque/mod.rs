@@ -1,3 +1,4 @@
+pub(crate) mod codec;
 pub(crate) mod dart2rust;
 pub(crate) mod rust2dart;
 pub(crate) mod utils;
