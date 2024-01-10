@@ -1,13 +1,22 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use serde::Serialize;
+use strum_macros::{Display, EnumIter};
 
 crate::ir! {
 pub struct IrTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: Box<IrType>,
+    pub codec: RustOpaqueCodecMode,
     pub brief_name: bool,
 }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display, EnumIter)]
+pub(crate) enum RustOpaqueCodecMode {
+    Nom,
+    Moi,
 }
 
 impl IrTypeRustOpaque {
