@@ -43,10 +43,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
-        let new_ir = IrTypeRustAutoOpaque {
+
+        RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
             inner: IrTypeRustOpaque {
-                namespace: self.context.initiated_namespace.clone(),
+                namespace: (self.inner.rust_auto_opaque_parser_info)
+                    .get_or_insert(ty.safe_ident(), self.context.initiated_namespace.clone()),
                 inner: Box::new(IrType::Unencodable(IrTypeUnencodable {
                     namespace: None,
                     // TODO when all usages of a type do not require `&mut`, can drop this Mutex
@@ -59,11 +61,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 })),
                 brief_name: true,
             },
-        };
-
-        RustAutoOpaque(
-            (self.inner.rust_auto_opaque_parser_info).get_or_insert(ty.safe_ident(), new_ir),
-        )
+        })
     }
 }
 

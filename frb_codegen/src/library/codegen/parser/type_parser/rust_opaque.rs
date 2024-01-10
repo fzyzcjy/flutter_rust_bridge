@@ -22,9 +22,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
-        let new_ir =
-            IrTypeRustOpaque::new(self.context.initiated_namespace.clone(), ty.clone(), false);
-        RustOpaque((self.inner.rust_opaque_parser_info).get_or_insert(ty.safe_ident(), new_ir))
+        let namespace = (self.inner.rust_opaque_parser_info)
+            .get_or_insert(ty.safe_ident(), self.context.initiated_namespace.clone());
+        RustOpaque(IrTypeRustOpaque::new(namespace, ty.clone(), false))
     }
 }
 
