@@ -20,10 +20,16 @@ pub(crate) enum RustOpaqueCodecMode {
 }
 
 impl IrTypeRustOpaque {
-    pub fn new(namespace: Namespace, inner: IrType, brief_name: bool) -> Self {
+    pub fn new(
+        namespace: Namespace,
+        inner: IrType,
+        codec: RustOpaqueCodecMode,
+        brief_name: bool,
+    ) -> Self {
         Self {
             namespace,
             inner: Box::new(inner),
+            codec,
             brief_name,
         }
     }

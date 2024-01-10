@@ -1,7 +1,7 @@
 use crate::codegen::ir::pack::DistinctTypeGatherer;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
@@ -57,6 +57,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     ),
                     segments: vec![],
                 })),
+                // TODO
+                codec: RustOpaqueCodecMode::Nom,
                 brief_name: true,
             },
         };
