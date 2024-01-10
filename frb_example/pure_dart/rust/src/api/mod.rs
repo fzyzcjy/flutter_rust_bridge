@@ -19,6 +19,7 @@ pub mod map_and_set;
 pub mod method;
 pub mod mirror;
 pub mod misc_example;
+pub mod misc_no_twin_example;
 pub mod misc_type;
 pub mod newtype_pattern;
 pub mod optional;
