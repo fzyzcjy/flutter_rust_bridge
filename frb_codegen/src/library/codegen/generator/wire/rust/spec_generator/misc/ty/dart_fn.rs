@@ -31,7 +31,7 @@ impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
                     use flutter_rust_bridge::IntoDart;
 
                     async fn body(dart_opaque: flutter_rust_bridge::DartOpaque, {parameter_names_and_types}) -> {return_type} {{
-                        let args = [{into_dart_expressions}];
+                        let args = vec![{into_dart_expressions}];
                         let message = FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_invoke(dart_opaque, args).await;
                         <{return_type}>::sse_decode_single(message)
                     }}
