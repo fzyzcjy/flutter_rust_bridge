@@ -5,7 +5,7 @@ use flutter_rust_bridge::frb;
 
 // Reproduce #1630
 #[frb(opaque)]
-pub struct StructInMiscNoTwinExampleA;
+pub struct StructInMiscNoTwinExampleA {}
 
 impl StructInMiscNoTwinExampleB {
     pub async fn sample_function_a(&self) {}
