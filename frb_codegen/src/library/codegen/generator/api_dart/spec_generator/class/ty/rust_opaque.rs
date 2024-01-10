@@ -31,7 +31,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             code: format!(
                 "
             // Rust type: {rust_api_type}
-            @sealed class {dart_api_type} extends RustOpaque {{
+            @sealed class {dart_api_type} extends RustOpaqueNom {{
                 {dart_api_type}.dcoDecode(List<dynamic> wire): super.dcoDecode(wire, _kStaticData);
 
                 {dart_api_type}.sseDecode(int ptr, int externalSizeOnNative):
