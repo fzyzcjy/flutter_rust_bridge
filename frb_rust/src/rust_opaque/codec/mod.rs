@@ -4,5 +4,5 @@ pub(crate) mod moi;
 pub(crate) mod nom;
 
 pub(crate) trait BaseRustOpaqueCodec: Clone + Copy + Send + Sync {
-    type Data<T>;
+    type Data<T: ?Sized>;
 }

@@ -5,9 +5,9 @@ use std::sync::Arc;
 pub struct NomRustOpaqueCodec;
 
 impl BaseRustOpaqueCodec for NomRustOpaqueCodec {
-    type Data<T> = NomRustOpaqueData<T>;
+    type Data<T: ?Sized> = NomRustOpaqueData<T>;
 }
 
-pub(crate) struct NomRustOpaqueData<T> {
+pub(crate) struct NomRustOpaqueData<T: ?Sized> {
     arc: Arc<T>,
 }

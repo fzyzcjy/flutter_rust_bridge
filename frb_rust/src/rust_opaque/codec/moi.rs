@@ -4,5 +4,5 @@ use super::BaseRustOpaqueCodec;
 pub struct MoiRustOpaqueCodec;
 
 impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {
-    type Data<T> = i64;
+    type Data<T: ?Sized> = i64;
 }
