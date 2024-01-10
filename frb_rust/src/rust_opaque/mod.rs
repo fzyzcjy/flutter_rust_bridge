@@ -3,6 +3,8 @@ pub(crate) mod dart2rust;
 pub(crate) mod rust2dart;
 pub(crate) mod utils;
 
+use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
+use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::sync::Arc;
 
 /// A wrapper to transfer ownership of T to Dart.
@@ -39,7 +41,7 @@ use std::sync::Arc;
 /// ```
 #[repr(transparent)]
 #[derive(Debug)]
-pub struct RustOpaque<T: ?Sized> {
+pub struct RustOpaque<T: ?Sized, Codec: BaseRustOpaqueCodec = NomRustOpaqueCodec> {
     arc: Arc<T>,
 }
 
