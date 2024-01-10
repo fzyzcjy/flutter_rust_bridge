@@ -23,7 +23,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
         let new_ir =
             IrTypeRustOpaque::new(self.context.initiated_namespace.clone(), ty.clone(), false);
-        RustOpaque((self.inner.rust_opaque_parser_info).get_or_insert(ty, new_ir))
+        RustOpaque((self.inner.rust_opaque_parser_info).get_or_insert(ty.safe_ident(), new_ir))
     }
 }
 
@@ -44,7 +44,7 @@ impl<T: Clone + Debug> SimpleParsedTypesParserInfo<T> {
     // NOTE when meeting the *same* type (same safe_ident), reuse the existing parsed
     // result. Especially, when the same type is seen in two different files
     // (thus `namespace`s), this can ensure they both point to one namespace.
-    pub fn get_or_insert(&mut self, ty: &IrType, new_ir: T) -> T {
-        (self.parsed_types.entry(ty.safe_ident()).or_insert(new_ir)).clone()
+    pub fn get_or_insert(&mut self, dedup_key: String, new_ir: T) -> T {
+        (self.parsed_types.entry(dedup_key).or_insert(new_ir)).clone()
     }
 }

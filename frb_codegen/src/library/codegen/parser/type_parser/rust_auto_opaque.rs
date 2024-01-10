@@ -61,7 +61,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             },
         };
 
-        RustAutoOpaque((self.inner.rust_auto_opaque_parser_info).get_or_insert(ty, new_ir))
+        RustAutoOpaque(
+            (self.inner.rust_auto_opaque_parser_info).get_or_insert(ty.safe_ident(), new_ir),
+        )
     }
 }
 
