@@ -22,10 +22,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         T: Sized,
     {
         let mut pool = Self::get_pool().write();
-
-        let object_id = pool.next_id;
-        TODO_mod;
-        pool.next_id += 1;
+        let object_id = pool.next_id();
 
         pool.map.insert(
             object_id,
@@ -108,6 +105,22 @@ type MapBasedArcPool<T: ?Sized> = RwLock<MapBasedArcPoolInner<T>>;
 struct MapBasedArcPoolInner<T: ?Sized> {
     map: HashMap<ObjectId, MapBasedArcPoolValue<T>>,
     next_id: ObjectId,
+}
+
+impl<T: ?Sized> MapBasedArcPoolInner<T> {
+    fn new() -> Self {
+        Self {
+            map: HashMap::new(),
+            next_id: 0,
+        }
+    }
+
+    fn next_id(&mut self) -> ObjectId {
+        let ans = self.next_id;
+        TODO_mod;
+        self.next_id += 1;
+        ans
+    }
 }
 
 struct MapBasedArcPoolValue<T: ?Sized> {
