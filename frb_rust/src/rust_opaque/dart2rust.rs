@@ -42,6 +42,6 @@ pub unsafe fn sse_decode_rust_opaque<T, C: BaseRustOpaqueCodec>(ptr: usize) -> R
 unsafe fn decode_rust_opaque_inner<T, C: BaseRustOpaqueCodec>(ptr: *const T) -> RustOpaque<T, C> {
     assert!(!ptr.is_null());
     RustOpaque {
-        arc: Arc::from_raw(ptr),
+        arc: C::Arc::from_raw(ptr),
     }
 }

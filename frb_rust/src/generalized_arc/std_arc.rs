@@ -33,6 +33,14 @@ impl<T: ?Sized> BaseArc<T> for StdArc<T> {
     {
         Arc::into_inner(self.0)
     }
+
+    unsafe fn from_raw(raw: usize) -> Self {
+        Self(Arc::from_raw(raw as *const T))
+    }
+
+    fn into_raw(self) -> usize {
+        Arc::into_raw(self) as _
+    }
 }
 
 impl<T: ?Sized> From<Arc<T>> for StdArc<T> {

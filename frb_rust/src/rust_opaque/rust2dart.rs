@@ -12,7 +12,7 @@ impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     }
 
     fn encode(self) -> (*const T, usize) {
-        let ptr = Arc::into_raw(self.arc);
+        let ptr = C::Arc::into_raw(self.arc);
         let size = mem::size_of::<T>();
         (ptr, size)
     }
