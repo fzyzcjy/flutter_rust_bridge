@@ -6,6 +6,12 @@ use std::sync::Arc;
 #[derive(Debug)]
 pub(crate) struct StdArc<T: ?Sized>(Arc<T>);
 
+impl<T: ?Sized> AsRef<T> for StdArc<T> {
+    fn as_ref(&self) -> &T {
+        self.0.as_ref()
+    }
+}
+
 impl<T: ?Sized> BaseArc<T> for StdArc<T> {
     fn new(value: T) -> Self
     where
