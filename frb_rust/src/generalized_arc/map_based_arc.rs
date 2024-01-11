@@ -51,11 +51,11 @@ impl<T: ?Sized> Clone for MapBasedArc<T> {
 }
 
 impl<T> MapBasedArc<T> {
-    fn increment_strong_count(raw: usize) {
+    pub(crate) fn increment_strong_count(raw: usize) {
         todo!()
     }
 
-    fn decrement_strong_count(raw: usize) {
+    pub(crate) fn decrement_strong_count(raw: usize) {
         todo!()
     }
 }
