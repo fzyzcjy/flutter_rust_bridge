@@ -56,11 +56,14 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        todo!()
+        Self {
+            object_id: raw,
+            _phantom: PhantomData,
+        }
     }
 
     fn into_raw(self) -> usize {
-        todo!()
+        self.object_id
     }
 }
 
