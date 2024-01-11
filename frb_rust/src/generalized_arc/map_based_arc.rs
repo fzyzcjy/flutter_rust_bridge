@@ -157,13 +157,3 @@ struct MapBasedArcPoolValue<T: ?Sized> {
     // Use (std) Arc merely for lifetime
     value: Arc<T>,
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_TODO() {
-        todo!();
-    }
-}
