@@ -1,4 +1,4 @@
-pub(crate) trait BaseArc<T: ?Sized> {
+pub(crate) trait BaseArc<T: ?Sized>: Clone {
     fn new(value: T) -> Self
     where
         T: Sized;

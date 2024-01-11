@@ -3,6 +3,7 @@ use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
 use crate::RustOpaque;
 use std::sync::Arc;
 
+#[derive(Debug)]
 pub(crate) struct StdArc<T: ?Sized>(Arc<T>);
 
 impl<T: ?Sized> BaseArc<T> for StdArc<T> {
@@ -31,5 +32,11 @@ impl<T: ?Sized> BaseArc<T> for StdArc<T> {
 impl<T: ?Sized> From<Arc<T>> for StdArc<T> {
     fn from(ptr: Arc<T>) -> Self {
         Self(ptr)
+    }
+}
+
+impl<T: ?Sized> Clone for StdArc<T> {
+    fn clone(&self) -> Self {
+        Self(self.0.clone())
     }
 }
