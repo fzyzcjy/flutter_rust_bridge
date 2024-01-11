@@ -59,8 +59,8 @@ impl<T: ?Sized + MapBasedArcValue> BaseArc<T> for MapBasedArc<T> {
         // NOTE: Ensure lock is held during all operations to avoid racing conditions
         let pool = &mut T::get_pool().write();
 
-        let removed = Self::decrement_strong_count_raw(self.object_id.unwrap(), pool).is_some();
-        if removed {
+        if pool.map.get(&self.object_id).unwrap().ref_count == 1 {
+            Self::decrement_strong_count_raw(self.object_id.unwrap(), pool);
             // `take`, such that the `drop` will not decrease ref count
             self.object_id.take().unwrap();
             Ok(Arc::into_inner(self.value.take().unwrap()).unwrap())
@@ -113,22 +113,15 @@ impl<T: ?Sized + MapBasedArcValue> MapBasedArc<T> {
         map.get_mut(&raw).unwrap().ref_count += 1;
     }
 
-    pub(crate) fn decrement_strong_count(raw: usize) -> Option<MapBasedArcPoolValue<T>> {
+    pub(crate) fn decrement_strong_count(raw: usize) {
         Self::decrement_strong_count_raw(raw, &mut T::get_pool().write())
     }
 
-    pub(crate) fn decrement_strong_count_raw(
-        raw: usize,
-        pool: &mut MapBasedArcPoolInner<T>,
-    ) -> Option<MapBasedArcPoolValue<T>> {
+    pub(crate) fn decrement_strong_count_raw(raw: usize, pool: &mut MapBasedArcPoolInner<T>) {
         let value = pool.map.get_mut(&raw).unwrap();
-
         value.ref_count -= 1;
-
         if value.ref_count == 0 {
-            Some(pool.map.remove(&raw).unwrap())
-        } else {
-            None
+            pool.map.remove(&raw).unwrap()
         }
     }
 }
