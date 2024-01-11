@@ -12,7 +12,9 @@ pub(crate) trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
     where
         T: Sized;
 
-    unsafe fn from_raw(raw: usize) -> Self;
+    unsafe fn from_raw(raw: usize) -> Self
+    where
+        T: Sized;
 
     fn into_raw(self) -> usize;
 }
