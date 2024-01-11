@@ -214,5 +214,7 @@ mod tests {
     #[derive(Debug)]
     struct DummyType(i32);
 
+    frb_generated_map_based_arc_impl_value!(DummyType);
+
     base_arc_generate_tests!(super::MapBasedArc::<DummyType>);
 }
