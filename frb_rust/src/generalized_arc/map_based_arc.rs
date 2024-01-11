@@ -124,7 +124,7 @@ impl<T: ?Sized + 'static> MapBasedArc<T> {
     }
 }
 
-pub trait MapBasedArcValue {
+pub trait MapBasedArcValue: 'static {
     fn get_pool() -> &'static MapBasedArcPool<Self>;
 }
 
