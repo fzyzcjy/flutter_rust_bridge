@@ -16,7 +16,7 @@ pub struct MapBasedArc<T: ?Sized + 'static> {
 impl<T: ?Sized + 'static> Drop for MapBasedArc<T> {
     fn drop(&mut self) {
         if let Some(object_id) = self.object_id {
-            Self::decrement_strong_count_safe(object_id);
+            Self::decrement_strong_count(object_id);
         }
     }
 }
@@ -57,7 +57,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         T: Sized,
     {
         let map = &mut Self::get_pool().write().map;
-        let removed = Self::decrement_strong_count_safe(self.object_id.unwrap()).is_some();
+        let removed = Self::decrement_strong_count(self.object_id.unwrap()).is_some();
         if removed {
             // `take`, such that the `drop` will not decrease ref count
             self.object_id.take().unwrap();
@@ -82,7 +82,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
 
 impl<T: ?Sized + 'static> Clone for MapBasedArc<T> {
     fn clone(&self) -> Self {
-        Self::increment_strong_count_safe(self.object_id.unwrap());
+        Self::increment_strong_count(self.object_id.unwrap());
 
         Self {
             object_id: self.object_id,
