@@ -16,7 +16,7 @@ impl<T: ?Sized> AsRef<T> for MapBasedArc<T> {
     }
 }
 
-impl<T: ?Sized> BaseArc<T> for MapBasedArc<T> {
+impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     fn new(value: T) -> Self
     where
         T: Sized,
@@ -78,7 +78,7 @@ impl<T: ?Sized> Clone for MapBasedArc<T> {
     }
 }
 
-impl<T: ?Sized> MapBasedArc<T> {
+impl<T: ?Sized + 'static> MapBasedArc<T> {
     pub(crate) fn increment_strong_count(raw: usize) {
         let map = &mut Self::get_pool().write().map;
         map.get_mut(&raw).unwrap().ref_count += 1;
