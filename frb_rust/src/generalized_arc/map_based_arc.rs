@@ -56,11 +56,14 @@ impl<T: ?Sized> Clone for MapBasedArc<T> {
 
 impl<T> MapBasedArc<T> {
     pub(crate) fn increment_strong_count(raw: usize) {
-        todo!()
+        let pool = Self::get_pool().write();
+        pool.get(&raw).unwrap().ref_count += 1;
     }
 
     pub(crate) fn decrement_strong_count(raw: usize) {
-        todo!()
+        let pool = Self::get_pool().write();
+        pool.get(&raw).unwrap().ref_count -= 1;
+        todo!("when zero")
     }
 }
 
