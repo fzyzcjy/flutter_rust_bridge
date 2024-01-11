@@ -6,14 +6,16 @@ use std::sync::Arc;
 
 #[derive(Debug)]
 pub struct MapBasedArc<T: ?Sized> {
-    // `Option` for dropping
+    // `Option` for correct dropping
     object_id: Option<ObjectId>,
     _phantom: PhantomData<T>,
 }
 
 impl<T: ?Sized> Drop for MapBasedArc<T> {
     fn drop(&mut self) {
-        Self::decrement_strong_count(self.object_id.take().unwrap());
+        if let Some(object_id) = self.object_id {
+            Self::decrement_strong_count(object_id);
+        }
     }
 }
 
