@@ -58,5 +58,22 @@ mod tests {
             drop(a);
             assert_eq!(b.try_unwrap().unwrap().0, 100);
         }
+
+        // into_inner succeed when only 1 ref
+        {
+            let a = T::new(DummyType(100));
+            assert_eq!(a.into_inner().unwrap().0, 100);
+        }
+
+        // into_inner fail when multi ref
+        {
+            let a = T::new(DummyType(100));
+            let b = a.clone();
+            assert!(a.into_inner().is_none());
+            assert!(b.into_inner().is_none());
+
+            drop(a);
+            assert_eq!(b.into_inner().unwrap().0, 100);
+        }
     }
 }
