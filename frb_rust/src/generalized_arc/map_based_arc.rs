@@ -8,8 +8,8 @@ use std::sync::Arc;
 pub struct MapBasedArc<T: ?Sized + 'static> {
     // `Option` for correct dropping
     object_id: Option<ObjectId>,
-    // Mainly for `as_ref`
-    value: Arc<T>,
+    // Mainly for `as_ref`. `Option` for correct dropping
+    value: Option<Arc<T>>,
     _phantom: PhantomData<T>,
 }
 
@@ -23,7 +23,7 @@ impl<T: ?Sized + 'static> Drop for MapBasedArc<T> {
 
 impl<T: ?Sized + 'static> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {
-        self.value.as_ref()
+        self.value.unwrap().as_ref()
     }
 }
 
