@@ -140,16 +140,24 @@ struct MapBasedArcPoolInner<T: ?Sized> {
 }
 
 impl<T: ?Sized> MapBasedArcPoolInner<T> {
+    const MIN_ID: ObjectId = 1;
+
     fn new() -> Self {
         Self {
             map: HashMap::new(),
-            next_id: 1,
+            next_id: Self::MIN_ID,
         }
     }
 
     fn next_id(&mut self) -> ObjectId {
         let ans = self.next_id;
-        self.next_id = self.next_id.wrapping_add(1);
+
+        self.next_id = if self.next_id == ObjectId::MAX_VALUE {
+            Self::MIN_ID
+        } else {
+            self.next_id + 1
+        };
+
         ans
     }
 }
@@ -159,4 +167,12 @@ struct MapBasedArcPoolValue<T: ?Sized> {
     ref_count: i32,
     // Use (std) Arc merely for lifetime
     value: Arc<T>,
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_next_id() {
+        TODO;
+    }
 }
