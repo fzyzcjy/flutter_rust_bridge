@@ -107,26 +107,17 @@ impl<T: ?Sized + MapBasedArcValue> MapBasedArc<T> {
     }
 
     pub(crate) fn increment_strong_count(raw: usize) {
-        Self::increment_strong_count_raw(raw, &mut T::get_pool().write());
+        let map = &mut T::get_pool().write().map;
+        map.get_mut(&raw).unwrap().ref_count += 1;
     }
 
     pub(crate) fn decrement_strong_count(raw: usize) -> Option<MapBasedArcPoolValue<T>> {
-        Self::decrement_strong_count_raw(raw, &mut T::get_pool().write());
-    }
-
-    fn increment_strong_count_raw(raw: usize, inner: &mut MapBasedArcPoolInner<T>) {
-        inner.map.get_mut(&raw).unwrap().ref_count += 1;
-    }
-
-    fn decrement_strong_count_raw(
-        raw: usize,
-        inner: &mut MapBasedArcPoolInner<T>,
-    ) -> Option<MapBasedArcPoolValue<T>> {
-        let value = inner.map.get_mut(&raw).unwrap();
+        let map = &mut T::get_pool().write().map;
+        let value = map.get_mut(&raw).unwrap();
         value.ref_count -= 1;
 
         if value.ref_count == 0 {
-            Some(inner.map.remove(&raw).unwrap())
+            Some(map.remove(&raw).unwrap())
         } else {
             None
         }
