@@ -22,13 +22,13 @@ macro_rules! opaque_dyn {
     };
 }
 
-impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec<T>> {
+impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec> {
     fn from(ptr: Arc<T>) -> Self {
         Self { arc: ptr.into() }
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
+impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     pub fn new(value: T) -> Self {
         Self {
             arc: C::Arc::new(value),
@@ -36,7 +36,7 @@ impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
     }
 }
 
-impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> ops::Deref for RustOpaque<T, C> {
+impl<T: ?Sized, C: BaseRustOpaqueCodec> ops::Deref for RustOpaque<T, C> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -44,7 +44,7 @@ impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> ops::Deref for RustOpaque<T, C> {
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
+impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     pub fn try_unwrap(self) -> Result<T, Self> {
         C::Arc::try_unwrap(self.arc).map_err(|arc| RustOpaque { arc })
     }
@@ -54,7 +54,7 @@ impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
     }
 }
 
-impl<T: ?Sized + 'static, C: BaseRustOpaqueCodec<T>> Clone for RustOpaque<T, C> {
+impl<T: ?Sized + 'static, C: BaseRustOpaqueCodec> Clone for RustOpaque<T, C> {
     fn clone(&self) -> Self {
         Self {
             arc: self.arc.clone(),

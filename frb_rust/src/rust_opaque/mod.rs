@@ -40,8 +40,8 @@ use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 /// ```
 #[repr(transparent)]
 #[derive(Debug)]
-pub struct RustOpaque<T: ?Sized + 'static, C: BaseRustOpaqueCodec<T> = NomRustOpaqueCodec<T>> {
-    arc: C::Arc,
+pub struct RustOpaque<T: ?Sized + 'static, C: BaseRustOpaqueCodec = NomRustOpaqueCodec> {
+    arc: C::Arc<T>,
 }
 
 // https://github.com/fzyzcjy/flutter_rust_bridge/pull/1574
