@@ -56,7 +56,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        todo!()
+        self.try_unwrap().ok()
     }
 
     unsafe fn from_raw(raw: usize) -> Self
