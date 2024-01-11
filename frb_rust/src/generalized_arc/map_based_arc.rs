@@ -78,7 +78,8 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     }
 
     fn into_raw(self) -> usize {
-        self.object_id.unwrap()
+        // `take`, such that the `drop` will not decrease ref count
+        self.object_id.take().unwrap()
     }
 }
 
