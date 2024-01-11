@@ -22,6 +22,24 @@ mod tests {
     }
 
     fn body<T: BaseArc<DummyType>>() {
-        todo!()
+        // Simple drop
+        {
+            let a = T::new(DummyType("a".to_owned()));
+            assert_eq!(a.as_ref().0, "a");
+            drop(a);
+        }
+
+        // Simple clone
+        {
+            let a = T::new(DummyType("a".to_owned()));
+            let b = a.clone();
+            assert_eq!(a.as_ref().0, "a");
+            assert_eq!(b.as_ref().0, "a");
+
+            drop(a);
+            assert_eq!(b.as_ref().0, "a");
+
+            drop(b);
+        }
     }
 }
