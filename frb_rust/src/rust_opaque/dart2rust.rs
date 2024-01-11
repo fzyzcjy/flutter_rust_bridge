@@ -3,7 +3,7 @@ use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 
 macro_rules! impl_functions {
-    ($postfix:ident) => {
+    ($postfix:ident, $safety:expr) => {
         paste::paste! {
             /// # Safety
             ///
@@ -11,7 +11,7 @@ macro_rules! impl_functions {
             /// Retrieving an opaque pointer from Dart is an implementation detail, so this
             /// function is not guaranteed to be API-stable.
             #[cfg(not(wasm))]
-            pub unsafe fn [<cst_decode_rust_opaque_ $postfix>]<T, C: BaseRustOpaqueCodec>(
+            pub $safety fn [<cst_decode_rust_opaque_ $postfix>]<T, C: BaseRustOpaqueCodec>(
                 ptr: usize,
             ) -> RustOpaque<T, C> {
                 [<decode_rust_opaque_innerr_ $postfix>](ptr as _)
@@ -21,7 +21,7 @@ macro_rules! impl_functions {
             ///
             /// This should never be called manually.
             #[cfg(wasm)]
-            pub unsafe fn [<cst_decode_rust_opaque_ $postfix>]<T, C: BaseRustOpaqueCodec>(
+            pub $safety fn [<cst_decode_rust_opaque_ $postfix>]<T, C: BaseRustOpaqueCodec>(
                 raw: wasm_bindgen::JsValue,
             ) -> RustOpaque<T, C> {
                 #[cfg(target_pointer_width = "64")]
@@ -35,7 +35,7 @@ macro_rules! impl_functions {
             /// # Safety
             ///
             /// This should never be called manually.
-            pub unsafe fn [<sse_decode_rust_opaque_ $postfix>]<T, C: BaseRustOpaqueCodec>(
+            pub $safety fn [<sse_decode_rust_opaque_ $postfix>]<T, C: BaseRustOpaqueCodec>(
                 ptr: usize,
             ) -> RustOpaque<T, C> {
                 [<decode_rust_opaque_innerr_ $postfix>](ptr)
@@ -44,7 +44,7 @@ macro_rules! impl_functions {
             /// # Safety
             ///
             /// This should never be called manually.
-            unsafe fn [<decode_rust_opaque_innerr_ $postfix>]<T, C: BaseRustOpaqueCodec>(
+            $safety fn [<decode_rust_opaque_innerr_ $postfix>]<T, C: BaseRustOpaqueCodec>(
                 ptr: usize,
             ) -> RustOpaque<T, C> {
                 assert!(ptr != 0);
@@ -56,5 +56,5 @@ macro_rules! impl_functions {
     };
 }
 
-impl_functions!(nom);
-impl_functions!(moi);
+impl_functions!(nom, unsafe);
+impl_functions!(moi,);
