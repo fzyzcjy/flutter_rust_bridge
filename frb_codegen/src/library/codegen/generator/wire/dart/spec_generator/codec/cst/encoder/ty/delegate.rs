@@ -48,6 +48,9 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGener
                 web: Some("return raw;".into()),
                 ..Default::default()
             },
+
+            IrTypeDelegate::Char => TODO,
+
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     // In this case, even though the body is the same, their types are different
             //     // and must be split.
