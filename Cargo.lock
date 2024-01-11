@@ -585,6 +585,7 @@ dependencies = [
  "log",
  "oslog",
  "parking_lot",
+ "paste",
  "threadpool",
  "tokio",
  "uuid",
