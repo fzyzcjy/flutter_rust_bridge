@@ -20,8 +20,12 @@ impl<T: ?Sized> BaseArc<T> for MapBasedArc<T> {
         T: Sized,
     {
         let pool = Self::get_pool().write();
-        pool.insert(
-            TODO,
+
+        let chosen_id = pool.next_id;
+        pool.next_id += 1;
+
+        pool.map.insert(
+            chosen_id,
             MapBasedArcPoolValue {
                 ref_count: 1,
                 value: Arc::new(value),
