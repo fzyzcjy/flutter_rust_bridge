@@ -9,6 +9,7 @@ mod tests {
     use crate::generalized_arc::std_arc::StdArc;
 
     // Do NOT make it `clone` (to test non-clone behavior)
+    #[derive(Debug)]
     struct DummyType(i32);
 
     #[test]
