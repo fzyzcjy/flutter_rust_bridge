@@ -76,7 +76,7 @@ macro_rules! base_arc_generate_tests {
         fn from_raw_and_into_raw_simple() {
             let a = <$T>::new(DummyType(100));
             let a_raw = a.into_raw();
-            let a_recovered = <$T>::from_raw(a_raw);
+            let a_recovered = unsafe { <$T>::from_raw(a_raw) };
             assert_eq!(a.as_ref().0, 100);
         }
 
@@ -87,7 +87,7 @@ macro_rules! base_arc_generate_tests {
             let a_raw = a.into_raw();
             assert_eq!(b.as_ref().0, 100);
 
-            let a_recovered = <$T>::from_raw(a_raw);
+            let a_recovered = unsafe { <$T>::from_raw(a_raw) };
             assert_eq!(a.as_ref().0, 100);
             assert_eq!(b.as_ref().0, 100);
         }
