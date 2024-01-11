@@ -14,6 +14,7 @@ unsafe fn decode_rust_opaque_nom<T>(ptr: usize) -> RustOpaque<T, NomRustOpaqueCo
     }
 }
 
+// This does not have `unsafe` keyword, thus is a separate function
 fn decode_rust_opaque_moi<T>(ptr: usize) -> RustOpaque<T, MoiRustOpaqueCodec> {
     RustOpaque {
         arc: MoiRustOpaqueCodec::Arc::from_raw(ptr),
