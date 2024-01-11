@@ -1,10 +1,11 @@
 use super::RustOpaque;
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
+use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::mem;
 use std::sync::Arc;
 
-impl<T> RustOpaque<T> {
+impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     pub fn sse_encode_raw(self) -> (usize, i32) {
         let (ptr, size) = self.encode();
         (ptr as _, size as _)
@@ -17,8 +18,8 @@ impl<T> RustOpaque<T> {
     }
 }
 
-impl<T> From<RustOpaque<T>> for DartAbi {
-    fn from(value: RustOpaque<T>) -> Self {
+impl<T, C: BaseRustOpaqueCodec> From<RustOpaque<T, C>> for DartAbi {
+    fn from(value: RustOpaque<T, C>) -> Self {
         let (ptr, size) = value.encode();
         [ptr.into_dart(), size.into_dart()].into_dart()
     }
