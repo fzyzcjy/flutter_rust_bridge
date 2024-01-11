@@ -85,6 +85,14 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         // `take`, such that the `drop` will not decrease ref count
         self.object_id.take().unwrap()
     }
+
+    unsafe fn increment_strong_count(raw: usize) {
+        Self::increment_strong_count_safe(raw)
+    }
+
+    unsafe fn decrement_strong_count(raw: usize) {
+        Self::decrement_strong_count_safe(raw)
+    }
 }
 
 impl<T: ?Sized + 'static> Clone for MapBasedArc<T> {
