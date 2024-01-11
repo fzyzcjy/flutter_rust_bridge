@@ -35,16 +35,19 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         let mut pool = Self::get_pool().write();
         let object_id = pool.next_id();
 
+        let value = Arc::new(value);
+
         pool.map.insert(
             object_id,
             MapBasedArcPoolValue {
                 ref_count: 1,
-                value: Arc::new(value),
+                value,
             },
         );
 
         Self {
             object_id: Some(object_id),
+            value: value,
             _phantom: PhantomData,
         }
     }
@@ -76,6 +79,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     {
         Self {
             object_id: Some(raw),
+            value: TODO,
             _phantom: PhantomData,
         }
     }
@@ -92,6 +96,7 @@ impl<T: ?Sized + 'static> Clone for MapBasedArc<T> {
 
         Self {
             object_id: self.object_id,
+            value: self.value.clone(),
             _phantom: PhantomData,
         }
     }
