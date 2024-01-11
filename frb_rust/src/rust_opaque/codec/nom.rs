@@ -1,5 +1,4 @@
 use super::BaseRustOpaqueCodec;
-use std::sync::Arc;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct NomRustOpaqueCodec;

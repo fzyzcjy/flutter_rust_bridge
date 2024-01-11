@@ -5,7 +5,6 @@ pub(crate) mod utils;
 
 use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
-use std::sync::Arc;
 
 /// A wrapper to transfer ownership of T to Dart.
 ///
