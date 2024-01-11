@@ -1,6 +1,4 @@
 use crate::generalized_arc::base_arc::BaseArc;
-use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
-use crate::RustOpaque;
 use std::sync::Arc;
 
 #[derive(Debug)]

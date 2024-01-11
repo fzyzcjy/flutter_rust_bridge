@@ -1,6 +1,5 @@
 use super::RustOpaque;
 use crate::generalized_arc::base_arc::BaseArc;
-use crate::generalized_arc::std_arc::StdArc;
 use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::ops;

@@ -4,7 +4,6 @@ use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::mem;
-use std::sync::Arc;
 
 impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     pub fn sse_encode_raw(self) -> (usize, i32) {
