@@ -71,3 +71,10 @@ impl<T: ?Sized + 'static> StdArc<T> {
         Arc::decrement_strong_count(raw as *const T)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::base_arc_generate_tests;
+
+    base_arc_generate_tests!();
+}

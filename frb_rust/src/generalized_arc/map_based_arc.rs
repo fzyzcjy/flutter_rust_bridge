@@ -172,6 +172,7 @@ struct MapBasedArcPoolValue<T: ?Sized> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::base_arc_generate_tests;
 
     #[test]
     fn test_next_id() {
@@ -188,4 +189,6 @@ mod tests {
         assert_eq!(pool.next_id(), 2);
         assert_eq!(pool.next_id(), 3);
     }
+
+    base_arc_generate_tests!();
 }
