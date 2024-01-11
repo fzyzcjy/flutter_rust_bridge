@@ -12,6 +12,7 @@ use std::sync::Arc;
 pub unsafe fn cst_decode_rust_opaque<T, C: BaseRustOpaqueCodec>(
     ptr: *const core::ffi::c_void,
 ) -> RustOpaque<T, C> {
+    assert!(!ptr.is_null());
     decode_rust_opaque_inner(ptr as _)
 }
 
@@ -34,14 +35,14 @@ pub unsafe fn cst_decode_rust_opaque<T, C: BaseRustOpaqueCodec>(
 ///
 /// This should never be called manually.
 pub unsafe fn sse_decode_rust_opaque<T, C: BaseRustOpaqueCodec>(ptr: usize) -> RustOpaque<T, C> {
-    decode_rust_opaque_inner(ptr as _)
+    decode_rust_opaque_inner(ptr)
 }
 
 /// # Safety
 ///
 /// This should never be called manually.
-unsafe fn decode_rust_opaque_inner<T, C: BaseRustOpaqueCodec>(ptr: *const T) -> RustOpaque<T, C> {
-    assert!(!ptr.is_null());
+unsafe fn decode_rust_opaque_inner<T, C: BaseRustOpaqueCodec>(ptr: usize) -> RustOpaque<T, C> {
+    assert!(ptr != 0);
     RustOpaque {
         arc: C::Arc::from_raw(ptr),
     }
