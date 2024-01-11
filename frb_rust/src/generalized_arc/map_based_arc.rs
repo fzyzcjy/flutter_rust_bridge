@@ -8,6 +8,8 @@ use std::sync::Arc;
 pub struct MapBasedArc<T: ?Sized + 'static> {
     // `Option` for correct dropping
     object_id: Option<ObjectId>,
+    // Mainly for `as_ref`
+    value: Arc<T>,
     _phantom: PhantomData<T>,
 }
 
@@ -21,8 +23,7 @@ impl<T: ?Sized + 'static> Drop for MapBasedArc<T> {
 
 impl<T: ?Sized + 'static> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {
-        let map = &Self::get_pool().read().map;
-        &map.get(&self.object_id.unwrap()).unwrap().value
+        self.value.as_ref()
     }
 }
 
@@ -144,6 +145,8 @@ impl<T: ?Sized> MapBasedArcPoolInner<T> {
 }
 
 struct MapBasedArcPoolValue<T: ?Sized> {
+    // Real reference counting of this MapBasedArc
     ref_count: i32,
+    // Use (std) Arc merely for lifetime
     value: Arc<T>,
 }
