@@ -141,8 +141,8 @@ macro_rules! frb_generated_map_based_arc_impl_value {
         impl MapBasedArcValue for $T {
             fn get_pool() -> &'static crate::generalized_arc::map_based_arc::MapBasedArcPool<Self> {
                 use crate::generalized_arc::map_based_arc::MapBasedArcPool;
-                lazy_static! {
-                    static ref POOL: MapBasedArcPool<$H> = MapBasedArcPool::new();
+                crate::for_generated::lazy_static! {
+                    static ref POOL: MapBasedArcPool<$T> = MapBasedArcPool::new(MapBasedArcPoolInner::new());
                 }
                 &POOL
             }
