@@ -4,5 +4,6 @@ use super::BaseRustOpaqueCodec;
 pub struct MoiRustOpaqueCodec;
 
 impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {
-    type Data<T: ?Sized> = i64;
+    // TODO
+    type Arc<T: ?Sized> = std::sync::Arc<T>;
 }
