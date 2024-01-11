@@ -17,8 +17,4 @@ pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
         T: Sized;
 
     fn into_raw(self) -> usize;
-
-    unsafe fn increment_strong_count(raw: usize);
-
-    unsafe fn decrement_strong_count(raw: usize);
 }
