@@ -41,13 +41,13 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
             object_id,
             MapBasedArcPoolValue {
                 ref_count: 1,
-                value,
+                value: value.clone(),
             },
         );
 
         Self {
             object_id: Some(object_id),
-            value: value,
+            value,
             _phantom: PhantomData,
         }
     }
@@ -77,7 +77,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        let map = &mut Self::get_pool().read().map;
+        let map = &Self::get_pool().read().map;
 
         Self {
             object_id: Some(raw),
