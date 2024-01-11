@@ -38,9 +38,11 @@ use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 /// // it's possible to name it directly
 /// pub struct DebugWrapper2(pub RustOpaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
+pub type RustOpaque<T: ?Sized> = RustOpaqueRaw<T, NomRustOpaqueCodec>;
+
 #[repr(transparent)]
 #[derive(Debug)]
-pub struct RustOpaque<T: ?Sized, Codec: BaseRustOpaqueCodec = NomRustOpaqueCodec> {
+pub struct RustOpaqueRaw<T: ?Sized, Codec: BaseRustOpaqueCodec> {
     arc: Codec::Arc<T>,
 }
 
