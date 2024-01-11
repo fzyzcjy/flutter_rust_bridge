@@ -2,7 +2,7 @@ use super::BaseRustOpaqueCodec;
 use crate::generalized_arc::std_arc::StdArc;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub(crate) struct MoiRustOpaqueCodec;
+pub struct MoiRustOpaqueCodec;
 
 impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {
     // TODO

@@ -2,7 +2,7 @@ use crate::generalized_arc::base_arc::BaseArc;
 use std::sync::Arc;
 
 #[derive(Debug)]
-pub(crate) struct StdArc<T: ?Sized>(Arc<T>);
+pub struct StdArc<T: ?Sized>(Arc<T>);
 
 impl<T: ?Sized> AsRef<T> for StdArc<T> {
     fn as_ref(&self) -> &T {
