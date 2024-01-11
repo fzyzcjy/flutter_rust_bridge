@@ -25,7 +25,7 @@ macro_rules! opaque_dyn {
 
 impl<T: ?Sized> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { arc: ptr.into() }
+        StdArc::from(ptr).into()
     }
 }
 
