@@ -1,4 +1,5 @@
 use super::RustOpaque;
+use crate::generalized_arc::base_arc::BaseArc;
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;

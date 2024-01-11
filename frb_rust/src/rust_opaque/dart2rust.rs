@@ -1,4 +1,5 @@
 use super::RustOpaque;
+use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::sync::Arc;
 
