@@ -111,7 +111,7 @@ impl<T: ?Sized + 'static> MapBasedArc<T> {
     }
 
     pub(crate) fn decrement_strong_count(raw: usize) {
-        let mut map = &mut Self::get_pool().write().map;
+        let map = &mut Self::get_pool().write().map;
         let value = map.get_mut(&raw).unwrap();
         value.ref_count -= 1;
 
@@ -129,7 +129,7 @@ impl<T: ?Sized> MapBasedArc<T> {
 
 type ObjectId = usize;
 
-type MapBasedArcPool<T: ?Sized> = RwLock<MapBasedArcPoolInner<T>>;
+type MapBasedArcPool<T> = RwLock<MapBasedArcPoolInner<T>>;
 
 struct MapBasedArcPoolInner<T: ?Sized> {
     map: HashMap<ObjectId, MapBasedArcPoolValue<T>>,
