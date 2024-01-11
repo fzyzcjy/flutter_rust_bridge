@@ -94,7 +94,20 @@ macro_rules! base_arc_generate_tests {
 
         #[test]
         fn increment_strong_count_and_decrement_strong_count() {
-            todo!();
+            let a = <$T>::new(DummyType(100));
+            let b = a.clone();
+            let a_raw = a.into_raw();
+            assert_eq!(b.as_ref().0, 100);
+
+            <$T>::increment_strong_count(a_raw);
+            assert_eq!(b.as_ref().0, 100);
+
+            <$T>::decrement_strong_count(a_raw);
+            assert_eq!(b.as_ref().0, 100);
+
+            let a_recovered = unsafe { <$T>::from_raw(a_raw) };
+            assert_eq!(a.as_ref().0, 100);
+            assert_eq!(b.as_ref().0, 100);
         }
     };
 }
