@@ -80,7 +80,7 @@ impl<T> MapBasedArc<T> {
 type ObjectId = u64;
 
 struct MapBasedArcPoolValue<T> {
-    ref_count: u32,
+    ref_count: i32,
     value: Arc<T>,
 }
 
