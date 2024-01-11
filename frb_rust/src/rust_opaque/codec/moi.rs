@@ -1,9 +1,9 @@
 use super::BaseRustOpaqueCodec;
-use crate::generalized_arc::map_based_arc::{MapBasedArc, MapBasedArcValue};
+use crate::generalized_arc::map_based_arc::MapBasedArc;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct MoiRustOpaqueCodec;
 
 impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {
-    type Arc<T: ?Sized + MapBasedArcValue> = MapBasedArc<T>;
+    type Arc<T: ?Sized + 'static> = MapBasedArc<T>;
 }

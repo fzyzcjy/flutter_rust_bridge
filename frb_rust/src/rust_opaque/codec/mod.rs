@@ -4,6 +4,5 @@ pub(crate) mod moi;
 pub(crate) mod nom;
 
 pub trait BaseRustOpaqueCodec: Clone + Copy + Send + Sync {
-    type ArcValue;
-    type Arc<T: ?Sized + Self::ArcValue>: BaseArc<T>;
+    type Arc<T: ?Sized + 'static>: BaseArc<T>;
 }
