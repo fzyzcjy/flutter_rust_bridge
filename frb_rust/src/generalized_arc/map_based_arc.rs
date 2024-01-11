@@ -57,9 +57,10 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         T: Sized,
     {
         let map = &mut Self::get_pool().write().map;
-        if map.get(&self.object_id.unwrap()).unwrap().ref_count == 1 {
+        let removed = Self::decrement_strong_count(self.object_id).is_some();
+        if removed {
             // `take`, such that the `drop` will not decrease ref count
-            map.remove(&self.object_id.take().unwrap()).unwrap();
+            self.object_id.take().unwrap();
             Ok(Arc::into_inner(self.value.take().unwrap()).unwrap())
         } else {
             Err(self)
@@ -110,13 +111,15 @@ impl<T: ?Sized + 'static> MapBasedArc<T> {
         map.get_mut(&raw).unwrap().ref_count += 1;
     }
 
-    pub(crate) fn decrement_strong_count(raw: usize) {
+    pub(crate) fn decrement_strong_count(raw: usize) -> Option<MapBasedArcPoolValue<T>> {
         let map = &mut Self::get_pool().write().map;
         let value = map.get_mut(&raw).unwrap();
         value.ref_count -= 1;
 
         if value.ref_count == 0 {
-            map.remove(&raw);
+            Some(map.remove(&raw).unwrap())
+        } else {
+            None
         }
     }
 }
