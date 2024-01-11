@@ -6,17 +6,17 @@ use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_create(name: &str, org: &Option<String>) -> anyhow::Result<()> {
-    if org.is_none() {
-        info!("Execute `flutter create {name}`");
-        check_exit_code(
-            &command_run!(call_shell[None, None], "flutter", "create", name )?,
-        )
-    } else {
-        let org_v = org.as_deref().unwrap();
-        info!("Execute `flutter create  --org {org_v} {name}`");
-        check_exit_code(
-            &command_run!(call_shell[None, None], "flutter", "create", "--org", org_v, name )?,
-        )
+    match org {
+        Some(o) => {
+            info!("Execute `flutter create  --org {o} {name}`");
+            check_exit_code(
+                &command_run!(call_shell[None, None], "flutter", "create", "--org", o, name )?,
+            )
+        }
+        None => {
+            info!("Execute `flutter create {name}`");
+            check_exit_code(&command_run!(call_shell[None, None], "flutter", "create", name )?)
+        }
     }
 }
 
