@@ -6,8 +6,15 @@ use std::sync::Arc;
 
 #[derive(Debug)]
 pub struct MapBasedArc<T: ?Sized> {
-    object_id: ObjectId,
+    // `Option` for dropping
+    object_id: Option<ObjectId>,
     _phantom: PhantomData<T>,
+}
+
+impl<T: ?Sized> Drop for MapBasedArc<T> {
+    fn drop(&mut self) {
+        Self::decrement_strong_count(self.object_id.take().unwrap());
+    }
 }
 
 impl<T: ?Sized> AsRef<T> for MapBasedArc<T> {
@@ -33,7 +40,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         );
 
         Self {
-            object_id,
+            object_id: Some(object_id),
             _phantom: PhantomData,
         }
     }
@@ -57,19 +64,19 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         T: Sized,
     {
         Self {
-            object_id: raw,
+            object_id: Some(raw),
             _phantom: PhantomData,
         }
     }
 
     fn into_raw(self) -> usize {
-        self.object_id
+        self.object_id.unwrap()
     }
 }
 
 impl<T: ?Sized + 'static> Clone for MapBasedArc<T> {
     fn clone(&self) -> Self {
-        Self::increment_strong_count(self.object_id);
+        Self::increment_strong_count(self.object_id.unwrap());
 
         Self {
             object_id: self.object_id,
