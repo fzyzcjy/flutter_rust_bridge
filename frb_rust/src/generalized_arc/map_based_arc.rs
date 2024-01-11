@@ -57,7 +57,9 @@ impl<T: ?Sized + MapBasedArcValue> BaseArc<T> for MapBasedArc<T> {
         T: Sized,
     {
         // NOTE: Ensure lock is held during all operations to avoid racing conditions
-        let removed = Self::decrement_strong_count(self.object_id.unwrap()).is_some();
+        let pool = &mut T::get_pool().write();
+
+        let removed = Self::decrement_strong_count_raw(self.object_id.unwrap(), pool).is_some();
         if removed {
             // `take`, such that the `drop` will not decrease ref count
             self.object_id.take().unwrap();
