@@ -21,7 +21,7 @@ impl<T: ?Sized> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        let pool = Self::get_pool().write();
+        let mut pool = Self::get_pool().write();
 
         let object_id = pool.next_id;
         pool.next_id += 1;
@@ -79,7 +79,7 @@ impl<T: ?Sized> Clone for MapBasedArc<T> {
 
 impl<T: ?Sized> MapBasedArc<T> {
     pub(crate) fn increment_strong_count(raw: usize) {
-        let map = &Self::get_pool().write().map;
+        let map = &mut Self::get_pool().write().map;
         map.get_mut(&raw).unwrap().ref_count += 1;
     }
 
