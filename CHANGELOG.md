@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0-dev.16
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Improve performance by avoiding constructing vectors #1636
+* Fix some Dart imports are not auto generated when using rust-auto-opaque in some scenarios #1638
+* Add test that one struct has multiple impl blocks in multiple files #1639
+
 ## 2.0.0-dev.15
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
