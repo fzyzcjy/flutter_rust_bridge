@@ -2,7 +2,9 @@ use crate::generalized_arc::base_arc::BaseArc;
 use std::sync::Arc;
 
 #[derive(Debug)]
-pub struct MapBasedArc<T: ?Sized>(u64);
+pub struct MapBasedArc<T: ?Sized> {
+    todo: Arc<T>,
+}
 
 impl<T: ?Sized> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {

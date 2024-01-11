@@ -1,3 +1,4 @@
+use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 
 /// # Safety
