@@ -22,10 +22,8 @@ pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! base_arc_generate_tests {
-    () => {
+    ($T:ty) => {
         use crate::generalized_arc::base_arc::BaseArc;
-        use crate::generalized_arc::map_based_arc::MapBasedArc;
-        use crate::generalized_arc::std_arc::StdArc;
         use std::fmt::Debug;
 
         // Do NOT make it `clone` (to test non-clone behavior)
@@ -33,79 +31,67 @@ macro_rules! base_arc_generate_tests {
         struct DummyType(i32);
 
         #[test]
-        fn test_std_arc() {
-            body::<StdArc<DummyType>>();
+        fn simple_drop() {
+            let a = $T::new(DummyType(100));
+            assert_eq!(a.as_ref().0, 100);
+            drop(a);
         }
 
         #[test]
-        fn test_map_based_arc() {
-            body::<MapBasedArc<DummyType>>();
+        fn simple_clone() {
+            let a = $T::new(DummyType(100));
+            let b = a.clone();
+            assert_eq!(a.as_ref().0, 100);
+            assert_eq!(b.as_ref().0, 100);
+
+            drop(a);
+            assert_eq!(b.as_ref().0, 100);
+
+            drop(b);
         }
 
-        fn body<T: BaseArc<DummyType> + Debug>() {
-            // Simple drop
-            {
-                let a = T::new(DummyType(100));
-                assert_eq!(a.as_ref().0, 100);
-                drop(a);
-            }
+        #[test]
+        fn try_unwrap_when_1_ref_should_succeed() {
+            let a = $T::new(DummyType(100));
+            assert_eq!(a.try_unwrap().unwrap().0, 100);
+        }
 
-            // Simple clone
-            {
-                let a = T::new(DummyType(100));
-                let b = a.clone();
-                assert_eq!(a.as_ref().0, 100);
-                assert_eq!(b.as_ref().0, 100);
+        #[test]
+        fn try_unwrap_when_2_ref_should_fail() {
+            let a = $T::new(DummyType(100));
+            let b = a.clone();
+            assert!(a.try_unwrap().is_err());
+            assert!(b.try_unwrap().is_err());
 
-                drop(a);
-                assert_eq!(b.as_ref().0, 100);
+            drop(a);
+            assert_eq!(b.try_unwrap().unwrap().0, 100);
+        }
 
-                drop(b);
-            }
+        #[test]
+        fn into_inner_when_1_ref_should_succeed() {
+            let a = $T::new(DummyType(100));
+            assert_eq!(a.into_inner().unwrap().0, 100);
+        }
 
-            // try_unwrap succeed when only 1 ref
-            {
-                let a = T::new(DummyType(100));
-                assert_eq!(a.try_unwrap().unwrap().0, 100);
-            }
+        #[test]
+        fn into_inner_when_2_ref_should_fail() {
+            let a = $T::new(DummyType(100));
+            let b = a.clone();
+            assert!(a.into_inner().is_none());
+            assert!(b.into_inner().is_none());
 
-            // try_unwrap fail when multi ref
-            {
-                let a = T::new(DummyType(100));
-                let b = a.clone();
-                assert!(a.try_unwrap().is_err());
-                assert!(b.try_unwrap().is_err());
+            drop(a);
+            assert_eq!(b.into_inner().unwrap().0, 100);
+        }
 
-                drop(a);
-                assert_eq!(b.try_unwrap().unwrap().0, 100);
-            }
+        #[test]
+        fn from_raw_and_into_raw() {
+            todo!();
+        }
 
-            // into_inner succeed when only 1 ref
-            {
-                let a = T::new(DummyType(100));
-                assert_eq!(a.into_inner().unwrap().0, 100);
-            }
-
-            // into_inner fail when multi ref
-            {
-                let a = T::new(DummyType(100));
-                let b = a.clone();
-                assert!(a.into_inner().is_none());
-                assert!(b.into_inner().is_none());
-
-                drop(a);
-                assert_eq!(b.into_inner().unwrap().0, 100);
-            }
-
-            // from_raw & into_raw
-            {
-                todo!();
-            }
-
-            // increment_strong_count & decrement_strong_count
-            {
-                todo!();
-            }
+        #[test]
+        fn increment_strong_count_and_decrement_strong_count() {
+            todo!();
         }
     };
 }
