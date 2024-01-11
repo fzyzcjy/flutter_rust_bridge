@@ -49,7 +49,15 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        todo!()
+        let map = &mut Self::get_pool().write().map;
+        let value = map.get(&self.object_id).unwrap();
+
+        if value.ref_count == 1 {
+            // TODO `take`?
+            map.remove(&self.object_id)
+        } else {
+            todo!()
+        }
     }
 
     fn into_inner(self) -> Option<T>
