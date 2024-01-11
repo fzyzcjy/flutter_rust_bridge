@@ -39,7 +39,7 @@ impl<T: ?Sized> BaseArc<T> for StdArc<T> {
     }
 
     fn into_raw(self) -> usize {
-        Arc::into_raw(self) as _
+        Arc::into_raw(self.0) as _
     }
 }
 
