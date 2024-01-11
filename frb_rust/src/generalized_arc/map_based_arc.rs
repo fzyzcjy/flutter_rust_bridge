@@ -59,8 +59,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         let map = &mut Self::get_pool().write().map;
         let removed = Self::decrement_strong_count(self.object_id).is_some();
         if removed {
-            // `take`, such that the `drop` will not decrease ref count
-            self.object_id.take().unwrap();
+            self.object_id = None; // such that the `drop` will not decrease ref count
             Ok(Arc::into_inner(self.value.take().unwrap()).unwrap())
         } else {
             Err(self)
