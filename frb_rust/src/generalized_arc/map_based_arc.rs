@@ -21,7 +21,8 @@ impl<T: ?Sized> Drop for MapBasedArc<T> {
 
 impl<T: ?Sized> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {
-        todo!()
+        let map = &Self::get_pool().read().map;
+        map.get(&self.object_id).unwrap().value
     }
 }
 
