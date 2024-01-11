@@ -1,3 +1,5 @@
+use std::fmt::Debug;
+
 pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
     fn new(value: T) -> Self
     where

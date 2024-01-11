@@ -7,6 +7,7 @@ mod tests {
     use crate::generalized_arc::base_arc::BaseArc;
     use crate::generalized_arc::map_based_arc::MapBasedArc;
     use crate::generalized_arc::std_arc::StdArc;
+    use std::fmt::Debug;
 
     // Do NOT make it `clone` (to test non-clone behavior)
     #[derive(Debug)]
@@ -22,7 +23,7 @@ mod tests {
         body::<MapBasedArc<DummyType>>();
     }
 
-    fn body<T: BaseArc<DummyType>>() {
+    fn body<T: BaseArc<DummyType> + Debug>() {
         // Simple drop
         {
             let a = T::new(DummyType(100));
