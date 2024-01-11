@@ -26,10 +26,6 @@ macro_rules! base_arc_generate_tests {
         use crate::generalized_arc::base_arc::BaseArc;
         use std::fmt::Debug;
 
-        // Do NOT make it `clone` (to test non-clone behavior)
-        #[derive(Debug)]
-        struct DummyType(i32);
-
         #[test]
         fn simple_drop() {
             let a = $T::new(DummyType(100));

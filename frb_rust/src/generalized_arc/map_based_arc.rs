@@ -190,5 +190,9 @@ mod tests {
         assert_eq!(pool.next_id(), 3);
     }
 
-    base_arc_generate_tests!(super::MapBasedArc);
+    // Do NOT make it `clone` (to test non-clone behavior)
+    #[derive(Debug)]
+    struct DummyType(i32);
+
+    base_arc_generate_tests!(super::MapBasedArc::<DummyType>);
 }
