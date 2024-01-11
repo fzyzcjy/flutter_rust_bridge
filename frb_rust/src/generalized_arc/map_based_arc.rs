@@ -62,8 +62,12 @@ impl<T> MapBasedArc<T> {
 
     pub(crate) fn decrement_strong_count(raw: usize) {
         let pool = Self::get_pool().write();
-        pool.get(&raw).unwrap().ref_count -= 1;
-        todo!("when zero")
+        let value = pool.get(&raw).unwrap();
+        value.ref_count -= 1;
+
+        if value.ref_count == 0 {
+            pool.remove(&raw);
+        }
     }
 }
 
