@@ -78,12 +78,12 @@ mod tests {
 
         // from_raw & into_raw
         {
-            TODO;
+            todo!();
         }
 
         // increment_strong_count & decrement_strong_count
         {
-            TODO;
+            todo!();
         }
     }
 }
