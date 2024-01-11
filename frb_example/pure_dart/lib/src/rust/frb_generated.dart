@@ -24,6 +24,8 @@ import 'api/map_and_set.dart';
 import 'api/method.dart';
 import 'api/mirror.dart';
 import 'api/misc_example.dart';
+import 'api/misc_no_twin_example_a.dart';
+import 'api/misc_no_twin_example_b.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
@@ -725,6 +727,16 @@ abstract class RustLibApi extends BaseApi {
 
   Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
       {required StructWithEnumTwinNormal se, dynamic hint});
+
+  Future<void> structInMiscNoTwinExampleASampleFunctionA(
+      {required StructInMiscNoTwinExampleA that, dynamic hint});
+
+  Future<StructInMiscNoTwinExampleA>
+      structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
+          {required StructInMiscNoTwinExampleB that, dynamic hint});
+
+  Future<void> structInMiscNoTwinExampleBSampleFunctionB(
+      {required StructInMiscNoTwinExampleB that, dynamic hint});
 
   Future<EmptyTwinNormal> emptyStructTwinNormal(
       {required EmptyTwinNormal empty, dynamic hint});
@@ -5353,6 +5365,24 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructInMiscNoTwinExampleA;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleA;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleAPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructInMiscNoTwinExampleB;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleB;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleBPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcDecrementStrongCountFnType
@@ -9606,6 +9636,96 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "test_struct_with_enum_twin_normal",
         argNames: ["se"],
+      );
+
+  @override
+  Future<void> structInMiscNoTwinExampleASampleFunctionA(
+      {required StructInMiscNoTwinExampleA that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+                that);
+        return wire.wire_StructInMiscNoTwinExampleA_sample_function_a(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStructInMiscNoTwinExampleASampleFunctionAConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructInMiscNoTwinExampleASampleFunctionAConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructInMiscNoTwinExampleA_sample_function_a",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<StructInMiscNoTwinExampleA>
+      structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
+          {required StructInMiscNoTwinExampleB that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+                that);
+        return wire
+            .wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kStructInMiscNoTwinExampleBGetStructInMiscNoTwinExampleAConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kStructInMiscNoTwinExampleBGetStructInMiscNoTwinExampleAConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void> structInMiscNoTwinExampleBSampleFunctionB(
+      {required StructInMiscNoTwinExampleB that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+                that);
+        return wire.wire_StructInMiscNoTwinExampleB_sample_function_b(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStructInMiscNoTwinExampleBSampleFunctionBConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructInMiscNoTwinExampleBSampleFunctionBConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructInMiscNoTwinExampleB_sample_function_b",
+        argNames: ["that"],
       );
 
   @override
@@ -51097,6 +51217,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructInMiscNoTwinExampleA => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleA => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructInMiscNoTwinExampleB => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructInMiscNoTwinExampleB => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
 
@@ -51422,6 +51558,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleA.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51770,6 +51913,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleA.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleB
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleB.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52242,6 +52399,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleA.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleB
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleB.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -62118,6 +62289,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructInMiscNoTwinExampleA
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          SseDeserializer deserializer) {
+    return StructInMiscNoTwinExampleA.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           SseDeserializer deserializer) {
@@ -62498,6 +62677,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          SseDeserializer deserializer) {
+    return StructInMiscNoTwinExampleA.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructInMiscNoTwinExampleB
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          SseDeserializer deserializer) {
+    return StructInMiscNoTwinExampleB.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62929,6 +63124,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          SseDeserializer deserializer) {
+    return StructInMiscNoTwinExampleA.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructInMiscNoTwinExampleB
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          SseDeserializer deserializer) {
+    return StructInMiscNoTwinExampleB.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -73048,6 +73259,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
@@ -73432,6 +73651,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
@@ -73803,6 +74038,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74262,6 +74513,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           StructWithGoodAndOpaqueFieldTwinNormal self,
           SseSerializer serializer) {
@@ -74605,6 +74863,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -75123,6 +75395,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          StructInMiscNoTwinExampleA self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          StructInMiscNoTwinExampleB self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
