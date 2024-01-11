@@ -190,5 +190,5 @@ mod tests {
         assert_eq!(pool.next_id(), 3);
     }
 
-    base_arc_generate_tests!();
+    base_arc_generate_tests!(super::MapBasedArc);
 }

@@ -76,5 +76,5 @@ impl<T: ?Sized + 'static> StdArc<T> {
 mod tests {
     use crate::base_arc_generate_tests;
 
-    base_arc_generate_tests!();
+    base_arc_generate_tests!(super::StdArc);
 }
