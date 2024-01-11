@@ -4,6 +4,8 @@
 // Section: imports
 
 use super::*;
+use crate::api::misc_no_twin_example_a::*;
+use crate::api::misc_no_twin_example_b::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sse::*;
@@ -10099,6 +10101,36 @@ impl
 impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
@@ -10204,6 +10236,21 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSyncSse,
         >,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
     > {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
     }
@@ -12807,6 +12854,46 @@ pub fn wire_test_struct_with_enum_twin_normal(
     se: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_test_struct_with_enum_twin_normal_impl(port_, se)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructInMiscNoTwinExampleA_sample_function_a(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructInMiscNoTwinExampleA_sample_function_a_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructWithImplBlockInMultiFile_method_in_a(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructWithImplBlockInMultiFile_method_in_a_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructInMiscNoTwinExampleB_sample_function_b(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructInMiscNoTwinExampleB_sample_function_b_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructWithImplBlockInMultiFile_method_in_b(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_StructWithImplBlockInMultiFile_method_in_b_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -27319,6 +27406,50 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 }
 
 #[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
@@ -27470,6 +27601,28 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >(ptr);
     }
 }
