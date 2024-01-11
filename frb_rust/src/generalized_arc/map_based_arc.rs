@@ -24,6 +24,7 @@ impl<T: ?Sized> BaseArc<T> for MapBasedArc<T> {
         let mut pool = Self::get_pool().write();
 
         let object_id = pool.next_id;
+        TODO_mod;
         pool.next_id += 1;
 
         pool.map.insert(
