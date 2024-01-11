@@ -13,7 +13,7 @@ macro_rules! impl_functions {
             /// Retrieving an opaque pointer from Dart is an implementation detail, so this
             /// function is not guaranteed to be API-stable.
             #[cfg(not(wasm))]
-            pub $safety fn [<cst_decode_rust_opaque_ $postfix>]<T>(
+            pub $safety [<cst_decode_rust_opaque_ $postfix>]<T>(
                 ptr: usize,
             ) -> RustOpaque<T, $C> {
                 [<decode_rust_opaque_innerr_ $postfix>](ptr as _)
@@ -23,7 +23,7 @@ macro_rules! impl_functions {
             ///
             /// This should never be called manually.
             #[cfg(wasm)]
-            pub $safety fn [<cst_decode_rust_opaque_ $postfix>]<T>(
+            pub $safety [<cst_decode_rust_opaque_ $postfix>]<T>(
                 raw: wasm_bindgen::JsValue,
             ) -> RustOpaque<T, $C> {
                 #[cfg(target_pointer_width = "64")]
@@ -37,7 +37,7 @@ macro_rules! impl_functions {
             /// # Safety
             ///
             /// This should never be called manually.
-            pub $safety fn [<sse_decode_rust_opaque_ $postfix>]<T>(
+            pub $safety [<sse_decode_rust_opaque_ $postfix>]<T>(
                 ptr: usize,
             ) -> RustOpaque<T, $C> {
                 [<decode_rust_opaque_innerr_ $postfix>](ptr)
@@ -46,7 +46,7 @@ macro_rules! impl_functions {
             /// # Safety
             ///
             /// This should never be called manually.
-            $safety fn [<decode_rust_opaque_innerr_ $postfix>]<T>(
+            $safety [<decode_rust_opaque_innerr_ $postfix>]<T>(
                 ptr: usize,
             ) -> RustOpaque<T, $C> {
                 assert!(ptr != 0);
@@ -58,5 +58,5 @@ macro_rules! impl_functions {
     };
 }
 
-impl_functions!(nom, NomRustOpaqueCodec, unsafe);
-impl_functions!(moi, MoiRustOpaqueCodec,);
+impl_functions!(nom, NomRustOpaqueCodec, unsafe fn);
+impl_functions!(moi, MoiRustOpaqueCodec, fn);
