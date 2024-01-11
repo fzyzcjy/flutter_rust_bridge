@@ -9,7 +9,7 @@ mod tests {
     use crate::generalized_arc::std_arc::StdArc;
 
     // Do NOT make it `clone` (to test non-clone behavior)
-    struct DummyType(String);
+    struct DummyType(i32);
 
     #[test]
     fn test_std_arc() {
@@ -24,22 +24,39 @@ mod tests {
     fn body<T: BaseArc<DummyType>>() {
         // Simple drop
         {
-            let a = T::new(DummyType("a".to_owned()));
-            assert_eq!(a.as_ref().0, "a");
+            let a = T::new(DummyType(100));
+            assert_eq!(a.as_ref().0, 100);
             drop(a);
         }
 
         // Simple clone
         {
-            let a = T::new(DummyType("a".to_owned()));
+            let a = T::new(DummyType(100));
             let b = a.clone();
-            assert_eq!(a.as_ref().0, "a");
-            assert_eq!(b.as_ref().0, "a");
+            assert_eq!(a.as_ref().0, 100);
+            assert_eq!(b.as_ref().0, 100);
 
             drop(a);
-            assert_eq!(b.as_ref().0, "a");
+            assert_eq!(b.as_ref().0, 100);
 
             drop(b);
+        }
+
+        // try_unwrap succeed when only 1 ref
+        {
+            let a = T::new(DummyType(100));
+            assert_eq!(a.try_unwrap().unwrap().0, 100);
+        }
+
+        // try_unwrap fail when multi ref
+        {
+            let a = T::new(DummyType(100));
+            let b = a.clone();
+            assert!(a.try_unwrap().is_err());
+            assert!(b.try_unwrap().is_err());
+
+            drop(a);
+            assert_eq!(b.try_unwrap().unwrap().0, 100);
         }
     }
 }
