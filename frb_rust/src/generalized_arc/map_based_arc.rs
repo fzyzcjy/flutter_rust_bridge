@@ -78,13 +78,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        let map = &Self::get_pool().read().map;
-
-        Self {
-            object_id: Some(raw),
-            value: Some(map.get(&raw).unwrap().value.clone()),
-            _phantom: PhantomData,
-        }
+        Self::from_raw_safe(raw)
     }
 
     fn into_raw(mut self) -> usize {
@@ -106,6 +100,19 @@ impl<T: ?Sized + 'static> Clone for MapBasedArc<T> {
 }
 
 impl<T: ?Sized + 'static> MapBasedArc<T> {
+    pub(crate) fn from_raw_safe(raw: usize) -> Self
+    where
+        T: Sized,
+    {
+        let map = &Self::get_pool().read().map;
+
+        Self {
+            object_id: Some(raw),
+            value: Some(map.get(&raw).unwrap().value.clone()),
+            _phantom: PhantomData,
+        }
+    }
+
     pub(crate) fn increment_strong_count_safe(raw: usize) {
         let map = &mut Self::get_pool().write().map;
         map.get_mut(&raw).unwrap().ref_count += 1;
