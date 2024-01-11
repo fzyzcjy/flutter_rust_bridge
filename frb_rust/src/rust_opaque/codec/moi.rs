@@ -4,6 +4,6 @@ use crate::generalized_arc::map_based_arc::MapBasedArc;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct MoiRustOpaqueCodec;
 
-impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {
-    type Arc<T: ?Sized + 'static> = MapBasedArc<T>;
+impl<T: ?Sized + 'static> BaseRustOpaqueCodec<T> for MoiRustOpaqueCodec {
+    type Arc = MapBasedArc<T>;
 }
