@@ -175,7 +175,7 @@ mod tests {
 
     #[test]
     fn test_next_id() {
-        let pool = MapBasedArcPoolInner::new();
+        let pool = MapBasedArcPoolInner::<String>::new();
         assert_eq!(pool.next_id(), 1);
         assert_eq!(pool.next_id(), 2);
         assert_eq!(pool.next_id(), 3);
