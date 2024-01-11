@@ -50,7 +50,11 @@ impl<T: ?Sized> BaseArc<T> for MapBasedArc<T> {
 
 impl<T: ?Sized> Clone for MapBasedArc<T> {
     fn clone(&self) -> Self {
-        todo!()
+        Self::increment_strong_count(self.object_id);
+
+        Self {
+            object_id: self.object_id,
+        }
     }
 }
 
@@ -77,7 +81,7 @@ impl<T> MapBasedArc<T> {
     }
 }
 
-type ObjectId = u64;
+type ObjectId = usize;
 
 struct MapBasedArcPoolValue<T> {
     ref_count: i32,
