@@ -99,10 +99,10 @@ macro_rules! base_arc_generate_tests {
             let a_raw = a.into_raw();
             assert_eq!(b.as_ref().0, 100);
 
-            <$T>::increment_strong_count(a_raw);
+            unsafe { <$T>::increment_strong_count(a_raw) };
             assert_eq!(b.as_ref().0, 100);
 
-            <$T>::decrement_strong_count(a_raw);
+            unsafe { <$T>::decrement_strong_count(a_raw) };
             assert_eq!(b.as_ref().0, 100);
 
             let a_recovered = unsafe { <$T>::from_raw(a_raw) };
