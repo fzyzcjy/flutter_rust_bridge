@@ -8,7 +8,7 @@ use std::path::Path;
 pub fn flutter_create(name: &str, org: &Option<String>) -> anyhow::Result<()> {
     let mut args = vec![name];
     if let Some(o) = org {
-        args.append(&mut vec!["--org", o]);
+        args.extend(["--org", o]);
     }
     info!("Execute `flutter create {args:?}`");
     check_exit_code(&command_run!(call_shell[None, None], "flutter", "create", *args)?)
