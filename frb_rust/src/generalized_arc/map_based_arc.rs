@@ -143,7 +143,7 @@ impl<T: ?Sized> MapBasedArcPoolInner<T> {
     fn new() -> Self {
         Self {
             map: HashMap::new(),
-            next_id: 0,
+            next_id: 1,
         }
     }
 
