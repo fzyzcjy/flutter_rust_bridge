@@ -77,9 +77,11 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
+        let map = &mut Self::get_pool().read().map;
+
         Self {
             object_id: Some(raw),
-            value: TODO,
+            value: map.get(&raw).unwrap().value.clone(),
             _phantom: PhantomData,
         }
     }
