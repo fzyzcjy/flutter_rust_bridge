@@ -3,7 +3,9 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 #[derive(Debug)]
-pub struct MapBasedArc<T: ?Sized>(Arc<T>);
+pub struct MapBasedArc<T: ?Sized> {
+    object_id: ObjectId,
+}
 
 impl<T: ?Sized> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {
@@ -67,9 +69,11 @@ impl<T> MapBasedArc<T> {
     }
 }
 
+type ObjectId = u64;
+
 struct MapBasedArcPoolValue<T> {
     ref_count: u32,
     value: Arc<T>,
 }
 
-type MapBasedArcPool<T> = HashMap<u64, MapBasedArcPoolValue<T>>;
+type MapBasedArcPool<T> = HashMap<ObjectId, MapBasedArcPoolValue<T>>;
