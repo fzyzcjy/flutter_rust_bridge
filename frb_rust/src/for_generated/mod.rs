@@ -16,10 +16,6 @@ pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
-pub use crate::misc::rust_arc::{
-    rust_arc_decrement_strong_count_moi, rust_arc_decrement_strong_count_nom,
-    rust_arc_increment_strong_count_moi, rust_arc_increment_strong_count_nom,
-};
 pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
