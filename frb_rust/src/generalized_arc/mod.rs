@@ -75,5 +75,15 @@ mod tests {
             drop(a);
             assert_eq!(b.into_inner().unwrap().0, 100);
         }
+
+        // from_raw & into_raw
+        {
+            TODO;
+        }
+
+        // increment_strong_count & decrement_strong_count
+        {
+            TODO;
+        }
     }
 }
