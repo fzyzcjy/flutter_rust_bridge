@@ -179,6 +179,7 @@ const sidebars = {
                     items: [
                         'guides/miscellaneous/directory',
                         'guides/miscellaneous/methods',
+                        'guides/miscellaneous/properties',
                         'guides/miscellaneous/codec',
                         'guides/miscellaneous/build-rs',
                         'guides/miscellaneous/expanding-macros',
