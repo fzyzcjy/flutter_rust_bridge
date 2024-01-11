@@ -9,3 +9,11 @@ pub struct StructInMiscNoTwinExampleA {}
 impl StructInMiscNoTwinExampleA {
     pub async fn sample_function_a(&self) {}
 }
+
+// Reproduce "multi impl block" in #1630
+#[frb(opaque)]
+pub struct StructWithImplBlockInMultiFile {}
+
+impl StructWithImplBlockInMultiFile {
+    pub fn method_in_a(&self) {}
+}

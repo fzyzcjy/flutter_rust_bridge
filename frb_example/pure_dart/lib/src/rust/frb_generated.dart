@@ -731,12 +731,18 @@ abstract class RustLibApi extends BaseApi {
   Future<void> structInMiscNoTwinExampleASampleFunctionA(
       {required StructInMiscNoTwinExampleA that, dynamic hint});
 
+  Future<void> structWithImplBlockInMultiFileMethodInA(
+      {required StructWithImplBlockInMultiFile that, dynamic hint});
+
   Future<StructInMiscNoTwinExampleA>
       structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
           {required StructInMiscNoTwinExampleB that, dynamic hint});
 
   Future<void> structInMiscNoTwinExampleBSampleFunctionB(
       {required StructInMiscNoTwinExampleB that, dynamic hint});
+
+  Future<void> structWithImplBlockInMultiFileMethodInB(
+      {required StructWithImplBlockInMultiFile that, dynamic hint});
 
   Future<EmptyTwinNormal> emptyStructTwinNormal(
       {required EmptyTwinNormal empty, dynamic hint});
@@ -5437,6 +5443,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithImplBlockInMultiFile;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFile;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync;
 
   RustArcDecrementStrongCountFnType
@@ -9667,6 +9682,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> structWithImplBlockInMultiFileMethodInA(
+      {required StructWithImplBlockInMultiFile that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+                that);
+        return wire.wire_StructWithImplBlockInMultiFile_method_in_a(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStructWithImplBlockInMultiFileMethodInAConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructWithImplBlockInMultiFileMethodInAConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructWithImplBlockInMultiFile_method_in_a",
+        argNames: ["that"],
+      );
+
+  @override
   Future<StructInMiscNoTwinExampleA>
       structInMiscNoTwinExampleBGetStructInMiscNoTwinExampleA(
           {required StructInMiscNoTwinExampleB that, dynamic hint}) {
@@ -9725,6 +9768,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kStructInMiscNoTwinExampleBSampleFunctionBConstMeta =>
       const TaskConstMeta(
         debugName: "StructInMiscNoTwinExampleB_sample_function_b",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<void> structWithImplBlockInMultiFileMethodInB(
+      {required StructWithImplBlockInMultiFile that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+                that);
+        return wire.wire_StructWithImplBlockInMultiFile_method_in_b(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kStructWithImplBlockInMultiFileMethodInBConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructWithImplBlockInMultiFileMethodInBConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructWithImplBlockInMultiFile_method_in_b",
         argNames: ["that"],
       );
 
@@ -51281,6 +51352,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithImplBlockInMultiFile => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFile => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync;
 
@@ -51976,6 +52055,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic raw) {
+    return StructWithImplBlockInMultiFile.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   String dco_decode_Backtrace(dynamic raw) {
     return raw as String;
   }
@@ -52459,6 +52545,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
         raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic raw) {
+    return StructWithImplBlockInMultiFile.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -62745,6 +62838,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithImplBlockInMultiFile
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          SseDeserializer deserializer) {
+    return StructWithImplBlockInMultiFile.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   String sse_decode_Backtrace(SseDeserializer deserializer) {
     var inner = sse_decode_String(deserializer);
     return inner;
@@ -63188,6 +63289,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithImplBlockInMultiFile
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          SseDeserializer deserializer) {
+    return StructWithImplBlockInMultiFile.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -73714,6 +73823,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw) {
     return cst_encode_DartOpaque(
@@ -74102,6 +74219,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PlatformPointer
       cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74927,6 +75052,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer) {
     throw UnimplementedError(
         'not yet supported in serialized mode, feel free to create an issue');
@@ -75455,6 +75587,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 

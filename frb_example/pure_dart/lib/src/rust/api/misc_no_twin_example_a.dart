@@ -29,3 +29,32 @@ class StructInMiscNoTwinExampleA extends RustOpaque {
         that: this,
       );
 }
+
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>>
+@sealed
+class StructWithImplBlockInMultiFile extends RustOpaque {
+  StructWithImplBlockInMultiFile.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  StructWithImplBlockInMultiFile.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithImplBlockInMultiFile,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFile,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr,
+  );
+
+  Future<void> methodInA({dynamic hint}) =>
+      RustLib.instance.api.structWithImplBlockInMultiFileMethodInA(
+        that: this,
+      );
+
+  Future<void> methodInB({dynamic hint}) =>
+      RustLib.instance.api.structWithImplBlockInMultiFileMethodInB(
+        that: this,
+      );
+}

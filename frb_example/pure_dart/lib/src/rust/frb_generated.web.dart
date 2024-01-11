@@ -365,6 +365,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithImplBlockInMultiFilePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsyncPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync;
 
@@ -818,6 +822,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic raw);
+
+  @protected
   String dco_decode_Backtrace(dynamic raw);
 
   @protected
@@ -1125,6 +1134,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           dynamic raw);
 
   @protected
@@ -5347,6 +5361,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithImplBlockInMultiFile
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          SseDeserializer deserializer);
+
+  @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
 
   @protected
@@ -5604,6 +5623,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithImplBlockInMultiFile
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           SseDeserializer deserializer);
 
   @protected
@@ -18195,6 +18219,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
+  PlatformPointer
+      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw);
+
+  @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
       FutureOr<void> Function(Object) raw);
 
@@ -18435,6 +18464,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformPointer
       cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+
+  @protected
+  PlatformPointer
+      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile raw);
 
   @protected
   PlatformPointer
@@ -18995,6 +19029,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseSerializer serializer);
 
   @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
 
   @protected
@@ -19331,6 +19370,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
           SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          StructWithImplBlockInMultiFile self, SseSerializer serializer);
 
   @protected
   void
@@ -24227,6 +24271,10 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object that) =>
       wasmModule.wire_StructInMiscNoTwinExampleA_sample_function_a(port_, that);
 
+  void wire_StructWithImplBlockInMultiFile_method_in_a(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_StructWithImplBlockInMultiFile_method_in_a(port_, that);
+
   void wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
           NativePortType port_, Object that) =>
       wasmModule
@@ -24236,6 +24284,10 @@ class RustLibWire extends BaseWire {
   void wire_StructInMiscNoTwinExampleB_sample_function_b(
           NativePortType port_, Object that) =>
       wasmModule.wire_StructInMiscNoTwinExampleB_sample_function_b(port_, that);
+
+  void wire_StructWithImplBlockInMultiFile_method_in_b(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_StructWithImplBlockInMultiFile_method_in_b(port_, that);
 
   void wire_empty_struct_twin_normal(
           NativePortType port_, List<dynamic> empty) =>
@@ -34070,6 +34122,18 @@ class RustLibWire extends BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
           dynamic ptr) =>
       wasmModule
@@ -34742,11 +34806,17 @@ class RustLibWasmModule implements WasmModule {
   external void wire_StructInMiscNoTwinExampleA_sample_function_a(
       NativePortType port_, Object that);
 
+  external void wire_StructWithImplBlockInMultiFile_method_in_a(
+      NativePortType port_, Object that);
+
   external void
       wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
           NativePortType port_, Object that);
 
   external void wire_StructInMiscNoTwinExampleB_sample_function_b(
+      NativePortType port_, Object that);
+
+  external void wire_StructWithImplBlockInMultiFile_method_in_b(
       NativePortType port_, Object that);
 
   external void wire_empty_struct_twin_normal(
@@ -41236,6 +41306,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
           dynamic ptr);
 
   external void

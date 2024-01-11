@@ -829,6 +829,21 @@ impl
 impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -18741,6 +18756,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleA_s
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFile_method_in_a(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_StructWithImplBlockInMultiFile_method_in_a_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
     port_: i64,
     that: *const std::ffi::c_void,
@@ -18754,6 +18777,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_s
     that: *const std::ffi::c_void,
 ) {
     wire_StructInMiscNoTwinExampleB_sample_function_b_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFile_method_in_b(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_StructWithImplBlockInMultiFile_method_in_b_impl(port_, that)
 }
 
 #[no_mangle]
@@ -33457,6 +33488,28 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >(ptr);
     }
 }
