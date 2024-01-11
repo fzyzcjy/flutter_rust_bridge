@@ -5,13 +5,13 @@ use std::marker::PhantomData;
 use std::sync::Arc;
 
 #[derive(Debug)]
-pub struct MapBasedArc<T: ?Sized> {
+pub struct MapBasedArc<T: ?Sized + 'static> {
     // `Option` for correct dropping
     object_id: Option<ObjectId>,
     _phantom: PhantomData<T>,
 }
 
-impl<T: ?Sized> Drop for MapBasedArc<T> {
+impl<T: ?Sized + 'static> Drop for MapBasedArc<T> {
     fn drop(&mut self) {
         if let Some(object_id) = self.object_id {
             Self::decrement_strong_count(object_id);
@@ -19,7 +19,7 @@ impl<T: ?Sized> Drop for MapBasedArc<T> {
     }
 }
 
-impl<T: ?Sized> AsRef<T> for MapBasedArc<T> {
+impl<T: ?Sized + 'static> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {
         let map = &Self::get_pool().read().map;
         &map.get(&self.object_id.unwrap()).unwrap().value
