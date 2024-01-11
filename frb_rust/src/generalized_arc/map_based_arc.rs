@@ -48,7 +48,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         }
     }
 
-    fn try_unwrap(self) -> Result<T, Self>
+    fn try_unwrap(mut self) -> Result<T, Self>
     where
         T: Sized,
     {
@@ -79,7 +79,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         }
     }
 
-    fn into_raw(self) -> usize {
+    fn into_raw(mut self) -> usize {
         // `take`, such that the `drop` will not decrease ref count
         self.object_id.take().unwrap()
     }
