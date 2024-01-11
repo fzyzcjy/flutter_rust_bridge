@@ -152,7 +152,7 @@ impl<T: ?Sized> MapBasedArcPoolInner<T> {
     fn next_id(&mut self) -> ObjectId {
         let ans = self.next_id;
 
-        self.next_id = if self.next_id == ObjectId::MAX_VALUE {
+        self.next_id = if self.next_id == ObjectId::MAX {
             Self::MIN_ID
         } else {
             self.next_id + 1
@@ -171,8 +171,21 @@ struct MapBasedArcPoolValue<T: ?Sized> {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
     fn test_next_id() {
-        TODO;
+        let pool = MapBasedArcPoolInner::new();
+        assert_eq!(pool.next_id(), 1);
+        assert_eq!(pool.next_id(), 2);
+        assert_eq!(pool.next_id(), 3);
+
+        pool.next_id = ObjectId::MAX - 2;
+        assert_eq!(pool.next_id(), ObjectId::MAX - 2);
+        assert_eq!(pool.next_id(), ObjectId::MAX - 1);
+        assert_eq!(pool.next_id(), ObjectId::MAX);
+        assert_eq!(pool.next_id(), 1); // NOTE: still not zero
+        assert_eq!(pool.next_id(), 2);
+        assert_eq!(pool.next_id(), 3);
     }
 }
