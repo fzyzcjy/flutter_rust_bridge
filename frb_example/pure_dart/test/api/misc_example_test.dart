@@ -85,6 +85,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "Hello, world!Hello, world!");
   });
 
+  addTestsIdentityFunctionCall(
+      handleCharTwinNormal, <String>['a', '\0', '\u{10FFFF}']);
+
   test('dart call handleString with nul-containing string', () async {
     // The string will be replaced when generating pseudo-manual tests.
     // Thus we use this hack to check whether we are using SSE codec
