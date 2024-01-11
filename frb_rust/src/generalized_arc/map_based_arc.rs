@@ -59,7 +59,7 @@ impl<T: ?Sized + MapBasedArcValue> BaseArc<T> for MapBasedArc<T> {
         // NOTE: Ensure lock is held during all operations to avoid racing conditions
         let pool = &mut T::get_pool().write();
 
-        if pool.map.get(&self.object_id).unwrap().ref_count == 1 {
+        if pool.map.get(&self.object_id.unwrap()).unwrap().ref_count == 1 {
             Self::decrement_strong_count_raw(self.object_id.unwrap(), pool);
             // `take`, such that the `drop` will not decrease ref count
             self.object_id.take().unwrap();
@@ -121,7 +121,7 @@ impl<T: ?Sized + MapBasedArcValue> MapBasedArc<T> {
         let value = pool.map.get_mut(&raw).unwrap();
         value.ref_count -= 1;
         if value.ref_count == 0 {
-            pool.map.remove(&raw).unwrap()
+            pool.map.remove(&raw).unwrap();
         }
     }
 }
