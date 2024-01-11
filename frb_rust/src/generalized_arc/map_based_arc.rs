@@ -90,9 +90,14 @@ impl<T> MapBasedArc<T> {
 
 type ObjectId = usize;
 
+type MapBasedArcPool<T> = RwLock<MapBasedArcPoolInner<T>>;
+
+struct MapBasedArcPoolInner<T> {
+    map: HashMap<ObjectId, MapBasedArcPoolValue<T>>,
+    next_id: ObjectId,
+}
+
 struct MapBasedArcPoolValue<T> {
     ref_count: i32,
     value: Arc<T>,
 }
-
-type MapBasedArcPool<T> = RwLock<HashMap<ObjectId, MapBasedArcPoolValue<T>>>;
