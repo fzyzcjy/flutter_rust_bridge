@@ -1,4 +1,8 @@
 use super::RustOpaque;
+use crate::generalized_arc::base_arc::BaseArc;
+use crate::generalized_arc::std_arc::StdArc;
+use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
+use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::ops;
 use std::sync::Arc;
 
@@ -19,21 +23,21 @@ macro_rules! opaque_dyn {
     };
 }
 
-impl<T: ?Sized> From<Arc<T>> for RustOpaque<T> {
+impl<T: ?Sized> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { arc: ptr }
+        Self { arc: StdArc(ptr) }
     }
 }
 
-impl<T> RustOpaque<T> {
+impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     pub fn new(value: T) -> Self {
         Self {
-            arc: Arc::new(value),
+            arc: C::Arc::new(value),
         }
     }
 }
 
-impl<T: ?Sized> ops::Deref for RustOpaque<T> {
+impl<T: ?Sized, C: BaseRustOpaqueCodec> ops::Deref for RustOpaque<T, C> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -41,17 +45,17 @@ impl<T: ?Sized> ops::Deref for RustOpaque<T> {
     }
 }
 
-impl<T> RustOpaque<T> {
+impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     pub fn try_unwrap(self) -> Result<T, Self> {
-        Arc::try_unwrap(self.arc).map_err(RustOpaque::from)
+        C::Arc::try_unwrap(self.arc).map_err(RustOpaque::from)
     }
 
     pub fn into_inner(self) -> Option<T> {
-        Arc::into_inner(self.arc)
+        C::Arc::into_inner(self.arc)
     }
 }
 
-impl<T: ?Sized> Clone for RustOpaque<T> {
+impl<T: ?Sized, C: BaseRustOpaqueCodec> Clone for RustOpaque<T, C> {
     fn clone(&self) -> Self {
         Self {
             arc: self.arc.clone(),
