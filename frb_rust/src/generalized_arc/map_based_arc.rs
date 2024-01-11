@@ -67,17 +67,17 @@ impl<T: ?Sized> Clone for MapBasedArc<T> {
 
 impl<T> MapBasedArc<T> {
     pub(crate) fn increment_strong_count(raw: usize) {
-        let pool = Self::get_pool().write();
-        pool.get(&raw).unwrap().ref_count += 1;
+        let map = &Self::get_pool().write().map;
+        map.get_mut(&raw).unwrap().ref_count += 1;
     }
 
     pub(crate) fn decrement_strong_count(raw: usize) {
-        let pool = Self::get_pool().write();
-        let value = pool.get(&raw).unwrap();
+        let mut map = &mut Self::get_pool().write().map;
+        let value = map.get_mut(&raw).unwrap();
         value.ref_count -= 1;
 
         if value.ref_count == 0 {
-            pool.remove(&raw);
+            map.remove(&raw);
         }
     }
 }
