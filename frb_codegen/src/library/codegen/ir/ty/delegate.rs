@@ -11,6 +11,7 @@ crate::ir! {
 pub enum IrTypeDelegate {
     Array(IrTypeDelegateArray),
     String,
+    Char,
     // StringList,// TODO avoid this special case?
     // ZeroCopyBufferVecPrimitive(IrTypePrimitive),
     PrimitiveEnum(IrTypeDelegatePrimitiveEnum),
@@ -79,6 +80,7 @@ impl IrTypeTrait for IrTypeDelegate {
         match self {
             IrTypeDelegate::Array(array) => array.safe_ident(),
             IrTypeDelegate::String => "String".to_owned(),
+            IrTypeDelegate::Char => "Char".to_owned(),
             // IrTypeDelegate::StringList => "StringList".to_owned(),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
@@ -103,6 +105,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("[{}; {}]", array.inner().rust_api_type(), array.length)
             }
             IrTypeDelegate::String => "String".to_owned(),
+            IrTypeDelegate::Char => "char".to_owned(),
             // IrTypeDelegate::StringList => "Vec<String>".to_owned(),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
             //     format!(
@@ -169,6 +172,7 @@ impl IrTypeDelegate {
                 primitive: IrTypePrimitive::U8,
                 strict_dart_type: true,
             }),
+            IrTypeDelegate::Char => IrType::Delegate(IrTypeDelegate::String),
             // IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
             //     IrType::PrimitiveList(IrTypePrimitiveList {
             //         primitive: primitive.clone(),
