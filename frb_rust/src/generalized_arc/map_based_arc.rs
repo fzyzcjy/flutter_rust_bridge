@@ -23,7 +23,7 @@ impl<T: ?Sized + 'static> Drop for MapBasedArc<T> {
 
 impl<T: ?Sized + 'static> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {
-        self.value.unwrap().as_ref()
+        self.value.as_ref().unwrap().as_ref()
     }
 }
 
@@ -47,7 +47,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
 
         Self {
             object_id: Some(object_id),
-            value,
+            value: Some(value),
             _phantom: PhantomData,
         }
     }
@@ -60,7 +60,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         if map.get(&self.object_id.unwrap()).unwrap().ref_count == 1 {
             // `take`, such that the `drop` will not decrease ref count
             map.remove(&self.object_id.take().unwrap()).unwrap();
-            Ok(Arc::into_inner(self.value).unwrap())
+            Ok(Arc::into_inner(self.value.take().unwrap()).unwrap())
         } else {
             Err(self)
         }
@@ -81,7 +81,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
 
         Self {
             object_id: Some(raw),
-            value: map.get(&raw).unwrap().value.clone(),
+            value: Some(map.get(&raw).unwrap().value.clone()),
             _phantom: PhantomData,
         }
     }
