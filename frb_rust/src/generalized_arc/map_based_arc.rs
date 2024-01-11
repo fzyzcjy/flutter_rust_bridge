@@ -117,8 +117,7 @@ impl<T: ?Sized> MapBasedArcPoolInner<T> {
 
     fn next_id(&mut self) -> ObjectId {
         let ans = self.next_id;
-        TODO_mod;
-        self.next_id += 1;
+        self.next_id = self.next_id.wrapping_add(1);
         ans
     }
 }
