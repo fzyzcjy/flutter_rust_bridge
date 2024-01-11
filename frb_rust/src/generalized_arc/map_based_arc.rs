@@ -56,7 +56,6 @@ impl<T: ?Sized + MapBasedArcValue> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        let map = &mut T::get_pool().write().map;
         let removed = Self::decrement_strong_count(self.object_id.unwrap()).is_some();
         if removed {
             // `take`, such that the `drop` will not decrease ref count
