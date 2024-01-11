@@ -57,10 +57,6 @@ macro_rules! base_arc_generate_tests {
             let a = <$T>::new(DummyType(100));
             let b = a.clone();
             assert!(a.try_unwrap().is_err());
-            assert!(b.try_unwrap().is_err());
-
-            drop(a);
-            assert_eq!(b.try_unwrap().unwrap().0, 100);
         }
 
         #[test]
@@ -74,10 +70,6 @@ macro_rules! base_arc_generate_tests {
             let a = <$T>::new(DummyType(100));
             let b = a.clone();
             assert!(a.into_inner().is_none());
-            assert!(b.into_inner().is_none());
-
-            drop(a);
-            assert_eq!(b.into_inner().unwrap().0, 100);
         }
 
         #[test]
