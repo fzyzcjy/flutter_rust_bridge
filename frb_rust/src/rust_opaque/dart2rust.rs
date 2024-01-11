@@ -8,9 +8,7 @@ use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 /// Retrieving an opaque pointer from Dart is an implementation detail, so this
 /// function is not guaranteed to be API-stable.
 #[cfg(not(wasm))]
-pub unsafe fn cst_decode_rust_opaque<T, C: BaseRustOpaqueCodec>(
-    ptr: *const core::ffi::c_void,
-) -> RustOpaque<T, C> {
+pub unsafe fn cst_decode_rust_opaque<T, C: BaseRustOpaqueCodec>(ptr: usize) -> RustOpaque<T, C> {
     assert!(!ptr.is_null());
     decode_rust_opaque_inner(ptr as _)
 }
