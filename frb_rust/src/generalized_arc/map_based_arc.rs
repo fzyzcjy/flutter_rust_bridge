@@ -19,7 +19,14 @@ impl<T: ?Sized> BaseArc<T> for MapBasedArc<T> {
     where
         T: Sized,
     {
-        todo!()
+        let pool = Self::get_pool().write();
+        pool.insert(
+            TODO,
+            MapBasedArcPoolValue {
+                ref_count: 1,
+                value: Arc::new(value),
+            },
+        );
     }
 
     fn try_unwrap(self) -> Result<T, Self>
