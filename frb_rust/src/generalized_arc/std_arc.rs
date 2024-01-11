@@ -32,13 +32,6 @@ impl<T: ?Sized> BaseArc<T> for StdArc<T> {
         Arc::into_inner(self.0)
     }
 
-    unsafe fn from_raw(raw: usize) -> Self
-    where
-        T: Sized,
-    {
-        Self(Arc::from_raw(raw as *const T))
-    }
-
     fn into_raw(self) -> usize {
         Arc::into_raw(self.0) as *const () as _
     }
@@ -53,5 +46,14 @@ impl<T: ?Sized> From<Arc<T>> for StdArc<T> {
 impl<T: ?Sized> Clone for StdArc<T> {
     fn clone(&self) -> Self {
         Self(self.0.clone())
+    }
+}
+
+impl<T: ?Sized + 'static> Stdarc<T> {
+    unsafe fn from_raw(raw: usize) -> Self
+    where
+        T: Sized,
+    {
+        Self(Arc::from_raw(raw as *const T))
     }
 }

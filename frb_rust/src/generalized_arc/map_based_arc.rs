@@ -74,13 +74,6 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         self.try_unwrap().ok()
     }
 
-    unsafe fn from_raw(raw: usize) -> Self
-    where
-        T: Sized,
-    {
-        Self::from_raw_safe(raw)
-    }
-
     fn into_raw(mut self) -> usize {
         // `take`, such that the `drop` will not decrease ref count
         self.object_id.take().unwrap()
@@ -100,7 +93,7 @@ impl<T: ?Sized + 'static> Clone for MapBasedArc<T> {
 }
 
 impl<T: ?Sized + 'static> MapBasedArc<T> {
-    pub(crate) fn from_raw_safe(raw: usize) -> Self
+    pub(crate) fn from_raw(raw: usize) -> Self
     where
         T: Sized,
     {
@@ -113,12 +106,12 @@ impl<T: ?Sized + 'static> MapBasedArc<T> {
         }
     }
 
-    pub(crate) fn increment_strong_count_safe(raw: usize) {
+    pub(crate) fn increment_strong_count(raw: usize) {
         let map = &mut Self::get_pool().write().map;
         map.get_mut(&raw).unwrap().ref_count += 1;
     }
 
-    pub(crate) fn decrement_strong_count_safe(raw: usize) -> Option<MapBasedArcPoolValue<T>> {
+    pub(crate) fn decrement_strong_count(raw: usize) -> Option<MapBasedArcPoolValue<T>> {
         let map = &mut Self::get_pool().write().map;
         let value = map.get_mut(&raw).unwrap();
         value.ref_count -= 1;
