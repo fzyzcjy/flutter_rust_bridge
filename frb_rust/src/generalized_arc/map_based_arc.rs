@@ -42,6 +42,14 @@ impl<T: ?Sized> BaseArc<T> for MapBasedArc<T> {
     fn into_raw(self) -> usize {
         todo!()
     }
+
+    fn increment_strong_count(raw: usize) {
+        todo!()
+    }
+
+    fn decrement_strong_count(raw: usize) {
+        todo!()
+    }
 }
 
 impl<T: ?Sized> Clone for MapBasedArc<T> {
