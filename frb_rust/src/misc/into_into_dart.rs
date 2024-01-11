@@ -36,7 +36,7 @@ where
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec> IntoIntoDart<RustOpaque<T, C>> for RustOpaque<T, C> {
+impl<T: 'static, C: BaseRustOpaqueCodec> IntoIntoDart<RustOpaque<T, C>> for RustOpaque<T, C> {
     #[inline(always)]
     fn into_into_dart(self) -> RustOpaque<T, C> {
         self

@@ -40,7 +40,7 @@ use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 /// ```
 #[repr(transparent)]
 #[derive(Debug)]
-pub struct RustOpaque<T: ?Sized, C: BaseRustOpaqueCodec = NomRustOpaqueCodec> {
+pub struct RustOpaque<T: ?Sized + 'static, C: BaseRustOpaqueCodec = NomRustOpaqueCodec> {
     arc: C::Arc<T>,
 }
 

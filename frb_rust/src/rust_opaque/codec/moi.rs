@@ -5,5 +5,5 @@ use crate::generalized_arc::map_based_arc::MapBasedArc;
 pub struct MoiRustOpaqueCodec;
 
 impl BaseRustOpaqueCodec for MoiRustOpaqueCodec {
-    type Arc<T: ?Sized> = MapBasedArc<T>;
+    type Arc<T: ?Sized + 'static> = MapBasedArc<T>;
 }

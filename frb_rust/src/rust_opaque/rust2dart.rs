@@ -18,7 +18,7 @@ impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec> From<RustOpaque<T, C>> for DartAbi {
+impl<T: 'static, C: BaseRustOpaqueCodec> From<RustOpaque<T, C>> for DartAbi {
     fn from(value: RustOpaque<T, C>) -> Self {
         let (ptr, size) = value.encode();
         [ptr.into_dart(), size.into_dart()].into_dart()

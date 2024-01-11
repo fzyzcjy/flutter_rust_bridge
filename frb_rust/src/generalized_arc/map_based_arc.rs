@@ -64,7 +64,7 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
     }
 }
 
-impl<T: ?Sized> Clone for MapBasedArc<T> {
+impl<T: ?Sized + 'static> Clone for MapBasedArc<T> {
     fn clone(&self) -> Self {
         Self::increment_strong_count(self.object_id);
 

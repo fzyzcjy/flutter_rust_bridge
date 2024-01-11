@@ -22,7 +22,7 @@ macro_rules! opaque_dyn {
     };
 }
 
-impl<T: ?Sized> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec> {
+impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec> {
     fn from(ptr: Arc<T>) -> Self {
         Self { arc: ptr.into() }
     }
@@ -54,7 +54,7 @@ impl<T, C: BaseRustOpaqueCodec> RustOpaque<T, C> {
     }
 }
 
-impl<T: ?Sized, C: BaseRustOpaqueCodec> Clone for RustOpaque<T, C> {
+impl<T: ?Sized + 'static, C: BaseRustOpaqueCodec> Clone for RustOpaque<T, C> {
     fn clone(&self) -> Self {
         Self {
             arc: self.arc.clone(),

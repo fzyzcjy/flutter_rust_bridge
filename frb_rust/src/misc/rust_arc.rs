@@ -17,10 +17,10 @@ pub unsafe fn rust_arc_decrement_strong_count_nom<T>(ptr: *const std::ffi::c_voi
 }
 
 // This is a separate function, because it is safe (not `unsafe`)
-pub fn rust_arc_increment_strong_count_moi<T>(raw: usize) {
+pub fn rust_arc_increment_strong_count_moi<T: 'static>(raw: usize) {
     <MoiRustOpaqueCodec as BaseRustOpaqueCodec>::Arc::<T>::increment_strong_count(raw)
 }
 
-pub fn rust_arc_decrement_strong_count_moi<T>(raw: usize) {
+pub fn rust_arc_decrement_strong_count_moi<T: 'static>(raw: usize) {
     <MoiRustOpaqueCodec as BaseRustOpaqueCodec>::Arc::<T>::decrement_strong_count(raw)
 }

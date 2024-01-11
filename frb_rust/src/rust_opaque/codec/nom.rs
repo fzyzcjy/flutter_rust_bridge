@@ -5,5 +5,5 @@ use crate::generalized_arc::std_arc::StdArc;
 pub struct NomRustOpaqueCodec;
 
 impl BaseRustOpaqueCodec for NomRustOpaqueCodec {
-    type Arc<T: ?Sized> = StdArc<T>;
+    type Arc<T: ?Sized + 'static> = StdArc<T>;
 }
