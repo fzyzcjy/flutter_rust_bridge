@@ -124,7 +124,7 @@ impl<T: ?Sized + 'static> MapBasedArc<T> {
     }
 }
 
-pub trait MapBasedArcPoolGetter {
+pub trait MapBasedArcValue {
     fn get_pool() -> &'static MapBasedArcPool<Self>;
 }
 
@@ -136,9 +136,9 @@ impl<T: ?Sized> MapBasedArc<T> {
 
 #[doc(hidden)]
 #[macro_export]
-macro_rules! frb_generated_map_based_arc_impl_get_pool {
+macro_rules! frb_generated_map_based_arc_impl_value {
     ($T:ty) => {
-        impl MapBasedArcPoolGetter for $T {
+        impl MapBasedArcValue for $T {
             fn get_pool() -> &'static crate::generalized_arc::map_based_arc::MapBasedArcPool<Self> {
                 use crate::generalized_arc::map_based_arc::MapBasedArcPool;
                 lazy_static! {
