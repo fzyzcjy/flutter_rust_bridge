@@ -22,7 +22,7 @@ impl<T: ?Sized> Drop for MapBasedArc<T> {
 impl<T: ?Sized> AsRef<T> for MapBasedArc<T> {
     fn as_ref(&self) -> &T {
         let map = &Self::get_pool().read().map;
-        map.get(&self.object_id).unwrap().value
+        &map.get(&self.object_id.unwrap()).unwrap().value
     }
 }
 
@@ -53,9 +53,10 @@ impl<T: ?Sized + 'static> BaseArc<T> for MapBasedArc<T> {
         T: Sized,
     {
         let map = &mut Self::get_pool().write().map;
-        if map.get(&self.object_id).unwrap().ref_count == 1 {
+        if map.get(&self.object_id.unwrap()).unwrap().ref_count == 1 {
             // `take`, such that the `drop` will not decrease ref count
-            Ok(map.remove(&self.object_id.take()))
+            let value = map.remove(&self.object_id.take().unwrap()).unwrap().value;
+            Ok(Arc::into_inner(value).unwrap())
         } else {
             Err(self)
         }
