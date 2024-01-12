@@ -88,7 +88,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                         field.name.rust_style(),
                         if WireRustCodecCstGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
-                            || matches!(field.ty, IrType::RustOpaque(_) | IrType::DartOpaque(_))
+                            || matches!(field.ty, IrType::DartOpaque(_))
                         {
                             "core::ptr::null_mut()".to_owned()
                         } else {
