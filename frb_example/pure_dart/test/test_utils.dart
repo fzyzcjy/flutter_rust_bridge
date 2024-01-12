@@ -126,3 +126,15 @@ Future<void> futurizeVoidTwinSse(Future<void> x) async => x;
 Future<void> futurizeVoidTwinRustAsyncSse(Future<void> x) async => x;
 
 Future<void> futurizeVoidTwinSyncSse(void x) async => x;
+
+Future<void> futurizeVoidTwinNormalMoi(Future<void> x) async => x;
+
+Future<void> futurizeVoidTwinRustAsyncMoi(Future<void> x) async => x;
+
+Future<void> futurizeVoidTwinSyncMoi(void x) async => x;
+
+Future<void> futurizeVoidTwinSseMoi(Future<void> x) async => x;
+
+Future<void> futurizeVoidTwinRustAsyncSseMoi(Future<void> x) async => x;
+
+Future<void> futurizeVoidTwinSyncSseMoi(void x) async => x;
