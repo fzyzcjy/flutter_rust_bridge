@@ -24,16 +24,15 @@ macro_rules! base_arc_generate_tests {
         use crate::generalized_arc::base_arc::BaseArc;
         use std::fmt::Debug;
         use std::sync::atomic::{AtomicBool, Ordering};
-        use std::sync::Arc;
 
         // Do NOT make it `clone` (to test non-clone behavior)
         struct DummyType {
             value: i32,
-            on_drop: Arc<AtomicBool>,
+            on_drop: std::sync::Arc<AtomicBool>,
         }
 
         impl DummyType {
-            fn new(value: i32, on_drop: Arc<AtomicBool>) -> Self {
+            fn new(value: i32, on_drop: std::sync::Arc<AtomicBool>) -> Self {
                 Self { value, on_drop }
             }
         }
@@ -50,8 +49,8 @@ macro_rules! base_arc_generate_tests {
             }
         }
 
-        fn create() -> ($T<DummyType>, Arc<AtomicBool>) {
-            let dropped = Arc::new(AtomicBool::new(false));
+        fn create() -> ($T<DummyType>, std::sync::Arc<AtomicBool>) {
+            let dropped = std::sync::Arc::new(AtomicBool::new(false));
             let arc = <$T<DummyType>>::new(DummyType::new(100, dropped.clone()));
             (arc, dropped)
         }
