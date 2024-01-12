@@ -23,113 +23,169 @@ macro_rules! base_arc_generate_tests {
     ($T:tt) => {
         use crate::generalized_arc::base_arc::BaseArc;
         use std::fmt::Debug;
+        use std::sync::atomic::{AtomicBool, Ordering};
+        use std::sync::Arc;
 
         // Do NOT make it `clone` (to test non-clone behavior)
         struct DummyType {
             value: i32,
-            on_drop: Box<dyn Fn() + Send + Sync>,
+            on_drop: Arc<AtomicBool>,
         }
 
         impl DummyType {
-            fn new(value: i32, on_drop: Box<dyn Fn() + Send + Sync>) -> Self {
+            fn new(value: i32, on_drop: Arc<AtomicBool>) -> Self {
                 Self { value, on_drop }
             }
         }
 
         impl Debug for DummyType {
             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                write!(f, "DummyType({})", self.value)
+                write!(f, "DummyType::new({})", self.value)
             }
         }
 
         impl Drop for DummyType {
             fn drop(&mut self) {
-                (self.on_drop)()
+                self.on_drop.store(true, Ordering::SeqCst)
             }
+        }
+
+        fn create() -> ($T<DummyType>, Arc<AtomicBool>) {
+            let dropped = Arc::new(AtomicBool::new(false));
+            let arc = <$T<DummyType>>::new(DummyType::new(100, dropped.clone()));
+            (arc, dropped)
         }
 
         #[test]
         fn simple_drop() {
-            let a = <$T<DummyType>>::new(DummyType(100));
+            let (a, dropped) = create();
             assert_eq!(a.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
             drop(a);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn simple_clone() {
-            let a = <$T<DummyType>>::new(DummyType(100));
+            let (a, dropped) = create();
             let b = a.clone();
             assert_eq!(a.as_ref().value, 100);
             assert_eq!(b.as_ref().value, 100);
 
             drop(a);
             assert_eq!(b.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
 
             drop(b);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn try_unwrap_when_1_ref_should_succeed() {
-            let a = <$T<DummyType>>::new(DummyType(100));
-            assert_eq!(a.try_unwrap().unwrap().value, 100);
+            let (a, dropped) = create();
+            let inner = a.try_unwrap().unwrap();
+            assert_eq!(inner.value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+            drop(inner);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn try_unwrap_when_2_ref_should_fail() {
-            let a = <$T<DummyType>>::new(DummyType(100));
-            let _b = a.clone();
+            let (a, dropped) = create();
+            let b = a.clone();
             assert!(a.try_unwrap().is_err());
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+            drop(b);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn into_inner_when_1_ref_should_succeed() {
-            let a = <$T<DummyType>>::new(DummyType(100));
-            assert_eq!(a.into_inner().unwrap().value, 100);
+            let (a, dropped) = create();
+            let inner = a.into_inner().unwrap();
+            assert_eq!(inner.value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+            drop(inner);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn into_inner_when_2_ref_should_fail() {
-            let a = <$T<DummyType>>::new(DummyType(100));
-            let _b = a.clone();
+            let (a, dropped) = create();
+            let b = a.clone();
             assert!(a.into_inner().is_none());
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+            drop(b);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn from_raw_and_into_raw_simple() {
-            let a = <$T<DummyType>>::new(DummyType(100));
+            let (a, dropped) = create();
             let a_raw = a.into_raw();
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+            drop(a_recovered);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn from_raw_and_into_raw_with_another_ref() {
-            let a = <$T<DummyType>>::new(DummyType(100));
+            let (a, dropped) = create();
             let b = a.clone();
             let a_raw = a.into_raw();
             assert_eq!(b.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
 
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().value, 100);
             assert_eq!(b.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+
+            drop(b);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+            drop(a_recovered);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
 
         #[test]
         fn increment_strong_count_and_decrement_strong_count() {
-            let a = <$T<DummyType>>::new(DummyType(100));
+            let (a, dropped) = create();
             let b = a.clone();
             let a_raw = a.into_raw();
             assert_eq!(b.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
 
             unsafe { <$T<DummyType>>::increment_strong_count(a_raw) };
             assert_eq!(b.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
 
             unsafe { <$T<DummyType>>::decrement_strong_count(a_raw) };
             assert_eq!(b.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
 
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().value, 100);
             assert_eq!(b.as_ref().value, 100);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+
+            drop(b);
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+            drop(a_recovered);
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
+        }
+
+        #[test]
+        fn simple_decrement_strong_count() {
+            let (a, dropped) = create();
+            let a_raw = a.into_raw();
+            assert_eq!(dropped.load(Ordering::SeqCst), false);
+
+            unsafe { <$T<DummyType>>::decrement_strong_count(a_raw) };
+            assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
     };
 }
