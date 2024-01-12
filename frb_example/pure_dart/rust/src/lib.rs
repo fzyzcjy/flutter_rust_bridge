@@ -9,7 +9,15 @@ mod frb_generated; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be
 
 fn wire_rust_auto_opaque_callable_arg_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl CstDecode<RustOpaque<RwLock<String>, NomRustOpaqueCodec>>,
+    // arg: impl CstDecode<RustOpaque<RwLock<String>, NomRustOpaqueCodec>>, // THIS IS GOOD
+    arg: impl CstDecode<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<
+                Box<dyn Fn(String) -> String + Send + Sync>,
+            >,
+            NomRustOpaqueCodec,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
