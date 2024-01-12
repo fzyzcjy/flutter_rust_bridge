@@ -65,7 +65,7 @@ class DuplicatorMode with _$DuplicatorMode {
   static DuplicatorMode parse(String raw) => DuplicatorMode(
       raw.split(' ').map(DuplicatorComponentMode.values.byName).toList());
 
-  static const values = [
+  static const defaultValues = [
     DuplicatorMode([DuplicatorComponentMode.sync]),
     DuplicatorMode([DuplicatorComponentMode.rustAsync]),
     DuplicatorMode([DuplicatorComponentMode.sse]),
@@ -92,7 +92,7 @@ class _Duplicator {
       if (file is! File ||
           path.extension(file.path) != '.${generator.extension}') continue;
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
-      if (DuplicatorMode.values
+      if (DuplicatorMode.defaultValues
           .any((mode) => fileStem.contains(mode.postfix))) {
         continue;
       }
@@ -100,7 +100,7 @@ class _Duplicator {
       final fileContent = (file as File).readAsStringSync();
       final annotation = _parseAnnotation(fileContent);
 
-      for (final mode in DuplicatorMode.values) {
+      for (final mode in DuplicatorMode.defaultValues) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
 
         var outputText = computeDuplicatorPrelude(' from `$fileName`') +
