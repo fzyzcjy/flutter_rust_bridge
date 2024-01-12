@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_auto_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -16,15 +16,27 @@ pub struct NonCloneSimpleTwinSyncSseMoi {
 
 // ==================================== simple =======================================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_own_twin_sync_sse_moi(arg: NonCloneSimpleTwinSyncSseMoi, expect: i32) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_own_twin_sync_sse_moi(arg: NonCloneSimpleTwinSyncSseMoi, expect: i32) {
     assert_eq!(arg.inner, expect);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_borrow_twin_sync_sse_moi(arg: &NonCloneSimpleTwinSyncSseMoi, expect: i32) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
+    arg: &NonCloneSimpleTwinSyncSseMoi,
+    expect: i32,
+) {
     assert_eq!(arg.inner, expect);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_mut_borrow_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_mut_borrow_twin_sync_sse_moi(
     arg: &mut NonCloneSimpleTwinSyncSseMoi,
     expect: i32,
     adder: i32,
@@ -33,20 +45,29 @@ pub struct NonCloneSimpleTwinSyncSseMoi {
     arg.inner += adder;
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_return_own_twin_sync_sse_moi(initial: i32) -> NonCloneSimpleTwinSyncSseMoi {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_own_twin_sync_sse_moi(initial: i32) -> NonCloneSimpleTwinSyncSseMoi {
     NonCloneSimpleTwinSyncSseMoi { inner: initial }
 }
 
 // ==================================== with other args =======================================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi(
     arg: NonCloneSimpleTwinSyncSseMoi,
 ) -> NonCloneSimpleTwinSyncSseMoi {
     assert_eq!(arg.inner, 42);
     arg
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_two_args_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_two_args_twin_sync_sse_moi(
     a: NonCloneSimpleTwinSyncSseMoi,
     b: NonCloneSimpleTwinSyncSseMoi,
 ) {
@@ -54,7 +75,13 @@ pub struct NonCloneSimpleTwinSyncSseMoi {
     assert_eq!(b.inner, 20);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_moi(a: NonCloneSimpleTwinSyncSseMoi, b: String) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_moi(
+    a: NonCloneSimpleTwinSyncSseMoi,
+    b: String,
+) {
     assert_eq!(a.inner, 42);
     assert_eq!(b, "hello");
 }
@@ -71,20 +98,37 @@ impl MyTraitTwinSyncSseMoi for String {
 }
 
 /// "+" inside the type signature
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_plus_sign_arg_twin_sync_sse_moi(arg: Box<dyn MyTraitTwinSyncSseMoi + Send + Sync>) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_plus_sign_arg_twin_sync_sse_moi(
+    arg: Box<dyn MyTraitTwinSyncSseMoi + Send + Sync>,
+) {
     assert_eq!(arg.f(), "hello");
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_plus_sign_return_twin_sync_sse_moi() -> Box<dyn MyTraitTwinSyncSseMoi + Send + Sync> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_plus_sign_return_twin_sync_sse_moi(
+) -> Box<dyn MyTraitTwinSyncSseMoi + Send + Sync> {
     Box::new("hello".to_owned())
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_callable_arg_twin_sync_sse_moi(arg: Box<dyn Fn(String) -> String + Send + Sync>) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_callable_arg_twin_sync_sse_moi(
+    arg: Box<dyn Fn(String) -> String + Send + Sync>,
+) {
     assert_eq!(&arg("hello".into()), "hellohello");
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_callable_return_twin_sync_sse_moi() -> Box<dyn Fn(String) -> String + Send + Sync>
-{
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_callable_return_twin_sync_sse_moi(
+) -> Box<dyn Fn(String) -> String + Send + Sync> {
     Box::new(|x: String| x.repeat(2))
 }
 
@@ -118,7 +162,10 @@ impl HelloTraitTwinSyncSseMoi for HelloTwoEnumTwinSyncSseMoi {
     }
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_own_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_trait_object_arg_own_twin_sync_sse_moi(
     arg: Box<dyn HelloTraitTwinSyncSseMoi>,
     expect: String,
 ) {
@@ -126,46 +173,72 @@ impl HelloTraitTwinSyncSseMoi for HelloTwoEnumTwinSyncSseMoi {
 }
 
 #[allow(clippy::borrowed_box)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse_moi(
     arg: &Box<dyn HelloTraitTwinSyncSseMoi>,
     expect: String,
 ) {
     assert_eq!(arg.func_hello(), expect);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse_moi(
     arg: &mut Box<dyn HelloTraitTwinSyncSseMoi>,
     expect: String,
 ) {
     assert_eq!(arg.func_hello(), expect);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_return_own_one_twin_sync_sse_moi() -> Box<dyn HelloTraitTwinSyncSseMoi> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_trait_object_return_own_one_twin_sync_sse_moi(
+) -> Box<dyn HelloTraitTwinSyncSseMoi> {
     Box::new(HelloOneStructTwinSyncSseMoi {
         inner: "hello".into(),
     })
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_trait_object_return_own_two_twin_sync_sse_moi() -> Box<dyn HelloTraitTwinSyncSseMoi> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_trait_object_return_own_two_twin_sync_sse_moi(
+) -> Box<dyn HelloTraitTwinSyncSseMoi> {
     Box::new(HelloTwoEnumTwinSyncSseMoi::B)
 }
 
 // ==================================== static method =======================================
 
 impl NonCloneSimpleTwinSyncSseMoi {
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_arg_own_twin_sync_sse_moi(arg: NonCloneSimpleTwinSyncSseMoi) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_arg_own_twin_sync_sse_moi(arg: NonCloneSimpleTwinSyncSseMoi) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_arg_borrow_twin_sync_sse_moi(arg: &NonCloneSimpleTwinSyncSseMoi) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_arg_borrow_twin_sync_sse_moi(arg: &NonCloneSimpleTwinSyncSseMoi) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_arg_mut_borrow_twin_sync_sse_moi(arg: &mut NonCloneSimpleTwinSyncSseMoi) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_arg_mut_borrow_twin_sync_sse_moi(arg: &mut NonCloneSimpleTwinSyncSseMoi) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_return_own_twin_sync_sse_moi() -> NonCloneSimpleTwinSyncSseMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_return_own_twin_sync_sse_moi() -> NonCloneSimpleTwinSyncSseMoi {
         NonCloneSimpleTwinSyncSseMoi { inner: 42 }
     }
 }
@@ -174,38 +247,62 @@ impl NonCloneSimpleTwinSyncSseMoi {
 
 impl NonCloneSimpleTwinSyncSseMoi {
     /// unnamed constructor
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn new_twin_sync_sse_moi() -> NonCloneSimpleTwinSyncSseMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_twin_sync_sse_moi() -> NonCloneSimpleTwinSyncSseMoi {
         Self { inner: 42 }
     }
 
     /// named constructor
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn new_custom_name_twin_sync_sse_moi() -> NonCloneSimpleTwinSyncSseMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_custom_name_twin_sync_sse_moi() -> NonCloneSimpleTwinSyncSseMoi {
         Self { inner: 42 }
     }
 
     /// constructor with Result
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn new_with_result_twin_sync_sse_moi() -> anyhow::Result<NonCloneSimpleTwinSyncSseMoi> {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_with_result_twin_sync_sse_moi() -> anyhow::Result<NonCloneSimpleTwinSyncSseMoi> {
         Ok(Self { inner: 42 })
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_arg_own_twin_sync_sse_moi(self) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_arg_own_twin_sync_sse_moi(self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_arg_borrow_twin_sync_sse_moi(&self) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_arg_borrow_twin_sync_sse_moi(&self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_arg_mut_borrow_twin_sync_sse_moi(&mut self) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_arg_mut_borrow_twin_sync_sse_moi(&mut self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_return_own_twin_sync_sse_moi(&self) -> NonCloneSimpleTwinSyncSseMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_return_own_twin_sync_sse_moi(&self) -> NonCloneSimpleTwinSyncSseMoi {
         Self { inner: 42 }
     }
 
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_getter_twin_sync_sse_moi(&self) -> i32 {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(serialize)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_getter_twin_sync_sse_moi(&self) -> i32 {
         self.inner
     }
 }
@@ -218,28 +315,40 @@ pub struct StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
     pub opaque: NonCloneSimpleTwinSyncSseMoi,
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
     arg: StructWithGoodAndOpaqueFieldTwinSyncSseMoi,
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_moi(
     arg: &StructWithGoodAndOpaqueFieldTwinSyncSseMoi,
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_moi(
     arg: &mut StructWithGoodAndOpaqueFieldTwinSyncSseMoi,
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_moi(
 ) -> StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
     StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
         good: "hello".to_string(),
@@ -252,10 +361,16 @@ pub struct StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
 // #1577 - this should generate valid Dart code without name collisions
 pub struct OpaqueOneTwinSyncSseMoi(PathBuf);
 pub struct OpaqueTwoTwinSyncSseMoi(PathBuf);
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse_moi(
 ) -> (OpaqueOneTwinSyncSseMoi, OpaqueTwoTwinSyncSseMoi) {
     unimplemented!()
 }
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_return_opaque_two_twin_sync_sse_moi() -> OpaqueTwoTwinSyncSseMoi {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_opaque_two_twin_sync_sse_moi() -> OpaqueTwoTwinSyncSseMoi {
     unimplemented!()
 }
