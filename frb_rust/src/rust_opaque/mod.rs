@@ -51,7 +51,7 @@ pub type RustOpaque<T> = RustOpaqueNom<T>;
 #[macro_export]
 macro_rules! frb_generated_rust_opaque_def {
     () => {
-        pub type RustOpaqueMoi<T> = RustOpaqueBase<T, MoiArc<T>>;
+        pub type RustOpaqueMoi<T> = $crate::for_generated::RustOpaqueBase<T, MoiArc<T>>;
     };
 }
 

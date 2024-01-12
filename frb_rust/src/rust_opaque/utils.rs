@@ -18,7 +18,7 @@ use std::sync::Arc;
 #[macro_export]
 macro_rules! opaque_dyn {
     ($ex:expr) => {
-        $crate::RustOpaqueBase::new(::std::boxed::Box::new($ex))
+        $crate::for_generated::RustOpaqueBase::new(::std::boxed::Box::new($ex))
     };
 }
 
