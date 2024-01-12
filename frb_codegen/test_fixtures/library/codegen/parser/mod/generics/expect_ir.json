@@ -110,6 +110,7 @@
             "data": {
               "inner": {
                 "brief_name": true,
+                "codec": "Nom",
                 "inner": {
                   "data": {
                     "namespace": null,
@@ -160,6 +161,7 @@
             "data": {
               "inner": {
                 "brief_name": true,
+                "codec": "Nom",
                 "inner": {
                   "data": {
                     "namespace": null,
@@ -210,6 +212,7 @@
             "data": {
               "inner": {
                 "brief_name": true,
+                "codec": "Nom",
                 "inner": {
                   "data": {
                     "namespace": null,
@@ -260,6 +263,7 @@
             "data": {
               "inner": {
                 "brief_name": true,
+                "codec": "Nom",
                 "inner": {
                   "data": {
                     "namespace": null,
@@ -310,6 +314,7 @@
             "data": {
               "inner": {
                 "brief_name": true,
+                "codec": "Nom",
                 "inner": {
                   "data": {
                     "namespace": null,
