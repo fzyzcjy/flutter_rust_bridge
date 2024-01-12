@@ -66,9 +66,8 @@ class RustGenerator extends BaseGenerator {
     }
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
-      ans = ans
-          .replaceAll('RustOpaque<', 'RustOpaqueMoi<')
-          .replaceAll('RustOpaqueNom<', 'RustOpaqueMoi<');
+      ans = ans.replaceAll(
+          RegExp(r'RustOpaque(Nom)?<'), 'crate::frb_generated::RustOpaqueMoi<');
     }
 
     return ans;
