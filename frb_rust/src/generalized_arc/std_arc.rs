@@ -50,7 +50,7 @@ impl<T: ?Sized> Clone for StdArc<T> {
 }
 
 impl<T: ?Sized + 'static> StdArc<T> {
-    pub(crate) unsafe fn from_raw(raw: usize) -> Self
+    pub unsafe fn from_raw(raw: usize) -> Self
     where
         T: Sized,
     {
