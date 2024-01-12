@@ -32836,9 +32836,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Mutex<HideData>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<Mutex<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32847,9 +32845,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Mutex<HideData>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32858,9 +32854,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            RwLock<HideData>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<RwLock<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32869,9 +32863,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            RwLock<HideData>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32880,9 +32872,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinNormal>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32891,9 +32881,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinNormal>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32902,9 +32890,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinRustAsync>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32913,9 +32899,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinRustAsync>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32924,9 +32908,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinRustAsyncSse>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32935,9 +32917,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinRustAsyncSse>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32946,9 +32926,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinSse>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32957,9 +32935,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinSse>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32968,9 +32944,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinSync>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32979,9 +32953,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinSync>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32990,9 +32962,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinSyncSse>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33001,9 +32971,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            Box<dyn DartDebugTwinSyncSse>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33012,11 +32980,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33025,11 +32993,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33038,9 +33006,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33049,9 +33017,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33060,11 +33028,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33073,11 +33041,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33086,11 +33054,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33099,11 +33067,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33112,9 +33080,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33123,9 +33089,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33134,9 +33098,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33145,9 +33107,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33156,9 +33116,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33167,9 +33127,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33178,11 +33138,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33191,11 +33151,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33204,11 +33164,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33217,11 +33177,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33230,11 +33190,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33243,11 +33203,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33256,11 +33216,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33269,11 +33229,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33282,11 +33242,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33295,11 +33255,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33308,11 +33268,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33321,11 +33281,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33334,9 +33294,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33345,9 +33303,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33356,9 +33312,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33367,9 +33321,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33378,9 +33330,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33389,9 +33341,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33400,9 +33352,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33411,9 +33361,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33422,9 +33370,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33433,9 +33379,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33444,9 +33388,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33455,9 +33397,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33466,9 +33406,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33477,9 +33415,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33488,9 +33424,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33499,9 +33433,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33510,11 +33442,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33523,11 +33455,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33536,11 +33468,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33549,11 +33481,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33562,11 +33494,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33575,11 +33507,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33588,11 +33520,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33601,11 +33533,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33614,11 +33546,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33627,11 +33559,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33640,11 +33572,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33653,11 +33585,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33666,9 +33598,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33677,9 +33609,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33688,12 +33620,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             )>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33702,12 +33634,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             )>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33716,11 +33648,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33729,11 +33661,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33742,7 +33674,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33751,7 +33683,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33760,7 +33692,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>>::Arc::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33769,7 +33701,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33778,12 +33710,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             )>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33792,12 +33724,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             )>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33806,11 +33738,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33819,11 +33751,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33832,12 +33764,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             )>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33846,12 +33778,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             )>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33860,11 +33792,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33873,11 +33805,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33886,12 +33818,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             )>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33900,12 +33832,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             )>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33914,11 +33846,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33927,11 +33859,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33940,12 +33872,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             )>,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33954,12 +33886,12 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             )>,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33968,11 +33900,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
-        >>::Arc::increment_strong_count(ptr as _);
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33981,11 +33913,11 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
-        >>::Arc::decrement_strong_count(ptr as _);
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33994,9 +33926,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::FrbOpaqueReturn,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(ptr as _);
     }
 }
 
@@ -34005,9 +33935,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::FrbOpaqueReturn,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -34016,9 +33944,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -34027,9 +33955,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -34038,9 +33966,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::HideData,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::HideData>::increment_strong_count(ptr as _);
     }
 }
 
@@ -34049,9 +33975,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::HideData,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -34060,7 +33984,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<i32>>::Arc::increment_strong_count(ptr as _);
+        StdArc::<i32>::increment_strong_count(ptr as _);
     }
 }
 
@@ -34069,7 +33993,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<i32>>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -34078,9 +34002,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::NonCloneData,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(ptr as _);
     }
 }
 
@@ -34089,9 +34011,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::NonCloneData,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -34100,9 +34020,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::NonSendHideData,
-        >>::Arc::increment_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(ptr as _);
     }
 }
 
@@ -34111,9 +34029,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            crate::auxiliary::sample_types::NonSendHideData,
-        >>::Arc::decrement_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(ptr as _);
     }
 }
 
