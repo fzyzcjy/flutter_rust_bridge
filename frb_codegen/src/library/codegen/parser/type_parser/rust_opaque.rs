@@ -16,6 +16,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
             ("RustOpaque", Some(Generic([ty]))) => self.parse_rust_opaque(ty),
+            // TODO handle codec that is expressed in this name
+            ("RustOpaqueNom", Some(Generic([ty]))) => self.parse_rust_opaque(ty),
+            ("RustOpaqueMoi", Some(Generic([ty]))) => self.parse_rust_opaque(ty),
 
             _ => return Ok(None),
         }))
