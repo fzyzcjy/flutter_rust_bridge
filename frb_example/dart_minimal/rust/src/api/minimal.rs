@@ -1,4 +1,5 @@
 use flutter_rust_bridge::frb;
+use std::cell::RefCell;
 pub use std::panic::{RefUnwindSafe, UnwindSafe};
 
 #[frb(init)]
@@ -13,14 +14,14 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 // TODO only temp example
 #[frb(opaque)]
 pub struct Apple {
-    hi: std::rc::Rc<String>,
+    hi: RefCell<String>,
 }
 
 impl Apple {
     // #[frb(rust_opaque_codec_moi)]
     pub fn new() -> Apple {
         Apple {
-            hi: std::rc::Rc::new("".to_string()),
+            hi: RefCell::new("".to_string()),
         }
     }
 
