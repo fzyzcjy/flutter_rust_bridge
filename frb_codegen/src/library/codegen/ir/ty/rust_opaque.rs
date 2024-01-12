@@ -69,9 +69,9 @@ impl IrTypeTrait for IrTypeRustOpaque {
 
     fn rust_api_type(&self) -> String {
         format!(
-            "flutter_rust_bridge::RustOpaque<{}, {}<_>>",
+            "flutter_rust_bridge::RustOpaque{}<{}>",
+            self.codec,
             self.inner.rust_api_type(),
-            self.codec.arc_ty(),
         )
     }
 
