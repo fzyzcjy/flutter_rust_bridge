@@ -28,7 +28,8 @@ class RustArc<T> extends Droppable {
   RustArc<T> clone() {
     final ptr = _ptr;
 
-    _staticData._rustArcIncrementStrongCount(ptr);
+    _staticData
+        ._rustArcIncrementStrongCount(PlatformPointerUtil.ptrFromInt(ptr));
 
     return RustArc.fromRaw(
       ptr: ptr,
@@ -71,14 +72,13 @@ class RustArcStaticData<T> extends DroppableStaticData {
     required CrossPlatformFinalizerArg rustArcDecrementStrongCountPtr,
   })  : _rustArcIncrementStrongCount = rustArcIncrementStrongCount,
         super(
-          releaseFn: (ptr) =>
-              rustArcDecrementStrongCount(PlatformPointerUtil.ptrToInt(ptr)),
+          releaseFn: rustArcDecrementStrongCount,
           releaseFnPtr: rustArcDecrementStrongCountPtr,
         );
 }
 
 /// The type of [RustArcStaticData._rustArcIncrementStrongCount]
-typedef RustArcIncrementStrongCountFnType = void Function(int);
+typedef RustArcIncrementStrongCountFnType = void Function(PlatformPointer);
 
 /// The type of [RustArcStaticData._rustArcDecrementStrongCount]
-typedef RustArcDecrementStrongCountFnType = void Function(int);
+typedef RustArcDecrementStrongCountFnType = void Function(PlatformPointer);
