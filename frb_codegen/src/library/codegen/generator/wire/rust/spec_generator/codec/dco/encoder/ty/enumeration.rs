@@ -35,7 +35,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
                         format!("{}.into_into_dart().into_dart()", field.name.rust_style())
                     }))
                     .join(",\n");
-                format!("vec![{fields}]")
+                format!("[{fields}].into_dart()")
             },
         );
 
@@ -43,7 +43,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
         Some(format!(
             "impl flutter_rust_bridge::IntoDart for {name} {{
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
-                    {body}.into_dart()
+                    {body}
                 }}
             }}
             impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {name} {{}}

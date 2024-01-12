@@ -387,6 +387,15 @@
       ]
     },
     {
+      "login": "MateusHBR",
+      "name": "mtz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13079483?v=4",
+      "profile": "https://github.com/MateusHBR",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "codercengiz",
       "name": "codercengiz",
       "avatar_url": "https://avatars.githubusercontent.com/u/45819755?v=4",
@@ -450,19 +459,19 @@
       ]
     },
     {
-      "login": "anstadnik",
-      "name": "Andrii Stadnik",
-      "avatar_url": "https://avatars.githubusercontent.com/u/40110937?v=4",
-      "profile": "https://github.com/anstadnik",
+      "login": "aran",
+      "name": "Aran Donohue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
+      "profile": "https://github.com/aran",
       "contributions": [
         "code"
       ]
     },
     {
-      "login": "aran",
-      "name": "Aran Donohue",
-      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
-      "profile": "https://github.com/aran",
+      "login": "anstadnik",
+      "name": "Andrii Stadnik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40110937?v=4",
+      "profile": "https://github.com/anstadnik",
       "contributions": [
         "code"
       ]
@@ -538,6 +547,15 @@
       "profile": "https://matrix.to/#/@vincentherl:matrix.org",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "wxitcode",
+      "name": "wxitcode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
+      "profile": "https://github.com/wxitcode",
+      "contributions": [
+        "doc"
       ]
     },
     {
@@ -734,15 +752,6 @@
       "name": "Damien Wise",
       "avatar_url": "https://avatars.githubusercontent.com/u/25608913?v=4",
       "profile": "https://github.com/damywise",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "wxitcode",
-      "name": "wxitcode",
-      "avatar_url": "https://avatars.githubusercontent.com/u/37947163?v=4",
-      "profile": "https://github.com/wxitcode",
       "contributions": [
         "doc"
       ]

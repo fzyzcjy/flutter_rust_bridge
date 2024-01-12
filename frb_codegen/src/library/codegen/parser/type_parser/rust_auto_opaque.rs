@@ -4,7 +4,7 @@ use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
+use crate::codegen::parser::type_parser::rust_opaque::SimpleNamespaceMap;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use log::debug;
@@ -43,10 +43,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
-        let new_ir = IrTypeRustAutoOpaque {
+
+        RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
             inner: IrTypeRustOpaque {
-                namespace: self.context.initiated_namespace.clone(),
+                namespace: (self.inner.rust_auto_opaque_parser_info)
+                    .get_or_insert(&inner, self.context.initiated_namespace.clone()),
                 inner: Box::new(IrType::Unencodable(IrTypeUnencodable {
                     namespace: None,
                     // TODO when all usages of a type do not require `&mut`, can drop this Mutex
@@ -59,10 +61,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 })),
                 brief_name: true,
             },
-        };
-
-        RustAutoOpaque((self.inner.rust_auto_opaque_parser_info).get_or_insert(ty, new_ir))
+        })
     }
 }
 
-pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustAutoOpaque>;
+pub(super) type RustAutoOpaqueParserInfo = SimpleNamespaceMap;

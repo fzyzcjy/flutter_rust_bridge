@@ -73,7 +73,7 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 
 <TabItem value="Create new">
 
-Suppose your app is to be named `my_app`, then execute:
+Suppose your app is to be named `my_app`, then execute this. <small>(Use `--help` to see more options, e.g. package name)</small>
 
 ```shell
 flutter_rust_bridge_codegen create my_app
