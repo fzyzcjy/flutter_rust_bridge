@@ -21,7 +21,7 @@ pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
 #[macro_export]
 macro_rules! base_arc_generate_tests {
     ($T:tt) => {
-        use crate::generalized_arc::base_arc::BaseArc;
+        use $crate::generalized_arc::base_arc::BaseArc;
         use std::fmt::Debug;
         use std::sync::atomic::{AtomicBool, Ordering};
 

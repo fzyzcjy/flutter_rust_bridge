@@ -76,7 +76,6 @@ impl<T: ?Sized + 'static> StdArc<T> {
 #[cfg(test)]
 mod tests {
     use super::StdArc;
-
     use crate::base_arc_generate_tests;
 
     base_arc_generate_tests!(StdArc);

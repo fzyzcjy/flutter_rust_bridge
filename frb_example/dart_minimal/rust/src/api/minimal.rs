@@ -1,5 +1,4 @@
 use flutter_rust_bridge::frb;
-use std::cell::RefCell;
 pub use std::panic::{RefUnwindSafe, UnwindSafe};
 
 #[frb(init)]
