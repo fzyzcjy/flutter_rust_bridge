@@ -1,5 +1,7 @@
 # Codec
 
+## Main codec
+
 The "codec" here means how Dart data becomes accessible from the Rust side, and vise versa.
 For example, suppose we have a Dart object of class `class MyClass { String name; }`.
 Then, the chosen codec will do the job of constructing a Rust object of type `struct MyClass { name: String }`.
@@ -26,7 +28,7 @@ For simplicity of implementation, Rust-Call-Dart uses DCO+SSE and cannot be chan
 but this should usually be no problem.
 If you find any difficulties due to this, feel free to create an issue.
 
-## Comparison
+### Comparison
 
 Firstly, for most use cases, both approaches should be good enough.
 But if you want to tune the fast bridge to be even faster for whatever reason, here are some suggestions.
@@ -41,3 +43,7 @@ thus may outperform.
 
 For some benchmarks on the typical cases, which are evaluated continuously on CI,
 please refer to [this page](../performance/overview).
+
+## RustOpaque codec
+
+TODO
