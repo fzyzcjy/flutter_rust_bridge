@@ -43,6 +43,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
+        let codec = TODO;
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
@@ -59,8 +60,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     ),
                     segments: vec![],
                 })),
-                // TODO
-                codec: RustOpaqueCodecMode::Nom,
+                codec,
                 brief_name: true,
             },
         })
