@@ -10,7 +10,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGen
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(format!(
-                "unsafe {{ flutter_rust_bridge::for_generated::decode_rust_opaque_{}(self as _) }}",
+                "unsafe {{ decode_rust_opaque_{}(self as _) }}",
                 self.ir.codec.to_string().to_case(Case::Snake),
             )),
             ..Default::default()
@@ -23,7 +23,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGen
                 r#"
                 #[cfg(target_pointer_width = "64")]
                 {{ compile_error!("64-bit pointers are not supported."); }}
-                unsafe {{ flutter_rust_bridge::for_generated::decode_rust_opaque_{}((self.as_f64().unwrap() as usize) as _) }}
+                unsafe {{ decode_rust_opaque_{}((self.as_f64().unwrap() as usize) as _) }}
                 "#,
                 self.ir.codec.to_string().to_case(Case::Snake),
             )

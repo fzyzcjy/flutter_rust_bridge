@@ -44,7 +44,7 @@ pub(super) fn generate_generalized_rust_opaque_decode(
             lang,
             &IrTypeRustOpaque::DELEGATE_TYPE,
             &format!(
-                "unsafe {{ flutter_rust_bridge::for_generated::decode_rust_opaque_{}(inner) }}",
+                "unsafe {{ decode_rust_opaque_{}(inner) }}",
                 codec.to_string().to_case(Case::Snake),
             ),
         ),

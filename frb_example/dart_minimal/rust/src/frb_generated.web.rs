@@ -39,11 +39,7 @@ impl
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        unsafe {
-            flutter_rust_bridge::for_generated::decode_rust_opaque_moi(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
