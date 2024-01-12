@@ -892,3 +892,13 @@ jobs:
         with:
           directory: downloaded-artifacts
           verbose: true
+
+  temp_debug_remote:
+    name: 'Temp debug remote environment'
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+      - name: Sleep forever
+        run: sleep 1000000
