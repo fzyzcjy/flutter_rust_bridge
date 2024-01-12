@@ -47,6 +47,14 @@ pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>> {
 pub type RustOpaqueNom<T> = RustOpaqueBase<T, StdArc<T>>;
 pub type RustOpaque<T> = RustOpaqueNom<T>;
 
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_rust_opaque_def {
+    () => {
+        pub type RustOpaqueMoi<T> = RustOpaqueBase<T, MoiArc<T>>;
+    };
+}
+
 // https://github.com/fzyzcjy/flutter_rust_bridge/pull/1574
 #[deprecated(note = "It is empty trait and can be directly deleted")]
 pub trait DartSafe {}
