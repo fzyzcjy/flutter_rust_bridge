@@ -12,7 +12,9 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // TODO only temp example
 #[frb(opaque)]
-pub struct Apple {}
+pub struct Apple {
+    hi: Rc<String>,
+}
 
 impl Apple {
     #[frb(rust_opaque_codec_moi)]
