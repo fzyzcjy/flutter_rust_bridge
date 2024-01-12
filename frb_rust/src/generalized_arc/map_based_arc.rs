@@ -2,10 +2,10 @@
 #[macro_export]
 macro_rules! frb_generated_map_based_arc_def {
     () => {
-        use parking_lot::RwLock;
         use std::collections::HashMap;
         use std::marker::PhantomData;
         use std::sync::Arc;
+        use $crate::for_generated::parking_lot::RwLock;
         use $crate::for_generated::BaseArc;
 
         #[derive(Debug)]
@@ -181,9 +181,8 @@ macro_rules! frb_generated_map_based_arc_def {
 #[macro_export]
 macro_rules! frb_generated_map_based_arc_impl_value {
     ($T:ty) => {
-        impl $crate::for_generated::MapBasedArcValue for $T {
-            fn get_pool() -> &'static $crate::for_generated::MapBasedArcPool<Self> {
-                use $crate::for_generated::MapBasedArcPool;
+        impl MapBasedArcValue for $T {
+            fn get_pool() -> &'static MapBasedArcPool<Self> {
                 $crate::for_generated::lazy_static! {
                     static ref POOL: MapBasedArcPool<$T> = MapBasedArcPool::new(Default::default());
                 }

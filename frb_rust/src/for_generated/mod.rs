@@ -41,6 +41,7 @@ pub use futures;
 pub use js_sys;
 pub use lazy_static::lazy_static;
 pub use misc::*;
+pub use parking_lot;
 pub use pointer::*;
 #[cfg(wasm)]
 pub use wasm_bindgen;
