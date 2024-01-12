@@ -4,6 +4,9 @@
 #[macro_export]
 macro_rules! frb_generated_boilerplate {
     () => {
+        $crate::frb_generated_map_based_arc_def!();
+        $crate::frb_generated_moi_rust_opaque_codec_def!();
+
         // -------------------------- CstCodec ------------------------
 
         pub trait CstDecode<T> {
