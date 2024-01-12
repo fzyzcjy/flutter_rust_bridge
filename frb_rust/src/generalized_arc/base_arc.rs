@@ -21,9 +21,9 @@ pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
 #[macro_export]
 macro_rules! base_arc_generate_tests {
     ($T:tt) => {
-        use $crate::generalized_arc::base_arc::BaseArc;
         use std::fmt::Debug;
         use std::sync::atomic::{AtomicBool, Ordering};
+        use $crate::generalized_arc::base_arc::BaseArc;
 
         // Do NOT make it `clone` (to test non-clone behavior)
         struct DummyType {
@@ -124,6 +124,7 @@ macro_rules! base_arc_generate_tests {
             let (a, dropped) = create();
             let a_raw = a.into_raw();
             assert_eq!(dropped.load(Ordering::SeqCst), false);
+            #[allow(unused_unsafe)]
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().value, 100);
             assert_eq!(dropped.load(Ordering::SeqCst), false);
@@ -139,6 +140,7 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(b.as_ref().value, 100);
             assert_eq!(dropped.load(Ordering::SeqCst), false);
 
+            #[allow(unused_unsafe)]
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().value, 100);
             assert_eq!(b.as_ref().value, 100);
@@ -158,14 +160,21 @@ macro_rules! base_arc_generate_tests {
             assert_eq!(b.as_ref().value, 100);
             assert_eq!(dropped.load(Ordering::SeqCst), false);
 
-            unsafe { <$T<DummyType>>::increment_strong_count(a_raw) };
+            #[allow(unused_unsafe)]
+            unsafe {
+                <$T<DummyType>>::increment_strong_count(a_raw)
+            };
             assert_eq!(b.as_ref().value, 100);
             assert_eq!(dropped.load(Ordering::SeqCst), false);
 
-            unsafe { <$T<DummyType>>::decrement_strong_count(a_raw) };
+            #[allow(unused_unsafe)]
+            unsafe {
+                <$T<DummyType>>::decrement_strong_count(a_raw)
+            };
             assert_eq!(b.as_ref().value, 100);
             assert_eq!(dropped.load(Ordering::SeqCst), false);
 
+            #[allow(unused_unsafe)]
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().value, 100);
             assert_eq!(b.as_ref().value, 100);
@@ -183,7 +192,10 @@ macro_rules! base_arc_generate_tests {
             let a_raw = a.into_raw();
             assert_eq!(dropped.load(Ordering::SeqCst), false);
 
-            unsafe { <$T<DummyType>>::decrement_strong_count(a_raw) };
+            #[allow(unused_unsafe)]
+            unsafe {
+                <$T<DummyType>>::decrement_strong_count(a_raw)
+            };
             assert_eq!(dropped.load(Ordering::SeqCst), true);
         }
     };
