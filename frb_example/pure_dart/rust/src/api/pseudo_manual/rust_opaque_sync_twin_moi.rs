@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_opaque_sync.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -18,20 +18,25 @@ pub struct HideDataAnotherTwinMoi(HideDataRaw);
 pub struct FrbOpaqueSyncReturnTwinMoi;
 
 #[frb(sync)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn sync_option_rust_opaque_twin_moi() -> Result<Option<crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinMoi>>>
-{
-    Ok(Some(crate::frb_generated::RustOpaqueMoi::new(HideDataAnotherTwinMoi(
-        HideDataRaw::new(),
-    ))))
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn sync_option_rust_opaque_twin_moi(
+) -> Result<Option<crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinMoi>>> {
+    Ok(Some(crate::frb_generated::RustOpaqueMoi::new(
+        HideDataAnotherTwinMoi(HideDataRaw::new()),
+    )))
 }
 
 #[frb(sync)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn sync_create_opaque_twin_moi() -> crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinMoi> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn sync_create_opaque_twin_moi() -> crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinMoi>
+{
     crate::frb_generated::RustOpaqueMoi::new(HideDataAnotherTwinMoi(HideDataRaw::new()))
 }
 
 #[frb(sync)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn sync_create_non_clone_twin_moi() -> crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinMoi> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn sync_create_non_clone_twin_moi() -> crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinMoi>
+{
     crate::frb_generated::RustOpaqueMoi::new(NonCloneDataTwinMoi(NonCloneDataRaw::new()))
 }
 
@@ -45,6 +50,8 @@ pub struct FrbOpaqueSyncReturnTwinMoi;
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 #[frb(sync)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub fn frb_sync_generator_test_twin_moi() -> crate::frb_generated::RustOpaqueMoi<FrbOpaqueSyncReturnTwinMoi> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn frb_sync_generator_test_twin_moi(
+) -> crate::frb_generated::RustOpaqueMoi<FrbOpaqueSyncReturnTwinMoi> {
     crate::frb_generated::RustOpaqueMoi::new(FrbOpaqueSyncReturnTwinMoi)
 }
