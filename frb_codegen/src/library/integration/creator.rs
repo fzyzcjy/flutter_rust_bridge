@@ -8,6 +8,7 @@ use std::{env, fs};
 
 pub struct CreateConfig {
     pub name: String,
+    pub org: Option<String>,
     pub enable_local_dependency: bool,
     pub rust_crate_name: String,
     pub rust_crate_dir: String,
@@ -16,7 +17,10 @@ pub struct CreateConfig {
 /// Create a new Flutter + Rust project.
 pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     let dart_root = env::current_dir()?.join(&config.name);
-    debug!("create name={} dart_root={dart_root:?}", config.name);
+    debug!(
+        "create name={} org={:?} dart_root={dart_root:?}",
+        config.name, config.org
+    );
 
     // This will stop the whole generator and tell the users, so we do not care about testing it
     // frb-coverage:ignore-start
@@ -27,7 +31,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name)?;
+    flutter_create(&config.name, &config.org)?;
 
     env::set_current_dir(&dart_root)?;
 

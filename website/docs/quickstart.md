@@ -79,6 +79,20 @@ Suppose your app is to be named `my_app`, then execute:
 flutter_rust_bridge_codegen create my_app
 ```
 
+
+
+Suppose your app is named `my_app` and specify organization to `com.example`, then your appid is `com.example.my_app`
+
+```shell
+flutter_rust_bridge_codegen create my_app --org com.example
+```
+
+> --org
+> 
+> The organization responsible for your new Flutter project, in reverse domain name notation.
+> This string is used in Java package names and as prefix in the iOS bundle identifier.
+> (defaults to "com.example")
+
 </TabItem>
 
 <TabItem value="Add to existing">
