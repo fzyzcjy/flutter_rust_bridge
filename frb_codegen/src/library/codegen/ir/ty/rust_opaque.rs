@@ -19,6 +19,12 @@ pub(crate) enum RustOpaqueCodecMode {
     Moi,
 }
 
+impl RustOpaqueCodecMode {
+    pub(crate) fn needs_unsafe_block(self) -> bool {
+        self == RustOpaqueCodecMode::Nom
+    }
+}
+
 impl IrTypeRustOpaque {
     pub fn new(
         namespace: Namespace,
