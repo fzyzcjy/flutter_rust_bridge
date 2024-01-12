@@ -4,13 +4,12 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
-pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw, NonSendHideDataRaw};
+pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 use anyhow::Result;
 use flutter_rust_bridge::{frb, RustOpaque};
 
 pub struct HideDataAnotherTwinSseMoi(HideDataRaw);
 pub struct NonCloneDataAnotherTwinSseMoi(NonCloneDataRaw);
-pub struct NonSendHideDataAnotherTwinSseMoi(NonSendHideDataRaw);
 
 /// Structure for testing the SyncReturn<RustOpaque> code generator.
 /// FrbOpaqueSyncReturn must be only return type.
@@ -36,14 +35,6 @@ pub fn sync_create_opaque_twin_sse_moi(
 #[frb(sync)]
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_create_sync_opaque_twin_sse_moi(
-) -> crate::frb_generated::RustOpaqueMoi<NonSendHideDataAnotherTwinSseMoi> {
-    RustOpaque::new(NonSendHideDataAnotherTwinSseMoi::new())
-}
-
-#[frb(sync)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
 pub fn sync_create_non_clone_twin_sse_moi(
 ) -> crate::frb_generated::RustOpaqueMoi<NonCloneDataAnotherTwinSseMoi> {
     RustOpaque::new(NonCloneDataAnotherTwinSseMoi::new())
@@ -54,15 +45,6 @@ pub fn sync_create_non_clone_twin_sse_moi(
 // #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub fn run_opaque_twin_sse_moi(opaque: Opaque<OpaqueSyncStruct>) -> String {
 //     data.0.hide_data()
 // }
-
-#[frb(sync)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn sync_run_opaque_twin_sse_moi(
-    opaque: crate::frb_generated::RustOpaqueMoi<NonSendHideDataAnotherTwinSseMoi>,
-) -> String {
-    opaque.hide_data()
-}
 
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.

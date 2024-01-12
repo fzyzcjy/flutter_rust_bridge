@@ -4,7 +4,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
-pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw, NonSendHideDataRaw};
+pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 use anyhow::Result;
 use flutter_rust_bridge::{opaque_dyn, RustOpaque};
 use std::fmt::Debug;
@@ -13,7 +13,6 @@ pub use std::sync::{Mutex, RwLock};
 
 pub struct HideDataTwinRustAsync(HideDataRaw);
 pub struct NonCloneDataTwinRustAsync(NonCloneDataRaw);
-pub struct NonSendHideDataTwinRustAsync(NonSendHideDataRaw);
 
 /// Structure for testing the RustOpaque code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -110,15 +109,6 @@ pub async fn run_non_clone_twin_rust_async(clone: RustOpaque<NonCloneDataTwinRus
     // implementing Clone.
     clone.clone().hide_data()
 }
-
-pub async fn create_sync_opaque_twin_rust_async() -> RustOpaque<NonSendHideDataTwinRustAsync> {
-    RustOpaque::new(NonSendHideDataTwinRustAsync::new())
-}
-
-// TODO about sync
-// pub async fn sync_create_sync_opaque_twin_rust_async() -> SyncReturn<RustOpaque<NonSendHideDataTwinRustAsync>> {
-//     SyncReturn(RustOpaque::new(NonSendHideDataTwinRustAsync::new()))
-// }
 
 pub async fn opaque_array_run_twin_rust_async(data: [RustOpaque<HideDataTwinRustAsync>; 2]) {
     for i in data {

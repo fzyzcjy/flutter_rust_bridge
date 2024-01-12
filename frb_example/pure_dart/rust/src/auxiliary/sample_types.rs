@@ -26,34 +26,6 @@ struct PrivateData {
 }
 
 #[derive(Debug)]
-pub struct NonSendHideDataRaw {
-    content: String,
-    box_content: Option<Rc<PrivateData>>,
-}
-
-impl NonSendHideDataRaw {
-    pub fn new() -> Self {
-        Self {
-            content: "content".to_owned(),
-            box_content: Some(Rc::new(PrivateData {
-                content: "content nested".to_owned(),
-                primitive: 424242,
-                array: [451; 10],
-                lifetime: "static str",
-            })),
-        }
-    }
-
-    pub fn hide_data(&self) -> String {
-        format!("{} - {:?}", self.content, self.box_content)
-    }
-
-    pub fn change_data(&mut self) {
-        self.content = "MUT SELF".to_owned();
-    }
-}
-
-#[derive(Debug)]
 pub struct HideDataRaw {
     content: String,
     box_content: Option<Box<PrivateData>>,

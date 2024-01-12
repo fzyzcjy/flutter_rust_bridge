@@ -4,7 +4,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
-pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw, NonSendHideDataRaw};
+pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 use anyhow::Result;
 use flutter_rust_bridge::{opaque_dyn, RustOpaque};
 use std::fmt::Debug;
@@ -13,7 +13,6 @@ pub use std::sync::{Mutex, RwLock};
 
 pub struct HideDataTwinSse(HideDataRaw);
 pub struct NonCloneDataTwinSse(NonCloneDataRaw);
-pub struct NonSendHideDataTwinSse(NonSendHideDataRaw);
 
 /// Structure for testing the RustOpaque code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -120,17 +119,6 @@ pub fn run_non_clone_twin_sse(
     // implementing Clone.
     clone.clone().hide_data()
 }
-
-#[flutter_rust_bridge::frb(serialize)]
-pub fn create_sync_opaque_twin_sse() -> crate::frb_generated::RustOpaqueMoi<NonSendHideDataTwinSse>
-{
-    RustOpaque::new(NonSendHideDataTwinSse::new())
-}
-
-// TODO about sync
-// #[flutter_rust_bridge::frb(serialize)] pub fn sync_create_sync_opaque_twin_sse() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<NonSendHideDataTwinSse>> {
-//     SyncReturn(RustOpaque::new(NonSendHideDataTwinSse::new()))
-// }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn opaque_array_run_twin_sse(data: [crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>; 2]) {
