@@ -29,13 +29,23 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-pub(super) type RustOpaqueParserInfo = SimpleNamespaceMap;
+pub(super) type RustOpaqueParserInfo = GeneralizedRustOpaqueParserInfo;
+
+#[derive(Clone, Debug)]
+pub(super) struct RustOpaqueParserTypeInfo {
+    namespace: Namespace,
+    codec: RustOpaqueCodecMode,
+}
 
 #[derive(Clone, Debug, Default)]
-pub(super) struct SimpleNamespaceMap(HashMap<String, Namespace>);
+pub(super) struct GeneralizedRustOpaqueParserInfo(HashMap<String, RustOpaqueParserTypeInfo>);
 
-impl SimpleNamespaceMap {
-    pub fn get_or_insert(&mut self, ty: &IrType, insert_namespace: Namespace) -> Namespace {
-        (self.0.entry(ty.safe_ident()).or_insert(insert_namespace)).clone()
+impl GeneralizedRustOpaqueParserInfo {
+    pub fn get_or_insert(
+        &mut self,
+        ty: &IrType,
+        insert_value: RustOpaqueParserTypeInfo,
+    ) -> RustOpaqueParserTypeInfo {
+        (self.0.entry(ty.safe_ident()).or_insert(insert_value)).clone()
     }
 }
