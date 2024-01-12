@@ -21,15 +21,20 @@ class RustGenerator extends BaseGenerator {
 
   @override
   String generateDuplicateCode(String inputText, DuplicatorMode mode) {
-    const sse = '#[flutter_rust_bridge::frb(serialize)]';
-    String prefix(String raw) => switch (mode) {
-          DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] $raw',
-          DuplicatorMode.rustAsync => 'pub async fn',
-          DuplicatorMode.sse => '$sse $raw',
-          DuplicatorMode.syncSse =>
-            '$sse #[flutter_rust_bridge::frb(sync)] $raw',
-          DuplicatorMode.rustAsyncSse => '$sse pub async fn',
-        };
+    String prefix(String raw) {
+      var ans = raw;
+      for (final component in mode.components) {
+        switch (component) {
+          case DuplicatorComponentMode.sync:
+            ans = '#[flutter_rust_bridge::frb(sync)] $ans';
+          case DuplicatorComponentMode.rustAsync:
+            ans = 'pub async fn';
+          case DuplicatorComponentMode.sse:
+            ans = '#[flutter_rust_bridge::frb(serialize)] $ans';
+        }
+      }
+      return ans;
+    }
 
     var ans = inputText
         .replaceAllMapped(
@@ -43,7 +48,7 @@ class RustGenerator extends BaseGenerator {
             RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
             (m) =>
                 'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
-    if (mode.enableSse) {
+    if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
       // quick hack, since we are merely generating tests
       ans = ans
           .replaceAllMapped(

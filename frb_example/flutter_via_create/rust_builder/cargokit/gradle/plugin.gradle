@@ -144,7 +144,7 @@ class CargoKitPlugin implements Plugin<Project> {
                 }
 
                 def task = project.tasks.create(taskName, CargoKitBuildTask.class) {
-                    buildMode = variant.name
+                    buildMode = variant.buildType.name
                     buildDir = cargoBuildDir
                     outputDir = cargoOutputDir
                     ndkVersion = plugin.project.android.ndkVersion

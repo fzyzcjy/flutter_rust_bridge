@@ -1,4 +1,4 @@
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "syncSse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
 use crate::frb_generated::StreamSink;
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;

@@ -559,6 +559,24 @@
       ]
     },
     {
+      "login": "pixelshot91",
+      "name": "pixelshot91",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19229808?v=4",
+      "profile": "https://github.com/pixelshot91",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "TrackerSB",
+      "name": "TrackerSB",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6358523?v=4",
+      "profile": "https://steinbrecher-bayern.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "samuel-cavalcanti",
       "name": "Samuel Cavalcanti",
       "avatar_url": "https://avatars.githubusercontent.com/u/24573157?v=4",
@@ -694,15 +712,6 @@
       ]
     },
     {
-      "login": "pixelshot91",
-      "name": "pixelshot91",
-      "avatar_url": "https://avatars.githubusercontent.com/u/19229808?v=4",
-      "profile": "https://github.com/pixelshot91",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
       "login": "vimaxwell",
       "name": "max",
       "avatar_url": "https://avatars.githubusercontent.com/u/19898639?v=4",
@@ -790,15 +799,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "TrackerSB",
-      "name": "TrackerSB",
-      "avatar_url": "https://avatars.githubusercontent.com/u/6358523?v=4",
-      "profile": "http://steinbrecher-bayern.de",
-      "contributions": [
-        "code"
       ]
     }
   ],
