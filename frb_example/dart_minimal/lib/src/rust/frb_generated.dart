@@ -263,25 +263,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-          Apple raw) {
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+      Apple raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-          Apple raw) {
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+      Apple raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-          Apple raw) {
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+      Apple raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }

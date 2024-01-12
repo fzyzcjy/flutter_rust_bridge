@@ -72,19 +72,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-          Apple raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+      Apple raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-          Apple raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+      Apple raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-          Apple raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+      Apple raw);
 
   @protected
   int cst_encode_i_32(int raw);
