@@ -25,9 +25,7 @@ pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust2dart::stream_sink::StreamSinkBase;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
-pub use crate::rust_opaque::codec::{
-    moi::MoiRustOpaqueCodec, nom::NomRustOpaqueCodec, BaseRustOpaqueCodec,
-};
+pub use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 pub use crate::rust_opaque::dart2rust::{decode_rust_opaque_moi, decode_rust_opaque_nom};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
