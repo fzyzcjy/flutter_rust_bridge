@@ -25,21 +25,26 @@ macro_rules! base_arc_generate_tests {
         use std::fmt::Debug;
 
         // Do NOT make it `clone` (to test non-clone behavior)
-        #[derive(Debug)]
         struct DummyType {
             value: i32,
-            on_drop: Box<dyn Fn()>,
+            on_drop: Box<dyn Fn() + Send + Sync>,
         }
 
         impl DummyType {
-            fn new(value: i32, on_drop: Box<dyn Fn()>) -> Self {
+            fn new(value: i32, on_drop: Box<dyn Fn() + Send + Sync>) -> Self {
                 Self { value, on_drop }
+            }
+        }
+
+        impl Debug for DummyType {
+            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                write!(f, "DummyType({})", self.value)
             }
         }
 
         impl Drop for DummyType {
             fn drop(&mut self) {
-                self.on_drop()
+                (self.on_drop)()
             }
         }
 
