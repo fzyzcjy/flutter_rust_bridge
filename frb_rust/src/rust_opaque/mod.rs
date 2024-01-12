@@ -35,12 +35,12 @@ pub type RustOpaqueNom<T> = RustOpaqueBase<T, StdArc<T>>;
 /// use std::fmt::Debug;
 /// use std::panic::{UnwindSafe, RefUnwindSafe};
 ///
-/// pub struct DebugWrapper(pub RustOpaqueBase<Box<dyn Debug>>);
+/// pub struct DebugWrapper(pub RustOpaque<Box<dyn Debug>>);
 ///
 /// // creating a DebugWrapper using the opaque_dyn macro
 /// let wrap = DebugWrapper(opaque_dyn!("foobar"));
 /// // it's possible to name it directly
-/// pub struct DebugWrapper2(pub RustOpaqueBase<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
+/// pub struct DebugWrapper2(pub RustOpaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 pub type RustOpaque<T> = RustOpaqueNom<T>;
 

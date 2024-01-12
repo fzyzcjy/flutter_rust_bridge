@@ -13,7 +13,7 @@ use std::sync::Arc;
 /// use std::fmt::Debug;
 /// use flutter_rust_bridge::*;
 ///
-/// let opaque: RustOpaqueBase<Box<dyn Debug>> = opaque_dyn!("foobar");
+/// let opaque: RustOpaque<Box<dyn Debug>> = opaque_dyn!("foobar");
 /// ```
 #[macro_export]
 macro_rules! opaque_dyn {
