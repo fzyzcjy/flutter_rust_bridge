@@ -15973,8 +15973,8 @@ impl Default for wire_cst_old_simple_struct {
 impl NewWithNullPtr for wire_cst_opaque_nested_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: core::ptr::null_mut(),
-            second: core::ptr::null_mut(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -15986,8 +15986,8 @@ impl Default for wire_cst_opaque_nested_twin_normal {
 impl NewWithNullPtr for wire_cst_opaque_nested_twin_rust_async {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: core::ptr::null_mut(),
-            second: core::ptr::null_mut(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -15999,8 +15999,8 @@ impl Default for wire_cst_opaque_nested_twin_rust_async {
 impl NewWithNullPtr for wire_cst_opaque_nested_twin_rust_async_sse {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: core::ptr::null_mut(),
-            second: core::ptr::null_mut(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -16012,8 +16012,8 @@ impl Default for wire_cst_opaque_nested_twin_rust_async_sse {
 impl NewWithNullPtr for wire_cst_opaque_nested_twin_sse {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: core::ptr::null_mut(),
-            second: core::ptr::null_mut(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -16025,8 +16025,8 @@ impl Default for wire_cst_opaque_nested_twin_sse {
 impl NewWithNullPtr for wire_cst_opaque_nested_twin_sync {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: core::ptr::null_mut(),
-            second: core::ptr::null_mut(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -16038,8 +16038,8 @@ impl Default for wire_cst_opaque_nested_twin_sync {
 impl NewWithNullPtr for wire_cst_opaque_nested_twin_sync_sse {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: core::ptr::null_mut(),
-            second: core::ptr::null_mut(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -36963,7 +36963,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_hide_data
     len: i32,
 ) -> *mut wire_cst_list_RustOpaque_hide_data {
     let wrap = wire_cst_list_RustOpaque_hide_data {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
