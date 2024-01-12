@@ -4,7 +4,7 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
-use super::rust_opaque::NonCloneDataTwinSseMoi;
+use super::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi;
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 use anyhow::Result;
 #[allow(unused_imports)]
