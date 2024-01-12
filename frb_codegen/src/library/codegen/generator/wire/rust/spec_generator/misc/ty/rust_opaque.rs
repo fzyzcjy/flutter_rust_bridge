@@ -43,7 +43,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
 
         let common = if self.ir.codec == RustOpaqueCodecMode::Moi {
             format!(
-                "flutter_rust_bridge::frb_generated_map_based_arc_impl_value!({});\n",
+                "flutter_rust_bridge::frb_generated_moi_arc_impl_value!({});\n",
                 self.ir.inner.rust_api_type()
             )
         } else {

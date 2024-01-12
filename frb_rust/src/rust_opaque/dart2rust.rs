@@ -14,7 +14,7 @@ macro_rules! frb_generated_rust_opaque_dart2rust {
         }
 
         // This does not have `unsafe` keyword, thus is a separate function
-        pub fn decode_rust_opaque_moi<T: MapBasedArcValue>(
+        pub fn decode_rust_opaque_moi<T: MoiArcValue>(
             ptr: usize,
         ) -> RustOpaque<T, MoiRustOpaqueCodec> {
             RustOpaque::from_arc(<MoiRustOpaqueCodec as BaseRustOpaqueCodec<T>>::Arc::from_raw(ptr))

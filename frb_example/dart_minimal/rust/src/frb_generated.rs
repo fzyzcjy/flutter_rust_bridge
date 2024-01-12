@@ -123,7 +123,7 @@ fn wire_minimal_adder_impl(
 
 // Section: related_funcs
 
-flutter_rust_bridge::frb_generated_map_based_arc_impl_value!(
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>
 );
 

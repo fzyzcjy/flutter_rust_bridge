@@ -1,13 +1,13 @@
 #[doc(hidden)]
 #[macro_export]
-macro_rules! frb_generated_map_based_arc_def {
+macro_rules! frb_generated_moi_arc_def {
     () => {
         use std::collections::HashMap;
         use std::marker::PhantomData;
         use std::sync::Arc;
 
         #[derive(Debug)]
-        pub struct MapBasedArc<T: ?Sized + MapBasedArcValue> {
+        pub struct MoiArc<T: ?Sized + MoiArcValue> {
             // `Option` for correct dropping
             object_id: Option<ObjectId>,
             // Mainly for `as_ref`. `Option` for correct dropping
@@ -15,7 +15,7 @@ macro_rules! frb_generated_map_based_arc_def {
             _phantom: PhantomData<T>,
         }
 
-        impl<T: ?Sized + MapBasedArcValue> Drop for MapBasedArc<T> {
+        impl<T: ?Sized + MoiArcValue> Drop for MoiArc<T> {
             fn drop(&mut self) {
                 if let Some(object_id) = self.object_id {
                     Self::decrement_strong_count(object_id);
@@ -23,13 +23,13 @@ macro_rules! frb_generated_map_based_arc_def {
             }
         }
 
-        impl<T: ?Sized + MapBasedArcValue> AsRef<T> for MapBasedArc<T> {
+        impl<T: ?Sized + MoiArcValue> AsRef<T> for MoiArc<T> {
             fn as_ref(&self) -> &T {
                 self.value.as_ref().unwrap().as_ref()
             }
         }
 
-        impl<T: ?Sized + MapBasedArcValue> $crate::for_generated::BaseArc<T> for MapBasedArc<T> {
+        impl<T: ?Sized + MoiArcValue> $crate::for_generated::BaseArc<T> for MoiArc<T> {
             fn new(value: T) -> Self
             where
                 T: Sized,
@@ -41,7 +41,7 @@ macro_rules! frb_generated_map_based_arc_def {
 
                 pool.map.insert(
                     object_id,
-                    MapBasedArcPoolValue {
+                    MoiArcPoolValue {
                         ref_count: 1,
                         value: value.clone(),
                     },
@@ -84,7 +84,7 @@ macro_rules! frb_generated_map_based_arc_def {
             }
         }
 
-        impl<T: ?Sized + MapBasedArcValue> Clone for MapBasedArc<T> {
+        impl<T: ?Sized + MoiArcValue> Clone for MoiArc<T> {
             fn clone(&self) -> Self {
                 Self::increment_strong_count(self.object_id.unwrap());
 
@@ -96,7 +96,7 @@ macro_rules! frb_generated_map_based_arc_def {
             }
         }
 
-        impl<T: ?Sized + MapBasedArcValue> MapBasedArc<T> {
+        impl<T: ?Sized + MoiArcValue> MoiArc<T> {
             pub(crate) fn from_raw(raw: usize) -> Self
             where
                 T: Sized,
@@ -119,7 +119,7 @@ macro_rules! frb_generated_map_based_arc_def {
                 Self::decrement_strong_count_raw(raw, &mut T::get_pool().write())
             }
 
-            fn decrement_strong_count_raw(raw: usize, pool: &mut MapBasedArcPoolInner<T>) {
+            fn decrement_strong_count_raw(raw: usize, pool: &mut MoiArcPoolInner<T>) {
                 let value = pool.map.get_mut(&raw).unwrap();
                 value.ref_count -= 1;
                 if value.ref_count == 0 {
@@ -128,21 +128,20 @@ macro_rules! frb_generated_map_based_arc_def {
             }
         }
 
-        pub trait MapBasedArcValue: 'static {
-            fn get_pool() -> &'static MapBasedArcPool<Self>;
+        pub trait MoiArcValue: 'static {
+            fn get_pool() -> &'static MoiArcPool<Self>;
         }
 
         type ObjectId = usize;
 
-        pub type MapBasedArcPool<T> =
-            $crate::for_generated::parking_lot::RwLock<MapBasedArcPoolInner<T>>;
+        pub type MoiArcPool<T> = $crate::for_generated::parking_lot::RwLock<MoiArcPoolInner<T>>;
 
-        pub struct MapBasedArcPoolInner<T: ?Sized> {
-            map: HashMap<ObjectId, MapBasedArcPoolValue<T>>,
+        pub struct MoiArcPoolInner<T: ?Sized> {
+            map: HashMap<ObjectId, MoiArcPoolValue<T>>,
             next_id: ObjectId,
         }
 
-        impl<T: ?Sized> Default for MapBasedArcPoolInner<T> {
+        impl<T: ?Sized> Default for MoiArcPoolInner<T> {
             fn default() -> Self {
                 Self {
                     map: HashMap::new(),
@@ -151,7 +150,7 @@ macro_rules! frb_generated_map_based_arc_def {
             }
         }
 
-        impl<T: ?Sized> MapBasedArcPoolInner<T> {
+        impl<T: ?Sized> MoiArcPoolInner<T> {
             const MIN_ID: ObjectId = 1;
 
             fn next_id(&mut self) -> ObjectId {
@@ -167,8 +166,8 @@ macro_rules! frb_generated_map_based_arc_def {
             }
         }
 
-        struct MapBasedArcPoolValue<T: ?Sized> {
-            // Real reference counting of this MapBasedArc
+        struct MoiArcPoolValue<T: ?Sized> {
+            // Real reference counting of this MoiArc
             ref_count: i32,
             // Use (std) Arc merely for lifetime
             value: Arc<T>,
@@ -178,12 +177,12 @@ macro_rules! frb_generated_map_based_arc_def {
 
 #[doc(hidden)]
 #[macro_export]
-macro_rules! frb_generated_map_based_arc_impl_value {
+macro_rules! frb_generated_moi_arc_impl_value {
     ($T:ty) => {
-        impl MapBasedArcValue for $T {
-            fn get_pool() -> &'static MapBasedArcPool<Self> {
+        impl MoiArcValue for $T {
+            fn get_pool() -> &'static MoiArcPool<Self> {
                 $crate::for_generated::lazy_static! {
-                    static ref POOL: MapBasedArcPool<$T> = MapBasedArcPool::new(Default::default());
+                    static ref POOL: MoiArcPool<$T> = MoiArcPool::new(Default::default());
                 }
                 &POOL
             }
@@ -193,12 +192,12 @@ macro_rules! frb_generated_map_based_arc_impl_value {
 
 #[cfg(test)]
 mod tests {
-    crate::frb_generated_map_based_arc_def!();
+    crate::frb_generated_moi_arc_def!();
     crate::frb_generated_moi_rust_opaque_codec_def!();
 
     #[test]
     fn test_next_id() {
-        let mut pool = MapBasedArcPoolInner::<String>::default();
+        let mut pool = MoiArcPoolInner::<String>::default();
         assert_eq!(pool.next_id(), 1);
         assert_eq!(pool.next_id(), 2);
         assert_eq!(pool.next_id(), 3);
@@ -216,7 +215,7 @@ mod tests {
     #[derive(Debug)]
     struct DummyType(i32);
 
-    frb_generated_map_based_arc_impl_value!(DummyType);
+    frb_generated_moi_arc_impl_value!(DummyType);
 
-    crate::base_arc_generate_tests!(MapBasedArc::<DummyType>);
+    crate::base_arc_generate_tests!(MoiArc::<DummyType>);
 }
