@@ -9,7 +9,7 @@ class RustArc<T> extends Droppable {
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`,
   /// but only with a small constant offset.
-  PlatformPointer get _ptr => super.dangerousReadInternalPtr();
+  int get _ptr => super.dangerousReadInternalPtr();
 
   /// See comments in [RustArcStaticData] for details.
   final RustArcStaticData<T> _staticData;
@@ -38,7 +38,7 @@ class RustArc<T> extends Droppable {
 
   /// Mimic `std::sync::Arc::into_raw`
   // Almost 1:1 implementation to `std::sync::Arc::into_raw` impl.
-  PlatformPointer intoRaw() {
+  int intoRaw() {
     final ptr = _ptr;
     forget();
     return ptr;
@@ -76,7 +76,7 @@ class RustArcStaticData<T> extends DroppableStaticData {
 }
 
 /// The type of [RustArcStaticData._rustArcIncrementStrongCount]
-typedef RustArcIncrementStrongCountFnType = void Function(PlatformPointer);
+typedef RustArcIncrementStrongCountFnType = void Function(int);
 
 /// The type of [RustArcStaticData._rustArcDecrementStrongCount]
-typedef RustArcDecrementStrongCountFnType = void Function(PlatformPointer);
+typedef RustArcDecrementStrongCountFnType = void Function(int);

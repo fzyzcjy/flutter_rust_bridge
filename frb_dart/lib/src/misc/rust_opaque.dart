@@ -44,19 +44,18 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  PlatformPointer cstEncode({bool? move}) {
+  int cstEncode({bool? move}) {
     assert(move == null || _move == null,
         'Cannot specify move semantics in two places');
     final effectiveMoveMode = move ?? _move ?? false;
 
     final target = effectiveMoveMode ? _arc : _arc.clone();
-    return target.intoRaw();
+    return PlatformPointerUtil.ptrToInt(target);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  int sseEncode({bool? move}) =>
-      PlatformPointerUtil.ptrToInt(cstEncode(move: move));
+  int sseEncode({bool? move}) => cstEncode(move: move);
 
   /// Dispose the underlying `Arc`.
   void dispose() => _arc.dispose();
