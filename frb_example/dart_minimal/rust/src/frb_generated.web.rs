@@ -97,20 +97,16 @@ pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
     ptr: *const std::ffi::c_void,
 ) {
-    unsafe {
-        <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        >>::Arc::increment_strong_count(ptr as _);
-    }
+    <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
+    >>::Arc::increment_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
     ptr: *const std::ffi::c_void,
 ) {
-    unsafe {
-        <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        >>::Arc::decrement_strong_count(ptr as _);
-    }
+    <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
+    >>::Arc::decrement_strong_count(ptr as _);
 }

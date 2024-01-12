@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::ty::rust_opaque::generate_maybe_unsafe;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
@@ -28,11 +29,11 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                              dart_type: "dynamic".into(),
                          }.clone()],
                          return_type: None,
-                         body: format!(
-                             "unsafe {{ <{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr as _); }}",
+                         body: generate_maybe_unsafe(&format!(
+                             "<{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr as _);",
                              self.ir.codec.to_string(),
                              &self.ir.inner.rust_api_type(),
-                         ),
+                         ), self.ir.codec.needs_unsafe_block()),
                          target,
                      },
                 )
