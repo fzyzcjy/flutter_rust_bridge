@@ -33,11 +33,11 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGen
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        dart_opaque_or_generalized_rust_opaque_rust_wire_type(target)
+        generalized_rust_opaque_rust_wire_type(target)
     }
 }
 
-pub(super) fn dart_opaque_or_generalized_rust_opaque_rust_wire_type(target: Target) -> String {
+pub(super) fn generalized_rust_opaque_rust_wire_type(target: Target) -> String {
     match target {
         Target::Io => "*const std::ffi::c_void",
         Target::Web => JS_VALUE,
