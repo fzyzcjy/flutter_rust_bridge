@@ -49,14 +49,22 @@ pub(super) fn generate_generalized_rust_opaque_decode(
 }
 
 pub(crate) fn generate_decode_rust_opaque(inner: &str, codec: RustOpaqueCodecMode) -> String {
-    let mut ans = format!(
-        "decode_rust_opaque_{}({inner})",
-        codec.to_string().to_case(Case::Snake)
-    );
-    if codec.needs_unsafe_block() {
-        ans = format!("unsafe {{ {ans} }} ");
+    generate_maybe_unsafe(
+        &format!(
+            "decode_rust_opaque_{}({inner})",
+            codec.to_string().to_case(Case::Snake)
+        ),
+        codec.needs_unsafe_block(),
+    )
+}
+
+// TODO mv
+pub(crate) fn generate_maybe_unsafe(inner: &str, needs_unsafe_block: bool) -> String {
+    if needs_unsafe_block {
+        format!("unsafe {{ {inner} }} ")
+    } else {
+        inner.to_owned()
     }
-    ans
 }
 
 pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &str) -> String {
