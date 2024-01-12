@@ -15,7 +15,7 @@ void frbgen_frb_example_dart_minimal_dart_fn_deliver_output(int32_t call_id,
                                                             int32_t rust_vec_len_,
                                                             int32_t data_len_);
 
-void frbgen_frb_example_dart_minimal_wire_Apple_apple_method_ref(int64_t port_, const void *that);
+void frbgen_frb_example_dart_minimal_wire_Apple_apple_method_ref(int64_t port_, uintptr_t that);
 
 void frbgen_frb_example_dart_minimal_wire_init_app(int64_t port_);
 

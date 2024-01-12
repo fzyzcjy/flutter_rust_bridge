@@ -155,7 +155,7 @@ class RustLibWire implements BaseWire {
 
   void wire_Apple_apple_method_ref(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_Apple_apple_method_ref(
       port_,
@@ -163,12 +163,11 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_Apple_apple_method_refPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_dart_minimal_wire_Apple_apple_method_ref');
-  late final _wire_Apple_apple_method_ref = _wire_Apple_apple_method_refPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_Apple_apple_method_refPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_dart_minimal_wire_Apple_apple_method_ref');
+  late final _wire_Apple_apple_method_ref =
+      _wire_Apple_apple_method_refPtr.asFunction<void Function(int, int)>();
 
   void wire_init_app(
     int port_,

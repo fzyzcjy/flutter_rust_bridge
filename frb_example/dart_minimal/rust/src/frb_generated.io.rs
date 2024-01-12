@@ -16,7 +16,7 @@ impl
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
         >,
-    > for *const std::ffi::c_void
+    > for usize
 {
     fn cst_decode(
         self,
@@ -56,7 +56,7 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire_Apple_apple_method_ref(
     port_: i64,
-    that: *const std::ffi::c_void,
+    that: usize,
 ) {
     wire_Apple_apple_method_ref_impl(port_, that)
 }
