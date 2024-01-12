@@ -68120,7 +68120,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumOpaqueTwinRustAsyncMoi_Primitive(
-          dco_decode_RustOpaque_i_32(raw[1]),
+          dco_decode_RustOpaque_i_16(raw[1]),
         );
       case 2:
         return EnumOpaqueTwinRustAsyncMoi_TraitObj(
@@ -68157,7 +68157,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumOpaqueTwinRustAsyncSse_Primitive(
-          dco_decode_RustOpaque_i_16(raw[1]),
+          dco_decode_RustOpaque_i_32(raw[1]),
         );
       case 2:
         return EnumOpaqueTwinRustAsyncSse_TraitObj(
@@ -68230,7 +68230,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumOpaqueTwinSse_Primitive(
-          dco_decode_RustOpaque_i_16(raw[1]),
+          dco_decode_RustOpaque_i_32(raw[1]),
         );
       case 2:
         return EnumOpaqueTwinSse_TraitObj(
@@ -68335,7 +68335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumOpaqueTwinSyncMoi_Primitive(
-          dco_decode_RustOpaque_i_32(raw[1]),
+          dco_decode_RustOpaque_i_16(raw[1]),
         );
       case 2:
         return EnumOpaqueTwinSyncMoi_TraitObj(
@@ -68371,7 +68371,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumOpaqueTwinSyncSse_Primitive(
-          dco_decode_RustOpaque_i_16(raw[1]),
+          dco_decode_RustOpaque_i_32(raw[1]),
         );
       case 2:
         return EnumOpaqueTwinSyncSse_TraitObj(
@@ -80677,7 +80677,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_hide_data_twin_rust_async_moi(deserializer);
         return EnumOpaqueTwinRustAsyncMoi_Struct(var_field0);
       case 1:
-        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
+        var var_field0 = sse_decode_RustOpaque_i_16(deserializer);
         return EnumOpaqueTwinRustAsyncMoi_Primitive(var_field0);
       case 2:
         var var_field0 = sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(
@@ -80714,7 +80714,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_hide_data_twin_rust_async_sse(deserializer);
         return EnumOpaqueTwinRustAsyncSse_Struct(var_field0);
       case 1:
-        var var_field0 = sse_decode_RustOpaque_i_16(deserializer);
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
         return EnumOpaqueTwinRustAsyncSse_Primitive(var_field0);
       case 2:
         var var_field0 = sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
@@ -80791,7 +80791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_RustOpaque_hide_data_twin_sse(deserializer);
         return EnumOpaqueTwinSse_Struct(var_field0);
       case 1:
-        var var_field0 = sse_decode_RustOpaque_i_16(deserializer);
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
         return EnumOpaqueTwinSse_Primitive(var_field0);
       case 2:
         var var_field0 =
@@ -80899,7 +80899,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_hide_data_twin_sync_moi(deserializer);
         return EnumOpaqueTwinSyncMoi_Struct(var_field0);
       case 1:
-        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
+        var var_field0 = sse_decode_RustOpaque_i_16(deserializer);
         return EnumOpaqueTwinSyncMoi_Primitive(var_field0);
       case 2:
         var var_field0 =
@@ -80935,7 +80935,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_hide_data_twin_sync_sse(deserializer);
         return EnumOpaqueTwinSyncSse_Struct(var_field0);
       case 1:
-        var var_field0 = sse_decode_RustOpaque_i_16(deserializer);
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
         return EnumOpaqueTwinSyncSse_Primitive(var_field0);
       case 2:
         var var_field0 =
@@ -95274,7 +95274,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_hide_data_twin_rust_async_moi(field0, serializer);
       case EnumOpaqueTwinRustAsyncMoi_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_RustOpaque_i_32(field0, serializer);
+        sse_encode_RustOpaque_i_16(field0, serializer);
       case EnumOpaqueTwinRustAsyncMoi_TraitObj(field0: final field0):
         sse_encode_i_32(2, serializer);
         sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(
@@ -95304,7 +95304,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_hide_data_twin_rust_async_sse(field0, serializer);
       case EnumOpaqueTwinRustAsyncSse_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_RustOpaque_i_16(field0, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
       case EnumOpaqueTwinRustAsyncSse_TraitObj(field0: final field0):
         sse_encode_i_32(2, serializer);
         sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
@@ -95366,7 +95366,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_hide_data_twin_sse(field0, serializer);
       case EnumOpaqueTwinSse_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_RustOpaque_i_16(field0, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
       case EnumOpaqueTwinSse_TraitObj(field0: final field0):
         sse_encode_i_32(2, serializer);
         sse_encode_RustOpaque_box_dynDartDebugTwinSse(field0, serializer);
@@ -95450,7 +95450,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_hide_data_twin_sync_moi(field0, serializer);
       case EnumOpaqueTwinSyncMoi_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_RustOpaque_i_32(field0, serializer);
+        sse_encode_RustOpaque_i_16(field0, serializer);
       case EnumOpaqueTwinSyncMoi_TraitObj(field0: final field0):
         sse_encode_i_32(2, serializer);
         sse_encode_RustOpaque_box_dynDartDebugTwinSyncMoi(field0, serializer);
@@ -95478,7 +95478,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_hide_data_twin_sync_sse(field0, serializer);
       case EnumOpaqueTwinSyncSse_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_RustOpaque_i_16(field0, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
       case EnumOpaqueTwinSyncSse_TraitObj(field0: final field0):
         sse_encode_i_32(2, serializer);
         sse_encode_RustOpaque_box_dynDartDebugTwinSyncSse(field0, serializer);

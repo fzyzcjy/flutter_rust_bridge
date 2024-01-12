@@ -22927,7 +22927,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinRustAsyncMoi_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -22967,7 +22967,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinRustAsyncSse_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23046,7 +23046,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinSse_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23163,7 +23163,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinSyncMoi_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23203,7 +23203,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinSyncSse_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;

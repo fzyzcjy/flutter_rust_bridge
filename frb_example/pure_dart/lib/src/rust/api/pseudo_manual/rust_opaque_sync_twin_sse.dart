@@ -21,7 +21,7 @@ NonCloneDataAnotherTwinSse syncCreateNonCloneTwinSse({dynamic hint}) =>
 FrbOpaqueSyncReturnTwinSse frbSyncGeneratorTestTwinSse({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTestTwinSse(hint: hint);
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>
+// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>
 @sealed
 class FrbOpaqueSyncReturnTwinSse extends RustOpaque {
   FrbOpaqueSyncReturnTwinSse.dcoDecode(List<dynamic> wire)
@@ -40,7 +40,7 @@ class FrbOpaqueSyncReturnTwinSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
+// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
 @sealed
 class HideDataAnotherTwinSse extends RustOpaque {
   HideDataAnotherTwinSse.dcoDecode(List<dynamic> wire)
@@ -59,7 +59,7 @@ class HideDataAnotherTwinSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>
+// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>
 @sealed
 class NonCloneDataAnotherTwinSse extends RustOpaque {
   NonCloneDataAnotherTwinSse.dcoDecode(List<dynamic> wire)

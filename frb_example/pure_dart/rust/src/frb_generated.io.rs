@@ -342,9 +342,9 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>>> for usize {
@@ -352,9 +352,9 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSseMoi>>> for usize {
@@ -372,9 +372,9 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSyncSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSyncSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSyncSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>>> for usize {
@@ -397,9 +397,9 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>>> for usize {
@@ -407,9 +407,9 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSseMoi>>> for usize {
@@ -427,9 +427,9 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSyncSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSyncSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSyncSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>>> for usize {
@@ -452,9 +452,9 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>> for usize {
@@ -462,9 +462,9 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>>> for usize {
@@ -482,9 +482,9 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>>> for usize {
         decode_rust_opaque_moi(self as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncSse>>> for usize {
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSyncSse>> {
-        decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>> for usize {
+    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncSseMoi>>> for usize {
@@ -1659,9 +1659,9 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
                 decode_rust_opaque_moi(self as _)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>> for usize {
-            fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse> {
-                decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>> for usize {
+            fn cst_decode(self) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse> {
+                unsafe { decode_rust_opaque_nom(self as _) }
             }
         }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi>> for usize {
@@ -1671,14 +1671,14 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
         }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
     {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -1724,17 +1724,17 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
     > {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -1763,17 +1763,17 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTw
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
     > {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -1798,14 +1798,14 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNo
 }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
     {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -1904,32 +1904,32 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
     > {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        [RustOpaqueMoi<
+        [RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
         >; 2],
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_rust_async_sse
 {
     fn cst_decode(
         self,
-    ) -> [RustOpaqueMoi<
+    ) -> [RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
     >; 2] {
-        let vec: Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> = self.cst_decode();
+        let vec: Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
@@ -1943,23 +1943,23 @@ impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_a
                 let vec: Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
     for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
-        decode_rust_opaque_moi(self as _)
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2]>
+impl CstDecode<[RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2]>
     for *mut wire_cst_list_RustOpaque_hide_data_twin_sse
 {
     fn cst_decode(
         self,
-    ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2] {
+    ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2] {
         let vec: Vec<
-            RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>,
+            RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>,
         > = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -2047,28 +2047,28 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
     {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>;
+        [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>;
             2],
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_sync_sse
 {
     fn cst_decode(
         self,
-    ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>; 2]
+    ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>; 2]
     {
         let vec: Vec<
-            RustOpaqueMoi<
+            RustOpaqueNom<
                 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
             >,
         > = self.cst_decode();
@@ -2131,17 +2131,17 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTw
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
     > {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -2184,9 +2184,9 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
                 decode_rust_opaque_moi(self as _)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>> for usize {
-            fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse> {
-                decode_rust_opaque_moi(self as _)
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>> for usize {
+            fn cst_decode(self) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse> {
+                unsafe { decode_rust_opaque_nom(self as _) }
             }
         }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi>> for usize {
@@ -2194,13 +2194,13 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
                 decode_rust_opaque_moi(self as _)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>>
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>>
     for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse> {
-        decode_rust_opaque_moi(self as _)
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse> {
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -2241,16 +2241,16 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
     {
-        decode_rust_opaque_moi(self as _)
+        unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
@@ -3072,16 +3072,16 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNo
 }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
     > for *mut usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
     {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<
-            RustOpaqueMoi<
+            RustOpaqueNom<
                 crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse,
             >,
         >::cst_decode(*wrap)
@@ -3154,18 +3154,18 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
         >,
     > for *mut usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
     > {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::cst_decode(*wrap).into()
+        CstDecode::<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> for *mut usize {
@@ -3174,14 +3174,14 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
                 CstDecode::<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::cst_decode(*wrap).into()
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
     for *mut usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::cst_decode(*wrap).into()
+        CstDecode::<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::cst_decode(*wrap).into()
     }
 }
 impl
@@ -3230,16 +3230,16 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
     > for *mut usize
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
     {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<
-            RustOpaqueMoi<
+            RustOpaqueNom<
                 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
             >,
         >::cst_decode(*wrap)
@@ -9880,8 +9880,8 @@ impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rus
     vec.into_iter().map(CstDecode::cst_decode).collect()
             }
         }
-impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>> for *mut wire_cst_list_RustOpaque_hide_data_twin_rust_async_sse {
-            fn cst_decode(self) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> {
+impl CstDecode<Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>> for *mut wire_cst_list_RustOpaque_hide_data_twin_rust_async_sse {
+            fn cst_decode(self) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> {
                 let vec = unsafe {
         let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
         flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -9898,12 +9898,12 @@ impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rus
     vec.into_iter().map(CstDecode::cst_decode).collect()
             }
         }
-impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>>
+impl CstDecode<Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>>
     for *mut wire_cst_list_RustOpaque_hide_data_twin_sse
 {
     fn cst_decode(
         self,
-    ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>> {
+    ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -9966,7 +9966,7 @@ impl
 impl
     CstDecode<
         Vec<
-            RustOpaqueMoi<
+            RustOpaqueNom<
                 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
             >,
         >,
@@ -9974,7 +9974,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>
+    ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>
     {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -37300,14 +37300,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37328,14 +37332,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37388,14 +37396,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37466,14 +37478,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37494,14 +37510,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37554,14 +37574,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37632,14 +37656,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37660,14 +37688,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -37720,14 +37752,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39330,18 +39366,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse,
-    >::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse,
-    >::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39362,14 +39398,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39422,14 +39462,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39468,14 +39512,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39518,14 +39566,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_hide_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_hide_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39596,14 +39648,22 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_hide_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39628,14 +39688,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39688,14 +39752,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39766,14 +39834,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39848,18 +39920,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse,
-    >::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse,
-    >::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39880,14 +39952,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
@@ -39940,14 +40016,18 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[no_mangle]

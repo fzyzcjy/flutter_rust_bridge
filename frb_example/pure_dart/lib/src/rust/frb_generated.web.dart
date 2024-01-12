@@ -16681,7 +16681,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ];
     }
     if (raw is EnumOpaqueTwinRustAsyncMoi_Primitive) {
-      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_16(raw.field0)];
     }
     if (raw is EnumOpaqueTwinRustAsyncMoi_TraitObj) {
       return [
@@ -16721,7 +16721,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ];
     }
     if (raw is EnumOpaqueTwinRustAsyncSse_Primitive) {
-      return [1, cst_encode_RustOpaque_i_16(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinRustAsyncSse_TraitObj) {
       return [
@@ -16797,7 +16797,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, cst_encode_RustOpaque_hide_data_twin_sse(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSse_Primitive) {
-      return [1, cst_encode_RustOpaque_i_16(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSse_TraitObj) {
       return [2, cst_encode_RustOpaque_box_dynDartDebugTwinSse(raw.field0)];
@@ -16879,7 +16879,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, cst_encode_RustOpaque_hide_data_twin_sync_moi(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSyncMoi_Primitive) {
-      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_16(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSyncMoi_TraitObj) {
       return [2, cst_encode_RustOpaque_box_dynDartDebugTwinSyncMoi(raw.field0)];
@@ -16907,7 +16907,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, cst_encode_RustOpaque_hide_data_twin_sync_sse(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSyncSse_Primitive) {
-      return [1, cst_encode_RustOpaque_i_16(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSyncSse_TraitObj) {
       return [2, cst_encode_RustOpaque_box_dynDartDebugTwinSyncSse(raw.field0)];

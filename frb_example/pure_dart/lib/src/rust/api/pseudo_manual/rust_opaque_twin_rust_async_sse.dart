@@ -7,6 +7,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'rust_opaque_twin_rust_async.dart';
 part 'rust_opaque_twin_rust_async_sse.freezed.dart';
 
 Future<HideDataTwinRustAsyncSse> createOpaqueTwinRustAsyncSse({dynamic hint}) =>
@@ -76,7 +77,7 @@ Future<FrbOpaqueReturnTwinRustAsyncSse> frbGeneratorTestTwinRustAsyncSse(
         {dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinRustAsyncSse(hint: hint);
 
-// Rust type: RustOpaqueMoi<Mutex < HideDataTwinRustAsyncSse >>
+// Rust type: RustOpaqueNom<Mutex < HideDataTwinRustAsyncSse >>
 @sealed
 class MutexHideDataTwinRustAsyncSse extends RustOpaque {
   MutexHideDataTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -95,7 +96,7 @@ class MutexHideDataTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<RwLock < HideDataTwinRustAsyncSse >>
+// Rust type: RustOpaqueNom<RwLock < HideDataTwinRustAsyncSse >>
 @sealed
 class RwLockHideDataTwinRustAsyncSse extends RustOpaque {
   RwLockHideDataTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -114,7 +115,7 @@ class RwLockHideDataTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSse>>
+// Rust type: RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>>
 @sealed
 class BoxDartDebugTwinRustAsyncSse extends RustOpaque {
   BoxDartDebugTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -133,7 +134,7 @@ class BoxDartDebugTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>
+// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>
 @sealed
 class FrbOpaqueReturnTwinRustAsyncSse extends RustOpaque {
   FrbOpaqueReturnTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -152,7 +153,7 @@ class FrbOpaqueReturnTwinRustAsyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>
+// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>
 @sealed
 class HideDataTwinRustAsyncSse extends RustOpaque {
   HideDataTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -187,25 +188,7 @@ class HideDataTwinRustAsyncSseArray2
       : this(List<HideDataTwinRustAsyncSse>.filled(arraySize, fill));
 }
 
-// Rust type: RustOpaqueMoi<i16>
-@sealed
-class I16 extends RustOpaque {
-  I16.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
-
-  I16.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_I16,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_I16,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_I16Ptr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>
+// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>
 @sealed
 class NonCloneDataTwinRustAsyncSse extends RustOpaque {
   NonCloneDataTwinRustAsyncSse.dcoDecode(List<dynamic> wire)
@@ -230,7 +213,7 @@ sealed class EnumOpaqueTwinRustAsyncSse with _$EnumOpaqueTwinRustAsyncSse {
     HideDataTwinRustAsyncSse field0,
   ) = EnumOpaqueTwinRustAsyncSse_Struct;
   const factory EnumOpaqueTwinRustAsyncSse.primitive(
-    I16 field0,
+    I32 field0,
   ) = EnumOpaqueTwinRustAsyncSse_Primitive;
   const factory EnumOpaqueTwinRustAsyncSse.traitObj(
     BoxDartDebugTwinRustAsyncSse field0,

@@ -4423,8 +4423,8 @@ impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rus
                 self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
             }
         }
-impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> {
+impl CstDecode<Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> {
                 self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
             }
         }
@@ -4433,12 +4433,12 @@ impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rus
                 self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
             }
         }
-impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>>
+impl CstDecode<Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>> {
+    ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -4501,7 +4501,7 @@ impl
 impl
     CstDecode<
         Vec<
-            RustOpaqueMoi<
+            RustOpaqueNom<
                 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
             >,
         >,
@@ -4509,7 +4509,7 @@ impl
 {
     fn cst_decode(
         self,
-    ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>
+    ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>
     {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -10168,15 +10168,15 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSse>>>
+impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>>>
@@ -10190,15 +10190,15 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSse>>>
+impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSseMoi>>>
@@ -10234,15 +10234,15 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncSse>>>
+impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSyncSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>>>
@@ -10289,15 +10289,15 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSse>>>
+impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>>>
@@ -10311,15 +10311,15 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSse>>>
+impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSseMoi>>>
@@ -10355,15 +10355,15 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncSse>>>
+impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSyncSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>>>
@@ -10410,15 +10410,15 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSse>>>
+impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>>
@@ -10432,15 +10432,15 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSse>>>
+impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>>>
@@ -10476,15 +10476,15 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>>>
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncSse>>>
+impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSyncSse>> {
+    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncSseMoi>>>
@@ -11941,11 +11941,11 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
                 decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse> {
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+                unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
             }
         }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -11957,18 +11957,18 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
         }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
     {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -12026,21 +12026,21 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
     > {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -12077,21 +12077,21 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTw
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
     > {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -12126,18 +12126,18 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNo
 }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
     {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -12254,36 +12254,36 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
     > {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
     CstDecode<
-        [RustOpaqueMoi<
+        [RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
         >; 2],
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> [RustOpaqueMoi<
+    ) -> [RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
     >; 2] {
-        let vec: Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> = self.cst_decode();
+        let vec: Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
@@ -12299,27 +12299,27 @@ impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_a
                 let vec: Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2]>
+impl CstDecode<[RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2] {
+    ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2] {
         let vec: Vec<
-            RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>,
+            RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>,
         > = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -12419,32 +12419,32 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
     {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
     CstDecode<
-        [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>;
+        [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>;
             2],
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>; 2]
+    ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>; 2]
     {
         let vec: Vec<
-            RustOpaqueMoi<
+            RustOpaqueNom<
                 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
             >,
         > = self.cst_decode();
@@ -12523,21 +12523,21 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTw
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<
+    ) -> RustOpaqueNom<
         crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
     > {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -12596,11 +12596,11 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
                 decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse> {
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+                unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
             }
         }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -12610,17 +12610,17 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_as
                 decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
             }
         }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>>
+impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse> {
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -12673,20 +12673,20 @@ impl
 }
 impl
     CstDecode<
-        RustOpaqueMoi<
+        RustOpaqueNom<
             crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
+    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
     {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl
@@ -31565,14 +31565,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsyncMoi(
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31593,14 +31597,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSseM
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31653,14 +31661,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSyncMoi(
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Mutex<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Mutex<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31731,14 +31743,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncMoi
 pub fn rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31759,14 +31775,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSse
 pub fn rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31819,14 +31839,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncMoi(
 pub fn rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<RwLock<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<RwLock<HideDataTwinSyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31897,14 +31921,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncM
 pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31925,14 +31953,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncS
 pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -31985,14 +32017,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncMoi(
 pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33595,18 +33631,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_as
 pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse,
-    >::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse,
-    >::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33627,14 +33663,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_as
 pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33687,14 +33727,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync_mo
 pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33733,14 +33777,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return_twin_no
 pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33783,14 +33831,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_another_twin_normal(
 pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33861,14 +33913,22 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async_moi(
 pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33891,12 +33951,16 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async_sse_
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sse(ptr: *const std::ffi::c_void) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sse(ptr: *const std::ffi::c_void) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -33949,14 +34013,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_moi(
 pub fn rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -34019,14 +34087,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_no
 pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -34101,18 +34173,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async
 pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse,
-    >::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse,
-    >::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -34133,14 +34205,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async
 pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
@@ -34193,14 +34269,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_moi(
 pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::increment_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::increment_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    unsafe {
+        StdArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>::decrement_strong_count(ptr as _);
+    }
 }
 
 #[wasm_bindgen]
