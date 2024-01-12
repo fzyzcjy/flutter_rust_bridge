@@ -13,15 +13,17 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 // TODO only temp example
 #[frb(opaque)]
 pub struct Apple {
-    hi: Rc<String>,
+    hi: std::rc::Rc<String>,
 }
 
 impl Apple {
-    #[frb(rust_opaque_codec_moi)]
+    // #[frb(rust_opaque_codec_moi)]
     pub fn new() -> Apple {
-        Apple {}
+        Apple {
+            hi: std::rc::Rc::new("".to_string()),
+        }
     }
 
-    #[frb(rust_opaque_codec_moi)]
+    // #[frb(rust_opaque_codec_moi)]
     pub fn apple_method_ref(&self) {}
 }
