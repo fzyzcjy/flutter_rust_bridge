@@ -5,9 +5,13 @@ use log::info;
 use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
-pub fn flutter_create(name: &str) -> anyhow::Result<()> {
-    info!("Execute `flutter create {name}`");
-    check_exit_code(&command_run!(call_shell[None, None], "flutter", "create", name)?)
+pub fn flutter_create(name: &str, org: &Option<String>) -> anyhow::Result<()> {
+    let mut args = vec![name];
+    if let Some(o) = org {
+        args.extend(["--org", o]);
+    }
+    info!("Execute `flutter create {args:?}`");
+    check_exit_code(&command_run!(call_shell[None, None], "flutter", "create", *args)?)
 }
 
 #[allow(clippy::vec_init_then_push)]

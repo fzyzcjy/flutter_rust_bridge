@@ -10,7 +10,7 @@
 use crate::auxiliary::sample_types::{MyEnum, MyStruct};
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
-pub use frb_example_pure_dart_exapmle_external_lib::{
+pub use frb_example_pure_dart_example_external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
     ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,
     RawStringMirrored, Sequences,
@@ -43,14 +43,14 @@ pub struct _ApplicationEnvTwinRustAsyncSse {
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn get_app_settings_twin_rust_async_sse() -> ApplicationSettings {
-    frb_example_pure_dart_exapmle_external_lib::get_app_settings()
+    frb_example_pure_dart_example_external_lib::get_app_settings()
 }
 
 // This function can return a Result, that includes an object of the external type ApplicationSettings because it has a mirror
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn get_fallible_app_settings_twin_rust_async_sse() -> anyhow::Result<ApplicationSettings>
 {
-    Ok(frb_example_pure_dart_exapmle_external_lib::get_app_settings())
+    Ok(frb_example_pure_dart_example_external_lib::get_app_settings())
 }
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
@@ -65,7 +65,7 @@ pub async fn is_app_embedded_twin_rust_async_sse(app_settings: ApplicationSettin
 pub async fn app_settings_stream_twin_rust_async_sse(
     sink: StreamSink<ApplicationSettings, flutter_rust_bridge::SseCodec>,
 ) {
-    let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
+    let app_settings = frb_example_pure_dart_example_external_lib::get_app_settings();
     sink.add(app_settings).unwrap();
 }
 
@@ -75,8 +75,8 @@ pub async fn app_settings_vec_stream_twin_rust_async_sse(
     sink: StreamSink<Vec<ApplicationSettings>, flutter_rust_bridge::SseCodec>,
 ) {
     let app_settings = vec![
-        frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
-        frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
+        frb_example_pure_dart_example_external_lib::get_app_settings(),
+        frb_example_pure_dart_example_external_lib::get_app_settings(),
     ];
     sink.add(app_settings).unwrap();
 }
@@ -94,12 +94,12 @@ pub async fn mirror_struct_stream_twin_rust_async_sse(
     sink: StreamSink<MirrorStructTwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
 ) {
     let val = MirrorStructTwinRustAsyncSse {
-        a: frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
+        a: frb_example_pure_dart_example_external_lib::get_app_settings(),
         b: MyStruct { content: true },
         c: vec![MyEnum::True, MyEnum::False],
         d: vec![
-            frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
-            frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
+            frb_example_pure_dart_example_external_lib::get_app_settings(),
+            frb_example_pure_dart_example_external_lib::get_app_settings(),
         ],
     };
     sink.add(val).unwrap();
@@ -111,7 +111,7 @@ pub async fn mirror_tuple_stream_twin_rust_async_sse(
     sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored), flutter_rust_bridge::SseCodec>,
 ) {
     let tuple = (
-        frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
+        frb_example_pure_dart_example_external_lib::get_app_settings(),
         RawStringEnumMirrored::Raw(RawStringMirrored {
             value: String::from("test"),
         }),
@@ -128,7 +128,7 @@ pub enum _ApplicationMessageTwinRustAsyncSse {
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn get_message_twin_rust_async_sse() -> ApplicationMessage {
-    frb_example_pure_dart_exapmle_external_lib::poll_messages()[1].clone()
+    frb_example_pure_dart_example_external_lib::poll_messages()[1].clone()
 }
 
 #[frb(mirror(Numbers, Sequences))]
@@ -136,12 +136,12 @@ pub struct _NumbersTwinRustAsyncSse(pub Vec<i32>);
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn repeat_number_twin_rust_async_sse(num: i32, times: usize) -> Numbers {
-    frb_example_pure_dart_exapmle_external_lib::repeat_number(num, times)
+    frb_example_pure_dart_example_external_lib::repeat_number(num, times)
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn repeat_sequence_twin_rust_async_sse(seq: i32, times: usize) -> Sequences {
-    frb_example_pure_dart_exapmle_external_lib::repeat_sequences(seq, times)
+    frb_example_pure_dart_example_external_lib::repeat_sequences(seq, times)
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -246,7 +246,7 @@ pub async fn test_list_of_nested_enums_mirrored_twin_rust_async_sse() -> Vec<Raw
 
 // TODO rm (use the auto-generated sync code)
 // #[flutter_rust_bridge::frb(serialize)] pub async fn sync_return_mirror_twin_rust_async_sse() -> SyncReturn<ApplicationSettings> {
-//     SyncReturn(frb_example_pure_dart_exapmle_external_lib::get_app_settings())
+//     SyncReturn(frb_example_pure_dart_example_external_lib::get_app_settings())
 // }
 
 pub struct AnotherTwinRustAsyncSse {

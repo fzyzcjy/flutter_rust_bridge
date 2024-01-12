@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0-dev.17
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add org option in create command #1635 (thanks @wxitcode)
+* Fix typo in frb_example_pure_dart_exapmle_external_lib #1645 (thanks @aran)
+
 ## 2.0.0-dev.16
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

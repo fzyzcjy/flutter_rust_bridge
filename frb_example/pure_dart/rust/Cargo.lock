@@ -247,7 +247,7 @@ checksum = "25cbce373ec4653f1a01a31e8a5e5ec0c622dc27ff9c4e6606eefef5cbbed4a5"
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "2.0.0-dev.16"
+version = "2.0.0-dev.17"
 dependencies = [
  "allo-isolate",
  "android_logger",
@@ -279,7 +279,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "2.0.0-dev.16"
+version = "2.0.0-dev.17"
 
 [[package]]
 name = "frb_example_pure_dart"
@@ -290,7 +290,7 @@ dependencies = [
  "byteorder",
  "chrono",
  "flutter_rust_bridge",
- "frb_example_pure_dart_exapmle_external_lib",
+ "frb_example_pure_dart_example_external_lib",
  "futures",
  "lazy_static",
  "log",
@@ -303,7 +303,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "frb_example_pure_dart_exapmle_external_lib"
+name = "frb_example_pure_dart_example_external_lib"
 version = "0.1.0"
 
 [[package]]

@@ -30,6 +30,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         }
         Commands::Create(args) => integration::create(CreateConfig {
             name: args.name,
+            org: args.org,
             enable_local_dependency: args.common.local,
             rust_crate_name: compute_rust_crate_name(&args.common),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
