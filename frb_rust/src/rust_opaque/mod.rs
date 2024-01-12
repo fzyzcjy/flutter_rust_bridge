@@ -39,10 +39,13 @@ use std::marker::PhantomData;
 /// ```
 #[repr(transparent)]
 #[derive(Debug)]
-pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T> = StdArc<T>> {
+pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>> {
     arc: A,
     _phantom: PhantomData<T>,
 }
+
+pub type RustOpaqueNom<T> = RustOpaqueBase<T, StdArc<T>>;
+pub type RustOpaque<T> = RustOpaqueNom<T>;
 
 // https://github.com/fzyzcjy/flutter_rust_bridge/pull/1574
 #[deprecated(note = "It is empty trait and can be directly deleted")]
