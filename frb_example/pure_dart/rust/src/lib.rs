@@ -1,7 +1,7 @@
 use crate::frb_generated::{CstDecode, FLUTTER_RUST_BRIDGE_HANDLER};
 use flutter_rust_bridge::for_generated::{transform_result_dco, StdArc};
 use flutter_rust_bridge::rust_async::RwLock;
-use flutter_rust_bridge::{Handler, NomRustOpaqueCodec, RustOpaque};
+use flutter_rust_bridge::{Handler, RustOpaque};
 
 pub mod api;
 mod auxiliary;
@@ -15,7 +15,7 @@ fn wire_rust_auto_opaque_callable_arg_twin_rust_async_impl(
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     >,
 ) {

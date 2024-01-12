@@ -27,7 +27,6 @@ pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust2dart::stream_sink::StreamSinkBase;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
-pub use crate::rust_opaque::codec::{nom::NomRustOpaqueCodec, BaseRustOpaqueCodec};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;

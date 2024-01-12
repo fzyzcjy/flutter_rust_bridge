@@ -1,7 +1,6 @@
 use super::RustOpaque;
+use crate::for_generated::StdArc;
 use crate::generalized_arc::base_arc::BaseArc;
-use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
-use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::marker::PhantomData;
 use std::ops;
 use std::sync::Arc;
@@ -23,31 +22,30 @@ macro_rules! opaque_dyn {
     };
 }
 
-impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec> {
+impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaque<T, StdArc<T>> {
     fn from(ptr: Arc<T>) -> Self {
         Self::from_arc(ptr.into())
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
+impl<T, A: BaseArc<T>> RustOpaque<T, A> {
     pub fn new(value: T) -> Self {
-        Self::from_arc(C::Arc::new(value))
+        Self::from_arc(A::new(value))
     }
 }
 
-impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
+impl<T: ?Sized, A: BaseArc<T>> RustOpaque<T, A> {
     // `pub` mainly because dart2rust.rs needs it
     #[doc(hidden)]
-    pub fn from_arc(arc: C::Arc) -> Self {
+    pub fn from_arc(arc: A) -> Self {
         Self {
             arc,
-            _phantom_t: PhantomData,
-            _phantom_c: PhantomData,
+            _phantom: PhantomData,
         }
     }
 }
 
-impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> ops::Deref for RustOpaque<T, C> {
+impl<T: ?Sized, A: BaseArc<T>> ops::Deref for RustOpaque<T, A> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -55,17 +53,17 @@ impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> ops::Deref for RustOpaque<T, C> {
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
+impl<T, A: BaseArc<T>> RustOpaque<T, A> {
     pub fn try_unwrap(self) -> Result<T, Self> {
-        C::Arc::try_unwrap(self.arc).map_err(Self::from_arc)
+        A::try_unwrap(self.arc).map_err(Self::from_arc)
     }
 
     pub fn into_inner(self) -> Option<T> {
-        C::Arc::into_inner(self.arc)
+        A::into_inner(self.arc)
     }
 }
 
-impl<T: ?Sized + 'static, C: BaseRustOpaqueCodec<T>> Clone for RustOpaque<T, C> {
+impl<T: ?Sized + 'static, A: BaseArc<T>> Clone for RustOpaque<T, A> {
     fn clone(&self) -> Self {
         Self::from_arc(self.arc.clone())
     }

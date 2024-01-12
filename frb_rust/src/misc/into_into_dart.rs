@@ -1,6 +1,6 @@
 use crate::dart_opaque::DartOpaque;
+use crate::for_generated::BaseArc;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
-use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use crate::rust_opaque::RustOpaque;
 use std::collections::{HashMap, HashSet};
 
@@ -36,9 +36,9 @@ where
     }
 }
 
-impl<T: 'static, C: BaseRustOpaqueCodec<T>> IntoIntoDart<RustOpaque<T, C>> for RustOpaque<T, C> {
+impl<T, A: BaseArc<T>> IntoIntoDart<RustOpaque<T, A>> for RustOpaque<T, A> {
     #[inline(always)]
-    fn into_into_dart(self) -> RustOpaque<T, C> {
+    fn into_into_dart(self) -> RustOpaque<T, A> {
         self
     }
 }
