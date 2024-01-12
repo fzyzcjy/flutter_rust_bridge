@@ -1,7 +1,5 @@
 #![allow(dead_code, clippy::new_without_default)]
 
-use std::rc::Rc;
-
 #[derive(Debug, Clone)]
 pub struct MySize {
     pub width: i32,
