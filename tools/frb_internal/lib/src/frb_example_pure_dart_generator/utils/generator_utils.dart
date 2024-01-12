@@ -77,8 +77,8 @@ class DuplicatorMode with _$DuplicatorMode {
 
   static final allValues = [
     ...defaultValues,
-    ...defaultValues
-        .map((e) => DuplicatorMode([...e, DuplicatorComponentMode.moi])),
+    ...defaultValues.map(
+        (e) => DuplicatorMode([...e.components, DuplicatorComponentMode.moi])),
   ];
 
   String get postfix =>

@@ -31,6 +31,8 @@ class RustGenerator extends BaseGenerator {
             ans = 'pub async fn';
           case DuplicatorComponentMode.sse:
             ans = '#[flutter_rust_bridge::frb(serialize)] $ans';
+          case DuplicatorComponentMode.moi:
+            ans = '#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] $ans';
         }
       }
       return ans;
