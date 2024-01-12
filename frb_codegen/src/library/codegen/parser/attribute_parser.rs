@@ -77,6 +77,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Opaque)
     }
 
+    pub(crate) fn rust_opaque_codec_moi(&self) -> bool {
+        self.any_eq(&FrbAttribute::RustOpaqueCodecMoi)
+    }
+
     pub(crate) fn codec_mode_pack(&self) -> CodecModePack {
         if self.any_eq(&FrbAttribute::Serialize) {
             CodecModePack {
@@ -129,6 +133,7 @@ mod frb_keyword {
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(opaque);
+    syn::custom_keyword!(rust_opaque_codec_moi);
     syn::custom_keyword!(serialize);
     syn::custom_keyword!(semi_serialize);
     syn::custom_keyword!(dart_metadata);
@@ -156,6 +161,7 @@ enum FrbAttribute {
     Init,
     Ignore,
     Opaque,
+    RustOpaqueCodecMoi,
     Serialize,
     // NOTE: Undocumented, since this name may be suboptimal and is subject to change
     SemiSerialize,
@@ -193,6 +199,10 @@ impl Parse for FrbAttribute {
             input
                 .parse::<frb_keyword::opaque>()
                 .map(|_| FrbAttribute::Opaque)?
+        } else if lookahead.peek(frb_keyword::rust_opaque_codec_moi) {
+            input
+                .parse::<frb_keyword::rust_opaque_codec_moi>()
+                .map(|_| FrbAttribute::RustOpaqueCodecMoi)?
         } else if lookahead.peek(frb_keyword::serialize) {
             input
                 .parse::<frb_keyword::serialize>()
@@ -502,6 +512,23 @@ mod tests {
     fn test_ignore() -> anyhow::Result<()> {
         let parsed = parse("#[frb(ignore)]")?;
         assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Ignore]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_opaque() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(opaque)]")?;
+        assert_eq!(parsed, FrbAttributes(vec![FrbAttribute::Opaque]));
+        Ok(())
+    }
+
+    #[test]
+    fn test_rust_opaque_codec_moi() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(rust_opaque_codec_moi)]")?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::RustOpaqueCodecMoi])
+        );
         Ok(())
     }
 
