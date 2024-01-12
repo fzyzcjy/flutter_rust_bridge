@@ -77,7 +77,7 @@ class DuplicatorMode with _$DuplicatorMode {
 
   static final allValues = [
     ...defaultValues,
-    ...defaultValues.map(
+    ...[const DuplicatorMode([]), ...defaultValues].map(
         (e) => DuplicatorMode([...e.components, DuplicatorComponentMode.moi])),
   ];
 
