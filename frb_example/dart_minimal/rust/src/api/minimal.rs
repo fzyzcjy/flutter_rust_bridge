@@ -1,5 +1,3 @@
-#![flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-
 use flutter_rust_bridge::frb;
 pub use std::panic::{RefUnwindSafe, UnwindSafe};
 
