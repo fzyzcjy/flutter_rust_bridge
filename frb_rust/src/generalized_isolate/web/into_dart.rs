@@ -14,7 +14,7 @@ pub trait IntoDart {
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
-impl<T, C: BaseRustOpaqueCodec> IntoDartExceptPrimitive for RustOpaque<T, C> {}
+impl<T, C: BaseRustOpaqueCodec<T>> IntoDartExceptPrimitive for RustOpaque<T, C> {}
 impl IntoDartExceptPrimitive for DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl IntoDartExceptPrimitive for bool {}
@@ -216,7 +216,7 @@ impl<T> IntoDart for *mut T {
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec> IntoDart for RustOpaque<T, C> {
+impl<T, C: BaseRustOpaqueCodec<T>> IntoDart for RustOpaque<T, C> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()
