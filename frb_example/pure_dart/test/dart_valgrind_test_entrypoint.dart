@@ -265,6 +265,8 @@ import 'api/pseudo_manual/raw_string_twin_sync_sse_test.dart'
     as raw_string_twin_sync_sse_test;
 import 'api/pseudo_manual/raw_string_twin_sync_test.dart'
     as raw_string_twin_sync_test;
+import 'api/pseudo_manual/rust_auto_opaque_twin_moi_test.dart'
+    as rust_auto_opaque_twin_moi_test;
 import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_moi_test.dart'
     as rust_auto_opaque_twin_rust_async_moi_test;
 import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse_moi_test.dart'
@@ -285,10 +287,14 @@ import 'api/pseudo_manual/rust_auto_opaque_twin_sync_sse_test.dart'
     as rust_auto_opaque_twin_sync_sse_test;
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync_test.dart'
     as rust_auto_opaque_twin_sync_test;
+import 'api/pseudo_manual/rust_opaque_sync_twin_moi_test.dart'
+    as rust_opaque_sync_twin_moi_test;
 import 'api/pseudo_manual/rust_opaque_sync_twin_sse_moi_test.dart'
     as rust_opaque_sync_twin_sse_moi_test;
 import 'api/pseudo_manual/rust_opaque_sync_twin_sse_test.dart'
     as rust_opaque_sync_twin_sse_test;
+import 'api/pseudo_manual/rust_opaque_twin_moi_test.dart'
+    as rust_opaque_twin_moi_test;
 import 'api/pseudo_manual/rust_opaque_twin_rust_async_moi_test.dart'
     as rust_opaque_twin_rust_async_moi_test;
 import 'api/pseudo_manual/rust_opaque_twin_rust_async_sse_moi_test.dart'
@@ -538,6 +544,7 @@ Future<void> callFileEntrypoints() async {
   await raw_string_twin_sse_test.main(skipRustLibInit: true);
   await raw_string_twin_sync_sse_test.main(skipRustLibInit: true);
   await raw_string_twin_sync_test.main(skipRustLibInit: true);
+  await rust_auto_opaque_twin_moi_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_rust_async_moi_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_rust_async_sse_moi_test.main(
       skipRustLibInit: true);
@@ -549,8 +556,10 @@ Future<void> callFileEntrypoints() async {
   await rust_auto_opaque_twin_sync_sse_moi_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_sync_sse_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_sync_test.main(skipRustLibInit: true);
+  await rust_opaque_sync_twin_moi_test.main(skipRustLibInit: true);
   await rust_opaque_sync_twin_sse_moi_test.main(skipRustLibInit: true);
   await rust_opaque_sync_twin_sse_test.main(skipRustLibInit: true);
+  await rust_opaque_twin_moi_test.main(skipRustLibInit: true);
   await rust_opaque_twin_rust_async_moi_test.main(skipRustLibInit: true);
   await rust_opaque_twin_rust_async_sse_moi_test.main(skipRustLibInit: true);
   await rust_opaque_twin_rust_async_sse_test.main(skipRustLibInit: true);
