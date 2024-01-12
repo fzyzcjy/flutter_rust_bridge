@@ -39,13 +39,14 @@ macro_rules! frb_generated_moi_arc_def {
 
                 let value = Arc::new(value);
 
-                pool.map.insert(
+                let old_value = pool.map.insert(
                     object_id,
                     MoiArcPoolValue {
                         ref_count: 1,
                         value: value.clone(),
                     },
                 );
+                assert!(old_value.is_none());
 
                 Self {
                     object_id: Some(object_id),
