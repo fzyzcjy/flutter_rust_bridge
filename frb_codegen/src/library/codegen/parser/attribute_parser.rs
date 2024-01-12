@@ -2,6 +2,7 @@ use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
@@ -77,8 +78,12 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Opaque)
     }
 
-    pub(crate) fn rust_opaque_codec_moi(&self) -> bool {
-        self.any_eq(&FrbAttribute::RustOpaqueCodecMoi)
+    pub(crate) fn rust_opaque_codec(&self) -> RustOpaqueCodecMode {
+        if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
+            RustOpaqueCodecMode::Moi
+        } else {
+            RustOpaqueCodecMode::Nom
+        }
     }
 
     pub(crate) fn codec_mode_pack(&self) -> CodecModePack {
