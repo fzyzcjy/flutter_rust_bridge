@@ -6,7 +6,7 @@
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sse.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sse_moi.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -16,15 +16,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('create and dispose', () async {
-    var futureData = createOpaqueTwinSse();
-    var data = await createOpaqueTwinSse();
+    var futureData = createOpaqueTwinSseMoi();
+    var data = await createOpaqueTwinSseMoi();
     data.dispose();
     (await futureData).dispose();
   });
 
   test('simple call', () async {
-    var opaque = await createOpaqueTwinSse();
-    var hideData = await runOpaqueTwinSse(opaque: opaque);
+    var opaque = await createOpaqueTwinSseMoi();
+    var hideData = await runOpaqueTwinSseMoi(opaque: opaque);
 
     expect(
         hideData,
@@ -39,9 +39,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('double Call', () async {
-    var data = await createOpaqueTwinSse();
+    var data = await createOpaqueTwinSseMoi();
     expect(
-        await runOpaqueTwinSse(opaque: data),
+        await runOpaqueTwinSseMoi(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -50,7 +50,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     expect(
-        await runOpaqueTwinSse(opaque: data),
+        await runOpaqueTwinSseMoi(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -62,9 +62,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('call after dispose', () async {
-    var data = await createOpaqueTwinSse();
+    var data = await createOpaqueTwinSseMoi();
     expect(
-        await runOpaqueTwinSse(opaque: data),
+        await runOpaqueTwinSseMoi(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -73,13 +73,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectLater(() => runOpaqueTwinSse(opaque: data),
+    await expectLater(() => runOpaqueTwinSseMoi(opaque: data),
         throwsA(isA<DroppableDisposedException>()));
   });
 
   test('dispose before complete', () async {
-    var data = await createOpaqueTwinSse();
-    var task = runOpaqueWithDelayTwinSse(opaque: data);
+    var data = await createOpaqueTwinSseMoi();
+    var task = runOpaqueWithDelayTwinSseMoi(opaque: data);
     data.dispose();
     expect(
         await task,
@@ -90,15 +90,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    await expectLater(() => runOpaqueTwinSse(opaque: data),
+    await expectLater(() => runOpaqueTwinSseMoi(opaque: data),
         throwsA(isA<DroppableDisposedException>()));
   });
 
   test('create array of opaque type', () async {
-    var data = await opaqueArrayTwinSse();
+    var data = await opaqueArrayTwinSseMoi();
     for (var v in data) {
       expect(
-          await runOpaqueTwinSse(opaque: v),
+          await runOpaqueTwinSseMoi(opaque: v),
           "content - Some(PrivateData "
           "{"
           " content: \"content nested\", "
@@ -107,16 +107,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
           "lifetime: \"static str\" "
           "})");
       v.dispose();
-      await expectLater(() => runOpaqueTwinSse(opaque: v),
+      await expectLater(() => runOpaqueTwinSseMoi(opaque: v),
           throwsA(isA<DroppableDisposedException>()));
     }
   });
 
   test('create enums of opaque type', () async {
-    var data = await createArrayOpaqueEnumTwinSse();
+    var data = await createArrayOpaqueEnumTwinSseMoi();
 
     expect(
-        await runEnumOpaqueTwinSse(opaque: data[0]),
+        await runEnumOpaqueTwinSseMoi(opaque: data[0]),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -124,16 +124,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    (data[0] as EnumOpaqueTwinSse_Struct).field0.dispose();
+    (data[0] as EnumOpaqueTwinSseMoi_Struct).field0.dispose();
 
-    expect(await runEnumOpaqueTwinSse(opaque: data[1]), "42");
-    (data[1] as EnumOpaqueTwinSse_Primitive).field0.dispose();
+    expect(await runEnumOpaqueTwinSseMoi(opaque: data[1]), "42");
+    (data[1] as EnumOpaqueTwinSseMoi_Primitive).field0.dispose();
 
-    expect(await runEnumOpaqueTwinSse(opaque: data[2]), "\"String\"");
-    (data[2] as EnumOpaqueTwinSse_TraitObj).field0.dispose();
+    expect(await runEnumOpaqueTwinSseMoi(opaque: data[2]), "\"String\"");
+    (data[2] as EnumOpaqueTwinSseMoi_TraitObj).field0.dispose();
 
     expect(
-        await runEnumOpaqueTwinSse(opaque: data[3]),
+        await runEnumOpaqueTwinSseMoi(opaque: data[3]),
         "\"content - Some(PrivateData "
         "{"
         " content: \\\"content nested\\\", "
@@ -141,10 +141,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \\\"static str\\\" "
         "})\"");
-    (data[3] as EnumOpaqueTwinSse_Mutex).field0.dispose();
+    (data[3] as EnumOpaqueTwinSseMoi_Mutex).field0.dispose();
 
     expect(
-        await runEnumOpaqueTwinSse(opaque: data[4]),
+        await runEnumOpaqueTwinSseMoi(opaque: data[4]),
         "\"content - Some(PrivateData "
         "{"
         " content: \\\"content nested\\\", "
@@ -152,17 +152,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \\\"static str\\\" "
         "})\"");
-    (data[4] as EnumOpaqueTwinSse_RwLock).field0.dispose();
-    await expectLater(() => runEnumOpaqueTwinSse(opaque: data[4]),
+    (data[4] as EnumOpaqueTwinSseMoi_RwLock).field0.dispose();
+    await expectLater(() => runEnumOpaqueTwinSseMoi(opaque: data[4]),
         throwsA(isA<DroppableDisposedException>()));
   });
 
   test('opaque field', () async {
-    var data = await createNestedOpaqueTwinSse();
-    await futurizeVoidTwinSse(runNestedOpaqueTwinSse(opaque: data));
+    var data = await createNestedOpaqueTwinSseMoi();
+    await futurizeVoidTwinSseMoi(runNestedOpaqueTwinSseMoi(opaque: data));
 
     expect(
-        await runOpaqueTwinSse(opaque: data.first),
+        await runOpaqueTwinSseMoi(opaque: data.first),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -171,7 +171,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     expect(
-        await runOpaqueTwinSse(opaque: data.second),
+        await runOpaqueTwinSseMoi(opaque: data.second),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -180,12 +180,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.first.dispose();
-    await expectLater(() => runOpaqueTwinSse(opaque: data.first),
+    await expectLater(() => runOpaqueTwinSseMoi(opaque: data.first),
         throwsA(isA<DroppableDisposedException>()));
-    await expectLater(() => runNestedOpaqueTwinSse(opaque: data),
+    await expectLater(() => runNestedOpaqueTwinSseMoi(opaque: data),
         throwsA(isA<DroppableDisposedException>()));
     expect(
-        await runOpaqueTwinSse(opaque: data.second),
+        await runOpaqueTwinSseMoi(opaque: data.second),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -197,12 +197,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('array', () async {
-    var data = await opaqueArrayTwinSse();
-    await futurizeVoidTwinSse(opaqueArrayRunTwinSse(data: data));
+    var data = await opaqueArrayTwinSseMoi();
+    await futurizeVoidTwinSseMoi(opaqueArrayRunTwinSseMoi(data: data));
     data[0].dispose();
 
     expect(
-        await runOpaqueTwinSse(opaque: data[1]),
+        await runOpaqueTwinSseMoi(opaque: data[1]),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -211,18 +211,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(() => opaqueArrayRunTwinSse(data: data),
+    await expectLater(() => opaqueArrayRunTwinSseMoi(data: data),
         throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
   test('vec', () async {
-    var data = await opaqueVecTwinSse();
-    await futurizeVoidTwinSse(opaqueVecRunTwinSse(data: data));
+    var data = await opaqueVecTwinSseMoi();
+    await futurizeVoidTwinSseMoi(opaqueVecRunTwinSseMoi(data: data));
     data[0].dispose();
 
     expect(
-        await runOpaqueTwinSse(opaque: data[1]),
+        await runOpaqueTwinSseMoi(opaque: data[1]),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -231,16 +231,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(() => opaqueVecRunTwinSse(data: data),
+    await expectLater(() => opaqueVecRunTwinSseMoi(data: data),
         throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
   test('unwrap', () async {
-    var data = await createOpaqueTwinSse();
+    var data = await createOpaqueTwinSseMoi();
     data.move = true;
     expect(
-        await unwrapRustOpaqueTwinSse(opaque: data),
+        await unwrapRustOpaqueTwinSseMoi(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -250,8 +250,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "})");
     expect(data.isDisposed, isTrue);
 
-    var data2 = await createOpaqueTwinSse();
-    await expectLater(() => unwrapRustOpaqueTwinSse(opaque: data2),
+    var data2 = await createOpaqueTwinSseMoi();
+    await expectLater(() => unwrapRustOpaqueTwinSseMoi(opaque: data2),
         throwsA(isA<AnyhowException>()));
     expect(data2.isDisposed, isFalse);
   });

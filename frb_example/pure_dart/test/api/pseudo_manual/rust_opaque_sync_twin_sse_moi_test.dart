@@ -5,9 +5,9 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_sse_twin_sse.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sse.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_sse.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_sse_twin_sse_moi.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sse_moi.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_sse_moi.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -15,27 +15,27 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('create', () {
-    var data = syncCreateOpaqueTwinSse();
+    var data = syncCreateOpaqueTwinSseMoi();
     data.dispose();
   });
 
   test('option', () async {
-    var x = syncOptionRustOpaqueTwinSse();
+    var x = syncOptionRustOpaqueTwinSseMoi();
     expect(x, isNotNull);
     x!.dispose();
   });
 
   test('nonclone', () async {
-    var data = syncCreateNonCloneTwinSse();
-    var data2 = await runNonCloneTwinSse(clone: data);
+    var data = syncCreateNonCloneTwinSseMoi();
+    var data2 = await runNonCloneTwinSseMoi(clone: data);
     expect(data2, "content");
     data.dispose();
   });
 
   test('double call', () {
-    var data = syncCreateSyncOpaqueTwinSse();
+    var data = syncCreateSyncOpaqueTwinSseMoi();
     expect(
-        syncRunOpaqueTwinSse(opaque: data),
+        syncRunOpaqueTwinSseMoi(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -44,7 +44,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     expect(
-        syncRunOpaqueTwinSse(opaque: data),
+        syncRunOpaqueTwinSseMoi(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -56,9 +56,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('call after drop', () async {
-    var data = syncCreateSyncOpaqueTwinSse();
+    var data = syncCreateSyncOpaqueTwinSseMoi();
     expect(
-        syncRunOpaqueTwinSse(opaque: data),
+        syncRunOpaqueTwinSseMoi(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -67,12 +67,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectLater(() => syncRunOpaqueTwinSse(opaque: data),
+    await expectLater(() => syncRunOpaqueTwinSseMoi(opaque: data),
         throwsA(isA<DroppableDisposedException>()));
   });
 
   test('check generator', () {
-    expect(frbSyncGeneratorTestTwinSse().runtimeType == FrbOpaqueSyncReturn,
+    expect(frbSyncGeneratorTestTwinSseMoi().runtimeType == FrbOpaqueSyncReturn,
         isTrue);
   });
 }

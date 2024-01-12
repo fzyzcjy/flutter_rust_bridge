@@ -2,6 +2,8 @@
 // and is auto-generated from `rust_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+// FRB_INTERNAL_GENERATOR: {"enableAll": true}
+
 pub use crate::auxiliary::sample_types::{
     FrbOpaqueReturn, HideData, NonCloneData, NonSendHideData,
 };
