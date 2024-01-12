@@ -3,7 +3,6 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use convert_case::{Case, Casing};
 use std::borrow::Cow;
 
