@@ -14,8 +14,7 @@ pub(crate) mod dart_opaque;
 pub(crate) mod ffi_binding;
 #[doc(hidden)]
 pub mod for_generated;
-#[doc(hidden)] // only to be used as `for_generated::...`
-pub mod generalized_arc;
+pub(crate) mod generalized_arc;
 #[doc(hidden)] // only to be used as `for_generated::rust_async`
 pub mod rust_async;
 pub(crate) mod rust_opaque;
