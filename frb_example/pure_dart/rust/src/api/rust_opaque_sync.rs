@@ -15,17 +15,19 @@ pub struct FrbOpaqueSyncReturnTwinNormal;
 #[frb(sync)]
 pub fn sync_option_rust_opaque_twin_normal() -> Result<Option<RustOpaque<HideDataAnotherTwinNormal>>>
 {
-    Ok(Some(RustOpaque::new(HideDataAnotherTwinNormal::new())))
+    Ok(Some(RustOpaque::new(HideDataAnotherTwinNormal(
+        HideDataRaw::new(),
+    ))))
 }
 
 #[frb(sync)]
 pub fn sync_create_opaque_twin_normal() -> RustOpaque<HideDataAnotherTwinNormal> {
-    RustOpaque::new(HideDataAnotherTwinNormal::new())
+    RustOpaque::new(HideDataAnotherTwinNormal(HideDataRaw::new()))
 }
 
 #[frb(sync)]
 pub fn sync_create_non_clone_twin_normal() -> RustOpaque<NonCloneDataAnotherTwinNormal> {
-    RustOpaque::new(NonCloneDataAnotherTwinNormal::new())
+    RustOpaque::new(NonCloneDataAnotherTwinNormal(NonCloneDataRaw::new()))
 }
 
 // OpaqueSyncStruct does not implement Send trait.

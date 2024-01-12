@@ -21,7 +21,9 @@ pub struct FrbOpaqueSyncReturnTwinSseMoi;
 #[flutter_rust_bridge::frb(serialize)]
 pub fn sync_option_rust_opaque_twin_sse_moi(
 ) -> Result<Option<crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinSseMoi>>> {
-    Ok(Some(RustOpaque::new(HideDataAnotherTwinSseMoi::new())))
+    Ok(Some(RustOpaque::new(HideDataAnotherTwinSseMoi(
+        HideDataRaw::new(),
+    ))))
 }
 
 #[frb(sync)]
@@ -29,7 +31,7 @@ pub fn sync_option_rust_opaque_twin_sse_moi(
 #[flutter_rust_bridge::frb(serialize)]
 pub fn sync_create_opaque_twin_sse_moi(
 ) -> crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinSseMoi> {
-    RustOpaque::new(HideDataAnotherTwinSseMoi::new())
+    RustOpaque::new(HideDataAnotherTwinSseMoi(HideDataRaw::new()))
 }
 
 #[frb(sync)]
@@ -37,7 +39,7 @@ pub fn sync_create_opaque_twin_sse_moi(
 #[flutter_rust_bridge::frb(serialize)]
 pub fn sync_create_non_clone_twin_sse_moi(
 ) -> crate::frb_generated::RustOpaqueMoi<NonCloneDataAnotherTwinSseMoi> {
-    RustOpaque::new(NonCloneDataAnotherTwinSseMoi::new())
+    RustOpaque::new(NonCloneDataAnotherTwinSseMoi(NonCloneDataRaw::new()))
 }
 
 // OpaqueSyncStruct does not implement Send trait.

@@ -39,7 +39,7 @@ pub struct OpaqueNestedTwinSync {
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn create_opaque_twin_sync() -> RustOpaque<HideDataTwinSync> {
-    RustOpaque::new(HideDataTwinSync::new())
+    RustOpaque::new(HideDataTwinSync(HideDataRaw::new()))
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -51,38 +51,42 @@ pub fn create_option_opaque_twin_sync(
 
 // TODO about sync
 // #[flutter_rust_bridge::frb(sync)] pub fn sync_create_opaque_twin_sync() -> SyncReturn<RustOpaque<HideDataTwinSync>> {
-//     SyncReturn(RustOpaque::new(HideDataTwinSync::new()))
+//     SyncReturn(RustOpaque::new(HideDataTwinSync(HideDataRaw::new())))
 // }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn create_array_opaque_enum_twin_sync() -> [EnumOpaqueTwinSync; 5] {
     [
-        EnumOpaqueTwinSync::Struct(RustOpaque::new(HideDataTwinSync::new())),
+        EnumOpaqueTwinSync::Struct(RustOpaque::new(HideDataTwinSync(HideDataRaw::new()))),
         EnumOpaqueTwinSync::Primitive(RustOpaque::new(42)),
         EnumOpaqueTwinSync::TraitObj(opaque_dyn!("String")),
-        EnumOpaqueTwinSync::Mutex(RustOpaque::new(Mutex::new(HideDataTwinSync::new()))),
-        EnumOpaqueTwinSync::RwLock(RustOpaque::new(RwLock::new(HideDataTwinSync::new()))),
+        EnumOpaqueTwinSync::Mutex(RustOpaque::new(Mutex::new(HideDataTwinSync(
+            HideDataRaw::new(),
+        )))),
+        EnumOpaqueTwinSync::RwLock(RustOpaque::new(RwLock::new(HideDataTwinSync(
+            HideDataRaw::new(),
+        )))),
     ]
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn run_enum_opaque_twin_sync(opaque: EnumOpaqueTwinSync) -> String {
     match opaque {
-        EnumOpaqueTwinSync::Struct(s) => s.hide_data(),
+        EnumOpaqueTwinSync::Struct(s) => s.0.hide_data(),
         EnumOpaqueTwinSync::Primitive(p) => format!("{:?}", p.deref()),
         EnumOpaqueTwinSync::TraitObj(t) => format!("{:?}", t.deref()),
         EnumOpaqueTwinSync::Mutex(m) => {
-            format!("{:?}", m.lock().unwrap().hide_data())
+            format!("{:?}", m.lock().unwrap().0.hide_data())
         }
         EnumOpaqueTwinSync::RwLock(r) => {
-            format!("{:?}", r.read().unwrap().hide_data())
+            format!("{:?}", r.read().unwrap().0.hide_data())
         }
     }
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn run_opaque_twin_sync(opaque: RustOpaque<HideDataTwinSync>) -> String {
-    opaque.hide_data()
+    opaque.0.hide_data()
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -92,14 +96,14 @@ pub fn run_opaque_with_delay_twin_sync(opaque: RustOpaque<HideDataTwinSync>) -> 
     #[cfg(not(target_family = "wasm"))]
     std::thread::sleep(std::time::Duration::from_millis(1000));
 
-    opaque.hide_data()
+    opaque.0.hide_data()
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn opaque_array_twin_sync() -> [RustOpaque<HideDataTwinSync>; 2] {
     [
-        RustOpaque::new(HideDataTwinSync::new()),
-        RustOpaque::new(HideDataTwinSync::new()),
+        RustOpaque::new(HideDataTwinSync(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinSync(HideDataRaw::new())),
     ]
 }
 
@@ -113,43 +117,43 @@ pub fn opaque_array_twin_sync() -> [RustOpaque<HideDataTwinSync>; 2] {
 pub fn run_non_clone_twin_sync(clone: RustOpaque<NonCloneDataTwinSync>) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
-    clone.clone().hide_data()
+    clone.clone().0.hide_data()
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn opaque_array_run_twin_sync(data: [RustOpaque<HideDataTwinSync>; 2]) {
     for i in data {
-        i.hide_data();
+        i.0.hide_data();
     }
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn opaque_vec_twin_sync() -> Vec<RustOpaque<HideDataTwinSync>> {
     vec![
-        RustOpaque::new(HideDataTwinSync::new()),
-        RustOpaque::new(HideDataTwinSync::new()),
+        RustOpaque::new(HideDataTwinSync(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinSync(HideDataRaw::new())),
     ]
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn opaque_vec_run_twin_sync(data: Vec<RustOpaque<HideDataTwinSync>>) {
     for i in data {
-        i.hide_data();
+        i.0.hide_data();
     }
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn create_nested_opaque_twin_sync() -> OpaqueNestedTwinSync {
     OpaqueNestedTwinSync {
-        first: RustOpaque::new(HideDataTwinSync::new()),
-        second: RustOpaque::new(HideDataTwinSync::new()),
+        first: RustOpaque::new(HideDataTwinSync(HideDataRaw::new())),
+        second: RustOpaque::new(HideDataTwinSync(HideDataRaw::new())),
     }
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn run_nested_opaque_twin_sync(opaque: OpaqueNestedTwinSync) {
-    opaque.first.hide_data();
-    opaque.second.hide_data();
+    opaque.first.0.hide_data();
+    opaque.second.0.hide_data();
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -157,7 +161,7 @@ pub fn unwrap_rust_opaque_twin_sync(opaque: RustOpaque<HideDataTwinSync>) -> Res
     let data: HideDataTwinSync = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
-    Ok(data.hide_data())
+    Ok(data.0.hide_data())
 }
 
 /// Function to check the code generator.

@@ -38,7 +38,7 @@ pub struct OpaqueNestedTwinRustAsync {
 }
 
 pub async fn create_opaque_twin_rust_async() -> RustOpaque<HideDataTwinRustAsync> {
-    RustOpaque::new(HideDataTwinRustAsync::new())
+    RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new()))
 }
 
 pub async fn create_option_opaque_twin_rust_async(
@@ -49,35 +49,39 @@ pub async fn create_option_opaque_twin_rust_async(
 
 // TODO about sync
 // pub async fn sync_create_opaque_twin_rust_async() -> SyncReturn<RustOpaque<HideDataTwinRustAsync>> {
-//     SyncReturn(RustOpaque::new(HideDataTwinRustAsync::new()))
+//     SyncReturn(RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new())))
 // }
 
 pub async fn create_array_opaque_enum_twin_rust_async() -> [EnumOpaqueTwinRustAsync; 5] {
     [
-        EnumOpaqueTwinRustAsync::Struct(RustOpaque::new(HideDataTwinRustAsync::new())),
+        EnumOpaqueTwinRustAsync::Struct(RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new()))),
         EnumOpaqueTwinRustAsync::Primitive(RustOpaque::new(42)),
         EnumOpaqueTwinRustAsync::TraitObj(opaque_dyn!("String")),
-        EnumOpaqueTwinRustAsync::Mutex(RustOpaque::new(Mutex::new(HideDataTwinRustAsync::new()))),
-        EnumOpaqueTwinRustAsync::RwLock(RustOpaque::new(RwLock::new(HideDataTwinRustAsync::new()))),
+        EnumOpaqueTwinRustAsync::Mutex(RustOpaque::new(Mutex::new(HideDataTwinRustAsync(
+            HideDataRaw::new(),
+        )))),
+        EnumOpaqueTwinRustAsync::RwLock(RustOpaque::new(RwLock::new(HideDataTwinRustAsync(
+            HideDataRaw::new(),
+        )))),
     ]
 }
 
 pub async fn run_enum_opaque_twin_rust_async(opaque: EnumOpaqueTwinRustAsync) -> String {
     match opaque {
-        EnumOpaqueTwinRustAsync::Struct(s) => s.hide_data(),
+        EnumOpaqueTwinRustAsync::Struct(s) => s.0.hide_data(),
         EnumOpaqueTwinRustAsync::Primitive(p) => format!("{:?}", p.deref()),
         EnumOpaqueTwinRustAsync::TraitObj(t) => format!("{:?}", t.deref()),
         EnumOpaqueTwinRustAsync::Mutex(m) => {
-            format!("{:?}", m.lock().unwrap().hide_data())
+            format!("{:?}", m.lock().unwrap().0.hide_data())
         }
         EnumOpaqueTwinRustAsync::RwLock(r) => {
-            format!("{:?}", r.read().unwrap().hide_data())
+            format!("{:?}", r.read().unwrap().0.hide_data())
         }
     }
 }
 
 pub async fn run_opaque_twin_rust_async(opaque: RustOpaque<HideDataTwinRustAsync>) -> String {
-    opaque.hide_data()
+    opaque.0.hide_data()
 }
 
 pub async fn run_opaque_with_delay_twin_rust_async(
@@ -88,13 +92,13 @@ pub async fn run_opaque_with_delay_twin_rust_async(
     #[cfg(not(target_family = "wasm"))]
     std::thread::sleep(std::time::Duration::from_millis(1000));
 
-    opaque.hide_data()
+    opaque.0.hide_data()
 }
 
 pub async fn opaque_array_twin_rust_async() -> [RustOpaque<HideDataTwinRustAsync>; 2] {
     [
-        RustOpaque::new(HideDataTwinRustAsync::new()),
-        RustOpaque::new(HideDataTwinRustAsync::new()),
+        RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new())),
     ]
 }
 
@@ -107,38 +111,38 @@ pub async fn opaque_array_twin_rust_async() -> [RustOpaque<HideDataTwinRustAsync
 pub async fn run_non_clone_twin_rust_async(clone: RustOpaque<NonCloneDataTwinRustAsync>) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
-    clone.clone().hide_data()
+    clone.clone().0.hide_data()
 }
 
 pub async fn opaque_array_run_twin_rust_async(data: [RustOpaque<HideDataTwinRustAsync>; 2]) {
     for i in data {
-        i.hide_data();
+        i.0.hide_data();
     }
 }
 
 pub async fn opaque_vec_twin_rust_async() -> Vec<RustOpaque<HideDataTwinRustAsync>> {
     vec![
-        RustOpaque::new(HideDataTwinRustAsync::new()),
-        RustOpaque::new(HideDataTwinRustAsync::new()),
+        RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new())),
     ]
 }
 
 pub async fn opaque_vec_run_twin_rust_async(data: Vec<RustOpaque<HideDataTwinRustAsync>>) {
     for i in data {
-        i.hide_data();
+        i.0.hide_data();
     }
 }
 
 pub async fn create_nested_opaque_twin_rust_async() -> OpaqueNestedTwinRustAsync {
     OpaqueNestedTwinRustAsync {
-        first: RustOpaque::new(HideDataTwinRustAsync::new()),
-        second: RustOpaque::new(HideDataTwinRustAsync::new()),
+        first: RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new())),
+        second: RustOpaque::new(HideDataTwinRustAsync(HideDataRaw::new())),
     }
 }
 
 pub async fn run_nested_opaque_twin_rust_async(opaque: OpaqueNestedTwinRustAsync) {
-    opaque.first.hide_data();
-    opaque.second.hide_data();
+    opaque.first.0.hide_data();
+    opaque.second.0.hide_data();
 }
 
 pub async fn unwrap_rust_opaque_twin_rust_async(
@@ -147,7 +151,7 @@ pub async fn unwrap_rust_opaque_twin_rust_async(
     let data: HideDataTwinRustAsync = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
-    Ok(data.hide_data())
+    Ok(data.0.hide_data())
 }
 
 /// Function to check the code generator.
