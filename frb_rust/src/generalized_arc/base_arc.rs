@@ -20,20 +20,24 @@ pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! base_arc_generate_tests {
-    ($T:ty) => {
+    ($T:tt) => {
         use crate::generalized_arc::base_arc::BaseArc;
         use std::fmt::Debug;
 
+        // Do NOT make it `clone` (to test non-clone behavior)
+        #[derive(Debug)]
+        struct DummyType(i32);
+
         #[test]
         fn simple_drop() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             assert_eq!(a.as_ref().0, 100);
             drop(a);
         }
 
         #[test]
         fn simple_clone() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             let b = a.clone();
             assert_eq!(a.as_ref().0, 100);
             assert_eq!(b.as_ref().0, 100);
@@ -46,64 +50,64 @@ macro_rules! base_arc_generate_tests {
 
         #[test]
         fn try_unwrap_when_1_ref_should_succeed() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             assert_eq!(a.try_unwrap().unwrap().0, 100);
         }
 
         #[test]
         fn try_unwrap_when_2_ref_should_fail() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             let _b = a.clone();
             assert!(a.try_unwrap().is_err());
         }
 
         #[test]
         fn into_inner_when_1_ref_should_succeed() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             assert_eq!(a.into_inner().unwrap().0, 100);
         }
 
         #[test]
         fn into_inner_when_2_ref_should_fail() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             let _b = a.clone();
             assert!(a.into_inner().is_none());
         }
 
         #[test]
         fn from_raw_and_into_raw_simple() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             let a_raw = a.into_raw();
-            let a_recovered = unsafe { <$T>::from_raw(a_raw) };
+            let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().0, 100);
         }
 
         #[test]
         fn from_raw_and_into_raw_with_another_ref() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             let b = a.clone();
             let a_raw = a.into_raw();
             assert_eq!(b.as_ref().0, 100);
 
-            let a_recovered = unsafe { <$T>::from_raw(a_raw) };
+            let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().0, 100);
             assert_eq!(b.as_ref().0, 100);
         }
 
         #[test]
         fn increment_strong_count_and_decrement_strong_count() {
-            let a = <$T>::new(DummyType(100));
+            let a = <$T<DummyType>>::new(DummyType(100));
             let b = a.clone();
             let a_raw = a.into_raw();
             assert_eq!(b.as_ref().0, 100);
 
-            unsafe { <$T>::increment_strong_count(a_raw) };
+            unsafe { <$T<DummyType>>::increment_strong_count(a_raw) };
             assert_eq!(b.as_ref().0, 100);
 
-            unsafe { <$T>::decrement_strong_count(a_raw) };
+            unsafe { <$T<DummyType>>::decrement_strong_count(a_raw) };
             assert_eq!(b.as_ref().0, 100);
 
-            let a_recovered = unsafe { <$T>::from_raw(a_raw) };
+            let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
             assert_eq!(a_recovered.as_ref().0, 100);
             assert_eq!(b.as_ref().0, 100);
         }

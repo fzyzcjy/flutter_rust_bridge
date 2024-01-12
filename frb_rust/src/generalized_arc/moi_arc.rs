@@ -227,11 +227,7 @@ mod tests {
         assert_eq!(pool.id_generator.next_id(), 3);
     }
 
-    // Do NOT make it `clone` (to test non-clone behavior)
-    #[derive(Debug)]
-    struct DummyType(i32);
-
     frb_generated_moi_arc_impl_value!(DummyType);
 
-    crate::base_arc_generate_tests!(MoiArc::<DummyType>);
+    crate::base_arc_generate_tests!(MoiArc);
 }

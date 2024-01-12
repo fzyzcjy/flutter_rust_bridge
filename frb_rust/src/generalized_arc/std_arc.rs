@@ -75,11 +75,9 @@ impl<T: ?Sized + 'static> StdArc<T> {
 
 #[cfg(test)]
 mod tests {
+    use super::StdArc;
+
     use crate::base_arc_generate_tests;
 
-    // Do NOT make it `clone` (to test non-clone behavior)
-    #[derive(Debug)]
-    struct DummyType(i32);
-
-    base_arc_generate_tests!(super::StdArc::<DummyType>);
+    base_arc_generate_tests!(StdArc);
 }
