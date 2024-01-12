@@ -5,13 +5,7 @@ pub(crate) mod utils;
 use crate::for_generated::{BaseArc, StdArc};
 use std::marker::PhantomData;
 
-/// A wrapper to transfer ownership of T to Dart.
-///
-/// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
-/// be None if a nullptr is received from Dart, signifying that this pointer
-/// has been disposed.
-///
-/// Extensions for [`sync::RwLock`] and [`sync::Mutex`] are provided.
+/// A wrapper to support [arbitrary Rust types](https://cjycode.com/flutter_rust_bridge/guides/types/arbitrary).
 ///
 /// ## Naming the inner type
 ///
