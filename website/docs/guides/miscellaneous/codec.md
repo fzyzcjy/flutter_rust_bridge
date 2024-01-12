@@ -46,4 +46,12 @@ please refer to [this page](../performance/overview).
 
 ## RustOpaque codec
 
-TODO
+There are currently two codecs underlying the "arbitrary Rust types" features.
+
+* **NOM** (NOrmal Memory): The commonly seen standard one.
+* **MOI** (Map Of Ids): Use a HashMap from ids to objects.
+
+The MOI codec mainly helps as an extra test utility.
+However, if you are super worried about code safety, this mode may be useful.
+It can be enabled by `#[frb(rust_opaque_codec_moi)]` annotation on functions (this name may be changed, but even if changed, will only be a simple rename).
+If needed, there can also be a global flag (feel free create an issue on GitHub).
