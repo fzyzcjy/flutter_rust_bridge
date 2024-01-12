@@ -1,5 +1,3 @@
-use std::fmt::Debug;
-
 // NOTE: Some functions are not in this trait, because different implementors have different `unsafe` keywords
 // and that is not supported in Rust yet
 pub trait BaseArc<T: ?Sized>: Clone + AsRef<T> {
