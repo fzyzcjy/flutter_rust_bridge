@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Update cargokit to fix flutter flavor messing up with build mode #1644 (thanks @pixelshot91)
+
 ## 2.0.0-dev.17
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
