@@ -66,6 +66,10 @@ class RustGenerator extends BaseGenerator {
     }
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
+      // hack, otherwise `i32` is considered as Nom, and will ignore requests of using Moi codec
+      // anyway this hack only affects how tests are auto generated, so no problem
+      ans = ans.replaceAll(RegExp(r'RustOpaque<i32>'),
+          'crate::frb_generated::RustOpaqueMoi<i16>');
       ans = ans.replaceAll(
           RegExp(r'RustOpaque(Nom)?<'), 'crate::frb_generated::RustOpaqueMoi<');
     }

@@ -26,7 +26,7 @@ impl<T: Debug + Send + Sync> DartDebugTwinRustAsyncSse for T {}
 
 pub enum EnumOpaqueTwinRustAsyncSse {
     Struct(crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncSse>),
-    Primitive(crate::frb_generated::RustOpaqueMoi<i32>),
+    Primitive(crate::frb_generated::RustOpaqueMoi<i16>),
     TraitObj(crate::frb_generated::RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSse>>),
     Mutex(crate::frb_generated::RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSse>>),
     RwLock(crate::frb_generated::RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSse>>),
