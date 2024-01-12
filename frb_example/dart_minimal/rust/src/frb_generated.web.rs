@@ -38,7 +38,7 @@ impl
             compile_error!("64-bit pointers are not supported.");
         }
         unsafe {
-            flutter_rust_bridge::for_generated::decode_rust_opaque_nom(
+            flutter_rust_bridge::for_generated::decode_rust_opaque_moi(
                 (self.as_f64().unwrap() as usize) as _,
             )
         }
@@ -95,7 +95,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <flutter_rust_bridge::for_generated::NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::increment_strong_count(ptr as _);
+        <flutter_rust_bridge::for_generated::MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::increment_strong_count(ptr as _);
     }
 }
 
@@ -104,6 +104,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <flutter_rust_bridge::for_generated::NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::decrement_strong_count(ptr as _);
+        <flutter_rust_bridge::for_generated::MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::decrement_strong_count(ptr as _);
     }
 }
