@@ -1,7 +1,7 @@
 use crate::dart_opaque::DartOpaque;
+use crate::for_generated::BaseArc;
 use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
-use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use crate::rust_opaque::RustOpaque;
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
 use std::collections::{HashMap, HashSet};
@@ -14,7 +14,7 @@ pub trait IntoDart {
 
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
-impl<T, C: BaseRustOpaqueCodec<T>> IntoDartExceptPrimitive for RustOpaque<T, C> {}
+impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaque<T, A> {}
 impl IntoDartExceptPrimitive for DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl IntoDartExceptPrimitive for bool {}
@@ -216,7 +216,7 @@ impl<T> IntoDart for *mut T {
     }
 }
 
-impl<T, C: BaseRustOpaqueCodec<T>> IntoDart for RustOpaque<T, C> {
+impl<T, A: BaseArc<T>> IntoDart for RustOpaque<T, A> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()
