@@ -139,25 +139,39 @@ macro_rules! frb_generated_moi_arc_def {
 
         pub struct MoiArcPoolInner<T: ?Sized> {
             map: HashMap<ObjectId, MoiArcPoolValue<T>>,
-            next_id: ObjectId,
+            id_generator: IdGenerator,
         }
 
         impl<T: ?Sized> Default for MoiArcPoolInner<T> {
             fn default() -> Self {
                 Self {
                     map: HashMap::new(),
+                    id_generator: Default::default(),
+                }
+            }
+        }
+
+        struct IdGenerator {
+            next_id: ObjectId,
+        }
+
+        impl Default for IdGenerator {
+            fn default() -> Self {
+                Self {
                     next_id: Self::MIN_ID,
                 }
             }
         }
 
-        impl<T: ?Sized> MoiArcPoolInner<T> {
+        impl IdGenerator {
             const MIN_ID: ObjectId = 1;
+            // Less than i32's max value to be extra safe
+            const MAX_ID: ObjectId = 2147483600;
 
             fn next_id(&mut self) -> ObjectId {
                 let ans = self.next_id;
 
-                self.next_id = if self.next_id == ObjectId::MAX {
+                self.next_id = if self.next_id >= Self::MAX_ID {
                     Self::MIN_ID
                 } else {
                     self.next_id + 1
@@ -166,6 +180,8 @@ macro_rules! frb_generated_moi_arc_def {
                 ans
             }
         }
+
+        impl<T: ?Sized> MoiArcPoolInner<T> {}
 
         struct MoiArcPoolValue<T: ?Sized> {
             // Real reference counting of this MoiArc
@@ -203,10 +219,10 @@ mod tests {
         assert_eq!(pool.next_id(), 2);
         assert_eq!(pool.next_id(), 3);
 
-        pool.next_id = ObjectId::MAX - 2;
-        assert_eq!(pool.next_id(), ObjectId::MAX - 2);
-        assert_eq!(pool.next_id(), ObjectId::MAX - 1);
-        assert_eq!(pool.next_id(), ObjectId::MAX);
+        pool.id_generator.next_id = 2147483598; // HACK and change value
+        assert_eq!(pool.next_id(), 2147483598);
+        assert_eq!(pool.next_id(), 2147483599);
+        assert_eq!(pool.next_id(), 2147483600);
         assert_eq!(pool.next_id(), 1); // NOTE: still not zero
         assert_eq!(pool.next_id(), 2);
         assert_eq!(pool.next_id(), 3);
