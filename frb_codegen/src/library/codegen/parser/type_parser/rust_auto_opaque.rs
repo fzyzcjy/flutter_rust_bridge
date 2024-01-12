@@ -4,7 +4,9 @@ use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::type_parser::rust_opaque::GeneralizedRustOpaqueParserInfo;
+use crate::codegen::parser::type_parser::rust_opaque::{
+    GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
+};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use log::debug;
@@ -43,13 +45,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
-        let codec = TODO;
+
+        let info = self.inner.rust_auto_opaque_parser_info.get_or_insert(
+            &inner,
+            RustOpaqueParserTypeInfo::new(self.context.initiated_namespace.clone(), TODO),
+        );
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
             inner: IrTypeRustOpaque {
-                namespace: (self.inner.rust_auto_opaque_parser_info)
-                    .get_or_insert(&inner, self.context.initiated_namespace.clone()),
+                namespace: info.namespace,
                 inner: Box::new(IrType::Unencodable(IrTypeUnencodable {
                     namespace: None,
                     // TODO when all usages of a type do not require `&mut`, can drop this Mutex
@@ -60,7 +65,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     ),
                     segments: vec![],
                 })),
-                codec,
+                codec: info.codec,
                 brief_name: true,
             },
         })

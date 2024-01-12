@@ -22,10 +22,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
-        let namespace = (self.inner.rust_opaque_parser_info)
-            .get_or_insert(ty, self.context.initiated_namespace.clone());
-        let codec = TODO;
-        RustOpaque(IrTypeRustOpaque::new(namespace, ty.clone(), codec, false))
+        let info = self.inner.rust_opaque_parser_info.get_or_insert(
+            ty,
+            RustOpaqueParserTypeInfo::new(self.context.initiated_namespace.clone(), TODO),
+        );
+        RustOpaque(IrTypeRustOpaque::new(
+            info.namespace,
+            ty.clone(),
+            info.codec,
+            false,
+        ))
     }
 }
 
@@ -33,8 +39,14 @@ pub(super) type RustOpaqueParserInfo = GeneralizedRustOpaqueParserInfo;
 
 #[derive(Clone, Debug)]
 pub(super) struct RustOpaqueParserTypeInfo {
-    namespace: Namespace,
-    codec: RustOpaqueCodecMode,
+    pub namespace: Namespace,
+    pub codec: RustOpaqueCodecMode,
+}
+
+impl RustOpaqueParserTypeInfo {
+    pub fn new(namespace: Namespace, codec: RustOpaqueCodecMode) -> Self {
+        Self { namespace, codec }
+    }
 }
 
 #[derive(Clone, Debug, Default)]
