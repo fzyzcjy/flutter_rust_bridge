@@ -27005,28 +27005,28 @@ pub fn wire_handle_uuid_twin_normal(
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        StdArc::<Mutex<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+        StdArc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        StdArc::<RwLock<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+        StdArc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27035,7 +27035,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27044,7 +27044,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27053,7 +27053,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27062,7 +27062,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27071,7 +27071,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncS
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27080,7 +27080,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncS
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27089,7 +27089,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27098,7 +27098,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27107,7 +27107,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27116,7 +27116,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27125,7 +27125,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27134,7 +27134,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
+        StdArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27143,7 +27143,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
@@ -27156,7 +27156,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
@@ -27169,7 +27169,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
         >::increment_strong_count(ptr as _);
     }
@@ -27180,7 +27180,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27191,7 +27191,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
@@ -27204,7 +27204,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
@@ -27217,7 +27217,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
@@ -27230,7 +27230,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
@@ -27243,9 +27243,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27254,9 +27252,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27265,9 +27261,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27276,9 +27270,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27287,7 +27279,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
         >::increment_strong_count(ptr as _);
     }
@@ -27298,7 +27290,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27309,7 +27301,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
@@ -27322,7 +27314,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
@@ -27335,7 +27327,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
@@ -27348,7 +27340,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
@@ -27361,7 +27353,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
@@ -27374,7 +27366,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
@@ -27387,7 +27379,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
@@ -27400,7 +27392,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
@@ -27413,7 +27405,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
@@ -27426,7 +27418,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
@@ -27439,7 +27431,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
@@ -27452,7 +27444,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
@@ -27465,9 +27457,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27476,9 +27466,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27487,9 +27475,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27498,9 +27484,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27509,7 +27493,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
         >::increment_strong_count(ptr as _);
     }
@@ -27520,7 +27504,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27531,9 +27515,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27542,9 +27524,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27553,9 +27533,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27564,9 +27542,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27575,9 +27551,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27586,9 +27560,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27597,9 +27569,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27608,9 +27578,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27619,9 +27587,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-        >::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27630,9 +27596,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-        >::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27641,7 +27605,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
@@ -27654,7 +27618,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
@@ -27667,7 +27631,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
@@ -27680,7 +27644,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
@@ -27693,7 +27657,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
@@ -27706,7 +27670,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
@@ -27719,7 +27683,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
@@ -27732,7 +27696,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
@@ -27745,7 +27709,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
@@ -27758,7 +27722,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
@@ -27771,7 +27735,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
@@ -27784,7 +27748,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
@@ -27797,7 +27761,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::increment_strong_count(ptr as _);
     }
@@ -27808,7 +27772,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27819,7 +27783,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -27833,7 +27797,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -27847,7 +27811,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
@@ -27860,7 +27824,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
@@ -27873,7 +27837,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27882,7 +27846,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27891,7 +27855,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27900,7 +27864,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27909,7 +27873,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
@@ -27923,7 +27887,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
@@ -27937,7 +27901,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
@@ -27950,7 +27914,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
@@ -27963,7 +27927,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
@@ -27977,7 +27941,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
@@ -27991,7 +27955,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
@@ -28004,7 +27968,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
@@ -28017,7 +27981,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
@@ -28031,7 +27995,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
@@ -28045,7 +28009,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
@@ -28058,7 +28022,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
@@ -28071,7 +28035,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
@@ -28085,7 +28049,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
@@ -28099,7 +28063,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
@@ -28112,7 +28076,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<
+        StdArc::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
@@ -28123,18 +28087,14 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(
-            ptr as _,
-        );
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(
-            ptr as _,
-        );
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -28143,7 +28103,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -28152,70 +28114,64 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::HideData>::increment_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::HideData>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(ptr as _);
+        StdArc::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<i32>::increment_strong_count(ptr as _);
+        StdArc::<i32>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<i32>::decrement_strong_count(ptr as _);
+        StdArc::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(
-            ptr as _,
-        );
+        StdArc::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(
-            ptr as _,
-        );
+        StdArc::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(
-            ptr as _,
-        );
+        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        RustOpaqueNom::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(
-            ptr as _,
-        );
+        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(ptr as _);
     }
 }

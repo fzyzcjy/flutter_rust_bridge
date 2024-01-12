@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
+use std::any::Any;
 
 impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_imports(&self) -> Option<Vec<String>> {
@@ -35,8 +36,8 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                     return_type: None,
                     body: generate_maybe_unsafe(
                         &format!(
-                            "RustOpaque{}::<{}>::{op}_strong_count(ptr as _);",
-                            self.ir.codec.to_string(),
+                            "{}::<{}>::{op}_strong_count(ptr as _);",
+                            self.ir.codec.arc_ty(),
                             &self.ir.inner.rust_api_type(),
                         ),
                         self.ir.codec.needs_unsafe_block(),
