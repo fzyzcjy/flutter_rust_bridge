@@ -26,7 +26,22 @@ macro_rules! base_arc_generate_tests {
 
         // Do NOT make it `clone` (to test non-clone behavior)
         #[derive(Debug)]
-        struct DummyType(i32);
+        struct DummyType {
+            value: i32,
+            on_drop: Box<dyn Fn()>,
+        }
+
+        impl DummyType {
+            fn new(value: i32, on_drop: Box<dyn Fn()>) -> Self {
+                Self { value, on_drop }
+            }
+        }
+
+        impl Drop for DummyType {
+            fn drop(&mut self) {
+                self.on_drop()
+            }
+        }
 
         #[test]
         fn simple_drop() {
