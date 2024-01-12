@@ -614,6 +614,7 @@ jobs:
         with:
           sdk: stable
           architecture: x64
+      - run: sudo apt-get update
 
       # execute
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
