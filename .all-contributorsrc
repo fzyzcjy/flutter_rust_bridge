@@ -791,6 +791,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "TrackerSB",
+      "name": "TrackerSB",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6358523?v=4",
+      "profile": "http://steinbrecher-bayern.de",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
