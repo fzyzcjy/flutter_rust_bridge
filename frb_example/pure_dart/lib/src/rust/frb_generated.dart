@@ -159,16 +159,27 @@ import 'api/pseudo_manual/raw_string_twin_sse.dart';
 import 'api/pseudo_manual/raw_string_twin_sync.dart';
 import 'api/pseudo_manual/raw_string_twin_sync_sse.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_moi.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_sse_moi.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sse.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_sse_moi.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_sync_moi.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync_sse.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_sync_sse_moi.dart';
 import 'api/pseudo_manual/rust_opaque_sync_twin_sse.dart';
+import 'api/pseudo_manual/rust_opaque_sync_twin_sse_moi.dart';
 import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
+import 'api/pseudo_manual/rust_opaque_twin_rust_async_moi.dart';
 import 'api/pseudo_manual/rust_opaque_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/rust_opaque_twin_rust_async_sse_moi.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sse.dart';
+import 'api/pseudo_manual/rust_opaque_twin_sse_moi.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
+import 'api/pseudo_manual/rust_opaque_twin_sync_moi.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync_sse.dart';
+import 'api/pseudo_manual/rust_opaque_twin_sync_sse_moi.dart';
 import 'api/pseudo_manual/simple_twin_rust_async.dart';
 import 'api/pseudo_manual/simple_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/simple_twin_sse.dart';
@@ -3978,6 +3989,143 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<void>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodArgBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodArgMutBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodArgOwnTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint});
+
+  Future<int>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodGetterTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodReturnOwnTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiNewCustomNameTwinRustAsyncMoi(
+          {dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiNewTwinRustAsyncMoi({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiNewWithResultTwinRustAsyncMoi(
+          {dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiStaticMethodArgBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiStaticMethodArgMutBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinRustAsyncMoiStaticMethodArgOwnTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiStaticMethodReturnOwnTwinRustAsyncMoi(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsyncMoi(
+      {required BoxFnStringString arg, dynamic hint});
+
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncMoi(
+      {dynamic hint});
+
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi a,
+      required String b,
+      dynamic hint});
+
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncMoi(
+      {required BoxMyTraitTwinRustAsyncMoi arg, dynamic hint});
+
+  Future<BoxMyTraitTwinRustAsyncMoi>
+      rustAutoOpaquePlusSignReturnTwinRustAsyncMoi({dynamic hint});
+
+  Future<OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncMoi({dynamic hint});
+
+  Future<OpaqueTwoTwinRustAsyncMoi>
+      rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncMoi({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      rustAutoOpaqueReturnOwnTwinRustAsyncMoi(
+          {required int initial, dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncMoi arg,
+          dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncMoi arg,
+          dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsyncMoi arg,
+      dynamic hint});
+
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsyncMoi>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncMoi(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoi(
+      {required BoxHelloTraitTwinRustAsyncMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoi(
+      {required BoxHelloTraitTwinRustAsyncMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoi(
+      {required BoxHelloTraitTwinRustAsyncMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsyncMoi>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoi({dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsyncMoi>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoi({dynamic hint});
+
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi a,
+      required NonCloneSimpleTwinRustAsyncMoi b,
+      dynamic hint});
+
+  Future<void>
       nonCloneSimpleTwinRustAsyncSseInstanceMethodArgBorrowTwinRustAsyncSse(
           {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint});
 
@@ -4114,6 +4262,145 @@ abstract class RustLibApi extends BaseApi {
       required NonCloneSimpleTwinRustAsyncSse b,
       dynamic hint});
 
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgMutBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint});
+
+  Future<int>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodGetterTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodReturnOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiNewCustomNameTwinRustAsyncSseMoi(
+          {dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiNewTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiNewWithResultTwinRustAsyncSseMoi(
+          {dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgMutBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint});
+
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodReturnOwnTwinRustAsyncSseMoi(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSseMoi(
+      {required BoxFnStringString arg, dynamic hint});
+
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncSseMoi(
+      {dynamic hint});
+
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi a,
+      required String b,
+      dynamic hint});
+
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncSseMoi(
+      {required BoxMyTraitTwinRustAsyncSseMoi arg, dynamic hint});
+
+  Future<BoxMyTraitTwinRustAsyncSseMoi>
+      rustAutoOpaquePlusSignReturnTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<OpaqueTwoTwinRustAsyncSseMoi>
+      rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(
+          {required int initial, dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSseMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg,
+          dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSseMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg,
+          dynamic hint});
+
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg,
+          dynamic hint});
+
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoi(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoi(
+      {required BoxHelloTraitTwinRustAsyncSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoi(
+      {required BoxHelloTraitTwinRustAsyncSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoi(
+      {required BoxHelloTraitTwinRustAsyncSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsyncSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<BoxHelloTraitTwinRustAsyncSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi a,
+      required NonCloneSimpleTwinRustAsyncSseMoi b,
+      dynamic hint});
+
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgBorrowTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint});
 
@@ -4225,6 +4512,125 @@ abstract class RustLibApi extends BaseApi {
       required NonCloneSimpleTwinSse b,
       dynamic hint});
 
+  Future<void> nonCloneSimpleTwinSseMoiInstanceMethodArgBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinSseMoiInstanceMethodArgMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinSseMoiInstanceMethodArgOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint});
+
+  Future<int> nonCloneSimpleTwinSseMoiInstanceMethodGetterTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint});
+
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiInstanceMethodReturnOwnTwinSseMoi(
+          {required NonCloneSimpleTwinSseMoi that, dynamic hint});
+
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiNewCustomNameTwinSseMoi({dynamic hint});
+
+  Future<NonCloneSimpleTwinSseMoi> nonCloneSimpleTwinSseMoiNewTwinSseMoi(
+      {dynamic hint});
+
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiNewWithResultTwinSseMoi({dynamic hint});
+
+  Future<void> nonCloneSimpleTwinSseMoiStaticMethodArgBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinSseMoiStaticMethodArgMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinSseMoiStaticMethodArgOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint});
+
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiStaticMethodReturnOwnTwinSseMoi({dynamic hint});
+
+  Future<void> rustAutoOpaqueArgBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueArgMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
+
+  Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueArgOwnAndReturnOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg,
+      required int expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueCallableArgTwinSseMoi(
+      {required BoxFnStringString arg, dynamic hint});
+
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSseMoi(
+      {dynamic hint});
+
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi a, required String b, dynamic hint});
+
+  Future<void> rustAutoOpaquePlusSignArgTwinSseMoi(
+      {required BoxMyTraitTwinSseMoi arg, dynamic hint});
+
+  Future<BoxMyTraitTwinSseMoi> rustAutoOpaquePlusSignReturnTwinSseMoi(
+      {dynamic hint});
+
+  Future<OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoi({dynamic hint});
+
+  Future<OpaqueTwoTwinSseMoi> rustAutoOpaqueReturnOpaqueTwoTwinSseMoi(
+      {dynamic hint});
+
+  Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueReturnOwnTwinSseMoi(
+      {required int initial, dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSseMoi arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSseMoi arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSseMoi arg, dynamic hint});
+
+  Future<StructWithGoodAndOpaqueFieldTwinSseMoi>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoi(
+          {dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinSseMoi(
+      {required BoxHelloTraitTwinSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinSseMoi(
+      {required BoxHelloTraitTwinSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinSseMoi(
+      {required BoxHelloTraitTwinSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  Future<BoxHelloTraitTwinSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinSseMoi({dynamic hint});
+
+  Future<BoxHelloTraitTwinSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSseMoi({dynamic hint});
+
+  Future<void> rustAutoOpaqueTwoArgsTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi a,
+      required NonCloneSimpleTwinSseMoi b,
+      dynamic hint});
+
   void nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
       {required NonCloneSimpleTwinSync that, dynamic hint});
 
@@ -4333,6 +4739,122 @@ abstract class RustLibApi extends BaseApi {
   void rustAutoOpaqueTwoArgsTwinSync(
       {required NonCloneSimpleTwinSync a,
       required NonCloneSimpleTwinSync b,
+      dynamic hint});
+
+  void nonCloneSimpleTwinSyncMoiInstanceMethodArgBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint});
+
+  void nonCloneSimpleTwinSyncMoiInstanceMethodArgMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint});
+
+  void nonCloneSimpleTwinSyncMoiInstanceMethodArgOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint});
+
+  int nonCloneSimpleTwinSyncMoiInstanceMethodGetterTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint});
+
+  NonCloneSimpleTwinSyncMoi
+      nonCloneSimpleTwinSyncMoiInstanceMethodReturnOwnTwinSyncMoi(
+          {required NonCloneSimpleTwinSyncMoi that, dynamic hint});
+
+  NonCloneSimpleTwinSyncMoi nonCloneSimpleTwinSyncMoiNewCustomNameTwinSyncMoi(
+      {dynamic hint});
+
+  NonCloneSimpleTwinSyncMoi nonCloneSimpleTwinSyncMoiNewTwinSyncMoi(
+      {dynamic hint});
+
+  NonCloneSimpleTwinSyncMoi nonCloneSimpleTwinSyncMoiNewWithResultTwinSyncMoi(
+      {dynamic hint});
+
+  void nonCloneSimpleTwinSyncMoiStaticMethodArgBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint});
+
+  void nonCloneSimpleTwinSyncMoiStaticMethodArgMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint});
+
+  void nonCloneSimpleTwinSyncMoiStaticMethodArgOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint});
+
+  NonCloneSimpleTwinSyncMoi
+      nonCloneSimpleTwinSyncMoiStaticMethodReturnOwnTwinSyncMoi({dynamic hint});
+
+  void rustAutoOpaqueArgBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg,
+      required int expect,
+      dynamic hint});
+
+  void rustAutoOpaqueArgMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
+
+  NonCloneSimpleTwinSyncMoi rustAutoOpaqueArgOwnAndReturnOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint});
+
+  void rustAutoOpaqueArgOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg,
+      required int expect,
+      dynamic hint});
+
+  void rustAutoOpaqueCallableArgTwinSyncMoi(
+      {required BoxFnStringString arg, dynamic hint});
+
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncMoi({dynamic hint});
+
+  void rustAutoOpaqueNormalAndOpaqueArgTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi a, required String b, dynamic hint});
+
+  void rustAutoOpaquePlusSignArgTwinSyncMoi(
+      {required BoxMyTraitTwinSyncMoi arg, dynamic hint});
+
+  BoxMyTraitTwinSyncMoi rustAutoOpaquePlusSignReturnTwinSyncMoi({dynamic hint});
+
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncMoi({dynamic hint});
+
+  OpaqueTwoTwinSyncMoi rustAutoOpaqueReturnOpaqueTwoTwinSyncMoi({dynamic hint});
+
+  NonCloneSimpleTwinSyncMoi rustAutoOpaqueReturnOwnTwinSyncMoi(
+      {required int initial, dynamic hint});
+
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg, dynamic hint});
+
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg, dynamic hint});
+
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg, dynamic hint});
+
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncMoi(
+          {dynamic hint});
+
+  void rustAutoOpaqueTraitObjectArgBorrowTwinSyncMoi(
+      {required BoxHelloTraitTwinSyncMoi arg,
+      required String expect,
+      dynamic hint});
+
+  void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncMoi(
+      {required BoxHelloTraitTwinSyncMoi arg,
+      required String expect,
+      dynamic hint});
+
+  void rustAutoOpaqueTraitObjectArgOwnTwinSyncMoi(
+      {required BoxHelloTraitTwinSyncMoi arg,
+      required String expect,
+      dynamic hint});
+
+  BoxHelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoi(
+      {dynamic hint});
+
+  BoxHelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoi(
+      {dynamic hint});
+
+  void rustAutoOpaqueTwoArgsTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi a,
+      required NonCloneSimpleTwinSyncMoi b,
       dynamic hint});
 
   void nonCloneSimpleTwinSyncSseInstanceMethodArgBorrowTwinSyncSse(
@@ -4451,6 +4973,127 @@ abstract class RustLibApi extends BaseApi {
       required NonCloneSimpleTwinSyncSse b,
       dynamic hint});
 
+  void nonCloneSimpleTwinSyncSseMoiInstanceMethodArgBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint});
+
+  void nonCloneSimpleTwinSyncSseMoiInstanceMethodArgMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint});
+
+  void nonCloneSimpleTwinSyncSseMoiInstanceMethodArgOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint});
+
+  int nonCloneSimpleTwinSyncSseMoiInstanceMethodGetterTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint});
+
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiInstanceMethodReturnOwnTwinSyncSseMoi(
+          {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint});
+
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiNewCustomNameTwinSyncSseMoi({dynamic hint});
+
+  NonCloneSimpleTwinSyncSseMoi nonCloneSimpleTwinSyncSseMoiNewTwinSyncSseMoi(
+      {dynamic hint});
+
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiNewWithResultTwinSyncSseMoi({dynamic hint});
+
+  void nonCloneSimpleTwinSyncSseMoiStaticMethodArgBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint});
+
+  void nonCloneSimpleTwinSyncSseMoiStaticMethodArgMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint});
+
+  void nonCloneSimpleTwinSyncSseMoiStaticMethodArgOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint});
+
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiStaticMethodReturnOwnTwinSyncSseMoi(
+          {dynamic hint});
+
+  void rustAutoOpaqueArgBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg,
+      required int expect,
+      dynamic hint});
+
+  void rustAutoOpaqueArgMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
+
+  NonCloneSimpleTwinSyncSseMoi rustAutoOpaqueArgOwnAndReturnOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint});
+
+  void rustAutoOpaqueArgOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg,
+      required int expect,
+      dynamic hint});
+
+  void rustAutoOpaqueCallableArgTwinSyncSseMoi(
+      {required BoxFnStringString arg, dynamic hint});
+
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSseMoi({dynamic hint});
+
+  void rustAutoOpaqueNormalAndOpaqueArgTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi a,
+      required String b,
+      dynamic hint});
+
+  void rustAutoOpaquePlusSignArgTwinSyncSseMoi(
+      {required BoxMyTraitTwinSyncSseMoi arg, dynamic hint});
+
+  BoxMyTraitTwinSyncSseMoi rustAutoOpaquePlusSignReturnTwinSyncSseMoi(
+      {dynamic hint});
+
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoi({dynamic hint});
+
+  OpaqueTwoTwinSyncSseMoi rustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoi(
+      {dynamic hint});
+
+  NonCloneSimpleTwinSyncSseMoi rustAutoOpaqueReturnOwnTwinSyncSseMoi(
+      {required int initial, dynamic hint});
+
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg, dynamic hint});
+
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg, dynamic hint});
+
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg, dynamic hint});
+
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoi(
+          {dynamic hint});
+
+  void rustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoi(
+      {required BoxHelloTraitTwinSyncSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoi(
+      {required BoxHelloTraitTwinSyncSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  void rustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoi(
+      {required BoxHelloTraitTwinSyncSseMoi arg,
+      required String expect,
+      dynamic hint});
+
+  BoxHelloTraitTwinSyncSseMoi
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi({dynamic hint});
+
+  BoxHelloTraitTwinSyncSseMoi
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi({dynamic hint});
+
+  void rustAutoOpaqueTwoArgsTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi a,
+      required NonCloneSimpleTwinSyncSseMoi b,
+      dynamic hint});
+
   FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSse({dynamic hint});
 
   NonCloneData syncCreateNonCloneTwinSse({dynamic hint});
@@ -4462,6 +5105,19 @@ abstract class RustLibApi extends BaseApi {
   HideData? syncOptionRustOpaqueTwinSse({dynamic hint});
 
   String syncRunOpaqueTwinSse({required NonSendHideData opaque, dynamic hint});
+
+  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSseMoi({dynamic hint});
+
+  NonCloneData syncCreateNonCloneTwinSseMoi({dynamic hint});
+
+  HideData syncCreateOpaqueTwinSseMoi({dynamic hint});
+
+  NonSendHideData syncCreateSyncOpaqueTwinSseMoi({dynamic hint});
+
+  HideData? syncOptionRustOpaqueTwinSseMoi({dynamic hint});
+
+  String syncRunOpaqueTwinSseMoi(
+      {required NonSendHideData opaque, dynamic hint});
 
   Future<EnumOpaqueTwinRustAsyncArray5> createArrayOpaqueEnumTwinRustAsync(
       {dynamic hint});
@@ -4504,6 +5160,49 @@ abstract class RustLibApi extends BaseApi {
       {required HideData opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinRustAsync(
+      {required HideData opaque, dynamic hint});
+
+  Future<EnumOpaqueTwinRustAsyncMoiArray5>
+      createArrayOpaqueEnumTwinRustAsyncMoi({dynamic hint});
+
+  Future<OpaqueNestedTwinRustAsyncMoi> createNestedOpaqueTwinRustAsyncMoi(
+      {dynamic hint});
+
+  Future<HideData> createOpaqueTwinRustAsyncMoi({dynamic hint});
+
+  Future<HideData?> createOptionOpaqueTwinRustAsyncMoi(
+      {HideData? opaque, dynamic hint});
+
+  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncMoi({dynamic hint});
+
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncMoi({dynamic hint});
+
+  Future<void> opaqueArrayRunTwinRustAsyncMoi(
+      {required HideDataArray2 data, dynamic hint});
+
+  Future<HideDataArray2> opaqueArrayTwinRustAsyncMoi({dynamic hint});
+
+  Future<void> opaqueVecRunTwinRustAsyncMoi(
+      {required List<HideData> data, dynamic hint});
+
+  Future<List<HideData>> opaqueVecTwinRustAsyncMoi({dynamic hint});
+
+  Future<String> runEnumOpaqueTwinRustAsyncMoi(
+      {required EnumOpaqueTwinRustAsyncMoi opaque, dynamic hint});
+
+  Future<void> runNestedOpaqueTwinRustAsyncMoi(
+      {required OpaqueNestedTwinRustAsyncMoi opaque, dynamic hint});
+
+  Future<String> runNonCloneTwinRustAsyncMoi(
+      {required NonCloneData clone, dynamic hint});
+
+  Future<String> runOpaqueTwinRustAsyncMoi(
+      {required HideData opaque, dynamic hint});
+
+  Future<String> runOpaqueWithDelayTwinRustAsyncMoi(
+      {required HideData opaque, dynamic hint});
+
+  Future<String> unwrapRustOpaqueTwinRustAsyncMoi(
       {required HideData opaque, dynamic hint});
 
   Future<EnumOpaqueTwinRustAsyncSseArray5>
@@ -4549,6 +5248,49 @@ abstract class RustLibApi extends BaseApi {
   Future<String> unwrapRustOpaqueTwinRustAsyncSse(
       {required HideData opaque, dynamic hint});
 
+  Future<EnumOpaqueTwinRustAsyncSseMoiArray5>
+      createArrayOpaqueEnumTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<OpaqueNestedTwinRustAsyncSseMoi> createNestedOpaqueTwinRustAsyncSseMoi(
+      {dynamic hint});
+
+  Future<HideData> createOpaqueTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<HideData?> createOptionOpaqueTwinRustAsyncSseMoi(
+      {HideData? opaque, dynamic hint});
+
+  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<void> opaqueArrayRunTwinRustAsyncSseMoi(
+      {required HideDataArray2 data, dynamic hint});
+
+  Future<HideDataArray2> opaqueArrayTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<void> opaqueVecRunTwinRustAsyncSseMoi(
+      {required List<HideData> data, dynamic hint});
+
+  Future<List<HideData>> opaqueVecTwinRustAsyncSseMoi({dynamic hint});
+
+  Future<String> runEnumOpaqueTwinRustAsyncSseMoi(
+      {required EnumOpaqueTwinRustAsyncSseMoi opaque, dynamic hint});
+
+  Future<void> runNestedOpaqueTwinRustAsyncSseMoi(
+      {required OpaqueNestedTwinRustAsyncSseMoi opaque, dynamic hint});
+
+  Future<String> runNonCloneTwinRustAsyncSseMoi(
+      {required NonCloneData clone, dynamic hint});
+
+  Future<String> runOpaqueTwinRustAsyncSseMoi(
+      {required HideData opaque, dynamic hint});
+
+  Future<String> runOpaqueWithDelayTwinRustAsyncSseMoi(
+      {required HideData opaque, dynamic hint});
+
+  Future<String> unwrapRustOpaqueTwinRustAsyncSseMoi(
+      {required HideData opaque, dynamic hint});
+
   Future<EnumOpaqueTwinSseArray5> createArrayOpaqueEnumTwinSse({dynamic hint});
 
   Future<OpaqueNestedTwinSse> createNestedOpaqueTwinSse({dynamic hint});
@@ -4588,6 +5330,47 @@ abstract class RustLibApi extends BaseApi {
   Future<String> unwrapRustOpaqueTwinSse(
       {required HideData opaque, dynamic hint});
 
+  Future<EnumOpaqueTwinSseMoiArray5> createArrayOpaqueEnumTwinSseMoi(
+      {dynamic hint});
+
+  Future<OpaqueNestedTwinSseMoi> createNestedOpaqueTwinSseMoi({dynamic hint});
+
+  Future<HideData> createOpaqueTwinSseMoi({dynamic hint});
+
+  Future<HideData?> createOptionOpaqueTwinSseMoi(
+      {HideData? opaque, dynamic hint});
+
+  Future<NonSendHideData> createSyncOpaqueTwinSseMoi({dynamic hint});
+
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinSseMoi({dynamic hint});
+
+  Future<void> opaqueArrayRunTwinSseMoi(
+      {required HideDataArray2 data, dynamic hint});
+
+  Future<HideDataArray2> opaqueArrayTwinSseMoi({dynamic hint});
+
+  Future<void> opaqueVecRunTwinSseMoi(
+      {required List<HideData> data, dynamic hint});
+
+  Future<List<HideData>> opaqueVecTwinSseMoi({dynamic hint});
+
+  Future<String> runEnumOpaqueTwinSseMoi(
+      {required EnumOpaqueTwinSseMoi opaque, dynamic hint});
+
+  Future<void> runNestedOpaqueTwinSseMoi(
+      {required OpaqueNestedTwinSseMoi opaque, dynamic hint});
+
+  Future<String> runNonCloneTwinSseMoi(
+      {required NonCloneData clone, dynamic hint});
+
+  Future<String> runOpaqueTwinSseMoi({required HideData opaque, dynamic hint});
+
+  Future<String> runOpaqueWithDelayTwinSseMoi(
+      {required HideData opaque, dynamic hint});
+
+  Future<String> unwrapRustOpaqueTwinSseMoi(
+      {required HideData opaque, dynamic hint});
+
   EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync({dynamic hint});
 
   OpaqueNestedTwinSync createNestedOpaqueTwinSync({dynamic hint});
@@ -4621,6 +5404,41 @@ abstract class RustLibApi extends BaseApi {
   String runOpaqueWithDelayTwinSync({required HideData opaque, dynamic hint});
 
   String unwrapRustOpaqueTwinSync({required HideData opaque, dynamic hint});
+
+  EnumOpaqueTwinSyncMoiArray5 createArrayOpaqueEnumTwinSyncMoi({dynamic hint});
+
+  OpaqueNestedTwinSyncMoi createNestedOpaqueTwinSyncMoi({dynamic hint});
+
+  HideData createOpaqueTwinSyncMoi({dynamic hint});
+
+  HideData? createOptionOpaqueTwinSyncMoi({HideData? opaque, dynamic hint});
+
+  NonSendHideData createSyncOpaqueTwinSyncMoi({dynamic hint});
+
+  FrbOpaqueReturn frbGeneratorTestTwinSyncMoi({dynamic hint});
+
+  void opaqueArrayRunTwinSyncMoi({required HideDataArray2 data, dynamic hint});
+
+  HideDataArray2 opaqueArrayTwinSyncMoi({dynamic hint});
+
+  void opaqueVecRunTwinSyncMoi({required List<HideData> data, dynamic hint});
+
+  List<HideData> opaqueVecTwinSyncMoi({dynamic hint});
+
+  String runEnumOpaqueTwinSyncMoi(
+      {required EnumOpaqueTwinSyncMoi opaque, dynamic hint});
+
+  void runNestedOpaqueTwinSyncMoi(
+      {required OpaqueNestedTwinSyncMoi opaque, dynamic hint});
+
+  String runNonCloneTwinSyncMoi({required NonCloneData clone, dynamic hint});
+
+  String runOpaqueTwinSyncMoi({required HideData opaque, dynamic hint});
+
+  String runOpaqueWithDelayTwinSyncMoi(
+      {required HideData opaque, dynamic hint});
+
+  String unwrapRustOpaqueTwinSyncMoi({required HideData opaque, dynamic hint});
 
   EnumOpaqueTwinSyncSseArray5 createArrayOpaqueEnumTwinSyncSse({dynamic hint});
 
@@ -4656,6 +5474,44 @@ abstract class RustLibApi extends BaseApi {
       {required HideData opaque, dynamic hint});
 
   String unwrapRustOpaqueTwinSyncSse({required HideData opaque, dynamic hint});
+
+  EnumOpaqueTwinSyncSseMoiArray5 createArrayOpaqueEnumTwinSyncSseMoi(
+      {dynamic hint});
+
+  OpaqueNestedTwinSyncSseMoi createNestedOpaqueTwinSyncSseMoi({dynamic hint});
+
+  HideData createOpaqueTwinSyncSseMoi({dynamic hint});
+
+  HideData? createOptionOpaqueTwinSyncSseMoi({HideData? opaque, dynamic hint});
+
+  NonSendHideData createSyncOpaqueTwinSyncSseMoi({dynamic hint});
+
+  FrbOpaqueReturn frbGeneratorTestTwinSyncSseMoi({dynamic hint});
+
+  void opaqueArrayRunTwinSyncSseMoi(
+      {required HideDataArray2 data, dynamic hint});
+
+  HideDataArray2 opaqueArrayTwinSyncSseMoi({dynamic hint});
+
+  void opaqueVecRunTwinSyncSseMoi({required List<HideData> data, dynamic hint});
+
+  List<HideData> opaqueVecTwinSyncSseMoi({dynamic hint});
+
+  String runEnumOpaqueTwinSyncSseMoi(
+      {required EnumOpaqueTwinSyncSseMoi opaque, dynamic hint});
+
+  void runNestedOpaqueTwinSyncSseMoi(
+      {required OpaqueNestedTwinSyncSseMoi opaque, dynamic hint});
+
+  String runNonCloneTwinSyncSseMoi({required NonCloneData clone, dynamic hint});
+
+  String runOpaqueTwinSyncSseMoi({required HideData opaque, dynamic hint});
+
+  String runOpaqueWithDelayTwinSyncSseMoi(
+      {required HideData opaque, dynamic hint});
+
+  String unwrapRustOpaqueTwinSyncSseMoi(
+      {required HideData opaque, dynamic hint});
 
   Future<int> simpleAdderTwinRustAsync(
       {required int a, required int b, dynamic hint});
@@ -5164,6 +6020,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5171,6 +6036,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinSse;
@@ -5182,6 +6056,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -5191,6 +6074,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5198,6 +6090,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxFnStringString;
@@ -5227,6 +6128,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5234,6 +6144,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSse;
@@ -5245,6 +6164,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -5252,6 +6180,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncSse;
@@ -5263,6 +6200,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinNormal;
 
   RustArcDecrementStrongCountFnType
@@ -5270,6 +6216,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsync;
@@ -5281,6 +6236,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5288,6 +6252,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSse;
@@ -5299,6 +6272,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxMyTraitTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -5306,6 +6288,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSyncSse;
@@ -5335,6 +6326,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5342,6 +6342,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSse;
@@ -5353,6 +6362,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -5362,6 +6380,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5369,6 +6396,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructInMiscNoTwinExampleA;
@@ -5407,6 +6443,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5414,6 +6459,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSse;
@@ -5425,6 +6479,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -5434,6 +6497,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5441,6 +6513,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithImplBlockInMultiFile;
@@ -5470,6 +6551,24 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5486,6 +6585,24 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse;
@@ -5506,6 +6623,24 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_OpaqueTwoTwinSsePtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSyncOpaqueTwoTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -5524,6 +6659,24 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
@@ -5540,6 +6693,24 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormal;
@@ -40110,6 +41281,1069 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodArgBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_borrow_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiInstanceMethodArgBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiInstanceMethodArgBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_borrow_twin_rust_async_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodArgMutBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_mut_borrow_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiInstanceMethodArgMutBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiInstanceMethodArgMutBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_mut_borrow_twin_rust_async_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodArgOwnTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_own_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiInstanceMethodArgOwnTwinRustAsyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiInstanceMethodArgOwnTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_instance_method_arg_own_twin_rust_async_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<int>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodGetterTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_instance_method_getter_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiInstanceMethodGetterTwinRustAsyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiInstanceMethodGetterTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_instance_method_getter_twin_rust_async_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiInstanceMethodReturnOwnTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_instance_method_return_own_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiInstanceMethodReturnOwnTwinRustAsyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiInstanceMethodReturnOwnTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_instance_method_return_own_twin_rust_async_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiNewCustomNameTwinRustAsyncMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_new_custom_name_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiNewCustomNameTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiNewCustomNameTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_new_custom_name_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiNewTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_new_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinRustAsyncMoiNewTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiNewTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName: "NonCloneSimpleTwinRustAsyncMoi_new_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiNewWithResultTwinRustAsyncMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_new_with_result_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiNewWithResultTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiNewWithResultTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_new_with_result_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiStaticMethodArgBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_static_method_arg_borrow_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiStaticMethodArgBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiStaticMethodArgBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_static_method_arg_borrow_twin_rust_async_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncMoiStaticMethodArgMutBorrowTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_static_method_arg_mut_borrow_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiStaticMethodArgMutBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiStaticMethodArgMutBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_static_method_arg_mut_borrow_twin_rust_async_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinRustAsyncMoiStaticMethodArgOwnTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_static_method_arg_own_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiStaticMethodArgOwnTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiStaticMethodArgOwnTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_static_method_arg_own_twin_rust_async_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      nonCloneSimpleTwinRustAsyncMoiStaticMethodReturnOwnTwinRustAsyncMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncMoi_static_method_return_own_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncMoiStaticMethodReturnOwnTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncMoiStaticMethodReturnOwnTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncMoi_static_method_return_own_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_rust_async_moi(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow_twin_rust_async_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        var arg2 = cst_encode_i_32(adder);
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async_moi(
+            port_, arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgMutBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg, expect, adder],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow_twin_rust_async_moi",
+        argNames: ["arg", "expect", "adder"],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncMoi(
+          {required NonCloneSimpleTwinRustAsyncMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_arg_own_and_return_own_twin_rust_async_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_own_twin_rust_async_moi(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnTwinRustAsyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_twin_rust_async_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsyncMoi(
+      {required BoxFnStringString arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_callable_arg_twin_rust_async_moi(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableArgTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg_twin_rust_async_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_callable_return_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableReturnTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi a,
+      required String b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                a);
+        var arg1 = cst_encode_String(b);
+        return wire
+            .wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_moi(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_moi",
+            argNames: ["a", "b"],
+          );
+
+  @override
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncMoi(
+      {required BoxMyTraitTwinRustAsyncMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_rust_async_moi(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignArgTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg_twin_rust_async_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxMyTraitTwinRustAsyncMoi>
+      rustAutoOpaquePlusSignReturnTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_plus_sign_return_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignReturnTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<OpaqueTwoTwinRustAsyncMoi>
+      rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_return_opaque_two_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_two_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncMoi>
+      rustAutoOpaqueReturnOwnTwinRustAsyncMoi(
+          {required int initial, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(initial);
+        return wire.wire_rust_auto_opaque_return_own_twin_rust_async_moi(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOwnTwinRustAsyncMoiConstMeta,
+      argValues: [initial],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own_twin_rust_async_moi",
+        argNames: ["initial"],
+      );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncMoi arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncMoi arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinRustAsyncMoi arg,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsyncMoi>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoi(
+      {required BoxHelloTraitTwinRustAsyncMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_moi(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoi(
+      {required BoxHelloTraitTwinRustAsyncMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_moi(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoi(
+      {required BoxHelloTraitTwinRustAsyncMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async_moi(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own_twin_rust_async_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsyncMoi>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_one_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsyncMoi>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async_moi(
+                port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_two_twin_rust_async_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi a,
+      required NonCloneSimpleTwinRustAsyncMoi b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                a);
+        var arg1 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                b);
+        return wire.wire_rust_auto_opaque_two_args_twin_rust_async_moi(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTwoArgsTwinRustAsyncMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args_twin_rust_async_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<void>
       nonCloneSimpleTwinRustAsyncSseInstanceMethodArgBorrowTwinRustAsyncSse(
           {required NonCloneSimpleTwinRustAsyncSse that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -41228,6 +43462,1140 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_borrow_twin_rust_async_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgMutBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_mut_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgMutBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgMutBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_mut_borrow_twin_rust_async_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodArgOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_instance_method_arg_own_twin_rust_async_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<int>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodGetterTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_instance_method_getter_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodGetterTwinRustAsyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodGetterTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_instance_method_getter_twin_rust_async_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiInstanceMethodReturnOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_instance_method_return_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodReturnOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiInstanceMethodReturnOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_instance_method_return_own_twin_rust_async_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiNewCustomNameTwinRustAsyncSseMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_new_custom_name_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiNewCustomNameTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiNewCustomNameTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_new_custom_name_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiNewTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiNewTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiNewTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_new_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiNewWithResultTwinRustAsyncSseMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_new_with_result_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiNewWithResultTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiNewWithResultTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_new_with_result_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_borrow_twin_rust_async_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgMutBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_mut_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgMutBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgMutBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_mut_borrow_twin_rust_async_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_static_method_arg_own_twin_rust_async_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      nonCloneSimpleTwinRustAsyncSseMoiStaticMethodReturnOwnTwinRustAsyncSseMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinRustAsyncSseMoi_static_method_return_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodReturnOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinRustAsyncSseMoiStaticMethodReturnOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinRustAsyncSseMoi_static_method_return_own_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow_twin_rust_async_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        sse_encode_i_32(adder, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgMutBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg, expect, adder],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow_twin_rust_async_sse_moi",
+        argNames: ["arg", "expect", "adder"],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_arg_own_and_return_own_twin_rust_async_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_own_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_twin_rust_async_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSseMoi(
+      {required BoxFnStringString arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_callable_arg_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableArgTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg_twin_rust_async_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncSseMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_callable_return_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableReturnTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi a,
+      required String b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            a, serializer);
+        sse_encode_String(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse_moi",
+            argNames: ["a", "b"],
+          );
+
+  @override
+  Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncSseMoi(
+      {required BoxMyTraitTwinRustAsyncSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignArgTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg_twin_rust_async_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxMyTraitTwinRustAsyncSseMoi>
+      rustAutoOpaquePlusSignReturnTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_plus_sign_return_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignReturnTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<OpaqueTwoTwinRustAsyncSseMoi>
+      rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_return_opaque_two_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_return_opaque_two_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinRustAsyncSseMoi>
+      rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(
+          {required int initial, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(initial, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_return_own_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [initial],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own_twin_rust_async_sse_moi",
+        argNames: ["initial"],
+      );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSseMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSseMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoi(
+          {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoi(
+      {required BoxHelloTraitTwinRustAsyncSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_sse_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoi(
+      {required BoxHelloTraitTwinRustAsyncSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_sse_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoi(
+      {required BoxHelloTraitTwinRustAsyncSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_own_twin_rust_async_sse_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsyncSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_one_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<BoxHelloTraitTwinRustAsyncSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_two_twin_rust_async_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi a,
+      required NonCloneSimpleTwinRustAsyncSseMoi b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            a, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_two_args_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTwoArgsTwinRustAsyncSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args_twin_rust_async_sse_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
   Future<void> nonCloneSimpleTwinSseInstanceMethodArgBorrowTwinSse(
       {required NonCloneSimpleTwinSse that, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -42276,6 +45644,1076 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> nonCloneSimpleTwinSseMoiInstanceMethodArgBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_instance_method_arg_borrow_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiInstanceMethodArgBorrowTwinSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiInstanceMethodArgBorrowTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_instance_method_arg_borrow_twin_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinSseMoiInstanceMethodArgMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_instance_method_arg_mut_borrow_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiInstanceMethodArgMutBorrowTwinSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiInstanceMethodArgMutBorrowTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_instance_method_arg_mut_borrow_twin_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinSseMoiInstanceMethodArgOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_instance_method_arg_own_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiInstanceMethodArgOwnTwinSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiInstanceMethodArgOwnTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_instance_method_arg_own_twin_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<int> nonCloneSimpleTwinSseMoiInstanceMethodGetterTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_instance_method_getter_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiInstanceMethodGetterTwinSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiInstanceMethodGetterTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_instance_method_getter_twin_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiInstanceMethodReturnOwnTwinSseMoi(
+          {required NonCloneSimpleTwinSseMoi that, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_instance_method_return_own_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiInstanceMethodReturnOwnTwinSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiInstanceMethodReturnOwnTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_instance_method_return_own_twin_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiNewCustomNameTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_NonCloneSimpleTwinSseMoi_new_custom_name_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSseMoiNewCustomNameTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinSseMoiNewCustomNameTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinSseMoi_new_custom_name_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinSseMoi> nonCloneSimpleTwinSseMoiNewTwinSseMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_NonCloneSimpleTwinSseMoi_new_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSseMoiNewTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinSseMoiNewTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinSseMoi_new_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiNewWithResultTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_NonCloneSimpleTwinSseMoi_new_with_result_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kNonCloneSimpleTwinSseMoiNewWithResultTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinSseMoiNewWithResultTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinSseMoi_new_with_result_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinSseMoiStaticMethodArgBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_static_method_arg_borrow_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiStaticMethodArgBorrowTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiStaticMethodArgBorrowTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_static_method_arg_borrow_twin_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinSseMoiStaticMethodArgMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_static_method_arg_mut_borrow_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiStaticMethodArgMutBorrowTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiStaticMethodArgMutBorrowTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_static_method_arg_mut_borrow_twin_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinSseMoiStaticMethodArgOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_static_method_arg_own_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSseMoiStaticMethodArgOwnTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiStaticMethodArgOwnTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_static_method_arg_own_twin_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<NonCloneSimpleTwinSseMoi>
+      nonCloneSimpleTwinSseMoiStaticMethodReturnOwnTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSseMoi_static_method_return_own_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSseMoiStaticMethodReturnOwnTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSseMoiStaticMethodReturnOwnTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSseMoi_static_method_return_own_twin_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueArgBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgBorrowTwinSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow_twin_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        sse_encode_i_32(adder, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgMutBorrowTwinSseMoiConstMeta,
+      argValues: [arg, expect, adder],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow_twin_sse_moi",
+        argNames: ["arg", "expect", "adder"],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueArgOwnAndReturnOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_own_and_return_own_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnAndReturnOwnTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_and_return_own_twin_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgOwnTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_own_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnTwinSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_twin_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueCallableArgTwinSseMoi(
+      {required BoxFnStringString arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_callable_arg_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableArgTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg_twin_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSseMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_callable_return_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableReturnTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi a, required String b, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            a, serializer);
+        sse_encode_String(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueNormalAndOpaqueArgTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_normal_and_opaque_arg_twin_sse_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<void> rustAutoOpaquePlusSignArgTwinSseMoi(
+      {required BoxMyTraitTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignArgTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg_twin_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxMyTraitTwinSseMoi> rustAutoOpaquePlusSignReturnTwinSseMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_plus_sign_return_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignReturnTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi>
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_return_opaque_one_and_two_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_one_and_two_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueTwoTwinSseMoi> rustAutoOpaqueReturnOpaqueTwoTwinSseMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_return_opaque_two_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueTwoTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueTwoTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_two_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueReturnOwnTwinSseMoi(
+      {required int initial, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(initial, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_return_own_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOwnTwinSseMoiConstMeta,
+      argValues: [initial],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own_twin_sse_moi",
+        argNames: ["initial"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSseMoi arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<StructWithGoodAndOpaqueFieldTwinSseMoi>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoi(
+          {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinSseMoi(
+      {required BoxHelloTraitTwinSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgBorrowTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_borrow_twin_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinSseMoi(
+      {required BoxHelloTraitTwinSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgMutBorrowTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinSseMoi(
+      {required BoxHelloTraitTwinSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_trait_object_arg_own_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own_twin_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<BoxHelloTraitTwinSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectReturnOwnOneTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_return_own_one_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<BoxHelloTraitTwinSseMoi>
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_return_own_two_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTwoArgsTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi a,
+      required NonCloneSimpleTwinSseMoi b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            a, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_two_args_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTwoArgsTwinSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args_twin_sse_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
   void nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
       {required NonCloneSimpleTwinSync that, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -43255,6 +47693,1016 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kRustAutoOpaqueTwoArgsTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_two_args_twin_sync",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  void nonCloneSimpleTwinSyncMoiInstanceMethodArgBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_instance_method_arg_borrow_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiInstanceMethodArgBorrowTwinSyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiInstanceMethodArgBorrowTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_instance_method_arg_borrow_twin_sync_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncMoiInstanceMethodArgMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_instance_method_arg_mut_borrow_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiInstanceMethodArgMutBorrowTwinSyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiInstanceMethodArgMutBorrowTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_instance_method_arg_mut_borrow_twin_sync_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncMoiInstanceMethodArgOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_instance_method_arg_own_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiInstanceMethodArgOwnTwinSyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiInstanceMethodArgOwnTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_instance_method_arg_own_twin_sync_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  int nonCloneSimpleTwinSyncMoiInstanceMethodGetterTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_instance_method_getter_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiInstanceMethodGetterTwinSyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiInstanceMethodGetterTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_instance_method_getter_twin_sync_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncMoi
+      nonCloneSimpleTwinSyncMoiInstanceMethodReturnOwnTwinSyncMoi(
+          {required NonCloneSimpleTwinSyncMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_instance_method_return_own_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiInstanceMethodReturnOwnTwinSyncMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiInstanceMethodReturnOwnTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_instance_method_return_own_twin_sync_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncMoi nonCloneSimpleTwinSyncMoiNewCustomNameTwinSyncMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_new_custom_name_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSyncMoiNewCustomNameTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiNewCustomNameTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_new_custom_name_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncMoi nonCloneSimpleTwinSyncMoiNewTwinSyncMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_NonCloneSimpleTwinSyncMoi_new_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSyncMoiNewTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinSyncMoiNewTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinSyncMoi_new_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  NonCloneSimpleTwinSyncMoi nonCloneSimpleTwinSyncMoiNewWithResultTwinSyncMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_new_with_result_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kNonCloneSimpleTwinSyncMoiNewWithResultTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiNewWithResultTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_new_with_result_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncMoiStaticMethodArgBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_static_method_arg_borrow_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiStaticMethodArgBorrowTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiStaticMethodArgBorrowTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_static_method_arg_borrow_twin_sync_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncMoiStaticMethodArgMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_static_method_arg_mut_borrow_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiStaticMethodArgMutBorrowTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiStaticMethodArgMutBorrowTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_static_method_arg_mut_borrow_twin_sync_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncMoiStaticMethodArgOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_static_method_arg_own_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiStaticMethodArgOwnTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiStaticMethodArgOwnTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_static_method_arg_own_twin_sync_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncMoi
+      nonCloneSimpleTwinSyncMoiStaticMethodReturnOwnTwinSyncMoi(
+          {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire_NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncMoiStaticMethodReturnOwnTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncMoiStaticMethodReturnOwnTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncMoi_static_method_return_own_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  void rustAutoOpaqueArgBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_sync_moi(arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgBorrowTwinSyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow_twin_sync_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  void rustAutoOpaqueArgMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        var arg2 = cst_encode_i_32(adder);
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_sync_moi(
+            arg0, arg1, arg2);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgMutBorrowTwinSyncMoiConstMeta,
+      argValues: [arg, expect, adder],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow_twin_sync_moi",
+        argNames: ["arg", "expect", "adder"],
+      );
+
+  @override
+  NonCloneSimpleTwinSyncMoi rustAutoOpaqueArgOwnAndReturnOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnAndReturnOwnTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_and_return_own_twin_sync_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  void rustAutoOpaqueArgOwnTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_own_twin_sync_moi(arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnTwinSyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_twin_sync_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  void rustAutoOpaqueCallableArgTwinSyncMoi(
+      {required BoxFnStringString arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_callable_arg_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableArgTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg_twin_sync_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_rust_auto_opaque_callable_return_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableReturnTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  void rustAutoOpaqueNormalAndOpaqueArgTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi a, required String b, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                a);
+        var arg1 = cst_encode_String(b);
+        return wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinSyncMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueNormalAndOpaqueArgTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  void rustAutoOpaquePlusSignArgTwinSyncMoi(
+      {required BoxMyTraitTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignArgTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg_twin_sync_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  BoxMyTraitTwinSyncMoi rustAutoOpaquePlusSignReturnTwinSyncMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_rust_auto_opaque_plus_sign_return_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignReturnTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire_rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  OpaqueTwoTwinSyncMoi rustAutoOpaqueReturnOpaqueTwoTwinSyncMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_rust_auto_opaque_return_opaque_two_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueTwoTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueTwoTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_two_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  NonCloneSimpleTwinSyncMoi rustAutoOpaqueReturnOwnTwinSyncMoi(
+      {required int initial, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(initial);
+        return wire.wire_rust_auto_opaque_return_own_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOwnTwinSyncMoiConstMeta,
+      argValues: [initial],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own_twin_sync_moi",
+        argNames: ["initial"],
+      );
+
+  @override
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncMoi(
+          {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  void rustAutoOpaqueTraitObjectArgBorrowTwinSyncMoi(
+      {required BoxHelloTraitTwinSyncMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_moi(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinSyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgBorrowTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_borrow_twin_sync_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncMoi(
+      {required BoxHelloTraitTwinSyncMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_moi(
+                arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  void rustAutoOpaqueTraitObjectArgOwnTwinSyncMoi(
+      {required BoxHelloTraitTwinSyncMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_own_twin_sync_moi(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinSyncMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own_twin_sync_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  BoxHelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_one_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  BoxHelloTraitTwinSyncMoi rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_two_twin_sync_moi",
+            argNames: [],
+          );
+
+  @override
+  void rustAutoOpaqueTwoArgsTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi a,
+      required NonCloneSimpleTwinSyncMoi b,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                a);
+        var arg1 =
+            cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                b);
+        return wire.wire_rust_auto_opaque_two_args_twin_sync_moi(arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTwoArgsTwinSyncMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args_twin_sync_moi",
         argNames: ["a", "b"],
       );
 
@@ -44342,6 +49790,1101 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void nonCloneSimpleTwinSyncSseMoiInstanceMethodArgBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_instance_method_arg_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiInstanceMethodArgBorrowTwinSyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiInstanceMethodArgBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_instance_method_arg_borrow_twin_sync_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncSseMoiInstanceMethodArgMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_instance_method_arg_mut_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiInstanceMethodArgMutBorrowTwinSyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiInstanceMethodArgMutBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_instance_method_arg_mut_borrow_twin_sync_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncSseMoiInstanceMethodArgOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_instance_method_arg_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiInstanceMethodArgOwnTwinSyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiInstanceMethodArgOwnTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_instance_method_arg_own_twin_sync_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  int nonCloneSimpleTwinSyncSseMoiInstanceMethodGetterTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_instance_method_getter_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiInstanceMethodGetterTwinSyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiInstanceMethodGetterTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_instance_method_getter_twin_sync_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiInstanceMethodReturnOwnTwinSyncSseMoi(
+          {required NonCloneSimpleTwinSyncSseMoi that, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            that, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_instance_method_return_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiInstanceMethodReturnOwnTwinSyncSseMoiConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiInstanceMethodReturnOwnTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_instance_method_return_own_twin_sync_sse_moi",
+            argNames: ["that"],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiNewCustomNameTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_new_custom_name_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiNewCustomNameTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiNewCustomNameTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_new_custom_name_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncSseMoi nonCloneSimpleTwinSyncSseMoiNewTwinSyncSseMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_NonCloneSimpleTwinSyncSseMoi_new_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kNonCloneSimpleTwinSyncSseMoiNewTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinSyncSseMoiNewTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinSyncSseMoi_new_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiNewWithResultTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_new_with_result_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiNewWithResultTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiNewWithResultTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_new_with_result_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncSseMoiStaticMethodArgBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_static_method_arg_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiStaticMethodArgBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiStaticMethodArgBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_static_method_arg_borrow_twin_sync_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncSseMoiStaticMethodArgMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_static_method_arg_mut_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiStaticMethodArgMutBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiStaticMethodArgMutBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_static_method_arg_mut_borrow_twin_sync_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void nonCloneSimpleTwinSyncSseMoiStaticMethodArgOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_static_method_arg_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiStaticMethodArgOwnTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiStaticMethodArgOwnTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_static_method_arg_own_twin_sync_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  NonCloneSimpleTwinSyncSseMoi
+      nonCloneSimpleTwinSyncSseMoiStaticMethodReturnOwnTwinSyncSseMoi(
+          {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_NonCloneSimpleTwinSyncSseMoi_static_method_return_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kNonCloneSimpleTwinSyncSseMoiStaticMethodReturnOwnTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinSyncSseMoiStaticMethodReturnOwnTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinSyncSseMoi_static_method_return_own_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  void rustAutoOpaqueArgBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow_twin_sync_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  void rustAutoOpaqueArgMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        sse_encode_i_32(adder, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgMutBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg, expect, adder],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow_twin_sync_sse_moi",
+        argNames: ["arg", "expect", "adder"],
+      );
+
+  @override
+  NonCloneSimpleTwinSyncSseMoi rustAutoOpaqueArgOwnAndReturnOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnAndReturnOwnTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_and_return_own_twin_sync_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  void rustAutoOpaqueArgOwnTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi arg,
+      required int expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            arg, serializer);
+        sse_encode_i_32(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_arg_own_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueArgOwnTwinSyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_twin_sync_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  void rustAutoOpaqueCallableArgTwinSyncSseMoi(
+      {required BoxFnStringString arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_callable_arg_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableArgTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg_twin_sync_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  BoxFnStringString rustAutoOpaqueCallableReturnTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_callable_return_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueCallableReturnTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  void rustAutoOpaqueNormalAndOpaqueArgTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi a,
+      required String b,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            a, serializer);
+        sse_encode_String(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinSyncSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueNormalAndOpaqueArgTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_normal_and_opaque_arg_twin_sync_sse_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  void rustAutoOpaquePlusSignArgTwinSyncSseMoi(
+      {required BoxMyTraitTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignArgTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg_twin_sync_sse_moi",
+        argNames: ["arg"],
+      );
+
+  @override
+  BoxMyTraitTwinSyncSseMoi rustAutoOpaquePlusSignReturnTwinSyncSseMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_plus_sign_return_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaquePlusSignReturnTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      rustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueReturnOpaqueOneAndTwoTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  OpaqueTwoTwinSyncSseMoi rustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_return_opaque_two_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOpaqueTwoTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_opaque_two_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  NonCloneSimpleTwinSyncSseMoi rustAutoOpaqueReturnOwnTwinSyncSseMoi(
+      {required int initial, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(initial, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_return_own_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueReturnOwnTwinSyncSseMoiConstMeta,
+      argValues: [initial],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own_twin_sync_sse_moi",
+        argNames: ["initial"],
+      );
+
+  @override
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSseMoi(
+      {required StructWithGoodAndOpaqueFieldTwinSyncSseMoi arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSseMoiConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_sse_moi",
+            argNames: ["arg"],
+          );
+
+  @override
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoi(
+          {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  void rustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoi(
+      {required BoxHelloTraitTwinSyncSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_borrow_twin_sync_sse_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  void rustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoi(
+      {required BoxHelloTraitTwinSyncSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_sse_moi",
+            argNames: ["arg", "expect"],
+          );
+
+  @override
+  void rustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoi(
+      {required BoxHelloTraitTwinSyncSseMoi arg,
+      required String expect,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+            arg, serializer);
+        sse_encode_String(expect, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_own_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoiConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own_twin_sync_sse_moi",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  BoxHelloTraitTwinSyncSseMoi
+      rustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_one_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  BoxHelloTraitTwinSyncSseMoi
+      rustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_trait_object_return_own_two_twin_sync_sse_moi",
+            argNames: [],
+          );
+
+  @override
+  void rustAutoOpaqueTwoArgsTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi a,
+      required NonCloneSimpleTwinSyncSseMoi b,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            a, serializer);
+        sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_two_args_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueTwoArgsTwinSyncSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args_twin_sync_sse_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
   FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -44497,6 +51040,167 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kSyncRunOpaqueTwinSseConstMeta => const TaskConstMeta(
         debugName: "sync_run_opaque_twin_sse",
+        argNames: ["opaque"],
+      );
+
+  @override
+  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_frb_sync_generator_test_twin_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_sync_return,
+        decodeErrorData: null,
+      ),
+      constMeta: kFrbSyncGeneratorTestTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbSyncGeneratorTestTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "frb_sync_generator_test_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  NonCloneData syncCreateNonCloneTwinSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_sync_create_non_clone_twin_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_non_clone_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kSyncCreateNonCloneTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncCreateNonCloneTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_create_non_clone_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  HideData syncCreateOpaqueTwinSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_sync_create_opaque_twin_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kSyncCreateOpaqueTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncCreateOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "sync_create_opaque_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  NonSendHideData syncCreateSyncOpaqueTwinSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_sync_create_sync_opaque_twin_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kSyncCreateSyncOpaqueTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncCreateSyncOpaqueTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_create_sync_opaque_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  HideData? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_sync_option_rust_opaque_twin_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kSyncOptionRustOpaqueTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionRustOpaqueTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_option_rust_opaque_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  String syncRunOpaqueTwinSseMoi(
+      {required NonSendHideData opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_non_send_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_sync_run_opaque_twin_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kSyncRunOpaqueTwinSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncRunOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "sync_run_opaque_twin_sse_moi",
         argNames: ["opaque"],
       );
 
@@ -44878,6 +51582,394 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kUnwrapRustOpaqueTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "unwrap_rust_opaque_twin_rust_async",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<EnumOpaqueTwinRustAsyncMoiArray5>
+      createArrayOpaqueEnumTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_create_array_opaque_enum_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_enum_opaque_twin_rust_async_moi_array_5,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateArrayOpaqueEnumTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateArrayOpaqueEnumTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_array_opaque_enum_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueNestedTwinRustAsyncMoi> createNestedOpaqueTwinRustAsyncMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_create_nested_opaque_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opaque_nested_twin_rust_async_moi,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateNestedOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedOpaqueTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_opaque_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData> createOpaqueTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_create_opaque_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOpaqueTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_opaque_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData?> createOptionOpaqueTwinRustAsyncMoi(
+      {HideData? opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        return wire.wire_create_option_opaque_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOptionOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOptionOpaqueTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_option_opaque_twin_rust_async_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_create_sync_opaque_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateSyncOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateSyncOpaqueTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_sync_opaque_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_frb_generator_test_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
+      ),
+      constMeta: kFrbGeneratorTestTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbGeneratorTestTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "frb_generator_test_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueArrayRunTwinRustAsyncMoi(
+      {required HideDataArray2 data, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        return wire.wire_opaque_array_run_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayRunTwinRustAsyncMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayRunTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_array_run_twin_rust_async_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<HideDataArray2> opaqueArrayTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_opaque_array_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_array_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueVecRunTwinRustAsyncMoi(
+      {required List<HideData> data, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        return wire.wire_opaque_vec_run_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecRunTwinRustAsyncMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecRunTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_vec_run_twin_rust_async_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<List<HideData>> opaqueVecTwinRustAsyncMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_opaque_vec_twin_rust_async_moi(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecTwinRustAsyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecTwinRustAsyncMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_twin_rust_async_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<String> runEnumOpaqueTwinRustAsyncMoi(
+      {required EnumOpaqueTwinRustAsyncMoi opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_enum_opaque_twin_rust_async_moi(opaque);
+        return wire.wire_run_enum_opaque_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunEnumOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunEnumOpaqueTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_enum_opaque_twin_rust_async_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> runNestedOpaqueTwinRustAsyncMoi(
+      {required OpaqueNestedTwinRustAsyncMoi opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_opaque_nested_twin_rust_async_moi(opaque);
+        return wire.wire_run_nested_opaque_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNestedOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNestedOpaqueTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_nested_opaque_twin_rust_async_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runNonCloneTwinRustAsyncMoi(
+      {required NonCloneData clone, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        return wire.wire_run_non_clone_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNonCloneTwinRustAsyncMoiConstMeta,
+      argValues: [clone],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNonCloneTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_non_clone_twin_rust_async_moi",
+        argNames: ["clone"],
+      );
+
+  @override
+  Future<String> runOpaqueTwinRustAsyncMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueTwinRustAsyncMoiConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_twin_rust_async_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runOpaqueWithDelayTwinRustAsyncMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_with_delay_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueWithDelayTwinRustAsyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueWithDelayTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_opaque_with_delay_twin_rust_async_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> unwrapRustOpaqueTwinRustAsyncMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_unwrap_rust_opaque_twin_rust_async_moi(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kUnwrapRustOpaqueTwinRustAsyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapRustOpaqueTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "unwrap_rust_opaque_twin_rust_async_moi",
         argNames: ["opaque"],
       );
 
@@ -45325,6 +52417,452 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<EnumOpaqueTwinRustAsyncSseMoiArray5>
+      createArrayOpaqueEnumTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_array_opaque_enum_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_enum_opaque_twin_rust_async_sse_moi_array_5,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateArrayOpaqueEnumTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateArrayOpaqueEnumTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_array_opaque_enum_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueNestedTwinRustAsyncSseMoi> createNestedOpaqueTwinRustAsyncSseMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_nested_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opaque_nested_twin_rust_async_sse_moi,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateNestedOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_opaque_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData> createOpaqueTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_opaque_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData?> createOptionOpaqueTwinRustAsyncSseMoi(
+      {HideData? opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_option_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOptionOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOptionOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_option_opaque_twin_rust_async_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_sync_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateSyncOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateSyncOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_sync_opaque_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_frb_generator_test_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
+      ),
+      constMeta: kFrbGeneratorTestTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbGeneratorTestTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "frb_generator_test_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueArrayRunTwinRustAsyncSseMoi(
+      {required HideDataArray2 data, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_array_run_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayRunTwinRustAsyncSseMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayRunTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_array_run_twin_rust_async_sse_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<HideDataArray2> opaqueArrayTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_array_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_array_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueVecRunTwinRustAsyncSseMoi(
+      {required List<HideData> data, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_vec_run_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecRunTwinRustAsyncSseMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecRunTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_vec_run_twin_rust_async_sse_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<List<HideData>> opaqueVecTwinRustAsyncSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_vec_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecTwinRustAsyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_vec_twin_rust_async_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<String> runEnumOpaqueTwinRustAsyncSseMoi(
+      {required EnumOpaqueTwinRustAsyncSseMoi opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_enum_opaque_twin_rust_async_sse_moi(
+            opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_enum_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunEnumOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunEnumOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_enum_opaque_twin_rust_async_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> runNestedOpaqueTwinRustAsyncSseMoi(
+      {required OpaqueNestedTwinRustAsyncSseMoi opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_opaque_nested_twin_rust_async_sse_moi(
+            opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_nested_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNestedOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNestedOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_nested_opaque_twin_rust_async_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runNonCloneTwinRustAsyncSseMoi(
+      {required NonCloneData clone, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_non_clone_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNonCloneTwinRustAsyncSseMoiConstMeta,
+      argValues: [clone],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNonCloneTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_non_clone_twin_rust_async_sse_moi",
+        argNames: ["clone"],
+      );
+
+  @override
+  Future<String> runOpaqueTwinRustAsyncSseMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_opaque_twin_rust_async_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runOpaqueWithDelayTwinRustAsyncSseMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_opaque_with_delay_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueWithDelayTwinRustAsyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueWithDelayTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_opaque_with_delay_twin_rust_async_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> unwrapRustOpaqueTwinRustAsyncSseMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_unwrap_rust_opaque_twin_rust_async_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kUnwrapRustOpaqueTwinRustAsyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapRustOpaqueTwinRustAsyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "unwrap_rust_opaque_twin_rust_async_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
   Future<EnumOpaqueTwinSseArray5> createArrayOpaqueEnumTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -45750,6 +53288,435 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<EnumOpaqueTwinSseMoiArray5> createArrayOpaqueEnumTwinSseMoi(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_array_opaque_enum_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_enum_opaque_twin_sse_moi_array_5,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateArrayOpaqueEnumTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateArrayOpaqueEnumTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_array_opaque_enum_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueNestedTwinSseMoi> createNestedOpaqueTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_nested_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opaque_nested_twin_sse_moi,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateNestedOpaqueTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedOpaqueTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_opaque_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData> createOpaqueTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOpaqueTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "create_opaque_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData?> createOptionOpaqueTwinSseMoi(
+      {HideData? opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_option_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOptionOpaqueTwinSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOptionOpaqueTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_option_opaque_twin_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<NonSendHideData> createSyncOpaqueTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_sync_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateSyncOpaqueTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateSyncOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "create_sync_opaque_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_frb_generator_test_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
+      ),
+      constMeta: kFrbGeneratorTestTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbGeneratorTestTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "frb_generator_test_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueArrayRunTwinSseMoi(
+      {required HideDataArray2 data, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_array_run_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayRunTwinSseMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayRunTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_run_twin_sse_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<HideDataArray2> opaqueArrayTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_array_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueVecRunTwinSseMoi(
+      {required List<HideData> data, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_vec_run_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecRunTwinSseMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecRunTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_run_twin_sse_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<List<HideData>> opaqueVecTwinSseMoi({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_vec_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecTwinSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_twin_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  Future<String> runEnumOpaqueTwinSseMoi(
+      {required EnumOpaqueTwinSseMoi opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_enum_opaque_twin_sse_moi(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_enum_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunEnumOpaqueTwinSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunEnumOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "run_enum_opaque_twin_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> runNestedOpaqueTwinSseMoi(
+      {required OpaqueNestedTwinSseMoi opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_opaque_nested_twin_sse_moi(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_nested_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNestedOpaqueTwinSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNestedOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "run_nested_opaque_twin_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runNonCloneTwinSseMoi(
+      {required NonCloneData clone, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_non_clone_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNonCloneTwinSseMoiConstMeta,
+      argValues: [clone],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNonCloneTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "run_non_clone_twin_sse_moi",
+        argNames: ["clone"],
+      );
+
+  @override
+  Future<String> runOpaqueTwinSseMoi({required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueTwinSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_twin_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runOpaqueWithDelayTwinSseMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_opaque_with_delay_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueWithDelayTwinSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueWithDelayTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_opaque_with_delay_twin_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> unwrapRustOpaqueTwinSseMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_unwrap_rust_opaque_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kUnwrapRustOpaqueTwinSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapRustOpaqueTwinSseMoiConstMeta => const TaskConstMeta(
+        debugName: "unwrap_rust_opaque_twin_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
   EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -46110,6 +54077,377 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kUnwrapRustOpaqueTwinSyncConstMeta => const TaskConstMeta(
         debugName: "unwrap_rust_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  EnumOpaqueTwinSyncMoiArray5 createArrayOpaqueEnumTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_create_array_opaque_enum_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_enum_opaque_twin_sync_moi_array_5,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateArrayOpaqueEnumTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateArrayOpaqueEnumTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_array_opaque_enum_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  OpaqueNestedTwinSyncMoi createNestedOpaqueTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_create_nested_opaque_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opaque_nested_twin_sync_moi,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateNestedOpaqueTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedOpaqueTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_opaque_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  HideData createOpaqueTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_create_opaque_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOpaqueTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOpaqueTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "create_opaque_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  HideData? createOptionOpaqueTwinSyncMoi({HideData? opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        return wire.wire_create_option_opaque_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOptionOpaqueTwinSyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOptionOpaqueTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_option_opaque_twin_sync_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  NonSendHideData createSyncOpaqueTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_create_sync_opaque_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateSyncOpaqueTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateSyncOpaqueTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_sync_opaque_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  FrbOpaqueReturn frbGeneratorTestTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_frb_generator_test_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
+      ),
+      constMeta: kFrbGeneratorTestTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbGeneratorTestTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "frb_generator_test_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  void opaqueArrayRunTwinSyncMoi({required HideDataArray2 data, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        return wire.wire_opaque_array_run_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayRunTwinSyncMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayRunTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_run_twin_sync_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  HideDataArray2 opaqueArrayTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_opaque_array_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  void opaqueVecRunTwinSyncMoi({required List<HideData> data, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        return wire.wire_opaque_vec_run_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecRunTwinSyncMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecRunTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_run_twin_sync_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  List<HideData> opaqueVecTwinSyncMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        return wire.wire_opaque_vec_twin_sync_moi();
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecTwinSyncMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_twin_sync_moi",
+        argNames: [],
+      );
+
+  @override
+  String runEnumOpaqueTwinSyncMoi(
+      {required EnumOpaqueTwinSyncMoi opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_enum_opaque_twin_sync_moi(opaque);
+        return wire.wire_run_enum_opaque_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunEnumOpaqueTwinSyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunEnumOpaqueTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "run_enum_opaque_twin_sync_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void runNestedOpaqueTwinSyncMoi(
+      {required OpaqueNestedTwinSyncMoi opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_opaque_nested_twin_sync_moi(opaque);
+        return wire.wire_run_nested_opaque_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNestedOpaqueTwinSyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNestedOpaqueTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "run_nested_opaque_twin_sync_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String runNonCloneTwinSyncMoi({required NonCloneData clone, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        return wire.wire_run_non_clone_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNonCloneTwinSyncMoiConstMeta,
+      argValues: [clone],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNonCloneTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "run_non_clone_twin_sync_moi",
+        argNames: ["clone"],
+      );
+
+  @override
+  String runOpaqueTwinSyncMoi({required HideData opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueTwinSyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueTwinSyncMoiConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_twin_sync_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String runOpaqueWithDelayTwinSyncMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_with_delay_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueWithDelayTwinSyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueWithDelayTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_opaque_with_delay_twin_sync_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String unwrapRustOpaqueTwinSyncMoi({required HideData opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_unwrap_rust_opaque_twin_sync_moi(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: dco_decode_AnyhowException,
+      ),
+      constMeta: kUnwrapRustOpaqueTwinSyncMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapRustOpaqueTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "unwrap_rust_opaque_twin_sync_moi",
         argNames: ["opaque"],
       );
 
@@ -46536,6 +54874,442 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kUnwrapRustOpaqueTwinSyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "unwrap_rust_opaque_twin_sync_sse",
+        argNames: ["opaque"],
+      );
+
+  @override
+  EnumOpaqueTwinSyncSseMoiArray5 createArrayOpaqueEnumTwinSyncSseMoi(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_array_opaque_enum_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_enum_opaque_twin_sync_sse_moi_array_5,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateArrayOpaqueEnumTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateArrayOpaqueEnumTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_array_opaque_enum_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  OpaqueNestedTwinSyncSseMoi createNestedOpaqueTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_nested_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opaque_nested_twin_sync_sse_moi,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateNestedOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedOpaqueTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_opaque_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  HideData createOpaqueTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOpaqueTwinSyncSseMoiConstMeta => const TaskConstMeta(
+        debugName: "create_opaque_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  HideData? createOptionOpaqueTwinSyncSseMoi({HideData? opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_option_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateOptionOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOptionOpaqueTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_option_opaque_twin_sync_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  NonSendHideData createSyncOpaqueTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_create_sync_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kCreateSyncOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateSyncOpaqueTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_sync_opaque_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  FrbOpaqueReturn frbGeneratorTestTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_frb_generator_test_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeErrorData: null,
+      ),
+      constMeta: kFrbGeneratorTestTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbGeneratorTestTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "frb_generator_test_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  void opaqueArrayRunTwinSyncSseMoi(
+      {required HideDataArray2 data, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_array_run_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayRunTwinSyncSseMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayRunTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "opaque_array_run_twin_sync_sse_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  HideDataArray2 opaqueArrayTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_array_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueArrayTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayTwinSyncSseMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  void opaqueVecRunTwinSyncSseMoi(
+      {required List<HideData> data, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_vec_run_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecRunTwinSyncSseMoiConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecRunTwinSyncSseMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_run_twin_sync_sse_moi",
+        argNames: ["data"],
+      );
+
+  @override
+  List<HideData> opaqueVecTwinSyncSseMoi({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire.wire_opaque_vec_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeErrorData: null,
+      ),
+      constMeta: kOpaqueVecTwinSyncSseMoiConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecTwinSyncSseMoiConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_twin_sync_sse_moi",
+        argNames: [],
+      );
+
+  @override
+  String runEnumOpaqueTwinSyncSseMoi(
+      {required EnumOpaqueTwinSyncSseMoi opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_enum_opaque_twin_sync_sse_moi(
+            opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_enum_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunEnumOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunEnumOpaqueTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_enum_opaque_twin_sync_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void runNestedOpaqueTwinSyncSseMoi(
+      {required OpaqueNestedTwinSyncSseMoi opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_opaque_nested_twin_sync_sse_moi(
+            opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_nested_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNestedOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNestedOpaqueTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_nested_opaque_twin_sync_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String runNonCloneTwinSyncSseMoi(
+      {required NonCloneData clone, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_non_clone_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunNonCloneTwinSyncSseMoiConstMeta,
+      argValues: [clone],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNonCloneTwinSyncSseMoiConstMeta => const TaskConstMeta(
+        debugName: "run_non_clone_twin_sync_sse_moi",
+        argNames: ["clone"],
+      );
+
+  @override
+  String runOpaqueTwinSyncSseMoi({required HideData opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueTwinSyncSseMoiConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_twin_sync_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String runOpaqueWithDelayTwinSyncSseMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_run_opaque_with_delay_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kRunOpaqueWithDelayTwinSyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueWithDelayTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_opaque_with_delay_twin_sync_sse_moi",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String unwrapRustOpaqueTwinSyncSseMoi(
+      {required HideData opaque, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_unwrap_rust_opaque_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kUnwrapRustOpaqueTwinSyncSseMoiConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapRustOpaqueTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "unwrap_rust_opaque_twin_sync_sse_moi",
         argNames: ["opaque"],
       );
 
@@ -51104,12 +59878,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinSse => wire
@@ -51120,6 +59910,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync;
 
@@ -51128,12 +59926,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinSyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxFnStringString => wire
@@ -51160,12 +59974,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSse => wire
@@ -51176,12 +60006,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinSync => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncSse => wire
@@ -51192,12 +60038,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsync => wire
@@ -51208,12 +60070,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinRustAsyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxMyTraitTwinRustAsyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSse => wire
@@ -51224,12 +60102,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxMyTraitTwinSync => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxMyTraitTwinSyncSse => wire
@@ -51256,12 +60150,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSse => wire
@@ -51272,6 +60182,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync;
 
@@ -51280,12 +60198,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncSse => wire
           .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructInMiscNoTwinExampleA => wire
@@ -51320,12 +60254,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSse =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSse =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSse =>
@@ -51336,6 +60286,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSync =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
@@ -51344,12 +60302,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSse =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithImplBlockInMultiFile => wire
@@ -51376,6 +60350,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse;
 
@@ -51390,6 +60380,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse => wire
@@ -51408,6 +60414,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSyncOpaqueTwoTwinSync =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync;
 
@@ -51424,6 +60446,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse =>
           wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse;
 
@@ -51438,6 +60476,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSse => wire
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_OpaqueTwoTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_OpaqueTwoTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormal =>
@@ -51528,10 +60582,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           dynamic raw) {
     return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51542,10 +60610,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
     return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51556,10 +60638,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxMyTraitTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
     return BoxMyTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51570,10 +60666,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxMyTraitTwinRustAsyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
           dynamic raw) {
     return BoxMyTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51584,10 +60694,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxMyTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
     return BoxMyTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51612,10 +60736,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51626,6 +60764,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
@@ -51633,10 +60778,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51663,10 +60822,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -51678,6 +60853,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
@@ -51685,10 +60868,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -51708,6 +60907,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           dynamic raw) {
@@ -51720,6 +60934,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           dynamic raw) {
     return OpaqueTwoTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51737,6 +60966,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   OpaqueOneTwinSyncOpaqueTwoTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           dynamic raw) {
@@ -51748,6 +60992,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           dynamic raw) {
     return OpaqueTwoTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51763,6 +61022,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           dynamic raw) {
     return OpaqueTwoTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51795,10 +61069,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           dynamic raw) {
     return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51809,6 +61097,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
@@ -51816,10 +61111,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
     return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51837,10 +61146,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51851,6 +61174,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
@@ -51858,10 +61188,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51881,10 +61225,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -51896,6 +61256,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
@@ -51903,10 +61271,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -51925,10 +61309,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           dynamic raw) {
     return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51939,6 +61337,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
@@ -51946,10 +61351,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
           dynamic raw) {
     return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51967,10 +61386,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -51981,6 +61414,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
@@ -51988,10 +61428,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52025,10 +61479,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -52040,6 +61510,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
@@ -52047,10 +61525,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -52331,9 +61825,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxDartDebugTwinRustAsyncMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(dynamic raw) {
+    return BoxDartDebugTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxDartDebugTwinRustAsyncSse
       dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(dynamic raw) {
     return BoxDartDebugTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(dynamic raw) {
+    return BoxDartDebugTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52343,15 +61849,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxDartDebugTwinSseMoi dco_decode_RustOpaque_box_dynDartDebugTwinSseMoi(
+      dynamic raw) {
+    return BoxDartDebugTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxDartDebugTwinSync dco_decode_RustOpaque_box_dynDartDebugTwinSync(
       dynamic raw) {
     return BoxDartDebugTwinSync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
+  BoxDartDebugTwinSyncMoi dco_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(
+      dynamic raw) {
+    return BoxDartDebugTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxDartDebugTwinSyncSse dco_decode_RustOpaque_box_dynDartDebugTwinSyncSse(
       dynamic raw) {
     return BoxDartDebugTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinSyncSseMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(dynamic raw) {
+    return BoxDartDebugTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52376,10 +61900,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           dynamic raw) {
     return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52390,10 +61928,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
     return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52404,10 +61956,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxMyTraitTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
     return BoxMyTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52418,10 +61984,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxMyTraitTwinRustAsyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
           dynamic raw) {
     return BoxMyTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52432,10 +62012,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   BoxMyTraitTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic raw) {
     return BoxMyTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52460,10 +62054,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52474,6 +62082,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
@@ -52481,10 +62096,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           dynamic raw) {
     return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52518,10 +62147,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -52533,6 +62178,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw) {
@@ -52540,10 +62193,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           dynamic raw) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
         raw as List<dynamic>);
   }
 
@@ -52570,6 +62239,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           dynamic raw) {
@@ -52582,6 +62266,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           dynamic raw) {
     return OpaqueTwoTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52599,6 +62298,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
   OpaqueOneTwinSyncOpaqueTwoTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           dynamic raw) {
@@ -52610,6 +62324,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           dynamic raw) {
     return OpaqueTwoTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -52625,6 +62354,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           dynamic raw) {
     return OpaqueTwoTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -54132,9 +63876,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinRustAsyncMoi
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_moi(dynamic raw) {
+    return dco_decode_enum_opaque_twin_rust_async_moi(raw);
+  }
+
+  @protected
   EnumOpaqueTwinRustAsyncSse
       dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse(dynamic raw) {
     return dco_decode_enum_opaque_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse_moi(dynamic raw) {
+    return dco_decode_enum_opaque_twin_rust_async_sse_moi(raw);
   }
 
   @protected
@@ -54143,14 +63899,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinSseMoi dco_decode_box_autoadd_enum_opaque_twin_sse_moi(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_sse_moi(raw);
+  }
+
+  @protected
   EnumOpaqueTwinSync dco_decode_box_autoadd_enum_opaque_twin_sync(dynamic raw) {
     return dco_decode_enum_opaque_twin_sync(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSyncMoi dco_decode_box_autoadd_enum_opaque_twin_sync_moi(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_sync_moi(raw);
   }
 
   @protected
   EnumOpaqueTwinSyncSse dco_decode_box_autoadd_enum_opaque_twin_sync_sse(
       dynamic raw) {
     return dco_decode_enum_opaque_twin_sync_sse(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi dco_decode_box_autoadd_enum_opaque_twin_sync_sse_moi(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_sync_sse_moi(raw);
   }
 
   @protected
@@ -54703,9 +64477,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinRustAsyncMoi
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_moi(dynamic raw) {
+    return dco_decode_opaque_nested_twin_rust_async_moi(raw);
+  }
+
+  @protected
   OpaqueNestedTwinRustAsyncSse
       dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse(dynamic raw) {
     return dco_decode_opaque_nested_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return dco_decode_opaque_nested_twin_rust_async_sse_moi(raw);
   }
 
   @protected
@@ -54715,15 +64502,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinSseMoi dco_decode_box_autoadd_opaque_nested_twin_sse_moi(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_sse_moi(raw);
+  }
+
+  @protected
   OpaqueNestedTwinSync dco_decode_box_autoadd_opaque_nested_twin_sync(
       dynamic raw) {
     return dco_decode_opaque_nested_twin_sync(raw);
   }
 
   @protected
+  OpaqueNestedTwinSyncMoi dco_decode_box_autoadd_opaque_nested_twin_sync_moi(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_sync_moi(raw);
+  }
+
+  @protected
   OpaqueNestedTwinSyncSse dco_decode_box_autoadd_opaque_nested_twin_sync_sse(
       dynamic raw) {
     return dco_decode_opaque_nested_twin_sync_sse(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi
+      dco_decode_box_autoadd_opaque_nested_twin_sync_sse_moi(dynamic raw) {
+    return dco_decode_opaque_nested_twin_sync_sse_moi(raw);
   }
 
   @protected
@@ -57125,6 +66930,43 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinRustAsyncMoi dco_decode_enum_opaque_twin_rust_async_moi(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinRustAsyncMoi_Struct(
+          dco_decode_RustOpaque_hide_data(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinRustAsyncMoi_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinRustAsyncMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinRustAsyncMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideData(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinRustAsyncMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoiArray5
+      dco_decode_enum_opaque_twin_rust_async_moi_array_5(dynamic raw) {
+    return EnumOpaqueTwinRustAsyncMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_moi)
+        .toList());
+  }
+
+  @protected
   EnumOpaqueTwinRustAsyncSse dco_decode_enum_opaque_twin_rust_async_sse(
       dynamic raw) {
     switch (raw[0]) {
@@ -57158,6 +67000,43 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_enum_opaque_twin_rust_async_sse_array_5(dynamic raw) {
     return EnumOpaqueTwinRustAsyncSseArray5((raw as List<dynamic>)
         .map(dco_decode_enum_opaque_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi dco_decode_enum_opaque_twin_rust_async_sse_moi(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinRustAsyncSseMoi_Struct(
+          dco_decode_RustOpaque_hide_data(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinRustAsyncSseMoi_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinRustAsyncSseMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinRustAsyncSseMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideData(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinRustAsyncSseMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoiArray5
+      dco_decode_enum_opaque_twin_rust_async_sse_moi_array_5(dynamic raw) {
+    return EnumOpaqueTwinRustAsyncSseMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_sse_moi)
         .toList());
   }
 
@@ -57196,6 +67075,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinSseMoi dco_decode_enum_opaque_twin_sse_moi(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSseMoi_Struct(
+          dco_decode_RustOpaque_hide_data(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSseMoi_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSseMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSseMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSseMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideData(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSseMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSseMoiArray5 dco_decode_enum_opaque_twin_sse_moi_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinSseMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sse_moi)
+        .toList());
+  }
+
+  @protected
   EnumOpaqueTwinSync dco_decode_enum_opaque_twin_sync(dynamic raw) {
     switch (raw[0]) {
       case 0:
@@ -57231,6 +67146,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinSyncMoi dco_decode_enum_opaque_twin_sync_moi(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSyncMoi_Struct(
+          dco_decode_RustOpaque_hide_data(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSyncMoi_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSyncMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSyncMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideData(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSyncMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncMoiArray5 dco_decode_enum_opaque_twin_sync_moi_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinSyncMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_moi)
+        .toList());
+  }
+
+  @protected
   EnumOpaqueTwinSyncSse dco_decode_enum_opaque_twin_sync_sse(dynamic raw) {
     switch (raw[0]) {
       case 0:
@@ -57263,6 +67214,43 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     return EnumOpaqueTwinSyncSseArray5((raw as List<dynamic>)
         .map(dco_decode_enum_opaque_twin_sync_sse)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi dco_decode_enum_opaque_twin_sync_sse_moi(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSyncSseMoi_Struct(
+          dco_decode_RustOpaque_hide_data(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSyncSseMoi_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSyncSseMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSyncSseMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideData(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSyncSseMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoiArray5
+      dco_decode_enum_opaque_twin_sync_sse_moi_array_5(dynamic raw) {
+    return EnumOpaqueTwinSyncSseMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_sse_moi)
         .toList());
   }
 
@@ -58342,6 +68330,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<EnumOpaqueTwinRustAsyncMoi>
+      dco_decode_list_enum_opaque_twin_rust_async_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_moi)
+        .toList();
+  }
+
+  @protected
   List<EnumOpaqueTwinRustAsyncSse>
       dco_decode_list_enum_opaque_twin_rust_async_sse(dynamic raw) {
     return (raw as List<dynamic>)
@@ -58350,8 +68346,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<EnumOpaqueTwinRustAsyncSseMoi>
+      dco_decode_list_enum_opaque_twin_rust_async_sse_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_sse_moi)
+        .toList();
+  }
+
+  @protected
   List<EnumOpaqueTwinSse> dco_decode_list_enum_opaque_twin_sse(dynamic raw) {
     return (raw as List<dynamic>).map(dco_decode_enum_opaque_twin_sse).toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSseMoi> dco_decode_list_enum_opaque_twin_sse_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sse_moi)
+        .toList();
   }
 
   @protected
@@ -58362,10 +68374,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<EnumOpaqueTwinSyncMoi> dco_decode_list_enum_opaque_twin_sync_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_moi)
+        .toList();
+  }
+
+  @protected
   List<EnumOpaqueTwinSyncSse> dco_decode_list_enum_opaque_twin_sync_sse(
       dynamic raw) {
     return (raw as List<dynamic>)
         .map(dco_decode_enum_opaque_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSyncSseMoi> dco_decode_list_enum_opaque_twin_sync_sse_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_sse_moi)
         .toList();
   }
 
@@ -59792,12 +69820,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinRustAsyncMoi dco_decode_opaque_nested_twin_rust_async_moi(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinRustAsyncMoi(
+      first: dco_decode_RustOpaque_hide_data(arr[0]),
+      second: dco_decode_RustOpaque_hide_data(arr[1]),
+    );
+  }
+
+  @protected
   OpaqueNestedTwinRustAsyncSse dco_decode_opaque_nested_twin_rust_async_sse(
       dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinRustAsyncSse(
+      first: dco_decode_RustOpaque_hide_data(arr[0]),
+      second: dco_decode_RustOpaque_hide_data(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      dco_decode_opaque_nested_twin_rust_async_sse_moi(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinRustAsyncSseMoi(
       first: dco_decode_RustOpaque_hide_data(arr[0]),
       second: dco_decode_RustOpaque_hide_data(arr[1]),
     );
@@ -59815,6 +69867,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinSseMoi dco_decode_opaque_nested_twin_sse_moi(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSseMoi(
+      first: dco_decode_RustOpaque_hide_data(arr[0]),
+      second: dco_decode_RustOpaque_hide_data(arr[1]),
+    );
+  }
+
+  @protected
   OpaqueNestedTwinSync dco_decode_opaque_nested_twin_sync(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
@@ -59826,11 +69889,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinSyncMoi dco_decode_opaque_nested_twin_sync_moi(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSyncMoi(
+      first: dco_decode_RustOpaque_hide_data(arr[0]),
+      second: dco_decode_RustOpaque_hide_data(arr[1]),
+    );
+  }
+
+  @protected
   OpaqueNestedTwinSyncSse dco_decode_opaque_nested_twin_sync_sse(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSyncSse(
+      first: dco_decode_RustOpaque_hide_data(arr[0]),
+      second: dco_decode_RustOpaque_hide_data(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi dco_decode_opaque_nested_twin_sync_sse_moi(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSyncSseMoi(
       first: dco_decode_RustOpaque_hide_data(arr[0]),
       second: dco_decode_RustOpaque_hide_data(arr[1]),
     );
@@ -62254,10 +72340,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62270,10 +72372,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62286,10 +72404,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxMyTraitTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsyncMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62302,10 +72436,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxMyTraitTwinRustAsyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62318,10 +72468,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxMyTraitTwinSync
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62350,10 +72516,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62366,6 +72548,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
@@ -62374,10 +72564,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62406,10 +72612,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62422,6 +72644,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
@@ -62430,10 +72660,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62454,6 +72700,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           SseDeserializer deserializer) {
@@ -62466,6 +72728,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return OpaqueTwoTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62486,6 +72764,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   OpaqueOneTwinSyncOpaqueTwoTwinSync
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           SseDeserializer deserializer) {
@@ -62502,6 +72796,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           SseDeserializer deserializer) {
@@ -62514,6 +72824,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           SseDeserializer deserializer) {
     return OpaqueTwoTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62550,10 +72876,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62566,6 +72908,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
@@ -62574,10 +72924,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62598,10 +72964,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62614,6 +72996,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
@@ -62622,10 +73012,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62646,10 +73052,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62662,6 +73084,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
@@ -62670,10 +73100,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62694,10 +73140,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62710,6 +73172,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
@@ -62718,10 +73188,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62742,10 +73228,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62758,6 +73260,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
@@ -62766,10 +73276,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62806,10 +73332,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -62822,6 +73364,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
@@ -62830,10 +73380,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63048,10 +73614,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxDartDebugTwinRustAsyncMoi
+      sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return BoxDartDebugTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxDartDebugTwinRustAsyncSse
       sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return BoxDartDebugTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxDartDebugTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxDartDebugTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63063,6 +73645,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxDartDebugTwinSseMoi sse_decode_RustOpaque_box_dynDartDebugTwinSseMoi(
+      SseDeserializer deserializer) {
+    return BoxDartDebugTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxDartDebugTwinSync sse_decode_RustOpaque_box_dynDartDebugTwinSync(
       SseDeserializer deserializer) {
     return BoxDartDebugTwinSync.sseDecode(
@@ -63070,9 +73659,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxDartDebugTwinSyncMoi sse_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(
+      SseDeserializer deserializer) {
+    return BoxDartDebugTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxDartDebugTwinSyncSse sse_decode_RustOpaque_box_dynDartDebugTwinSyncSse(
       SseDeserializer deserializer) {
     return BoxDartDebugTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxDartDebugTwinSyncSseMoi
+      sse_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxDartDebugTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63101,10 +73705,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinRustAsyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63117,10 +73737,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxHelloTraitTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           SseDeserializer deserializer) {
     return BoxHelloTraitTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63133,10 +73769,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxHelloTraitTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return BoxHelloTraitTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxMyTraitTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsyncMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63149,10 +73801,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxMyTraitTwinRustAsyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63165,10 +73833,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BoxMyTraitTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   BoxMyTraitTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
           SseDeserializer deserializer) {
     return BoxMyTraitTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          SseDeserializer deserializer) {
+    return BoxMyTraitTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63197,10 +73881,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinRustAsyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63213,6 +73913,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           SseDeserializer deserializer) {
@@ -63221,10 +73929,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  NonCloneSimpleTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   NonCloneSimpleTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           SseDeserializer deserializer) {
     return NonCloneSimpleTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return NonCloneSimpleTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63261,10 +73985,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinRustAsyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63277,6 +74017,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           SseDeserializer deserializer) {
@@ -63285,10 +74033,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           SseDeserializer deserializer) {
     return StructWithGoodAndOpaqueFieldTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63317,6 +74081,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           SseDeserializer deserializer) {
@@ -63329,6 +74109,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           SseDeserializer deserializer) {
     return OpaqueTwoTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinRustAsyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -63349,6 +74145,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   OpaqueOneTwinSyncOpaqueTwoTwinSync
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           SseDeserializer deserializer) {
@@ -63365,6 +74177,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
   OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           SseDeserializer deserializer) {
@@ -63377,6 +74205,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           SseDeserializer deserializer) {
     return OpaqueTwoTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return OpaqueTwoTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -64800,10 +75644,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinRustAsyncMoi
+      sse_decode_box_autoadd_enum_opaque_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_enum_opaque_twin_rust_async_moi(deserializer));
+  }
+
+  @protected
   EnumOpaqueTwinRustAsyncSse
       sse_decode_box_autoadd_enum_opaque_twin_rust_async_sse(
           SseDeserializer deserializer) {
     return (sse_decode_enum_opaque_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi
+      sse_decode_box_autoadd_enum_opaque_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_enum_opaque_twin_rust_async_sse_moi(deserializer));
   }
 
   @protected
@@ -64813,15 +75671,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinSseMoi sse_decode_box_autoadd_enum_opaque_twin_sse_moi(
+      SseDeserializer deserializer) {
+    return (sse_decode_enum_opaque_twin_sse_moi(deserializer));
+  }
+
+  @protected
   EnumOpaqueTwinSync sse_decode_box_autoadd_enum_opaque_twin_sync(
       SseDeserializer deserializer) {
     return (sse_decode_enum_opaque_twin_sync(deserializer));
   }
 
   @protected
+  EnumOpaqueTwinSyncMoi sse_decode_box_autoadd_enum_opaque_twin_sync_moi(
+      SseDeserializer deserializer) {
+    return (sse_decode_enum_opaque_twin_sync_moi(deserializer));
+  }
+
+  @protected
   EnumOpaqueTwinSyncSse sse_decode_box_autoadd_enum_opaque_twin_sync_sse(
       SseDeserializer deserializer) {
     return (sse_decode_enum_opaque_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi sse_decode_box_autoadd_enum_opaque_twin_sync_sse_moi(
+      SseDeserializer deserializer) {
+    return (sse_decode_enum_opaque_twin_sync_sse_moi(deserializer));
   }
 
   @protected
@@ -65421,10 +76297,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinRustAsyncMoi
+      sse_decode_box_autoadd_opaque_nested_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_opaque_nested_twin_rust_async_moi(deserializer));
+  }
+
+  @protected
   OpaqueNestedTwinRustAsyncSse
       sse_decode_box_autoadd_opaque_nested_twin_rust_async_sse(
           SseDeserializer deserializer) {
     return (sse_decode_opaque_nested_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      sse_decode_box_autoadd_opaque_nested_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_opaque_nested_twin_rust_async_sse_moi(deserializer));
   }
 
   @protected
@@ -65434,15 +76324,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinSseMoi sse_decode_box_autoadd_opaque_nested_twin_sse_moi(
+      SseDeserializer deserializer) {
+    return (sse_decode_opaque_nested_twin_sse_moi(deserializer));
+  }
+
+  @protected
   OpaqueNestedTwinSync sse_decode_box_autoadd_opaque_nested_twin_sync(
       SseDeserializer deserializer) {
     return (sse_decode_opaque_nested_twin_sync(deserializer));
   }
 
   @protected
+  OpaqueNestedTwinSyncMoi sse_decode_box_autoadd_opaque_nested_twin_sync_moi(
+      SseDeserializer deserializer) {
+    return (sse_decode_opaque_nested_twin_sync_moi(deserializer));
+  }
+
+  @protected
   OpaqueNestedTwinSyncSse sse_decode_box_autoadd_opaque_nested_twin_sync_sse(
       SseDeserializer deserializer) {
     return (sse_decode_opaque_nested_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi
+      sse_decode_box_autoadd_opaque_nested_twin_sync_sse_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_opaque_nested_twin_sync_sse_moi(deserializer));
   }
 
   @protected
@@ -67766,6 +78675,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinRustAsyncMoi sse_decode_enum_opaque_twin_rust_async_moi(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinRustAsyncMoi_Struct(var_field0);
+      case 1:
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinRustAsyncMoi_Primitive(var_field0);
+      case 2:
+        var var_field0 = sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(
+            deserializer);
+        return EnumOpaqueTwinRustAsyncMoi_TraitObj(var_field0);
+      case 3:
+        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinRustAsyncMoi_Mutex(var_field0);
+      case 4:
+        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinRustAsyncMoi_RwLock(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoiArray5
+      sse_decode_enum_opaque_twin_rust_async_moi_array_5(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_enum_opaque_twin_rust_async_moi(deserializer);
+    return EnumOpaqueTwinRustAsyncMoiArray5(inner);
+  }
+
+  @protected
   EnumOpaqueTwinRustAsyncSse sse_decode_enum_opaque_twin_rust_async_sse(
       SseDeserializer deserializer) {
     var tag_ = sse_decode_i_32(deserializer);
@@ -67797,6 +78740,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     var inner = sse_decode_list_enum_opaque_twin_rust_async_sse(deserializer);
     return EnumOpaqueTwinRustAsyncSseArray5(inner);
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi sse_decode_enum_opaque_twin_rust_async_sse_moi(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinRustAsyncSseMoi_Struct(var_field0);
+      case 1:
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinRustAsyncSseMoi_Primitive(var_field0);
+      case 2:
+        var var_field0 =
+            sse_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(
+                deserializer);
+        return EnumOpaqueTwinRustAsyncSseMoi_TraitObj(var_field0);
+      case 3:
+        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinRustAsyncSseMoi_Mutex(var_field0);
+      case 4:
+        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinRustAsyncSseMoi_RwLock(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoiArray5
+      sse_decode_enum_opaque_twin_rust_async_sse_moi_array_5(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_enum_opaque_twin_rust_async_sse_moi(deserializer);
+    return EnumOpaqueTwinRustAsyncSseMoiArray5(inner);
   }
 
   @protected
@@ -67833,6 +78812,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinSseMoi sse_decode_enum_opaque_twin_sse_moi(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinSseMoi_Struct(var_field0);
+      case 1:
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinSseMoi_Primitive(var_field0);
+      case 2:
+        var var_field0 =
+            sse_decode_RustOpaque_box_dynDartDebugTwinSseMoi(deserializer);
+        return EnumOpaqueTwinSseMoi_TraitObj(var_field0);
+      case 3:
+        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinSseMoi_Mutex(var_field0);
+      case 4:
+        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinSseMoi_RwLock(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSseMoiArray5 sse_decode_enum_opaque_twin_sse_moi_array_5(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_enum_opaque_twin_sse_moi(deserializer);
+    return EnumOpaqueTwinSseMoiArray5(inner);
+  }
+
+  @protected
   EnumOpaqueTwinSync sse_decode_enum_opaque_twin_sync(
       SseDeserializer deserializer) {
     var tag_ = sse_decode_i_32(deserializer);
@@ -67866,6 +78878,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  EnumOpaqueTwinSyncMoi sse_decode_enum_opaque_twin_sync_moi(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinSyncMoi_Struct(var_field0);
+      case 1:
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinSyncMoi_Primitive(var_field0);
+      case 2:
+        var var_field0 =
+            sse_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(deserializer);
+        return EnumOpaqueTwinSyncMoi_TraitObj(var_field0);
+      case 3:
+        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinSyncMoi_Mutex(var_field0);
+      case 4:
+        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinSyncMoi_RwLock(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncMoiArray5 sse_decode_enum_opaque_twin_sync_moi_array_5(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_enum_opaque_twin_sync_moi(deserializer);
+    return EnumOpaqueTwinSyncMoiArray5(inner);
+  }
+
+  @protected
   EnumOpaqueTwinSyncSse sse_decode_enum_opaque_twin_sync_sse(
       SseDeserializer deserializer) {
     var tag_ = sse_decode_i_32(deserializer);
@@ -67896,6 +78941,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     var inner = sse_decode_list_enum_opaque_twin_sync_sse(deserializer);
     return EnumOpaqueTwinSyncSseArray5(inner);
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi sse_decode_enum_opaque_twin_sync_sse_moi(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        return EnumOpaqueTwinSyncSseMoi_Struct(var_field0);
+      case 1:
+        var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
+        return EnumOpaqueTwinSyncSseMoi_Primitive(var_field0);
+      case 2:
+        var var_field0 =
+            sse_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(deserializer);
+        return EnumOpaqueTwinSyncSseMoi_TraitObj(var_field0);
+      case 3:
+        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        return EnumOpaqueTwinSyncSseMoi_Mutex(var_field0);
+      case 4:
+        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        return EnumOpaqueTwinSyncSseMoi_RwLock(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoiArray5
+      sse_decode_enum_opaque_twin_sync_sse_moi_array_5(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_enum_opaque_twin_sync_sse_moi(deserializer);
+    return EnumOpaqueTwinSyncSseMoiArray5(inner);
   }
 
   @protected
@@ -69101,6 +80180,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<EnumOpaqueTwinRustAsyncMoi>
+      sse_decode_list_enum_opaque_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinRustAsyncMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_enum_opaque_twin_rust_async_moi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<EnumOpaqueTwinRustAsyncSse>
       sse_decode_list_enum_opaque_twin_rust_async_sse(
           SseDeserializer deserializer) {
@@ -69108,6 +80199,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var ans_ = <EnumOpaqueTwinRustAsyncSse>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(sse_decode_enum_opaque_twin_rust_async_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncSseMoi>
+      sse_decode_list_enum_opaque_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinRustAsyncSseMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_enum_opaque_twin_rust_async_sse_moi(deserializer));
     }
     return ans_;
   }
@@ -69124,6 +80227,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<EnumOpaqueTwinSseMoi> sse_decode_list_enum_opaque_twin_sse_moi(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinSseMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_enum_opaque_twin_sse_moi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<EnumOpaqueTwinSync> sse_decode_list_enum_opaque_twin_sync(
       SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
@@ -69135,12 +80249,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<EnumOpaqueTwinSyncMoi> sse_decode_list_enum_opaque_twin_sync_moi(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinSyncMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_enum_opaque_twin_sync_moi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<EnumOpaqueTwinSyncSse> sse_decode_list_enum_opaque_twin_sync_sse(
       SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <EnumOpaqueTwinSyncSse>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(sse_decode_enum_opaque_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<EnumOpaqueTwinSyncSseMoi> sse_decode_list_enum_opaque_twin_sync_sse_moi(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <EnumOpaqueTwinSyncSseMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_enum_opaque_twin_sync_sse_moi(deserializer));
     }
     return ans_;
   }
@@ -70708,11 +81844,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinRustAsyncMoi sse_decode_opaque_nested_twin_rust_async_moi(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinRustAsyncMoi(first: var_first, second: var_second);
+  }
+
+  @protected
   OpaqueNestedTwinRustAsyncSse sse_decode_opaque_nested_twin_rust_async_sse(
       SseDeserializer deserializer) {
     var var_first = sse_decode_RustOpaque_hide_data(deserializer);
     var var_second = sse_decode_RustOpaque_hide_data(deserializer);
     return OpaqueNestedTwinRustAsyncSse(first: var_first, second: var_second);
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      sse_decode_opaque_nested_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinRustAsyncSseMoi(
+        first: var_first, second: var_second);
   }
 
   @protected
@@ -70724,6 +81878,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinSseMoi sse_decode_opaque_nested_twin_sse_moi(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinSseMoi(first: var_first, second: var_second);
+  }
+
+  @protected
   OpaqueNestedTwinSync sse_decode_opaque_nested_twin_sync(
       SseDeserializer deserializer) {
     var var_first = sse_decode_RustOpaque_hide_data(deserializer);
@@ -70732,11 +81894,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  OpaqueNestedTwinSyncMoi sse_decode_opaque_nested_twin_sync_moi(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinSyncMoi(first: var_first, second: var_second);
+  }
+
+  @protected
   OpaqueNestedTwinSyncSse sse_decode_opaque_nested_twin_sync_sse(
       SseDeserializer deserializer) {
     var var_first = sse_decode_RustOpaque_hide_data(deserializer);
     var var_second = sse_decode_RustOpaque_hide_data(deserializer);
     return OpaqueNestedTwinSyncSse(first: var_first, second: var_second);
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi sse_decode_opaque_nested_twin_sync_sse_moi(
+      SseDeserializer deserializer) {
+    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    return OpaqueNestedTwinSyncSseMoi(first: var_first, second: var_second);
   }
 
   @protected
@@ -73236,8 +84414,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+      BoxHelloTraitTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
       BoxHelloTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+      BoxHelloTraitTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73250,8 +84442,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+      BoxHelloTraitTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
       BoxHelloTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+      BoxHelloTraitTwinSyncMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73264,8 +84470,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+      BoxHelloTraitTwinSyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
       BoxMyTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+      BoxMyTraitTwinRustAsyncMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73278,8 +84498,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+      BoxMyTraitTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
       BoxMyTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+      BoxMyTraitTwinSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73292,8 +84526,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+      BoxMyTraitTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
       BoxMyTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+      BoxMyTraitTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73320,8 +84568,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+      NonCloneSimpleTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
       NonCloneSimpleTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+      NonCloneSimpleTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73334,6 +84596,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+      NonCloneSimpleTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
       NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73341,8 +84610,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+      NonCloneSimpleTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
       NonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+      NonCloneSimpleTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73369,8 +84652,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
       StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73383,6 +84680,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
       StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73390,8 +84694,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
       StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73411,6 +84729,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+      OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+      OpaqueTwoTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
       OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -73420,6 +84752,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
       OpaqueTwoTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+      OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+      OpaqueTwoTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73439,6 +84785,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+      OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+      OpaqueTwoTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
       OpaqueOneTwinSyncOpaqueTwoTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73453,6 +84813,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+      OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+      OpaqueTwoTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
       OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -73462,6 +84836,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
       OpaqueTwoTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+      OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+      OpaqueTwoTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: true);
   }
@@ -73495,8 +84883,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+      BoxHelloTraitTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
       BoxHelloTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+      BoxHelloTraitTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73509,6 +84911,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+      BoxHelloTraitTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
       BoxHelloTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73516,8 +84925,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+      BoxHelloTraitTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
       BoxHelloTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+      BoxHelloTraitTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73537,8 +84960,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+      NonCloneSimpleTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
       NonCloneSimpleTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+      NonCloneSimpleTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73551,6 +84988,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+      NonCloneSimpleTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
       NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73558,8 +85002,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+      NonCloneSimpleTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
       NonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+      NonCloneSimpleTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73579,8 +85037,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
       StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73593,6 +85065,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
       StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73600,8 +85079,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
       StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73621,8 +85114,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+      BoxHelloTraitTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
       BoxHelloTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+      BoxHelloTraitTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73635,6 +85142,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+      BoxHelloTraitTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
       BoxHelloTraitTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73642,8 +85156,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+      BoxHelloTraitTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
       BoxHelloTraitTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+      BoxHelloTraitTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73663,8 +85191,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+      NonCloneSimpleTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
       NonCloneSimpleTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+      NonCloneSimpleTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73677,6 +85219,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+      NonCloneSimpleTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
       NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73684,8 +85233,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+      NonCloneSimpleTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
       NonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+      NonCloneSimpleTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73719,8 +85282,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
       StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73733,6 +85310,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
       StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -73740,8 +85324,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
       StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: false);
+  }
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode(move: false);
   }
@@ -73903,8 +85501,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(
+      BoxDartDebugTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
       BoxDartDebugTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(
+      BoxDartDebugTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -73916,7 +85528,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_box_dynDartDebugTwinSseMoi(
+      BoxDartDebugTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_box_dynDartDebugTwinSync(BoxDartDebugTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_box_dynDartDebugTwinSyncMoi(
+      BoxDartDebugTwinSyncMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -73924,6 +85550,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int cst_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
       BoxDartDebugTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(
+      BoxDartDebugTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -73950,8 +85583,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+      BoxHelloTraitTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
       BoxHelloTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+      BoxHelloTraitTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -73964,8 +85611,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+      BoxHelloTraitTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
       BoxHelloTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+      BoxHelloTraitTwinSyncMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -73978,8 +85639,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+      BoxHelloTraitTwinSyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
       BoxMyTraitTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+      BoxMyTraitTwinRustAsyncMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -73992,8 +85667,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+      BoxMyTraitTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
       BoxMyTraitTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+      BoxMyTraitTwinSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74006,8 +85695,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+      BoxMyTraitTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
       BoxMyTraitTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+      BoxMyTraitTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74034,8 +85737,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+      NonCloneSimpleTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
       NonCloneSimpleTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+      NonCloneSimpleTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74048,6 +85765,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+      NonCloneSimpleTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
       NonCloneSimpleTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -74055,8 +85779,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+      NonCloneSimpleTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
       NonCloneSimpleTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+      NonCloneSimpleTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74090,8 +85828,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
       StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74104,6 +85856,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
       StructWithGoodAndOpaqueFieldTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -74111,8 +85870,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
       StructWithGoodAndOpaqueFieldTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+      StructWithGoodAndOpaqueFieldTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74139,6 +85912,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+      OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+      OpaqueTwoTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
       OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -74148,6 +85935,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
       OpaqueTwoTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+      OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+      OpaqueTwoTwinRustAsyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74167,6 +85968,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+      OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+      OpaqueTwoTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
       OpaqueOneTwinSyncOpaqueTwoTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -74181,6 +85996,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+      OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+      OpaqueTwoTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
       OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse raw) {
     // ignore: invalid_use_of_internal_member
@@ -74190,6 +86019,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
       OpaqueTwoTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+      OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+      OpaqueTwoTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -74405,8 +86248,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          BoxHelloTraitTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          BoxHelloTraitTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74419,8 +86276,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          BoxHelloTraitTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           BoxHelloTraitTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          BoxHelloTraitTwinSyncMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74433,8 +86304,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
           BoxMyTraitTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          BoxMyTraitTwinRustAsyncMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74447,8 +86332,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          BoxMyTraitTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
           BoxMyTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          BoxMyTraitTwinSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74461,8 +86360,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          BoxMyTraitTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
           BoxMyTraitTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          BoxMyTraitTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74489,8 +86402,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          NonCloneSimpleTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74503,6 +86430,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          NonCloneSimpleTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
@@ -74510,8 +86444,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74540,8 +86488,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
@@ -74555,6 +86519,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
@@ -74562,8 +86534,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
@@ -74585,6 +86573,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          OpaqueTwoTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse self,
           SseSerializer serializer) {
@@ -74595,6 +86598,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           OpaqueTwoTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          OpaqueTwoTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74614,6 +86632,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          OpaqueTwoTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           OpaqueOneTwinSyncOpaqueTwoTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
@@ -74623,6 +86656,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           OpaqueTwoTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          OpaqueTwoTwinSyncMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74638,6 +86686,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           OpaqueTwoTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          OpaqueTwoTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
@@ -74672,8 +86735,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          BoxHelloTraitTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          BoxHelloTraitTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74686,6 +86763,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          BoxHelloTraitTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           BoxHelloTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -74693,8 +86777,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          BoxHelloTraitTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
           BoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74714,8 +86812,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          NonCloneSimpleTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74728,6 +86840,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          NonCloneSimpleTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -74735,8 +86854,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74758,8 +86891,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -74773,6 +86922,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -74780,8 +86937,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -74802,8 +86975,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          BoxHelloTraitTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          BoxHelloTraitTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74816,6 +87003,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          BoxHelloTraitTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           BoxHelloTraitTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -74823,8 +87017,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          BoxHelloTraitTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
           BoxHelloTraitTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74844,8 +87052,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          NonCloneSimpleTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74858,6 +87080,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          NonCloneSimpleTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -74865,8 +87094,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
 
@@ -74902,8 +87145,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -74917,6 +87176,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
@@ -74924,8 +87191,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: false), serializer);
   }
@@ -75253,8 +87536,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(
+      BoxDartDebugTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
       BoxDartDebugTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(
+      BoxDartDebugTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75265,14 +87560,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinSseMoi(
+      BoxDartDebugTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_box_dynDartDebugTwinSync(
       BoxDartDebugTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinSyncMoi(
+      BoxDartDebugTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
   void sse_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
       BoxDartDebugTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(
+      BoxDartDebugTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75299,8 +87612,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          BoxHelloTraitTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
           BoxHelloTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          BoxHelloTraitTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75313,8 +87640,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          BoxHelloTraitTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           BoxHelloTraitTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          BoxHelloTraitTwinSyncMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75327,8 +87668,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          BoxHelloTraitTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
           BoxMyTraitTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          BoxMyTraitTwinRustAsyncMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75341,8 +87696,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          BoxMyTraitTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
           BoxMyTraitTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          BoxMyTraitTwinSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75355,8 +87724,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          BoxMyTraitTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
           BoxMyTraitTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          BoxMyTraitTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75383,8 +87766,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          NonCloneSimpleTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
           NonCloneSimpleTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          NonCloneSimpleTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75397,6 +87794,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          NonCloneSimpleTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           NonCloneSimpleTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -75404,8 +87808,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          NonCloneSimpleTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
           NonCloneSimpleTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          NonCloneSimpleTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75441,8 +87859,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
           StructWithGoodAndOpaqueFieldTwinRustAsyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
@@ -75456,6 +87890,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           StructWithGoodAndOpaqueFieldTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -75463,8 +87905,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
           StructWithGoodAndOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          StructWithGoodAndOpaqueFieldTwinSyncSseMoi self,
           SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
@@ -75493,6 +87951,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          OpaqueTwoTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse self,
           SseSerializer serializer) {
@@ -75503,6 +87976,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
           OpaqueTwoTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          OpaqueTwoTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75522,6 +88010,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          OpaqueTwoTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           OpaqueOneTwinSyncOpaqueTwoTwinSync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
@@ -75531,6 +88034,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           OpaqueTwoTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          OpaqueTwoTwinSyncMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -75546,6 +88064,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
           OpaqueTwoTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi self,
+          SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          OpaqueTwoTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -76831,9 +89364,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_rust_async_moi(
+      EnumOpaqueTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_enum_opaque_twin_rust_async_moi(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_enum_opaque_twin_rust_async_sse(
       EnumOpaqueTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_enum_opaque_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_rust_async_sse_moi(
+      EnumOpaqueTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_enum_opaque_twin_rust_async_sse_moi(self, serializer);
   }
 
   @protected
@@ -76843,15 +89388,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_sse_moi(
+      EnumOpaqueTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_enum_opaque_twin_sse_moi(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_enum_opaque_twin_sync(
       EnumOpaqueTwinSync self, SseSerializer serializer) {
     sse_encode_enum_opaque_twin_sync(self, serializer);
   }
 
   @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_sync_moi(
+      EnumOpaqueTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_enum_opaque_twin_sync_moi(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_enum_opaque_twin_sync_sse(
       EnumOpaqueTwinSyncSse self, SseSerializer serializer) {
     sse_encode_enum_opaque_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_enum_opaque_twin_sync_sse_moi(
+      EnumOpaqueTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_enum_opaque_twin_sync_sse_moi(self, serializer);
   }
 
   @protected
@@ -77423,9 +89986,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_rust_async_moi(
+      OpaqueNestedTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_opaque_nested_twin_rust_async_moi(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_opaque_nested_twin_rust_async_sse(
       OpaqueNestedTwinRustAsyncSse self, SseSerializer serializer) {
     sse_encode_opaque_nested_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_rust_async_sse_moi(
+      OpaqueNestedTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_opaque_nested_twin_rust_async_sse_moi(self, serializer);
   }
 
   @protected
@@ -77435,15 +90010,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_sse_moi(
+      OpaqueNestedTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_opaque_nested_twin_sse_moi(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_opaque_nested_twin_sync(
       OpaqueNestedTwinSync self, SseSerializer serializer) {
     sse_encode_opaque_nested_twin_sync(self, serializer);
   }
 
   @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_sync_moi(
+      OpaqueNestedTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_opaque_nested_twin_sync_moi(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_opaque_nested_twin_sync_sse(
       OpaqueNestedTwinSyncSse self, SseSerializer serializer) {
     sse_encode_opaque_nested_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_opaque_nested_twin_sync_sse_moi(
+      OpaqueNestedTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_opaque_nested_twin_sync_sse_moi(self, serializer);
   }
 
   @protected
@@ -79476,6 +92069,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_enum_opaque_twin_rust_async_moi(
+      EnumOpaqueTwinRustAsyncMoi self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinRustAsyncMoi_Struct(field0: final field0):
+        sse_encode_i_32(0, serializer);
+        sse_encode_RustOpaque_hide_data(field0, serializer);
+      case EnumOpaqueTwinRustAsyncMoi_Primitive(field0: final field0):
+        sse_encode_i_32(1, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
+      case EnumOpaqueTwinRustAsyncMoi_TraitObj(field0: final field0):
+        sse_encode_i_32(2, serializer);
+        sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(
+            field0, serializer);
+      case EnumOpaqueTwinRustAsyncMoi_Mutex(field0: final field0):
+        sse_encode_i_32(3, serializer);
+        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+      case EnumOpaqueTwinRustAsyncMoi_RwLock(field0: final field0):
+        sse_encode_i_32(4, serializer);
+        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_enum_opaque_twin_rust_async_moi_array_5(
+      EnumOpaqueTwinRustAsyncMoiArray5 self, SseSerializer serializer) {
+    sse_encode_list_enum_opaque_twin_rust_async_moi(self.inner, serializer);
+  }
+
+  @protected
   void sse_encode_enum_opaque_twin_rust_async_sse(
       EnumOpaqueTwinRustAsyncSse self, SseSerializer serializer) {
     switch (self) {
@@ -79502,6 +92124,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_enum_opaque_twin_rust_async_sse_array_5(
       EnumOpaqueTwinRustAsyncSseArray5 self, SseSerializer serializer) {
     sse_encode_list_enum_opaque_twin_rust_async_sse(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_enum_opaque_twin_rust_async_sse_moi(
+      EnumOpaqueTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinRustAsyncSseMoi_Struct(field0: final field0):
+        sse_encode_i_32(0, serializer);
+        sse_encode_RustOpaque_hide_data(field0, serializer);
+      case EnumOpaqueTwinRustAsyncSseMoi_Primitive(field0: final field0):
+        sse_encode_i_32(1, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
+      case EnumOpaqueTwinRustAsyncSseMoi_TraitObj(field0: final field0):
+        sse_encode_i_32(2, serializer);
+        sse_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(
+            field0, serializer);
+      case EnumOpaqueTwinRustAsyncSseMoi_Mutex(field0: final field0):
+        sse_encode_i_32(3, serializer);
+        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+      case EnumOpaqueTwinRustAsyncSseMoi_RwLock(field0: final field0):
+        sse_encode_i_32(4, serializer);
+        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_enum_opaque_twin_rust_async_sse_moi_array_5(
+      EnumOpaqueTwinRustAsyncSseMoiArray5 self, SseSerializer serializer) {
+    sse_encode_list_enum_opaque_twin_rust_async_sse_moi(self.inner, serializer);
   }
 
   @protected
@@ -79533,6 +92184,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_enum_opaque_twin_sse_moi(
+      EnumOpaqueTwinSseMoi self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinSseMoi_Struct(field0: final field0):
+        sse_encode_i_32(0, serializer);
+        sse_encode_RustOpaque_hide_data(field0, serializer);
+      case EnumOpaqueTwinSseMoi_Primitive(field0: final field0):
+        sse_encode_i_32(1, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
+      case EnumOpaqueTwinSseMoi_TraitObj(field0: final field0):
+        sse_encode_i_32(2, serializer);
+        sse_encode_RustOpaque_box_dynDartDebugTwinSseMoi(field0, serializer);
+      case EnumOpaqueTwinSseMoi_Mutex(field0: final field0):
+        sse_encode_i_32(3, serializer);
+        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+      case EnumOpaqueTwinSseMoi_RwLock(field0: final field0):
+        sse_encode_i_32(4, serializer);
+        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_enum_opaque_twin_sse_moi_array_5(
+      EnumOpaqueTwinSseMoiArray5 self, SseSerializer serializer) {
+    sse_encode_list_enum_opaque_twin_sse_moi(self.inner, serializer);
+  }
+
+  @protected
   void sse_encode_enum_opaque_twin_sync(
       EnumOpaqueTwinSync self, SseSerializer serializer) {
     switch (self) {
@@ -79561,6 +92240,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_enum_opaque_twin_sync_moi(
+      EnumOpaqueTwinSyncMoi self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinSyncMoi_Struct(field0: final field0):
+        sse_encode_i_32(0, serializer);
+        sse_encode_RustOpaque_hide_data(field0, serializer);
+      case EnumOpaqueTwinSyncMoi_Primitive(field0: final field0):
+        sse_encode_i_32(1, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
+      case EnumOpaqueTwinSyncMoi_TraitObj(field0: final field0):
+        sse_encode_i_32(2, serializer);
+        sse_encode_RustOpaque_box_dynDartDebugTwinSyncMoi(field0, serializer);
+      case EnumOpaqueTwinSyncMoi_Mutex(field0: final field0):
+        sse_encode_i_32(3, serializer);
+        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+      case EnumOpaqueTwinSyncMoi_RwLock(field0: final field0):
+        sse_encode_i_32(4, serializer);
+        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_enum_opaque_twin_sync_moi_array_5(
+      EnumOpaqueTwinSyncMoiArray5 self, SseSerializer serializer) {
+    sse_encode_list_enum_opaque_twin_sync_moi(self.inner, serializer);
+  }
+
+  @protected
   void sse_encode_enum_opaque_twin_sync_sse(
       EnumOpaqueTwinSyncSse self, SseSerializer serializer) {
     switch (self) {
@@ -79586,6 +92293,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_enum_opaque_twin_sync_sse_array_5(
       EnumOpaqueTwinSyncSseArray5 self, SseSerializer serializer) {
     sse_encode_list_enum_opaque_twin_sync_sse(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_enum_opaque_twin_sync_sse_moi(
+      EnumOpaqueTwinSyncSseMoi self, SseSerializer serializer) {
+    switch (self) {
+      case EnumOpaqueTwinSyncSseMoi_Struct(field0: final field0):
+        sse_encode_i_32(0, serializer);
+        sse_encode_RustOpaque_hide_data(field0, serializer);
+      case EnumOpaqueTwinSyncSseMoi_Primitive(field0: final field0):
+        sse_encode_i_32(1, serializer);
+        sse_encode_RustOpaque_i_32(field0, serializer);
+      case EnumOpaqueTwinSyncSseMoi_TraitObj(field0: final field0):
+        sse_encode_i_32(2, serializer);
+        sse_encode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(
+            field0, serializer);
+      case EnumOpaqueTwinSyncSseMoi_Mutex(field0: final field0):
+        sse_encode_i_32(3, serializer);
+        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+      case EnumOpaqueTwinSyncSseMoi_RwLock(field0: final field0):
+        sse_encode_i_32(4, serializer);
+        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_enum_opaque_twin_sync_sse_moi_array_5(
+      EnumOpaqueTwinSyncSseMoiArray5 self, SseSerializer serializer) {
+    sse_encode_list_enum_opaque_twin_sync_sse_moi(self.inner, serializer);
   }
 
   @protected
@@ -80589,11 +93325,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_enum_opaque_twin_rust_async_moi(
+      List<EnumOpaqueTwinRustAsyncMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_enum_opaque_twin_rust_async_moi(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_enum_opaque_twin_rust_async_sse(
       List<EnumOpaqueTwinRustAsyncSse> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       sse_encode_enum_opaque_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_rust_async_sse_moi(
+      List<EnumOpaqueTwinRustAsyncSseMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_enum_opaque_twin_rust_async_sse_moi(item, serializer);
     }
   }
 
@@ -80607,6 +93361,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_enum_opaque_twin_sse_moi(
+      List<EnumOpaqueTwinSseMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_enum_opaque_twin_sse_moi(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_enum_opaque_twin_sync(
       List<EnumOpaqueTwinSync> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
@@ -80616,11 +93379,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_enum_opaque_twin_sync_moi(
+      List<EnumOpaqueTwinSyncMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_enum_opaque_twin_sync_moi(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_enum_opaque_twin_sync_sse(
       List<EnumOpaqueTwinSyncSse> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       sse_encode_enum_opaque_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_enum_opaque_twin_sync_sse_moi(
+      List<EnumOpaqueTwinSyncSseMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_enum_opaque_twin_sync_sse_moi(item, serializer);
     }
   }
 
@@ -81917,8 +94698,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_opaque_nested_twin_rust_async_moi(
+      OpaqueNestedTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data(self.first, serializer);
+    sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  @protected
   void sse_encode_opaque_nested_twin_rust_async_sse(
       OpaqueNestedTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data(self.first, serializer);
+    sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  @protected
+  void sse_encode_opaque_nested_twin_rust_async_sse_moi(
+      OpaqueNestedTwinRustAsyncSseMoi self, SseSerializer serializer) {
     sse_encode_RustOpaque_hide_data(self.first, serializer);
     sse_encode_RustOpaque_hide_data(self.second, serializer);
   }
@@ -81931,6 +94726,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_opaque_nested_twin_sse_moi(
+      OpaqueNestedTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data(self.first, serializer);
+    sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  @protected
   void sse_encode_opaque_nested_twin_sync(
       OpaqueNestedTwinSync self, SseSerializer serializer) {
     sse_encode_RustOpaque_hide_data(self.first, serializer);
@@ -81938,8 +94740,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_opaque_nested_twin_sync_moi(
+      OpaqueNestedTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data(self.first, serializer);
+    sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  @protected
   void sse_encode_opaque_nested_twin_sync_sse(
       OpaqueNestedTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data(self.first, serializer);
+    sse_encode_RustOpaque_hide_data(self.second, serializer);
+  }
+
+  @protected
+  void sse_encode_opaque_nested_twin_sync_sse_moi(
+      OpaqueNestedTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_RustOpaque_hide_data(self.first, serializer);
     sse_encode_RustOpaque_hide_data(self.second, serializer);
   }
