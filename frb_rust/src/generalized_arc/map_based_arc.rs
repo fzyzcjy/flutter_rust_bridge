@@ -135,10 +135,10 @@ pub trait MapBasedArcValue: 'static {
 macro_rules! frb_generated_map_based_arc_impl_value {
     ($T:ty) => {
         impl MapBasedArcValue for $T {
-            fn get_pool() -> &'static crate::generalized_arc::map_based_arc::MapBasedArcPool<Self> {
-                use crate::generalized_arc::map_based_arc::MapBasedArcPool;
+            fn get_pool() -> &'static crate::for_generated::MapBasedArcPool<Self> {
+                use crate::for_generated::MapBasedArcPool;
                 crate::for_generated::lazy_static! {
-                    static ref POOL: MapBasedArcPool<$T> = MapBasedArcPool::new(MapBasedArcPoolInner::new());
+                    static ref POOL: MapBasedArcPool<$T> = MapBasedArcPool::new(Default::default());
                 }
                 &POOL
             }
@@ -148,22 +148,24 @@ macro_rules! frb_generated_map_based_arc_impl_value {
 
 type ObjectId = usize;
 
-type MapBasedArcPool<T> = RwLock<MapBasedArcPoolInner<T>>;
+pub type MapBasedArcPool<T> = RwLock<MapBasedArcPoolInner<T>>;
 
-struct MapBasedArcPoolInner<T: ?Sized> {
+pub struct MapBasedArcPoolInner<T: ?Sized> {
     map: HashMap<ObjectId, MapBasedArcPoolValue<T>>,
     next_id: ObjectId,
 }
 
-impl<T: ?Sized> MapBasedArcPoolInner<T> {
-    const MIN_ID: ObjectId = 1;
-
-    fn new() -> Self {
+impl<T: ?Sized> Default for MapBasedArcPoolInner<T> {
+    fn default() -> Self {
         Self {
             map: HashMap::new(),
             next_id: Self::MIN_ID,
         }
     }
+}
+
+impl<T: ?Sized> MapBasedArcPoolInner<T> {
+    const MIN_ID: ObjectId = 1;
 
     fn next_id(&mut self) -> ObjectId {
         let ans = self.next_id;
