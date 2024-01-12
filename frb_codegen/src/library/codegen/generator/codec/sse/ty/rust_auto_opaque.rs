@@ -12,7 +12,12 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         self.should_generate(lang).then(|| {
-            generate_generalized_rust_opaque_decode(lang, self.ir.clone().into(), self.context)
+            generate_generalized_rust_opaque_decode(
+                lang,
+                self.ir.clone().into(),
+                self.ir.inner.codec,
+                self.context,
+            )
         })
     }
 }
