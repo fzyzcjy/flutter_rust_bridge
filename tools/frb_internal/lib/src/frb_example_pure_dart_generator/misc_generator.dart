@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 
 Future<void> generateRustMod(Uri dir) async {
   final files = [
-    for (final file in Glob('${dir.toFilePath()}**.dart').listSync())
+    for (final file in Glob('${dir.toFilePath()}**.rs').listSync())
       if (file is File) basenameWithoutExtension(file.path)
   ].sorted();
   final lines = [
