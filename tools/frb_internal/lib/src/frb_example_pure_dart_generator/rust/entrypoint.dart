@@ -50,6 +50,7 @@ class RustGenerator extends BaseGenerator {
             RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
             (m) =>
                 'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
+
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
       // quick hack, since we are merely generating tests
       ans = ans
@@ -63,6 +64,13 @@ class RustGenerator extends BaseGenerator {
                   ? m.group(0)!
                   : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }
+
+    if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
+      ans = ans
+          .replaceAll('RustOpaque<', 'RustOpaqueMoi<')
+          .replaceAll('RustOpaqueNom<', 'RustOpaqueMoi<');
+    }
+
     return ans;
   }
 
