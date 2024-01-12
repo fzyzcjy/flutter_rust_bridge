@@ -13,6 +13,7 @@ pub use crate::codec::sse::{
 pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec, BaseCodec};
 pub use crate::dart_opaque::dart2rust::{cst_decode_dart_opaque, sse_decode_dart_opaque};
 pub use crate::generalized_arc::base_arc::BaseArc;
+pub use crate::generalized_arc::std_arc::StdArc; // TODO temp
 pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
