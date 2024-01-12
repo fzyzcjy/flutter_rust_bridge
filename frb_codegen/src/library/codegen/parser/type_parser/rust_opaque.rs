@@ -15,21 +15,24 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            ("RustOpaque", Some(Generic([ty]))) => self.parse_rust_opaque(ty),
-            // TODO handle codec that is expressed in this name
-            ("RustOpaqueNom", Some(Generic([ty]))) => self.parse_rust_opaque(ty),
-            ("RustOpaqueMoi", Some(Generic([ty]))) => self.parse_rust_opaque(ty),
+            ("RustOpaque", Some(Generic([ty]))) => self.parse_rust_opaque(ty, None),
+            ("RustOpaqueNom", Some(Generic([ty]))) => {
+                self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Nom))
+            }
+            ("RustOpaqueMoi", Some(Generic([ty]))) => {
+                self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi))
+            }
 
             _ => return Ok(None),
         }))
     }
 
-    fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
+    fn parse_rust_opaque(&mut self, ty: &IrType, codec: Option<RustOpaqueCodecMode>) -> IrType {
         let info = self.inner.rust_opaque_parser_info.get_or_insert(
             ty,
             RustOpaqueParserTypeInfo::new(
                 self.context.initiated_namespace.clone(),
-                self.context.func_attributes.rust_opaque_codec(),
+                codec.unwrap_or(self.context.func_attributes.rust_opaque_codec()),
             ),
         );
         RustOpaque(IrTypeRustOpaque::new(
