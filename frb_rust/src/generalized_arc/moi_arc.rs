@@ -35,7 +35,7 @@ macro_rules! frb_generated_moi_arc_def {
                 T: Sized,
             {
                 let mut pool = T::get_pool().write();
-                let object_id = pool.next_id();
+                let object_id = pool.id_generator.next_id();
 
                 let value = Arc::new(value);
 
@@ -210,22 +210,21 @@ macro_rules! frb_generated_moi_arc_impl_value {
 #[cfg(test)]
 mod tests {
     crate::frb_generated_moi_arc_def!();
-    crate::frb_generated_moi_rust_opaque_codec_def!();
 
     #[test]
     fn test_next_id() {
         let mut pool = MoiArcPoolInner::<String>::default();
-        assert_eq!(pool.next_id(), 1);
-        assert_eq!(pool.next_id(), 2);
-        assert_eq!(pool.next_id(), 3);
+        assert_eq!(pool.id_generator.next_id(), 1);
+        assert_eq!(pool.id_generator.next_id(), 2);
+        assert_eq!(pool.id_generator.next_id(), 3);
 
         pool.id_generator.next_id = 2147483598; // HACK and change value
-        assert_eq!(pool.next_id(), 2147483598);
-        assert_eq!(pool.next_id(), 2147483599);
-        assert_eq!(pool.next_id(), 2147483600);
-        assert_eq!(pool.next_id(), 1); // NOTE: still not zero
-        assert_eq!(pool.next_id(), 2);
-        assert_eq!(pool.next_id(), 3);
+        assert_eq!(pool.id_generator.next_id(), 2147483598);
+        assert_eq!(pool.id_generator.next_id(), 2147483599);
+        assert_eq!(pool.id_generator.next_id(), 2147483600);
+        assert_eq!(pool.id_generator.next_id(), 1); // NOTE: still not zero
+        assert_eq!(pool.id_generator.next_id(), 2);
+        assert_eq!(pool.id_generator.next_id(), 3);
     }
 
     // Do NOT make it `clone` (to test non-clone behavior)
