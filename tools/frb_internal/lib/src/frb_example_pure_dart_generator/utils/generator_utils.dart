@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/preludes.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
-import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 import 'package:recase/recase.dart';
+
+part 'generator_utils.freezed.dart';
 
 abstract class BaseGenerator {
   final Uri packageRootDir;
@@ -53,12 +55,14 @@ enum DuplicatorComponentMode {
   sse,
 }
 
-class DuplicatorMode {
-  final List<DuplicatorComponentMode> components;
+@freezed
+class DuplicatorMode with _$DuplicatorMode {
+  const factory DuplicatorMode(List<DuplicatorComponentMode> components) =
+      _DuplicatorMode;
 
-  const DuplicatorMode(this.components);
+  const DuplicatorMode._();
 
-  factory DuplicatorMode.parse(String raw) => DuplicatorMode(
+  static DuplicatorMode parse(String raw) => DuplicatorMode(
       raw.split(' ').map(DuplicatorComponentMode.values.byName).toList());
 
   static const values = [
