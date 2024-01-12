@@ -40,7 +40,7 @@ pub struct OpaqueNestedTwinSyncSse {
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn create_opaque_twin_sync_sse() -> crate::frb_generated::RustOpaqueMoi<HideDataTwinSyncSse> {
-    RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new()))
+    crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new()))
 }
 
 #[flutter_rust_bridge::frb(serialize)]
@@ -53,22 +53,24 @@ pub fn create_option_opaque_twin_sync_sse(
 
 // TODO about sync
 // #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn sync_create_opaque_twin_sync_sse() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<HideDataTwinSyncSse>> {
-//     SyncReturn(RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new())))
+//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new())))
 // }
 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn create_array_opaque_enum_twin_sync_sse() -> [EnumOpaqueTwinSyncSse; 5] {
     [
-        EnumOpaqueTwinSyncSse::Struct(RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new()))),
-        EnumOpaqueTwinSyncSse::Primitive(RustOpaque::new(42)),
+        EnumOpaqueTwinSyncSse::Struct(crate::frb_generated::RustOpaqueMoi::new(
+            HideDataTwinSyncSse(HideDataRaw::new()),
+        )),
+        EnumOpaqueTwinSyncSse::Primitive(crate::frb_generated::RustOpaqueMoi::new(42)),
         EnumOpaqueTwinSyncSse::TraitObj(opaque_dyn!("String")),
-        EnumOpaqueTwinSyncSse::Mutex(RustOpaque::new(Mutex::new(HideDataTwinSyncSse(
-            HideDataRaw::new(),
-        )))),
-        EnumOpaqueTwinSyncSse::RwLock(RustOpaque::new(RwLock::new(HideDataTwinSyncSse(
-            HideDataRaw::new(),
-        )))),
+        EnumOpaqueTwinSyncSse::Mutex(crate::frb_generated::RustOpaqueMoi::new(Mutex::new(
+            HideDataTwinSyncSse(HideDataRaw::new()),
+        ))),
+        EnumOpaqueTwinSyncSse::RwLock(crate::frb_generated::RustOpaqueMoi::new(RwLock::new(
+            HideDataTwinSyncSse(HideDataRaw::new()),
+        ))),
     ]
 }
 
@@ -114,14 +116,14 @@ pub fn run_opaque_with_delay_twin_sync_sse(
 pub fn opaque_array_twin_sync_sse() -> [crate::frb_generated::RustOpaqueMoi<HideDataTwinSyncSse>; 2]
 {
     [
-        RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new())),
-        RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new())),
     ]
 }
 
 // TODO about sync
 // #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn sync_create_non_clone_twin_sync_sse() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinSyncSse>> {
-//     SyncReturn(RustOpaque::new(NonCloneDataTwinSyncSse::new()))
+//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(NonCloneDataTwinSyncSse::new()))
 // }
 
 #[allow(clippy::redundant_clone)]
@@ -149,8 +151,8 @@ pub fn opaque_array_run_twin_sync_sse(
 #[flutter_rust_bridge::frb(sync)]
 pub fn opaque_vec_twin_sync_sse() -> Vec<crate::frb_generated::RustOpaqueMoi<HideDataTwinSyncSse>> {
     vec![
-        RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new())),
-        RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new())),
     ]
 }
 
@@ -168,8 +170,8 @@ pub fn opaque_vec_run_twin_sync_sse(
 #[flutter_rust_bridge::frb(sync)]
 pub fn create_nested_opaque_twin_sync_sse() -> OpaqueNestedTwinSyncSse {
     OpaqueNestedTwinSyncSse {
-        first: RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new())),
-        second: RustOpaque::new(HideDataTwinSyncSse(HideDataRaw::new())),
+        first: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new())),
+        second: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSyncSse(HideDataRaw::new())),
     }
 }
 

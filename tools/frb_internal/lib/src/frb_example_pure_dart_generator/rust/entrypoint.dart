@@ -70,8 +70,8 @@ class RustGenerator extends BaseGenerator {
       // anyway this hack only affects how tests are auto generated, so no problem
       ans = ans.replaceAll(RegExp(r'RustOpaque<i32>'),
           'crate::frb_generated::RustOpaqueMoi<i16>');
-      ans = ans.replaceAll(
-          RegExp(r'RustOpaque(Nom)?<'), 'crate::frb_generated::RustOpaqueMoi<');
+      ans = ans.replaceAllMapped(RegExp(r'RustOpaque(Nom)?(<|::)'),
+          (m) => 'crate::frb_generated::RustOpaqueMoi${m.group(2)}');
     }
 
     return ans;

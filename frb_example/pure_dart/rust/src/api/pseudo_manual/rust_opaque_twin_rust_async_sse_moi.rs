@@ -41,7 +41,7 @@ pub struct OpaqueNestedTwinRustAsyncSseMoi {
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn create_opaque_twin_rust_async_sse_moi(
 ) -> crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncSseMoi> {
-    RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new()))
+    crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new()))
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -54,7 +54,7 @@ pub async fn create_option_opaque_twin_rust_async_sse_moi(
 
 // TODO about sync
 // #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub async fn sync_create_opaque_twin_rust_async_sse_moi() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncSseMoi>> {
-//     SyncReturn(RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())))
+//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())))
 // }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -62,17 +62,17 @@ pub async fn create_option_opaque_twin_rust_async_sse_moi(
 pub async fn create_array_opaque_enum_twin_rust_async_sse_moi() -> [EnumOpaqueTwinRustAsyncSseMoi; 5]
 {
     [
-        EnumOpaqueTwinRustAsyncSseMoi::Struct(RustOpaque::new(HideDataTwinRustAsyncSseMoi(
-            HideDataRaw::new(),
-        ))),
-        EnumOpaqueTwinRustAsyncSseMoi::Primitive(RustOpaque::new(42)),
+        EnumOpaqueTwinRustAsyncSseMoi::Struct(crate::frb_generated::RustOpaqueMoi::new(
+            HideDataTwinRustAsyncSseMoi(HideDataRaw::new()),
+        )),
+        EnumOpaqueTwinRustAsyncSseMoi::Primitive(crate::frb_generated::RustOpaqueMoi::new(42)),
         EnumOpaqueTwinRustAsyncSseMoi::TraitObj(opaque_dyn!("String")),
-        EnumOpaqueTwinRustAsyncSseMoi::Mutex(RustOpaque::new(Mutex::new(
+        EnumOpaqueTwinRustAsyncSseMoi::Mutex(crate::frb_generated::RustOpaqueMoi::new(Mutex::new(
             HideDataTwinRustAsyncSseMoi(HideDataRaw::new()),
         ))),
-        EnumOpaqueTwinRustAsyncSseMoi::RwLock(RustOpaque::new(RwLock::new(
-            HideDataTwinRustAsyncSseMoi(HideDataRaw::new()),
-        ))),
+        EnumOpaqueTwinRustAsyncSseMoi::RwLock(crate::frb_generated::RustOpaqueMoi::new(
+            RwLock::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
+        )),
     ]
 }
 
@@ -120,14 +120,14 @@ pub async fn run_opaque_with_delay_twin_rust_async_sse_moi(
 pub async fn opaque_array_twin_rust_async_sse_moi(
 ) -> [crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncSseMoi>; 2] {
     [
-        RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
-        RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
     ]
 }
 
 // TODO about sync
 // #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(serialize)] pub async fn sync_create_non_clone_twin_rust_async_sse_moi() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinRustAsyncSseMoi>> {
-//     SyncReturn(RustOpaque::new(NonCloneDataTwinRustAsyncSseMoi::new()))
+//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(NonCloneDataTwinRustAsyncSseMoi::new()))
 // }
 
 #[allow(clippy::redundant_clone)]
@@ -156,8 +156,8 @@ pub async fn opaque_array_run_twin_rust_async_sse_moi(
 pub async fn opaque_vec_twin_rust_async_sse_moi(
 ) -> Vec<crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncSseMoi>> {
     vec![
-        RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
-        RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
     ]
 }
 
@@ -175,8 +175,12 @@ pub async fn opaque_vec_run_twin_rust_async_sse_moi(
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn create_nested_opaque_twin_rust_async_sse_moi() -> OpaqueNestedTwinRustAsyncSseMoi {
     OpaqueNestedTwinRustAsyncSseMoi {
-        first: RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
-        second: RustOpaque::new(HideDataTwinRustAsyncSseMoi(HideDataRaw::new())),
+        first: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(
+            HideDataRaw::new(),
+        )),
+        second: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncSseMoi(
+            HideDataRaw::new(),
+        )),
     }
 }
 
