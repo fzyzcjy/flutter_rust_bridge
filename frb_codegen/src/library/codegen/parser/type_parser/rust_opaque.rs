@@ -1,5 +1,5 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::RustOpaque;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
@@ -24,7 +24,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
         let namespace = (self.inner.rust_opaque_parser_info)
             .get_or_insert(ty, self.context.initiated_namespace.clone());
-        RustOpaque(IrTypeRustOpaque::new(namespace, ty.clone(), false))
+        RustOpaque(IrTypeRustOpaque::new(
+            namespace,
+            ty.clone(),
+            RustOpaqueCodecMode::Nom,
+            false,
+        ))
     }
 }
 
