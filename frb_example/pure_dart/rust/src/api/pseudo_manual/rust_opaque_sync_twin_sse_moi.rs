@@ -5,9 +5,14 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
 use crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideData;
-use crate::auxiliary::sample_types::{FrbOpaqueSyncReturn, NonCloneData, NonSendHideData};
+use crate::auxiliary::sample_types::{NonCloneData, NonSendHideData};
 use anyhow::Result;
 use flutter_rust_bridge::{frb, RustOpaque};
+
+/// Structure for testing the SyncReturn<RustOpaque> code generator.
+/// FrbOpaqueSyncReturn must be only return type.
+/// FrbOpaqueSyncReturn must should be without wrapper like Option<> Vec<> etc.
+pub struct FrbOpaqueSyncReturnTwinSseMoi;
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
@@ -61,6 +66,6 @@ pub fn sync_run_opaque_twin_sse_moi(
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(serialize)]
 pub fn frb_sync_generator_test_twin_sse_moi(
-) -> crate::frb_generated::RustOpaqueMoi<FrbOpaqueSyncReturn> {
-    RustOpaque::new(FrbOpaqueSyncReturn)
+) -> crate::frb_generated::RustOpaqueMoi<FrbOpaqueSyncReturnTwinSseMoi> {
+    RustOpaque::new(FrbOpaqueSyncReturnTwinSseMoi)
 }
