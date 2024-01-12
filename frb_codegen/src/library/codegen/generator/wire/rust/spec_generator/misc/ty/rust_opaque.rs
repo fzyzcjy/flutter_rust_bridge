@@ -35,7 +35,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                     return_type: None,
                     body: generate_maybe_unsafe(
                         &format!(
-                            "{}<{}>::{op}_strong_count(ptr as _);",
+                            "{}::<{}>::{op}_strong_count(ptr as _);",
                             self.ir.codec.arc_ty(),
                             &self.ir.inner.rust_api_type(),
                         ),
