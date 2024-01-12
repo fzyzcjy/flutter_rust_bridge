@@ -197,6 +197,9 @@ mod tests {
     use super::*;
     use crate::base_arc_generate_tests;
 
+    crate::frb_generated_map_based_arc_def!();
+    crate::frb_generated_moi_rust_opaque_codec_def!();
+
     #[test]
     fn test_next_id() {
         let mut pool = MapBasedArcPoolInner::<String>::new();
