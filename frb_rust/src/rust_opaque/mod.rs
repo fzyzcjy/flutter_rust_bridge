@@ -3,6 +3,7 @@ pub(crate) mod dart2rust;
 pub(crate) mod rust2dart;
 pub(crate) mod utils;
 
+use crate::for_generated::BaseArc;
 use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 use std::marker::PhantomData;
@@ -43,9 +44,9 @@ use std::marker::PhantomData;
 #[derive(Debug)]
 pub struct RustOpaque<
     T: ?Sized + 'static,
-    C: BaseRustOpaqueCodec<T, Arc = A> = NomRustOpaqueCodec,
+    C: BaseRustOpaqueCodec<T, Arc = A> + 'static + Send = NomRustOpaqueCodec,
     // Weird extra generic to workaround https://github.com/rust-lang/rust/issues/102211#issuecomment-1513931928
-    A = <C as BaseRustOpaqueCodec<T>>::Arc,
+    A: BaseArc<T> + 'static = <C as BaseRustOpaqueCodec<T>>::Arc,
 > {
     arc: A,
     _phantom_t: PhantomData<T>,
