@@ -38,7 +38,7 @@ fn generate_rust_arc_functions(
                          }.clone()],
                          return_type: None,
                          body: format!(
-                             "unsafe {{ <flutter_rust_bridge::for_generated::{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr); }}",
+                             "unsafe {{ <flutter_rust_bridge::for_generated::{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr as _); }}",
                              codec.to_string(),
                              inner.rust_api_type(),
                          ),
