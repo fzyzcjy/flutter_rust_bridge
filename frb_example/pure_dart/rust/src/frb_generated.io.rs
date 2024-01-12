@@ -315,70 +315,57 @@ impl CstDecode<std::collections::HashMap<i32, i32>> for *mut wire_cst_list_recor
         vec.into_iter().collect()
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Mutex<HideData>, NomRustOpaqueCodec>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>, NomRustOpaqueCodec> {
+impl CstDecode<flutter_rust_bridge::RustOpaque<Mutex<HideData>, StdArc<_>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>, StdArc<_>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<RwLock<HideData>, NomRustOpaqueCodec>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>, NomRustOpaqueCodec> {
+impl CstDecode<flutter_rust_bridge::RustOpaque<RwLock<HideData>, StdArc<_>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>, StdArc<_>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, NomRustOpaqueCodec>>
+impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, StdArc<_>>> for usize {
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, StdArc<_>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, StdArc<_>>>
     for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, NomRustOpaqueCodec> {
+    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, StdArc<_>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, NomRustOpaqueCodec>>
+impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, StdArc<_>>>
     for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, NomRustOpaqueCodec> {
+    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, StdArc<_>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, NomRustOpaqueCodec>,
-    > for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, NomRustOpaqueCodec>
-    {
+impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc<_>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc<_>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, NomRustOpaqueCodec>>
+impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, StdArc<_>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, StdArc<_>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, StdArc<_>>>
     for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, NomRustOpaqueCodec> {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, NomRustOpaqueCodec>>
-    for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, NomRustOpaqueCodec> {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, NomRustOpaqueCodec>>
-    for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, NomRustOpaqueCodec> {
+    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, StdArc<_>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
@@ -388,7 +375,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -398,7 +385,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn Fn(String) -> String + Send + Sync>,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -407,7 +394,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -415,7 +402,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -426,7 +413,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -434,7 +421,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -445,7 +432,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -453,7 +440,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsyncSse>>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -462,7 +449,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -470,7 +457,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -479,7 +466,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -487,7 +474,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -496,7 +483,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -504,7 +491,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -515,7 +502,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -525,7 +512,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinNormal + Send + Sync>,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -536,7 +523,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -546,7 +533,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinRustAsync + Send + Sync>,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -557,7 +544,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -567,7 +554,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -578,7 +565,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -588,7 +575,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSse + Send + Sync>,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -599,7 +586,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -609,7 +596,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSync + Send + Sync>,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -620,7 +607,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -630,7 +617,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSyncSse + Send + Sync>,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -639,7 +626,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -647,7 +634,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -656,7 +643,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -664,7 +651,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -673,7 +660,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -681,7 +668,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -690,7 +677,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -698,7 +685,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -707,7 +694,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -715,7 +702,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -724,7 +711,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -732,7 +719,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -741,7 +728,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -749,7 +736,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -758,7 +745,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -766,7 +753,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -777,7 +764,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -787,7 +774,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinNormal,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -798,7 +785,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -808,7 +795,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinRustAsync,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -819,7 +806,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -829,7 +816,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -840,7 +827,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -848,7 +835,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSse>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -859,7 +846,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -869,7 +856,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSync,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -880,7 +867,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -890,7 +877,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSyncSse,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -899,7 +886,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -907,7 +894,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -919,7 +906,7 @@ impl
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             )>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -930,7 +917,7 @@ impl
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
         )>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -941,7 +928,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -951,18 +938,18 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, NomRustOpaqueCodec>> for usize {
-            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, NomRustOpaqueCodec> {
+impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, StdArc<_>>> for usize {
+            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, StdArc<_>> {
                 unsafe { decode_rust_opaque_nom(self as _) }
             }
         }
-impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, NomRustOpaqueCodec>> for usize {
-            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, NomRustOpaqueCodec> {
+impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, StdArc<_>>> for usize {
+            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, StdArc<_>> {
                 unsafe { decode_rust_opaque_nom(self as _) }
             }
         }
@@ -973,7 +960,7 @@ impl
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             )>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -984,7 +971,7 @@ impl
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
         )>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -995,7 +982,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1005,7 +992,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1017,7 +1004,7 @@ impl
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             )>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1028,7 +1015,7 @@ impl
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
         )>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1039,7 +1026,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1049,7 +1036,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1061,7 +1048,7 @@ impl
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             )>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1072,7 +1059,7 @@ impl
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
         )>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1083,7 +1070,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1093,7 +1080,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1105,7 +1092,7 @@ impl
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             )>,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1116,7 +1103,7 @@ impl
             crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
             crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
         )>,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1127,7 +1114,7 @@ impl
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1137,25 +1124,20 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
         >,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::FrbOpaqueReturn,
-            NomRustOpaqueCodec,
-        >,
+        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, StdArc<_>>,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        crate::auxiliary::sample_types::FrbOpaqueReturn,
-        NomRustOpaqueCodec,
-    > {
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, StdArc<_>>
+    {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
@@ -1163,7 +1145,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-            NomRustOpaqueCodec,
+            StdArc<_>,
         >,
     > for usize
 {
@@ -1171,85 +1153,61 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-        NomRustOpaqueCodec,
+        StdArc<_>,
     > {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
+    for usize
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::HideData,
-            NomRustOpaqueCodec,
-        >,
+        [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>; 2],
+    > for *mut wire_cst_list_RustOpaque_hide_data
+{
+    fn cst_decode(
+        self,
+    ) -> [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>; 2]
+    {
+        let vec: Vec<
+            flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>,
+        > = self.cst_decode();
+        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaque<i32, StdArc<_>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<i32, StdArc<_>> {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData, StdArc<_>>,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, NomRustOpaqueCodec>
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData, StdArc<_>>
     {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        [flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::HideData,
-            NomRustOpaqueCodec,
-        >; 2],
-    > for *mut wire_cst_list_RustOpaque_hide_data
-{
-    fn cst_decode(
-        self,
-    ) -> [flutter_rust_bridge::RustOpaque<
-        crate::auxiliary::sample_types::HideData,
-        NomRustOpaqueCodec,
-    >; 2] {
-        let vec: Vec<
-            flutter_rust_bridge::RustOpaque<
-                crate::auxiliary::sample_types::HideData,
-                NomRustOpaqueCodec,
-            >,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<i32, NomRustOpaqueCodec>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<i32, NomRustOpaqueCodec> {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::NonCloneData,
-            NomRustOpaqueCodec,
-        >,
+        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData, StdArc<_>>,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        crate::auxiliary::sample_types::NonCloneData,
-        NomRustOpaqueCodec,
-    > {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::NonSendHideData,
-            NomRustOpaqueCodec,
-        >,
-    > for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        crate::auxiliary::sample_types::NonSendHideData,
-        NomRustOpaqueCodec,
-    > {
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData, StdArc<_>>
+    {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
@@ -2047,24 +2005,15 @@ impl CstDecode<flutter_rust_bridge::DartOpaque> for *mut *const std::ffi::c_void
         CstDecode::<flutter_rust_bridge::DartOpaque>::cst_decode(*wrap).into()
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::HideData,
-            NomRustOpaqueCodec,
-        >,
-    > for *mut usize
+impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
+    for *mut usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, NomRustOpaqueCodec>
-    {
+    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<
-            flutter_rust_bridge::RustOpaque<
-                crate::auxiliary::sample_types::HideData,
-                NomRustOpaqueCodec,
-            >,
+            flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>,
         >::cst_decode(*wrap)
         .into()
     }
@@ -8307,22 +8256,13 @@ impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>> for *mut wire_cst_list_Dart
 }
 impl
     CstDecode<
-        Vec<
-            flutter_rust_bridge::RustOpaque<
-                crate::auxiliary::sample_types::HideData,
-                NomRustOpaqueCodec,
-            >,
-        >,
+        Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>,
     > for *mut wire_cst_list_RustOpaque_hide_data
 {
     fn cst_decode(
         self,
-    ) -> Vec<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::HideData,
-            NomRustOpaqueCodec,
-        >,
-    > {
+    ) -> Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
+    {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)

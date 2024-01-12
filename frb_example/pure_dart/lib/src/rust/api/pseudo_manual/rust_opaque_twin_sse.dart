@@ -69,7 +69,7 @@ Future<String> unwrapRustOpaqueTwinSse(
 Future<FrbOpaqueReturn> frbGeneratorTestTwinSse({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinSse(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc<_>>
 @sealed
 class BoxDartDebugTwinSse extends RustOpaque {
   BoxDartDebugTwinSse.dcoDecode(List<dynamic> wire)

@@ -76,7 +76,7 @@ Future<String> unwrapRustOpaqueTwinRustAsync(
 Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinRustAsync(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<Mutex < HideData >, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<Mutex < HideData >, StdArc<_>>
 @sealed
 class MutexHideData extends RustOpaque {
   MutexHideData.dcoDecode(List<dynamic> wire)
@@ -95,7 +95,7 @@ class MutexHideData extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<RwLock < HideData >, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<RwLock < HideData >, StdArc<_>>
 @sealed
 class RwLockHideData extends RustOpaque {
   RwLockHideData.dcoDecode(List<dynamic> wire)
@@ -114,7 +114,7 @@ class RwLockHideData extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, StdArc<_>>
 @sealed
 class BoxDartDebugTwinRustAsync extends RustOpaque {
   BoxDartDebugTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -133,7 +133,7 @@ class BoxDartDebugTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, StdArc<_>>
 @sealed
 class FrbOpaqueReturn extends RustOpaque {
   FrbOpaqueReturn.dcoDecode(List<dynamic> wire)
@@ -167,7 +167,7 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
       : this(List<HideData>.filled(arraySize, fill));
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<i32, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<i32, StdArc<_>>
 @sealed
 class I32 extends RustOpaque {
   I32.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);

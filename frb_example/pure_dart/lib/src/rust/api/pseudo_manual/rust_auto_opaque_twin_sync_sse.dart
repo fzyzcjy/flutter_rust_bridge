@@ -134,7 +134,7 @@ OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse
 OpaqueTwoTwinSyncSse rustAutoOpaqueReturnOpaqueTwoTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinSyncSse(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>, StdArc<_>>
 @sealed
 class BoxHelloTraitTwinSyncSse extends RustOpaque {
   BoxHelloTraitTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -153,7 +153,7 @@ class BoxHelloTraitTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinSyncSse + Send + Sync>>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinSyncSse + Send + Sync>>, StdArc<_>>
 @sealed
 class BoxMyTraitTwinSyncSse extends RustOpaque {
   BoxMyTraitTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -172,7 +172,7 @@ class BoxMyTraitTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>, StdArc<_>>
 @sealed
 class NonCloneSimpleTwinSyncSse extends RustOpaque {
   NonCloneSimpleTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -258,7 +258,7 @@ class NonCloneSimpleTwinSyncSse extends RustOpaque {
               hint: hint);
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSyncSse>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSyncSse>, StdArc<_>>
 @sealed
 class StructWithGoodAndOpaqueFieldTwinSyncSse extends RustOpaque {
   StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -278,7 +278,7 @@ class StructWithGoodAndOpaqueFieldTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,)>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,)>, StdArc<_>>
 @sealed
 class OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse extends RustOpaque {
   OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -298,7 +298,7 @@ class OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse>, StdArc<_>>
 @sealed
 class OpaqueTwoTwinSyncSse extends RustOpaque {
   OpaqueTwoTwinSyncSse.dcoDecode(List<dynamic> wire)

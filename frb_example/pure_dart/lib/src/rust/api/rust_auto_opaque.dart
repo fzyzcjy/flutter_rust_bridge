@@ -137,7 +137,7 @@ Future<OpaqueTwoTwinNormal> rustAutoOpaqueReturnOpaqueTwoTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinNormal(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>, StdArc<_>>
 @sealed
 class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.dcoDecode(List<dynamic> wire)
@@ -156,7 +156,7 @@ class BoxHelloTraitTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>, StdArc<_>>
 @sealed
 class BoxMyTraitTwinNormal extends RustOpaque {
   BoxMyTraitTwinNormal.dcoDecode(List<dynamic> wire)
@@ -175,7 +175,7 @@ class BoxMyTraitTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>, StdArc<_>>
 @sealed
 class NonCloneSimpleTwinNormal extends RustOpaque {
   NonCloneSimpleTwinNormal.dcoDecode(List<dynamic> wire)
@@ -262,7 +262,7 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
           .nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal(hint: hint);
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>, StdArc<_>>
 @sealed
 class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
   StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(List<dynamic> wire)
@@ -282,7 +282,7 @@ class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::rust_auto_opaque::OpaqueOneTwinNormal,crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,)>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::rust_auto_opaque::OpaqueOneTwinNormal,crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,)>, StdArc<_>>
 @sealed
 class OpaqueOneTwinNormalOpaqueTwoTwinNormal extends RustOpaque {
   OpaqueOneTwinNormalOpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
@@ -302,7 +302,7 @@ class OpaqueOneTwinNormalOpaqueTwoTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::rust_auto_opaque::OpaqueTwoTwinNormal>, NomRustOpaqueCodec>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::rust_auto_opaque::OpaqueTwoTwinNormal>, StdArc<_>>
 @sealed
 class OpaqueTwoTwinNormal extends RustOpaque {
   OpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
