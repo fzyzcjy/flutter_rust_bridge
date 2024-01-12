@@ -63,6 +63,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<void> appleAppleMethodRef({required Apple that, dynamic hint});
 
+  Future<Apple> appleNew({dynamic hint});
+
   Future<void> initApp({dynamic hint});
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
@@ -105,6 +107,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kAppleAppleMethodRefConstMeta => const TaskConstMeta(
         debugName: "Apple_apple_method_ref",
         argNames: ["that"],
+      );
+
+  @override
+  Future<Apple> appleNew({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        return wire.wire_Apple_new(port_);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple,
+        decodeErrorData: null,
+      ),
+      constMeta: kAppleNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAppleNewConstMeta => const TaskConstMeta(
+        debugName: "Apple_new",
+        argNames: [],
       );
 
   @override
@@ -161,6 +186,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Apple
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          dynamic raw) {
+    return Apple.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  Apple
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
           dynamic raw) {
     return Apple.dcoDecode(raw as List<dynamic>);
@@ -186,6 +218,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_usize(dynamic raw) {
     return dcoDecodeI64OrU64(raw);
+  }
+
+  @protected
+  Apple
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          SseDeserializer deserializer) {
+    return Apple.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -224,6 +264,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          Apple raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode(move: true);
+  }
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
           Apple raw) {
     // ignore: invalid_use_of_internal_member
@@ -251,6 +299,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int cst_encode_usize(int raw) {
     return raw;
+  }
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          Apple self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected

@@ -79,6 +79,11 @@ pub fn wire_Apple_apple_method_ref(
 }
 
 #[wasm_bindgen]
+pub fn wire_Apple_new(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_Apple_new_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_init_app(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_init_app_impl(port_)
 }

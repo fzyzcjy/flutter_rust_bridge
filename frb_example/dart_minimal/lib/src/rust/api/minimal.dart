@@ -30,4 +30,7 @@ class Apple extends RustOpaque {
       RustLib.instance.api.appleAppleMethodRef(
         that: this,
       );
+
+  static Future<Apple> newApple({dynamic hint}) =>
+      RustLib.instance.api.appleNew(hint: hint);
 }

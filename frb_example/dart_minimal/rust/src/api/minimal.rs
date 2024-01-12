@@ -16,5 +16,10 @@ pub struct Apple {}
 
 impl Apple {
     #[frb(rust_opaque_codec_moi)]
+    pub fn new() -> Apple {
+        Apple {}
+    }
+
+    #[frb(rust_opaque_codec_moi)]
     pub fn apple_method_ref(&self) {}
 }

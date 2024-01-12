@@ -64,6 +64,11 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_wire_Apple_apple_method_ref(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_dart_minimal_wire_Apple_new(port_: i64) {
+    wire_Apple_new_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire_init_app(port_: i64) {
     wire_init_app_impl(port_)
 }

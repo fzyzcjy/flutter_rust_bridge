@@ -22,6 +22,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Apple
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          dynamic raw);
+
+  @protected
+  Apple
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
           dynamic raw);
 
@@ -38,6 +43,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int dco_decode_usize(dynamic raw);
+
+  @protected
+  Apple
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          SseDeserializer deserializer);
 
   @protected
   Apple
@@ -63,6 +73,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
+      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          Apple raw);
+
+  @protected
+  PlatformPointer
       cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
           Apple raw);
 
@@ -79,6 +94,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int cst_encode_usize(int raw);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
+          Apple self, SseSerializer serializer);
 
   @protected
   void
@@ -116,6 +136,8 @@ class RustLibWire extends BaseWire {
   void wire_Apple_apple_method_ref(NativePortType port_, Object that) =>
       wasmModule.wire_Apple_apple_method_ref(port_, that);
 
+  void wire_Apple_new(NativePortType port_) => wasmModule.wire_Apple_new(port_);
+
   void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
@@ -150,6 +172,8 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_Apple_apple_method_ref(NativePortType port_, Object that);
+
+  external void wire_Apple_new(NativePortType port_);
 
   external void wire_init_app(NativePortType port_);
 
