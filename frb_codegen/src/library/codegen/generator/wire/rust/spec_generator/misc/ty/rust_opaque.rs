@@ -19,24 +19,30 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
         let generate_io_web_impl = |target| -> WireRustOutputCode {
-            ["increment", "decrement"].iter()
-                .map(|op|
-                     ExternFunc {
-                         partial_func_name: format!("rust_arc_{op}_strong_count_{}", self.ir.safe_ident()),
-                         params: vec![ExternFuncParam {
-                             name: "ptr".to_owned(),
-                             rust_type: "*const std::ffi::c_void".to_owned(),
-                             dart_type: "dynamic".into(),
-                         }.clone()],
-                         return_type: None,
-                         body: generate_maybe_unsafe(&format!(
-                             "<{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr as _);",
-                             self.ir.codec.to_string(),
-                             &self.ir.inner.rust_api_type(),
-                         ), self.ir.codec.needs_unsafe_block()),
-                         target,
-                     },
-                )
+            ["increment", "decrement"]
+                .iter()
+                .map(|op| ExternFunc {
+                    partial_func_name: format!(
+                        "rust_arc_{op}_strong_count_{}",
+                        self.ir.safe_ident()
+                    ),
+                    params: vec![ExternFuncParam {
+                        name: "ptr".to_owned(),
+                        rust_type: "*const std::ffi::c_void".to_owned(),
+                        dart_type: "dynamic".into(),
+                    }
+                    .clone()],
+                    return_type: None,
+                    body: generate_maybe_unsafe(
+                        &format!(
+                            "{}Arc<{}>::{op}_strong_count(ptr as _);",
+                            self.ir.codec.to_string(),
+                            &self.ir.inner.rust_api_type(),
+                        ),
+                        self.ir.codec.needs_unsafe_block(),
+                    ),
+                    target,
+                })
                 .collect_vec()
                 .into()
         };
