@@ -76,7 +76,7 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_coun
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <flutter_rust_bridge::for_generated::NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec>::Arc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::increment_strong_count(ptr);
+        <flutter_rust_bridge::for_generated::NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::increment_strong_count(ptr);
     }
 }
 
@@ -85,6 +85,6 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_coun
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <flutter_rust_bridge::for_generated::NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec>::Arc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::decrement_strong_count(ptr);
+        <flutter_rust_bridge::for_generated::NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::decrement_strong_count(ptr);
     }
 }

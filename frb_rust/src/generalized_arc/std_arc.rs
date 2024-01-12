@@ -57,14 +57,14 @@ impl<T: ?Sized + 'static> StdArc<T> {
         Self(Arc::from_raw(raw as *const T))
     }
 
-    pub(crate) unsafe fn increment_strong_count(raw: usize)
+    pub unsafe fn increment_strong_count(raw: usize)
     where
         T: Sized,
     {
         Arc::increment_strong_count(raw as *const T)
     }
 
-    pub(crate) unsafe fn decrement_strong_count(raw: usize)
+    pub unsafe fn decrement_strong_count(raw: usize)
     where
         T: Sized,
     {
