@@ -34,7 +34,7 @@ macro_rules! frb_generated_moi_arc_def {
             where
                 T: Sized,
             {
-                let mut pool = T::get_pool().write();
+                let mut pool = T::get_pool().write().unwrap();
                 let object_id = pool.id_generator.next_id();
 
                 let value = Arc::new(value);
@@ -60,7 +60,7 @@ macro_rules! frb_generated_moi_arc_def {
                 T: Sized,
             {
                 // NOTE: Ensure lock is held during all operations to avoid racing conditions
-                let pool = &mut T::get_pool().write();
+                let pool = &mut T::get_pool().write().unwrap();
 
                 if pool.map.get(&self.object_id.unwrap()).unwrap().ref_count == 1 {
                     Self::decrement_strong_count_raw(self.object_id.unwrap(), pool);
@@ -102,7 +102,7 @@ macro_rules! frb_generated_moi_arc_def {
             where
                 T: Sized,
             {
-                let map = &T::get_pool().read().map;
+                let map = &T::get_pool().read().unwrap().map;
 
                 Self {
                     object_id: Some(raw),
@@ -112,12 +112,12 @@ macro_rules! frb_generated_moi_arc_def {
             }
 
             pub fn increment_strong_count(raw: usize) {
-                let map = &mut T::get_pool().write().map;
+                let map = &mut T::get_pool().write().unwrap().map;
                 map.get_mut(&raw).unwrap().ref_count += 1;
             }
 
             pub fn decrement_strong_count(raw: usize) {
-                Self::decrement_strong_count_raw(raw, &mut T::get_pool().write())
+                Self::decrement_strong_count_raw(raw, &mut T::get_pool().write().unwrap())
             }
 
             fn decrement_strong_count_raw(raw: usize, pool: &mut MoiArcPoolInner<T>) {
@@ -135,7 +135,7 @@ macro_rules! frb_generated_moi_arc_def {
 
         type ObjectId = usize;
 
-        pub type MoiArcPool<T> = $crate::for_generated::parking_lot::RwLock<MoiArcPoolInner<T>>;
+        pub type MoiArcPool<T> = std::sync::RwLock<MoiArcPoolInner<T>>;
 
         pub struct MoiArcPoolInner<T: ?Sized> {
             map: HashMap<ObjectId, MoiArcPoolValue<T>>,
