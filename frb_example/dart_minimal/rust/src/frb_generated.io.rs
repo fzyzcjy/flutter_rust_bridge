@@ -25,7 +25,7 @@ impl
         flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
         MoiRustOpaqueCodec,
     > {
-        unsafe { decode_rust_opaque_moi(self as _) }
+        decode_rust_opaque_moi(self as _)
     }
 }
 pub trait NewWithNullPtr {
