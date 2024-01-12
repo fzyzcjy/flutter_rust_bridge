@@ -1,9 +1,12 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
-use crate::api::rust_opaque::HideData;
-use crate::auxiliary::sample_types::{NonCloneData, NonSendHideData};
+pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw, NonSendHideDataRaw};
 use anyhow::Result;
 use flutter_rust_bridge::{frb, RustOpaque};
+
+pub struct HideData(HideDataRaw);
+pub struct NonCloneData(NonCloneDataRaw);
+pub struct NonSendHideData(NonSendHideDataRaw);
 
 /// Structure for testing the SyncReturn<RustOpaque> code generator.
 /// FrbOpaqueSyncReturn must be only return type.

@@ -26,12 +26,12 @@ struct PrivateData {
 }
 
 #[derive(Debug)]
-pub struct NonSendHideData {
+pub struct NonSendHideDataRaw {
     content: String,
     box_content: Option<Rc<PrivateData>>,
 }
 
-impl NonSendHideData {
+impl NonSendHideDataRaw {
     pub fn new() -> Self {
         Self {
             content: "content".to_owned(),
@@ -54,12 +54,12 @@ impl NonSendHideData {
 }
 
 #[derive(Debug)]
-pub struct HideData {
+pub struct HideDataRaw {
     content: String,
     box_content: Option<Box<PrivateData>>,
 }
 
-impl HideData {
+impl HideDataRaw {
     pub fn new() -> Self {
         Self {
             content: "content".to_owned(),
@@ -82,11 +82,11 @@ impl HideData {
 }
 
 #[derive(Debug)]
-pub struct NonCloneData {
+pub struct NonCloneDataRaw {
     content: String,
 }
 
-impl NonCloneData {
+impl NonCloneDataRaw {
     pub fn new() -> Self {
         Self {
             content: "content".to_owned(),

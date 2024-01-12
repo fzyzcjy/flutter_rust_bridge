@@ -1,11 +1,15 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
-pub use crate::auxiliary::sample_types::{HideData, NonCloneData, NonSendHideData};
+pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw, NonSendHideDataRaw};
 use anyhow::Result;
 use flutter_rust_bridge::{opaque_dyn, RustOpaque};
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
+
+pub struct HideData(HideDataRaw);
+pub struct NonCloneData(NonCloneDataRaw);
+pub struct NonSendHideData(NonSendHideDataRaw);
 
 /// Structure for testing the RustOpaque code generator.
 /// FrbOpaqueReturn must be only return type.
