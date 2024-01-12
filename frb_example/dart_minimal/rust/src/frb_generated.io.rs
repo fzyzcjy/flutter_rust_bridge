@@ -4,22 +4,12 @@
 // Section: imports
 
 use super::*;
-use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>
-    for usize
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>> {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }
@@ -48,19 +38,6 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
 }
 
 #[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_wire_Apple_apple_method_ref(
-    port_: i64,
-    that: usize,
-) {
-    wire_Apple_apple_method_ref_impl(port_, that)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_wire_Apple_new(port_: i64) {
-    wire_Apple_new_impl(port_)
-}
-
-#[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire_init_app(port_: i64) {
     wire_init_app_impl(port_)
 }
@@ -68,22 +45,4 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_wire_init_app(port_: i64) {
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::decrement_strong_count(ptr as _);
-    }
 }
