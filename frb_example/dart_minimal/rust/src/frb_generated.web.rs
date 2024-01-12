@@ -21,18 +21,12 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    > {
+    ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");

@@ -35,11 +35,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire_Apple_apple_method_ref_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: impl CstDecode<
-        flutter_rust_bridge::RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        >,
-    >,
+    that: impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -137,11 +133,7 @@ impl CstDecode<usize> for usize {
         self
     }
 }
-impl SseDecode
-    for flutter_rust_bridge::RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    >
-{
+impl SseDecode for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return decode_rust_opaque_moi(inner);
@@ -172,11 +164,7 @@ impl SseDecode for bool {
 
 // Section: rust2dart
 
-impl SseEncode
-    for flutter_rust_bridge::RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    >
-{
+impl SseEncode for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);

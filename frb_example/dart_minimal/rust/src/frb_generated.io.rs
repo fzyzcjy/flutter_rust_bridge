@@ -11,18 +11,12 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        >,
-    > for usize
+impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>
+    for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    > {
+    ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>> {
         decode_rust_opaque_moi(self as _)
     }
 }
