@@ -43,12 +43,20 @@ pub(super) fn generate_generalized_rust_opaque_decode(
         Lang::RustLang(_) => simple_delegate_decode(
             lang,
             &IrTypeRustOpaque::DELEGATE_TYPE,
-            &format!(
-                "unsafe {{ decode_rust_opaque_{}(inner) }}",
-                codec.to_string().to_case(Case::Snake),
-            ),
+            &generate_decode_rust_opaque("inner", codec),
         ),
     }
+}
+
+pub(crate) fn generate_decode_rust_opaque(inner: &str, codec: RustOpaqueCodecMode) -> String {
+    let mut ans = format!(
+        "decode_rust_opaque_{}({inner})",
+        codec.to_string().to_case(Case::Snake)
+    );
+    if codec.needs_unsafe_block() {
+        ans = format!("unsafe {{ {ans} }} ");
+    }
+    ans
 }
 
 pub(super) fn generate_generalized_rust_opaque_encode(lang: &Lang, needs_move: &str) -> String {

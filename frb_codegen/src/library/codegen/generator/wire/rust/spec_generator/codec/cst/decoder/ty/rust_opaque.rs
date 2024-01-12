@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::sse::ty::rust_opaque::generate_decode_rust_opaque;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::misc::JS_VALUE;
@@ -9,10 +10,7 @@ use std::borrow::Cow;
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: Some(format!(
-                "unsafe {{ decode_rust_opaque_{}(self as _) }}",
-                self.ir.codec.to_string().to_case(Case::Snake),
-            )),
+            io: Some(generate_decode_rust_opaque("self as _", self.ir.codec)),
             ..Default::default()
         }
     }
@@ -23,9 +21,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGen
                 r#"
                 #[cfg(target_pointer_width = "64")]
                 {{ compile_error!("64-bit pointers are not supported."); }}
-                unsafe {{ decode_rust_opaque_{}((self.as_f64().unwrap() as usize) as _) }}
+                {}
                 "#,
-                self.ir.codec.to_string().to_case(Case::Snake),
+                generate_decode_rust_opaque(
+                    "(self.as_f64().unwrap() as usize) as _",
+                    self.ir.codec
+                )
             )
             .into(),
         )
