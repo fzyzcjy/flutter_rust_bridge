@@ -1,3 +1,10 @@
+struct MoiArcPoolValue<T: ?Sized> {
+    // Real reference counting of this MoiArc
+    ref_count: i32,
+    // Use (std) Arc merely for lifetime
+    value: std::sync::Arc<T>,
+}
+
 #[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_moi_arc_def {
@@ -41,7 +48,7 @@ macro_rules! frb_generated_moi_arc_def {
 
                 let old_value = pool.map.insert(
                     object_id,
-                    MoiArcPoolValue {
+                    $crate::for_generated::moi_arc::MoiArcPoolValue {
                         ref_count: 1,
                         value: value.clone(),
                     },
@@ -138,7 +145,7 @@ macro_rules! frb_generated_moi_arc_def {
         pub type MoiArcPool<T> = $crate::for_generated::parking_lot::RwLock<MoiArcPoolInner<T>>;
 
         pub struct MoiArcPoolInner<T: ?Sized> {
-            map: HashMap<ObjectId, MoiArcPoolValue<T>>,
+            map: HashMap<ObjectId, $crate::for_generated::moi_arc::MoiArcPoolValue<T>>,
             next_id: ObjectId,
         }
 
@@ -165,13 +172,6 @@ macro_rules! frb_generated_moi_arc_def {
 
                 ans
             }
-        }
-
-        struct MoiArcPoolValue<T: ?Sized> {
-            // Real reference counting of this MoiArc
-            ref_count: i32,
-            // Use (std) Arc merely for lifetime
-            value: Arc<T>,
         }
     };
 }
