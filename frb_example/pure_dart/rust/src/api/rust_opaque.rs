@@ -8,8 +8,8 @@ use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
 
-pub struct HideDataTwinNormal(HideDataRaw);
-pub struct NonCloneDataTwinNormal(NonCloneDataRaw);
+pub struct HideDataTwinNormal(pub HideDataRaw);
+pub struct NonCloneDataTwinNormal(pub NonCloneDataRaw);
 
 /// Structure for testing the RustOpaque code generator.
 /// FrbOpaqueReturn must be only return type.

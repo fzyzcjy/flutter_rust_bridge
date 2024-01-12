@@ -12,8 +12,8 @@ use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
 
-pub struct HideDataTwinRustAsyncSseMoi(HideDataRaw);
-pub struct NonCloneDataTwinRustAsyncSseMoi(NonCloneDataRaw);
+pub struct HideDataTwinRustAsyncSseMoi(pub HideDataRaw);
+pub struct NonCloneDataTwinRustAsyncSseMoi(pub NonCloneDataRaw);
 
 /// Structure for testing the RustOpaque code generator.
 /// FrbOpaqueReturn must be only return type.
