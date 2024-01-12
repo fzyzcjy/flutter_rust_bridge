@@ -10251,7 +10251,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int> cst_encode_box_autoadd_RustOpaque_hide_data(HideData raw) {
+  ffi.Pointer<ffi.UintPtr> cst_encode_box_autoadd_RustOpaque_hide_data(
+      HideData raw) {
     return wire.cst_new_box_autoadd_RustOpaque_hide_data(
         cst_encode_RustOpaque_hide_data(raw));
   }
@@ -14560,7 +14561,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<int> cst_encode_opt_box_autoadd_RustOpaque_hide_data(
+  ffi.Pointer<ffi.UintPtr> cst_encode_opt_box_autoadd_RustOpaque_hide_data(
       HideData? raw) {
     return raw == null
         ? ffi.nullptr
