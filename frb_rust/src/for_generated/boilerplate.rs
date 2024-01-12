@@ -5,7 +5,6 @@
 macro_rules! frb_generated_boilerplate {
     () => {
         $crate::frb_generated_moi_arc_def!();
-        $crate::frb_generated_moi_rust_opaque_codec_def!();
         $crate::frb_generated_rust_opaque_dart2rust!();
 
         // -------------------------- CstCodec ------------------------
