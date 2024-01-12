@@ -6,7 +6,6 @@ macro_rules! frb_generated_map_based_arc_def {
         use std::marker::PhantomData;
         use std::sync::Arc;
         use $crate::for_generated::parking_lot::RwLock;
-        use $crate::for_generated::BaseArc;
 
         #[derive(Debug)]
         pub struct MapBasedArc<T: ?Sized + MapBasedArcValue> {
@@ -31,7 +30,7 @@ macro_rules! frb_generated_map_based_arc_def {
             }
         }
 
-        impl<T: ?Sized + MapBasedArcValue> BaseArc<T> for MapBasedArc<T> {
+        impl<T: ?Sized + MapBasedArcValue> $crate::for_generated::BaseArc<T> for MapBasedArc<T> {
             fn new(value: T) -> Self
             where
                 T: Sized,
@@ -194,15 +193,12 @@ macro_rules! frb_generated_map_based_arc_impl_value {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::base_arc_generate_tests;
-
     crate::frb_generated_map_based_arc_def!();
     crate::frb_generated_moi_rust_opaque_codec_def!();
 
     #[test]
     fn test_next_id() {
-        let mut pool = MapBasedArcPoolInner::<String>::new();
+        let mut pool = MapBasedArcPoolInner::<String>::default();
         assert_eq!(pool.next_id(), 1);
         assert_eq!(pool.next_id(), 2);
         assert_eq!(pool.next_id(), 3);
@@ -222,5 +218,5 @@ mod tests {
 
     frb_generated_map_based_arc_impl_value!(DummyType);
 
-    base_arc_generate_tests!(super::MapBasedArc::<DummyType>);
+    crate::base_arc_generate_tests!(MapBasedArc::<DummyType>);
 }
