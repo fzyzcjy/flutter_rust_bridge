@@ -5,6 +5,17 @@ pub(crate) mod utils;
 use crate::for_generated::{BaseArc, StdArc};
 use std::marker::PhantomData;
 
+/// Please refer to [RustOpaque] for doc.
+#[repr(transparent)]
+#[derive(Debug)]
+pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>> {
+    arc: A,
+    _phantom: PhantomData<T>,
+}
+
+/// Please refer to [RustOpaque] for doc.
+pub type RustOpaqueNom<T> = RustOpaqueBase<T, StdArc<T>>;
+
 /// A wrapper to support [arbitrary Rust types](https://cjycode.com/flutter_rust_bridge/guides/types/arbitrary).
 ///
 /// ## Naming the inner type
@@ -31,14 +42,6 @@ use std::marker::PhantomData;
 /// // it's possible to name it directly
 /// pub struct DebugWrapper2(pub RustOpaqueBase<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
-#[repr(transparent)]
-#[derive(Debug)]
-pub struct RustOpaqueBase<T: ?Sized + 'static, A: BaseArc<T>> {
-    arc: A,
-    _phantom: PhantomData<T>,
-}
-
-pub type RustOpaqueNom<T> = RustOpaqueBase<T, StdArc<T>>;
 pub type RustOpaque<T> = RustOpaqueNom<T>;
 
 #[doc(hidden)]

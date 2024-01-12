@@ -584,7 +584,6 @@ dependencies = [
  "libc",
  "log",
  "oslog",
- "parking_lot",
  "threadpool",
  "tokio",
  "uuid",
