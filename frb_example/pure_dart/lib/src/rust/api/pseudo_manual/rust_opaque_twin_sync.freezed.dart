@@ -19,29 +19,29 @@ mixin _$EnumOpaqueTwinSync {
   RustOpaque get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HideData field0) struct,
+    required TResult Function(HideDataTwinSync field0) struct,
     required TResult Function(I32 field0) primitive,
     required TResult Function(BoxDartDebugTwinSync field0) traitObj,
-    required TResult Function(MutexHideData field0) mutex,
-    required TResult Function(RwLockHideData field0) rwLock,
+    required TResult Function(MutexHideDataTwinSync field0) mutex,
+    required TResult Function(RwLockHideDataTwinSync field0) rwLock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HideData field0)? struct,
+    TResult? Function(HideDataTwinSync field0)? struct,
     TResult? Function(I32 field0)? primitive,
     TResult? Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult? Function(MutexHideData field0)? mutex,
-    TResult? Function(RwLockHideData field0)? rwLock,
+    TResult? Function(MutexHideDataTwinSync field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSync field0)? rwLock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
+    TResult Function(HideDataTwinSync field0)? struct,
     TResult Function(I32 field0)? primitive,
     TResult Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -100,7 +100,7 @@ abstract class _$$EnumOpaqueTwinSync_StructImplCopyWith<$Res> {
           $Res Function(_$EnumOpaqueTwinSync_StructImpl) then) =
       __$$EnumOpaqueTwinSync_StructImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({HideData field0});
+  $Res call({HideDataTwinSync field0});
 }
 
 /// @nodoc
@@ -122,7 +122,7 @@ class __$$EnumOpaqueTwinSync_StructImplCopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as HideData,
+              as HideDataTwinSync,
     ));
   }
 }
@@ -133,7 +133,7 @@ class _$EnumOpaqueTwinSync_StructImpl implements EnumOpaqueTwinSync_Struct {
   const _$EnumOpaqueTwinSync_StructImpl(this.field0);
 
   @override
-  final HideData field0;
+  final HideDataTwinSync field0;
 
   @override
   String toString() {
@@ -161,11 +161,11 @@ class _$EnumOpaqueTwinSync_StructImpl implements EnumOpaqueTwinSync_Struct {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HideData field0) struct,
+    required TResult Function(HideDataTwinSync field0) struct,
     required TResult Function(I32 field0) primitive,
     required TResult Function(BoxDartDebugTwinSync field0) traitObj,
-    required TResult Function(MutexHideData field0) mutex,
-    required TResult Function(RwLockHideData field0) rwLock,
+    required TResult Function(MutexHideDataTwinSync field0) mutex,
+    required TResult Function(RwLockHideDataTwinSync field0) rwLock,
   }) {
     return struct(field0);
   }
@@ -173,11 +173,11 @@ class _$EnumOpaqueTwinSync_StructImpl implements EnumOpaqueTwinSync_Struct {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HideData field0)? struct,
+    TResult? Function(HideDataTwinSync field0)? struct,
     TResult? Function(I32 field0)? primitive,
     TResult? Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult? Function(MutexHideData field0)? mutex,
-    TResult? Function(RwLockHideData field0)? rwLock,
+    TResult? Function(MutexHideDataTwinSync field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSync field0)? rwLock,
   }) {
     return struct?.call(field0);
   }
@@ -185,11 +185,11 @@ class _$EnumOpaqueTwinSync_StructImpl implements EnumOpaqueTwinSync_Struct {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
+    TResult Function(HideDataTwinSync field0)? struct,
     TResult Function(I32 field0)? primitive,
     TResult Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -240,11 +240,11 @@ class _$EnumOpaqueTwinSync_StructImpl implements EnumOpaqueTwinSync_Struct {
 }
 
 abstract class EnumOpaqueTwinSync_Struct implements EnumOpaqueTwinSync {
-  const factory EnumOpaqueTwinSync_Struct(final HideData field0) =
+  const factory EnumOpaqueTwinSync_Struct(final HideDataTwinSync field0) =
       _$EnumOpaqueTwinSync_StructImpl;
 
   @override
-  HideData get field0;
+  HideDataTwinSync get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinSync_StructImplCopyWith<_$EnumOpaqueTwinSync_StructImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -320,11 +320,11 @@ class _$EnumOpaqueTwinSync_PrimitiveImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HideData field0) struct,
+    required TResult Function(HideDataTwinSync field0) struct,
     required TResult Function(I32 field0) primitive,
     required TResult Function(BoxDartDebugTwinSync field0) traitObj,
-    required TResult Function(MutexHideData field0) mutex,
-    required TResult Function(RwLockHideData field0) rwLock,
+    required TResult Function(MutexHideDataTwinSync field0) mutex,
+    required TResult Function(RwLockHideDataTwinSync field0) rwLock,
   }) {
     return primitive(field0);
   }
@@ -332,11 +332,11 @@ class _$EnumOpaqueTwinSync_PrimitiveImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HideData field0)? struct,
+    TResult? Function(HideDataTwinSync field0)? struct,
     TResult? Function(I32 field0)? primitive,
     TResult? Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult? Function(MutexHideData field0)? mutex,
-    TResult? Function(RwLockHideData field0)? rwLock,
+    TResult? Function(MutexHideDataTwinSync field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSync field0)? rwLock,
   }) {
     return primitive?.call(field0);
   }
@@ -344,11 +344,11 @@ class _$EnumOpaqueTwinSync_PrimitiveImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
+    TResult Function(HideDataTwinSync field0)? struct,
     TResult Function(I32 field0)? primitive,
     TResult Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
     required TResult orElse(),
   }) {
     if (primitive != null) {
@@ -478,11 +478,11 @@ class _$EnumOpaqueTwinSync_TraitObjImpl implements EnumOpaqueTwinSync_TraitObj {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HideData field0) struct,
+    required TResult Function(HideDataTwinSync field0) struct,
     required TResult Function(I32 field0) primitive,
     required TResult Function(BoxDartDebugTwinSync field0) traitObj,
-    required TResult Function(MutexHideData field0) mutex,
-    required TResult Function(RwLockHideData field0) rwLock,
+    required TResult Function(MutexHideDataTwinSync field0) mutex,
+    required TResult Function(RwLockHideDataTwinSync field0) rwLock,
   }) {
     return traitObj(field0);
   }
@@ -490,11 +490,11 @@ class _$EnumOpaqueTwinSync_TraitObjImpl implements EnumOpaqueTwinSync_TraitObj {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HideData field0)? struct,
+    TResult? Function(HideDataTwinSync field0)? struct,
     TResult? Function(I32 field0)? primitive,
     TResult? Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult? Function(MutexHideData field0)? mutex,
-    TResult? Function(RwLockHideData field0)? rwLock,
+    TResult? Function(MutexHideDataTwinSync field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSync field0)? rwLock,
   }) {
     return traitObj?.call(field0);
   }
@@ -502,11 +502,11 @@ class _$EnumOpaqueTwinSync_TraitObjImpl implements EnumOpaqueTwinSync_TraitObj {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
+    TResult Function(HideDataTwinSync field0)? struct,
     TResult Function(I32 field0)? primitive,
     TResult Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
     required TResult orElse(),
   }) {
     if (traitObj != null) {
@@ -574,7 +574,7 @@ abstract class _$$EnumOpaqueTwinSync_MutexImplCopyWith<$Res> {
           $Res Function(_$EnumOpaqueTwinSync_MutexImpl) then) =
       __$$EnumOpaqueTwinSync_MutexImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({MutexHideData field0});
+  $Res call({MutexHideDataTwinSync field0});
 }
 
 /// @nodoc
@@ -596,7 +596,7 @@ class __$$EnumOpaqueTwinSync_MutexImplCopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as MutexHideData,
+              as MutexHideDataTwinSync,
     ));
   }
 }
@@ -607,7 +607,7 @@ class _$EnumOpaqueTwinSync_MutexImpl implements EnumOpaqueTwinSync_Mutex {
   const _$EnumOpaqueTwinSync_MutexImpl(this.field0);
 
   @override
-  final MutexHideData field0;
+  final MutexHideDataTwinSync field0;
 
   @override
   String toString() {
@@ -635,11 +635,11 @@ class _$EnumOpaqueTwinSync_MutexImpl implements EnumOpaqueTwinSync_Mutex {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HideData field0) struct,
+    required TResult Function(HideDataTwinSync field0) struct,
     required TResult Function(I32 field0) primitive,
     required TResult Function(BoxDartDebugTwinSync field0) traitObj,
-    required TResult Function(MutexHideData field0) mutex,
-    required TResult Function(RwLockHideData field0) rwLock,
+    required TResult Function(MutexHideDataTwinSync field0) mutex,
+    required TResult Function(RwLockHideDataTwinSync field0) rwLock,
   }) {
     return mutex(field0);
   }
@@ -647,11 +647,11 @@ class _$EnumOpaqueTwinSync_MutexImpl implements EnumOpaqueTwinSync_Mutex {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HideData field0)? struct,
+    TResult? Function(HideDataTwinSync field0)? struct,
     TResult? Function(I32 field0)? primitive,
     TResult? Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult? Function(MutexHideData field0)? mutex,
-    TResult? Function(RwLockHideData field0)? rwLock,
+    TResult? Function(MutexHideDataTwinSync field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSync field0)? rwLock,
   }) {
     return mutex?.call(field0);
   }
@@ -659,11 +659,11 @@ class _$EnumOpaqueTwinSync_MutexImpl implements EnumOpaqueTwinSync_Mutex {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
+    TResult Function(HideDataTwinSync field0)? struct,
     TResult Function(I32 field0)? primitive,
     TResult Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
     required TResult orElse(),
   }) {
     if (mutex != null) {
@@ -714,11 +714,11 @@ class _$EnumOpaqueTwinSync_MutexImpl implements EnumOpaqueTwinSync_Mutex {
 }
 
 abstract class EnumOpaqueTwinSync_Mutex implements EnumOpaqueTwinSync {
-  const factory EnumOpaqueTwinSync_Mutex(final MutexHideData field0) =
+  const factory EnumOpaqueTwinSync_Mutex(final MutexHideDataTwinSync field0) =
       _$EnumOpaqueTwinSync_MutexImpl;
 
   @override
-  MutexHideData get field0;
+  MutexHideDataTwinSync get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinSync_MutexImplCopyWith<_$EnumOpaqueTwinSync_MutexImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -731,7 +731,7 @@ abstract class _$$EnumOpaqueTwinSync_RwLockImplCopyWith<$Res> {
           $Res Function(_$EnumOpaqueTwinSync_RwLockImpl) then) =
       __$$EnumOpaqueTwinSync_RwLockImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({RwLockHideData field0});
+  $Res call({RwLockHideDataTwinSync field0});
 }
 
 /// @nodoc
@@ -753,7 +753,7 @@ class __$$EnumOpaqueTwinSync_RwLockImplCopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as RwLockHideData,
+              as RwLockHideDataTwinSync,
     ));
   }
 }
@@ -764,7 +764,7 @@ class _$EnumOpaqueTwinSync_RwLockImpl implements EnumOpaqueTwinSync_RwLock {
   const _$EnumOpaqueTwinSync_RwLockImpl(this.field0);
 
   @override
-  final RwLockHideData field0;
+  final RwLockHideDataTwinSync field0;
 
   @override
   String toString() {
@@ -792,11 +792,11 @@ class _$EnumOpaqueTwinSync_RwLockImpl implements EnumOpaqueTwinSync_RwLock {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(HideData field0) struct,
+    required TResult Function(HideDataTwinSync field0) struct,
     required TResult Function(I32 field0) primitive,
     required TResult Function(BoxDartDebugTwinSync field0) traitObj,
-    required TResult Function(MutexHideData field0) mutex,
-    required TResult Function(RwLockHideData field0) rwLock,
+    required TResult Function(MutexHideDataTwinSync field0) mutex,
+    required TResult Function(RwLockHideDataTwinSync field0) rwLock,
   }) {
     return rwLock(field0);
   }
@@ -804,11 +804,11 @@ class _$EnumOpaqueTwinSync_RwLockImpl implements EnumOpaqueTwinSync_RwLock {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(HideData field0)? struct,
+    TResult? Function(HideDataTwinSync field0)? struct,
     TResult? Function(I32 field0)? primitive,
     TResult? Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult? Function(MutexHideData field0)? mutex,
-    TResult? Function(RwLockHideData field0)? rwLock,
+    TResult? Function(MutexHideDataTwinSync field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSync field0)? rwLock,
   }) {
     return rwLock?.call(field0);
   }
@@ -816,11 +816,11 @@ class _$EnumOpaqueTwinSync_RwLockImpl implements EnumOpaqueTwinSync_RwLock {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HideData field0)? struct,
+    TResult Function(HideDataTwinSync field0)? struct,
     TResult Function(I32 field0)? primitive,
     TResult Function(BoxDartDebugTwinSync field0)? traitObj,
-    TResult Function(MutexHideData field0)? mutex,
-    TResult Function(RwLockHideData field0)? rwLock,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
     required TResult orElse(),
   }) {
     if (rwLock != null) {
@@ -871,11 +871,11 @@ class _$EnumOpaqueTwinSync_RwLockImpl implements EnumOpaqueTwinSync_RwLock {
 }
 
 abstract class EnumOpaqueTwinSync_RwLock implements EnumOpaqueTwinSync {
-  const factory EnumOpaqueTwinSync_RwLock(final RwLockHideData field0) =
+  const factory EnumOpaqueTwinSync_RwLock(final RwLockHideDataTwinSync field0) =
       _$EnumOpaqueTwinSync_RwLockImpl;
 
   @override
-  RwLockHideData get field0;
+  RwLockHideDataTwinSync get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinSync_RwLockImplCopyWith<_$EnumOpaqueTwinSync_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;

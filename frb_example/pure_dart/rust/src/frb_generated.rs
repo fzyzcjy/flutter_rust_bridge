@@ -31,6 +31,7 @@ use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::*;
 use crate::api::pseudo_manual::rust_opaque_sync_twin_sse::*;
+use crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::*;
@@ -43,6 +44,7 @@ use crate::api::pseudo_manual::rust_opaque_twin_sync_sse::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::*;
 use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
+use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
@@ -24284,10 +24286,9 @@ fn wire_sync_run_opaque_twin_sse_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque =
-                <RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData>>::sse_decode(
-                    &mut deserializer,
-                );
+            let api_opaque = <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonSendHideDataAnotherTwinSse,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
@@ -24372,7 +24373,7 @@ fn wire_sync_run_opaque_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "sync_run_opaque_twin_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonSendHideDataAnotherTwinSseMoi>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::sync_run_opaque_twin_sse_moi(api_opaque))
                 })()) })
@@ -24404,7 +24405,13 @@ fn wire_create_opaque_twin_rust_async_impl(port_: flutter_rust_bridge::for_gener
 }
 fn wire_create_option_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    opaque: impl CstDecode<
+        Option<
+            RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24432,7 +24439,11 @@ fn wire_frb_generator_test_twin_rust_async_impl(
 }
 fn wire_opaque_array_run_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecode<[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>,
+    data: impl CstDecode<
+        [RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >; 2],
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_data = data.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24449,7 +24460,13 @@ fn wire_opaque_array_twin_rust_async_impl(port_: flutter_rust_bridge::for_genera
 }
 fn wire_opaque_vec_run_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecode<Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    data: impl CstDecode<
+        Vec<
+            RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_data = data.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24490,7 +24507,11 @@ fn wire_run_nested_opaque_twin_rust_async_impl(
 }
 fn wire_run_non_clone_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    clone: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>,
+    clone: impl CstDecode<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonCloneDataTwinRustAsync,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_clone = clone.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24500,7 +24521,11 @@ fn wire_run_non_clone_twin_rust_async_impl(
 }
 fn wire_run_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24510,7 +24535,11 @@ fn wire_run_opaque_twin_rust_async_impl(
 }
 fn wire_run_opaque_with_delay_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24520,7 +24549,11 @@ fn wire_run_opaque_with_delay_twin_rust_async_impl(
 }
 fn wire_unwrap_rust_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24557,7 +24590,7 @@ fn wire_create_opaque_twin_rust_async_moi_impl(
 }
 fn wire_create_option_opaque_twin_rust_async_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    opaque: impl CstDecode<Option<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24585,7 +24618,11 @@ fn wire_frb_generator_test_twin_rust_async_moi_impl(
 }
 fn wire_opaque_array_run_twin_rust_async_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecode<[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>,
+    data: impl CstDecode<
+        [RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >; 2],
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_data = data.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24604,7 +24641,7 @@ fn wire_opaque_array_twin_rust_async_moi_impl(
 }
 fn wire_opaque_vec_run_twin_rust_async_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecode<Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    data: impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_data = data.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24647,7 +24684,7 @@ fn wire_run_nested_opaque_twin_rust_async_moi_impl(
 }
 fn wire_run_non_clone_twin_rust_async_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    clone: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>,
+    clone: impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_clone = clone.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24657,7 +24694,11 @@ fn wire_run_non_clone_twin_rust_async_moi_impl(
 }
 fn wire_run_opaque_twin_rust_async_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24667,7 +24708,11 @@ fn wire_run_opaque_twin_rust_async_moi_impl(
 }
 fn wire_run_opaque_with_delay_twin_rust_async_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24677,7 +24722,11 @@ fn wire_run_opaque_with_delay_twin_rust_async_moi_impl(
 }
 fn wire_unwrap_rust_opaque_twin_rust_async_moi_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >,
+    >,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_rust_async_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
@@ -24739,7 +24788,7 @@ fn wire_create_option_opaque_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::create_option_opaque_twin_rust_async_sse(api_opaque).await)
                     })().await)
@@ -24784,7 +24833,7 @@ fn wire_opaque_array_run_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_data = <[RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>; 2]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::opaque_array_run_twin_rust_async_sse(api_data).await)
                     })().await)
@@ -24814,7 +24863,7 @@ fn wire_opaque_vec_run_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_data = <Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::opaque_vec_run_twin_rust_async_sse(api_data).await)
                     })().await)
@@ -24874,7 +24923,7 @@ fn wire_run_non_clone_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_clone = <RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_clone = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::run_non_clone_twin_rust_async_sse(api_clone).await)
                     })().await)
@@ -24889,7 +24938,7 @@ fn wire_run_opaque_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::run_opaque_twin_rust_async_sse(api_opaque).await)
                     })().await)
@@ -24904,7 +24953,7 @@ fn wire_run_opaque_with_delay_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::run_opaque_with_delay_twin_rust_async_sse(api_opaque).await)
                     })().await)
@@ -24919,7 +24968,7 @@ fn wire_unwrap_rust_opaque_twin_rust_async_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::unwrap_rust_opaque_twin_rust_async_sse(api_opaque).await
                     })().await)
@@ -24979,7 +25028,7 @@ fn wire_create_option_opaque_twin_rust_async_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <Option<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::create_option_opaque_twin_rust_async_sse_moi(api_opaque).await)
                     })().await)
@@ -25024,7 +25073,7 @@ fn wire_opaque_array_run_twin_rust_async_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_data = <[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>; 2]>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::opaque_array_run_twin_rust_async_sse_moi(api_data).await)
                     })().await)
@@ -25054,7 +25103,7 @@ fn wire_opaque_vec_run_twin_rust_async_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_data = <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::opaque_vec_run_twin_rust_async_sse_moi(api_data).await)
                     })().await)
@@ -25114,7 +25163,7 @@ fn wire_run_non_clone_twin_rust_async_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_clone = <RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_clone = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::run_non_clone_twin_rust_async_sse_moi(api_clone).await)
                     })().await)
@@ -25129,7 +25178,7 @@ fn wire_run_opaque_twin_rust_async_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::run_opaque_twin_rust_async_sse_moi(api_opaque).await)
                     })().await)
@@ -25144,7 +25193,7 @@ fn wire_run_opaque_with_delay_twin_rust_async_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::run_opaque_with_delay_twin_rust_async_sse_moi(api_opaque).await)
                     })().await)
@@ -25159,7 +25208,7 @@ fn wire_unwrap_rust_opaque_twin_rust_async_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_rust_async_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::unwrap_rust_opaque_twin_rust_async_sse_moi(api_opaque).await
                     })().await)
@@ -25237,7 +25286,7 @@ fn wire_create_option_opaque_twin_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_opaque = <Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse::create_option_opaque_twin_sse(api_opaque))
                     })())
@@ -25295,10 +25344,9 @@ fn wire_opaque_array_run_twin_sse_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data =
-                <[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>::sse_decode(
-                    &mut deserializer,
-                );
+            let api_data = <[RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+            >; 2]>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -25367,10 +25415,9 @@ fn wire_opaque_vec_run_twin_sse_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data =
-                <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(
-                    &mut deserializer,
-                );
+            let api_data = <Vec<
+                RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -25517,10 +25564,9 @@ fn wire_run_non_clone_twin_sse_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_clone =
-                <RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>::sse_decode(
-                    &mut deserializer,
-                );
+            let api_clone = <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -25556,9 +25602,9 @@ fn wire_run_opaque_twin_sse_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                &mut deserializer,
-            );
+            let api_opaque = <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -25581,7 +25627,7 @@ fn wire_run_opaque_with_delay_twin_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_opaque = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse::run_opaque_with_delay_twin_sse(api_opaque))
                     })())
@@ -25609,9 +25655,9 @@ fn wire_unwrap_rust_opaque_twin_sse_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                &mut deserializer,
-            );
+            let api_opaque = <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -25677,7 +25723,7 @@ fn wire_create_option_opaque_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_opaque = <Option<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse_moi::create_option_opaque_twin_sse_moi(api_opaque))
                     })())
@@ -25722,7 +25768,7 @@ fn wire_opaque_array_run_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_data = <[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>; 2]>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse_moi::opaque_array_run_twin_sse_moi(api_data))
                     })())
@@ -25752,7 +25798,7 @@ fn wire_opaque_vec_run_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_data = <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse_moi::opaque_vec_run_twin_sse_moi(api_data))
                     })())
@@ -25812,7 +25858,7 @@ fn wire_run_non_clone_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_clone = <RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_clone = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse_moi::run_non_clone_twin_sse_moi(api_clone))
                     })())
@@ -25827,7 +25873,7 @@ fn wire_run_opaque_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse_moi::run_opaque_twin_sse_moi(api_opaque))
                     })())
@@ -25842,7 +25888,7 @@ fn wire_run_opaque_with_delay_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sse_moi::run_opaque_with_delay_twin_sse_moi(api_opaque))
                     })())
@@ -25857,7 +25903,7 @@ fn wire_unwrap_rust_opaque_twin_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_sse_moi", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
                     transform_result_sse((move ||  {
                          crate::api::pseudo_manual::rust_opaque_twin_sse_moi::unwrap_rust_opaque_twin_sse_moi(api_opaque)
                     })())
@@ -25894,7 +25940,9 @@ fn wire_create_opaque_twin_sync_impl() -> flutter_rust_bridge::for_generated::Wi
     )
 }
 fn wire_create_option_opaque_twin_sync_impl(
-    opaque: impl CstDecode<Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    opaque: impl CstDecode<
+        Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();
                 transform_result_dco((move || {
@@ -25938,7 +25986,9 @@ fn wire_frb_generator_test_twin_sync_impl(
     )
 }
 fn wire_opaque_array_run_twin_sync_impl(
-    data: impl CstDecode<[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>,
+    data: impl CstDecode<
+        [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>; 2],
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -25975,7 +26025,9 @@ fn wire_opaque_array_twin_sync_impl() -> flutter_rust_bridge::for_generated::Wir
     )
 }
 fn wire_opaque_vec_run_twin_sync_impl(
-    data: impl CstDecode<Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    data: impl CstDecode<
+        Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -26054,7 +26106,9 @@ fn wire_run_nested_opaque_twin_sync_impl(
     )
 }
 fn wire_run_non_clone_twin_sync_impl(
-    clone: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>,
+    clone: impl CstDecode<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -26075,7 +26129,9 @@ fn wire_run_non_clone_twin_sync_impl(
     )
 }
 fn wire_run_opaque_twin_sync_impl(
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -26096,7 +26152,9 @@ fn wire_run_opaque_twin_sync_impl(
     )
 }
 fn wire_run_opaque_with_delay_twin_sync_impl(
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();
                 transform_result_dco((move || {
@@ -26104,7 +26162,9 @@ fn wire_run_opaque_with_delay_twin_sync_impl(
                 })()) })
 }
 fn wire_unwrap_rust_opaque_twin_sync_impl(
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -26144,7 +26204,13 @@ fn wire_create_opaque_twin_sync_moi_impl(
                 })()) })
 }
 fn wire_create_option_opaque_twin_sync_moi_impl(
-    opaque: impl CstDecode<Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    opaque: impl CstDecode<
+        Option<
+            RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >,
+        >,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();
                 transform_result_dco((move || {
@@ -26166,7 +26232,10 @@ fn wire_frb_generator_test_twin_sync_moi_impl(
                 })()) })
 }
 fn wire_opaque_array_run_twin_sync_moi_impl(
-    data: impl CstDecode<[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>,
+    data: impl CstDecode<
+        [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>;
+            2],
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_data = data.cst_decode();
                 transform_result_dco((move || {
@@ -26181,7 +26250,13 @@ fn wire_opaque_array_twin_sync_moi_impl() -> flutter_rust_bridge::for_generated:
                 })()) })
 }
 fn wire_opaque_vec_run_twin_sync_moi_impl(
-    data: impl CstDecode<Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    data: impl CstDecode<
+        Vec<
+            RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >,
+        >,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_data = data.cst_decode();
                 transform_result_dco((move || {
@@ -26225,7 +26300,11 @@ fn wire_run_nested_opaque_twin_sync_moi_impl(
                 })()) })
 }
 fn wire_run_non_clone_twin_sync_moi_impl(
-    clone: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>,
+    clone: impl CstDecode<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonCloneDataTwinSyncMoi,
+        >,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_clone = clone.cst_decode();
                 transform_result_dco((move || {
@@ -26233,7 +26312,9 @@ fn wire_run_non_clone_twin_sync_moi_impl(
                 })()) })
 }
 fn wire_run_opaque_twin_sync_moi_impl(
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -26254,7 +26335,9 @@ fn wire_run_opaque_twin_sync_moi_impl(
     )
 }
 fn wire_run_opaque_with_delay_twin_sync_moi_impl(
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();
                 transform_result_dco((move || {
@@ -26262,7 +26345,9 @@ fn wire_run_opaque_with_delay_twin_sync_moi_impl(
                 })()) })
 }
 fn wire_unwrap_rust_opaque_twin_sync_moi_impl(
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_sync_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.cst_decode();
                 transform_result_dco((move || {
@@ -26316,7 +26401,7 @@ fn wire_create_option_opaque_twin_sync_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse::create_option_opaque_twin_sync_sse(api_opaque))
                 })()) })
@@ -26355,7 +26440,7 @@ fn wire_opaque_array_run_twin_sync_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>::sse_decode(&mut deserializer);deserializer.end();
+            let api_data = <[RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>; 2]>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse::opaque_array_run_twin_sync_sse(api_data))
                 })()) })
@@ -26381,7 +26466,7 @@ fn wire_opaque_vec_run_twin_sync_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_data = <Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse::opaque_vec_run_twin_sync_sse(api_data))
                 })()) })
@@ -26451,7 +26536,7 @@ fn wire_run_non_clone_twin_sync_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_clone = <RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_clone = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse::run_non_clone_twin_sync_sse(api_clone))
                 })()) })
@@ -26477,9 +26562,9 @@ fn wire_run_opaque_twin_sync_sse_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                &mut deserializer,
-            );
+            let api_opaque = <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse((move || {
                 Result::<_, ()>::Ok(
@@ -26499,7 +26584,7 @@ fn wire_run_opaque_with_delay_twin_sync_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse::run_opaque_with_delay_twin_sync_sse(api_opaque))
                 })()) })
@@ -26512,7 +26597,7 @@ fn wire_unwrap_rust_opaque_twin_sync_sse_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      crate::api::pseudo_manual::rust_opaque_twin_sync_sse::unwrap_rust_opaque_twin_sync_sse(api_opaque)
                 })()) })
@@ -26564,7 +26649,7 @@ fn wire_create_option_opaque_twin_sync_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_option_opaque_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <Option<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::create_option_opaque_twin_sync_sse_moi(api_opaque))
                 })()) })
@@ -26603,7 +26688,7 @@ fn wire_opaque_array_run_twin_sync_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_array_run_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>::sse_decode(&mut deserializer);deserializer.end();
+            let api_data = <[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>; 2]>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::opaque_array_run_twin_sync_sse_moi(api_data))
                 })()) })
@@ -26629,7 +26714,7 @@ fn wire_opaque_vec_run_twin_sync_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "opaque_vec_run_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_data = <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_data = <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::opaque_vec_run_twin_sync_sse_moi(api_data))
                 })()) })
@@ -26681,7 +26766,7 @@ fn wire_run_non_clone_twin_sync_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_non_clone_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_clone = <RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_clone = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonCloneDataTwinSyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::run_non_clone_twin_sync_sse_moi(api_clone))
                 })()) })
@@ -26694,7 +26779,7 @@ fn wire_run_opaque_twin_sync_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::run_opaque_twin_sync_sse_moi(api_opaque))
                 })()) })
@@ -26707,7 +26792,7 @@ fn wire_run_opaque_with_delay_twin_sync_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "run_opaque_with_delay_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::run_opaque_with_delay_twin_sync_sse_moi(api_opaque))
                 })()) })
@@ -26720,7 +26805,7 @@ fn wire_unwrap_rust_opaque_twin_sync_sse_moi_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "unwrap_rust_opaque_twin_sync_sse_moi", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_opaque = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(&mut deserializer);deserializer.end();
+            let api_opaque = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::unwrap_rust_opaque_twin_sync_sse_moi(api_opaque)
                 })()) })
@@ -28644,7 +28729,7 @@ fn wire_create_opaque_twin_normal_impl(port_: flutter_rust_bridge::for_generated
 }
 fn wire_create_option_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    opaque: impl CstDecode<Option<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -28702,7 +28787,7 @@ fn wire_frb_generator_test_twin_normal_impl(
 }
 fn wire_opaque_array_run_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecode<[RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>,
+    data: impl CstDecode<[RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>; 2]>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -28740,7 +28825,7 @@ fn wire_opaque_array_twin_normal_impl(port_: flutter_rust_bridge::for_generated:
 }
 fn wire_opaque_vec_run_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    data: impl CstDecode<Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>,
+    data: impl CstDecode<Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -28822,7 +28907,7 @@ fn wire_run_nested_opaque_twin_normal_impl(
 }
 fn wire_run_non_clone_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    clone: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>,
+    clone: impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -28844,7 +28929,7 @@ fn wire_run_non_clone_twin_normal_impl(
 }
 fn wire_run_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -28864,7 +28949,7 @@ fn wire_run_opaque_twin_normal_impl(
 }
 fn wire_run_opaque_with_delay_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -28886,7 +28971,7 @@ fn wire_run_opaque_with_delay_twin_normal_impl(
 }
 fn wire_unwrap_rust_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>,
+    opaque: impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -28986,7 +29071,9 @@ fn wire_sync_option_rust_opaque_twin_normal_impl(
     )
 }
 fn wire_sync_run_opaque_twin_normal_impl(
-    opaque: impl CstDecode<RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData>>,
+    opaque: impl CstDecode<
+        RustOpaqueNom<crate::api::rust_opaque_sync::NonSendHideDataAnotherTwinNormal>,
+    >,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -29941,6 +30028,16 @@ fn decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_stru
         ))
     }
 }
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Mutex<HideDataTwinRustAsyncMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Mutex<HideDataTwinRustAsyncSseMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Mutex<HideDataTwinSseMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Mutex<HideDataTwinSyncMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Mutex<HideDataTwinSyncSseMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinRustAsyncMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinRustAsyncSseMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinSseMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinSyncMoi>);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(RwLock<HideDataTwinSyncSseMoi>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Box<dyn DartDebugTwinRustAsyncMoi>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Box<dyn DartDebugTwinRustAsyncSseMoi>);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(Box<dyn DartDebugTwinSseMoi>);
@@ -30067,6 +30164,74 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::rust_async::RwLock<
         crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::OpaqueTwoTwinSyncSseMoi,
     >
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::FrbOpaqueReturnTwinRustAsyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sse_moi::FrbOpaqueReturnTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_moi::FrbOpaqueReturnTwinSyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::FrbOpaqueReturnTwinSyncSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::FrbOpaqueSyncReturnTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonCloneDataTwinSyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonCloneDataTwinSyncSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonSendHideDataAnotherTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonSendHideDataTwinRustAsyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonSendHideDataTwinRustAsyncSseMoi);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonSendHideDataTwinSseMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonSendHideDataTwinSyncMoi
+);
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
+    crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonSendHideDataTwinSyncSseMoi
 );
 
 // Section: dart2rust
@@ -30600,17 +30765,157 @@ impl SseDecode for std::collections::HashMap<i32, i32> {
     }
 }
 
-impl SseDecode for RustOpaqueNom<Mutex<HideData>> {
+impl SseDecode for RustOpaqueNom<Mutex<HideDataTwinNormal>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
     }
 }
 
-impl SseDecode for RustOpaqueNom<RwLock<HideData>> {
+impl SseDecode for RustOpaqueNom<Mutex<HideDataTwinRustAsync>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<Mutex<HideDataTwinSse>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<Mutex<HideDataTwinSseMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<Mutex<HideDataTwinSync>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<Mutex<HideDataTwinSyncSse>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<RwLock<HideDataTwinNormal>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueNom<RwLock<HideDataTwinRustAsync>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<RwLock<HideDataTwinSse>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<RwLock<HideDataTwinSseMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<RwLock<HideDataTwinSync>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<RwLock<HideDataTwinSyncSse>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
     }
 }
 
@@ -31509,32 +31814,401 @@ impl SseDecode
     }
 }
 
-impl SseDecode for RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueReturn> {
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
     }
 }
 
-impl SseDecode for RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueSyncReturn> {
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async::FrbOpaqueReturnTwinRustAsync,
+    >
+{
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
     }
 }
 
-impl SseDecode for RustOpaqueNom<crate::auxiliary::sample_types::HideData> {
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::FrbOpaqueReturnTwinRustAsyncMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse,
+    >
+{
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
     }
 }
 
-impl SseDecode for [RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2] {
+impl SseDecode for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);}
+                }
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
+{
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_decode(
-            deserializer,
-        );
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sse_moi::FrbOpaqueReturnTwinSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_moi::FrbOpaqueReturnTwinSyncMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::FrbOpaqueReturnTwinSyncSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::FrbOpaqueSyncReturnTwinSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for [RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>; 2] {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner =
+            <Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>>::sse_decode(
+                deserializer,
+            );
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>;
+        2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<
+            RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+    >; 2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+    >; 2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi,
+    >; 2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<
+            RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>; 2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<
+            RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>; 2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<
+            RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>;
+        2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<
+            RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>;
+        2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<
+            RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+            >,
+        >>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for [RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+    >; 2]
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<
+            RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+            >,
+        >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
     }
 }
@@ -31546,17 +32220,269 @@ impl SseDecode for RustOpaqueNom<i32> {
     }
 }
 
-impl SseDecode for RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData> {
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
     }
 }
 
-impl SseDecode for RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData> {
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
+    >
+{
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonCloneDataTwinRustAsync,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);}
+                }
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonCloneDataTwinSyncMoi>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonCloneDataTwinSyncSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque_sync::NonSendHideDataAnotherTwinNormal> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonSendHideDataAnotherTwinSse,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonSendHideDataAnotherTwinSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueNom<crate::api::rust_opaque::NonSendHideDataTwinNormal> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonSendHideDataTwinRustAsync,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonSendHideDataTwinRustAsyncMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonSendHideDataTwinRustAsyncSse,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonSendHideDataTwinRustAsyncSseMoi> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);}
+                }
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonSendHideDataTwinSse>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonSendHideDataTwinSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonSendHideDataTwinSync>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonSendHideDataTwinSyncMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
+    }
+}
+
+impl SseDecode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonSendHideDataTwinSyncSse,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return unsafe { decode_rust_opaque_nom(inner) };
+    }
+}
+
+impl SseDecode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonSendHideDataTwinSyncSseMoi,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
     }
 }
 
@@ -34469,7 +35395,7 @@ impl SseDecode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
         match tag_ {
             0 => {
                 let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
+                    <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_decode(
                         deserializer,
                     );
                 return crate::api::rust_opaque::EnumOpaqueTwinNormal::Struct(var_field0);
@@ -34484,11 +35410,13 @@ impl SseDecode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
                 return crate::api::rust_opaque::EnumOpaqueTwinNormal::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<Mutex<HideDataTwinNormal>>>::sse_decode(deserializer);
                 return crate::api::rust_opaque::EnumOpaqueTwinNormal::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<RwLock<HideDataTwinNormal>>>::sse_decode(deserializer);
                 return crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(var_field0);
             }
             _ => {
@@ -34511,10 +35439,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumO
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueNom<
+                    crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+                >>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct(var_field0);
             }
             1 => {
@@ -34527,11 +35454,13 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumO
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<Mutex<HideDataTwinRustAsync>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<RwLock<HideDataTwinRustAsync>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(var_field0);
             }
             _ => {
@@ -34559,10 +35488,7 @@ impl SseDecode
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Struct(var_field0);
             }
             1 => {
@@ -34575,11 +35501,13 @@ impl SseDecode
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock(var_field0);
             }
             _ => {
@@ -34607,10 +35535,7 @@ impl SseDecode
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Struct(var_field0);
             }
             1 => {
@@ -34623,11 +35548,13 @@ impl SseDecode
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock(var_field0);
             }
             _ => {
@@ -34650,15 +35577,15 @@ impl SseDecode
 
 impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi {
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut tag_ = <i32>::sse_decode(deserializer);
-            match tag_ {0 => { let mut var_field0 = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+            match tag_ {0 => { let mut var_field0 = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Struct(var_field0); }
 1 => { let mut var_field0 = <RustOpaqueNom<i32>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Primitive(var_field0); }
 2 => { let mut var_field0 = <RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::TraitObj(var_field0); }
-3 => { let mut var_field0 = <RustOpaqueNom<Mutex < HideData >>>::sse_decode(deserializer);
+3 => { let mut var_field0 = <RustOpaqueMoi<Mutex < HideDataTwinRustAsyncSseMoi >>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Mutex(var_field0); }
-4 => { let mut var_field0 = <RustOpaqueNom<RwLock < HideData >>>::sse_decode(deserializer);
+4 => { let mut var_field0 = <RustOpaqueMoi<RwLock < HideDataTwinRustAsyncSseMoi >>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::RwLock(var_field0); }
  _ => { unimplemented!(""); }}}
                 }
@@ -34678,10 +35605,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueNom<
+                    crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+                >>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Struct(
                     var_field0,
                 );
@@ -34696,13 +35622,15 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
                 return crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<Mutex<HideDataTwinSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Mutex(
                     var_field0,
                 );
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<RwLock<HideDataTwinSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::RwLock(
                     var_field0,
                 );
@@ -34729,10 +35657,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaq
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueMoi<
+                    crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi,
+                >>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Struct(var_field0);
             }
             1 => {
@@ -34745,11 +35672,13 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaq
                 return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<Mutex<HideDataTwinSseMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<RwLock<HideDataTwinSseMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::RwLock(var_field0);
             }
             _ => {
@@ -34773,10 +35702,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueNom<
+                    crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync,
+                >>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Struct(var_field0);
             }
             1 => {
@@ -34789,13 +35717,15 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
                 return crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<Mutex<HideDataTwinSync>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Mutex(
                     var_field0,
                 );
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<RwLock<HideDataTwinSync>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(var_field0);
             }
             _ => {
@@ -34820,10 +35750,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpa
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueMoi<
+                    crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+                >>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Struct(var_field0);
             }
             1 => {
@@ -34836,11 +35765,13 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpa
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock(var_field0);
             }
             _ => {
@@ -34866,10 +35797,9 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpa
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueNom<
+                    crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+                >>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Struct(var_field0);
             }
             1 => {
@@ -34882,11 +35812,13 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpa
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<Mutex<HideDataTwinSyncSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueNom<RwLock<HideDataTwinSyncSse>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock(var_field0);
             }
             _ => {
@@ -34914,10 +35846,7 @@ impl SseDecode
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
-                let mut var_field0 =
-                    <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(
-                        deserializer,
-                    );
+                let mut var_field0 = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Struct(var_field0);
             }
             1 => {
@@ -34930,11 +35859,13 @@ impl SseDecode
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::TraitObj(var_field0);
             }
             3 => {
-                let mut var_field0 = <RustOpaqueNom<Mutex<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Mutex(var_field0);
             }
             4 => {
-                let mut var_field0 = <RustOpaqueNom<RwLock<HideData>>>::sse_decode(deserializer);
+                let mut var_field0 =
+                    <RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::RwLock(var_field0);
             }
             _ => {
@@ -36124,14 +37055,174 @@ impl SseDecode for Vec<flutter_rust_bridge::DartOpaque> {
     }
 }
 
-impl SseDecode for Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>> {
+impl SseDecode for Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
             ans_.push(
-                <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer),
+                <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_decode(
+                    deserializer,
+                ),
             );
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ { ans_.push(<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(deserializer)); }
+        return ans_;}
+                }
+
+impl SseDecode
+    for Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+            >>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi,
+            >>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync,
+            >>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+            >>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode
+    for Vec<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+            >>::sse_decode(deserializer));
         }
         return ans_;
     }
@@ -38469,9 +39560,9 @@ impl SseDecode for crate::auxiliary::old_module_system::sub_module::OldSimpleStr
 impl SseDecode for crate::api::rust_opaque::OpaqueNestedTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+            <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_decode(deserializer);
         let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+            <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_decode(deserializer);
         return crate::api::rust_opaque::OpaqueNestedTwinNormal {
             first: var_first,
             second: var_second,
@@ -38483,10 +39574,12 @@ impl SseDecode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
             first: var_first,
             second: var_second,
@@ -38498,10 +39591,12 @@ impl SseDecode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi{first: var_first, second: var_second};
     }
 }
@@ -38510,26 +39605,30 @@ impl SseDecode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::OpaqueNestedTwinRustAsyncSse
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::OpaqueNestedTwinRustAsyncSse{first: var_first, second: var_second};
     }
 }
 
 impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::OpaqueNestedTwinRustAsyncSseMoi {
-                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_first = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-let mut var_second = <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_first = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(deserializer);
+let mut var_second = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::OpaqueNestedTwinRustAsyncSseMoi{first: var_first, second: var_second};}
                 }
 
 impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse::OpaqueNestedTwinSse {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_sse::OpaqueNestedTwinSse {
             first: var_first,
             second: var_second,
@@ -38539,10 +39638,12 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse::OpaqueNested
 
 impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::OpaqueNestedTwinSseMoi {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::OpaqueNestedTwinSseMoi {
             first: var_first,
             second: var_second,
@@ -38552,10 +39653,12 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::OpaqueNe
 
 impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
             first: var_first,
             second: var_second,
@@ -38565,10 +39668,12 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNeste
 
 impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi {
             first: var_first,
             second: var_second,
@@ -38578,10 +39683,12 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueN
 
 impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::OpaqueNestedTwinSyncSse {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::OpaqueNestedTwinSyncSse {
             first: var_first,
             second: var_second,
@@ -38593,10 +39700,12 @@ impl SseDecode
     for crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::OpaqueNestedTwinSyncSseMoi
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_first =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
-        let mut var_second =
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer);
+        let mut var_first = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >>::sse_decode(deserializer);
+        let mut var_second = <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >>::sse_decode(deserializer);
         return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::OpaqueNestedTwinSyncSseMoi{first: var_first, second: var_second};
     }
 }
@@ -38651,12 +39760,212 @@ impl SseDecode for Option<flutter_rust_bridge::DartOpaque> {
     }
 }
 
-impl SseDecode for Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>> {
+impl SseDecode for Option<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueNom<
+                crate::api::rust_opaque_sync::HideDataAnotherTwinNormal,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
             return Some(
-                <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_decode(deserializer),
+                <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_decode(
+                    deserializer,
+                ),
             );
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> {
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {if (<bool>::sse_decode(deserializer)) {
+                return Some(<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(deserializer));
+            } else {
+                return None;
+            }}
+                }
+
+impl SseDecode
+    for Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+            >>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode
+    for Option<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >,
+    >
+{
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+            >>::sse_decode(deserializer));
         } else {
             return None;
         }
@@ -52135,7 +53444,7 @@ impl SseEncode for std::collections::HashMap<i32, i32> {
     }
 }
 
-impl SseEncode for RustOpaqueNom<Mutex<HideData>> {
+impl SseEncode for RustOpaqueNom<Mutex<HideDataTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -52143,7 +53452,167 @@ impl SseEncode for RustOpaqueNom<Mutex<HideData>> {
     }
 }
 
-impl SseEncode for RustOpaqueNom<RwLock<HideData>> {
+impl SseEncode for RustOpaqueNom<Mutex<HideDataTwinRustAsync>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<Mutex<HideDataTwinSse>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<Mutex<HideDataTwinSseMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<Mutex<HideDataTwinSync>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<Mutex<HideDataTwinSyncSse>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<RwLock<HideDataTwinNormal>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<RwLock<HideDataTwinRustAsync>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<RwLock<HideDataTwinSse>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<RwLock<HideDataTwinSseMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<RwLock<HideDataTwinSync>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<RwLock<HideDataTwinSyncSse>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -53127,7 +54596,7 @@ impl SseEncode
     }
 }
 
-impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueReturn> {
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -53135,7 +54604,11 @@ impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueReturn
     }
 }
 
-impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueSyncReturn> {
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async::FrbOpaqueReturnTwinRustAsync,
+    >
+{
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -53143,7 +54616,11 @@ impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueSyncRe
     }
 }
 
-impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::HideData> {
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::FrbOpaqueReturnTwinRustAsyncMoi,
+    >
+{
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -53151,9 +54628,402 @@ impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::HideData> {
     }
 }
 
-impl SseEncode for [RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2] {
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse,
+    >
+{
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>::sse_encode(
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {let (ptr, size) = self.sse_encode_raw();
+                <usize>::sse_encode(ptr, serializer);
+                <i32>::sse_encode(size, serializer);}
+                }
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sse_moi::FrbOpaqueReturnTwinSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_moi::FrbOpaqueReturnTwinSyncMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::FrbOpaqueReturnTwinSyncSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::FrbOpaqueSyncReturnTwinSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for [RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>; 2] {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>>::sse_encode(
+            {
+                let boxed: Box<[_]> = Box::new(self);
+                boxed.into_vec()
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>;
+        2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<
+            RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >,
+        >>::sse_encode(
+            {
+                let boxed: Box<[_]> = Box::new(self);
+                boxed.into_vec()
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+    >; 2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>>::sse_encode({ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+    >; 2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>>::sse_encode({ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi,
+    >; 2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>>::sse_encode({ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>>::sse_encode({ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>; 2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>>::sse_encode({ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>; 2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>>::sse_encode({ let boxed: Box<[_]> = Box::new(self); boxed.into_vec() }, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>;
+        2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<
+            RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >,
+        >>::sse_encode(
+            {
+                let boxed: Box<[_]> = Box::new(self);
+                boxed.into_vec()
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>;
+        2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<
+            RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+            >,
+        >>::sse_encode(
+            {
+                let boxed: Box<[_]> = Box::new(self);
+                boxed.into_vec()
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for [RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+    >; 2]
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<
+            RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+            >,
+        >>::sse_encode(
             {
                 let boxed: Box<[_]> = Box::new(self);
                 boxed.into_vec()
@@ -53171,7 +55041,7 @@ impl SseEncode for RustOpaqueNom<i32> {
     }
 }
 
-impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData> {
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -53179,7 +55049,285 @@ impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData> {
     }
 }
 
-impl SseEncode for RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData> {
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonCloneDataTwinRustAsync,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {let (ptr, size) = self.sse_encode_raw();
+                <usize>::sse_encode(ptr, serializer);
+                <i32>::sse_encode(size, serializer);}
+                }
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonCloneDataTwinSyncMoi>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonCloneDataTwinSyncSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque_sync::NonSendHideDataAnotherTwinNormal> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonSendHideDataAnotherTwinSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonSendHideDataAnotherTwinSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueNom<crate::api::rust_opaque::NonSendHideDataTwinNormal> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonSendHideDataTwinRustAsync,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonSendHideDataTwinRustAsyncMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonSendHideDataTwinRustAsyncSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode for RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonSendHideDataTwinRustAsyncSseMoi> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {let (ptr, size) = self.sse_encode_raw();
+                <usize>::sse_encode(ptr, serializer);
+                <i32>::sse_encode(size, serializer);}
+                }
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonSendHideDataTwinSse>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonSendHideDataTwinSseMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonSendHideDataTwinSync>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonSendHideDataTwinSyncMoi,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueNom<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonSendHideDataTwinSyncSse,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
+impl SseEncode
+    for RustOpaqueMoi<
+        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonSendHideDataTwinSyncSseMoi,
+    >
+{
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);
@@ -55382,7 +57530,7 @@ impl SseEncode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
         match self {
             crate::api::rust_opaque::EnumOpaqueTwinNormal::Struct(field0) => {
                 <i32>::sse_encode(0, serializer);
-                <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
+                <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_encode(
                     field0, serializer,
                 );
             }
@@ -55396,11 +57544,11 @@ impl SseEncode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
             }
             crate::api::rust_opaque::EnumOpaqueTwinNormal::Mutex(field0) => {
                 <i32>::sse_encode(3, serializer);
-                <RustOpaqueNom<Mutex<HideData>>>::sse_encode(field0, serializer);
+                <RustOpaqueNom<Mutex<HideDataTwinNormal>>>::sse_encode(field0, serializer);
             }
             crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(field0) => {
                 <i32>::sse_encode(4, serializer);
-                <RustOpaqueNom<RwLock<HideData>>>::sse_encode(field0, serializer);
+                <RustOpaqueNom<RwLock<HideDataTwinNormal>>>::sse_encode(field0, serializer);
             }
         }
     }
@@ -55420,15 +57568,15 @@ impl SseEncode for [crate::api::rust_opaque::EnumOpaqueTwinNormal; 5] {
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+        match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideDataTwinRustAsync >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideDataTwinRustAsync >>>::sse_encode(field0, serializer);
  }
  }
     }
@@ -55446,15 +57594,15 @@ impl SseEncode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+        match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueMoi<Mutex < HideDataTwinRustAsyncMoi >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinRustAsyncMoi >>>::sse_encode(field0, serializer);
  }
  }
     }
@@ -55472,15 +57620,15 @@ impl SseEncode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+        match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideDataTwinRustAsyncSse >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideDataTwinRustAsyncSse >>>::sse_encode(field0, serializer);
  }
  }
     }
@@ -55495,15 +57643,15 @@ impl SseEncode
 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi {
-                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueMoi<Mutex < HideDataTwinRustAsyncSseMoi >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinRustAsyncSseMoi >>>::sse_encode(field0, serializer);
  }
  }}
                 }
@@ -55522,9 +57670,7 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
         match self {
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Struct(field0) => {
                 <i32>::sse_encode(0, serializer);
-                <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-                    field0, serializer,
-                );
+                <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::sse_encode(field0, serializer);
             }
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Primitive(
                 field0,
@@ -55540,11 +57686,11 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
             }
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Mutex(field0) => {
                 <i32>::sse_encode(3, serializer);
-                <RustOpaqueNom<Mutex<HideData>>>::sse_encode(field0, serializer);
+                <RustOpaqueNom<Mutex<HideDataTwinSse>>>::sse_encode(field0, serializer);
             }
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::RwLock(field0) => {
                 <i32>::sse_encode(4, serializer);
-                <RustOpaqueNom<RwLock<HideData>>>::sse_encode(field0, serializer);
+                <RustOpaqueNom<RwLock<HideDataTwinSse>>>::sse_encode(field0, serializer);
             }
         }
     }
@@ -55564,15 +57710,15 @@ impl SseEncode for [crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueT
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+        match self {crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueMoi<Mutex < HideDataTwinSseMoi >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinSseMoi >>>::sse_encode(field0, serializer);
  }
  }
     }
@@ -55591,9 +57737,7 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
                 field0,
             ) => {
                 <i32>::sse_encode(0, serializer);
-                <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-                    field0, serializer,
-                );
+                <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>::sse_encode(field0, serializer);
             }
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Primitive(
                 field0,
@@ -55609,13 +57753,13 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
             }
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Mutex(field0) => {
                 <i32>::sse_encode(3, serializer);
-                <RustOpaqueNom<Mutex<HideData>>>::sse_encode(field0, serializer);
+                <RustOpaqueNom<Mutex<HideDataTwinSync>>>::sse_encode(field0, serializer);
             }
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(
                 field0,
             ) => {
                 <i32>::sse_encode(4, serializer);
-                <RustOpaqueNom<RwLock<HideData>>>::sse_encode(field0, serializer);
+                <RustOpaqueNom<RwLock<HideDataTwinSync>>>::sse_encode(field0, serializer);
             }
         }
     }
@@ -55635,15 +57779,15 @@ impl SseEncode for [crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaque
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+        match self {crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueMoi<Mutex < HideDataTwinSyncMoi >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinSyncMoi >>>::sse_encode(field0, serializer);
  }
  }
     }
@@ -55659,15 +57803,15 @@ impl SseEncode
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+        match self {crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideDataTwinSyncSse >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideDataTwinSyncSse >>>::sse_encode(field0, serializer);
  }
  }
     }
@@ -55685,15 +57829,15 @@ impl SseEncode
     for crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        match self {crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(field0, serializer);
+        match self {crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinSyncSseMoi>>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueNom<Mutex < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Mutex(field0) => { <i32>::sse_encode(3, serializer); <RustOpaqueMoi<Mutex < HideDataTwinSyncSseMoi >>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueNom<RwLock < HideData >>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinSyncSseMoi >>>::sse_encode(field0, serializer);
  }
  }
     }
@@ -56587,11 +58731,145 @@ impl SseEncode for Vec<flutter_rust_bridge::DartOpaque> {
     }
 }
 
-impl SseEncode for Vec<RustOpaqueNom<crate::auxiliary::sample_types::HideData>> {
+impl SseEncode for Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(item, serializer);
+            <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_encode(
+                item, serializer,
+            );
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<i32>::sse_encode(self.len() as _, serializer);
+        for item in self { <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_encode(item, serializer); }}
+                }
+
+impl SseEncode
+    for Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+            >>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Vec<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+            >>::sse_encode(item, serializer);
         }
     }
 }
@@ -58366,10 +60644,10 @@ impl SseEncode for crate::auxiliary::old_module_system::sub_module::OldSimpleStr
 
 impl SseEncode for crate::api::rust_opaque::OpaqueNestedTwinNormal {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
+        <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_encode(
             self.first, serializer,
         );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
+        <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_encode(
             self.second,
             serializer,
         );
@@ -58380,13 +60658,12 @@ impl SseEncode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >>::sse_encode(self.first, serializer);
+        <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >>::sse_encode(self.second, serializer);
     }
 }
 
@@ -58394,13 +60671,12 @@ impl SseEncode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >>::sse_encode(self.first, serializer);
+        <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >>::sse_encode(self.second, serializer);
     }
 }
 
@@ -58408,78 +60684,52 @@ impl SseEncode
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::OpaqueNestedTwinRustAsyncSse
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >>::sse_encode(self.first, serializer);
+        <RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >>::sse_encode(self.second, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::OpaqueNestedTwinRustAsyncSseMoi {
-                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(self.first, serializer);
-<RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(self.second, serializer);}
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_encode(self.first, serializer);
+<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_encode(self.second, serializer);}
                 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse::OpaqueNestedTwinSse {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::sse_encode(self.first, serializer);
+        <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::sse_encode(self.second, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::OpaqueNestedTwinSseMoi {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_encode(self.first, serializer);
+        <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_encode(self.second, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>::sse_encode(self.first, serializer);
+        <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>::sse_encode(self.second, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>>::sse_encode(self.first, serializer);
+        <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>>::sse_encode(self.second, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::OpaqueNestedTwinSyncSse {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>::sse_encode(self.first, serializer);
+        <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>::sse_encode(self.second, serializer);
     }
 }
 
@@ -58487,13 +60737,12 @@ impl SseEncode
     for crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::OpaqueNestedTwinSyncSseMoi
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.first, serializer,
-        );
-        <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
-            self.second,
-            serializer,
-        );
+        <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >>::sse_encode(self.first, serializer);
+        <RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >>::sse_encode(self.second, serializer);
     }
 }
 
@@ -58542,13 +60791,192 @@ impl SseEncode for Option<flutter_rust_bridge::DartOpaque> {
     }
 }
 
-impl SseEncode for Option<RustOpaqueNom<crate::auxiliary::sample_types::HideData>> {
+impl SseEncode for Option<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
-            <RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::sse_encode(
+            <RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>>::sse_encode(
                 value, serializer,
             );
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse,
+            >>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
+            >>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::sse_encode(
+                value, serializer,
+            );
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync,
+            >>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueNom<
+            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> {
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<bool>::sse_encode(self.is_some(), serializer);
+                if let Some(value) = self {
+                    <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_encode(value, serializer);
+                }}
+                }
+
+impl SseEncode
+    for Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi,
+            >>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueNom<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
+            >>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode
+    for Option<
+        RustOpaqueMoi<
+            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+        >,
+    >
+{
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <RustOpaqueMoi<
+                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
+            >>::sse_encode(value, serializer);
         }
     }
 }

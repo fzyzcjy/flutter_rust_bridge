@@ -5,26 +5,102 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'rust_opaque_sync_twin_sse.dart';
 
-HideData? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) =>
+HideDataAnotherTwinSseMoi? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.syncOptionRustOpaqueTwinSseMoi(hint: hint);
 
-HideData syncCreateOpaqueTwinSseMoi({dynamic hint}) =>
+HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.syncCreateOpaqueTwinSseMoi(hint: hint);
 
-NonSendHideData syncCreateSyncOpaqueTwinSseMoi({dynamic hint}) =>
+NonSendHideDataAnotherTwinSseMoi syncCreateSyncOpaqueTwinSseMoi(
+        {dynamic hint}) =>
     RustLib.instance.api.syncCreateSyncOpaqueTwinSseMoi(hint: hint);
 
-NonCloneData syncCreateNonCloneTwinSseMoi({dynamic hint}) =>
+NonCloneDataAnotherTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.syncCreateNonCloneTwinSseMoi(hint: hint);
 
 String syncRunOpaqueTwinSseMoi(
-        {required NonSendHideData opaque, dynamic hint}) =>
+        {required NonSendHideDataAnotherTwinSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api.syncRunOpaqueTwinSseMoi(opaque: opaque, hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
-FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSseMoi({dynamic hint}) =>
+FrbOpaqueSyncReturnTwinSseMoi frbSyncGeneratorTestTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTestTwinSseMoi(hint: hint);
+
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::FrbOpaqueSyncReturnTwinSseMoi>
+@sealed
+class FrbOpaqueSyncReturnTwinSseMoi extends RustOpaque {
+  FrbOpaqueSyncReturnTwinSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  FrbOpaqueSyncReturnTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi>
+@sealed
+class HideDataAnotherTwinSseMoi extends RustOpaque {
+  HideDataAnotherTwinSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  HideDataAnotherTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_HideDataAnotherTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HideDataAnotherTwinSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi>
+@sealed
+class NonCloneDataAnotherTwinSseMoi extends RustOpaque {
+  NonCloneDataAnotherTwinSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneDataAnotherTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneDataAnotherTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonSendHideDataAnotherTwinSseMoi>
+@sealed
+class NonSendHideDataAnotherTwinSseMoi extends RustOpaque {
+  NonSendHideDataAnotherTwinSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonSendHideDataAnotherTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonSendHideDataAnotherTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoiPtr,
+  );
+}

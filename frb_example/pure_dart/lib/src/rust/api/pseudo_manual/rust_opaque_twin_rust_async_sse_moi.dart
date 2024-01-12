@@ -7,15 +7,15 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'rust_opaque_sync_twin_sse.dart';
 import 'rust_opaque_twin_rust_async.dart';
 part 'rust_opaque_twin_rust_async_sse_moi.freezed.dart';
 
-Future<HideData> createOpaqueTwinRustAsyncSseMoi({dynamic hint}) =>
+Future<HideDataTwinRustAsyncSseMoi> createOpaqueTwinRustAsyncSseMoi(
+        {dynamic hint}) =>
     RustLib.instance.api.createOpaqueTwinRustAsyncSseMoi(hint: hint);
 
-Future<HideData?> createOptionOpaqueTwinRustAsyncSseMoi(
-        {HideData? opaque, dynamic hint}) =>
+Future<HideDataTwinRustAsyncSseMoi?> createOptionOpaqueTwinRustAsyncSseMoi(
+        {HideDataTwinRustAsyncSseMoi? opaque, dynamic hint}) =>
     RustLib.instance.api
         .createOptionOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
 
@@ -30,36 +30,39 @@ Future<String> runEnumOpaqueTwinRustAsyncSseMoi(
         .runEnumOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
 
 Future<String> runOpaqueTwinRustAsyncSseMoi(
-        {required HideData opaque, dynamic hint}) =>
+        {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
         .runOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
 
 Future<String> runOpaqueWithDelayTwinRustAsyncSseMoi(
-        {required HideData opaque, dynamic hint}) =>
+        {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
         .runOpaqueWithDelayTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
 
-Future<HideDataArray2> opaqueArrayTwinRustAsyncSseMoi({dynamic hint}) =>
+Future<HideDataTwinRustAsyncSseMoiArray2> opaqueArrayTwinRustAsyncSseMoi(
+        {dynamic hint}) =>
     RustLib.instance.api.opaqueArrayTwinRustAsyncSseMoi(hint: hint);
 
 Future<String> runNonCloneTwinRustAsyncSseMoi(
-        {required NonCloneData clone, dynamic hint}) =>
+        {required NonCloneDataTwinRustAsyncSseMoi clone, dynamic hint}) =>
     RustLib.instance.api
         .runNonCloneTwinRustAsyncSseMoi(clone: clone, hint: hint);
 
-Future<NonSendHideData> createSyncOpaqueTwinRustAsyncSseMoi({dynamic hint}) =>
+Future<NonSendHideDataTwinRustAsyncSseMoi> createSyncOpaqueTwinRustAsyncSseMoi(
+        {dynamic hint}) =>
     RustLib.instance.api.createSyncOpaqueTwinRustAsyncSseMoi(hint: hint);
 
 Future<void> opaqueArrayRunTwinRustAsyncSseMoi(
-        {required HideDataArray2 data, dynamic hint}) =>
+        {required HideDataTwinRustAsyncSseMoiArray2 data, dynamic hint}) =>
     RustLib.instance.api
         .opaqueArrayRunTwinRustAsyncSseMoi(data: data, hint: hint);
 
-Future<List<HideData>> opaqueVecTwinRustAsyncSseMoi({dynamic hint}) =>
+Future<List<HideDataTwinRustAsyncSseMoi>> opaqueVecTwinRustAsyncSseMoi(
+        {dynamic hint}) =>
     RustLib.instance.api.opaqueVecTwinRustAsyncSseMoi(hint: hint);
 
 Future<void> opaqueVecRunTwinRustAsyncSseMoi(
-        {required List<HideData> data, dynamic hint}) =>
+        {required List<HideDataTwinRustAsyncSseMoi> data, dynamic hint}) =>
     RustLib.instance.api
         .opaqueVecRunTwinRustAsyncSseMoi(data: data, hint: hint);
 
@@ -73,15 +76,54 @@ Future<void> runNestedOpaqueTwinRustAsyncSseMoi(
         .runNestedOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
 
 Future<String> unwrapRustOpaqueTwinRustAsyncSseMoi(
-        {required HideData opaque, dynamic hint}) =>
+        {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) =>
     RustLib.instance.api
         .unwrapRustOpaqueTwinRustAsyncSseMoi(opaque: opaque, hint: hint);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSseMoi({dynamic hint}) =>
+Future<FrbOpaqueReturnTwinRustAsyncSseMoi> frbGeneratorTestTwinRustAsyncSseMoi(
+        {dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinRustAsyncSseMoi(hint: hint);
+
+// Rust type: RustOpaqueMoi<Mutex < HideDataTwinRustAsyncSseMoi >>
+@sealed
+class MutexHideDataTwinRustAsyncSseMoi extends RustOpaque {
+  MutexHideDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  MutexHideDataTwinRustAsyncSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<RwLock < HideDataTwinRustAsyncSseMoi >>
+@sealed
+class RwLockHideDataTwinRustAsyncSseMoi extends RustOpaque {
+  RwLockHideDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  RwLockHideDataTwinRustAsyncSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSseMoiPtr,
+  );
+}
 
 // Rust type: RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>
 @sealed
@@ -102,11 +144,105 @@ class BoxDartDebugTwinRustAsyncSseMoi extends RustOpaque {
   );
 }
 
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi>
+@sealed
+class FrbOpaqueReturnTwinRustAsyncSseMoi extends RustOpaque {
+  FrbOpaqueReturnTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  FrbOpaqueReturnTwinRustAsyncSseMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>
+@sealed
+class HideDataTwinRustAsyncSseMoi extends RustOpaque {
+  HideDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  HideDataTwinRustAsyncSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_HideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_HideDataTwinRustAsyncSseMoiPtr,
+  );
+}
+
+class HideDataTwinRustAsyncSseMoiArray2
+    extends NonGrowableListView<HideDataTwinRustAsyncSseMoi> {
+  static const arraySize = 2;
+
+  @internal
+  List<HideDataTwinRustAsyncSseMoi> get inner => _inner;
+  final List<HideDataTwinRustAsyncSseMoi> _inner;
+
+  HideDataTwinRustAsyncSseMoiArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  HideDataTwinRustAsyncSseMoiArray2.init(HideDataTwinRustAsyncSseMoi fill)
+      : this(List<HideDataTwinRustAsyncSseMoi>.filled(arraySize, fill));
+}
+
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi>
+@sealed
+class NonCloneDataTwinRustAsyncSseMoi extends RustOpaque {
+  NonCloneDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonCloneDataTwinRustAsyncSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonSendHideDataTwinRustAsyncSseMoi>
+@sealed
+class NonSendHideDataTwinRustAsyncSseMoi extends RustOpaque {
+  NonSendHideDataTwinRustAsyncSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  NonSendHideDataTwinRustAsyncSseMoi.sseDecode(
+      int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_NonSendHideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSseMoiPtr,
+  );
+}
+
 @freezed
 sealed class EnumOpaqueTwinRustAsyncSseMoi
     with _$EnumOpaqueTwinRustAsyncSseMoi {
   const factory EnumOpaqueTwinRustAsyncSseMoi.struct(
-    HideData field0,
+    HideDataTwinRustAsyncSseMoi field0,
   ) = EnumOpaqueTwinRustAsyncSseMoi_Struct;
   const factory EnumOpaqueTwinRustAsyncSseMoi.primitive(
     I32 field0,
@@ -115,10 +251,10 @@ sealed class EnumOpaqueTwinRustAsyncSseMoi
     BoxDartDebugTwinRustAsyncSseMoi field0,
   ) = EnumOpaqueTwinRustAsyncSseMoi_TraitObj;
   const factory EnumOpaqueTwinRustAsyncSseMoi.mutex(
-    MutexHideData field0,
+    MutexHideDataTwinRustAsyncSseMoi field0,
   ) = EnumOpaqueTwinRustAsyncSseMoi_Mutex;
   const factory EnumOpaqueTwinRustAsyncSseMoi.rwLock(
-    RwLockHideData field0,
+    RwLockHideDataTwinRustAsyncSseMoi field0,
   ) = EnumOpaqueTwinRustAsyncSseMoi_RwLock;
 }
 
@@ -138,10 +274,10 @@ class EnumOpaqueTwinRustAsyncSseMoiArray5
       : this(List<EnumOpaqueTwinRustAsyncSseMoi>.filled(arraySize, fill));
 }
 
-/// [`HideData`] has private fields.
+/// [`HideDataTwinRustAsyncSseMoi`] has private fields.
 class OpaqueNestedTwinRustAsyncSseMoi {
-  final HideData first;
-  final HideData second;
+  final HideDataTwinRustAsyncSseMoi first;
+  final HideDataTwinRustAsyncSseMoi second;
 
   const OpaqueNestedTwinRustAsyncSseMoi({
     required this.first,

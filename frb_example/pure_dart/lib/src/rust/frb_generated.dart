@@ -5094,30 +5094,32 @@ abstract class RustLibApi extends BaseApi {
       required NonCloneSimpleTwinSyncSseMoi b,
       dynamic hint});
 
-  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSse({dynamic hint});
+  FrbOpaqueSyncReturnTwinSse frbSyncGeneratorTestTwinSse({dynamic hint});
 
-  NonCloneData syncCreateNonCloneTwinSse({dynamic hint});
+  NonCloneDataAnotherTwinSse syncCreateNonCloneTwinSse({dynamic hint});
 
-  HideData syncCreateOpaqueTwinSse({dynamic hint});
+  HideDataAnotherTwinSse syncCreateOpaqueTwinSse({dynamic hint});
 
-  NonSendHideData syncCreateSyncOpaqueTwinSse({dynamic hint});
+  NonSendHideDataAnotherTwinSse syncCreateSyncOpaqueTwinSse({dynamic hint});
 
-  HideData? syncOptionRustOpaqueTwinSse({dynamic hint});
+  HideDataAnotherTwinSse? syncOptionRustOpaqueTwinSse({dynamic hint});
 
-  String syncRunOpaqueTwinSse({required NonSendHideData opaque, dynamic hint});
+  String syncRunOpaqueTwinSse(
+      {required NonSendHideDataAnotherTwinSse opaque, dynamic hint});
 
-  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSseMoi({dynamic hint});
+  FrbOpaqueSyncReturnTwinSseMoi frbSyncGeneratorTestTwinSseMoi({dynamic hint});
 
-  NonCloneData syncCreateNonCloneTwinSseMoi({dynamic hint});
+  NonCloneDataAnotherTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint});
 
-  HideData syncCreateOpaqueTwinSseMoi({dynamic hint});
+  HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi({dynamic hint});
 
-  NonSendHideData syncCreateSyncOpaqueTwinSseMoi({dynamic hint});
+  NonSendHideDataAnotherTwinSseMoi syncCreateSyncOpaqueTwinSseMoi(
+      {dynamic hint});
 
-  HideData? syncOptionRustOpaqueTwinSseMoi({dynamic hint});
+  HideDataAnotherTwinSseMoi? syncOptionRustOpaqueTwinSseMoi({dynamic hint});
 
   String syncRunOpaqueTwinSseMoi(
-      {required NonSendHideData opaque, dynamic hint});
+      {required NonSendHideDataAnotherTwinSseMoi opaque, dynamic hint});
 
   Future<EnumOpaqueTwinRustAsyncArray5> createArrayOpaqueEnumTwinRustAsync(
       {dynamic hint});
@@ -5125,24 +5127,26 @@ abstract class RustLibApi extends BaseApi {
   Future<OpaqueNestedTwinRustAsync> createNestedOpaqueTwinRustAsync(
       {dynamic hint});
 
-  Future<HideData> createOpaqueTwinRustAsync({dynamic hint});
+  Future<HideDataTwinRustAsync> createOpaqueTwinRustAsync({dynamic hint});
 
-  Future<HideData?> createOptionOpaqueTwinRustAsync(
-      {HideData? opaque, dynamic hint});
+  Future<HideDataTwinRustAsync?> createOptionOpaqueTwinRustAsync(
+      {HideDataTwinRustAsync? opaque, dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsync({dynamic hint});
+  Future<NonSendHideDataTwinRustAsync> createSyncOpaqueTwinRustAsync(
+      {dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint});
+  Future<FrbOpaqueReturnTwinRustAsync> frbGeneratorTestTwinRustAsync(
+      {dynamic hint});
 
   Future<void> opaqueArrayRunTwinRustAsync(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinRustAsyncArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArrayTwinRustAsync({dynamic hint});
+  Future<HideDataTwinRustAsyncArray2> opaqueArrayTwinRustAsync({dynamic hint});
 
   Future<void> opaqueVecRunTwinRustAsync(
-      {required List<HideData> data, dynamic hint});
+      {required List<HideDataTwinRustAsync> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVecTwinRustAsync({dynamic hint});
+  Future<List<HideDataTwinRustAsync>> opaqueVecTwinRustAsync({dynamic hint});
 
   Future<String> runEnumOpaqueTwinRustAsync(
       {required EnumOpaqueTwinRustAsync opaque, dynamic hint});
@@ -5151,16 +5155,16 @@ abstract class RustLibApi extends BaseApi {
       {required OpaqueNestedTwinRustAsync opaque, dynamic hint});
 
   Future<String> runNonCloneTwinRustAsync(
-      {required NonCloneData clone, dynamic hint});
+      {required NonCloneDataTwinRustAsync clone, dynamic hint});
 
   Future<String> runOpaqueTwinRustAsync(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsync opaque, dynamic hint});
 
   Future<String> runOpaqueWithDelayTwinRustAsync(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsync opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinRustAsync(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsync opaque, dynamic hint});
 
   Future<EnumOpaqueTwinRustAsyncMoiArray5>
       createArrayOpaqueEnumTwinRustAsyncMoi({dynamic hint});
@@ -5168,24 +5172,28 @@ abstract class RustLibApi extends BaseApi {
   Future<OpaqueNestedTwinRustAsyncMoi> createNestedOpaqueTwinRustAsyncMoi(
       {dynamic hint});
 
-  Future<HideData> createOpaqueTwinRustAsyncMoi({dynamic hint});
+  Future<HideDataTwinRustAsyncMoi> createOpaqueTwinRustAsyncMoi({dynamic hint});
 
-  Future<HideData?> createOptionOpaqueTwinRustAsyncMoi(
-      {HideData? opaque, dynamic hint});
+  Future<HideDataTwinRustAsyncMoi?> createOptionOpaqueTwinRustAsyncMoi(
+      {HideDataTwinRustAsyncMoi? opaque, dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncMoi({dynamic hint});
+  Future<NonSendHideDataTwinRustAsyncMoi> createSyncOpaqueTwinRustAsyncMoi(
+      {dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncMoi({dynamic hint});
+  Future<FrbOpaqueReturnTwinRustAsyncMoi> frbGeneratorTestTwinRustAsyncMoi(
+      {dynamic hint});
 
   Future<void> opaqueArrayRunTwinRustAsyncMoi(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinRustAsyncMoiArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArrayTwinRustAsyncMoi({dynamic hint});
+  Future<HideDataTwinRustAsyncMoiArray2> opaqueArrayTwinRustAsyncMoi(
+      {dynamic hint});
 
   Future<void> opaqueVecRunTwinRustAsyncMoi(
-      {required List<HideData> data, dynamic hint});
+      {required List<HideDataTwinRustAsyncMoi> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVecTwinRustAsyncMoi({dynamic hint});
+  Future<List<HideDataTwinRustAsyncMoi>> opaqueVecTwinRustAsyncMoi(
+      {dynamic hint});
 
   Future<String> runEnumOpaqueTwinRustAsyncMoi(
       {required EnumOpaqueTwinRustAsyncMoi opaque, dynamic hint});
@@ -5194,16 +5202,16 @@ abstract class RustLibApi extends BaseApi {
       {required OpaqueNestedTwinRustAsyncMoi opaque, dynamic hint});
 
   Future<String> runNonCloneTwinRustAsyncMoi(
-      {required NonCloneData clone, dynamic hint});
+      {required NonCloneDataTwinRustAsyncMoi clone, dynamic hint});
 
   Future<String> runOpaqueTwinRustAsyncMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncMoi opaque, dynamic hint});
 
   Future<String> runOpaqueWithDelayTwinRustAsyncMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncMoi opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinRustAsyncMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncMoi opaque, dynamic hint});
 
   Future<EnumOpaqueTwinRustAsyncSseArray5>
       createArrayOpaqueEnumTwinRustAsyncSse({dynamic hint});
@@ -5211,24 +5219,28 @@ abstract class RustLibApi extends BaseApi {
   Future<OpaqueNestedTwinRustAsyncSse> createNestedOpaqueTwinRustAsyncSse(
       {dynamic hint});
 
-  Future<HideData> createOpaqueTwinRustAsyncSse({dynamic hint});
+  Future<HideDataTwinRustAsyncSse> createOpaqueTwinRustAsyncSse({dynamic hint});
 
-  Future<HideData?> createOptionOpaqueTwinRustAsyncSse(
-      {HideData? opaque, dynamic hint});
+  Future<HideDataTwinRustAsyncSse?> createOptionOpaqueTwinRustAsyncSse(
+      {HideDataTwinRustAsyncSse? opaque, dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncSse({dynamic hint});
+  Future<NonSendHideDataTwinRustAsyncSse> createSyncOpaqueTwinRustAsyncSse(
+      {dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSse({dynamic hint});
+  Future<FrbOpaqueReturnTwinRustAsyncSse> frbGeneratorTestTwinRustAsyncSse(
+      {dynamic hint});
 
   Future<void> opaqueArrayRunTwinRustAsyncSse(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinRustAsyncSseArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArrayTwinRustAsyncSse({dynamic hint});
+  Future<HideDataTwinRustAsyncSseArray2> opaqueArrayTwinRustAsyncSse(
+      {dynamic hint});
 
   Future<void> opaqueVecRunTwinRustAsyncSse(
-      {required List<HideData> data, dynamic hint});
+      {required List<HideDataTwinRustAsyncSse> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVecTwinRustAsyncSse({dynamic hint});
+  Future<List<HideDataTwinRustAsyncSse>> opaqueVecTwinRustAsyncSse(
+      {dynamic hint});
 
   Future<String> runEnumOpaqueTwinRustAsyncSse(
       {required EnumOpaqueTwinRustAsyncSse opaque, dynamic hint});
@@ -5237,16 +5249,16 @@ abstract class RustLibApi extends BaseApi {
       {required OpaqueNestedTwinRustAsyncSse opaque, dynamic hint});
 
   Future<String> runNonCloneTwinRustAsyncSse(
-      {required NonCloneData clone, dynamic hint});
+      {required NonCloneDataTwinRustAsyncSse clone, dynamic hint});
 
   Future<String> runOpaqueTwinRustAsyncSse(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncSse opaque, dynamic hint});
 
   Future<String> runOpaqueWithDelayTwinRustAsyncSse(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncSse opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinRustAsyncSse(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncSse opaque, dynamic hint});
 
   Future<EnumOpaqueTwinRustAsyncSseMoiArray5>
       createArrayOpaqueEnumTwinRustAsyncSseMoi({dynamic hint});
@@ -5254,24 +5266,29 @@ abstract class RustLibApi extends BaseApi {
   Future<OpaqueNestedTwinRustAsyncSseMoi> createNestedOpaqueTwinRustAsyncSseMoi(
       {dynamic hint});
 
-  Future<HideData> createOpaqueTwinRustAsyncSseMoi({dynamic hint});
+  Future<HideDataTwinRustAsyncSseMoi> createOpaqueTwinRustAsyncSseMoi(
+      {dynamic hint});
 
-  Future<HideData?> createOptionOpaqueTwinRustAsyncSseMoi(
-      {HideData? opaque, dynamic hint});
+  Future<HideDataTwinRustAsyncSseMoi?> createOptionOpaqueTwinRustAsyncSseMoi(
+      {HideDataTwinRustAsyncSseMoi? opaque, dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncSseMoi({dynamic hint});
+  Future<NonSendHideDataTwinRustAsyncSseMoi>
+      createSyncOpaqueTwinRustAsyncSseMoi({dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSseMoi({dynamic hint});
+  Future<FrbOpaqueReturnTwinRustAsyncSseMoi>
+      frbGeneratorTestTwinRustAsyncSseMoi({dynamic hint});
 
   Future<void> opaqueArrayRunTwinRustAsyncSseMoi(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinRustAsyncSseMoiArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArrayTwinRustAsyncSseMoi({dynamic hint});
+  Future<HideDataTwinRustAsyncSseMoiArray2> opaqueArrayTwinRustAsyncSseMoi(
+      {dynamic hint});
 
   Future<void> opaqueVecRunTwinRustAsyncSseMoi(
-      {required List<HideData> data, dynamic hint});
+      {required List<HideDataTwinRustAsyncSseMoi> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVecTwinRustAsyncSseMoi({dynamic hint});
+  Future<List<HideDataTwinRustAsyncSseMoi>> opaqueVecTwinRustAsyncSseMoi(
+      {dynamic hint});
 
   Future<String> runEnumOpaqueTwinRustAsyncSseMoi(
       {required EnumOpaqueTwinRustAsyncSseMoi opaque, dynamic hint});
@@ -5280,38 +5297,39 @@ abstract class RustLibApi extends BaseApi {
       {required OpaqueNestedTwinRustAsyncSseMoi opaque, dynamic hint});
 
   Future<String> runNonCloneTwinRustAsyncSseMoi(
-      {required NonCloneData clone, dynamic hint});
+      {required NonCloneDataTwinRustAsyncSseMoi clone, dynamic hint});
 
   Future<String> runOpaqueTwinRustAsyncSseMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint});
 
   Future<String> runOpaqueWithDelayTwinRustAsyncSseMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinRustAsyncSseMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint});
 
   Future<EnumOpaqueTwinSseArray5> createArrayOpaqueEnumTwinSse({dynamic hint});
 
   Future<OpaqueNestedTwinSse> createNestedOpaqueTwinSse({dynamic hint});
 
-  Future<HideData> createOpaqueTwinSse({dynamic hint});
+  Future<HideDataTwinSse> createOpaqueTwinSse({dynamic hint});
 
-  Future<HideData?> createOptionOpaqueTwinSse({HideData? opaque, dynamic hint});
+  Future<HideDataTwinSse?> createOptionOpaqueTwinSse(
+      {HideDataTwinSse? opaque, dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaqueTwinSse({dynamic hint});
+  Future<NonSendHideDataTwinSse> createSyncOpaqueTwinSse({dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinSse({dynamic hint});
+  Future<FrbOpaqueReturnTwinSse> frbGeneratorTestTwinSse({dynamic hint});
 
   Future<void> opaqueArrayRunTwinSse(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinSseArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArrayTwinSse({dynamic hint});
+  Future<HideDataTwinSseArray2> opaqueArrayTwinSse({dynamic hint});
 
   Future<void> opaqueVecRunTwinSse(
-      {required List<HideData> data, dynamic hint});
+      {required List<HideDataTwinSse> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVecTwinSse({dynamic hint});
+  Future<List<HideDataTwinSse>> opaqueVecTwinSse({dynamic hint});
 
   Future<String> runEnumOpaqueTwinSse(
       {required EnumOpaqueTwinSse opaque, dynamic hint});
@@ -5320,39 +5338,40 @@ abstract class RustLibApi extends BaseApi {
       {required OpaqueNestedTwinSse opaque, dynamic hint});
 
   Future<String> runNonCloneTwinSse(
-      {required NonCloneData clone, dynamic hint});
+      {required NonCloneDataTwinSse clone, dynamic hint});
 
-  Future<String> runOpaqueTwinSse({required HideData opaque, dynamic hint});
+  Future<String> runOpaqueTwinSse(
+      {required HideDataTwinSse opaque, dynamic hint});
 
   Future<String> runOpaqueWithDelayTwinSse(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSse opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinSse(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSse opaque, dynamic hint});
 
   Future<EnumOpaqueTwinSseMoiArray5> createArrayOpaqueEnumTwinSseMoi(
       {dynamic hint});
 
   Future<OpaqueNestedTwinSseMoi> createNestedOpaqueTwinSseMoi({dynamic hint});
 
-  Future<HideData> createOpaqueTwinSseMoi({dynamic hint});
+  Future<HideDataTwinSseMoi> createOpaqueTwinSseMoi({dynamic hint});
 
-  Future<HideData?> createOptionOpaqueTwinSseMoi(
-      {HideData? opaque, dynamic hint});
+  Future<HideDataTwinSseMoi?> createOptionOpaqueTwinSseMoi(
+      {HideDataTwinSseMoi? opaque, dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaqueTwinSseMoi({dynamic hint});
+  Future<NonSendHideDataTwinSseMoi> createSyncOpaqueTwinSseMoi({dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinSseMoi({dynamic hint});
+  Future<FrbOpaqueReturnTwinSseMoi> frbGeneratorTestTwinSseMoi({dynamic hint});
 
   Future<void> opaqueArrayRunTwinSseMoi(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinSseMoiArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArrayTwinSseMoi({dynamic hint});
+  Future<HideDataTwinSseMoiArray2> opaqueArrayTwinSseMoi({dynamic hint});
 
   Future<void> opaqueVecRunTwinSseMoi(
-      {required List<HideData> data, dynamic hint});
+      {required List<HideDataTwinSseMoi> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVecTwinSseMoi({dynamic hint});
+  Future<List<HideDataTwinSseMoi>> opaqueVecTwinSseMoi({dynamic hint});
 
   Future<String> runEnumOpaqueTwinSseMoi(
       {required EnumOpaqueTwinSseMoi opaque, dynamic hint});
@@ -5361,35 +5380,39 @@ abstract class RustLibApi extends BaseApi {
       {required OpaqueNestedTwinSseMoi opaque, dynamic hint});
 
   Future<String> runNonCloneTwinSseMoi(
-      {required NonCloneData clone, dynamic hint});
+      {required NonCloneDataTwinSseMoi clone, dynamic hint});
 
-  Future<String> runOpaqueTwinSseMoi({required HideData opaque, dynamic hint});
+  Future<String> runOpaqueTwinSseMoi(
+      {required HideDataTwinSseMoi opaque, dynamic hint});
 
   Future<String> runOpaqueWithDelayTwinSseMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSseMoi opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinSseMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSseMoi opaque, dynamic hint});
 
   EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync({dynamic hint});
 
   OpaqueNestedTwinSync createNestedOpaqueTwinSync({dynamic hint});
 
-  HideData createOpaqueTwinSync({dynamic hint});
+  HideDataTwinSync createOpaqueTwinSync({dynamic hint});
 
-  HideData? createOptionOpaqueTwinSync({HideData? opaque, dynamic hint});
+  HideDataTwinSync? createOptionOpaqueTwinSync(
+      {HideDataTwinSync? opaque, dynamic hint});
 
-  NonSendHideData createSyncOpaqueTwinSync({dynamic hint});
+  NonSendHideDataTwinSync createSyncOpaqueTwinSync({dynamic hint});
 
-  FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint});
+  FrbOpaqueReturnTwinSync frbGeneratorTestTwinSync({dynamic hint});
 
-  void opaqueArrayRunTwinSync({required HideDataArray2 data, dynamic hint});
+  void opaqueArrayRunTwinSync(
+      {required HideDataTwinSyncArray2 data, dynamic hint});
 
-  HideDataArray2 opaqueArrayTwinSync({dynamic hint});
+  HideDataTwinSyncArray2 opaqueArrayTwinSync({dynamic hint});
 
-  void opaqueVecRunTwinSync({required List<HideData> data, dynamic hint});
+  void opaqueVecRunTwinSync(
+      {required List<HideDataTwinSync> data, dynamic hint});
 
-  List<HideData> opaqueVecTwinSync({dynamic hint});
+  List<HideDataTwinSync> opaqueVecTwinSync({dynamic hint});
 
   String runEnumOpaqueTwinSync(
       {required EnumOpaqueTwinSync opaque, dynamic hint});
@@ -5397,33 +5420,39 @@ abstract class RustLibApi extends BaseApi {
   void runNestedOpaqueTwinSync(
       {required OpaqueNestedTwinSync opaque, dynamic hint});
 
-  String runNonCloneTwinSync({required NonCloneData clone, dynamic hint});
+  String runNonCloneTwinSync(
+      {required NonCloneDataTwinSync clone, dynamic hint});
 
-  String runOpaqueTwinSync({required HideData opaque, dynamic hint});
+  String runOpaqueTwinSync({required HideDataTwinSync opaque, dynamic hint});
 
-  String runOpaqueWithDelayTwinSync({required HideData opaque, dynamic hint});
+  String runOpaqueWithDelayTwinSync(
+      {required HideDataTwinSync opaque, dynamic hint});
 
-  String unwrapRustOpaqueTwinSync({required HideData opaque, dynamic hint});
+  String unwrapRustOpaqueTwinSync(
+      {required HideDataTwinSync opaque, dynamic hint});
 
   EnumOpaqueTwinSyncMoiArray5 createArrayOpaqueEnumTwinSyncMoi({dynamic hint});
 
   OpaqueNestedTwinSyncMoi createNestedOpaqueTwinSyncMoi({dynamic hint});
 
-  HideData createOpaqueTwinSyncMoi({dynamic hint});
+  HideDataTwinSyncMoi createOpaqueTwinSyncMoi({dynamic hint});
 
-  HideData? createOptionOpaqueTwinSyncMoi({HideData? opaque, dynamic hint});
+  HideDataTwinSyncMoi? createOptionOpaqueTwinSyncMoi(
+      {HideDataTwinSyncMoi? opaque, dynamic hint});
 
-  NonSendHideData createSyncOpaqueTwinSyncMoi({dynamic hint});
+  NonSendHideDataTwinSyncMoi createSyncOpaqueTwinSyncMoi({dynamic hint});
 
-  FrbOpaqueReturn frbGeneratorTestTwinSyncMoi({dynamic hint});
+  FrbOpaqueReturnTwinSyncMoi frbGeneratorTestTwinSyncMoi({dynamic hint});
 
-  void opaqueArrayRunTwinSyncMoi({required HideDataArray2 data, dynamic hint});
+  void opaqueArrayRunTwinSyncMoi(
+      {required HideDataTwinSyncMoiArray2 data, dynamic hint});
 
-  HideDataArray2 opaqueArrayTwinSyncMoi({dynamic hint});
+  HideDataTwinSyncMoiArray2 opaqueArrayTwinSyncMoi({dynamic hint});
 
-  void opaqueVecRunTwinSyncMoi({required List<HideData> data, dynamic hint});
+  void opaqueVecRunTwinSyncMoi(
+      {required List<HideDataTwinSyncMoi> data, dynamic hint});
 
-  List<HideData> opaqueVecTwinSyncMoi({dynamic hint});
+  List<HideDataTwinSyncMoi> opaqueVecTwinSyncMoi({dynamic hint});
 
   String runEnumOpaqueTwinSyncMoi(
       {required EnumOpaqueTwinSyncMoi opaque, dynamic hint});
@@ -5431,34 +5460,40 @@ abstract class RustLibApi extends BaseApi {
   void runNestedOpaqueTwinSyncMoi(
       {required OpaqueNestedTwinSyncMoi opaque, dynamic hint});
 
-  String runNonCloneTwinSyncMoi({required NonCloneData clone, dynamic hint});
+  String runNonCloneTwinSyncMoi(
+      {required NonCloneDataTwinSyncMoi clone, dynamic hint});
 
-  String runOpaqueTwinSyncMoi({required HideData opaque, dynamic hint});
+  String runOpaqueTwinSyncMoi(
+      {required HideDataTwinSyncMoi opaque, dynamic hint});
 
   String runOpaqueWithDelayTwinSyncMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSyncMoi opaque, dynamic hint});
 
-  String unwrapRustOpaqueTwinSyncMoi({required HideData opaque, dynamic hint});
+  String unwrapRustOpaqueTwinSyncMoi(
+      {required HideDataTwinSyncMoi opaque, dynamic hint});
 
   EnumOpaqueTwinSyncSseArray5 createArrayOpaqueEnumTwinSyncSse({dynamic hint});
 
   OpaqueNestedTwinSyncSse createNestedOpaqueTwinSyncSse({dynamic hint});
 
-  HideData createOpaqueTwinSyncSse({dynamic hint});
+  HideDataTwinSyncSse createOpaqueTwinSyncSse({dynamic hint});
 
-  HideData? createOptionOpaqueTwinSyncSse({HideData? opaque, dynamic hint});
+  HideDataTwinSyncSse? createOptionOpaqueTwinSyncSse(
+      {HideDataTwinSyncSse? opaque, dynamic hint});
 
-  NonSendHideData createSyncOpaqueTwinSyncSse({dynamic hint});
+  NonSendHideDataTwinSyncSse createSyncOpaqueTwinSyncSse({dynamic hint});
 
-  FrbOpaqueReturn frbGeneratorTestTwinSyncSse({dynamic hint});
+  FrbOpaqueReturnTwinSyncSse frbGeneratorTestTwinSyncSse({dynamic hint});
 
-  void opaqueArrayRunTwinSyncSse({required HideDataArray2 data, dynamic hint});
+  void opaqueArrayRunTwinSyncSse(
+      {required HideDataTwinSyncSseArray2 data, dynamic hint});
 
-  HideDataArray2 opaqueArrayTwinSyncSse({dynamic hint});
+  HideDataTwinSyncSseArray2 opaqueArrayTwinSyncSse({dynamic hint});
 
-  void opaqueVecRunTwinSyncSse({required List<HideData> data, dynamic hint});
+  void opaqueVecRunTwinSyncSse(
+      {required List<HideDataTwinSyncSse> data, dynamic hint});
 
-  List<HideData> opaqueVecTwinSyncSse({dynamic hint});
+  List<HideDataTwinSyncSse> opaqueVecTwinSyncSse({dynamic hint});
 
   String runEnumOpaqueTwinSyncSse(
       {required EnumOpaqueTwinSyncSse opaque, dynamic hint});
@@ -5466,36 +5501,41 @@ abstract class RustLibApi extends BaseApi {
   void runNestedOpaqueTwinSyncSse(
       {required OpaqueNestedTwinSyncSse opaque, dynamic hint});
 
-  String runNonCloneTwinSyncSse({required NonCloneData clone, dynamic hint});
+  String runNonCloneTwinSyncSse(
+      {required NonCloneDataTwinSyncSse clone, dynamic hint});
 
-  String runOpaqueTwinSyncSse({required HideData opaque, dynamic hint});
+  String runOpaqueTwinSyncSse(
+      {required HideDataTwinSyncSse opaque, dynamic hint});
 
   String runOpaqueWithDelayTwinSyncSse(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSyncSse opaque, dynamic hint});
 
-  String unwrapRustOpaqueTwinSyncSse({required HideData opaque, dynamic hint});
+  String unwrapRustOpaqueTwinSyncSse(
+      {required HideDataTwinSyncSse opaque, dynamic hint});
 
   EnumOpaqueTwinSyncSseMoiArray5 createArrayOpaqueEnumTwinSyncSseMoi(
       {dynamic hint});
 
   OpaqueNestedTwinSyncSseMoi createNestedOpaqueTwinSyncSseMoi({dynamic hint});
 
-  HideData createOpaqueTwinSyncSseMoi({dynamic hint});
+  HideDataTwinSyncSseMoi createOpaqueTwinSyncSseMoi({dynamic hint});
 
-  HideData? createOptionOpaqueTwinSyncSseMoi({HideData? opaque, dynamic hint});
+  HideDataTwinSyncSseMoi? createOptionOpaqueTwinSyncSseMoi(
+      {HideDataTwinSyncSseMoi? opaque, dynamic hint});
 
-  NonSendHideData createSyncOpaqueTwinSyncSseMoi({dynamic hint});
+  NonSendHideDataTwinSyncSseMoi createSyncOpaqueTwinSyncSseMoi({dynamic hint});
 
-  FrbOpaqueReturn frbGeneratorTestTwinSyncSseMoi({dynamic hint});
+  FrbOpaqueReturnTwinSyncSseMoi frbGeneratorTestTwinSyncSseMoi({dynamic hint});
 
   void opaqueArrayRunTwinSyncSseMoi(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinSyncSseMoiArray2 data, dynamic hint});
 
-  HideDataArray2 opaqueArrayTwinSyncSseMoi({dynamic hint});
+  HideDataTwinSyncSseMoiArray2 opaqueArrayTwinSyncSseMoi({dynamic hint});
 
-  void opaqueVecRunTwinSyncSseMoi({required List<HideData> data, dynamic hint});
+  void opaqueVecRunTwinSyncSseMoi(
+      {required List<HideDataTwinSyncSseMoi> data, dynamic hint});
 
-  List<HideData> opaqueVecTwinSyncSseMoi({dynamic hint});
+  List<HideDataTwinSyncSseMoi> opaqueVecTwinSyncSseMoi({dynamic hint});
 
   String runEnumOpaqueTwinSyncSseMoi(
       {required EnumOpaqueTwinSyncSseMoi opaque, dynamic hint});
@@ -5503,15 +5543,17 @@ abstract class RustLibApi extends BaseApi {
   void runNestedOpaqueTwinSyncSseMoi(
       {required OpaqueNestedTwinSyncSseMoi opaque, dynamic hint});
 
-  String runNonCloneTwinSyncSseMoi({required NonCloneData clone, dynamic hint});
+  String runNonCloneTwinSyncSseMoi(
+      {required NonCloneDataTwinSyncSseMoi clone, dynamic hint});
 
-  String runOpaqueTwinSyncSseMoi({required HideData opaque, dynamic hint});
+  String runOpaqueTwinSyncSseMoi(
+      {required HideDataTwinSyncSseMoi opaque, dynamic hint});
 
   String runOpaqueWithDelayTwinSyncSseMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSyncSseMoi opaque, dynamic hint});
 
   String unwrapRustOpaqueTwinSyncSseMoi(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinSyncSseMoi opaque, dynamic hint});
 
   Future<int> simpleAdderTwinRustAsync(
       {required int a, required int b, dynamic hint});
@@ -5873,24 +5915,24 @@ abstract class RustLibApi extends BaseApi {
 
   Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal({dynamic hint});
 
-  Future<HideData> createOpaqueTwinNormal({dynamic hint});
+  Future<HideDataTwinNormal> createOpaqueTwinNormal({dynamic hint});
 
-  Future<HideData?> createOptionOpaqueTwinNormal(
-      {HideData? opaque, dynamic hint});
+  Future<HideDataTwinNormal?> createOptionOpaqueTwinNormal(
+      {HideDataTwinNormal? opaque, dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaqueTwinNormal({dynamic hint});
+  Future<NonSendHideDataTwinNormal> createSyncOpaqueTwinNormal({dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint});
+  Future<FrbOpaqueReturnTwinNormal> frbGeneratorTestTwinNormal({dynamic hint});
 
   Future<void> opaqueArrayRunTwinNormal(
-      {required HideDataArray2 data, dynamic hint});
+      {required HideDataTwinNormalArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArrayTwinNormal({dynamic hint});
+  Future<HideDataTwinNormalArray2> opaqueArrayTwinNormal({dynamic hint});
 
   Future<void> opaqueVecRunTwinNormal(
-      {required List<HideData> data, dynamic hint});
+      {required List<HideDataTwinNormal> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVecTwinNormal({dynamic hint});
+  Future<List<HideDataTwinNormal>> opaqueVecTwinNormal({dynamic hint});
 
   Future<String> runEnumOpaqueTwinNormal(
       {required EnumOpaqueTwinNormal opaque, dynamic hint});
@@ -5899,28 +5941,30 @@ abstract class RustLibApi extends BaseApi {
       {required OpaqueNestedTwinNormal opaque, dynamic hint});
 
   Future<String> runNonCloneTwinNormal(
-      {required NonCloneData clone, dynamic hint});
+      {required NonCloneDataTwinNormal clone, dynamic hint});
 
-  Future<String> runOpaqueTwinNormal({required HideData opaque, dynamic hint});
+  Future<String> runOpaqueTwinNormal(
+      {required HideDataTwinNormal opaque, dynamic hint});
 
   Future<String> runOpaqueWithDelayTwinNormal(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinNormal opaque, dynamic hint});
 
   Future<String> unwrapRustOpaqueTwinNormal(
-      {required HideData opaque, dynamic hint});
+      {required HideDataTwinNormal opaque, dynamic hint});
 
-  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint});
+  FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal({dynamic hint});
 
-  NonCloneData syncCreateNonCloneTwinNormal({dynamic hint});
+  NonCloneDataAnotherTwinNormal syncCreateNonCloneTwinNormal({dynamic hint});
 
-  HideData syncCreateOpaqueTwinNormal({dynamic hint});
+  HideDataAnotherTwinNormal syncCreateOpaqueTwinNormal({dynamic hint});
 
-  NonSendHideData syncCreateSyncOpaqueTwinNormal({dynamic hint});
+  NonSendHideDataAnotherTwinNormal syncCreateSyncOpaqueTwinNormal(
+      {dynamic hint});
 
-  HideData? syncOptionRustOpaqueTwinNormal({dynamic hint});
+  HideDataAnotherTwinNormal? syncOptionRustOpaqueTwinNormal({dynamic hint});
 
   String syncRunOpaqueTwinNormal(
-      {required NonSendHideData opaque, dynamic hint});
+      {required NonSendHideDataAnotherTwinNormal opaque, dynamic hint});
 
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
@@ -5984,22 +6028,202 @@ abstract class RustLibApi extends BaseApi {
   Future<UuidValue> handleUuidTwinNormal({required UuidValue id, dynamic hint});
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutexHideData;
+      get rust_arc_increment_strong_count_MutexHideDataTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutexHideData;
+      get rust_arc_decrement_strong_count_MutexHideDataTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutexHideDataPtr;
+      get rust_arc_decrement_strong_count_MutexHideDataTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockHideData;
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockHideData;
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsync;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockHideDataPtr;
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinNormal;
@@ -6731,30 +6955,256 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_FrbOpaqueReturn;
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_FrbOpaqueReturn;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_FrbOpaqueSyncReturn;
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturn;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsync;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnPtr;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HideData;
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncMoi;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HideData;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncMoi;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_HideDataPtr;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataAnotherTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataAnotherTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataAnotherTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_HideDataTwinSyncSseMoiPtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32;
 
@@ -6763,21 +7213,256 @@ abstract class RustLibApi extends BaseApi {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneData;
+      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneData;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_NonCloneDataPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonSendHideData;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonSendHideData;
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormal;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataPtr;
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataAnotherTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataAnotherTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataAnotherTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSseMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncMoiPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSsePtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSseMoi;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSseMoiPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -50885,7 +51570,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSse({dynamic hint}) {
+  FrbOpaqueSyncReturnTwinSse frbSyncGeneratorTestTwinSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -50895,7 +51580,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_sync_return,
+        decodeSuccessData:
+            sse_decode_RustOpaque_frb_opaque_sync_return_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kFrbSyncGeneratorTestTwinSseConstMeta,
@@ -50912,7 +51598,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonCloneData syncCreateNonCloneTwinSse({dynamic hint}) {
+  NonCloneDataAnotherTwinSse syncCreateNonCloneTwinSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -50922,7 +51608,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_clone_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_clone_data_another_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateNonCloneTwinSseConstMeta,
@@ -50938,7 +51625,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData syncCreateOpaqueTwinSse({dynamic hint}) {
+  HideDataAnotherTwinSse syncCreateOpaqueTwinSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -50948,7 +51635,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_another_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateOpaqueTwinSseConstMeta,
@@ -50964,7 +51651,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonSendHideData syncCreateSyncOpaqueTwinSse({dynamic hint}) {
+  NonSendHideDataAnotherTwinSse syncCreateSyncOpaqueTwinSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -50974,7 +51661,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_send_hide_data_another_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateSyncOpaqueTwinSseConstMeta,
@@ -50991,7 +51679,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData? syncOptionRustOpaqueTwinSse({dynamic hint}) {
+  HideDataAnotherTwinSse? syncOptionRustOpaqueTwinSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51001,7 +51689,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kSyncOptionRustOpaqueTwinSseConstMeta,
@@ -51018,11 +51707,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String syncRunOpaqueTwinSse({required NonSendHideData opaque, dynamic hint}) {
+  String syncRunOpaqueTwinSse(
+      {required NonSendHideDataAnotherTwinSse opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_send_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_non_send_hide_data_another_twin_sse(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_sync_run_opaque_twin_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -51044,7 +51735,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSseMoi({dynamic hint}) {
+  FrbOpaqueSyncReturnTwinSseMoi frbSyncGeneratorTestTwinSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51054,7 +51745,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_sync_return,
+        decodeSuccessData:
+            sse_decode_RustOpaque_frb_opaque_sync_return_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kFrbSyncGeneratorTestTwinSseMoiConstMeta,
@@ -51071,7 +51763,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonCloneData syncCreateNonCloneTwinSseMoi({dynamic hint}) {
+  NonCloneDataAnotherTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51081,7 +51773,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_clone_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_clone_data_another_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateNonCloneTwinSseMoiConstMeta,
@@ -51098,7 +51791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData syncCreateOpaqueTwinSseMoi({dynamic hint}) {
+  HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51108,7 +51801,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_another_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateOpaqueTwinSseMoiConstMeta,
@@ -51124,7 +51817,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonSendHideData syncCreateSyncOpaqueTwinSseMoi({dynamic hint}) {
+  NonSendHideDataAnotherTwinSseMoi syncCreateSyncOpaqueTwinSseMoi(
+      {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51134,7 +51828,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_send_hide_data_another_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateSyncOpaqueTwinSseMoiConstMeta,
@@ -51151,7 +51846,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) {
+  HideDataAnotherTwinSseMoi? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51161,7 +51856,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kSyncOptionRustOpaqueTwinSseMoiConstMeta,
@@ -51179,11 +51875,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String syncRunOpaqueTwinSseMoi(
-      {required NonSendHideData opaque, dynamic hint}) {
+      {required NonSendHideDataAnotherTwinSseMoi opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_send_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_sync_run_opaque_twin_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -51253,13 +51950,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData> createOpaqueTwinRustAsync({dynamic hint}) {
+  Future<HideDataTwinRustAsync> createOpaqueTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_create_opaque_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_twin_rust_async,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinRustAsyncConstMeta,
@@ -51275,15 +51972,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData?> createOptionOpaqueTwinRustAsync(
-      {HideData? opaque, dynamic hint}) {
+  Future<HideDataTwinRustAsync?> createOptionOpaqueTwinRustAsync(
+      {HideDataTwinRustAsync? opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        var arg0 =
+            cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+                opaque);
         return wire.wire_create_option_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinRustAsyncConstMeta,
@@ -51300,13 +52000,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsync({dynamic hint}) {
+  Future<NonSendHideDataTwinRustAsync> createSyncOpaqueTwinRustAsync(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_create_sync_opaque_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            dco_decode_RustOpaque_non_send_hide_data_twin_rust_async,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinRustAsyncConstMeta,
@@ -51323,13 +52025,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) {
+  Future<FrbOpaqueReturnTwinRustAsync> frbGeneratorTestTwinRustAsync(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_frb_generator_test_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData:
+            dco_decode_RustOpaque_frb_opaque_return_twin_rust_async,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinRustAsyncConstMeta,
@@ -51347,10 +52051,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueArrayRunTwinRustAsync(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinRustAsyncArray2 data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        var arg0 =
+            cst_encode_RustOpaque_hide_data_twin_rust_async_array_2(data);
         return wire.wire_opaque_array_run_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
@@ -51371,13 +52076,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideDataArray2> opaqueArrayTwinRustAsync({dynamic hint}) {
+  Future<HideDataTwinRustAsyncArray2> opaqueArrayTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_opaque_array_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData:
+            dco_decode_RustOpaque_hide_data_twin_rust_async_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinRustAsyncConstMeta,
@@ -51394,10 +52100,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueVecRunTwinRustAsync(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinRustAsync> data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        var arg0 = cst_encode_list_RustOpaque_hide_data_twin_rust_async(data);
         return wire.wire_opaque_vec_run_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
@@ -51417,13 +52123,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<HideData>> opaqueVecTwinRustAsync({dynamic hint}) {
+  Future<List<HideDataTwinRustAsync>> opaqueVecTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_opaque_vec_twin_rust_async(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_list_RustOpaque_hide_data_twin_rust_async,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinRustAsyncConstMeta,
@@ -51489,10 +52195,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runNonCloneTwinRustAsync(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinRustAsync clone, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        var arg0 = cst_encode_RustOpaque_non_clone_data_twin_rust_async(clone);
         return wire.wire_run_non_clone_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
@@ -51513,10 +52219,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueTwinRustAsync(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsync opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_rust_async(opaque);
         return wire.wire_run_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
@@ -51537,10 +52243,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueWithDelayTwinRustAsync(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsync opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_rust_async(opaque);
         return wire.wire_run_opaque_with_delay_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
@@ -51562,10 +52268,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> unwrapRustOpaqueTwinRustAsync(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsync opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_rust_async(opaque);
         return wire.wire_unwrap_rust_opaque_twin_rust_async(port_, arg0);
       },
       codec: DcoCodec(
@@ -51634,13 +52340,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData> createOpaqueTwinRustAsyncMoi({dynamic hint}) {
+  Future<HideDataTwinRustAsyncMoi> createOpaqueTwinRustAsyncMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_create_opaque_twin_rust_async_moi(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_twin_rust_async_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinRustAsyncMoiConstMeta,
@@ -51657,15 +52364,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData?> createOptionOpaqueTwinRustAsyncMoi(
-      {HideData? opaque, dynamic hint}) {
+  Future<HideDataTwinRustAsyncMoi?> createOptionOpaqueTwinRustAsyncMoi(
+      {HideDataTwinRustAsyncMoi? opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        var arg0 =
+            cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+                opaque);
         return wire.wire_create_option_opaque_twin_rust_async_moi(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinRustAsyncMoiConstMeta,
@@ -51682,13 +52392,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncMoi({dynamic hint}) {
+  Future<NonSendHideDataTwinRustAsyncMoi> createSyncOpaqueTwinRustAsyncMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_create_sync_opaque_twin_rust_async_moi(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            dco_decode_RustOpaque_non_send_hide_data_twin_rust_async_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinRustAsyncMoiConstMeta,
@@ -51705,13 +52417,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncMoi({dynamic hint}) {
+  Future<FrbOpaqueReturnTwinRustAsyncMoi> frbGeneratorTestTwinRustAsyncMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_frb_generator_test_twin_rust_async_moi(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData:
+            dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_moi,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinRustAsyncMoiConstMeta,
@@ -51729,10 +52443,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueArrayRunTwinRustAsyncMoi(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinRustAsyncMoiArray2 data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        var arg0 =
+            cst_encode_RustOpaque_hide_data_twin_rust_async_moi_array_2(data);
         return wire.wire_opaque_array_run_twin_rust_async_moi(port_, arg0);
       },
       codec: DcoCodec(
@@ -51753,13 +52468,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideDataArray2> opaqueArrayTwinRustAsyncMoi({dynamic hint}) {
+  Future<HideDataTwinRustAsyncMoiArray2> opaqueArrayTwinRustAsyncMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_opaque_array_twin_rust_async_moi(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData:
+            dco_decode_RustOpaque_hide_data_twin_rust_async_moi_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinRustAsyncMoiConstMeta,
@@ -51777,10 +52494,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueVecRunTwinRustAsyncMoi(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinRustAsyncMoi> data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        var arg0 =
+            cst_encode_list_RustOpaque_hide_data_twin_rust_async_moi(data);
         return wire.wire_opaque_vec_run_twin_rust_async_moi(port_, arg0);
       },
       codec: DcoCodec(
@@ -51801,13 +52519,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<HideData>> opaqueVecTwinRustAsyncMoi({dynamic hint}) {
+  Future<List<HideDataTwinRustAsyncMoi>> opaqueVecTwinRustAsyncMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_opaque_vec_twin_rust_async_moi(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_RustOpaque_hide_data,
+        decodeSuccessData:
+            dco_decode_list_RustOpaque_hide_data_twin_rust_async_moi,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinRustAsyncMoiConstMeta,
@@ -51876,10 +52596,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runNonCloneTwinRustAsyncMoi(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinRustAsyncMoi clone, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        var arg0 =
+            cst_encode_RustOpaque_non_clone_data_twin_rust_async_moi(clone);
         return wire.wire_run_non_clone_twin_rust_async_moi(port_, arg0);
       },
       codec: DcoCodec(
@@ -51901,10 +52622,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueTwinRustAsyncMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_rust_async_moi(opaque);
         return wire.wire_run_opaque_twin_rust_async_moi(port_, arg0);
       },
       codec: DcoCodec(
@@ -51925,10 +52646,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueWithDelayTwinRustAsyncMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_rust_async_moi(opaque);
         return wire.wire_run_opaque_with_delay_twin_rust_async_moi(port_, arg0);
       },
       codec: DcoCodec(
@@ -51950,10 +52671,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> unwrapRustOpaqueTwinRustAsyncMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_rust_async_moi(opaque);
         return wire.wire_unwrap_rust_opaque_twin_rust_async_moi(port_, arg0);
       },
       codec: DcoCodec(
@@ -52030,7 +52751,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData> createOpaqueTwinRustAsyncSse({dynamic hint}) {
+  Future<HideDataTwinRustAsyncSse> createOpaqueTwinRustAsyncSse(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52040,7 +52762,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_twin_rust_async_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinRustAsyncSseConstMeta,
@@ -52057,18 +52779,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData?> createOptionOpaqueTwinRustAsyncSse(
-      {HideData? opaque, dynamic hint}) {
+  Future<HideDataTwinRustAsyncSse?> createOptionOpaqueTwinRustAsyncSse(
+      {HideDataTwinRustAsyncSse? opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_create_option_opaque_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinRustAsyncSseConstMeta,
@@ -52085,7 +52809,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncSse({dynamic hint}) {
+  Future<NonSendHideDataTwinRustAsyncSse> createSyncOpaqueTwinRustAsyncSse(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52095,7 +52820,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinRustAsyncSseConstMeta,
@@ -52112,7 +52838,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSse({dynamic hint}) {
+  Future<FrbOpaqueReturnTwinRustAsyncSse> frbGeneratorTestTwinRustAsyncSse(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52122,7 +52849,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData:
+            sse_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinRustAsyncSseConstMeta,
@@ -52140,11 +52868,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueArrayRunTwinRustAsyncSse(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinRustAsyncSseArray2 data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse_array_2(
+            data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_array_run_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52167,7 +52896,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideDataArray2> opaqueArrayTwinRustAsyncSse({dynamic hint}) {
+  Future<HideDataTwinRustAsyncSseArray2> opaqueArrayTwinRustAsyncSse(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52177,7 +52907,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData:
+            sse_decode_RustOpaque_hide_data_twin_rust_async_sse_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinRustAsyncSseConstMeta,
@@ -52195,11 +52926,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueVecRunTwinRustAsyncSse(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinRustAsyncSse> data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        sse_encode_list_RustOpaque_hide_data_twin_rust_async_sse(
+            data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_vec_run_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52222,7 +52954,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<HideData>> opaqueVecTwinRustAsyncSse({dynamic hint}) {
+  Future<List<HideDataTwinRustAsyncSse>> opaqueVecTwinRustAsyncSse(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52232,7 +52965,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_list_RustOpaque_hide_data_twin_rust_async_sse,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinRustAsyncSseConstMeta,
@@ -52307,11 +53041,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runNonCloneTwinRustAsyncSse(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinRustAsyncSse clone, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        sse_encode_RustOpaque_non_clone_data_twin_rust_async_sse(
+            clone, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_non_clone_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52335,11 +53070,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueTwinRustAsyncSse(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncSse opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52362,11 +53097,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueWithDelayTwinRustAsyncSse(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncSse opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_with_delay_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52390,11 +53125,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> unwrapRustOpaqueTwinRustAsyncSse(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncSse opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_unwrap_rust_opaque_twin_rust_async_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52474,7 +53209,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData> createOpaqueTwinRustAsyncSseMoi({dynamic hint}) {
+  Future<HideDataTwinRustAsyncSseMoi> createOpaqueTwinRustAsyncSseMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52484,7 +53220,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinRustAsyncSseMoiConstMeta,
@@ -52501,18 +53238,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData?> createOptionOpaqueTwinRustAsyncSseMoi(
-      {HideData? opaque, dynamic hint}) {
+  Future<HideDataTwinRustAsyncSseMoi?> createOptionOpaqueTwinRustAsyncSseMoi(
+      {HideDataTwinRustAsyncSseMoi? opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_create_option_opaque_twin_rust_async_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinRustAsyncSseMoiConstMeta,
@@ -52529,7 +53268,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaqueTwinRustAsyncSseMoi({dynamic hint}) {
+  Future<NonSendHideDataTwinRustAsyncSseMoi>
+      createSyncOpaqueTwinRustAsyncSseMoi({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52539,7 +53279,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinRustAsyncSseMoiConstMeta,
@@ -52556,7 +53297,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSseMoi({dynamic hint}) {
+  Future<FrbOpaqueReturnTwinRustAsyncSseMoi>
+      frbGeneratorTestTwinRustAsyncSseMoi({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52566,7 +53308,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData:
+            sse_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinRustAsyncSseMoiConstMeta,
@@ -52584,11 +53327,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueArrayRunTwinRustAsyncSseMoi(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinRustAsyncSseMoiArray2 data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi_array_2(
+            data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_array_run_twin_rust_async_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52611,7 +53355,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideDataArray2> opaqueArrayTwinRustAsyncSseMoi({dynamic hint}) {
+  Future<HideDataTwinRustAsyncSseMoiArray2> opaqueArrayTwinRustAsyncSseMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52621,7 +53366,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData:
+            sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinRustAsyncSseMoiConstMeta,
@@ -52639,11 +53385,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueVecRunTwinRustAsyncSseMoi(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinRustAsyncSseMoi> data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        sse_encode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_vec_run_twin_rust_async_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52666,7 +53413,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<HideData>> opaqueVecTwinRustAsyncSseMoi({dynamic hint}) {
+  Future<List<HideDataTwinRustAsyncSseMoi>> opaqueVecTwinRustAsyncSseMoi(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52676,7 +53424,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_list_RustOpaque_hide_data_twin_rust_async_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinRustAsyncSseMoiConstMeta,
@@ -52752,11 +53501,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runNonCloneTwinRustAsyncSseMoi(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinRustAsyncSseMoi clone, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        sse_encode_RustOpaque_non_clone_data_twin_rust_async_sse_moi(
+            clone, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_non_clone_twin_rust_async_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52780,11 +53530,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueTwinRustAsyncSseMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_twin_rust_async_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52808,11 +53559,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueWithDelayTwinRustAsyncSseMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_with_delay_twin_rust_async_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52836,11 +53588,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> unwrapRustOpaqueTwinRustAsyncSseMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinRustAsyncSseMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_unwrap_rust_opaque_twin_rust_async_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -52916,7 +53669,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData> createOpaqueTwinSse({dynamic hint}) {
+  Future<HideDataTwinSse> createOpaqueTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52926,7 +53679,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinSseConstMeta,
@@ -52942,18 +53695,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData?> createOptionOpaqueTwinSse(
-      {HideData? opaque, dynamic hint}) {
+  Future<HideDataTwinSse?> createOptionOpaqueTwinSse(
+      {HideDataTwinSse? opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sse(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_create_option_opaque_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinSseConstMeta,
@@ -52969,7 +53724,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaqueTwinSse({dynamic hint}) {
+  Future<NonSendHideDataTwinSse> createSyncOpaqueTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -52979,7 +53734,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinSseConstMeta,
@@ -52995,7 +53750,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinSse({dynamic hint}) {
+  Future<FrbOpaqueReturnTwinSse> frbGeneratorTestTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53005,7 +53760,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinSseConstMeta,
@@ -53022,11 +53777,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueArrayRunTwinSse(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinSseArray2 data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse_array_2(data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_array_run_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53048,7 +53803,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideDataArray2> opaqueArrayTwinSse({dynamic hint}) {
+  Future<HideDataTwinSseArray2> opaqueArrayTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53058,7 +53813,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_twin_sse_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinSseConstMeta,
@@ -53075,11 +53830,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueVecRunTwinSse(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinSse> data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        sse_encode_list_RustOpaque_hide_data_twin_sse(data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_vec_run_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53101,7 +53856,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<HideData>> opaqueVecTwinSse({dynamic hint}) {
+  Future<List<HideDataTwinSse>> opaqueVecTwinSse({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53111,7 +53866,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_list_RustOpaque_hide_data_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinSseConstMeta,
@@ -53182,11 +53937,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runNonCloneTwinSse(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinSse clone, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        sse_encode_RustOpaque_non_clone_data_twin_sse(clone, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_non_clone_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53208,11 +53963,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> runOpaqueTwinSse({required HideData opaque, dynamic hint}) {
+  Future<String> runOpaqueTwinSse(
+      {required HideDataTwinSse opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53235,11 +53991,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueWithDelayTwinSse(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSse opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_with_delay_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53262,11 +54018,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> unwrapRustOpaqueTwinSse(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSse opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_unwrap_rust_opaque_twin_sse(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53343,7 +54099,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData> createOpaqueTwinSseMoi({dynamic hint}) {
+  Future<HideDataTwinSseMoi> createOpaqueTwinSseMoi({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53353,7 +54109,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinSseMoiConstMeta,
@@ -53369,18 +54125,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData?> createOptionOpaqueTwinSseMoi(
-      {HideData? opaque, dynamic hint}) {
+  Future<HideDataTwinSseMoi?> createOptionOpaqueTwinSseMoi(
+      {HideDataTwinSseMoi? opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_create_option_opaque_twin_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinSseMoiConstMeta,
@@ -53397,7 +54155,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaqueTwinSseMoi({dynamic hint}) {
+  Future<NonSendHideDataTwinSseMoi> createSyncOpaqueTwinSseMoi({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53407,7 +54165,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_send_hide_data_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinSseMoiConstMeta,
@@ -53423,7 +54182,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinSseMoi({dynamic hint}) {
+  Future<FrbOpaqueReturnTwinSseMoi> frbGeneratorTestTwinSseMoi({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53433,7 +54192,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinSseMoiConstMeta,
@@ -53450,11 +54209,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueArrayRunTwinSseMoi(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinSseMoiArray2 data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse_moi_array_2(data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_array_run_twin_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53476,7 +54235,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideDataArray2> opaqueArrayTwinSseMoi({dynamic hint}) {
+  Future<HideDataTwinSseMoiArray2> opaqueArrayTwinSseMoi({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53486,7 +54245,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_twin_sse_moi_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinSseMoiConstMeta,
@@ -53503,11 +54262,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueVecRunTwinSseMoi(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinSseMoi> data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        sse_encode_list_RustOpaque_hide_data_twin_sse_moi(data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_vec_run_twin_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53529,7 +54288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<HideData>> opaqueVecTwinSseMoi({dynamic hint}) {
+  Future<List<HideDataTwinSseMoi>> opaqueVecTwinSseMoi({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -53539,7 +54298,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_list_RustOpaque_hide_data_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinSseMoiConstMeta,
@@ -53610,11 +54369,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runNonCloneTwinSseMoi(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinSseMoi clone, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        sse_encode_RustOpaque_non_clone_data_twin_sse_moi(clone, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_non_clone_twin_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53636,11 +54395,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> runOpaqueTwinSseMoi({required HideData opaque, dynamic hint}) {
+  Future<String> runOpaqueTwinSseMoi(
+      {required HideDataTwinSseMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse_moi(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_twin_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53663,11 +54423,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueWithDelayTwinSseMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSseMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse_moi(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_with_delay_twin_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53691,11 +54451,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> unwrapRustOpaqueTwinSseMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSseMoi opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse_moi(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_unwrap_rust_opaque_twin_sse_moi(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -53762,13 +54522,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData createOpaqueTwinSync({dynamic hint}) {
+  HideDataTwinSync createOpaqueTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_create_opaque_twin_sync();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_twin_sync,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinSyncConstMeta,
@@ -53784,14 +54544,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData? createOptionOpaqueTwinSync({HideData? opaque, dynamic hint}) {
+  HideDataTwinSync? createOptionOpaqueTwinSync(
+      {HideDataTwinSync? opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        var arg0 =
+            cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(opaque);
         return wire.wire_create_option_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinSyncConstMeta,
@@ -53807,13 +54570,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonSendHideData createSyncOpaqueTwinSync({dynamic hint}) {
+  NonSendHideDataTwinSync createSyncOpaqueTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_create_sync_opaque_twin_sync();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data_twin_sync,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinSyncConstMeta,
@@ -53829,13 +54592,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint}) {
+  FrbOpaqueReturnTwinSync frbGeneratorTestTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_frb_generator_test_twin_sync();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return_twin_sync,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinSyncConstMeta,
@@ -53851,10 +54614,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void opaqueArrayRunTwinSync({required HideDataArray2 data, dynamic hint}) {
+  void opaqueArrayRunTwinSync(
+      {required HideDataTwinSyncArray2 data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync_array_2(data);
         return wire.wire_opaque_array_run_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -53874,13 +54638,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideDataArray2 opaqueArrayTwinSync({dynamic hint}) {
+  HideDataTwinSyncArray2 opaqueArrayTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_opaque_array_twin_sync();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_twin_sync_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinSyncConstMeta,
@@ -53896,10 +54660,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void opaqueVecRunTwinSync({required List<HideData> data, dynamic hint}) {
+  void opaqueVecRunTwinSync(
+      {required List<HideDataTwinSync> data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        var arg0 = cst_encode_list_RustOpaque_hide_data_twin_sync(data);
         return wire.wire_opaque_vec_run_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -53919,13 +54684,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  List<HideData> opaqueVecTwinSync({dynamic hint}) {
+  List<HideDataTwinSync> opaqueVecTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_opaque_vec_twin_sync();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_list_RustOpaque_hide_data_twin_sync,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinSyncConstMeta,
@@ -53989,10 +54754,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runNonCloneTwinSync({required NonCloneData clone, dynamic hint}) {
+  String runNonCloneTwinSync(
+      {required NonCloneDataTwinSync clone, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        var arg0 = cst_encode_RustOpaque_non_clone_data_twin_sync(clone);
         return wire.wire_run_non_clone_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -54012,10 +54778,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runOpaqueTwinSync({required HideData opaque, dynamic hint}) {
+  String runOpaqueTwinSync({required HideDataTwinSync opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync(opaque);
         return wire.wire_run_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -54035,10 +54801,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runOpaqueWithDelayTwinSync({required HideData opaque, dynamic hint}) {
+  String runOpaqueWithDelayTwinSync(
+      {required HideDataTwinSync opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync(opaque);
         return wire.wire_run_opaque_with_delay_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -54058,10 +54825,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String unwrapRustOpaqueTwinSync({required HideData opaque, dynamic hint}) {
+  String unwrapRustOpaqueTwinSync(
+      {required HideDataTwinSync opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync(opaque);
         return wire.wire_unwrap_rust_opaque_twin_sync(arg0);
       },
       codec: DcoCodec(
@@ -54127,13 +54895,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData createOpaqueTwinSyncMoi({dynamic hint}) {
+  HideDataTwinSyncMoi createOpaqueTwinSyncMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_create_opaque_twin_sync_moi();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_twin_sync_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinSyncMoiConstMeta,
@@ -54149,14 +54917,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData? createOptionOpaqueTwinSyncMoi({HideData? opaque, dynamic hint}) {
+  HideDataTwinSyncMoi? createOptionOpaqueTwinSyncMoi(
+      {HideDataTwinSyncMoi? opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        var arg0 =
+            cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+                opaque);
         return wire.wire_create_option_opaque_twin_sync_moi(arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinSyncMoiConstMeta,
@@ -54173,13 +54945,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonSendHideData createSyncOpaqueTwinSyncMoi({dynamic hint}) {
+  NonSendHideDataTwinSyncMoi createSyncOpaqueTwinSyncMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_create_sync_opaque_twin_sync_moi();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            dco_decode_RustOpaque_non_send_hide_data_twin_sync_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinSyncMoiConstMeta,
@@ -54196,13 +54969,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  FrbOpaqueReturn frbGeneratorTestTwinSyncMoi({dynamic hint}) {
+  FrbOpaqueReturnTwinSyncMoi frbGeneratorTestTwinSyncMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_frb_generator_test_twin_sync_moi();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData:
+            dco_decode_RustOpaque_frb_opaque_return_twin_sync_moi,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinSyncMoiConstMeta,
@@ -54219,10 +54993,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void opaqueArrayRunTwinSyncMoi({required HideDataArray2 data, dynamic hint}) {
+  void opaqueArrayRunTwinSyncMoi(
+      {required HideDataTwinSyncMoiArray2 data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync_moi_array_2(data);
         return wire.wire_opaque_array_run_twin_sync_moi(arg0);
       },
       codec: DcoCodec(
@@ -54242,13 +55017,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideDataArray2 opaqueArrayTwinSyncMoi({dynamic hint}) {
+  HideDataTwinSyncMoiArray2 opaqueArrayTwinSyncMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_opaque_array_twin_sync_moi();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData:
+            dco_decode_RustOpaque_hide_data_twin_sync_moi_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinSyncMoiConstMeta,
@@ -54264,10 +55040,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void opaqueVecRunTwinSyncMoi({required List<HideData> data, dynamic hint}) {
+  void opaqueVecRunTwinSyncMoi(
+      {required List<HideDataTwinSyncMoi> data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        var arg0 = cst_encode_list_RustOpaque_hide_data_twin_sync_moi(data);
         return wire.wire_opaque_vec_run_twin_sync_moi(arg0);
       },
       codec: DcoCodec(
@@ -54287,13 +55064,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  List<HideData> opaqueVecTwinSyncMoi({dynamic hint}) {
+  List<HideDataTwinSyncMoi> opaqueVecTwinSyncMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_opaque_vec_twin_sync_moi();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_list_RustOpaque_hide_data_twin_sync_moi,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinSyncMoiConstMeta,
@@ -54357,10 +55134,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runNonCloneTwinSyncMoi({required NonCloneData clone, dynamic hint}) {
+  String runNonCloneTwinSyncMoi(
+      {required NonCloneDataTwinSyncMoi clone, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        var arg0 = cst_encode_RustOpaque_non_clone_data_twin_sync_moi(clone);
         return wire.wire_run_non_clone_twin_sync_moi(arg0);
       },
       codec: DcoCodec(
@@ -54380,10 +55158,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runOpaqueTwinSyncMoi({required HideData opaque, dynamic hint}) {
+  String runOpaqueTwinSyncMoi(
+      {required HideDataTwinSyncMoi opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync_moi(opaque);
         return wire.wire_run_opaque_twin_sync_moi(arg0);
       },
       codec: DcoCodec(
@@ -54404,10 +55183,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String runOpaqueWithDelayTwinSyncMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSyncMoi opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync_moi(opaque);
         return wire.wire_run_opaque_with_delay_twin_sync_moi(arg0);
       },
       codec: DcoCodec(
@@ -54428,10 +55207,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String unwrapRustOpaqueTwinSyncMoi({required HideData opaque, dynamic hint}) {
+  String unwrapRustOpaqueTwinSyncMoi(
+      {required HideDataTwinSyncMoi opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_sync_moi(opaque);
         return wire.wire_unwrap_rust_opaque_twin_sync_moi(arg0);
       },
       codec: DcoCodec(
@@ -54506,7 +55286,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData createOpaqueTwinSyncSse({dynamic hint}) {
+  HideDataTwinSyncSse createOpaqueTwinSyncSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -54516,7 +55296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_twin_sync_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinSyncSseConstMeta,
@@ -54532,17 +55312,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData? createOptionOpaqueTwinSyncSse({HideData? opaque, dynamic hint}) {
+  HideDataTwinSyncSse? createOptionOpaqueTwinSyncSse(
+      {HideDataTwinSyncSse? opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_create_option_opaque_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinSyncSseConstMeta,
@@ -54559,7 +55342,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonSendHideData createSyncOpaqueTwinSyncSse({dynamic hint}) {
+  NonSendHideDataTwinSyncSse createSyncOpaqueTwinSyncSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -54569,7 +55352,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_send_hide_data_twin_sync_sse,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinSyncSseConstMeta,
@@ -54586,7 +55370,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  FrbOpaqueReturn frbGeneratorTestTwinSyncSse({dynamic hint}) {
+  FrbOpaqueReturnTwinSyncSse frbGeneratorTestTwinSyncSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -54596,7 +55380,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData:
+            sse_decode_RustOpaque_frb_opaque_return_twin_sync_sse,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinSyncSseConstMeta,
@@ -54613,11 +55398,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void opaqueArrayRunTwinSyncSse({required HideDataArray2 data, dynamic hint}) {
+  void opaqueArrayRunTwinSyncSse(
+      {required HideDataTwinSyncSseArray2 data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse_array_2(data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_array_run_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -54639,7 +55425,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideDataArray2 opaqueArrayTwinSyncSse({dynamic hint}) {
+  HideDataTwinSyncSseArray2 opaqueArrayTwinSyncSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -54649,7 +55435,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData:
+            sse_decode_RustOpaque_hide_data_twin_sync_sse_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinSyncSseConstMeta,
@@ -54665,11 +55452,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void opaqueVecRunTwinSyncSse({required List<HideData> data, dynamic hint}) {
+  void opaqueVecRunTwinSyncSse(
+      {required List<HideDataTwinSyncSse> data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        sse_encode_list_RustOpaque_hide_data_twin_sync_sse(data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_vec_run_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -54691,7 +55479,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  List<HideData> opaqueVecTwinSyncSse({dynamic hint}) {
+  List<HideDataTwinSyncSse> opaqueVecTwinSyncSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -54701,7 +55489,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_list_RustOpaque_hide_data_twin_sync_sse,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinSyncSseConstMeta,
@@ -54771,11 +55559,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runNonCloneTwinSyncSse({required NonCloneData clone, dynamic hint}) {
+  String runNonCloneTwinSyncSse(
+      {required NonCloneDataTwinSyncSse clone, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        sse_encode_RustOpaque_non_clone_data_twin_sync_sse(clone, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_non_clone_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -54797,11 +55586,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runOpaqueTwinSyncSse({required HideData opaque, dynamic hint}) {
+  String runOpaqueTwinSyncSse(
+      {required HideDataTwinSyncSse opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -54824,11 +55614,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String runOpaqueWithDelayTwinSyncSse(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSyncSse opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_with_delay_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -54851,11 +55641,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String unwrapRustOpaqueTwinSyncSse({required HideData opaque, dynamic hint}) {
+  String unwrapRustOpaqueTwinSyncSse(
+      {required HideDataTwinSyncSse opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_unwrap_rust_opaque_twin_sync_sse(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -54933,7 +55724,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData createOpaqueTwinSyncSseMoi({dynamic hint}) {
+  HideDataTwinSyncSseMoi createOpaqueTwinSyncSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -54943,7 +55734,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data,
+        decodeSuccessData: sse_decode_RustOpaque_hide_data_twin_sync_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinSyncSseMoiConstMeta,
@@ -54959,17 +55750,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData? createOptionOpaqueTwinSyncSseMoi({HideData? opaque, dynamic hint}) {
+  HideDataTwinSyncSseMoi? createOptionOpaqueTwinSyncSseMoi(
+      {HideDataTwinSyncSseMoi? opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+            opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_create_option_opaque_twin_sync_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinSyncSseMoiConstMeta,
@@ -54986,7 +55780,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonSendHideData createSyncOpaqueTwinSyncSseMoi({dynamic hint}) {
+  NonSendHideDataTwinSyncSseMoi createSyncOpaqueTwinSyncSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -54996,7 +55790,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            sse_decode_RustOpaque_non_send_hide_data_twin_sync_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinSyncSseMoiConstMeta,
@@ -55013,7 +55808,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  FrbOpaqueReturn frbGeneratorTestTwinSyncSseMoi({dynamic hint}) {
+  FrbOpaqueReturnTwinSyncSseMoi frbGeneratorTestTwinSyncSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -55023,7 +55818,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData:
+            sse_decode_RustOpaque_frb_opaque_return_twin_sync_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinSyncSseMoiConstMeta,
@@ -55041,11 +55837,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void opaqueArrayRunTwinSyncSseMoi(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinSyncSseMoiArray2 data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data_array_2(data, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(
+            data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_array_run_twin_sync_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -55068,7 +55865,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideDataArray2 opaqueArrayTwinSyncSseMoi({dynamic hint}) {
+  HideDataTwinSyncSseMoiArray2 opaqueArrayTwinSyncSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -55078,7 +55875,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData:
+            sse_decode_RustOpaque_hide_data_twin_sync_sse_moi_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinSyncSseMoiConstMeta,
@@ -55095,11 +55893,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void opaqueVecRunTwinSyncSseMoi(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinSyncSseMoi> data, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_RustOpaque_hide_data(data, serializer);
+        sse_encode_list_RustOpaque_hide_data_twin_sync_sse_moi(
+            data, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_opaque_vec_run_twin_sync_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -55121,7 +55920,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  List<HideData> opaqueVecTwinSyncSseMoi({dynamic hint}) {
+  List<HideDataTwinSyncSseMoi> opaqueVecTwinSyncSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -55131,7 +55930,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_list_RustOpaque_hide_data,
+        decodeSuccessData:
+            sse_decode_list_RustOpaque_hide_data_twin_sync_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinSyncSseMoiConstMeta,
@@ -55206,11 +56006,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String runNonCloneTwinSyncSseMoi(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinSyncSseMoi clone, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_non_clone_data(clone, serializer);
+        sse_encode_RustOpaque_non_clone_data_twin_sync_sse_moi(
+            clone, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_non_clone_twin_sync_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -55232,11 +56033,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String runOpaqueTwinSyncSseMoi({required HideData opaque, dynamic hint}) {
+  String runOpaqueTwinSyncSseMoi(
+      {required HideDataTwinSyncSseMoi opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_twin_sync_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -55259,11 +56061,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String runOpaqueWithDelayTwinSyncSseMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSyncSseMoi opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_run_opaque_with_delay_twin_sync_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -55287,11 +56089,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String unwrapRustOpaqueTwinSyncSseMoi(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinSyncSseMoi opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_RustOpaque_hide_data(opaque, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(opaque, serializer);
         final raw_ = serializer.intoRaw();
         return wire.wire_unwrap_rust_opaque_twin_sync_sse_moi(
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
@@ -58602,13 +59404,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData> createOpaqueTwinNormal({dynamic hint}) {
+  Future<HideDataTwinNormal> createOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_create_opaque_twin_normal(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kCreateOpaqueTwinNormalConstMeta,
@@ -58624,15 +59426,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideData?> createOptionOpaqueTwinNormal(
-      {HideData? opaque, dynamic hint}) {
+  Future<HideDataTwinNormal?> createOptionOpaqueTwinNormal(
+      {HideDataTwinNormal? opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        var arg0 =
+            cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_normal(opaque);
         return wire.wire_create_option_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kCreateOptionOpaqueTwinNormalConstMeta,
@@ -58649,13 +59453,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaqueTwinNormal({dynamic hint}) {
+  Future<NonSendHideDataTwinNormal> createSyncOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_create_sync_opaque_twin_normal(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kCreateSyncOpaqueTwinNormalConstMeta,
@@ -58671,13 +59475,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) {
+  Future<FrbOpaqueReturnTwinNormal> frbGeneratorTestTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_frb_generator_test_twin_normal(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return,
+        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_return_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kFrbGeneratorTestTwinNormalConstMeta,
@@ -58694,10 +59498,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueArrayRunTwinNormal(
-      {required HideDataArray2 data, dynamic hint}) {
+      {required HideDataTwinNormalArray2 data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_normal_array_2(data);
         return wire.wire_opaque_array_run_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -58717,13 +59521,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<HideDataArray2> opaqueArrayTwinNormal({dynamic hint}) {
+  Future<HideDataTwinNormalArray2> opaqueArrayTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_opaque_array_twin_normal(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data_array_2,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_twin_normal_array_2,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueArrayTwinNormalConstMeta,
@@ -58740,10 +59544,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> opaqueVecRunTwinNormal(
-      {required List<HideData> data, dynamic hint}) {
+      {required List<HideDataTwinNormal> data, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        var arg0 = cst_encode_list_RustOpaque_hide_data_twin_normal(data);
         return wire.wire_opaque_vec_run_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -58763,13 +59567,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<HideData>> opaqueVecTwinNormal({dynamic hint}) {
+  Future<List<HideDataTwinNormal>> opaqueVecTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         return wire.wire_opaque_vec_twin_normal(port_);
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_list_RustOpaque_hide_data_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kOpaqueVecTwinNormalConstMeta,
@@ -58834,10 +59638,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runNonCloneTwinNormal(
-      {required NonCloneData clone, dynamic hint}) {
+      {required NonCloneDataTwinNormal clone, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        var arg0 = cst_encode_RustOpaque_non_clone_data_twin_normal(clone);
         return wire.wire_run_non_clone_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -58857,10 +59661,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> runOpaqueTwinNormal({required HideData opaque, dynamic hint}) {
+  Future<String> runOpaqueTwinNormal(
+      {required HideDataTwinNormal opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_normal(opaque);
         return wire.wire_run_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -58881,10 +59686,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueWithDelayTwinNormal(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinNormal opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_normal(opaque);
         return wire.wire_run_opaque_with_delay_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -58906,10 +59711,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> unwrapRustOpaqueTwinNormal(
-      {required HideData opaque, dynamic hint}) {
+      {required HideDataTwinNormal opaque, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_hide_data_twin_normal(opaque);
         return wire.wire_unwrap_rust_opaque_twin_normal(port_, arg0);
       },
       codec: DcoCodec(
@@ -58929,13 +59734,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) {
+  FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_frb_sync_generator_test_twin_normal();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_frb_opaque_sync_return,
+        decodeSuccessData:
+            dco_decode_RustOpaque_frb_opaque_sync_return_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kFrbSyncGeneratorTestTwinNormalConstMeta,
@@ -58952,13 +59758,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonCloneData syncCreateNonCloneTwinNormal({dynamic hint}) {
+  NonCloneDataAnotherTwinNormal syncCreateNonCloneTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_sync_create_non_clone_twin_normal();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_non_clone_data,
+        decodeSuccessData:
+            dco_decode_RustOpaque_non_clone_data_another_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateNonCloneTwinNormalConstMeta,
@@ -58975,13 +59782,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData syncCreateOpaqueTwinNormal({dynamic hint}) {
+  HideDataAnotherTwinNormal syncCreateOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_sync_create_opaque_twin_normal();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_hide_data,
+        decodeSuccessData: dco_decode_RustOpaque_hide_data_another_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateOpaqueTwinNormalConstMeta,
@@ -58997,13 +59804,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonSendHideData syncCreateSyncOpaqueTwinNormal({dynamic hint}) {
+  NonSendHideDataAnotherTwinNormal syncCreateSyncOpaqueTwinNormal(
+      {dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_sync_create_sync_opaque_twin_normal();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_RustOpaque_non_send_hide_data,
+        decodeSuccessData:
+            dco_decode_RustOpaque_non_send_hide_data_another_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateSyncOpaqueTwinNormalConstMeta,
@@ -59020,13 +59829,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  HideData? syncOptionRustOpaqueTwinNormal({dynamic hint}) {
+  HideDataAnotherTwinNormal? syncOptionRustOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_sync_option_rust_opaque_twin_normal();
       },
       codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_normal,
         decodeErrorData: dco_decode_AnyhowException,
       ),
       constMeta: kSyncOptionRustOpaqueTwinNormalConstMeta,
@@ -59044,10 +59854,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String syncRunOpaqueTwinNormal(
-      {required NonSendHideData opaque, dynamic hint}) {
+      {required NonSendHideDataAnotherTwinNormal opaque, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
-        var arg0 = cst_encode_RustOpaque_non_send_hide_data(opaque);
+        var arg0 = cst_encode_RustOpaque_non_send_hide_data_another_twin_normal(
+            opaque);
         return wire.wire_sync_run_opaque_twin_normal(arg0);
       },
       codec: DcoCodec(
@@ -59846,20 +60657,180 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutexHideData =>
-          wire.rust_arc_increment_strong_count_RustOpaque_MutexHideData;
+      get rust_arc_increment_strong_count_MutexHideDataTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinNormal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutexHideData =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
+      get rust_arc_decrement_strong_count_MutexHideDataTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockHideData =>
-          wire.rust_arc_increment_strong_count_RustOpaque_RwLockHideData;
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsync;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockHideData =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData;
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinRustAsyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSse =>
+          wire.rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSse =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSync =>
+          wire.rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSync =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideDataTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideDataTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_MutexHideDataTwinSyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSse =>
+          wire.rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSse =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSseMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSync => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncMoi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncSse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideDataTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideDataTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataTwinSyncSseMoi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinNormal => wire
@@ -60510,28 +61481,228 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_FrbOpaqueReturn =>
-          wire.rust_arc_increment_strong_count_RustOpaque_frb_opaque_return;
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_normal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_FrbOpaqueReturn =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_normal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_FrbOpaqueSyncReturn => wire
-          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return;
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_rust_async;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturn => wire
-          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_async;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_HideData =>
-          wire.rust_arc_increment_strong_count_RustOpaque_hide_data;
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_moi;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_HideData =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_hide_data;
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinRustAsyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSync => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sync_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturnTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return_twin_sync_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return_twin_normal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return_twin_normal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturnTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataAnotherTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_another_twin_normal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_another_twin_normal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataAnotherTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_another_twin_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_another_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataAnotherTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_another_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataAnotherTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_another_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustOpaque_hide_data_twin_normal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_normal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_rust_async;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_rust_async_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_rust_async_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_rust_async_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_rust_async_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSse =>
+          wire.rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSse =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSync =>
+          wire.rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSync =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sync_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sync_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideDataTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_hide_data_twin_sync_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideDataTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse_moi;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32 =>
       wire.rust_arc_increment_strong_count_RustOpaque_i_32;
@@ -60540,20 +61711,228 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       wire.rust_arc_decrement_strong_count_RustOpaque_i_32;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneData =>
-          wire.rust_arc_increment_strong_count_RustOpaque_non_clone_data;
+      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneData =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_non_clone_data;
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonSendHideData =>
-          wire.rust_arc_increment_strong_count_RustOpaque_non_send_hide_data;
+      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonSendHideData =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data;
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_normal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_normal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_rust_async;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_rust_async_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinRustAsyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_rust_async_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSync => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sync_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sync_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneDataTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_sync_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneDataTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataAnotherTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_normal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_normal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataAnotherTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataAnotherTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_normal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_normal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinRustAsyncSseMoi =>
+          wire.rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSseMoi =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSync => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSyncMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSyncSse => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSse => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideDataTwinSyncSseMoi => wire
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSseMoi => wire
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
@@ -61803,13 +63182,134 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MutexHideData dco_decode_RustOpaque_MutexHideData(dynamic raw) {
-    return MutexHideData.dcoDecode(raw as List<dynamic>);
+  MutexHideDataTwinNormal dco_decode_RustOpaque_MutexHideDataTwinNormal(
+      dynamic raw) {
+    return MutexHideDataTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  RwLockHideData dco_decode_RustOpaque_RwLockHideData(dynamic raw) {
-    return RwLockHideData.dcoDecode(raw as List<dynamic>);
+  MutexHideDataTwinRustAsync dco_decode_RustOpaque_MutexHideDataTwinRustAsync(
+      dynamic raw) {
+    return MutexHideDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(dynamic raw) {
+    return MutexHideDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncSse
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSse(dynamic raw) {
+    return MutexHideDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(dynamic raw) {
+    return MutexHideDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSse dco_decode_RustOpaque_MutexHideDataTwinSse(dynamic raw) {
+    return MutexHideDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSseMoi dco_decode_RustOpaque_MutexHideDataTwinSseMoi(
+      dynamic raw) {
+    return MutexHideDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSync dco_decode_RustOpaque_MutexHideDataTwinSync(
+      dynamic raw) {
+    return MutexHideDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSyncMoi dco_decode_RustOpaque_MutexHideDataTwinSyncMoi(
+      dynamic raw) {
+    return MutexHideDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSyncSse dco_decode_RustOpaque_MutexHideDataTwinSyncSse(
+      dynamic raw) {
+    return MutexHideDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSyncSseMoi dco_decode_RustOpaque_MutexHideDataTwinSyncSseMoi(
+      dynamic raw) {
+    return MutexHideDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinNormal dco_decode_RustOpaque_RwLockHideDataTwinNormal(
+      dynamic raw) {
+    return RwLockHideDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsync dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(
+      dynamic raw) {
+    return RwLockHideDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(dynamic raw) {
+    return RwLockHideDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncSse
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSse(dynamic raw) {
+    return RwLockHideDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(dynamic raw) {
+    return RwLockHideDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSse dco_decode_RustOpaque_RwLockHideDataTwinSse(
+      dynamic raw) {
+    return RwLockHideDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSseMoi dco_decode_RustOpaque_RwLockHideDataTwinSseMoi(
+      dynamic raw) {
+    return RwLockHideDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSync dco_decode_RustOpaque_RwLockHideDataTwinSync(
+      dynamic raw) {
+    return RwLockHideDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSyncMoi dco_decode_RustOpaque_RwLockHideDataTwinSyncMoi(
+      dynamic raw) {
+    return RwLockHideDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSyncSse dco_decode_RustOpaque_RwLockHideDataTwinSyncSse(
+      dynamic raw) {
+    return RwLockHideDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSyncSseMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(dynamic raw) {
+    return RwLockHideDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -62387,25 +63887,257 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  FrbOpaqueReturn dco_decode_RustOpaque_frb_opaque_return(dynamic raw) {
-    return FrbOpaqueReturn.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  FrbOpaqueSyncReturn dco_decode_RustOpaque_frb_opaque_sync_return(
+  FrbOpaqueReturnTwinNormal dco_decode_RustOpaque_frb_opaque_return_twin_normal(
       dynamic raw) {
-    return FrbOpaqueSyncReturn.dcoDecode(raw as List<dynamic>);
+    return FrbOpaqueReturnTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  HideData dco_decode_RustOpaque_hide_data(dynamic raw) {
-    return HideData.dcoDecode(raw as List<dynamic>);
+  FrbOpaqueReturnTwinRustAsync
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async(dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsync.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  HideDataArray2 dco_decode_RustOpaque_hide_data_array_2(dynamic raw) {
-    return HideDataArray2(
-        (raw as List<dynamic>).map(dco_decode_RustOpaque_hide_data).toList());
+  FrbOpaqueReturnTwinRustAsyncMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncSse
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse(dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSse dco_decode_RustOpaque_frb_opaque_return_twin_sse(
+      dynamic raw) {
+    return FrbOpaqueReturnTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sse_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSync dco_decode_RustOpaque_frb_opaque_return_twin_sync(
+      dynamic raw) {
+    return FrbOpaqueReturnTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncSse
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_sse(dynamic raw) {
+    return FrbOpaqueReturnTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_sse_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinNormal
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_normal(dynamic raw) {
+    return FrbOpaqueSyncReturnTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinSse
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_sse(dynamic raw) {
+    return FrbOpaqueSyncReturnTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinSseMoi
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_sse_moi(dynamic raw) {
+    return FrbOpaqueSyncReturnTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataAnotherTwinNormal dco_decode_RustOpaque_hide_data_another_twin_normal(
+      dynamic raw) {
+    return HideDataAnotherTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataAnotherTwinSse dco_decode_RustOpaque_hide_data_another_twin_sse(
+      dynamic raw) {
+    return HideDataAnotherTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      dco_decode_RustOpaque_hide_data_another_twin_sse_moi(dynamic raw) {
+    return HideDataAnotherTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinNormal dco_decode_RustOpaque_hide_data_twin_normal(dynamic raw) {
+    return HideDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinNormalArray2 dco_decode_RustOpaque_hide_data_twin_normal_array_2(
+      dynamic raw) {
+    return HideDataTwinNormalArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_normal)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsync dco_decode_RustOpaque_hide_data_twin_rust_async(
+      dynamic raw) {
+    return HideDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_array_2(dynamic raw) {
+    return HideDataTwinRustAsyncArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi dco_decode_RustOpaque_hide_data_twin_rust_async_moi(
+      dynamic raw) {
+    return HideDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_moi_array_2(dynamic raw) {
+    return HideDataTwinRustAsyncMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse dco_decode_RustOpaque_hide_data_twin_rust_async_sse(
+      dynamic raw) {
+    return HideDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_array_2(dynamic raw) {
+    return HideDataTwinRustAsyncSseArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(dynamic raw) {
+    return HideDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi_array_2(
+          dynamic raw) {
+    return HideDataTwinRustAsyncSseMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSse dco_decode_RustOpaque_hide_data_twin_sse(dynamic raw) {
+    return HideDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSseArray2 dco_decode_RustOpaque_hide_data_twin_sse_array_2(
+      dynamic raw) {
+    return HideDataTwinSseArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSseMoi dco_decode_RustOpaque_hide_data_twin_sse_moi(dynamic raw) {
+    return HideDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSseMoiArray2 dco_decode_RustOpaque_hide_data_twin_sse_moi_array_2(
+      dynamic raw) {
+    return HideDataTwinSseMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSync dco_decode_RustOpaque_hide_data_twin_sync(dynamic raw) {
+    return HideDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncArray2 dco_decode_RustOpaque_hide_data_twin_sync_array_2(
+      dynamic raw) {
+    return HideDataTwinSyncArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSyncMoi dco_decode_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw) {
+    return HideDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_moi_array_2(dynamic raw) {
+    return HideDataTwinSyncMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSyncSse dco_decode_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw) {
+    return HideDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncSseArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_sse_array_2(dynamic raw) {
+    return HideDataTwinSyncSseArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(
+      dynamic raw) {
+    return HideDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncSseMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(dynamic raw) {
+    return HideDataTwinSyncSseMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse_moi)
+        .toList());
   }
 
   @protected
@@ -62414,13 +64146,177 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  NonCloneData dco_decode_RustOpaque_non_clone_data(dynamic raw) {
-    return NonCloneData.dcoDecode(raw as List<dynamic>);
+  NonCloneDataAnotherTwinNormal
+      dco_decode_RustOpaque_non_clone_data_another_twin_normal(dynamic raw) {
+    return NonCloneDataAnotherTwinNormal.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  NonSendHideData dco_decode_RustOpaque_non_send_hide_data(dynamic raw) {
-    return NonSendHideData.dcoDecode(raw as List<dynamic>);
+  NonCloneDataAnotherTwinSse
+      dco_decode_RustOpaque_non_clone_data_another_twin_sse(dynamic raw) {
+    return NonCloneDataAnotherTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataAnotherTwinSseMoi
+      dco_decode_RustOpaque_non_clone_data_another_twin_sse_moi(dynamic raw) {
+    return NonCloneDataAnotherTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinNormal dco_decode_RustOpaque_non_clone_data_twin_normal(
+      dynamic raw) {
+    return NonCloneDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsync
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async(dynamic raw) {
+    return NonCloneDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_moi(dynamic raw) {
+    return NonCloneDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncSse
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_sse(dynamic raw) {
+    return NonCloneDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return NonCloneDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSse dco_decode_RustOpaque_non_clone_data_twin_sse(
+      dynamic raw) {
+    return NonCloneDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSseMoi dco_decode_RustOpaque_non_clone_data_twin_sse_moi(
+      dynamic raw) {
+    return NonCloneDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSync dco_decode_RustOpaque_non_clone_data_twin_sync(
+      dynamic raw) {
+    return NonCloneDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSyncMoi dco_decode_RustOpaque_non_clone_data_twin_sync_moi(
+      dynamic raw) {
+    return NonCloneDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSyncSse dco_decode_RustOpaque_non_clone_data_twin_sync_sse(
+      dynamic raw) {
+    return NonCloneDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSyncSseMoi
+      dco_decode_RustOpaque_non_clone_data_twin_sync_sse_moi(dynamic raw) {
+    return NonCloneDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataAnotherTwinNormal
+      dco_decode_RustOpaque_non_send_hide_data_another_twin_normal(
+          dynamic raw) {
+    return NonSendHideDataAnotherTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataAnotherTwinSse
+      dco_decode_RustOpaque_non_send_hide_data_another_twin_sse(dynamic raw) {
+    return NonSendHideDataAnotherTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataAnotherTwinSseMoi
+      dco_decode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
+          dynamic raw) {
+    return NonSendHideDataAnotherTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinNormal
+      dco_decode_RustOpaque_non_send_hide_data_twin_normal(dynamic raw) {
+    return NonSendHideDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsync
+      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async(dynamic raw) {
+    return NonSendHideDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async_moi(
+          dynamic raw) {
+    return NonSendHideDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsyncSse
+      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse(
+          dynamic raw) {
+    return NonSendHideDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return NonSendHideDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinSse dco_decode_RustOpaque_non_send_hide_data_twin_sse(
+      dynamic raw) {
+    return NonSendHideDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinSseMoi
+      dco_decode_RustOpaque_non_send_hide_data_twin_sse_moi(dynamic raw) {
+    return NonSendHideDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinSync dco_decode_RustOpaque_non_send_hide_data_twin_sync(
+      dynamic raw) {
+    return NonSendHideDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinSyncMoi
+      dco_decode_RustOpaque_non_send_hide_data_twin_sync_moi(dynamic raw) {
+    return NonSendHideDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinSyncSse
+      dco_decode_RustOpaque_non_send_hide_data_twin_sync_sse(dynamic raw) {
+    return NonSendHideDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonSendHideDataTwinSyncSseMoi
+      dco_decode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(dynamic raw) {
+    return NonSendHideDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -63218,8 +65114,94 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  HideData dco_decode_box_autoadd_RustOpaque_hide_data(dynamic raw) {
-    return dco_decode_RustOpaque_hide_data(raw);
+  HideDataAnotherTwinNormal
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_another_twin_normal(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSse
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_another_twin_sse(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_another_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinNormal dco_decode_box_autoadd_RustOpaque_hide_data_twin_normal(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_normal(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsync
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async(dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSse dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSseMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSync dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync(raw);
+  }
+
+  @protected
+  HideDataTwinSyncMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSse dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(raw);
   }
 
   @protected
@@ -66862,7 +68844,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinNormal_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_normal(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinNormal_Primitive(
@@ -66874,11 +68856,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinNormal_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinNormal(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinNormal_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinNormal(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -66898,7 +68880,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinRustAsync_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_rust_async(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinRustAsync_Primitive(
@@ -66910,11 +68892,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinRustAsync_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsync(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinRustAsync_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -66935,7 +68917,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinRustAsyncMoi_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_rust_async_moi(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinRustAsyncMoi_Primitive(
@@ -66947,11 +68929,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinRustAsyncMoi_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinRustAsyncMoi_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -66972,7 +68954,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinRustAsyncSse_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_rust_async_sse(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinRustAsyncSse_Primitive(
@@ -66984,11 +68966,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinRustAsyncSse_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSse(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinRustAsyncSse_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSse(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -67009,7 +68991,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinRustAsyncSseMoi_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinRustAsyncSseMoi_Primitive(
@@ -67021,11 +69003,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinRustAsyncSseMoi_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinRustAsyncSseMoi_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -67045,7 +69027,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinSse_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_sse(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinSse_Primitive(
@@ -67057,11 +69039,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinSse_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinSse(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinSse_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinSse(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -67079,7 +69061,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinSseMoi_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_sse_moi(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinSseMoi_Primitive(
@@ -67091,11 +69073,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinSseMoi_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinSseMoi(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinSseMoi_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinSseMoi(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -67115,7 +69097,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinSync_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_sync(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinSync_Primitive(
@@ -67127,11 +69109,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinSync_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinSync(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinSync_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinSync(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -67150,7 +69132,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinSyncMoi_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_sync_moi(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinSyncMoi_Primitive(
@@ -67162,11 +69144,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinSyncMoi_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinSyncMoi(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinSyncMoi_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinSyncMoi(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -67186,7 +69168,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinSyncSse_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_sync_sse(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinSyncSse_Primitive(
@@ -67198,11 +69180,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinSyncSse_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinSyncSse(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinSyncSse_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinSyncSse(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -67223,7 +69205,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (raw[0]) {
       case 0:
         return EnumOpaqueTwinSyncSseMoi_Struct(
-          dco_decode_RustOpaque_hide_data(raw[1]),
+          dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(raw[1]),
         );
       case 1:
         return EnumOpaqueTwinSyncSseMoi_Primitive(
@@ -67235,11 +69217,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 3:
         return EnumOpaqueTwinSyncSseMoi_Mutex(
-          dco_decode_RustOpaque_MutexHideData(raw[1]),
+          dco_decode_RustOpaque_MutexHideDataTwinSyncSseMoi(raw[1]),
         );
       case 4:
         return EnumOpaqueTwinSyncSseMoi_RwLock(
-          dco_decode_RustOpaque_RwLockHideData(raw[1]),
+          dco_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -68210,8 +70192,92 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<HideData> dco_decode_list_RustOpaque_hide_data(dynamic raw) {
-    return (raw as List<dynamic>).map(dco_decode_RustOpaque_hide_data).toList();
+  List<HideDataTwinNormal> dco_decode_list_RustOpaque_hide_data_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsync>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncSse>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncSseMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSse> dco_decode_list_RustOpaque_hide_data_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSseMoi> dco_decode_list_RustOpaque_hide_data_twin_sse_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSync> dco_decode_list_RustOpaque_hide_data_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSyncMoi> dco_decode_list_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSyncSse> dco_decode_list_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSyncSseMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_sync_sse_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse_moi)
+        .toList();
   }
 
   @protected
@@ -69802,8 +71868,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinNormal(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_normal(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_normal(arr[1]),
     );
   }
 
@@ -69814,8 +71880,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinRustAsync(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async(arr[1]),
     );
   }
 
@@ -69826,8 +71892,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinRustAsyncMoi(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async_moi(arr[1]),
     );
   }
 
@@ -69838,8 +71904,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinRustAsyncSse(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async_sse(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async_sse(arr[1]),
     );
   }
 
@@ -69850,8 +71916,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinRustAsyncSseMoi(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(arr[1]),
     );
   }
 
@@ -69861,8 +71927,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSse(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_sse(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sse(arr[1]),
     );
   }
 
@@ -69872,8 +71938,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSseMoi(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_sse_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sse_moi(arr[1]),
     );
   }
 
@@ -69883,8 +71949,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSync(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_sync(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync(arr[1]),
     );
   }
 
@@ -69894,8 +71960,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSyncMoi(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_sync_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync_moi(arr[1]),
     );
   }
 
@@ -69905,8 +71971,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSyncSse(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_sync_sse(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync_sse(arr[1]),
     );
   }
 
@@ -69917,8 +71983,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinSyncSseMoi(
-      first: dco_decode_RustOpaque_hide_data(arr[0]),
-      second: dco_decode_RustOpaque_hide_data(arr[1]),
+      first: dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(arr[1]),
     );
   }
 
@@ -69948,10 +72014,127 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  HideData? dco_decode_opt_box_autoadd_RustOpaque_hide_data(dynamic raw) {
+  HideDataAnotherTwinNormal?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          dynamic raw) {
     return raw == null
         ? null
-        : dco_decode_box_autoadd_RustOpaque_hide_data(raw);
+        : dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_normal(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinNormal?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_normal(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsync?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            raw);
+  }
+
+  @protected
+  HideDataTwinSse? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSync? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync(raw);
+  }
+
+  @protected
+  HideDataTwinSyncMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(raw);
   }
 
   @protected
@@ -73586,16 +75769,163 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MutexHideData sse_decode_RustOpaque_MutexHideData(
+  MutexHideDataTwinNormal sse_decode_RustOpaque_MutexHideDataTwinNormal(
       SseDeserializer deserializer) {
-    return MutexHideData.sseDecode(
+    return MutexHideDataTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RwLockHideData sse_decode_RustOpaque_RwLockHideData(
+  MutexHideDataTwinRustAsync sse_decode_RustOpaque_MutexHideDataTwinRustAsync(
       SseDeserializer deserializer) {
-    return RwLockHideData.sseDecode(
+    return MutexHideDataTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncMoi
+      sse_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return MutexHideDataTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncSse
+      sse_decode_RustOpaque_MutexHideDataTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return MutexHideDataTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return MutexHideDataTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinSse sse_decode_RustOpaque_MutexHideDataTwinSse(
+      SseDeserializer deserializer) {
+    return MutexHideDataTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinSseMoi sse_decode_RustOpaque_MutexHideDataTwinSseMoi(
+      SseDeserializer deserializer) {
+    return MutexHideDataTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinSync sse_decode_RustOpaque_MutexHideDataTwinSync(
+      SseDeserializer deserializer) {
+    return MutexHideDataTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinSyncMoi sse_decode_RustOpaque_MutexHideDataTwinSyncMoi(
+      SseDeserializer deserializer) {
+    return MutexHideDataTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinSyncSse sse_decode_RustOpaque_MutexHideDataTwinSyncSse(
+      SseDeserializer deserializer) {
+    return MutexHideDataTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  MutexHideDataTwinSyncSseMoi sse_decode_RustOpaque_MutexHideDataTwinSyncSseMoi(
+      SseDeserializer deserializer) {
+    return MutexHideDataTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinNormal sse_decode_RustOpaque_RwLockHideDataTwinNormal(
+      SseDeserializer deserializer) {
+    return RwLockHideDataTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsync sse_decode_RustOpaque_RwLockHideDataTwinRustAsync(
+      SseDeserializer deserializer) {
+    return RwLockHideDataTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncMoi
+      sse_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(
+          SseDeserializer deserializer) {
+    return RwLockHideDataTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncSse
+      sse_decode_RustOpaque_RwLockHideDataTwinRustAsyncSse(
+          SseDeserializer deserializer) {
+    return RwLockHideDataTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(
+          SseDeserializer deserializer) {
+    return RwLockHideDataTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinSse sse_decode_RustOpaque_RwLockHideDataTwinSse(
+      SseDeserializer deserializer) {
+    return RwLockHideDataTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinSseMoi sse_decode_RustOpaque_RwLockHideDataTwinSseMoi(
+      SseDeserializer deserializer) {
+    return RwLockHideDataTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinSync sse_decode_RustOpaque_RwLockHideDataTwinSync(
+      SseDeserializer deserializer) {
+    return RwLockHideDataTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinSyncMoi sse_decode_RustOpaque_RwLockHideDataTwinSyncMoi(
+      SseDeserializer deserializer) {
+    return RwLockHideDataTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinSyncSse sse_decode_RustOpaque_RwLockHideDataTwinSyncSse(
+      SseDeserializer deserializer) {
+    return RwLockHideDataTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  RwLockHideDataTwinSyncSseMoi
+      sse_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(
+          SseDeserializer deserializer) {
+    return RwLockHideDataTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -74241,30 +76571,303 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  FrbOpaqueReturn sse_decode_RustOpaque_frb_opaque_return(
+  FrbOpaqueReturnTwinNormal sse_decode_RustOpaque_frb_opaque_return_twin_normal(
       SseDeserializer deserializer) {
-    return FrbOpaqueReturn.sseDecode(
+    return FrbOpaqueReturnTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  FrbOpaqueSyncReturn sse_decode_RustOpaque_frb_opaque_sync_return(
-      SseDeserializer deserializer) {
-    return FrbOpaqueSyncReturn.sseDecode(
+  FrbOpaqueReturnTwinRustAsync
+      sse_decode_RustOpaque_frb_opaque_return_twin_rust_async(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinRustAsync.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  HideData sse_decode_RustOpaque_hide_data(SseDeserializer deserializer) {
-    return HideData.sseDecode(
+  FrbOpaqueReturnTwinRustAsyncMoi
+      sse_decode_RustOpaque_frb_opaque_return_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinRustAsyncMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  HideDataArray2 sse_decode_RustOpaque_hide_data_array_2(
+  FrbOpaqueReturnTwinRustAsyncSse
+      sse_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSse sse_decode_RustOpaque_frb_opaque_return_twin_sse(
       SseDeserializer deserializer) {
-    var inner = sse_decode_list_RustOpaque_hide_data(deserializer);
-    return HideDataArray2(inner);
+    return FrbOpaqueReturnTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSseMoi
+      sse_decode_RustOpaque_frb_opaque_return_twin_sse_moi(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSync sse_decode_RustOpaque_frb_opaque_return_twin_sync(
+      SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncMoi
+      sse_decode_RustOpaque_frb_opaque_return_twin_sync_moi(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncSse
+      sse_decode_RustOpaque_frb_opaque_return_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncSseMoi
+      sse_decode_RustOpaque_frb_opaque_return_twin_sync_sse_moi(
+          SseDeserializer deserializer) {
+    return FrbOpaqueReturnTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinNormal
+      sse_decode_RustOpaque_frb_opaque_sync_return_twin_normal(
+          SseDeserializer deserializer) {
+    return FrbOpaqueSyncReturnTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinSse
+      sse_decode_RustOpaque_frb_opaque_sync_return_twin_sse(
+          SseDeserializer deserializer) {
+    return FrbOpaqueSyncReturnTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinSseMoi
+      sse_decode_RustOpaque_frb_opaque_sync_return_twin_sse_moi(
+          SseDeserializer deserializer) {
+    return FrbOpaqueSyncReturnTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataAnotherTwinNormal sse_decode_RustOpaque_hide_data_another_twin_normal(
+      SseDeserializer deserializer) {
+    return HideDataAnotherTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataAnotherTwinSse sse_decode_RustOpaque_hide_data_another_twin_sse(
+      SseDeserializer deserializer) {
+    return HideDataAnotherTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      sse_decode_RustOpaque_hide_data_another_twin_sse_moi(
+          SseDeserializer deserializer) {
+    return HideDataAnotherTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinNormal sse_decode_RustOpaque_hide_data_twin_normal(
+      SseDeserializer deserializer) {
+    return HideDataTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinNormalArray2 sse_decode_RustOpaque_hide_data_twin_normal_array_2(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_RustOpaque_hide_data_twin_normal(deserializer);
+    return HideDataTwinNormalArray2(inner);
+  }
+
+  @protected
+  HideDataTwinRustAsync sse_decode_RustOpaque_hide_data_twin_rust_async(
+      SseDeserializer deserializer) {
+    return HideDataTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsyncArray2
+      sse_decode_RustOpaque_hide_data_twin_rust_async_array_2(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_RustOpaque_hide_data_twin_rust_async(deserializer);
+    return HideDataTwinRustAsyncArray2(inner);
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi sse_decode_RustOpaque_hide_data_twin_rust_async_moi(
+      SseDeserializer deserializer) {
+    return HideDataTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoiArray2
+      sse_decode_RustOpaque_hide_data_twin_rust_async_moi_array_2(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_RustOpaque_hide_data_twin_rust_async_moi(deserializer);
+    return HideDataTwinRustAsyncMoiArray2(inner);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse sse_decode_RustOpaque_hide_data_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    return HideDataTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseArray2
+      sse_decode_RustOpaque_hide_data_twin_rust_async_sse_array_2(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_RustOpaque_hide_data_twin_rust_async_sse(deserializer);
+    return HideDataTwinRustAsyncSseArray2(inner);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    return HideDataTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoiArray2
+      sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi_array_2(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(
+        deserializer);
+    return HideDataTwinRustAsyncSseMoiArray2(inner);
+  }
+
+  @protected
+  HideDataTwinSse sse_decode_RustOpaque_hide_data_twin_sse(
+      SseDeserializer deserializer) {
+    return HideDataTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinSseArray2 sse_decode_RustOpaque_hide_data_twin_sse_array_2(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_RustOpaque_hide_data_twin_sse(deserializer);
+    return HideDataTwinSseArray2(inner);
+  }
+
+  @protected
+  HideDataTwinSseMoi sse_decode_RustOpaque_hide_data_twin_sse_moi(
+      SseDeserializer deserializer) {
+    return HideDataTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinSseMoiArray2 sse_decode_RustOpaque_hide_data_twin_sse_moi_array_2(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_RustOpaque_hide_data_twin_sse_moi(deserializer);
+    return HideDataTwinSseMoiArray2(inner);
+  }
+
+  @protected
+  HideDataTwinSync sse_decode_RustOpaque_hide_data_twin_sync(
+      SseDeserializer deserializer) {
+    return HideDataTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinSyncArray2 sse_decode_RustOpaque_hide_data_twin_sync_array_2(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_RustOpaque_hide_data_twin_sync(deserializer);
+    return HideDataTwinSyncArray2(inner);
+  }
+
+  @protected
+  HideDataTwinSyncMoi sse_decode_RustOpaque_hide_data_twin_sync_moi(
+      SseDeserializer deserializer) {
+    return HideDataTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinSyncMoiArray2
+      sse_decode_RustOpaque_hide_data_twin_sync_moi_array_2(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_RustOpaque_hide_data_twin_sync_moi(deserializer);
+    return HideDataTwinSyncMoiArray2(inner);
+  }
+
+  @protected
+  HideDataTwinSyncSse sse_decode_RustOpaque_hide_data_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return HideDataTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinSyncSseArray2
+      sse_decode_RustOpaque_hide_data_twin_sync_sse_array_2(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_RustOpaque_hide_data_twin_sync_sse(deserializer);
+    return HideDataTwinSyncSseArray2(inner);
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi sse_decode_RustOpaque_hide_data_twin_sync_sse_moi(
+      SseDeserializer deserializer) {
+    return HideDataTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  HideDataTwinSyncSseMoiArray2
+      sse_decode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_RustOpaque_hide_data_twin_sync_sse_moi(deserializer);
+    return HideDataTwinSyncSseMoiArray2(inner);
   }
 
   @protected
@@ -74274,16 +76877,218 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  NonCloneData sse_decode_RustOpaque_non_clone_data(
-      SseDeserializer deserializer) {
-    return NonCloneData.sseDecode(
+  NonCloneDataAnotherTwinNormal
+      sse_decode_RustOpaque_non_clone_data_another_twin_normal(
+          SseDeserializer deserializer) {
+    return NonCloneDataAnotherTwinNormal.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  NonSendHideData sse_decode_RustOpaque_non_send_hide_data(
+  NonCloneDataAnotherTwinSse
+      sse_decode_RustOpaque_non_clone_data_another_twin_sse(
+          SseDeserializer deserializer) {
+    return NonCloneDataAnotherTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataAnotherTwinSseMoi
+      sse_decode_RustOpaque_non_clone_data_another_twin_sse_moi(
+          SseDeserializer deserializer) {
+    return NonCloneDataAnotherTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinNormal sse_decode_RustOpaque_non_clone_data_twin_normal(
       SseDeserializer deserializer) {
-    return NonSendHideData.sseDecode(
+    return NonCloneDataTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinRustAsync
+      sse_decode_RustOpaque_non_clone_data_twin_rust_async(
+          SseDeserializer deserializer) {
+    return NonCloneDataTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncMoi
+      sse_decode_RustOpaque_non_clone_data_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    return NonCloneDataTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncSse
+      sse_decode_RustOpaque_non_clone_data_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return NonCloneDataTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_non_clone_data_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    return NonCloneDataTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinSse sse_decode_RustOpaque_non_clone_data_twin_sse(
+      SseDeserializer deserializer) {
+    return NonCloneDataTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinSseMoi sse_decode_RustOpaque_non_clone_data_twin_sse_moi(
+      SseDeserializer deserializer) {
+    return NonCloneDataTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinSync sse_decode_RustOpaque_non_clone_data_twin_sync(
+      SseDeserializer deserializer) {
+    return NonCloneDataTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinSyncMoi sse_decode_RustOpaque_non_clone_data_twin_sync_moi(
+      SseDeserializer deserializer) {
+    return NonCloneDataTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinSyncSse sse_decode_RustOpaque_non_clone_data_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return NonCloneDataTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonCloneDataTwinSyncSseMoi
+      sse_decode_RustOpaque_non_clone_data_twin_sync_sse_moi(
+          SseDeserializer deserializer) {
+    return NonCloneDataTwinSyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataAnotherTwinNormal
+      sse_decode_RustOpaque_non_send_hide_data_another_twin_normal(
+          SseDeserializer deserializer) {
+    return NonSendHideDataAnotherTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataAnotherTwinSse
+      sse_decode_RustOpaque_non_send_hide_data_another_twin_sse(
+          SseDeserializer deserializer) {
+    return NonSendHideDataAnotherTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataAnotherTwinSseMoi
+      sse_decode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
+          SseDeserializer deserializer) {
+    return NonSendHideDataAnotherTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinNormal
+      sse_decode_RustOpaque_non_send_hide_data_twin_normal(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinNormal.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsync
+      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinRustAsync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsyncMoi
+      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinRustAsyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsyncSse
+      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinRustAsyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinRustAsyncSseMoi
+      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinRustAsyncSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinSse sse_decode_RustOpaque_non_send_hide_data_twin_sse(
+      SseDeserializer deserializer) {
+    return NonSendHideDataTwinSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinSseMoi
+      sse_decode_RustOpaque_non_send_hide_data_twin_sse_moi(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinSseMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinSync sse_decode_RustOpaque_non_send_hide_data_twin_sync(
+      SseDeserializer deserializer) {
+    return NonSendHideDataTwinSync.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinSyncMoi
+      sse_decode_RustOpaque_non_send_hide_data_twin_sync_moi(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinSyncMoi.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinSyncSse
+      sse_decode_RustOpaque_non_send_hide_data_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinSyncSse.sseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  NonSendHideDataTwinSyncSseMoi
+      sse_decode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
+          SseDeserializer deserializer) {
+    return NonSendHideDataTwinSyncSseMoi.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -74921,9 +77726,96 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  HideData sse_decode_box_autoadd_RustOpaque_hide_data(
+  HideDataAnotherTwinNormal
+      sse_decode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_another_twin_normal(deserializer));
+  }
+
+  @protected
+  HideDataAnotherTwinSse
+      sse_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_another_twin_sse(deserializer));
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      sse_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_another_twin_sse_moi(deserializer));
+  }
+
+  @protected
+  HideDataTwinNormal sse_decode_box_autoadd_RustOpaque_hide_data_twin_normal(
       SseDeserializer deserializer) {
-    return (sse_decode_RustOpaque_hide_data(deserializer));
+    return (sse_decode_RustOpaque_hide_data_twin_normal(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsync
+      sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_rust_async(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi
+      sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_rust_async_moi(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse
+      sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+        deserializer));
+  }
+
+  @protected
+  HideDataTwinSse sse_decode_box_autoadd_RustOpaque_hide_data_twin_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_sse(deserializer));
+  }
+
+  @protected
+  HideDataTwinSseMoi sse_decode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+      SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_sse_moi(deserializer));
+  }
+
+  @protected
+  HideDataTwinSync sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync(
+      SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_sync(deserializer));
+  }
+
+  @protected
+  HideDataTwinSyncMoi sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+      SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_sync_moi(deserializer));
+  }
+
+  @protected
+  HideDataTwinSyncSse sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi
+      sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          SseDeserializer deserializer) {
+    return (sse_decode_RustOpaque_hide_data_twin_sync_sse_moi(deserializer));
   }
 
   @protected
@@ -78614,7 +81506,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_normal(deserializer);
         return EnumOpaqueTwinNormal_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78624,10 +81517,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinNormal(deserializer);
         return EnumOpaqueTwinNormal_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinNormal(deserializer);
         return EnumOpaqueTwinNormal_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinNormal(deserializer);
         return EnumOpaqueTwinNormal_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78647,7 +81542,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_rust_async(deserializer);
         return EnumOpaqueTwinRustAsync_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78657,10 +81553,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinRustAsync(deserializer);
         return EnumOpaqueTwinRustAsync_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinRustAsync(deserializer);
         return EnumOpaqueTwinRustAsync_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinRustAsync(deserializer);
         return EnumOpaqueTwinRustAsync_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78680,7 +81578,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_rust_async_moi(deserializer);
         return EnumOpaqueTwinRustAsyncMoi_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78690,10 +81589,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             deserializer);
         return EnumOpaqueTwinRustAsyncMoi_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(deserializer);
         return EnumOpaqueTwinRustAsyncMoi_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(deserializer);
         return EnumOpaqueTwinRustAsyncMoi_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78714,7 +81615,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_rust_async_sse(deserializer);
         return EnumOpaqueTwinRustAsyncSse_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78724,10 +81626,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             deserializer);
         return EnumOpaqueTwinRustAsyncSse_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinRustAsyncSse(deserializer);
         return EnumOpaqueTwinRustAsyncSse_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinRustAsyncSse(deserializer);
         return EnumOpaqueTwinRustAsyncSse_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78748,7 +81652,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+                deserializer);
         return EnumOpaqueTwinRustAsyncSseMoi_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78759,10 +81665,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 deserializer);
         return EnumOpaqueTwinRustAsyncSseMoi_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 = sse_decode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(
+            deserializer);
         return EnumOpaqueTwinRustAsyncSseMoi_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(
+                deserializer);
         return EnumOpaqueTwinRustAsyncSseMoi_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78784,7 +81693,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 = sse_decode_RustOpaque_hide_data_twin_sse(deserializer);
         return EnumOpaqueTwinSse_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78794,10 +81703,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinSse(deserializer);
         return EnumOpaqueTwinSse_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinSse(deserializer);
         return EnumOpaqueTwinSse_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinSse(deserializer);
         return EnumOpaqueTwinSse_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78817,7 +81728,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_sse_moi(deserializer);
         return EnumOpaqueTwinSseMoi_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78827,10 +81739,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinSseMoi(deserializer);
         return EnumOpaqueTwinSseMoi_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinSseMoi(deserializer);
         return EnumOpaqueTwinSseMoi_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinSseMoi(deserializer);
         return EnumOpaqueTwinSseMoi_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78850,7 +81764,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_sync(deserializer);
         return EnumOpaqueTwinSync_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78860,10 +81775,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinSync(deserializer);
         return EnumOpaqueTwinSync_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinSync(deserializer);
         return EnumOpaqueTwinSync_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinSync(deserializer);
         return EnumOpaqueTwinSync_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78883,7 +81800,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_sync_moi(deserializer);
         return EnumOpaqueTwinSyncMoi_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78893,10 +81811,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(deserializer);
         return EnumOpaqueTwinSyncMoi_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinSyncMoi(deserializer);
         return EnumOpaqueTwinSyncMoi_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinSyncMoi(deserializer);
         return EnumOpaqueTwinSyncMoi_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78916,7 +81836,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_sync_sse(deserializer);
         return EnumOpaqueTwinSyncSse_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78926,10 +81847,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinSyncSse(deserializer);
         return EnumOpaqueTwinSyncSse_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinSyncSse(deserializer);
         return EnumOpaqueTwinSyncSse_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinSyncSse(deserializer);
         return EnumOpaqueTwinSyncSse_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -78949,7 +81872,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
-        var var_field0 = sse_decode_RustOpaque_hide_data(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_hide_data_twin_sync_sse_moi(deserializer);
         return EnumOpaqueTwinSyncSseMoi_Struct(var_field0);
       case 1:
         var var_field0 = sse_decode_RustOpaque_i_32(deserializer);
@@ -78959,10 +81883,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             sse_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(deserializer);
         return EnumOpaqueTwinSyncSseMoi_TraitObj(var_field0);
       case 3:
-        var var_field0 = sse_decode_RustOpaque_MutexHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_MutexHideDataTwinSyncSseMoi(deserializer);
         return EnumOpaqueTwinSyncSseMoi_Mutex(var_field0);
       case 4:
-        var var_field0 = sse_decode_RustOpaque_RwLockHideData(deserializer);
+        var var_field0 =
+            sse_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(deserializer);
         return EnumOpaqueTwinSyncSseMoi_RwLock(var_field0);
       default:
         throw UnimplementedError('');
@@ -79973,12 +82899,130 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<HideData> sse_decode_list_RustOpaque_hide_data(
+  List<HideDataTwinNormal> sse_decode_list_RustOpaque_hide_data_twin_normal(
       SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
-    var ans_ = <HideData>[];
+    var ans_ = <HideDataTwinNormal>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_RustOpaque_hide_data(deserializer));
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinRustAsync>
+      sse_decode_list_RustOpaque_hide_data_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncMoi>
+      sse_decode_list_RustOpaque_hide_data_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinRustAsyncMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_RustOpaque_hide_data_twin_rust_async_moi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncSse>
+      sse_decode_list_RustOpaque_hide_data_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinRustAsyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_RustOpaque_hide_data_twin_rust_async_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncSseMoi>
+      sse_decode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinRustAsyncSseMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinSse> sse_decode_list_RustOpaque_hide_data_twin_sse(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinSseMoi> sse_decode_list_RustOpaque_hide_data_twin_sse_moi(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinSseMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_sse_moi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinSync> sse_decode_list_RustOpaque_hide_data_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinSyncMoi> sse_decode_list_RustOpaque_hide_data_twin_sync_moi(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinSyncMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_sync_moi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinSyncSse> sse_decode_list_RustOpaque_hide_data_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinSyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<HideDataTwinSyncSseMoi>
+      sse_decode_list_RustOpaque_hide_data_twin_sync_sse_moi(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <HideDataTwinSyncSseMoi>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_RustOpaque_hide_data_twin_sync_sse_moi(deserializer));
     }
     return ans_;
   }
@@ -81830,32 +84874,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OpaqueNestedTwinNormal sse_decode_opaque_nested_twin_normal(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first = sse_decode_RustOpaque_hide_data_twin_normal(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data_twin_normal(deserializer);
     return OpaqueNestedTwinNormal(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinRustAsync sse_decode_opaque_nested_twin_rust_async(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first =
+        sse_decode_RustOpaque_hide_data_twin_rust_async(deserializer);
+    var var_second =
+        sse_decode_RustOpaque_hide_data_twin_rust_async(deserializer);
     return OpaqueNestedTwinRustAsync(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinRustAsyncMoi sse_decode_opaque_nested_twin_rust_async_moi(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first =
+        sse_decode_RustOpaque_hide_data_twin_rust_async_moi(deserializer);
+    var var_second =
+        sse_decode_RustOpaque_hide_data_twin_rust_async_moi(deserializer);
     return OpaqueNestedTwinRustAsyncMoi(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinRustAsyncSse sse_decode_opaque_nested_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first =
+        sse_decode_RustOpaque_hide_data_twin_rust_async_sse(deserializer);
+    var var_second =
+        sse_decode_RustOpaque_hide_data_twin_rust_async_sse(deserializer);
     return OpaqueNestedTwinRustAsyncSse(first: var_first, second: var_second);
   }
 
@@ -81863,8 +84913,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   OpaqueNestedTwinRustAsyncSseMoi
       sse_decode_opaque_nested_twin_rust_async_sse_moi(
           SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first =
+        sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(deserializer);
+    var var_second =
+        sse_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(deserializer);
     return OpaqueNestedTwinRustAsyncSseMoi(
         first: var_first, second: var_second);
   }
@@ -81872,48 +84924,52 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   OpaqueNestedTwinSse sse_decode_opaque_nested_twin_sse(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first = sse_decode_RustOpaque_hide_data_twin_sse(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data_twin_sse(deserializer);
     return OpaqueNestedTwinSse(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinSseMoi sse_decode_opaque_nested_twin_sse_moi(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first = sse_decode_RustOpaque_hide_data_twin_sse_moi(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data_twin_sse_moi(deserializer);
     return OpaqueNestedTwinSseMoi(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinSync sse_decode_opaque_nested_twin_sync(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first = sse_decode_RustOpaque_hide_data_twin_sync(deserializer);
+    var var_second = sse_decode_RustOpaque_hide_data_twin_sync(deserializer);
     return OpaqueNestedTwinSync(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinSyncMoi sse_decode_opaque_nested_twin_sync_moi(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first = sse_decode_RustOpaque_hide_data_twin_sync_moi(deserializer);
+    var var_second =
+        sse_decode_RustOpaque_hide_data_twin_sync_moi(deserializer);
     return OpaqueNestedTwinSyncMoi(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinSyncSse sse_decode_opaque_nested_twin_sync_sse(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first = sse_decode_RustOpaque_hide_data_twin_sync_sse(deserializer);
+    var var_second =
+        sse_decode_RustOpaque_hide_data_twin_sync_sse(deserializer);
     return OpaqueNestedTwinSyncSse(first: var_first, second: var_second);
   }
 
   @protected
   OpaqueNestedTwinSyncSseMoi sse_decode_opaque_nested_twin_sync_sse_moi(
       SseDeserializer deserializer) {
-    var var_first = sse_decode_RustOpaque_hide_data(deserializer);
-    var var_second = sse_decode_RustOpaque_hide_data(deserializer);
+    var var_first =
+        sse_decode_RustOpaque_hide_data_twin_sync_sse_moi(deserializer);
+    var var_second =
+        sse_decode_RustOpaque_hide_data_twin_sync_sse_moi(deserializer);
     return OpaqueNestedTwinSyncSseMoi(first: var_first, second: var_second);
   }
 
@@ -81966,10 +85022,166 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  HideData? sse_decode_opt_box_autoadd_RustOpaque_hide_data(
+  HideDataAnotherTwinNormal?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataAnotherTwinSse?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinNormal?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_normal(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_normal(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinRustAsync?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinSse? sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse(
       SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_box_autoadd_RustOpaque_hide_data(deserializer));
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinSseMoi?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinSync? sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(
+      SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinSyncMoi?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinSyncSse?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi?
+      sse_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          deserializer));
     } else {
       return null;
     }
@@ -85475,13 +88687,151 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int cst_encode_RustOpaque_MutexHideData(MutexHideData raw) {
+  int cst_encode_RustOpaque_MutexHideDataTwinNormal(
+      MutexHideDataTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
-  int cst_encode_RustOpaque_RwLockHideData(RwLockHideData raw) {
+  int cst_encode_RustOpaque_MutexHideDataTwinRustAsync(
+      MutexHideDataTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinRustAsyncMoi(
+      MutexHideDataTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinRustAsyncSse(
+      MutexHideDataTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(
+      MutexHideDataTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinSse(MutexHideDataTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinSseMoi(
+      MutexHideDataTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinSync(MutexHideDataTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinSyncMoi(
+      MutexHideDataTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinSyncSse(
+      MutexHideDataTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_MutexHideDataTwinSyncSseMoi(
+      MutexHideDataTwinSyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinNormal(
+      RwLockHideDataTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinRustAsync(
+      RwLockHideDataTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(
+      RwLockHideDataTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinRustAsyncSse(
+      RwLockHideDataTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(
+      RwLockHideDataTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinSse(RwLockHideDataTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinSseMoi(
+      RwLockHideDataTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinSync(RwLockHideDataTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinSyncMoi(
+      RwLockHideDataTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinSyncSse(
+      RwLockHideDataTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_RwLockHideDataTwinSyncSseMoi(
+      RwLockHideDataTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -86052,19 +89402,191 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int cst_encode_RustOpaque_frb_opaque_return(FrbOpaqueReturn raw) {
+  int cst_encode_RustOpaque_frb_opaque_return_twin_normal(
+      FrbOpaqueReturnTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
-  int cst_encode_RustOpaque_frb_opaque_sync_return(FrbOpaqueSyncReturn raw) {
+  int cst_encode_RustOpaque_frb_opaque_return_twin_rust_async(
+      FrbOpaqueReturnTwinRustAsync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
-  int cst_encode_RustOpaque_hide_data(HideData raw) {
+  int cst_encode_RustOpaque_frb_opaque_return_twin_rust_async_moi(
+      FrbOpaqueReturnTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_rust_async_sse(
+      FrbOpaqueReturnTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi(
+      FrbOpaqueReturnTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_sse(
+      FrbOpaqueReturnTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_sse_moi(
+      FrbOpaqueReturnTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_sync(
+      FrbOpaqueReturnTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_sync_moi(
+      FrbOpaqueReturnTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_sync_sse(
+      FrbOpaqueReturnTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_return_twin_sync_sse_moi(
+      FrbOpaqueReturnTwinSyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_sync_return_twin_normal(
+      FrbOpaqueSyncReturnTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_sync_return_twin_sse(
+      FrbOpaqueSyncReturnTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_frb_opaque_sync_return_twin_sse_moi(
+      FrbOpaqueSyncReturnTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_another_twin_normal(
+      HideDataAnotherTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_another_twin_sse(
+      HideDataAnotherTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_another_twin_sse_moi(
+      HideDataAnotherTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_normal(HideDataTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_rust_async(
+      HideDataTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_rust_async_moi(
+      HideDataTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_rust_async_sse(
+      HideDataTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+      HideDataTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_sse(HideDataTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_sse_moi(HideDataTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_sync(HideDataTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_sync_moi(HideDataTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_sync_sse(HideDataTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_hide_data_twin_sync_sse_moi(
+      HideDataTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -86076,13 +89598,195 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int cst_encode_RustOpaque_non_clone_data(NonCloneData raw) {
+  int cst_encode_RustOpaque_non_clone_data_another_twin_normal(
+      NonCloneDataAnotherTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
 
   @protected
-  int cst_encode_RustOpaque_non_send_hide_data(NonSendHideData raw) {
+  int cst_encode_RustOpaque_non_clone_data_another_twin_sse(
+      NonCloneDataAnotherTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
+      NonCloneDataAnotherTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_normal(
+      NonCloneDataTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_rust_async(
+      NonCloneDataTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_rust_async_moi(
+      NonCloneDataTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_rust_async_sse(
+      NonCloneDataTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_rust_async_sse_moi(
+      NonCloneDataTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_sse(NonCloneDataTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_sse_moi(
+      NonCloneDataTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_sync(NonCloneDataTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_sync_moi(
+      NonCloneDataTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_sync_sse(
+      NonCloneDataTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_clone_data_twin_sync_sse_moi(
+      NonCloneDataTwinSyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_another_twin_normal(
+      NonSendHideDataAnotherTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_another_twin_sse(
+      NonSendHideDataAnotherTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
+      NonSendHideDataAnotherTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_normal(
+      NonSendHideDataTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async(
+      NonSendHideDataTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async_moi(
+      NonSendHideDataTwinRustAsyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse(
+      NonSendHideDataTwinRustAsyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
+      NonSendHideDataTwinRustAsyncSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_sse(
+      NonSendHideDataTwinSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_sse_moi(
+      NonSendHideDataTwinSseMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_sync(
+      NonSendHideDataTwinSync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_sync_moi(
+      NonSendHideDataTwinSyncMoi raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_sync_sse(
+      NonSendHideDataTwinSyncSse raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.cstEncode();
+  }
+
+  @protected
+  int cst_encode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
+      NonSendHideDataTwinSyncSseMoi raw) {
     // ignore: invalid_use_of_internal_member
     return raw.cstEncode();
   }
@@ -87512,14 +91216,134 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_RustOpaque_MutexHideData(
-      MutexHideData self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_MutexHideDataTwinNormal(
+      MutexHideDataTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
-  void sse_encode_RustOpaque_RwLockHideData(
-      RwLockHideData self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_MutexHideDataTwinRustAsync(
+      MutexHideDataTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinRustAsyncMoi(
+      MutexHideDataTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinRustAsyncSse(
+      MutexHideDataTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(
+      MutexHideDataTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinSse(
+      MutexHideDataTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinSseMoi(
+      MutexHideDataTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinSync(
+      MutexHideDataTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinSyncMoi(
+      MutexHideDataTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinSyncSse(
+      MutexHideDataTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_MutexHideDataTwinSyncSseMoi(
+      MutexHideDataTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinNormal(
+      RwLockHideDataTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinRustAsync(
+      RwLockHideDataTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(
+      RwLockHideDataTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinRustAsyncSse(
+      RwLockHideDataTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(
+      RwLockHideDataTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinSse(
+      RwLockHideDataTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinSseMoi(
+      RwLockHideDataTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinSync(
+      RwLockHideDataTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinSyncMoi(
+      RwLockHideDataTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinSyncSse(
+      RwLockHideDataTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_RwLockHideDataTwinSyncSseMoi(
+      RwLockHideDataTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -88098,27 +91922,242 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_RustOpaque_frb_opaque_return(
-      FrbOpaqueReturn self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_frb_opaque_return_twin_normal(
+      FrbOpaqueReturnTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
-  void sse_encode_RustOpaque_frb_opaque_sync_return(
-      FrbOpaqueSyncReturn self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_frb_opaque_return_twin_rust_async(
+      FrbOpaqueReturnTwinRustAsync self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
-  void sse_encode_RustOpaque_hide_data(
-      HideData self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_frb_opaque_return_twin_rust_async_moi(
+      FrbOpaqueReturnTwinRustAsyncMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
-  void sse_encode_RustOpaque_hide_data_array_2(
-      HideDataArray2 self, SseSerializer serializer) {
-    sse_encode_list_RustOpaque_hide_data(self.inner, serializer);
+  void sse_encode_RustOpaque_frb_opaque_return_twin_rust_async_sse(
+      FrbOpaqueReturnTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi(
+      FrbOpaqueReturnTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return_twin_sse(
+      FrbOpaqueReturnTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return_twin_sse_moi(
+      FrbOpaqueReturnTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return_twin_sync(
+      FrbOpaqueReturnTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return_twin_sync_moi(
+      FrbOpaqueReturnTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return_twin_sync_sse(
+      FrbOpaqueReturnTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_return_twin_sync_sse_moi(
+      FrbOpaqueReturnTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_sync_return_twin_normal(
+      FrbOpaqueSyncReturnTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_sync_return_twin_sse(
+      FrbOpaqueSyncReturnTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_frb_opaque_sync_return_twin_sse_moi(
+      FrbOpaqueSyncReturnTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_another_twin_normal(
+      HideDataAnotherTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_another_twin_sse(
+      HideDataAnotherTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_another_twin_sse_moi(
+      HideDataAnotherTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_normal(
+      HideDataTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_normal_array_2(
+      HideDataTwinNormalArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_normal(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async(
+      HideDataTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async_array_2(
+      HideDataTwinRustAsyncArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_rust_async(
+        self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async_moi(
+      HideDataTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async_moi_array_2(
+      HideDataTwinRustAsyncMoiArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_rust_async_moi(
+        self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async_sse(
+      HideDataTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async_sse_array_2(
+      HideDataTwinRustAsyncSseArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_rust_async_sse(
+        self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+      HideDataTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi_array_2(
+      HideDataTwinRustAsyncSseMoiArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(
+        self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sse(
+      HideDataTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sse_array_2(
+      HideDataTwinSseArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_sse(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sse_moi(
+      HideDataTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sse_moi_array_2(
+      HideDataTwinSseMoiArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_sse_moi(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync(
+      HideDataTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync_array_2(
+      HideDataTwinSyncArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_sync(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync_moi(
+      HideDataTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync_moi_array_2(
+      HideDataTwinSyncMoiArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_sync_moi(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync_sse(
+      HideDataTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync_sse_array_2(
+      HideDataTwinSyncSseArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_sync_sse(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(
+      HideDataTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(
+      HideDataTwinSyncSseMoiArray2 self, SseSerializer serializer) {
+    sse_encode_list_RustOpaque_hide_data_twin_sync_sse_moi(
+        self.inner, serializer);
   }
 
   @protected
@@ -88127,14 +92166,170 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_RustOpaque_non_clone_data(
-      NonCloneData self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_non_clone_data_another_twin_normal(
+      NonCloneDataAnotherTwinNormal self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
   @protected
-  void sse_encode_RustOpaque_non_send_hide_data(
-      NonSendHideData self, SseSerializer serializer) {
+  void sse_encode_RustOpaque_non_clone_data_another_twin_sse(
+      NonCloneDataAnotherTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
+      NonCloneDataAnotherTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_normal(
+      NonCloneDataTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_rust_async(
+      NonCloneDataTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_rust_async_moi(
+      NonCloneDataTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_rust_async_sse(
+      NonCloneDataTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_rust_async_sse_moi(
+      NonCloneDataTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_sse(
+      NonCloneDataTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_sse_moi(
+      NonCloneDataTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_sync(
+      NonCloneDataTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_sync_moi(
+      NonCloneDataTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_sync_sse(
+      NonCloneDataTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_clone_data_twin_sync_sse_moi(
+      NonCloneDataTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_another_twin_normal(
+      NonSendHideDataAnotherTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_another_twin_sse(
+      NonSendHideDataAnotherTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
+      NonSendHideDataAnotherTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_normal(
+      NonSendHideDataTwinNormal self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async(
+      NonSendHideDataTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async_moi(
+      NonSendHideDataTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse(
+      NonSendHideDataTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
+      NonSendHideDataTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_sse(
+      NonSendHideDataTwinSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_sse_moi(
+      NonSendHideDataTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_sync(
+      NonSendHideDataTwinSync self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_sync_moi(
+      NonSendHideDataTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_sync_sse(
+      NonSendHideDataTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_usize(self.sseEncode(move: null), serializer);
+  }
+
+  @protected
+  void sse_encode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
+      NonSendHideDataTwinSyncSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
@@ -88681,9 +92876,87 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_RustOpaque_hide_data(
-      HideData self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self, serializer);
+  void sse_encode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+      HideDataAnotherTwinNormal self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_another_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+      HideDataAnotherTwinSse self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_another_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+      HideDataAnotherTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_another_twin_sse_moi(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_normal(
+      HideDataTwinNormal self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+      HideDataTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+      HideDataTwinRustAsyncMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_rust_async_moi(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+      HideDataTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+      HideDataTwinRustAsyncSseMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_sse(
+      HideDataTwinSse self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+      HideDataTwinSseMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_sse_moi(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync(
+      HideDataTwinSync self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+      HideDataTwinSyncMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_sync_moi(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+      HideDataTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+      HideDataTwinSyncSseMoi self, SseSerializer serializer) {
+    sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(self, serializer);
   }
 
   @protected
@@ -92018,7 +96291,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinNormal_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_normal(field0, serializer);
       case EnumOpaqueTwinNormal_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92027,10 +96300,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_box_dynDartDebugTwinNormal(field0, serializer);
       case EnumOpaqueTwinNormal_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinNormal(field0, serializer);
       case EnumOpaqueTwinNormal_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinNormal(field0, serializer);
     }
   }
 
@@ -92046,7 +96319,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinRustAsync_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async(field0, serializer);
       case EnumOpaqueTwinRustAsync_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92055,10 +96328,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_box_dynDartDebugTwinRustAsync(field0, serializer);
       case EnumOpaqueTwinRustAsync_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinRustAsync(field0, serializer);
       case EnumOpaqueTwinRustAsync_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinRustAsync(field0, serializer);
     }
   }
 
@@ -92074,7 +96347,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinRustAsyncMoi_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_moi(field0, serializer);
       case EnumOpaqueTwinRustAsyncMoi_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92084,10 +96357,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             field0, serializer);
       case EnumOpaqueTwinRustAsyncMoi_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinRustAsyncMoi(field0, serializer);
       case EnumOpaqueTwinRustAsyncMoi_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(
+            field0, serializer);
     }
   }
 
@@ -92103,7 +96377,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinRustAsyncSse_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse(field0, serializer);
       case EnumOpaqueTwinRustAsyncSse_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92113,10 +96387,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             field0, serializer);
       case EnumOpaqueTwinRustAsyncSse_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinRustAsyncSse(field0, serializer);
       case EnumOpaqueTwinRustAsyncSse_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinRustAsyncSse(
+            field0, serializer);
     }
   }
 
@@ -92132,7 +96407,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinRustAsyncSseMoi_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            field0, serializer);
       case EnumOpaqueTwinRustAsyncSseMoi_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92142,10 +96418,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             field0, serializer);
       case EnumOpaqueTwinRustAsyncSseMoi_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(
+            field0, serializer);
       case EnumOpaqueTwinRustAsyncSseMoi_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(
+            field0, serializer);
     }
   }
 
@@ -92161,7 +96439,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinSse_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse(field0, serializer);
       case EnumOpaqueTwinSse_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92170,10 +96448,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_box_dynDartDebugTwinSse(field0, serializer);
       case EnumOpaqueTwinSse_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinSse(field0, serializer);
       case EnumOpaqueTwinSse_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinSse(field0, serializer);
     }
   }
 
@@ -92189,7 +96467,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinSseMoi_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sse_moi(field0, serializer);
       case EnumOpaqueTwinSseMoi_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92198,10 +96476,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_box_dynDartDebugTwinSseMoi(field0, serializer);
       case EnumOpaqueTwinSseMoi_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinSseMoi(field0, serializer);
       case EnumOpaqueTwinSseMoi_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinSseMoi(field0, serializer);
     }
   }
 
@@ -92217,7 +96495,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinSync_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync(field0, serializer);
       case EnumOpaqueTwinSync_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92226,10 +96504,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_box_dynDartDebugTwinSync(field0, serializer);
       case EnumOpaqueTwinSync_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinSync(field0, serializer);
       case EnumOpaqueTwinSync_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinSync(field0, serializer);
     }
   }
 
@@ -92245,7 +96523,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinSyncMoi_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_moi(field0, serializer);
       case EnumOpaqueTwinSyncMoi_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92254,10 +96532,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_box_dynDartDebugTwinSyncMoi(field0, serializer);
       case EnumOpaqueTwinSyncMoi_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinSyncMoi(field0, serializer);
       case EnumOpaqueTwinSyncMoi_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinSyncMoi(field0, serializer);
     }
   }
 
@@ -92273,7 +96551,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinSyncSse_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse(field0, serializer);
       case EnumOpaqueTwinSyncSse_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92282,10 +96560,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_RustOpaque_box_dynDartDebugTwinSyncSse(field0, serializer);
       case EnumOpaqueTwinSyncSse_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinSyncSse(field0, serializer);
       case EnumOpaqueTwinSyncSse_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinSyncSse(field0, serializer);
     }
   }
 
@@ -92301,7 +96579,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     switch (self) {
       case EnumOpaqueTwinSyncSseMoi_Struct(field0: final field0):
         sse_encode_i_32(0, serializer);
-        sse_encode_RustOpaque_hide_data(field0, serializer);
+        sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(field0, serializer);
       case EnumOpaqueTwinSyncSseMoi_Primitive(field0: final field0):
         sse_encode_i_32(1, serializer);
         sse_encode_RustOpaque_i_32(field0, serializer);
@@ -92311,10 +96589,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             field0, serializer);
       case EnumOpaqueTwinSyncSseMoi_Mutex(field0: final field0):
         sse_encode_i_32(3, serializer);
-        sse_encode_RustOpaque_MutexHideData(field0, serializer);
+        sse_encode_RustOpaque_MutexHideDataTwinSyncSseMoi(field0, serializer);
       case EnumOpaqueTwinSyncSseMoi_RwLock(field0: final field0):
         sse_encode_i_32(4, serializer);
-        sse_encode_RustOpaque_RwLockHideData(field0, serializer);
+        sse_encode_RustOpaque_RwLockHideDataTwinSyncSseMoi(field0, serializer);
     }
   }
 
@@ -93156,11 +97434,101 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_list_RustOpaque_hide_data(
-      List<HideData> self, SseSerializer serializer) {
+  void sse_encode_list_RustOpaque_hide_data_twin_normal(
+      List<HideDataTwinNormal> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
-      sse_encode_RustOpaque_hide_data(item, serializer);
+      sse_encode_RustOpaque_hide_data_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_rust_async(
+      List<HideDataTwinRustAsync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_rust_async(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_rust_async_moi(
+      List<HideDataTwinRustAsyncMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_rust_async_moi(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_rust_async_sse(
+      List<HideDataTwinRustAsyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(
+      List<HideDataTwinRustAsyncSseMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_sse(
+      List<HideDataTwinSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_sse_moi(
+      List<HideDataTwinSseMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_sse_moi(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_sync(
+      List<HideDataTwinSync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_sync_moi(
+      List<HideDataTwinSyncMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_sync_moi(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_sync_sse(
+      List<HideDataTwinSyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_RustOpaque_hide_data_twin_sync_sse_moi(
+      List<HideDataTwinSyncSseMoi> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(item, serializer);
     }
   }
 
@@ -94686,78 +99054,82 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_normal(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_normal(self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async(self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_rust_async_moi(
       OpaqueNestedTwinRustAsyncMoi self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async_moi(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async_moi(
+        self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_rust_async_sse(
       OpaqueNestedTwinRustAsyncSse self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async_sse(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async_sse(
+        self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_rust_async_sse_moi(
       OpaqueNestedTwinRustAsyncSseMoi self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+        self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_rust_async_sse_moi(
+        self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_sse(
       OpaqueNestedTwinSse self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sse(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sse(self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_sse_moi(
       OpaqueNestedTwinSseMoi self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sse_moi(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sse_moi(self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_sync(
       OpaqueNestedTwinSync self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync(self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_sync_moi(
       OpaqueNestedTwinSyncMoi self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync_moi(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync_moi(self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_sync_sse(
       OpaqueNestedTwinSyncSse self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync_sse(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync_sse(self.second, serializer);
   }
 
   @protected
   void sse_encode_opaque_nested_twin_sync_sse_moi(
       OpaqueNestedTwinSyncSseMoi self, SseSerializer serializer) {
-    sse_encode_RustOpaque_hide_data(self.first, serializer);
-    sse_encode_RustOpaque_hide_data(self.second, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(self.first, serializer);
+    sse_encode_RustOpaque_hide_data_twin_sync_sse_moi(self.second, serializer);
   }
 
   @protected
@@ -94805,11 +99177,139 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_opt_box_autoadd_RustOpaque_hide_data(
-      HideData? self, SseSerializer serializer) {
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+      HideDataAnotherTwinNormal? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_box_autoadd_RustOpaque_hide_data(self, serializer);
+      sse_encode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+      HideDataAnotherTwinSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+      HideDataAnotherTwinSseMoi? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_normal(
+      HideDataTwinNormal? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_normal(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+      HideDataTwinRustAsync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+      HideDataTwinRustAsyncMoi? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+      HideDataTwinRustAsyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+      HideDataTwinRustAsyncSseMoi? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sse(
+      HideDataTwinSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+      HideDataTwinSseMoi? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(
+      HideDataTwinSync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+      HideDataTwinSyncMoi? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+      HideDataTwinSyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+      HideDataTwinSyncSseMoi? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          self, serializer);
     }
   }
 
