@@ -421,7 +421,7 @@ mod tests {
     #[test]
     fn test_error() -> anyhow::Result<()> {
         let result = parse("#[frb(what_is_this)]");
-        assert!(result.err().is_some());
+        assert_eq!(result.err().is_some(), true);
         Ok(())
     }
 
