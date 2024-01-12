@@ -760,6 +760,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_HideDataTwinSyncSseMoiPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse_moiPtr;
 
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I16Ptr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_i_16Ptr;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_i_32Ptr;
 
@@ -2342,6 +2345,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   HideDataTwinSyncSseMoiArray2
       dco_decode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(dynamic raw);
+
+  @protected
+  I16 dco_decode_RustOpaque_i_16(dynamic raw);
 
   @protected
   I32 dco_decode_RustOpaque_i_32(dynamic raw);
@@ -7942,6 +7948,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   HideDataTwinSyncSseMoiArray2
       sse_decode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(
           SseDeserializer deserializer);
+
+  @protected
+  I16 sse_decode_RustOpaque_i_16(SseDeserializer deserializer);
 
   @protected
   I32 sse_decode_RustOpaque_i_32(SseDeserializer deserializer);
@@ -23140,7 +23149,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinRustAsyncSse_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23180,7 +23189,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinRustAsyncSseMoi_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23219,7 +23228,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinSse_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23258,7 +23267,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinSseMoi_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23376,7 +23385,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinSyncSse_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -23416,7 +23425,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return;
     }
     if (apiObj is EnumOpaqueTwinSyncSseMoi_Primitive) {
-      var pre_field0 = cst_encode_RustOpaque_i_32(apiObj.field0);
+      var pre_field0 = cst_encode_RustOpaque_i_16(apiObj.field0);
       wireObj.tag = 1;
       wireObj.kind.Primitive.field0 = pre_field0;
       return;
@@ -27260,6 +27269,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       HideDataTwinSyncSseMoi raw);
 
   @protected
+  int cst_encode_RustOpaque_i_16(I16 raw);
+
+  @protected
   int cst_encode_RustOpaque_i_32(I32 raw);
 
   @protected
@@ -28998,6 +29010,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(
       HideDataTwinSyncSseMoiArray2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustOpaque_i_16(I16 self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer);
@@ -76361,6 +76376,36 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse_moi');
   late final _rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse_moi =
       _rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse_moiPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_i_16(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_i_16(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_i_16Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_i_16');
+  late final _rust_arc_increment_strong_count_RustOpaque_i_16 =
+      _rust_arc_increment_strong_count_RustOpaque_i_16Ptr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_i_16(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_i_16(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_i_16Ptr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+      'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_i_16');
+  late final _rust_arc_decrement_strong_count_RustOpaque_i_16 =
+      _rust_arc_decrement_strong_count_RustOpaque_i_16Ptr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_i_32(

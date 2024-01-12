@@ -7,7 +7,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'rust_opaque_twin_rust_async.dart';
+import 'rust_opaque_twin_rust_async_sse.dart';
 part 'rust_opaque_twin_sync_sse_moi.freezed.dart';
 
 HideDataTwinSyncSseMoi createOpaqueTwinSyncSseMoi({dynamic hint}) =>
@@ -231,7 +231,7 @@ sealed class EnumOpaqueTwinSyncSseMoi with _$EnumOpaqueTwinSyncSseMoi {
     HideDataTwinSyncSseMoi field0,
   ) = EnumOpaqueTwinSyncSseMoi_Struct;
   const factory EnumOpaqueTwinSyncSseMoi.primitive(
-    I32 field0,
+    I16 field0,
   ) = EnumOpaqueTwinSyncSseMoi_Primitive;
   const factory EnumOpaqueTwinSyncSseMoi.traitObj(
     BoxDartDebugTwinSyncSseMoi field0,

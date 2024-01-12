@@ -2110,6 +2110,11 @@ impl
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<RustOpaqueMoi<i16>> for usize {
+    fn cst_decode(self) -> RustOpaqueMoi<i16> {
+        decode_rust_opaque_moi(self as _)
+    }
+}
 impl CstDecode<RustOpaqueNom<i32>> for usize {
     fn cst_decode(self) -> RustOpaqueNom<i32> {
         unsafe { decode_rust_opaque_nom(self as _) }
@@ -39988,6 +39993,20 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>::decrement_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_i_16(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<i16>::increment_strong_count(ptr as _);
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_i_16(
+    ptr: *const std::ffi::c_void,
+) {
+    MoiArc::<i16>::decrement_strong_count(ptr as _);
 }
 
 #[no_mangle]

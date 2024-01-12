@@ -7,7 +7,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'rust_opaque_twin_rust_async.dart';
+import 'rust_opaque_twin_rust_async_sse.dart';
 part 'rust_opaque_twin_rust_async_sse_moi.freezed.dart';
 
 Future<HideDataTwinRustAsyncSseMoi> createOpaqueTwinRustAsyncSseMoi(
@@ -245,7 +245,7 @@ sealed class EnumOpaqueTwinRustAsyncSseMoi
     HideDataTwinRustAsyncSseMoi field0,
   ) = EnumOpaqueTwinRustAsyncSseMoi_Struct;
   const factory EnumOpaqueTwinRustAsyncSseMoi.primitive(
-    I32 field0,
+    I16 field0,
   ) = EnumOpaqueTwinRustAsyncSseMoi_Primitive;
   const factory EnumOpaqueTwinRustAsyncSseMoi.traitObj(
     BoxDartDebugTwinRustAsyncSseMoi field0,

@@ -12490,6 +12490,15 @@ impl
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl CstDecode<RustOpaqueMoi<i16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> RustOpaqueMoi<i16> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
+    }
+}
 impl CstDecode<RustOpaqueNom<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn cst_decode(self) -> RustOpaqueNom<i32> {
         #[cfg(target_pointer_width = "64")]
@@ -34297,6 +34306,16 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data_twin_sync_sse_moi(
     ptr: *const std::ffi::c_void,
 ) {
     MoiArc::<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>::decrement_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_i_16(ptr: *const std::ffi::c_void) {
+    MoiArc::<i16>::increment_strong_count(ptr as _);
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_i_16(ptr: *const std::ffi::c_void) {
+    MoiArc::<i16>::decrement_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]

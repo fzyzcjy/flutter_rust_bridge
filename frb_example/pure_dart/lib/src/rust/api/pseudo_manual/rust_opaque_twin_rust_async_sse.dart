@@ -7,7 +7,6 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'rust_opaque_twin_rust_async.dart';
 part 'rust_opaque_twin_rust_async_sse.freezed.dart';
 
 Future<HideDataTwinRustAsyncSse> createOpaqueTwinRustAsyncSse({dynamic hint}) =>
@@ -192,6 +191,24 @@ class HideDataTwinRustAsyncSseArray2
       : this(List<HideDataTwinRustAsyncSse>.filled(arraySize, fill));
 }
 
+// Rust type: RustOpaqueMoi<i16>
+@sealed
+class I16 extends RustOpaque {
+  I16.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
+
+  I16.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_I16,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_I16,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_I16Ptr,
+  );
+}
+
 // Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>
 @sealed
 class NonCloneDataTwinRustAsyncSse extends RustOpaque {
@@ -236,7 +253,7 @@ sealed class EnumOpaqueTwinRustAsyncSse with _$EnumOpaqueTwinRustAsyncSse {
     HideDataTwinRustAsyncSse field0,
   ) = EnumOpaqueTwinRustAsyncSse_Struct;
   const factory EnumOpaqueTwinRustAsyncSse.primitive(
-    I32 field0,
+    I16 field0,
   ) = EnumOpaqueTwinRustAsyncSse_Primitive;
   const factory EnumOpaqueTwinRustAsyncSse.traitObj(
     BoxDartDebugTwinRustAsyncSse field0,

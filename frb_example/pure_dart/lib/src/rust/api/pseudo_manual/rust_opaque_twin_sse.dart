@@ -7,7 +7,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'rust_opaque_twin_rust_async.dart';
+import 'rust_opaque_twin_rust_async_sse.dart';
 part 'rust_opaque_twin_sse.freezed.dart';
 
 Future<HideDataTwinSse> createOpaqueTwinSse({dynamic hint}) =>
@@ -224,7 +224,7 @@ sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
     HideDataTwinSse field0,
   ) = EnumOpaqueTwinSse_Struct;
   const factory EnumOpaqueTwinSse.primitive(
-    I32 field0,
+    I16 field0,
   ) = EnumOpaqueTwinSse_Primitive;
   const factory EnumOpaqueTwinSse.traitObj(
     BoxDartDebugTwinSse field0,

@@ -30232,6 +30232,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi
 );
+flutter_rust_bridge::frb_generated_moi_arc_impl_value!(i16);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse
 );
@@ -32267,6 +32268,13 @@ impl SseDecode
             >,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode for RustOpaqueMoi<i16> {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <usize>::sse_decode(deserializer);
+        return decode_rust_opaque_moi(inner);
     }
 }
 
@@ -35596,7 +35604,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Struct(var_field0);
             }
             1 => {
-                let mut var_field0 = <RustOpaqueNom<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <RustOpaqueMoi<i16>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Primitive(var_field0);
             }
             2 => {
@@ -35636,7 +35644,7 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_mo
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut tag_ = <i32>::sse_decode(deserializer);
             match tag_ {0 => { let mut var_field0 = <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Struct(var_field0); }
-1 => { let mut var_field0 = <RustOpaqueNom<i32>>::sse_decode(deserializer);
+1 => { let mut var_field0 = <RustOpaqueMoi<i16>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Primitive(var_field0); }
 2 => { let mut var_field0 = <RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>>::sse_decode(deserializer);
 return crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::TraitObj(var_field0); }
@@ -35670,7 +35678,7 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
                 );
             }
             1 => {
-                let mut var_field0 = <RustOpaqueNom<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <RustOpaqueMoi<i16>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Primitive(var_field0);
             }
             2 => {
@@ -35720,7 +35728,7 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaq
                 return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Struct(var_field0);
             }
             1 => {
-                let mut var_field0 = <RustOpaqueNom<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <RustOpaqueMoi<i16>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Primitive(var_field0);
             }
             2 => {
@@ -35860,7 +35868,7 @@ impl SseDecode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpa
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Struct(var_field0);
             }
             1 => {
-                let mut var_field0 = <RustOpaqueNom<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <RustOpaqueMoi<i16>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Primitive(var_field0);
             }
             2 => {
@@ -35907,7 +35915,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Struct(var_field0);
             }
             1 => {
-                let mut var_field0 = <RustOpaqueNom<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <RustOpaqueMoi<i16>>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Primitive(var_field0);
             }
             2 => {
@@ -55090,6 +55098,14 @@ impl SseEncode
     }
 }
 
+impl SseEncode for RustOpaqueMoi<i16> {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        let (ptr, size) = self.sse_encode_raw();
+        <usize>::sse_encode(ptr, serializer);
+        <i32>::sse_encode(size, serializer);
+    }
+}
+
 impl SseEncode for RustOpaqueNom<i32> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
@@ -57679,7 +57695,7 @@ impl SseEncode
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueMoi<i16>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSse>>>::sse_encode(field0, serializer);
  }
@@ -57702,7 +57718,7 @@ impl SseEncode
 impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi {
                     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueMoi<i16>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>>::sse_encode(field0, serializer);
  }
@@ -57733,7 +57749,7 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTw
                 field0,
             ) => {
                 <i32>::sse_encode(1, serializer);
-                <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
+                <RustOpaqueMoi<i16>>::sse_encode(field0, serializer);
             }
             crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::TraitObj(
                 field0,
@@ -57769,7 +57785,7 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaq
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueMoi<i16>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>>>::sse_encode(field0, serializer);
  }
@@ -57862,7 +57878,7 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpa
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueMoi<i16>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinSyncSse>>>::sse_encode(field0, serializer);
  }
@@ -57888,7 +57904,7 @@ impl SseEncode
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Struct(field0) => { <i32>::sse_encode(0, serializer); <RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueNom<i32>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Primitive(field0) => { <i32>::sse_encode(1, serializer); <RustOpaqueMoi<i16>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::TraitObj(field0) => { <i32>::sse_encode(2, serializer); <RustOpaqueMoi<Box<dyn DartDebugTwinSyncSseMoi>>>::sse_encode(field0, serializer);
  }
