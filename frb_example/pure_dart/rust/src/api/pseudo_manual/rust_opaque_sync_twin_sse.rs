@@ -4,13 +4,13 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
+use super::rust_opaque::NonCloneDataTwinSse;
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 use anyhow::Result;
 #[allow(unused_imports)]
 use flutter_rust_bridge::{frb, RustOpaque};
 
 pub struct HideDataAnotherTwinSse(HideDataRaw);
-pub struct NonCloneDataAnotherTwinSse(NonCloneDataRaw);
 
 /// Structure for testing the SyncReturn<RustOpaque> code generator.
 /// FrbOpaqueSyncReturn must be only return type.
@@ -33,8 +33,8 @@ pub fn sync_create_opaque_twin_sse() -> RustOpaque<HideDataAnotherTwinSse> {
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_create_non_clone_twin_sse() -> RustOpaque<NonCloneDataAnotherTwinSse> {
-    RustOpaque::new(NonCloneDataAnotherTwinSse(NonCloneDataRaw::new()))
+pub fn sync_create_non_clone_twin_sse() -> RustOpaque<NonCloneDataTwinSse> {
+    RustOpaque::new(NonCloneDataTwinSse(NonCloneDataRaw::new()))
 }
 
 // OpaqueSyncStruct does not implement Send trait.
