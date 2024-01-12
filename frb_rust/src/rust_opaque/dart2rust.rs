@@ -9,7 +9,6 @@ macro_rules! frb_generated_rust_opaque_dart2rust {
         ///
         /// This should never be called manually.
         pub unsafe fn decode_rust_opaque_nom<T>(ptr: usize) -> RustOpaqueBase<T, StdArc<_>> {
-            assert!(ptr != 0);
             RustOpaqueBase::from_arc(StdArc::<T>::from_raw(ptr))
         }
 

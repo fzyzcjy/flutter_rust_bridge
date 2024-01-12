@@ -54,6 +54,7 @@ impl<T: ?Sized + 'static> StdArc<T> {
     where
         T: Sized,
     {
+        assert!(raw != 0);
         Self(Arc::from_raw(raw as *const T))
     }
 
