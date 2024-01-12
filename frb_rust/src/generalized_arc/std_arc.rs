@@ -50,6 +50,9 @@ impl<T: ?Sized> Clone for StdArc<T> {
 }
 
 impl<T: ?Sized + 'static> StdArc<T> {
+    /// # Safety
+    ///
+    /// Please refer to `Arc`'s documentation
     pub unsafe fn from_raw(raw: usize) -> Self
     where
         T: Sized,
@@ -58,6 +61,9 @@ impl<T: ?Sized + 'static> StdArc<T> {
         Self(Arc::from_raw(raw as *const T))
     }
 
+    /// # Safety
+    ///
+    /// Please refer to `Arc`'s documentation
     pub unsafe fn increment_strong_count(raw: usize)
     where
         T: Sized,
@@ -65,6 +71,9 @@ impl<T: ?Sized + 'static> StdArc<T> {
         Arc::increment_strong_count(raw as *const T)
     }
 
+    /// # Safety
+    ///
+    /// Please refer to `Arc`'s documentation
     pub unsafe fn decrement_strong_count(raw: usize)
     where
         T: Sized,
