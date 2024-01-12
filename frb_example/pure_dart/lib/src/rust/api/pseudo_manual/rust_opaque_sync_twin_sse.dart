@@ -27,7 +27,7 @@ String syncRunOpaqueTwinSse({required NonSendHideData opaque, dynamic hint}) =>
 FrbOpaqueSyncReturn frbSyncGeneratorTestTwinSse({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTestTwinSse(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn, NomRustOpaqueCodec>
 @sealed
 class FrbOpaqueSyncReturn extends RustOpaque {
   FrbOpaqueSyncReturn.dcoDecode(List<dynamic> wire)
@@ -46,7 +46,7 @@ class FrbOpaqueSyncReturn extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, NomRustOpaqueCodec>
 @sealed
 class HideData extends RustOpaque {
   HideData.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
@@ -64,7 +64,7 @@ class HideData extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData, NomRustOpaqueCodec>
 @sealed
 class NonCloneData extends RustOpaque {
   NonCloneData.dcoDecode(List<dynamic> wire)
@@ -83,7 +83,7 @@ class NonCloneData extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData, NomRustOpaqueCodec>
 @sealed
 class NonSendHideData extends RustOpaque {
   NonSendHideData.dcoDecode(List<dynamic> wire)

@@ -78,7 +78,7 @@ Future<String> unwrapRustOpaqueTwinRustAsyncSse(
 Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsyncSse({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinRustAsyncSse(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>>
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, NomRustOpaqueCodec>
 @sealed
 class BoxDartDebugTwinRustAsyncSse extends RustOpaque {
   BoxDartDebugTwinRustAsyncSse.dcoDecode(List<dynamic> wire)

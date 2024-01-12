@@ -10251,8 +10251,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<PlatformPointer> cst_encode_box_autoadd_RustOpaque_hide_data(
-      HideData raw) {
+  ffi.Pointer<int> cst_encode_box_autoadd_RustOpaque_hide_data(HideData raw) {
     return wire.cst_new_box_autoadd_RustOpaque_hide_data(
         cst_encode_RustOpaque_hide_data(raw));
   }
@@ -14561,7 +14560,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<PlatformPointer> cst_encode_opt_box_autoadd_RustOpaque_hide_data(
+  ffi.Pointer<int> cst_encode_opt_box_autoadd_RustOpaque_hide_data(
       HideData? raw) {
     return raw == null
         ? ffi.nullptr
@@ -22521,389 +22520,312 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
-          BoxFnStringString raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+      BoxFnStringString raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-          BoxHelloTraitTwinNormal raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+      BoxHelloTraitTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-          BoxHelloTraitTwinRustAsync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+      BoxHelloTraitTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
-          BoxHelloTraitTwinRustAsyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+      BoxHelloTraitTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
-          BoxHelloTraitTwinSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+      BoxHelloTraitTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-          BoxHelloTraitTwinSync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+      BoxHelloTraitTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
-          BoxHelloTraitTwinSyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+      BoxHelloTraitTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          BoxMyTraitTwinNormal raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
+      BoxMyTraitTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          BoxMyTraitTwinRustAsync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+      BoxMyTraitTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
-          BoxMyTraitTwinRustAsyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+      BoxMyTraitTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
-          BoxMyTraitTwinSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
+      BoxMyTraitTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          BoxMyTraitTwinSync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+      BoxMyTraitTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          BoxMyTraitTwinSyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+      BoxMyTraitTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          NonCloneSimpleTwinNormal raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+      NonCloneSimpleTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          NonCloneSimpleTwinRustAsync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+      NonCloneSimpleTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
-          NonCloneSimpleTwinRustAsyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+      NonCloneSimpleTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
-          NonCloneSimpleTwinSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+      NonCloneSimpleTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-          NonCloneSimpleTwinSync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+      NonCloneSimpleTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
-          NonCloneSimpleTwinSyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+      NonCloneSimpleTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
-          StructInMiscNoTwinExampleA raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+      StructInMiscNoTwinExampleA raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          StructWithGoodAndOpaqueFieldTwinNormal raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          StructWithGoodAndOpaqueFieldTwinRustAsync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+      StructWithGoodAndOpaqueFieldTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
-          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          StructWithGoodAndOpaqueFieldTwinSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+      StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          StructWithGoodAndOpaqueFieldTwinSync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+      StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+      StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-          OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+      OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-          OpaqueTwoTwinRustAsync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+      OpaqueTwoTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
-          OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+      OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
-          OpaqueTwoTwinRustAsyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+      OpaqueTwoTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
-          OpaqueOneTwinSseOpaqueTwoTwinSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+      OpaqueOneTwinSseOpaqueTwoTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
-          OpaqueTwoTwinSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+      OpaqueTwoTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-          OpaqueOneTwinSyncOpaqueTwoTwinSync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+      OpaqueOneTwinSyncOpaqueTwoTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-          OpaqueTwoTwinSync raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+      OpaqueTwoTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
-          OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+      OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
-          OpaqueTwoTwinSyncSse raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+      OpaqueTwoTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-          OpaqueOneTwinNormalOpaqueTwoTwinNormal raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+      OpaqueOneTwinNormalOpaqueTwoTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-          OpaqueTwoTwinNormal raw);
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+      OpaqueTwoTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-          BoxHelloTraitTwinNormal raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+      BoxHelloTraitTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-          BoxHelloTraitTwinRustAsync raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+      BoxHelloTraitTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
-          BoxHelloTraitTwinRustAsyncSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+      BoxHelloTraitTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
-          BoxHelloTraitTwinSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+      BoxHelloTraitTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-          BoxHelloTraitTwinSync raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+      BoxHelloTraitTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
-          BoxHelloTraitTwinSyncSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+      BoxHelloTraitTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          NonCloneSimpleTwinNormal raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+      NonCloneSimpleTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          NonCloneSimpleTwinRustAsync raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+      NonCloneSimpleTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
-          NonCloneSimpleTwinRustAsyncSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+      NonCloneSimpleTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
-          NonCloneSimpleTwinSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+      NonCloneSimpleTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-          NonCloneSimpleTwinSync raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+      NonCloneSimpleTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
-          NonCloneSimpleTwinSyncSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+      NonCloneSimpleTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          StructWithGoodAndOpaqueFieldTwinNormal raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          StructWithGoodAndOpaqueFieldTwinRustAsync raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+      StructWithGoodAndOpaqueFieldTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
-          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          StructWithGoodAndOpaqueFieldTwinSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+      StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          StructWithGoodAndOpaqueFieldTwinSync raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+      StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+      StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-          BoxHelloTraitTwinNormal raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+      BoxHelloTraitTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-          BoxHelloTraitTwinRustAsync raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+      BoxHelloTraitTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
-          BoxHelloTraitTwinRustAsyncSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+      BoxHelloTraitTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
-          BoxHelloTraitTwinSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+      BoxHelloTraitTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-          BoxHelloTraitTwinSync raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+      BoxHelloTraitTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
-          BoxHelloTraitTwinSyncSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+      BoxHelloTraitTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          NonCloneSimpleTwinNormal raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+      NonCloneSimpleTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          NonCloneSimpleTwinRustAsync raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+      NonCloneSimpleTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
-          NonCloneSimpleTwinRustAsyncSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+      NonCloneSimpleTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
-          NonCloneSimpleTwinSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+      NonCloneSimpleTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-          NonCloneSimpleTwinSync raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+      NonCloneSimpleTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
-          NonCloneSimpleTwinSyncSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+      NonCloneSimpleTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
-          StructInMiscNoTwinExampleA raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+      StructInMiscNoTwinExampleA raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
-          StructInMiscNoTwinExampleB raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+      StructInMiscNoTwinExampleB raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          StructWithGoodAndOpaqueFieldTwinNormal raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          StructWithGoodAndOpaqueFieldTwinRustAsync raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+      StructWithGoodAndOpaqueFieldTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
-          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          StructWithGoodAndOpaqueFieldTwinSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+      StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          StructWithGoodAndOpaqueFieldTwinSync raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+      StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+      StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
-          StructWithImplBlockInMultiFile raw);
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+      StructWithImplBlockInMultiFile raw);
 
   @protected
   PlatformPointer cst_encode_DartFn_Inputs_DartOpaque_Output_unit(
@@ -22983,253 +22905,210 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   PlatformPointer cst_encode_DartOpaque(Object raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
+  int cst_encode_RustOpaque_MutexHideData(MutexHideData raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_RwLockHideData(RwLockHideData raw);
+  int cst_encode_RustOpaque_RwLockHideData(RwLockHideData raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinNormal(
+  int cst_encode_RustOpaque_box_dynDartDebugTwinNormal(
       BoxDartDebugTwinNormal raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
+  int cst_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
       BoxDartDebugTwinRustAsync raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
+  int cst_encode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(
       BoxDartDebugTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSse(
-      BoxDartDebugTwinSse raw);
+  int cst_encode_RustOpaque_box_dynDartDebugTwinSse(BoxDartDebugTwinSse raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSync(
-      BoxDartDebugTwinSync raw);
+  int cst_encode_RustOpaque_box_dynDartDebugTwinSync(BoxDartDebugTwinSync raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
+  int cst_encode_RustOpaque_box_dynDartDebugTwinSyncSse(
       BoxDartDebugTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
-          BoxFnStringString raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+      BoxFnStringString raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
-          BoxHelloTraitTwinNormal raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+      BoxHelloTraitTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
-          BoxHelloTraitTwinRustAsync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+      BoxHelloTraitTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
-          BoxHelloTraitTwinRustAsyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+      BoxHelloTraitTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
-          BoxHelloTraitTwinSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+      BoxHelloTraitTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
-          BoxHelloTraitTwinSync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+      BoxHelloTraitTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
-          BoxHelloTraitTwinSyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+      BoxHelloTraitTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
-          BoxMyTraitTwinNormal raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
+      BoxMyTraitTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          BoxMyTraitTwinRustAsync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+      BoxMyTraitTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
-          BoxMyTraitTwinRustAsyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+      BoxMyTraitTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
-          BoxMyTraitTwinSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
+      BoxMyTraitTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
-          BoxMyTraitTwinSync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+      BoxMyTraitTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
-          BoxMyTraitTwinSyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+      BoxMyTraitTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
-          NonCloneSimpleTwinNormal raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+      NonCloneSimpleTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
-          NonCloneSimpleTwinRustAsync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+      NonCloneSimpleTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
-          NonCloneSimpleTwinRustAsyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+      NonCloneSimpleTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
-          NonCloneSimpleTwinSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+      NonCloneSimpleTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
-          NonCloneSimpleTwinSync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+      NonCloneSimpleTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
-          NonCloneSimpleTwinSyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+      NonCloneSimpleTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
-          StructInMiscNoTwinExampleA raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+      StructInMiscNoTwinExampleA raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
-          StructInMiscNoTwinExampleB raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+      StructInMiscNoTwinExampleB raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-          StructWithGoodAndOpaqueFieldTwinNormal raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+      StructWithGoodAndOpaqueFieldTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          StructWithGoodAndOpaqueFieldTwinRustAsync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+      StructWithGoodAndOpaqueFieldTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
-          StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+      StructWithGoodAndOpaqueFieldTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
-          StructWithGoodAndOpaqueFieldTwinSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+      StructWithGoodAndOpaqueFieldTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          StructWithGoodAndOpaqueFieldTwinSync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+      StructWithGoodAndOpaqueFieldTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
-          StructWithGoodAndOpaqueFieldTwinSyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+      StructWithGoodAndOpaqueFieldTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
-          StructWithImplBlockInMultiFile raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+      StructWithImplBlockInMultiFile raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-          OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+      OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
-          OpaqueTwoTwinRustAsync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+      OpaqueTwoTwinRustAsync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
-          OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+      OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
-          OpaqueTwoTwinRustAsyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+      OpaqueTwoTwinRustAsyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
-          OpaqueOneTwinSseOpaqueTwoTwinSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+      OpaqueOneTwinSseOpaqueTwoTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
-          OpaqueTwoTwinSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+      OpaqueTwoTwinSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-          OpaqueOneTwinSyncOpaqueTwoTwinSync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+      OpaqueOneTwinSyncOpaqueTwoTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
-          OpaqueTwoTwinSync raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+      OpaqueTwoTwinSync raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
-          OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+      OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
-          OpaqueTwoTwinSyncSse raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+      OpaqueTwoTwinSyncSse raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-          OpaqueOneTwinNormalOpaqueTwoTwinNormal raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+      OpaqueOneTwinNormalOpaqueTwoTwinNormal raw);
 
   @protected
-  PlatformPointer
-      cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
-          OpaqueTwoTwinNormal raw);
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+      OpaqueTwoTwinNormal raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_frb_opaque_return(FrbOpaqueReturn raw);
+  int cst_encode_RustOpaque_frb_opaque_return(FrbOpaqueReturn raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_frb_opaque_sync_return(
-      FrbOpaqueSyncReturn raw);
+  int cst_encode_RustOpaque_frb_opaque_sync_return(FrbOpaqueSyncReturn raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_hide_data(HideData raw);
+  int cst_encode_RustOpaque_hide_data(HideData raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_i_32(I32 raw);
+  int cst_encode_RustOpaque_i_32(I32 raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_non_clone_data(NonCloneData raw);
+  int cst_encode_RustOpaque_non_clone_data(NonCloneData raw);
 
   @protected
-  PlatformPointer cst_encode_RustOpaque_non_send_hide_data(NonSendHideData raw);
+  int cst_encode_RustOpaque_non_send_hide_data(NonSendHideData raw);
 
   @protected
   int cst_encode_application_mode(ApplicationMode raw);
@@ -31304,7 +31183,7 @@ class RustLibWire implements BaseWire {
 
   void wire_StructInMiscNoTwinExampleA_sample_function_a(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_StructInMiscNoTwinExampleA_sample_function_a(
       port_,
@@ -31313,16 +31192,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_StructInMiscNoTwinExampleA_sample_function_aPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleA_sample_function_a');
   late final _wire_StructInMiscNoTwinExampleA_sample_function_a =
       _wire_StructInMiscNoTwinExampleA_sample_function_aPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_StructWithImplBlockInMultiFile_method_in_a(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_StructWithImplBlockInMultiFile_method_in_a(
       port_,
@@ -31331,16 +31209,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_StructWithImplBlockInMultiFile_method_in_aPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFile_method_in_a');
   late final _wire_StructWithImplBlockInMultiFile_method_in_a =
       _wire_StructWithImplBlockInMultiFile_method_in_aPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a(
       port_,
@@ -31349,17 +31226,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_aPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a');
   late final _wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_a =
       _wire_StructInMiscNoTwinExampleB_get_struct_in_misc_no_twin_example_aPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_StructInMiscNoTwinExampleB_sample_function_b(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_StructInMiscNoTwinExampleB_sample_function_b(
       port_,
@@ -31368,16 +31243,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_StructInMiscNoTwinExampleB_sample_function_bPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_StructInMiscNoTwinExampleB_sample_function_b');
   late final _wire_StructInMiscNoTwinExampleB_sample_function_b =
       _wire_StructInMiscNoTwinExampleB_sample_function_bPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_StructWithImplBlockInMultiFile_method_in_b(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_StructWithImplBlockInMultiFile_method_in_b(
       port_,
@@ -31386,12 +31260,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_StructWithImplBlockInMultiFile_method_in_bPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_StructWithImplBlockInMultiFile_method_in_b');
   late final _wire_StructWithImplBlockInMultiFile_method_in_b =
       _wire_StructWithImplBlockInMultiFile_method_in_bPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_empty_struct_twin_normal(
     int port_,
@@ -53460,7 +53333,7 @@ class RustLibWire implements BaseWire {
   void
       wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
       port_,
@@ -53469,18 +53342,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
       port_,
@@ -53489,17 +53360,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
       port_,
@@ -53508,17 +53377,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async(
       port_,
@@ -53527,18 +53394,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_instance_method_getter_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
       port_,
@@ -53547,13 +53412,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(
     int port_,
@@ -53603,7 +53466,7 @@ class RustLibWire implements BaseWire {
   void
       wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
       port_,
@@ -53612,18 +53475,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
       port_,
@@ -53632,17 +53493,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
       port_,
@@ -53651,13 +53510,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async');
   late final _wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async =
       _wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
@@ -53677,7 +53534,7 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_arg_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
   ) {
     return _wire_rust_auto_opaque_arg_borrow_twin_rust_async(
@@ -53689,15 +53546,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_borrow_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_borrow_twin_rust_async');
   late final _wire_rust_auto_opaque_arg_borrow_twin_rust_async =
       _wire_rust_auto_opaque_arg_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<void Function(int, int, int)>();
 
   void wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
     int adder,
   ) {
@@ -53711,16 +53568,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async');
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async =
       _wire_rust_auto_opaque_arg_mut_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int, int)>();
+          .asFunction<void Function(int, int, int, int)>();
 
   void wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
       port_,
@@ -53729,17 +53585,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async');
   late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async =
       _wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_rust_auto_opaque_arg_own_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
   ) {
     return _wire_rust_auto_opaque_arg_own_twin_rust_async(
@@ -53751,15 +53605,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_own_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_rust_async');
   late final _wire_rust_auto_opaque_arg_own_twin_rust_async =
       _wire_rust_auto_opaque_arg_own_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<void Function(int, int, int)>();
 
   void wire_rust_auto_opaque_callable_arg_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_callable_arg_twin_rust_async(
       port_,
@@ -53768,12 +53622,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_callable_arg_twin_rust_asyncPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_rust_async');
   late final _wire_rust_auto_opaque_callable_arg_twin_rust_async =
       _wire_rust_auto_opaque_callable_arg_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_rust_auto_opaque_callable_return_twin_rust_async(
     int port_,
@@ -53792,7 +53645,7 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> a,
+    int a,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> b,
   ) {
     return _wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
@@ -53805,18 +53658,18 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_asyncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr,
                       ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async');
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async =
       _wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_asyncPtr
           .asFunction<
-              void Function(int, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              void Function(
+                  int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(
       port_,
@@ -53825,12 +53678,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_rust_asyncPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_plus_sign_arg_twin_rust_async');
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_rust_async =
       _wire_rust_auto_opaque_plus_sign_arg_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_rust_auto_opaque_plus_sign_return_twin_rust_async(
     int port_,
@@ -53897,7 +53749,7 @@ class RustLibWire implements BaseWire {
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
       port_,
@@ -53906,18 +53758,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
       port_,
@@ -53926,18 +53776,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
       port_,
@@ -53946,13 +53794,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_asyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
@@ -53972,7 +53818,7 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
@@ -53985,18 +53831,18 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_asyncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr,
                       ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async');
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async =
       _wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_asyncPtr
           .asFunction<
-              void Function(int, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              void Function(
+                  int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
@@ -54009,18 +53855,18 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_asyncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr,
                       ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async');
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async =
       _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_asyncPtr
           .asFunction<
-              void Function(int, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              void Function(
+                  int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
@@ -54033,13 +53879,13 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_rust_asyncPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr,
                       ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async');
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async =
       _wire_rust_auto_opaque_trait_object_arg_own_twin_rust_asyncPtr.asFunction<
-          void Function(int, ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(
     int port_,
@@ -54073,8 +53919,8 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_two_args_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> a,
-    ffi.Pointer<ffi.Void> b,
+    int a,
+    int b,
   ) {
     return _wire_rust_auto_opaque_two_args_twin_rust_async(
       port_,
@@ -54085,12 +53931,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_two_args_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_two_args_twin_rust_async');
   late final _wire_rust_auto_opaque_two_args_twin_rust_async =
-      _wire_rust_auto_opaque_two_args_twin_rust_asyncPtr.asFunction<
-          void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      _wire_rust_auto_opaque_two_args_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
 
   void
       wire_NonCloneSimpleTwinRustAsyncSse_instance_method_arg_borrow_twin_rust_async_sse(
@@ -55717,7 +55562,7 @@ class RustLibWire implements BaseWire {
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
       that,
@@ -55725,17 +55570,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
       that,
@@ -55743,17 +55586,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
       that,
@@ -55761,17 +55602,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync(
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync(
       that,
@@ -55779,17 +55618,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_getter_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_getter_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_getter_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
       that,
@@ -55797,13 +55634,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync =
       _wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync() {
     return _wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
@@ -55840,7 +55675,7 @@ class RustLibWire implements BaseWire {
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
       arg,
@@ -55848,17 +55683,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
       arg,
@@ -55866,17 +55699,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync =
       _wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
       arg,
@@ -55884,13 +55715,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync');
   late final _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync =
       _wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync() {
@@ -55905,7 +55734,7 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_arg_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
   ) {
     return _wire_rust_auto_opaque_arg_borrow_twin_sync(
@@ -55916,14 +55745,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_borrow_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_borrow_twin_sync');
   late final _wire_rust_auto_opaque_arg_borrow_twin_sync =
-      _wire_rust_auto_opaque_arg_borrow_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>, int)>();
+      _wire_rust_auto_opaque_arg_borrow_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
     int adder,
   ) {
@@ -55937,14 +55766,14 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_syncPtr = _lookup<
           ffi.NativeFunction<
               WireSyncRust2DartDco Function(
-                  ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32)>>(
+                  ffi.UintPtr, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_mut_borrow_twin_sync');
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_sync =
-      _wire_rust_auto_opaque_arg_mut_borrow_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>, int, int)>();
+      _wire_rust_auto_opaque_arg_mut_borrow_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int, int)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
       arg,
@@ -55952,15 +55781,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_and_return_own_twin_sync');
   late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_sync =
       _wire_rust_auto_opaque_arg_own_and_return_own_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_arg_own_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
   ) {
     return _wire_rust_auto_opaque_arg_own_twin_sync(
@@ -55971,14 +55799,14 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_own_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_sync');
   late final _wire_rust_auto_opaque_arg_own_twin_sync =
-      _wire_rust_auto_opaque_arg_own_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>, int)>();
+      _wire_rust_auto_opaque_arg_own_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_callable_arg_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_callable_arg_twin_sync(
       arg,
@@ -55986,12 +55814,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_callable_arg_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_sync');
   late final _wire_rust_auto_opaque_callable_arg_twin_sync =
       _wire_rust_auto_opaque_callable_arg_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_callable_return_twin_sync() {
     return _wire_rust_auto_opaque_callable_return_twin_sync();
@@ -56005,7 +55832,7 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
-    ffi.Pointer<ffi.Void> a,
+    int a,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> b,
   ) {
     return _wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
@@ -56016,16 +55843,16 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync');
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync =
       _wire_rust_auto_opaque_normal_and_opaque_arg_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_plus_sign_arg_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_plus_sign_arg_twin_sync(
       arg,
@@ -56033,12 +55860,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_plus_sign_arg_twin_sync');
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_sync =
       _wire_rust_auto_opaque_plus_sign_arg_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_plus_sign_return_twin_sync() {
     return _wire_rust_auto_opaque_plus_sign_return_twin_sync();
@@ -56091,7 +55917,7 @@ class RustLibWire implements BaseWire {
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
       arg,
@@ -56099,17 +55925,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
       arg,
@@ -56117,17 +55941,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
       arg,
@@ -56135,13 +55957,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_syncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync() {
@@ -56156,7 +55976,7 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
@@ -56167,17 +55987,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync =
       _wire_rust_auto_opaque_trait_object_arg_borrow_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
@@ -56189,17 +56009,17 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_syncPtr =
       _lookup<
               ffi.NativeFunction<
-                  WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
+                  WireSyncRust2DartDco Function(ffi.UintPtr,
                       ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync =
       _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_syncPtr
           .asFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              WireSyncRust2DartDco Function(
+                  int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
@@ -56210,13 +56030,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
+              WireSyncRust2DartDco Function(
+                  ffi.UintPtr, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_own_twin_sync');
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_sync =
       _wire_rust_auto_opaque_trait_object_arg_own_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          WireSyncRust2DartDco Function(
+              int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_trait_object_return_own_one_twin_sync() {
@@ -56243,8 +56063,8 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_two_args_twin_sync(
-    ffi.Pointer<ffi.Void> a,
-    ffi.Pointer<ffi.Void> b,
+    int a,
+    int b,
   ) {
     return _wire_rust_auto_opaque_two_args_twin_sync(
       a,
@@ -56254,13 +56074,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_two_args_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(
-                  ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_two_args_twin_sync');
   late final _wire_rust_auto_opaque_two_args_twin_sync =
-      _wire_rust_auto_opaque_two_args_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      _wire_rust_auto_opaque_two_args_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
 
   WireSyncRust2DartSse
       wire_NonCloneSimpleTwinSyncSse_instance_method_arg_borrow_twin_sync_sse(
@@ -57232,7 +57050,7 @@ class RustLibWire implements BaseWire {
 
   void wire_create_option_opaque_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
+    ffi.Pointer<ffi.UintPtr> opaque,
   ) {
     return _wire_create_option_opaque_twin_rust_async(
       port_,
@@ -57242,12 +57060,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_option_opaque_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.UintPtr>)>>(
       'frbgen_frb_example_pure_dart_wire_create_option_opaque_twin_rust_async');
   late final _wire_create_option_opaque_twin_rust_async =
       _wire_create_option_opaque_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.UintPtr>)>();
 
   void wire_create_sync_opaque_twin_rust_async(
     int port_,
@@ -57389,7 +57206,7 @@ class RustLibWire implements BaseWire {
 
   void wire_run_non_clone_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> clone,
+    int clone,
   ) {
     return _wire_run_non_clone_twin_rust_async(
       port_,
@@ -57397,17 +57214,16 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_run_non_clone_twin_rust_asyncPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_run_non_clone_twin_rust_async');
+  late final _wire_run_non_clone_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_run_non_clone_twin_rust_async');
   late final _wire_run_non_clone_twin_rust_async =
       _wire_run_non_clone_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_run_opaque_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_run_opaque_twin_rust_async(
       port_,
@@ -57415,17 +57231,15 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_run_opaque_twin_rust_asyncPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_run_opaque_twin_rust_async');
+  late final _wire_run_opaque_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_run_opaque_twin_rust_async');
   late final _wire_run_opaque_twin_rust_async =
-      _wire_run_opaque_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      _wire_run_opaque_twin_rust_asyncPtr.asFunction<void Function(int, int)>();
 
   void wire_run_opaque_with_delay_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_run_opaque_with_delay_twin_rust_async(
       port_,
@@ -57434,16 +57248,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_with_delay_twin_rust_asyncPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_run_opaque_with_delay_twin_rust_async');
   late final _wire_run_opaque_with_delay_twin_rust_async =
       _wire_run_opaque_with_delay_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_unwrap_rust_opaque_twin_rust_async(
     int port_,
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_unwrap_rust_opaque_twin_rust_async(
       port_,
@@ -57452,12 +57265,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_unwrap_rust_opaque_twin_rust_asyncPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_unwrap_rust_opaque_twin_rust_async');
   late final _wire_unwrap_rust_opaque_twin_rust_async =
       _wire_unwrap_rust_opaque_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_create_array_opaque_enum_twin_rust_async_sse(
     int port_,
@@ -58221,7 +58033,7 @@ class RustLibWire implements BaseWire {
       .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_create_option_opaque_twin_sync(
-    ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
+    ffi.Pointer<ffi.UintPtr> opaque,
   ) {
     return _wire_create_option_opaque_twin_sync(
       opaque,
@@ -58230,12 +58042,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_option_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncRust2DartDco Function(
-                  ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+              WireSyncRust2DartDco Function(ffi.Pointer<ffi.UintPtr>)>>(
       'frbgen_frb_example_pure_dart_wire_create_option_opaque_twin_sync');
   late final _wire_create_option_opaque_twin_sync =
       _wire_create_option_opaque_twin_syncPtr.asFunction<
-          WireSyncRust2DartDco Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+          WireSyncRust2DartDco Function(ffi.Pointer<ffi.UintPtr>)>();
 
   WireSyncRust2DartDco wire_create_sync_opaque_twin_sync() {
     return _wire_create_sync_opaque_twin_sync();
@@ -58352,66 +58163,62 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_cst_opaque_nested_twin_sync>)>();
 
   WireSyncRust2DartDco wire_run_non_clone_twin_sync(
-    ffi.Pointer<ffi.Void> clone,
+    int clone,
   ) {
     return _wire_run_non_clone_twin_sync(
       clone,
     );
   }
 
-  late final _wire_run_non_clone_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_run_non_clone_twin_sync');
+  late final _wire_run_non_clone_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_run_non_clone_twin_sync');
   late final _wire_run_non_clone_twin_sync = _wire_run_non_clone_twin_syncPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+      .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_run_opaque_twin_sync(
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_run_opaque_twin_sync(
       opaque,
     );
   }
 
-  late final _wire_run_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_run_opaque_twin_sync');
+  late final _wire_run_opaque_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_run_opaque_twin_sync');
   late final _wire_run_opaque_twin_sync = _wire_run_opaque_twin_syncPtr
-      .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+      .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_run_opaque_with_delay_twin_sync(
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_run_opaque_with_delay_twin_sync(
       opaque,
     );
   }
 
-  late final _wire_run_opaque_with_delay_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_run_opaque_with_delay_twin_sync');
+  late final _wire_run_opaque_with_delay_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_run_opaque_with_delay_twin_sync');
   late final _wire_run_opaque_with_delay_twin_sync =
       _wire_run_opaque_with_delay_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartDco wire_unwrap_rust_opaque_twin_sync(
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_unwrap_rust_opaque_twin_sync(
       opaque,
     );
   }
 
-  late final _wire_unwrap_rust_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_unwrap_rust_opaque_twin_sync');
+  late final _wire_unwrap_rust_opaque_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_unwrap_rust_opaque_twin_sync');
   late final _wire_unwrap_rust_opaque_twin_sync =
       _wire_unwrap_rust_opaque_twin_syncPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   WireSyncRust2DartSse wire_create_array_opaque_enum_twin_sync_sse(
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -60475,7 +60282,7 @@ class RustLibWire implements BaseWire {
 
   void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
       port_,
@@ -60484,17 +60291,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal =
       _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
       port_,
@@ -60503,17 +60308,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal =
       _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
       port_,
@@ -60522,17 +60325,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal =
       _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal(
       port_,
@@ -60541,17 +60342,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normal =
       _wire_NonCloneSimpleTwinNormal_instance_method_getter_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> that,
+    int that,
   ) {
     return _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
       port_,
@@ -60560,13 +60359,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal =
       _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
     int port_,
@@ -60615,7 +60412,7 @@ class RustLibWire implements BaseWire {
 
   void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
       port_,
@@ -60624,17 +60421,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal =
       _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
       port_,
@@ -60643,17 +60438,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal =
       _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
       port_,
@@ -60662,13 +60455,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal');
   late final _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal =
       _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
     int port_,
@@ -60687,7 +60478,7 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_arg_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
   ) {
     return _wire_rust_auto_opaque_arg_borrow_twin_normal(
@@ -60699,15 +60490,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_borrow_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_borrow_twin_normal');
   late final _wire_rust_auto_opaque_arg_borrow_twin_normal =
       _wire_rust_auto_opaque_arg_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<void Function(int, int, int)>();
 
   void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
     int adder,
   ) {
@@ -60721,16 +60512,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_mut_borrow_twin_normal');
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_normal =
       _wire_rust_auto_opaque_arg_mut_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int, int)>();
+          .asFunction<void Function(int, int, int, int)>();
 
   void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
       port_,
@@ -60738,17 +60528,16 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_and_return_own_twin_normal');
+  late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_and_return_own_twin_normal');
   late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_normal =
       _wire_rust_auto_opaque_arg_own_and_return_own_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_rust_auto_opaque_arg_own_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     int expect,
   ) {
     return _wire_rust_auto_opaque_arg_own_twin_normal(
@@ -60760,15 +60549,15 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_arg_own_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_normal');
   late final _wire_rust_auto_opaque_arg_own_twin_normal =
       _wire_rust_auto_opaque_arg_own_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
+          .asFunction<void Function(int, int, int)>();
 
   void wire_rust_auto_opaque_callable_arg_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_callable_arg_twin_normal(
       port_,
@@ -60777,12 +60566,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_callable_arg_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_normal');
   late final _wire_rust_auto_opaque_callable_arg_twin_normal =
       _wire_rust_auto_opaque_callable_arg_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_rust_auto_opaque_callable_return_twin_normal(
     int port_,
@@ -60801,7 +60589,7 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> a,
+    int a,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> b,
   ) {
     return _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
@@ -60813,17 +60601,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Void Function(ffi.Int64, ffi.UintPtr,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal');
   late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal =
       _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_plus_sign_arg_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_plus_sign_arg_twin_normal(
       port_,
@@ -60832,12 +60620,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_plus_sign_arg_twin_normal');
   late final _wire_rust_auto_opaque_plus_sign_arg_twin_normal =
       _wire_rust_auto_opaque_plus_sign_arg_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_rust_auto_opaque_plus_sign_return_twin_normal(
     int port_,
@@ -60904,7 +60691,7 @@ class RustLibWire implements BaseWire {
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
       port_,
@@ -60913,18 +60700,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
       port_,
@@ -60933,18 +60718,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
   ) {
     return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
       port_,
@@ -60953,13 +60736,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normalPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal');
   late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal =
       _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
@@ -60979,7 +60760,7 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
@@ -60992,17 +60773,17 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr,
                       ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal');
   late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal =
       _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
@@ -61015,18 +60796,18 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr,
                       ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal');
   late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal =
       _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normalPtr
           .asFunction<
-              void Function(int, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+              void Function(
+                  int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> arg,
+    int arg,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> expect,
   ) {
     return _wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
@@ -61038,13 +60819,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Void Function(ffi.Int64, ffi.UintPtr,
                   ffi.Pointer<wire_cst_list_prim_u_8_strict>)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_trait_object_arg_own_twin_normal');
   late final _wire_rust_auto_opaque_trait_object_arg_own_twin_normal =
       _wire_rust_auto_opaque_trait_object_arg_own_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<ffi.Void>,
-              ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
+          void Function(
+              int, int, ffi.Pointer<wire_cst_list_prim_u_8_strict>)>();
 
   void wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
     int port_,
@@ -61078,8 +60859,8 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_two_args_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> a,
-    ffi.Pointer<ffi.Void> b,
+    int a,
+    int b,
   ) {
     return _wire_rust_auto_opaque_two_args_twin_normal(
       port_,
@@ -61090,12 +60871,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_rust_auto_opaque_two_args_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_two_args_twin_normal');
   late final _wire_rust_auto_opaque_two_args_twin_normal =
-      _wire_rust_auto_opaque_two_args_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+      _wire_rust_auto_opaque_two_args_twin_normalPtr
+          .asFunction<void Function(int, int, int)>();
 
   void wire_create_array_opaque_enum_twin_normal(
     int port_,
@@ -61143,7 +60923,7 @@ class RustLibWire implements BaseWire {
 
   void wire_create_option_opaque_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
+    ffi.Pointer<ffi.UintPtr> opaque,
   ) {
     return _wire_create_option_opaque_twin_normal(
       port_,
@@ -61153,12 +60933,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_option_opaque_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
+              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.UintPtr>)>>(
       'frbgen_frb_example_pure_dart_wire_create_option_opaque_twin_normal');
   late final _wire_create_option_opaque_twin_normal =
       _wire_create_option_opaque_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.UintPtr>)>();
 
   void wire_create_sync_opaque_twin_normal(
     int port_,
@@ -61297,7 +61076,7 @@ class RustLibWire implements BaseWire {
 
   void wire_run_non_clone_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> clone,
+    int clone,
   ) {
     return _wire_run_non_clone_twin_normal(
       port_,
@@ -61305,17 +61084,15 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_run_non_clone_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_run_non_clone_twin_normal');
+  late final _wire_run_non_clone_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_run_non_clone_twin_normal');
   late final _wire_run_non_clone_twin_normal =
-      _wire_run_non_clone_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+      _wire_run_non_clone_twin_normalPtr.asFunction<void Function(int, int)>();
 
   void wire_run_opaque_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_run_opaque_twin_normal(
       port_,
@@ -61323,16 +61100,15 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_run_opaque_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_run_opaque_twin_normal');
-  late final _wire_run_opaque_twin_normal = _wire_run_opaque_twin_normalPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_run_opaque_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_run_opaque_twin_normal');
+  late final _wire_run_opaque_twin_normal =
+      _wire_run_opaque_twin_normalPtr.asFunction<void Function(int, int)>();
 
   void wire_run_opaque_with_delay_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_run_opaque_with_delay_twin_normal(
       port_,
@@ -61341,16 +61117,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_with_delay_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_wire_run_opaque_with_delay_twin_normal');
   late final _wire_run_opaque_with_delay_twin_normal =
       _wire_run_opaque_with_delay_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_unwrap_rust_opaque_twin_normal(
     int port_,
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_unwrap_rust_opaque_twin_normal(
       port_,
@@ -61358,13 +61133,12 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_unwrap_rust_opaque_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_unwrap_rust_opaque_twin_normal');
+  late final _wire_unwrap_rust_opaque_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_unwrap_rust_opaque_twin_normal');
   late final _wire_unwrap_rust_opaque_twin_normal =
       _wire_unwrap_rust_opaque_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   WireSyncRust2DartDco wire_frb_sync_generator_test_twin_normal() {
     return _wire_frb_sync_generator_test_twin_normal();
@@ -61422,20 +61196,19 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncRust2DartDco Function()>();
 
   WireSyncRust2DartDco wire_sync_run_opaque_twin_normal(
-    ffi.Pointer<ffi.Void> opaque,
+    int opaque,
   ) {
     return _wire_sync_run_opaque_twin_normal(
       opaque,
     );
   }
 
-  late final _wire_sync_run_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>>(
-      'frbgen_frb_example_pure_dart_wire_sync_run_opaque_twin_normal');
+  late final _wire_sync_run_opaque_twin_normalPtr =
+      _lookup<ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_sync_run_opaque_twin_normal');
   late final _wire_sync_run_opaque_twin_normal =
       _wire_sync_run_opaque_twin_normalPtr
-          .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncRust2DartDco Function(int)>();
 
   void wire_simple_adder_twin_normal(
     int port_,
@@ -63605,8 +63378,8 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_DartOpaquePtr.asFunction<
           ffi.Pointer<ffi.Pointer<ffi.Void>> Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Pointer<ffi.Void>> cst_new_box_autoadd_RustOpaque_hide_data(
-    ffi.Pointer<ffi.Void> value,
+  ffi.Pointer<ffi.UintPtr> cst_new_box_autoadd_RustOpaque_hide_data(
+    int value,
   ) {
     return _cst_new_box_autoadd_RustOpaque_hide_data(
       value,
@@ -63614,13 +63387,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _cst_new_box_autoadd_RustOpaque_hide_dataPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Pointer<ffi.Void>> Function(
-                  ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<ffi.Pointer<ffi.UintPtr> Function(ffi.UintPtr)>>(
       'frbgen_frb_example_pure_dart_cst_new_box_autoadd_RustOpaque_hide_data');
   late final _cst_new_box_autoadd_RustOpaque_hide_data =
-      _cst_new_box_autoadd_RustOpaque_hide_dataPtr.asFunction<
-          ffi.Pointer<ffi.Pointer<ffi.Void>> Function(ffi.Pointer<ffi.Void>)>();
+      _cst_new_box_autoadd_RustOpaque_hide_dataPtr
+          .asFunction<ffi.Pointer<ffi.UintPtr> Function(int)>();
 
   ffi.Pointer<wire_cst_a_twin_normal> cst_new_box_autoadd_a_twin_normal() {
     return _cst_new_box_autoadd_a_twin_normal();
@@ -72337,30 +72108,35 @@ final class wire_cst_list_prim_u_64_strict extends ffi.Struct {
 }
 
 final class wire_cst_list_RustOpaque_hide_data extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<ffi.Void>> ptr;
+  external ffi.Pointer<ffi.UintPtr> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsync_Struct extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsync_Primitive extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsync_TraitObj extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsync_Mutex extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsync_RwLock extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class EnumOpaqueTwinRustAsyncKind extends ffi.Union {
@@ -72383,29 +72159,36 @@ final class wire_cst_enum_opaque_twin_rust_async extends ffi.Struct {
 }
 
 final class wire_cst_opaque_nested_twin_rust_async extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> first;
+  @ffi.UintPtr()
+  external int first;
 
-  external ffi.Pointer<ffi.Void> second;
+  @ffi.UintPtr()
+  external int second;
 }
 
 final class wire_cst_EnumOpaqueTwinSync_Struct extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSync_Primitive extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSync_TraitObj extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSync_Mutex extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSync_RwLock extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class EnumOpaqueTwinSyncKind extends ffi.Union {
@@ -72428,9 +72211,11 @@ final class wire_cst_enum_opaque_twin_sync extends ffi.Struct {
 }
 
 final class wire_cst_opaque_nested_twin_sync extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> first;
+  @ffi.UintPtr()
+  external int first;
 
-  external ffi.Pointer<ffi.Void> second;
+  @ffi.UintPtr()
+  external int second;
 }
 
 final class wire_cst_struct_with_one_field_twin_rust_async extends ffi.Struct {
@@ -72515,23 +72300,28 @@ final class wire_cst_feature_uuid_twin_sync extends ffi.Struct {
 }
 
 final class wire_cst_EnumOpaqueTwinNormal_Struct extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinNormal_Primitive extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinNormal_TraitObj extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinNormal_Mutex extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinNormal_RwLock extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class EnumOpaqueTwinNormalKind extends ffi.Union {
@@ -72554,9 +72344,11 @@ final class wire_cst_enum_opaque_twin_normal extends ffi.Struct {
 }
 
 final class wire_cst_opaque_nested_twin_normal extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> first;
+  @ffi.UintPtr()
+  external int first;
 
-  external ffi.Pointer<ffi.Void> second;
+  @ffi.UintPtr()
+  external int second;
 }
 
 final class wire_cst_struct_with_one_field_twin_normal extends ffi.Struct {
@@ -73366,23 +73158,28 @@ final class wire_cst_enum_dart_opaque_twin_sync_sse extends ffi.Struct {
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsyncSse_Struct extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsyncSse_Primitive extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsyncSse_TraitObj extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsyncSse_Mutex extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinRustAsyncSse_RwLock extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class EnumOpaqueTwinRustAsyncSseKind extends ffi.Union {
@@ -73405,23 +73202,28 @@ final class wire_cst_enum_opaque_twin_rust_async_sse extends ffi.Struct {
 }
 
 final class wire_cst_EnumOpaqueTwinSse_Struct extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSse_Primitive extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSse_TraitObj extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSse_Mutex extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSse_RwLock extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class EnumOpaqueTwinSseKind extends ffi.Union {
@@ -73444,23 +73246,28 @@ final class wire_cst_enum_opaque_twin_sse extends ffi.Struct {
 }
 
 final class wire_cst_EnumOpaqueTwinSyncSse_Struct extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSyncSse_Primitive extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSyncSse_TraitObj extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSyncSse_Mutex extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class wire_cst_EnumOpaqueTwinSyncSse_RwLock extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> field0;
+  @ffi.UintPtr()
+  external int field0;
 }
 
 final class EnumOpaqueTwinSyncSseKind extends ffi.Union {
@@ -74278,21 +74085,27 @@ final class wire_cst_note_twin_sync_sse extends ffi.Struct {
 }
 
 final class wire_cst_opaque_nested_twin_rust_async_sse extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> first;
+  @ffi.UintPtr()
+  external int first;
 
-  external ffi.Pointer<ffi.Void> second;
+  @ffi.UintPtr()
+  external int second;
 }
 
 final class wire_cst_opaque_nested_twin_sse extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> first;
+  @ffi.UintPtr()
+  external int first;
 
-  external ffi.Pointer<ffi.Void> second;
+  @ffi.UintPtr()
+  external int second;
 }
 
 final class wire_cst_opaque_nested_twin_sync_sse extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> first;
+  @ffi.UintPtr()
+  external int first;
 
-  external ffi.Pointer<ffi.Void> second;
+  @ffi.UintPtr()
+  external int second;
 }
 
 final class wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async_sse

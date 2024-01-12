@@ -6,7 +6,7 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>, NomRustOpaqueCodec>
 @sealed
 class StructInMiscNoTwinExampleA extends RustOpaque {
   StructInMiscNoTwinExampleA.dcoDecode(List<dynamic> wire)
@@ -30,7 +30,7 @@ class StructInMiscNoTwinExampleA extends RustOpaque {
       );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>>
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>, NomRustOpaqueCodec>
 @sealed
 class StructWithImplBlockInMultiFile extends RustOpaque {
   StructWithImplBlockInMultiFile.dcoDecode(List<dynamic> wire)
