@@ -156,7 +156,7 @@ impl SseDecode for bool {
 
 impl flutter_rust_bridge::IntoDart for crate::api::mandelbrot::Point {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        vec![
+        [
             self.x.into_into_dart().into_dart(),
             self.y.into_into_dart().into_dart(),
         ]
@@ -173,7 +173,7 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::mandelbrot::Point>
 }
 impl flutter_rust_bridge::IntoDart for crate::api::mandelbrot::Size {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        vec![
+        [
             self.width.into_into_dart().into_dart(),
             self.height.into_into_dart().into_dart(),
         ]
