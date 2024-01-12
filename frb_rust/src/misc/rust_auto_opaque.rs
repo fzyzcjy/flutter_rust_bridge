@@ -1,6 +1,6 @@
 use crate::for_generated::BaseArc;
 use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
-use crate::RustOpaqueBase;
+use crate::rust_opaque::RustOpaqueBase;
 
 impl<T, A: BaseArc<RwLock<T>>> RustOpaqueBase<RwLock<T>, A> {
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool

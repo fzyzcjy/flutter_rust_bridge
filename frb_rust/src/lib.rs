@@ -32,5 +32,5 @@ pub use crate::misc::into_into_dart::IntoIntoDart;
 pub use crate::misc::user_utils::setup_default_user_utils;
 pub use crate::rust_async::{spawn, spawn_blocking_with, spawn_local, JoinHandle};
 #[allow(deprecated)]
-pub use crate::rust_opaque::{DartSafe, RustOpaque};
+pub use crate::rust_opaque::{DartSafe, RustOpaque, RustOpaqueNom};
 pub use flutter_rust_bridge_macros::frb;
