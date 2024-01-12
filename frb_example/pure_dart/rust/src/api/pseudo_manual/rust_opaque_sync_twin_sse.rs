@@ -11,25 +11,25 @@ use flutter_rust_bridge::{frb, RustOpaque};
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_option_rust_opaque_twin_sse() -> Result<Option<RustOpaque<HideData>>> {
+pub fn sync_option_rust_opaque_twin_sse() -> Result<Option<RustOpaqueMoi<HideData>>> {
     Ok(Some(RustOpaque::new(HideData::new())))
 }
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_create_opaque_twin_sse() -> RustOpaque<HideData> {
+pub fn sync_create_opaque_twin_sse() -> RustOpaqueMoi<HideData> {
     RustOpaque::new(HideData::new())
 }
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_create_sync_opaque_twin_sse() -> RustOpaque<NonSendHideData> {
+pub fn sync_create_sync_opaque_twin_sse() -> RustOpaqueMoi<NonSendHideData> {
     RustOpaque::new(NonSendHideData::new())
 }
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_create_non_clone_twin_sse() -> RustOpaque<NonCloneData> {
+pub fn sync_create_non_clone_twin_sse() -> RustOpaqueMoi<NonCloneData> {
     RustOpaque::new(NonCloneData::new())
 }
 
@@ -41,7 +41,7 @@ pub fn sync_create_non_clone_twin_sse() -> RustOpaque<NonCloneData> {
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_run_opaque_twin_sse(opaque: RustOpaque<NonSendHideData>) -> String {
+pub fn sync_run_opaque_twin_sse(opaque: RustOpaqueMoi<NonSendHideData>) -> String {
     opaque.hide_data()
 }
 
@@ -50,6 +50,6 @@ pub fn sync_run_opaque_twin_sse(opaque: RustOpaque<NonSendHideData>) -> String {
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn frb_sync_generator_test_twin_sse() -> RustOpaque<FrbOpaqueSyncReturn> {
+pub fn frb_sync_generator_test_twin_sse() -> RustOpaqueMoi<FrbOpaqueSyncReturn> {
     RustOpaque::new(FrbOpaqueSyncReturn)
 }
