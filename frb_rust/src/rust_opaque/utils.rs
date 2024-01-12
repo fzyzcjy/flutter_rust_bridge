@@ -52,7 +52,7 @@ impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> ops::Deref for RustOpaque<T, C> {
 
 impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
     pub fn try_unwrap(self) -> Result<T, Self> {
-        C::Arc::try_unwrap(self.arc).map_err(|arc| RustOpaque { arc })
+        C::Arc::try_unwrap(self.arc).map_err(Self::from_arc)
     }
 
     pub fn into_inner(self) -> Option<T> {
@@ -62,8 +62,6 @@ impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
 
 impl<T: ?Sized + 'static, C: BaseRustOpaqueCodec<T>> Clone for RustOpaque<T, C> {
     fn clone(&self) -> Self {
-        Self {
-            arc: self.arc.clone(),
-        }
+        Self::from_arc(self.arc.clone())
     }
 }
