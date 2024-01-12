@@ -134,7 +134,7 @@ pub trait MapBasedArcValue: 'static {
 #[macro_export]
 macro_rules! frb_generated_map_based_arc_impl_value {
     ($T:ty) => {
-        impl MapBasedArcValue for $T {
+        impl $crate::for_generated::MapBasedArcValue for $T {
             fn get_pool() -> &'static $crate::for_generated::MapBasedArcPool<Self> {
                 use $crate::for_generated::MapBasedArcPool;
                 $crate::for_generated::lazy_static! {
