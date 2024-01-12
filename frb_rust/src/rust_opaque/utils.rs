@@ -2,6 +2,7 @@ use super::RustOpaque;
 use crate::generalized_arc::base_arc::BaseArc;
 use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
+use std::marker::PhantomData;
 use std::ops;
 use std::sync::Arc;
 
@@ -38,7 +39,11 @@ impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
     // `pub` mainly because dart2rust.rs needs it
     #[doc(hidden)]
     pub fn from_arc(arc: C::Arc) -> Self {
-        Self { arc }
+        Self {
+            arc,
+            _phantom_t: PhantomData,
+            _phantom_c: PhantomData,
+        }
     }
 }
 

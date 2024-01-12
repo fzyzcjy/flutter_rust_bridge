@@ -5,6 +5,7 @@ pub(crate) mod utils;
 
 use crate::rust_opaque::codec::nom::NomRustOpaqueCodec;
 use crate::rust_opaque::codec::BaseRustOpaqueCodec;
+use std::marker::PhantomData;
 
 /// A wrapper to transfer ownership of T to Dart.
 ///
@@ -40,8 +41,15 @@ use crate::rust_opaque::codec::BaseRustOpaqueCodec;
 /// ```
 #[repr(transparent)]
 #[derive(Debug)]
-pub struct RustOpaque<T: ?Sized + 'static, C: BaseRustOpaqueCodec<T> = NomRustOpaqueCodec> {
-    arc: C::Arc,
+pub struct RustOpaque<
+    T: ?Sized + 'static,
+    C: BaseRustOpaqueCodec<T, Arc = A> = NomRustOpaqueCodec,
+    // Weird extra generic to workaround https://github.com/rust-lang/rust/issues/102211#issuecomment-1513931928
+    A = <C as BaseRustOpaqueCodec<T>>::Arc,
+> {
+    arc: A,
+    _phantom_t: PhantomData<T>,
+    _phantom_c: PhantomData<C>,
 }
 
 // https://github.com/fzyzcjy/flutter_rust_bridge/pull/1574
