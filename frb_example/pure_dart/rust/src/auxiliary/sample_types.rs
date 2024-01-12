@@ -97,16 +97,6 @@ impl NonCloneData {
     }
 }
 
-/// Structure for testing the RustOpaque code generator.
-/// FrbOpaqueReturn must be only return type.
-/// FrbOpaqueReturn must not be used as an argument.
-pub struct FrbOpaqueReturn;
-
-/// Structure for testing the SyncReturn<RustOpaque> code generator.
-/// FrbOpaqueSyncReturn must be only return type.
-/// FrbOpaqueSyncReturn must should be without wrapper like Option<> Vec<> etc.
-pub struct FrbOpaqueSyncReturn;
-
 pub type Id = u64;
 pub type UserIdAlias = Id;
 pub type EnumAlias = MyEnum;

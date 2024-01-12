@@ -1,9 +1,14 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
 use crate::api::rust_opaque::HideData;
-use crate::auxiliary::sample_types::{FrbOpaqueSyncReturn, NonCloneData, NonSendHideData};
+use crate::auxiliary::sample_types::{NonCloneData, NonSendHideData};
 use anyhow::Result;
 use flutter_rust_bridge::{frb, RustOpaque};
+
+/// Structure for testing the SyncReturn<RustOpaque> code generator.
+/// FrbOpaqueSyncReturn must be only return type.
+/// FrbOpaqueSyncReturn must should be without wrapper like Option<> Vec<> etc.
+pub struct FrbOpaqueSyncReturnTwinNormal;
 
 #[frb(sync)]
 pub fn sync_option_rust_opaque_twin_normal() -> Result<Option<RustOpaque<HideData>>> {
@@ -40,6 +45,6 @@ pub fn sync_run_opaque_twin_normal(opaque: RustOpaque<NonSendHideData>) -> Strin
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 #[frb(sync)]
-pub fn frb_sync_generator_test_twin_normal() -> RustOpaque<FrbOpaqueSyncReturn> {
-    RustOpaque::new(FrbOpaqueSyncReturn)
+pub fn frb_sync_generator_test_twin_normal() -> RustOpaque<FrbOpaqueSyncReturnTwinNormal> {
+    RustOpaque::new(FrbOpaqueSyncReturnTwinNormal)
 }

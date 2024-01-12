@@ -1,13 +1,16 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
-pub use crate::auxiliary::sample_types::{
-    FrbOpaqueReturn, HideData, NonCloneData, NonSendHideData,
-};
+pub use crate::auxiliary::sample_types::{HideData, NonCloneData, NonSendHideData};
 use anyhow::Result;
 use flutter_rust_bridge::{opaque_dyn, RustOpaque};
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
+
+/// Structure for testing the RustOpaque code generator.
+/// FrbOpaqueReturn must be only return type.
+/// FrbOpaqueReturn must not be used as an argument.
+pub struct FrbOpaqueReturnTwinNormal;
 
 /// Opaque types
 pub trait DartDebugTwinNormal: Debug + Send + Sync {}
@@ -148,6 +151,6 @@ pub fn unwrap_rust_opaque_twin_normal(opaque: RustOpaque<HideData>) -> Result<St
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-pub fn frb_generator_test_twin_normal() -> RustOpaque<FrbOpaqueReturn> {
+pub fn frb_generator_test_twin_normal() -> RustOpaque<FrbOpaqueReturnTwinNormal> {
     panic!("dummy code");
 }
