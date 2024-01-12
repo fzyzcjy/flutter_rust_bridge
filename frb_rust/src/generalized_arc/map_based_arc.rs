@@ -1,13 +1,13 @@
-use crate::generalized_arc::base_arc::BaseArc;
-use parking_lot::RwLock;
-use std::collections::HashMap;
-use std::marker::PhantomData;
-use std::sync::Arc;
-
 #[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_map_based_arc_def {
     () => {
+        use parking_lot::RwLock;
+        use std::collections::HashMap;
+        use std::marker::PhantomData;
+        use std::sync::Arc;
+        use $crate::for_generated::BaseArc;
+
         #[derive(Debug)]
         pub struct MapBasedArc<T: ?Sized + MapBasedArcValue> {
             // `Option` for correct dropping
