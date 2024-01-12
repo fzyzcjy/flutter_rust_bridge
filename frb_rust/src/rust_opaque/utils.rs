@@ -24,15 +24,21 @@ macro_rules! opaque_dyn {
 
 impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaque<T, NomRustOpaqueCodec> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { arc: ptr.into() }
+        Self::from_arc(ptr.into())
     }
 }
 
 impl<T, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
     pub fn new(value: T) -> Self {
-        Self {
-            arc: C::Arc::new(value),
-        }
+        Self::from_arc(C::Arc::new(value))
+    }
+}
+
+impl<T: ?Sized, C: BaseRustOpaqueCodec<T>> RustOpaque<T, C> {
+    // `pub` mainly because dart2rust.rs needs it
+    #[doc(hidden)]
+    pub fn from_arc(arc: C::Arc) -> Self {
+        Self { arc }
     }
 }
 
