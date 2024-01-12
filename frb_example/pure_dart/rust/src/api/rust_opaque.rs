@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"enableAll": true}
+
 pub use crate::auxiliary::sample_types::{
     FrbOpaqueReturn, HideData, NonCloneData, NonSendHideData,
 };

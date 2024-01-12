@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"enableAll": true}
+
 use flutter_rust_bridge::frb;
 use std::path::PathBuf;
 
