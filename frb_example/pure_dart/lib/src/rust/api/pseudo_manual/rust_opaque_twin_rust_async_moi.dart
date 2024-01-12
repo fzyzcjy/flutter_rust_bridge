@@ -7,6 +7,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'rust_opaque_twin_moi.dart';
 part 'rust_opaque_twin_rust_async_moi.freezed.dart';
 
 Future<HideDataTwinRustAsyncMoi> createOpaqueTwinRustAsyncMoi({dynamic hint}) =>
@@ -185,24 +186,6 @@ class HideDataTwinRustAsyncMoiArray2
 
   HideDataTwinRustAsyncMoiArray2.init(HideDataTwinRustAsyncMoi fill)
       : this(List<HideDataTwinRustAsyncMoi>.filled(arraySize, fill));
-}
-
-// Rust type: RustOpaqueMoi<i16>
-@sealed
-class I16 extends RustOpaque {
-  I16.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
-
-  I16.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_I16,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_I16,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_I16Ptr,
-  );
 }
 
 // Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi>

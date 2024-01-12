@@ -5,7 +5,7 @@
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'rust_auto_opaque_twin_rust_async.dart';
+import 'rust_auto_opaque_twin_moi.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinSse(
         {required NonCloneSimpleTwinSse arg,
