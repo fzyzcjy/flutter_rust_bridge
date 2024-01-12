@@ -7,9 +7,9 @@ use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
 
-pub struct HideData(HideDataRaw);
-pub struct NonCloneData(NonCloneDataRaw);
-pub struct NonSendHideData(NonSendHideDataRaw);
+pub struct HideDataTwinNormal(HideDataRaw);
+pub struct NonCloneDataTwinNormal(NonCloneDataRaw);
+pub struct NonSendHideDataTwinNormal(NonSendHideDataRaw);
 
 /// Structure for testing the RustOpaque code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -21,41 +21,41 @@ pub trait DartDebugTwinNormal: Debug + Send + Sync {}
 impl<T: Debug + Send + Sync> DartDebugTwinNormal for T {}
 
 pub enum EnumOpaqueTwinNormal {
-    Struct(RustOpaque<HideData>),
+    Struct(RustOpaque<HideDataTwinNormal>),
     Primitive(RustOpaque<i32>),
     TraitObj(RustOpaque<Box<dyn DartDebugTwinNormal>>),
-    Mutex(RustOpaque<Mutex<HideData>>),
-    RwLock(RustOpaque<RwLock<HideData>>),
+    Mutex(RustOpaque<Mutex<HideDataTwinNormal>>),
+    RwLock(RustOpaque<RwLock<HideDataTwinNormal>>),
 }
 
-/// [`HideData`] has private fields.
+/// [`HideDataTwinNormal`] has private fields.
 pub struct OpaqueNestedTwinNormal {
-    pub first: RustOpaque<HideData>,
-    pub second: RustOpaque<HideData>,
+    pub first: RustOpaque<HideDataTwinNormal>,
+    pub second: RustOpaque<HideDataTwinNormal>,
 }
 
-pub fn create_opaque_twin_normal() -> RustOpaque<HideData> {
-    RustOpaque::new(HideData::new())
+pub fn create_opaque_twin_normal() -> RustOpaque<HideDataTwinNormal> {
+    RustOpaque::new(HideDataTwinNormal::new())
 }
 
 pub fn create_option_opaque_twin_normal(
-    opaque: Option<RustOpaque<HideData>>,
-) -> Option<RustOpaque<HideData>> {
+    opaque: Option<RustOpaque<HideDataTwinNormal>>,
+) -> Option<RustOpaque<HideDataTwinNormal>> {
     opaque
 }
 
 // TODO about sync
-// pub fn sync_create_opaque_twin_normal() -> SyncReturn<RustOpaque<HideData>> {
-//     SyncReturn(RustOpaque::new(HideData::new()))
+// pub fn sync_create_opaque_twin_normal() -> SyncReturn<RustOpaque<HideDataTwinNormal>> {
+//     SyncReturn(RustOpaque::new(HideDataTwinNormal::new()))
 // }
 
 pub fn create_array_opaque_enum_twin_normal() -> [EnumOpaqueTwinNormal; 5] {
     [
-        EnumOpaqueTwinNormal::Struct(RustOpaque::new(HideData::new())),
+        EnumOpaqueTwinNormal::Struct(RustOpaque::new(HideDataTwinNormal::new())),
         EnumOpaqueTwinNormal::Primitive(RustOpaque::new(42)),
         EnumOpaqueTwinNormal::TraitObj(opaque_dyn!("String")),
-        EnumOpaqueTwinNormal::Mutex(RustOpaque::new(Mutex::new(HideData::new()))),
-        EnumOpaqueTwinNormal::RwLock(RustOpaque::new(RwLock::new(HideData::new()))),
+        EnumOpaqueTwinNormal::Mutex(RustOpaque::new(Mutex::new(HideDataTwinNormal::new()))),
+        EnumOpaqueTwinNormal::RwLock(RustOpaque::new(RwLock::new(HideDataTwinNormal::new()))),
     ]
 }
 
@@ -73,11 +73,11 @@ pub fn run_enum_opaque_twin_normal(opaque: EnumOpaqueTwinNormal) -> String {
     }
 }
 
-pub fn run_opaque_twin_normal(opaque: RustOpaque<HideData>) -> String {
+pub fn run_opaque_twin_normal(opaque: RustOpaque<HideDataTwinNormal>) -> String {
     opaque.hide_data()
 }
 
-pub fn run_opaque_with_delay_twin_normal(opaque: RustOpaque<HideData>) -> String {
+pub fn run_opaque_with_delay_twin_normal(opaque: RustOpaque<HideDataTwinNormal>) -> String {
     // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
     // (But if on native, or on WASM + async mode, it is OK)
     #[cfg(not(target_family = "wasm"))]
@@ -86,48 +86,48 @@ pub fn run_opaque_with_delay_twin_normal(opaque: RustOpaque<HideData>) -> String
     opaque.hide_data()
 }
 
-pub fn opaque_array_twin_normal() -> [RustOpaque<HideData>; 2] {
+pub fn opaque_array_twin_normal() -> [RustOpaque<HideDataTwinNormal>; 2] {
     [
-        RustOpaque::new(HideData::new()),
-        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideDataTwinNormal::new()),
+        RustOpaque::new(HideDataTwinNormal::new()),
     ]
 }
 
 // TODO about sync
-// pub fn sync_create_non_clone_twin_normal() -> SyncReturn<RustOpaque<NonCloneData>> {
-//     SyncReturn(RustOpaque::new(NonCloneData::new()))
+// pub fn sync_create_non_clone_twin_normal() -> SyncReturn<RustOpaque<NonCloneDataTwinNormal>> {
+//     SyncReturn(RustOpaque::new(NonCloneDataTwinNormal::new()))
 // }
 
 #[allow(clippy::redundant_clone)]
-pub fn run_non_clone_twin_normal(clone: RustOpaque<NonCloneData>) -> String {
+pub fn run_non_clone_twin_normal(clone: RustOpaque<NonCloneDataTwinNormal>) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
     clone.clone().hide_data()
 }
 
-pub fn create_sync_opaque_twin_normal() -> RustOpaque<NonSendHideData> {
-    RustOpaque::new(NonSendHideData::new())
+pub fn create_sync_opaque_twin_normal() -> RustOpaque<NonSendHideDataTwinNormal> {
+    RustOpaque::new(NonSendHideDataTwinNormal::new())
 }
 
 // TODO about sync
-// pub fn sync_create_sync_opaque_twin_normal() -> SyncReturn<RustOpaque<NonSendHideData>> {
-//     SyncReturn(RustOpaque::new(NonSendHideData::new()))
+// pub fn sync_create_sync_opaque_twin_normal() -> SyncReturn<RustOpaque<NonSendHideDataTwinNormal>> {
+//     SyncReturn(RustOpaque::new(NonSendHideDataTwinNormal::new()))
 // }
 
-pub fn opaque_array_run_twin_normal(data: [RustOpaque<HideData>; 2]) {
+pub fn opaque_array_run_twin_normal(data: [RustOpaque<HideDataTwinNormal>; 2]) {
     for i in data {
         i.hide_data();
     }
 }
 
-pub fn opaque_vec_twin_normal() -> Vec<RustOpaque<HideData>> {
+pub fn opaque_vec_twin_normal() -> Vec<RustOpaque<HideDataTwinNormal>> {
     vec![
-        RustOpaque::new(HideData::new()),
-        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideDataTwinNormal::new()),
+        RustOpaque::new(HideDataTwinNormal::new()),
     ]
 }
 
-pub fn opaque_vec_run_twin_normal(data: Vec<RustOpaque<HideData>>) {
+pub fn opaque_vec_run_twin_normal(data: Vec<RustOpaque<HideDataTwinNormal>>) {
     for i in data {
         i.hide_data();
     }
@@ -135,8 +135,8 @@ pub fn opaque_vec_run_twin_normal(data: Vec<RustOpaque<HideData>>) {
 
 pub fn create_nested_opaque_twin_normal() -> OpaqueNestedTwinNormal {
     OpaqueNestedTwinNormal {
-        first: RustOpaque::new(HideData::new()),
-        second: RustOpaque::new(HideData::new()),
+        first: RustOpaque::new(HideDataTwinNormal::new()),
+        second: RustOpaque::new(HideDataTwinNormal::new()),
     }
 }
 
@@ -145,8 +145,8 @@ pub fn run_nested_opaque_twin_normal(opaque: OpaqueNestedTwinNormal) {
     opaque.second.hide_data();
 }
 
-pub fn unwrap_rust_opaque_twin_normal(opaque: RustOpaque<HideData>) -> Result<String> {
-    let data: HideData = opaque
+pub fn unwrap_rust_opaque_twin_normal(opaque: RustOpaque<HideDataTwinNormal>) -> Result<String> {
+    let data: HideDataTwinNormal = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
     Ok(data.hide_data())
