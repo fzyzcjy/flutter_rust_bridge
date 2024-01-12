@@ -11,7 +11,7 @@ Future<int> minimalAdder({required int a, required int b, dynamic hint}) =>
 
 // Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>
 @sealed
-class Apple extends RustOpaqueNom {
+class Apple extends RustOpaque {
   Apple.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
 
   Apple.sseDecode(int ptr, int externalSizeOnNative)
