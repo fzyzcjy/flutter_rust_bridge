@@ -12,7 +12,7 @@ use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
-#[derive(PartialEq, Eq, Debug)]
+#[derive(PartialEq, Eq, Debug, Clone)]
 pub(crate) struct FrbAttributes(Vec<FrbAttribute>);
 
 impl FrbAttributes {
@@ -152,7 +152,7 @@ impl Parse for FrbAttributesInner {
     }
 }
 
-#[derive(Eq, PartialEq, Debug)]
+#[derive(Eq, PartialEq, Debug, Clone)]
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,

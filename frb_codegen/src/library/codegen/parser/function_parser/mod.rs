@@ -54,8 +54,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let sig = func.sig();
         let namespace = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
+        let attributes = FrbAttributes::parse(func.attrs())?;
         let context = TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
+            func_attributes: attributes.clone(),
         };
 
         let owner = if let Some(owner) = self.parse_owner(func, &context)? {
@@ -65,7 +67,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let func_name = parse_name(sig, &owner);
-        let attributes = FrbAttributes::parse(func.attrs())?;
 
         if attributes.ignore() {
             return Ok(None);
