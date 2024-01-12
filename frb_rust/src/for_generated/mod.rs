@@ -32,7 +32,8 @@ pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 pub use crate::web_transfer::transfer_closure::TransferClosure;
 pub use anyhow;
 pub use byteorder;
-pub use cast::*;
+#[cfg(wasm)]
+pub use cast::slice_from_byte_buffer;
 #[cfg(not(wasm))]
 pub use dart_sys_fork as dart_sys;
 pub use futures;
