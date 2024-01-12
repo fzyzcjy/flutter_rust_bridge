@@ -15,11 +15,11 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 pub struct Apple {}
 
 impl Apple {
-    #[frb(rust_opaque_codec_moi)]
+    // #[frb(rust_opaque_codec_moi)]
     pub fn new() -> Apple {
         Apple {}
     }
 
-    #[frb(rust_opaque_codec_moi)]
+    // #[frb(rust_opaque_codec_moi)]
     pub fn apple_method_ref(&self) {}
 }

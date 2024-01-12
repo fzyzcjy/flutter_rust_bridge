@@ -25,7 +25,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-            MoiRustOpaqueCodec,
+            NomRustOpaqueCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -33,13 +33,13 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        MoiRustOpaqueCodec,
+        NomRustOpaqueCodec,
     > {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
         }
-        unsafe { decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _) }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
@@ -98,7 +98,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
         >>::Arc::increment_strong_count(ptr as _);
     }
@@ -109,7 +109,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+        <NomRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
         >>::Arc::decrement_strong_count(ptr as _);
     }
