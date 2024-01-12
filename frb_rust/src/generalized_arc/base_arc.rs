@@ -53,7 +53,7 @@ macro_rules! base_arc_generate_tests {
         #[test]
         fn try_unwrap_when_2_ref_should_fail() {
             let a = <$T>::new(DummyType(100));
-            let b = a.clone();
+            let _b = a.clone();
             assert!(a.try_unwrap().is_err());
         }
 
@@ -66,7 +66,7 @@ macro_rules! base_arc_generate_tests {
         #[test]
         fn into_inner_when_2_ref_should_fail() {
             let a = <$T>::new(DummyType(100));
-            let b = a.clone();
+            let _b = a.clone();
             assert!(a.into_inner().is_none());
         }
 
