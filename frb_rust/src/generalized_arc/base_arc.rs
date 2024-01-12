@@ -51,7 +51,7 @@ macro_rules! base_arc_generate_tests {
         #[test]
         fn simple_drop() {
             let a = <$T<DummyType>>::new(DummyType(100));
-            assert_eq!(a.as_ref().0, 100);
+            assert_eq!(a.as_ref().value, 100);
             drop(a);
         }
 
@@ -59,11 +59,11 @@ macro_rules! base_arc_generate_tests {
         fn simple_clone() {
             let a = <$T<DummyType>>::new(DummyType(100));
             let b = a.clone();
-            assert_eq!(a.as_ref().0, 100);
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(a.as_ref().value, 100);
+            assert_eq!(b.as_ref().value, 100);
 
             drop(a);
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(b.as_ref().value, 100);
 
             drop(b);
         }
@@ -71,7 +71,7 @@ macro_rules! base_arc_generate_tests {
         #[test]
         fn try_unwrap_when_1_ref_should_succeed() {
             let a = <$T<DummyType>>::new(DummyType(100));
-            assert_eq!(a.try_unwrap().unwrap().0, 100);
+            assert_eq!(a.try_unwrap().unwrap().value, 100);
         }
 
         #[test]
@@ -84,7 +84,7 @@ macro_rules! base_arc_generate_tests {
         #[test]
         fn into_inner_when_1_ref_should_succeed() {
             let a = <$T<DummyType>>::new(DummyType(100));
-            assert_eq!(a.into_inner().unwrap().0, 100);
+            assert_eq!(a.into_inner().unwrap().value, 100);
         }
 
         #[test]
@@ -99,7 +99,7 @@ macro_rules! base_arc_generate_tests {
             let a = <$T<DummyType>>::new(DummyType(100));
             let a_raw = a.into_raw();
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
-            assert_eq!(a_recovered.as_ref().0, 100);
+            assert_eq!(a_recovered.as_ref().value, 100);
         }
 
         #[test]
@@ -107,11 +107,11 @@ macro_rules! base_arc_generate_tests {
             let a = <$T<DummyType>>::new(DummyType(100));
             let b = a.clone();
             let a_raw = a.into_raw();
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(b.as_ref().value, 100);
 
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
-            assert_eq!(a_recovered.as_ref().0, 100);
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(a_recovered.as_ref().value, 100);
+            assert_eq!(b.as_ref().value, 100);
         }
 
         #[test]
@@ -119,17 +119,17 @@ macro_rules! base_arc_generate_tests {
             let a = <$T<DummyType>>::new(DummyType(100));
             let b = a.clone();
             let a_raw = a.into_raw();
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(b.as_ref().value, 100);
 
             unsafe { <$T<DummyType>>::increment_strong_count(a_raw) };
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(b.as_ref().value, 100);
 
             unsafe { <$T<DummyType>>::decrement_strong_count(a_raw) };
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(b.as_ref().value, 100);
 
             let a_recovered = unsafe { <$T<DummyType>>::from_raw(a_raw) };
-            assert_eq!(a_recovered.as_ref().0, 100);
-            assert_eq!(b.as_ref().0, 100);
+            assert_eq!(a_recovered.as_ref().value, 100);
+            assert_eq!(b.as_ref().value, 100);
         }
     };
 }
