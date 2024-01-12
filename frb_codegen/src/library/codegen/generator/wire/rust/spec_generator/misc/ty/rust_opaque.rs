@@ -17,20 +17,11 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        generate_rust_arc_functions(self.ir.clone().into(), &self.ir.inner, self.ir.codec)
-    }
-}
-
-fn generate_rust_arc_functions(
-    ir: IrType,
-    inner: &IrType,
-    codec: RustOpaqueCodecMode,
-) -> Acc<WireRustOutputCode> {
-    let generate_impl = |target| -> WireRustOutputCode {
-        ["increment", "decrement"].iter()
-            .map(|op|
+        let generate_impl = |target| -> WireRustOutputCode {
+            ["increment", "decrement"].iter()
+                .map(|op|
                      ExternFunc {
-                         partial_func_name: format!("rust_arc_{op}_strong_count_{}", ir.safe_ident()),
+                         partial_func_name: format!("rust_arc_{op}_strong_count_{}", self.ir.safe_ident()),
                          params: vec![ExternFuncParam {
                              name: "ptr".to_owned(),
                              rust_type: "*const std::ffi::c_void".to_owned(),
@@ -39,19 +30,20 @@ fn generate_rust_arc_functions(
                          return_type: None,
                          body: format!(
                              "unsafe {{ <flutter_rust_bridge::{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr as _); }}",
-                             codec.to_string(),
-                             inner.rust_api_type(),
+                             self.ir.codec.to_string(),
+                             &self.ir.inner.rust_api_type(),
                          ),
                          target,
                      },
-            )
-            .collect_vec()
-            .into()
-    };
+                )
+                .collect_vec()
+                .into()
+        };
 
-    Acc {
-        io: generate_impl(Target::Io),
-        web: generate_impl(Target::Web),
-        ..Default::default()
+        Acc {
+            io: generate_impl(Target::Io),
+            web: generate_impl(Target::Web),
+            ..Default::default()
+        }
     }
 }
