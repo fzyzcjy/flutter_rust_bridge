@@ -1,4 +1,5 @@
 use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use serde::Serialize;
@@ -73,5 +74,10 @@ impl IrTypeTrait for IrTypeRustOpaque {
 
     fn self_namespace(&self) -> Option<Namespace> {
         Some(self.namespace.clone())
+    }
+
+    // Because we are using usize on the wirre
+    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        Some(&IrTypePrimitive::Usize)
     }
 }
