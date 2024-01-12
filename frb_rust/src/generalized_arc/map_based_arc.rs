@@ -5,7 +5,6 @@ macro_rules! frb_generated_map_based_arc_def {
         use std::collections::HashMap;
         use std::marker::PhantomData;
         use std::sync::Arc;
-        use $crate::for_generated::parking_lot::RwLock;
 
         #[derive(Debug)]
         pub struct MapBasedArc<T: ?Sized + MapBasedArcValue> {
@@ -135,7 +134,8 @@ macro_rules! frb_generated_map_based_arc_def {
 
         type ObjectId = usize;
 
-        pub type MapBasedArcPool<T> = RwLock<MapBasedArcPoolInner<T>>;
+        pub type MapBasedArcPool<T> =
+            $crate::for_generated::parking_lot::RwLock<MapBasedArcPoolInner<T>>;
 
         pub struct MapBasedArcPoolInner<T: ?Sized> {
             map: HashMap<ObjectId, MapBasedArcPoolValue<T>>,
