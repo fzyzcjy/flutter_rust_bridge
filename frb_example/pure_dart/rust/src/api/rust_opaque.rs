@@ -2,6 +2,7 @@
 
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 use anyhow::Result;
+#[allow(unused_imports)]
 use flutter_rust_bridge::{opaque_dyn, RustOpaque};
 use std::fmt::Debug;
 use std::ops::Deref;

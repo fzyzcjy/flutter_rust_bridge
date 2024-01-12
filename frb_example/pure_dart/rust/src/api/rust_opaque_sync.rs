@@ -2,6 +2,7 @@
 
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 use anyhow::Result;
+#[allow(unused_imports)]
 use flutter_rust_bridge::{frb, RustOpaque};
 
 pub struct HideDataAnotherTwinNormal(HideDataRaw);
