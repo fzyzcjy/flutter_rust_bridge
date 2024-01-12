@@ -1,4 +1,4 @@
-use super::RustOpaque;
+use super::RustOpaqueBase;
 use crate::for_generated::StdArc;
 use crate::generalized_arc::base_arc::BaseArc;
 use std::marker::PhantomData;
@@ -13,28 +13,28 @@ use std::sync::Arc;
 /// use std::fmt::Debug;
 /// use flutter_rust_bridge::*;
 ///
-/// let opaque: RustOpaque<Box<dyn Debug>> = opaque_dyn!("foobar");
+/// let opaque: RustOpaqueBase<Box<dyn Debug>> = opaque_dyn!("foobar");
 /// ```
 #[macro_export]
 macro_rules! opaque_dyn {
     ($ex:expr) => {
-        $crate::RustOpaque::new(::std::boxed::Box::new($ex))
+        $crate::RustOpaqueBase::new(::std::boxed::Box::new($ex))
     };
 }
 
-impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaque<T, StdArc<T>> {
+impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaqueBase<T, StdArc<T>> {
     fn from(ptr: Arc<T>) -> Self {
         Self::from_arc(ptr.into())
     }
 }
 
-impl<T, A: BaseArc<T>> RustOpaque<T, A> {
+impl<T, A: BaseArc<T>> RustOpaqueBase<T, A> {
     pub fn new(value: T) -> Self {
         Self::from_arc(A::new(value))
     }
 }
 
-impl<T: ?Sized, A: BaseArc<T>> RustOpaque<T, A> {
+impl<T: ?Sized, A: BaseArc<T>> RustOpaqueBase<T, A> {
     // `pub` mainly because dart2rust.rs needs it
     #[doc(hidden)]
     pub fn from_arc(arc: A) -> Self {
@@ -45,7 +45,7 @@ impl<T: ?Sized, A: BaseArc<T>> RustOpaque<T, A> {
     }
 }
 
-impl<T: ?Sized, A: BaseArc<T>> ops::Deref for RustOpaque<T, A> {
+impl<T: ?Sized, A: BaseArc<T>> ops::Deref for RustOpaqueBase<T, A> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -53,7 +53,7 @@ impl<T: ?Sized, A: BaseArc<T>> ops::Deref for RustOpaque<T, A> {
     }
 }
 
-impl<T, A: BaseArc<T>> RustOpaque<T, A> {
+impl<T, A: BaseArc<T>> RustOpaqueBase<T, A> {
     pub fn try_unwrap(self) -> Result<T, Self> {
         A::try_unwrap(self.arc).map_err(Self::from_arc)
     }
@@ -63,7 +63,7 @@ impl<T, A: BaseArc<T>> RustOpaque<T, A> {
     }
 }
 
-impl<T: ?Sized + 'static, A: BaseArc<T>> Clone for RustOpaque<T, A> {
+impl<T: ?Sized + 'static, A: BaseArc<T>> Clone for RustOpaqueBase<T, A> {
     fn clone(&self) -> Self {
         Self::from_arc(self.arc.clone())
     }

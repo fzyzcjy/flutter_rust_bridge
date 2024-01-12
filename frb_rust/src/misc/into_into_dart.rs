@@ -1,7 +1,7 @@
 use crate::dart_opaque::DartOpaque;
 use crate::for_generated::BaseArc;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
-use crate::rust_opaque::RustOpaque;
+use crate::rust_opaque::RustOpaqueBase;
 use std::collections::{HashMap, HashSet};
 
 /// Basically the Into trait.
@@ -36,9 +36,9 @@ where
     }
 }
 
-impl<T, A: BaseArc<T>> IntoIntoDart<RustOpaque<T, A>> for RustOpaque<T, A> {
+impl<T, A: BaseArc<T>> IntoIntoDart<RustOpaqueBase<T, A>> for RustOpaqueBase<T, A> {
     #[inline(always)]
-    fn into_into_dart(self) -> RustOpaque<T, A> {
+    fn into_into_dart(self) -> RustOpaqueBase<T, A> {
         self
     }
 }

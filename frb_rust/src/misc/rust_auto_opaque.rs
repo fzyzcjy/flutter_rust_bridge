@@ -1,8 +1,8 @@
 use crate::for_generated::BaseArc;
 use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
-use crate::RustOpaque;
+use crate::RustOpaqueBase;
 
-impl<T, A: BaseArc<RwLock<T>>> RustOpaque<RwLock<T>, A> {
+impl<T, A: BaseArc<RwLock<T>>> RustOpaqueBase<RwLock<T>, A> {
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
     pub fn rust_auto_opaque_decode_sync_owned(self) -> T {
@@ -33,6 +33,6 @@ impl<T, A: BaseArc<RwLock<T>>> RustOpaque<RwLock<T>, A> {
     }
 }
 
-pub fn rust_auto_opaque_encode<T, A: BaseArc<RwLock<T>>>(value: T) -> RustOpaque<RwLock<T>, A> {
-    RustOpaque::new(RwLock::new(value))
+pub fn rust_auto_opaque_encode<T, A: BaseArc<RwLock<T>>>(value: T) -> RustOpaqueBase<RwLock<T>, A> {
+    RustOpaqueBase::new(RwLock::new(value))
 }
