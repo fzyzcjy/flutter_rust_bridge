@@ -52,7 +52,7 @@ pub(crate) fn generate_decode_rust_opaque(inner: &str, codec: RustOpaqueCodecMod
     generate_maybe_unsafe(
         &format!(
             "decode_rust_opaque_{}({inner})",
-            codec.to_string().to_case(Case::Snake)
+            codec.needs_unsafe_block().to_case(Case::Snake)
         ),
         codec.needs_unsafe_block(),
     )

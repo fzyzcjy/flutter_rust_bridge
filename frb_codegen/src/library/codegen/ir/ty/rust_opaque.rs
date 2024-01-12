@@ -20,6 +20,13 @@ pub(crate) enum RustOpaqueCodecMode {
 }
 
 impl RustOpaqueCodecMode {
+    pub(crate) fn arc_ty(self) -> &'static str {
+        match self {
+            RustOpaqueCodecMode::Nom => "StdArc",
+            RustOpaqueCodecMode::Moi => "MoiArc",
+        }
+    }
+
     pub(crate) fn needs_unsafe_block(self) -> bool {
         self == RustOpaqueCodecMode::Nom
     }
