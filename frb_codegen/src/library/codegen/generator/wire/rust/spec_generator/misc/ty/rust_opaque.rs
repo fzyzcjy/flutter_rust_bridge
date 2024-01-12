@@ -17,7 +17,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        let generate_impl = |target| -> WireRustOutputCode {
+        let generate_io_web_impl = |target| -> WireRustOutputCode {
             ["increment", "decrement"].iter()
                 .map(|op|
                      ExternFunc {
@@ -40,10 +40,19 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                 .into()
         };
 
+        let common = if self.ir.codec == RustOpaqueCodecMode::Moi {
+            format!(
+                "flutter_rust_bridge::frb_generated_map_based_arc_impl_value!({})",
+                TODO
+            )
+        } else {
+            "".to_owned()
+        };
+
         Acc {
-            io: generate_impl(Target::Io),
-            web: generate_impl(Target::Web),
-            ..Default::default()
+            io: generate_io_web_impl(Target::Io),
+            web: generate_io_web_impl(Target::Web),
+            common: common.into(),
         }
     }
 }
