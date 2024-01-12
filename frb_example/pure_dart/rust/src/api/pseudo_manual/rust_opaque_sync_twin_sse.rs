@@ -18,25 +18,22 @@ pub struct FrbOpaqueSyncReturnTwinSse;
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_option_rust_opaque_twin_sse(
-) -> Result<Option<crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinSse>>> {
-    Ok(Some(crate::frb_generated::RustOpaqueMoi::new(
-        HideDataAnotherTwinSse(HideDataRaw::new()),
-    )))
+pub fn sync_option_rust_opaque_twin_sse() -> Result<Option<RustOpaque<HideDataAnotherTwinSse>>> {
+    Ok(Some(RustOpaque::new(HideDataAnotherTwinSse(
+        HideDataRaw::new(),
+    ))))
 }
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_create_opaque_twin_sse() -> crate::frb_generated::RustOpaqueMoi<HideDataAnotherTwinSse>
-{
-    crate::frb_generated::RustOpaqueMoi::new(HideDataAnotherTwinSse(HideDataRaw::new()))
+pub fn sync_create_opaque_twin_sse() -> RustOpaque<HideDataAnotherTwinSse> {
+    RustOpaque::new(HideDataAnotherTwinSse(HideDataRaw::new()))
 }
 
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn sync_create_non_clone_twin_sse(
-) -> crate::frb_generated::RustOpaqueMoi<NonCloneDataAnotherTwinSse> {
-    crate::frb_generated::RustOpaqueMoi::new(NonCloneDataAnotherTwinSse(NonCloneDataRaw::new()))
+pub fn sync_create_non_clone_twin_sse() -> RustOpaque<NonCloneDataAnotherTwinSse> {
+    RustOpaque::new(NonCloneDataAnotherTwinSse(NonCloneDataRaw::new()))
 }
 
 // OpaqueSyncStruct does not implement Send trait.
@@ -50,7 +47,6 @@ pub fn sync_create_non_clone_twin_sse(
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 #[frb(sync)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn frb_sync_generator_test_twin_sse(
-) -> crate::frb_generated::RustOpaqueMoi<FrbOpaqueSyncReturnTwinSse> {
-    crate::frb_generated::RustOpaqueMoi::new(FrbOpaqueSyncReturnTwinSse)
+pub fn frb_sync_generator_test_twin_sse() -> RustOpaque<FrbOpaqueSyncReturnTwinSse> {
+    RustOpaque::new(FrbOpaqueSyncReturnTwinSse)
 }

@@ -24,50 +24,51 @@ pub trait DartDebugTwinRustAsyncMoi: Debug + Send + Sync {}
 impl<T: Debug + Send + Sync> DartDebugTwinRustAsyncMoi for T {}
 
 pub enum EnumOpaqueTwinRustAsyncMoi {
-    Struct(RustOpaque<HideDataTwinRustAsyncMoi>),
-    Primitive(RustOpaque<i32>),
-    TraitObj(RustOpaque<Box<dyn DartDebugTwinRustAsyncMoi>>),
-    Mutex(RustOpaque<Mutex<HideDataTwinRustAsyncMoi>>),
-    RwLock(RustOpaque<RwLock<HideDataTwinRustAsyncMoi>>),
+    Struct(crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>),
+    Primitive(crate::frb_generated::RustOpaqueMoi<i16>),
+    TraitObj(crate::frb_generated::RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>>),
+    Mutex(crate::frb_generated::RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>>),
+    RwLock(crate::frb_generated::RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>>),
 }
 
 /// [`HideDataTwinRustAsyncMoi`] has private fields.
 pub struct OpaqueNestedTwinRustAsyncMoi {
-    pub first: RustOpaque<HideDataTwinRustAsyncMoi>,
-    pub second: RustOpaque<HideDataTwinRustAsyncMoi>,
+    pub first: crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>,
+    pub second: crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>,
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn create_opaque_twin_rust_async_moi() -> RustOpaque<HideDataTwinRustAsyncMoi> {
-    RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new()))
+pub async fn create_opaque_twin_rust_async_moi(
+) -> crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi> {
+    crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(HideDataRaw::new()))
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn create_option_opaque_twin_rust_async_moi(
-    opaque: Option<RustOpaque<HideDataTwinRustAsyncMoi>>,
-) -> Option<RustOpaque<HideDataTwinRustAsyncMoi>> {
+    opaque: Option<crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>>,
+) -> Option<crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>> {
     opaque
 }
 
 // TODO about sync
-// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn sync_create_opaque_twin_rust_async_moi() -> SyncReturn<RustOpaque<HideDataTwinRustAsyncMoi>> {
-//     SyncReturn(RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())))
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn sync_create_opaque_twin_rust_async_moi() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>> {
+//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())))
 // }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn create_array_opaque_enum_twin_rust_async_moi() -> [EnumOpaqueTwinRustAsyncMoi; 5] {
     [
-        EnumOpaqueTwinRustAsyncMoi::Struct(RustOpaque::new(HideDataTwinRustAsyncMoi(
-            HideDataRaw::new(),
-        ))),
-        EnumOpaqueTwinRustAsyncMoi::Primitive(RustOpaque::new(42)),
+        EnumOpaqueTwinRustAsyncMoi::Struct(crate::frb_generated::RustOpaqueMoi::new(
+            HideDataTwinRustAsyncMoi(HideDataRaw::new()),
+        )),
+        EnumOpaqueTwinRustAsyncMoi::Primitive(crate::frb_generated::RustOpaqueMoi::new(42)),
         EnumOpaqueTwinRustAsyncMoi::TraitObj(opaque_dyn!("String")),
-        EnumOpaqueTwinRustAsyncMoi::Mutex(RustOpaque::new(Mutex::new(HideDataTwinRustAsyncMoi(
-            HideDataRaw::new(),
-        )))),
-        EnumOpaqueTwinRustAsyncMoi::RwLock(RustOpaque::new(RwLock::new(HideDataTwinRustAsyncMoi(
-            HideDataRaw::new(),
-        )))),
+        EnumOpaqueTwinRustAsyncMoi::Mutex(crate::frb_generated::RustOpaqueMoi::new(Mutex::new(
+            HideDataTwinRustAsyncMoi(HideDataRaw::new()),
+        ))),
+        EnumOpaqueTwinRustAsyncMoi::RwLock(crate::frb_generated::RustOpaqueMoi::new(RwLock::new(
+            HideDataTwinRustAsyncMoi(HideDataRaw::new()),
+        ))),
     ]
 }
 
@@ -88,14 +89,14 @@ pub async fn run_enum_opaque_twin_rust_async_moi(opaque: EnumOpaqueTwinRustAsync
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn run_opaque_twin_rust_async_moi(
-    opaque: RustOpaque<HideDataTwinRustAsyncMoi>,
+    opaque: crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>,
 ) -> String {
     opaque.0.hide_data()
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn run_opaque_with_delay_twin_rust_async_moi(
-    opaque: RustOpaque<HideDataTwinRustAsyncMoi>,
+    opaque: crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>,
 ) -> String {
     // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
     // (But if on native, or on WASM + async mode, it is OK)
@@ -106,22 +107,23 @@ pub async fn run_opaque_with_delay_twin_rust_async_moi(
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn opaque_array_twin_rust_async_moi() -> [RustOpaque<HideDataTwinRustAsyncMoi>; 2] {
+pub async fn opaque_array_twin_rust_async_moi(
+) -> [crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>; 2] {
     [
-        RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
-        RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
     ]
 }
 
 // TODO about sync
-// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn sync_create_non_clone_twin_rust_async_moi() -> SyncReturn<RustOpaque<NonCloneDataTwinRustAsyncMoi>> {
-//     SyncReturn(RustOpaque::new(NonCloneDataTwinRustAsyncMoi::new()))
+// #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] pub async fn sync_create_non_clone_twin_rust_async_moi() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinRustAsyncMoi>> {
+//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(NonCloneDataTwinRustAsyncMoi::new()))
 // }
 
 #[allow(clippy::redundant_clone)]
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn run_non_clone_twin_rust_async_moi(
-    clone: RustOpaque<NonCloneDataTwinRustAsyncMoi>,
+    clone: crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinRustAsyncMoi>,
 ) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
@@ -129,22 +131,27 @@ pub async fn run_non_clone_twin_rust_async_moi(
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn opaque_array_run_twin_rust_async_moi(data: [RustOpaque<HideDataTwinRustAsyncMoi>; 2]) {
+pub async fn opaque_array_run_twin_rust_async_moi(
+    data: [crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>; 2],
+) {
     for i in data {
         i.0.hide_data();
     }
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn opaque_vec_twin_rust_async_moi() -> Vec<RustOpaque<HideDataTwinRustAsyncMoi>> {
+pub async fn opaque_vec_twin_rust_async_moi(
+) -> Vec<crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>> {
     vec![
-        RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
-        RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
+        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
     ]
 }
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn opaque_vec_run_twin_rust_async_moi(data: Vec<RustOpaque<HideDataTwinRustAsyncMoi>>) {
+pub async fn opaque_vec_run_twin_rust_async_moi(
+    data: Vec<crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>>,
+) {
     for i in data {
         i.0.hide_data();
     }
@@ -153,8 +160,12 @@ pub async fn opaque_vec_run_twin_rust_async_moi(data: Vec<RustOpaque<HideDataTwi
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn create_nested_opaque_twin_rust_async_moi() -> OpaqueNestedTwinRustAsyncMoi {
     OpaqueNestedTwinRustAsyncMoi {
-        first: RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
-        second: RustOpaque::new(HideDataTwinRustAsyncMoi(HideDataRaw::new())),
+        first: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(
+            HideDataRaw::new(),
+        )),
+        second: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinRustAsyncMoi(
+            HideDataRaw::new(),
+        )),
     }
 }
 
@@ -166,7 +177,7 @@ pub async fn run_nested_opaque_twin_rust_async_moi(opaque: OpaqueNestedTwinRustA
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn unwrap_rust_opaque_twin_rust_async_moi(
-    opaque: RustOpaque<HideDataTwinRustAsyncMoi>,
+    opaque: crate::frb_generated::RustOpaqueMoi<HideDataTwinRustAsyncMoi>,
 ) -> Result<String> {
     let data: HideDataTwinRustAsyncMoi = opaque
         .try_unwrap()
@@ -178,7 +189,7 @@ pub async fn unwrap_rust_opaque_twin_rust_async_moi(
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-pub async fn frb_generator_test_twin_rust_async_moi() -> RustOpaque<FrbOpaqueReturnTwinRustAsyncMoi>
-{
+pub async fn frb_generator_test_twin_rust_async_moi(
+) -> crate::frb_generated::RustOpaqueMoi<FrbOpaqueReturnTwinRustAsyncMoi> {
     panic!("dummy code");
 }

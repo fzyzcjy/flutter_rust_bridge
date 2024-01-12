@@ -65,7 +65,7 @@ class RustGenerator extends BaseGenerator {
                   : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }
 
-    if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
+    if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {
       // hack, otherwise `i32` is considered as Nom, and will ignore requests of using Moi codec
       // anyway this hack only affects how tests are auto generated, so no problem
       ans = ans.replaceAll(RegExp(r'RustOpaque<i32>'),

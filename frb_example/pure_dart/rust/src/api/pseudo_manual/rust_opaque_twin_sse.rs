@@ -24,50 +24,48 @@ pub trait DartDebugTwinSse: Debug + Send + Sync {}
 impl<T: Debug + Send + Sync> DartDebugTwinSse for T {}
 
 pub enum EnumOpaqueTwinSse {
-    Struct(crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>),
-    Primitive(crate::frb_generated::RustOpaqueMoi<i16>),
-    TraitObj(crate::frb_generated::RustOpaqueMoi<Box<dyn DartDebugTwinSse>>),
-    Mutex(crate::frb_generated::RustOpaqueMoi<Mutex<HideDataTwinSse>>),
-    RwLock(crate::frb_generated::RustOpaqueMoi<RwLock<HideDataTwinSse>>),
+    Struct(RustOpaque<HideDataTwinSse>),
+    Primitive(RustOpaque<i32>),
+    TraitObj(RustOpaque<Box<dyn DartDebugTwinSse>>),
+    Mutex(RustOpaque<Mutex<HideDataTwinSse>>),
+    RwLock(RustOpaque<RwLock<HideDataTwinSse>>),
 }
 
 /// [`HideDataTwinSse`] has private fields.
 pub struct OpaqueNestedTwinSse {
-    pub first: crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>,
-    pub second: crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>,
+    pub first: RustOpaque<HideDataTwinSse>,
+    pub second: RustOpaque<HideDataTwinSse>,
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn create_opaque_twin_sse() -> crate::frb_generated::RustOpaqueMoi<HideDataTwinSse> {
-    crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new()))
+pub fn create_opaque_twin_sse() -> RustOpaque<HideDataTwinSse> {
+    RustOpaque::new(HideDataTwinSse(HideDataRaw::new()))
 }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn create_option_opaque_twin_sse(
-    opaque: Option<crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>>,
-) -> Option<crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>> {
+    opaque: Option<RustOpaque<HideDataTwinSse>>,
+) -> Option<RustOpaque<HideDataTwinSse>> {
     opaque
 }
 
 // TODO about sync
-// #[flutter_rust_bridge::frb(serialize)] pub fn sync_create_opaque_twin_sse() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>> {
-//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new())))
+// #[flutter_rust_bridge::frb(serialize)] pub fn sync_create_opaque_twin_sse() -> SyncReturn<RustOpaque<HideDataTwinSse>> {
+//     SyncReturn(RustOpaque::new(HideDataTwinSse(HideDataRaw::new())))
 // }
 
 #[flutter_rust_bridge::frb(serialize)]
 pub fn create_array_opaque_enum_twin_sse() -> [EnumOpaqueTwinSse; 5] {
     [
-        EnumOpaqueTwinSse::Struct(crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(
-            HideDataRaw::new(),
-        ))),
-        EnumOpaqueTwinSse::Primitive(crate::frb_generated::RustOpaqueMoi::new(42)),
+        EnumOpaqueTwinSse::Struct(RustOpaque::new(HideDataTwinSse(HideDataRaw::new()))),
+        EnumOpaqueTwinSse::Primitive(RustOpaque::new(42)),
         EnumOpaqueTwinSse::TraitObj(opaque_dyn!("String")),
-        EnumOpaqueTwinSse::Mutex(crate::frb_generated::RustOpaqueMoi::new(Mutex::new(
-            HideDataTwinSse(HideDataRaw::new()),
-        ))),
-        EnumOpaqueTwinSse::RwLock(crate::frb_generated::RustOpaqueMoi::new(RwLock::new(
-            HideDataTwinSse(HideDataRaw::new()),
-        ))),
+        EnumOpaqueTwinSse::Mutex(RustOpaque::new(Mutex::new(HideDataTwinSse(
+            HideDataRaw::new(),
+        )))),
+        EnumOpaqueTwinSse::RwLock(RustOpaque::new(RwLock::new(HideDataTwinSse(
+            HideDataRaw::new(),
+        )))),
     ]
 }
 
@@ -87,14 +85,12 @@ pub fn run_enum_opaque_twin_sse(opaque: EnumOpaqueTwinSse) -> String {
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn run_opaque_twin_sse(opaque: crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>) -> String {
+pub fn run_opaque_twin_sse(opaque: RustOpaque<HideDataTwinSse>) -> String {
     opaque.0.hide_data()
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn run_opaque_with_delay_twin_sse(
-    opaque: crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>,
-) -> String {
+pub fn run_opaque_with_delay_twin_sse(opaque: RustOpaque<HideDataTwinSse>) -> String {
     // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
     // (But if on native, or on WASM + async mode, it is OK)
     #[cfg(not(target_family = "wasm"))]
@@ -104,45 +100,43 @@ pub fn run_opaque_with_delay_twin_sse(
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn opaque_array_twin_sse() -> [crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>; 2] {
+pub fn opaque_array_twin_sse() -> [RustOpaque<HideDataTwinSse>; 2] {
     [
-        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new())),
-        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinSse(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinSse(HideDataRaw::new())),
     ]
 }
 
 // TODO about sync
-// #[flutter_rust_bridge::frb(serialize)] pub fn sync_create_non_clone_twin_sse() -> SyncReturn<crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinSse>> {
-//     SyncReturn(crate::frb_generated::RustOpaqueMoi::new(NonCloneDataTwinSse::new()))
+// #[flutter_rust_bridge::frb(serialize)] pub fn sync_create_non_clone_twin_sse() -> SyncReturn<RustOpaque<NonCloneDataTwinSse>> {
+//     SyncReturn(RustOpaque::new(NonCloneDataTwinSse::new()))
 // }
 
 #[allow(clippy::redundant_clone)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn run_non_clone_twin_sse(
-    clone: crate::frb_generated::RustOpaqueMoi<NonCloneDataTwinSse>,
-) -> String {
+pub fn run_non_clone_twin_sse(clone: RustOpaque<NonCloneDataTwinSse>) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
     clone.clone().0.hide_data()
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn opaque_array_run_twin_sse(data: [crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>; 2]) {
+pub fn opaque_array_run_twin_sse(data: [RustOpaque<HideDataTwinSse>; 2]) {
     for i in data {
         i.0.hide_data();
     }
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn opaque_vec_twin_sse() -> Vec<crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>> {
+pub fn opaque_vec_twin_sse() -> Vec<RustOpaque<HideDataTwinSse>> {
     vec![
-        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new())),
-        crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinSse(HideDataRaw::new())),
+        RustOpaque::new(HideDataTwinSse(HideDataRaw::new())),
     ]
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn opaque_vec_run_twin_sse(data: Vec<crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>>) {
+pub fn opaque_vec_run_twin_sse(data: Vec<RustOpaque<HideDataTwinSse>>) {
     for i in data {
         i.0.hide_data();
     }
@@ -151,8 +145,8 @@ pub fn opaque_vec_run_twin_sse(data: Vec<crate::frb_generated::RustOpaqueMoi<Hid
 #[flutter_rust_bridge::frb(serialize)]
 pub fn create_nested_opaque_twin_sse() -> OpaqueNestedTwinSse {
     OpaqueNestedTwinSse {
-        first: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new())),
-        second: crate::frb_generated::RustOpaqueMoi::new(HideDataTwinSse(HideDataRaw::new())),
+        first: RustOpaque::new(HideDataTwinSse(HideDataRaw::new())),
+        second: RustOpaque::new(HideDataTwinSse(HideDataRaw::new())),
     }
 }
 
@@ -163,9 +157,7 @@ pub fn run_nested_opaque_twin_sse(opaque: OpaqueNestedTwinSse) {
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn unwrap_rust_opaque_twin_sse(
-    opaque: crate::frb_generated::RustOpaqueMoi<HideDataTwinSse>,
-) -> Result<String> {
+pub fn unwrap_rust_opaque_twin_sse(opaque: RustOpaque<HideDataTwinSse>) -> Result<String> {
     let data: HideDataTwinSse = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
@@ -176,7 +168,6 @@ pub fn unwrap_rust_opaque_twin_sse(
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 #[flutter_rust_bridge::frb(serialize)]
-pub fn frb_generator_test_twin_sse() -> crate::frb_generated::RustOpaqueMoi<FrbOpaqueReturnTwinSse>
-{
+pub fn frb_generator_test_twin_sse() -> RustOpaque<FrbOpaqueReturnTwinSse> {
     panic!("dummy code");
 }
