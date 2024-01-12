@@ -29,7 +29,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                          }.clone()],
                          return_type: None,
                          body: format!(
-                             "unsafe {{ <flutter_rust_bridge::{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr as _); }}",
+                             "unsafe {{ <{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<{}>>::Arc::{op}_strong_count(ptr as _); }}",
                              self.ir.codec.to_string(),
                              &self.ir.inner.rust_api_type(),
                          ),

@@ -25,7 +25,7 @@ impl
     CstDecode<
         flutter_rust_bridge::RustOpaque<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-            flutter_rust_bridge::MoiRustOpaqueCodec,
+            MoiRustOpaqueCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -33,7 +33,7 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        flutter_rust_bridge::MoiRustOpaqueCodec,
+        MoiRustOpaqueCodec,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -97,7 +97,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <flutter_rust_bridge::MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::increment_strong_count(ptr as _);
+        <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
+        >>::Arc::increment_strong_count(ptr as _);
     }
 }
 
@@ -106,6 +108,8 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        <flutter_rust_bridge::MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>>::Arc::decrement_strong_count(ptr as _);
+        <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
+        >>::Arc::decrement_strong_count(ptr as _);
     }
 }
