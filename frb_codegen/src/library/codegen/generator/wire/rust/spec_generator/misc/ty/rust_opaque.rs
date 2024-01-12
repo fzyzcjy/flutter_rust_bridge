@@ -6,6 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 
@@ -16,11 +17,15 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        generate_rust_arc_functions(self.ir.clone().into(), &self.ir.inner)
+        generate_rust_arc_functions(self.ir.clone().into(), &self.ir.inner, self.ir.codec)
     }
 }
 
-pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<WireRustOutputCode> {
+fn generate_rust_arc_functions(
+    ir: IrType,
+    inner: &IrType,
+    codec: RustOpaqueCodecMode,
+) -> Acc<WireRustOutputCode> {
     let generate_impl = |target| -> WireRustOutputCode {
         ["increment", "decrement"].iter()
             .map(|op|
@@ -33,8 +38,9 @@ pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<Wir
                          }.clone()],
                          return_type: None,
                          body: format!(
-                             "unsafe {{ flutter_rust_bridge::for_generated::rust_arc_{op}_strong_count::<{}>(ptr); }}",
-                             inner.rust_api_type()
+                             "unsafe {{ <flutter_rust_bridge::for_generated::{}RustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec>::Arc::<{}>::{op}_strong_count(ptr); }}",
+                             codec.to_string(),
+                             inner.rust_api_type(),
                          ),
                          target,
                      },
