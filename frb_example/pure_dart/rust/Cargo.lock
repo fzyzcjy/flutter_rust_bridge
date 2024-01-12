@@ -290,7 +290,7 @@ dependencies = [
  "byteorder",
  "chrono",
  "flutter_rust_bridge",
- "frb_example_pure_dart_exapmle_external_lib",
+ "frb_example_pure_dart_example_external_lib",
  "futures",
  "lazy_static",
  "log",
@@ -303,7 +303,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "frb_example_pure_dart_exapmle_external_lib"
+name = "frb_example_pure_dart_example_external_lib"
 version = "0.1.0"
 
 [[package]]
