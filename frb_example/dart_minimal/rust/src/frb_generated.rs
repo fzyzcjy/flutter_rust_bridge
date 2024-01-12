@@ -100,6 +100,15 @@ fn wire_minimal_adder_impl(
     )
 }
 
+// Section: related_funcs
+
+flutter_rust_bridge::frb_generated_map_based_arc_impl_value!(
+    flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
+        flutter_rust_bridge::MoiRustOpaqueCodec,
+    >
+);
+
 // Section: dart2rust
 
 impl CstDecode<i32> for i32 {
