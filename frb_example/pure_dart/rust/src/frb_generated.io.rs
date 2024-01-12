@@ -315,899 +315,791 @@ impl CstDecode<std::collections::HashMap<i32, i32>> for *mut wire_cst_list_recor
         vec.into_iter().collect()
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Mutex<HideData>, StdArc<_>>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Mutex<HideData>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Mutex<HideData>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<RwLock<HideData>, StdArc<_>>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<RwLock<HideData>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<RwLock<HideData>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, StdArc<_>>> for usize {
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinNormal>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinNormal>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, StdArc<_>>>
-    for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, StdArc<_>>>
-    for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc<_>>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSse>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSse>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, StdArc<_>>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSync>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, StdArc<_>>>
-    for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn Fn(String) -> String + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsyncSse>>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinNormal + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinRustAsync + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSse + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSync + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSyncSse + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinNormal,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinRustAsync,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSse>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSync,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSyncSse,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             )>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
         )>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, StdArc<_>>> for usize {
-            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>> for usize {
+            fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>> {
                 unsafe { decode_rust_opaque_nom(self as _) }
             }
         }
-impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, StdArc<_>>> for usize {
-            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>> for usize {
+            fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>> {
                 unsafe { decode_rust_opaque_nom(self as _) }
             }
         }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             )>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
         )>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             )>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
         )>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             )>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
         )>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             )>,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
             crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
         )>,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
-            StdArc<_>,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
         >,
-        StdArc<_>,
     > {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, StdArc<_>>,
-    > for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, StdArc<_>>
-    {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-            StdArc<_>,
-        >,
-    > for usize
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-        StdArc<_>,
-    > {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueReturn>>
     for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>> {
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueReturn> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl
     CstDecode<
-        [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>; 2],
-    > for *mut wire_cst_list_RustOpaque_hide_data
+        flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>,
+    > for usize
 {
     fn cst_decode(
         self,
-    ) -> [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>; 2]
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
     {
-        let vec: Vec<
-            flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>,
-        > = self.cst_decode();
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>>
+    for usize
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData> {
+        unsafe { decode_rust_opaque_nom(self as _) }
+    }
+}
+impl CstDecode<[flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>
+    for *mut wire_cst_list_RustOpaque_hide_data
+{
+    fn cst_decode(
+        self,
+    ) -> [flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2] {
+        let vec: Vec<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>> =
+            self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<i32, StdArc<_>>> for usize {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<i32, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<i32>> for usize {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<i32> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData, StdArc<_>>,
-    > for usize
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>
+    for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData, StdArc<_>>
-    {
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData, StdArc<_>>,
-    > for usize
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData>>
+    for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData, StdArc<_>>
-    {
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
@@ -2005,17 +1897,14 @@ impl CstDecode<flutter_rust_bridge::DartOpaque> for *mut *const std::ffi::c_void
         CstDecode::<flutter_rust_bridge::DartOpaque>::cst_decode(*wrap).into()
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>>
     for *mut usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>> {
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecode::<
-            flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>,
-        >::cst_decode(*wrap)
-        .into()
+        CstDecode::<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::misc_example::ATwinNormal> for *mut wire_cst_a_twin_normal {
@@ -8254,15 +8143,12 @@ impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>> for *mut wire_cst_list_Dart
         vec.into_iter().map(CstDecode::cst_decode).collect()
     }
 }
-impl
-    CstDecode<
-        Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>,
-    > for *mut wire_cst_list_RustOpaque_hide_data
+impl CstDecode<Vec<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>
+    for *mut wire_cst_list_RustOpaque_hide_data
 {
     fn cst_decode(
         self,
-    ) -> Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
-    {
+    ) -> Vec<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
             flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -32776,7 +32662,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Mutex<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32785,7 +32671,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Mutex<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32794,7 +32680,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<RwLock<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32803,7 +32689,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32812,7 +32698,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32821,7 +32707,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32830,7 +32716,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32839,7 +32725,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32848,7 +32734,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32857,7 +32743,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32866,7 +32752,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32875,7 +32761,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32884,7 +32770,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32893,7 +32779,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32902,7 +32788,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -32911,7 +32797,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -32920,7 +32806,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
@@ -32933,7 +32819,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
@@ -32946,7 +32832,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
         >::increment_strong_count(ptr as _);
     }
@@ -32957,7 +32843,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
         >::decrement_strong_count(ptr as _);
     }
@@ -32968,7 +32854,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
@@ -32981,7 +32867,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
@@ -32994,7 +32880,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
@@ -33007,7 +32893,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
@@ -33020,7 +32906,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33029,7 +32917,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33038,7 +32928,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33047,7 +32939,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33056,7 +32950,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
         >::increment_strong_count(ptr as _);
     }
@@ -33067,7 +32961,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
         >::decrement_strong_count(ptr as _);
     }
@@ -33078,7 +32972,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
@@ -33091,7 +32985,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
@@ -33104,7 +32998,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
@@ -33117,7 +33011,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
@@ -33130,7 +33024,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
@@ -33143,7 +33037,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
@@ -33156,7 +33050,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
@@ -33169,7 +33063,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
@@ -33182,7 +33076,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
@@ -33195,7 +33089,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
@@ -33208,7 +33102,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
@@ -33221,7 +33115,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
@@ -33234,7 +33128,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33243,7 +33139,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33252,7 +33150,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33261,7 +33161,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33270,7 +33172,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
         >::increment_strong_count(ptr as _);
     }
@@ -33281,7 +33183,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
         >::decrement_strong_count(ptr as _);
     }
@@ -33292,7 +33194,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33301,7 +33205,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33310,7 +33216,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33319,7 +33227,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33328,7 +33238,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33337,7 +33249,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33346,7 +33260,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33355,7 +33271,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33364,7 +33282,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -33373,7 +33293,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33382,7 +33304,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
@@ -33395,7 +33317,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
@@ -33408,7 +33330,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
@@ -33421,7 +33343,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
@@ -33434,7 +33356,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
@@ -33447,7 +33369,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
@@ -33460,7 +33382,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
@@ -33473,7 +33395,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
@@ -33486,7 +33408,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
@@ -33499,7 +33421,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
@@ -33512,7 +33434,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
@@ -33525,7 +33447,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
@@ -33538,7 +33460,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::increment_strong_count(ptr as _);
     }
@@ -33549,7 +33471,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::decrement_strong_count(ptr as _);
     }
@@ -33560,7 +33482,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -33574,7 +33496,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -33588,7 +33510,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
@@ -33601,7 +33523,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
@@ -33614,7 +33536,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33623,7 +33545,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33632,7 +33554,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33641,7 +33563,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33650,7 +33572,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
@@ -33664,7 +33586,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
@@ -33678,7 +33600,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
@@ -33691,7 +33613,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
@@ -33704,7 +33626,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
@@ -33718,7 +33640,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
@@ -33732,7 +33654,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
@@ -33745,7 +33667,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
@@ -33758,7 +33680,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
@@ -33772,7 +33694,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
@@ -33786,7 +33708,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
@@ -33799,7 +33721,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
@@ -33812,7 +33734,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
@@ -33826,7 +33748,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
@@ -33840,7 +33762,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
@@ -33853,7 +33775,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
@@ -33866,7 +33788,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -33875,7 +33799,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -33884,9 +33810,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(
-            ptr as _,
-        );
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33895,9 +33819,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(
-            ptr as _,
-        );
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33906,7 +33828,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::HideData>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::HideData>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33915,7 +33837,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33924,7 +33846,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<i32>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<i32>::increment_strong_count(ptr as _);
     }
 }
 
@@ -33933,7 +33855,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<i32>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -33942,7 +33864,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -33951,7 +33875,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -33960,7 +33886,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -33969,7 +33897,9 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 

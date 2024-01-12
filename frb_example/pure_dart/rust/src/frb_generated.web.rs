@@ -4275,15 +4275,12 @@ impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>>
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<Vec<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
-    {
+    ) -> Vec<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -9728,10 +9725,10 @@ impl CstDecode<std::collections::HashMap<i32, i32>>
         vec.into_iter().collect()
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Mutex<HideData>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Mutex<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Mutex<HideData>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9739,10 +9736,10 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Mutex<HideData>, StdArc<_>>>
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<RwLock<HideData>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<RwLock<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<RwLock<HideData>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9750,12 +9747,10 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<RwLock<HideData>, StdArc<_>>>
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinNormal>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9763,12 +9758,10 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>, Std
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9776,12 +9769,10 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>, 
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9789,10 +9780,10 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsyncSse
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9800,10 +9791,10 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSse>, StdArc
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSync>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9811,12 +9802,10 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>, StdAr
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -9826,21 +9815,19 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, St
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn Fn(String) -> String + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -9851,17 +9838,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -9872,19 +9857,17 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -9895,19 +9878,17 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsyncSse>>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -9918,17 +9899,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -9939,17 +9918,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -9960,17 +9937,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -9981,21 +9956,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinNormal + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10006,21 +9979,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinRustAsync + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10031,21 +10002,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10056,21 +10025,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSse + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10081,21 +10048,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSync + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10106,21 +10071,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             Box<dyn MyTraitTwinSyncSse + Send + Sync>,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10131,17 +10094,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10152,17 +10113,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10173,17 +10132,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10194,17 +10151,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10215,17 +10170,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10236,17 +10189,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10257,17 +10208,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10278,17 +10227,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10299,21 +10246,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinNormal,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10324,21 +10269,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinRustAsync,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10349,21 +10292,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10374,19 +10315,17 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSse>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10397,21 +10336,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSync,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10422,21 +10359,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             StructWithGoodAndOpaqueFieldTwinSyncSse,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10447,17 +10382,15 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10468,23 +10401,21 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             )>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
         )>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10495,21 +10426,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10518,15 +10447,15 @@ impl
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, StdArc<_>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
                 unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
             }
         }
-impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, StdArc<_>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>, StdArc<_>> {
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
                 unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
@@ -10534,23 +10463,21 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generate
         }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             )>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
         )>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10561,21 +10488,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10586,23 +10511,21 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             )>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
         )>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10613,21 +10536,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10638,23 +10559,21 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             )>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
         )>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10665,21 +10584,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10690,23 +10607,21 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             )>,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<(
             crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
             crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
         )>,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10717,21 +10632,19 @@ impl
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
-            StdArc<_>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueNom<
         flutter_rust_bridge::for_generated::rust_async::RwLock<
             crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
         >,
-        StdArc<_>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -10740,49 +10653,12 @@ impl
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, StdArc<_>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn, StdArc<_>>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<
-            crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-            StdArc<_>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-        StdArc<_>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueReturn>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>> {
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueReturn> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -10792,23 +10668,48 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::H
 }
 impl
     CstDecode<
-        [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>; 2],
+        flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> [flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>; 2]
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
     {
-        let vec: Vec<
-            flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData, StdArc<_>>,
-        > = self.cst_decode();
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl CstDecode<[flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2]>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(
+        self,
+    ) -> [flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>; 2] {
+        let vec: Vec<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::HideData>> =
+            self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<flutter_rust_bridge::RustOpaque<i32, StdArc<_>>>
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<i32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
-    fn cst_decode(self) -> flutter_rust_bridge::RustOpaque<i32, StdArc<_>> {
+    fn cst_decode(self) -> flutter_rust_bridge::RustOpaqueNom<i32> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -10816,15 +10717,12 @@ impl CstDecode<flutter_rust_bridge::RustOpaque<i32, StdArc<_>>>
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData, StdArc<_>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData, StdArc<_>>
-    {
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonCloneData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -10832,15 +10730,12 @@ impl
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl
-    CstDecode<
-        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData, StdArc<_>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData, StdArc<_>>
-    {
+    ) -> flutter_rust_bridge::RustOpaqueNom<crate::auxiliary::sample_types::NonSendHideData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -27110,28 +27005,28 @@ pub fn wire_handle_uuid_twin_normal(
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Mutex<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Mutex<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<RwLock<HideData>>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27140,7 +27035,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27149,7 +27044,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27158,7 +27053,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27167,7 +27062,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27176,7 +27071,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncS
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27185,7 +27080,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncS
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27194,7 +27089,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27203,7 +27098,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27212,7 +27107,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27221,7 +27116,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27230,7 +27125,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27239,7 +27134,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncSse(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<Box<dyn DartDebugTwinSyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27248,7 +27143,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
@@ -27261,7 +27156,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn Fn(String) -> String + Send + Sync>,
             >,
@@ -27274,7 +27169,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
         >::increment_strong_count(ptr as _);
     }
@@ -27285,7 +27180,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27296,7 +27191,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
@@ -27309,7 +27204,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsync>,
             >,
@@ -27322,7 +27217,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
@@ -27335,7 +27230,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn HelloTraitTwinRustAsyncSse>,
             >,
@@ -27348,7 +27243,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27357,7 +27254,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27366,7 +27265,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27375,7 +27276,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27384,7 +27287,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
         >::increment_strong_count(ptr as _);
     }
@@ -27395,7 +27298,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27406,7 +27309,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
@@ -27419,7 +27322,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinNormal + Send + Sync>,
             >,
@@ -27432,7 +27335,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
@@ -27445,7 +27348,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsync + Send + Sync>,
             >,
@@ -27458,7 +27361,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
@@ -27471,7 +27374,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
             >,
@@ -27484,7 +27387,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
@@ -27497,7 +27400,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSse + Send + Sync>,
             >,
@@ -27510,7 +27413,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
@@ -27523,7 +27426,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSync + Send + Sync>,
             >,
@@ -27536,7 +27439,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
@@ -27549,7 +27452,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncSse + Send + Sync>,
             >,
@@ -27562,7 +27465,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27571,7 +27476,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27580,7 +27487,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27589,7 +27498,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsync>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27598,7 +27509,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
         >::increment_strong_count(ptr as _);
     }
@@ -27609,7 +27520,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27620,7 +27531,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27629,7 +27542,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27638,7 +27553,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27647,7 +27564,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27656,7 +27575,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27665,7 +27586,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27674,7 +27597,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27683,7 +27608,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27692,7 +27619,9 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+        >::increment_strong_count(ptr as _);
     }
 }
 
@@ -27701,7 +27630,9 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleB>,
+        >::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27710,7 +27641,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
@@ -27723,7 +27654,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinNormal,
             >,
@@ -27736,7 +27667,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
@@ -27749,7 +27680,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsync,
             >,
@@ -27762,7 +27693,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
@@ -27775,7 +27706,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
             >,
@@ -27788,7 +27719,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
@@ -27801,7 +27732,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSse,
             >,
@@ -27814,7 +27745,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
@@ -27827,7 +27758,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
@@ -27840,7 +27771,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
@@ -27853,7 +27784,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSyncSse,
             >,
@@ -27866,7 +27797,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::increment_strong_count(ptr as _);
     }
@@ -27877,7 +27808,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >::decrement_strong_count(ptr as _);
     }
@@ -27888,7 +27819,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -27902,7 +27833,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
@@ -27916,7 +27847,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
@@ -27929,7 +27860,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,
             >,
@@ -27942,7 +27873,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27951,7 +27882,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27960,7 +27891,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::increment_strong_count(ptr as _);
     }
 }
 
@@ -27969,7 +27900,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -27978,7 +27909,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
@@ -27992,7 +27923,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
@@ -28006,7 +27937,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
@@ -28019,7 +27950,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
             >,
@@ -28032,7 +27963,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
@@ -28046,7 +27977,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
@@ -28060,7 +27991,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
@@ -28073,7 +28004,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,
             >,
@@ -28086,7 +28017,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
@@ -28100,7 +28031,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
@@ -28114,7 +28045,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
@@ -28127,7 +28058,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
             >,
@@ -28140,7 +28071,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
@@ -28154,7 +28085,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
@@ -28168,7 +28099,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
@@ -28181,7 +28112,7 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<
+        RustOpaqueNom::<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             >,
@@ -28192,14 +28123,18 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generat
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -28208,9 +28143,7 @@ pub fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(
-            ptr as _,
-        );
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
     }
 }
 
@@ -28219,64 +28152,70 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(
-            ptr as _,
-        );
+        RustOpaqueNom::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::HideData>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::HideData>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<i32>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<i32>::increment_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<i32>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_non_clone_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(
+            ptr as _,
+        );
     }
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        StdArc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(ptr as _);
+        RustOpaqueNom::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }

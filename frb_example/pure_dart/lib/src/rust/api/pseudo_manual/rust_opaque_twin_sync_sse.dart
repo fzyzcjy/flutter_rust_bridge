@@ -68,7 +68,7 @@ String unwrapRustOpaqueTwinSyncSse({required HideData opaque, dynamic hint}) =>
 FrbOpaqueReturn frbGeneratorTestTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinSyncSse(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSyncSse>, StdArc<_>>
+// Rust type: flutter_rust_bridge::RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>
 @sealed
 class BoxDartDebugTwinSyncSse extends RustOpaque {
   BoxDartDebugTwinSyncSse.dcoDecode(List<dynamic> wire)
