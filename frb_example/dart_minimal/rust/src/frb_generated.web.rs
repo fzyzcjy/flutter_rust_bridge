@@ -23,17 +23,15 @@ where
 }
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-            MoiRustOpaqueCodec,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueMoi<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        MoiRustOpaqueCodec,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -97,16 +95,16 @@ pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort
 pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
     ptr: *const std::ffi::c_void,
 ) {
-    <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    >>::Arc::increment_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::increment_strong_count(
+        ptr as _,
+    );
 }
 
 #[wasm_bindgen]
 pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
     ptr: *const std::ffi::c_void,
 ) {
-    <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    >>::Arc::decrement_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::decrement_strong_count(
+        ptr as _,
+    );
 }

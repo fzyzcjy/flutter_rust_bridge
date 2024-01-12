@@ -13,17 +13,15 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 impl
     CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-            MoiRustOpaqueCodec,
         >,
     > for usize
 {
     fn cst_decode(
         self,
-    ) -> flutter_rust_bridge::RustOpaque<
+    ) -> flutter_rust_bridge::RustOpaqueMoi<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        MoiRustOpaqueCodec,
     > {
         decode_rust_opaque_moi(self as _)
     }
@@ -82,16 +80,16 @@ pub extern "C" fn frbgen_frb_example_dart_minimal_wire_minimal_adder(port_: i64,
 pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
     ptr: *const std::ffi::c_void,
 ) {
-    <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    >>::Arc::increment_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::increment_strong_count(
+        ptr as _,
+    );
 }
 
 #[no_mangle]
 pub extern "C" fn frbgen_frb_example_dart_minimal_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockApple(
     ptr: *const std::ffi::c_void,
 ) {
-    <MoiRustOpaqueCodec as flutter_rust_bridge::for_generated::BaseRustOpaqueCodec<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-    >>::Arc::decrement_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>>::decrement_strong_count(
+        ptr as _,
+    );
 }

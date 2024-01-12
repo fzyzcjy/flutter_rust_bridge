@@ -36,9 +36,8 @@ flutter_rust_bridge::frb_generated_default_handler!();
 fn wire_Apple_apple_method_ref_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl CstDecode<
-        flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-            MoiRustOpaqueCodec,
         >,
     >,
 ) {
@@ -72,10 +71,9 @@ fn wire_Apple_new_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
             move |context| {
                 transform_result_dco((move || {
                     Result::<_, ()>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<
-                            _,
-                            MoiRustOpaqueCodec,
-                        >(crate::api::minimal::Apple::new()),
+                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(
+                            crate::api::minimal::Apple::new(),
+                        ),
                     )
                 })())
             }
@@ -140,9 +138,8 @@ impl CstDecode<usize> for usize {
     }
 }
 impl SseDecode
-    for flutter_rust_bridge::RustOpaque<
+    for flutter_rust_bridge::RustOpaqueMoi<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        MoiRustOpaqueCodec,
     >
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -176,9 +173,8 @@ impl SseDecode for bool {
 // Section: rust2dart
 
 impl SseEncode
-    for flutter_rust_bridge::RustOpaque<
+    for flutter_rust_bridge::RustOpaqueMoi<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Apple>,
-        MoiRustOpaqueCodec,
     >
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
