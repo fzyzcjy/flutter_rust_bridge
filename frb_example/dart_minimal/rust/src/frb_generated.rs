@@ -72,9 +72,10 @@ fn wire_Apple_new_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
             move |context| {
                 transform_result_dco((move || {
                     Result::<_, ()>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode(
-                            crate::api::minimal::Apple::new(),
-                        ),
+                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<
+                            _,
+                            MoiRustOpaqueCodec,
+                        >(crate::api::minimal::Apple::new()),
                     )
                 })())
             }
