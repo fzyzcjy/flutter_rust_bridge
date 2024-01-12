@@ -568,6 +568,15 @@
       ]
     },
     {
+      "login": "TrackerSB",
+      "name": "TrackerSB",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6358523?v=4",
+      "profile": "https://steinbrecher-bayern.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "samuel-cavalcanti",
       "name": "Samuel Cavalcanti",
       "avatar_url": "https://avatars.githubusercontent.com/u/24573157?v=4",
@@ -790,15 +799,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "TrackerSB",
-      "name": "TrackerSB",
-      "avatar_url": "https://avatars.githubusercontent.com/u/6358523?v=4",
-      "profile": "http://steinbrecher-bayern.de",
-      "contributions": [
-        "code"
       ]
     }
   ],
