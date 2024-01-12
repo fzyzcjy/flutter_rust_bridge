@@ -2,7 +2,7 @@
 // and is auto-generated from `dart_fn.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "syncSse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
 use flutter_rust_bridge::{DartFnFuture, DartOpaque};
 
