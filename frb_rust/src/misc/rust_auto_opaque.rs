@@ -1,7 +1,8 @@
+use crate::for_generated::BaseRustOpaqueCodec;
 use crate::rust_async::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 use crate::RustOpaque;
 
-impl<T> RustOpaque<RwLock<T>> {
+impl<T, C: BaseRustOpaqueCodec<RwLock<T>>> RustOpaque<RwLock<T>, C> {
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
     pub fn rust_auto_opaque_decode_sync_owned(self) -> T {
@@ -32,6 +33,8 @@ impl<T> RustOpaque<RwLock<T>> {
     }
 }
 
-pub fn rust_auto_opaque_encode<T>(value: T) -> RustOpaque<RwLock<T>> {
+pub fn rust_auto_opaque_encode<T, C: BaseRustOpaqueCodec<RwLock<T>>>(
+    value: T,
+) -> RustOpaque<RwLock<T>, C> {
     RustOpaque::new(RwLock::new(value))
 }
