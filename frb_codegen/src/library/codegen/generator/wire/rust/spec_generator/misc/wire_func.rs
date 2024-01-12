@@ -168,9 +168,12 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
 
     if matches!(&func.output, IrType::RustAutoOpaque(_)) {
         if func.fallible() {
-            ans = format!("Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans}?))");
-        } else {
-            ans = format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans})");
+            ans = format!("{ans}?");
+        }
+        ans = format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode({ans})");
+        if func.fallible() {
+            ans =
+                format!("Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok({ans})");
         }
     }
 
