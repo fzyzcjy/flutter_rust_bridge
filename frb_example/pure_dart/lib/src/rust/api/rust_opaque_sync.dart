@@ -5,6 +5,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'rust_opaque.dart';
 
 HideDataAnotherTwinNormal? syncOptionRustOpaqueTwinNormal({dynamic hint}) =>
     RustLib.instance.api.syncOptionRustOpaqueTwinNormal(hint: hint);
@@ -12,7 +13,7 @@ HideDataAnotherTwinNormal? syncOptionRustOpaqueTwinNormal({dynamic hint}) =>
 HideDataAnotherTwinNormal syncCreateOpaqueTwinNormal({dynamic hint}) =>
     RustLib.instance.api.syncCreateOpaqueTwinNormal(hint: hint);
 
-NonCloneDataAnotherTwinNormal syncCreateNonCloneTwinNormal({dynamic hint}) =>
+NonCloneDataTwinNormal syncCreateNonCloneTwinNormal({dynamic hint}) =>
     RustLib.instance.api.syncCreateNonCloneTwinNormal(hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
@@ -56,24 +57,5 @@ class HideDataAnotherTwinNormal extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_HideDataAnotherTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_HideDataAnotherTwinNormalPtr,
-  );
-}
-
-// Rust type: RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal>
-@sealed
-class NonCloneDataAnotherTwinNormal extends RustOpaque {
-  NonCloneDataAnotherTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonCloneDataAnotherTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonCloneDataAnotherTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormalPtr,
   );
 }

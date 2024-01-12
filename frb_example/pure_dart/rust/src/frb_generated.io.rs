@@ -2120,45 +2120,6 @@ impl CstDecode<RustOpaqueNom<i32>> for usize {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
-impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal>>
-    for usize
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal> {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
-        >,
-    > for usize
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
-    > {
-        unsafe { decode_rust_opaque_nom(self as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi,
-        >,
-    > for usize
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi,
-    > {
-        decode_rust_opaque_moi(self as _)
-    }
-}
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal>> for usize {
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal> {
         unsafe { decode_rust_opaque_nom(self as _) }
@@ -39810,56 +39771,6 @@ pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_R
     unsafe {
         StdArc::<i32>::decrement_strong_count(ptr as _);
     }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::increment_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        StdArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi>::increment_strong_count(ptr as _);
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-    ptr: *const std::ffi::c_void,
-) {
-    MoiArc::<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi>::decrement_strong_count(ptr as _);
 }
 
 #[no_mangle]

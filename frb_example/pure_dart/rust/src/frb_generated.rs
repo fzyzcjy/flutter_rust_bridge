@@ -29942,9 +29942,6 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(i16);
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi
-);
-flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
@@ -31950,35 +31947,6 @@ impl SseDecode for RustOpaqueNom<i32> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <usize>::sse_decode(deserializer);
         return unsafe { decode_rust_opaque_nom(inner) };
-    }
-}
-
-impl SseDecode for RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal> {
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return unsafe { decode_rust_opaque_nom(inner) };
-    }
-}
-
-impl SseDecode
-    for RustOpaqueNom<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
-    >
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return unsafe { decode_rust_opaque_nom(inner) };
-    }
-}
-
-impl SseDecode
-    for RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi,
-    >
-{
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer);
-        return decode_rust_opaque_moi(inner);
     }
 }
 
@@ -54639,38 +54607,6 @@ impl SseEncode for RustOpaqueMoi<i16> {
 }
 
 impl SseEncode for RustOpaqueNom<i32> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode for RustOpaqueNom<crate::api::rust_opaque_sync::NonCloneDataAnotherTwinNormal> {
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueNom<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse,
-    >
-{
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        let (ptr, size) = self.sse_encode_raw();
-        <usize>::sse_encode(ptr, serializer);
-        <i32>::sse_encode(size, serializer);
-    }
-}
-
-impl SseEncode
-    for RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi,
-    >
-{
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         let (ptr, size) = self.sse_encode_raw();
         <usize>::sse_encode(ptr, serializer);

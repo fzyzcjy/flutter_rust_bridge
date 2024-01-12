@@ -767,18 +767,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire._rust_arc_decrement_strong_count_RustOpaque_i_32Ptr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSsePtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_ssePtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoiPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moiPtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneDataTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_normalPtr;
 
@@ -2295,18 +2283,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   I32 dco_decode_RustOpaque_i_32(dynamic raw);
-
-  @protected
-  NonCloneDataAnotherTwinNormal
-      dco_decode_RustOpaque_non_clone_data_another_twin_normal(dynamic raw);
-
-  @protected
-  NonCloneDataAnotherTwinSse
-      dco_decode_RustOpaque_non_clone_data_another_twin_sse(dynamic raw);
-
-  @protected
-  NonCloneDataAnotherTwinSseMoi
-      dco_decode_RustOpaque_non_clone_data_another_twin_sse_moi(dynamic raw);
 
   @protected
   NonCloneDataTwinNormal dco_decode_RustOpaque_non_clone_data_twin_normal(
@@ -7840,21 +7816,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   I32 sse_decode_RustOpaque_i_32(SseDeserializer deserializer);
-
-  @protected
-  NonCloneDataAnotherTwinNormal
-      sse_decode_RustOpaque_non_clone_data_another_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  NonCloneDataAnotherTwinSse
-      sse_decode_RustOpaque_non_clone_data_another_twin_sse(
-          SseDeserializer deserializer);
-
-  @protected
-  NonCloneDataAnotherTwinSseMoi
-      sse_decode_RustOpaque_non_clone_data_another_twin_sse_moi(
-          SseDeserializer deserializer);
 
   @protected
   NonCloneDataTwinNormal sse_decode_RustOpaque_non_clone_data_twin_normal(
@@ -27093,18 +27054,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_RustOpaque_i_32(I32 raw);
 
   @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_normal(
-      NonCloneDataAnotherTwinNormal raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_sse(
-      NonCloneDataAnotherTwinSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
-      NonCloneDataAnotherTwinSseMoi raw);
-
-  @protected
   int cst_encode_RustOpaque_non_clone_data_twin_normal(
       NonCloneDataTwinNormal raw);
 
@@ -28778,18 +28727,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_normal(
-      NonCloneDataAnotherTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_sse(
-      NonCloneDataAnotherTwinSse self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
-      NonCloneDataAnotherTwinSseMoi self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_non_clone_data_twin_normal(
@@ -75832,102 +75769,6 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_i_32');
   late final _rust_arc_decrement_strong_count_RustOpaque_i_32 =
       _rust_arc_decrement_strong_count_RustOpaque_i_32Ptr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal');
-  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal =
-      _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal');
-  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal =
-      _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_ssePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse');
-  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse =
-      _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_ssePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_ssePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse');
-  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse =
-      _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_ssePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moiPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi');
-  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi =
-      _rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moiPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moiPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'frbgen_frb_example_pure_dart_rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi');
-  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi =
-      _rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moiPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_normal(

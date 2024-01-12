@@ -766,18 +766,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire.rust_arc_decrement_strong_count_RustOpaque_i_32;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSsePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoiPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneDataTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_normal;
 
@@ -2294,18 +2282,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   I32 dco_decode_RustOpaque_i_32(dynamic raw);
-
-  @protected
-  NonCloneDataAnotherTwinNormal
-      dco_decode_RustOpaque_non_clone_data_another_twin_normal(dynamic raw);
-
-  @protected
-  NonCloneDataAnotherTwinSse
-      dco_decode_RustOpaque_non_clone_data_another_twin_sse(dynamic raw);
-
-  @protected
-  NonCloneDataAnotherTwinSseMoi
-      dco_decode_RustOpaque_non_clone_data_another_twin_sse_moi(dynamic raw);
 
   @protected
   NonCloneDataTwinNormal dco_decode_RustOpaque_non_clone_data_twin_normal(
@@ -7839,21 +7815,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   I32 sse_decode_RustOpaque_i_32(SseDeserializer deserializer);
-
-  @protected
-  NonCloneDataAnotherTwinNormal
-      sse_decode_RustOpaque_non_clone_data_another_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  NonCloneDataAnotherTwinSse
-      sse_decode_RustOpaque_non_clone_data_another_twin_sse(
-          SseDeserializer deserializer);
-
-  @protected
-  NonCloneDataAnotherTwinSseMoi
-      sse_decode_RustOpaque_non_clone_data_another_twin_sse_moi(
-          SseDeserializer deserializer);
 
   @protected
   NonCloneDataTwinNormal sse_decode_RustOpaque_non_clone_data_twin_normal(
@@ -22097,18 +22058,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_RustOpaque_i_32(I32 raw);
 
   @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_normal(
-      NonCloneDataAnotherTwinNormal raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_sse(
-      NonCloneDataAnotherTwinSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
-      NonCloneDataAnotherTwinSseMoi raw);
-
-  @protected
   int cst_encode_RustOpaque_non_clone_data_twin_normal(
       NonCloneDataTwinNormal raw);
 
@@ -23782,18 +23731,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_normal(
-      NonCloneDataAnotherTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_sse(
-      NonCloneDataAnotherTwinSse self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
-      NonCloneDataAnotherTwinSseMoi self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_non_clone_data_twin_normal(
@@ -41627,42 +41564,6 @@ class RustLibWire extends BaseWire {
   void rust_arc_decrement_strong_count_RustOpaque_i_32(dynamic ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_i_32(ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_normal(
           dynamic ptr) =>
       wasmModule
@@ -50706,30 +50607,6 @@ class RustLibWasmModule implements WasmModule {
   external void rust_arc_increment_strong_count_RustOpaque_i_32(dynamic ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_i_32(dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi(
-          dynamic ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_non_clone_data_twin_normal(

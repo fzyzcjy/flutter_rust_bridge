@@ -7,6 +7,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'rust_opaque_sync_twin_sse.dart';
 import 'rust_opaque_twin_rust_async.dart';
 part 'rust_opaque_twin_sse.freezed.dart';
 
@@ -175,25 +176,6 @@ class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
 
   HideDataTwinSseArray2.init(HideDataTwinSse fill)
       : this(List<HideDataTwinSse>.filled(arraySize, fill));
-}
-
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>
-@sealed
-class NonCloneDataTwinSse extends RustOpaque {
-  NonCloneDataTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonCloneDataTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSsePtr,
-  );
 }
 
 @freezed

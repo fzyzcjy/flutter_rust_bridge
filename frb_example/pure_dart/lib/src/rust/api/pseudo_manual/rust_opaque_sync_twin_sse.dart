@@ -12,7 +12,7 @@ HideDataAnotherTwinSse? syncOptionRustOpaqueTwinSse({dynamic hint}) =>
 HideDataAnotherTwinSse syncCreateOpaqueTwinSse({dynamic hint}) =>
     RustLib.instance.api.syncCreateOpaqueTwinSse(hint: hint);
 
-NonCloneDataAnotherTwinSse syncCreateNonCloneTwinSse({dynamic hint}) =>
+NonCloneDataTwinSse syncCreateNonCloneTwinSse({dynamic hint}) =>
     RustLib.instance.api.syncCreateNonCloneTwinSse(hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
@@ -59,21 +59,21 @@ class HideDataAnotherTwinSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonCloneDataAnotherTwinSse>
+// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>
 @sealed
-class NonCloneDataAnotherTwinSse extends RustOpaque {
-  NonCloneDataAnotherTwinSse.dcoDecode(List<dynamic> wire)
+class NonCloneDataTwinSse extends RustOpaque {
+  NonCloneDataTwinSse.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneDataAnotherTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneDataTwinSse.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonCloneDataAnotherTwinSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSsePtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinSse,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSsePtr,
   );
 }

@@ -12,7 +12,7 @@ HideDataAnotherTwinSseMoi? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) =>
 HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.syncCreateOpaqueTwinSseMoi(hint: hint);
 
-NonCloneDataAnotherTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) =>
+NonCloneDataTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.syncCreateNonCloneTwinSseMoi(hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
@@ -59,21 +59,21 @@ class HideDataAnotherTwinSseMoi extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonCloneDataAnotherTwinSseMoi>
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi>
 @sealed
-class NonCloneDataAnotherTwinSseMoi extends RustOpaque {
-  NonCloneDataAnotherTwinSseMoi.dcoDecode(List<dynamic> wire)
+class NonCloneDataTwinSseMoi extends RustOpaque {
+  NonCloneDataTwinSseMoi.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  NonCloneDataAnotherTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+  NonCloneDataTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonCloneDataAnotherTwinSseMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoiPtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneDataTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSseMoiPtr,
   );
 }

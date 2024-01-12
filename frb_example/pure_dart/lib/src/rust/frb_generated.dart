@@ -5096,7 +5096,7 @@ abstract class RustLibApi extends BaseApi {
 
   FrbOpaqueSyncReturnTwinSse frbSyncGeneratorTestTwinSse({dynamic hint});
 
-  NonCloneDataAnotherTwinSse syncCreateNonCloneTwinSse({dynamic hint});
+  NonCloneDataTwinSse syncCreateNonCloneTwinSse({dynamic hint});
 
   HideDataAnotherTwinSse syncCreateOpaqueTwinSse({dynamic hint});
 
@@ -5104,7 +5104,7 @@ abstract class RustLibApi extends BaseApi {
 
   FrbOpaqueSyncReturnTwinSseMoi frbSyncGeneratorTestTwinSseMoi({dynamic hint});
 
-  NonCloneDataAnotherTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint});
+  NonCloneDataTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint});
 
   HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi({dynamic hint});
 
@@ -5917,7 +5917,7 @@ abstract class RustLibApi extends BaseApi {
 
   FrbOpaqueSyncReturnTwinNormal frbSyncGeneratorTestTwinNormal({dynamic hint});
 
-  NonCloneDataAnotherTwinNormal syncCreateNonCloneTwinNormal({dynamic hint});
+  NonCloneDataTwinNormal syncCreateNonCloneTwinNormal({dynamic hint});
 
   HideDataAnotherTwinNormal syncCreateOpaqueTwinNormal({dynamic hint});
 
@@ -7174,33 +7174,6 @@ abstract class RustLibApi extends BaseApi {
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_I32;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSse;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSse;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSsePtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSseMoi;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoi;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoiPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneDataTwinNormal;
@@ -51435,7 +51408,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonCloneDataAnotherTwinSse syncCreateNonCloneTwinSse({dynamic hint}) {
+  NonCloneDataTwinSse syncCreateNonCloneTwinSse({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51445,8 +51418,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_RustOpaque_non_clone_data_another_twin_sse,
+        decodeSuccessData: sse_decode_RustOpaque_non_clone_data_twin_sse,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateNonCloneTwinSseConstMeta,
@@ -51544,7 +51516,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonCloneDataAnotherTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) {
+  NonCloneDataTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -51554,8 +51526,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_RustOpaque_non_clone_data_another_twin_sse_moi,
+        decodeSuccessData: sse_decode_RustOpaque_non_clone_data_twin_sse_moi,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateNonCloneTwinSseMoiConstMeta,
@@ -59197,14 +59168,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  NonCloneDataAnotherTwinNormal syncCreateNonCloneTwinNormal({dynamic hint}) {
+  NonCloneDataTwinNormal syncCreateNonCloneTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         return wire.wire_sync_create_non_clone_twin_normal();
       },
       codec: DcoCodec(
-        decodeSuccessData:
-            dco_decode_RustOpaque_non_clone_data_another_twin_normal,
+        decodeSuccessData: dco_decode_RustOpaque_non_clone_data_twin_normal,
         decodeErrorData: null,
       ),
       constMeta: kSyncCreateNonCloneTwinNormalConstMeta,
@@ -61104,30 +61074,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_I32 =>
       wire.rust_arc_decrement_strong_count_RustOpaque_i_32;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinNormal => wire
-          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_normal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_normal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSse => wire
-          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSse => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneDataAnotherTwinSseMoi => wire
-          .rust_arc_increment_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoi => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_another_twin_sse_moi;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_NonCloneDataTwinNormal => wire
@@ -63431,24 +63377,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   I32 dco_decode_RustOpaque_i_32(dynamic raw) {
     return I32.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  NonCloneDataAnotherTwinNormal
-      dco_decode_RustOpaque_non_clone_data_another_twin_normal(dynamic raw) {
-    return NonCloneDataAnotherTwinNormal.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  NonCloneDataAnotherTwinSse
-      dco_decode_RustOpaque_non_clone_data_another_twin_sse(dynamic raw) {
-    return NonCloneDataAnotherTwinSse.dcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  NonCloneDataAnotherTwinSseMoi
-      dco_decode_RustOpaque_non_clone_data_another_twin_sse_moi(dynamic raw) {
-    return NonCloneDataAnotherTwinSseMoi.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -76082,30 +76010,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  NonCloneDataAnotherTwinNormal
-      sse_decode_RustOpaque_non_clone_data_another_twin_normal(
-          SseDeserializer deserializer) {
-    return NonCloneDataAnotherTwinNormal.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  NonCloneDataAnotherTwinSse
-      sse_decode_RustOpaque_non_clone_data_another_twin_sse(
-          SseDeserializer deserializer) {
-    return NonCloneDataAnotherTwinSse.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  NonCloneDataAnotherTwinSseMoi
-      sse_decode_RustOpaque_non_clone_data_another_twin_sse_moi(
-          SseDeserializer deserializer) {
-    return NonCloneDataAnotherTwinSseMoi.sseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   NonCloneDataTwinNormal sse_decode_RustOpaque_non_clone_data_twin_normal(
       SseDeserializer deserializer) {
     return NonCloneDataTwinNormal.sseDecode(
@@ -88699,27 +88603,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_normal(
-      NonCloneDataAnotherTwinNormal raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode();
-  }
-
-  @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_sse(
-      NonCloneDataAnotherTwinSse raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode();
-  }
-
-  @protected
-  int cst_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
-      NonCloneDataAnotherTwinSseMoi raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.cstEncode();
-  }
-
-  @protected
   int cst_encode_RustOpaque_non_clone_data_twin_normal(
       NonCloneDataTwinNormal raw) {
     // ignore: invalid_use_of_internal_member
@@ -91170,24 +91053,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_RustOpaque_i_32(I32 self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_normal(
-      NonCloneDataAnotherTwinNormal self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_sse(
-      NonCloneDataAnotherTwinSse self, SseSerializer serializer) {
-    sse_encode_usize(self.sseEncode(move: null), serializer);
-  }
-
-  @protected
-  void sse_encode_RustOpaque_non_clone_data_another_twin_sse_moi(
-      NonCloneDataAnotherTwinSseMoi self, SseSerializer serializer) {
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
 
