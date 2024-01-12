@@ -47,25 +47,31 @@ abstract class BaseGenerator {
   }
 }
 
-enum DuplicatorMode {
+enum DuplicatorComponentMode {
   sync,
   rustAsync,
   sse,
-  syncSse,
-  rustAsyncSse,
-  ;
+}
 
-  String get postfix => '_twin_${ReCase(name).snakeCase}';
+class DuplicatorMode {
+  final List<DuplicatorComponentMode> components;
 
-  bool get enableSse {
-    return switch (this) {
-      DuplicatorMode.sync || DuplicatorMode.rustAsync => false,
-      DuplicatorMode.sse ||
-      DuplicatorMode.syncSse ||
-      DuplicatorMode.rustAsyncSse =>
-        true,
-    };
-  }
+  const DuplicatorMode(this.components);
+
+  factory DuplicatorMode.parse(String raw) => DuplicatorMode(
+      raw.split(' ').map(DuplicatorComponentMode.values.byName).toList());
+
+  static const values = [
+    DuplicatorMode([DuplicatorComponentMode.sync]),
+    DuplicatorMode([DuplicatorComponentMode.rustAsync]),
+    DuplicatorMode([DuplicatorComponentMode.sse]),
+    DuplicatorMode([DuplicatorComponentMode.sync, DuplicatorComponentMode.sse]),
+    DuplicatorMode(
+        [DuplicatorComponentMode.rustAsync, DuplicatorComponentMode.sse]),
+  ];
+
+  String get postfix =>
+      '_twin_${components.map((c) => ReCase(c.name).snakeCase).join('_')}';
 }
 
 class _Duplicator {
@@ -121,7 +127,7 @@ _Annotation _parseAnnotation(String fileContent) {
   return _Annotation(
     forbiddenDuplicatorModes:
         ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
-            .map((x) => DuplicatorMode.values.byName(x))
+            .map((x) => DuplicatorMode.parse(x as String))
             .toList(),
     addCode: data['addCode'] as String?,
     removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
