@@ -17,7 +17,10 @@ pub struct CreateConfig {
 /// Create a new Flutter + Rust project.
 pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     let dart_root = env::current_dir()?.join(&config.name);
-    debug!("create name={} org={:?} dart_root={dart_root:?}", config.name, config.org);
+    debug!(
+        "create name={} org={:?} dart_root={dart_root:?}",
+        config.name, config.org
+    );
 
     // This will stop the whole generator and tell the users, so we do not care about testing it
     // frb-coverage:ignore-start

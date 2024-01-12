@@ -145,7 +145,7 @@ pub(crate) struct GenerateCommandArgsPrimary {
 pub(crate) struct CreateCommandArgs {
     /// Name of the new project
     pub(crate) name: String,
-    
+
     /// The organization responsible for your new Flutter project, in reverse domain name notation.
     #[clap(long)]
     pub(crate) org: Option<String>,
