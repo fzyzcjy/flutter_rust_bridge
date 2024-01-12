@@ -39,9 +39,6 @@ Future<String> runNonCloneTwinSse(
         {required NonCloneDataTwinSse clone, dynamic hint}) =>
     RustLib.instance.api.runNonCloneTwinSse(clone: clone, hint: hint);
 
-Future<NonSendHideDataTwinSse> createSyncOpaqueTwinSse({dynamic hint}) =>
-    RustLib.instance.api.createSyncOpaqueTwinSse(hint: hint);
-
 Future<void> opaqueArrayRunTwinSse(
         {required HideDataTwinSseArray2 data, dynamic hint}) =>
     RustLib.instance.api.opaqueArrayRunTwinSse(data: data, hint: hint);
@@ -196,25 +193,6 @@ class NonCloneDataTwinSse extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSse,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinSsePtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse::NonSendHideDataTwinSse>
-@sealed
-class NonSendHideDataTwinSse extends RustOpaque {
-  NonSendHideDataTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonSendHideDataTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonSendHideDataTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonSendHideDataTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonSendHideDataTwinSsePtr,
   );
 }
 

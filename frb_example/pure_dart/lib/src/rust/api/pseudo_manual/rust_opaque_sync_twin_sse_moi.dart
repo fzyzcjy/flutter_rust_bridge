@@ -12,16 +12,8 @@ HideDataAnotherTwinSseMoi? syncOptionRustOpaqueTwinSseMoi({dynamic hint}) =>
 HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.syncCreateOpaqueTwinSseMoi(hint: hint);
 
-NonSendHideDataAnotherTwinSseMoi syncCreateSyncOpaqueTwinSseMoi(
-        {dynamic hint}) =>
-    RustLib.instance.api.syncCreateSyncOpaqueTwinSseMoi(hint: hint);
-
 NonCloneDataAnotherTwinSseMoi syncCreateNonCloneTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.syncCreateNonCloneTwinSseMoi(hint: hint);
-
-String syncRunOpaqueTwinSseMoi(
-        {required NonSendHideDataAnotherTwinSseMoi opaque, dynamic hint}) =>
-    RustLib.instance.api.syncRunOpaqueTwinSseMoi(opaque: opaque, hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
@@ -83,24 +75,5 @@ class NonCloneDataAnotherTwinSseMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSseMoiPtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::NonSendHideDataAnotherTwinSseMoi>
-@sealed
-class NonSendHideDataAnotherTwinSseMoi extends RustOpaque {
-  NonSendHideDataAnotherTwinSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonSendHideDataAnotherTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonSendHideDataAnotherTwinSseMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoiPtr,
   );
 }

@@ -42,9 +42,6 @@ Future<String> runNonCloneTwinNormal(
         {required NonCloneDataTwinNormal clone, dynamic hint}) =>
     RustLib.instance.api.runNonCloneTwinNormal(clone: clone, hint: hint);
 
-Future<NonSendHideDataTwinNormal> createSyncOpaqueTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.createSyncOpaqueTwinNormal(hint: hint);
-
 Future<void> opaqueArrayRunTwinNormal(
         {required HideDataTwinNormalArray2 data, dynamic hint}) =>
     RustLib.instance.api.opaqueArrayRunTwinNormal(data: data, hint: hint);
@@ -199,25 +196,6 @@ class NonCloneDataTwinNormal extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinNormalPtr,
-  );
-}
-
-// Rust type: RustOpaqueNom<crate::api::rust_opaque::NonSendHideDataTwinNormal>
-@sealed
-class NonSendHideDataTwinNormal extends RustOpaque {
-  NonSendHideDataTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonSendHideDataTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonSendHideDataTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonSendHideDataTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataTwinNormalPtr,
   );
 }
 

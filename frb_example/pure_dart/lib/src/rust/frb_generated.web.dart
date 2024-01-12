@@ -821,62 +821,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_NonCloneDataTwinSyncSseMoiPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse_moi;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinNormalPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_normal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSsePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSseMoiPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_normal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncMoiPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSsePtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncSseMoiPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinSsePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinSseMoiPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncMoiPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSsePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSseMoiPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi;
-
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
@@ -2406,64 +2350,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneDataTwinSyncSseMoi
       dco_decode_RustOpaque_non_clone_data_twin_sync_sse_moi(dynamic raw);
-
-  @protected
-  NonSendHideDataAnotherTwinNormal
-      dco_decode_RustOpaque_non_send_hide_data_another_twin_normal(dynamic raw);
-
-  @protected
-  NonSendHideDataAnotherTwinSse
-      dco_decode_RustOpaque_non_send_hide_data_another_twin_sse(dynamic raw);
-
-  @protected
-  NonSendHideDataAnotherTwinSseMoi
-      dco_decode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-          dynamic raw);
-
-  @protected
-  NonSendHideDataTwinNormal
-      dco_decode_RustOpaque_non_send_hide_data_twin_normal(dynamic raw);
-
-  @protected
-  NonSendHideDataTwinRustAsync
-      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async(dynamic raw);
-
-  @protected
-  NonSendHideDataTwinRustAsyncMoi
-      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async_moi(dynamic raw);
-
-  @protected
-  NonSendHideDataTwinRustAsyncSse
-      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse(dynamic raw);
-
-  @protected
-  NonSendHideDataTwinRustAsyncSseMoi
-      dco_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-          dynamic raw);
-
-  @protected
-  NonSendHideDataTwinSse dco_decode_RustOpaque_non_send_hide_data_twin_sse(
-      dynamic raw);
-
-  @protected
-  NonSendHideDataTwinSseMoi
-      dco_decode_RustOpaque_non_send_hide_data_twin_sse_moi(dynamic raw);
-
-  @protected
-  NonSendHideDataTwinSync dco_decode_RustOpaque_non_send_hide_data_twin_sync(
-      dynamic raw);
-
-  @protected
-  NonSendHideDataTwinSyncMoi
-      dco_decode_RustOpaque_non_send_hide_data_twin_sync_moi(dynamic raw);
-
-  @protected
-  NonSendHideDataTwinSyncSse
-      dco_decode_RustOpaque_non_send_hide_data_twin_sync_sse(dynamic raw);
-
-  @protected
-  NonSendHideDataTwinSyncSseMoi
-      dco_decode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(dynamic raw);
 
   @protected
   Set<String> dco_decode_Set_String(dynamic raw);
@@ -8016,74 +7902,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneDataTwinSyncSseMoi
       sse_decode_RustOpaque_non_clone_data_twin_sync_sse_moi(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataAnotherTwinNormal
-      sse_decode_RustOpaque_non_send_hide_data_another_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataAnotherTwinSse
-      sse_decode_RustOpaque_non_send_hide_data_another_twin_sse(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataAnotherTwinSseMoi
-      sse_decode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinNormal
-      sse_decode_RustOpaque_non_send_hide_data_twin_normal(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinRustAsync
-      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinRustAsyncMoi
-      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinRustAsyncSse
-      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinRustAsyncSseMoi
-      sse_decode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinSse sse_decode_RustOpaque_non_send_hide_data_twin_sse(
-      SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinSseMoi
-      sse_decode_RustOpaque_non_send_hide_data_twin_sse_moi(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinSync sse_decode_RustOpaque_non_send_hide_data_twin_sync(
-      SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinSyncMoi
-      sse_decode_RustOpaque_non_send_hide_data_twin_sync_moi(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinSyncSse
-      sse_decode_RustOpaque_non_send_hide_data_twin_sync_sse(
-          SseDeserializer deserializer);
-
-  @protected
-  NonSendHideDataTwinSyncSseMoi
-      sse_decode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
           SseDeserializer deserializer);
 
   @protected
@@ -22333,62 +22151,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NonCloneDataTwinSyncSseMoi raw);
 
   @protected
-  int cst_encode_RustOpaque_non_send_hide_data_another_twin_normal(
-      NonSendHideDataAnotherTwinNormal raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_another_twin_sse(
-      NonSendHideDataAnotherTwinSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-      NonSendHideDataAnotherTwinSseMoi raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_normal(
-      NonSendHideDataTwinNormal raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async(
-      NonSendHideDataTwinRustAsync raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-      NonSendHideDataTwinRustAsyncMoi raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-      NonSendHideDataTwinRustAsyncSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-      NonSendHideDataTwinRustAsyncSseMoi raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_sse(
-      NonSendHideDataTwinSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_sse_moi(
-      NonSendHideDataTwinSseMoi raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_sync(
-      NonSendHideDataTwinSync raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_sync_moi(
-      NonSendHideDataTwinSyncMoi raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_sync_sse(
-      NonSendHideDataTwinSyncSse raw);
-
-  @protected
-  int cst_encode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
-      NonSendHideDataTwinSyncSseMoi raw);
-
-  @protected
   int cst_encode_application_mode(ApplicationMode raw);
 
   @protected
@@ -24076,62 +23838,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_RustOpaque_non_clone_data_twin_sync_sse_moi(
       NonCloneDataTwinSyncSseMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_another_twin_normal(
-      NonSendHideDataAnotherTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_another_twin_sse(
-      NonSendHideDataAnotherTwinSse self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-      NonSendHideDataAnotherTwinSseMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_normal(
-      NonSendHideDataTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async(
-      NonSendHideDataTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-      NonSendHideDataTwinRustAsyncMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-      NonSendHideDataTwinRustAsyncSse self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-      NonSendHideDataTwinRustAsyncSseMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_sse(
-      NonSendHideDataTwinSse self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_sse_moi(
-      NonSendHideDataTwinSseMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_sync(
-      NonSendHideDataTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_sync_moi(
-      NonSendHideDataTwinSyncMoi self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_sync_sse(
-      NonSendHideDataTwinSyncSse self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
-      NonSendHideDataTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
   void sse_encode_Set_String(Set<String> self, SseSerializer serializer);
@@ -38553,25 +38259,11 @@ class RustLibWire extends BaseWire {
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_create_sync_opaque_twin_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_sync_create_sync_opaque_twin_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_sync_option_rust_opaque_twin_sse(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_sync_option_rust_opaque_twin_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_run_opaque_twin_sse(PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_, int data_len_) =>
-          wasmModule.wire_sync_run_opaque_twin_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -38597,25 +38289,11 @@ class RustLibWire extends BaseWire {
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_create_sync_opaque_twin_sse_moi(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_sync_create_sync_opaque_twin_sse_moi(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_sync_option_rust_opaque_twin_sse_moi(
               PlatformGeneralizedUint8ListPtr ptr_,
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_sync_option_rust_opaque_twin_sse_moi(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_run_opaque_twin_sse_moi(PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_, int data_len_) =>
-          wasmModule.wire_sync_run_opaque_twin_sse_moi(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_create_array_opaque_enum_twin_rust_async(NativePortType port_) =>
@@ -38630,9 +38308,6 @@ class RustLibWire extends BaseWire {
   void wire_create_option_opaque_twin_rust_async(
           NativePortType port_, Object? opaque) =>
       wasmModule.wire_create_option_opaque_twin_rust_async(port_, opaque);
-
-  void wire_create_sync_opaque_twin_rust_async(NativePortType port_) =>
-      wasmModule.wire_create_sync_opaque_twin_rust_async(port_);
 
   void wire_frb_generator_test_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_frb_generator_test_twin_rust_async(port_);
@@ -38686,9 +38361,6 @@ class RustLibWire extends BaseWire {
   void wire_create_option_opaque_twin_rust_async_moi(
           NativePortType port_, Object? opaque) =>
       wasmModule.wire_create_option_opaque_twin_rust_async_moi(port_, opaque);
-
-  void wire_create_sync_opaque_twin_rust_async_moi(NativePortType port_) =>
-      wasmModule.wire_create_sync_opaque_twin_rust_async_moi(port_);
 
   void wire_frb_generator_test_twin_rust_async_moi(NativePortType port_) =>
       wasmModule.wire_frb_generator_test_twin_rust_async_moi(port_);
@@ -38761,14 +38433,6 @@ class RustLibWire extends BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_create_option_opaque_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_create_sync_opaque_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_create_sync_opaque_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_frb_generator_test_twin_rust_async_sse(
@@ -38891,14 +38555,6 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_create_option_opaque_twin_rust_async_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_create_sync_opaque_twin_rust_async_sse_moi(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_create_sync_opaque_twin_rust_async_sse_moi(
-          port_, ptr_, rust_vec_len_, data_len_);
-
   void wire_frb_generator_test_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39017,14 +38673,6 @@ class RustLibWire extends BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_create_option_opaque_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_create_sync_opaque_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_create_sync_opaque_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_frb_generator_test_twin_sse(
@@ -39147,14 +38795,6 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_create_option_opaque_twin_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_create_sync_opaque_twin_sse_moi(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_create_sync_opaque_twin_sse_moi(
-          port_, ptr_, rust_vec_len_, data_len_);
-
   void wire_frb_generator_test_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -39260,10 +38900,6 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_create_option_opaque_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_sync_opaque_twin_sync() =>
-          wasmModule.wire_create_sync_opaque_twin_sync();
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_frb_generator_test_twin_sync() =>
           wasmModule.wire_frb_generator_test_twin_sync();
 
@@ -39320,10 +38956,6 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_create_option_opaque_twin_sync_moi(Object? opaque) =>
           wasmModule.wire_create_option_opaque_twin_sync_moi(opaque);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_sync_opaque_twin_sync_moi() =>
-          wasmModule.wire_create_sync_opaque_twin_sync_moi();
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_frb_generator_test_twin_sync_moi() =>
@@ -39397,14 +39029,6 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_create_option_opaque_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_sync_opaque_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_create_sync_opaque_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -39507,14 +39131,6 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_create_option_opaque_twin_sync_sse_moi(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_sync_opaque_twin_sync_sse_moi(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_create_sync_opaque_twin_sync_sse_moi(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -40299,9 +39915,6 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object? opaque) =>
       wasmModule.wire_create_option_opaque_twin_normal(port_, opaque);
 
-  void wire_create_sync_opaque_twin_normal(NativePortType port_) =>
-      wasmModule.wire_create_sync_opaque_twin_normal(port_);
-
   void wire_frb_generator_test_twin_normal(NativePortType port_) =>
       wasmModule.wire_frb_generator_test_twin_normal(port_);
 
@@ -40354,16 +39967,8 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_sync_create_opaque_twin_normal();
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_create_sync_opaque_twin_normal() =>
-          wasmModule.wire_sync_create_sync_opaque_twin_normal();
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_sync_option_rust_opaque_twin_normal() =>
           wasmModule.wire_sync_option_rust_opaque_twin_normal();
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_run_opaque_twin_normal(Object opaque) =>
-          wasmModule.wire_sync_run_opaque_twin_normal(opaque);
 
   void wire_simple_adder_twin_normal(NativePortType port_, int a, int b) =>
       wasmModule.wire_simple_adder_twin_normal(port_, a, b);
@@ -42188,174 +41793,6 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse_moi(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_normal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_normal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_normal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_normal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_normal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_normal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_normal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_normal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
               ptr);
 }
 
@@ -49086,20 +48523,10 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_create_sync_opaque_twin_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_sync_option_rust_opaque_twin_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_run_opaque_twin_sse(PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_frb_sync_generator_test_twin_sse_moi(
@@ -49118,20 +48545,10 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_, int data_len_);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_create_sync_opaque_twin_sse_moi(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_sync_option_rust_opaque_twin_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_sync_run_opaque_twin_sse_moi(PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_);
 
   external void wire_create_array_opaque_enum_twin_rust_async(
       NativePortType port_);
@@ -49142,8 +48559,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_create_option_opaque_twin_rust_async(
       NativePortType port_, Object? opaque);
-
-  external void wire_create_sync_opaque_twin_rust_async(NativePortType port_);
 
   external void wire_frb_generator_test_twin_rust_async(NativePortType port_);
 
@@ -49185,9 +48600,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_create_option_opaque_twin_rust_async_moi(
       NativePortType port_, Object? opaque);
-
-  external void wire_create_sync_opaque_twin_rust_async_moi(
-      NativePortType port_);
 
   external void wire_frb_generator_test_twin_rust_async_moi(
       NativePortType port_);
@@ -49236,12 +48648,6 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_option_opaque_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_create_sync_opaque_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
@@ -49305,12 +48711,6 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_option_opaque_twin_rust_async_sse_moi(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_create_sync_opaque_twin_rust_async_sse_moi(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
@@ -49382,9 +48782,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_create_option_opaque_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_create_sync_opaque_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
   external void wire_frb_generator_test_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
@@ -49428,9 +48825,6 @@ class RustLibWasmModule implements WasmModule {
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_create_option_opaque_twin_sse_moi(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_create_sync_opaque_twin_sse_moi(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
   external void wire_frb_generator_test_twin_sse_moi(NativePortType port_,
@@ -49479,9 +48873,6 @@ class RustLibWasmModule implements WasmModule {
       wire_create_option_opaque_twin_sync(Object? opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_sync_opaque_twin_sync();
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_frb_generator_test_twin_sync();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -49525,9 +48916,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_create_option_opaque_twin_sync_moi(Object? opaque);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_create_sync_opaque_twin_sync_moi();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_frb_generator_test_twin_sync_moi();
@@ -49580,12 +48968,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_create_option_opaque_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_sync_opaque_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -49658,12 +49040,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_create_option_opaque_twin_sync_sse_moi(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_create_sync_opaque_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -50179,8 +49555,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_create_option_opaque_twin_normal(
       NativePortType port_, Object? opaque);
 
-  external void wire_create_sync_opaque_twin_normal(NativePortType port_);
-
   external void wire_frb_generator_test_twin_normal(NativePortType port_);
 
   external void wire_opaque_array_run_twin_normal(
@@ -50221,13 +49595,7 @@ class RustLibWasmModule implements WasmModule {
       wire_sync_create_opaque_twin_normal();
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_create_sync_opaque_twin_normal();
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_sync_option_rust_opaque_twin_normal();
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_sync_run_opaque_twin_normal(Object opaque);
 
   external void wire_simple_adder_twin_normal(
       NativePortType port_, int a, int b);
@@ -51449,117 +50817,5 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_normal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_normal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_another_twin_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_normal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_normal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_rust_async_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data_twin_sync_sse_moi(
           dynamic ptr);
 }

@@ -12,15 +12,8 @@ HideDataAnotherTwinSse? syncOptionRustOpaqueTwinSse({dynamic hint}) =>
 HideDataAnotherTwinSse syncCreateOpaqueTwinSse({dynamic hint}) =>
     RustLib.instance.api.syncCreateOpaqueTwinSse(hint: hint);
 
-NonSendHideDataAnotherTwinSse syncCreateSyncOpaqueTwinSse({dynamic hint}) =>
-    RustLib.instance.api.syncCreateSyncOpaqueTwinSse(hint: hint);
-
 NonCloneDataAnotherTwinSse syncCreateNonCloneTwinSse({dynamic hint}) =>
     RustLib.instance.api.syncCreateNonCloneTwinSse(hint: hint);
-
-String syncRunOpaqueTwinSse(
-        {required NonSendHideDataAnotherTwinSse opaque, dynamic hint}) =>
-    RustLib.instance.api.syncRunOpaqueTwinSse(opaque: opaque, hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
@@ -82,24 +75,5 @@ class NonCloneDataAnotherTwinSse extends RustOpaque {
         .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSse,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_NonCloneDataAnotherTwinSsePtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::NonSendHideDataAnotherTwinSse>
-@sealed
-class NonSendHideDataAnotherTwinSse extends RustOpaque {
-  NonSendHideDataAnotherTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonSendHideDataAnotherTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonSendHideDataAnotherTwinSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataAnotherTwinSsePtr,
   );
 }

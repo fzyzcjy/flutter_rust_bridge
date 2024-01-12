@@ -43,9 +43,6 @@ String runNonCloneTwinSyncSseMoi(
         {required NonCloneDataTwinSyncSseMoi clone, dynamic hint}) =>
     RustLib.instance.api.runNonCloneTwinSyncSseMoi(clone: clone, hint: hint);
 
-NonSendHideDataTwinSyncSseMoi createSyncOpaqueTwinSyncSseMoi({dynamic hint}) =>
-    RustLib.instance.api.createSyncOpaqueTwinSyncSseMoi(hint: hint);
-
 void opaqueArrayRunTwinSyncSseMoi(
         {required HideDataTwinSyncSseMoiArray2 data, dynamic hint}) =>
     RustLib.instance.api.opaqueArrayRunTwinSyncSseMoi(data: data, hint: hint);
@@ -203,25 +200,6 @@ class NonCloneDataTwinSyncSseMoi extends RustOpaque {
         .rust_arc_decrement_strong_count_NonCloneDataTwinSyncSseMoi,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_NonCloneDataTwinSyncSseMoiPtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonSendHideDataTwinSyncSseMoi>
-@sealed
-class NonSendHideDataTwinSyncSseMoi extends RustOpaque {
-  NonSendHideDataTwinSyncSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonSendHideDataTwinSyncSseMoi.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonSendHideDataTwinSyncSseMoi,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSseMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataTwinSyncSseMoiPtr,
   );
 }
 

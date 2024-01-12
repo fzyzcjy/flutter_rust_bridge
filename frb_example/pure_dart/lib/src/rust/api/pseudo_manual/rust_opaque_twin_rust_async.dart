@@ -41,10 +41,6 @@ Future<String> runNonCloneTwinRustAsync(
         {required NonCloneDataTwinRustAsync clone, dynamic hint}) =>
     RustLib.instance.api.runNonCloneTwinRustAsync(clone: clone, hint: hint);
 
-Future<NonSendHideDataTwinRustAsync> createSyncOpaqueTwinRustAsync(
-        {dynamic hint}) =>
-    RustLib.instance.api.createSyncOpaqueTwinRustAsync(hint: hint);
-
 Future<void> opaqueArrayRunTwinRustAsync(
         {required HideDataTwinRustAsyncArray2 data, dynamic hint}) =>
     RustLib.instance.api.opaqueArrayRunTwinRustAsync(data: data, hint: hint);
@@ -222,25 +218,6 @@ class NonCloneDataTwinRustAsync extends RustOpaque {
         .instance.api.rust_arc_decrement_strong_count_NonCloneDataTwinRustAsync,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_NonCloneDataTwinRustAsyncPtr,
-  );
-}
-
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::NonSendHideDataTwinRustAsync>
-@sealed
-class NonSendHideDataTwinRustAsync extends RustOpaque {
-  NonSendHideDataTwinRustAsync.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  NonSendHideDataTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_NonSendHideDataTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonSendHideDataTwinRustAsyncPtr,
   );
 }
 
