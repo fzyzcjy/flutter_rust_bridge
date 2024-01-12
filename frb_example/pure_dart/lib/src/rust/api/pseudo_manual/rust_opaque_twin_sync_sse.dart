@@ -73,7 +73,7 @@ String unwrapRustOpaqueTwinSyncSse(
 FrbOpaqueReturnTwinSyncSse frbGeneratorTestTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinSyncSse(hint: hint);
 
-// Rust type: RustOpaqueNom<Mutex < HideDataTwinSyncSse >>
+// Rust type: RustOpaqueMoi<Mutex < HideDataTwinSyncSse >>
 @sealed
 class MutexHideDataTwinSyncSse extends RustOpaque {
   MutexHideDataTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -92,7 +92,7 @@ class MutexHideDataTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<RwLock < HideDataTwinSyncSse >>
+// Rust type: RustOpaqueMoi<RwLock < HideDataTwinSyncSse >>
 @sealed
 class RwLockHideDataTwinSyncSse extends RustOpaque {
   RwLockHideDataTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -111,7 +111,7 @@ class RwLockHideDataTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>
+// Rust type: RustOpaqueMoi<Box<dyn DartDebugTwinSyncSse>>
 @sealed
 class BoxDartDebugTwinSyncSse extends RustOpaque {
   BoxDartDebugTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -130,7 +130,7 @@ class BoxDartDebugTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse>
 @sealed
 class FrbOpaqueReturnTwinSyncSse extends RustOpaque {
   FrbOpaqueReturnTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -149,7 +149,7 @@ class FrbOpaqueReturnTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
 @sealed
 class HideDataTwinSyncSse extends RustOpaque {
   HideDataTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -184,7 +184,7 @@ class HideDataTwinSyncSseArray2
       : this(List<HideDataTwinSyncSse>.filled(arraySize, fill));
 }
 
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
 @sealed
 class NonCloneDataTwinSyncSse extends RustOpaque {
   NonCloneDataTwinSyncSse.dcoDecode(List<dynamic> wire)
@@ -203,7 +203,7 @@ class NonCloneDataTwinSyncSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonSendHideDataTwinSyncSse>
+// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonSendHideDataTwinSyncSse>
 @sealed
 class NonSendHideDataTwinSyncSse extends RustOpaque {
   NonSendHideDataTwinSyncSse.dcoDecode(List<dynamic> wire)
