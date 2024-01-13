@@ -13,11 +13,11 @@ impl<T, A: BaseArc<RwLock<T>>> RustOpaqueBase<RwLock<T>, A> {
     }
 
     pub fn rust_auto_opaque_decode_sync_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.blocking_read()
+        self.try_read().expect(LOCK_FAIL_ERROR_MESSAGE)
     }
 
     pub fn rust_auto_opaque_decode_sync_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.blocking_write()
+        self.try_write().expect(LOCK_FAIL_ERROR_MESSAGE)
     }
 
     pub async fn rust_auto_opaque_decode_async_owned(self) -> T {
@@ -25,14 +25,16 @@ impl<T, A: BaseArc<RwLock<T>>> RustOpaqueBase<RwLock<T>, A> {
     }
 
     pub async fn rust_auto_opaque_decode_async_ref(&self) -> RwLockReadGuard<'_, T> {
-        self.read().await
+        self.rust_auto_opaque_decode_sync_ref()
     }
 
     pub async fn rust_auto_opaque_decode_async_ref_mut(&self) -> RwLockWriteGuard<'_, T> {
-        self.write().await
+        self.rust_auto_opaque_decode_sync_ref_mut()
     }
 }
 
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RwLock<T>>>(value: T) -> RustOpaqueBase<RwLock<T>, A> {
     RustOpaqueBase::new(RwLock::new(value))
 }
+
+static LOCK_FAIL_ERROR_MESSAGE: &str = "TODO";
