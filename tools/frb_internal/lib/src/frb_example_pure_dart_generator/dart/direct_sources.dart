@@ -28,8 +28,8 @@ Map<String, String> generateDartDirectSources() {
       import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
       import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
       """,
-      valueType: (ty) => null,
       enable: (ty) => ty.enableList,
+      valueType: (ty) => ty.primitiveListName ?? 'List<${ty.dartTypeName}>',
     ),
     'pseudo_manual/basic_map_test.dart': _generateBasicRelated(
       postfix: '_map',
