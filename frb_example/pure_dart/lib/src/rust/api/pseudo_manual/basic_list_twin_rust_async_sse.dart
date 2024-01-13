@@ -67,11 +67,6 @@ Future<List<String>> exampleBasicListTypeStringTwinRustAsyncSse(
     RustLib.instance.api
         .exampleBasicListTypeStringTwinRustAsyncSse(arg: arg, hint: hint);
 
-Future<List<Uint8List>> exampleBasicListTypeBytesTwinRustAsyncSse(
-        {required List<Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api
-        .exampleBasicListTypeBytesTwinRustAsyncSse(arg: arg, hint: hint);
-
 Future<List<BasicPrimitiveEnumTwinRustAsyncSse>>
     exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
             {required List<BasicPrimitiveEnumTwinRustAsyncSse> arg,

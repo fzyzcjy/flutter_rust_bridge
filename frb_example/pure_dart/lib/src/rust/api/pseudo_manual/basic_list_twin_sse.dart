@@ -56,10 +56,6 @@ Future<List<String>> exampleBasicListTypeStringTwinSse(
     RustLib.instance.api
         .exampleBasicListTypeStringTwinSse(arg: arg, hint: hint);
 
-Future<List<Uint8List>> exampleBasicListTypeBytesTwinSse(
-        {required List<Uint8List> arg, dynamic hint}) =>
-    RustLib.instance.api.exampleBasicListTypeBytesTwinSse(arg: arg, hint: hint);
-
 Future<List<BasicPrimitiveEnumTwinSse>>
     exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse(
             {required List<BasicPrimitiveEnumTwinSse> arg, dynamic hint}) =>
