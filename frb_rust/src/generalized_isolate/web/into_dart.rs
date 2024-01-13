@@ -97,6 +97,7 @@ impl IntoDart for Vec<uuid::Uuid> {
     }
 }
 
+#[cfg(feature = "backtrace")]
 impl IntoDart for backtrace::Backtrace {
     fn into_dart(self) -> DartAbi {
         format!("{:?}", self).into_dart()
@@ -307,6 +308,7 @@ impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
     }
 }
 
+#[cfg(feature = "anyhow")]
 impl IntoDart for anyhow::Error {
     fn into_dart(self) -> DartAbi {
         format!("{:?}", self).into_dart()

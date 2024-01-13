@@ -4,6 +4,7 @@ use crate::misc::panic_backtrace::PanicBacktrace;
 /// Surely, you are free to customize everything.
 pub fn setup_default_user_utils() {
     // setup log before others, such that we can see logs in other setup functions
+    #[cfg(feature = "log")]
     setup_log_to_console();
     setup_backtrace();
 }
@@ -20,6 +21,7 @@ fn setup_backtrace() {
     PanicBacktrace::setup();
 }
 
+#[cfg(feature = "log")]
 fn setup_log_to_console() {
     #[cfg(target_os = "android")]
     let _ = android_logger::init_once(
