@@ -68,3 +68,16 @@ impl<T: ?Sized + 'static, A: BaseArc<T>> Clone for RustOpaqueBase<T, A> {
         Self::from_arc(self.arc.clone())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::RustOpaque;
+    use std::sync::Arc;
+
+    #[test]
+    fn test_from_arc() {
+        let arc = Arc::new(42);
+        let opaque: RustOpaque<_> = arc.into();
+        assert_eq!(*opaque, 42);
+    }
+}
