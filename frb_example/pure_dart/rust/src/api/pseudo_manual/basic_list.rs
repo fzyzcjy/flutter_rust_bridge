@@ -51,10 +51,6 @@ pub fn example_basic_list_type_string_twin_normal(arg: Vec<String>) -> Vec<Strin
     arg
 }
 
-pub fn example_basic_list_type_bytes_twin_normal(arg: Vec<Vec<u8>>) -> Vec<Vec<u8>> {
-    arg
-}
-
 pub fn example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(
     arg: Vec<BasicPrimitiveEnumTwinNormal>,
 ) -> Vec<BasicPrimitiveEnumTwinNormal> {

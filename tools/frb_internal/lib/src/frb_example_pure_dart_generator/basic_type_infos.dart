@@ -141,6 +141,8 @@ final kBasicTypes = [
     name: 'bytes',
     rustTypeName: 'Vec<u8>',
     dartTypeName: 'Uint8List',
+    // TODO await upstream allo-isolate to implement
+    enableList: false,
     interestRawValues: [
       'Uint8List.fromList([])',
       'Uint8List.fromList([255, 0])',
