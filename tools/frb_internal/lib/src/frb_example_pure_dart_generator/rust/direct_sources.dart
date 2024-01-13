@@ -4,41 +4,21 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 
 Map<String, String> generateRustDirectSources() {
   return {
-    'pseudo_manual/basic.rs': _generateBasic(),
-    'pseudo_manual/optional_basic.rs': _generateOptionalBasic(),
-    'pseudo_manual/basic_list.rs': _generateBasicList(),
-    'pseudo_manual/basic_map.rs': _generateBasicMap(),
+    'pseudo_manual/basic.rs': _generateBasicRelated((x) => x),
+    'pseudo_manual/optional_basic.rs':
+        _generateBasicRelated((x) => 'Option<$x>'),
+    'pseudo_manual/basic_list.rs': _generateBasicRelated((x) => 'Vec<$x>'),
+    'pseudo_manual/basic_map.rs':
+        _generateBasicRelated((x) => 'HashMap<i32, $x>'),
     'pseudo_manual/benchmark_api.rs': generateBenchmark(),
   };
 }
 
-String _generateBasic() {
+String _generateBasicRelated(String Function(String) rustTypeNameWrapper) {
   final builder = RustFileBuilder();
   for (final ty in kBasicTypes) {
     builder.addIdentityFunction(
-        ty.rustTypeName, 'example_basic_type_${ty.name}');
-  }
-  return builder.toString();
-}
-
-String _generateBasicList() {
-  final builder = RustFileBuilder();
-  for (final ty in kBasicTypes) {
-    builder.addIdentityFunction(
-        'Vec<${ty.rustTypeName}>', 'example_basic_list_type_${ty.name}');
-  }
-  return builder.toString();
-}
-
-String _generateBasicMap() {
-  throw UnimplementedError();
-}
-
-String _generateOptionalBasic() {
-  final builder = RustFileBuilder();
-  for (final ty in kBasicTypes) {
-    builder.addIdentityFunction(
-        'Option<${ty.rustTypeName}>', 'example_optional_basic_type_${ty.name}');
+        rustTypeNameWrapper(ty.rustTypeName), 'example_basic_type_${ty.name}');
   }
   return builder.toString();
 }
