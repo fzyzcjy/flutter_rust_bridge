@@ -48,16 +48,6 @@ pub async fn example_basic_list_type_u64_twin_rust_async_sse(arg: Vec<u64>) -> V
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn example_basic_list_type_isize_twin_rust_async_sse(arg: Vec<isize>) -> Vec<isize> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn example_basic_list_type_usize_twin_rust_async_sse(arg: Vec<usize>) -> Vec<usize> {
-    arg
-}
-
-#[flutter_rust_bridge::frb(serialize)]
 pub async fn example_basic_list_type_f32_twin_rust_async_sse(arg: Vec<f32>) -> Vec<f32> {
     arg
 }
