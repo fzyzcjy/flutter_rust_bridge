@@ -39,8 +39,8 @@ pub enum BasicGeneralEnumTwinNormal {
 }
 
 pub struct BasicStructTwinNormal {
-    pub apple: String,
-    pub orange: i32,
+    pub apple: Option<String>,
+    pub orange: Option<i32>,
 }
 ''';
   } else {

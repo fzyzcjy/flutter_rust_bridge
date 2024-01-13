@@ -17,8 +17,8 @@ pub enum BasicGeneralEnumTwinSyncSse {
 }
 
 pub struct BasicStructTwinSyncSse {
-    pub apple: String,
-    pub orange: i32,
+    pub apple: Option<String>,
+    pub orange: Option<i32>,
 }
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]

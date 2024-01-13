@@ -17,8 +17,8 @@ pub enum BasicGeneralEnumTwinSync {
 }
 
 pub struct BasicStructTwinSync {
-    pub apple: String,
-    pub orange: i32,
+    pub apple: Option<String>,
+    pub orange: Option<i32>,
 }
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_type_i8_twin_sync(arg: i8) -> i8 {

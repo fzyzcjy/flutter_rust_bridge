@@ -17,8 +17,8 @@ pub enum BasicGeneralEnumTwinRustAsync {
 }
 
 pub struct BasicStructTwinRustAsync {
-    pub apple: String,
-    pub orange: i32,
+    pub apple: Option<String>,
+    pub orange: Option<i32>,
 }
 pub async fn example_basic_type_i8_twin_rust_async(arg: i8) -> i8 {
     arg
