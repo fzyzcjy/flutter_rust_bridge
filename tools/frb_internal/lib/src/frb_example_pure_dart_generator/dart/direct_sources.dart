@@ -34,7 +34,7 @@ String _generateBasicOptional() {
       ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
     ];
     builder.addTestsIdentityFunctionCall(
-        'exampleOptionalBasicType${ReCase(ty.name).pascalCase}TwinNormal',
+        'exampleBasicOptionalType${ReCase(ty.name).pascalCase}TwinNormal',
         values,
         valueType: '${ty.dartTypeName}?');
   }
