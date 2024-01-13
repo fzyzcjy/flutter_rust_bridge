@@ -15,7 +15,8 @@ Map<String, String> generateRustDirectSources() {
 String _generateBasic() {
   final builder = RustFileBuilder();
   for (final ty in kBasicTypes) {
-    builder.addIdentityFunction(ty.name, 'example_basic_type_${ty.name}');
+    builder.addIdentityFunction(
+        ty.rustTypeName, 'example_basic_type_${ty.name}');
   }
   return builder.toString();
 }
@@ -24,7 +25,7 @@ String _generateBasicList() {
   final builder = RustFileBuilder();
   for (final ty in kBasicTypes) {
     builder.addIdentityFunction(
-        'Vec<${ty.name}>', 'example_basic_list_type_${ty.name}');
+        'Vec<${ty.rustTypeName}>', 'example_basic_list_type_${ty.name}');
   }
   return builder.toString();
 }
@@ -37,7 +38,7 @@ String _generateOptionalBasic() {
   final builder = RustFileBuilder();
   for (final ty in kBasicTypes) {
     builder.addIdentityFunction(
-        'Option<${ty.name}>', 'example_optional_basic_type_${ty.name}');
+        'Option<${ty.rustTypeName}>', 'example_optional_basic_type_${ty.name}');
   }
   return builder.toString();
 }

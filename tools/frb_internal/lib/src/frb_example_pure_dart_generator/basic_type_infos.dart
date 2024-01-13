@@ -1,4 +1,7 @@
+import 'package:recase/recase.dart';
+
 class BasicTypeInfo {
+  final String name;
   final String rustTypeName;
   final String dartTypeName;
   final String? primitiveListName;
@@ -6,14 +9,15 @@ class BasicTypeInfo {
   final String Function(BasicTypeInfo, String) primitiveWrapper;
   final String Function(BasicTypeInfo, String) primitiveListWrapper;
 
-  const BasicTypeInfo({
+  BasicTypeInfo({
+    String? name,
     required this.rustTypeName,
     required this.dartTypeName,
     this.primitiveListName,
     required this.interestRawValues,
     this.primitiveWrapper = _defaultPrimitiveWrapper,
     this.primitiveListWrapper = _defaultPrimitiveListWrapper,
-  });
+  }) : name = name ?? ReCase(rustTypeName).snakeCase;
 
   static String _defaultPrimitiveWrapper(BasicTypeInfo info, String value) =>
       value;
@@ -24,25 +28,25 @@ class BasicTypeInfo {
 }
 
 final kBasicTypes = [
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'i8',
     dartTypeName: 'int',
     primitiveListName: 'Int8List',
     interestRawValues: ['0', '-128', '127'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'i16',
     dartTypeName: 'int',
     primitiveListName: 'Int16List',
     interestRawValues: ['0', '-32768', '32767'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'i32',
     dartTypeName: 'int',
     primitiveListName: 'Int32List',
     interestRawValues: ['0', '-2147483648', '2147483647'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'i64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
@@ -57,25 +61,25 @@ final kBasicTypes = [
     ],
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'u8',
     dartTypeName: 'int',
     primitiveListName: 'Uint8List',
     interestRawValues: ['0', '255'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'u16',
     dartTypeName: 'int',
     primitiveListName: 'Uint16List',
     interestRawValues: ['0', '65535'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'u32',
     dartTypeName: 'int',
     primitiveListName: 'Uint32List',
     interestRawValues: ['0', '4294967295'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'u64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
@@ -89,7 +93,7 @@ final kBasicTypes = [
     ],
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'isize',
     dartTypeName: 'int',
     primitiveListName: 'Int64List',
@@ -101,19 +105,19 @@ final kBasicTypes = [
       '9007199254740992',
     ],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'usize',
     dartTypeName: 'int',
     primitiveListName: 'Uint64List',
     interestRawValues: ['0', '4294967295', '9007199254740992'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'f32',
     dartTypeName: 'double',
     primitiveListName: 'Float32List',
     interestRawValues: ['0', '-42.5', '123456'],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'f64',
     dartTypeName: 'double',
     primitiveListName: 'Float64List',
@@ -126,13 +130,14 @@ final kBasicTypes = [
     interestRawValues: ['false', 'true'],
     primitiveListWrapper: (info, x) => '<bool>[$x]',
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'String',
     dartTypeName: 'String',
     interestRawValues: ['""', '"hello"', '"😂"'],
   ),
-  const BasicTypeInfo(
-    rustTypeName: 'Bytes',
+  BasicTypeInfo(
+    name: 'bytes',
+    rustTypeName: 'Vec<u8>',
     dartTypeName: 'Uint8List',
     interestRawValues: [
       'Uint8List.fromList([])',
@@ -140,7 +145,7 @@ final kBasicTypes = [
       'Uint8List.fromList([10, 20, 30, 40])'
     ],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'BasicPrimitiveEnumTwinNormal',
     dartTypeName: 'BasicPrimitiveEnumTwinNormal',
     interestRawValues: [
@@ -148,7 +153,7 @@ final kBasicTypes = [
       'BasicPrimitiveEnumTwinNormal.orange',
     ],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'BasicGeneralEnumTwinNormal',
     dartTypeName: 'BasicGeneralEnumTwinNormal',
     interestRawValues: [
@@ -156,7 +161,7 @@ final kBasicTypes = [
       'BasicGeneralEnumTwinNormal.orange()',
     ],
   ),
-  const BasicTypeInfo(
+  BasicTypeInfo(
     rustTypeName: 'BasicStructTwinNormal',
     dartTypeName: 'BasicStructTwinNormal',
     interestRawValues: [
