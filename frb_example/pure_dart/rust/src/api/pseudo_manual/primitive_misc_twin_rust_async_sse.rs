@@ -26,13 +26,3 @@ pub async fn primitive_u32_twin_rust_async_sse(my_u32: u32) -> u32 {
     info!("returning {}", ret);
     ret
 }
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn primitive_usize_loopback_twin_rust_async_sse(arg: usize) -> usize {
-    arg
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn primitive_isize_loopback_twin_rust_async_sse(arg: isize) -> isize {
-    arg
-}

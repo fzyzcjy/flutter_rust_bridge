@@ -10,6 +10,7 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic_twin_sse.
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 import '../../test_utils.dart';
+import 'dart:typed_data';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
@@ -30,10 +31,38 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(
         exampleBasicTypeU64TwinSse, <int>[0, 9007199254740992]);
     addTestsIdentityFunctionCall(
+        exampleBasicTypeIsizeTwinSse, <int>[0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeUsizeTwinSse, <int>[0, 4294967295]);
+    addTestsIdentityFunctionCall(
         exampleBasicTypeF32TwinSse, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF64TwinSse, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeBoolTwinSse, <bool>[false, true]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeStringTwinSse, <String>["", "hello", "😂"]);
+    addTestsIdentityFunctionCall(exampleBasicTypeBytesTwinSse, <Uint8List>[
+      Uint8List.fromList([]),
+      Uint8List.fromList([255, 0]),
+      Uint8List.fromList([10, 20, 30, 40])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicPrimitiveEnumTwinSseTwinSse,
+        <BasicPrimitiveEnumTwinSse>[
+          BasicPrimitiveEnumTwinSse.apple,
+          BasicPrimitiveEnumTwinSse.orange
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicGeneralEnumTwinSseTwinSse,
+        <BasicGeneralEnumTwinSse>[
+          BasicGeneralEnumTwinSse.apple(field: "one"),
+          BasicGeneralEnumTwinSse.orange()
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicStructTwinSseTwinSse, <BasicStructTwinSse>[
+      BasicStructTwinSse(apple: null, orange: null),
+      BasicStructTwinSse(apple: "one", orange: 42)
+    ]);
   });
 }
