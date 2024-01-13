@@ -14,6 +14,7 @@ use crate::rust2dart::stream_sink::StreamSinkCloser;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
+#[cfg(feature = "rust-async")]
 use futures::FutureExt;
 use std::future::Future;
 use std::panic::AssertUnwindSafe;

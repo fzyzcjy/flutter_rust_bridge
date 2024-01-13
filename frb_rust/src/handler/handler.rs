@@ -1,7 +1,6 @@
 use crate::codec::sse::Dart2RustMessageSse;
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
-use crate::dart_fn::DartFnFuture;
 use crate::platform_types::DartAbi;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::context::TaskRust2DartContext;
@@ -60,12 +59,14 @@ pub trait Handler {
             + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec;
 
+    #[cfg(feature = "rust-async")]
     fn dart_fn_invoke(
         &self,
         dart_fn: DartOpaque,
         args: Vec<DartAbi>,
-    ) -> DartFnFuture<Dart2RustMessageSse>;
+    ) -> crate::dart_fn::DartFnFuture<Dart2RustMessageSse>;
 
+    #[cfg(feature = "rust-async")]
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse);
 }
 

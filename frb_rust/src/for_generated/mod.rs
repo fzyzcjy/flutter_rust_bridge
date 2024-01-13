@@ -3,7 +3,8 @@
 
 mod boilerplate;
 mod cast;
-mod misc;
+#[cfg(feature = "rust-async")]
+mod misc_rust_async;
 mod pointer;
 
 pub use crate::codec::dco::{transform_result_dco, Rust2DartMessageDco};
@@ -18,6 +19,7 @@ pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
+#[cfg(feature = "rust-async")]
 pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
@@ -37,11 +39,13 @@ pub use byteorder;
 pub use cast::slice_from_byte_buffer;
 #[cfg(not(wasm))]
 pub use dart_sys_fork as dart_sys;
+#[cfg(feature = "rust-async")]
 pub use futures;
 #[cfg(wasm)]
 pub use js_sys;
 pub use lazy_static::lazy_static;
-pub use misc::*;
+#[cfg(feature = "rust-async")]
+pub use misc_rust_async::*;
 pub use pointer::*;
 #[cfg(wasm)]
 pub use wasm_bindgen;
