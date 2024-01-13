@@ -21,8 +21,8 @@ Map<String, String> generateDartDirectSources() {
     'pseudo_manual/basic_list_test.dart': _generateBasicRelated(
       postfix: '_list',
       values: (ty) => [
-        ty.primitiveListWrapper(ty, ''),
-        ...ty.interestRawValues.map((x) => ty.primitiveListWrapper(ty, x)),
+        ty.listWrapper(ty, ''),
+        ...ty.interestRawValues.map((x) => ty.listWrapper(ty, x)),
       ],
       imports: """
       import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';

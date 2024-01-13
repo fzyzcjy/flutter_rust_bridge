@@ -7,7 +7,7 @@ class BasicTypeInfo {
   final String? primitiveListName;
   final bool enableList;
   final List<String> interestRawValues;
-  final String Function(BasicTypeInfo, String) primitiveListWrapper;
+  final String Function(BasicTypeInfo, String) listWrapper;
 
   BasicTypeInfo({
     String? name,
@@ -16,7 +16,7 @@ class BasicTypeInfo {
     this.primitiveListName,
     this.enableList = true,
     required this.interestRawValues,
-    this.primitiveListWrapper = _defaultPrimitiveListWrapper,
+    this.listWrapper = _defaultPrimitiveListWrapper,
   }) : name = name ?? ReCase(rustTypeName).snakeCase;
 
   static String _defaultPrimitiveListWrapper(
@@ -125,7 +125,7 @@ final kBasicTypes = [
     dartTypeName: 'bool',
     primitiveListName: 'List<bool>',
     interestRawValues: ['false', 'true'],
-    primitiveListWrapper: (info, x) => '<bool>[$x]',
+    listWrapper: (info, x) => '<bool>[$x]',
   ),
   BasicTypeInfo(
     rustTypeName: 'String',
