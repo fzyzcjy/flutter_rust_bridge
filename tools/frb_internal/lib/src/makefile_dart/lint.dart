@@ -15,6 +15,7 @@ List<Command<void>> createCommands() {
         _$parseLintConfigResult),
     SimpleConfigCommand('lint-dart', lintDart, _$populateLintConfigParser,
         _$parseLintConfigResult),
+    SimpleCommand('lint-rust-feature-flag', lintRustFeatureFlag),
   ];
 }
 
@@ -89,4 +90,9 @@ Future<void> lintDartPana(LintConfig config) async {
   await exec('flutter pub global activate pana');
   await exec('$pana --no-warning --line-length 80 --exit-code-threshold 0',
       relativePwd: 'frb_dart');
+}
+
+Future<void> lintRustFeatureFlag() async {
+  const package = 'frb_rust';
+  // TODO
 }

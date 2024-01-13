@@ -14,7 +14,6 @@ List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand('build-flutter', buildFlutter,
         _$populateBuildFlutterConfigParser, _$parseBuildFlutterConfigResult),
-    SimpleCommand('build-rust-feature-flag', buildRustFeatureFlag),
   ];
 }
 
@@ -84,8 +83,4 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
           relativePwd: package);
       copyArtifacts(['build/ios/archive']);
   }
-}
-
-Future<void> buildRustFeatureFlag() async {
-  // TODO
 }

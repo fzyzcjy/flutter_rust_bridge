@@ -64,8 +64,8 @@ jobs:
 
   # ----------------------------------- lint -----------------------------------
 
-  lint_rust:
-    name: 'Lint :: Rust'
+  lint_rust_primary:
+    name: 'Lint :: Rust :: Primary'
     runs-on: ubuntu-latest
 
     steps:
@@ -92,8 +92,8 @@ jobs:
       # execute
       - run: ./frb_internal lint-rust
 
-  lint_dart:
-    name: 'Lint :: Dart'
+  lint_dart_primary:
+    name: 'Lint :: Dart :: Primary'
     runs-on: ubuntu-latest
 
     steps:
@@ -111,6 +111,31 @@ jobs:
 
       # execute
       - run: ./frb_internal lint-dart
+
+  lint_rust_feature_flag:
+    name: 'Lint :: Rust :: Feature flag'
+    runs-on: ubuntu-latest
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
+      - uses: taiki-e/install-action@cargo-hack
+
+      # execute
+      - run: ./frb_internal lint-rust-feature-flag
 
   # ----------------------------------- codegen -----------------------------------
   # instead of running this explicit test for frb_codegen and frb_rust only, we run the test for
@@ -391,31 +416,6 @@ jobs:
         with:
           name: ${{ github.job }}--${{ matrix.info.target }}--output
           path: target/build_flutter_output
-
-  build_rust_feature_flag:
-    name: 'Build :: Rust :: Feature flag'
-    runs-on: ubuntu-latest
-
-    steps:
-      # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
-        with:
-          comment_on_pr: false
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
-          architecture: x64
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-          components: rustfmt, clippy
-      - uses: taiki-e/install-action@cargo-hack
-
-      # execute
-      - run: ./frb_internal build-rust-feature-flag
 
   # ----------------------------------- test -----------------------------------
 
