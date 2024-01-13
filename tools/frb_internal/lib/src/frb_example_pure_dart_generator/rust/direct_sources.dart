@@ -128,6 +128,24 @@ final kBasicTypes = [
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   const BasicTypeInfo(
+    name: 'isize',
+    dartTypeName: 'int',
+    primitiveListName: 'Int64List',
+    interestRawValues: [
+      '0',
+      '-2147483648',
+      '2147483647',
+      '-9007199254740992',
+      '9007199254740992',
+    ],
+  ),
+  const BasicTypeInfo(
+    name: 'usize',
+    dartTypeName: 'int',
+    primitiveListName: 'Uint64List',
+    interestRawValues: ['0', '4294967295', '9007199254740992'],
+  ),
+  const BasicTypeInfo(
     name: 'f32',
     dartTypeName: 'double',
     primitiveListName: 'Float32List',
