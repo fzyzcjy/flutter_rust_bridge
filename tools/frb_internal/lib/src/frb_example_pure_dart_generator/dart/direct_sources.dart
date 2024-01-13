@@ -27,7 +27,6 @@ Map<String, String> generateDartDirectSources() {
         ...ty.interestRawValues.map((x) => ty.primitiveListWrapper(ty, x)),
       ],
       imports: """
-      import 'dart:typed_data';
       import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
       """,
       valueType: (ty) => null,
@@ -50,7 +49,10 @@ String _generateBasicRelated({
   String imports = '',
 }) {
   final builder = DartFileBuilder(importName: 'basic$postfix');
-  builder.imports = imports;
+  builder.imports += '''
+  import 'dart:typed_data';
+  $imports
+  ''';
   for (final ty in kBasicTypes) {
     builder.addTestsIdentityFunctionCall(
       'exampleBasic${ReCase(postfix).pascalCase}Type${ReCase(ty.name).pascalCase}TwinNormal',
