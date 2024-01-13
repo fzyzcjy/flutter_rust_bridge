@@ -7,9 +7,6 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<String> funcStringTwinRustAsync({required String arg, dynamic hint}) =>
-    RustLib.instance.api.funcStringTwinRustAsync(arg: arg, hint: hint);
-
 Future<void> funcReturnUnitTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.funcReturnUnitTwinRustAsync(hint: hint);
 

@@ -50,6 +50,18 @@ import 'api/pseudo_manual/basic_list_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/basic_list_twin_sse.dart';
 import 'api/pseudo_manual/basic_list_twin_sync.dart';
 import 'api/pseudo_manual/basic_list_twin_sync_sse.dart';
+import 'api/pseudo_manual/basic_map.dart';
+import 'api/pseudo_manual/basic_map_twin_rust_async.dart';
+import 'api/pseudo_manual/basic_map_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/basic_map_twin_sse.dart';
+import 'api/pseudo_manual/basic_map_twin_sync.dart';
+import 'api/pseudo_manual/basic_map_twin_sync_sse.dart';
+import 'api/pseudo_manual/basic_optional.dart';
+import 'api/pseudo_manual/basic_optional_twin_rust_async.dart';
+import 'api/pseudo_manual/basic_optional_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/basic_optional_twin_sse.dart';
+import 'api/pseudo_manual/basic_optional_twin_sync.dart';
+import 'api/pseudo_manual/basic_optional_twin_sync_sse.dart';
 import 'api/pseudo_manual/basic_twin_rust_async.dart';
 import 'api/pseudo_manual/basic_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/basic_twin_sse.dart';
@@ -127,12 +139,6 @@ import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync_sse.dart';
-import 'api/pseudo_manual/optional_basic.dart';
-import 'api/pseudo_manual/optional_basic_twin_rust_async.dart';
-import 'api/pseudo_manual/optional_basic_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/optional_basic_twin_sse.dart';
-import 'api/pseudo_manual/optional_basic_twin_sync.dart';
-import 'api/pseudo_manual/optional_basic_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sse.dart';
@@ -763,8 +769,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> funcReturnUnitTwinNormal({dynamic hint});
 
-  Future<String> funcStringTwinNormal({required String arg, dynamic hint});
-
   Future<List<MySize>> handleListOfStructTwinNormal(
       {required List<MySize> l, dynamic hint});
 
@@ -805,9 +809,6 @@ abstract class RustLibApi extends BaseApi {
   Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
       {required int n, dynamic hint});
 
-  Future<int> primitiveIsizeLoopbackTwinNormal(
-      {required int arg, dynamic hint});
-
   Future<int> primitiveTypesTwinNormal(
       {required int myI32,
       required int myI64,
@@ -816,9 +817,6 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint});
-
-  Future<int> primitiveUsizeLoopbackTwinNormal(
-      {required int arg, dynamic hint});
 
   Future<BlobTwinRustAsync> boxedBlobTwinRustAsync(
       {required U8Array1600 blob, dynamic hint});
@@ -1003,8 +1001,22 @@ abstract class RustLibApi extends BaseApi {
   UserIdTwinSyncSse nextUserIdTwinSyncSse(
       {required UserIdTwinSyncSse userId, dynamic hint});
 
+  Future<BasicGeneralEnumTwinNormal>
+      exampleBasicTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {required BasicGeneralEnumTwinNormal arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinNormal>
+      exampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {required BasicPrimitiveEnumTwinNormal arg, dynamic hint});
+
+  Future<BasicStructTwinNormal> exampleBasicTypeBasicStructTwinNormalTwinNormal(
+      {required BasicStructTwinNormal arg, dynamic hint});
+
   Future<bool> exampleBasicTypeBoolTwinNormal(
       {required bool arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicTypeBytesTwinNormal(
+      {required List<int> arg, dynamic hint});
 
   Future<double> exampleBasicTypeF32TwinNormal(
       {required double arg, dynamic hint});
@@ -1020,6 +1032,11 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> exampleBasicTypeI8TwinNormal({required int arg, dynamic hint});
 
+  Future<int> exampleBasicTypeIsizeTwinNormal({required int arg, dynamic hint});
+
+  Future<String> exampleBasicTypeStringTwinNormal(
+      {required String arg, dynamic hint});
+
   Future<int> exampleBasicTypeU16TwinNormal({required int arg, dynamic hint});
 
   Future<int> exampleBasicTypeU32TwinNormal({required int arg, dynamic hint});
@@ -1027,6 +1044,20 @@ abstract class RustLibApi extends BaseApi {
   Future<int> exampleBasicTypeU64TwinNormal({required int arg, dynamic hint});
 
   Future<int> exampleBasicTypeU8TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeUsizeTwinNormal({required int arg, dynamic hint});
+
+  Future<List<BasicGeneralEnumTwinNormal>>
+      exampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {required List<BasicGeneralEnumTwinNormal> arg, dynamic hint});
+
+  Future<List<BasicPrimitiveEnumTwinNormal>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {required List<BasicPrimitiveEnumTwinNormal> arg, dynamic hint});
+
+  Future<List<BasicStructTwinNormal>>
+      exampleBasicListTypeBasicStructTwinNormalTwinNormal(
+          {required List<BasicStructTwinNormal> arg, dynamic hint});
 
   Future<List<bool>> exampleBasicListTypeBoolTwinNormal(
       {required List<bool> arg, dynamic hint});
@@ -1049,6 +1080,9 @@ abstract class RustLibApi extends BaseApi {
   Future<Int8List> exampleBasicListTypeI8TwinNormal(
       {required List<int> arg, dynamic hint});
 
+  Future<List<String>> exampleBasicListTypeStringTwinNormal(
+      {required List<String> arg, dynamic hint});
+
   Future<Uint16List> exampleBasicListTypeU16TwinNormal(
       {required List<int> arg, dynamic hint});
 
@@ -1060,6 +1094,18 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Uint8List> exampleBasicListTypeU8TwinNormal(
       {required List<int> arg, dynamic hint});
+
+  Future<List<BasicGeneralEnumTwinRustAsync>>
+      exampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {required List<BasicGeneralEnumTwinRustAsync> arg, dynamic hint});
+
+  Future<List<BasicPrimitiveEnumTwinRustAsync>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {required List<BasicPrimitiveEnumTwinRustAsync> arg, dynamic hint});
+
+  Future<List<BasicStructTwinRustAsync>>
+      exampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {required List<BasicStructTwinRustAsync> arg, dynamic hint});
 
   Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync(
       {required List<bool> arg, dynamic hint});
@@ -1082,6 +1128,9 @@ abstract class RustLibApi extends BaseApi {
   Future<Int8List> exampleBasicListTypeI8TwinRustAsync(
       {required List<int> arg, dynamic hint});
 
+  Future<List<String>> exampleBasicListTypeStringTwinRustAsync(
+      {required List<String> arg, dynamic hint});
+
   Future<Uint16List> exampleBasicListTypeU16TwinRustAsync(
       {required List<int> arg, dynamic hint});
 
@@ -1093,6 +1142,19 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Uint8List> exampleBasicListTypeU8TwinRustAsync(
       {required List<int> arg, dynamic hint});
+
+  Future<List<BasicGeneralEnumTwinRustAsyncSse>>
+      exampleBasicListTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required List<BasicGeneralEnumTwinRustAsyncSse> arg, dynamic hint});
+
+  Future<List<BasicPrimitiveEnumTwinRustAsyncSse>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required List<BasicPrimitiveEnumTwinRustAsyncSse> arg,
+          dynamic hint});
+
+  Future<List<BasicStructTwinRustAsyncSse>>
+      exampleBasicListTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {required List<BasicStructTwinRustAsyncSse> arg, dynamic hint});
 
   Future<List<bool>> exampleBasicListTypeBoolTwinRustAsyncSse(
       {required List<bool> arg, dynamic hint});
@@ -1115,6 +1177,9 @@ abstract class RustLibApi extends BaseApi {
   Future<Int8List> exampleBasicListTypeI8TwinRustAsyncSse(
       {required List<int> arg, dynamic hint});
 
+  Future<List<String>> exampleBasicListTypeStringTwinRustAsyncSse(
+      {required List<String> arg, dynamic hint});
+
   Future<Uint16List> exampleBasicListTypeU16TwinRustAsyncSse(
       {required List<int> arg, dynamic hint});
 
@@ -1126,6 +1191,18 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Uint8List> exampleBasicListTypeU8TwinRustAsyncSse(
       {required List<int> arg, dynamic hint});
+
+  Future<List<BasicGeneralEnumTwinSse>>
+      exampleBasicListTypeBasicGeneralEnumTwinSseTwinSse(
+          {required List<BasicGeneralEnumTwinSse> arg, dynamic hint});
+
+  Future<List<BasicPrimitiveEnumTwinSse>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {required List<BasicPrimitiveEnumTwinSse> arg, dynamic hint});
+
+  Future<List<BasicStructTwinSse>>
+      exampleBasicListTypeBasicStructTwinSseTwinSse(
+          {required List<BasicStructTwinSse> arg, dynamic hint});
 
   Future<List<bool>> exampleBasicListTypeBoolTwinSse(
       {required List<bool> arg, dynamic hint});
@@ -1148,6 +1225,9 @@ abstract class RustLibApi extends BaseApi {
   Future<Int8List> exampleBasicListTypeI8TwinSse(
       {required List<int> arg, dynamic hint});
 
+  Future<List<String>> exampleBasicListTypeStringTwinSse(
+      {required List<String> arg, dynamic hint});
+
   Future<Uint16List> exampleBasicListTypeU16TwinSse(
       {required List<int> arg, dynamic hint});
 
@@ -1159,6 +1239,17 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Uint8List> exampleBasicListTypeU8TwinSse(
       {required List<int> arg, dynamic hint});
+
+  List<BasicGeneralEnumTwinSync>
+      exampleBasicListTypeBasicGeneralEnumTwinSyncTwinSync(
+          {required List<BasicGeneralEnumTwinSync> arg, dynamic hint});
+
+  List<BasicPrimitiveEnumTwinSync>
+      exampleBasicListTypeBasicPrimitiveEnumTwinSyncTwinSync(
+          {required List<BasicPrimitiveEnumTwinSync> arg, dynamic hint});
+
+  List<BasicStructTwinSync> exampleBasicListTypeBasicStructTwinSyncTwinSync(
+      {required List<BasicStructTwinSync> arg, dynamic hint});
 
   List<bool> exampleBasicListTypeBoolTwinSync(
       {required List<bool> arg, dynamic hint});
@@ -1181,6 +1272,9 @@ abstract class RustLibApi extends BaseApi {
   Int8List exampleBasicListTypeI8TwinSync(
       {required List<int> arg, dynamic hint});
 
+  List<String> exampleBasicListTypeStringTwinSync(
+      {required List<String> arg, dynamic hint});
+
   Uint16List exampleBasicListTypeU16TwinSync(
       {required List<int> arg, dynamic hint});
 
@@ -1192,6 +1286,18 @@ abstract class RustLibApi extends BaseApi {
 
   Uint8List exampleBasicListTypeU8TwinSync(
       {required List<int> arg, dynamic hint});
+
+  List<BasicGeneralEnumTwinSyncSse>
+      exampleBasicListTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {required List<BasicGeneralEnumTwinSyncSse> arg, dynamic hint});
+
+  List<BasicPrimitiveEnumTwinSyncSse>
+      exampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {required List<BasicPrimitiveEnumTwinSyncSse> arg, dynamic hint});
+
+  List<BasicStructTwinSyncSse>
+      exampleBasicListTypeBasicStructTwinSyncSseTwinSyncSse(
+          {required List<BasicStructTwinSyncSse> arg, dynamic hint});
 
   List<bool> exampleBasicListTypeBoolTwinSyncSse(
       {required List<bool> arg, dynamic hint});
@@ -1214,6 +1320,9 @@ abstract class RustLibApi extends BaseApi {
   Int8List exampleBasicListTypeI8TwinSyncSse(
       {required List<int> arg, dynamic hint});
 
+  List<String> exampleBasicListTypeStringTwinSyncSse(
+      {required List<String> arg, dynamic hint});
+
   Uint16List exampleBasicListTypeU16TwinSyncSse(
       {required List<int> arg, dynamic hint});
 
@@ -1226,8 +1335,661 @@ abstract class RustLibApi extends BaseApi {
   Uint8List exampleBasicListTypeU8TwinSyncSse(
       {required List<int> arg, dynamic hint});
 
+  Future<Map<int, BasicGeneralEnumTwinNormal>>
+      exampleBasicMapTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {required Map<int, BasicGeneralEnumTwinNormal> arg, dynamic hint});
+
+  Future<Map<int, BasicPrimitiveEnumTwinNormal>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {required Map<int, BasicPrimitiveEnumTwinNormal> arg, dynamic hint});
+
+  Future<Map<int, BasicStructTwinNormal>>
+      exampleBasicMapTypeBasicStructTwinNormalTwinNormal(
+          {required Map<int, BasicStructTwinNormal> arg, dynamic hint});
+
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinNormal(
+      {required Map<int, bool> arg, dynamic hint});
+
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinNormal(
+      {required Map<int, Uint8List> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinNormal(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinNormal(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinNormal(
+      {required Map<int, String> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinNormal(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, BasicGeneralEnumTwinRustAsync>>
+      exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {required Map<int, BasicGeneralEnumTwinRustAsync> arg, dynamic hint});
+
+  Future<Map<int, BasicPrimitiveEnumTwinRustAsync>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {required Map<int, BasicPrimitiveEnumTwinRustAsync> arg,
+          dynamic hint});
+
+  Future<Map<int, BasicStructTwinRustAsync>>
+      exampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {required Map<int, BasicStructTwinRustAsync> arg, dynamic hint});
+
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinRustAsync(
+      {required Map<int, bool> arg, dynamic hint});
+
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinRustAsync(
+      {required Map<int, Uint8List> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinRustAsync(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinRustAsync(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinRustAsync(
+      {required Map<int, String> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinRustAsync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, BasicGeneralEnumTwinRustAsyncSse>>
+      exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required Map<int, BasicGeneralEnumTwinRustAsyncSse> arg,
+          dynamic hint});
+
+  Future<Map<int, BasicPrimitiveEnumTwinRustAsyncSse>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required Map<int, BasicPrimitiveEnumTwinRustAsyncSse> arg,
+          dynamic hint});
+
+  Future<Map<int, BasicStructTwinRustAsyncSse>>
+      exampleBasicMapTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {required Map<int, BasicStructTwinRustAsyncSse> arg, dynamic hint});
+
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinRustAsyncSse(
+      {required Map<int, bool> arg, dynamic hint});
+
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinRustAsyncSse(
+      {required Map<int, Uint8List> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinRustAsyncSse(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinRustAsyncSse(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinRustAsyncSse(
+      {required Map<int, String> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, BasicGeneralEnumTwinSse>>
+      exampleBasicMapTypeBasicGeneralEnumTwinSseTwinSse(
+          {required Map<int, BasicGeneralEnumTwinSse> arg, dynamic hint});
+
+  Future<Map<int, BasicPrimitiveEnumTwinSse>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {required Map<int, BasicPrimitiveEnumTwinSse> arg, dynamic hint});
+
+  Future<Map<int, BasicStructTwinSse>>
+      exampleBasicMapTypeBasicStructTwinSseTwinSse(
+          {required Map<int, BasicStructTwinSse> arg, dynamic hint});
+
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinSse(
+      {required Map<int, bool> arg, dynamic hint});
+
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinSse(
+      {required Map<int, Uint8List> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinSse(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinSse(
+      {required Map<int, double> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinSse(
+      {required Map<int, String> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, BasicGeneralEnumTwinSync>
+      exampleBasicMapTypeBasicGeneralEnumTwinSyncTwinSync(
+          {required Map<int, BasicGeneralEnumTwinSync> arg, dynamic hint});
+
+  Map<int, BasicPrimitiveEnumTwinSync>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinSyncTwinSync(
+          {required Map<int, BasicPrimitiveEnumTwinSync> arg, dynamic hint});
+
+  Map<int, BasicStructTwinSync> exampleBasicMapTypeBasicStructTwinSyncTwinSync(
+      {required Map<int, BasicStructTwinSync> arg, dynamic hint});
+
+  Map<int, bool> exampleBasicMapTypeBoolTwinSync(
+      {required Map<int, bool> arg, dynamic hint});
+
+  Map<int, Uint8List> exampleBasicMapTypeBytesTwinSync(
+      {required Map<int, Uint8List> arg, dynamic hint});
+
+  Map<int, double> exampleBasicMapTypeF32TwinSync(
+      {required Map<int, double> arg, dynamic hint});
+
+  Map<int, double> exampleBasicMapTypeF64TwinSync(
+      {required Map<int, double> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI16TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI32TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI64TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI8TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeIsizeTwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, String> exampleBasicMapTypeStringTwinSync(
+      {required Map<int, String> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU16TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU32TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU64TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU8TwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeUsizeTwinSync(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, BasicGeneralEnumTwinSyncSse>
+      exampleBasicMapTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {required Map<int, BasicGeneralEnumTwinSyncSse> arg, dynamic hint});
+
+  Map<int, BasicPrimitiveEnumTwinSyncSse>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {required Map<int, BasicPrimitiveEnumTwinSyncSse> arg, dynamic hint});
+
+  Map<int, BasicStructTwinSyncSse>
+      exampleBasicMapTypeBasicStructTwinSyncSseTwinSyncSse(
+          {required Map<int, BasicStructTwinSyncSse> arg, dynamic hint});
+
+  Map<int, bool> exampleBasicMapTypeBoolTwinSyncSse(
+      {required Map<int, bool> arg, dynamic hint});
+
+  Map<int, Uint8List> exampleBasicMapTypeBytesTwinSyncSse(
+      {required Map<int, Uint8List> arg, dynamic hint});
+
+  Map<int, double> exampleBasicMapTypeF32TwinSyncSse(
+      {required Map<int, double> arg, dynamic hint});
+
+  Map<int, double> exampleBasicMapTypeF64TwinSyncSse(
+      {required Map<int, double> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI16TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI32TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI64TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeI8TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeIsizeTwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, String> exampleBasicMapTypeStringTwinSyncSse(
+      {required Map<int, String> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU16TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU32TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU64TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeU8TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Map<int, int> exampleBasicMapTypeUsizeTwinSyncSse(
+      {required Map<int, int> arg, dynamic hint});
+
+  Future<BasicGeneralEnumTwinNormal?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {BasicGeneralEnumTwinNormal? arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinNormal?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {BasicPrimitiveEnumTwinNormal? arg, dynamic hint});
+
+  Future<BasicStructTwinNormal?>
+      exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal(
+          {BasicStructTwinNormal? arg, dynamic hint});
+
+  Future<bool?> exampleBasicOptionalTypeBoolTwinNormal(
+      {bool? arg, dynamic hint});
+
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinNormal(
+      {Uint8List? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF32TwinNormal(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF64TwinNormal(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI16TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI32TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI64TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI8TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeIsizeTwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<String?> exampleBasicOptionalTypeStringTwinNormal(
+      {String? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU16TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU32TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU64TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU8TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeUsizeTwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<BasicGeneralEnumTwinRustAsync?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {BasicGeneralEnumTwinRustAsync? arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinRustAsync?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {BasicPrimitiveEnumTwinRustAsync? arg, dynamic hint});
+
+  Future<BasicStructTwinRustAsync?>
+      exampleBasicOptionalTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {BasicStructTwinRustAsync? arg, dynamic hint});
+
+  Future<bool?> exampleBasicOptionalTypeBoolTwinRustAsync(
+      {bool? arg, dynamic hint});
+
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinRustAsync(
+      {Uint8List? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF32TwinRustAsync(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF64TwinRustAsync(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI16TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI32TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI64TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI8TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeIsizeTwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<String?> exampleBasicOptionalTypeStringTwinRustAsync(
+      {String? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU16TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU32TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU64TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU8TwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeUsizeTwinRustAsync(
+      {int? arg, dynamic hint});
+
+  Future<BasicGeneralEnumTwinRustAsyncSse?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {BasicGeneralEnumTwinRustAsyncSse? arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinRustAsyncSse?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {BasicPrimitiveEnumTwinRustAsyncSse? arg, dynamic hint});
+
+  Future<BasicStructTwinRustAsyncSse?>
+      exampleBasicOptionalTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {BasicStructTwinRustAsyncSse? arg, dynamic hint});
+
+  Future<bool?> exampleBasicOptionalTypeBoolTwinRustAsyncSse(
+      {bool? arg, dynamic hint});
+
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinRustAsyncSse(
+      {Uint8List? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF32TwinRustAsyncSse(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF64TwinRustAsyncSse(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI16TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI32TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI64TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI8TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeIsizeTwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<String?> exampleBasicOptionalTypeStringTwinRustAsyncSse(
+      {String? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU16TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU32TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU64TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU8TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeUsizeTwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<BasicGeneralEnumTwinSse?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
+          {BasicGeneralEnumTwinSse? arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinSse?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {BasicPrimitiveEnumTwinSse? arg, dynamic hint});
+
+  Future<BasicStructTwinSse?> exampleBasicOptionalTypeBasicStructTwinSseTwinSse(
+      {BasicStructTwinSse? arg, dynamic hint});
+
+  Future<bool?> exampleBasicOptionalTypeBoolTwinSse({bool? arg, dynamic hint});
+
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinSse(
+      {Uint8List? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF32TwinSse(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleBasicOptionalTypeF64TwinSse(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI16TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI32TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI64TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeI8TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeIsizeTwinSse({int? arg, dynamic hint});
+
+  Future<String?> exampleBasicOptionalTypeStringTwinSse(
+      {String? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU16TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU32TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU64TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeU8TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleBasicOptionalTypeUsizeTwinSse({int? arg, dynamic hint});
+
+  BasicGeneralEnumTwinSync?
+      exampleBasicOptionalTypeBasicGeneralEnumTwinSyncTwinSync(
+          {BasicGeneralEnumTwinSync? arg, dynamic hint});
+
+  BasicPrimitiveEnumTwinSync?
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncTwinSync(
+          {BasicPrimitiveEnumTwinSync? arg, dynamic hint});
+
+  BasicStructTwinSync? exampleBasicOptionalTypeBasicStructTwinSyncTwinSync(
+      {BasicStructTwinSync? arg, dynamic hint});
+
+  bool? exampleBasicOptionalTypeBoolTwinSync({bool? arg, dynamic hint});
+
+  Uint8List? exampleBasicOptionalTypeBytesTwinSync(
+      {Uint8List? arg, dynamic hint});
+
+  double? exampleBasicOptionalTypeF32TwinSync({double? arg, dynamic hint});
+
+  double? exampleBasicOptionalTypeF64TwinSync({double? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI16TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI32TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI64TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI8TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeIsizeTwinSync({int? arg, dynamic hint});
+
+  String? exampleBasicOptionalTypeStringTwinSync({String? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU16TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU32TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU64TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU8TwinSync({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeUsizeTwinSync({int? arg, dynamic hint});
+
+  BasicGeneralEnumTwinSyncSse?
+      exampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {BasicGeneralEnumTwinSyncSse? arg, dynamic hint});
+
+  BasicPrimitiveEnumTwinSyncSse?
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {BasicPrimitiveEnumTwinSyncSse? arg, dynamic hint});
+
+  BasicStructTwinSyncSse?
+      exampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSse(
+          {BasicStructTwinSyncSse? arg, dynamic hint});
+
+  bool? exampleBasicOptionalTypeBoolTwinSyncSse({bool? arg, dynamic hint});
+
+  Uint8List? exampleBasicOptionalTypeBytesTwinSyncSse(
+      {Uint8List? arg, dynamic hint});
+
+  double? exampleBasicOptionalTypeF32TwinSyncSse({double? arg, dynamic hint});
+
+  double? exampleBasicOptionalTypeF64TwinSyncSse({double? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI16TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI32TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI64TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeI8TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeIsizeTwinSyncSse({int? arg, dynamic hint});
+
+  String? exampleBasicOptionalTypeStringTwinSyncSse(
+      {String? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU16TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU32TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU64TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeU8TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleBasicOptionalTypeUsizeTwinSyncSse({int? arg, dynamic hint});
+
+  Future<BasicGeneralEnumTwinRustAsync>
+      exampleBasicTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {required BasicGeneralEnumTwinRustAsync arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinRustAsync>
+      exampleBasicTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {required BasicPrimitiveEnumTwinRustAsync arg, dynamic hint});
+
+  Future<BasicStructTwinRustAsync>
+      exampleBasicTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {required BasicStructTwinRustAsync arg, dynamic hint});
+
   Future<bool> exampleBasicTypeBoolTwinRustAsync(
       {required bool arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicTypeBytesTwinRustAsync(
+      {required List<int> arg, dynamic hint});
 
   Future<double> exampleBasicTypeF32TwinRustAsync(
       {required double arg, dynamic hint});
@@ -1246,6 +2008,12 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> exampleBasicTypeI8TwinRustAsync({required int arg, dynamic hint});
 
+  Future<int> exampleBasicTypeIsizeTwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<String> exampleBasicTypeStringTwinRustAsync(
+      {required String arg, dynamic hint});
+
   Future<int> exampleBasicTypeU16TwinRustAsync(
       {required int arg, dynamic hint});
 
@@ -1257,8 +2025,26 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> exampleBasicTypeU8TwinRustAsync({required int arg, dynamic hint});
 
+  Future<int> exampleBasicTypeUsizeTwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<BasicGeneralEnumTwinRustAsyncSse>
+      exampleBasicTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required BasicGeneralEnumTwinRustAsyncSse arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinRustAsyncSse>
+      exampleBasicTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required BasicPrimitiveEnumTwinRustAsyncSse arg, dynamic hint});
+
+  Future<BasicStructTwinRustAsyncSse>
+      exampleBasicTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {required BasicStructTwinRustAsyncSse arg, dynamic hint});
+
   Future<bool> exampleBasicTypeBoolTwinRustAsyncSse(
       {required bool arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicTypeBytesTwinRustAsyncSse(
+      {required List<int> arg, dynamic hint});
 
   Future<double> exampleBasicTypeF32TwinRustAsyncSse(
       {required double arg, dynamic hint});
@@ -1278,6 +2064,12 @@ abstract class RustLibApi extends BaseApi {
   Future<int> exampleBasicTypeI8TwinRustAsyncSse(
       {required int arg, dynamic hint});
 
+  Future<int> exampleBasicTypeIsizeTwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<String> exampleBasicTypeStringTwinRustAsyncSse(
+      {required String arg, dynamic hint});
+
   Future<int> exampleBasicTypeU16TwinRustAsyncSse(
       {required int arg, dynamic hint});
 
@@ -1290,7 +2082,24 @@ abstract class RustLibApi extends BaseApi {
   Future<int> exampleBasicTypeU8TwinRustAsyncSse(
       {required int arg, dynamic hint});
 
+  Future<int> exampleBasicTypeUsizeTwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<BasicGeneralEnumTwinSse>
+      exampleBasicTypeBasicGeneralEnumTwinSseTwinSse(
+          {required BasicGeneralEnumTwinSse arg, dynamic hint});
+
+  Future<BasicPrimitiveEnumTwinSse>
+      exampleBasicTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {required BasicPrimitiveEnumTwinSse arg, dynamic hint});
+
+  Future<BasicStructTwinSse> exampleBasicTypeBasicStructTwinSseTwinSse(
+      {required BasicStructTwinSse arg, dynamic hint});
+
   Future<bool> exampleBasicTypeBoolTwinSse({required bool arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicTypeBytesTwinSse(
+      {required List<int> arg, dynamic hint});
 
   Future<double> exampleBasicTypeF32TwinSse(
       {required double arg, dynamic hint});
@@ -1306,6 +2115,11 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> exampleBasicTypeI8TwinSse({required int arg, dynamic hint});
 
+  Future<int> exampleBasicTypeIsizeTwinSse({required int arg, dynamic hint});
+
+  Future<String> exampleBasicTypeStringTwinSse(
+      {required String arg, dynamic hint});
+
   Future<int> exampleBasicTypeU16TwinSse({required int arg, dynamic hint});
 
   Future<int> exampleBasicTypeU32TwinSse({required int arg, dynamic hint});
@@ -1314,7 +2128,21 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> exampleBasicTypeU8TwinSse({required int arg, dynamic hint});
 
+  Future<int> exampleBasicTypeUsizeTwinSse({required int arg, dynamic hint});
+
+  BasicGeneralEnumTwinSync exampleBasicTypeBasicGeneralEnumTwinSyncTwinSync(
+      {required BasicGeneralEnumTwinSync arg, dynamic hint});
+
+  BasicPrimitiveEnumTwinSync exampleBasicTypeBasicPrimitiveEnumTwinSyncTwinSync(
+      {required BasicPrimitiveEnumTwinSync arg, dynamic hint});
+
+  BasicStructTwinSync exampleBasicTypeBasicStructTwinSyncTwinSync(
+      {required BasicStructTwinSync arg, dynamic hint});
+
   bool exampleBasicTypeBoolTwinSync({required bool arg, dynamic hint});
+
+  Uint8List exampleBasicTypeBytesTwinSync(
+      {required List<int> arg, dynamic hint});
 
   double exampleBasicTypeF32TwinSync({required double arg, dynamic hint});
 
@@ -1328,6 +2156,10 @@ abstract class RustLibApi extends BaseApi {
 
   int exampleBasicTypeI8TwinSync({required int arg, dynamic hint});
 
+  int exampleBasicTypeIsizeTwinSync({required int arg, dynamic hint});
+
+  String exampleBasicTypeStringTwinSync({required String arg, dynamic hint});
+
   int exampleBasicTypeU16TwinSync({required int arg, dynamic hint});
 
   int exampleBasicTypeU32TwinSync({required int arg, dynamic hint});
@@ -1336,7 +2168,23 @@ abstract class RustLibApi extends BaseApi {
 
   int exampleBasicTypeU8TwinSync({required int arg, dynamic hint});
 
+  int exampleBasicTypeUsizeTwinSync({required int arg, dynamic hint});
+
+  BasicGeneralEnumTwinSyncSse
+      exampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {required BasicGeneralEnumTwinSyncSse arg, dynamic hint});
+
+  BasicPrimitiveEnumTwinSyncSse
+      exampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {required BasicPrimitiveEnumTwinSyncSse arg, dynamic hint});
+
+  BasicStructTwinSyncSse exampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
+      {required BasicStructTwinSyncSse arg, dynamic hint});
+
   bool exampleBasicTypeBoolTwinSyncSse({required bool arg, dynamic hint});
+
+  Uint8List exampleBasicTypeBytesTwinSyncSse(
+      {required List<int> arg, dynamic hint});
 
   double exampleBasicTypeF32TwinSyncSse({required double arg, dynamic hint});
 
@@ -1350,6 +2198,10 @@ abstract class RustLibApi extends BaseApi {
 
   int exampleBasicTypeI8TwinSyncSse({required int arg, dynamic hint});
 
+  int exampleBasicTypeIsizeTwinSyncSse({required int arg, dynamic hint});
+
+  String exampleBasicTypeStringTwinSyncSse({required String arg, dynamic hint});
+
   int exampleBasicTypeU16TwinSyncSse({required int arg, dynamic hint});
 
   int exampleBasicTypeU32TwinSyncSse({required int arg, dynamic hint});
@@ -1357,6 +2209,8 @@ abstract class RustLibApi extends BaseApi {
   int exampleBasicTypeU64TwinSyncSse({required int arg, dynamic hint});
 
   int exampleBasicTypeU8TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeUsizeTwinSyncSse({required int arg, dynamic hint});
 
   Future<void> benchmarkBinaryTreeInputJsonTwinNormal(
       {required String raw, dynamic hint});
@@ -3354,8 +4208,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> funcReturnUnitTwinRustAsync({dynamic hint});
 
-  Future<String> funcStringTwinRustAsync({required String arg, dynamic hint});
-
   Future<List<MySize>> handleListOfStructTwinRustAsync(
       {required List<MySize> l, dynamic hint});
 
@@ -3366,9 +4218,6 @@ abstract class RustLibApi extends BaseApi {
       {required EmptyTwinRustAsyncSse empty, dynamic hint});
 
   Future<void> funcReturnUnitTwinRustAsyncSse({dynamic hint});
-
-  Future<String> funcStringTwinRustAsyncSse(
-      {required String arg, dynamic hint});
 
   Future<List<MySize>> handleListOfStructTwinRustAsyncSse(
       {required List<MySize> l, dynamic hint});
@@ -3381,8 +4230,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> funcReturnUnitTwinSse({dynamic hint});
 
-  Future<String> funcStringTwinSse({required String arg, dynamic hint});
-
   Future<List<MySize>> handleListOfStructTwinSse(
       {required List<MySize> l, dynamic hint});
 
@@ -3394,8 +4241,6 @@ abstract class RustLibApi extends BaseApi {
 
   void funcReturnUnitTwinSync({dynamic hint});
 
-  String funcStringTwinSync({required String arg, dynamic hint});
-
   List<MySize> handleListOfStructTwinSync(
       {required List<MySize> l, dynamic hint});
 
@@ -3406,8 +4251,6 @@ abstract class RustLibApi extends BaseApi {
       {required EmptyTwinSyncSse empty, dynamic hint});
 
   void funcReturnUnitTwinSyncSse({dynamic hint});
-
-  String funcStringTwinSyncSse({required String arg, dynamic hint});
 
   List<MySize> handleListOfStructTwinSyncSse(
       {required List<MySize> l, dynamic hint});
@@ -3429,165 +4272,6 @@ abstract class RustLibApi extends BaseApi {
 
   NewTypeIntTwinSyncSse handleNewtypeTwinSyncSse(
       {required NewTypeIntTwinSyncSse arg, dynamic hint});
-
-  Future<bool?> exampleOptionalBasicTypeBoolTwinNormal(
-      {bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF32TwinNormal(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF64TwinNormal(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI16TwinNormal({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI32TwinNormal({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI64TwinNormal({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI8TwinNormal({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU16TwinNormal({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU32TwinNormal({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU64TwinNormal({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU8TwinNormal({int? arg, dynamic hint});
-
-  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsync(
-      {bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF32TwinRustAsync(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF64TwinRustAsync(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI16TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI32TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI64TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI8TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU16TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU32TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU64TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU8TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsyncSse(
-      {bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF32TwinRustAsyncSse(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF64TwinRustAsyncSse(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI16TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI32TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI64TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI8TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU16TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU32TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU64TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU8TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<bool?> exampleOptionalBasicTypeBoolTwinSse({bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF32TwinSse(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalBasicTypeF64TwinSse(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI16TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI32TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI64TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeI8TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU16TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU32TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU64TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalBasicTypeU8TwinSse({int? arg, dynamic hint});
-
-  bool? exampleOptionalBasicTypeBoolTwinSync({bool? arg, dynamic hint});
-
-  double? exampleOptionalBasicTypeF32TwinSync({double? arg, dynamic hint});
-
-  double? exampleOptionalBasicTypeF64TwinSync({double? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI16TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI32TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI64TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI8TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU16TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU32TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU64TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU8TwinSync({int? arg, dynamic hint});
-
-  bool? exampleOptionalBasicTypeBoolTwinSyncSse({bool? arg, dynamic hint});
-
-  double? exampleOptionalBasicTypeF32TwinSyncSse({double? arg, dynamic hint});
-
-  double? exampleOptionalBasicTypeF64TwinSyncSse({double? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI16TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI32TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI64TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeI8TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU16TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU32TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU64TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalBasicTypeU8TwinSyncSse({int? arg, dynamic hint});
 
   Future<int?> primitiveOptionalTypesTwinRustAsync(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
@@ -3743,9 +4427,6 @@ abstract class RustLibApi extends BaseApi {
   VecOfPrimitivePackTwinSyncSse handleVecOfPrimitiveTwinSyncSse(
       {required int n, dynamic hint});
 
-  Future<int> primitiveIsizeLoopbackTwinRustAsync(
-      {required int arg, dynamic hint});
-
   Future<int> primitiveTypesTwinRustAsync(
       {required int myI32,
       required int myI64,
@@ -3754,12 +4435,6 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<int> primitiveU32TwinRustAsync({required int myU32, dynamic hint});
-
-  Future<int> primitiveUsizeLoopbackTwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> primitiveIsizeLoopbackTwinRustAsyncSse(
-      {required int arg, dynamic hint});
 
   Future<int> primitiveTypesTwinRustAsyncSse(
       {required int myI32,
@@ -3770,11 +4445,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> primitiveU32TwinRustAsyncSse({required int myU32, dynamic hint});
 
-  Future<int> primitiveUsizeLoopbackTwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> primitiveIsizeLoopbackTwinSse({required int arg, dynamic hint});
-
   Future<int> primitiveTypesTwinSse(
       {required int myI32,
       required int myI64,
@@ -3783,10 +4453,6 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<int> primitiveU32TwinSse({required int myU32, dynamic hint});
-
-  Future<int> primitiveUsizeLoopbackTwinSse({required int arg, dynamic hint});
-
-  int primitiveIsizeLoopbackTwinSync({required int arg, dynamic hint});
 
   int primitiveTypesTwinSync(
       {required int myI32,
@@ -3797,10 +4463,6 @@ abstract class RustLibApi extends BaseApi {
 
   int primitiveU32TwinSync({required int myU32, dynamic hint});
 
-  int primitiveUsizeLoopbackTwinSync({required int arg, dynamic hint});
-
-  int primitiveIsizeLoopbackTwinSyncSse({required int arg, dynamic hint});
-
   int primitiveTypesTwinSyncSse(
       {required int myI32,
       required int myI64,
@@ -3809,8 +4471,6 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   int primitiveU32TwinSyncSse({required int myU32, dynamic hint});
-
-  int primitiveUsizeLoopbackTwinSyncSse({required int arg, dynamic hint});
 
   Future<MoreThanJustOneRawStringStructTwinRustAsync>
       testMoreThanJustOneRawStringStructTwinRustAsync({dynamic hint});
@@ -11895,29 +12555,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> funcStringTwinNormal({required String arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_String(arg);
-        return wire.wire_func_string_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncStringTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStringTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "func_string_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<List<MySize>> handleListOfStructTwinNormal(
       {required List<MySize> l, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -12219,31 +12856,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> primitiveIsizeLoopbackTwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_isize(arg);
-        return wire.wire_primitive_isize_loopback_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_isize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveIsizeLoopbackTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveIsizeLoopbackTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_isize_loopback_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<int> primitiveTypesTwinNormal(
       {required int myI32,
       required int myI64,
@@ -12296,31 +12908,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinNormalConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_normal",
         argNames: ["myU32"],
-      );
-
-  @override
-  Future<int> primitiveUsizeLoopbackTwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_usize(arg);
-        return wire.wire_primitive_usize_loopback_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_usize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveUsizeLoopbackTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveUsizeLoopbackTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_usize_loopback_twin_normal",
-        argNames: ["arg"],
       );
 
   @override
@@ -14052,6 +14639,94 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<BasicGeneralEnumTwinNormal>
+      exampleBasicTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {required BasicGeneralEnumTwinNormal arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_basic_general_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_type_basic_general_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_general_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_general_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicPrimitiveEnumTwinNormal>
+      exampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {required BasicPrimitiveEnumTwinNormal arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_basic_primitive_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_type_basic_primitive_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_primitive_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_primitive_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinNormal> exampleBasicTypeBasicStructTwinNormalTwinNormal(
+      {required BasicStructTwinNormal arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_basic_struct_twin_normal(arg);
+        return wire
+            .wire_example_basic_type_basic_struct_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_struct_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicStructTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBasicStructTwinNormalTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_basic_struct_twin_normal_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<bool> exampleBasicTypeBoolTwinNormal(
       {required bool arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -14073,6 +14748,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicTypeBoolTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicTypeBytesTwinNormal(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        return wire.wire_example_basic_type_bytes_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBytesTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBytesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bytes_twin_normal",
         argNames: ["arg"],
       );
 
@@ -14223,6 +14923,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> exampleBasicTypeIsizeTwinNormal(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_isize(arg);
+        return wire.wire_example_basic_type_isize_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeIsizeTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeIsizeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_isize_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String> exampleBasicTypeStringTwinNormal(
+      {required String arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_example_basic_type_string_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeStringTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeStringTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_string_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> exampleBasicTypeU16TwinNormal({required int arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -14317,6 +15067,123 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "example_basic_type_u8_twin_normal",
         argNames: ["arg"],
       );
+
+  @override
+  Future<int> exampleBasicTypeUsizeTwinNormal(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_usize(arg);
+        return wire.wire_example_basic_type_usize_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeUsizeTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeUsizeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_usize_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<BasicGeneralEnumTwinNormal>>
+      exampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {required List<BasicGeneralEnumTwinNormal> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_basic_general_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_general_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_general_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicPrimitiveEnumTwinNormal>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {required List<BasicPrimitiveEnumTwinNormal> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_basic_primitive_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_primitive_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicStructTwinNormal>>
+      exampleBasicListTypeBasicStructTwinNormalTwinNormal(
+          {required List<BasicStructTwinNormal> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_basic_struct_twin_normal(arg);
+        return wire
+            .wire_example_basic_list_type_basic_struct_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_struct_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBasicStructTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicStructTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_struct_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
 
   @override
   Future<List<bool>> exampleBasicListTypeBoolTwinNormal(
@@ -14494,6 +15361,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<String>> exampleBasicListTypeStringTwinNormal(
+      {required List<String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_String(arg);
+        return wire.wire_example_basic_list_type_string_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeStringTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeStringTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_string_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<Uint16List> exampleBasicListTypeU16TwinNormal(
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -14592,6 +15485,99 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "example_basic_list_type_u8_twin_normal",
         argNames: ["arg"],
       );
+
+  @override
+  Future<List<BasicGeneralEnumTwinRustAsync>>
+      exampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {required List<BasicGeneralEnumTwinRustAsync> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_basic_general_enum_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_general_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicPrimitiveEnumTwinRustAsync>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {required List<BasicPrimitiveEnumTwinRustAsync> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_basic_primitive_enum_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_primitive_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicStructTwinRustAsync>>
+      exampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {required List<BasicStructTwinRustAsync> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_basic_struct_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_struct_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
 
   @override
   Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync(
@@ -14776,6 +15762,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<String>> exampleBasicListTypeStringTwinRustAsync(
+      {required List<String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_String(arg);
+        return wire.wire_example_basic_list_type_string_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeStringTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeStringTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_string_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<Uint16List> exampleBasicListTypeU16TwinRustAsync(
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -14878,6 +15890,109 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "example_basic_list_type_u8_twin_rust_async",
         argNames: ["arg"],
       );
+
+  @override
+  Future<List<BasicGeneralEnumTwinRustAsyncSse>>
+      exampleBasicListTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required List<BasicGeneralEnumTwinRustAsyncSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_general_enum_twin_rust_async_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_list_basic_general_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicPrimitiveEnumTwinRustAsyncSse>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required List<BasicPrimitiveEnumTwinRustAsyncSse> arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_primitive_enum_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_list_basic_primitive_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicStructTwinRustAsyncSse>>
+      exampleBasicListTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {required List<BasicStructTwinRustAsyncSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_struct_twin_rust_async_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_basic_struct_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
 
   @override
   Future<List<bool>> exampleBasicListTypeBoolTwinRustAsyncSse(
@@ -15076,6 +16191,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<String>> exampleBasicListTypeStringTwinRustAsyncSse(
+      {required List<String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_string_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeStringTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeStringTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_string_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<Uint16List> exampleBasicListTypeU16TwinRustAsyncSse(
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -15184,6 +16327,99 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicListTypeU8TwinRustAsyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_list_type_u8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<BasicGeneralEnumTwinSse>>
+      exampleBasicListTypeBasicGeneralEnumTwinSseTwinSse(
+          {required List<BasicGeneralEnumTwinSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_general_enum_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_general_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_basic_general_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBasicGeneralEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicGeneralEnumTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_general_enum_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicPrimitiveEnumTwinSse>>
+      exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {required List<BasicPrimitiveEnumTwinSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_primitive_enum_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_primitive_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_basic_primitive_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_primitive_enum_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<List<BasicStructTwinSse>>
+      exampleBasicListTypeBasicStructTwinSseTwinSse(
+          {required List<BasicStructTwinSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_struct_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_basic_struct_twin_sse_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_basic_struct_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBasicStructTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBasicStructTwinSseTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_basic_struct_twin_sse_twin_sse",
         argNames: ["arg"],
       );
 
@@ -15384,6 +16620,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<String>> exampleBasicListTypeStringTwinSse(
+      {required List<String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_string_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeStringTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeStringTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_string_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<Uint16List> exampleBasicListTypeU16TwinSse(
       {required List<int> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -15492,6 +16756,94 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicListTypeU8TwinSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_list_type_u8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  List<BasicGeneralEnumTwinSync>
+      exampleBasicListTypeBasicGeneralEnumTwinSyncTwinSync(
+          {required List<BasicGeneralEnumTwinSync> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_basic_general_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_list_type_basic_general_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_general_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_general_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  List<BasicPrimitiveEnumTwinSync>
+      exampleBasicListTypeBasicPrimitiveEnumTwinSyncTwinSync(
+          {required List<BasicPrimitiveEnumTwinSync> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_basic_primitive_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_primitive_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_primitive_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  List<BasicStructTwinSync> exampleBasicListTypeBasicStructTwinSyncTwinSync(
+      {required List<BasicStructTwinSync> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_basic_struct_twin_sync(arg);
+        return wire
+            .wire_example_basic_list_type_basic_struct_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_basic_struct_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBasicStructTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBasicStructTwinSyncTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_basic_struct_twin_sync_twin_sync",
         argNames: ["arg"],
       );
 
@@ -15671,6 +17023,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  List<String> exampleBasicListTypeStringTwinSync(
+      {required List<String> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_String(arg);
+        return wire.wire_example_basic_list_type_string_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeStringTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeStringTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_string_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   Uint16List exampleBasicListTypeU16TwinSync(
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -15769,6 +17146,105 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "example_basic_list_type_u8_twin_sync",
         argNames: ["arg"],
       );
+
+  @override
+  List<BasicGeneralEnumTwinSyncSse>
+      exampleBasicListTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {required List<BasicGeneralEnumTwinSyncSse> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_general_enum_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_basic_general_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_general_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  List<BasicPrimitiveEnumTwinSyncSse>
+      exampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {required List<BasicPrimitiveEnumTwinSyncSse> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_primitive_enum_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_basic_primitive_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  List<BasicStructTwinSyncSse>
+      exampleBasicListTypeBasicStructTwinSyncSseTwinSyncSse(
+          {required List<BasicStructTwinSyncSse> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_basic_struct_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_list_type_basic_struct_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_basic_struct_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicListTypeBasicStructTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicListTypeBasicStructTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_list_type_basic_struct_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
 
   @override
   List<bool> exampleBasicListTypeBoolTwinSyncSse(
@@ -15967,6 +17443,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  List<String> exampleBasicListTypeStringTwinSyncSse(
+      {required List<String> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_string_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeStringTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeStringTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_string_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Uint16List exampleBasicListTypeU16TwinSyncSse(
       {required List<int> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -16079,6 +17583,6041 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<Map<int, BasicGeneralEnumTwinNormal>>
+      exampleBasicMapTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {required Map<int, BasicGeneralEnumTwinNormal> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_basic_general_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_map_type_basic_general_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_basic_general_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_general_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicPrimitiveEnumTwinNormal>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {required Map<int, BasicPrimitiveEnumTwinNormal> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_basic_primitive_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_basic_primitive_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_primitive_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicStructTwinNormal>>
+      exampleBasicMapTypeBasicStructTwinNormalTwinNormal(
+          {required Map<int, BasicStructTwinNormal> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_basic_struct_twin_normal(arg);
+        return wire
+            .wire_example_basic_map_type_basic_struct_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_basic_struct_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBasicStructTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicStructTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_struct_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinNormal(
+      {required Map<int, bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_bool(arg);
+        return wire.wire_example_basic_map_type_bool_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinNormal(
+      {required Map<int, Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_map_type_bytes_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBytesTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBytesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bytes_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinNormal(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_f_32(arg);
+        return wire.wire_example_basic_map_type_f32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinNormal(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_f_64(arg);
+        return wire.wire_example_basic_map_type_f64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_16(arg);
+        return wire.wire_example_basic_map_type_i16_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_32(arg);
+        return wire.wire_example_basic_map_type_i32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_64(arg);
+        return wire.wire_example_basic_map_type_i64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_8(arg);
+        return wire.wire_example_basic_map_type_i8_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_isize(arg);
+        return wire.wire_example_basic_map_type_isize_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeIsizeTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeIsizeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_isize_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinNormal(
+      {required Map<int, String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_String(arg);
+        return wire.wire_example_basic_map_type_string_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeStringTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeStringTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_string_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_16(arg);
+        return wire.wire_example_basic_map_type_u16_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_32(arg);
+        return wire.wire_example_basic_map_type_u32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_64(arg);
+        return wire.wire_example_basic_map_type_u64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_8(arg);
+        return wire.wire_example_basic_map_type_u8_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinNormal(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_usize(arg);
+        return wire.wire_example_basic_map_type_usize_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeUsizeTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeUsizeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_usize_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, BasicGeneralEnumTwinRustAsync>>
+      exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {required Map<int, BasicGeneralEnumTwinRustAsync> arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_basic_general_enum_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Map_i_32_basic_general_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicPrimitiveEnumTwinRustAsync>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {required Map<int, BasicPrimitiveEnumTwinRustAsync> arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Map_i_32_basic_primitive_enum_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicStructTwinRustAsync>>
+      exampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {required Map<int, BasicStructTwinRustAsync> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_basic_struct_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_basic_struct_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinRustAsync(
+      {required Map<int, bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_bool(arg);
+        return wire.wire_example_basic_map_type_bool_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBoolTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBoolTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bool_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinRustAsync(
+      {required Map<int, Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_map_type_bytes_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBytesTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBytesTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bytes_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinRustAsync(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_f_32(arg);
+        return wire.wire_example_basic_map_type_f32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinRustAsync(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_f_64(arg);
+        return wire.wire_example_basic_map_type_f64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_16(arg);
+        return wire.wire_example_basic_map_type_i16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_32(arg);
+        return wire.wire_example_basic_map_type_i32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_64(arg);
+        return wire.wire_example_basic_map_type_i64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_i_8(arg);
+        return wire.wire_example_basic_map_type_i8_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_isize(arg);
+        return wire.wire_example_basic_map_type_isize_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeIsizeTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeIsizeTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_isize_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinRustAsync(
+      {required Map<int, String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_String(arg);
+        return wire.wire_example_basic_map_type_string_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeStringTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeStringTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_string_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_16(arg);
+        return wire.wire_example_basic_map_type_u16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_32(arg);
+        return wire.wire_example_basic_map_type_u32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_64(arg);
+        return wire.wire_example_basic_map_type_u64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_u_8(arg);
+        return wire.wire_example_basic_map_type_u8_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinRustAsync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_Map_i_32_usize(arg);
+        return wire.wire_example_basic_map_type_usize_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeUsizeTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeUsizeTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_usize_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, BasicGeneralEnumTwinRustAsyncSse>>
+      exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required Map<int, BasicGeneralEnumTwinRustAsyncSse> arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_general_enum_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_general_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicPrimitiveEnumTwinRustAsyncSse>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required Map<int, BasicPrimitiveEnumTwinRustAsyncSse> arg,
+          dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicStructTwinRustAsyncSse>>
+      exampleBasicMapTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {required Map<int, BasicStructTwinRustAsyncSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_struct_twin_rust_async_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinRustAsyncSse(
+      {required Map<int, bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_bool_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBoolTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBoolTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bool_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinRustAsyncSse(
+      {required Map<int, Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_bytes_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBytesTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBytesTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bytes_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinRustAsyncSse(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_f32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinRustAsyncSse(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_f64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_isize_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeIsizeTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeIsizeTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_isize_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinRustAsyncSse(
+      {required Map<int, String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_string_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeStringTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeStringTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_string_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinRustAsyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_usize_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeUsizeTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeUsizeTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_usize_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, BasicGeneralEnumTwinSse>>
+      exampleBasicMapTypeBasicGeneralEnumTwinSseTwinSse(
+          {required Map<int, BasicGeneralEnumTwinSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_general_enum_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_general_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_basic_general_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBasicGeneralEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicGeneralEnumTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_general_enum_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicPrimitiveEnumTwinSse>>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {required Map<int, BasicPrimitiveEnumTwinSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_primitive_enum_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_primitive_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_basic_primitive_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_primitive_enum_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<Map<int, BasicStructTwinSse>>
+      exampleBasicMapTypeBasicStructTwinSseTwinSse(
+          {required Map<int, BasicStructTwinSse> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_struct_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_basic_struct_twin_sse_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBasicStructTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBasicStructTwinSseTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_basic_struct_twin_sse_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, bool>> exampleBasicMapTypeBoolTwinSse(
+      {required Map<int, bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_bool_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBoolTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBoolTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bool_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, Uint8List>> exampleBasicMapTypeBytesTwinSse(
+      {required Map<int, Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_bytes_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBytesTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBytesTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bytes_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF32TwinSse(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_f32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, double>> exampleBasicMapTypeF64TwinSse(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_f64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI16TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI32TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI64TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeI8TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeIsizeTwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_isize_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeIsizeTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeIsizeTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_isize_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, String>> exampleBasicMapTypeStringTwinSse(
+      {required Map<int, String> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_string_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeStringTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeStringTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_string_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU16TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU32TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU64TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeU8TwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Map<int, int>> exampleBasicMapTypeUsizeTwinSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_usize_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeUsizeTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeUsizeTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_usize_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, BasicGeneralEnumTwinSync>
+      exampleBasicMapTypeBasicGeneralEnumTwinSyncTwinSync(
+          {required Map<int, BasicGeneralEnumTwinSync> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_basic_general_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_map_type_basic_general_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_basic_general_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_general_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  Map<int, BasicPrimitiveEnumTwinSync>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinSyncTwinSync(
+          {required Map<int, BasicPrimitiveEnumTwinSync> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_basic_primitive_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_basic_primitive_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_primitive_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  Map<int, BasicStructTwinSync> exampleBasicMapTypeBasicStructTwinSyncTwinSync(
+      {required Map<int, BasicStructTwinSync> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_basic_struct_twin_sync(arg);
+        return wire
+            .wire_example_basic_map_type_basic_struct_twin_sync_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_basic_struct_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBasicStructTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBasicStructTwinSyncTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_basic_struct_twin_sync_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, bool> exampleBasicMapTypeBoolTwinSync(
+      {required Map<int, bool> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_bool(arg);
+        return wire.wire_example_basic_map_type_bool_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, Uint8List> exampleBasicMapTypeBytesTwinSync(
+      {required Map<int, Uint8List> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_map_type_bytes_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBytesTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBytesTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bytes_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, double> exampleBasicMapTypeF32TwinSync(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_f_32(arg);
+        return wire.wire_example_basic_map_type_f32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, double> exampleBasicMapTypeF64TwinSync(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_f_64(arg);
+        return wire.wire_example_basic_map_type_f64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI16TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_i_16(arg);
+        return wire.wire_example_basic_map_type_i16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI32TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_i_32(arg);
+        return wire.wire_example_basic_map_type_i32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI64TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_i_64(arg);
+        return wire.wire_example_basic_map_type_i64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI8TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_i_8(arg);
+        return wire.wire_example_basic_map_type_i8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeIsizeTwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_isize(arg);
+        return wire.wire_example_basic_map_type_isize_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeIsizeTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeIsizeTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_isize_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, String> exampleBasicMapTypeStringTwinSync(
+      {required Map<int, String> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_String(arg);
+        return wire.wire_example_basic_map_type_string_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeStringTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeStringTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_string_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU16TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_u_16(arg);
+        return wire.wire_example_basic_map_type_u16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU32TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_u_32(arg);
+        return wire.wire_example_basic_map_type_u32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU64TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_u_64(arg);
+        return wire.wire_example_basic_map_type_u64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU8TwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_u_8(arg);
+        return wire.wire_example_basic_map_type_u8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeUsizeTwinSync(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_Map_i_32_usize(arg);
+        return wire.wire_example_basic_map_type_usize_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_Map_i_32_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeUsizeTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeUsizeTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_usize_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, BasicGeneralEnumTwinSyncSse>
+      exampleBasicMapTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {required Map<int, BasicGeneralEnumTwinSyncSse> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_general_enum_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_basic_general_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Map<int, BasicPrimitiveEnumTwinSyncSse>
+      exampleBasicMapTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {required Map<int, BasicPrimitiveEnumTwinSyncSse> arg,
+          dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_primitive_enum_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_primitive_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicMapTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Map<int, BasicStructTwinSyncSse>
+      exampleBasicMapTypeBasicStructTwinSyncSseTwinSyncSse(
+          {required Map<int, BasicStructTwinSyncSse> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_basic_struct_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_map_type_basic_struct_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBasicStructTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicMapTypeBasicStructTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_map_type_basic_struct_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Map<int, bool> exampleBasicMapTypeBoolTwinSyncSse(
+      {required Map<int, bool> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_bool_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBoolTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBoolTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bool_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, Uint8List> exampleBasicMapTypeBytesTwinSyncSse(
+      {required Map<int, Uint8List> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_bytes_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeBytesTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeBytesTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_bytes_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, double> exampleBasicMapTypeF32TwinSyncSse(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_f32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, double> exampleBasicMapTypeF64TwinSyncSse(
+      {required Map<int, double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_f64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeF64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeF64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_f64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI16TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI32TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI64TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeI8TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_i8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeI8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeI8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_i8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeIsizeTwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_isize_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeIsizeTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeIsizeTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_isize_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, String> exampleBasicMapTypeStringTwinSyncSse(
+      {required Map<int, String> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_string_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeStringTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeStringTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_string_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU16TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU32TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU64TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeU8TwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_u8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeU8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeU8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_u8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Map<int, int> exampleBasicMapTypeUsizeTwinSyncSse(
+      {required Map<int, int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_i_32_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_map_type_usize_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_i_32_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicMapTypeUsizeTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicMapTypeUsizeTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_map_type_usize_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicGeneralEnumTwinNormal?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal(
+          {BasicGeneralEnumTwinNormal? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_opt_box_autoadd_basic_general_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_basic_general_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_general_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicPrimitiveEnumTwinNormal?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          {BasicPrimitiveEnumTwinNormal? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_opt_box_autoadd_basic_primitive_enum_twin_normal(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_basic_primitive_enum_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinNormal?>
+      exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal(
+          {BasicStructTwinNormal? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_basic_struct_twin_normal(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_struct_twin_normal_twin_normal(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_basic_struct_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicStructTwinNormalTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicStructTwinNormalTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_struct_twin_normal_twin_normal",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<bool?> exampleBasicOptionalTypeBoolTwinNormal(
+      {bool? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_basic_optional_type_bool_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinNormal(
+      {Uint8List? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_optional_type_bytes_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBytesTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBytesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bytes_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF32TwinNormal(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_basic_optional_type_f32_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF64TwinNormal(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_basic_optional_type_f64_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI16TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_basic_optional_type_i16_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI32TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_basic_optional_type_i32_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI64TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_basic_optional_type_i64_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI8TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_basic_optional_type_i8_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeIsizeTwinNormal(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_isize(arg);
+        return wire.wire_example_basic_optional_type_isize_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeIsizeTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeIsizeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_isize_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String?> exampleBasicOptionalTypeStringTwinNormal(
+      {String? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_String(arg);
+        return wire.wire_example_basic_optional_type_string_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeStringTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeStringTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_string_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU16TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_basic_optional_type_u16_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU32TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_basic_optional_type_u32_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU64TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_basic_optional_type_u64_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU8TwinNormal({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_basic_optional_type_u8_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeUsizeTwinNormal(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_usize(arg);
+        return wire.wire_example_basic_optional_type_usize_twin_normal(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeUsizeTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeUsizeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_usize_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicGeneralEnumTwinRustAsync?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {BasicGeneralEnumTwinRustAsync? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_opt_box_autoadd_basic_general_enum_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_basic_general_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_general_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicPrimitiveEnumTwinRustAsync?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {BasicPrimitiveEnumTwinRustAsync? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
+                arg);
+        return wire
+            .wire_example_basic_optional_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_primitive_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinRustAsync?>
+      exampleBasicOptionalTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {BasicStructTwinRustAsync? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_basic_struct_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_basic_struct_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_struct_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<bool?> exampleBasicOptionalTypeBoolTwinRustAsync(
+      {bool? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_basic_optional_type_bool_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBoolTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBoolTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bool_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinRustAsync(
+      {Uint8List? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_optional_type_bytes_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBytesTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBytesTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bytes_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF32TwinRustAsync(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_basic_optional_type_f32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF64TwinRustAsync(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_basic_optional_type_f64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI16TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_basic_optional_type_i16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI32TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_basic_optional_type_i32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI64TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_basic_optional_type_i64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI8TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_basic_optional_type_i8_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeIsizeTwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_isize(arg);
+        return wire.wire_example_basic_optional_type_isize_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeIsizeTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeIsizeTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_isize_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String?> exampleBasicOptionalTypeStringTwinRustAsync(
+      {String? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_String(arg);
+        return wire.wire_example_basic_optional_type_string_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeStringTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeStringTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_string_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU16TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_basic_optional_type_u16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU32TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_basic_optional_type_u32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU64TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_basic_optional_type_u64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU8TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_basic_optional_type_u8_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeUsizeTwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_usize(arg);
+        return wire.wire_example_basic_optional_type_usize_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeUsizeTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeUsizeTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_usize_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicGeneralEnumTwinRustAsyncSse?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {BasicGeneralEnumTwinRustAsyncSse? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_general_enum_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_general_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicPrimitiveEnumTwinRustAsyncSse?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {BasicPrimitiveEnumTwinRustAsyncSse? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinRustAsyncSse?>
+      exampleBasicOptionalTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {BasicStructTwinRustAsyncSse? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_struct_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_struct_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<bool?> exampleBasicOptionalTypeBoolTwinRustAsyncSse(
+      {bool? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_bool_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBoolTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBoolTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bool_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinRustAsyncSse(
+      {Uint8List? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_bytes_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBytesTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBytesTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bytes_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF32TwinRustAsyncSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_f32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF64TwinRustAsyncSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_f64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI16TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI32TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI64TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI8TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeIsizeTwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_isize_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeIsizeTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeIsizeTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_isize_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String?> exampleBasicOptionalTypeStringTwinRustAsyncSse(
+      {String? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_string_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeStringTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeStringTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_string_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU16TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU32TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU64TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU8TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeUsizeTwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_usize_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeUsizeTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeUsizeTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_usize_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicGeneralEnumTwinSse?>
+      exampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
+          {BasicGeneralEnumTwinSse? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_general_enum_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_general_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_general_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_general_enum_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicPrimitiveEnumTwinSse?>
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {BasicPrimitiveEnumTwinSse? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_primitive_enum_twin_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_primitive_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_primitive_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_primitive_enum_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinSse?> exampleBasicOptionalTypeBasicStructTwinSseTwinSse(
+      {BasicStructTwinSse? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_struct_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_struct_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_basic_struct_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBasicStructTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicStructTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_struct_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<bool?> exampleBasicOptionalTypeBoolTwinSse({bool? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_bool_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBoolTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBoolTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bool_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List?> exampleBasicOptionalTypeBytesTwinSse(
+      {Uint8List? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_bytes_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBytesTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBytesTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bytes_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF32TwinSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_f32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleBasicOptionalTypeF64TwinSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_f64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI16TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI32TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI64TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeI8TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeIsizeTwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_isize_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeIsizeTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeIsizeTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_isize_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String?> exampleBasicOptionalTypeStringTwinSse(
+      {String? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_string_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeStringTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeStringTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_string_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU16TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU32TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU64TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeU8TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleBasicOptionalTypeUsizeTwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_usize_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeUsizeTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeUsizeTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_usize_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  BasicGeneralEnumTwinSync?
+      exampleBasicOptionalTypeBasicGeneralEnumTwinSyncTwinSync(
+          {BasicGeneralEnumTwinSync? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_basic_general_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_general_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_basic_general_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_general_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicPrimitiveEnumTwinSync?
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncTwinSync(
+          {BasicPrimitiveEnumTwinSync? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_opt_box_autoadd_basic_primitive_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData:
+            dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_primitive_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicStructTwinSync? exampleBasicOptionalTypeBasicStructTwinSyncTwinSync(
+      {BasicStructTwinSync? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_basic_struct_twin_sync(arg);
+        return wire
+            .wire_example_basic_optional_type_basic_struct_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_basic_struct_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBasicStructTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicStructTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_struct_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  bool? exampleBasicOptionalTypeBoolTwinSync({bool? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_basic_optional_type_bool_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List? exampleBasicOptionalTypeBytesTwinSync(
+      {Uint8List? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_optional_type_bytes_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBytesTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBytesTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bytes_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleBasicOptionalTypeF32TwinSync({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_basic_optional_type_f32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleBasicOptionalTypeF64TwinSync({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_basic_optional_type_f64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI16TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_basic_optional_type_i16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI32TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_basic_optional_type_i32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI64TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_basic_optional_type_i64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI8TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_basic_optional_type_i8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeIsizeTwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_isize(arg);
+        return wire.wire_example_basic_optional_type_isize_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeIsizeTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeIsizeTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_isize_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  String? exampleBasicOptionalTypeStringTwinSync({String? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_String(arg);
+        return wire.wire_example_basic_optional_type_string_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeStringTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeStringTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_string_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU16TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_basic_optional_type_u16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU32TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_basic_optional_type_u32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU64TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_basic_optional_type_u64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU8TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_basic_optional_type_u8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeUsizeTwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_usize(arg);
+        return wire.wire_example_basic_optional_type_usize_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeUsizeTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeUsizeTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_usize_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  BasicGeneralEnumTwinSyncSse?
+      exampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {BasicGeneralEnumTwinSyncSse? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_general_enum_twin_sync_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_general_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_general_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicPrimitiveEnumTwinSyncSse?
+      exampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {BasicPrimitiveEnumTwinSyncSse? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_primitive_enum_twin_sync_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_primitive_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicStructTwinSyncSse?
+      exampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSse(
+          {BasicStructTwinSyncSse? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_basic_struct_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_optional_type_basic_struct_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_opt_box_autoadd_basic_struct_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_optional_type_basic_struct_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  bool? exampleBasicOptionalTypeBoolTwinSyncSse({bool? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_bool_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBoolTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBoolTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bool_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List? exampleBasicOptionalTypeBytesTwinSyncSse(
+      {Uint8List? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_bytes_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeBytesTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeBytesTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_bytes_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleBasicOptionalTypeF32TwinSyncSse({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_f32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleBasicOptionalTypeF64TwinSyncSse({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_f64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeF64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeF64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_f64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI16TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI32TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI64TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeI8TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_i8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeI8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeI8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_i8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeIsizeTwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_isize_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeIsizeTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeIsizeTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_isize_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  String? exampleBasicOptionalTypeStringTwinSyncSse(
+      {String? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_string_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeStringTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeStringTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_string_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU16TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU32TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU64TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeU8TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_u8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeU8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeU8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_u8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleBasicOptionalTypeUsizeTwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_optional_type_usize_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicOptionalTypeUsizeTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicOptionalTypeUsizeTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_optional_type_usize_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicGeneralEnumTwinRustAsync>
+      exampleBasicTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+          {required BasicGeneralEnumTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_basic_general_enum_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_general_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicGeneralEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_general_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicPrimitiveEnumTwinRustAsync>
+      exampleBasicTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+          {required BasicPrimitiveEnumTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_basic_primitive_enum_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_primitive_enum_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_primitive_enum_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinRustAsync>
+      exampleBasicTypeBasicStructTwinRustAsyncTwinRustAsync(
+          {required BasicStructTwinRustAsync arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_basic_struct_twin_rust_async(arg);
+        return wire
+            .wire_example_basic_type_basic_struct_twin_rust_async_twin_rust_async(
+                port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_struct_twin_rust_async,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicStructTwinRustAsyncTwinRustAsyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_struct_twin_rust_async_twin_rust_async",
+            argNames: ["arg"],
+          );
+
+  @override
   Future<bool> exampleBasicTypeBoolTwinRustAsync(
       {required bool arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -16100,6 +23639,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicTypeBoolTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_type_bool_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicTypeBytesTwinRustAsync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        return wire.wire_example_basic_type_bytes_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBytesTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBytesTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bytes_twin_rust_async",
         argNames: ["arg"],
       );
 
@@ -16254,6 +23818,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> exampleBasicTypeIsizeTwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_isize(arg);
+        return wire.wire_example_basic_type_isize_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeIsizeTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeIsizeTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_isize_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String> exampleBasicTypeStringTwinRustAsync(
+      {required String arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_example_basic_type_string_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeStringTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeStringTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_string_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> exampleBasicTypeU16TwinRustAsync(
       {required int arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -16354,6 +23968,132 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> exampleBasicTypeUsizeTwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_usize(arg);
+        return wire.wire_example_basic_type_usize_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeUsizeTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeUsizeTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_usize_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicGeneralEnumTwinRustAsyncSse>
+      exampleBasicTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required BasicGeneralEnumTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_general_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicGeneralEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicPrimitiveEnumTwinRustAsyncSse>
+      exampleBasicTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSse(
+          {required BasicPrimitiveEnumTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_basic_primitive_enum_twin_rust_async_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_primitive_enum_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicPrimitiveEnumTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinRustAsyncSse>
+      exampleBasicTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
+          {required BasicStructTwinRustAsyncSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_basic_struct_twin_rust_async_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_struct_twin_rust_async_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicStructTwinRustAsyncSseTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse",
+            argNames: ["arg"],
+          );
+
+  @override
   Future<bool> exampleBasicTypeBoolTwinRustAsyncSse(
       {required bool arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -16378,6 +24118,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicTypeBoolTwinRustAsyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_type_bool_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicTypeBytesTwinRustAsyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_bytes_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBytesTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBytesTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bytes_twin_rust_async_sse",
         argNames: ["arg"],
       );
 
@@ -16550,6 +24318,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> exampleBasicTypeIsizeTwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_isize_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeIsizeTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeIsizeTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_isize_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String> exampleBasicTypeStringTwinRustAsyncSse(
+      {required String arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_string_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeStringTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeStringTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_string_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> exampleBasicTypeU16TwinRustAsyncSse(
       {required int arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -16662,6 +24486,124 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> exampleBasicTypeUsizeTwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_usize_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeUsizeTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeUsizeTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_usize_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicGeneralEnumTwinSse>
+      exampleBasicTypeBasicGeneralEnumTwinSseTwinSse(
+          {required BasicGeneralEnumTwinSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_basic_general_enum_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_general_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_general_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicGeneralEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBasicGeneralEnumTwinSseTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_basic_general_enum_twin_sse_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BasicPrimitiveEnumTwinSse>
+      exampleBasicTypeBasicPrimitiveEnumTwinSseTwinSse(
+          {required BasicPrimitiveEnumTwinSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_basic_primitive_enum_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_primitive_enum_twin_sse_twin_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_primitive_enum_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicPrimitiveEnumTwinSseTwinSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_primitive_enum_twin_sse_twin_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<BasicStructTwinSse> exampleBasicTypeBasicStructTwinSseTwinSse(
+      {required BasicStructTwinSse arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_basic_struct_twin_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_basic_struct_twin_sse_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_struct_twin_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicStructTwinSseTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBasicStructTwinSseTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_basic_struct_twin_sse_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<bool> exampleBasicTypeBoolTwinSse({required bool arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -16685,6 +24627,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicTypeBoolTwinSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_type_bool_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicTypeBytesTwinSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_bytes_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBytesTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBytesTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bytes_twin_sse",
         argNames: ["arg"],
       );
 
@@ -16847,6 +24817,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> exampleBasicTypeIsizeTwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_isize_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeIsizeTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeIsizeTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_isize_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<String> exampleBasicTypeStringTwinSse(
+      {required String arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_string_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeStringTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeStringTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_string_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> exampleBasicTypeU16TwinSse({required int arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
@@ -16951,6 +24976,117 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> exampleBasicTypeUsizeTwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_usize_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeUsizeTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeUsizeTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_usize_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  BasicGeneralEnumTwinSync exampleBasicTypeBasicGeneralEnumTwinSyncTwinSync(
+      {required BasicGeneralEnumTwinSync arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_basic_general_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_type_basic_general_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_general_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicGeneralEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_general_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicPrimitiveEnumTwinSync exampleBasicTypeBasicPrimitiveEnumTwinSyncTwinSync(
+      {required BasicPrimitiveEnumTwinSync arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_basic_primitive_enum_twin_sync(arg);
+        return wire
+            .wire_example_basic_type_basic_primitive_enum_twin_sync_twin_sync(
+                arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_primitive_enum_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicPrimitiveEnumTwinSyncTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_primitive_enum_twin_sync_twin_sync",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicStructTwinSync exampleBasicTypeBasicStructTwinSyncTwinSync(
+      {required BasicStructTwinSync arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_basic_struct_twin_sync(arg);
+        return wire
+            .wire_example_basic_type_basic_struct_twin_sync_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_basic_struct_twin_sync,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicStructTwinSyncTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBasicStructTwinSyncTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_basic_struct_twin_sync_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   bool exampleBasicTypeBoolTwinSync({required bool arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -16971,6 +25107,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicTypeBoolTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List exampleBasicTypeBytesTwinSync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        return wire.wire_example_basic_type_bytes_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBytesTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBytesTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bytes_twin_sync",
         argNames: ["arg"],
       );
 
@@ -17118,6 +25279,54 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  int exampleBasicTypeIsizeTwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_isize(arg);
+        return wire.wire_example_basic_type_isize_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeIsizeTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeIsizeTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_isize_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  String exampleBasicTypeStringTwinSync({required String arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_example_basic_type_string_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeStringTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeStringTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_string_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   int exampleBasicTypeU16TwinSync({required int arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -17213,6 +25422,128 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  int exampleBasicTypeUsizeTwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_usize(arg);
+        return wire.wire_example_basic_type_usize_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeUsizeTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeUsizeTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_usize_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  BasicGeneralEnumTwinSyncSse
+      exampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          {required BasicGeneralEnumTwinSyncSse arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_basic_general_enum_twin_sync_sse(
+            arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_general_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicPrimitiveEnumTwinSyncSse
+      exampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          {required BasicPrimitiveEnumTwinSyncSse arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_basic_primitive_enum_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_primitive_enum_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kExampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
+  BasicStructTwinSyncSse exampleBasicTypeBasicStructTwinSyncSseTwinSyncSse(
+      {required BasicStructTwinSyncSse arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_basic_struct_twin_sync_sse(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_example_basic_type_basic_struct_twin_sync_sse_twin_sync_sse(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_basic_struct_twin_sync_sse,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBasicStructTwinSyncSseTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kExampleBasicTypeBasicStructTwinSyncSseTwinSyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "example_basic_type_basic_struct_twin_sync_sse_twin_sync_sse",
+            argNames: ["arg"],
+          );
+
+  @override
   bool exampleBasicTypeBoolTwinSyncSse({required bool arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -17236,6 +25567,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicTypeBoolTwinSyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_type_bool_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List exampleBasicTypeBytesTwinSyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_bytes_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBytesTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBytesTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bytes_twin_sync_sse",
         argNames: ["arg"],
       );
 
@@ -17402,6 +25761,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  int exampleBasicTypeIsizeTwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_isize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_isize_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_isize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeIsizeTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeIsizeTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_isize_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  String exampleBasicTypeStringTwinSyncSse(
+      {required String arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_string_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeStringTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeStringTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_string_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   int exampleBasicTypeU16TwinSyncSse({required int arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
@@ -17506,6 +25920,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicTypeU8TwinSyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_type_u8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeUsizeTwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_usize(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_usize_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_usize,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeUsizeTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeUsizeTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_usize_twin_sync_sse",
         argNames: ["arg"],
       );
 
@@ -36550,29 +44991,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> funcStringTwinRustAsync({required String arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_String(arg);
-        return wire.wire_func_string_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncStringTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStringTwinRustAsyncConstMeta => const TaskConstMeta(
-        debugName: "func_string_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<List<MySize>> handleListOfStructTwinRustAsync(
       {required List<MySize> l, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -36675,33 +45093,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "func_return_unit_twin_rust_async_sse",
         argNames: [],
-      );
-
-  @override
-  Future<String> funcStringTwinRustAsyncSse(
-      {required String arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_string_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncStringTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStringTwinRustAsyncSseConstMeta => const TaskConstMeta(
-        debugName: "func_string_twin_rust_async_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -36814,32 +45205,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<String> funcStringTwinSse({required String arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_string_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncStringTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStringTwinSseConstMeta => const TaskConstMeta(
-        debugName: "func_string_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<List<MySize>> handleListOfStructTwinSse(
       {required List<MySize> l, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -36937,29 +45302,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncReturnUnitTwinSyncConstMeta => const TaskConstMeta(
         debugName: "func_return_unit_twin_sync",
         argNames: [],
-      );
-
-  @override
-  String funcStringTwinSync({required String arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_String(arg);
-        return wire.wire_func_string_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncStringTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStringTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "func_string_twin_sync",
-        argNames: ["arg"],
       );
 
   @override
@@ -37061,32 +45403,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncReturnUnitTwinSyncSseConstMeta => const TaskConstMeta(
         debugName: "func_return_unit_twin_sync_sse",
         argNames: [],
-      );
-
-  @override
-  String funcStringTwinSyncSse({required String arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_func_string_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_String,
-        decodeErrorData: null,
-      ),
-      constMeta: kFuncStringTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStringTwinSyncSseConstMeta => const TaskConstMeta(
-        debugName: "func_string_twin_sync_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -37273,1738 +45589,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kHandleNewtypeTwinSyncSseConstMeta => const TaskConstMeta(
         debugName: "handle_newtype_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalBasicTypeBoolTwinNormal(
-      {bool? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
-        return wire.wire_example_optional_basic_type_bool_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeBoolTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_bool_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF32TwinNormal(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
-        return wire.wire_example_optional_basic_type_f32_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF64TwinNormal(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
-        return wire.wire_example_optional_basic_type_f64_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI16TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
-        return wire.wire_example_optional_basic_type_i16_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI32TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
-        return wire.wire_example_optional_basic_type_i32_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI64TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
-        return wire.wire_example_optional_basic_type_i64_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI8TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
-        return wire.wire_example_optional_basic_type_i8_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU16TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
-        return wire.wire_example_optional_basic_type_u16_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU32TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
-        return wire.wire_example_optional_basic_type_u32_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU64TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
-        return wire.wire_example_optional_basic_type_u64_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU8TwinNormal({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
-        return wire.wire_example_optional_basic_type_u8_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsync(
-      {bool? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
-        return wire.wire_example_optional_basic_type_bool_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeBoolTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_bool_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF32TwinRustAsync(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
-        return wire.wire_example_optional_basic_type_f32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF64TwinRustAsync(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
-        return wire.wire_example_optional_basic_type_f64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI16TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
-        return wire.wire_example_optional_basic_type_i16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI32TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
-        return wire.wire_example_optional_basic_type_i32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI64TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
-        return wire.wire_example_optional_basic_type_i64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI8TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
-        return wire.wire_example_optional_basic_type_i8_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU16TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
-        return wire.wire_example_optional_basic_type_u16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU32TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
-        return wire.wire_example_optional_basic_type_u32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU64TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
-        return wire.wire_example_optional_basic_type_u64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU8TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
-        return wire.wire_example_optional_basic_type_u8_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsyncSse(
-      {bool? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_bool_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeBoolTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_bool_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF32TwinRustAsyncSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_f32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF64TwinRustAsyncSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_f64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI16TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i16_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI32TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI64TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI8TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU16TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u16_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU32TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU64TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU8TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalBasicTypeBoolTwinSse({bool? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_bool_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeBoolTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_bool_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF32TwinSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_f32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalBasicTypeF64TwinSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_f64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI16TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI32TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI64TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeI8TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU16TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU32TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU64TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalBasicTypeU8TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool? exampleOptionalBasicTypeBoolTwinSync({bool? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
-        return wire.wire_example_optional_basic_type_bool_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeBoolTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_bool_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalBasicTypeF32TwinSync({double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
-        return wire.wire_example_optional_basic_type_f32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalBasicTypeF64TwinSync({double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
-        return wire.wire_example_optional_basic_type_f64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI16TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
-        return wire.wire_example_optional_basic_type_i16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI32TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
-        return wire.wire_example_optional_basic_type_i32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI64TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
-        return wire.wire_example_optional_basic_type_i64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI8TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
-        return wire.wire_example_optional_basic_type_i8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU16TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
-        return wire.wire_example_optional_basic_type_u16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU32TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
-        return wire.wire_example_optional_basic_type_u32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU64TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
-        return wire.wire_example_optional_basic_type_u64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU8TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
-        return wire.wire_example_optional_basic_type_u8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool? exampleOptionalBasicTypeBoolTwinSyncSse({bool? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_bool_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeBoolTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_bool_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalBasicTypeF32TwinSyncSse({double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_f32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalBasicTypeF64TwinSyncSse({double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_f64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeF64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeF64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_f64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI16TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI32TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI64TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeI8TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_i8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeI8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeI8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_i8_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU16TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU32TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU64TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalBasicTypeU8TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_basic_type_u8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalBasicTypeU8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalBasicTypeU8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_basic_type_u8_twin_sync_sse",
         argNames: ["arg"],
       );
 
@@ -40219,31 +46803,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> primitiveIsizeLoopbackTwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_isize(arg);
-        return wire.wire_primitive_isize_loopback_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_isize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveIsizeLoopbackTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveIsizeLoopbackTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_isize_loopback_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<int> primitiveTypesTwinRustAsync(
       {required int myI32,
       required int myI64,
@@ -40297,59 +46856,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinRustAsyncConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_rust_async",
         argNames: ["myU32"],
-      );
-
-  @override
-  Future<int> primitiveUsizeLoopbackTwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_usize(arg);
-        return wire.wire_primitive_usize_loopback_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_usize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveUsizeLoopbackTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveUsizeLoopbackTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_usize_loopback_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> primitiveIsizeLoopbackTwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_isize(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_primitive_isize_loopback_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_isize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveIsizeLoopbackTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveIsizeLoopbackTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_isize_loopback_twin_rust_async_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -40415,61 +46921,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> primitiveUsizeLoopbackTwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_usize(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_primitive_usize_loopback_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_usize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveUsizeLoopbackTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveUsizeLoopbackTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_usize_loopback_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> primitiveIsizeLoopbackTwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_isize(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_primitive_isize_loopback_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_isize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveIsizeLoopbackTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveIsizeLoopbackTwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_isize_loopback_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<int> primitiveTypesTwinSse(
       {required int myI32,
       required int myI64,
@@ -40530,57 +46981,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> primitiveUsizeLoopbackTwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_usize(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_primitive_usize_loopback_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_usize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveUsizeLoopbackTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveUsizeLoopbackTwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_usize_loopback_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int primitiveIsizeLoopbackTwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_isize(arg);
-        return wire.wire_primitive_isize_loopback_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_isize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveIsizeLoopbackTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveIsizeLoopbackTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_isize_loopback_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
   int primitiveTypesTwinSync(
       {required int myI32,
       required int myI64,
@@ -40632,57 +47032,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinSyncConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_sync",
         argNames: ["myU32"],
-      );
-
-  @override
-  int primitiveUsizeLoopbackTwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_usize(arg);
-        return wire.wire_primitive_usize_loopback_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_usize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveUsizeLoopbackTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveUsizeLoopbackTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_usize_loopback_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int primitiveIsizeLoopbackTwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_isize(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_primitive_isize_loopback_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_isize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveIsizeLoopbackTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveIsizeLoopbackTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_isize_loopback_twin_sync_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -40743,33 +47092,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveU32TwinSyncSseConstMeta => const TaskConstMeta(
         debugName: "primitive_u32_twin_sync_sse",
         argNames: ["myU32"],
-      );
-
-  @override
-  int primitiveUsizeLoopbackTwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_usize(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_primitive_usize_loopback_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_usize,
-        decodeErrorData: null,
-      ),
-      constMeta: kPrimitiveUsizeLoopbackTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kPrimitiveUsizeLoopbackTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "primitive_usize_loopback_twin_sync_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -65142,9 +71464,239 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Map<int, String> dco_decode_Map_i_32_String(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_string(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinNormal>
+      dco_decode_Map_i_32_basic_general_enum_twin_normal(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinRustAsync>
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSync>
+      dco_decode_Map_i_32_basic_general_enum_twin_sync(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSyncSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinNormal>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_normal(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsync>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+                raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSync>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSyncSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinNormal> dco_decode_Map_i_32_basic_struct_twin_normal(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinRustAsync>
+      dco_decode_Map_i_32_basic_struct_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSse> dco_decode_Map_i_32_basic_struct_twin_sse(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSyncSse>
+      dco_decode_Map_i_32_basic_struct_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, bool> dco_decode_Map_i_32_bool(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_bool(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, double> dco_decode_Map_i_32_f_32(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_f_32(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, double> dco_decode_Map_i_32_f_64(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_f_64(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_16(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_i_16(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
   Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw) {
     return Map.fromEntries(
         dco_decode_list_record_i_32_i_32(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_64(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_i_64(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_8(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_i_8(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_isize(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_isize(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, Uint8List> dco_decode_Map_i_32_list_prim_u_8_strict(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_list_prim_u_8_strict(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_16(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_16(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_32(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_32(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_64(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_64(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_8(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_8(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_usize(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_usize(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
@@ -66762,6 +73314,199 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BasicGeneralEnumTwinNormal dco_decode_basic_general_enum_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinNormal_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinNormal_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync dco_decode_basic_general_enum_twin_rust_async(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinRustAsync_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinRustAsync_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      dco_decode_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinRustAsyncSse_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinRustAsyncSse_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse dco_decode_basic_general_enum_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinSse_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinSse_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync dco_decode_basic_general_enum_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinSync_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinSync_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse dco_decode_basic_general_enum_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinSyncSse_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinSyncSse_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal dco_decode_basic_primitive_enum_twin_normal(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinNormal.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      dco_decode_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return BasicPrimitiveEnumTwinRustAsync.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      dco_decode_basic_primitive_enum_twin_rust_async_sse(dynamic raw) {
+    return BasicPrimitiveEnumTwinRustAsyncSse.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse dco_decode_basic_primitive_enum_twin_sse(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinSse.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync dco_decode_basic_primitive_enum_twin_sync(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinSync.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse dco_decode_basic_primitive_enum_twin_sync_sse(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinSyncSse.values[raw as int];
+  }
+
+  @protected
+  BasicStructTwinNormal dco_decode_basic_struct_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinNormal(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinRustAsync dco_decode_basic_struct_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinRustAsync(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse dco_decode_basic_struct_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinRustAsyncSse(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinSse dco_decode_basic_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinSse(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinSync dco_decode_basic_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinSync(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinSyncSse dco_decode_basic_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinSyncSse(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
   BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -67310,6 +74055,115 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BTwinSyncSse dco_decode_box_autoadd_b_twin_sync_sse(dynamic raw) {
     return dco_decode_b_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinNormal
+      dco_decode_box_autoadd_basic_general_enum_twin_normal(dynamic raw) {
+    return dco_decode_basic_general_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync
+      dco_decode_box_autoadd_basic_general_enum_twin_rust_async(dynamic raw) {
+    return dco_decode_basic_general_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_basic_general_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse dco_decode_box_autoadd_basic_general_enum_twin_sse(
+      dynamic raw) {
+    return dco_decode_basic_general_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync dco_decode_box_autoadd_basic_general_enum_twin_sync(
+      dynamic raw) {
+    return dco_decode_basic_general_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse
+      dco_decode_box_autoadd_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return dco_decode_basic_general_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal
+      dco_decode_box_autoadd_basic_primitive_enum_twin_normal(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sse(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinNormal dco_decode_box_autoadd_basic_struct_twin_normal(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_normal(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsync dco_decode_box_autoadd_basic_struct_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_basic_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSse dco_decode_box_autoadd_basic_struct_twin_sse(dynamic raw) {
+    return dco_decode_basic_struct_twin_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSync dco_decode_box_autoadd_basic_struct_twin_sync(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_sync(raw);
+  }
+
+  @protected
+  BasicStructTwinSyncSse dco_decode_box_autoadd_basic_struct_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_sync_sse(raw);
   }
 
   @protected
@@ -68155,6 +75009,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int dco_decode_box_autoadd_isize(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
   KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
       dynamic raw) {
     return dco_decode_kitchen_sink_twin_normal(raw);
@@ -68963,6 +75822,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   UserIdTwinSyncSse dco_decode_box_autoadd_user_id_twin_sync_sse(dynamic raw) {
     return dco_decode_user_id_twin_sync_sse(raw);
+  }
+
+  @protected
+  int dco_decode_box_autoadd_usize(dynamic raw) {
+    return dco_decode_usize(raw);
   }
 
   @protected
@@ -72363,6 +79227,149 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<BasicGeneralEnumTwinNormal>
+      dco_decode_list_basic_general_enum_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinRustAsync>
+      dco_decode_list_basic_general_enum_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinRustAsyncSse>
+      dco_decode_list_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSse> dco_decode_list_basic_general_enum_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSync> dco_decode_list_basic_general_enum_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSyncSse>
+      dco_decode_list_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinNormal>
+      dco_decode_list_basic_primitive_enum_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinRustAsync>
+      dco_decode_list_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinRustAsyncSse>
+      dco_decode_list_basic_primitive_enum_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSse> dco_decode_list_basic_primitive_enum_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSync>
+      dco_decode_list_basic_primitive_enum_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSyncSse>
+      dco_decode_list_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinNormal> dco_decode_list_basic_struct_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinRustAsync> dco_decode_list_basic_struct_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinRustAsyncSse>
+      dco_decode_list_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinSse> dco_decode_list_basic_struct_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinSync> dco_decode_list_basic_struct_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinSyncSse> dco_decode_list_basic_struct_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
   List<bool> dco_decode_list_bool(dynamic raw) {
     return (raw as List<dynamic>).map(dco_decode_bool).toList();
   }
@@ -72823,8 +79830,233 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(int, BasicGeneralEnumTwinNormal)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_rust_async(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSync)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sync_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinNormal)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_normal(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSync)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sync_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinNormal)>
+      dco_decode_list_record_i_32_basic_struct_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_struct_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinSync)>
+      dco_decode_list_record_i_32_basic_struct_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, bool)> dco_decode_list_record_i_32_bool(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_bool).toList();
+  }
+
+  @protected
+  List<(int, double)> dco_decode_list_record_i_32_f_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_f_32).toList();
+  }
+
+  @protected
+  List<(int, double)> dco_decode_list_record_i_32_f_64(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_f_64).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_16(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_16).toList();
+  }
+
+  @protected
   List<(int, int)> dco_decode_list_record_i_32_i_32(dynamic raw) {
     return (raw as List<dynamic>).map(dco_decode_record_i_32_i_32).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_64(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_64).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_8(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_8).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_isize(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_isize).toList();
+  }
+
+  @protected
+  List<(int, Uint8List)> dco_decode_list_record_i_32_list_prim_u_8_strict(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_list_prim_u_8_strict)
+        .toList();
+  }
+
+  @protected
+  List<(int, String)> dco_decode_list_record_i_32_string(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_string).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_16(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_16).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_32).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_64(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_64).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_8(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_8).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_usize(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_usize).toList();
   }
 
   @protected
@@ -74245,6 +81477,155 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BasicGeneralEnumTwinNormal?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_rust_async(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinNormal? dco_decode_opt_box_autoadd_basic_struct_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_normal(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_struct_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSse? dco_decode_opt_box_autoadd_basic_struct_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSync? dco_decode_opt_box_autoadd_basic_struct_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_sync(raw);
+  }
+
+  @protected
+  BasicStructTwinSyncSse? dco_decode_opt_box_autoadd_basic_struct_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_sync_sse(raw);
+  }
+
+  @protected
   bool? dco_decode_opt_box_autoadd_bool(dynamic raw) {
     return raw == null ? null : dco_decode_box_autoadd_bool(raw);
   }
@@ -74369,6 +81750,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int? dco_decode_opt_box_autoadd_isize(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_isize(raw);
+  }
+
+  @protected
   MeasureTwinNormal? dco_decode_opt_box_autoadd_measure_twin_normal(
       dynamic raw) {
     return raw == null ? null : dco_decode_box_autoadd_measure_twin_normal(raw);
@@ -74479,6 +81865,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int? dco_decode_opt_box_autoadd_u_8(dynamic raw) {
     return raw == null ? null : dco_decode_box_autoadd_u_8(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_usize(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_usize(raw);
   }
 
   @protected
@@ -75089,6 +82480,291 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  (int, BasicGeneralEnumTwinNormal)
+      dco_decode_record_i_32_basic_general_enum_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinRustAsync)
+      dco_decode_record_i_32_basic_general_enum_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (
+    int,
+    BasicGeneralEnumTwinRustAsyncSse
+  ) dco_decode_record_i_32_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSse)
+      dco_decode_record_i_32_basic_general_enum_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSync)
+      dco_decode_record_i_32_basic_general_enum_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSyncSse)
+      dco_decode_record_i_32_basic_general_enum_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinNormal)
+      dco_decode_record_i_32_basic_primitive_enum_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinRustAsync)
+      dco_decode_record_i_32_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinRustAsyncSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSync)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSyncSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinNormal) dco_decode_record_i_32_basic_struct_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinRustAsync)
+      dco_decode_record_i_32_basic_struct_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinRustAsyncSse)
+      dco_decode_record_i_32_basic_struct_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinSse) dco_decode_record_i_32_basic_struct_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinSync) dco_decode_record_i_32_basic_struct_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinSyncSse)
+      dco_decode_record_i_32_basic_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, bool) dco_decode_record_i_32_bool(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_bool(arr[1]),
+    );
+  }
+
+  @protected
+  (int, double) dco_decode_record_i_32_f_32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  (int, double) dco_decode_record_i_32_f_64(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_f_64(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_16(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_i_16(arr[1]),
+    );
+  }
+
+  @protected
   (int, int) dco_decode_record_i_32_i_32(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2) {
@@ -75097,6 +82773,126 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (
       dco_decode_i_32(arr[0]),
       dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_64(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_i_64(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_8(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_i_8(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_isize(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_isize(arr[1]),
+    );
+  }
+
+  @protected
+  (int, Uint8List) dco_decode_record_i_32_list_prim_u_8_strict(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_list_prim_u_8_strict(arr[1]),
+    );
+  }
+
+  @protected
+  (int, String) dco_decode_record_i_32_string(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_16(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_16(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_32(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_64(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_64(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_8(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_8(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_usize(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_usize(arr[1]),
     );
   }
 
@@ -77918,8 +85714,254 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Map<int, String> sse_decode_Map_i_32_String(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_string(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinNormal>
+      sse_decode_Map_i_32_basic_general_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_general_enum_twin_normal(
+        deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinRustAsync>
+      sse_decode_Map_i_32_basic_general_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_general_enum_twin_rust_async(
+        deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinRustAsyncSse>
+      sse_decode_Map_i_32_basic_general_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_general_enum_twin_rust_async_sse(
+            deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSse>
+      sse_decode_Map_i_32_basic_general_enum_twin_sse(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_general_enum_twin_sse(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSync>
+      sse_decode_Map_i_32_basic_general_enum_twin_sync(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_general_enum_twin_sync(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSyncSse>
+      sse_decode_Map_i_32_basic_general_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_general_enum_twin_sync_sse(
+        deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinNormal>
+      sse_decode_Map_i_32_basic_primitive_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_primitive_enum_twin_normal(
+        deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsync>
+      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+            deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsyncSse>
+      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+            deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSse>
+      sse_decode_Map_i_32_basic_primitive_enum_twin_sse(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_primitive_enum_twin_sse(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSync>
+      sse_decode_Map_i_32_basic_primitive_enum_twin_sync(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_primitive_enum_twin_sync(
+        deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSyncSse>
+      sse_decode_Map_i_32_basic_primitive_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_primitive_enum_twin_sync_sse(
+        deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinNormal> sse_decode_Map_i_32_basic_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_struct_twin_normal(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinRustAsync>
+      sse_decode_Map_i_32_basic_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_struct_twin_rust_async(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinRustAsyncSse>
+      sse_decode_Map_i_32_basic_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_struct_twin_rust_async_sse(
+        deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSse> sse_decode_Map_i_32_basic_struct_twin_sse(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_basic_struct_twin_sse(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSync> sse_decode_Map_i_32_basic_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_struct_twin_sync(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSyncSse>
+      sse_decode_Map_i_32_basic_struct_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var inner =
+        sse_decode_list_record_i_32_basic_struct_twin_sync_sse(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, bool> sse_decode_Map_i_32_bool(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_bool(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, double> sse_decode_Map_i_32_f_32(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_f_32(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, double> sse_decode_Map_i_32_f_64(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_f_64(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_i_16(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_i_16(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
   Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer) {
     var inner = sse_decode_list_record_i_32_i_32(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_i_64(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_i_64(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_i_8(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_i_8(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_isize(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_isize(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, Uint8List> sse_decode_Map_i_32_list_prim_u_8_strict(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_list_prim_u_8_strict(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_u_16(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_u_16(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_u_32(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_u_32(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_u_64(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_u_64(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_u_8(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_u_8(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> sse_decode_Map_i_32_usize(SseDeserializer deserializer) {
+    var inner = sse_decode_list_record_i_32_usize(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
@@ -79613,6 +87655,189 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BasicGeneralEnumTwinNormal sse_decode_basic_general_enum_twin_normal(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field = sse_decode_String(deserializer);
+        return BasicGeneralEnumTwinNormal_Apple(field: var_field);
+      case 1:
+        return BasicGeneralEnumTwinNormal_Orange();
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync sse_decode_basic_general_enum_twin_rust_async(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field = sse_decode_String(deserializer);
+        return BasicGeneralEnumTwinRustAsync_Apple(field: var_field);
+      case 1:
+        return BasicGeneralEnumTwinRustAsync_Orange();
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      sse_decode_basic_general_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field = sse_decode_String(deserializer);
+        return BasicGeneralEnumTwinRustAsyncSse_Apple(field: var_field);
+      case 1:
+        return BasicGeneralEnumTwinRustAsyncSse_Orange();
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse sse_decode_basic_general_enum_twin_sse(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field = sse_decode_String(deserializer);
+        return BasicGeneralEnumTwinSse_Apple(field: var_field);
+      case 1:
+        return BasicGeneralEnumTwinSse_Orange();
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync sse_decode_basic_general_enum_twin_sync(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field = sse_decode_String(deserializer);
+        return BasicGeneralEnumTwinSync_Apple(field: var_field);
+      case 1:
+        return BasicGeneralEnumTwinSync_Orange();
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse sse_decode_basic_general_enum_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_field = sse_decode_String(deserializer);
+        return BasicGeneralEnumTwinSyncSse_Apple(field: var_field);
+      case 1:
+        return BasicGeneralEnumTwinSyncSse_Orange();
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal sse_decode_basic_primitive_enum_twin_normal(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_i_32(deserializer);
+    return BasicPrimitiveEnumTwinNormal.values[inner];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      sse_decode_basic_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_i_32(deserializer);
+    return BasicPrimitiveEnumTwinRustAsync.values[inner];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      sse_decode_basic_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var inner = sse_decode_i_32(deserializer);
+    return BasicPrimitiveEnumTwinRustAsyncSse.values[inner];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse sse_decode_basic_primitive_enum_twin_sse(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_i_32(deserializer);
+    return BasicPrimitiveEnumTwinSse.values[inner];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync sse_decode_basic_primitive_enum_twin_sync(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_i_32(deserializer);
+    return BasicPrimitiveEnumTwinSync.values[inner];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse sse_decode_basic_primitive_enum_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var inner = sse_decode_i_32(deserializer);
+    return BasicPrimitiveEnumTwinSyncSse.values[inner];
+  }
+
+  @protected
+  BasicStructTwinNormal sse_decode_basic_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
+    return BasicStructTwinNormal(apple: var_apple, orange: var_orange);
+  }
+
+  @protected
+  BasicStructTwinRustAsync sse_decode_basic_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
+    return BasicStructTwinRustAsync(apple: var_apple, orange: var_orange);
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse sse_decode_basic_struct_twin_rust_async_sse(
+      SseDeserializer deserializer) {
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
+    return BasicStructTwinRustAsyncSse(apple: var_apple, orange: var_orange);
+  }
+
+  @protected
+  BasicStructTwinSse sse_decode_basic_struct_twin_sse(
+      SseDeserializer deserializer) {
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
+    return BasicStructTwinSse(apple: var_apple, orange: var_orange);
+  }
+
+  @protected
+  BasicStructTwinSync sse_decode_basic_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
+    return BasicStructTwinSync(apple: var_apple, orange: var_orange);
+  }
+
+  @protected
+  BasicStructTwinSyncSse sse_decode_basic_struct_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
+    return BasicStructTwinSyncSse(apple: var_apple, orange: var_orange);
+  }
+
+  @protected
   BenchmarkBinaryTreeTwinNormal sse_decode_benchmark_binary_tree_twin_normal(
       SseDeserializer deserializer) {
     var var_name = sse_decode_String(deserializer);
@@ -80120,6 +88345,125 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BTwinSyncSse sse_decode_box_autoadd_b_twin_sync_sse(
       SseDeserializer deserializer) {
     return (sse_decode_b_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  BasicGeneralEnumTwinNormal
+      sse_decode_box_autoadd_basic_general_enum_twin_normal(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_general_enum_twin_normal(deserializer));
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync
+      sse_decode_box_autoadd_basic_general_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_general_enum_twin_rust_async(deserializer));
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      sse_decode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_general_enum_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse sse_decode_box_autoadd_basic_general_enum_twin_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_basic_general_enum_twin_sse(deserializer));
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync sse_decode_box_autoadd_basic_general_enum_twin_sync(
+      SseDeserializer deserializer) {
+    return (sse_decode_basic_general_enum_twin_sync(deserializer));
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse
+      sse_decode_box_autoadd_basic_general_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_general_enum_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal
+      sse_decode_box_autoadd_basic_primitive_enum_twin_normal(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_primitive_enum_twin_normal(deserializer));
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      sse_decode_box_autoadd_basic_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_primitive_enum_twin_rust_async(deserializer));
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      sse_decode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_primitive_enum_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse
+      sse_decode_box_autoadd_basic_primitive_enum_twin_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_primitive_enum_twin_sse(deserializer));
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync
+      sse_decode_box_autoadd_basic_primitive_enum_twin_sync(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_primitive_enum_twin_sync(deserializer));
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse
+      sse_decode_box_autoadd_basic_primitive_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_primitive_enum_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  BasicStructTwinNormal sse_decode_box_autoadd_basic_struct_twin_normal(
+      SseDeserializer deserializer) {
+    return (sse_decode_basic_struct_twin_normal(deserializer));
+  }
+
+  @protected
+  BasicStructTwinRustAsync sse_decode_box_autoadd_basic_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    return (sse_decode_basic_struct_twin_rust_async(deserializer));
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse
+      sse_decode_box_autoadd_basic_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    return (sse_decode_basic_struct_twin_rust_async_sse(deserializer));
+  }
+
+  @protected
+  BasicStructTwinSse sse_decode_box_autoadd_basic_struct_twin_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_basic_struct_twin_sse(deserializer));
+  }
+
+  @protected
+  BasicStructTwinSync sse_decode_box_autoadd_basic_struct_twin_sync(
+      SseDeserializer deserializer) {
+    return (sse_decode_basic_struct_twin_sync(deserializer));
+  }
+
+  @protected
+  BasicStructTwinSyncSse sse_decode_box_autoadd_basic_struct_twin_sync_sse(
+      SseDeserializer deserializer) {
+    return (sse_decode_basic_struct_twin_sync_sse(deserializer));
   }
 
   @protected
@@ -81041,6 +89385,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int sse_decode_box_autoadd_isize(SseDeserializer deserializer) {
+    return (sse_decode_isize(deserializer));
+  }
+
+  @protected
   KitchenSinkTwinNormal sse_decode_box_autoadd_kitchen_sink_twin_normal(
       SseDeserializer deserializer) {
     return (sse_decode_kitchen_sink_twin_normal(deserializer));
@@ -81922,6 +90271,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   UserIdTwinSyncSse sse_decode_box_autoadd_user_id_twin_sync_sse(
       SseDeserializer deserializer) {
     return (sse_decode_user_id_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  int sse_decode_box_autoadd_usize(SseDeserializer deserializer) {
+    return (sse_decode_usize(deserializer));
   }
 
   @protected
@@ -85336,6 +93690,215 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<BasicGeneralEnumTwinNormal>
+      sse_decode_list_basic_general_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicGeneralEnumTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_general_enum_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinRustAsync>
+      sse_decode_list_basic_general_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicGeneralEnumTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_general_enum_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinRustAsyncSse>
+      sse_decode_list_basic_general_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicGeneralEnumTwinRustAsyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_general_enum_twin_rust_async_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSse> sse_decode_list_basic_general_enum_twin_sse(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicGeneralEnumTwinSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_general_enum_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSync> sse_decode_list_basic_general_enum_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicGeneralEnumTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_general_enum_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSyncSse>
+      sse_decode_list_basic_general_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicGeneralEnumTwinSyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_general_enum_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinNormal>
+      sse_decode_list_basic_primitive_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicPrimitiveEnumTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_primitive_enum_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinRustAsync>
+      sse_decode_list_basic_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicPrimitiveEnumTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_primitive_enum_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinRustAsyncSse>
+      sse_decode_list_basic_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicPrimitiveEnumTwinRustAsyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_basic_primitive_enum_twin_rust_async_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSse> sse_decode_list_basic_primitive_enum_twin_sse(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicPrimitiveEnumTwinSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_primitive_enum_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSync>
+      sse_decode_list_basic_primitive_enum_twin_sync(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicPrimitiveEnumTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_primitive_enum_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSyncSse>
+      sse_decode_list_basic_primitive_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicPrimitiveEnumTwinSyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_primitive_enum_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicStructTwinNormal> sse_decode_list_basic_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicStructTwinNormal>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_struct_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicStructTwinRustAsync> sse_decode_list_basic_struct_twin_rust_async(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicStructTwinRustAsync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_struct_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicStructTwinRustAsyncSse>
+      sse_decode_list_basic_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicStructTwinRustAsyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_struct_twin_rust_async_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicStructTwinSse> sse_decode_list_basic_struct_twin_sse(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicStructTwinSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_struct_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicStructTwinSync> sse_decode_list_basic_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicStructTwinSync>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_struct_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<BasicStructTwinSyncSse> sse_decode_list_basic_struct_twin_sync_sse(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <BasicStructTwinSyncSse>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_basic_struct_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<bool> sse_decode_list_bool(SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <bool>[];
@@ -86025,12 +94588,396 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<(int, BasicGeneralEnumTwinNormal)>
+      sse_decode_list_record_i_32_basic_general_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicGeneralEnumTwinNormal)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_i_32_basic_general_enum_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinRustAsync)>
+      sse_decode_list_record_i_32_basic_general_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicGeneralEnumTwinRustAsync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_general_enum_twin_rust_async(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinRustAsyncSse)>
+      sse_decode_list_record_i_32_basic_general_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicGeneralEnumTwinRustAsyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_general_enum_twin_rust_async_sse(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSse)>
+      sse_decode_list_record_i_32_basic_general_enum_twin_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicGeneralEnumTwinSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_i_32_basic_general_enum_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSync)>
+      sse_decode_list_record_i_32_basic_general_enum_twin_sync(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicGeneralEnumTwinSync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_i_32_basic_general_enum_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSyncSse)>
+      sse_decode_list_record_i_32_basic_general_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicGeneralEnumTwinSyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_general_enum_twin_sync_sse(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinNormal)>
+      sse_decode_list_record_i_32_basic_primitive_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicPrimitiveEnumTwinNormal)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_primitive_enum_twin_normal(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsync)>
+      sse_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicPrimitiveEnumTwinRustAsync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_primitive_enum_twin_rust_async(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsyncSse)>
+      sse_decode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicPrimitiveEnumTwinRustAsyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSse)>
+      sse_decode_list_record_i_32_basic_primitive_enum_twin_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicPrimitiveEnumTwinSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_i_32_basic_primitive_enum_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSync)>
+      sse_decode_list_record_i_32_basic_primitive_enum_twin_sync(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicPrimitiveEnumTwinSync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_i_32_basic_primitive_enum_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSyncSse)>
+      sse_decode_list_record_i_32_basic_primitive_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicPrimitiveEnumTwinSyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_primitive_enum_twin_sync_sse(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicStructTwinNormal)>
+      sse_decode_list_record_i_32_basic_struct_twin_normal(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicStructTwinNormal)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_struct_twin_normal(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicStructTwinRustAsync)>
+      sse_decode_list_record_i_32_basic_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicStructTwinRustAsync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_record_i_32_basic_struct_twin_rust_async(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicStructTwinRustAsyncSse)>
+      sse_decode_list_record_i_32_basic_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicStructTwinRustAsyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_struct_twin_rust_async_sse(
+          deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicStructTwinSse)>
+      sse_decode_list_record_i_32_basic_struct_twin_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicStructTwinSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_struct_twin_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicStructTwinSync)>
+      sse_decode_list_record_i_32_basic_struct_twin_sync(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicStructTwinSync)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_struct_twin_sync(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, BasicStructTwinSyncSse)>
+      sse_decode_list_record_i_32_basic_struct_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, BasicStructTwinSyncSse)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_basic_struct_twin_sync_sse(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, bool)> sse_decode_list_record_i_32_bool(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, bool)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_bool(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, double)> sse_decode_list_record_i_32_f_32(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, double)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_f_32(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, double)> sse_decode_list_record_i_32_f_64(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, double)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_f_64(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_i_16(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_i_16(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<(int, int)> sse_decode_list_record_i_32_i_32(
       SseDeserializer deserializer) {
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <(int, int)>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(sse_decode_record_i_32_i_32(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_i_64(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_i_64(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_i_8(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_i_8(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_isize(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_isize(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, Uint8List)> sse_decode_list_record_i_32_list_prim_u_8_strict(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, Uint8List)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_list_prim_u_8_strict(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, String)> sse_decode_list_record_i_32_string(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, String)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_string(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_u_16(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_u_16(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_u_32(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_u_32(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_u_64(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_u_64(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_u_8(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_u_8(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(int, int)> sse_decode_list_record_i_32_usize(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(int, int)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_i_32_usize(deserializer));
     }
     return ans_;
   }
@@ -87512,6 +96459,213 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  BasicGeneralEnumTwinNormal?
+      sse_decode_opt_box_autoadd_basic_general_enum_twin_normal(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_general_enum_twin_normal(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync?
+      sse_decode_opt_box_autoadd_basic_general_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_general_enum_twin_rust_async(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse?
+      sse_decode_opt_box_autoadd_basic_general_enum_twin_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_general_enum_twin_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync?
+      sse_decode_opt_box_autoadd_basic_general_enum_twin_sync(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_general_enum_twin_sync(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse?
+      sse_decode_opt_box_autoadd_basic_general_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_general_enum_twin_sync_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal?
+      sse_decode_opt_box_autoadd_basic_primitive_enum_twin_normal(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_primitive_enum_twin_normal(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync?
+      sse_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_primitive_enum_twin_rust_async(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse?
+      sse_decode_opt_box_autoadd_basic_primitive_enum_twin_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_primitive_enum_twin_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync?
+      sse_decode_opt_box_autoadd_basic_primitive_enum_twin_sync(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_primitive_enum_twin_sync(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse?
+      sse_decode_opt_box_autoadd_basic_primitive_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_primitive_enum_twin_sync_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicStructTwinNormal? sse_decode_opt_box_autoadd_basic_struct_twin_normal(
+      SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_struct_twin_normal(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicStructTwinRustAsync?
+      sse_decode_opt_box_autoadd_basic_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_struct_twin_rust_async(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse?
+      sse_decode_opt_box_autoadd_basic_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_struct_twin_rust_async_sse(
+          deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicStructTwinSse? sse_decode_opt_box_autoadd_basic_struct_twin_sse(
+      SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_struct_twin_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicStructTwinSync? sse_decode_opt_box_autoadd_basic_struct_twin_sync(
+      SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_struct_twin_sync(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  BasicStructTwinSyncSse? sse_decode_opt_box_autoadd_basic_struct_twin_sync_sse(
+      SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_basic_struct_twin_sync_sse(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   bool? sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_bool(deserializer));
@@ -87705,6 +96859,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int? sse_decode_opt_box_autoadd_isize(SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_isize(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
   MeasureTwinNormal? sse_decode_opt_box_autoadd_measure_twin_normal(
       SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
@@ -87870,6 +97033,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int? sse_decode_opt_box_autoadd_u_8(SseDeserializer deserializer) {
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_u_8(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  int? sse_decode_opt_box_autoadd_usize(SseDeserializer deserializer) {
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_autoadd_usize(deserializer));
     } else {
       return null;
     }
@@ -88623,9 +97795,272 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  (int, BasicGeneralEnumTwinNormal)
+      sse_decode_record_i_32_basic_general_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_general_enum_twin_normal(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinRustAsync)
+      sse_decode_record_i_32_basic_general_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 =
+        sse_decode_basic_general_enum_twin_rust_async(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinRustAsyncSse)
+      sse_decode_record_i_32_basic_general_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 =
+        sse_decode_basic_general_enum_twin_rust_async_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSse)
+      sse_decode_record_i_32_basic_general_enum_twin_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_general_enum_twin_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSync)
+      sse_decode_record_i_32_basic_general_enum_twin_sync(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_general_enum_twin_sync(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSyncSse)
+      sse_decode_record_i_32_basic_general_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_general_enum_twin_sync_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinNormal)
+      sse_decode_record_i_32_basic_primitive_enum_twin_normal(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_primitive_enum_twin_normal(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinRustAsync)
+      sse_decode_record_i_32_basic_primitive_enum_twin_rust_async(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 =
+        sse_decode_basic_primitive_enum_twin_rust_async(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinRustAsyncSse)
+      sse_decode_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 =
+        sse_decode_basic_primitive_enum_twin_rust_async_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSse)
+      sse_decode_record_i_32_basic_primitive_enum_twin_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_primitive_enum_twin_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSync)
+      sse_decode_record_i_32_basic_primitive_enum_twin_sync(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_primitive_enum_twin_sync(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSyncSse)
+      sse_decode_record_i_32_basic_primitive_enum_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 =
+        sse_decode_basic_primitive_enum_twin_sync_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicStructTwinNormal) sse_decode_record_i_32_basic_struct_twin_normal(
+      SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_struct_twin_normal(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicStructTwinRustAsync)
+      sse_decode_record_i_32_basic_struct_twin_rust_async(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_struct_twin_rust_async(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicStructTwinRustAsyncSse)
+      sse_decode_record_i_32_basic_struct_twin_rust_async_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_struct_twin_rust_async_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicStructTwinSse) sse_decode_record_i_32_basic_struct_twin_sse(
+      SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_struct_twin_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicStructTwinSync) sse_decode_record_i_32_basic_struct_twin_sync(
+      SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_struct_twin_sync(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, BasicStructTwinSyncSse)
+      sse_decode_record_i_32_basic_struct_twin_sync_sse(
+          SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_basic_struct_twin_sync_sse(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, bool) sse_decode_record_i_32_bool(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_bool(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, double) sse_decode_record_i_32_f_32(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_f_32(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, double) sse_decode_record_i_32_f_64(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_f_64(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_i_16(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_i_16(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
   (int, int) sse_decode_record_i_32_i_32(SseDeserializer deserializer) {
     var var_field0 = sse_decode_i_32(deserializer);
     var var_field1 = sse_decode_i_32(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_i_64(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_i_64(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_i_8(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_i_8(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_isize(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_isize(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, Uint8List) sse_decode_record_i_32_list_prim_u_8_strict(
+      SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_list_prim_u_8_strict(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, String) sse_decode_record_i_32_string(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_String(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_u_16(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_u_16(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_u_32(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_u_32(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_u_64(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_u_64(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_u_8(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_u_8(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (int, int) sse_decode_record_i_32_usize(SseDeserializer deserializer) {
+    var var_field0 = sse_decode_i_32(deserializer);
+    var var_field1 = sse_decode_usize(deserializer);
     return (var_field0, var_field1);
   }
 
@@ -92113,6 +101548,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int cst_encode_basic_primitive_enum_twin_normal(
+      BasicPrimitiveEnumTwinNormal raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_basic_primitive_enum_twin_rust_async(
+      BasicPrimitiveEnumTwinRustAsync raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_basic_primitive_enum_twin_rust_async_sse(
+      BasicPrimitiveEnumTwinRustAsyncSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_basic_primitive_enum_twin_sse(BasicPrimitiveEnumTwinSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_basic_primitive_enum_twin_sync(
+      BasicPrimitiveEnumTwinSync raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
+  int cst_encode_basic_primitive_enum_twin_sync_sse(
+      BasicPrimitiveEnumTwinSyncSse raw) {
+    return cst_encode_i_32(raw.index);
+  }
+
+  @protected
   bool cst_encode_bool(bool raw) {
     return raw;
   }
@@ -93610,8 +103080,225 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_Map_i_32_String(
+      Map<int, String> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_string(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_general_enum_twin_normal(
+      Map<int, BasicGeneralEnumTwinNormal> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_general_enum_twin_normal(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async(
+      Map<int, BasicGeneralEnumTwinRustAsync> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_general_enum_twin_rust_async(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async_sse(
+      Map<int, BasicGeneralEnumTwinRustAsyncSse> self,
+      SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_general_enum_twin_rust_async_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_general_enum_twin_sse(
+      Map<int, BasicGeneralEnumTwinSse> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_general_enum_twin_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_general_enum_twin_sync(
+      Map<int, BasicGeneralEnumTwinSync> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_general_enum_twin_sync(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_general_enum_twin_sync_sse(
+      Map<int, BasicGeneralEnumTwinSyncSse> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_general_enum_twin_sync_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_normal(
+      Map<int, BasicPrimitiveEnumTwinNormal> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_primitive_enum_twin_normal(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
+      Map<int, BasicPrimitiveEnumTwinRustAsync> self,
+      SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(
+      Map<int, BasicPrimitiveEnumTwinRustAsyncSse> self,
+      SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_sse(
+      Map<int, BasicPrimitiveEnumTwinSse> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_primitive_enum_twin_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync(
+      Map<int, BasicPrimitiveEnumTwinSync> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_primitive_enum_twin_sync(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync_sse(
+      Map<int, BasicPrimitiveEnumTwinSyncSse> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_primitive_enum_twin_sync_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_struct_twin_normal(
+      Map<int, BasicStructTwinNormal> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_struct_twin_normal(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_struct_twin_rust_async(
+      Map<int, BasicStructTwinRustAsync> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_struct_twin_rust_async(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_struct_twin_rust_async_sse(
+      Map<int, BasicStructTwinRustAsyncSse> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_struct_twin_rust_async_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_struct_twin_sse(
+      Map<int, BasicStructTwinSse> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_struct_twin_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_struct_twin_sync(
+      Map<int, BasicStructTwinSync> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_struct_twin_sync(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_basic_struct_twin_sync_sse(
+      Map<int, BasicStructTwinSyncSse> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_basic_struct_twin_sync_sse(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_bool(Map<int, bool> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_bool(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_f_32(
+      Map<int, double> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_f_32(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_f_64(
+      Map<int, double> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_f_64(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_i_16(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_i_16(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
   void sse_encode_Map_i_32_i_32(Map<int, int> self, SseSerializer serializer) {
     sse_encode_list_record_i_32_i_32(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_i_64(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_i_64(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_i_8(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_i_8(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_isize(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_isize(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_list_prim_u_8_strict(
+      Map<int, Uint8List> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_list_prim_u_8_strict(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_u_16(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_u_16(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_u_32(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_u_32(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_u_64(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_u_64(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_u_8(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_u_8(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_i_32_usize(Map<int, int> self, SseSerializer serializer) {
+    sse_encode_list_record_i_32_usize(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
@@ -95061,6 +104748,156 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_basic_general_enum_twin_normal(
+      BasicGeneralEnumTwinNormal self, SseSerializer serializer) {
+    switch (self) {
+      case BasicGeneralEnumTwinNormal_Apple(field: final field):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(field, serializer);
+      case BasicGeneralEnumTwinNormal_Orange():
+        sse_encode_i_32(1, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_basic_general_enum_twin_rust_async(
+      BasicGeneralEnumTwinRustAsync self, SseSerializer serializer) {
+    switch (self) {
+      case BasicGeneralEnumTwinRustAsync_Apple(field: final field):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(field, serializer);
+      case BasicGeneralEnumTwinRustAsync_Orange():
+        sse_encode_i_32(1, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_basic_general_enum_twin_rust_async_sse(
+      BasicGeneralEnumTwinRustAsyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case BasicGeneralEnumTwinRustAsyncSse_Apple(field: final field):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(field, serializer);
+      case BasicGeneralEnumTwinRustAsyncSse_Orange():
+        sse_encode_i_32(1, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_basic_general_enum_twin_sse(
+      BasicGeneralEnumTwinSse self, SseSerializer serializer) {
+    switch (self) {
+      case BasicGeneralEnumTwinSse_Apple(field: final field):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(field, serializer);
+      case BasicGeneralEnumTwinSse_Orange():
+        sse_encode_i_32(1, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_basic_general_enum_twin_sync(
+      BasicGeneralEnumTwinSync self, SseSerializer serializer) {
+    switch (self) {
+      case BasicGeneralEnumTwinSync_Apple(field: final field):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(field, serializer);
+      case BasicGeneralEnumTwinSync_Orange():
+        sse_encode_i_32(1, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_basic_general_enum_twin_sync_sse(
+      BasicGeneralEnumTwinSyncSse self, SseSerializer serializer) {
+    switch (self) {
+      case BasicGeneralEnumTwinSyncSse_Apple(field: final field):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(field, serializer);
+      case BasicGeneralEnumTwinSyncSse_Orange():
+        sse_encode_i_32(1, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_basic_primitive_enum_twin_normal(
+      BasicPrimitiveEnumTwinNormal self, SseSerializer serializer) {
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_primitive_enum_twin_rust_async(
+      BasicPrimitiveEnumTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_primitive_enum_twin_rust_async_sse(
+      BasicPrimitiveEnumTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_primitive_enum_twin_sse(
+      BasicPrimitiveEnumTwinSse self, SseSerializer serializer) {
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_primitive_enum_twin_sync(
+      BasicPrimitiveEnumTwinSync self, SseSerializer serializer) {
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_primitive_enum_twin_sync_sse(
+      BasicPrimitiveEnumTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_struct_twin_normal(
+      BasicStructTwinNormal self, SseSerializer serializer) {
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_struct_twin_rust_async(
+      BasicStructTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_struct_twin_rust_async_sse(
+      BasicStructTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_struct_twin_sse(
+      BasicStructTwinSse self, SseSerializer serializer) {
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_struct_twin_sync(
+      BasicStructTwinSync self, SseSerializer serializer) {
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
+  }
+
+  @protected
+  void sse_encode_basic_struct_twin_sync_sse(
+      BasicStructTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
+  }
+
+  @protected
   void sse_encode_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer) {
     sse_encode_String(self.name, serializer);
@@ -95524,6 +105361,114 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_box_autoadd_b_twin_sync_sse(
       BTwinSyncSse self, SseSerializer serializer) {
     sse_encode_b_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_general_enum_twin_normal(
+      BasicGeneralEnumTwinNormal self, SseSerializer serializer) {
+    sse_encode_basic_general_enum_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_general_enum_twin_rust_async(
+      BasicGeneralEnumTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_basic_general_enum_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+      BasicGeneralEnumTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_basic_general_enum_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_general_enum_twin_sse(
+      BasicGeneralEnumTwinSse self, SseSerializer serializer) {
+    sse_encode_basic_general_enum_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_general_enum_twin_sync(
+      BasicGeneralEnumTwinSync self, SseSerializer serializer) {
+    sse_encode_basic_general_enum_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_general_enum_twin_sync_sse(
+      BasicGeneralEnumTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_basic_general_enum_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_primitive_enum_twin_normal(
+      BasicPrimitiveEnumTwinNormal self, SseSerializer serializer) {
+    sse_encode_basic_primitive_enum_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_primitive_enum_twin_rust_async(
+      BasicPrimitiveEnumTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_basic_primitive_enum_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+      BasicPrimitiveEnumTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_basic_primitive_enum_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_primitive_enum_twin_sse(
+      BasicPrimitiveEnumTwinSse self, SseSerializer serializer) {
+    sse_encode_basic_primitive_enum_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_primitive_enum_twin_sync(
+      BasicPrimitiveEnumTwinSync self, SseSerializer serializer) {
+    sse_encode_basic_primitive_enum_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_primitive_enum_twin_sync_sse(
+      BasicPrimitiveEnumTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_basic_primitive_enum_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_struct_twin_normal(
+      BasicStructTwinNormal self, SseSerializer serializer) {
+    sse_encode_basic_struct_twin_normal(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_struct_twin_rust_async(
+      BasicStructTwinRustAsync self, SseSerializer serializer) {
+    sse_encode_basic_struct_twin_rust_async(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_struct_twin_rust_async_sse(
+      BasicStructTwinRustAsyncSse self, SseSerializer serializer) {
+    sse_encode_basic_struct_twin_rust_async_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_struct_twin_sse(
+      BasicStructTwinSse self, SseSerializer serializer) {
+    sse_encode_basic_struct_twin_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_struct_twin_sync(
+      BasicStructTwinSync self, SseSerializer serializer) {
+    sse_encode_basic_struct_twin_sync(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_basic_struct_twin_sync_sse(
+      BasicStructTwinSyncSse self, SseSerializer serializer) {
+    sse_encode_basic_struct_twin_sync_sse(self, serializer);
   }
 
   @protected
@@ -96378,6 +106323,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_isize(int self, SseSerializer serializer) {
+    sse_encode_isize(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal self, SseSerializer serializer) {
     sse_encode_kitchen_sink_twin_normal(self, serializer);
@@ -97205,6 +107155,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_box_autoadd_user_id_twin_sync_sse(
       UserIdTwinSyncSse self, SseSerializer serializer) {
     sse_encode_user_id_twin_sync_sse(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_usize(int self, SseSerializer serializer) {
+    sse_encode_usize(self, serializer);
   }
 
   @protected
@@ -100073,6 +110028,168 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_basic_general_enum_twin_normal(
+      List<BasicGeneralEnumTwinNormal> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_general_enum_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_general_enum_twin_rust_async(
+      List<BasicGeneralEnumTwinRustAsync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_general_enum_twin_rust_async(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_general_enum_twin_rust_async_sse(
+      List<BasicGeneralEnumTwinRustAsyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_general_enum_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_general_enum_twin_sse(
+      List<BasicGeneralEnumTwinSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_general_enum_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_general_enum_twin_sync(
+      List<BasicGeneralEnumTwinSync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_general_enum_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_general_enum_twin_sync_sse(
+      List<BasicGeneralEnumTwinSyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_general_enum_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_primitive_enum_twin_normal(
+      List<BasicPrimitiveEnumTwinNormal> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_primitive_enum_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_primitive_enum_twin_rust_async(
+      List<BasicPrimitiveEnumTwinRustAsync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_primitive_enum_twin_rust_async(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_primitive_enum_twin_rust_async_sse(
+      List<BasicPrimitiveEnumTwinRustAsyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_primitive_enum_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_primitive_enum_twin_sse(
+      List<BasicPrimitiveEnumTwinSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_primitive_enum_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_primitive_enum_twin_sync(
+      List<BasicPrimitiveEnumTwinSync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_primitive_enum_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_primitive_enum_twin_sync_sse(
+      List<BasicPrimitiveEnumTwinSyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_primitive_enum_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_struct_twin_normal(
+      List<BasicStructTwinNormal> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_struct_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_struct_twin_rust_async(
+      List<BasicStructTwinRustAsync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_struct_twin_rust_async(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_struct_twin_rust_async_sse(
+      List<BasicStructTwinRustAsyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_struct_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_struct_twin_sse(
+      List<BasicStructTwinSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_struct_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_struct_twin_sync(
+      List<BasicStructTwinSync> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_struct_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_basic_struct_twin_sync_sse(
+      List<BasicStructTwinSyncSse> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_basic_struct_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_bool(List<bool> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
@@ -100670,11 +110787,310 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_list_record_i_32_basic_general_enum_twin_normal(
+      List<(int, BasicGeneralEnumTwinNormal)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_general_enum_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_general_enum_twin_rust_async(
+      List<(int, BasicGeneralEnumTwinRustAsync)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_general_enum_twin_rust_async(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_general_enum_twin_rust_async_sse(
+      List<(int, BasicGeneralEnumTwinRustAsyncSse)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_general_enum_twin_rust_async_sse(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_general_enum_twin_sse(
+      List<(int, BasicGeneralEnumTwinSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_general_enum_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_general_enum_twin_sync(
+      List<(int, BasicGeneralEnumTwinSync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_general_enum_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_general_enum_twin_sync_sse(
+      List<(int, BasicGeneralEnumTwinSyncSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_general_enum_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_primitive_enum_twin_normal(
+      List<(int, BasicPrimitiveEnumTwinNormal)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_primitive_enum_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+      List<(int, BasicPrimitiveEnumTwinRustAsync)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_primitive_enum_twin_rust_async(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+      List<(int, BasicPrimitiveEnumTwinRustAsyncSse)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_primitive_enum_twin_sse(
+      List<(int, BasicPrimitiveEnumTwinSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_primitive_enum_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_primitive_enum_twin_sync(
+      List<(int, BasicPrimitiveEnumTwinSync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_primitive_enum_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_primitive_enum_twin_sync_sse(
+      List<(int, BasicPrimitiveEnumTwinSyncSse)> self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_primitive_enum_twin_sync_sse(
+          item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_struct_twin_normal(
+      List<(int, BasicStructTwinNormal)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_struct_twin_normal(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_struct_twin_rust_async(
+      List<(int, BasicStructTwinRustAsync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_struct_twin_rust_async(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_struct_twin_rust_async_sse(
+      List<(int, BasicStructTwinRustAsyncSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_struct_twin_rust_async_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_struct_twin_sse(
+      List<(int, BasicStructTwinSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_struct_twin_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_struct_twin_sync(
+      List<(int, BasicStructTwinSync)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_struct_twin_sync(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_basic_struct_twin_sync_sse(
+      List<(int, BasicStructTwinSyncSse)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_basic_struct_twin_sync_sse(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_bool(
+      List<(int, bool)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_bool(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_f_32(
+      List<(int, double)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_f_32(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_f_64(
+      List<(int, double)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_f_64(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_i_16(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_i_16(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_record_i_32_i_32(
       List<(int, int)> self, SseSerializer serializer) {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       sse_encode_record_i_32_i_32(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_i_64(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_i_64(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_i_8(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_i_8(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_isize(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_isize(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_list_prim_u_8_strict(
+      List<(int, Uint8List)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_list_prim_u_8_strict(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_string(
+      List<(int, String)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_string(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_u_16(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_u_16(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_u_32(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_u_32(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_u_64(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_u_64(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_u_8(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_u_8(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_i_32_usize(
+      List<(int, int)> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_i_32_usize(item, serializer);
     }
   }
 
@@ -101872,6 +112288,173 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_opt_box_autoadd_basic_general_enum_twin_normal(
+      BasicGeneralEnumTwinNormal? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_general_enum_twin_normal(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_general_enum_twin_rust_async(
+      BasicGeneralEnumTwinRustAsync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_general_enum_twin_rust_async(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_general_enum_twin_rust_async_sse(
+      BasicGeneralEnumTwinRustAsyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_general_enum_twin_sse(
+      BasicGeneralEnumTwinSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_general_enum_twin_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_general_enum_twin_sync(
+      BasicGeneralEnumTwinSync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_general_enum_twin_sync(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_general_enum_twin_sync_sse(
+      BasicGeneralEnumTwinSyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_general_enum_twin_sync_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_primitive_enum_twin_normal(
+      BasicPrimitiveEnumTwinNormal? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_primitive_enum_twin_normal(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
+      BasicPrimitiveEnumTwinRustAsync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_primitive_enum_twin_rust_async(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+      BasicPrimitiveEnumTwinRustAsyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_primitive_enum_twin_sse(
+      BasicPrimitiveEnumTwinSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_primitive_enum_twin_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_primitive_enum_twin_sync(
+      BasicPrimitiveEnumTwinSync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_primitive_enum_twin_sync(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_primitive_enum_twin_sync_sse(
+      BasicPrimitiveEnumTwinSyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_primitive_enum_twin_sync_sse(
+          self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_struct_twin_normal(
+      BasicStructTwinNormal? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_struct_twin_normal(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_struct_twin_rust_async(
+      BasicStructTwinRustAsync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_struct_twin_rust_async(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_struct_twin_rust_async_sse(
+      BasicStructTwinRustAsyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_struct_twin_rust_async_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_struct_twin_sse(
+      BasicStructTwinSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_struct_twin_sse(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_struct_twin_sync(
+      BasicStructTwinSync? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_struct_twin_sync(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_basic_struct_twin_sync_sse(
+      BasicStructTwinSyncSse? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_basic_struct_twin_sync_sse(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
@@ -102037,6 +112620,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_opt_box_autoadd_isize(int? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_isize(self, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_opt_box_autoadd_measure_twin_normal(
       MeasureTwinNormal? self, SseSerializer serializer) {
     sse_encode_bool(self != null, serializer);
@@ -102182,6 +112773,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_u_8(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_autoadd_usize(int? self, SseSerializer serializer) {
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_autoadd_usize(self, serializer);
     }
   }
 
@@ -102808,9 +113407,224 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_record_i_32_basic_general_enum_twin_normal(
+      (int, BasicGeneralEnumTwinNormal) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_general_enum_twin_normal(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_general_enum_twin_rust_async(
+      (int, BasicGeneralEnumTwinRustAsync) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_general_enum_twin_rust_async(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_general_enum_twin_rust_async_sse(
+      (int, BasicGeneralEnumTwinRustAsyncSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_general_enum_twin_rust_async_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_general_enum_twin_sse(
+      (int, BasicGeneralEnumTwinSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_general_enum_twin_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_general_enum_twin_sync(
+      (int, BasicGeneralEnumTwinSync) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_general_enum_twin_sync(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_general_enum_twin_sync_sse(
+      (int, BasicGeneralEnumTwinSyncSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_general_enum_twin_sync_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_primitive_enum_twin_normal(
+      (int, BasicPrimitiveEnumTwinNormal) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_primitive_enum_twin_normal(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_primitive_enum_twin_rust_async(
+      (int, BasicPrimitiveEnumTwinRustAsync) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_primitive_enum_twin_rust_async(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+      (int, BasicPrimitiveEnumTwinRustAsyncSse) self,
+      SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_primitive_enum_twin_rust_async_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_primitive_enum_twin_sse(
+      (int, BasicPrimitiveEnumTwinSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_primitive_enum_twin_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_primitive_enum_twin_sync(
+      (int, BasicPrimitiveEnumTwinSync) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_primitive_enum_twin_sync(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_primitive_enum_twin_sync_sse(
+      (int, BasicPrimitiveEnumTwinSyncSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_primitive_enum_twin_sync_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_struct_twin_normal(
+      (int, BasicStructTwinNormal) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_struct_twin_normal(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_struct_twin_rust_async(
+      (int, BasicStructTwinRustAsync) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_struct_twin_rust_async(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_struct_twin_rust_async_sse(
+      (int, BasicStructTwinRustAsyncSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_struct_twin_rust_async_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_struct_twin_sse(
+      (int, BasicStructTwinSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_struct_twin_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_struct_twin_sync(
+      (int, BasicStructTwinSync) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_struct_twin_sync(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_basic_struct_twin_sync_sse(
+      (int, BasicStructTwinSyncSse) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_basic_struct_twin_sync_sse(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_bool((int, bool) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_bool(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_f_32(
+      (int, double) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_f_32(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_f_64(
+      (int, double) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_f_64(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_i_16((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_i_16(self.$2, serializer);
+  }
+
+  @protected
   void sse_encode_record_i_32_i_32((int, int) self, SseSerializer serializer) {
     sse_encode_i_32(self.$1, serializer);
     sse_encode_i_32(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_i_64((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_i_64(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_i_8((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_i_8(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_isize((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_isize(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_list_prim_u_8_strict(
+      (int, Uint8List) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_list_prim_u_8_strict(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_string(
+      (int, String) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_String(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_u_16((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_u_16(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_u_32((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_u_32(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_u_64((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_u_64(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_u_8((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_u_8(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_i_32_usize((int, int) self, SseSerializer serializer) {
+    sse_encode_i_32(self.$1, serializer);
+    sse_encode_usize(self.$2, serializer);
   }
 
   @protected

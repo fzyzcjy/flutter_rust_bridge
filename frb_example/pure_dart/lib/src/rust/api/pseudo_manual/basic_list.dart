@@ -4,6 +4,7 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import 'basic.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<Int8List> exampleBasicListTypeI8TwinNormal(
@@ -58,3 +59,29 @@ Future<List<bool>> exampleBasicListTypeBoolTwinNormal(
         {required List<bool> arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleBasicListTypeBoolTwinNormal(arg: arg, hint: hint);
+
+Future<List<String>> exampleBasicListTypeStringTwinNormal(
+        {required List<String> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleBasicListTypeStringTwinNormal(arg: arg, hint: hint);
+
+Future<List<BasicPrimitiveEnumTwinNormal>>
+    exampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+            {required List<BasicPrimitiveEnumTwinNormal> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+                arg: arg, hint: hint);
+
+Future<List<BasicGeneralEnumTwinNormal>>
+    exampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormal(
+            {required List<BasicGeneralEnumTwinNormal> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormal(
+                arg: arg, hint: hint);
+
+Future<List<BasicStructTwinNormal>>
+    exampleBasicListTypeBasicStructTwinNormalTwinNormal(
+            {required List<BasicStructTwinNormal> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicStructTwinNormalTwinNormal(
+                arg: arg, hint: hint);

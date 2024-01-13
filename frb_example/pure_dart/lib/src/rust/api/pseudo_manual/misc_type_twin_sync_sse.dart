@@ -7,9 +7,6 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-String funcStringTwinSyncSse({required String arg, dynamic hint}) =>
-    RustLib.instance.api.funcStringTwinSyncSse(arg: arg, hint: hint);
-
 void funcReturnUnitTwinSyncSse({dynamic hint}) =>
     RustLib.instance.api.funcReturnUnitTwinSyncSse(hint: hint);
 

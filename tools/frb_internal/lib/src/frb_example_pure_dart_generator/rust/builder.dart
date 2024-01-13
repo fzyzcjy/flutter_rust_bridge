@@ -4,7 +4,7 @@ class RustFileBuilder {
   String body = '';
 
   void addIdentityFunction(String ty, String partialName) {
-    body += 'pub fn ${partialName}_twin_normal(arg: $ty) -> $ty { arg }\n';
+    body += 'pub fn ${partialName}_twin_normal(arg: $ty) -> $ty { arg }\n\n';
   }
 
   @override

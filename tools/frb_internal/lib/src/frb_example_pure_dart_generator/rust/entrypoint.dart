@@ -51,7 +51,8 @@ class RustGenerator extends BaseGenerator {
             (m) =>
                 'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::')
         .replaceAll(
-            'super::rust_opaque::', 'super::rust_opaque${mode.postfix}::');
+            'super::rust_opaque::', 'super::rust_opaque${mode.postfix}::')
+        .replaceAll('super::basic::', 'super::basic${mode.postfix}::');
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
       // quick hack, since we are merely generating tests
