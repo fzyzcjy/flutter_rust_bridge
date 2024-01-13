@@ -187,7 +187,6 @@ dependencies = [
  "build-target",
  "bytemuck",
  "byteorder",
- "cc",
  "console_error_panic_hook",
  "dart-sys-fork",
  "delegate-attr",

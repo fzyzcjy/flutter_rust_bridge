@@ -571,7 +571,6 @@ dependencies = [
  "build-target",
  "bytemuck",
  "byteorder",
- "cc",
  "chrono",
  "console_error_panic_hook",
  "cool_asserts",
