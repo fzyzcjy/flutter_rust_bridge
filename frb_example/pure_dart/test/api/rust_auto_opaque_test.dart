@@ -267,4 +267,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
           await rustAutoOpaqueBorrowAndMutBorrow(borrow: a, mutBorrow: b), 300);
     });
   });
+
+  group('borrow + borrow', () {
+    test('when same object', () async {
+      final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      expect(await rustAutoOpaqueBorrowAndBorrow(a: obj, b: obj), 200);
+    });
+
+    test('when different object', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 200);
+      expect(await rustAutoOpaqueBorrowAndBorrow(a: a, b: b), 300);
+    });
+  });
 }

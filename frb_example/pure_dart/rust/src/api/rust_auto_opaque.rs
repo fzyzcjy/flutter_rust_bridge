@@ -262,3 +262,10 @@ pub fn rust_auto_opaque_borrow_and_mut_borrow(
 ) -> i32 {
     borrow.inner + mut_borrow.inner
 }
+
+pub fn rust_auto_opaque_borrow_and_borrow(
+    a: &NonCloneSimpleTwinNormal,
+    b: &NonCloneSimpleTwinNormal,
+) -> i32 {
+    a.inner + b.inner
+}
