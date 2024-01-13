@@ -240,6 +240,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7a81dae078cea95a014a339291cec439d2f232ebe854a9d672b796c6afafa9b7"
 
 [[package]]
+name = "dart-sys-fork"
+version = "4.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "933dafff26172b719bb9695dd3715a1e7792f62dcdc8a5d4c740db7e0fedee8b"
+dependencies = [
+ "cc",
+]
+
+[[package]]
 name = "dashmap"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -331,6 +340,7 @@ dependencies = [
  "byteorder",
  "cc",
  "console_error_panic_hook",
+ "dart-sys-fork",
  "delegate-attr",
  "flutter_rust_bridge_macros",
  "futures",
