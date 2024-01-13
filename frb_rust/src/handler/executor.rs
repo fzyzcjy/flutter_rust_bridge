@@ -9,6 +9,7 @@ use std::future::Future;
 pub trait Executor {
     /// Executes a Rust function and transforms its return value into a Dart-compatible
     /// value, i.e. types that implement [`IntoDart`].
+    #[cfg(feature = "thread-pool")]
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(

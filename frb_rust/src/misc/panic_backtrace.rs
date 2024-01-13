@@ -1,5 +1,5 @@
-use backtrace::Backtrace;
 use std::any::Any;
+use std::backtrace::Backtrace;
 use std::cell::RefCell;
 use std::panic::UnwindSafe;
 
@@ -13,7 +13,7 @@ impl PanicBacktrace {
     pub(crate) fn setup() {
         let old_hook = std::panic::take_hook();
         std::panic::set_hook(Box::new(move |arg| {
-            let trace = Backtrace::new();
+            let trace = Backtrace::capture();
             BACKTRACE.with(move |b| b.borrow_mut().replace(trace));
 
             old_hook(arg);

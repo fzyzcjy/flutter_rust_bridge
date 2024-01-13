@@ -1,7 +1,7 @@
 use crate::codec::BaseCodec;
 use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::{channel_to_handle, handle_to_channel, SendableChannelHandle};
-use crate::rust2dart::sender::Rust2DartSender;
+use crate::rust2dart::sender::{Rust2DartSendError, Rust2DartSender};
 use std::marker::PhantomData;
 use std::sync::Arc;
 
@@ -30,7 +30,7 @@ impl<T, Rust2DartCodec: BaseCodec> StreamSinkBase<T, Rust2DartCodec> {
 
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    pub fn add(&self, value: Rust2DartCodec::Message) -> anyhow::Result<()> {
+    pub fn add(&self, value: Rust2DartCodec::Message) -> Result<(), Rust2DartSendError> {
         sender(&self.sendable_channel_handle).send(value.into_dart_abi())
     }
 }

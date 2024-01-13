@@ -12,6 +12,7 @@ pub use crate::codec::sse::{
     Dart2RustMessageSse, Rust2DartMessageSse, SseDeserializer, SseSerializer,
 };
 pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec, BaseCodec};
+#[cfg(feature = "dart-opaque")]
 pub use crate::dart_opaque::dart2rust::{cst_decode_dart_opaque, sse_decode_dart_opaque};
 pub use crate::generalized_arc::base_arc::BaseArc;
 pub use crate::generalized_arc::std_arc::StdArc; // TODO temp
@@ -33,10 +34,12 @@ pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;
+#[cfg(feature = "anyhow")]
 pub use anyhow;
 pub use byteorder;
 #[cfg(wasm)]
 pub use cast::slice_from_byte_buffer;
+#[cfg(feature = "dart-opaque")]
 #[cfg(not(wasm))]
 pub use dart_sys_fork as dart_sys;
 #[cfg(feature = "rust-async")]
