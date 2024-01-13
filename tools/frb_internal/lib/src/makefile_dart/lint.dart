@@ -94,5 +94,6 @@ Future<void> lintDartPana(LintConfig config) async {
 
 Future<void> lintRustFeatureFlag() async {
   const package = 'frb_rust';
-  // TODO
+  await exec('cargo hack check --each-feature --no-dev-deps',
+      relativePwd: package);
 }
