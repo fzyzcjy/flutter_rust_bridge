@@ -25537,6 +25537,24 @@ pub fn wire_rust_auto_opaque_arg_own_twin_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_moi_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi_impl(port_, borrow, mut_borrow)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -25806,6 +25824,24 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async(
     expect: i32,
 ) {
     wire_rust_auto_opaque_arg_own_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_impl(port_, borrow, mut_borrow)
 }
 
 #[wasm_bindgen]
@@ -26092,6 +26128,24 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async_moi(
     expect: i32,
 ) {
     wire_rust_auto_opaque_arg_own_twin_rust_async_moi_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi_impl(port_, borrow, mut_borrow)
 }
 
 #[wasm_bindgen]
@@ -26472,6 +26526,36 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_rust_auto_opaque_arg_own_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]
@@ -26970,6 +27054,36 @@ pub fn wire_rust_auto_opaque_arg_own_twin_rust_async_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_rust_async_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -27445,6 +27559,26 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -27890,6 +28024,31 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -28237,6 +28396,22 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync(
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_impl(a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+    borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_impl(borrow, mut_borrow)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -28470,6 +28645,22 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync_moi(
     expect: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_arg_own_twin_sync_moi_impl(arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi_impl(a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+    borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi_impl(borrow, mut_borrow)
 }
 
 #[wasm_bindgen]
@@ -28782,6 +28973,24 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -29168,6 +29377,28 @@ pub fn wire_rust_auto_opaque_arg_own_twin_sync_sse_moi(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_own_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[wasm_bindgen]

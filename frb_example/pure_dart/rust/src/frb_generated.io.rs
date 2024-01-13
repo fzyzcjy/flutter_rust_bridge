@@ -31302,6 +31302,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
+    port_: i64,
+    a: usize,
+    b: usize,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_moi_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+    port_: i64,
+    borrow: usize,
+    mut_borrow: usize,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi_impl(port_, borrow, mut_borrow)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_moi(
     port_: i64,
     arg: usize,
@@ -31571,6 +31589,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
     expect: i32,
 ) {
     wire_rust_auto_opaque_arg_own_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+    port_: i64,
+    a: usize,
+    b: usize,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+    port_: i64,
+    borrow: usize,
+    mut_borrow: usize,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_impl(port_, borrow, mut_borrow)
 }
 
 #[no_mangle]
@@ -31857,6 +31893,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
     expect: i32,
 ) {
     wire_rust_auto_opaque_arg_own_twin_rust_async_moi_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+    port_: i64,
+    a: usize,
+    b: usize,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+    port_: i64,
+    borrow: usize,
+    mut_borrow: usize,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi_impl(port_, borrow, mut_borrow)
 }
 
 #[no_mangle]
@@ -32237,6 +32291,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
     data_len_: i32,
 ) {
     wire_rust_auto_opaque_arg_own_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]
@@ -32735,6 +32819,36 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_rust_async_sse_moi(
     port_: i64,
     ptr_: *mut u8,
@@ -33210,6 +33324,26 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_sse(
     port_: i64,
     ptr_: *mut u8,
@@ -33655,6 +33789,31 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+    port_: i64,
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_sse_moi(
     port_: i64,
     ptr_: *mut u8,
@@ -34002,6 +34161,22 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync(
+    a: usize,
+    b: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_impl(a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+    borrow: usize,
+    mut_borrow: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_impl(borrow, mut_borrow)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_sync(
     arg: usize,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -34235,6 +34410,22 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
     expect: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_arg_own_twin_sync_moi_impl(arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+    a: usize,
+    b: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi_impl(a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+    borrow: usize,
+    mut_borrow: usize,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi_impl(borrow, mut_borrow)
 }
 
 #[no_mangle]
@@ -34547,6 +34738,24 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_own_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[no_mangle]
@@ -34933,6 +35142,28 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_arg_own_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
+    ptr_: *mut u8,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi_impl(
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
 }
 
 #[no_mangle]

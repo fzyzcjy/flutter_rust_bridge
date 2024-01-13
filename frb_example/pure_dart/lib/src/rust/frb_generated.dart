@@ -3916,6 +3916,16 @@ abstract class RustLibApi extends BaseApi {
   Future<void> rustAutoOpaqueArgOwnTwinMoi(
       {required NonCloneSimpleTwinMoi arg, required int expect, dynamic hint});
 
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinMoi(
+      {required NonCloneSimpleTwinMoi a,
+      required NonCloneSimpleTwinMoi b,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
+      {required NonCloneSimpleTwinMoi borrow,
+      required NonCloneSimpleTwinMoi mutBorrow,
+      dynamic hint});
+
   Future<void> rustAutoOpaqueCallableArgTwinMoi(
       {required BoxFnStringString arg, dynamic hint});
 
@@ -4033,6 +4043,16 @@ abstract class RustLibApi extends BaseApi {
   Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
       {required NonCloneSimpleTwinRustAsync arg,
       required int expect,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync a,
+      required NonCloneSimpleTwinRustAsync b,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync borrow,
+      required NonCloneSimpleTwinRustAsync mutBorrow,
       dynamic hint});
 
   Future<void> rustAutoOpaqueCallableArgTwinRustAsync(
@@ -4166,6 +4186,16 @@ abstract class RustLibApi extends BaseApi {
   Future<void> rustAutoOpaqueArgOwnTwinRustAsyncMoi(
       {required NonCloneSimpleTwinRustAsyncMoi arg,
       required int expect,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi a,
+      required NonCloneSimpleTwinRustAsyncMoi b,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi borrow,
+      required NonCloneSimpleTwinRustAsyncMoi mutBorrow,
       dynamic hint});
 
   Future<void> rustAutoOpaqueCallableArgTwinRustAsyncMoi(
@@ -4303,6 +4333,16 @@ abstract class RustLibApi extends BaseApi {
   Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSse(
       {required NonCloneSimpleTwinRustAsyncSse arg,
       required int expect,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse a,
+      required NonCloneSimpleTwinRustAsyncSse b,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse borrow,
+      required NonCloneSimpleTwinRustAsyncSse mutBorrow,
       dynamic hint});
 
   Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSse(
@@ -4443,6 +4483,16 @@ abstract class RustLibApi extends BaseApi {
       required int expect,
       dynamic hint});
 
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi a,
+      required NonCloneSimpleTwinRustAsyncSseMoi b,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi borrow,
+      required NonCloneSimpleTwinRustAsyncSseMoi mutBorrow,
+      dynamic hint});
+
   Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSseMoi(
       {required BoxFnStringString arg, dynamic hint});
 
@@ -4566,6 +4616,16 @@ abstract class RustLibApi extends BaseApi {
   Future<void> rustAutoOpaqueArgOwnTwinSse(
       {required NonCloneSimpleTwinSse arg, required int expect, dynamic hint});
 
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinSse(
+      {required NonCloneSimpleTwinSse a,
+      required NonCloneSimpleTwinSse b,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSse(
+      {required NonCloneSimpleTwinSse borrow,
+      required NonCloneSimpleTwinSse mutBorrow,
+      dynamic hint});
+
   Future<void> rustAutoOpaqueCallableArgTwinSse(
       {required BoxFnStringString arg, dynamic hint});
 
@@ -4682,6 +4742,16 @@ abstract class RustLibApi extends BaseApi {
       required int expect,
       dynamic hint});
 
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi a,
+      required NonCloneSimpleTwinSseMoi b,
+      dynamic hint});
+
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi borrow,
+      required NonCloneSimpleTwinSseMoi mutBorrow,
+      dynamic hint});
+
   Future<void> rustAutoOpaqueCallableArgTwinSseMoi(
       {required BoxFnStringString arg, dynamic hint});
 
@@ -4794,6 +4864,16 @@ abstract class RustLibApi extends BaseApi {
 
   void rustAutoOpaqueArgOwnTwinSync(
       {required NonCloneSimpleTwinSync arg, required int expect, dynamic hint});
+
+  int rustAutoOpaqueBorrowAndBorrowTwinSync(
+      {required NonCloneSimpleTwinSync a,
+      required NonCloneSimpleTwinSync b,
+      dynamic hint});
+
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSync(
+      {required NonCloneSimpleTwinSync borrow,
+      required NonCloneSimpleTwinSync mutBorrow,
+      dynamic hint});
 
   void rustAutoOpaqueCallableArgTwinSync(
       {required BoxFnStringString arg, dynamic hint});
@@ -4909,6 +4989,16 @@ abstract class RustLibApi extends BaseApi {
   void rustAutoOpaqueArgOwnTwinSyncMoi(
       {required NonCloneSimpleTwinSyncMoi arg,
       required int expect,
+      dynamic hint});
+
+  int rustAutoOpaqueBorrowAndBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi a,
+      required NonCloneSimpleTwinSyncMoi b,
+      dynamic hint});
+
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi borrow,
+      required NonCloneSimpleTwinSyncMoi mutBorrow,
       dynamic hint});
 
   void rustAutoOpaqueCallableArgTwinSyncMoi(
@@ -5027,6 +5117,16 @@ abstract class RustLibApi extends BaseApi {
       required int expect,
       dynamic hint});
 
+  int rustAutoOpaqueBorrowAndBorrowTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse a,
+      required NonCloneSimpleTwinSyncSse b,
+      dynamic hint});
+
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse borrow,
+      required NonCloneSimpleTwinSyncSse mutBorrow,
+      dynamic hint});
+
   void rustAutoOpaqueCallableArgTwinSyncSse(
       {required BoxFnStringString arg, dynamic hint});
 
@@ -5142,6 +5242,16 @@ abstract class RustLibApi extends BaseApi {
   void rustAutoOpaqueArgOwnTwinSyncSseMoi(
       {required NonCloneSimpleTwinSyncSseMoi arg,
       required int expect,
+      dynamic hint});
+
+  int rustAutoOpaqueBorrowAndBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi a,
+      required NonCloneSimpleTwinSyncSseMoi b,
+      dynamic hint});
+
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi borrow,
+      required NonCloneSimpleTwinSyncSseMoi mutBorrow,
       dynamic hint});
 
   void rustAutoOpaqueCallableArgTwinSyncSseMoi(
@@ -41500,6 +41610,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinMoi(
+      {required NonCloneSimpleTwinMoi a,
+      required NonCloneSimpleTwinMoi b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+                a);
+        var arg1 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+                b);
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
+      {required NonCloneSimpleTwinMoi borrow,
+      required NonCloneSimpleTwinMoi mutBorrow,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+                borrow);
+        var arg1 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+                mutBorrow);
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinMoiConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_moi",
+        argNames: ["borrow", "mutBorrow"],
+      );
+
+  @override
   Future<void> rustAutoOpaqueCallableArgTwinMoi(
       {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -42512,6 +42688,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_own_twin_rust_async",
         argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync a,
+      required NonCloneSimpleTwinRustAsync b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+                a);
+        var arg1 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+                b);
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_rust_async",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsync(
+      {required NonCloneSimpleTwinRustAsync borrow,
+      required NonCloneSimpleTwinRustAsync mutBorrow,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+                borrow);
+        var arg1 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+                mutBorrow);
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async",
+        argNames: ["borrow", "mutBorrow"],
       );
 
   @override
@@ -43563,6 +43805,75 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "rust_auto_opaque_arg_own_twin_rust_async_moi",
         argNames: ["arg", "expect"],
       );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi a,
+      required NonCloneSimpleTwinRustAsyncMoi b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                a);
+        var arg1 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                b);
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+            port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncMoi(
+      {required NonCloneSimpleTwinRustAsyncMoi borrow,
+      required NonCloneSimpleTwinRustAsyncMoi mutBorrow,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                borrow);
+        var arg1 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+                mutBorrow);
+        return wire
+            .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+                port_, arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncMoiConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi",
+            argNames: ["borrow", "mutBorrow"],
+          );
 
   @override
   Future<void> rustAutoOpaqueCallableArgTwinRustAsyncMoi(
@@ -44650,6 +44961,75 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "rust_auto_opaque_arg_own_twin_rust_async_sse",
         argNames: ["arg", "expect"],
       );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse a,
+      required NonCloneSimpleTwinRustAsyncSse b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            a, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSse(
+      {required NonCloneSimpleTwinRustAsyncSse borrow,
+      required NonCloneSimpleTwinRustAsyncSse mutBorrow,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            borrow, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+            mutBorrow, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse",
+            argNames: ["borrow", "mutBorrow"],
+          );
 
   @override
   Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSse(
@@ -45776,6 +46156,78 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi a,
+      required NonCloneSimpleTwinRustAsyncSseMoi b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            a, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi",
+            argNames: ["a", "b"],
+          );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseMoi(
+      {required NonCloneSimpleTwinRustAsyncSseMoi borrow,
+      required NonCloneSimpleTwinRustAsyncSseMoi mutBorrow,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            borrow, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+            mutBorrow, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseMoiConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseMoiConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi",
+            argNames: ["borrow", "mutBorrow"],
+          );
+
+  @override
   Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSseMoi(
       {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -46864,6 +47316,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinSse(
+      {required NonCloneSimpleTwinSse a,
+      required NonCloneSimpleTwinSse b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+            a, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinSseConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_sse",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSse(
+      {required NonCloneSimpleTwinSse borrow,
+      required NonCloneSimpleTwinSse mutBorrow,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+            borrow, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+            mutBorrow, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinSseConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_sse",
+        argNames: ["borrow", "mutBorrow"],
+      );
+
+  @override
   Future<void> rustAutoOpaqueCallableArgTwinSse(
       {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -47930,6 +48448,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi a,
+      required NonCloneSimpleTwinSseMoi b,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            a, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_sse_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSseMoi(
+      {required NonCloneSimpleTwinSseMoi borrow,
+      required NonCloneSimpleTwinSseMoi mutBorrow,
+      dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            borrow, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+            mutBorrow, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinSseMoiConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi",
+        argNames: ["borrow", "mutBorrow"],
+      );
+
+  @override
   Future<void> rustAutoOpaqueCallableArgTwinSseMoi(
       {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -48961,6 +49545,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  int rustAutoOpaqueBorrowAndBorrowTwinSync(
+      {required NonCloneSimpleTwinSync a,
+      required NonCloneSimpleTwinSync b,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+                a);
+        var arg1 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+                b);
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_sync(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinSyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_sync",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSync(
+      {required NonCloneSimpleTwinSync borrow,
+      required NonCloneSimpleTwinSync mutBorrow,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+                borrow);
+        var arg1 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+                mutBorrow);
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinSyncConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_sync",
+        argNames: ["borrow", "mutBorrow"],
+      );
+
+  @override
   void rustAutoOpaqueCallableArgTwinSync(
       {required BoxFnStringString arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -49958,6 +50608,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_own_twin_sync_moi",
         argNames: ["arg", "expect"],
+      );
+
+  @override
+  int rustAutoOpaqueBorrowAndBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi a,
+      required NonCloneSimpleTwinSyncMoi b,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                a);
+        var arg1 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                b);
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinSyncMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_sync_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSyncMoi(
+      {required NonCloneSimpleTwinSyncMoi borrow,
+      required NonCloneSimpleTwinSyncMoi mutBorrow,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                borrow);
+        var arg1 =
+            cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+                mutBorrow);
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+            arg0, arg1);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinSyncMoiConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinSyncMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi",
+        argNames: ["borrow", "mutBorrow"],
       );
 
   @override
@@ -50998,6 +51714,72 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_own_twin_sync_sse",
         argNames: ["arg", "expect"],
+      );
+
+  @override
+  int rustAutoOpaqueBorrowAndBorrowTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse a,
+      required NonCloneSimpleTwinSyncSse b,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+            a, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinSyncSseConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_sync_sse",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSyncSse(
+      {required NonCloneSimpleTwinSyncSse borrow,
+      required NonCloneSimpleTwinSyncSse mutBorrow,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+            borrow, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+            mutBorrow, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinSyncSseConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse",
+        argNames: ["borrow", "mutBorrow"],
       );
 
   @override
@@ -52084,6 +52866,73 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_own_twin_sync_sse_moi",
         argNames: ["arg", "expect"],
+      );
+
+  @override
+  int rustAutoOpaqueBorrowAndBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi a,
+      required NonCloneSimpleTwinSyncSseMoi b,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            a, serializer);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinSyncSseMoiConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  int rustAutoOpaqueBorrowAndMutBorrowTwinSyncSseMoi(
+      {required NonCloneSimpleTwinSyncSseMoi borrow,
+      required NonCloneSimpleTwinSyncSseMoi mutBorrow,
+      dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            borrow, serializer);
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+            mutBorrow, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
+                raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinSyncSseMoiConstMeta,
+      argValues: [borrow, mutBorrow],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinSyncSseMoiConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi",
+        argNames: ["borrow", "mutBorrow"],
       );
 
   @override

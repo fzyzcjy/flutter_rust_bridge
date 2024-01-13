@@ -59420,6 +59420,46 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_own_twin_moiPtr
           .asFunction<void Function(int, int, int)>();
 
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_moi');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_moi =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_moiPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+    int port_,
+    int borrow,
+    int mut_borrow,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+      port_,
+      borrow,
+      mut_borrow,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moiPtr
+          .asFunction<void Function(int, int, int)>();
+
   void wire_rust_auto_opaque_callable_arg_twin_moi(
     int port_,
     int arg,
@@ -60018,6 +60058,47 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_rust_async');
   late final _wire_rust_auto_opaque_arg_own_twin_rust_async =
       _wire_rust_auto_opaque_arg_own_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+    int port_,
+    int borrow,
+    int mut_borrow,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+      port_,
+      borrow,
+      mut_borrow,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_asyncPtr
           .asFunction<void Function(int, int, int)>();
 
   void wire_rust_auto_opaque_callable_arg_twin_rust_async(
@@ -60628,6 +60709,48 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_rust_async_moi');
   late final _wire_rust_auto_opaque_arg_own_twin_rust_async_moi =
       _wire_rust_auto_opaque_arg_own_twin_rust_async_moiPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moiPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+    int port_,
+    int borrow,
+    int mut_borrow,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+      port_,
+      borrow,
+      mut_borrow,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moiPtr
           .asFunction<void Function(int, int, int)>();
 
   void wire_rust_auto_opaque_callable_arg_twin_rust_async_moi(
@@ -61345,6 +61468,54 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_rust_async_sse');
   late final _wire_rust_auto_opaque_arg_own_twin_rust_async_sse =
       _wire_rust_auto_opaque_arg_own_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_auto_opaque_callable_arg_twin_rust_async_sse(
@@ -62172,6 +62343,54 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_own_twin_rust_async_sse_moiPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_callable_arg_twin_rust_async_sse_moi(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -62986,6 +63205,52 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_own_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sse');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sse =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_callable_arg_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -63791,6 +64056,52 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_own_twin_sse_moiPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_callable_arg_twin_sse_moi(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -64463,6 +64774,42 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_own_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function(int, int)>();
 
+  WireSyncRust2DartDco wire_rust_auto_opaque_borrow_and_borrow_twin_sync(
+    int a,
+    int b,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_sync(
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sync =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+    int borrow,
+    int mut_borrow,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+      borrow,
+      mut_borrow,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
+
   WireSyncRust2DartDco wire_rust_auto_opaque_callable_arg_twin_sync(
     int arg,
   ) {
@@ -64984,6 +65331,44 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_sync_moi');
   late final _wire_rust_auto_opaque_arg_own_twin_sync_moi =
       _wire_rust_auto_opaque_arg_own_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+    int a,
+    int b,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
+
+  WireSyncRust2DartDco
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+    int borrow,
+    int mut_borrow,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+      borrow,
+      mut_borrow,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartDco Function(ffi.UintPtr, ffi.UintPtr)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moiPtr
           .asFunction<WireSyncRust2DartDco Function(int, int)>();
 
   WireSyncRust2DartDco wire_rust_auto_opaque_callable_arg_twin_sync_moi(
@@ -65646,6 +66031,50 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_sync_sse');
   late final _wire_rust_auto_opaque_arg_own_twin_sync_sse =
       _wire_rust_auto_opaque_arg_own_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_rust_auto_opaque_callable_arg_twin_sync_sse(
@@ -66447,6 +66876,54 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_arg_own_twin_sync_sse_moi =
       _wire_rust_auto_opaque_arg_own_twin_sync_sse_moiPtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moiPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  WireSyncRust2DartSse Function(
+                      ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moiPtr
+          .asFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_rust_auto_opaque_callable_arg_twin_sync_sse_moi(
     ffi.Pointer<ffi.Uint8> ptr_,

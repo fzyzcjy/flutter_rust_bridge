@@ -131,6 +131,20 @@ OpaqueOneTwinSyncOpaqueTwoTwinSync rustAutoOpaqueReturnOpaqueOneAndTwoTwinSync(
 OpaqueTwoTwinSync rustAutoOpaqueReturnOpaqueTwoTwinSync({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinSync(hint: hint);
 
+int rustAutoOpaqueBorrowAndMutBorrowTwinSync(
+        {required NonCloneSimpleTwinSync borrow,
+        required NonCloneSimpleTwinSync mutBorrow,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueBorrowAndMutBorrowTwinSync(
+        borrow: borrow, mutBorrow: mutBorrow, hint: hint);
+
+int rustAutoOpaqueBorrowAndBorrowTwinSync(
+        {required NonCloneSimpleTwinSync a,
+        required NonCloneSimpleTwinSync b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueBorrowAndBorrowTwinSync(a: a, b: b, hint: hint);
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>
 @sealed
 class BoxHelloTraitTwinSync extends RustOpaque {
