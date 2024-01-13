@@ -29,11 +29,39 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicTypeU32TwinSse, <int>[0, 4294967295]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeU64TwinSse, <int>[0, 9007199254740992]);
+    addTestsIdentityFunctionCall(exampleBasicTypeIsizeTwinSse,
+        <int>[0, -2147483648, 2147483647, -9007199254740992, 9007199254740992]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeUsizeTwinSse, <int>[0, 4294967295, 9007199254740992]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF32TwinSse, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF64TwinSse, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeBoolTwinSse, <bool>[false, true]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeStringTwinSse, <String>["", "hello", "😂"]);
+    addTestsIdentityFunctionCall(exampleBasicTypeBytesTwinSse, <Uint8List>[
+      Uint8List.fromList([]),
+      Uint8List.fromList([255, 0]),
+      Uint8List.fromList([10, 20, 30, 40])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicPrimitiveEnumTwinSseTwinSse,
+        <BasicPrimitiveEnumTwinSse>[
+          BasicPrimitiveEnumTwinSse.apple,
+          BasicPrimitiveEnumTwinSse.orange
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicGeneralEnumTwinSseTwinSse,
+        <BasicGeneralEnumTwinSse>[
+          BasicGeneralEnumTwinSse.apple(field: "one"),
+          BasicGeneralEnumTwinSse.orange()
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicStructTwinSseTwinSse, <BasicStructTwinSse>[
+      BasicStructTwinSse(apple: null, orange: null),
+      BasicStructTwinSse(apple: "one", orange: 42)
+    ]);
   });
 }

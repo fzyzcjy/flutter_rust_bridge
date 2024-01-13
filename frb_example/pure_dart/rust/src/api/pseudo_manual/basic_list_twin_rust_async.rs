@@ -30,6 +30,12 @@ pub async fn example_basic_list_type_u32_twin_rust_async(arg: Vec<u32>) -> Vec<u
 pub async fn example_basic_list_type_u64_twin_rust_async(arg: Vec<u64>) -> Vec<u64> {
     arg
 }
+pub async fn example_basic_list_type_isize_twin_rust_async(arg: Vec<isize>) -> Vec<isize> {
+    arg
+}
+pub async fn example_basic_list_type_usize_twin_rust_async(arg: Vec<usize>) -> Vec<usize> {
+    arg
+}
 pub async fn example_basic_list_type_f32_twin_rust_async(arg: Vec<f32>) -> Vec<f32> {
     arg
 }
@@ -37,5 +43,26 @@ pub async fn example_basic_list_type_f64_twin_rust_async(arg: Vec<f64>) -> Vec<f
     arg
 }
 pub async fn example_basic_list_type_bool_twin_rust_async(arg: Vec<bool>) -> Vec<bool> {
+    arg
+}
+pub async fn example_basic_list_type_string_twin_rust_async(arg: Vec<String>) -> Vec<String> {
+    arg
+}
+pub async fn example_basic_list_type_bytes_twin_rust_async(arg: Vec<Vec<u8>>) -> Vec<Vec<u8>> {
+    arg
+}
+pub async fn example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
+    arg: Vec<BasicPrimitiveEnumTwinRustAsync>,
+) -> Vec<BasicPrimitiveEnumTwinRustAsync> {
+    arg
+}
+pub async fn example_basic_list_type_basic_general_enum_twin_rust_async_twin_rust_async(
+    arg: Vec<BasicGeneralEnumTwinRustAsync>,
+) -> Vec<BasicGeneralEnumTwinRustAsync> {
+    arg
+}
+pub async fn example_basic_list_type_basic_struct_twin_rust_async_twin_rust_async(
+    arg: Vec<BasicStructTwinRustAsync>,
+) -> Vec<BasicStructTwinRustAsync> {
     arg
 }

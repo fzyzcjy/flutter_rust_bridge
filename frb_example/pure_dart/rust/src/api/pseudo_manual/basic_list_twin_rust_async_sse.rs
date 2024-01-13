@@ -39,6 +39,14 @@ pub async fn example_basic_list_type_u64_twin_rust_async_sse(arg: Vec<u64>) -> V
     arg
 }
 #[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_list_type_isize_twin_rust_async_sse(arg: Vec<isize>) -> Vec<isize> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_list_type_usize_twin_rust_async_sse(arg: Vec<usize>) -> Vec<usize> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn example_basic_list_type_f32_twin_rust_async_sse(arg: Vec<f32>) -> Vec<f32> {
     arg
 }
@@ -48,5 +56,31 @@ pub async fn example_basic_list_type_f64_twin_rust_async_sse(arg: Vec<f64>) -> V
 }
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn example_basic_list_type_bool_twin_rust_async_sse(arg: Vec<bool>) -> Vec<bool> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_list_type_string_twin_rust_async_sse(arg: Vec<String>) -> Vec<String> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_list_type_bytes_twin_rust_async_sse(arg: Vec<Vec<u8>>) -> Vec<Vec<u8>> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_list_type_basic_primitive_enum_twin_rust_async_sse_twin_rust_async_sse(
+    arg: Vec<BasicPrimitiveEnumTwinRustAsyncSse>,
+) -> Vec<BasicPrimitiveEnumTwinRustAsyncSse> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_list_type_basic_general_enum_twin_rust_async_sse_twin_rust_async_sse(
+    arg: Vec<BasicGeneralEnumTwinRustAsyncSse>,
+) -> Vec<BasicGeneralEnumTwinRustAsyncSse> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn example_basic_list_type_basic_struct_twin_rust_async_sse_twin_rust_async_sse(
+    arg: Vec<BasicStructTwinRustAsyncSse>,
+) -> Vec<BasicStructTwinRustAsyncSse> {
     arg
 }

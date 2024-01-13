@@ -39,6 +39,14 @@ pub fn example_basic_type_u64_twin_sse(arg: u64) -> u64 {
     arg
 }
 #[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_type_isize_twin_sse(arg: isize) -> isize {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_type_usize_twin_sse(arg: usize) -> usize {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_f32_twin_sse(arg: f32) -> f32 {
     arg
 }
@@ -48,5 +56,31 @@ pub fn example_basic_type_f64_twin_sse(arg: f64) -> f64 {
 }
 #[flutter_rust_bridge::frb(serialize)]
 pub fn example_basic_type_bool_twin_sse(arg: bool) -> bool {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_type_string_twin_sse(arg: String) -> String {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_type_bytes_twin_sse(arg: Vec<u8>) -> Vec<u8> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_type_basic_primitive_enum_twin_sse_twin_sse(
+    arg: BasicPrimitiveEnumTwinSse,
+) -> BasicPrimitiveEnumTwinSse {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_type_basic_general_enum_twin_sse_twin_sse(
+    arg: BasicGeneralEnumTwinSse,
+) -> BasicGeneralEnumTwinSse {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+pub fn example_basic_type_basic_struct_twin_sse_twin_sse(
+    arg: BasicStructTwinSse,
+) -> BasicStructTwinSse {
     arg
 }

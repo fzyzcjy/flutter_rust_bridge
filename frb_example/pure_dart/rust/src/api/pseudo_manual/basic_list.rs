@@ -26,6 +26,12 @@ pub fn example_basic_list_type_u32_twin_normal(arg: Vec<u32>) -> Vec<u32> {
 pub fn example_basic_list_type_u64_twin_normal(arg: Vec<u64>) -> Vec<u64> {
     arg
 }
+pub fn example_basic_list_type_isize_twin_normal(arg: Vec<isize>) -> Vec<isize> {
+    arg
+}
+pub fn example_basic_list_type_usize_twin_normal(arg: Vec<usize>) -> Vec<usize> {
+    arg
+}
 pub fn example_basic_list_type_f32_twin_normal(arg: Vec<f32>) -> Vec<f32> {
     arg
 }
@@ -33,5 +39,26 @@ pub fn example_basic_list_type_f64_twin_normal(arg: Vec<f64>) -> Vec<f64> {
     arg
 }
 pub fn example_basic_list_type_bool_twin_normal(arg: Vec<bool>) -> Vec<bool> {
+    arg
+}
+pub fn example_basic_list_type_string_twin_normal(arg: Vec<String>) -> Vec<String> {
+    arg
+}
+pub fn example_basic_list_type_bytes_twin_normal(arg: Vec<Vec<u8>>) -> Vec<Vec<u8>> {
+    arg
+}
+pub fn example_basic_list_type_basic_primitive_enum_twin_normal_twin_normal(
+    arg: Vec<BasicPrimitiveEnumTwinNormal>,
+) -> Vec<BasicPrimitiveEnumTwinNormal> {
+    arg
+}
+pub fn example_basic_list_type_basic_general_enum_twin_normal_twin_normal(
+    arg: Vec<BasicGeneralEnumTwinNormal>,
+) -> Vec<BasicGeneralEnumTwinNormal> {
+    arg
+}
+pub fn example_basic_list_type_basic_struct_twin_normal_twin_normal(
+    arg: Vec<BasicStructTwinNormal>,
+) -> Vec<BasicStructTwinNormal> {
     arg
 }

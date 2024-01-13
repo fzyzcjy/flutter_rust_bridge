@@ -61,6 +61,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Uint64List.fromList([0]),
       Uint64List.fromList([9007199254740992])
     ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeIsizeTwinRustAsync, [
+      Int64List.fromList([]),
+      Int64List.fromList([0]),
+      Int64List.fromList([-2147483648]),
+      Int64List.fromList([2147483647]),
+      Int64List.fromList([-9007199254740992]),
+      Int64List.fromList([9007199254740992])
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeUsizeTwinRustAsync, [
+      Uint64List.fromList([]),
+      Uint64List.fromList([0]),
+      Uint64List.fromList([4294967295]),
+      Uint64List.fromList([9007199254740992])
+    ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeF32TwinRustAsync, [
       Float32List.fromList([]),
       Float32List.fromList([0]),
@@ -77,6 +91,40 @@ Future<void> main({bool skipRustLibInit = false}) async {
       <bool>[],
       <bool>[false],
       <bool>[true]
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeStringTwinRustAsync, [
+      null.fromList([]),
+      null.fromList([""]),
+      null.fromList(["hello"]),
+      null.fromList(["😂"])
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeBytesTwinRustAsync, [
+      null.fromList([]),
+      null.fromList([Uint8List.fromList([])]),
+      null.fromList([
+        Uint8List.fromList([255, 0])
+      ]),
+      null.fromList([
+        Uint8List.fromList([10, 20, 30, 40])
+      ])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync, [
+      null.fromList([]),
+      null.fromList([BasicPrimitiveEnumTwinRustAsync.apple]),
+      null.fromList([BasicPrimitiveEnumTwinRustAsync.orange])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync, [
+      null.fromList([]),
+      null.fromList([BasicGeneralEnumTwinRustAsync.apple(field: "one")]),
+      null.fromList([BasicGeneralEnumTwinRustAsync.orange()])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync, [
+      null.fromList([]),
+      null.fromList([BasicStructTwinRustAsync(apple: null, orange: null)]),
+      null.fromList([BasicStructTwinRustAsync(apple: "one", orange: 42)])
     ]);
   });
 }

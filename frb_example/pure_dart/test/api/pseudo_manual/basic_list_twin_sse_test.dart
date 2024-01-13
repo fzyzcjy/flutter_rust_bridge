@@ -61,6 +61,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Uint64List.fromList([0]),
       Uint64List.fromList([9007199254740992])
     ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeIsizeTwinSse, [
+      Int64List.fromList([]),
+      Int64List.fromList([0]),
+      Int64List.fromList([-2147483648]),
+      Int64List.fromList([2147483647]),
+      Int64List.fromList([-9007199254740992]),
+      Int64List.fromList([9007199254740992])
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeUsizeTwinSse, [
+      Uint64List.fromList([]),
+      Uint64List.fromList([0]),
+      Uint64List.fromList([4294967295]),
+      Uint64List.fromList([9007199254740992])
+    ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeF32TwinSse, [
       Float32List.fromList([]),
       Float32List.fromList([0]),
@@ -77,6 +91,40 @@ Future<void> main({bool skipRustLibInit = false}) async {
       <bool>[],
       <bool>[false],
       <bool>[true]
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeStringTwinSse, [
+      null.fromList([]),
+      null.fromList([""]),
+      null.fromList(["hello"]),
+      null.fromList(["😂"])
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeBytesTwinSse, [
+      null.fromList([]),
+      null.fromList([Uint8List.fromList([])]),
+      null.fromList([
+        Uint8List.fromList([255, 0])
+      ]),
+      null.fromList([
+        Uint8List.fromList([10, 20, 30, 40])
+      ])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse, [
+      null.fromList([]),
+      null.fromList([BasicPrimitiveEnumTwinSse.apple]),
+      null.fromList([BasicPrimitiveEnumTwinSse.orange])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicGeneralEnumTwinSseTwinSse, [
+      null.fromList([]),
+      null.fromList([BasicGeneralEnumTwinSse.apple(field: "one")]),
+      null.fromList([BasicGeneralEnumTwinSse.orange()])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicStructTwinSseTwinSse, [
+      null.fromList([]),
+      null.fromList([BasicStructTwinSse(apple: null, orange: null)]),
+      null.fromList([BasicStructTwinSse(apple: "one", orange: 42)])
     ]);
   });
 }

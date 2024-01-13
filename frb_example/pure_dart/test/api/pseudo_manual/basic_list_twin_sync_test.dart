@@ -61,6 +61,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Uint64List.fromList([0]),
       Uint64List.fromList([9007199254740992])
     ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeIsizeTwinSync, [
+      Int64List.fromList([]),
+      Int64List.fromList([0]),
+      Int64List.fromList([-2147483648]),
+      Int64List.fromList([2147483647]),
+      Int64List.fromList([-9007199254740992]),
+      Int64List.fromList([9007199254740992])
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeUsizeTwinSync, [
+      Uint64List.fromList([]),
+      Uint64List.fromList([0]),
+      Uint64List.fromList([4294967295]),
+      Uint64List.fromList([9007199254740992])
+    ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeF32TwinSync, [
       Float32List.fromList([]),
       Float32List.fromList([0]),
@@ -77,6 +91,40 @@ Future<void> main({bool skipRustLibInit = false}) async {
       <bool>[],
       <bool>[false],
       <bool>[true]
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeStringTwinSync, [
+      null.fromList([]),
+      null.fromList([""]),
+      null.fromList(["hello"]),
+      null.fromList(["😂"])
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicListTypeBytesTwinSync, [
+      null.fromList([]),
+      null.fromList([Uint8List.fromList([])]),
+      null.fromList([
+        Uint8List.fromList([255, 0])
+      ]),
+      null.fromList([
+        Uint8List.fromList([10, 20, 30, 40])
+      ])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicPrimitiveEnumTwinSyncTwinSync, [
+      null.fromList([]),
+      null.fromList([BasicPrimitiveEnumTwinSync.apple]),
+      null.fromList([BasicPrimitiveEnumTwinSync.orange])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicGeneralEnumTwinSyncTwinSync, [
+      null.fromList([]),
+      null.fromList([BasicGeneralEnumTwinSync.apple(field: "one")]),
+      null.fromList([BasicGeneralEnumTwinSync.orange()])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeBasicStructTwinSyncTwinSync, [
+      null.fromList([]),
+      null.fromList([BasicStructTwinSync(apple: null, orange: null)]),
+      null.fromList([BasicStructTwinSync(apple: "one", orange: 42)])
     ]);
   });
 }

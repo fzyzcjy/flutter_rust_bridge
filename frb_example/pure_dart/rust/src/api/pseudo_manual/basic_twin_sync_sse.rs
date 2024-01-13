@@ -48,6 +48,16 @@ pub fn example_basic_type_u64_twin_sync_sse(arg: u64) -> u64 {
 }
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_type_isize_twin_sync_sse(arg: isize) -> isize {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_type_usize_twin_sync_sse(arg: usize) -> usize {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_type_f32_twin_sync_sse(arg: f32) -> f32 {
     arg
 }
@@ -59,5 +69,36 @@ pub fn example_basic_type_f64_twin_sync_sse(arg: f64) -> f64 {
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_type_bool_twin_sync_sse(arg: bool) -> bool {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_type_string_twin_sync_sse(arg: String) -> String {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_type_bytes_twin_sync_sse(arg: Vec<u8>) -> Vec<u8> {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
+    arg: BasicPrimitiveEnumTwinSyncSse,
+) -> BasicPrimitiveEnumTwinSyncSse {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
+    arg: BasicGeneralEnumTwinSyncSse,
+) -> BasicGeneralEnumTwinSyncSse {
+    arg
+}
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_type_basic_struct_twin_sync_sse_twin_sync_sse(
+    arg: BasicStructTwinSyncSse,
+) -> BasicStructTwinSyncSse {
     arg
 }

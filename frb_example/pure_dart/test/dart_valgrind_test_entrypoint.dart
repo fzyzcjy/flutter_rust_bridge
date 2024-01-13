@@ -66,6 +66,28 @@ import 'api/pseudo_manual/basic_list_twin_sync_sse_test.dart'
     as basic_list_twin_sync_sse_test;
 import 'api/pseudo_manual/basic_list_twin_sync_test.dart'
     as basic_list_twin_sync_test;
+import 'api/pseudo_manual/basic_map_test.dart' as basic_map_test;
+import 'api/pseudo_manual/basic_map_twin_rust_async_sse_test.dart'
+    as basic_map_twin_rust_async_sse_test;
+import 'api/pseudo_manual/basic_map_twin_rust_async_test.dart'
+    as basic_map_twin_rust_async_test;
+import 'api/pseudo_manual/basic_map_twin_sse_test.dart'
+    as basic_map_twin_sse_test;
+import 'api/pseudo_manual/basic_map_twin_sync_sse_test.dart'
+    as basic_map_twin_sync_sse_test;
+import 'api/pseudo_manual/basic_map_twin_sync_test.dart'
+    as basic_map_twin_sync_test;
+import 'api/pseudo_manual/basic_optional_test.dart' as basic_optional_test;
+import 'api/pseudo_manual/basic_optional_twin_rust_async_sse_test.dart'
+    as basic_optional_twin_rust_async_sse_test;
+import 'api/pseudo_manual/basic_optional_twin_rust_async_test.dart'
+    as basic_optional_twin_rust_async_test;
+import 'api/pseudo_manual/basic_optional_twin_sse_test.dart'
+    as basic_optional_twin_sse_test;
+import 'api/pseudo_manual/basic_optional_twin_sync_sse_test.dart'
+    as basic_optional_twin_sync_sse_test;
+import 'api/pseudo_manual/basic_optional_twin_sync_test.dart'
+    as basic_optional_twin_sync_test;
 import 'api/pseudo_manual/basic_test.dart' as basic_test;
 import 'api/pseudo_manual/basic_twin_rust_async_sse_test.dart'
     as basic_twin_rust_async_sse_test;
@@ -201,17 +223,6 @@ import 'api/pseudo_manual/newtype_pattern_twin_sync_sse_test.dart'
     as newtype_pattern_twin_sync_sse_test;
 import 'api/pseudo_manual/newtype_pattern_twin_sync_test.dart'
     as newtype_pattern_twin_sync_test;
-import 'api/pseudo_manual/optional_basic_test.dart' as optional_basic_test;
-import 'api/pseudo_manual/optional_basic_twin_rust_async_sse_test.dart'
-    as optional_basic_twin_rust_async_sse_test;
-import 'api/pseudo_manual/optional_basic_twin_rust_async_test.dart'
-    as optional_basic_twin_rust_async_test;
-import 'api/pseudo_manual/optional_basic_twin_sse_test.dart'
-    as optional_basic_twin_sse_test;
-import 'api/pseudo_manual/optional_basic_twin_sync_sse_test.dart'
-    as optional_basic_twin_sync_sse_test;
-import 'api/pseudo_manual/optional_basic_twin_sync_test.dart'
-    as optional_basic_twin_sync_test;
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_sse_test.dart'
     as optional_primitive_misc_twin_rust_async_sse_test;
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_test.dart'
@@ -434,6 +445,18 @@ Future<void> callFileEntrypoints() async {
   await basic_list_twin_sse_test.main(skipRustLibInit: true);
   await basic_list_twin_sync_sse_test.main(skipRustLibInit: true);
   await basic_list_twin_sync_test.main(skipRustLibInit: true);
+  await basic_map_test.main(skipRustLibInit: true);
+  await basic_map_twin_rust_async_sse_test.main(skipRustLibInit: true);
+  await basic_map_twin_rust_async_test.main(skipRustLibInit: true);
+  await basic_map_twin_sse_test.main(skipRustLibInit: true);
+  await basic_map_twin_sync_sse_test.main(skipRustLibInit: true);
+  await basic_map_twin_sync_test.main(skipRustLibInit: true);
+  await basic_optional_test.main(skipRustLibInit: true);
+  await basic_optional_twin_rust_async_sse_test.main(skipRustLibInit: true);
+  await basic_optional_twin_rust_async_test.main(skipRustLibInit: true);
+  await basic_optional_twin_sse_test.main(skipRustLibInit: true);
+  await basic_optional_twin_sync_sse_test.main(skipRustLibInit: true);
+  await basic_optional_twin_sync_test.main(skipRustLibInit: true);
   await basic_test.main(skipRustLibInit: true);
   await basic_twin_rust_async_sse_test.main(skipRustLibInit: true);
   await basic_twin_rust_async_test.main(skipRustLibInit: true);
@@ -507,12 +530,6 @@ Future<void> callFileEntrypoints() async {
   await newtype_pattern_twin_sse_test.main(skipRustLibInit: true);
   await newtype_pattern_twin_sync_sse_test.main(skipRustLibInit: true);
   await newtype_pattern_twin_sync_test.main(skipRustLibInit: true);
-  await optional_basic_test.main(skipRustLibInit: true);
-  await optional_basic_twin_rust_async_sse_test.main(skipRustLibInit: true);
-  await optional_basic_twin_rust_async_test.main(skipRustLibInit: true);
-  await optional_basic_twin_sse_test.main(skipRustLibInit: true);
-  await optional_basic_twin_sync_sse_test.main(skipRustLibInit: true);
-  await optional_basic_twin_sync_test.main(skipRustLibInit: true);
   await optional_primitive_misc_twin_rust_async_sse_test.main(
       skipRustLibInit: true);
   await optional_primitive_misc_twin_rust_async_test.main(

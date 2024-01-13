@@ -29,11 +29,39 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicTypeU32TwinSync, <int>[0, 4294967295]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeU64TwinSync, <int>[0, 9007199254740992]);
+    addTestsIdentityFunctionCall(exampleBasicTypeIsizeTwinSync,
+        <int>[0, -2147483648, 2147483647, -9007199254740992, 9007199254740992]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeUsizeTwinSync, <int>[0, 4294967295, 9007199254740992]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF32TwinSync, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF64TwinSync, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeBoolTwinSync, <bool>[false, true]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeStringTwinSync, <String>["", "hello", "😂"]);
+    addTestsIdentityFunctionCall(exampleBasicTypeBytesTwinSync, <Uint8List>[
+      Uint8List.fromList([]),
+      Uint8List.fromList([255, 0]),
+      Uint8List.fromList([10, 20, 30, 40])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicPrimitiveEnumTwinSyncTwinSync,
+        <BasicPrimitiveEnumTwinSync>[
+          BasicPrimitiveEnumTwinSync.apple,
+          BasicPrimitiveEnumTwinSync.orange
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicGeneralEnumTwinSyncTwinSync,
+        <BasicGeneralEnumTwinSync>[
+          BasicGeneralEnumTwinSync.apple(field: "one"),
+          BasicGeneralEnumTwinSync.orange()
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicStructTwinSyncTwinSync, <BasicStructTwinSync>[
+      BasicStructTwinSync(apple: null, orange: null),
+      BasicStructTwinSync(apple: "one", orange: 42)
+    ]);
   });
 }
