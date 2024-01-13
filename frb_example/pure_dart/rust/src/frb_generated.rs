@@ -28939,6 +28939,43 @@ fn wire_rust_auto_opaque_arg_own_twin_normal_impl(
         },
     )
 }
+fn wire_rust_auto_opaque_borrow_and_mut_borrow_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    borrow: impl CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
+        >,
+    >,
+    mut_borrow: impl CstDecode<
+        RustOpaqueNom<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinNormal>,
+        >,
+    >,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_borrow_and_mut_borrow",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_borrow = borrow.cst_decode();
+            let api_mut_borrow = mut_borrow.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    let api_borrow = api_borrow.rust_auto_opaque_decode_sync_ref();
+                    let mut api_mut_borrow = api_mut_borrow.rust_auto_opaque_decode_sync_ref_mut();
+                    Result::<_, flutter_rust_bridge::for_generated::anyhow::Error>::Ok(
+                        crate::api::rust_auto_opaque::rust_auto_opaque_borrow_and_mut_borrow(
+                            &api_borrow,
+                            &mut api_mut_borrow,
+                        ),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_rust_auto_opaque_callable_arg_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<

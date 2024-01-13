@@ -40736,6 +40736,11 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object arg, int expect) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg, expect);
 
+  void wire_rust_auto_opaque_borrow_and_mut_borrow(
+          NativePortType port_, Object borrow, Object mut_borrow) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow(
+          port_, borrow, mut_borrow);
+
   void wire_rust_auto_opaque_callable_arg_twin_normal(
           NativePortType port_, Object arg) =>
       wasmModule.wire_rust_auto_opaque_callable_arg_twin_normal(port_, arg);
@@ -50692,6 +50697,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_arg_own_twin_normal(
       NativePortType port_, Object arg, int expect);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow(
+      NativePortType port_, Object borrow, Object mut_borrow);
 
   external void wire_rust_auto_opaque_callable_arg_twin_normal(
       NativePortType port_, Object arg);

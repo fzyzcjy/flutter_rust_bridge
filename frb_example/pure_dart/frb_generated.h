@@ -11558,6 +11558,10 @@ void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_normal(int6
                                                                             uintptr_t arg,
                                                                             int32_t expect);
 
+void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow(int64_t port_,
+                                                                              uintptr_t borrow,
+                                                                              uintptr_t mut_borrow);
+
 void frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_normal(int64_t port_,
                                                                                  uintptr_t arg);
 
@@ -15773,6 +15777,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_sync_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twin_sync_sse_moi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_arg_twin_rust_async);

@@ -31746,6 +31746,15 @@ pub fn wire_rust_auto_opaque_arg_own_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_borrow_and_mut_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    mut_borrow: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_borrow_and_mut_borrow_impl(port_, borrow, mut_borrow)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_callable_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,

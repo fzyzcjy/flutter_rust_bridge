@@ -137,6 +137,13 @@ Future<OpaqueTwoTwinNormal> rustAutoOpaqueReturnOpaqueTwoTwinNormal(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinNormal(hint: hint);
 
+Future<int> rustAutoOpaqueBorrowAndMutBorrow(
+        {required NonCloneSimpleTwinNormal borrow,
+        required NonCloneSimpleTwinNormal mutBorrow,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueBorrowAndMutBorrow(
+        borrow: borrow, mutBorrow: mutBorrow, hint: hint);
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>>
 @sealed
 class BoxHelloTraitTwinNormal extends RustOpaque {
