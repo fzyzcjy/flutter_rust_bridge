@@ -22026,46 +22026,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void cst_api_fill_to_wire_basic_struct_twin_normal(
       BasicStructTwinNormal apiObj, wire_cst_basic_struct_twin_normal wireObj) {
-    wireObj.apple = cst_encode_String(apiObj.apple);
-    wireObj.orange = cst_encode_i_32(apiObj.orange);
+    wireObj.apple = cst_encode_opt_String(apiObj.apple);
+    wireObj.orange = cst_encode_opt_box_autoadd_i_32(apiObj.orange);
   }
 
   @protected
   void cst_api_fill_to_wire_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync apiObj,
       wire_cst_basic_struct_twin_rust_async wireObj) {
-    wireObj.apple = cst_encode_String(apiObj.apple);
-    wireObj.orange = cst_encode_i_32(apiObj.orange);
+    wireObj.apple = cst_encode_opt_String(apiObj.apple);
+    wireObj.orange = cst_encode_opt_box_autoadd_i_32(apiObj.orange);
   }
 
   @protected
   void cst_api_fill_to_wire_basic_struct_twin_rust_async_sse(
       BasicStructTwinRustAsyncSse apiObj,
       wire_cst_basic_struct_twin_rust_async_sse wireObj) {
-    wireObj.apple = cst_encode_String(apiObj.apple);
-    wireObj.orange = cst_encode_i_32(apiObj.orange);
+    wireObj.apple = cst_encode_opt_String(apiObj.apple);
+    wireObj.orange = cst_encode_opt_box_autoadd_i_32(apiObj.orange);
   }
 
   @protected
   void cst_api_fill_to_wire_basic_struct_twin_sse(
       BasicStructTwinSse apiObj, wire_cst_basic_struct_twin_sse wireObj) {
-    wireObj.apple = cst_encode_String(apiObj.apple);
-    wireObj.orange = cst_encode_i_32(apiObj.orange);
+    wireObj.apple = cst_encode_opt_String(apiObj.apple);
+    wireObj.orange = cst_encode_opt_box_autoadd_i_32(apiObj.orange);
   }
 
   @protected
   void cst_api_fill_to_wire_basic_struct_twin_sync(
       BasicStructTwinSync apiObj, wire_cst_basic_struct_twin_sync wireObj) {
-    wireObj.apple = cst_encode_String(apiObj.apple);
-    wireObj.orange = cst_encode_i_32(apiObj.orange);
+    wireObj.apple = cst_encode_opt_String(apiObj.apple);
+    wireObj.orange = cst_encode_opt_box_autoadd_i_32(apiObj.orange);
   }
 
   @protected
   void cst_api_fill_to_wire_basic_struct_twin_sync_sse(
       BasicStructTwinSyncSse apiObj,
       wire_cst_basic_struct_twin_sync_sse wireObj) {
-    wireObj.apple = cst_encode_String(apiObj.apple);
-    wireObj.orange = cst_encode_i_32(apiObj.orange);
+    wireObj.apple = cst_encode_opt_String(apiObj.apple);
+    wireObj.orange = cst_encode_opt_box_autoadd_i_32(apiObj.orange);
   }
 
   @protected
@@ -96448,8 +96448,7 @@ final class wire_cst_basic_general_enum_twin_normal extends ffi.Struct {
 final class wire_cst_basic_struct_twin_normal extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> apple;
 
-  @ffi.Int32()
-  external int orange;
+  external ffi.Pointer<ffi.Int32> orange;
 }
 
 final class wire_cst_list_basic_general_enum_twin_normal extends ffi.Struct {
@@ -96577,8 +96576,7 @@ final class wire_cst_list_basic_primitive_enum_twin_rust_async
 final class wire_cst_basic_struct_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> apple;
 
-  @ffi.Int32()
-  external int orange;
+  external ffi.Pointer<ffi.Int32> orange;
 }
 
 final class wire_cst_list_basic_struct_twin_rust_async extends ffi.Struct {
@@ -96620,8 +96618,7 @@ final class wire_cst_list_basic_primitive_enum_twin_sync extends ffi.Struct {
 final class wire_cst_basic_struct_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> apple;
 
-  @ffi.Int32()
-  external int orange;
+  external ffi.Pointer<ffi.Int32> orange;
 }
 
 final class wire_cst_list_basic_struct_twin_sync extends ffi.Struct {
@@ -98693,22 +98690,19 @@ final class wire_cst_basic_general_enum_twin_sync_sse extends ffi.Struct {
 final class wire_cst_basic_struct_twin_rust_async_sse extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> apple;
 
-  @ffi.Int32()
-  external int orange;
+  external ffi.Pointer<ffi.Int32> orange;
 }
 
 final class wire_cst_basic_struct_twin_sse extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> apple;
 
-  @ffi.Int32()
-  external int orange;
+  external ffi.Pointer<ffi.Int32> orange;
 }
 
 final class wire_cst_basic_struct_twin_sync_sse extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> apple;
 
-  @ffi.Int32()
-  external int orange;
+  external ffi.Pointer<ffi.Int32> orange;
 }
 
 final class wire_cst_benchmark_binary_tree_twin_rust_async_sse

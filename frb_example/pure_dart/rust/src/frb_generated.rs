@@ -37553,8 +37553,8 @@ impl SseDecode for crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiv
 
 impl SseDecode for crate::api::pseudo_manual::basic::BasicStructTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_apple = <String>::sse_decode(deserializer);
-        let mut var_orange = <i32>::sse_decode(deserializer);
+        let mut var_apple = <Option<String>>::sse_decode(deserializer);
+        let mut var_orange = <Option<i32>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::basic::BasicStructTwinNormal {
             apple: var_apple,
             orange: var_orange,
@@ -37564,8 +37564,8 @@ impl SseDecode for crate::api::pseudo_manual::basic::BasicStructTwinNormal {
 
 impl SseDecode for crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_apple = <String>::sse_decode(deserializer);
-        let mut var_orange = <i32>::sse_decode(deserializer);
+        let mut var_apple = <Option<String>>::sse_decode(deserializer);
+        let mut var_orange = <Option<i32>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync {
             apple: var_apple,
             orange: var_orange,
@@ -37577,8 +37577,8 @@ impl SseDecode
     for crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse
 {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_apple = <String>::sse_decode(deserializer);
-        let mut var_orange = <i32>::sse_decode(deserializer);
+        let mut var_apple = <Option<String>>::sse_decode(deserializer);
+        let mut var_orange = <Option<i32>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse {
             apple: var_apple,
             orange: var_orange,
@@ -37588,8 +37588,8 @@ impl SseDecode
 
 impl SseDecode for crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_apple = <String>::sse_decode(deserializer);
-        let mut var_orange = <i32>::sse_decode(deserializer);
+        let mut var_apple = <Option<String>>::sse_decode(deserializer);
+        let mut var_orange = <Option<i32>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse {
             apple: var_apple,
             orange: var_orange,
@@ -37599,8 +37599,8 @@ impl SseDecode for crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse
 
 impl SseDecode for crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_apple = <String>::sse_decode(deserializer);
-        let mut var_orange = <i32>::sse_decode(deserializer);
+        let mut var_apple = <Option<String>>::sse_decode(deserializer);
+        let mut var_orange = <Option<i32>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync {
             apple: var_apple,
             orange: var_orange,
@@ -37610,8 +37610,8 @@ impl SseDecode for crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSy
 
 impl SseDecode for crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_apple = <String>::sse_decode(deserializer);
-        let mut var_orange = <i32>::sse_decode(deserializer);
+        let mut var_apple = <Option<String>>::sse_decode(deserializer);
+        let mut var_orange = <Option<i32>>::sse_decode(deserializer);
         return crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse {
             apple: var_apple,
             orange: var_orange,
@@ -62766,15 +62766,15 @@ impl SseEncode for crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiv
 
 impl SseEncode for crate::api::pseudo_manual::basic::BasicStructTwinNormal {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.apple, serializer);
-        <i32>::sse_encode(self.orange, serializer);
+        <Option<String>>::sse_encode(self.apple, serializer);
+        <Option<i32>>::sse_encode(self.orange, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.apple, serializer);
-        <i32>::sse_encode(self.orange, serializer);
+        <Option<String>>::sse_encode(self.apple, serializer);
+        <Option<i32>>::sse_encode(self.orange, serializer);
     }
 }
 
@@ -62782,29 +62782,29 @@ impl SseEncode
     for crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse
 {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.apple, serializer);
-        <i32>::sse_encode(self.orange, serializer);
+        <Option<String>>::sse_encode(self.apple, serializer);
+        <Option<i32>>::sse_encode(self.orange, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.apple, serializer);
-        <i32>::sse_encode(self.orange, serializer);
+        <Option<String>>::sse_encode(self.apple, serializer);
+        <Option<i32>>::sse_encode(self.orange, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.apple, serializer);
-        <i32>::sse_encode(self.orange, serializer);
+        <Option<String>>::sse_encode(self.apple, serializer);
+        <Option<i32>>::sse_encode(self.orange, serializer);
     }
 }
 
 impl SseEncode for crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <String>::sse_encode(self.apple, serializer);
-        <i32>::sse_encode(self.orange, serializer);
+        <Option<String>>::sse_encode(self.apple, serializer);
+        <Option<i32>>::sse_encode(self.orange, serializer);
     }
 }
 

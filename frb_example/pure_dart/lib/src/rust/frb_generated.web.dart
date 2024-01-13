@@ -15075,35 +15075,53 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_normal(BasicStructTwinNormal raw) {
-    return [cst_encode_String(raw.apple), cst_encode_i_32(raw.orange)];
+    return [
+      cst_encode_opt_String(raw.apple),
+      cst_encode_opt_box_autoadd_i_32(raw.orange)
+    ];
   }
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync raw) {
-    return [cst_encode_String(raw.apple), cst_encode_i_32(raw.orange)];
+    return [
+      cst_encode_opt_String(raw.apple),
+      cst_encode_opt_box_autoadd_i_32(raw.orange)
+    ];
   }
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_rust_async_sse(
       BasicStructTwinRustAsyncSse raw) {
-    return [cst_encode_String(raw.apple), cst_encode_i_32(raw.orange)];
+    return [
+      cst_encode_opt_String(raw.apple),
+      cst_encode_opt_box_autoadd_i_32(raw.orange)
+    ];
   }
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_sse(BasicStructTwinSse raw) {
-    return [cst_encode_String(raw.apple), cst_encode_i_32(raw.orange)];
+    return [
+      cst_encode_opt_String(raw.apple),
+      cst_encode_opt_box_autoadd_i_32(raw.orange)
+    ];
   }
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_sync(BasicStructTwinSync raw) {
-    return [cst_encode_String(raw.apple), cst_encode_i_32(raw.orange)];
+    return [
+      cst_encode_opt_String(raw.apple),
+      cst_encode_opt_box_autoadd_i_32(raw.orange)
+    ];
   }
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_sync_sse(
       BasicStructTwinSyncSse raw) {
-    return [cst_encode_String(raw.apple), cst_encode_i_32(raw.orange)];
+    return [
+      cst_encode_opt_String(raw.apple),
+      cst_encode_opt_box_autoadd_i_32(raw.orange)
+    ];
   }
 
   @protected

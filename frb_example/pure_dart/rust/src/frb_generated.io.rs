@@ -16565,7 +16565,7 @@ impl NewWithNullPtr for wire_cst_basic_struct_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             apple: core::ptr::null_mut(),
-            orange: Default::default(),
+            orange: core::ptr::null_mut(),
         }
     }
 }
@@ -16578,7 +16578,7 @@ impl NewWithNullPtr for wire_cst_basic_struct_twin_rust_async {
     fn new_with_null_ptr() -> Self {
         Self {
             apple: core::ptr::null_mut(),
-            orange: Default::default(),
+            orange: core::ptr::null_mut(),
         }
     }
 }
@@ -16591,7 +16591,7 @@ impl NewWithNullPtr for wire_cst_basic_struct_twin_rust_async_sse {
     fn new_with_null_ptr() -> Self {
         Self {
             apple: core::ptr::null_mut(),
-            orange: Default::default(),
+            orange: core::ptr::null_mut(),
         }
     }
 }
@@ -16604,7 +16604,7 @@ impl NewWithNullPtr for wire_cst_basic_struct_twin_sse {
     fn new_with_null_ptr() -> Self {
         Self {
             apple: core::ptr::null_mut(),
-            orange: Default::default(),
+            orange: core::ptr::null_mut(),
         }
     }
 }
@@ -16617,7 +16617,7 @@ impl NewWithNullPtr for wire_cst_basic_struct_twin_sync {
     fn new_with_null_ptr() -> Self {
         Self {
             apple: core::ptr::null_mut(),
-            orange: Default::default(),
+            orange: core::ptr::null_mut(),
         }
     }
 }
@@ -16630,7 +16630,7 @@ impl NewWithNullPtr for wire_cst_basic_struct_twin_sync_sse {
     fn new_with_null_ptr() -> Self {
         Self {
             apple: core::ptr::null_mut(),
-            orange: Default::default(),
+            orange: core::ptr::null_mut(),
         }
     }
 }
@@ -51411,37 +51411,37 @@ pub struct wire_cst_BasicGeneralEnumTwinSyncSse_Apple {
 #[derive(Clone, Copy)]
 pub struct wire_cst_basic_struct_twin_normal {
     apple: *mut wire_cst_list_prim_u_8_strict,
-    orange: i32,
+    orange: *mut i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_basic_struct_twin_rust_async {
     apple: *mut wire_cst_list_prim_u_8_strict,
-    orange: i32,
+    orange: *mut i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_basic_struct_twin_rust_async_sse {
     apple: *mut wire_cst_list_prim_u_8_strict,
-    orange: i32,
+    orange: *mut i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_basic_struct_twin_sse {
     apple: *mut wire_cst_list_prim_u_8_strict,
-    orange: i32,
+    orange: *mut i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_basic_struct_twin_sync {
     apple: *mut wire_cst_list_prim_u_8_strict,
-    orange: i32,
+    orange: *mut i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_basic_struct_twin_sync_sse {
     apple: *mut wire_cst_list_prim_u_8_strict,
-    orange: i32,
+    orange: *mut i32,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

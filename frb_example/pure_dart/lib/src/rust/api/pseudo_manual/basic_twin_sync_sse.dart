@@ -89,12 +89,12 @@ enum BasicPrimitiveEnumTwinSyncSse {
 }
 
 class BasicStructTwinSyncSse {
-  final String apple;
-  final int orange;
+  final String? apple;
+  final int? orange;
 
   const BasicStructTwinSyncSse({
-    required this.apple,
-    required this.orange,
+    this.apple,
+    this.orange,
   });
 
   @override

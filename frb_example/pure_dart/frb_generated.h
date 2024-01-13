@@ -647,7 +647,7 @@ typedef struct wire_cst_basic_general_enum_twin_normal {
 
 typedef struct wire_cst_basic_struct_twin_normal {
   struct wire_cst_list_prim_u_8_strict *apple;
-  int32_t orange;
+  int32_t *orange;
 } wire_cst_basic_struct_twin_normal;
 
 typedef struct wire_cst_list_basic_general_enum_twin_normal {
@@ -740,7 +740,7 @@ typedef struct wire_cst_list_basic_primitive_enum_twin_rust_async {
 
 typedef struct wire_cst_basic_struct_twin_rust_async {
   struct wire_cst_list_prim_u_8_strict *apple;
-  int32_t orange;
+  int32_t *orange;
 } wire_cst_basic_struct_twin_rust_async;
 
 typedef struct wire_cst_list_basic_struct_twin_rust_async {
@@ -773,7 +773,7 @@ typedef struct wire_cst_list_basic_primitive_enum_twin_sync {
 
 typedef struct wire_cst_basic_struct_twin_sync {
   struct wire_cst_list_prim_u_8_strict *apple;
-  int32_t orange;
+  int32_t *orange;
 } wire_cst_basic_struct_twin_sync;
 
 typedef struct wire_cst_list_basic_struct_twin_sync {
@@ -2312,17 +2312,17 @@ typedef struct wire_cst_basic_general_enum_twin_sync_sse {
 
 typedef struct wire_cst_basic_struct_twin_rust_async_sse {
   struct wire_cst_list_prim_u_8_strict *apple;
-  int32_t orange;
+  int32_t *orange;
 } wire_cst_basic_struct_twin_rust_async_sse;
 
 typedef struct wire_cst_basic_struct_twin_sse {
   struct wire_cst_list_prim_u_8_strict *apple;
-  int32_t orange;
+  int32_t *orange;
 } wire_cst_basic_struct_twin_sse;
 
 typedef struct wire_cst_basic_struct_twin_sync_sse {
   struct wire_cst_list_prim_u_8_strict *apple;
-  int32_t orange;
+  int32_t *orange;
 } wire_cst_basic_struct_twin_sync_sse;
 
 typedef struct wire_cst_benchmark_binary_tree_twin_rust_async_sse {

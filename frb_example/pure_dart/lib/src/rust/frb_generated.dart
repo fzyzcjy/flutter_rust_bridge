@@ -73444,8 +73444,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinNormal(
-      apple: dco_decode_String(arr[0]),
-      orange: dco_decode_i_32(arr[1]),
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
     );
   }
 
@@ -73456,8 +73456,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinRustAsync(
-      apple: dco_decode_String(arr[0]),
-      orange: dco_decode_i_32(arr[1]),
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
     );
   }
 
@@ -73468,8 +73468,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinRustAsyncSse(
-      apple: dco_decode_String(arr[0]),
-      orange: dco_decode_i_32(arr[1]),
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
     );
   }
 
@@ -73479,8 +73479,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinSse(
-      apple: dco_decode_String(arr[0]),
-      orange: dco_decode_i_32(arr[1]),
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
     );
   }
 
@@ -73490,8 +73490,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinSync(
-      apple: dco_decode_String(arr[0]),
-      orange: dco_decode_i_32(arr[1]),
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
     );
   }
 
@@ -73501,8 +73501,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return BasicStructTwinSyncSse(
-      apple: dco_decode_String(arr[0]),
-      orange: dco_decode_i_32(arr[1]),
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
     );
   }
 
@@ -87792,48 +87792,48 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   BasicStructTwinNormal sse_decode_basic_struct_twin_normal(
       SseDeserializer deserializer) {
-    var var_apple = sse_decode_String(deserializer);
-    var var_orange = sse_decode_i_32(deserializer);
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
     return BasicStructTwinNormal(apple: var_apple, orange: var_orange);
   }
 
   @protected
   BasicStructTwinRustAsync sse_decode_basic_struct_twin_rust_async(
       SseDeserializer deserializer) {
-    var var_apple = sse_decode_String(deserializer);
-    var var_orange = sse_decode_i_32(deserializer);
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
     return BasicStructTwinRustAsync(apple: var_apple, orange: var_orange);
   }
 
   @protected
   BasicStructTwinRustAsyncSse sse_decode_basic_struct_twin_rust_async_sse(
       SseDeserializer deserializer) {
-    var var_apple = sse_decode_String(deserializer);
-    var var_orange = sse_decode_i_32(deserializer);
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
     return BasicStructTwinRustAsyncSse(apple: var_apple, orange: var_orange);
   }
 
   @protected
   BasicStructTwinSse sse_decode_basic_struct_twin_sse(
       SseDeserializer deserializer) {
-    var var_apple = sse_decode_String(deserializer);
-    var var_orange = sse_decode_i_32(deserializer);
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
     return BasicStructTwinSse(apple: var_apple, orange: var_orange);
   }
 
   @protected
   BasicStructTwinSync sse_decode_basic_struct_twin_sync(
       SseDeserializer deserializer) {
-    var var_apple = sse_decode_String(deserializer);
-    var var_orange = sse_decode_i_32(deserializer);
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
     return BasicStructTwinSync(apple: var_apple, orange: var_orange);
   }
 
   @protected
   BasicStructTwinSyncSse sse_decode_basic_struct_twin_sync_sse(
       SseDeserializer deserializer) {
-    var var_apple = sse_decode_String(deserializer);
-    var var_orange = sse_decode_i_32(deserializer);
+    var var_apple = sse_decode_opt_String(deserializer);
+    var var_orange = sse_decode_opt_box_autoadd_i_32(deserializer);
     return BasicStructTwinSyncSse(apple: var_apple, orange: var_orange);
   }
 
@@ -104858,43 +104858,43 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_basic_struct_twin_normal(
       BasicStructTwinNormal self, SseSerializer serializer) {
-    sse_encode_String(self.apple, serializer);
-    sse_encode_i_32(self.orange, serializer);
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
   }
 
   @protected
   void sse_encode_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync self, SseSerializer serializer) {
-    sse_encode_String(self.apple, serializer);
-    sse_encode_i_32(self.orange, serializer);
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
   }
 
   @protected
   void sse_encode_basic_struct_twin_rust_async_sse(
       BasicStructTwinRustAsyncSse self, SseSerializer serializer) {
-    sse_encode_String(self.apple, serializer);
-    sse_encode_i_32(self.orange, serializer);
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
   }
 
   @protected
   void sse_encode_basic_struct_twin_sse(
       BasicStructTwinSse self, SseSerializer serializer) {
-    sse_encode_String(self.apple, serializer);
-    sse_encode_i_32(self.orange, serializer);
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
   }
 
   @protected
   void sse_encode_basic_struct_twin_sync(
       BasicStructTwinSync self, SseSerializer serializer) {
-    sse_encode_String(self.apple, serializer);
-    sse_encode_i_32(self.orange, serializer);
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
   }
 
   @protected
   void sse_encode_basic_struct_twin_sync_sse(
       BasicStructTwinSyncSse self, SseSerializer serializer) {
-    sse_encode_String(self.apple, serializer);
-    sse_encode_i_32(self.orange, serializer);
+    sse_encode_opt_String(self.apple, serializer);
+    sse_encode_opt_box_autoadd_i_32(self.orange, serializer);
   }
 
   @protected

@@ -120,12 +120,12 @@ enum BasicPrimitiveEnumTwinRustAsyncSse {
 }
 
 class BasicStructTwinRustAsyncSse {
-  final String apple;
-  final int orange;
+  final String? apple;
+  final int? orange;
 
   const BasicStructTwinRustAsyncSse({
-    required this.apple,
-    required this.orange,
+    this.apple,
+    this.orange,
   });
 
   @override
