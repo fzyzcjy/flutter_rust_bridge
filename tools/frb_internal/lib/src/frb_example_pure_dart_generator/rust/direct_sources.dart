@@ -164,4 +164,10 @@ final kBasicTypes = [
     interestRawValues: ['false', 'true'],
     primitiveListWrapper: (info, x) => '<bool>[$x]',
   ),
+  const BasicTypeInfo(
+    name: 'String',
+    dartTypeName: 'String',
+    primitiveListName: 'TODO',
+    interestRawValues: ['""', '"hello"', '"😂"'],
+  ),
 ];
