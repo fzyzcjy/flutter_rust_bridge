@@ -33,6 +33,7 @@ pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;
+#[cfg(feature = "anyhow")]
 pub use anyhow;
 pub use byteorder;
 #[cfg(wasm)]

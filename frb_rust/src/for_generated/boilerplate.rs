@@ -83,7 +83,7 @@ macro_rules! frb_generated_boilerplate {
         }
 
         impl<T> StreamSink<T, $crate::for_generated::DcoCodec> {
-            pub fn add<T2>(&self, value: T) -> $crate::for_generated::anyhow::Result<()>
+            pub fn add<T2>(&self, value: T) -> Result<(), $crate::Rust2DartSendError>
             where
                 T: $crate::IntoIntoDart<T2>,
                 T2: $crate::IntoDart,
