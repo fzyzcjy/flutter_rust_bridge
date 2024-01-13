@@ -255,3 +255,10 @@ pub fn rust_auto_opaque_return_opaque_one_and_two_twin_normal(
 pub fn rust_auto_opaque_return_opaque_two_twin_normal() -> OpaqueTwoTwinNormal {
     unimplemented!()
 }
+
+pub fn rust_auto_opaque_borrow_and_mut_borrow(
+    borrow: &NonCloneSimpleTwinNormal,
+    mut_borrow: &mut NonCloneSimpleTwinNormal,
+) -> i32 {
+    borrow.inner + mut_borrow.inner
+}
