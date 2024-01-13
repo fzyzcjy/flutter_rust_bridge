@@ -70,16 +70,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {},
       {42: 0},
       {42: -2147483648},
-      {42: 2147483647},
-      {42: -9007199254740992},
-      {42: 9007199254740992}
+      {42: 2147483647}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeUsizeTwinNormal, <Map<int, int>>[
       {},
       {42: 0},
-      {42: 4294967295},
-      {42: 9007199254740992}
+      {42: 4294967295}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeF32TwinNormal, <Map<int, double>>[

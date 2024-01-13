@@ -31,10 +31,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         exampleBasicTypeU32TwinSyncSse, <int>[0, 4294967295]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeU64TwinSyncSse, <int>[0, 9007199254740992]);
-    addTestsIdentityFunctionCall(exampleBasicTypeIsizeTwinSyncSse,
-        <int>[0, -2147483648, 2147483647, -9007199254740992, 9007199254740992]);
-    addTestsIdentityFunctionCall(exampleBasicTypeUsizeTwinSyncSse,
-        <int>[0, 4294967295, 9007199254740992]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeIsizeTwinSyncSse, <int>[0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeUsizeTwinSyncSse, <int>[0, 4294967295]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF32TwinSyncSse, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(

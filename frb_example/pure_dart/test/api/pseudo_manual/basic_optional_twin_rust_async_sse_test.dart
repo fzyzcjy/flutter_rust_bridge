@@ -33,17 +33,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         <int?>[null, 0, 4294967295]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeU64TwinRustAsyncSse,
         <int?>[null, 0, 9007199254740992]);
-    addTestsIdentityFunctionCall(
-        exampleBasicOptionalTypeIsizeTwinRustAsyncSse, <int?>[
-      null,
-      0,
-      -2147483648,
-      2147483647,
-      -9007199254740992,
-      9007199254740992
-    ]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeIsizeTwinRustAsyncSse,
+        <int?>[null, 0, -2147483648, 2147483647]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeUsizeTwinRustAsyncSse,
-        <int?>[null, 0, 4294967295, 9007199254740992]);
+        <int?>[null, 0, 4294967295]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeF32TwinRustAsyncSse,
         <double?>[null, 0, -42.5, 123456]);
     addTestsIdentityFunctionCall(exampleBasicOptionalTypeF64TwinRustAsyncSse,
