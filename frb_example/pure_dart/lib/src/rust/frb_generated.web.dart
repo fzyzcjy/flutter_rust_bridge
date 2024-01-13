@@ -43,6 +43,18 @@ import 'api/pseudo_manual/attribute_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync_sse.dart';
+import 'api/pseudo_manual/basic.dart';
+import 'api/pseudo_manual/basic_list.dart';
+import 'api/pseudo_manual/basic_list_twin_rust_async.dart';
+import 'api/pseudo_manual/basic_list_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/basic_list_twin_sse.dart';
+import 'api/pseudo_manual/basic_list_twin_sync.dart';
+import 'api/pseudo_manual/basic_list_twin_sync_sse.dart';
+import 'api/pseudo_manual/basic_twin_rust_async.dart';
+import 'api/pseudo_manual/basic_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/basic_twin_sse.dart';
+import 'api/pseudo_manual/basic_twin_sync.dart';
+import 'api/pseudo_manual/basic_twin_sync_sse.dart';
 import 'api/pseudo_manual/benchmark_api.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async_sse.dart';
@@ -115,44 +127,32 @@ import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync_sse.dart';
-import 'api/pseudo_manual/optional_primitive.dart';
+import 'api/pseudo_manual/optional_basic.dart';
+import 'api/pseudo_manual/optional_basic_twin_rust_async.dart';
+import 'api/pseudo_manual/optional_basic_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/optional_basic_twin_sse.dart';
+import 'api/pseudo_manual/optional_basic_twin_sync.dart';
+import 'api/pseudo_manual/optional_basic_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync_sse.dart';
-import 'api/pseudo_manual/optional_primitive_twin_rust_async.dart';
-import 'api/pseudo_manual/optional_primitive_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/optional_primitive_twin_sse.dart';
-import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
-import 'api/pseudo_manual/optional_primitive_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_twin_sse.dart';
 import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/optional_twin_sync_sse.dart';
-import 'api/pseudo_manual/primitive.dart';
-import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync_sse.dart';
-import 'api/pseudo_manual/primitive_list_twin_rust_async.dart';
-import 'api/pseudo_manual/primitive_list_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/primitive_list_twin_sse.dart';
-import 'api/pseudo_manual/primitive_list_twin_sync.dart';
-import 'api/pseudo_manual/primitive_list_twin_sync_sse.dart';
 import 'api/pseudo_manual/primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sse.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync_sse.dart';
-import 'api/pseudo_manual/primitive_twin_rust_async.dart';
-import 'api/pseudo_manual/primitive_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/primitive_twin_sse.dart';
-import 'api/pseudo_manual/primitive_twin_sync.dart';
-import 'api/pseudo_manual/primitive_twin_sync_sse.dart';
 import 'api/pseudo_manual/raw_string_twin_rust_async.dart';
 import 'api/pseudo_manual/raw_string_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/raw_string_twin_sse.dart';
@@ -30100,6 +30100,794 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_next_user_id_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
+  void wire_example_basic_type_bool_twin_normal(
+          NativePortType port_, bool arg) =>
+      wasmModule.wire_example_basic_type_bool_twin_normal(port_, arg);
+
+  void wire_example_basic_type_f32_twin_normal(
+          NativePortType port_, double arg) =>
+      wasmModule.wire_example_basic_type_f32_twin_normal(port_, arg);
+
+  void wire_example_basic_type_f64_twin_normal(
+          NativePortType port_, double arg) =>
+      wasmModule.wire_example_basic_type_f64_twin_normal(port_, arg);
+
+  void wire_example_basic_type_i16_twin_normal(NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_i16_twin_normal(port_, arg);
+
+  void wire_example_basic_type_i32_twin_normal(NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_i32_twin_normal(port_, arg);
+
+  void wire_example_basic_type_i64_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_example_basic_type_i64_twin_normal(port_, arg);
+
+  void wire_example_basic_type_i8_twin_normal(NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_i8_twin_normal(port_, arg);
+
+  void wire_example_basic_type_u16_twin_normal(NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_u16_twin_normal(port_, arg);
+
+  void wire_example_basic_type_u32_twin_normal(NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_u32_twin_normal(port_, arg);
+
+  void wire_example_basic_type_u64_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_example_basic_type_u64_twin_normal(port_, arg);
+
+  void wire_example_basic_type_u8_twin_normal(NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_u8_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_bool_twin_normal(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_example_basic_list_type_bool_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_f32_twin_normal(
+          NativePortType port_, List<double> arg) =>
+      wasmModule.wire_example_basic_list_type_f32_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_f64_twin_normal(
+          NativePortType port_, List<double> arg) =>
+      wasmModule.wire_example_basic_list_type_f64_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_i16_twin_normal(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_i16_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_i32_twin_normal(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_i32_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_i64_twin_normal(
+          NativePortType port_, Object /* BigInt64Array */ arg) =>
+      wasmModule.wire_example_basic_list_type_i64_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_i8_twin_normal(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_i8_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_u16_twin_normal(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_u16_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_u32_twin_normal(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_u32_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_u64_twin_normal(
+          NativePortType port_, Object /* BigInt64Array */ arg) =>
+      wasmModule.wire_example_basic_list_type_u64_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_u8_twin_normal(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_u8_twin_normal(port_, arg);
+
+  void wire_example_basic_list_type_bool_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_example_basic_list_type_bool_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_f32_twin_rust_async(
+          NativePortType port_, List<double> arg) =>
+      wasmModule.wire_example_basic_list_type_f32_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_f64_twin_rust_async(
+          NativePortType port_, List<double> arg) =>
+      wasmModule.wire_example_basic_list_type_f64_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_i16_twin_rust_async(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_i16_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_i32_twin_rust_async(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_i32_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_i64_twin_rust_async(
+          NativePortType port_, Object /* BigInt64Array */ arg) =>
+      wasmModule.wire_example_basic_list_type_i64_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_i8_twin_rust_async(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_i8_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_u16_twin_rust_async(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_u16_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_u32_twin_rust_async(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_u32_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_u64_twin_rust_async(
+          NativePortType port_, Object /* BigInt64Array */ arg) =>
+      wasmModule.wire_example_basic_list_type_u64_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_u8_twin_rust_async(
+          NativePortType port_, List<int> arg) =>
+      wasmModule.wire_example_basic_list_type_u8_twin_rust_async(port_, arg);
+
+  void wire_example_basic_list_type_bool_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_bool_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_f32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_f32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_f64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_f64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i16_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i16_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i8_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u16_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u16_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u8_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_bool_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_bool_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_f32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_f32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_f64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_f64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i16_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i16_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_i8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_i8_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u16_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u16_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_list_type_u8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_list_type_u8_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_bool_twin_sync(List<dynamic> arg) =>
+          wasmModule.wire_example_basic_list_type_bool_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_f32_twin_sync(List<double> arg) =>
+          wasmModule.wire_example_basic_list_type_f32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_f64_twin_sync(List<double> arg) =>
+          wasmModule.wire_example_basic_list_type_f64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i16_twin_sync(List<int> arg) =>
+          wasmModule.wire_example_basic_list_type_i16_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i32_twin_sync(List<int> arg) =>
+          wasmModule.wire_example_basic_list_type_i32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i64_twin_sync(
+              Object /* BigInt64Array */ arg) =>
+          wasmModule.wire_example_basic_list_type_i64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i8_twin_sync(List<int> arg) =>
+          wasmModule.wire_example_basic_list_type_i8_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u16_twin_sync(List<int> arg) =>
+          wasmModule.wire_example_basic_list_type_u16_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u32_twin_sync(List<int> arg) =>
+          wasmModule.wire_example_basic_list_type_u32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u64_twin_sync(
+              Object /* BigInt64Array */ arg) =>
+          wasmModule.wire_example_basic_list_type_u64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u8_twin_sync(List<int> arg) =>
+          wasmModule.wire_example_basic_list_type_u8_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_bool_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_bool_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_f32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_f32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_f64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_f64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i16_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_i16_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_i32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_i64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i8_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_i8_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u16_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_u16_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_u32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_u64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u8_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_list_type_u8_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_bool_twin_rust_async(
+          NativePortType port_, bool arg) =>
+      wasmModule.wire_example_basic_type_bool_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_f32_twin_rust_async(
+          NativePortType port_, double arg) =>
+      wasmModule.wire_example_basic_type_f32_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_f64_twin_rust_async(
+          NativePortType port_, double arg) =>
+      wasmModule.wire_example_basic_type_f64_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_i16_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_i16_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_i32_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_i32_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_i64_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_example_basic_type_i64_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_i8_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_i8_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_u16_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_u16_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_u32_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_u32_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_u64_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_example_basic_type_u64_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_u8_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_basic_type_u8_twin_rust_async(port_, arg);
+
+  void wire_example_basic_type_bool_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_bool_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_f32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_f32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_f64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_f64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i16_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i16_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i8_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u16_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u16_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u8_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_bool_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_bool_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_f32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_f32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_f64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_f64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i16_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i16_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_i8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_i8_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u16_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u16_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_basic_type_u8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_basic_type_u8_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_bool_twin_sync(bool arg) =>
+          wasmModule.wire_example_basic_type_bool_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_f32_twin_sync(double arg) =>
+          wasmModule.wire_example_basic_type_f32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_f64_twin_sync(double arg) =>
+          wasmModule.wire_example_basic_type_f64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i16_twin_sync(int arg) =>
+          wasmModule.wire_example_basic_type_i16_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i32_twin_sync(int arg) =>
+          wasmModule.wire_example_basic_type_i32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i64_twin_sync(Object arg) =>
+          wasmModule.wire_example_basic_type_i64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i8_twin_sync(int arg) =>
+          wasmModule.wire_example_basic_type_i8_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u16_twin_sync(int arg) =>
+          wasmModule.wire_example_basic_type_u16_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u32_twin_sync(int arg) =>
+          wasmModule.wire_example_basic_type_u32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u64_twin_sync(Object arg) =>
+          wasmModule.wire_example_basic_type_u64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u8_twin_sync(int arg) =>
+          wasmModule.wire_example_basic_type_u8_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_bool_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_bool_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_f32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_f32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_f64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_f64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i16_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_i16_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_i32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_i64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i8_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_i8_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u16_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_u16_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_u32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_u64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u8_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_basic_type_u8_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
   void wire_benchmark_binary_tree_input_json_twin_normal(
           NativePortType port_, String raw) =>
       wasmModule.wire_benchmark_binary_tree_input_json_twin_normal(port_, raw);
@@ -34752,60 +35540,412 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_handle_newtype_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
-  void wire_example_optional_primitive_type_bool_twin_normal(
+  void wire_example_optional_basic_type_bool_twin_normal(
           NativePortType port_, bool? arg) =>
-      wasmModule.wire_example_optional_primitive_type_bool_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_bool_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_f32_twin_normal(
+  void wire_example_optional_basic_type_f32_twin_normal(
           NativePortType port_, double? arg) =>
-      wasmModule.wire_example_optional_primitive_type_f32_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_f32_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_f64_twin_normal(
+  void wire_example_optional_basic_type_f64_twin_normal(
           NativePortType port_, double? arg) =>
-      wasmModule.wire_example_optional_primitive_type_f64_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_f64_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_i16_twin_normal(
+  void wire_example_optional_basic_type_i16_twin_normal(
           NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i16_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_i16_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_i32_twin_normal(
+  void wire_example_optional_basic_type_i32_twin_normal(
           NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i32_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_i32_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_i64_twin_normal(
+  void wire_example_optional_basic_type_i64_twin_normal(
           NativePortType port_, Object? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i64_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_i64_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_i8_twin_normal(
+  void wire_example_optional_basic_type_i8_twin_normal(
           NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i8_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_i8_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_u16_twin_normal(
+  void wire_example_optional_basic_type_u16_twin_normal(
           NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u16_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_u16_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_u32_twin_normal(
+  void wire_example_optional_basic_type_u32_twin_normal(
           NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u32_twin_normal(
-          port_, arg);
+      wasmModule.wire_example_optional_basic_type_u32_twin_normal(port_, arg);
 
-  void wire_example_optional_primitive_type_u64_twin_normal(
+  void wire_example_optional_basic_type_u64_twin_normal(
           NativePortType port_, Object? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u64_twin_normal(
+      wasmModule.wire_example_optional_basic_type_u64_twin_normal(port_, arg);
+
+  void wire_example_optional_basic_type_u8_twin_normal(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_basic_type_u8_twin_normal(port_, arg);
+
+  void wire_example_optional_basic_type_bool_twin_rust_async(
+          NativePortType port_, bool? arg) =>
+      wasmModule.wire_example_optional_basic_type_bool_twin_rust_async(
           port_, arg);
 
-  void wire_example_optional_primitive_type_u8_twin_normal(
-          NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u8_twin_normal(
+  void wire_example_optional_basic_type_f32_twin_rust_async(
+          NativePortType port_, double? arg) =>
+      wasmModule.wire_example_optional_basic_type_f32_twin_rust_async(
           port_, arg);
+
+  void wire_example_optional_basic_type_f64_twin_rust_async(
+          NativePortType port_, double? arg) =>
+      wasmModule.wire_example_optional_basic_type_f64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_i16_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_basic_type_i16_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_i32_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_basic_type_i32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_i64_twin_rust_async(
+          NativePortType port_, Object? arg) =>
+      wasmModule.wire_example_optional_basic_type_i64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_i8_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_basic_type_i8_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_u16_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_basic_type_u16_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_u32_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_basic_type_u32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_u64_twin_rust_async(
+          NativePortType port_, Object? arg) =>
+      wasmModule.wire_example_optional_basic_type_u64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_u8_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_basic_type_u8_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_basic_type_bool_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_bool_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_f32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_f32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_f64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_f64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i16_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i16_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i8_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u16_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u16_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u32_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u32_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u64_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u64_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u8_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u8_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_bool_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_bool_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_f32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_f32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_f64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_f64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i16_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i16_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_i8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_i8_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u16_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u16_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u32_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u32_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u64_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u64_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_example_optional_basic_type_u8_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_example_optional_basic_type_u8_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_bool_twin_sync(bool? arg) =>
+          wasmModule.wire_example_optional_basic_type_bool_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_f32_twin_sync(double? arg) =>
+          wasmModule.wire_example_optional_basic_type_f32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_f64_twin_sync(double? arg) =>
+          wasmModule.wire_example_optional_basic_type_f64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i16_twin_sync(int? arg) =>
+          wasmModule.wire_example_optional_basic_type_i16_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i32_twin_sync(int? arg) =>
+          wasmModule.wire_example_optional_basic_type_i32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i64_twin_sync(Object? arg) =>
+          wasmModule.wire_example_optional_basic_type_i64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i8_twin_sync(int? arg) =>
+          wasmModule.wire_example_optional_basic_type_i8_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u16_twin_sync(int? arg) =>
+          wasmModule.wire_example_optional_basic_type_u16_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u32_twin_sync(int? arg) =>
+          wasmModule.wire_example_optional_basic_type_u32_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u64_twin_sync(Object? arg) =>
+          wasmModule.wire_example_optional_basic_type_u64_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u8_twin_sync(int? arg) =>
+          wasmModule.wire_example_optional_basic_type_u8_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_bool_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_bool_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_f32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_f32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_f64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_f64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i16_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_i16_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_i32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_i64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i8_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_i8_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u16_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_u16_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u32_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_u32_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u64_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_u64_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u8_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_example_optional_basic_type_u8_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
 
   void wire_primitive_optional_types_twin_rust_async(NativePortType port_,
           int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
@@ -34840,369 +35980,6 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_primitive_optional_types_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_bool_twin_rust_async(
-          NativePortType port_, bool? arg) =>
-      wasmModule.wire_example_optional_primitive_type_bool_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_f32_twin_rust_async(
-          NativePortType port_, double? arg) =>
-      wasmModule.wire_example_optional_primitive_type_f32_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_f64_twin_rust_async(
-          NativePortType port_, double? arg) =>
-      wasmModule.wire_example_optional_primitive_type_f64_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_i16_twin_rust_async(
-          NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i16_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_i32_twin_rust_async(
-          NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i32_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_i64_twin_rust_async(
-          NativePortType port_, Object? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i64_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_i8_twin_rust_async(
-          NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_i8_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_u16_twin_rust_async(
-          NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u16_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_u32_twin_rust_async(
-          NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u32_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_u64_twin_rust_async(
-          NativePortType port_, Object? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u64_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_u8_twin_rust_async(
-          NativePortType port_, int? arg) =>
-      wasmModule.wire_example_optional_primitive_type_u8_twin_rust_async(
-          port_, arg);
-
-  void wire_example_optional_primitive_type_bool_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_bool_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_f32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_f32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_f64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_f64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i16_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i16_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i8_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i8_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u16_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u16_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u8_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u8_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_bool_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_bool_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_f32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_f32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_f64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_f64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i16_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i16_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_i8_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_i8_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u16_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u16_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_optional_primitive_type_u8_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_optional_primitive_type_u8_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_bool_twin_sync(bool? arg) =>
-          wasmModule.wire_example_optional_primitive_type_bool_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_f32_twin_sync(double? arg) =>
-          wasmModule.wire_example_optional_primitive_type_f32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_f64_twin_sync(double? arg) =>
-          wasmModule.wire_example_optional_primitive_type_f64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i16_twin_sync(int? arg) =>
-          wasmModule.wire_example_optional_primitive_type_i16_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i32_twin_sync(int? arg) =>
-          wasmModule.wire_example_optional_primitive_type_i32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i64_twin_sync(Object? arg) =>
-          wasmModule.wire_example_optional_primitive_type_i64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i8_twin_sync(int? arg) =>
-          wasmModule.wire_example_optional_primitive_type_i8_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u16_twin_sync(int? arg) =>
-          wasmModule.wire_example_optional_primitive_type_u16_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u32_twin_sync(int? arg) =>
-          wasmModule.wire_example_optional_primitive_type_u32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u64_twin_sync(Object? arg) =>
-          wasmModule.wire_example_optional_primitive_type_u64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u8_twin_sync(int? arg) =>
-          wasmModule.wire_example_optional_primitive_type_u8_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_bool_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_bool_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_f32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_f32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_f64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_f64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i16_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_i16_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_i32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_i64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i8_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_i8_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u16_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_u16_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_u32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_u64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u8_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_optional_primitive_type_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_handle_increment_boxed_optional_twin_rust_async(
@@ -35415,94 +36192,6 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_handle_vec_of_opts_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
-  void wire_example_primitive_type_bool_twin_normal(
-          NativePortType port_, bool arg) =>
-      wasmModule.wire_example_primitive_type_bool_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_f32_twin_normal(
-          NativePortType port_, double arg) =>
-      wasmModule.wire_example_primitive_type_f32_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_f64_twin_normal(
-          NativePortType port_, double arg) =>
-      wasmModule.wire_example_primitive_type_f64_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_i16_twin_normal(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_i16_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_i32_twin_normal(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_i32_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_i64_twin_normal(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_example_primitive_type_i64_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_i8_twin_normal(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_i8_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_u16_twin_normal(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_u16_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_u32_twin_normal(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_u32_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_u64_twin_normal(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_example_primitive_type_u64_twin_normal(port_, arg);
-
-  void wire_example_primitive_type_u8_twin_normal(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_u8_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_bool_twin_normal(
-          NativePortType port_, List<dynamic> arg) =>
-      wasmModule.wire_example_primitive_list_type_bool_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_f32_twin_normal(
-          NativePortType port_, List<double> arg) =>
-      wasmModule.wire_example_primitive_list_type_f32_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_f64_twin_normal(
-          NativePortType port_, List<double> arg) =>
-      wasmModule.wire_example_primitive_list_type_f64_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_i16_twin_normal(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_i16_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_i32_twin_normal(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_i32_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_i64_twin_normal(
-          NativePortType port_, Object /* BigInt64Array */ arg) =>
-      wasmModule.wire_example_primitive_list_type_i64_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_i8_twin_normal(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_i8_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_u16_twin_normal(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_u16_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_u32_twin_normal(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_u32_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_u64_twin_normal(
-          NativePortType port_, Object /* BigInt64Array */ arg) =>
-      wasmModule.wire_example_primitive_list_type_u64_twin_normal(port_, arg);
-
-  void wire_example_primitive_list_type_u8_twin_normal(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_u8_twin_normal(port_, arg);
-
   void wire_handle_vec_of_primitive_twin_rust_async(
           NativePortType port_, int n) =>
       wasmModule.wire_handle_vec_of_primitive_twin_rust_async(port_, n);
@@ -35533,371 +36222,6 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_handle_vec_of_primitive_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_bool_twin_rust_async(
-          NativePortType port_, List<dynamic> arg) =>
-      wasmModule.wire_example_primitive_list_type_bool_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_f32_twin_rust_async(
-          NativePortType port_, List<double> arg) =>
-      wasmModule.wire_example_primitive_list_type_f32_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_f64_twin_rust_async(
-          NativePortType port_, List<double> arg) =>
-      wasmModule.wire_example_primitive_list_type_f64_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_i16_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_i16_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_i32_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_i32_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_i64_twin_rust_async(
-          NativePortType port_, Object /* BigInt64Array */ arg) =>
-      wasmModule.wire_example_primitive_list_type_i64_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_i8_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_i8_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_u16_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_u16_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_u32_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_u32_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_u64_twin_rust_async(
-          NativePortType port_, Object /* BigInt64Array */ arg) =>
-      wasmModule.wire_example_primitive_list_type_u64_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_u8_twin_rust_async(
-          NativePortType port_, List<int> arg) =>
-      wasmModule.wire_example_primitive_list_type_u8_twin_rust_async(
-          port_, arg);
-
-  void wire_example_primitive_list_type_bool_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_bool_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_f32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_f32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_f64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_f64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i16_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i16_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i8_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i8_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u16_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u16_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u8_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u8_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_bool_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_bool_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_f32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_f32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_f64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_f64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i16_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i16_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_i8_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_i8_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u16_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u16_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_list_type_u8_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_list_type_u8_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg) =>
-          wasmModule.wire_example_primitive_list_type_bool_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_f32_twin_sync(List<double> arg) =>
-          wasmModule.wire_example_primitive_list_type_f32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_f64_twin_sync(List<double> arg) =>
-          wasmModule.wire_example_primitive_list_type_f64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i16_twin_sync(List<int> arg) =>
-          wasmModule.wire_example_primitive_list_type_i16_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i32_twin_sync(List<int> arg) =>
-          wasmModule.wire_example_primitive_list_type_i32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i64_twin_sync(
-              Object /* BigInt64Array */ arg) =>
-          wasmModule.wire_example_primitive_list_type_i64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i8_twin_sync(List<int> arg) =>
-          wasmModule.wire_example_primitive_list_type_i8_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u16_twin_sync(List<int> arg) =>
-          wasmModule.wire_example_primitive_list_type_u16_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u32_twin_sync(List<int> arg) =>
-          wasmModule.wire_example_primitive_list_type_u32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u64_twin_sync(
-              Object /* BigInt64Array */ arg) =>
-          wasmModule.wire_example_primitive_list_type_u64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u8_twin_sync(List<int> arg) =>
-          wasmModule.wire_example_primitive_list_type_u8_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_bool_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_bool_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_f32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_f32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_f64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_f64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i16_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_i16_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_i32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_i64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i8_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_i8_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u16_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_u16_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_u32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_u64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u8_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_list_type_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_primitive_isize_loopback_twin_rust_async(
@@ -36024,358 +36348,6 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_primitive_usize_loopback_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_bool_twin_rust_async(
-          NativePortType port_, bool arg) =>
-      wasmModule.wire_example_primitive_type_bool_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_f32_twin_rust_async(
-          NativePortType port_, double arg) =>
-      wasmModule.wire_example_primitive_type_f32_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_f64_twin_rust_async(
-          NativePortType port_, double arg) =>
-      wasmModule.wire_example_primitive_type_f64_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_i16_twin_rust_async(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_i16_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_i32_twin_rust_async(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_i32_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_i64_twin_rust_async(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_example_primitive_type_i64_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_i8_twin_rust_async(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_i8_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_u16_twin_rust_async(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_u16_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_u32_twin_rust_async(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_u32_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_u64_twin_rust_async(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_example_primitive_type_u64_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_u8_twin_rust_async(
-          NativePortType port_, int arg) =>
-      wasmModule.wire_example_primitive_type_u8_twin_rust_async(port_, arg);
-
-  void wire_example_primitive_type_bool_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_bool_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_f32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_f32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_f64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_f64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i16_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i16_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i8_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i8_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u16_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u16_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u32_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u32_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u64_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u64_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u8_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u8_twin_rust_async_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_bool_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_bool_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_f32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_f32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_f64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_f64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i16_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i16_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_i8_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_i8_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u16_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u16_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u32_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u32_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u64_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u64_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_example_primitive_type_u8_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_example_primitive_type_u8_twin_sse(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_bool_twin_sync(bool arg) =>
-          wasmModule.wire_example_primitive_type_bool_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_f32_twin_sync(double arg) =>
-          wasmModule.wire_example_primitive_type_f32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_f64_twin_sync(double arg) =>
-          wasmModule.wire_example_primitive_type_f64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i16_twin_sync(int arg) =>
-          wasmModule.wire_example_primitive_type_i16_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i32_twin_sync(int arg) =>
-          wasmModule.wire_example_primitive_type_i32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i64_twin_sync(Object arg) =>
-          wasmModule.wire_example_primitive_type_i64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i8_twin_sync(int arg) =>
-          wasmModule.wire_example_primitive_type_i8_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u16_twin_sync(int arg) =>
-          wasmModule.wire_example_primitive_type_u16_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u32_twin_sync(int arg) =>
-          wasmModule.wire_example_primitive_type_u32_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u64_twin_sync(Object arg) =>
-          wasmModule.wire_example_primitive_type_u64_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u8_twin_sync(int arg) =>
-          wasmModule.wire_example_primitive_type_u8_twin_sync(arg);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_bool_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_bool_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_f32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_f32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_f64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_f64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i16_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_i16_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_i32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_i64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i8_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_i8_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u16_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_u16_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u32_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_u32_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u64_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_u64_twin_sync_sse(
-              ptr_, rust_vec_len_, data_len_);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u8_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule.wire_example_primitive_type_u8_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
@@ -43783,6 +43755,536 @@ class RustLibWasmModule implements WasmModule {
       wire_next_user_id_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
 
+  external void wire_example_basic_type_bool_twin_normal(
+      NativePortType port_, bool arg);
+
+  external void wire_example_basic_type_f32_twin_normal(
+      NativePortType port_, double arg);
+
+  external void wire_example_basic_type_f64_twin_normal(
+      NativePortType port_, double arg);
+
+  external void wire_example_basic_type_i16_twin_normal(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_i32_twin_normal(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_i64_twin_normal(
+      NativePortType port_, Object arg);
+
+  external void wire_example_basic_type_i8_twin_normal(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_u16_twin_normal(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_u32_twin_normal(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_u64_twin_normal(
+      NativePortType port_, Object arg);
+
+  external void wire_example_basic_type_u8_twin_normal(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_list_type_bool_twin_normal(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_example_basic_list_type_f32_twin_normal(
+      NativePortType port_, List<double> arg);
+
+  external void wire_example_basic_list_type_f64_twin_normal(
+      NativePortType port_, List<double> arg);
+
+  external void wire_example_basic_list_type_i16_twin_normal(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_i32_twin_normal(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_i64_twin_normal(
+      NativePortType port_, Object /* BigInt64Array */ arg);
+
+  external void wire_example_basic_list_type_i8_twin_normal(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_u16_twin_normal(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_u32_twin_normal(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_u64_twin_normal(
+      NativePortType port_, Object /* BigInt64Array */ arg);
+
+  external void wire_example_basic_list_type_u8_twin_normal(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_bool_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_example_basic_list_type_f32_twin_rust_async(
+      NativePortType port_, List<double> arg);
+
+  external void wire_example_basic_list_type_f64_twin_rust_async(
+      NativePortType port_, List<double> arg);
+
+  external void wire_example_basic_list_type_i16_twin_rust_async(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_i32_twin_rust_async(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_i64_twin_rust_async(
+      NativePortType port_, Object /* BigInt64Array */ arg);
+
+  external void wire_example_basic_list_type_i8_twin_rust_async(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_u16_twin_rust_async(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_u32_twin_rust_async(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_u64_twin_rust_async(
+      NativePortType port_, Object /* BigInt64Array */ arg);
+
+  external void wire_example_basic_list_type_u8_twin_rust_async(
+      NativePortType port_, List<int> arg);
+
+  external void wire_example_basic_list_type_bool_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_f32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_f64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_i16_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_i32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_i64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_i8_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_u16_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_u32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_u64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_u8_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_list_type_bool_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_f32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_f64_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_i16_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_i32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_i64_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_i8_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_u16_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_u32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_u64_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_list_type_u8_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_bool_twin_sync(List<dynamic> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_f32_twin_sync(List<double> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_f64_twin_sync(List<double> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i16_twin_sync(List<int> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i32_twin_sync(List<int> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i64_twin_sync(
+          Object /* BigInt64Array */ arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_i8_twin_sync(List<int> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u16_twin_sync(List<int> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u32_twin_sync(List<int> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u64_twin_sync(
+          Object /* BigInt64Array */ arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_list_type_u8_twin_sync(List<int> arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_bool_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_f32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_f64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i16_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_i8_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u16_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_list_type_u8_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire_example_basic_type_bool_twin_rust_async(
+      NativePortType port_, bool arg);
+
+  external void wire_example_basic_type_f32_twin_rust_async(
+      NativePortType port_, double arg);
+
+  external void wire_example_basic_type_f64_twin_rust_async(
+      NativePortType port_, double arg);
+
+  external void wire_example_basic_type_i16_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_i32_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_i64_twin_rust_async(
+      NativePortType port_, Object arg);
+
+  external void wire_example_basic_type_i8_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_u16_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_u32_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_u64_twin_rust_async(
+      NativePortType port_, Object arg);
+
+  external void wire_example_basic_type_u8_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_basic_type_bool_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_f32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_f64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_i16_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_i32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_i64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_i8_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_u16_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_u32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_u64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_u8_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_basic_type_bool_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_f32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_f64_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_i16_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_i32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_i64_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_i8_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_u16_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_u32_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_u64_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_example_basic_type_u8_twin_sse(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_bool_twin_sync(bool arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_f32_twin_sync(double arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_f64_twin_sync(double arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i16_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i32_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i64_twin_sync(Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_i8_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u16_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u32_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u64_twin_sync(Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_basic_type_u8_twin_sync(int arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_bool_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_f32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_f64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i16_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_i8_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u16_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_basic_type_u8_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire_benchmark_binary_tree_input_json_twin_normal(
       NativePortType port_, String raw);
 
@@ -46802,38 +47304,302 @@ class RustLibWasmModule implements WasmModule {
       wire_handle_newtype_twin_sync_sse(PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_, int data_len_);
 
-  external void wire_example_optional_primitive_type_bool_twin_normal(
+  external void wire_example_optional_basic_type_bool_twin_normal(
       NativePortType port_, bool? arg);
 
-  external void wire_example_optional_primitive_type_f32_twin_normal(
+  external void wire_example_optional_basic_type_f32_twin_normal(
       NativePortType port_, double? arg);
 
-  external void wire_example_optional_primitive_type_f64_twin_normal(
+  external void wire_example_optional_basic_type_f64_twin_normal(
       NativePortType port_, double? arg);
 
-  external void wire_example_optional_primitive_type_i16_twin_normal(
+  external void wire_example_optional_basic_type_i16_twin_normal(
       NativePortType port_, int? arg);
 
-  external void wire_example_optional_primitive_type_i32_twin_normal(
+  external void wire_example_optional_basic_type_i32_twin_normal(
       NativePortType port_, int? arg);
 
-  external void wire_example_optional_primitive_type_i64_twin_normal(
+  external void wire_example_optional_basic_type_i64_twin_normal(
       NativePortType port_, Object? arg);
 
-  external void wire_example_optional_primitive_type_i8_twin_normal(
+  external void wire_example_optional_basic_type_i8_twin_normal(
       NativePortType port_, int? arg);
 
-  external void wire_example_optional_primitive_type_u16_twin_normal(
+  external void wire_example_optional_basic_type_u16_twin_normal(
       NativePortType port_, int? arg);
 
-  external void wire_example_optional_primitive_type_u32_twin_normal(
+  external void wire_example_optional_basic_type_u32_twin_normal(
       NativePortType port_, int? arg);
 
-  external void wire_example_optional_primitive_type_u64_twin_normal(
+  external void wire_example_optional_basic_type_u64_twin_normal(
       NativePortType port_, Object? arg);
 
-  external void wire_example_optional_primitive_type_u8_twin_normal(
+  external void wire_example_optional_basic_type_u8_twin_normal(
       NativePortType port_, int? arg);
+
+  external void wire_example_optional_basic_type_bool_twin_rust_async(
+      NativePortType port_, bool? arg);
+
+  external void wire_example_optional_basic_type_f32_twin_rust_async(
+      NativePortType port_, double? arg);
+
+  external void wire_example_optional_basic_type_f64_twin_rust_async(
+      NativePortType port_, double? arg);
+
+  external void wire_example_optional_basic_type_i16_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_basic_type_i32_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_basic_type_i64_twin_rust_async(
+      NativePortType port_, Object? arg);
+
+  external void wire_example_optional_basic_type_i8_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_basic_type_u16_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_basic_type_u32_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_basic_type_u64_twin_rust_async(
+      NativePortType port_, Object? arg);
+
+  external void wire_example_optional_basic_type_u8_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_basic_type_bool_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_f32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_f64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i16_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i8_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u16_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u32_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u64_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u8_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_bool_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_f32_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_f64_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i16_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i32_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i64_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_i8_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u16_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u32_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u64_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_example_optional_basic_type_u8_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_bool_twin_sync(bool? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_f32_twin_sync(double? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_f64_twin_sync(double? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i16_twin_sync(int? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i32_twin_sync(int? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i64_twin_sync(Object? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_i8_twin_sync(int? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u16_twin_sync(int? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u32_twin_sync(int? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u64_twin_sync(Object? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_example_optional_basic_type_u8_twin_sync(int? arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_bool_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_f32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_f64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i16_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_i8_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u16_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u64_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_example_optional_basic_type_u8_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire_primitive_optional_types_twin_rust_async(
       NativePortType port_,
@@ -46857,270 +47623,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_primitive_optional_types_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void wire_example_optional_primitive_type_bool_twin_rust_async(
-      NativePortType port_, bool? arg);
-
-  external void wire_example_optional_primitive_type_f32_twin_rust_async(
-      NativePortType port_, double? arg);
-
-  external void wire_example_optional_primitive_type_f64_twin_rust_async(
-      NativePortType port_, double? arg);
-
-  external void wire_example_optional_primitive_type_i16_twin_rust_async(
-      NativePortType port_, int? arg);
-
-  external void wire_example_optional_primitive_type_i32_twin_rust_async(
-      NativePortType port_, int? arg);
-
-  external void wire_example_optional_primitive_type_i64_twin_rust_async(
-      NativePortType port_, Object? arg);
-
-  external void wire_example_optional_primitive_type_i8_twin_rust_async(
-      NativePortType port_, int? arg);
-
-  external void wire_example_optional_primitive_type_u16_twin_rust_async(
-      NativePortType port_, int? arg);
-
-  external void wire_example_optional_primitive_type_u32_twin_rust_async(
-      NativePortType port_, int? arg);
-
-  external void wire_example_optional_primitive_type_u64_twin_rust_async(
-      NativePortType port_, Object? arg);
-
-  external void wire_example_optional_primitive_type_u8_twin_rust_async(
-      NativePortType port_, int? arg);
-
-  external void wire_example_optional_primitive_type_bool_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_f32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_f64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i16_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i8_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u16_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u8_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_bool_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_f32_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_f64_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i16_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i32_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i64_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_i8_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u16_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u32_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u64_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_optional_primitive_type_u8_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_bool_twin_sync(bool? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_f32_twin_sync(double? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_f64_twin_sync(double? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i16_twin_sync(int? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i32_twin_sync(int? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i64_twin_sync(Object? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_i8_twin_sync(int? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u16_twin_sync(int? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u32_twin_sync(int? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u64_twin_sync(Object? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_optional_primitive_type_u8_twin_sync(int? arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_bool_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_f32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_f64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i16_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_i8_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u16_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_optional_primitive_type_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -47268,72 +47770,6 @@ class RustLibWasmModule implements WasmModule {
           int rust_vec_len_,
           int data_len_);
 
-  external void wire_example_primitive_type_bool_twin_normal(
-      NativePortType port_, bool arg);
-
-  external void wire_example_primitive_type_f32_twin_normal(
-      NativePortType port_, double arg);
-
-  external void wire_example_primitive_type_f64_twin_normal(
-      NativePortType port_, double arg);
-
-  external void wire_example_primitive_type_i16_twin_normal(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_i32_twin_normal(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_i64_twin_normal(
-      NativePortType port_, Object arg);
-
-  external void wire_example_primitive_type_i8_twin_normal(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_u16_twin_normal(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_u32_twin_normal(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_u64_twin_normal(
-      NativePortType port_, Object arg);
-
-  external void wire_example_primitive_type_u8_twin_normal(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_list_type_bool_twin_normal(
-      NativePortType port_, List<dynamic> arg);
-
-  external void wire_example_primitive_list_type_f32_twin_normal(
-      NativePortType port_, List<double> arg);
-
-  external void wire_example_primitive_list_type_f64_twin_normal(
-      NativePortType port_, List<double> arg);
-
-  external void wire_example_primitive_list_type_i16_twin_normal(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_i32_twin_normal(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_i64_twin_normal(
-      NativePortType port_, Object /* BigInt64Array */ arg);
-
-  external void wire_example_primitive_list_type_i8_twin_normal(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_u16_twin_normal(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_u32_twin_normal(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_u64_twin_normal(
-      NativePortType port_, Object /* BigInt64Array */ arg);
-
-  external void wire_example_primitive_list_type_u8_twin_normal(
-      NativePortType port_, List<int> arg);
-
   external void wire_handle_vec_of_primitive_twin_rust_async(
       NativePortType port_, int n);
 
@@ -47351,272 +47787,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_handle_vec_of_primitive_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void wire_example_primitive_list_type_bool_twin_rust_async(
-      NativePortType port_, List<dynamic> arg);
-
-  external void wire_example_primitive_list_type_f32_twin_rust_async(
-      NativePortType port_, List<double> arg);
-
-  external void wire_example_primitive_list_type_f64_twin_rust_async(
-      NativePortType port_, List<double> arg);
-
-  external void wire_example_primitive_list_type_i16_twin_rust_async(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_i32_twin_rust_async(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_i64_twin_rust_async(
-      NativePortType port_, Object /* BigInt64Array */ arg);
-
-  external void wire_example_primitive_list_type_i8_twin_rust_async(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_u16_twin_rust_async(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_u32_twin_rust_async(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_u64_twin_rust_async(
-      NativePortType port_, Object /* BigInt64Array */ arg);
-
-  external void wire_example_primitive_list_type_u8_twin_rust_async(
-      NativePortType port_, List<int> arg);
-
-  external void wire_example_primitive_list_type_bool_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_f32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_f64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i16_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i8_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u16_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u8_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_bool_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_f32_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_f64_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i16_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i32_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i64_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_i8_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u16_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u32_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u64_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_list_type_u8_twin_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_f32_twin_sync(List<double> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_f64_twin_sync(List<double> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i16_twin_sync(List<int> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i32_twin_sync(List<int> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i64_twin_sync(
-          Object /* BigInt64Array */ arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_i8_twin_sync(List<int> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u16_twin_sync(List<int> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u32_twin_sync(List<int> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u64_twin_sync(
-          Object /* BigInt64Array */ arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_list_type_u8_twin_sync(List<int> arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_bool_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_f32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_f64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i16_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_i8_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u16_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_list_type_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -47692,237 +47862,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_primitive_usize_loopback_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void wire_example_primitive_type_bool_twin_rust_async(
-      NativePortType port_, bool arg);
-
-  external void wire_example_primitive_type_f32_twin_rust_async(
-      NativePortType port_, double arg);
-
-  external void wire_example_primitive_type_f64_twin_rust_async(
-      NativePortType port_, double arg);
-
-  external void wire_example_primitive_type_i16_twin_rust_async(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_i32_twin_rust_async(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_i64_twin_rust_async(
-      NativePortType port_, Object arg);
-
-  external void wire_example_primitive_type_i8_twin_rust_async(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_u16_twin_rust_async(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_u32_twin_rust_async(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_u64_twin_rust_async(
-      NativePortType port_, Object arg);
-
-  external void wire_example_primitive_type_u8_twin_rust_async(
-      NativePortType port_, int arg);
-
-  external void wire_example_primitive_type_bool_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_f32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_f64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_i16_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_i32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_i64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_i8_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_u16_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_u32_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_u64_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_u8_twin_rust_async_sse(
-      NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_,
-      int rust_vec_len_,
-      int data_len_);
-
-  external void wire_example_primitive_type_bool_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_f32_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_f64_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_i16_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_i32_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_i64_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_i8_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_u16_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_u32_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_u64_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_example_primitive_type_u8_twin_sse(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_bool_twin_sync(bool arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_f32_twin_sync(double arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_f64_twin_sync(double arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i16_twin_sync(int arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i32_twin_sync(int arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i64_twin_sync(Object arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_i8_twin_sync(int arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u16_twin_sync(int arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u32_twin_sync(int arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u64_twin_sync(Object arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire_example_primitive_type_u8_twin_sync(int arg);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_bool_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_f32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_f64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i16_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_i8_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u16_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u32_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u64_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire_example_primitive_type_u8_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

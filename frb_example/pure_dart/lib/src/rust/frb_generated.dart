@@ -43,6 +43,18 @@ import 'api/pseudo_manual/attribute_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sse.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync_sse.dart';
+import 'api/pseudo_manual/basic.dart';
+import 'api/pseudo_manual/basic_list.dart';
+import 'api/pseudo_manual/basic_list_twin_rust_async.dart';
+import 'api/pseudo_manual/basic_list_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/basic_list_twin_sse.dart';
+import 'api/pseudo_manual/basic_list_twin_sync.dart';
+import 'api/pseudo_manual/basic_list_twin_sync_sse.dart';
+import 'api/pseudo_manual/basic_twin_rust_async.dart';
+import 'api/pseudo_manual/basic_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/basic_twin_sse.dart';
+import 'api/pseudo_manual/basic_twin_sync.dart';
+import 'api/pseudo_manual/basic_twin_sync_sse.dart';
 import 'api/pseudo_manual/benchmark_api.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async_sse.dart';
@@ -115,44 +127,32 @@ import 'api/pseudo_manual/newtype_pattern_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sse.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync_sse.dart';
-import 'api/pseudo_manual/optional_primitive.dart';
+import 'api/pseudo_manual/optional_basic.dart';
+import 'api/pseudo_manual/optional_basic_twin_rust_async.dart';
+import 'api/pseudo_manual/optional_basic_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/optional_basic_twin_sse.dart';
+import 'api/pseudo_manual/optional_basic_twin_sync.dart';
+import 'api/pseudo_manual/optional_basic_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sse.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync_sse.dart';
-import 'api/pseudo_manual/optional_primitive_twin_rust_async.dart';
-import 'api/pseudo_manual/optional_primitive_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/optional_primitive_twin_sse.dart';
-import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
-import 'api/pseudo_manual/optional_primitive_twin_sync_sse.dart';
 import 'api/pseudo_manual/optional_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/optional_twin_sse.dart';
 import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/optional_twin_sync_sse.dart';
-import 'api/pseudo_manual/primitive.dart';
-import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sse.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync_sse.dart';
-import 'api/pseudo_manual/primitive_list_twin_rust_async.dart';
-import 'api/pseudo_manual/primitive_list_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/primitive_list_twin_sse.dart';
-import 'api/pseudo_manual/primitive_list_twin_sync.dart';
-import 'api/pseudo_manual/primitive_list_twin_sync_sse.dart';
 import 'api/pseudo_manual/primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_misc_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sse.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync_sse.dart';
-import 'api/pseudo_manual/primitive_twin_rust_async.dart';
-import 'api/pseudo_manual/primitive_twin_rust_async_sse.dart';
-import 'api/pseudo_manual/primitive_twin_sse.dart';
-import 'api/pseudo_manual/primitive_twin_sync.dart';
-import 'api/pseudo_manual/primitive_twin_sync_sse.dart';
 import 'api/pseudo_manual/raw_string_twin_rust_async.dart';
 import 'api/pseudo_manual/raw_string_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/raw_string_twin_sse.dart';
@@ -1002,6 +1002,361 @@ abstract class RustLibApi extends BaseApi {
 
   UserIdTwinSyncSse nextUserIdTwinSyncSse(
       {required UserIdTwinSyncSse userId, dynamic hint});
+
+  Future<bool> exampleBasicTypeBoolTwinNormal(
+      {required bool arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF32TwinNormal(
+      {required double arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF64TwinNormal(
+      {required double arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI16TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI32TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI64TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI8TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU16TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU32TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU64TwinNormal({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU8TwinNormal({required int arg, dynamic hint});
+
+  Future<List<bool>> exampleBasicListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint});
+
+  Future<Float32List> exampleBasicListTypeF32TwinNormal(
+      {required List<double> arg, dynamic hint});
+
+  Future<Float64List> exampleBasicListTypeF64TwinNormal(
+      {required List<double> arg, dynamic hint});
+
+  Future<Int16List> exampleBasicListTypeI16TwinNormal(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int32List> exampleBasicListTypeI32TwinNormal(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int64List> exampleBasicListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint});
+
+  Future<Int8List> exampleBasicListTypeI8TwinNormal(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint16List> exampleBasicListTypeU16TwinNormal(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint32List> exampleBasicListTypeU32TwinNormal(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint64List> exampleBasicListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicListTypeU8TwinNormal(
+      {required List<int> arg, dynamic hint});
+
+  Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync(
+      {required List<bool> arg, dynamic hint});
+
+  Future<Float32List> exampleBasicListTypeF32TwinRustAsync(
+      {required List<double> arg, dynamic hint});
+
+  Future<Float64List> exampleBasicListTypeF64TwinRustAsync(
+      {required List<double> arg, dynamic hint});
+
+  Future<Int16List> exampleBasicListTypeI16TwinRustAsync(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int32List> exampleBasicListTypeI32TwinRustAsync(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int64List> exampleBasicListTypeI64TwinRustAsync(
+      {required Int64List arg, dynamic hint});
+
+  Future<Int8List> exampleBasicListTypeI8TwinRustAsync(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint16List> exampleBasicListTypeU16TwinRustAsync(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint32List> exampleBasicListTypeU32TwinRustAsync(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint64List> exampleBasicListTypeU64TwinRustAsync(
+      {required Uint64List arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicListTypeU8TwinRustAsync(
+      {required List<int> arg, dynamic hint});
+
+  Future<List<bool>> exampleBasicListTypeBoolTwinRustAsyncSse(
+      {required List<bool> arg, dynamic hint});
+
+  Future<Float32List> exampleBasicListTypeF32TwinRustAsyncSse(
+      {required List<double> arg, dynamic hint});
+
+  Future<Float64List> exampleBasicListTypeF64TwinRustAsyncSse(
+      {required List<double> arg, dynamic hint});
+
+  Future<Int16List> exampleBasicListTypeI16TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int32List> exampleBasicListTypeI32TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int64List> exampleBasicListTypeI64TwinRustAsyncSse(
+      {required Int64List arg, dynamic hint});
+
+  Future<Int8List> exampleBasicListTypeI8TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint16List> exampleBasicListTypeU16TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint32List> exampleBasicListTypeU32TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint64List> exampleBasicListTypeU64TwinRustAsyncSse(
+      {required Uint64List arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicListTypeU8TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<List<bool>> exampleBasicListTypeBoolTwinSse(
+      {required List<bool> arg, dynamic hint});
+
+  Future<Float32List> exampleBasicListTypeF32TwinSse(
+      {required List<double> arg, dynamic hint});
+
+  Future<Float64List> exampleBasicListTypeF64TwinSse(
+      {required List<double> arg, dynamic hint});
+
+  Future<Int16List> exampleBasicListTypeI16TwinSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int32List> exampleBasicListTypeI32TwinSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Int64List> exampleBasicListTypeI64TwinSse(
+      {required Int64List arg, dynamic hint});
+
+  Future<Int8List> exampleBasicListTypeI8TwinSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint16List> exampleBasicListTypeU16TwinSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint32List> exampleBasicListTypeU32TwinSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<Uint64List> exampleBasicListTypeU64TwinSse(
+      {required Uint64List arg, dynamic hint});
+
+  Future<Uint8List> exampleBasicListTypeU8TwinSse(
+      {required List<int> arg, dynamic hint});
+
+  List<bool> exampleBasicListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint});
+
+  Float32List exampleBasicListTypeF32TwinSync(
+      {required List<double> arg, dynamic hint});
+
+  Float64List exampleBasicListTypeF64TwinSync(
+      {required List<double> arg, dynamic hint});
+
+  Int16List exampleBasicListTypeI16TwinSync(
+      {required List<int> arg, dynamic hint});
+
+  Int32List exampleBasicListTypeI32TwinSync(
+      {required List<int> arg, dynamic hint});
+
+  Int64List exampleBasicListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint});
+
+  Int8List exampleBasicListTypeI8TwinSync(
+      {required List<int> arg, dynamic hint});
+
+  Uint16List exampleBasicListTypeU16TwinSync(
+      {required List<int> arg, dynamic hint});
+
+  Uint32List exampleBasicListTypeU32TwinSync(
+      {required List<int> arg, dynamic hint});
+
+  Uint64List exampleBasicListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint});
+
+  Uint8List exampleBasicListTypeU8TwinSync(
+      {required List<int> arg, dynamic hint});
+
+  List<bool> exampleBasicListTypeBoolTwinSyncSse(
+      {required List<bool> arg, dynamic hint});
+
+  Float32List exampleBasicListTypeF32TwinSyncSse(
+      {required List<double> arg, dynamic hint});
+
+  Float64List exampleBasicListTypeF64TwinSyncSse(
+      {required List<double> arg, dynamic hint});
+
+  Int16List exampleBasicListTypeI16TwinSyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Int32List exampleBasicListTypeI32TwinSyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Int64List exampleBasicListTypeI64TwinSyncSse(
+      {required Int64List arg, dynamic hint});
+
+  Int8List exampleBasicListTypeI8TwinSyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Uint16List exampleBasicListTypeU16TwinSyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Uint32List exampleBasicListTypeU32TwinSyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Uint64List exampleBasicListTypeU64TwinSyncSse(
+      {required Uint64List arg, dynamic hint});
+
+  Uint8List exampleBasicListTypeU8TwinSyncSse(
+      {required List<int> arg, dynamic hint});
+
+  Future<bool> exampleBasicTypeBoolTwinRustAsync(
+      {required bool arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF32TwinRustAsync(
+      {required double arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF64TwinRustAsync(
+      {required double arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI16TwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI32TwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI64TwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI8TwinRustAsync({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU16TwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU32TwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU64TwinRustAsync(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU8TwinRustAsync({required int arg, dynamic hint});
+
+  Future<bool> exampleBasicTypeBoolTwinRustAsyncSse(
+      {required bool arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF32TwinRustAsyncSse(
+      {required double arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF64TwinRustAsyncSse(
+      {required double arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI16TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI32TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI64TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI8TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU16TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU32TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU64TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU8TwinRustAsyncSse(
+      {required int arg, dynamic hint});
+
+  Future<bool> exampleBasicTypeBoolTwinSse({required bool arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF32TwinSse(
+      {required double arg, dynamic hint});
+
+  Future<double> exampleBasicTypeF64TwinSse(
+      {required double arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI16TwinSse({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI32TwinSse({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI64TwinSse({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeI8TwinSse({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU16TwinSse({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU32TwinSse({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU64TwinSse({required int arg, dynamic hint});
+
+  Future<int> exampleBasicTypeU8TwinSse({required int arg, dynamic hint});
+
+  bool exampleBasicTypeBoolTwinSync({required bool arg, dynamic hint});
+
+  double exampleBasicTypeF32TwinSync({required double arg, dynamic hint});
+
+  double exampleBasicTypeF64TwinSync({required double arg, dynamic hint});
+
+  int exampleBasicTypeI16TwinSync({required int arg, dynamic hint});
+
+  int exampleBasicTypeI32TwinSync({required int arg, dynamic hint});
+
+  int exampleBasicTypeI64TwinSync({required int arg, dynamic hint});
+
+  int exampleBasicTypeI8TwinSync({required int arg, dynamic hint});
+
+  int exampleBasicTypeU16TwinSync({required int arg, dynamic hint});
+
+  int exampleBasicTypeU32TwinSync({required int arg, dynamic hint});
+
+  int exampleBasicTypeU64TwinSync({required int arg, dynamic hint});
+
+  int exampleBasicTypeU8TwinSync({required int arg, dynamic hint});
+
+  bool exampleBasicTypeBoolTwinSyncSse({required bool arg, dynamic hint});
+
+  double exampleBasicTypeF32TwinSyncSse({required double arg, dynamic hint});
+
+  double exampleBasicTypeF64TwinSyncSse({required double arg, dynamic hint});
+
+  int exampleBasicTypeI16TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeI32TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeI64TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeI8TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeU16TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeU32TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeU64TwinSyncSse({required int arg, dynamic hint});
+
+  int exampleBasicTypeU8TwinSyncSse({required int arg, dynamic hint});
 
   Future<void> benchmarkBinaryTreeInputJsonTwinNormal(
       {required String raw, dynamic hint});
@@ -3075,38 +3430,164 @@ abstract class RustLibApi extends BaseApi {
   NewTypeIntTwinSyncSse handleNewtypeTwinSyncSse(
       {required NewTypeIntTwinSyncSse arg, dynamic hint});
 
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
+  Future<bool?> exampleOptionalBasicTypeBoolTwinNormal(
       {bool? arg, dynamic hint});
 
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
+  Future<double?> exampleOptionalBasicTypeF32TwinNormal(
       {double? arg, dynamic hint});
 
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
+  Future<double?> exampleOptionalBasicTypeF64TwinNormal(
       {double? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
+  Future<int?> exampleOptionalBasicTypeI16TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI32TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI64TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI8TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU16TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU32TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU64TwinNormal({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU8TwinNormal({int? arg, dynamic hint});
+
+  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsync(
+      {bool? arg, dynamic hint});
+
+  Future<double?> exampleOptionalBasicTypeF32TwinRustAsync(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleOptionalBasicTypeF64TwinRustAsync(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI16TwinRustAsync(
       {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
+  Future<int?> exampleOptionalBasicTypeI32TwinRustAsync(
       {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
+  Future<int?> exampleOptionalBasicTypeI64TwinRustAsync(
       {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
+  Future<int?> exampleOptionalBasicTypeI8TwinRustAsync(
       {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
+  Future<int?> exampleOptionalBasicTypeU16TwinRustAsync(
       {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
+  Future<int?> exampleOptionalBasicTypeU32TwinRustAsync(
       {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
+  Future<int?> exampleOptionalBasicTypeU64TwinRustAsync(
       {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
+  Future<int?> exampleOptionalBasicTypeU8TwinRustAsync(
       {int? arg, dynamic hint});
+
+  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsyncSse(
+      {bool? arg, dynamic hint});
+
+  Future<double?> exampleOptionalBasicTypeF32TwinRustAsyncSse(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleOptionalBasicTypeF64TwinRustAsyncSse(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI16TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI32TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI64TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI8TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU16TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU32TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU64TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU8TwinRustAsyncSse(
+      {int? arg, dynamic hint});
+
+  Future<bool?> exampleOptionalBasicTypeBoolTwinSse({bool? arg, dynamic hint});
+
+  Future<double?> exampleOptionalBasicTypeF32TwinSse(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleOptionalBasicTypeF64TwinSse(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI16TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI32TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI64TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeI8TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU16TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU32TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU64TwinSse({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalBasicTypeU8TwinSse({int? arg, dynamic hint});
+
+  bool? exampleOptionalBasicTypeBoolTwinSync({bool? arg, dynamic hint});
+
+  double? exampleOptionalBasicTypeF32TwinSync({double? arg, dynamic hint});
+
+  double? exampleOptionalBasicTypeF64TwinSync({double? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI16TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI32TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI64TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI8TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU16TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU32TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU64TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU8TwinSync({int? arg, dynamic hint});
+
+  bool? exampleOptionalBasicTypeBoolTwinSyncSse({bool? arg, dynamic hint});
+
+  double? exampleOptionalBasicTypeF32TwinSyncSse({double? arg, dynamic hint});
+
+  double? exampleOptionalBasicTypeF64TwinSyncSse({double? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI16TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI32TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI64TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeI8TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU16TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU32TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU64TwinSyncSse({int? arg, dynamic hint});
+
+  int? exampleOptionalBasicTypeU8TwinSyncSse({int? arg, dynamic hint});
 
   Future<int?> primitiveOptionalTypesTwinRustAsync(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
@@ -3122,143 +3603,6 @@ abstract class RustLibApi extends BaseApi {
 
   int? primitiveOptionalTypesTwinSyncSse(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
-
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinRustAsync(
-      {bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinRustAsync(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinRustAsync(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinRustAsync(
-      {int? arg, dynamic hint});
-
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinRustAsyncSse(
-      {bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinRustAsyncSse(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinRustAsyncSse(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinRustAsyncSse(
-      {int? arg, dynamic hint});
-
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinSse(
-      {bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinSse(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinSse(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinSse({int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinSse({int? arg, dynamic hint});
-
-  bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint});
-
-  double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint});
-
-  double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint});
-
-  bool? exampleOptionalPrimitiveTypeBoolTwinSyncSse({bool? arg, dynamic hint});
-
-  double? exampleOptionalPrimitiveTypeF32TwinSyncSse(
-      {double? arg, dynamic hint});
-
-  double? exampleOptionalPrimitiveTypeF64TwinSyncSse(
-      {double? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI16TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI32TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI64TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI8TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU16TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU32TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU64TwinSyncSse({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU8TwinSyncSse({int? arg, dynamic hint});
 
   Future<double> handleIncrementBoxedOptionalTwinRustAsync(
       {double? opt, dynamic hint});
@@ -3384,72 +3728,6 @@ abstract class RustLibApi extends BaseApi {
   OptVecsTwinSyncSse handleVecOfOptsTwinSyncSse(
       {required OptVecsTwinSyncSse opt, dynamic hint});
 
-  Future<bool> examplePrimitiveTypeBoolTwinNormal(
-      {required bool arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF32TwinNormal(
-      {required double arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF64TwinNormal(
-      {required double arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI16TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI32TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI64TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI8TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU16TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU32TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU64TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU8TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
-      {required List<bool> arg, dynamic hint});
-
-  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
-      {required List<double> arg, dynamic hint});
-
-  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
-      {required List<double> arg, dynamic hint});
-
-  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
-      {required Int64List arg, dynamic hint});
-
-  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
-      {required Uint64List arg, dynamic hint});
-
-  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
-      {required List<int> arg, dynamic hint});
-
   Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync(
       {required int n, dynamic hint});
 
@@ -3464,171 +3742,6 @@ abstract class RustLibApi extends BaseApi {
 
   VecOfPrimitivePackTwinSyncSse handleVecOfPrimitiveTwinSyncSse(
       {required int n, dynamic hint});
-
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinRustAsync(
-      {required List<bool> arg, dynamic hint});
-
-  Future<Float32List> examplePrimitiveListTypeF32TwinRustAsync(
-      {required List<double> arg, dynamic hint});
-
-  Future<Float64List> examplePrimitiveListTypeF64TwinRustAsync(
-      {required List<double> arg, dynamic hint});
-
-  Future<Int16List> examplePrimitiveListTypeI16TwinRustAsync(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int32List> examplePrimitiveListTypeI32TwinRustAsync(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int64List> examplePrimitiveListTypeI64TwinRustAsync(
-      {required Int64List arg, dynamic hint});
-
-  Future<Int8List> examplePrimitiveListTypeI8TwinRustAsync(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint16List> examplePrimitiveListTypeU16TwinRustAsync(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint32List> examplePrimitiveListTypeU32TwinRustAsync(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsync(
-      {required Uint64List arg, dynamic hint});
-
-  Future<Uint8List> examplePrimitiveListTypeU8TwinRustAsync(
-      {required List<int> arg, dynamic hint});
-
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinRustAsyncSse(
-      {required List<bool> arg, dynamic hint});
-
-  Future<Float32List> examplePrimitiveListTypeF32TwinRustAsyncSse(
-      {required List<double> arg, dynamic hint});
-
-  Future<Float64List> examplePrimitiveListTypeF64TwinRustAsyncSse(
-      {required List<double> arg, dynamic hint});
-
-  Future<Int16List> examplePrimitiveListTypeI16TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int32List> examplePrimitiveListTypeI32TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int64List> examplePrimitiveListTypeI64TwinRustAsyncSse(
-      {required Int64List arg, dynamic hint});
-
-  Future<Int8List> examplePrimitiveListTypeI8TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint16List> examplePrimitiveListTypeU16TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint32List> examplePrimitiveListTypeU32TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsyncSse(
-      {required Uint64List arg, dynamic hint});
-
-  Future<Uint8List> examplePrimitiveListTypeU8TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinSse(
-      {required List<bool> arg, dynamic hint});
-
-  Future<Float32List> examplePrimitiveListTypeF32TwinSse(
-      {required List<double> arg, dynamic hint});
-
-  Future<Float64List> examplePrimitiveListTypeF64TwinSse(
-      {required List<double> arg, dynamic hint});
-
-  Future<Int16List> examplePrimitiveListTypeI16TwinSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int32List> examplePrimitiveListTypeI32TwinSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Int64List> examplePrimitiveListTypeI64TwinSse(
-      {required Int64List arg, dynamic hint});
-
-  Future<Int8List> examplePrimitiveListTypeI8TwinSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint16List> examplePrimitiveListTypeU16TwinSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint32List> examplePrimitiveListTypeU32TwinSse(
-      {required List<int> arg, dynamic hint});
-
-  Future<Uint64List> examplePrimitiveListTypeU64TwinSse(
-      {required Uint64List arg, dynamic hint});
-
-  Future<Uint8List> examplePrimitiveListTypeU8TwinSse(
-      {required List<int> arg, dynamic hint});
-
-  List<bool> examplePrimitiveListTypeBoolTwinSync(
-      {required List<bool> arg, dynamic hint});
-
-  Float32List examplePrimitiveListTypeF32TwinSync(
-      {required List<double> arg, dynamic hint});
-
-  Float64List examplePrimitiveListTypeF64TwinSync(
-      {required List<double> arg, dynamic hint});
-
-  Int16List examplePrimitiveListTypeI16TwinSync(
-      {required List<int> arg, dynamic hint});
-
-  Int32List examplePrimitiveListTypeI32TwinSync(
-      {required List<int> arg, dynamic hint});
-
-  Int64List examplePrimitiveListTypeI64TwinSync(
-      {required Int64List arg, dynamic hint});
-
-  Int8List examplePrimitiveListTypeI8TwinSync(
-      {required List<int> arg, dynamic hint});
-
-  Uint16List examplePrimitiveListTypeU16TwinSync(
-      {required List<int> arg, dynamic hint});
-
-  Uint32List examplePrimitiveListTypeU32TwinSync(
-      {required List<int> arg, dynamic hint});
-
-  Uint64List examplePrimitiveListTypeU64TwinSync(
-      {required Uint64List arg, dynamic hint});
-
-  Uint8List examplePrimitiveListTypeU8TwinSync(
-      {required List<int> arg, dynamic hint});
-
-  List<bool> examplePrimitiveListTypeBoolTwinSyncSse(
-      {required List<bool> arg, dynamic hint});
-
-  Float32List examplePrimitiveListTypeF32TwinSyncSse(
-      {required List<double> arg, dynamic hint});
-
-  Float64List examplePrimitiveListTypeF64TwinSyncSse(
-      {required List<double> arg, dynamic hint});
-
-  Int16List examplePrimitiveListTypeI16TwinSyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Int32List examplePrimitiveListTypeI32TwinSyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Int64List examplePrimitiveListTypeI64TwinSyncSse(
-      {required Int64List arg, dynamic hint});
-
-  Int8List examplePrimitiveListTypeI8TwinSyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Uint16List examplePrimitiveListTypeU16TwinSyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Uint32List examplePrimitiveListTypeU32TwinSyncSse(
-      {required List<int> arg, dynamic hint});
-
-  Uint64List examplePrimitiveListTypeU64TwinSyncSse(
-      {required Uint64List arg, dynamic hint});
-
-  Uint8List examplePrimitiveListTypeU8TwinSyncSse(
-      {required List<int> arg, dynamic hint});
 
   Future<int> primitiveIsizeLoopbackTwinRustAsync(
       {required int arg, dynamic hint});
@@ -3698,143 +3811,6 @@ abstract class RustLibApi extends BaseApi {
   int primitiveU32TwinSyncSse({required int myU32, dynamic hint});
 
   int primitiveUsizeLoopbackTwinSyncSse({required int arg, dynamic hint});
-
-  Future<bool> examplePrimitiveTypeBoolTwinRustAsync(
-      {required bool arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF32TwinRustAsync(
-      {required double arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF64TwinRustAsync(
-      {required double arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI16TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI32TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI64TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI8TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU16TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU32TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU64TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU8TwinRustAsync(
-      {required int arg, dynamic hint});
-
-  Future<bool> examplePrimitiveTypeBoolTwinRustAsyncSse(
-      {required bool arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF32TwinRustAsyncSse(
-      {required double arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF64TwinRustAsyncSse(
-      {required double arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI16TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI32TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI64TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI8TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU16TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU32TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU64TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU8TwinRustAsyncSse(
-      {required int arg, dynamic hint});
-
-  Future<bool> examplePrimitiveTypeBoolTwinSse(
-      {required bool arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF32TwinSse(
-      {required double arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF64TwinSse(
-      {required double arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI16TwinSse({required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI32TwinSse({required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI64TwinSse({required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI8TwinSse({required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU16TwinSse({required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU32TwinSse({required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU64TwinSse({required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU8TwinSse({required int arg, dynamic hint});
-
-  bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint});
-
-  double examplePrimitiveTypeF32TwinSync({required double arg, dynamic hint});
-
-  double examplePrimitiveTypeF64TwinSync({required double arg, dynamic hint});
-
-  int examplePrimitiveTypeI16TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU16TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint});
-
-  bool examplePrimitiveTypeBoolTwinSyncSse({required bool arg, dynamic hint});
-
-  double examplePrimitiveTypeF32TwinSyncSse(
-      {required double arg, dynamic hint});
-
-  double examplePrimitiveTypeF64TwinSyncSse(
-      {required double arg, dynamic hint});
-
-  int examplePrimitiveTypeI16TwinSyncSse({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI32TwinSyncSse({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI64TwinSyncSse({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI8TwinSyncSse({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU16TwinSyncSse({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU32TwinSyncSse({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU64TwinSyncSse({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU8TwinSyncSse({required int arg, dynamic hint});
 
   Future<MoreThanJustOneRawStringStructTwinRustAsync>
       testMoreThanJustOneRawStringStructTwinRustAsync({dynamic hint});
@@ -14073,6 +14049,3464 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kNextUserIdTwinSyncSseConstMeta => const TaskConstMeta(
         debugName: "next_user_id_twin_sync_sse",
         argNames: ["userId"],
+      );
+
+  @override
+  Future<bool> exampleBasicTypeBoolTwinNormal(
+      {required bool arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_bool(arg);
+        return wire.wire_example_basic_type_bool_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF32TwinNormal(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_32(arg);
+        return wire.wire_example_basic_type_f32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF64TwinNormal(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64(arg);
+        return wire.wire_example_basic_type_f64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI16TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_16(arg);
+        return wire.wire_example_basic_type_i16_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI32TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(arg);
+        return wire.wire_example_basic_type_i32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI64TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_64(arg);
+        return wire.wire_example_basic_type_i64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI8TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_8(arg);
+        return wire.wire_example_basic_type_i8_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU16TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_16(arg);
+        return wire.wire_example_basic_type_u16_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU32TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_example_basic_type_u32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU64TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(arg);
+        return wire.wire_example_basic_type_u64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU8TwinNormal({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8(arg);
+        return wire.wire_example_basic_type_u8_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<bool>> exampleBasicListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_bool(arg);
+        return wire.wire_example_basic_list_type_bool_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float32List> exampleBasicListTypeF32TwinNormal(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_32_loose(arg);
+        return wire.wire_example_basic_list_type_f32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_f_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float64List> exampleBasicListTypeF64TwinNormal(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_64_loose(arg);
+        return wire.wire_example_basic_list_type_f64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_f_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int16List> exampleBasicListTypeI16TwinNormal(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_16_loose(arg);
+        return wire.wire_example_basic_list_type_i16_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int32List> exampleBasicListTypeI32TwinNormal(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_32_loose(arg);
+        return wire.wire_example_basic_list_type_i32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int64List> exampleBasicListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_64_strict(arg);
+        return wire.wire_example_basic_list_type_i64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int8List> exampleBasicListTypeI8TwinNormal(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_8_loose(arg);
+        return wire.wire_example_basic_list_type_i8_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint16List> exampleBasicListTypeU16TwinNormal(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_16_loose(arg);
+        return wire.wire_example_basic_list_type_u16_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint32List> exampleBasicListTypeU32TwinNormal(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_32_loose(arg);
+        return wire.wire_example_basic_list_type_u32_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint64List> exampleBasicListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_64_strict(arg);
+        return wire.wire_example_basic_list_type_u64_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicListTypeU8TwinNormal(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        return wire.wire_example_basic_list_type_u8_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync(
+      {required List<bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_bool(arg);
+        return wire.wire_example_basic_list_type_bool_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBoolTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBoolTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bool_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float32List> exampleBasicListTypeF32TwinRustAsync(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_32_loose(arg);
+        return wire.wire_example_basic_list_type_f32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_f_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float64List> exampleBasicListTypeF64TwinRustAsync(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_64_loose(arg);
+        return wire.wire_example_basic_list_type_f64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_f_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int16List> exampleBasicListTypeI16TwinRustAsync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_16_loose(arg);
+        return wire.wire_example_basic_list_type_i16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int32List> exampleBasicListTypeI32TwinRustAsync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_32_loose(arg);
+        return wire.wire_example_basic_list_type_i32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int64List> exampleBasicListTypeI64TwinRustAsync(
+      {required Int64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_64_strict(arg);
+        return wire.wire_example_basic_list_type_i64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int8List> exampleBasicListTypeI8TwinRustAsync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_8_loose(arg);
+        return wire.wire_example_basic_list_type_i8_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint16List> exampleBasicListTypeU16TwinRustAsync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_16_loose(arg);
+        return wire.wire_example_basic_list_type_u16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint32List> exampleBasicListTypeU32TwinRustAsync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_32_loose(arg);
+        return wire.wire_example_basic_list_type_u32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint64List> exampleBasicListTypeU64TwinRustAsync(
+      {required Uint64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_64_strict(arg);
+        return wire.wire_example_basic_list_type_u64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicListTypeU8TwinRustAsync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        return wire.wire_example_basic_list_type_u8_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<bool>> exampleBasicListTypeBoolTwinRustAsyncSse(
+      {required List<bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_bool_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBoolTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBoolTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bool_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float32List> exampleBasicListTypeF32TwinRustAsyncSse(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_f_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_f32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_f_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float64List> exampleBasicListTypeF64TwinRustAsyncSse(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_f_64_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_f64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_f_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int16List> exampleBasicListTypeI16TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_16_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int32List> exampleBasicListTypeI32TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int64List> exampleBasicListTypeI64TwinRustAsyncSse(
+      {required Int64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_64_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int8List> exampleBasicListTypeI8TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint16List> exampleBasicListTypeU16TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_16_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint32List> exampleBasicListTypeU32TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint64List> exampleBasicListTypeU64TwinRustAsyncSse(
+      {required Uint64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_64_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicListTypeU8TwinRustAsyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<bool>> exampleBasicListTypeBoolTwinSse(
+      {required List<bool> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_bool_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBoolTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBoolTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bool_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float32List> exampleBasicListTypeF32TwinSse(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_f_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_f32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_f_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float64List> exampleBasicListTypeF64TwinSse(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_f_64_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_f64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_f_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int16List> exampleBasicListTypeI16TwinSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_16_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int32List> exampleBasicListTypeI32TwinSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int64List> exampleBasicListTypeI64TwinSse(
+      {required Int64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_64_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int8List> exampleBasicListTypeI8TwinSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint16List> exampleBasicListTypeU16TwinSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_16_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint32List> exampleBasicListTypeU32TwinSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint64List> exampleBasicListTypeU64TwinSse(
+      {required Uint64List arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_64_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> exampleBasicListTypeU8TwinSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  List<bool> exampleBasicListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_bool(arg);
+        return wire.wire_example_basic_list_type_bool_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float32List exampleBasicListTypeF32TwinSync(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_f_32_loose(arg);
+        return wire.wire_example_basic_list_type_f32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_f_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float64List exampleBasicListTypeF64TwinSync(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_f_64_loose(arg);
+        return wire.wire_example_basic_list_type_f64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_f_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int16List exampleBasicListTypeI16TwinSync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_16_loose(arg);
+        return wire.wire_example_basic_list_type_i16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int32List exampleBasicListTypeI32TwinSync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_32_loose(arg);
+        return wire.wire_example_basic_list_type_i32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int64List exampleBasicListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_64_strict(arg);
+        return wire.wire_example_basic_list_type_i64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int8List exampleBasicListTypeI8TwinSync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_8_loose(arg);
+        return wire.wire_example_basic_list_type_i8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_i_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint16List exampleBasicListTypeU16TwinSync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_16_loose(arg);
+        return wire.wire_example_basic_list_type_u16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint32List exampleBasicListTypeU32TwinSync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_32_loose(arg);
+        return wire.wire_example_basic_list_type_u32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint64List exampleBasicListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_64_strict(arg);
+        return wire.wire_example_basic_list_type_u64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List exampleBasicListTypeU8TwinSync(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8_loose(arg);
+        return wire.wire_example_basic_list_type_u8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  List<bool> exampleBasicListTypeBoolTwinSyncSse(
+      {required List<bool> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_bool_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBoolTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBoolTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bool_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float32List exampleBasicListTypeF32TwinSyncSse(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_f_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_f32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_f_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float64List exampleBasicListTypeF64TwinSyncSse(
+      {required List<double> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_f_64_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_f64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_f_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeF64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeF64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_f64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int16List exampleBasicListTypeI16TwinSyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_16_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int32List exampleBasicListTypeI32TwinSyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int64List exampleBasicListTypeI64TwinSyncSse(
+      {required Int64List arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_64_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int8List exampleBasicListTypeI8TwinSyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_i_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_i8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_i_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeI8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeI8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_i8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint16List exampleBasicListTypeU16TwinSyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_16_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_16_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint32List exampleBasicListTypeU32TwinSyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_32_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_32_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint64List exampleBasicListTypeU64TwinSyncSse(
+      {required Uint64List arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_64_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_64_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List exampleBasicListTypeU8TwinSyncSse(
+      {required List<int> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_prim_u_8_loose(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_u8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeU8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeU8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_u8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<bool> exampleBasicTypeBoolTwinRustAsync(
+      {required bool arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_bool(arg);
+        return wire.wire_example_basic_type_bool_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBoolTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBoolTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bool_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF32TwinRustAsync(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_32(arg);
+        return wire.wire_example_basic_type_f32_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF64TwinRustAsync(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64(arg);
+        return wire.wire_example_basic_type_f64_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI16TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_16(arg);
+        return wire.wire_example_basic_type_i16_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI32TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(arg);
+        return wire.wire_example_basic_type_i32_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI64TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_64(arg);
+        return wire.wire_example_basic_type_i64_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI8TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_8(arg);
+        return wire.wire_example_basic_type_i8_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU16TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_16(arg);
+        return wire.wire_example_basic_type_u16_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU32TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_example_basic_type_u32_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU64TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(arg);
+        return wire.wire_example_basic_type_u64_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU8TwinRustAsync(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8(arg);
+        return wire.wire_example_basic_type_u8_twin_rust_async(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<bool> exampleBasicTypeBoolTwinRustAsyncSse(
+      {required bool arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_bool_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBoolTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBoolTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bool_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF32TwinRustAsyncSse(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_f32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF64TwinRustAsyncSse(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_f64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI16TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI32TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI64TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI8TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU16TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU32TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU64TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU8TwinRustAsyncSse(
+      {required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<bool> exampleBasicTypeBoolTwinSse({required bool arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_bool_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBoolTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBoolTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bool_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF32TwinSse(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_f32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF32TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_f32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> exampleBasicTypeF64TwinSse(
+      {required double arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_f64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF64TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_f64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI16TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI16TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_i16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI32TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI32TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_i32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI64TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI64TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_i64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeI8TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI8TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_i8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU16TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU16TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_u16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU32TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU32TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_u32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU64TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU64TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_u64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> exampleBasicTypeU8TwinSse({required int arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU8TwinSseConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_u8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  bool exampleBasicTypeBoolTwinSync({required bool arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_bool(arg);
+        return wire.wire_example_basic_type_bool_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double exampleBasicTypeF32TwinSync({required double arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_f_32(arg);
+        return wire.wire_example_basic_type_f32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double exampleBasicTypeF64TwinSync({required double arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_f_64(arg);
+        return wire.wire_example_basic_type_f64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI16TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_16(arg);
+        return wire.wire_example_basic_type_i16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI32TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_32(arg);
+        return wire.wire_example_basic_type_i32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI64TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_64(arg);
+        return wire.wire_example_basic_type_i64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI8TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_i_8(arg);
+        return wire.wire_example_basic_type_i8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI8TwinSyncConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU16TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_u_16(arg);
+        return wire.wire_example_basic_type_u16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU32TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_example_basic_type_u32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU64TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_u_64(arg);
+        return wire.wire_example_basic_type_u64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU8TwinSync({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_u_8(arg);
+        return wire.wire_example_basic_type_u8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU8TwinSyncConstMeta => const TaskConstMeta(
+        debugName: "example_basic_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  bool exampleBasicTypeBoolTwinSyncSse({required bool arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_bool_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeBoolTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeBoolTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_bool_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  double exampleBasicTypeF32TwinSyncSse({required double arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_f32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  double exampleBasicTypeF64TwinSyncSse({required double arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_f64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeF64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeF64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_f64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI16TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI32TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI64TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeI8TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_i8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeI8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeI8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_i8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU16TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU32TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU64TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int exampleBasicTypeU8TwinSyncSse({required int arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_type_u8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicTypeU8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicTypeU8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_type_u8_twin_sync_sse",
+        argNames: ["arg"],
       );
 
   @override
@@ -33843,288 +37277,1734 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
+  Future<bool?> exampleOptionalBasicTypeBoolTwinNormal(
       {bool? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_bool(arg);
-        return wire.wire_example_optional_primitive_type_bool_twin_normal(
+        return wire.wire_example_optional_basic_type_bool_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_bool,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeBoolTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_bool_twin_normal",
+        debugName: "example_optional_basic_type_bool_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
+  Future<double?> exampleOptionalBasicTypeF32TwinNormal(
       {double? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
-        return wire.wire_example_optional_primitive_type_f32_twin_normal(
+        return wire.wire_example_optional_basic_type_f32_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeF32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeF32TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_normal",
+        debugName: "example_optional_basic_type_f32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
+  Future<double?> exampleOptionalBasicTypeF64TwinNormal(
       {double? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
-        return wire.wire_example_optional_primitive_type_f64_twin_normal(
+        return wire.wire_example_optional_basic_type_f64_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeF64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeF64TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_normal",
+        debugName: "example_optional_basic_type_f64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeI16TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
-        return wire.wire_example_optional_primitive_type_i16_twin_normal(
+        return wire.wire_example_optional_basic_type_i16_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeI16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeI16TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_normal",
+        debugName: "example_optional_basic_type_i16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeI32TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
-        return wire.wire_example_optional_primitive_type_i32_twin_normal(
+        return wire.wire_example_optional_basic_type_i32_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeI32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeI32TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_normal",
+        debugName: "example_optional_basic_type_i32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeI64TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
-        return wire.wire_example_optional_primitive_type_i64_twin_normal(
+        return wire.wire_example_optional_basic_type_i64_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeI64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeI64TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_normal",
+        debugName: "example_optional_basic_type_i64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeI8TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
-        return wire.wire_example_optional_primitive_type_i8_twin_normal(
+        return wire.wire_example_optional_basic_type_i8_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeI8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeI8TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_normal",
+        debugName: "example_optional_basic_type_i8_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeU16TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
-        return wire.wire_example_optional_primitive_type_u16_twin_normal(
+        return wire.wire_example_optional_basic_type_u16_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeU16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeU16TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_normal",
+        debugName: "example_optional_basic_type_u16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeU32TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
-        return wire.wire_example_optional_primitive_type_u32_twin_normal(
+        return wire.wire_example_optional_basic_type_u32_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeU32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeU32TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_normal",
+        debugName: "example_optional_basic_type_u32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeU64TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
-        return wire.wire_example_optional_primitive_type_u64_twin_normal(
+        return wire.wire_example_optional_basic_type_u64_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeU64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeU64TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_normal",
+        debugName: "example_optional_basic_type_u64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
-      {int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalBasicTypeU8TwinNormal({int? arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
-        return wire.wire_example_optional_primitive_type_u8_twin_normal(
+        return wire.wire_example_optional_basic_type_u8_twin_normal(
             port_, arg0);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
         decodeErrorData: null,
       ),
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta,
+      constMeta: kExampleOptionalBasicTypeU8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta =>
+  TaskConstMeta get kExampleOptionalBasicTypeU8TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_normal",
+        debugName: "example_optional_basic_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsync(
+      {bool? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_optional_basic_type_bool_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeBoolTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_bool_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalBasicTypeF32TwinRustAsync(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_optional_basic_type_f32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalBasicTypeF64TwinRustAsync(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_optional_basic_type_f64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI16TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_optional_basic_type_i16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI32TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_optional_basic_type_i32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI64TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_optional_basic_type_i64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI8TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_optional_basic_type_i8_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU16TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_optional_basic_type_u16_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU16TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU16TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u16_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU32TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_optional_basic_type_u32_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU32TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU32TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u32_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU64TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_optional_basic_type_u64_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU64TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU64TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u64_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU8TwinRustAsync(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_optional_basic_type_u8_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU8TwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU8TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u8_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<bool?> exampleOptionalBasicTypeBoolTwinRustAsyncSse(
+      {bool? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_bool_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeBoolTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_bool_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalBasicTypeF32TwinRustAsyncSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_f32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalBasicTypeF64TwinRustAsyncSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_f64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI16TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI32TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI64TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI8TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU16TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u16_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU16TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU16TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u16_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU32TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u32_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU32TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU32TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u32_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU64TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u64_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU64TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU64TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u64_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU8TwinRustAsyncSse(
+      {int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u8_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU8TwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU8TwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u8_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<bool?> exampleOptionalBasicTypeBoolTwinSse({bool? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_bool_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeBoolTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_bool_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalBasicTypeF32TwinSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_f32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalBasicTypeF64TwinSse(
+      {double? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_f64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI16TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI32TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI64TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeI8TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU16TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u16_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU16TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU16TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u16_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU32TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u32_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU32TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU32TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u32_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU64TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u64_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU64TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU64TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u64_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalBasicTypeU8TwinSse({int? arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u8_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU8TwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU8TwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u8_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  bool? exampleOptionalBasicTypeBoolTwinSync({bool? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_optional_basic_type_bool_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleOptionalBasicTypeF32TwinSync({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_optional_basic_type_f32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleOptionalBasicTypeF64TwinSync({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_optional_basic_type_f64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI16TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_optional_basic_type_i16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI32TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_optional_basic_type_i32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI64TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_optional_basic_type_i64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI8TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_optional_basic_type_i8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU16TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_optional_basic_type_u16_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU32TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_optional_basic_type_u32_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU64TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_optional_basic_type_u64_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU8TwinSync({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_optional_basic_type_u8_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  bool? exampleOptionalBasicTypeBoolTwinSyncSse({bool? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_bool(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_bool_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeBoolTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeBoolTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_bool_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleOptionalBasicTypeF32TwinSyncSse({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_f32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleOptionalBasicTypeF64TwinSyncSse({double? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_f_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_f64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeF64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeF64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_f64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI16TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI32TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI64TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeI8TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_i_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_i8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeI8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeI8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_i8_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU16TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_16(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u16_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU16TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU16TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u16_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU32TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_32(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u32_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU32TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU32TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u32_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU64TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_64(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u64_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU64TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU64TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u64_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalBasicTypeU8TwinSyncSse({int? arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_opt_box_autoadd_u_8(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_optional_basic_type_u8_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleOptionalBasicTypeU8TwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalBasicTypeU8TwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_basic_type_u8_twin_sync_sse",
         argNames: ["arg"],
       );
 
@@ -34277,1480 +39157,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "primitive_optional_types_twin_sync_sse",
         argNames: ["myI32", "myI64", "myF64", "myBool"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinRustAsync(
-      {bool? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
-        return wire.wire_example_optional_primitive_type_bool_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_bool_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinRustAsync(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
-        return wire.wire_example_optional_primitive_type_f32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinRustAsync(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
-        return wire.wire_example_optional_primitive_type_f64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
-        return wire.wire_example_optional_primitive_type_i16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
-        return wire.wire_example_optional_primitive_type_i32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
-        return wire.wire_example_optional_primitive_type_i64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
-        return wire.wire_example_optional_primitive_type_i8_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
-        return wire.wire_example_optional_primitive_type_u16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
-        return wire.wire_example_optional_primitive_type_u32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
-        return wire.wire_example_optional_primitive_type_u64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinRustAsync(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
-        return wire.wire_example_optional_primitive_type_u8_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinRustAsyncSse(
-      {bool? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_bool_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kExampleOptionalPrimitiveTypeBoolTwinRustAsyncSseConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "example_optional_primitive_type_bool_twin_rust_async_sse",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinRustAsyncSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_f32_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinRustAsyncSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_f64_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_i16_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_i32_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_i64_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_u16_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_u32_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire
-            .wire_example_optional_primitive_type_u64_twin_rust_async_sse(
-                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinRustAsyncSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinSse(
-      {bool? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_bool_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_bool_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_f32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_f64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinSse(
-      {int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinSse({int? arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
-        return wire.wire_example_optional_primitive_type_bool_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_bool_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
-        return wire.wire_example_optional_primitive_type_f32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
-        return wire.wire_example_optional_primitive_type_f64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
-        return wire.wire_example_optional_primitive_type_i16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
-        return wire.wire_example_optional_primitive_type_i32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
-        return wire.wire_example_optional_primitive_type_i64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
-        return wire.wire_example_optional_primitive_type_i8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
-        return wire.wire_example_optional_primitive_type_u16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
-        return wire.wire_example_optional_primitive_type_u32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
-        return wire.wire_example_optional_primitive_type_u64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
-        return wire.wire_example_optional_primitive_type_u8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool? exampleOptionalPrimitiveTypeBoolTwinSyncSse({bool? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_bool_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_bool_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalPrimitiveTypeF32TwinSyncSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_f32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalPrimitiveTypeF64TwinSyncSse(
-      {double? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_f64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI16TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI32TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI64TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI8TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_i8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU16TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU32TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU64TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU8TwinSyncSse({int? arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_box_autoadd_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_optional_primitive_type_u8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_opt_box_autoadd_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_sync_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -36679,567 +40085,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<bool> examplePrimitiveTypeBoolTwinNormal(
-      {required bool arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_bool(arg);
-        return wire.wire_example_primitive_type_bool_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeBoolTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF32TwinNormal(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_f_32(arg);
-        return wire.wire_example_primitive_type_f32_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF64TwinNormal(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_f_64(arg);
-        return wire.wire_example_primitive_type_f64_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI16TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_16(arg);
-        return wire.wire_example_primitive_type_i16_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI32TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_32(arg);
-        return wire.wire_example_primitive_type_i32_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI64TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_64(arg);
-        return wire.wire_example_primitive_type_i64_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI8TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_8(arg);
-        return wire.wire_example_primitive_type_i8_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU16TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_16(arg);
-        return wire.wire_example_primitive_type_u16_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU32TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_32(arg);
-        return wire.wire_example_primitive_type_u32_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU64TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_64(arg);
-        return wire.wire_example_primitive_type_u64_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU8TwinNormal(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_8(arg);
-        return wire.wire_example_primitive_type_u8_twin_normal(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
-      {required List<bool> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_bool(arg);
-        return wire.wire_example_primitive_list_type_bool_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_32_loose(arg);
-        return wire.wire_example_primitive_list_type_f32_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_64_loose(arg);
-        return wire.wire_example_primitive_list_type_f64_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_16_loose(arg);
-        return wire.wire_example_primitive_list_type_i16_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_32_loose(arg);
-        return wire.wire_example_primitive_list_type_i32_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
-      {required Int64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_64_strict(arg);
-        return wire.wire_example_primitive_list_type_i64_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_8_loose(arg);
-        return wire.wire_example_primitive_list_type_i8_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_16_loose(arg);
-        return wire.wire_example_primitive_list_type_u16_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_32_loose(arg);
-        return wire.wire_example_primitive_list_type_u32_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
-      {required Uint64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_64_strict(arg);
-        return wire.wire_example_primitive_list_type_u64_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(arg);
-        return wire.wire_example_primitive_list_type_u8_twin_normal(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
   Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync(
       {required int n, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -37371,1491 +40216,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "handle_vec_of_primitive_twin_sync_sse",
         argNames: ["n"],
-      );
-
-  @override
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinRustAsync(
-      {required List<bool> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_bool(arg);
-        return wire.wire_example_primitive_list_type_bool_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeBoolTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float32List> examplePrimitiveListTypeF32TwinRustAsync(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_32_loose(arg);
-        return wire.wire_example_primitive_list_type_f32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float64List> examplePrimitiveListTypeF64TwinRustAsync(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_f_64_loose(arg);
-        return wire.wire_example_primitive_list_type_f64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int16List> examplePrimitiveListTypeI16TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_16_loose(arg);
-        return wire.wire_example_primitive_list_type_i16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int32List> examplePrimitiveListTypeI32TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_32_loose(arg);
-        return wire.wire_example_primitive_list_type_i32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int64List> examplePrimitiveListTypeI64TwinRustAsync(
-      {required Int64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_64_strict(arg);
-        return wire.wire_example_primitive_list_type_i64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int8List> examplePrimitiveListTypeI8TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_i_8_loose(arg);
-        return wire.wire_example_primitive_list_type_i8_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint16List> examplePrimitiveListTypeU16TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_16_loose(arg);
-        return wire.wire_example_primitive_list_type_u16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint32List> examplePrimitiveListTypeU32TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_32_loose(arg);
-        return wire.wire_example_primitive_list_type_u32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsync(
-      {required Uint64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_64_strict(arg);
-        return wire.wire_example_primitive_list_type_u64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint8List> examplePrimitiveListTypeU8TwinRustAsync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_list_prim_u_8_loose(arg);
-        return wire.wire_example_primitive_list_type_u8_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinRustAsyncSse(
-      {required List<bool> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_bool_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeBoolTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float32List> examplePrimitiveListTypeF32TwinRustAsyncSse(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_f32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float64List> examplePrimitiveListTypeF64TwinRustAsyncSse(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_f64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int16List> examplePrimitiveListTypeI16TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i16_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int32List> examplePrimitiveListTypeI32TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int64List> examplePrimitiveListTypeI64TwinRustAsyncSse(
-      {required Int64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_strict(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int8List> examplePrimitiveListTypeI8TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint16List> examplePrimitiveListTypeU16TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u16_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint32List> examplePrimitiveListTypeU32TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsyncSse(
-      {required Uint64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_strict(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint8List> examplePrimitiveListTypeU8TwinRustAsyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinSse(
-      {required List<bool> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_bool_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeBoolTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float32List> examplePrimitiveListTypeF32TwinSse(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_f32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float64List> examplePrimitiveListTypeF64TwinSse(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_f64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int16List> examplePrimitiveListTypeI16TwinSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int32List> examplePrimitiveListTypeI32TwinSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int64List> examplePrimitiveListTypeI64TwinSse(
-      {required Int64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_strict(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int8List> examplePrimitiveListTypeI8TwinSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint16List> examplePrimitiveListTypeU16TwinSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint32List> examplePrimitiveListTypeU32TwinSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint64List> examplePrimitiveListTypeU64TwinSse(
-      {required Uint64List arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_strict(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint8List> examplePrimitiveListTypeU8TwinSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  List<bool> examplePrimitiveListTypeBoolTwinSync(
-      {required List<bool> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_bool(arg);
-        return wire.wire_example_primitive_list_type_bool_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeBoolTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Float32List examplePrimitiveListTypeF32TwinSync(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_f_32_loose(arg);
-        return wire.wire_example_primitive_list_type_f32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Float64List examplePrimitiveListTypeF64TwinSync(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_f_64_loose(arg);
-        return wire.wire_example_primitive_list_type_f64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int16List examplePrimitiveListTypeI16TwinSync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_i_16_loose(arg);
-        return wire.wire_example_primitive_list_type_i16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int32List examplePrimitiveListTypeI32TwinSync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_i_32_loose(arg);
-        return wire.wire_example_primitive_list_type_i32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int64List examplePrimitiveListTypeI64TwinSync(
-      {required Int64List arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_i_64_strict(arg);
-        return wire.wire_example_primitive_list_type_i64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int8List examplePrimitiveListTypeI8TwinSync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_i_8_loose(arg);
-        return wire.wire_example_primitive_list_type_i8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint16List examplePrimitiveListTypeU16TwinSync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_u_16_loose(arg);
-        return wire.wire_example_primitive_list_type_u16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint32List examplePrimitiveListTypeU32TwinSync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_u_32_loose(arg);
-        return wire.wire_example_primitive_list_type_u32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint64List examplePrimitiveListTypeU64TwinSync(
-      {required Uint64List arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_u_64_strict(arg);
-        return wire.wire_example_primitive_list_type_u64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint8List examplePrimitiveListTypeU8TwinSync(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_list_prim_u_8_loose(arg);
-        return wire.wire_example_primitive_list_type_u8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  List<bool> examplePrimitiveListTypeBoolTwinSyncSse(
-      {required List<bool> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_bool_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeBoolTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Float32List examplePrimitiveListTypeF32TwinSyncSse(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_f32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Float64List examplePrimitiveListTypeF64TwinSyncSse(
-      {required List<double> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_f_64_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_f64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_f_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeF64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int16List examplePrimitiveListTypeI16TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_16_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int32List examplePrimitiveListTypeI32TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int64List examplePrimitiveListTypeI64TwinSyncSse(
-      {required Int64List arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_64_strict(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int8List examplePrimitiveListTypeI8TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_i_8_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_i8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_i_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeI8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint16List examplePrimitiveListTypeU16TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_16_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_16_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint32List examplePrimitiveListTypeU32TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_32_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_32_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint64List examplePrimitiveListTypeU64TwinSyncSse(
-      {required Uint64List arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_64_strict(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_64_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint8List examplePrimitiveListTypeU8TwinSyncSse(
-      {required List<int> arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_prim_u_8_loose(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_list_type_u8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_list_prim_u_8_strict,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveListTypeU8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_sync_sse",
-        argNames: ["arg"],
       );
 
   @override
@@ -39409,1461 +40769,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kPrimitiveUsizeLoopbackTwinSyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "primitive_usize_loopback_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool> examplePrimitiveTypeBoolTwinRustAsync(
-      {required bool arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_bool(arg);
-        return wire.wire_example_primitive_type_bool_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeBoolTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF32TwinRustAsync(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_f_32(arg);
-        return wire.wire_example_primitive_type_f32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF64TwinRustAsync(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_f_64(arg);
-        return wire.wire_example_primitive_type_f64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI16TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_16(arg);
-        return wire.wire_example_primitive_type_i16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI32TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_32(arg);
-        return wire.wire_example_primitive_type_i32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI64TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_64(arg);
-        return wire.wire_example_primitive_type_i64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI8TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_i_8(arg);
-        return wire.wire_example_primitive_type_i8_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU16TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_16(arg);
-        return wire.wire_example_primitive_type_u16_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU16TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU32TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_32(arg);
-        return wire.wire_example_primitive_type_u32_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU32TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU64TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_64(arg);
-        return wire.wire_example_primitive_type_u64_twin_rust_async(
-            port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU64TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU8TwinRustAsync(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        var arg0 = cst_encode_u_8(arg);
-        return wire.wire_example_primitive_type_u8_twin_rust_async(port_, arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU8TwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool> examplePrimitiveTypeBoolTwinRustAsyncSse(
-      {required bool arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_bool_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeBoolTwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF32TwinRustAsyncSse(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_f32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF64TwinRustAsyncSse(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_f64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI16TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i16_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI32TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI64TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI8TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU16TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u16_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU16TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU32TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u32_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU32TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU64TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u64_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU64TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU8TwinRustAsyncSse(
-      {required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u8_twin_rust_async_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU8TwinRustAsyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinRustAsyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_rust_async_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool> examplePrimitiveTypeBoolTwinSse(
-      {required bool arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_bool_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeBoolTwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF32TwinSse(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_f32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF64TwinSse(
-      {required double arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_f64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI16TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI32TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI64TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI8TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU16TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u16_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU16TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU32TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u32_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU32TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU64TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u64_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU64TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU8TwinSse({required int arg, dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u8_twin_sse(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU8TwinSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_bool(arg);
-        return wire.wire_example_primitive_type_bool_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeBoolTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double examplePrimitiveTypeF32TwinSync({required double arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_f_32(arg);
-        return wire.wire_example_primitive_type_f32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double examplePrimitiveTypeF64TwinSync({required double arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_f_64(arg);
-        return wire.wire_example_primitive_type_f64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI16TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_i_16(arg);
-        return wire.wire_example_primitive_type_i16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_i_32(arg);
-        return wire.wire_example_primitive_type_i32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_i_64(arg);
-        return wire.wire_example_primitive_type_i64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_i_8(arg);
-        return wire.wire_example_primitive_type_i8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU16TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_u_16(arg);
-        return wire.wire_example_primitive_type_u16_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_u_32(arg);
-        return wire.wire_example_primitive_type_u32_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_u_64(arg);
-        return wire.wire_example_primitive_type_u64_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        var arg0 = cst_encode_u_8(arg);
-        return wire.wire_example_primitive_type_u8_twin_sync(arg0);
-      },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool examplePrimitiveTypeBoolTwinSyncSse({required bool arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_bool(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_bool_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_bool,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeBoolTwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  double examplePrimitiveTypeF32TwinSyncSse(
-      {required double arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_f32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  double examplePrimitiveTypeF64TwinSyncSse(
-      {required double arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_f_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_f64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_f_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeF64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI16TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI32TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI64TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI8TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_i8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeI8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU16TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_16(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u16_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_16,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU16TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU32TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_32(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u32_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU32TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU64TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_64(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u64_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_64,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU64TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_sync_sse",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU8TwinSyncSse({required int arg, dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_u_8(arg, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_example_primitive_type_u8_twin_sync_sse(
-            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_8,
-        decodeErrorData: null,
-      ),
-      constMeta: kExamplePrimitiveTypeU8TwinSyncSseConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinSyncSseConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_sync_sse",
         argNames: ["arg"],
       );
 
