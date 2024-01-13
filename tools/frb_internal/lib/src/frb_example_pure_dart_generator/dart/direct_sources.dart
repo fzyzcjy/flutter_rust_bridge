@@ -33,9 +33,7 @@ Map<String, String> generateDartDirectSources() {
     ),
     'pseudo_manual/basic_map_test.dart': _generateBasicRelated(
       postfix: '_map',
-      values: (ty) => [
-        ...ty.interestRawValues, // TODO
-      ],
+      values: (ty) => ['{}', ...ty.interestRawValues.map((x) => '{42: $x}')],
       valueType: (ty) => null,
     ),
     '../../benchmark/src/generated.dart': generateBenchmark(),
