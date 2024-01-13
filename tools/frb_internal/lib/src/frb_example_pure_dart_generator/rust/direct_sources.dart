@@ -7,8 +7,9 @@ Map<String, String> generateRustDirectSources() {
     'pseudo_manual/basic.rs': _generateBasicRelated((x) => x, ''),
     'pseudo_manual/basic_optional.rs':
         _generateBasicRelated((x) => 'Option<$x>', '_optional'),
-    'pseudo_manual/basic_list.rs':
-        _generateBasicRelated((x) => 'Vec<$x>', '_list'),
+    'pseudo_manual/basic_list.rs': _generateBasicRelated(
+        (x) => 'Vec<$x>', '_list',
+        enable: (ty) => ty.enableList),
     'pseudo_manual/basic_map.rs': _generateBasicRelated(
         (x) => 'HashMap<i32, $x>', '_map',
         extraBody: 'use std::collections::HashMap;\n'),
@@ -20,6 +21,7 @@ String _generateBasicRelated(
   String Function(String) rustTypeNameWrapper,
   String postfix, {
   String extraBody = '',
+  bool Function(BasicTypeInfo)? enable,
 }) {
   final builder = RustFileBuilder();
   builder.body += extraBody;
@@ -47,8 +49,10 @@ pub use super::basic::*;
     ''';
   }
   for (final ty in kBasicTypes) {
-    builder.addIdentityFunction(rustTypeNameWrapper(ty.rustTypeName),
-        'example_basic${postfix}_type_${ty.name}');
+    if (enable?.call(ty) ?? true) {
+      builder.addIdentityFunction(rustTypeNameWrapper(ty.rustTypeName),
+          'example_basic${postfix}_type_${ty.name}');
+    }
   }
   return builder.toString();
 }

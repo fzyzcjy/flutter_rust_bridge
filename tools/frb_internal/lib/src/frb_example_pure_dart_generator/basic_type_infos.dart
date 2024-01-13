@@ -5,6 +5,7 @@ class BasicTypeInfo {
   final String rustTypeName;
   final String dartTypeName;
   final String? primitiveListName;
+  final bool enableList;
   final List<String> interestRawValues;
   final String Function(BasicTypeInfo, String) primitiveWrapper;
   final String Function(BasicTypeInfo, String) primitiveListWrapper;
@@ -14,6 +15,7 @@ class BasicTypeInfo {
     required this.rustTypeName,
     required this.dartTypeName,
     this.primitiveListName,
+    this.enableList = true,
     required this.interestRawValues,
     this.primitiveWrapper = _defaultPrimitiveWrapper,
     this.primitiveListWrapper = _defaultPrimitiveListWrapper,
@@ -96,7 +98,7 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'isize',
     dartTypeName: 'int',
-    primitiveListName: 'Int64List',
+    enableList: false,
     interestRawValues: [
       '0',
       '-2147483648',
@@ -108,7 +110,7 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'usize',
     dartTypeName: 'int',
-    primitiveListName: 'Uint64List',
+    enableList: false,
     interestRawValues: ['0', '4294967295', '9007199254740992'],
   ),
   BasicTypeInfo(
