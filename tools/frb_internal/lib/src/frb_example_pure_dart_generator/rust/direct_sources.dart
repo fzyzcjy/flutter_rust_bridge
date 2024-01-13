@@ -42,7 +42,7 @@ String _generateOptionalBasic() {
 }
 
 class BasicTypeInfo {
-  final String name;
+  final String rustTypeName;
   final String dartTypeName;
   final String primitiveListName;
   final List<String> interestRawValues;
@@ -50,7 +50,7 @@ class BasicTypeInfo {
   final String Function(BasicTypeInfo, String) primitiveListWrapper;
 
   const BasicTypeInfo({
-    required this.name,
+    required this.rustTypeName,
     required this.dartTypeName,
     required this.primitiveListName,
     required this.interestRawValues,
@@ -68,25 +68,25 @@ class BasicTypeInfo {
 
 final kBasicTypes = [
   const BasicTypeInfo(
-    name: 'i8',
+    rustTypeName: 'i8',
     dartTypeName: 'int',
     primitiveListName: 'Int8List',
     interestRawValues: ['0', '-128', '127'],
   ),
   const BasicTypeInfo(
-    name: 'i16',
+    rustTypeName: 'i16',
     dartTypeName: 'int',
     primitiveListName: 'Int16List',
     interestRawValues: ['0', '-32768', '32767'],
   ),
   const BasicTypeInfo(
-    name: 'i32',
+    rustTypeName: 'i32',
     dartTypeName: 'int',
     primitiveListName: 'Int32List',
     interestRawValues: ['0', '-2147483648', '2147483647'],
   ),
   const BasicTypeInfo(
-    name: 'i64',
+    rustTypeName: 'i64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
     primitiveListName: 'Int64List',
@@ -101,25 +101,25 @@ final kBasicTypes = [
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   const BasicTypeInfo(
-    name: 'u8',
+    rustTypeName: 'u8',
     dartTypeName: 'int',
     primitiveListName: 'Uint8List',
     interestRawValues: ['0', '255'],
   ),
   const BasicTypeInfo(
-    name: 'u16',
+    rustTypeName: 'u16',
     dartTypeName: 'int',
     primitiveListName: 'Uint16List',
     interestRawValues: ['0', '65535'],
   ),
   const BasicTypeInfo(
-    name: 'u32',
+    rustTypeName: 'u32',
     dartTypeName: 'int',
     primitiveListName: 'Uint32List',
     interestRawValues: ['0', '4294967295'],
   ),
   const BasicTypeInfo(
-    name: 'u64',
+    rustTypeName: 'u64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
     primitiveListName: 'Uint64List',
@@ -133,7 +133,7 @@ final kBasicTypes = [
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   const BasicTypeInfo(
-    name: 'isize',
+    rustTypeName: 'isize',
     dartTypeName: 'int',
     primitiveListName: 'Int64List',
     interestRawValues: [
@@ -145,38 +145,38 @@ final kBasicTypes = [
     ],
   ),
   const BasicTypeInfo(
-    name: 'usize',
+    rustTypeName: 'usize',
     dartTypeName: 'int',
     primitiveListName: 'Uint64List',
     interestRawValues: ['0', '4294967295', '9007199254740992'],
   ),
   const BasicTypeInfo(
-    name: 'f32',
+    rustTypeName: 'f32',
     dartTypeName: 'double',
     primitiveListName: 'Float32List',
     interestRawValues: ['0', '-42.5', '123456'],
   ),
   const BasicTypeInfo(
-    name: 'f64',
+    rustTypeName: 'f64',
     dartTypeName: 'double',
     primitiveListName: 'Float64List',
     interestRawValues: ['0', '-42.5', '123456'],
   ),
   BasicTypeInfo(
-    name: 'bool',
+    rustTypeName: 'bool',
     dartTypeName: 'bool',
     primitiveListName: 'List<bool>',
     interestRawValues: ['false', 'true'],
     primitiveListWrapper: (info, x) => '<bool>[$x]',
   ),
   const BasicTypeInfo(
-    name: 'String',
+    rustTypeName: 'String',
     dartTypeName: 'String',
     primitiveListName: 'TODO',
     interestRawValues: ['""', '"hello"', '"😂"'],
   ),
   const BasicTypeInfo(
-    name: 'Bytes',
+    rustTypeName: 'Bytes',
     dartTypeName: 'Uint8List',
     primitiveListName: 'TODO',
     interestRawValues: [
@@ -186,19 +186,19 @@ final kBasicTypes = [
     ],
   ),
   const BasicTypeInfo(
-    name: 'PrimitiveEnum',
+    rustTypeName: 'PrimitiveEnum',
     dartTypeName: 'TODO',
     primitiveListName: 'TODO',
     interestRawValues: ['TODO'],
   ),
   const BasicTypeInfo(
-    name: 'GeneralEnum',
+    rustTypeName: 'GeneralEnum',
     dartTypeName: 'TODO',
     primitiveListName: 'TODO',
     interestRawValues: ['TODO'],
   ),
   const BasicTypeInfo(
-    name: 'MyStruct',
+    rustTypeName: 'MyStruct',
     dartTypeName: 'TODO',
     primitiveListName: 'TODO',
     interestRawValues: ['TODO'],
