@@ -5,11 +5,6 @@
 use crate::auxiliary::sample_types::MySize;
 use log::info;
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn func_string_twin_rust_async_sse(arg: String) -> String {
-    arg
-}
-
 #[allow(clippy::unused_unit)]
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_return_unit_twin_rust_async_sse() -> () {}

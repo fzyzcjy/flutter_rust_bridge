@@ -10,6 +10,7 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic_twin_rust
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 import '../../test_utils.dart';
+import 'dart:typed_data';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
@@ -32,10 +33,40 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(
         exampleBasicTypeU64TwinRustAsync, <int>[0, 9007199254740992]);
     addTestsIdentityFunctionCall(
+        exampleBasicTypeIsizeTwinRustAsync, <int>[0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeUsizeTwinRustAsync, <int>[0, 4294967295]);
+    addTestsIdentityFunctionCall(
         exampleBasicTypeF32TwinRustAsync, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF64TwinRustAsync, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeBoolTwinRustAsync, <bool>[false, true]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeStringTwinRustAsync, <String>["", "hello", "😂"]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBytesTwinRustAsync, <Uint8List>[
+      Uint8List.fromList([]),
+      Uint8List.fromList([255, 0]),
+      Uint8List.fromList([10, 20, 30, 40])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync,
+        <BasicPrimitiveEnumTwinRustAsync>[
+          BasicPrimitiveEnumTwinRustAsync.apple,
+          BasicPrimitiveEnumTwinRustAsync.orange
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync,
+        <BasicGeneralEnumTwinRustAsync>[
+          BasicGeneralEnumTwinRustAsync.apple(field: "one"),
+          BasicGeneralEnumTwinRustAsync.orange()
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicStructTwinRustAsyncTwinRustAsync,
+        <BasicStructTwinRustAsync>[
+          BasicStructTwinRustAsync(apple: null, orange: null),
+          BasicStructTwinRustAsync(apple: "one", orange: 42)
+        ]);
   });
 }

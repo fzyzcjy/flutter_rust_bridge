@@ -15,11 +15,3 @@ pub fn primitive_u32_twin_normal(my_u32: u32) -> u32 {
     info!("returning {}", ret);
     ret
 }
-
-pub fn primitive_usize_loopback_twin_normal(arg: usize) -> usize {
-    arg
-}
-
-pub fn primitive_isize_loopback_twin_normal(arg: isize) -> isize {
-    arg
-}

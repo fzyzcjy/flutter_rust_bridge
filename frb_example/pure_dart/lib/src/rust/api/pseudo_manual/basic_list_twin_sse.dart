@@ -4,6 +4,7 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import 'basic_twin_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<Int8List> exampleBasicListTypeI8TwinSse(
@@ -49,3 +50,26 @@ Future<Float64List> exampleBasicListTypeF64TwinSse(
 Future<List<bool>> exampleBasicListTypeBoolTwinSse(
         {required List<bool> arg, dynamic hint}) =>
     RustLib.instance.api.exampleBasicListTypeBoolTwinSse(arg: arg, hint: hint);
+
+Future<List<String>> exampleBasicListTypeStringTwinSse(
+        {required List<String> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleBasicListTypeStringTwinSse(arg: arg, hint: hint);
+
+Future<List<BasicPrimitiveEnumTwinSse>>
+    exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse(
+            {required List<BasicPrimitiveEnumTwinSse> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse(
+                arg: arg, hint: hint);
+
+Future<List<BasicGeneralEnumTwinSse>>
+    exampleBasicListTypeBasicGeneralEnumTwinSseTwinSse(
+            {required List<BasicGeneralEnumTwinSse> arg, dynamic hint}) =>
+        RustLib.instance.api.exampleBasicListTypeBasicGeneralEnumTwinSseTwinSse(
+            arg: arg, hint: hint);
+
+Future<List<BasicStructTwinSse>> exampleBasicListTypeBasicStructTwinSseTwinSse(
+        {required List<BasicStructTwinSse> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleBasicListTypeBasicStructTwinSseTwinSse(arg: arg, hint: hint);

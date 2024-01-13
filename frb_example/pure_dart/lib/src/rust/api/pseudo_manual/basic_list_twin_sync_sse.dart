@@ -4,6 +4,7 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import 'basic_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Int8List exampleBasicListTypeI8TwinSyncSse(
@@ -60,3 +61,29 @@ List<bool> exampleBasicListTypeBoolTwinSyncSse(
         {required List<bool> arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleBasicListTypeBoolTwinSyncSse(arg: arg, hint: hint);
+
+List<String> exampleBasicListTypeStringTwinSyncSse(
+        {required List<String> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleBasicListTypeStringTwinSyncSse(arg: arg, hint: hint);
+
+List<BasicPrimitiveEnumTwinSyncSse>
+    exampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+            {required List<BasicPrimitiveEnumTwinSyncSse> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+                arg: arg, hint: hint);
+
+List<BasicGeneralEnumTwinSyncSse>
+    exampleBasicListTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+            {required List<BasicGeneralEnumTwinSyncSse> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+                arg: arg, hint: hint);
+
+List<BasicStructTwinSyncSse>
+    exampleBasicListTypeBasicStructTwinSyncSseTwinSyncSse(
+            {required List<BasicStructTwinSyncSse> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicStructTwinSyncSseTwinSyncSse(
+                arg: arg, hint: hint);

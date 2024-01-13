@@ -10,6 +10,7 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic_twin_sync
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 import '../../test_utils.dart';
+import 'dart:typed_data';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
@@ -31,10 +32,39 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(
         exampleBasicTypeU64TwinSyncSse, <int>[0, 9007199254740992]);
     addTestsIdentityFunctionCall(
+        exampleBasicTypeIsizeTwinSyncSse, <int>[0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeUsizeTwinSyncSse, <int>[0, 4294967295]);
+    addTestsIdentityFunctionCall(
         exampleBasicTypeF32TwinSyncSse, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeF64TwinSyncSse, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
         exampleBasicTypeBoolTwinSyncSse, <bool>[false, true]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeStringTwinSyncSse, <String>["", "hello", "😂"]);
+    addTestsIdentityFunctionCall(exampleBasicTypeBytesTwinSyncSse, <Uint8List>[
+      Uint8List.fromList([]),
+      Uint8List.fromList([255, 0]),
+      Uint8List.fromList([10, 20, 30, 40])
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse,
+        <BasicPrimitiveEnumTwinSyncSse>[
+          BasicPrimitiveEnumTwinSyncSse.apple,
+          BasicPrimitiveEnumTwinSyncSse.orange
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicGeneralEnumTwinSyncSseTwinSyncSse,
+        <BasicGeneralEnumTwinSyncSse>[
+          BasicGeneralEnumTwinSyncSse.apple(field: "one"),
+          BasicGeneralEnumTwinSyncSse.orange()
+        ]);
+    addTestsIdentityFunctionCall(
+        exampleBasicTypeBasicStructTwinSyncSseTwinSyncSse,
+        <BasicStructTwinSyncSse>[
+          BasicStructTwinSyncSse(apple: null, orange: null),
+          BasicStructTwinSyncSse(apple: "one", orange: 42)
+        ]);
   });
 }

@@ -4,6 +4,7 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import 'basic_twin_rust_async.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<Int8List> exampleBasicListTypeI8TwinRustAsync(
@@ -60,3 +61,30 @@ Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync(
         {required List<bool> arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleBasicListTypeBoolTwinRustAsync(arg: arg, hint: hint);
+
+Future<List<String>> exampleBasicListTypeStringTwinRustAsync(
+        {required List<String> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleBasicListTypeStringTwinRustAsync(arg: arg, hint: hint);
+
+Future<List<BasicPrimitiveEnumTwinRustAsync>>
+    exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+            {required List<BasicPrimitiveEnumTwinRustAsync> arg,
+            dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
+                arg: arg, hint: hint);
+
+Future<List<BasicGeneralEnumTwinRustAsync>>
+    exampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+            {required List<BasicGeneralEnumTwinRustAsync> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
+                arg: arg, hint: hint);
+
+Future<List<BasicStructTwinRustAsync>>
+    exampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync(
+            {required List<BasicStructTwinRustAsync> arg, dynamic hint}) =>
+        RustLib.instance.api
+            .exampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync(
+                arg: arg, hint: hint);

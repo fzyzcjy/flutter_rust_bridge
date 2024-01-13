@@ -5,11 +5,6 @@
 use crate::auxiliary::sample_types::MySize;
 use log::info;
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_string_twin_sync(arg: String) -> String {
-    arg
-}
-
 #[allow(clippy::unused_unit)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn func_return_unit_twin_sync() -> () {}
