@@ -26,6 +26,21 @@ String _generateBasic() {
   return builder.toString();
 }
 
+String _generateBasicOptional() {
+  final builder = DartFileBuilder(importName: 'basic_optional');
+  for (final ty in kBasicTypes) {
+    final values = [
+      "null",
+      ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
+    ];
+    builder.addTestsIdentityFunctionCall(
+        'exampleOptionalBasicType${ReCase(ty.name).pascalCase}TwinNormal',
+        values,
+        valueType: '${ty.dartTypeName}?');
+  }
+  return builder.toString();
+}
+
 String _generateBasicList() {
   final builder = DartFileBuilder(importName: 'basic_list');
 
@@ -47,19 +62,4 @@ String _generateBasicList() {
 
 String _generateBasicMap() {
   throw UnimplementedError();
-}
-
-String _generateBasicOptional() {
-  final builder = DartFileBuilder(importName: 'basic_optional');
-  for (final ty in kBasicTypes) {
-    final values = [
-      "null",
-      ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
-    ];
-    builder.addTestsIdentityFunctionCall(
-        'exampleOptionalBasicType${ReCase(ty.name).pascalCase}TwinNormal',
-        values,
-        valueType: '${ty.dartTypeName}?');
-  }
-  return builder.toString();
 }
