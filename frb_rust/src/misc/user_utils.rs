@@ -13,6 +13,7 @@ fn setup_backtrace() {
     if std::env::var("RUST_BACKTRACE").err() == Some(std::env::VarError::NotPresent) {
         std::env::set_var("RUST_BACKTRACE", "1");
     } else {
+        #[cfg(feature = "log")]
         log::debug!("Skip setup RUST_BACKTRACE because there is already environment variable");
     }
 

@@ -2,13 +2,13 @@ use super::DartFnFuture;
 use crate::codec::sse::Dart2RustMessageSse;
 use crate::dart_opaque::action::DartHandlerPortAction;
 use crate::generalized_isolate::{Channel, IntoDart};
+use crate::misc::logs::log_warn_or_println;
 use crate::platform_types::{handle_to_message_port, DartAbi};
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::DartOpaque;
 use futures::channel::oneshot;
 use futures::channel::oneshot::Sender;
 use futures::FutureExt;
-use log::warn;
 use std::collections::HashMap;
 use std::panic;
 use std::sync::atomic::{AtomicI32, Ordering};
@@ -64,7 +64,7 @@ impl DartFnHandler {
             if let Err(err) = catch_unwind_result {
                 // We do not care about details of this warning
                 // frb-coverage:ignore-start
-                warn!("Error when dart_fn_handle_output: {err:?}");
+                log_warn_or_println("Error when dart_fn_handle_output: {err:?}");
                 // frb-coverage:ignore-end
             }
         });
