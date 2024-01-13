@@ -7,9 +7,7 @@ Map<String, String> generateDartDirectSources() {
   return {
     'pseudo_manual/basic_test.dart': _generateBasicRelated(
       postfix: '',
-      values: (ty) => ty.interestRawValues
-          .map((value) => ty.primitiveWrapper(ty, value))
-          .toList(),
+      values: (ty) => ty.interestRawValues,
       valueType: (ty) => ty.dartTypeName,
     ),
     'pseudo_manual/basic_optional_test.dart': _generateBasicRelated(
@@ -17,10 +15,7 @@ Map<String, String> generateDartDirectSources() {
       imports: """
       import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
       """,
-      values: (ty) => [
-        "null",
-        ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
-      ],
+      values: (ty) => ["null", ...ty.interestRawValues],
       valueType: (ty) => '${ty.dartTypeName}?',
     ),
     'pseudo_manual/basic_list_test.dart': _generateBasicRelated(

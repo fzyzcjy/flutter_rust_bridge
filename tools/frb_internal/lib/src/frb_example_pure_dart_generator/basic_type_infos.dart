@@ -7,7 +7,6 @@ class BasicTypeInfo {
   final String? primitiveListName;
   final bool enableList;
   final List<String> interestRawValues;
-  final String Function(BasicTypeInfo, String) primitiveWrapper;
   final String Function(BasicTypeInfo, String) primitiveListWrapper;
 
   BasicTypeInfo({
@@ -17,12 +16,8 @@ class BasicTypeInfo {
     this.primitiveListName,
     this.enableList = true,
     required this.interestRawValues,
-    this.primitiveWrapper = _defaultPrimitiveWrapper,
     this.primitiveListWrapper = _defaultPrimitiveListWrapper,
   }) : name = name ?? ReCase(rustTypeName).snakeCase;
-
-  static String _defaultPrimitiveWrapper(BasicTypeInfo info, String value) =>
-      value;
 
   static String _defaultPrimitiveListWrapper(
           BasicTypeInfo info, String value) =>
