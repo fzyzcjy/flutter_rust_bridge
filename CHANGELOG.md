@@ -1,9 +1,10 @@
 # Changelog
 
-## Unreleased
+## 2.0.0-dev.18
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Update cargokit to fix flutter flavor messing up with build mode #1644 (thanks @pixelshot91)
+* Update dependency to allo-isolate for NaiveDate implementation #1631 (thanks @TrackerSB)
 
 ## 2.0.0-dev.17
 
