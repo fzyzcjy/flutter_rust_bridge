@@ -12,66 +12,79 @@ pub use super::basic_twin_sync_sse::*;
 pub fn example_basic_map_type_i8_twin_sync_sse(arg: HashMap<i32, i8>) -> HashMap<i32, i8> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_i16_twin_sync_sse(arg: HashMap<i32, i16>) -> HashMap<i32, i16> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_i32_twin_sync_sse(arg: HashMap<i32, i32>) -> HashMap<i32, i32> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_i64_twin_sync_sse(arg: HashMap<i32, i64>) -> HashMap<i32, i64> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_u8_twin_sync_sse(arg: HashMap<i32, u8>) -> HashMap<i32, u8> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_u16_twin_sync_sse(arg: HashMap<i32, u16>) -> HashMap<i32, u16> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_u32_twin_sync_sse(arg: HashMap<i32, u32>) -> HashMap<i32, u32> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_u64_twin_sync_sse(arg: HashMap<i32, u64>) -> HashMap<i32, u64> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_isize_twin_sync_sse(arg: HashMap<i32, isize>) -> HashMap<i32, isize> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_usize_twin_sync_sse(arg: HashMap<i32, usize>) -> HashMap<i32, usize> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_f32_twin_sync_sse(arg: HashMap<i32, f32>) -> HashMap<i32, f32> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_f64_twin_sync_sse(arg: HashMap<i32, f64>) -> HashMap<i32, f64> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_bool_twin_sync_sse(arg: HashMap<i32, bool>) -> HashMap<i32, bool> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_string_twin_sync_sse(
@@ -79,6 +92,7 @@ pub fn example_basic_map_type_string_twin_sync_sse(
 ) -> HashMap<i32, String> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_bytes_twin_sync_sse(
@@ -86,6 +100,7 @@ pub fn example_basic_map_type_bytes_twin_sync_sse(
 ) -> HashMap<i32, Vec<u8>> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
@@ -93,6 +108,7 @@ pub fn example_basic_map_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
 ) -> HashMap<i32, BasicPrimitiveEnumTwinSyncSse> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
@@ -100,6 +116,7 @@ pub fn example_basic_map_type_basic_general_enum_twin_sync_sse_twin_sync_sse(
 ) -> HashMap<i32, BasicGeneralEnumTwinSyncSse> {
     arg
 }
+
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_map_type_basic_struct_twin_sync_sse_twin_sync_sse(

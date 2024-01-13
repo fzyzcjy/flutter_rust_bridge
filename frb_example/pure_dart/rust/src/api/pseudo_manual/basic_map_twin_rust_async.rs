@@ -10,84 +10,101 @@ pub use super::basic_twin_rust_async::*;
 pub async fn example_basic_map_type_i8_twin_rust_async(arg: HashMap<i32, i8>) -> HashMap<i32, i8> {
     arg
 }
+
 pub async fn example_basic_map_type_i16_twin_rust_async(
     arg: HashMap<i32, i16>,
 ) -> HashMap<i32, i16> {
     arg
 }
+
 pub async fn example_basic_map_type_i32_twin_rust_async(
     arg: HashMap<i32, i32>,
 ) -> HashMap<i32, i32> {
     arg
 }
+
 pub async fn example_basic_map_type_i64_twin_rust_async(
     arg: HashMap<i32, i64>,
 ) -> HashMap<i32, i64> {
     arg
 }
+
 pub async fn example_basic_map_type_u8_twin_rust_async(arg: HashMap<i32, u8>) -> HashMap<i32, u8> {
     arg
 }
+
 pub async fn example_basic_map_type_u16_twin_rust_async(
     arg: HashMap<i32, u16>,
 ) -> HashMap<i32, u16> {
     arg
 }
+
 pub async fn example_basic_map_type_u32_twin_rust_async(
     arg: HashMap<i32, u32>,
 ) -> HashMap<i32, u32> {
     arg
 }
+
 pub async fn example_basic_map_type_u64_twin_rust_async(
     arg: HashMap<i32, u64>,
 ) -> HashMap<i32, u64> {
     arg
 }
+
 pub async fn example_basic_map_type_isize_twin_rust_async(
     arg: HashMap<i32, isize>,
 ) -> HashMap<i32, isize> {
     arg
 }
+
 pub async fn example_basic_map_type_usize_twin_rust_async(
     arg: HashMap<i32, usize>,
 ) -> HashMap<i32, usize> {
     arg
 }
+
 pub async fn example_basic_map_type_f32_twin_rust_async(
     arg: HashMap<i32, f32>,
 ) -> HashMap<i32, f32> {
     arg
 }
+
 pub async fn example_basic_map_type_f64_twin_rust_async(
     arg: HashMap<i32, f64>,
 ) -> HashMap<i32, f64> {
     arg
 }
+
 pub async fn example_basic_map_type_bool_twin_rust_async(
     arg: HashMap<i32, bool>,
 ) -> HashMap<i32, bool> {
     arg
 }
+
 pub async fn example_basic_map_type_string_twin_rust_async(
     arg: HashMap<i32, String>,
 ) -> HashMap<i32, String> {
     arg
 }
+
 pub async fn example_basic_map_type_bytes_twin_rust_async(
     arg: HashMap<i32, Vec<u8>>,
 ) -> HashMap<i32, Vec<u8>> {
     arg
 }
+
 pub async fn example_basic_map_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
     arg: HashMap<i32, BasicPrimitiveEnumTwinRustAsync>,
 ) -> HashMap<i32, BasicPrimitiveEnumTwinRustAsync> {
     arg
 }
+
 pub async fn example_basic_map_type_basic_general_enum_twin_rust_async_twin_rust_async(
     arg: HashMap<i32, BasicGeneralEnumTwinRustAsync>,
 ) -> HashMap<i32, BasicGeneralEnumTwinRustAsync> {
     arg
 }
+
 pub async fn example_basic_map_type_basic_struct_twin_rust_async_twin_rust_async(
     arg: HashMap<i32, BasicStructTwinRustAsync>,
 ) -> HashMap<i32, BasicStructTwinRustAsync> {

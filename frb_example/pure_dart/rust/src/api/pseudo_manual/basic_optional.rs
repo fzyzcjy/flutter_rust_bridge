@@ -6,58 +6,75 @@ pub use super::basic::*;
 pub fn example_basic_optional_type_i8_twin_normal(arg: Option<i8>) -> Option<i8> {
     arg
 }
+
 pub fn example_basic_optional_type_i16_twin_normal(arg: Option<i16>) -> Option<i16> {
     arg
 }
+
 pub fn example_basic_optional_type_i32_twin_normal(arg: Option<i32>) -> Option<i32> {
     arg
 }
+
 pub fn example_basic_optional_type_i64_twin_normal(arg: Option<i64>) -> Option<i64> {
     arg
 }
+
 pub fn example_basic_optional_type_u8_twin_normal(arg: Option<u8>) -> Option<u8> {
     arg
 }
+
 pub fn example_basic_optional_type_u16_twin_normal(arg: Option<u16>) -> Option<u16> {
     arg
 }
+
 pub fn example_basic_optional_type_u32_twin_normal(arg: Option<u32>) -> Option<u32> {
     arg
 }
+
 pub fn example_basic_optional_type_u64_twin_normal(arg: Option<u64>) -> Option<u64> {
     arg
 }
+
 pub fn example_basic_optional_type_isize_twin_normal(arg: Option<isize>) -> Option<isize> {
     arg
 }
+
 pub fn example_basic_optional_type_usize_twin_normal(arg: Option<usize>) -> Option<usize> {
     arg
 }
+
 pub fn example_basic_optional_type_f32_twin_normal(arg: Option<f32>) -> Option<f32> {
     arg
 }
+
 pub fn example_basic_optional_type_f64_twin_normal(arg: Option<f64>) -> Option<f64> {
     arg
 }
+
 pub fn example_basic_optional_type_bool_twin_normal(arg: Option<bool>) -> Option<bool> {
     arg
 }
+
 pub fn example_basic_optional_type_string_twin_normal(arg: Option<String>) -> Option<String> {
     arg
 }
+
 pub fn example_basic_optional_type_bytes_twin_normal(arg: Option<Vec<u8>>) -> Option<Vec<u8>> {
     arg
 }
+
 pub fn example_basic_optional_type_basic_primitive_enum_twin_normal_twin_normal(
     arg: Option<BasicPrimitiveEnumTwinNormal>,
 ) -> Option<BasicPrimitiveEnumTwinNormal> {
     arg
 }
+
 pub fn example_basic_optional_type_basic_general_enum_twin_normal_twin_normal(
     arg: Option<BasicGeneralEnumTwinNormal>,
 ) -> Option<BasicGeneralEnumTwinNormal> {
     arg
 }
+
 pub fn example_basic_optional_type_basic_struct_twin_normal_twin_normal(
     arg: Option<BasicStructTwinNormal>,
 ) -> Option<BasicStructTwinNormal> {

@@ -19,58 +19,75 @@ pub struct BasicStructTwinNormal {
 pub fn example_basic_type_i8_twin_normal(arg: i8) -> i8 {
     arg
 }
+
 pub fn example_basic_type_i16_twin_normal(arg: i16) -> i16 {
     arg
 }
+
 pub fn example_basic_type_i32_twin_normal(arg: i32) -> i32 {
     arg
 }
+
 pub fn example_basic_type_i64_twin_normal(arg: i64) -> i64 {
     arg
 }
+
 pub fn example_basic_type_u8_twin_normal(arg: u8) -> u8 {
     arg
 }
+
 pub fn example_basic_type_u16_twin_normal(arg: u16) -> u16 {
     arg
 }
+
 pub fn example_basic_type_u32_twin_normal(arg: u32) -> u32 {
     arg
 }
+
 pub fn example_basic_type_u64_twin_normal(arg: u64) -> u64 {
     arg
 }
+
 pub fn example_basic_type_isize_twin_normal(arg: isize) -> isize {
     arg
 }
+
 pub fn example_basic_type_usize_twin_normal(arg: usize) -> usize {
     arg
 }
+
 pub fn example_basic_type_f32_twin_normal(arg: f32) -> f32 {
     arg
 }
+
 pub fn example_basic_type_f64_twin_normal(arg: f64) -> f64 {
     arg
 }
+
 pub fn example_basic_type_bool_twin_normal(arg: bool) -> bool {
     arg
 }
+
 pub fn example_basic_type_string_twin_normal(arg: String) -> String {
     arg
 }
+
 pub fn example_basic_type_bytes_twin_normal(arg: Vec<u8>) -> Vec<u8> {
     arg
 }
+
 pub fn example_basic_type_basic_primitive_enum_twin_normal_twin_normal(
     arg: BasicPrimitiveEnumTwinNormal,
 ) -> BasicPrimitiveEnumTwinNormal {
     arg
 }
+
 pub fn example_basic_type_basic_general_enum_twin_normal_twin_normal(
     arg: BasicGeneralEnumTwinNormal,
 ) -> BasicGeneralEnumTwinNormal {
     arg
 }
+
 pub fn example_basic_type_basic_struct_twin_normal_twin_normal(
     arg: BasicStructTwinNormal,
 ) -> BasicStructTwinNormal {
