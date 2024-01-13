@@ -31,6 +31,8 @@ class RustGenerator extends BaseGenerator {
             ans = 'pub async fn';
           case DuplicatorComponentMode.sse:
             ans = '#[flutter_rust_bridge::frb(serialize)] $ans';
+          case DuplicatorComponentMode.moi:
+            ans = '#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] $ans';
         }
       }
       return ans;
@@ -47,7 +49,10 @@ class RustGenerator extends BaseGenerator {
         .replaceAllMapped(
             RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
             (m) =>
-                'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
+                'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::')
+        .replaceAll(
+            'super::rust_opaque::', 'super::rust_opaque${mode.postfix}::');
+
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
       // quick hack, since we are merely generating tests
       ans = ans
@@ -61,6 +66,16 @@ class RustGenerator extends BaseGenerator {
                   ? m.group(0)!
                   : 'StreamSink<${m.group(1)}, flutter_rust_bridge::SseCodec>');
     }
+
+    if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {
+      // hack, otherwise `i32` is considered as Nom, and will ignore requests of using Moi codec
+      // anyway this hack only affects how tests are auto generated, so no problem
+      ans = ans.replaceAll(RegExp(r'RustOpaque<i32>'),
+          'crate::frb_generated::RustOpaqueMoi<i16>');
+      ans = ans.replaceAllMapped(RegExp(r'RustOpaque(Nom)?(<|::)'),
+          (m) => 'crate::frb_generated::RustOpaqueMoi${m.group(2)}');
+    }
+
     return ans;
   }
 

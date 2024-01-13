@@ -1,7 +1,5 @@
 #![allow(dead_code, clippy::new_without_default)]
 
-use std::rc::Rc;
-
 #[derive(Debug, Clone)]
 pub struct MySize {
     pub width: i32,
@@ -26,40 +24,12 @@ struct PrivateData {
 }
 
 #[derive(Debug)]
-pub struct NonSendHideData {
-    content: String,
-    box_content: Option<Rc<PrivateData>>,
-}
-
-impl NonSendHideData {
-    pub fn new() -> Self {
-        Self {
-            content: "content".to_owned(),
-            box_content: Some(Rc::new(PrivateData {
-                content: "content nested".to_owned(),
-                primitive: 424242,
-                array: [451; 10],
-                lifetime: "static str",
-            })),
-        }
-    }
-
-    pub fn hide_data(&self) -> String {
-        format!("{} - {:?}", self.content, self.box_content)
-    }
-
-    pub fn change_data(&mut self) {
-        self.content = "MUT SELF".to_owned();
-    }
-}
-
-#[derive(Debug)]
-pub struct HideData {
+pub struct HideDataRaw {
     content: String,
     box_content: Option<Box<PrivateData>>,
 }
 
-impl HideData {
+impl HideDataRaw {
     pub fn new() -> Self {
         Self {
             content: "content".to_owned(),
@@ -82,11 +52,11 @@ impl HideData {
 }
 
 #[derive(Debug)]
-pub struct NonCloneData {
+pub struct NonCloneDataRaw {
     content: String,
 }
 
-impl NonCloneData {
+impl NonCloneDataRaw {
     pub fn new() -> Self {
         Self {
             content: "content".to_owned(),
@@ -96,16 +66,6 @@ impl NonCloneData {
         self.content.clone()
     }
 }
-
-/// Structure for testing the RustOpaque code generator.
-/// FrbOpaqueReturn must be only return type.
-/// FrbOpaqueReturn must not be used as an argument.
-pub struct FrbOpaqueReturn;
-
-/// Structure for testing the SyncReturn<RustOpaque> code generator.
-/// FrbOpaqueSyncReturn must be only return type.
-/// FrbOpaqueSyncReturn must should be without wrapper like Option<> Vec<> etc.
-pub struct FrbOpaqueSyncReturn;
 
 pub type Id = u64;
 pub type UserIdAlias = Id;

@@ -2,9 +2,8 @@
 // and is auto-generated from `rust_opaque_sync_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse"], "removeCode": ["import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_sse_twin_sse_twin_sse.dart';\n"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
-import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -31,47 +30,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data.dispose();
   });
 
-  test('double call', () {
-    var data = syncCreateSyncOpaqueTwinSse();
-    expect(
-        syncRunOpaqueTwinSse(opaque: data),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
-    expect(
-        syncRunOpaqueTwinSse(opaque: data),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
-    data.dispose();
-  });
-
-  test('call after drop', () async {
-    var data = syncCreateSyncOpaqueTwinSse();
-    expect(
-        syncRunOpaqueTwinSse(opaque: data),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
-    data.dispose();
-    await expectLater(() => syncRunOpaqueTwinSse(opaque: data),
-        throwsA(isA<DroppableDisposedException>()));
-  });
-
   test('check generator', () {
-    expect(frbSyncGeneratorTestTwinSse().runtimeType == FrbOpaqueSyncReturn,
+    expect(
+        frbSyncGeneratorTestTwinSse().runtimeType == FrbOpaqueSyncReturnTwinSse,
         isTrue);
   });
 }

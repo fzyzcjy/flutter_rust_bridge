@@ -1,20 +1,48 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use serde::Serialize;
+use strum_macros::{Display, EnumIter};
 
 crate::ir! {
 pub struct IrTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: Box<IrType>,
+    pub codec: RustOpaqueCodecMode,
     pub brief_name: bool,
 }
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display, EnumIter)]
+pub(crate) enum RustOpaqueCodecMode {
+    Nom,
+    Moi,
+}
+
+impl RustOpaqueCodecMode {
+    pub(crate) fn arc_ty(self) -> &'static str {
+        match self {
+            RustOpaqueCodecMode::Nom => "StdArc",
+            RustOpaqueCodecMode::Moi => "MoiArc",
+        }
+    }
+
+    pub(crate) fn needs_unsafe_block(self) -> bool {
+        self == RustOpaqueCodecMode::Nom
+    }
+}
+
 impl IrTypeRustOpaque {
-    pub fn new(namespace: Namespace, inner: IrType, brief_name: bool) -> Self {
+    pub fn new(
+        namespace: Namespace,
+        inner: IrType,
+        codec: RustOpaqueCodecMode,
+        brief_name: bool,
+    ) -> Self {
         Self {
             namespace,
             inner: Box::new(inner),
+            codec,
             brief_name,
         }
     }
@@ -40,13 +68,15 @@ impl IrTypeTrait for IrTypeRustOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        format!(
-            "flutter_rust_bridge::RustOpaque<{}>",
-            self.inner.rust_api_type()
-        )
+        format!("RustOpaque{}<{}>", self.codec, self.inner.rust_api_type(),)
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
         Some(self.namespace.clone())
+    }
+
+    // Because we are using usize on the wirre
+    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        Some(&IrTypePrimitive::Usize)
     }
 }

@@ -53,6 +53,7 @@ enum DuplicatorComponentMode {
   sync,
   rustAsync,
   sse,
+  moi,
 }
 
 @freezed
@@ -65,13 +66,19 @@ class DuplicatorMode with _$DuplicatorMode {
   static DuplicatorMode parse(String raw) => DuplicatorMode(
       raw.split(' ').map(DuplicatorComponentMode.values.byName).toList());
 
-  static const values = [
+  static const defaultValues = [
     DuplicatorMode([DuplicatorComponentMode.sync]),
     DuplicatorMode([DuplicatorComponentMode.rustAsync]),
     DuplicatorMode([DuplicatorComponentMode.sse]),
     DuplicatorMode([DuplicatorComponentMode.sync, DuplicatorComponentMode.sse]),
     DuplicatorMode(
         [DuplicatorComponentMode.rustAsync, DuplicatorComponentMode.sse]),
+  ];
+
+  static final allValues = [
+    ...defaultValues,
+    ...[const DuplicatorMode([]), ...defaultValues].map(
+        (e) => DuplicatorMode([...e.components, DuplicatorComponentMode.moi])),
   ];
 
   String get postfix =>
@@ -92,7 +99,7 @@ class _Duplicator {
       if (file is! File ||
           path.extension(file.path) != '.${generator.extension}') continue;
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
-      if (DuplicatorMode.values
+      if (DuplicatorMode.allValues
           .any((mode) => fileStem.contains(mode.postfix))) {
         continue;
       }
@@ -100,7 +107,9 @@ class _Duplicator {
       final fileContent = (file as File).readAsStringSync();
       final annotation = _parseAnnotation(fileContent);
 
-      for (final mode in DuplicatorMode.values) {
+      for (final mode in annotation.enableAll
+          ? DuplicatorMode.allValues
+          : DuplicatorMode.defaultValues) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
 
         var outputText = computeDuplicatorPrelude(' from `$fileName`') +
@@ -137,6 +146,7 @@ _Annotation _parseAnnotation(String fileContent) {
     removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
         .map((x) => x as String)
         .toList(),
+    enableAll: data['enableAll'] as bool? ?? false,
   );
 }
 
@@ -144,10 +154,12 @@ class _Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
   final String? addCode;
   final List<String> removeCode;
+  final bool enableAll;
 
   const _Annotation({
     this.forbiddenDuplicatorModes = const [],
     this.addCode,
     this.removeCode = const [],
+    this.enableAll = false,
   });
 }

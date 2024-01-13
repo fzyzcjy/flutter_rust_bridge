@@ -12,11 +12,12 @@ pub use crate::codec::sse::{
 };
 pub use crate::codec::{cst::CstCodec, dco::DcoCodec, sse::SseCodec, BaseCodec};
 pub use crate::dart_opaque::dart2rust::{cst_decode_dart_opaque, sse_decode_dart_opaque};
+pub use crate::generalized_arc::base_arc::BaseArc;
+pub use crate::generalized_arc::std_arc::StdArc; // TODO temp
 pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
-pub use crate::misc::rust_arc::{rust_arc_decrement_strong_count, rust_arc_increment_strong_count};
 pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
@@ -26,7 +27,7 @@ pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust2dart::stream_sink::StreamSinkBase;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
-pub use crate::rust_opaque::dart2rust::{cst_decode_rust_opaque, sse_decode_rust_opaque};
+pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;

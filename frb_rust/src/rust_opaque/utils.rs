@@ -1,4 +1,7 @@
-use super::RustOpaque;
+use super::RustOpaqueBase;
+use crate::for_generated::StdArc;
+use crate::generalized_arc::base_arc::BaseArc;
+use std::marker::PhantomData;
 use std::ops;
 use std::sync::Arc;
 
@@ -15,25 +18,34 @@ use std::sync::Arc;
 #[macro_export]
 macro_rules! opaque_dyn {
     ($ex:expr) => {
-        $crate::RustOpaque::new(::std::boxed::Box::new($ex))
+        $crate::for_generated::RustOpaqueBase::new(::std::boxed::Box::new($ex))
     };
 }
 
-impl<T: ?Sized> From<Arc<T>> for RustOpaque<T> {
+impl<T: ?Sized + 'static> From<Arc<T>> for RustOpaqueBase<T, StdArc<T>> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { arc: ptr }
+        Self::from_arc(ptr.into())
     }
 }
 
-impl<T> RustOpaque<T> {
+impl<T, A: BaseArc<T>> RustOpaqueBase<T, A> {
     pub fn new(value: T) -> Self {
+        Self::from_arc(A::new(value))
+    }
+}
+
+impl<T: ?Sized, A: BaseArc<T>> RustOpaqueBase<T, A> {
+    // `pub` mainly because dart2rust.rs needs it
+    #[doc(hidden)]
+    pub fn from_arc(arc: A) -> Self {
         Self {
-            arc: Arc::new(value),
+            arc,
+            _phantom: PhantomData,
         }
     }
 }
 
-impl<T: ?Sized> ops::Deref for RustOpaque<T> {
+impl<T: ?Sized, A: BaseArc<T>> ops::Deref for RustOpaqueBase<T, A> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -41,20 +53,31 @@ impl<T: ?Sized> ops::Deref for RustOpaque<T> {
     }
 }
 
-impl<T> RustOpaque<T> {
+impl<T, A: BaseArc<T>> RustOpaqueBase<T, A> {
     pub fn try_unwrap(self) -> Result<T, Self> {
-        Arc::try_unwrap(self.arc).map_err(RustOpaque::from)
+        A::try_unwrap(self.arc).map_err(Self::from_arc)
     }
 
     pub fn into_inner(self) -> Option<T> {
-        Arc::into_inner(self.arc)
+        A::into_inner(self.arc)
     }
 }
 
-impl<T: ?Sized> Clone for RustOpaque<T> {
+impl<T: ?Sized + 'static, A: BaseArc<T>> Clone for RustOpaqueBase<T, A> {
     fn clone(&self) -> Self {
-        Self {
-            arc: self.arc.clone(),
-        }
+        Self::from_arc(self.arc.clone())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::RustOpaque;
+    use std::sync::Arc;
+
+    #[test]
+    fn test_from_arc() {
+        let arc = Arc::new(42);
+        let opaque: RustOpaque<_> = arc.into();
+        assert_eq!(*opaque, 42);
     }
 }
