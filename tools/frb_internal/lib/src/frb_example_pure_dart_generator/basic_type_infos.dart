@@ -16,13 +16,15 @@ class BasicTypeInfo {
     this.primitiveListName,
     this.enableList = true,
     required this.interestRawValues,
-    this.listWrapper = _defaultPrimitiveListWrapper,
+    required this.listWrapper,
   }) : name = name ?? ReCase(rustTypeName).snakeCase;
-
-  static String _defaultPrimitiveListWrapper(
-          BasicTypeInfo info, String value) =>
-      '${info.primitiveListName}.fromList([$value])';
 }
+
+String _defaultGeneralListWrapper(BasicTypeInfo info, String value) =>
+    '[$value]';
+
+String _defaultPrimitiveListWrapper(BasicTypeInfo info, String value) =>
+    '${info.primitiveListName}.fromList([$value])';
 
 final kBasicTypes = [
   BasicTypeInfo(
@@ -30,18 +32,21 @@ final kBasicTypes = [
     dartTypeName: 'int',
     primitiveListName: 'Int8List',
     interestRawValues: ['0', '-128', '127'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'i16',
     dartTypeName: 'int',
     primitiveListName: 'Int16List',
     interestRawValues: ['0', '-32768', '32767'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'i32',
     dartTypeName: 'int',
     primitiveListName: 'Int32List',
     interestRawValues: ['0', '-2147483648', '2147483647'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'i64',
@@ -56,6 +61,7 @@ final kBasicTypes = [
       // '-9223372036854775808',
       // '9223372036854775807',
     ],
+    listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   BasicTypeInfo(
@@ -63,18 +69,21 @@ final kBasicTypes = [
     dartTypeName: 'int',
     primitiveListName: 'Uint8List',
     interestRawValues: ['0', '255'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'u16',
     dartTypeName: 'int',
     primitiveListName: 'Uint16List',
     interestRawValues: ['0', '65535'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'u32',
     dartTypeName: 'int',
     primitiveListName: 'Uint32List',
     interestRawValues: ['0', '4294967295'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'u64',
@@ -88,6 +97,7 @@ final kBasicTypes = [
       // TODO handle >53bit values, in dart web compiler it will error
       // '9223372036854775807',
     ],
+    listWrapper: _defaultPrimitiveListWrapper,
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   BasicTypeInfo(
@@ -101,24 +111,28 @@ final kBasicTypes = [
       '-9007199254740992',
       '9007199254740992',
     ],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'usize',
     dartTypeName: 'int',
     enableList: false,
     interestRawValues: ['0', '4294967295', '9007199254740992'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'f32',
     dartTypeName: 'double',
     primitiveListName: 'Float32List',
     interestRawValues: ['0', '-42.5', '123456'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'f64',
     dartTypeName: 'double',
     primitiveListName: 'Float64List',
     interestRawValues: ['0', '-42.5', '123456'],
+    listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'bool',
@@ -131,6 +145,7 @@ final kBasicTypes = [
     rustTypeName: 'String',
     dartTypeName: 'String',
     interestRawValues: ['""', '"hello"', '"😂"'],
+    listWrapper: _defaultGeneralListWrapper,
   ),
   BasicTypeInfo(
     name: 'bytes',
@@ -143,6 +158,7 @@ final kBasicTypes = [
       'Uint8List.fromList([255, 0])',
       'Uint8List.fromList([10, 20, 30, 40])'
     ],
+    listWrapper: _defaultGeneralListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'BasicPrimitiveEnumTwinNormal',
@@ -151,6 +167,7 @@ final kBasicTypes = [
       'BasicPrimitiveEnumTwinNormal.apple',
       'BasicPrimitiveEnumTwinNormal.orange',
     ],
+    listWrapper: _defaultGeneralListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'BasicGeneralEnumTwinNormal',
@@ -159,6 +176,7 @@ final kBasicTypes = [
       'BasicGeneralEnumTwinNormal.apple(field: "one")',
       'BasicGeneralEnumTwinNormal.orange()',
     ],
+    listWrapper: _defaultGeneralListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'BasicStructTwinNormal',
@@ -167,5 +185,6 @@ final kBasicTypes = [
       'BasicStructTwinNormal(apple: null, orange: null)',
       'BasicStructTwinNormal(apple: "one", orange: 42)',
     ],
+    listWrapper: _defaultGeneralListWrapper,
   ),
 ];
