@@ -128,6 +128,20 @@ Future<OpaqueOneTwinMoiOpaqueTwoTwinMoi>
 Future<OpaqueTwoTwinMoi> rustAutoOpaqueReturnOpaqueTwoTwinMoi({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinMoi(hint: hint);
 
+Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
+        {required NonCloneSimpleTwinMoi borrow,
+        required NonCloneSimpleTwinMoi mutBorrow,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
+        borrow: borrow, mutBorrow: mutBorrow, hint: hint);
+
+Future<int> rustAutoOpaqueBorrowAndBorrowTwinMoi(
+        {required NonCloneSimpleTwinMoi a,
+        required NonCloneSimpleTwinMoi b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueBorrowAndBorrowTwinMoi(a: a, b: b, hint: hint);
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn Fn (String) -> String + Send + Sync>>>
 @sealed
 class BoxFnStringString extends RustOpaque {

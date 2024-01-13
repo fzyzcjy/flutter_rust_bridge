@@ -255,4 +255,39 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSyncSse(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncSse(arg: obj));
   });
+
+  group('borrow + mut borrow', () {
+    test('when same object', () async {
+      final obj = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 100);
+      await expectRustPanic(
+        () async => rustAutoOpaqueBorrowAndMutBorrowTwinSyncSse(
+            borrow: obj, mutBorrow: obj),
+        'TwinSyncSse',
+        messageMatcherOnNative: matches(RegExp('Fail to.*borrow object')),
+      );
+    });
+
+    test('when different object', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 200);
+      expect(
+          await rustAutoOpaqueBorrowAndMutBorrowTwinSyncSse(
+              borrow: a, mutBorrow: b),
+          300);
+    });
+  });
+
+  group('borrow + borrow', () {
+    test('when same object', () async {
+      final obj = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 100);
+      expect(
+          await rustAutoOpaqueBorrowAndBorrowTwinSyncSse(a: obj, b: obj), 200);
+    });
+
+    test('when different object', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 200);
+      expect(await rustAutoOpaqueBorrowAndBorrowTwinSyncSse(a: a, b: b), 300);
+    });
+  });
 }

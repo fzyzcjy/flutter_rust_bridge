@@ -146,6 +146,20 @@ Future<OpaqueTwoTwinRustAsyncMoi> rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncMoi(
     RustLib.instance.api
         .rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncMoi(hint: hint);
 
+Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncMoi(
+        {required NonCloneSimpleTwinRustAsyncMoi borrow,
+        required NonCloneSimpleTwinRustAsyncMoi mutBorrow,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncMoi(
+        borrow: borrow, mutBorrow: mutBorrow, hint: hint);
+
+Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncMoi(
+        {required NonCloneSimpleTwinRustAsyncMoi a,
+        required NonCloneSimpleTwinRustAsyncMoi b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueBorrowAndBorrowTwinRustAsyncMoi(a: a, b: b, hint: hint);
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsyncMoi>>>
 @sealed
 class BoxHelloTraitTwinRustAsyncMoi extends RustOpaque {

@@ -247,4 +247,38 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSse(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(arg: obj));
   });
+
+  group('borrow + mut borrow', () {
+    test('when same object', () async {
+      final obj = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
+      await expectRustPanic(
+        () async => rustAutoOpaqueBorrowAndMutBorrowTwinSse(
+            borrow: obj, mutBorrow: obj),
+        'TwinSse',
+        messageMatcherOnNative: matches(RegExp('Fail to.*borrow object')),
+      );
+    });
+
+    test('when different object', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSse(initial: 200);
+      expect(
+          await rustAutoOpaqueBorrowAndMutBorrowTwinSse(
+              borrow: a, mutBorrow: b),
+          300);
+    });
+  });
+
+  group('borrow + borrow', () {
+    test('when same object', () async {
+      final obj = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
+      expect(await rustAutoOpaqueBorrowAndBorrowTwinSse(a: obj, b: obj), 200);
+    });
+
+    test('when different object', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinSse(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinSse(initial: 200);
+      expect(await rustAutoOpaqueBorrowAndBorrowTwinSse(a: a, b: b), 300);
+    });
+  });
 }

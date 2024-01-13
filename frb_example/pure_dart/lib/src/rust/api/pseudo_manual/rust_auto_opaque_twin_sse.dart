@@ -129,6 +129,20 @@ Future<OpaqueOneTwinSseOpaqueTwoTwinSse>
 Future<OpaqueTwoTwinSse> rustAutoOpaqueReturnOpaqueTwoTwinSse({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinSse(hint: hint);
 
+Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSse(
+        {required NonCloneSimpleTwinSse borrow,
+        required NonCloneSimpleTwinSse mutBorrow,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueBorrowAndMutBorrowTwinSse(
+        borrow: borrow, mutBorrow: mutBorrow, hint: hint);
+
+Future<int> rustAutoOpaqueBorrowAndBorrowTwinSse(
+        {required NonCloneSimpleTwinSse a,
+        required NonCloneSimpleTwinSse b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueBorrowAndBorrowTwinSse(a: a, b: b, hint: hint);
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>
 @sealed
 class BoxHelloTraitTwinSse extends RustOpaque {

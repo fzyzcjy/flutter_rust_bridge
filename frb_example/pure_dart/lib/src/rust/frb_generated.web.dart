@@ -36520,6 +36520,15 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object arg, int expect) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_moi(port_, arg, expect);
 
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
+          NativePortType port_, Object a, Object b) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_moi(port_, a, b);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+          NativePortType port_, Object borrow, Object mut_borrow) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+          port_, borrow, mut_borrow);
+
   void wire_rust_auto_opaque_callable_arg_twin_moi(
           NativePortType port_, Object arg) =>
       wasmModule.wire_rust_auto_opaque_callable_arg_twin_moi(port_, arg);
@@ -36693,6 +36702,16 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object arg, int expect) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_rust_async(
           port_, arg, expect);
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+          NativePortType port_, Object a, Object b) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+          port_, a, b);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+          NativePortType port_, Object borrow, Object mut_borrow) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+          port_, borrow, mut_borrow);
 
   void wire_rust_auto_opaque_callable_arg_twin_rust_async(
           NativePortType port_, Object arg) =>
@@ -36878,6 +36897,17 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object arg, int expect) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_rust_async_moi(
           port_, arg, expect);
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+          NativePortType port_, Object a, Object b) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+          port_, a, b);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+          NativePortType port_, Object borrow, Object mut_borrow) =>
+      wasmModule
+          .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+              port_, borrow, mut_borrow);
 
   void wire_rust_auto_opaque_callable_arg_twin_rust_async_moi(
           NativePortType port_, Object arg) =>
@@ -37118,6 +37148,23 @@ class RustLibWire extends BaseWire {
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_rust_async_sse(
           port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_callable_arg_twin_rust_async_sse(
           NativePortType port_,
@@ -37414,6 +37461,24 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_rust_auto_opaque_arg_own_twin_rust_async_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_rust_auto_opaque_callable_arg_twin_rust_async_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -37698,6 +37763,22 @@ class RustLibWire extends BaseWire {
           int rust_vec_len_,
           int data_len_) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
           port_, ptr_, rust_vec_len_, data_len_);
 
   void wire_rust_auto_opaque_callable_arg_twin_sse(
@@ -37985,6 +38066,22 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_rust_auto_opaque_arg_own_twin_sse_moi(
           port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+          port_, ptr_, rust_vec_len_, data_len_);
+
   void wire_rust_auto_opaque_callable_arg_twin_sse_moi(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -38224,6 +38321,16 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_rust_auto_opaque_arg_own_twin_sync(arg, expect);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync(Object a, Object b) =>
+          wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_sync(a, b);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+              Object borrow, Object mut_borrow) =>
+          wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+              borrow, mut_borrow);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_callable_arg_twin_sync(Object arg) =>
           wasmModule.wire_rust_auto_opaque_callable_arg_twin_sync(arg);
 
@@ -38410,6 +38517,18 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_arg_own_twin_sync_moi(Object arg, int expect) =>
           wasmModule.wire_rust_auto_opaque_arg_own_twin_sync_moi(arg, expect);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+              Object a, Object b) =>
+          wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+              a, b);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+              Object borrow, Object mut_borrow) =>
+          wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+              borrow, mut_borrow);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_callable_arg_twin_sync_moi(Object arg) =>
@@ -38643,6 +38762,22 @@ class RustLibWire extends BaseWire {
               int rust_vec_len_,
               int data_len_) =>
           wasmModule.wire_rust_auto_opaque_arg_own_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
               ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
@@ -38937,6 +39072,23 @@ class RustLibWire extends BaseWire {
               int data_len_) =>
           wasmModule.wire_rust_auto_opaque_arg_own_twin_sync_sse_moi(
               ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+              ptr_, rust_vec_len_, data_len_);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
+                  ptr_, rust_vec_len_, data_len_);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_callable_arg_twin_sync_sse_moi(
@@ -40735,6 +40887,16 @@ class RustLibWire extends BaseWire {
   void wire_rust_auto_opaque_arg_own_twin_normal(
           NativePortType port_, Object arg, int expect) =>
       wasmModule.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg, expect);
+
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_normal(
+          NativePortType port_, Object a, Object b) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_borrow_twin_normal(
+          port_, a, b);
+
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal(
+          NativePortType port_, Object borrow, Object mut_borrow) =>
+      wasmModule.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal(
+          port_, borrow, mut_borrow);
 
   void wire_rust_auto_opaque_callable_arg_twin_normal(
           NativePortType port_, Object arg) =>
@@ -47860,6 +48022,12 @@ class RustLibWasmModule implements WasmModule {
   external void wire_rust_auto_opaque_arg_own_twin_moi(
       NativePortType port_, Object arg, int expect);
 
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_moi(
+      NativePortType port_, Object a, Object b);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+      NativePortType port_, Object borrow, Object mut_borrow);
+
   external void wire_rust_auto_opaque_callable_arg_twin_moi(
       NativePortType port_, Object arg);
 
@@ -47976,6 +48144,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_arg_own_twin_rust_async(
       NativePortType port_, Object arg, int expect);
+
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+      NativePortType port_, Object a, Object b);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+      NativePortType port_, Object borrow, Object mut_borrow);
 
   external void wire_rust_auto_opaque_callable_arg_twin_rust_async(
       NativePortType port_, Object arg);
@@ -48097,6 +48271,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_arg_own_twin_rust_async_moi(
       NativePortType port_, Object arg, int expect);
+
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_moi(
+      NativePortType port_, Object a, Object b);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_moi(
+      NativePortType port_, Object borrow, Object mut_borrow);
 
   external void wire_rust_auto_opaque_callable_arg_twin_rust_async_moi(
       NativePortType port_, Object arg);
@@ -48264,6 +48444,18 @@ class RustLibWasmModule implements WasmModule {
           int data_len_);
 
   external void wire_rust_auto_opaque_arg_own_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
       int rust_vec_len_,
@@ -48495,6 +48687,19 @@ class RustLibWasmModule implements WasmModule {
       int rust_vec_len_,
       int data_len_);
 
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_rust_async_sse_moi(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async_sse_moi(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire_rust_auto_opaque_callable_arg_twin_rust_async_sse_moi(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -48702,6 +48907,18 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_arg_own_twin_sse(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
 
   external void wire_rust_auto_opaque_callable_arg_twin_sse(
       NativePortType port_,
@@ -48911,6 +49128,18 @@ class RustLibWasmModule implements WasmModule {
   external void wire_rust_auto_opaque_arg_own_twin_sse_moi(NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_sse_moi(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sse_moi(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
   external void wire_rust_auto_opaque_callable_arg_twin_sse_moi(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -49079,6 +49308,13 @@ class RustLibWasmModule implements WasmModule {
       wire_rust_auto_opaque_arg_own_twin_sync(Object arg, int expect);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync(Object a, Object b);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync(
+          Object borrow, Object mut_borrow);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_callable_arg_twin_sync(Object arg);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
@@ -49194,6 +49430,13 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_arg_own_twin_sync_moi(Object arg, int expect);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync_moi(Object a, Object b);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+          Object borrow, Object mut_borrow);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_rust_auto_opaque_callable_arg_twin_sync_moi(Object arg);
@@ -49348,6 +49591,18 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_arg_own_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -49552,6 +49807,18 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire_rust_auto_opaque_arg_own_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_borrow_twin_sync_sse_moi(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire_rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse_moi(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -50692,6 +50959,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_arg_own_twin_normal(
       NativePortType port_, Object arg, int expect);
+
+  external void wire_rust_auto_opaque_borrow_and_borrow_twin_normal(
+      NativePortType port_, Object a, Object b);
+
+  external void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal(
+      NativePortType port_, Object borrow, Object mut_borrow);
 
   external void wire_rust_auto_opaque_callable_arg_twin_normal(
       NativePortType port_, Object arg);
