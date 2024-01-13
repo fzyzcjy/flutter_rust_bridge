@@ -10,13 +10,19 @@ pub fn flutter_create(name: &str, org: &Option<String>) -> anyhow::Result<()> {
     if let Some(o) = org {
         args.extend(["--org", o]);
     }
-    info!("Execute `flutter create {args:?}` (this may take a while)");
+    info!(
+        "Execute `flutter create {}` (this may take a while)",
+        args.join(" ")
+    );
     check_exit_code(&command_run!(call_shell[None, None], "flutter", "create", *args)?)
 }
 
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_pub_add(items: &[String]) -> anyhow::Result<()> {
-    info!("Execute flutter pub add {items:?} (this may take a while)");
+    info!(
+        "Execute flutter pub add {} (this may take a while)",
+        items.join(" ")
+    );
     check_exit_code(&command_run!(
         call_shell[None, None],
         "flutter",
