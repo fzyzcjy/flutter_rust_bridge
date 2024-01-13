@@ -279,3 +279,17 @@ pub async fn rust_auto_opaque_return_opaque_one_and_two_twin_rust_async(
 pub async fn rust_auto_opaque_return_opaque_two_twin_rust_async() -> OpaqueTwoTwinRustAsync {
     unimplemented!()
 }
+
+pub async fn rust_auto_opaque_borrow_and_mut_borrow_twin_rust_async(
+    borrow: &NonCloneSimpleTwinRustAsync,
+    mut_borrow: &mut NonCloneSimpleTwinRustAsync,
+) -> i32 {
+    borrow.inner + mut_borrow.inner
+}
+
+pub async fn rust_auto_opaque_borrow_and_borrow_twin_rust_async(
+    a: &NonCloneSimpleTwinRustAsync,
+    b: &NonCloneSimpleTwinRustAsync,
+) -> i32 {
+    a.inner + b.inner
+}

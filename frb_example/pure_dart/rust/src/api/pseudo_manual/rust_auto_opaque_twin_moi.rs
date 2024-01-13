@@ -289,3 +289,19 @@ pub fn rust_auto_opaque_return_opaque_one_and_two_twin_moi() -> (OpaqueOneTwinMo
 pub fn rust_auto_opaque_return_opaque_two_twin_moi() -> OpaqueTwoTwinMoi {
     unimplemented!()
 }
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_borrow_and_mut_borrow_twin_moi(
+    borrow: &NonCloneSimpleTwinMoi,
+    mut_borrow: &mut NonCloneSimpleTwinMoi,
+) -> i32 {
+    borrow.inner + mut_borrow.inner
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+pub fn rust_auto_opaque_borrow_and_borrow_twin_moi(
+    a: &NonCloneSimpleTwinMoi,
+    b: &NonCloneSimpleTwinMoi,
+) -> i32 {
+    a.inner + b.inner
+}

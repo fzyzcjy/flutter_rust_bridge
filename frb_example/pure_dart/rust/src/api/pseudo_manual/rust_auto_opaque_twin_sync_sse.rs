@@ -337,3 +337,21 @@ pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sync_sse(
 pub fn rust_auto_opaque_return_opaque_two_twin_sync_sse() -> OpaqueTwoTwinSyncSse {
     unimplemented!()
 }
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_borrow_and_mut_borrow_twin_sync_sse(
+    borrow: &NonCloneSimpleTwinSyncSse,
+    mut_borrow: &mut NonCloneSimpleTwinSyncSse,
+) -> i32 {
+    borrow.inner + mut_borrow.inner
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_borrow_and_borrow_twin_sync_sse(
+    a: &NonCloneSimpleTwinSyncSse,
+    b: &NonCloneSimpleTwinSyncSse,
+) -> i32 {
+    a.inner + b.inner
+}
