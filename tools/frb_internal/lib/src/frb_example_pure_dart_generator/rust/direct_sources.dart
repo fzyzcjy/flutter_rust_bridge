@@ -18,6 +18,28 @@ Map<String, String> generateRustDirectSources() {
 String _generateBasicRelated(
     String Function(String) rustTypeNameWrapper, String postfix) {
   final builder = RustFileBuilder();
+  if (postfix.isEmpty) {
+    builder.body += '''
+pub enum BasicPrimitiveEnumTwinNormal {
+    Apple,
+    Orange,
+}
+
+pub enum BasicGeneralEnumTwinNormal {
+    Apple { field: String },
+    Orange,
+}
+
+pub struct BasicStructTwinNormal {
+    apple: String,
+    orange: i32,
+}
+''';
+  } else {
+    builder.body += '''
+pub use super::basic$postfix;
+    ''';
+  }
   for (final ty in kBasicTypes) {
     builder.addIdentityFunction(rustTypeNameWrapper(ty.rustTypeName),
         'example_basic${postfix}_type_${ty.name}');
