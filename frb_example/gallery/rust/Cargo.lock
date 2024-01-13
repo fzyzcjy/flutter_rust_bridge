@@ -335,6 +335,7 @@ version = "2.0.0-dev.18"
 dependencies = [
  "allo-isolate",
  "android_logger",
+ "anyhow",
  "build-target",
  "bytemuck",
  "byteorder",
