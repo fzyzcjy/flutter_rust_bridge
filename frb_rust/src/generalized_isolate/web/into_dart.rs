@@ -1,4 +1,3 @@
-use crate::dart_opaque::DartOpaque;
 use crate::for_generated::BaseArc;
 use crate::generalized_isolate::ZeroCopyBuffer;
 use crate::platform_types::DartAbi;
@@ -15,7 +14,8 @@ pub trait IntoDart {
 pub trait IntoDartExceptPrimitive: IntoDart {}
 impl IntoDartExceptPrimitive for JsValue {}
 impl<T, A: BaseArc<T>> IntoDartExceptPrimitive for RustOpaqueBase<T, A> {}
-impl IntoDartExceptPrimitive for DartOpaque {}
+#[cfg(feature = "dart-opaque")]
+impl IntoDartExceptPrimitive for crate::dart_opaque::DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
 impl IntoDartExceptPrimitive for bool {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
@@ -224,7 +224,8 @@ impl<T, A: BaseArc<T>> IntoDart for RustOpaqueBase<T, A> {
     }
 }
 
-impl IntoDart for DartOpaque {
+#[cfg(feature = "dart-opaque")]
+impl IntoDart for crate::dart_opaque::DartOpaque {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.into()

@@ -1,4 +1,3 @@
-use crate::dart_opaque::DartOpaque;
 use crate::for_generated::BaseArc;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
 use crate::rust_opaque::RustOpaqueBase;
@@ -161,7 +160,8 @@ impl_into_into_dart_by_self!(());
 impl_into_into_dart_by_self!(usize);
 impl_into_into_dart_by_self!(isize);
 impl_into_into_dart_by_self!(String);
-impl_into_into_dart_by_self!(DartOpaque);
+#[cfg(feature = "dart-opaque")]
+impl_into_into_dart_by_self!(crate::dart_opaque::DartOpaque);
 #[cfg(not(target_family = "wasm"))]
 impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
 #[cfg(target_family = "wasm")]
