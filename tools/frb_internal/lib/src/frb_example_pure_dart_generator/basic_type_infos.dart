@@ -141,27 +141,27 @@ final kBasicTypes = [
     ],
   ),
   const BasicTypeInfo(
-    rustTypeName: 'BasicPrimitiveEnum',
-    dartTypeName: 'BasicPrimitiveEnum',
+    rustTypeName: 'BasicPrimitiveEnumTwinNormal',
+    dartTypeName: 'BasicPrimitiveEnumTwinNormal',
     interestRawValues: [
-      'BasicPrimitiveEnum.apple',
-      'BasicPrimitiveEnum.orange',
+      'BasicPrimitiveEnumTwinNormal.apple',
+      'BasicPrimitiveEnumTwinNormal.orange',
     ],
   ),
   const BasicTypeInfo(
-    rustTypeName: 'BasicGeneralEnum',
-    dartTypeName: 'BasicGeneralEnum',
+    rustTypeName: 'BasicGeneralEnumTwinNormal',
+    dartTypeName: 'BasicGeneralEnumTwinNormal',
     interestRawValues: [
-      'BasicGeneralEnum.apple(field: "one")',
-      'BasicGeneralEnum.orange()',
+      'BasicGeneralEnumTwinNormal.apple(field: "one")',
+      'BasicGeneralEnumTwinNormal.orange()',
     ],
   ),
   const BasicTypeInfo(
-    rustTypeName: 'BasicStruct',
-    dartTypeName: 'BasicStruct',
+    rustTypeName: 'BasicStructTwinNormal',
+    dartTypeName: 'BasicStructTwinNormal',
     interestRawValues: [
-      'BasicStruct(apple: null, orange: null)',
-      'BasicStruct(apple: "one", orange: 42)',
+      'BasicStructTwinNormal(apple: null, orange: null)',
+      'BasicStructTwinNormal(apple: "one", orange: 42)',
     ],
   ),
 ];
