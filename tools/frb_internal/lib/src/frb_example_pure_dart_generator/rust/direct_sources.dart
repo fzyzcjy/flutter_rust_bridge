@@ -5,7 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 Map<String, String> generateRustDirectSources() {
   return {
     'pseudo_manual/basic.rs': _generateBasicRelated((x) => x, ''),
-    'pseudo_manual/optional_basic.rs':
+    'pseudo_manual/basic_optional.rs':
         _generateBasicRelated((x) => 'Option<$x>', '_optional'),
     'pseudo_manual/basic_list.rs':
         _generateBasicRelated((x) => 'Vec<$x>', '_list'),
