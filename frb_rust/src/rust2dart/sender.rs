@@ -46,3 +46,14 @@ impl fmt::Display for Rust2DartSendError {
         write!(f, "Fail to post message to Dart")
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::Rust2DartSendError;
+
+    #[test]
+    fn test_rust2dart_send_error() {
+        assert!(format!("{}", Rust2DartSendError).contains("post message"));
+        assert!(format!("{:?}", Rust2DartSendError).contains("post message"));
+    }
+}
