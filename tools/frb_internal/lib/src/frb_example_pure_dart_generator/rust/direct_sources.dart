@@ -171,7 +171,7 @@ final kBasicTypes = [
     interestRawValues: ['""', '"hello"', '"😂"'],
   ),
   const BasicTypeInfo(
-    name: 'Vec<u8>',
+    name: 'Bytes',
     dartTypeName: 'Uint8List',
     primitiveListName: 'TODO',
     interestRawValues: [
@@ -179,5 +179,23 @@ final kBasicTypes = [
       'Uint8List.fromList([255, 0])',
       'Uint8List.fromList([10, 20, 30, 40])'
     ],
+  ),
+  const BasicTypeInfo(
+    name: 'PrimitiveEnum',
+    dartTypeName: 'TODO',
+    primitiveListName: 'TODO',
+    interestRawValues: ['TODO'],
+  ),
+  const BasicTypeInfo(
+    name: 'GeneralEnum',
+    dartTypeName: 'TODO',
+    primitiveListName: 'TODO',
+    interestRawValues: ['TODO'],
+  ),
+  const BasicTypeInfo(
+    name: 'MyStruct',
+    dartTypeName: 'TODO',
+    primitiveListName: 'TODO',
+    interestRawValues: ['TODO'],
   ),
 ];
