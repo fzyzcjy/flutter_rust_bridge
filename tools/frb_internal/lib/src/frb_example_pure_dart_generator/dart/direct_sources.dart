@@ -29,7 +29,7 @@ Map<String, String> generateDartDirectSources() {
       import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
       """,
       enable: (ty) => ty.enableList,
-      valueType: (ty) => ty.listName ?? 'List<${ty.dartTypeName}>',
+      valueType: (ty) => ty.listName,
     ),
     'pseudo_manual/basic_map_test.dart': _generateBasicRelated(
       postfix: '_map',

@@ -4,7 +4,7 @@ class BasicTypeInfo {
   final String name;
   final String rustTypeName;
   final String dartTypeName;
-  final String? listName;
+  final String listName;
   final bool enableList;
   final List<String> interestRawValues;
   final String Function(BasicTypeInfo, String) listWrapper;
@@ -13,11 +13,12 @@ class BasicTypeInfo {
     String? name,
     required this.rustTypeName,
     required this.dartTypeName,
-    this.listName,
+    String? listName,
     this.enableList = true,
     required this.interestRawValues,
     required this.listWrapper,
-  }) : name = name ?? ReCase(rustTypeName).snakeCase;
+  })  : name = name ?? ReCase(rustTypeName).snakeCase,
+        listName = listName ?? 'List<$dartTypeName>';
 }
 
 String _defaultGeneralListWrapper(BasicTypeInfo info, String value) =>
