@@ -14,6 +14,9 @@ Map<String, String> generateDartDirectSources() {
     ),
     'pseudo_manual/basic_optional_test.dart': _generateBasicRelated(
       postfix: '_optional',
+      imports: """
+      import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
+      """,
       values: (ty) => [
         "null",
         ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
@@ -28,14 +31,18 @@ Map<String, String> generateDartDirectSources() {
       ],
       imports: """
       import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+      import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
       """,
       valueType: (ty) => null,
       enable: (ty) => ty.enableList,
     ),
     'pseudo_manual/basic_map_test.dart': _generateBasicRelated(
       postfix: '_map',
+      imports: """
+      import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
+      """,
       values: (ty) => ['{}', ...ty.interestRawValues.map((x) => '{42: $x}')],
-      valueType: (ty) => null,
+      valueType: (ty) => 'Map<int, ${ty.dartTypeName}>',
     ),
     '../../benchmark/src/generated.dart': generateBenchmark(),
   };

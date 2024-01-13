@@ -11,56 +11,66 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 import '../../test_utils.dart';
 import 'dart:typed_data';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic_twin_rust_async.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('basic_map', () {
-    addTestsIdentityFunctionCall(exampleBasicMapTypeI8TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeI8TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: -128},
       {42: 127}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeI16TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeI16TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: -32768},
       {42: 32767}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeI32TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeI32TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: -2147483648},
       {42: 2147483647}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeI64TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeI64TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: -9007199254740992},
       {42: 9007199254740992}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeU8TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeU8TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: 255}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeU16TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeU16TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: 65535}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeU32TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeU32TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: 4294967295}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeU64TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeU64TwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: 9007199254740992}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeIsizeTwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeIsizeTwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: -2147483648},
@@ -68,36 +78,42 @@ Future<void> main({bool skipRustLibInit = false}) async {
       {42: -9007199254740992},
       {42: 9007199254740992}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeUsizeTwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeUsizeTwinRustAsync, <Map<int, int>>[
       {},
       {42: 0},
       {42: 4294967295},
       {42: 9007199254740992}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeF32TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeF32TwinRustAsync, <Map<int, double>>[
       {},
       {42: 0},
       {42: -42.5},
       {42: 123456}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeF64TwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeF64TwinRustAsync, <Map<int, double>>[
       {},
       {42: 0},
       {42: -42.5},
       {42: 123456}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeBoolTwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeBoolTwinRustAsync, <Map<int, bool>>[
       {},
       {42: false},
       {42: true}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeStringTwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeStringTwinRustAsync, <Map<int, String>>[
       {},
       {42: ""},
       {42: "hello"},
       {42: "😂"}
     ]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeBytesTwinRustAsync, [
+    addTestsIdentityFunctionCall(
+        exampleBasicMapTypeBytesTwinRustAsync, <Map<int, Uint8List>>[
       {},
       {42: Uint8List.fromList([])},
       {
@@ -108,22 +124,25 @@ Future<void> main({bool skipRustLibInit = false}) async {
       }
     ]);
     addTestsIdentityFunctionCall(
-        exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync, [
-      {},
-      {42: BasicPrimitiveEnumTwinRustAsync.apple},
-      {42: BasicPrimitiveEnumTwinRustAsync.orange}
-    ]);
+        exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync,
+        <Map<int, BasicPrimitiveEnumTwinRustAsync>>[
+          {},
+          {42: BasicPrimitiveEnumTwinRustAsync.apple},
+          {42: BasicPrimitiveEnumTwinRustAsync.orange}
+        ]);
     addTestsIdentityFunctionCall(
-        exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync, [
-      {},
-      {42: BasicGeneralEnumTwinRustAsync.apple(field: "one")},
-      {42: BasicGeneralEnumTwinRustAsync.orange()}
-    ]);
+        exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync,
+        <Map<int, BasicGeneralEnumTwinRustAsync>>[
+          {},
+          {42: BasicGeneralEnumTwinRustAsync.apple(field: "one")},
+          {42: BasicGeneralEnumTwinRustAsync.orange()}
+        ]);
     addTestsIdentityFunctionCall(
-        exampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsync, [
-      {},
-      {42: BasicStructTwinRustAsync(apple: null, orange: null)},
-      {42: BasicStructTwinRustAsync(apple: "one", orange: 42)}
-    ]);
+        exampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsync,
+        <Map<int, BasicStructTwinRustAsync>>[
+          {},
+          {42: BasicStructTwinRustAsync(apple: null, orange: null)},
+          {42: BasicStructTwinRustAsync(apple: "one", orange: 42)}
+        ]);
   });
 }
