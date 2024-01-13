@@ -139,6 +139,7 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         self.dart_fn_handler.invoke(dart_fn, args)
     }
 
+    #[cfg(feature = "rust-async")]
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
         self.dart_fn_handler.handle_output(call_id, message)
     }

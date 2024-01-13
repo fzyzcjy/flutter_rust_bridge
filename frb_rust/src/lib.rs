@@ -17,6 +17,7 @@ pub(crate) mod ffi_binding;
 pub mod for_generated;
 pub(crate) mod generalized_arc;
 #[doc(hidden)] // only to be used as `for_generated::rust_async`
+#[cfg(feature = "rust-async")]
 pub mod rust_async;
 pub(crate) mod rust_opaque;
 pub(crate) mod web_transfer;
@@ -32,6 +33,7 @@ pub use crate::misc::dart_dynamic::DartDynamic;
 pub use crate::misc::into_into_dart::IntoIntoDart;
 #[cfg(feature = "user-utils")]
 pub use crate::misc::user_utils::setup_default_user_utils;
+#[cfg(feature = "rust-async")]
 pub use crate::rust_async::{spawn, spawn_blocking_with, spawn_local, JoinHandle};
 #[allow(deprecated)]
 pub use crate::rust_opaque::{DartSafe, RustOpaque, RustOpaqueNom};

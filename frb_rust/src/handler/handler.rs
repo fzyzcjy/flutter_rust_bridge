@@ -66,6 +66,7 @@ pub trait Handler {
         args: Vec<DartAbi>,
     ) -> crate::dart_fn::DartFnFuture<Dart2RustMessageSse>;
 
+    #[cfg(feature = "rust-async")]
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse);
 }
 
