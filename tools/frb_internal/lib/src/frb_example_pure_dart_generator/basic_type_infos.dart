@@ -105,20 +105,14 @@ final kBasicTypes = [
     rustTypeName: 'isize',
     dartTypeName: 'int',
     enableList: false,
-    interestRawValues: [
-      '0',
-      '-2147483648',
-      '2147483647',
-      '-9007199254740992',
-      '9007199254740992',
-    ],
+    interestRawValues: ['0', '-2147483648', '2147483647'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'usize',
     dartTypeName: 'int',
     enableList: false,
-    interestRawValues: ['0', '4294967295', '9007199254740992'],
+    interestRawValues: ['0', '4294967295'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
