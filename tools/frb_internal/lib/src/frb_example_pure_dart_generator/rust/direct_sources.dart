@@ -37,7 +37,7 @@ pub struct BasicStructTwinNormal {
 ''';
   } else {
     builder.body += '''
-pub use super::basic$postfix;
+pub use super::basic;
     ''';
   }
   for (final ty in kBasicTypes) {
