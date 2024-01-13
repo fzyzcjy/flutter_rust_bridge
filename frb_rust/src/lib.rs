@@ -9,6 +9,7 @@ pub(crate) mod third_party;
 pub(crate) mod thread_pool;
 
 pub(crate) mod codec;
+#[cfg(feature = "rust-async")]
 pub(crate) mod dart_fn;
 pub(crate) mod dart_opaque;
 pub(crate) mod ffi_binding;
@@ -21,6 +22,7 @@ pub(crate) mod rust_opaque;
 pub(crate) mod web_transfer;
 
 pub use crate::codec::sse::SseCodec;
+#[cfg(feature = "rust-async")]
 pub use crate::dart_fn::DartFnFuture;
 pub use crate::dart_opaque::DartOpaque;
 pub use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};

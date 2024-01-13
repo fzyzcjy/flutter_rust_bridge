@@ -3,6 +3,7 @@
 
 mod boilerplate;
 mod cast;
+#[cfg(feature = "rust-async")]
 mod misc;
 mod pointer;
 
@@ -41,6 +42,7 @@ pub use futures;
 #[cfg(wasm)]
 pub use js_sys;
 pub use lazy_static::lazy_static;
+#[cfg(feature = "rust-async")]
 pub use misc::*;
 pub use pointer::*;
 #[cfg(wasm)]
