@@ -412,6 +412,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
+      - uses: taiki-e/install-action@cargo-hack
 
       # execute
       - run: ./frb_internal build-rust-feature-flag
