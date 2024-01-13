@@ -168,7 +168,10 @@ impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
 impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart_by_self!(uuid::Uuid);
+#[cfg(feature = "backtrace")]
 impl_into_into_dart_by_self!(backtrace::Backtrace);
+// TODO await upstream
+// impl_into_into_dart_by_self!(std::backtrace::Backtrace);
 
 #[cfg(feature = "chrono")]
 mod chrono_impls {

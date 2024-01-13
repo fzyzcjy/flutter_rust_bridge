@@ -1,5 +1,5 @@
-use backtrace::Backtrace;
 use std::any::Any;
+use std::backtrace::Backtrace;
 
 /// Errors that occur from normal code execution.
 pub enum Error {

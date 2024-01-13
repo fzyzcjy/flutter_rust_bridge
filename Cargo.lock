@@ -567,6 +567,7 @@ dependencies = [
  "allo-isolate",
  "android_logger",
  "anyhow",
+ "backtrace",
  "build-target",
  "bytemuck",
  "byteorder",
