@@ -6,7 +6,7 @@ import 'package:recase/recase.dart';
 Map<String, String> generateDartDirectSources() {
   return {
     'pseudo_manual/basic_test.dart': _generateBasic(),
-    'pseudo_manual/basic_optional_test.dart': _generateOptionalBasic(),
+    'pseudo_manual/basic_optional_test.dart': _generateBasicOptional(),
     'pseudo_manual/basic_list_test.dart': _generateBasicList(),
     'pseudo_manual/basic_map_test.dart': _generateBasicMap(),
     '../../benchmark/src/generated.dart': generateBenchmark(),
@@ -49,7 +49,7 @@ String _generateBasicMap() {
   throw UnimplementedError();
 }
 
-String _generateOptionalBasic() {
+String _generateBasicOptional() {
   final builder = DartFileBuilder(importName: 'basic_optional');
   for (final ty in kBasicTypes) {
     final values = [
