@@ -3,10 +3,10 @@ use crate::generalized_isolate::IntoDart;
 use crate::handler::error::error_to_string;
 use crate::platform_types::{DartAbi, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartSse};
 use crate::rust2dart::action::Rust2DartAction;
-use backtrace::Backtrace;
 use byteorder::NativeEndian;
 use byteorder::WriteBytesExt;
 use std::any::Any;
+use std::backtrace::Backtrace;
 use std::io::Cursor;
 
 /// Codec that does a simple serialization

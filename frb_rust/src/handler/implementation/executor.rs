@@ -47,6 +47,7 @@ impl<EL: ErrorListener, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor
 impl<EL: ErrorListener + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     for SimpleExecutor<EL, TP, AR>
 {
+    #[cfg(feature = "thread-pool")]
     fn execute_normal<Rust2DartCodec, TaskFn>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(

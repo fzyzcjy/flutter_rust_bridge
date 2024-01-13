@@ -1,7 +1,7 @@
 use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::logs::log_warn_or_println;
-use anyhow::anyhow;
+use std::fmt;
 
 #[derive(Clone)]
 pub struct Rust2DartSender {
@@ -13,11 +13,11 @@ impl Rust2DartSender {
         Rust2DartSender { channel }
     }
 
-    pub fn send(&self, msg: impl IntoDart) -> anyhow::Result<()> {
+    pub fn send(&self, msg: impl IntoDart) -> Result<(), Rust2DartSendError> {
         if self.channel.post(msg) {
             Ok(())
         } else {
-            Err(anyhow!("Fail to post message to Dart"))
+            Err(Rust2DartSendError)
         }
     }
 
@@ -28,5 +28,32 @@ impl Rust2DartSender {
         if let Err(e) = self.send(msg) {
             log_warn_or_println(&format!("{e:?}"));
         }
+    }
+}
+
+/// Error when sending message from rust to dart
+#[derive(Clone)]
+pub struct Rust2DartSendError;
+
+impl fmt::Debug for Rust2DartSendError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self)
+    }
+}
+
+impl fmt::Display for Rust2DartSendError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Fail to post message to Dart")
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::Rust2DartSendError;
+
+    #[test]
+    fn test_rust2dart_send_error() {
+        assert!(format!("{}", Rust2DartSendError).contains("post message"));
+        assert!(format!("{:?}", Rust2DartSendError).contains("post message"));
     }
 }

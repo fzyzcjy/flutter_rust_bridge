@@ -1,7 +1,7 @@
 use super::{BaseCodec, Rust2DartMessageTrait};
 use crate::platform_types::DartAbi;
-use backtrace::Backtrace;
 use std::any::Any;
+use std::backtrace::Backtrace;
 
 // frb-coverage:ignore-start
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
