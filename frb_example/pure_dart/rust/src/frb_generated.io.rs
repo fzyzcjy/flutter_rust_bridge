@@ -37504,6 +37504,15 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_arg_own_twi
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow(
+    port_: i64,
+    a: usize,
+    b: usize,
+) {
+    wire_rust_auto_opaque_borrow_and_borrow_impl(port_, a, b)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow(
     port_: i64,
     borrow: usize,

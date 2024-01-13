@@ -72277,6 +72277,26 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_own_twin_normalPtr
           .asFunction<void Function(int, int, int)>();
 
+  void wire_rust_auto_opaque_borrow_and_borrow(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_rust_auto_opaque_borrow_and_borrow(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_borrow_and_borrowPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow');
+  late final _wire_rust_auto_opaque_borrow_and_borrow =
+      _wire_rust_auto_opaque_borrow_and_borrowPtr
+          .asFunction<void Function(int, int, int)>();
+
   void wire_rust_auto_opaque_borrow_and_mut_borrow(
     int port_,
     int borrow,
