@@ -80,28 +80,28 @@ Future<void> main({bool skipRustLibInit = false}) async {
       <bool>[true]
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeStringTwinSyncSse, [
-      null.fromList([]),
-      null.fromList([""]),
-      null.fromList(["hello"]),
-      null.fromList(["😂"])
+      [],
+      [""],
+      ["hello"],
+      ["😂"]
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse, [
-      null.fromList([]),
-      null.fromList([BasicPrimitiveEnumTwinSyncSse.apple]),
-      null.fromList([BasicPrimitiveEnumTwinSyncSse.orange])
+      [],
+      [BasicPrimitiveEnumTwinSyncSse.apple],
+      [BasicPrimitiveEnumTwinSyncSse.orange]
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeBasicGeneralEnumTwinSyncSseTwinSyncSse, [
-      null.fromList([]),
-      null.fromList([BasicGeneralEnumTwinSyncSse.apple(field: "one")]),
-      null.fromList([BasicGeneralEnumTwinSyncSse.orange()])
+      [],
+      [BasicGeneralEnumTwinSyncSse.apple(field: "one")],
+      [BasicGeneralEnumTwinSyncSse.orange()]
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeBasicStructTwinSyncSseTwinSyncSse, [
-      null.fromList([]),
-      null.fromList([BasicStructTwinSyncSse(apple: null, orange: null)]),
-      null.fromList([BasicStructTwinSyncSse(apple: "one", orange: 42)])
+      [],
+      [BasicStructTwinSyncSse(apple: null, orange: null)],
+      [BasicStructTwinSyncSse(apple: "one", orange: 42)]
     ]);
   });
 }
