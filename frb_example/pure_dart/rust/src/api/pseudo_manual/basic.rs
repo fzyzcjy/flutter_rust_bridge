@@ -13,8 +13,8 @@ pub enum BasicGeneralEnumTwinNormal {
 }
 
 pub struct BasicStructTwinNormal {
-    apple: String,
-    orange: i32,
+    pub apple: String,
+    pub orange: i32,
 }
 pub fn example_basic_type_i8_twin_normal(arg: i8) -> i8 {
     arg

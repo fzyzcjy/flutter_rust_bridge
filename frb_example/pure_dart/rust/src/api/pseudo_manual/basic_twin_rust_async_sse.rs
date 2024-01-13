@@ -17,8 +17,8 @@ pub enum BasicGeneralEnumTwinRustAsyncSse {
 }
 
 pub struct BasicStructTwinRustAsyncSse {
-    apple: String,
-    orange: i32,
+    pub apple: String,
+    pub orange: i32,
 }
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn example_basic_type_i8_twin_rust_async_sse(arg: i8) -> i8 {
