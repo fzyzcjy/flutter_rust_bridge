@@ -335,8 +335,6 @@ version = "2.0.0-dev.18"
 dependencies = [
  "allo-isolate",
  "android_logger",
- "anyhow",
- "backtrace",
  "build-target",
  "bytemuck",
  "byteorder",
@@ -348,7 +346,6 @@ dependencies = [
  "futures",
  "js-sys",
  "lazy_static",
- "log",
  "oslog",
  "threadpool",
  "tokio",

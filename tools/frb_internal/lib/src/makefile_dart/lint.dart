@@ -94,6 +94,11 @@ Future<void> lintDartPana(LintConfig config) async {
 
 Future<void> lintRustFeatureFlag() async {
   const package = 'frb_rust';
-  await exec('cargo hack check --each-feature --no-dev-deps',
-      relativePwd: package);
+  for (final extra in [
+    '',
+    '--target wasm32-unknown-unknown',
+  ]) {
+    await exec('cargo hack check --each-feature --no-dev-deps $extra',
+        relativePwd: package);
+  }
 }
