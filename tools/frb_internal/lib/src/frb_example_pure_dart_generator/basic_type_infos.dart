@@ -4,7 +4,7 @@ class BasicTypeInfo {
   final String name;
   final String rustTypeName;
   final String dartTypeName;
-  final String? primitiveListName;
+  final String? listName;
   final bool enableList;
   final List<String> interestRawValues;
   final String Function(BasicTypeInfo, String) listWrapper;
@@ -13,7 +13,7 @@ class BasicTypeInfo {
     String? name,
     required this.rustTypeName,
     required this.dartTypeName,
-    this.primitiveListName,
+    this.listName,
     this.enableList = true,
     required this.interestRawValues,
     required this.listWrapper,
@@ -24,27 +24,27 @@ String _defaultGeneralListWrapper(BasicTypeInfo info, String value) =>
     '[$value]';
 
 String _defaultPrimitiveListWrapper(BasicTypeInfo info, String value) =>
-    '${info.primitiveListName}.fromList([$value])';
+    '${info.listName}.fromList([$value])';
 
 final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'i8',
     dartTypeName: 'int',
-    primitiveListName: 'Int8List',
+    listName: 'Int8List',
     interestRawValues: ['0', '-128', '127'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'i16',
     dartTypeName: 'int',
-    primitiveListName: 'Int16List',
+    listName: 'Int16List',
     interestRawValues: ['0', '-32768', '32767'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'i32',
     dartTypeName: 'int',
-    primitiveListName: 'Int32List',
+    listName: 'Int32List',
     interestRawValues: ['0', '-2147483648', '2147483647'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
@@ -52,7 +52,7 @@ final kBasicTypes = [
     rustTypeName: 'i64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
-    primitiveListName: 'Int64List',
+    listName: 'Int64List',
     interestRawValues: [
       '0',
       '-9007199254740992',
@@ -67,21 +67,21 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'u8',
     dartTypeName: 'int',
-    primitiveListName: 'Uint8List',
+    listName: 'Uint8List',
     interestRawValues: ['0', '255'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'u16',
     dartTypeName: 'int',
-    primitiveListName: 'Uint16List',
+    listName: 'Uint16List',
     interestRawValues: ['0', '65535'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'u32',
     dartTypeName: 'int',
-    primitiveListName: 'Uint32List',
+    listName: 'Uint32List',
     interestRawValues: ['0', '4294967295'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
@@ -89,7 +89,7 @@ final kBasicTypes = [
     rustTypeName: 'u64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
-    primitiveListName: 'Uint64List',
+    listName: 'Uint64List',
     // '18446744073709551615', // not support numbers bigger than max i64 yet (but implementable)
     interestRawValues: [
       '0',
@@ -123,21 +123,21 @@ final kBasicTypes = [
   BasicTypeInfo(
     rustTypeName: 'f32',
     dartTypeName: 'double',
-    primitiveListName: 'Float32List',
+    listName: 'Float32List',
     interestRawValues: ['0', '-42.5', '123456'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'f64',
     dartTypeName: 'double',
-    primitiveListName: 'Float64List',
+    listName: 'Float64List',
     interestRawValues: ['0', '-42.5', '123456'],
     listWrapper: _defaultPrimitiveListWrapper,
   ),
   BasicTypeInfo(
     rustTypeName: 'bool',
     dartTypeName: 'bool',
-    primitiveListName: 'List<bool>',
+    listName: 'List<bool>',
     interestRawValues: ['false', 'true'],
     listWrapper: (info, x) => '<bool>[$x]',
   ),
