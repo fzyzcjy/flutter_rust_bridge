@@ -16155,6 +16155,1155 @@ pub fn wire_next_user_id_twin_sync_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_example_basic_type_bool_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: bool,
+) {
+    wire_example_basic_type_bool_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f32_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: f32,
+) {
+    wire_example_basic_type_f32_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: f64,
+) {
+    wire_example_basic_type_f64_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i16_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i16,
+) {
+    wire_example_basic_type_i16_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i32_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i32,
+) {
+    wire_example_basic_type_i32_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i64,
+) {
+    wire_example_basic_type_i64_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i8_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i8,
+) {
+    wire_example_basic_type_i8_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u16_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u16,
+) {
+    wire_example_basic_type_u16_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u32_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u32,
+) {
+    wire_example_basic_type_u32_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u64,
+) {
+    wire_example_basic_type_u64_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u8_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u8,
+) {
+    wire_example_basic_type_u8_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bool_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_basic_list_type_bool_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f32_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[f32]>,
+) {
+    wire_example_basic_list_type_f32_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[f64]>,
+) {
+    wire_example_basic_list_type_f64_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i16_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i16]>,
+) {
+    wire_example_basic_list_type_i16_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i32_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i32]>,
+) {
+    wire_example_basic_list_type_i32_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i64]>,
+) {
+    wire_example_basic_list_type_i64_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i8_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i8]>,
+) {
+    wire_example_basic_list_type_i8_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u16_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u16]>,
+) {
+    wire_example_basic_list_type_u16_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u32_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u32]>,
+) {
+    wire_example_basic_list_type_u32_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u64_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u64]>,
+) {
+    wire_example_basic_list_type_u64_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u8_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u8]>,
+) {
+    wire_example_basic_list_type_u8_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bool_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_basic_list_type_bool_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[f32]>,
+) {
+    wire_example_basic_list_type_f32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[f64]>,
+) {
+    wire_example_basic_list_type_f64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i16_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i16]>,
+) {
+    wire_example_basic_list_type_i16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i32]>,
+) {
+    wire_example_basic_list_type_i32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i64]>,
+) {
+    wire_example_basic_list_type_i64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i8_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[i8]>,
+) {
+    wire_example_basic_list_type_i8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u16_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u16]>,
+) {
+    wire_example_basic_list_type_u16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u32]>,
+) {
+    wire_example_basic_list_type_u32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u64]>,
+) {
+    wire_example_basic_list_type_u64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u8_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: Box<[u8]>,
+) {
+    wire_example_basic_list_type_u8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bool_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_bool_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_f32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_f64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i16_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i16_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i8_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u16_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u16_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u8_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bool_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_bool_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_f32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_f64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i16_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_i8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u16_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_u8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bool_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_bool_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f32_twin_sync(
+    arg: Box<[f32]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_f32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f64_twin_sync(
+    arg: Box<[f64]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_f64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i16_twin_sync(
+    arg: Box<[i16]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_i16_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i32_twin_sync(
+    arg: Box<[i32]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_i32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i64_twin_sync(
+    arg: Box<[i64]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_i64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i8_twin_sync(
+    arg: Box<[i8]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_i8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u16_twin_sync(
+    arg: Box<[u16]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_u16_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u32_twin_sync(
+    arg: Box<[u32]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_u32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u64_twin_sync(
+    arg: Box<[u64]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_u64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u8_twin_sync(
+    arg: Box<[u8]>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_u8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bool_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_f64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i16_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_i8_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u16_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_u8_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_bool_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: bool,
+) {
+    wire_example_basic_type_bool_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: f32,
+) {
+    wire_example_basic_type_f32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: f64,
+) {
+    wire_example_basic_type_f64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i16_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i16,
+) {
+    wire_example_basic_type_i16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i32,
+) {
+    wire_example_basic_type_i32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i64,
+) {
+    wire_example_basic_type_i64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i8_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i8,
+) {
+    wire_example_basic_type_i8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u16_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u16,
+) {
+    wire_example_basic_type_u16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u32,
+) {
+    wire_example_basic_type_u32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u64,
+) {
+    wire_example_basic_type_u64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u8_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: u8,
+) {
+    wire_example_basic_type_u8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_bool_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_bool_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_f32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_f64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i16_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i16_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i8_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u16_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u16_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u8_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_bool_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_bool_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_f32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_f64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i16_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_i8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u16_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_type_u8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_bool_twin_sync(
+    arg: bool,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_bool_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f32_twin_sync(
+    arg: f32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_f32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f64_twin_sync(
+    arg: f64,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_f64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i16_twin_sync(
+    arg: i16,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_i16_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i32_twin_sync(
+    arg: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_i32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i64_twin_sync(
+    arg: i64,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_i64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i8_twin_sync(
+    arg: i8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_i8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u16_twin_sync(
+    arg: u16,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_u16_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u32_twin_sync(
+    arg: u32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_u32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u64_twin_sync(
+    arg: u64,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_u64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u8_twin_sync(
+    arg: u8,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_type_u8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_bool_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_f64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i16_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_i8_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u16_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_type_u8_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_benchmark_binary_tree_input_json_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     raw: String,
@@ -22922,91 +24071,630 @@ pub fn wire_handle_newtype_twin_sync_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool_twin_normal(
+pub fn wire_example_optional_basic_type_bool_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_bool_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_normal(
+pub fn wire_example_optional_basic_type_f32_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_f32_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_normal(
+pub fn wire_example_optional_basic_type_f64_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_f64_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_normal(
+pub fn wire_example_optional_basic_type_i16_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_i16_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_normal(
+pub fn wire_example_optional_basic_type_i32_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_i32_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_normal(
+pub fn wire_example_optional_basic_type_i64_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_i64_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_normal(
+pub fn wire_example_optional_basic_type_i8_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_i8_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_normal(
+pub fn wire_example_optional_basic_type_u16_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_u16_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_normal(
+pub fn wire_example_optional_basic_type_u32_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_u32_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_normal(
+pub fn wire_example_optional_basic_type_u64_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_u64_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_normal(
+pub fn wire_example_optional_basic_type_u8_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_example_optional_primitive_type_u8_twin_normal_impl(port_, arg)
+    wire_example_optional_basic_type_u8_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_bool_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_bool_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_f32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_f64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i16_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_i16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_i32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_i64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i8_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_i8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u16_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_u16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u32_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_u32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u64_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_u64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u8_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_basic_type_u8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_bool_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_bool_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_f32_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_f64_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i16_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i16_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i32_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i64_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i8_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i8_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u16_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u16_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u32_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u32_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u64_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u64_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u8_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u8_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_bool_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_bool_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_f32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_f64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i16_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_i8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u16_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u32_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u64_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u8_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_optional_basic_type_u8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_bool_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_bool_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f32_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_f32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f64_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_f64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i16_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_i16_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i32_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_i32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i64_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_i64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i8_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_i8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u16_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_u16_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u32_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_u32_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u64_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_u64_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u8_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_optional_basic_type_u8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_bool_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_f64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i16_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_i8_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u16_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u32_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u64_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_basic_type_u8_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_optional_basic_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -23057,545 +24745,6 @@ pub fn wire_primitive_optional_types_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_primitive_optional_types_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_bool_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_f32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_f64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_i16_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_i32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_i64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_i8_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_u16_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_u32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_u64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_optional_primitive_type_u8_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_bool_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_f32_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_f64_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i16_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i32_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i64_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i8_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u16_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u32_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u64_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u8_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_bool_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_f32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_f64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_i8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_optional_primitive_type_u8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_bool_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_f32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_f64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_i16_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_i32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_i64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_i8_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_u16_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_u32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_u64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_optional_primitive_type_u8_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_optional_primitive_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -23886,182 +25035,6 @@ pub fn wire_handle_vec_of_opts_twin_sync_sse(
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: bool,
-) {
-    wire_example_primitive_type_bool_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: f32,
-) {
-    wire_example_primitive_type_f32_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: f64,
-) {
-    wire_example_primitive_type_f64_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i16,
-) {
-    wire_example_primitive_type_i16_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i32,
-) {
-    wire_example_primitive_type_i32_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i64,
-) {
-    wire_example_primitive_type_i64_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i8,
-) {
-    wire_example_primitive_type_i8_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u16,
-) {
-    wire_example_primitive_type_u16_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u32,
-) {
-    wire_example_primitive_type_u32_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u64,
-) {
-    wire_example_primitive_type_u64_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u8,
-) {
-    wire_example_primitive_type_u8_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_primitive_list_type_bool_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[f32]>,
-) {
-    wire_example_primitive_list_type_f32_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[f64]>,
-) {
-    wire_example_primitive_list_type_f64_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i16]>,
-) {
-    wire_example_primitive_list_type_i16_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i32]>,
-) {
-    wire_example_primitive_list_type_i32_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i64]>,
-) {
-    wire_example_primitive_list_type_i64_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i8]>,
-) {
-    wire_example_primitive_list_type_i8_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u16]>,
-) {
-    wire_example_primitive_list_type_u16_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u32]>,
-) {
-    wire_example_primitive_list_type_u32_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u64]>,
-) {
-    wire_example_primitive_list_type_u64_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_normal(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u8]>,
-) {
-    wire_example_primitive_list_type_u8_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
 pub fn wire_handle_vec_of_primitive_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     n: i32,
@@ -24103,545 +25076,6 @@ pub fn wire_handle_vec_of_primitive_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_handle_vec_of_primitive_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_example_primitive_list_type_bool_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[f32]>,
-) {
-    wire_example_primitive_list_type_f32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[f64]>,
-) {
-    wire_example_primitive_list_type_f64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i16]>,
-) {
-    wire_example_primitive_list_type_i16_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i32]>,
-) {
-    wire_example_primitive_list_type_i32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i64]>,
-) {
-    wire_example_primitive_list_type_i64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[i8]>,
-) {
-    wire_example_primitive_list_type_i8_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u16]>,
-) {
-    wire_example_primitive_list_type_u16_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u32]>,
-) {
-    wire_example_primitive_list_type_u32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u64]>,
-) {
-    wire_example_primitive_list_type_u64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: Box<[u8]>,
-) {
-    wire_example_primitive_list_type_u8_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_bool_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_f32_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_f64_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i16_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i32_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i64_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i8_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u16_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u32_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u64_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u8_twin_rust_async_sse_impl(
-        port_,
-        ptr_,
-        rust_vec_len_,
-        data_len_,
-    )
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_bool_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_f32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_f64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_i8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_list_type_u8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_sync(
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_bool_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_sync(
-    arg: Box<[f32]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_f32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_sync(
-    arg: Box<[f64]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_f64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_sync(
-    arg: Box<[i16]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_i16_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_sync(
-    arg: Box<[i32]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_i32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_sync(
-    arg: Box<[i64]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_i64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_sync(
-    arg: Box<[i8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_i8_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_sync(
-    arg: Box<[u16]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_u16_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_sync(
-    arg: Box<[u32]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_u32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_sync(
-    arg: Box<[u64]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_u64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_sync(
-    arg: Box<[u8]>,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_list_type_u8_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_list_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -24824,490 +25258,6 @@ pub fn wire_primitive_usize_loopback_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_primitive_usize_loopback_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: bool,
-) {
-    wire_example_primitive_type_bool_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: f32,
-) {
-    wire_example_primitive_type_f32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: f64,
-) {
-    wire_example_primitive_type_f64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i16,
-) {
-    wire_example_primitive_type_i16_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i32,
-) {
-    wire_example_primitive_type_i32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i64,
-) {
-    wire_example_primitive_type_i64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: i8,
-) {
-    wire_example_primitive_type_i8_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u16,
-) {
-    wire_example_primitive_type_u16_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u32,
-) {
-    wire_example_primitive_type_u32_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u64,
-) {
-    wire_example_primitive_type_u64_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_rust_async(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: u8,
-) {
-    wire_example_primitive_type_u8_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_bool_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_f32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_f64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i16_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u16_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u32_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u64_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_rust_async_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u8_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_bool_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_f32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_f64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_i8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u16_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u32_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u64_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_sse(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    wire_example_primitive_type_u8_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_sync(
-    arg: bool,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_bool_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_sync(
-    arg: f32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_f32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_sync(
-    arg: f64,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_f64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_sync(
-    arg: i16,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_i16_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_sync(
-    arg: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_i32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_sync(
-    arg: i64,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_i64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_sync(
-    arg: i8,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_i8_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_sync(
-    arg: u16,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_u16_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_sync(
-    arg: u32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_u32_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_sync(
-    arg: u64,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_u64_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_sync(
-    arg: u8,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
-    wire_example_primitive_type_u8_twin_sync_impl(arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_f32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_f64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_i16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_i32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_i64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_i8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_u16_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_u32_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_u64_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
-}
-
-#[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_sync_sse(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    wire_example_primitive_type_u8_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
