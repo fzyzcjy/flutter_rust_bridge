@@ -392,6 +392,30 @@ jobs:
           name: ${{ github.job }}--${{ matrix.info.target }}--output
           path: target/build_flutter_output
 
+  build_rust_feature_flag:
+    name: 'Build :: Rust :: Feature flag'
+    runs-on: ubuntu-latest
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+        with:
+          comment_on_pr: false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
+
+      # execute
+      - run: ./frb_internal build-rust-feature-flag
+
   # ----------------------------------- test -----------------------------------
 
   test_mimic_quickstart:
