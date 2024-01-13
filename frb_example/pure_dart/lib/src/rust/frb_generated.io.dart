@@ -72754,44 +72754,44 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_own_twin_normalPtr
           .asFunction<void Function(int, int, int)>();
 
-  void wire_rust_auto_opaque_borrow_and_borrow(
+  void wire_rust_auto_opaque_borrow_and_borrow_twin_normal(
     int port_,
     int a,
     int b,
   ) {
-    return _wire_rust_auto_opaque_borrow_and_borrow(
+    return _wire_rust_auto_opaque_borrow_and_borrow_twin_normal(
       port_,
       a,
       b,
     );
   }
 
-  late final _wire_rust_auto_opaque_borrow_and_borrowPtr = _lookup<
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
-      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow');
-  late final _wire_rust_auto_opaque_borrow_and_borrow =
-      _wire_rust_auto_opaque_borrow_and_borrowPtr
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_borrow_and_borrow_twin_normal =
+      _wire_rust_auto_opaque_borrow_and_borrow_twin_normalPtr
           .asFunction<void Function(int, int, int)>();
 
-  void wire_rust_auto_opaque_borrow_and_mut_borrow(
+  void wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal(
     int port_,
     int borrow,
     int mut_borrow,
   ) {
-    return _wire_rust_auto_opaque_borrow_and_mut_borrow(
+    return _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal(
       port_,
       borrow,
       mut_borrow,
     );
   }
 
-  late final _wire_rust_auto_opaque_borrow_and_mut_borrowPtr = _lookup<
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.UintPtr)>>(
-      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow');
-  late final _wire_rust_auto_opaque_borrow_and_mut_borrow =
-      _wire_rust_auto_opaque_borrow_and_mut_borrowPtr
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal =
+      _wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normalPtr
           .asFunction<void Function(int, int, int)>();
 
   void wire_rust_auto_opaque_callable_arg_twin_normal(

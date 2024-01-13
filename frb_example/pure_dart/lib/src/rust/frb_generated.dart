@@ -6083,12 +6083,12 @@ abstract class RustLibApi extends BaseApi {
       required int expect,
       dynamic hint});
 
-  Future<int> rustAutoOpaqueBorrowAndBorrow(
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal(
       {required NonCloneSimpleTwinNormal a,
       required NonCloneSimpleTwinNormal b,
       dynamic hint});
 
-  Future<int> rustAutoOpaqueBorrowAndMutBorrow(
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
       {required NonCloneSimpleTwinNormal borrow,
       required NonCloneSimpleTwinNormal mutBorrow,
       dynamic hint});
@@ -60840,7 +60840,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> rustAutoOpaqueBorrowAndBorrow(
+  Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal(
       {required NonCloneSimpleTwinNormal a,
       required NonCloneSimpleTwinNormal b,
       dynamic hint}) {
@@ -60852,27 +60852,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 =
             cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
                 b);
-        return wire.wire_rust_auto_opaque_borrow_and_borrow(port_, arg0, arg1);
+        return wire.wire_rust_auto_opaque_borrow_and_borrow_twin_normal(
+            port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kRustAutoOpaqueBorrowAndBorrowConstMeta,
+      constMeta: kRustAutoOpaqueBorrowAndBorrowTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowConstMeta =>
+  TaskConstMeta get kRustAutoOpaqueBorrowAndBorrowTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "rust_auto_opaque_borrow_and_borrow",
+        debugName: "rust_auto_opaque_borrow_and_borrow_twin_normal",
         argNames: ["a", "b"],
       );
 
   @override
-  Future<int> rustAutoOpaqueBorrowAndMutBorrow(
+  Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
       {required NonCloneSimpleTwinNormal borrow,
       required NonCloneSimpleTwinNormal mutBorrow,
       dynamic hint}) {
@@ -60884,23 +60885,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 =
             cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
                 mutBorrow);
-        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow(
+        return wire.wire_rust_auto_opaque_borrow_and_mut_borrow_twin_normal(
             port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kRustAutoOpaqueBorrowAndMutBorrowConstMeta,
+      constMeta: kRustAutoOpaqueBorrowAndMutBorrowTwinNormalConstMeta,
       argValues: [borrow, mutBorrow],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowConstMeta =>
+  TaskConstMeta get kRustAutoOpaqueBorrowAndMutBorrowTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "rust_auto_opaque_borrow_and_mut_borrow",
+        debugName: "rust_auto_opaque_borrow_and_mut_borrow_twin_normal",
         argNames: ["borrow", "mutBorrow"],
       );
 
