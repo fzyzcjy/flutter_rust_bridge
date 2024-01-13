@@ -170,4 +170,14 @@ final kBasicTypes = [
     primitiveListName: 'TODO',
     interestRawValues: ['""', '"hello"', '"😂"'],
   ),
+  const BasicTypeInfo(
+    name: 'Vec<u8>',
+    dartTypeName: 'Uint8List',
+    primitiveListName: 'TODO',
+    interestRawValues: [
+      'Uint8List.fromList([])',
+      'Uint8List.fromList([255, 0])',
+      'Uint8List.fromList([10, 20, 30, 40])'
+    ],
+  ),
 ];
