@@ -61,20 +61,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Uint64List.fromList([0]),
       Uint64List.fromList([9007199254740992])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeIsizeTwinSse, [
-      null.fromList([]),
-      null.fromList([0]),
-      null.fromList([-2147483648]),
-      null.fromList([2147483647]),
-      null.fromList([-9007199254740992]),
-      null.fromList([9007199254740992])
-    ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeUsizeTwinSse, [
-      null.fromList([]),
-      null.fromList([0]),
-      null.fromList([4294967295]),
-      null.fromList([9007199254740992])
-    ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeF32TwinSse, [
       Float32List.fromList([]),
       Float32List.fromList([0]),
@@ -97,16 +83,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
       null.fromList([""]),
       null.fromList(["hello"]),
       null.fromList(["😂"])
-    ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeBytesTwinSse, [
-      null.fromList([]),
-      null.fromList([Uint8List.fromList([])]),
-      null.fromList([
-        Uint8List.fromList([255, 0])
-      ]),
-      null.fromList([
-        Uint8List.fromList([10, 20, 30, 40])
-      ])
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse, [

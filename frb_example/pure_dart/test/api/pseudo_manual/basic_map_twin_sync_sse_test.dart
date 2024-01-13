@@ -16,51 +16,114 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('basic_map', () {
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeI8TwinSyncSse, [0, -128, 127]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeI16TwinSyncSse, [0, -32768, 32767]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeI32TwinSyncSse, [0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeI64TwinSyncSse,
-        [0, -9007199254740992, 9007199254740992]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeU8TwinSyncSse, [0, 255]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeU16TwinSyncSse, [0, 65535]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeU32TwinSyncSse, [0, 4294967295]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeU64TwinSyncSse, [0, 9007199254740992]);
-    addTestsIdentityFunctionCall(exampleBasicMapTypeIsizeTwinSyncSse,
-        [0, -2147483648, 2147483647, -9007199254740992, 9007199254740992]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeUsizeTwinSyncSse, [0, 4294967295, 9007199254740992]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeF32TwinSyncSse, [0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeF64TwinSyncSse, [0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeBoolTwinSyncSse, [false, true]);
-    addTestsIdentityFunctionCall(
-        exampleBasicMapTypeStringTwinSyncSse, ["", "hello", "😂"]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeI8TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: -128},
+      {42: 127}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeI16TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: -32768},
+      {42: 32767}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeI32TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: -2147483648},
+      {42: 2147483647}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeI64TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: -9007199254740992},
+      {42: 9007199254740992}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeU8TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: 255}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeU16TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: 65535}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeU32TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: 4294967295}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeU64TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: 9007199254740992}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeIsizeTwinSyncSse, [
+      {},
+      {42: 0},
+      {42: -2147483648},
+      {42: 2147483647},
+      {42: -9007199254740992},
+      {42: 9007199254740992}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeUsizeTwinSyncSse, [
+      {},
+      {42: 0},
+      {42: 4294967295},
+      {42: 9007199254740992}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeF32TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: -42.5},
+      {42: 123456}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeF64TwinSyncSse, [
+      {},
+      {42: 0},
+      {42: -42.5},
+      {42: 123456}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeBoolTwinSyncSse, [
+      {},
+      {42: false},
+      {42: true}
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicMapTypeStringTwinSyncSse, [
+      {},
+      {42: ""},
+      {42: "hello"},
+      {42: "😂"}
+    ]);
     addTestsIdentityFunctionCall(exampleBasicMapTypeBytesTwinSyncSse, [
-      Uint8List.fromList([]),
-      Uint8List.fromList([255, 0]),
-      Uint8List.fromList([10, 20, 30, 40])
+      {},
+      {42: Uint8List.fromList([])},
+      {
+        42: Uint8List.fromList([255, 0])
+      },
+      {
+        42: Uint8List.fromList([10, 20, 30, 40])
+      }
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse, [
-      BasicPrimitiveEnumTwinSyncSse.apple,
-      BasicPrimitiveEnumTwinSyncSse.orange
+      {},
+      {42: BasicPrimitiveEnumTwinSyncSse.apple},
+      {42: BasicPrimitiveEnumTwinSyncSse.orange}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeBasicGeneralEnumTwinSyncSseTwinSyncSse, [
-      BasicGeneralEnumTwinSyncSse.apple(field: "one"),
-      BasicGeneralEnumTwinSyncSse.orange()
+      {},
+      {42: BasicGeneralEnumTwinSyncSse.apple(field: "one")},
+      {42: BasicGeneralEnumTwinSyncSse.orange()}
     ]);
     addTestsIdentityFunctionCall(
         exampleBasicMapTypeBasicStructTwinSyncSseTwinSyncSse, [
-      BasicStructTwinSyncSse(apple: null, orange: null),
-      BasicStructTwinSyncSse(apple: "one", orange: 42)
+      {},
+      {42: BasicStructTwinSyncSse(apple: null, orange: null)},
+      {42: BasicStructTwinSyncSse(apple: "one", orange: 42)}
     ]);
   });
 }
