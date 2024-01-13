@@ -9,15 +9,21 @@ Map<String, String> generateRustDirectSources() {
         _generateBasicRelated((x) => 'Option<$x>', '_optional'),
     'pseudo_manual/basic_list.rs':
         _generateBasicRelated((x) => 'Vec<$x>', '_list'),
-    'pseudo_manual/basic_map.rs':
-        _generateBasicRelated((x) => 'HashMap<i32, $x>', '_map'),
+    'pseudo_manual/basic_map.rs': _generateBasicRelated(
+        (x) => 'HashMap<i32, $x>', '_map',
+        extraBody: 'use std::collections::HashMap;\n'),
     'pseudo_manual/benchmark_api.rs': generateBenchmark(),
   };
 }
 
 String _generateBasicRelated(
-    String Function(String) rustTypeNameWrapper, String postfix) {
+  String Function(String) rustTypeNameWrapper,
+  String postfix, {
+  String extraBody = '',
+}) {
   final builder = RustFileBuilder();
+  builder.body += extraBody;
+
   if (postfix.isEmpty) {
     builder.body += '''
 pub enum BasicPrimitiveEnumTwinNormal {

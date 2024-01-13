@@ -7,6 +7,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 pub use super::basic_twin_rust_async::*;
+use std::collections::HashMap;
 pub async fn example_basic_map_type_i8_twin_rust_async(arg: HashMap<i32, i8>) -> HashMap<i32, i8> {
     arg
 }
