@@ -56,6 +56,7 @@ impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
 }
 
 impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
+    #[cfg(feature = "thread-pool")]
     fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,

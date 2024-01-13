@@ -22,6 +22,7 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
+    #[cfg(feature = "thread-pool")]
     fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn>(
         &self,
         task_info: TaskInfo,
