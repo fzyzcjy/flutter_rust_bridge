@@ -30,6 +30,7 @@ Map<String, String> generateDartDirectSources() {
       import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
       """,
       valueType: (ty) => null,
+      enable: (ty) => ty.enableList,
     ),
     'pseudo_manual/basic_map_test.dart': _generateBasicRelated(
       postfix: '_map',
@@ -45,6 +46,7 @@ String _generateBasicRelated({
   required List<String> Function(BasicTypeInfo) values,
   required String? Function(BasicTypeInfo) valueType,
   String imports = '',
+  bool Function(BasicTypeInfo)? enable,
 }) {
   final builder = DartFileBuilder(importName: 'basic$postfix');
   builder.imports += '''
@@ -52,11 +54,13 @@ String _generateBasicRelated({
   $imports
   ''';
   for (final ty in kBasicTypes) {
-    builder.addTestsIdentityFunctionCall(
-      'exampleBasic${ReCase(postfix).pascalCase}Type${ReCase(ty.name).pascalCase}TwinNormal',
-      values(ty),
-      valueType: valueType(ty),
-    );
+    if (enable?.call(ty) ?? true) {
+      builder.addTestsIdentityFunctionCall(
+        'exampleBasic${ReCase(postfix).pascalCase}Type${ReCase(ty.name).pascalCase}TwinNormal',
+        values(ty),
+        valueType: valueType(ty),
+      );
+    }
   }
   return builder.toString();
 }

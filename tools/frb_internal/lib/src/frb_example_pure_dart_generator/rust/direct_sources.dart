@@ -8,8 +8,10 @@ Map<String, String> generateRustDirectSources() {
     'pseudo_manual/basic_optional.rs':
         _generateBasicRelated((x) => 'Option<$x>', '_optional'),
     'pseudo_manual/basic_list.rs': _generateBasicRelated(
-        (x) => 'Vec<$x>', '_list',
-        enable: (ty) => ty.enableList),
+      (x) => 'Vec<$x>',
+      '_list',
+      enable: (ty) => ty.enableList,
+    ),
     'pseudo_manual/basic_map.rs': _generateBasicRelated(
         (x) => 'HashMap<i32, $x>', '_map',
         extraBody: 'use std::collections::HashMap;\n'),
