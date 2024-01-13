@@ -18,90 +18,94 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('basic_list', () {
-    addTestsIdentityFunctionCall(exampleBasicListTypeI8TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeI8TwinSse, <Int8List>[
       Int8List.fromList([]),
       Int8List.fromList([0]),
       Int8List.fromList([-128]),
       Int8List.fromList([127])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeI16TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeI16TwinSse, <Int16List>[
       Int16List.fromList([]),
       Int16List.fromList([0]),
       Int16List.fromList([-32768]),
       Int16List.fromList([32767])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeI32TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeI32TwinSse, <Int32List>[
       Int32List.fromList([]),
       Int32List.fromList([0]),
       Int32List.fromList([-2147483648]),
       Int32List.fromList([2147483647])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeI64TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeI64TwinSse, <Int64List>[
       Int64List.fromList([]),
       Int64List.fromList([0]),
       Int64List.fromList([-9007199254740992]),
       Int64List.fromList([9007199254740992])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeU8TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeU8TwinSse, <Uint8List>[
       Uint8List.fromList([]),
       Uint8List.fromList([0]),
       Uint8List.fromList([255])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeU16TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeU16TwinSse, <Uint16List>[
       Uint16List.fromList([]),
       Uint16List.fromList([0]),
       Uint16List.fromList([65535])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeU32TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeU32TwinSse, <Uint32List>[
       Uint32List.fromList([]),
       Uint32List.fromList([0]),
       Uint32List.fromList([4294967295])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeU64TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeU64TwinSse, <Uint64List>[
       Uint64List.fromList([]),
       Uint64List.fromList([0]),
       Uint64List.fromList([9007199254740992])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeF32TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeF32TwinSse, <Float32List>[
       Float32List.fromList([]),
       Float32List.fromList([0]),
       Float32List.fromList([-42.5]),
       Float32List.fromList([123456])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeF64TwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeF64TwinSse, <Float64List>[
       Float64List.fromList([]),
       Float64List.fromList([0]),
       Float64List.fromList([-42.5]),
       Float64List.fromList([123456])
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeBoolTwinSse, [
+    addTestsIdentityFunctionCall(exampleBasicListTypeBoolTwinSse, <List<bool>>[
       <bool>[],
       <bool>[false],
       <bool>[true]
     ]);
-    addTestsIdentityFunctionCall(exampleBasicListTypeStringTwinSse, [
+    addTestsIdentityFunctionCall(
+        exampleBasicListTypeStringTwinSse, <List<String>>[
       [],
       [""],
       ["hello"],
       ["😂"]
     ]);
     addTestsIdentityFunctionCall(
-        exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse, [
-      [],
-      [BasicPrimitiveEnumTwinSse.apple],
-      [BasicPrimitiveEnumTwinSse.orange]
-    ]);
+        exampleBasicListTypeBasicPrimitiveEnumTwinSseTwinSse,
+        <List<BasicPrimitiveEnumTwinSse>>[
+          [],
+          [BasicPrimitiveEnumTwinSse.apple],
+          [BasicPrimitiveEnumTwinSse.orange]
+        ]);
     addTestsIdentityFunctionCall(
-        exampleBasicListTypeBasicGeneralEnumTwinSseTwinSse, [
-      [],
-      [BasicGeneralEnumTwinSse.apple(field: "one")],
-      [BasicGeneralEnumTwinSse.orange()]
-    ]);
+        exampleBasicListTypeBasicGeneralEnumTwinSseTwinSse,
+        <List<BasicGeneralEnumTwinSse>>[
+          [],
+          [BasicGeneralEnumTwinSse.apple(field: "one")],
+          [BasicGeneralEnumTwinSse.orange()]
+        ]);
     addTestsIdentityFunctionCall(
-        exampleBasicListTypeBasicStructTwinSseTwinSse, [
-      [],
-      [BasicStructTwinSse(apple: null, orange: null)],
-      [BasicStructTwinSse(apple: "one", orange: 42)]
-    ]);
+        exampleBasicListTypeBasicStructTwinSseTwinSse,
+        <List<BasicStructTwinSse>>[
+          [],
+          [BasicStructTwinSse(apple: null, orange: null)],
+          [BasicStructTwinSse(apple: "one", orange: 42)]
+        ]);
   });
 }
