@@ -19,6 +19,7 @@ pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
+#[cfg(feature = "rust-async")]
 pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
