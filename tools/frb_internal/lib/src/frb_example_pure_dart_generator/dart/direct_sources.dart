@@ -8,6 +8,7 @@ Map<String, String> generateDartDirectSources() {
     'pseudo_manual/basic_test.dart': _generateBasic(),
     'pseudo_manual/optional_basic_test.dart': _generateOptionalBasic(),
     'pseudo_manual/basic_list_test.dart': _generateBasicList(),
+    'pseudo_manual/basic_map_test.dart': _generateBasicMap(),
     '../../benchmark/src/generated.dart': generateBenchmark(),
   };
 }
@@ -42,6 +43,10 @@ String _generateBasicList() {
         'exampleBasicListType${ReCase(ty.name).pascalCase}TwinNormal', values);
   }
   return builder.toString();
+}
+
+String _generateBasicMap() {
+  throw UnimplementedError();
 }
 
 String _generateOptionalBasic() {
