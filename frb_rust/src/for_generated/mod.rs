@@ -4,7 +4,7 @@
 mod boilerplate;
 mod cast;
 #[cfg(feature = "rust-async")]
-mod misc;
+mod misc_rust_async;
 mod pointer;
 
 pub use crate::codec::dco::{transform_result_dco, Rust2DartMessageDco};
@@ -43,7 +43,7 @@ pub use futures;
 pub use js_sys;
 pub use lazy_static::lazy_static;
 #[cfg(feature = "rust-async")]
-pub use misc::*;
+pub use misc_rust_async::*;
 pub use pointer::*;
 #[cfg(wasm)]
 pub use wasm_bindgen;
