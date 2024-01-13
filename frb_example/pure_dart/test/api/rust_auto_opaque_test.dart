@@ -248,4 +248,23 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinNormal(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(arg: obj));
   });
+
+  group('borrow + mut borrow', () {
+    test('when same object', () async {
+      final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      await expectRustPanic(
+        () async =>
+            rustAutoOpaqueBorrowAndMutBorrow(borrow: obj, mutBorrow: obj),
+        'TwinNormal',
+        messageOnNative: 'TODO',
+      );
+    });
+
+    test('when different object', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 200);
+      expect(
+          await rustAutoOpaqueBorrowAndMutBorrow(borrow: a, mutBorrow: b), 300);
+    });
+  });
 }
