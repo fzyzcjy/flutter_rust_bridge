@@ -1,7 +1,7 @@
 class BasicTypeInfo {
   final String rustTypeName;
   final String dartTypeName;
-  final String primitiveListName;
+  final String? primitiveListName;
   final List<String> interestRawValues;
   final String Function(BasicTypeInfo, String) primitiveWrapper;
   final String Function(BasicTypeInfo, String) primitiveListWrapper;
@@ -9,7 +9,7 @@ class BasicTypeInfo {
   const BasicTypeInfo({
     required this.rustTypeName,
     required this.dartTypeName,
-    required this.primitiveListName,
+    this.primitiveListName,
     required this.interestRawValues,
     this.primitiveWrapper = _defaultPrimitiveWrapper,
     this.primitiveListWrapper = _defaultPrimitiveListWrapper,
@@ -129,13 +129,11 @@ final kBasicTypes = [
   const BasicTypeInfo(
     rustTypeName: 'String',
     dartTypeName: 'String',
-    primitiveListName: 'TODO',
     interestRawValues: ['""', '"hello"', '"😂"'],
   ),
   const BasicTypeInfo(
     rustTypeName: 'Bytes',
     dartTypeName: 'Uint8List',
-    primitiveListName: 'TODO',
     interestRawValues: [
       'Uint8List.fromList([])',
       'Uint8List.fromList([255, 0])',
@@ -143,21 +141,27 @@ final kBasicTypes = [
     ],
   ),
   const BasicTypeInfo(
-    rustTypeName: 'PrimitiveEnum',
-    dartTypeName: 'TODO',
-    primitiveListName: 'TODO',
-    interestRawValues: ['TODO'],
+    rustTypeName: 'BasicPrimitiveEnum',
+    dartTypeName: 'BasicPrimitiveEnum',
+    interestRawValues: [
+      'BasicPrimitiveEnum.apple',
+      'BasicPrimitiveEnum.orange',
+    ],
   ),
   const BasicTypeInfo(
-    rustTypeName: 'GeneralEnum',
-    dartTypeName: 'TODO',
-    primitiveListName: 'TODO',
-    interestRawValues: ['TODO'],
+    rustTypeName: 'BasicGeneralEnum',
+    dartTypeName: 'BasicGeneralEnum',
+    interestRawValues: [
+      'BasicGeneralEnum.apple(field: "one")',
+      'BasicGeneralEnum.orange()',
+    ],
   ),
   const BasicTypeInfo(
-    rustTypeName: 'MyStruct',
-    dartTypeName: 'TODO',
-    primitiveListName: 'TODO',
-    interestRawValues: ['TODO'],
+    rustTypeName: 'BasicStruct',
+    dartTypeName: 'BasicStruct',
+    interestRawValues: [
+      'BasicStruct(apple: null, orange: null)',
+      'BasicStruct(apple: "one", orange: 42)',
+    ],
   ),
 ];
