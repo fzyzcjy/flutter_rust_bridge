@@ -5,55 +5,54 @@ import 'package:recase/recase.dart';
 
 Map<String, String> generateDartDirectSources() {
   return {
-    'pseudo_manual/primitive_test.dart': _generatePrimitive(),
-    'pseudo_manual/optional_primitive_test.dart': _generateOptionalPrimitive(),
-    'pseudo_manual/primitive_list_test.dart': _generatePrimitiveList(),
+    'pseudo_manual/basic_test.dart': _generateBasic(),
+    'pseudo_manual/optional_basic_test.dart': _generateOptionalBasic(),
+    'pseudo_manual/basic_list_test.dart': _generateBasicList(),
     '../../benchmark/src/generated.dart': generateBenchmark(),
   };
 }
 
-String _generatePrimitive() {
-  final builder = DartFileBuilder(importName: 'primitive');
-  for (final ty in kPrimitiveTypes) {
+String _generateBasic() {
+  final builder = DartFileBuilder(importName: 'basic');
+  for (final ty in kBasicTypes) {
     final values = ty.interestRawValues
         .map((value) => ty.primitiveWrapper(ty, value))
         .toList();
     builder.addTestsIdentityFunctionCall(
-        'examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal', values,
+        'exampleBasicType${ReCase(ty.name).pascalCase}TwinNormal', values,
         valueType: ty.dartTypeName);
   }
   return builder.toString();
 }
 
-String _generatePrimitiveList() {
-  final builder = DartFileBuilder(importName: 'primitive_list');
+String _generateBasicList() {
+  final builder = DartFileBuilder(importName: 'basic_list');
 
   builder.imports += """
   import 'dart:typed_data';
   import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
   """;
 
-  for (final ty in kPrimitiveTypes) {
+  for (final ty in kBasicTypes) {
     final values = [
       ty.primitiveListWrapper(ty, ''),
       ...ty.interestRawValues.map((x) => ty.primitiveListWrapper(ty, x)),
     ];
     builder.addTestsIdentityFunctionCall(
-        'examplePrimitiveListType${ReCase(ty.name).pascalCase}TwinNormal',
-        values);
+        'exampleBasicListType${ReCase(ty.name).pascalCase}TwinNormal', values);
   }
   return builder.toString();
 }
 
-String _generateOptionalPrimitive() {
-  final builder = DartFileBuilder(importName: 'optional_primitive');
-  for (final ty in kPrimitiveTypes) {
+String _generateOptionalBasic() {
+  final builder = DartFileBuilder(importName: 'optional_basic');
+  for (final ty in kBasicTypes) {
     final values = [
       "null",
       ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
     ];
     builder.addTestsIdentityFunctionCall(
-        'exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}TwinNormal',
+        'exampleOptionalBasicType${ReCase(ty.name).pascalCase}TwinNormal',
         values,
         valueType: '${ty.dartTypeName}?');
   }
