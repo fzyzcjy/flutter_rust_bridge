@@ -17,11 +17,13 @@ pub(super) fn generate(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     if !config.enable {
-        return Ok(Acc::new(|target| match target {
-            TargetOrCommon::Io | TargetOrCommon::Web => {
-                generate_disabled_text(&config.dart_output_class_name_pack).into()
-            }
-            TargetOrCommon::Common => "".into(),
+        return Ok(Acc::new(|target| {
+            vec![match target {
+                TargetOrCommon::Io | TargetOrCommon::Web => {
+                    generate_disabled_text(&config.dart_output_class_name_pack).into()
+                }
+                TargetOrCommon::Common => "".into(),
+            }]
         }));
     }
 
