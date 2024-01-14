@@ -34,10 +34,7 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
         "api_impl_normal_functions",
         &Acc::new_common(spec.misc.api_impl_normal_functions.clone()),
     );
-    add(
-        "wire_delegate_functions",
-        &spec.misc.wire_delegate_functions,
-    );
+    // add("wire_delegate_functions", &spec.misc.wire_delegate_functions);
     add("extra_functions", &spec.misc.extra_functions);
     add("wire_class", &spec.misc.wire_class);
     add("rust2dart", &spec.rust2dart.inner);

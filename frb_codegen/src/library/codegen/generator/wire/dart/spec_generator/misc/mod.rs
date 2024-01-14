@@ -31,7 +31,6 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) wire_class: Acc<Vec<WireDartOutputCode>>,
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
-    pub(crate) wire_delegate_functions: Acc<Vec<WireDartOutputCode>>,
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
 }
 
@@ -54,9 +53,9 @@ pub(crate) fn generate(
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
-        wire_delegate_functions: (rust_extern_funcs.iter())
-            .map(|f| generate_wire_delegate_functions(f))
-            .collect(),
+        // wire_delegate_functions: (rust_extern_funcs.iter())
+        //     .map(|f| generate_wire_delegate_functions(f))
+        //     .collect(),
         extra_functions: (cache.distinct_types.iter())
             .flat_map(|ty| WireDartGenerator::new(ty.clone(), context).generate_extra_functions())
             .collect(),
@@ -219,23 +218,23 @@ fn generate_import_dart_api_layer(
         .join(""))
 }
 
-fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
-    let wire_func_name = func.func_name("");
-    let return_type = func.return_type.as_deref().unwrap_or("void");
-    let signature_args = (func.params.iter())
-        .map(|param| format!("{} {}", param.dart_type, param.name,))
-        .join(", ");
-    let body_args = (func.params.iter())
-        .map(|param| param.name.to_owned())
-        .join(", ");
-
-    let code = vec![WireDartOutputCode {
-        api_impl_class_methods: vec![DartApiImplClassMethod {
-            signature: format!("{return_type} {wire_func_name}({signature_args})"),
-            body: Some(format!("return wire.{wire_func_name}({body_args});")),
-        }],
-        ..Default::default()
-    }];
-
-    Acc::new_target(code, func.target.into())
-}
+// fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
+//     let wire_func_name = func.func_name("");
+//     let return_type = func.return_type.as_deref().unwrap_or("void");
+//     let signature_args = (func.params.iter())
+//         .map(|param| format!("{} {}", param.dart_type, param.name,))
+//         .join(", ");
+//     let body_args = (func.params.iter())
+//         .map(|param| param.name.to_owned())
+//         .join(", ");
+//
+//     let code = vec![WireDartOutputCode {
+//         api_impl_class_methods: vec![DartApiImplClassMethod {
+//             signature: format!("{return_type} {wire_func_name}({signature_args})"),
+//             body: Some(format!("return wire.{wire_func_name}({body_args});")),
+//         }],
+//         ..Default::default()
+//     }];
+//
+//     Acc::new_target(code, func.target.into())
+// }
