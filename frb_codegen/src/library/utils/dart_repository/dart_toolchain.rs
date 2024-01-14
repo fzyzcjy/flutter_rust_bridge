@@ -1,4 +1,5 @@
 use crate::commands::command_runner::call_shell;
+use crate::library::commands::command_runner::ShellMode;
 use crate::{command_args, command_run};
 use std::fmt::Display;
 use std::path::PathBuf;
@@ -41,12 +42,12 @@ impl DartToolchain {
     }
 
     #[allow(clippy::vec_init_then_push)]
-    pub(crate) fn available(&self) -> bool {
+    pub(crate) fn available(&self, shell_mode: Option<ShellMode>) -> bool {
         let toolchain = match self {
             DartToolchain::Dart => "dart",
             DartToolchain::Flutter => "flutter",
         };
-        command_run!(call_shell[None, None], toolchain, "--version")
+        command_run!(call_shell[shell_mode, None, None], toolchain, "--version")
             .unwrap()
             .status
             .success()

@@ -1,7 +1,7 @@
 //! Build web platform for a Flutter+Rust app
 
 use crate::command_run;
-use crate::library::commands::command_runner::{call_shell, check_exit_code};
+use crate::library::commands::command_runner::{call_shell, check_exit_code, ShellMode};
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
@@ -69,6 +69,7 @@ fn dart_run(
     current_dir: &Path,
     dart_coverage: bool,
     args: Vec<String>,
+    shell_mode: Option<ShellMode>,
 ) -> anyhow::Result<ExitStatus> {
     let handle = Command::new("dart")
         .current_dir(current_dir)
@@ -88,7 +89,7 @@ fn dart_run(
 
     if dart_coverage {
         let res = command_run!(
-            call_shell[Some(current_dir), None],
+            call_shell[shell_mode, Some(current_dir), None],
             "dart",
             "pub",
             "global",
