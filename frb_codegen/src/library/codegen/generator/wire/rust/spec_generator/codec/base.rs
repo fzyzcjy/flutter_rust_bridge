@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, CodecMode};
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::entrypoint::CstWireRustCodecEntrypoint;
@@ -7,9 +8,12 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoin
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen_codec_structs;
 use serde::Serialize;
+use strum::IntoEnumIterator;
 
 codegen_codec_structs!(WireRust);
 
