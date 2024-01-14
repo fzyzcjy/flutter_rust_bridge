@@ -130,6 +130,8 @@ macro_rules! delegate_buffer {
             }
         }
 
+        impl IntoDartExceptPrimitive for Vec<$ty> {}
+
         impl IntoDart for HashSet<$ty> {
             #[inline]
             fn into_dart(self) -> DartAbi {
