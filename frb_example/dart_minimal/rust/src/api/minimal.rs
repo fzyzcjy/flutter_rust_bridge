@@ -12,7 +12,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 // TODO temporary experiment
 pub struct MyStruct {
-    field: String,
+    pub field: String,
 }
 
 pub enum MyEnum {
