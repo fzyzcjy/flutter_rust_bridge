@@ -35,8 +35,7 @@ impl WireDartCodecEntrypointTrait<'_> for PdeWireDartCodecEntrypoint {
         };
         format!(
             "
-            final serializer = SseSerializer(generalizedFrbRustBinding);
-            {serialize_inputs}
+            final serializer = SseSerializer(generalizedFrbRustBinding);{serialize_inputs}
             return TODO_func({maybe_port}serializer);
             "
         )

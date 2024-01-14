@@ -79,7 +79,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-
         return TODO_func(port_, serializer);
       },
       codec: SseCodec(
