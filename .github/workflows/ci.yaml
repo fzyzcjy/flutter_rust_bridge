@@ -220,17 +220,18 @@ jobs:
 
   generate_run_frb_codegen_command_integrate:
     name: 'Generate :: FRB Codegen :: Command Integrate'
-    runs-on: ${{ matrix.image }}
+    runs-on: ${{ matrix.image_and_shell.image }}
     env:
       RUST_LOG: debug
 
     strategy:
       fail-fast: false
       matrix:
-        image:
-          - macos-11
-          - windows-2019
-          - ubuntu-20.04
+        image_and_shell:
+          - {image: macos-11, shell: default}
+          - {image: windows-2019, shell: default}
+          - {image: windows-2019, shell: cmd} # extra shell
+          - {image: ubuntu-20.04, shell: default}
         package:
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
@@ -255,12 +256,12 @@ jobs:
       - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
-      - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }} --shell ${{ matrix.image_and_shell.shell }} --coverage
 
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
+          name: ${{ github.job }}--${{ matrix.image_and_shell.image }}--${{ matrix.image_and_shell.shell }}--${{ matrix.package }}--coverage
           path: target/coverage
 
   generate_internal:
