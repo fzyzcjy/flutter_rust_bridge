@@ -29,6 +29,7 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) wire_class: Acc<Vec<WireDartOutputCode>>,
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
+    pub(crate) wire_delegate_functions: Acc<Vec<WireDartOutputCode>>,
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
 }
 
@@ -51,6 +52,7 @@ pub(crate) fn generate(
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
+        wire_delegate_functions: TODO,
         extra_functions: (cache.distinct_types.iter())
             .flat_map(|ty| WireDartGenerator::new(ty.clone(), context).generate_extra_functions())
             .collect(),
