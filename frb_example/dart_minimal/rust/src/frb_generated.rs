@@ -38,7 +38,7 @@ fn wire_init_app_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::PdeCodec, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "init_app",
             port: Some(port_),
@@ -56,7 +56,7 @@ fn wire_init_app_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             move |context| {
-                transform_result_pde((move || {
+                transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::init_app())
                 })())
             }
@@ -69,7 +69,7 @@ fn wire_minimal_adder_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::PdeCodec, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "minimal_adder",
             port: Some(port_),
@@ -89,7 +89,7 @@ fn wire_minimal_adder_impl(
             let api_b = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
-                transform_result_pde((move || {
+                transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
                 })())
             }
