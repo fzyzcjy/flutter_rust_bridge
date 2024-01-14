@@ -79,7 +79,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(port_, serializer);
+        pdeCallFfi(port_, serializer);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -104,7 +104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
-        return pdeCallFfi(port_, serializer);
+        pdeCallFfi(port_, serializer);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
