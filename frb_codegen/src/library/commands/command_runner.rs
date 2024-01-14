@@ -3,12 +3,11 @@ use anyhow::{bail, Context};
 use itertools::Itertools;
 use log::debug;
 use log::warn;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::process::Output;
-use strum_macros::{Display, EnumIter};
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
@@ -74,7 +73,7 @@ macro_rules! command_args {
     }};
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash)]
 pub(crate) enum ShellMode {
     Powershell,
     Cmd,

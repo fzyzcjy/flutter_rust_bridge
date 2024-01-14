@@ -17,6 +17,7 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
+use crate::library::commands::command_runner::ShellMode;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::{
     canonicalize_with_error_message, find_dart_package_dir, find_rust_crate_dir, glob_path,
@@ -85,6 +86,8 @@ impl InternalConfig {
         ];
         let controller_exclude_paths = rust_output_path.clone().into_vec();
 
+        let shell_mode: Option<ShellMode> = todo!();
+
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
                 watch: meta_config.watch,
@@ -95,6 +98,7 @@ impl InternalConfig {
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
                 deps_check: config.deps_check.unwrap_or(true),
+                shell_mode,
             },
             parser: ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.clone(),
@@ -126,6 +130,7 @@ impl InternalConfig {
                         dart_output_class_name_pack,
                         default_external_library_loader,
                         c_symbol_prefix: c_symbol_prefix.clone(),
+                        shell_mode,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
@@ -152,6 +157,7 @@ impl InternalConfig {
                 rust_crate_dir,
                 rust_output_path,
                 c_output_path,
+                shell_mode,
             },
             dumper: DumperInternalConfig {
                 dump_contents: parse_dump_contents(config),

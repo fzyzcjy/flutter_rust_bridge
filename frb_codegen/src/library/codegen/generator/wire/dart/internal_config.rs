@@ -1,4 +1,5 @@
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
+use crate::library::commands::command_runner::ShellMode;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
@@ -14,6 +15,7 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub default_external_library_loader:
         GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
     pub(crate) c_symbol_prefix: String,
+    pub shell_mode: Option<ShellMode>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

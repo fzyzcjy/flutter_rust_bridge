@@ -1,5 +1,6 @@
 use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
+use crate::library::commands::command_runner::ShellMode;
 use crate::library::commands::flutter::flutter_create;
 use anyhow::ensure;
 use log::{debug, info};
@@ -12,6 +13,7 @@ pub struct CreateConfig {
     pub enable_local_dependency: bool,
     pub rust_crate_name: String,
     pub rust_crate_dir: String,
+    pub shell_mode: Option<ShellMode>,
 }
 
 /// Create a new Flutter + Rust project.
@@ -31,7 +33,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name, &config.org)?;
+    flutter_create(&config.name, &config.org, config.shell_mode)?;
 
     env::set_current_dir(&dart_root)?;
 
@@ -43,6 +45,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         enable_local_dependency: config.enable_local_dependency,
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
+        shell_mode: config.shell_mode,
     })
 }
 

@@ -1,3 +1,4 @@
+use crate::library::commands::command_runner::ShellMode;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
@@ -5,4 +6,5 @@ use std::path::PathBuf;
 pub(crate) struct PreparerInternalConfig {
     pub dart_root: PathBuf,
     pub deps_check: bool,
+    pub shell_mode: Option<ShellMode>,
 }

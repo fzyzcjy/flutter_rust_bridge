@@ -18,10 +18,11 @@ pub fn build(
     dart_root: Option<PathBuf>,
     dart_coverage: bool,
     args: Vec<String>,
+    shell_mode: Option<ShellMode>,
 ) -> anyhow::Result<()> {
     let dart_root = parse_dart_root(dart_root)?;
     debug!("build dart_root={dart_root:?} args={args:?}");
-    execute_dart_command(&dart_root, &args, dart_coverage)
+    execute_dart_command(&dart_root, &args, dart_coverage, shell_mode)
 }
 
 fn parse_dart_root(dart_root: Option<PathBuf>) -> anyhow::Result<PathBuf> {
@@ -37,6 +38,7 @@ fn execute_dart_command(
     dart_root: &Path,
     args: &[String],
     dart_coverage: bool,
+    shell_mode: Option<ShellMode>,
 ) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
 
@@ -50,7 +52,7 @@ fn execute_dart_command(
         ans.extend(args.to_owned());
         ans
     };
-    let status = dart_run(&repo, dart_root, dart_coverage, dart_run_args)?;
+    let status = dart_run(&repo, dart_root, dart_coverage, dart_run_args, shell_mode)?;
 
     if !status.success() {
         // This will stop the whole generator and tell the users, so we do not care about testing it

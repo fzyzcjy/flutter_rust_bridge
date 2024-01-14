@@ -1,4 +1,5 @@
 use crate::integration::utils::extract_dir_and_modify;
+use crate::library::commands::command_runner::ShellMode;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
 use crate::library::commands::format_dart::format_dart;
 use crate::utils::dart_repository::get_dart_package_name;
@@ -19,6 +20,7 @@ pub struct IntegrateConfig {
     pub enable_local_dependency: bool,
     pub rust_crate_name: String,
     pub rust_crate_dir: String,
+    pub shell_mode: Option<ShellMode>,
 }
 
 /// Integrate Rust into existing Flutter project.
@@ -51,11 +53,12 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     pub_add_dependencies(
         config.enable_integration_test,
         config.enable_local_dependency,
+        config.shell_mode,
     )?;
 
-    setup_cargokit_dependencies(&dart_root)?;
+    setup_cargokit_dependencies(&dart_root, config.shell_mode)?;
 
-    format_dart(&[dart_root], 80)?;
+    format_dart(&[dart_root], 80, config.shell_mode)?;
 
     Ok(())
 }
@@ -73,13 +76,13 @@ fn modify_permissions(dart_root: &Path) -> Result<()> {
     Ok(())
 }
 
-fn setup_cargokit_dependencies(dart_root: &Path) -> Result<()> {
+fn setup_cargokit_dependencies(dart_root: &Path, shell_mode: Option<ShellMode>) -> Result<()> {
     let build_tool_dir = dart_root
         .join("rust_builder")
         .join("cargokit")
         .join("build_tool");
 
-    flutter_pub_get(&build_tool_dir)
+    flutter_pub_get(&build_tool_dir, shell_mode)
 }
 
 #[cfg(not(windows))]
@@ -235,27 +238,37 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 fn pub_add_dependencies(
     enable_integration_test: bool,
     enable_local_dependency: bool,
+    shell_mode: Option<ShellMode>,
 ) -> Result<()> {
     // frb-coverage:ignore-end
-    flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
+    flutter_pub_add(
+        &["rust_builder".into(), "--path=rust_builder".into()],
+        shell_mode,
+    )?;
 
-    flutter_pub_add(&if enable_local_dependency {
-        vec![
-            "flutter_rust_bridge".to_owned(),
-            "--path=../../frb_dart".to_owned(),
-        ]
-    } else {
-        vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
-    })?;
+    flutter_pub_add(
+        &if enable_local_dependency {
+            vec![
+                "flutter_rust_bridge".to_owned(),
+                "--path=../../frb_dart".to_owned(),
+            ]
+        } else {
+            vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
+        },
+        shell_mode,
+    )?;
 
     // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
-    flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
+    flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()], shell_mode)?;
     if enable_integration_test {
-        flutter_pub_add(&[
-            "integration_test".into(),
-            "--dev".into(),
-            "--sdk=flutter".into(),
-        ])?;
+        flutter_pub_add(
+            &[
+                "integration_test".into(),
+                "--dev".into(),
+                "--sdk=flutter".into(),
+            ],
+            shell_mode,
+        )?;
         // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
         // frb-coverage:ignore-start
     }

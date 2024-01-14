@@ -128,6 +128,7 @@ fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
             ..Default::default()
         },
         &repo_base_dir.join("frb_dart"),
+        None,
     )?;
 
     fs::write(

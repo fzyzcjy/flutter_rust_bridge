@@ -40,7 +40,7 @@ pub(super) fn polish(
         "execute_dart_format",
     );
     warn_if_fail(
-        execute_rust_format(output_paths, progress_bar_pack),
+        execute_rust_format(output_paths, progress_bar_pack, config),
         "execute_rust_format",
     );
 
@@ -90,7 +90,7 @@ fn execute_build_runner(
     }
 
     let _pb = progress_bar_pack.polish_dart_build_runner.start();
-    dart_build_runner(&config.dart_root)
+    dart_build_runner(&config.dart_root, config.shell_mode)
 }
 
 fn execute_dart_format(
@@ -102,15 +102,20 @@ fn execute_dart_format(
     format_dart(
         &filter_paths_by_extension(output_paths, "dart"),
         config.dart_format_line_length,
+        config.shell_mode,
     )
 }
 
 fn execute_rust_format(
     output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
+    config: &PolisherInternalConfig,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_rust_formatter.start();
-    format_rust(&filter_paths_by_extension(output_paths, "rs"))
+    format_rust(
+        &filter_paths_by_extension(output_paths, "rs"),
+        config.shell_mode,
+    )
 }
 
 fn filter_paths_by_extension(paths: &[PathBuf], extension: &str) -> Vec<PathBuf> {

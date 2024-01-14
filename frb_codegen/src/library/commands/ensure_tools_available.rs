@@ -1,3 +1,4 @@
+use crate::library::commands::command_runner::ShellMode;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
@@ -11,9 +12,13 @@ lazy_static! {
         VersionReq::parse(">= 8.0.0, < 10.0.0").unwrap();
 }
 
-pub fn ensure_tools_available(dart_root: &Path, enable_deps_check: bool) -> anyhow::Result<()> {
+pub fn ensure_tools_available(
+    dart_root: &Path,
+    enable_deps_check: bool,
+    shell_mode: Option<ShellMode>,
+) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
-    if !repo.toolchain_available() {
+    if !repo.toolchain_available(shell_mode) {
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
         bail!("Dart/Flutter toolchain not available");

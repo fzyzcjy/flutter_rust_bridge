@@ -34,6 +34,7 @@ fn execute_ffigen(
         function_rename: Some(
             &[(format!("{}(.*)", config.c_symbol_prefix), "$1".to_owned())].into(),
         ),
+        shell_mode: config.shell_mode,
     })
 }
 

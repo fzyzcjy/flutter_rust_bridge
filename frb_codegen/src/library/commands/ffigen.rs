@@ -21,6 +21,7 @@ pub(crate) struct FfigenArgs<'a> {
     pub llvm_compiler_opts: &'a str,
     pub dart_root: &'a Path,
     pub function_rename: Option<&'a HashMap<String, String>>,
+    pub shell_mode: Option<ShellMode>,
 }
 
 pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
@@ -36,6 +37,7 @@ pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
         llvm_compiler_opts: args.llvm_compiler_opts,
         dart_root: args.dart_root,
         function_rename: args.function_rename,
+        shell_mode: args.shell_mode,
     })?;
     let output_text = fs::read_to_string(temp_dart_file.path())?;
 
@@ -54,6 +56,7 @@ struct FfigenToFileArgs<'a> {
     llvm_compiler_opts: &'a str,
     dart_root: &'a Path,
     function_rename: Option<&'a HashMap<String, String>>,
+    shell_mode: Option<ShellMode>,
 }
 
 fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
@@ -69,7 +72,7 @@ fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
 
     let config = parse_config(&args);
 
-    ffigen_raw(&config, args.dart_root)
+    ffigen_raw(&config, args.dart_root, args.shell_mode)
 }
 
 pub(crate) fn ffigen_raw(

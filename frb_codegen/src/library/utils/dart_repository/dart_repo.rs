@@ -1,3 +1,4 @@
+use crate::library::commands::command_runner::ShellMode;
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
@@ -42,8 +43,8 @@ impl FromStr for DartRepository {
 
 impl DartRepository {
     /// check whether the toolchain is available from the CLI
-    pub(crate) fn toolchain_available(&self) -> bool {
-        self.toolchain.available()
+    pub(crate) fn toolchain_available(&self, shell_mode: Option<ShellMode>) -> bool {
+        self.toolchain.available(shell_mode)
     }
 
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
