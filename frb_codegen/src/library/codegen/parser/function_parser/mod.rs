@@ -227,5 +227,5 @@ fn compute_codec_mode_pack(
         warn!("Ignore attributes setting codec mode (e.g. when full_dep=false)");
     }
 
-    force_ans.or(attr_ans).unwrap_or(DEFAULT_ANS)
+    force_ans.to_owned().or(attr_ans).unwrap_or(DEFAULT_ANS)
 }
