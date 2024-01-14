@@ -14,7 +14,7 @@ pub(crate) fn generate(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputCode> {
     if !config.enable_ffigen {
-        return Ok(WireDartOutputCode::default());
+        return Ok(generate_disabled_text(&config.dart_output_class_name_pack).into());
     }
 
     let content = execute_ffigen(config, c_file_content, progress_bar_pack)?;
@@ -58,13 +58,7 @@ fn postpare_modify(
     let ans = content_raw
         .replace(
             &format!("class {wire_class_name} {{"),
-            &format!(
-                "class {wire_class_name} implements BaseWire {{
-
-                factory {wire_class_name}.fromExternalLibrary(ExternalLibrary lib) =>
-                  {wire_class_name}(lib.ffiDynamicLibrary);
-                "
-            ),
+            &generate_wire_class_partial_code(wire_class_name),
         )
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")
@@ -74,6 +68,24 @@ fn postpare_modify(
         );
     let ans = FILTER.replace_all(&ans, "").to_string();
     ans
+}
+
+fn generate_wire_class_partial_code(wire_class_name: &str) -> String {
+    format!(
+        "class {wire_class_name} implements BaseWire {{
+
+        factory {wire_class_name}.fromExternalLibrary(ExternalLibrary lib) =>
+          {wire_class_name}(lib.ffiDynamicLibrary);
+        "
+    )
+}
+
+fn generate_disabled_text(dart_output_class_name_pack: &DartOutputClassNamePack) -> String {
+    format!(
+        "{}
+        }}",
+        generate_wire_class_partial_code(&dart_output_class_name_pack.wire_class_name),
+    )
 }
 
 fn sanity_check(
