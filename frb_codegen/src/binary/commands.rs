@@ -130,7 +130,7 @@ pub(crate) struct GenerateCommandArgsPrimary {
     pub default_external_library_loader_web_prefix: Option<String>,
 
     /// The shell to use
-    #[arg(long)]
+    #[arg(value_enum, long)]
     pub shell: Option<ShellMode>,
 
     /// Disable language features introduced in Dart 3.
@@ -180,7 +180,7 @@ pub(crate) struct CreateOrIntegrateCommandCommonArgs {
     pub rust_crate_dir: Option<String>,
 
     /// The shell to use
-    #[arg(long)]
+    #[arg(value_enum, long)]
     pub shell: Option<ShellMode>,
 
     /// Use local version instead of the release version
@@ -200,7 +200,7 @@ pub(crate) struct BuildWebCommandArgs {
     pub dart_coverage: bool,
 
     /// The shell to use
-    #[arg(long)]
+    #[arg(value_enum, long)]
     pub shell: Option<ShellMode>,
 
     // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
