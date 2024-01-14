@@ -24,13 +24,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  void wire_init_app(NativePortType port_) {
-    return wire.wire_init_app(port_);
+  void wire_init_app(NativePortType port_, PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_, int data_len_) {
+    return wire.wire_init_app(port_, ptr_, rust_vec_len_, data_len_);
   }
 
   @protected
-  void wire_minimal_adder(NativePortType port_, int a, int b) {
-    return wire.wire_minimal_adder(port_, a, b);
+  void wire_minimal_adder(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_) {
+    return wire.wire_minimal_adder(port_, ptr_, rust_vec_len_, data_len_);
   }
 
   @protected
@@ -38,6 +40,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void dco_decode_unit(dynamic raw);
+
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer);
+
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
@@ -62,6 +73,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer);
 }
 
 // Section: wire_class
@@ -74,10 +94,16 @@ class RustLibWire extends BaseWire {
       wasmModule.dart_fn_deliver_output(
           call_id, ptr_, rust_vec_len_, data_len_);
 
-  void wire_init_app(NativePortType port_) => wasmModule.wire_init_app(port_);
+  void wire_init_app(NativePortType port_, PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_, int data_len_) =>
+      wasmModule.wire_init_app(port_, ptr_, rust_vec_len_, data_len_);
 
-  void wire_minimal_adder(NativePortType port_, int a, int b) =>
-      wasmModule.wire_minimal_adder(port_, a, b);
+  void wire_minimal_adder(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire_minimal_adder(port_, ptr_, rust_vec_len_, data_len_);
 }
 
 @JS('wasm_bindgen')
@@ -95,7 +121,9 @@ class RustLibWasmModule implements WasmModule {
   external void dart_fn_deliver_output(int call_id,
       PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_init_app(NativePortType port_);
+  external void wire_init_app(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 
-  external void wire_minimal_adder(NativePortType port_, int a, int b);
+  external void wire_minimal_adder(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 }

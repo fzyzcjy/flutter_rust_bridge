@@ -78,10 +78,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> initApp({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire_init_app(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+
+        final raw_ = serializer.intoRaw();
+        return wire_init_app(port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: PdeCodec(
+        decodeSuccessData: pde_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kInitAppConstMeta,
@@ -100,12 +103,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        var arg0 = cst_encode_i_32(a);
-        var arg1 = cst_encode_i_32(b);
-        return wire_minimal_adder(port_, arg0, arg1);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_i_32(a, serializer);
+        sse_encode_i_32(b, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire_minimal_adder(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_i_32,
+      codec: PdeCodec(
+        decodeSuccessData: pde_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kMinimalAdderConstMeta,
@@ -144,6 +150,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  int sse_decode_i_32(SseDeserializer deserializer) {
+    return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer) {}
+
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
   int cst_encode_i_32(int raw) {
     return raw;
   }
@@ -151,6 +170,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void cst_encode_unit(void raw) {
     return raw;
+  }
+
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer) {
+    serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer) {}
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self ? 1 : 0);
   }
 
   @protected
