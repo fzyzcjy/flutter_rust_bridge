@@ -56,6 +56,11 @@ List<String> exampleBasicListTypeStringTwinSync(
     RustLib.instance.api
         .exampleBasicListTypeStringTwinSync(arg: arg, hint: hint);
 
+List<Uint8List> exampleBasicListTypeBytesTwinSync(
+        {required List<Uint8List> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleBasicListTypeBytesTwinSync(arg: arg, hint: hint);
+
 List<BasicPrimitiveEnumTwinSync>
     exampleBasicListTypeBasicPrimitiveEnumTwinSyncTwinSync(
             {required List<BasicPrimitiveEnumTwinSync> arg, dynamic hint}) =>

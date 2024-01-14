@@ -1062,6 +1062,9 @@ abstract class RustLibApi extends BaseApi {
   Future<List<bool>> exampleBasicListTypeBoolTwinNormal(
       {required List<bool> arg, dynamic hint});
 
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinNormal(
+      {required List<Uint8List> arg, dynamic hint});
+
   Future<Float32List> exampleBasicListTypeF32TwinNormal(
       {required List<double> arg, dynamic hint});
 
@@ -1109,6 +1112,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync(
       {required List<bool> arg, dynamic hint});
+
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinRustAsync(
+      {required List<Uint8List> arg, dynamic hint});
 
   Future<Float32List> exampleBasicListTypeF32TwinRustAsync(
       {required List<double> arg, dynamic hint});
@@ -1159,6 +1165,9 @@ abstract class RustLibApi extends BaseApi {
   Future<List<bool>> exampleBasicListTypeBoolTwinRustAsyncSse(
       {required List<bool> arg, dynamic hint});
 
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinRustAsyncSse(
+      {required List<Uint8List> arg, dynamic hint});
+
   Future<Float32List> exampleBasicListTypeF32TwinRustAsyncSse(
       {required List<double> arg, dynamic hint});
 
@@ -1207,6 +1216,9 @@ abstract class RustLibApi extends BaseApi {
   Future<List<bool>> exampleBasicListTypeBoolTwinSse(
       {required List<bool> arg, dynamic hint});
 
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinSse(
+      {required List<Uint8List> arg, dynamic hint});
+
   Future<Float32List> exampleBasicListTypeF32TwinSse(
       {required List<double> arg, dynamic hint});
 
@@ -1253,6 +1265,9 @@ abstract class RustLibApi extends BaseApi {
 
   List<bool> exampleBasicListTypeBoolTwinSync(
       {required List<bool> arg, dynamic hint});
+
+  List<Uint8List> exampleBasicListTypeBytesTwinSync(
+      {required List<Uint8List> arg, dynamic hint});
 
   Float32List exampleBasicListTypeF32TwinSync(
       {required List<double> arg, dynamic hint});
@@ -1301,6 +1316,9 @@ abstract class RustLibApi extends BaseApi {
 
   List<bool> exampleBasicListTypeBoolTwinSyncSse(
       {required List<bool> arg, dynamic hint});
+
+  List<Uint8List> exampleBasicListTypeBytesTwinSyncSse(
+      {required List<Uint8List> arg, dynamic hint});
 
   Float32List exampleBasicListTypeF32TwinSyncSse(
       {required List<double> arg, dynamic hint});
@@ -15211,6 +15229,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinNormal(
+      {required List<Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_list_type_bytes_twin_normal(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBytesTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBytesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bytes_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<Float32List> exampleBasicListTypeF32TwinNormal(
       {required List<double> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -15602,6 +15645,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicListTypeBoolTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_list_type_bool_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinRustAsync(
+      {required List<Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_list_type_bytes_twin_rust_async(
+            port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBytesTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBytesTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bytes_twin_rust_async",
         argNames: ["arg"],
       );
 
@@ -16019,6 +16088,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicListTypeBoolTwinRustAsyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_list_type_bool_twin_rust_async_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinRustAsyncSse(
+      {required List<Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_bytes_twin_rust_async_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBytesTwinRustAsyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBytesTwinRustAsyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bytes_twin_rust_async_sse",
         argNames: ["arg"],
       );
 
@@ -16452,6 +16549,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<Uint8List>> exampleBasicListTypeBytesTwinSse(
+      {required List<Uint8List> arg, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_bytes_twin_sse(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBytesTwinSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBytesTwinSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bytes_twin_sse",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<Float32List> exampleBasicListTypeF32TwinSse(
       {required List<double> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -16873,6 +16998,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  List<Uint8List> exampleBasicListTypeBytesTwinSync(
+      {required List<Uint8List> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        var arg0 = cst_encode_list_list_prim_u_8_strict(arg);
+        return wire.wire_example_basic_list_type_bytes_twin_sync(arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_list_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBytesTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBytesTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bytes_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   Float32List exampleBasicListTypeF32TwinSync(
       {required List<double> arg, dynamic hint}) {
     return handler.executeSync(SyncTask(
@@ -17271,6 +17421,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kExampleBasicListTypeBoolTwinSyncSseConstMeta =>
       const TaskConstMeta(
         debugName: "example_basic_list_type_bool_twin_sync_sse",
+        argNames: ["arg"],
+      );
+
+  @override
+  List<Uint8List> exampleBasicListTypeBytesTwinSyncSse(
+      {required List<Uint8List> arg, dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_list_prim_u_8_strict(arg, serializer);
+        final raw_ = serializer.intoRaw();
+        return wire.wire_example_basic_list_type_bytes_twin_sync_sse(
+            raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_list_prim_u_8_strict,
+        decodeErrorData: null,
+      ),
+      constMeta: kExampleBasicListTypeBytesTwinSyncSseConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleBasicListTypeBytesTwinSyncSseConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_basic_list_type_bytes_twin_sync_sse",
         argNames: ["arg"],
       );
 
@@ -79502,6 +79680,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_list_prim_u_8_strict).toList();
+  }
+
+  @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw) {
     return (raw as List<dynamic>).map(dco_decode_my_enum).toList();
   }
@@ -94105,6 +94288,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var ans_ = <EnumOpaqueTwinSyncSseMoi>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
       ans_.add(sse_decode_enum_opaque_twin_sync_sse_moi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<Uint8List> sse_decode_list_list_prim_u_8_strict(
+      SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <Uint8List>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_list_prim_u_8_strict(deserializer));
     }
     return ans_;
   }
@@ -110356,6 +110550,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       sse_encode_enum_opaque_twin_sync_sse_moi(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_list_prim_u_8_strict(
+      List<Uint8List> self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_list_prim_u_8_strict(item, serializer);
     }
   }
 
