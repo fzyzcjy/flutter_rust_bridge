@@ -29,6 +29,11 @@ class GeneralizedFrbRustBinding {
       _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void pdeFfiDispatcher() {
+    _binding.frb_pde_ffi_dispatcher(TODO);
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
       _binding.dart_opaque_dart2rust_encode(object, dartHandlerPort);
