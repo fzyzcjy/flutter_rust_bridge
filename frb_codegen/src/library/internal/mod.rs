@@ -38,7 +38,7 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
 
     let extra_code = generate_frb_rust_extra_code();
     debug!("extra_code={extra_code:?}");
-    temp_change_file(dir_frb_rust.join("src").join("lib.rs"), |text| {
+    let temp_change_handle = temp_change_file(dir_frb_rust.join("src").join("lib.rs"), |text| {
         text.unwrap() + &extra_code
     })?;
 
@@ -68,7 +68,11 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
         repo_base_dir,
         &dir_frb_rust,
         "frb_rust",
-    )
+    )?;
+
+    drop(temp_change_handle);
+
+    Ok(())
 }
 
 fn generate_frb_rust_extra_code() -> String {
