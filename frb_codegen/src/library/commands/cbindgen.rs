@@ -31,32 +31,37 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
         rust_crate_dir = args.rust_crate_dir
     );
 
-    let mut config = default_cbindgen_config();
-    config.export = cbindgen::ExportConfig {
-        include: args.c_struct_names,
-        exclude: args.exclude_symbols,
-        ..Default::default()
+    let default_cbindgen_config = default_cbindgen_config();
+    let config = cbindgen::Config {
+        export: cbindgen::ExportConfig {
+            include: args.c_struct_names,
+            exclude: args.exclude_symbols,
+            ..Default::default()
+        },
+        after_includes: Some(
+            args.after_includes + &default_cbindgen_config.after_includes.unwrap(),
+        ),
+        ..default_cbindgen_config
     };
-    config.after_includes = Some(args.after_includes + &config.after_includes.unwrap());
     debug!("cbindgen config: {:#?}", config);
 
     cbindgen_raw(config, args.rust_crate_dir, c_output_path)
 }
 
 pub(crate) fn default_cbindgen_config() -> cbindgen::Config {
-    // Have to do this `mut` + setter, b/c
-    let mut config = cbindgen::Config::default();
-    // copied from: dart-sdk/dart_api.h
-    // used to convert Dart_Handle to Object.
-    config.after_includes = Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned());
-    config.language = cbindgen::Language::C;
-    config.sys_includes = vec![
-        "stdbool.h".to_string(),
-        "stdint.h".to_string(),
-        "stdlib.h".to_string(),
-    ];
-    config.no_includes = true;
-    config
+    cbindgen::Config {
+        // copied from: dart-sdk/dart_api.h
+        // used to convert Dart_Handle to Object.
+        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
+        language: cbindgen::Language::C,
+        sys_includes: vec![
+            "stdbool.h".to_string(),
+            "stdint.h".to_string(),
+            "stdlib.h".to_string(),
+        ],
+        no_includes: true,
+        ..Default::default()
+    }
 }
 
 pub(crate) fn cbindgen_raw(
