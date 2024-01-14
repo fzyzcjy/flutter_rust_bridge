@@ -13,7 +13,7 @@ pub(crate) fn generate(
     c_file_content: &str,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputCode> {
-    if !config.enable_ffigen {
+    if !config.enable {
         return Ok(generate_disabled_text(&config.dart_output_class_name_pack).into());
     }
 
