@@ -167,4 +167,32 @@ mod another {}";
         let extracted = extract_module(src, Some(String::from("another"))).unwrap();
         assert_eq!(String::from(""), extracted);
     }
+
+    #[test]
+    pub fn test_extract_module_with_prefix() {
+        let src = "pub mod parent {
+    mod another {
+        // some code
+    }
+}";
+        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+        assert_eq!(src, extracted);
+    }
+
+        #[test]
+    pub fn test_extract_module_with_same_name() {
+        let src = "pub mod parent {
+    mod another {
+        // some code
+    }
+}
+pub(self) mod another {
+    // 12345
+}
+
+";
+        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+        assert_eq!(String::from("    // 12345"), extracted);
+    }
+
 }
