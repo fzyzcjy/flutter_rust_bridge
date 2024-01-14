@@ -50,10 +50,8 @@ pub(crate) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
-    let rust2dart =
-        generate_via_codec::<WireDartCodecEntrypoint, _, _, _, _>(context, &cache, Decode);
-    let dart2rust =
-        generate_via_codec::<WireDartCodecEntrypoint, _, _, _, _>(context, &cache, Encode);
+    let rust2dart = generate_via_codec::<WireDartCodecEntrypoint, _, _, _>(context, &cache, Decode);
+    let dart2rust = generate_via_codec::<WireDartCodecEntrypoint, _, _, _>(context, &cache, Encode);
 
     Ok(WireDartOutputSpec {
         misc: misc::generate(

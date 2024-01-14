@@ -40,10 +40,8 @@ pub(super) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
-    let dart2rust =
-        generate_via_codec::<WireRustCodecEntrypoint, _, _, _, _>(context, &cache, Decode);
-    let rust2dart =
-        generate_via_codec::<WireRustCodecEntrypoint, _, _, _, _>(context, &cache, Encode);
+    let dart2rust = generate_via_codec::<WireRustCodecEntrypoint, _, _, _>(context, &cache, Decode);
+    let rust2dart = generate_via_codec::<WireRustCodecEntrypoint, _, _, _>(context, &cache, Encode);
     let extern_struct_names = generate_extern_struct_names(&dart2rust, &rust2dart);
 
     Ok(WireRustOutputSpec {

@@ -3,7 +3,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRust
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use serde::{Deserialize, Serialize};
-use std::ops::Deref;
 use strum::IntoEnumIterator;
 use strum_macros::{Display, EnumIter};
 
@@ -99,14 +98,13 @@ pub(crate) enum EncodeOrDecode {
     Decode,
 }
 
-pub(crate) fn generate_via_codec<E, ED, C, O, B>(
+pub(crate) fn generate_via_codec<E, C, O, B>(
     context: C,
     cache: &IrPackComputedCache,
     mode: EncodeOrDecode,
 ) -> B
 where
-    E: From<CodecMode> + Deref<Target = ED>,
-    ED: BaseCodecEntrypointTrait<C, O>,
+    E: From<CodecMode> + BaseCodecEntrypointTrait<C, O>,
     B: FromIterator<O>,
 {
     CodecMode::iter()
