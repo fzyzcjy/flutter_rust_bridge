@@ -33,12 +33,12 @@ fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
     let variants = (funcs.iter())
         .map(|f| {
             format!(
-                "{} => {}(port, ptr, rust_vec_len, data_len),\n",
+                "{} => {}(port, ptr, rust_vec_len, data_len),",
                 f.id,
                 wire_func_name(f)
             )
         })
-        .join("");
+        .join("\n");
     let code = format!(
         "
         fn pde_ffi_dispatcher(
