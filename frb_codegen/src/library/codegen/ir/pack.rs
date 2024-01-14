@@ -45,7 +45,7 @@ impl IrPack {
         filter_func: &Option<impl Fn(&IrFunc) -> bool>,
     ) {
         for func in &self.funcs {
-            if filter_func.is_none() || !filter_func.as_ref().unwrap()(func) {
+            if filter_func.is_some() && !filter_func.as_ref().unwrap()(func) {
                 continue;
             }
             func.visit_types(f, include_func_inputs, include_func_output, self)
