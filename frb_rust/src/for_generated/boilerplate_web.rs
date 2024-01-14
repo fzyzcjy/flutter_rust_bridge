@@ -26,8 +26,8 @@ macro_rules! frb_generated_web_cst_codec {
 #[macro_export]
 macro_rules! frb_generated_web_extern_func {
     () => {
-        #[no_mangle]
-        pub extern "C" fn frb_pde_ffi_dispatcher(
+        #[wasm_bindgen]
+        pub fn frb_pde_ffi_dispatcher(
             func_id: i32,
             port: $crate::for_generated::MessagePort,
             ptr: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
