@@ -53,7 +53,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
 
 pub(crate) fn generate_ffi_dispatcher_raw(variants: &str, crate_name: &str) -> String {
     [false, true]
-        .iter()
+        .into_iter()
         .map(|sync| {
             let name = if sync { "sync" } else { "primary" };
             let maybe_port = if sync {
