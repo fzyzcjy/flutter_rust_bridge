@@ -16,6 +16,8 @@ typedef struct WireSyncRust2DartSse {
   int32_t len;
 } WireSyncRust2DartSse;
 
+void hi_tom(void);
+
 /**
  * # Safety
  *
