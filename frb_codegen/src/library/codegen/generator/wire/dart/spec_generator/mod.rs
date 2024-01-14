@@ -1,7 +1,7 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::codec::structs::EncodeOrDecode::{Decode, Encode};
-use crate::codegen::generator::codec::structs::{generate_via_codec, CodecMode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypoint, WireDartCodecOutputSpec,
@@ -50,9 +50,6 @@ pub(crate) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
-    let rust2dart = generate_via_codec::<WireDartCodecEntrypoint, _, _, _>(context, &cache, Decode);
-    let dart2rust = generate_via_codec::<WireDartCodecEntrypoint, _, _, _>(context, &cache, Encode);
-
     Ok(WireDartOutputSpec {
         misc: misc::generate(
             context,
@@ -62,8 +59,16 @@ pub(crate) fn generate(
             rust_extern_funcs,
             progress_bar_pack,
         )?,
-        rust2dart: auto_add_base_class_abstract_method(rust2dart),
-        dart2rust: auto_add_base_class_abstract_method(dart2rust),
+        rust2dart: auto_add_base_class_abstract_method(
+            (CodecMode::iter().map(WireDartCodecEntrypoint::from))
+                .flat_map(|codec| codec.generate(context, &cache.distinct_types, Decode))
+                .collect(),
+        ),
+        dart2rust: auto_add_base_class_abstract_method(
+            (CodecMode::iter().map(WireDartCodecEntrypoint::from))
+                .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
+                .collect(),
+        ),
     })
 }
 
