@@ -10,6 +10,19 @@ pub(crate) enum CodecMode {
     Pde,
 }
 
+impl CodecMode {
+    pub(crate) fn delegate(self) -> Option<Self> {
+        match self {
+            CodecMode::Pde => Some(CodecMode::Sse),
+            _ => None,
+        }
+    }
+
+    pub(crate) fn delegate_or_self(self) -> Self {
+        self.delegate().unwrap_or(self)
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Hash)]
 pub(crate) struct CodecModePack {
     pub dart2rust: CodecMode,
