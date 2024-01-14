@@ -10,12 +10,10 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ty::IrType;
-use clap::ValueEnum;
 use itertools::Itertools;
-use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
-use strum_macros::{Display, EnumIter};
+use strum_macros::EnumIter;
 
 pub(crate) struct PdeWireRustCodecEntrypoint;
 
