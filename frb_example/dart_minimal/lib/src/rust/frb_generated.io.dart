@@ -18,6 +18,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  String dco_decode_String(dynamic raw);
+
+  @protected
+  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw);
+
+  @protected
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
+
+  @protected
+  int dco_decode_i_32(dynamic raw);
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  MyEnum dco_decode_my_enum(dynamic raw);
+
+  @protected
+  MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  int dco_decode_u_8(dynamic raw);
+
+  @protected
+  void dco_decode_unit(dynamic raw);
+
+  @protected
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected

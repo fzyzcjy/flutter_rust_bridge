@@ -214,6 +214,38 @@ fn pde_ffi_dispatcher_impl(
 
 // Section: rust2dart
 
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyEnum {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            crate::api::minimal::MyEnum::Apple => [0.into_dart()].into_dart(),
+            crate::api::minimal::MyEnum::Orange(field0) => {
+                [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::MyEnum {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyEnum>
+    for crate::api::minimal::MyEnum
+{
+    fn into_into_dart(self) -> crate::api::minimal::MyEnum {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyStruct {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.field.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::minimal::MyStruct {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyStruct>
+    for crate::api::minimal::MyStruct
+{
+    fn into_into_dart(self) -> crate::api::minimal::MyStruct {
+        self
+    }
+}
+
 impl SseEncode for String {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(self.into_bytes(), serializer);

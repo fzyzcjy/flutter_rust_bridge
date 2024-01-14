@@ -69386,6 +69386,14215 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_sse_moi;
 
   @protected
+  AnyhowException dco_decode_AnyhowException(dynamic raw) {
+    return AnyhowException(raw as String);
+  }
+
+  @protected
+  BoxFnStringString
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+          dynamic raw) {
+    return BoxFnStringString.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw) {
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw) {
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw) {
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleA.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinMoiOpaqueTwoTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueOneTwinMoicrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw) {
+    return OpaqueOneTwinMoiOpaqueTwoTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSseOpaqueTwoTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw) {
+    return OpaqueOneTwinSseOpaqueTwoTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw) {
+    return OpaqueTwoTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncOpaqueTwoTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw) {
+    return OpaqueOneTwinSyncOpaqueTwoTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw) {
+    return OpaqueTwoTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw) {
+    return OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinNormalOpaqueTwoTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw) {
+    return OpaqueOneTwinNormalOpaqueTwoTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw) {
+    return OpaqueTwoTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw) {
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw) {
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw) {
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw) {
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw) {
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw) {
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleA.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleB
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleB.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic raw) {
+    return StructWithImplBlockInMultiFile.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  String dco_decode_Backtrace(dynamic raw) {
+    return raw as String;
+  }
+
+  @protected
+  Duration dco_decode_Chrono_Duration(dynamic raw) {
+    return dcoDecodeDuration(dco_decode_i_64(raw).toInt());
+  }
+
+  @protected
+  DateTime dco_decode_Chrono_Local(dynamic raw) {
+    return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: false);
+  }
+
+  @protected
+  DateTime dco_decode_Chrono_Naive(dynamic raw) {
+    return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: true);
+  }
+
+  @protected
+  DateTime dco_decode_Chrono_Utc(dynamic raw) {
+    return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: true);
+  }
+
+  @protected
+  FutureOr<void> Function(Object)
+      dco_decode_DartFn_Inputs_DartOpaque_Output_unit(dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<void> Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
+      dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinRustAsync)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinRustAsyncSse)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<Object> Function() dco_decode_DartFn_Inputs__Output_DartOpaque(
+      dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<String> Function() dco_decode_DartFn_Inputs__Output_String(
+      dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<DemoStructForRustCallDartTwinNormal> Function(
+          DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
+          DemoStructForRustCallDartTwinRustAsync)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
+          DemoStructForRustCallDartTwinRustAsyncSse)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  FutureOr<DemoStructForRustCallDartTwinSse> Function(
+          DemoStructForRustCallDartTwinSse)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
+          dynamic raw) {
+    throw UnimplementedError('');
+  }
+
+  @protected
+  Object dco_decode_DartOpaque(dynamic raw) {
+    return decodeDartOpaque(raw, generalizedFrbRustBinding);
+  }
+
+  @protected
+  ObjectArray1 dco_decode_DartOpaque_array_1(dynamic raw) {
+    return ObjectArray1(
+        (raw as List<dynamic>).map(dco_decode_DartOpaque).toList());
+  }
+
+  @protected
+  Map<String, String> dco_decode_Map_String_String(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_string_string(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, EnumSimpleTwinNormal>
+      dco_decode_Map_String_enum_simple_twin_normal(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_enum_simple_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsync>
+      dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_enum_simple_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsyncSse>
+      dco_decode_Map_String_enum_simple_twin_rust_async_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_enum_simple_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, EnumSimpleTwinSse> dco_decode_Map_String_enum_simple_twin_sse(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_enum_simple_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_enum_simple_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, EnumSimpleTwinSyncSse>
+      dco_decode_Map_String_enum_simple_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_enum_simple_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, KitchenSinkTwinNormal>
+      dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_kitchen_sink_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsync>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_kitchen_sink_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_kitchen_sink_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, KitchenSinkTwinSse> dco_decode_Map_String_kitchen_sink_twin_sse(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_kitchen_sink_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_kitchen_sink_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, KitchenSinkTwinSyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_kitchen_sink_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_string_list_prim_u_8_strict(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_string_my_size(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, String> dco_decode_Map_i_32_String(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_string(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinNormal>
+      dco_decode_Map_i_32_basic_general_enum_twin_normal(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinRustAsync>
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSync>
+      dco_decode_Map_i_32_basic_general_enum_twin_sync(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSyncSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_general_enum_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinNormal>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_normal(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsync>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+                raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSync>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSyncSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_primitive_enum_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinNormal> dco_decode_Map_i_32_basic_struct_twin_normal(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_normal(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinRustAsync>
+      dco_decode_Map_i_32_basic_struct_twin_rust_async(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_rust_async(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_rust_async_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSse> dco_decode_Map_i_32_basic_struct_twin_sse(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync(
+      dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_sync(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, BasicStructTwinSyncSse>
+      dco_decode_Map_i_32_basic_struct_twin_sync_sse(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_basic_struct_twin_sync_sse(raw)
+            .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, bool> dco_decode_Map_i_32_bool(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_bool(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, double> dco_decode_Map_i_32_f_32(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_f_32(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, double> dco_decode_Map_i_32_f_64(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_f_64(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_16(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_i_16(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_i_32(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_64(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_i_64(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_8(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_i_8(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_isize(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_isize(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, Uint8List> dco_decode_Map_i_32_list_prim_u_8_strict(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_list_prim_u_8_strict(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_16(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_16(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_32(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_32(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_64(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_64(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_8(dynamic raw) {
+    return Map.fromEntries(
+        dco_decode_list_record_i_32_u_8(raw).map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_usize(dynamic raw) {
+    return Map.fromEntries(dco_decode_list_record_i_32_usize(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  MutexHideDataTwinMoi dco_decode_RustOpaque_MutexHideDataTwinMoi(dynamic raw) {
+    return MutexHideDataTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinNormal dco_decode_RustOpaque_MutexHideDataTwinNormal(
+      dynamic raw) {
+    return MutexHideDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinRustAsync dco_decode_RustOpaque_MutexHideDataTwinRustAsync(
+      dynamic raw) {
+    return MutexHideDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(dynamic raw) {
+    return MutexHideDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncSse
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSse(dynamic raw) {
+    return MutexHideDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(dynamic raw) {
+    return MutexHideDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSse dco_decode_RustOpaque_MutexHideDataTwinSse(dynamic raw) {
+    return MutexHideDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSseMoi dco_decode_RustOpaque_MutexHideDataTwinSseMoi(
+      dynamic raw) {
+    return MutexHideDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSync dco_decode_RustOpaque_MutexHideDataTwinSync(
+      dynamic raw) {
+    return MutexHideDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSyncMoi dco_decode_RustOpaque_MutexHideDataTwinSyncMoi(
+      dynamic raw) {
+    return MutexHideDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSyncSse dco_decode_RustOpaque_MutexHideDataTwinSyncSse(
+      dynamic raw) {
+    return MutexHideDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  MutexHideDataTwinSyncSseMoi dco_decode_RustOpaque_MutexHideDataTwinSyncSseMoi(
+      dynamic raw) {
+    return MutexHideDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinMoi dco_decode_RustOpaque_RwLockHideDataTwinMoi(
+      dynamic raw) {
+    return RwLockHideDataTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinNormal dco_decode_RustOpaque_RwLockHideDataTwinNormal(
+      dynamic raw) {
+    return RwLockHideDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsync dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(
+      dynamic raw) {
+    return RwLockHideDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(dynamic raw) {
+    return RwLockHideDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncSse
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSse(dynamic raw) {
+    return RwLockHideDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(dynamic raw) {
+    return RwLockHideDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSse dco_decode_RustOpaque_RwLockHideDataTwinSse(
+      dynamic raw) {
+    return RwLockHideDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSseMoi dco_decode_RustOpaque_RwLockHideDataTwinSseMoi(
+      dynamic raw) {
+    return RwLockHideDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSync dco_decode_RustOpaque_RwLockHideDataTwinSync(
+      dynamic raw) {
+    return RwLockHideDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSyncMoi dco_decode_RustOpaque_RwLockHideDataTwinSyncMoi(
+      dynamic raw) {
+    return RwLockHideDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSyncSse dco_decode_RustOpaque_RwLockHideDataTwinSyncSse(
+      dynamic raw) {
+    return RwLockHideDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  RwLockHideDataTwinSyncSseMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(dynamic raw) {
+    return RwLockHideDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinMoi dco_decode_RustOpaque_box_dynDartDebugTwinMoi(
+      dynamic raw) {
+    return BoxDartDebugTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinNormal dco_decode_RustOpaque_box_dynDartDebugTwinNormal(
+      dynamic raw) {
+    return BoxDartDebugTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinRustAsync dco_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      dynamic raw) {
+    return BoxDartDebugTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinRustAsyncMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(dynamic raw) {
+    return BoxDartDebugTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinRustAsyncSse
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(dynamic raw) {
+    return BoxDartDebugTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(dynamic raw) {
+    return BoxDartDebugTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinSse dco_decode_RustOpaque_box_dynDartDebugTwinSse(
+      dynamic raw) {
+    return BoxDartDebugTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinSseMoi dco_decode_RustOpaque_box_dynDartDebugTwinSseMoi(
+      dynamic raw) {
+    return BoxDartDebugTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinSync dco_decode_RustOpaque_box_dynDartDebugTwinSync(
+      dynamic raw) {
+    return BoxDartDebugTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinSyncMoi dco_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(
+      dynamic raw) {
+    return BoxDartDebugTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinSyncSse dco_decode_RustOpaque_box_dynDartDebugTwinSyncSse(
+      dynamic raw) {
+    return BoxDartDebugTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxDartDebugTwinSyncSseMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(dynamic raw) {
+    return BoxDartDebugTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxFnStringString
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+          dynamic raw) {
+    return BoxFnStringString.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return BoxHelloTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw) {
+    return BoxHelloTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
+          dynamic raw) {
+    return BoxHelloTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  BoxMyTraitTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
+          dynamic raw) {
+    return BoxMyTraitTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw) {
+    return NonCloneSimpleTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw) {
+    return NonCloneSimpleTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
+          dynamic raw) {
+    return NonCloneSimpleTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleA.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructInMiscNoTwinExampleB
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          dynamic raw) {
+    return StructInMiscNoTwinExampleB.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic raw) {
+    return StructWithImplBlockInMultiFile.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinMoiOpaqueTwoTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueOneTwinMoicrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw) {
+    return OpaqueOneTwinMoiOpaqueTwoTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSseOpaqueTwoTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw) {
+    return OpaqueOneTwinSseOpaqueTwoTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw) {
+    return OpaqueTwoTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncOpaqueTwoTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw) {
+    return OpaqueOneTwinSyncOpaqueTwoTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw) {
+    return OpaqueTwoTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw) {
+    return OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw) {
+    return OpaqueTwoTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueOneTwinNormalOpaqueTwoTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw) {
+    return OpaqueOneTwinNormalOpaqueTwoTwinNormal.dcoDecode(
+        raw as List<dynamic>);
+  }
+
+  @protected
+  OpaqueTwoTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw) {
+    return OpaqueTwoTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinMoi dco_decode_RustOpaque_frb_opaque_return_twin_moi(
+      dynamic raw) {
+    return FrbOpaqueReturnTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinNormal dco_decode_RustOpaque_frb_opaque_return_twin_normal(
+      dynamic raw) {
+    return FrbOpaqueReturnTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinRustAsync
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async(dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncSse
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse(dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return FrbOpaqueReturnTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSse dco_decode_RustOpaque_frb_opaque_return_twin_sse(
+      dynamic raw) {
+    return FrbOpaqueReturnTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sse_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSync dco_decode_RustOpaque_frb_opaque_return_twin_sync(
+      dynamic raw) {
+    return FrbOpaqueReturnTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncSse
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_sse(dynamic raw) {
+    return FrbOpaqueReturnTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueReturnTwinSyncSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_sse_moi(dynamic raw) {
+    return FrbOpaqueReturnTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinMoi
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_moi(dynamic raw) {
+    return FrbOpaqueSyncReturnTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinNormal
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_normal(dynamic raw) {
+    return FrbOpaqueSyncReturnTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinSse
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_sse(dynamic raw) {
+    return FrbOpaqueSyncReturnTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  FrbOpaqueSyncReturnTwinSseMoi
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_sse_moi(dynamic raw) {
+    return FrbOpaqueSyncReturnTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataAnotherTwinMoi dco_decode_RustOpaque_hide_data_another_twin_moi(
+      dynamic raw) {
+    return HideDataAnotherTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataAnotherTwinNormal dco_decode_RustOpaque_hide_data_another_twin_normal(
+      dynamic raw) {
+    return HideDataAnotherTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataAnotherTwinSse dco_decode_RustOpaque_hide_data_another_twin_sse(
+      dynamic raw) {
+    return HideDataAnotherTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      dco_decode_RustOpaque_hide_data_another_twin_sse_moi(dynamic raw) {
+    return HideDataAnotherTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinMoi dco_decode_RustOpaque_hide_data_twin_moi(dynamic raw) {
+    return HideDataTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinMoiArray2 dco_decode_RustOpaque_hide_data_twin_moi_array_2(
+      dynamic raw) {
+    return HideDataTwinMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinNormal dco_decode_RustOpaque_hide_data_twin_normal(dynamic raw) {
+    return HideDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinNormalArray2 dco_decode_RustOpaque_hide_data_twin_normal_array_2(
+      dynamic raw) {
+    return HideDataTwinNormalArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_normal)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsync dco_decode_RustOpaque_hide_data_twin_rust_async(
+      dynamic raw) {
+    return HideDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_array_2(dynamic raw) {
+    return HideDataTwinRustAsyncArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi dco_decode_RustOpaque_hide_data_twin_rust_async_moi(
+      dynamic raw) {
+    return HideDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_moi_array_2(dynamic raw) {
+    return HideDataTwinRustAsyncMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse dco_decode_RustOpaque_hide_data_twin_rust_async_sse(
+      dynamic raw) {
+    return HideDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_array_2(dynamic raw) {
+    return HideDataTwinRustAsyncSseArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(dynamic raw) {
+    return HideDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi_array_2(
+          dynamic raw) {
+    return HideDataTwinRustAsyncSseMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSse dco_decode_RustOpaque_hide_data_twin_sse(dynamic raw) {
+    return HideDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSseArray2 dco_decode_RustOpaque_hide_data_twin_sse_array_2(
+      dynamic raw) {
+    return HideDataTwinSseArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSseMoi dco_decode_RustOpaque_hide_data_twin_sse_moi(dynamic raw) {
+    return HideDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSseMoiArray2 dco_decode_RustOpaque_hide_data_twin_sse_moi_array_2(
+      dynamic raw) {
+    return HideDataTwinSseMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSync dco_decode_RustOpaque_hide_data_twin_sync(dynamic raw) {
+    return HideDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncArray2 dco_decode_RustOpaque_hide_data_twin_sync_array_2(
+      dynamic raw) {
+    return HideDataTwinSyncArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSyncMoi dco_decode_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw) {
+    return HideDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_moi_array_2(dynamic raw) {
+    return HideDataTwinSyncMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_moi)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSyncSse dco_decode_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw) {
+    return HideDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncSseArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_sse_array_2(dynamic raw) {
+    return HideDataTwinSyncSseArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse)
+        .toList());
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(
+      dynamic raw) {
+    return HideDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  HideDataTwinSyncSseMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(dynamic raw) {
+    return HideDataTwinSyncSseMoiArray2((raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse_moi)
+        .toList());
+  }
+
+  @protected
+  I16 dco_decode_RustOpaque_i_16(dynamic raw) {
+    return I16.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  I32 dco_decode_RustOpaque_i_32(dynamic raw) {
+    return I32.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinMoi dco_decode_RustOpaque_non_clone_data_twin_moi(
+      dynamic raw) {
+    return NonCloneDataTwinMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinNormal dco_decode_RustOpaque_non_clone_data_twin_normal(
+      dynamic raw) {
+    return NonCloneDataTwinNormal.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsync
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async(dynamic raw) {
+    return NonCloneDataTwinRustAsync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_moi(dynamic raw) {
+    return NonCloneDataTwinRustAsyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncSse
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_sse(dynamic raw) {
+    return NonCloneDataTwinRustAsyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return NonCloneDataTwinRustAsyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSse dco_decode_RustOpaque_non_clone_data_twin_sse(
+      dynamic raw) {
+    return NonCloneDataTwinSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSseMoi dco_decode_RustOpaque_non_clone_data_twin_sse_moi(
+      dynamic raw) {
+    return NonCloneDataTwinSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSync dco_decode_RustOpaque_non_clone_data_twin_sync(
+      dynamic raw) {
+    return NonCloneDataTwinSync.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSyncMoi dco_decode_RustOpaque_non_clone_data_twin_sync_moi(
+      dynamic raw) {
+    return NonCloneDataTwinSyncMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSyncSse dco_decode_RustOpaque_non_clone_data_twin_sync_sse(
+      dynamic raw) {
+    return NonCloneDataTwinSyncSse.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  NonCloneDataTwinSyncSseMoi
+      dco_decode_RustOpaque_non_clone_data_twin_sync_sse_moi(dynamic raw) {
+    return NonCloneDataTwinSyncSseMoi.dcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  Set<String> dco_decode_Set_String(dynamic raw) {
+    return Set.from(dco_decode_list_String(raw));
+  }
+
+  @protected
+  Set<int> dco_decode_Set_i_32(dynamic raw) {
+    return Set.from(dco_decode_list_prim_i_32_strict(raw));
+  }
+
+  @protected
+  String dco_decode_String(dynamic raw) {
+    return raw as String;
+  }
+
+  @protected
+  UuidValue dco_decode_Uuid(dynamic raw) {
+    return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));
+  }
+
+  @protected
+  ATwinNormal dco_decode_a_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ATwinNormal(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ATwinRustAsync dco_decode_a_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ATwinRustAsync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ATwinRustAsyncSse dco_decode_a_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ATwinRustAsyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ATwinSse dco_decode_a_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ATwinSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ATwinSync dco_decode_a_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ATwinSync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ATwinSyncSse dco_decode_a_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ATwinSyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  AbcTwinNormal dco_decode_abc_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return AbcTwinNormal_A(
+          dco_decode_box_autoadd_a_twin_normal(raw[1]),
+        );
+      case 1:
+        return AbcTwinNormal_B(
+          dco_decode_box_autoadd_b_twin_normal(raw[1]),
+        );
+      case 2:
+        return AbcTwinNormal_C(
+          dco_decode_box_autoadd_c_twin_normal(raw[1]),
+        );
+      case 3:
+        return AbcTwinNormal_JustInt(
+          dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  AbcTwinRustAsync dco_decode_abc_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return AbcTwinRustAsync_A(
+          dco_decode_box_autoadd_a_twin_rust_async(raw[1]),
+        );
+      case 1:
+        return AbcTwinRustAsync_B(
+          dco_decode_box_autoadd_b_twin_rust_async(raw[1]),
+        );
+      case 2:
+        return AbcTwinRustAsync_C(
+          dco_decode_box_autoadd_c_twin_rust_async(raw[1]),
+        );
+      case 3:
+        return AbcTwinRustAsync_JustInt(
+          dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  AbcTwinRustAsyncSse dco_decode_abc_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return AbcTwinRustAsyncSse_A(
+          dco_decode_box_autoadd_a_twin_rust_async_sse(raw[1]),
+        );
+      case 1:
+        return AbcTwinRustAsyncSse_B(
+          dco_decode_box_autoadd_b_twin_rust_async_sse(raw[1]),
+        );
+      case 2:
+        return AbcTwinRustAsyncSse_C(
+          dco_decode_box_autoadd_c_twin_rust_async_sse(raw[1]),
+        );
+      case 3:
+        return AbcTwinRustAsyncSse_JustInt(
+          dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  AbcTwinSse dco_decode_abc_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return AbcTwinSse_A(
+          dco_decode_box_autoadd_a_twin_sse(raw[1]),
+        );
+      case 1:
+        return AbcTwinSse_B(
+          dco_decode_box_autoadd_b_twin_sse(raw[1]),
+        );
+      case 2:
+        return AbcTwinSse_C(
+          dco_decode_box_autoadd_c_twin_sse(raw[1]),
+        );
+      case 3:
+        return AbcTwinSse_JustInt(
+          dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  AbcTwinSync dco_decode_abc_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return AbcTwinSync_A(
+          dco_decode_box_autoadd_a_twin_sync(raw[1]),
+        );
+      case 1:
+        return AbcTwinSync_B(
+          dco_decode_box_autoadd_b_twin_sync(raw[1]),
+        );
+      case 2:
+        return AbcTwinSync_C(
+          dco_decode_box_autoadd_c_twin_sync(raw[1]),
+        );
+      case 3:
+        return AbcTwinSync_JustInt(
+          dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  AbcTwinSyncSse dco_decode_abc_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return AbcTwinSyncSse_A(
+          dco_decode_box_autoadd_a_twin_sync_sse(raw[1]),
+        );
+      case 1:
+        return AbcTwinSyncSse_B(
+          dco_decode_box_autoadd_b_twin_sync_sse(raw[1]),
+        );
+      case 2:
+        return AbcTwinSyncSse_C(
+          dco_decode_box_autoadd_c_twin_sync_sse(raw[1]),
+        );
+      case 3:
+        return AbcTwinSyncSse_JustInt(
+          dco_decode_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  AnotherMacroStructTwinNormal dco_decode_another_macro_struct_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AnotherMacroStructTwinNormal(
+      data: dco_decode_i_32(arr[0]),
+      nonFinalData: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  AnotherTwinNormal dco_decode_another_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinNormal(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  AnotherTwinRustAsync dco_decode_another_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinRustAsync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  AnotherTwinRustAsyncSse dco_decode_another_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinRustAsyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  AnotherTwinSse dco_decode_another_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  AnotherTwinSync dco_decode_another_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinSync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  AnotherTwinSyncSse dco_decode_another_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinSyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ApplicationEnv dco_decode_application_env(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ApplicationEnv(
+      vars: dco_decode_list_application_env_var(arr[0]),
+    );
+  }
+
+  @protected
+  ApplicationEnvVar dco_decode_application_env_var(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ApplicationEnvVar(
+      field0: dco_decode_String(arr[0]),
+      field1: dco_decode_bool(arr[1]),
+    );
+  }
+
+  @protected
+  ApplicationMessage dco_decode_application_message(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return ApplicationMessage_DisplayMessage(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return ApplicationMessage_RenderPixel(
+          x: dco_decode_i_32(raw[1]),
+          y: dco_decode_i_32(raw[2]),
+        );
+      case 2:
+        return ApplicationMessage_Exit();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  ApplicationMode dco_decode_application_mode(dynamic raw) {
+    return ApplicationMode.values[raw as int];
+  }
+
+  @protected
+  ApplicationSettings dco_decode_application_settings(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 5)
+      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    return ApplicationSettings(
+      name: dco_decode_String(arr[0]),
+      version: dco_decode_String(arr[1]),
+      mode: dco_decode_application_mode(arr[2]),
+      env: dco_decode_box_application_env(arr[3]),
+      envOptional: dco_decode_opt_box_autoadd_application_env(arr[4]),
+    );
+  }
+
+  @protected
+  AttributeTwinNormal dco_decode_attribute_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AttributeTwinNormal(
+      key: dco_decode_String(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  AttributeTwinRustAsync dco_decode_attribute_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AttributeTwinRustAsync(
+      key: dco_decode_String(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  AttributeTwinRustAsyncSse dco_decode_attribute_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AttributeTwinRustAsyncSse(
+      key: dco_decode_String(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  AttributeTwinSse dco_decode_attribute_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AttributeTwinSse(
+      key: dco_decode_String(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  AttributeTwinSync dco_decode_attribute_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AttributeTwinSync(
+      key: dco_decode_String(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  AttributeTwinSyncSse dco_decode_attribute_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AttributeTwinSyncSse(
+      key: dco_decode_String(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  BTwinNormal dco_decode_b_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BTwinNormal(
+      b: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  BTwinRustAsync dco_decode_b_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BTwinRustAsync(
+      b: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  BTwinRustAsyncSse dco_decode_b_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BTwinRustAsyncSse(
+      b: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  BTwinSse dco_decode_b_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BTwinSse(
+      b: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  BTwinSync dco_decode_b_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BTwinSync(
+      b: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  BTwinSyncSse dco_decode_b_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BTwinSyncSse(
+      b: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  BasicGeneralEnumTwinNormal dco_decode_basic_general_enum_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinNormal_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinNormal_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync dco_decode_basic_general_enum_twin_rust_async(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinRustAsync_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinRustAsync_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      dco_decode_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinRustAsyncSse_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinRustAsyncSse_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse dco_decode_basic_general_enum_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinSse_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinSse_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync dco_decode_basic_general_enum_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinSync_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinSync_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse dco_decode_basic_general_enum_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return BasicGeneralEnumTwinSyncSse_Apple(
+          field: dco_decode_String(raw[1]),
+        );
+      case 1:
+        return BasicGeneralEnumTwinSyncSse_Orange();
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal dco_decode_basic_primitive_enum_twin_normal(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinNormal.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      dco_decode_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return BasicPrimitiveEnumTwinRustAsync.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      dco_decode_basic_primitive_enum_twin_rust_async_sse(dynamic raw) {
+    return BasicPrimitiveEnumTwinRustAsyncSse.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse dco_decode_basic_primitive_enum_twin_sse(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinSse.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync dco_decode_basic_primitive_enum_twin_sync(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinSync.values[raw as int];
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse dco_decode_basic_primitive_enum_twin_sync_sse(
+      dynamic raw) {
+    return BasicPrimitiveEnumTwinSyncSse.values[raw as int];
+  }
+
+  @protected
+  BasicStructTwinNormal dco_decode_basic_struct_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinNormal(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinRustAsync dco_decode_basic_struct_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinRustAsync(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse dco_decode_basic_struct_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinRustAsyncSse(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinSse dco_decode_basic_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinSse(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinSync dco_decode_basic_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinSync(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BasicStructTwinSyncSse dco_decode_basic_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BasicStructTwinSyncSse(
+      apple: dco_decode_opt_String(arr[0]),
+      orange: dco_decode_opt_box_autoadd_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinNormal(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_normal(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_normal(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_benchmark_binary_tree_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinRustAsync(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_benchmark_binary_tree_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinRustAsyncSse(
+      name: dco_decode_String(arr[0]),
+      left:
+          dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(arr[1]),
+      right:
+          dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_benchmark_binary_tree_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinSse(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_sse(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_sse(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_benchmark_binary_tree_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinSync(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_sync(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_sync(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse dco_decode_benchmark_binary_tree_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBinaryTreeTwinSyncSse(
+      name: dco_decode_String(arr[0]),
+      left: dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(arr[1]),
+      right: dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_benchmark_blob_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinNormal(
+      first: dco_decode_list_prim_u_8_strict(arr[0]),
+      second: dco_decode_list_prim_u_8_strict(arr[1]),
+      third: dco_decode_list_prim_u_8_strict(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsync dco_decode_benchmark_blob_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinRustAsync(
+      first: dco_decode_list_prim_u_8_strict(arr[0]),
+      second: dco_decode_list_prim_u_8_strict(arr[1]),
+      third: dco_decode_list_prim_u_8_strict(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse dco_decode_benchmark_blob_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinRustAsyncSse(
+      first: dco_decode_list_prim_u_8_strict(arr[0]),
+      second: dco_decode_list_prim_u_8_strict(arr[1]),
+      third: dco_decode_list_prim_u_8_strict(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_benchmark_blob_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinSse(
+      first: dco_decode_list_prim_u_8_strict(arr[0]),
+      second: dco_decode_list_prim_u_8_strict(arr[1]),
+      third: dco_decode_list_prim_u_8_strict(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_benchmark_blob_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinSync(
+      first: dco_decode_list_prim_u_8_strict(arr[0]),
+      second: dco_decode_list_prim_u_8_strict(arr[1]),
+      third: dco_decode_list_prim_u_8_strict(arr[2]),
+    );
+  }
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_benchmark_blob_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return BenchmarkBlobTwinSyncSse(
+      first: dco_decode_list_prim_u_8_strict(arr[0]),
+      second: dco_decode_list_prim_u_8_strict(arr[1]),
+      third: dco_decode_list_prim_u_8_strict(arr[2]),
+    );
+  }
+
+  @protected
+  BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BigBuffersTwinNormal(
+      int64: dco_decode_list_prim_i_64_strict(arr[0]),
+      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+    );
+  }
+
+  @protected
+  BigBuffersTwinRustAsync dco_decode_big_buffers_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BigBuffersTwinRustAsync(
+      int64: dco_decode_list_prim_i_64_strict(arr[0]),
+      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+    );
+  }
+
+  @protected
+  BigBuffersTwinRustAsyncSse dco_decode_big_buffers_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BigBuffersTwinRustAsyncSse(
+      int64: dco_decode_list_prim_i_64_strict(arr[0]),
+      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+    );
+  }
+
+  @protected
+  BigBuffersTwinSse dco_decode_big_buffers_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BigBuffersTwinSse(
+      int64: dco_decode_list_prim_i_64_strict(arr[0]),
+      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+    );
+  }
+
+  @protected
+  BigBuffersTwinSync dco_decode_big_buffers_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BigBuffersTwinSync(
+      int64: dco_decode_list_prim_i_64_strict(arr[0]),
+      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+    );
+  }
+
+  @protected
+  BigBuffersTwinSyncSse dco_decode_big_buffers_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BigBuffersTwinSyncSse(
+      int64: dco_decode_list_prim_i_64_strict(arr[0]),
+      uint64: dco_decode_list_prim_u_64_strict(arr[1]),
+    );
+  }
+
+  @protected
+  BlobTwinNormal dco_decode_blob_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BlobTwinNormal(
+      field0: dco_decode_u_8_array_1600(arr[0]),
+    );
+  }
+
+  @protected
+  BlobTwinRustAsync dco_decode_blob_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BlobTwinRustAsync(
+      field0: dco_decode_u_8_array_1600(arr[0]),
+    );
+  }
+
+  @protected
+  BlobTwinRustAsyncSse dco_decode_blob_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BlobTwinRustAsyncSse(
+      field0: dco_decode_u_8_array_1600(arr[0]),
+    );
+  }
+
+  @protected
+  BlobTwinSse dco_decode_blob_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BlobTwinSse(
+      field0: dco_decode_u_8_array_1600(arr[0]),
+    );
+  }
+
+  @protected
+  BlobTwinSync dco_decode_blob_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BlobTwinSync(
+      field0: dco_decode_u_8_array_1600(arr[0]),
+    );
+  }
+
+  @protected
+  BlobTwinSyncSse dco_decode_blob_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BlobTwinSyncSse(
+      field0: dco_decode_u_8_array_1600(arr[0]),
+    );
+  }
+
+  @protected
+  bool dco_decode_bool(dynamic raw) {
+    return raw as bool;
+  }
+
+  @protected
+  ApplicationEnv dco_decode_box_application_env(dynamic raw) {
+    return dco_decode_application_env(raw);
+  }
+
+  @protected
+  Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw) {
+    return dco_decode_Chrono_Duration(raw);
+  }
+
+  @protected
+  DateTime dco_decode_box_autoadd_Chrono_Naive(dynamic raw) {
+    return dco_decode_Chrono_Naive(raw);
+  }
+
+  @protected
+  DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw) {
+    return dco_decode_Chrono_Utc(raw);
+  }
+
+  @protected
+  Object dco_decode_box_autoadd_DartOpaque(dynamic raw) {
+    return dco_decode_DartOpaque(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_another_twin_moi(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinNormal
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_another_twin_normal(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSse
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_another_twin_sse(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_another_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_moi(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_moi(raw);
+  }
+
+  @protected
+  HideDataTwinNormal dco_decode_box_autoadd_RustOpaque_hide_data_twin_normal(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_normal(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsync
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async(dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSse dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSseMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSync dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync(raw);
+  }
+
+  @protected
+  HideDataTwinSyncMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSse dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          dynamic raw) {
+    return dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(raw);
+  }
+
+  @protected
+  ATwinNormal dco_decode_box_autoadd_a_twin_normal(dynamic raw) {
+    return dco_decode_a_twin_normal(raw);
+  }
+
+  @protected
+  ATwinRustAsync dco_decode_box_autoadd_a_twin_rust_async(dynamic raw) {
+    return dco_decode_a_twin_rust_async(raw);
+  }
+
+  @protected
+  ATwinRustAsyncSse dco_decode_box_autoadd_a_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_a_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ATwinSse dco_decode_box_autoadd_a_twin_sse(dynamic raw) {
+    return dco_decode_a_twin_sse(raw);
+  }
+
+  @protected
+  ATwinSync dco_decode_box_autoadd_a_twin_sync(dynamic raw) {
+    return dco_decode_a_twin_sync(raw);
+  }
+
+  @protected
+  ATwinSyncSse dco_decode_box_autoadd_a_twin_sync_sse(dynamic raw) {
+    return dco_decode_a_twin_sync_sse(raw);
+  }
+
+  @protected
+  AbcTwinNormal dco_decode_box_autoadd_abc_twin_normal(dynamic raw) {
+    return dco_decode_abc_twin_normal(raw);
+  }
+
+  @protected
+  AbcTwinRustAsync dco_decode_box_autoadd_abc_twin_rust_async(dynamic raw) {
+    return dco_decode_abc_twin_rust_async(raw);
+  }
+
+  @protected
+  AbcTwinRustAsyncSse dco_decode_box_autoadd_abc_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_abc_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  AbcTwinSse dco_decode_box_autoadd_abc_twin_sse(dynamic raw) {
+    return dco_decode_abc_twin_sse(raw);
+  }
+
+  @protected
+  AbcTwinSync dco_decode_box_autoadd_abc_twin_sync(dynamic raw) {
+    return dco_decode_abc_twin_sync(raw);
+  }
+
+  @protected
+  AbcTwinSyncSse dco_decode_box_autoadd_abc_twin_sync_sse(dynamic raw) {
+    return dco_decode_abc_twin_sync_sse(raw);
+  }
+
+  @protected
+  ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw) {
+    return dco_decode_application_env(raw);
+  }
+
+  @protected
+  ApplicationSettings dco_decode_box_autoadd_application_settings(dynamic raw) {
+    return dco_decode_application_settings(raw);
+  }
+
+  @protected
+  AttributeTwinNormal dco_decode_box_autoadd_attribute_twin_normal(
+      dynamic raw) {
+    return dco_decode_attribute_twin_normal(raw);
+  }
+
+  @protected
+  AttributeTwinRustAsync dco_decode_box_autoadd_attribute_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_attribute_twin_rust_async(raw);
+  }
+
+  @protected
+  AttributeTwinRustAsyncSse
+      dco_decode_box_autoadd_attribute_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_attribute_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  AttributeTwinSse dco_decode_box_autoadd_attribute_twin_sse(dynamic raw) {
+    return dco_decode_attribute_twin_sse(raw);
+  }
+
+  @protected
+  AttributeTwinSync dco_decode_box_autoadd_attribute_twin_sync(dynamic raw) {
+    return dco_decode_attribute_twin_sync(raw);
+  }
+
+  @protected
+  AttributeTwinSyncSse dco_decode_box_autoadd_attribute_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_attribute_twin_sync_sse(raw);
+  }
+
+  @protected
+  BTwinNormal dco_decode_box_autoadd_b_twin_normal(dynamic raw) {
+    return dco_decode_b_twin_normal(raw);
+  }
+
+  @protected
+  BTwinRustAsync dco_decode_box_autoadd_b_twin_rust_async(dynamic raw) {
+    return dco_decode_b_twin_rust_async(raw);
+  }
+
+  @protected
+  BTwinRustAsyncSse dco_decode_box_autoadd_b_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_b_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BTwinSse dco_decode_box_autoadd_b_twin_sse(dynamic raw) {
+    return dco_decode_b_twin_sse(raw);
+  }
+
+  @protected
+  BTwinSync dco_decode_box_autoadd_b_twin_sync(dynamic raw) {
+    return dco_decode_b_twin_sync(raw);
+  }
+
+  @protected
+  BTwinSyncSse dco_decode_box_autoadd_b_twin_sync_sse(dynamic raw) {
+    return dco_decode_b_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinNormal
+      dco_decode_box_autoadd_basic_general_enum_twin_normal(dynamic raw) {
+    return dco_decode_basic_general_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync
+      dco_decode_box_autoadd_basic_general_enum_twin_rust_async(dynamic raw) {
+    return dco_decode_basic_general_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_basic_general_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse dco_decode_box_autoadd_basic_general_enum_twin_sse(
+      dynamic raw) {
+    return dco_decode_basic_general_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync dco_decode_box_autoadd_basic_general_enum_twin_sync(
+      dynamic raw) {
+    return dco_decode_basic_general_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse
+      dco_decode_box_autoadd_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return dco_decode_basic_general_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal
+      dco_decode_box_autoadd_basic_primitive_enum_twin_normal(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sse(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    return dco_decode_basic_primitive_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinNormal dco_decode_box_autoadd_basic_struct_twin_normal(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_normal(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsync dco_decode_box_autoadd_basic_struct_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_basic_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSse dco_decode_box_autoadd_basic_struct_twin_sse(dynamic raw) {
+    return dco_decode_basic_struct_twin_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSync dco_decode_box_autoadd_basic_struct_twin_sync(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_sync(raw);
+  }
+
+  @protected
+  BasicStructTwinSyncSse dco_decode_box_autoadd_basic_struct_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_basic_struct_twin_sync_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_normal(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_box_autoadd_benchmark_blob_twin_normal(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async(dynamic raw) {
+    return dco_decode_benchmark_blob_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_benchmark_blob_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_box_autoadd_benchmark_blob_twin_sse(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_box_autoadd_benchmark_blob_twin_sync(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_box_autoadd_benchmark_blob_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_benchmark_blob_twin_sync_sse(raw);
+  }
+
+  @protected
+  bool dco_decode_box_autoadd_bool(dynamic raw) {
+    return raw as bool;
+  }
+
+  @protected
+  CTwinNormal dco_decode_box_autoadd_c_twin_normal(dynamic raw) {
+    return dco_decode_c_twin_normal(raw);
+  }
+
+  @protected
+  CTwinRustAsync dco_decode_box_autoadd_c_twin_rust_async(dynamic raw) {
+    return dco_decode_c_twin_rust_async(raw);
+  }
+
+  @protected
+  CTwinRustAsyncSse dco_decode_box_autoadd_c_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_c_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  CTwinSse dco_decode_box_autoadd_c_twin_sse(dynamic raw) {
+    return dco_decode_c_twin_sse(raw);
+  }
+
+  @protected
+  CTwinSync dco_decode_box_autoadd_c_twin_sync(dynamic raw) {
+    return dco_decode_c_twin_sync(raw);
+  }
+
+  @protected
+  CTwinSyncSse dco_decode_box_autoadd_c_twin_sync_sse(dynamic raw) {
+    return dco_decode_c_twin_sync_sse(raw);
+  }
+
+  @protected
+  ConcatenateWithTwinNormal dco_decode_box_autoadd_concatenate_with_twin_normal(
+      dynamic raw) {
+    return dco_decode_concatenate_with_twin_normal(raw);
+  }
+
+  @protected
+  ConcatenateWithTwinRustAsync
+      dco_decode_box_autoadd_concatenate_with_twin_rust_async(dynamic raw) {
+    return dco_decode_concatenate_with_twin_rust_async(raw);
+  }
+
+  @protected
+  ConcatenateWithTwinRustAsyncSse
+      dco_decode_box_autoadd_concatenate_with_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_concatenate_with_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ConcatenateWithTwinSse dco_decode_box_autoadd_concatenate_with_twin_sse(
+      dynamic raw) {
+    return dco_decode_concatenate_with_twin_sse(raw);
+  }
+
+  @protected
+  ConcatenateWithTwinSync dco_decode_box_autoadd_concatenate_with_twin_sync(
+      dynamic raw) {
+    return dco_decode_concatenate_with_twin_sync(raw);
+  }
+
+  @protected
+  ConcatenateWithTwinSyncSse
+      dco_decode_box_autoadd_concatenate_with_twin_sync_sse(dynamic raw) {
+    return dco_decode_concatenate_with_twin_sync_sse(raw);
+  }
+
+  @protected
+  CustomNestedError2TwinNormal
+      dco_decode_box_autoadd_custom_nested_error_2_twin_normal(dynamic raw) {
+    return dco_decode_custom_nested_error_2_twin_normal(raw);
+  }
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_2_twin_rust_async(raw);
+  }
+
+  @protected
+  CustomNestedError2TwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_2_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  CustomNestedError2TwinSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sse(dynamic raw) {
+    return dco_decode_custom_nested_error_2_twin_sse(raw);
+  }
+
+  @protected
+  CustomNestedError2TwinSync
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sync(dynamic raw) {
+    return dco_decode_custom_nested_error_2_twin_sync(raw);
+  }
+
+  @protected
+  CustomNestedError2TwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sync_sse(dynamic raw) {
+    return dco_decode_custom_nested_error_2_twin_sync_sse(raw);
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_normal(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_inner_twin_normal(raw);
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_inner_twin_rust_async(raw);
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_inner_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sse(dynamic raw) {
+    return dco_decode_custom_nested_error_inner_twin_sse(raw);
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinSync
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw) {
+    return dco_decode_custom_nested_error_inner_twin_sync(raw);
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sync_sse(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_inner_twin_sync_sse(raw);
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_normal(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_outer_twin_normal(raw);
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_outer_twin_rust_async(raw);
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_outer_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sse(dynamic raw) {
+    return dco_decode_custom_nested_error_outer_twin_sse(raw);
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinSync
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sync(dynamic raw) {
+    return dco_decode_custom_nested_error_outer_twin_sync(raw);
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+          dynamic raw) {
+    return dco_decode_custom_nested_error_outer_twin_sync_sse(raw);
+  }
+
+  @protected
+  CustomStructErrorTwinNormal
+      dco_decode_box_autoadd_custom_struct_error_twin_normal(dynamic raw) {
+    return dco_decode_custom_struct_error_twin_normal(raw);
+  }
+
+  @protected
+  CustomStructErrorTwinRustAsync
+      dco_decode_box_autoadd_custom_struct_error_twin_rust_async(dynamic raw) {
+    return dco_decode_custom_struct_error_twin_rust_async(raw);
+  }
+
+  @protected
+  CustomStructErrorTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_struct_error_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_custom_struct_error_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  CustomStructErrorTwinSse dco_decode_box_autoadd_custom_struct_error_twin_sse(
+      dynamic raw) {
+    return dco_decode_custom_struct_error_twin_sse(raw);
+  }
+
+  @protected
+  CustomStructErrorTwinSync
+      dco_decode_box_autoadd_custom_struct_error_twin_sync(dynamic raw) {
+    return dco_decode_custom_struct_error_twin_sync(raw);
+  }
+
+  @protected
+  CustomStructErrorTwinSyncSse
+      dco_decode_box_autoadd_custom_struct_error_twin_sync_sse(dynamic raw) {
+    return dco_decode_custom_struct_error_twin_sync_sse(raw);
+  }
+
+  @protected
+  CustomStructTwinNormal dco_decode_box_autoadd_custom_struct_twin_normal(
+      dynamic raw) {
+    return dco_decode_custom_struct_twin_normal(raw);
+  }
+
+  @protected
+  CustomStructTwinRustAsync
+      dco_decode_box_autoadd_custom_struct_twin_rust_async(dynamic raw) {
+    return dco_decode_custom_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  CustomStructTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_struct_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_custom_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  CustomStructTwinSse dco_decode_box_autoadd_custom_struct_twin_sse(
+      dynamic raw) {
+    return dco_decode_custom_struct_twin_sse(raw);
+  }
+
+  @protected
+  CustomStructTwinSync dco_decode_box_autoadd_custom_struct_twin_sync(
+      dynamic raw) {
+    return dco_decode_custom_struct_twin_sync(raw);
+  }
+
+  @protected
+  CustomStructTwinSyncSse dco_decode_box_autoadd_custom_struct_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_custom_struct_twin_sync_sse(raw);
+  }
+
+  @protected
+  CustomizedTwinNormal dco_decode_box_autoadd_customized_twin_normal(
+      dynamic raw) {
+    return dco_decode_customized_twin_normal(raw);
+  }
+
+  @protected
+  CustomizedTwinRustAsync dco_decode_box_autoadd_customized_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_customized_twin_rust_async(raw);
+  }
+
+  @protected
+  CustomizedTwinRustAsyncSse
+      dco_decode_box_autoadd_customized_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_customized_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  CustomizedTwinSse dco_decode_box_autoadd_customized_twin_sse(dynamic raw) {
+    return dco_decode_customized_twin_sse(raw);
+  }
+
+  @protected
+  CustomizedTwinSync dco_decode_box_autoadd_customized_twin_sync(dynamic raw) {
+    return dco_decode_customized_twin_sync(raw);
+  }
+
+  @protected
+  CustomizedTwinSyncSse dco_decode_box_autoadd_customized_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_customized_twin_sync_sse(raw);
+  }
+
+  @protected
+  DartOpaqueNestedTwinNormal
+      dco_decode_box_autoadd_dart_opaque_nested_twin_normal(dynamic raw) {
+    return dco_decode_dart_opaque_nested_twin_normal(raw);
+  }
+
+  @protected
+  DartOpaqueNestedTwinRustAsync
+      dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async(dynamic raw) {
+    return dco_decode_dart_opaque_nested_twin_rust_async(raw);
+  }
+
+  @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_dart_opaque_nested_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  DartOpaqueNestedTwinSse dco_decode_box_autoadd_dart_opaque_nested_twin_sse(
+      dynamic raw) {
+    return dco_decode_dart_opaque_nested_twin_sse(raw);
+  }
+
+  @protected
+  DartOpaqueNestedTwinSync dco_decode_box_autoadd_dart_opaque_nested_twin_sync(
+      dynamic raw) {
+    return dco_decode_dart_opaque_nested_twin_sync(raw);
+  }
+
+  @protected
+  DartOpaqueNestedTwinSyncSse
+      dco_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(dynamic raw) {
+    return dco_decode_dart_opaque_nested_twin_sync_sse(raw);
+  }
+
+  @protected
+  ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw) {
+    return dco_decode_element_twin_normal(raw);
+  }
+
+  @protected
+  ElementTwinRustAsync dco_decode_box_autoadd_element_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_element_twin_rust_async(raw);
+  }
+
+  @protected
+  ElementTwinRustAsyncSse dco_decode_box_autoadd_element_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_element_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ElementTwinSse dco_decode_box_autoadd_element_twin_sse(dynamic raw) {
+    return dco_decode_element_twin_sse(raw);
+  }
+
+  @protected
+  ElementTwinSync dco_decode_box_autoadd_element_twin_sync(dynamic raw) {
+    return dco_decode_element_twin_sync(raw);
+  }
+
+  @protected
+  ElementTwinSyncSse dco_decode_box_autoadd_element_twin_sync_sse(dynamic raw) {
+    return dco_decode_element_twin_sync_sse(raw);
+  }
+
+  @protected
+  EmptyTwinNormal dco_decode_box_autoadd_empty_twin_normal(dynamic raw) {
+    return dco_decode_empty_twin_normal(raw);
+  }
+
+  @protected
+  EmptyTwinRustAsync dco_decode_box_autoadd_empty_twin_rust_async(dynamic raw) {
+    return dco_decode_empty_twin_rust_async(raw);
+  }
+
+  @protected
+  EmptyTwinRustAsyncSse dco_decode_box_autoadd_empty_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_empty_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EmptyTwinSse dco_decode_box_autoadd_empty_twin_sse(dynamic raw) {
+    return dco_decode_empty_twin_sse(raw);
+  }
+
+  @protected
+  EmptyTwinSync dco_decode_box_autoadd_empty_twin_sync(dynamic raw) {
+    return dco_decode_empty_twin_sync(raw);
+  }
+
+  @protected
+  EmptyTwinSyncSse dco_decode_box_autoadd_empty_twin_sync_sse(dynamic raw) {
+    return dco_decode_empty_twin_sync_sse(raw);
+  }
+
+  @protected
+  EnumDartOpaqueTwinNormal dco_decode_box_autoadd_enum_dart_opaque_twin_normal(
+      dynamic raw) {
+    return dco_decode_enum_dart_opaque_twin_normal(raw);
+  }
+
+  @protected
+  EnumDartOpaqueTwinRustAsync
+      dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async(dynamic raw) {
+    return dco_decode_enum_dart_opaque_twin_rust_async(raw);
+  }
+
+  @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_enum_dart_opaque_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EnumDartOpaqueTwinSse dco_decode_box_autoadd_enum_dart_opaque_twin_sse(
+      dynamic raw) {
+    return dco_decode_enum_dart_opaque_twin_sse(raw);
+  }
+
+  @protected
+  EnumDartOpaqueTwinSync dco_decode_box_autoadd_enum_dart_opaque_twin_sync(
+      dynamic raw) {
+    return dco_decode_enum_dart_opaque_twin_sync(raw);
+  }
+
+  @protected
+  EnumDartOpaqueTwinSyncSse
+      dco_decode_box_autoadd_enum_dart_opaque_twin_sync_sse(dynamic raw) {
+    return dco_decode_enum_dart_opaque_twin_sync_sse(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinMoi dco_decode_box_autoadd_enum_opaque_twin_moi(dynamic raw) {
+    return dco_decode_enum_opaque_twin_moi(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinNormal dco_decode_box_autoadd_enum_opaque_twin_normal(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_normal(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsync dco_decode_box_autoadd_enum_opaque_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_rust_async(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoi
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_moi(dynamic raw) {
+    return dco_decode_enum_opaque_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_enum_opaque_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse_moi(dynamic raw) {
+    return dco_decode_enum_opaque_twin_rust_async_sse_moi(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSse dco_decode_box_autoadd_enum_opaque_twin_sse(dynamic raw) {
+    return dco_decode_enum_opaque_twin_sse(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSseMoi dco_decode_box_autoadd_enum_opaque_twin_sse_moi(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_sse_moi(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSync dco_decode_box_autoadd_enum_opaque_twin_sync(dynamic raw) {
+    return dco_decode_enum_opaque_twin_sync(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSyncMoi dco_decode_box_autoadd_enum_opaque_twin_sync_moi(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_sync_moi(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSse dco_decode_box_autoadd_enum_opaque_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_sync_sse(raw);
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi dco_decode_box_autoadd_enum_opaque_twin_sync_sse_moi(
+      dynamic raw) {
+    return dco_decode_enum_opaque_twin_sync_sse_moi(raw);
+  }
+
+  @protected
+  EnumWithItemMixedTwinNormal
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_normal(dynamic raw) {
+    return dco_decode_enum_with_item_mixed_twin_normal(raw);
+  }
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async(dynamic raw) {
+    return dco_decode_enum_with_item_mixed_twin_rust_async(raw);
+  }
+
+  @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_enum_with_item_mixed_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EnumWithItemMixedTwinSse dco_decode_box_autoadd_enum_with_item_mixed_twin_sse(
+      dynamic raw) {
+    return dco_decode_enum_with_item_mixed_twin_sse(raw);
+  }
+
+  @protected
+  EnumWithItemMixedTwinSync
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_sync(dynamic raw) {
+    return dco_decode_enum_with_item_mixed_twin_sync(raw);
+  }
+
+  @protected
+  EnumWithItemMixedTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_sync_sse(dynamic raw) {
+    return dco_decode_enum_with_item_mixed_twin_sync_sse(raw);
+  }
+
+  @protected
+  EnumWithItemStructTwinNormal
+      dco_decode_box_autoadd_enum_with_item_struct_twin_normal(dynamic raw) {
+    return dco_decode_enum_with_item_struct_twin_normal(raw);
+  }
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_enum_with_item_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  EnumWithItemStructTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_enum_with_item_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EnumWithItemStructTwinSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sse(dynamic raw) {
+    return dco_decode_enum_with_item_struct_twin_sse(raw);
+  }
+
+  @protected
+  EnumWithItemStructTwinSync
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sync(dynamic raw) {
+    return dco_decode_enum_with_item_struct_twin_sync(raw);
+  }
+
+  @protected
+  EnumWithItemStructTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sync_sse(dynamic raw) {
+    return dco_decode_enum_with_item_struct_twin_sync_sse(raw);
+  }
+
+  @protected
+  EnumWithItemTupleTwinNormal
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_normal(dynamic raw) {
+    return dco_decode_enum_with_item_tuple_twin_normal(raw);
+  }
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async(dynamic raw) {
+    return dco_decode_enum_with_item_tuple_twin_rust_async(raw);
+  }
+
+  @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_enum_with_item_tuple_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EnumWithItemTupleTwinSse dco_decode_box_autoadd_enum_with_item_tuple_twin_sse(
+      dynamic raw) {
+    return dco_decode_enum_with_item_tuple_twin_sse(raw);
+  }
+
+  @protected
+  EnumWithItemTupleTwinSync
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_sync(dynamic raw) {
+    return dco_decode_enum_with_item_tuple_twin_sync(raw);
+  }
+
+  @protected
+  EnumWithItemTupleTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_sync_sse(dynamic raw) {
+    return dco_decode_enum_with_item_tuple_twin_sync_sse(raw);
+  }
+
+  @protected
+  EventTwinNormal dco_decode_box_autoadd_event_twin_normal(dynamic raw) {
+    return dco_decode_event_twin_normal(raw);
+  }
+
+  @protected
+  EventTwinRustAsync dco_decode_box_autoadd_event_twin_rust_async(dynamic raw) {
+    return dco_decode_event_twin_rust_async(raw);
+  }
+
+  @protected
+  EventTwinRustAsyncSse dco_decode_box_autoadd_event_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_event_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  EventTwinSse dco_decode_box_autoadd_event_twin_sse(dynamic raw) {
+    return dco_decode_event_twin_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_box_autoadd_exotic_optionals_twin_normal(
+      dynamic raw) {
+    return dco_decode_exotic_optionals_twin_normal(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsync
+      dco_decode_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw) {
+    return dco_decode_exotic_optionals_twin_rust_async(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_box_autoadd_exotic_optionals_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_exotic_optionals_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_box_autoadd_exotic_optionals_twin_sse(
+      dynamic raw) {
+    return dco_decode_exotic_optionals_twin_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_box_autoadd_exotic_optionals_twin_sync(
+      dynamic raw) {
+    return dco_decode_exotic_optionals_twin_sync(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSyncSse
+      dco_decode_box_autoadd_exotic_optionals_twin_sync_sse(dynamic raw) {
+    return dco_decode_exotic_optionals_twin_sync_sse(raw);
+  }
+
+  @protected
+  double dco_decode_box_autoadd_f_32(dynamic raw) {
+    return raw as double;
+  }
+
+  @protected
+  double dco_decode_box_autoadd_f_64(dynamic raw) {
+    return raw as double;
+  }
+
+  @protected
+  FeatureChronoTwinNormal dco_decode_box_autoadd_feature_chrono_twin_normal(
+      dynamic raw) {
+    return dco_decode_feature_chrono_twin_normal(raw);
+  }
+
+  @protected
+  FeatureChronoTwinRustAsync
+      dco_decode_box_autoadd_feature_chrono_twin_rust_async(dynamic raw) {
+    return dco_decode_feature_chrono_twin_rust_async(raw);
+  }
+
+  @protected
+  FeatureChronoTwinSync dco_decode_box_autoadd_feature_chrono_twin_sync(
+      dynamic raw) {
+    return dco_decode_feature_chrono_twin_sync(raw);
+  }
+
+  @protected
+  FeatureUuidTwinNormal dco_decode_box_autoadd_feature_uuid_twin_normal(
+      dynamic raw) {
+    return dco_decode_feature_uuid_twin_normal(raw);
+  }
+
+  @protected
+  FeatureUuidTwinRustAsync dco_decode_box_autoadd_feature_uuid_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_feature_uuid_twin_rust_async(raw);
+  }
+
+  @protected
+  FeatureUuidTwinSync dco_decode_box_autoadd_feature_uuid_twin_sync(
+      dynamic raw) {
+    return dco_decode_feature_uuid_twin_sync(raw);
+  }
+
+  @protected
+  FeedIdTwinNormal dco_decode_box_autoadd_feed_id_twin_normal(dynamic raw) {
+    return dco_decode_feed_id_twin_normal(raw);
+  }
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_box_autoadd_feed_id_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_feed_id_twin_rust_async(raw);
+  }
+
+  @protected
+  FeedIdTwinRustAsyncSse dco_decode_box_autoadd_feed_id_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_feed_id_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  FeedIdTwinSse dco_decode_box_autoadd_feed_id_twin_sse(dynamic raw) {
+    return dco_decode_feed_id_twin_sse(raw);
+  }
+
+  @protected
+  FeedIdTwinSync dco_decode_box_autoadd_feed_id_twin_sync(dynamic raw) {
+    return dco_decode_feed_id_twin_sync(raw);
+  }
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_box_autoadd_feed_id_twin_sync_sse(dynamic raw) {
+    return dco_decode_feed_id_twin_sync_sse(raw);
+  }
+
+  @protected
+  int dco_decode_box_autoadd_i_16(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_box_autoadd_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_box_autoadd_i_64(dynamic raw) {
+    return dco_decode_i_64(raw);
+  }
+
+  @protected
+  int dco_decode_box_autoadd_i_8(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_box_autoadd_isize(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
+      dynamic raw) {
+    return dco_decode_kitchen_sink_twin_normal(raw);
+  }
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_box_autoadd_kitchen_sink_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_kitchen_sink_twin_rust_async(raw);
+  }
+
+  @protected
+  KitchenSinkTwinRustAsyncSse
+      dco_decode_box_autoadd_kitchen_sink_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_kitchen_sink_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  KitchenSinkTwinSse dco_decode_box_autoadd_kitchen_sink_twin_sse(dynamic raw) {
+    return dco_decode_kitchen_sink_twin_sse(raw);
+  }
+
+  @protected
+  KitchenSinkTwinSync dco_decode_box_autoadd_kitchen_sink_twin_sync(
+      dynamic raw) {
+    return dco_decode_kitchen_sink_twin_sync(raw);
+  }
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_box_autoadd_kitchen_sink_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_kitchen_sink_twin_sync_sse(raw);
+  }
+
+  @protected
+  ListOfNestedRawStringMirrored
+      dco_decode_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw) {
+    return dco_decode_list_of_nested_raw_string_mirrored(raw);
+  }
+
+  @protected
+  MacroStruct dco_decode_box_autoadd_macro_struct(dynamic raw) {
+    return dco_decode_macro_struct(raw);
+  }
+
+  @protected
+  MeasureTwinNormal dco_decode_box_autoadd_measure_twin_normal(dynamic raw) {
+    return dco_decode_measure_twin_normal(raw);
+  }
+
+  @protected
+  MeasureTwinRustAsync dco_decode_box_autoadd_measure_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_measure_twin_rust_async(raw);
+  }
+
+  @protected
+  MeasureTwinRustAsyncSse dco_decode_box_autoadd_measure_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_measure_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  MeasureTwinSse dco_decode_box_autoadd_measure_twin_sse(dynamic raw) {
+    return dco_decode_measure_twin_sse(raw);
+  }
+
+  @protected
+  MeasureTwinSync dco_decode_box_autoadd_measure_twin_sync(dynamic raw) {
+    return dco_decode_measure_twin_sync(raw);
+  }
+
+  @protected
+  MeasureTwinSyncSse dco_decode_box_autoadd_measure_twin_sync_sse(dynamic raw) {
+    return dco_decode_measure_twin_sync_sse(raw);
+  }
+
+  @protected
+  MessageIdTwinNormal dco_decode_box_autoadd_message_id_twin_normal(
+      dynamic raw) {
+    return dco_decode_message_id_twin_normal(raw);
+  }
+
+  @protected
+  MessageIdTwinRustAsync dco_decode_box_autoadd_message_id_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_message_id_twin_rust_async(raw);
+  }
+
+  @protected
+  MessageIdTwinRustAsyncSse
+      dco_decode_box_autoadd_message_id_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_message_id_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  MessageIdTwinSse dco_decode_box_autoadd_message_id_twin_sse(dynamic raw) {
+    return dco_decode_message_id_twin_sse(raw);
+  }
+
+  @protected
+  MessageIdTwinSync dco_decode_box_autoadd_message_id_twin_sync(dynamic raw) {
+    return dco_decode_message_id_twin_sync(raw);
+  }
+
+  @protected
+  MessageIdTwinSyncSse dco_decode_box_autoadd_message_id_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_message_id_twin_sync_sse(raw);
+  }
+
+  @protected
+  MyNestedStructTwinNormal dco_decode_box_autoadd_my_nested_struct_twin_normal(
+      dynamic raw) {
+    return dco_decode_my_nested_struct_twin_normal(raw);
+  }
+
+  @protected
+  MyNestedStructTwinRustAsync
+      dco_decode_box_autoadd_my_nested_struct_twin_rust_async(dynamic raw) {
+    return dco_decode_my_nested_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  MyNestedStructTwinRustAsyncSse
+      dco_decode_box_autoadd_my_nested_struct_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_my_nested_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  MyNestedStructTwinSse dco_decode_box_autoadd_my_nested_struct_twin_sse(
+      dynamic raw) {
+    return dco_decode_my_nested_struct_twin_sse(raw);
+  }
+
+  @protected
+  MyNestedStructTwinSync dco_decode_box_autoadd_my_nested_struct_twin_sync(
+      dynamic raw) {
+    return dco_decode_my_nested_struct_twin_sync(raw);
+  }
+
+  @protected
+  MyNestedStructTwinSyncSse
+      dco_decode_box_autoadd_my_nested_struct_twin_sync_sse(dynamic raw) {
+    return dco_decode_my_nested_struct_twin_sync_sse(raw);
+  }
+
+  @protected
+  MySize dco_decode_box_autoadd_my_size(dynamic raw) {
+    return dco_decode_my_size(raw);
+  }
+
+  @protected
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw) {
+    return dco_decode_my_struct(raw);
+  }
+
+  @protected
+  MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
+      dynamic raw) {
+    return dco_decode_my_tree_node_twin_normal(raw);
+  }
+
+  @protected
+  MyTreeNodeTwinRustAsync dco_decode_box_autoadd_my_tree_node_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_my_tree_node_twin_rust_async(raw);
+  }
+
+  @protected
+  MyTreeNodeTwinRustAsyncSse
+      dco_decode_box_autoadd_my_tree_node_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_my_tree_node_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  MyTreeNodeTwinSse dco_decode_box_autoadd_my_tree_node_twin_sse(dynamic raw) {
+    return dco_decode_my_tree_node_twin_sse(raw);
+  }
+
+  @protected
+  MyTreeNodeTwinSync dco_decode_box_autoadd_my_tree_node_twin_sync(
+      dynamic raw) {
+    return dco_decode_my_tree_node_twin_sync(raw);
+  }
+
+  @protected
+  MyTreeNodeTwinSyncSse dco_decode_box_autoadd_my_tree_node_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_my_tree_node_twin_sync_sse(raw);
+  }
+
+  @protected
+  NestedRawStringMirrored dco_decode_box_autoadd_nested_raw_string_mirrored(
+      dynamic raw) {
+    return dco_decode_nested_raw_string_mirrored(raw);
+  }
+
+  @protected
+  NewTypeIntTwinNormal dco_decode_box_autoadd_new_type_int_twin_normal(
+      dynamic raw) {
+    return dco_decode_new_type_int_twin_normal(raw);
+  }
+
+  @protected
+  NewTypeIntTwinRustAsync dco_decode_box_autoadd_new_type_int_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_new_type_int_twin_rust_async(raw);
+  }
+
+  @protected
+  NewTypeIntTwinRustAsyncSse
+      dco_decode_box_autoadd_new_type_int_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_new_type_int_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  NewTypeIntTwinSse dco_decode_box_autoadd_new_type_int_twin_sse(dynamic raw) {
+    return dco_decode_new_type_int_twin_sse(raw);
+  }
+
+  @protected
+  NewTypeIntTwinSync dco_decode_box_autoadd_new_type_int_twin_sync(
+      dynamic raw) {
+    return dco_decode_new_type_int_twin_sync(raw);
+  }
+
+  @protected
+  NewTypeIntTwinSyncSse dco_decode_box_autoadd_new_type_int_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_new_type_int_twin_sync_sse(raw);
+  }
+
+  @protected
+  NoteTwinNormal dco_decode_box_autoadd_note_twin_normal(dynamic raw) {
+    return dco_decode_note_twin_normal(raw);
+  }
+
+  @protected
+  NoteTwinRustAsync dco_decode_box_autoadd_note_twin_rust_async(dynamic raw) {
+    return dco_decode_note_twin_rust_async(raw);
+  }
+
+  @protected
+  NoteTwinRustAsyncSse dco_decode_box_autoadd_note_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_note_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  NoteTwinSse dco_decode_box_autoadd_note_twin_sse(dynamic raw) {
+    return dco_decode_note_twin_sse(raw);
+  }
+
+  @protected
+  NoteTwinSync dco_decode_box_autoadd_note_twin_sync(dynamic raw) {
+    return dco_decode_note_twin_sync(raw);
+  }
+
+  @protected
+  NoteTwinSyncSse dco_decode_box_autoadd_note_twin_sync_sse(dynamic raw) {
+    return dco_decode_note_twin_sync_sse(raw);
+  }
+
+  @protected
+  Numbers dco_decode_box_autoadd_numbers(dynamic raw) {
+    return dco_decode_numbers(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinMoi dco_decode_box_autoadd_opaque_nested_twin_moi(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_moi(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinNormal dco_decode_box_autoadd_opaque_nested_twin_normal(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_normal(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsync
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async(dynamic raw) {
+    return dco_decode_opaque_nested_twin_rust_async(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncMoi
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_moi(dynamic raw) {
+    return dco_decode_opaque_nested_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSse
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_opaque_nested_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return dco_decode_opaque_nested_twin_rust_async_sse_moi(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinSse dco_decode_box_autoadd_opaque_nested_twin_sse(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_sse(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinSseMoi dco_decode_box_autoadd_opaque_nested_twin_sse_moi(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_sse_moi(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinSync dco_decode_box_autoadd_opaque_nested_twin_sync(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_sync(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinSyncMoi dco_decode_box_autoadd_opaque_nested_twin_sync_moi(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_sync_moi(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSse dco_decode_box_autoadd_opaque_nested_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_opaque_nested_twin_sync_sse(raw);
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi
+      dco_decode_box_autoadd_opaque_nested_twin_sync_sse_moi(dynamic raw) {
+    return dco_decode_opaque_nested_twin_sync_sse_moi(raw);
+  }
+
+  @protected
+  OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw) {
+    return dco_decode_opt_vecs_twin_normal(raw);
+  }
+
+  @protected
+  OptVecsTwinRustAsync dco_decode_box_autoadd_opt_vecs_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_opt_vecs_twin_rust_async(raw);
+  }
+
+  @protected
+  OptVecsTwinRustAsyncSse dco_decode_box_autoadd_opt_vecs_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_opt_vecs_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  OptVecsTwinSse dco_decode_box_autoadd_opt_vecs_twin_sse(dynamic raw) {
+    return dco_decode_opt_vecs_twin_sse(raw);
+  }
+
+  @protected
+  OptVecsTwinSync dco_decode_box_autoadd_opt_vecs_twin_sync(dynamic raw) {
+    return dco_decode_opt_vecs_twin_sync(raw);
+  }
+
+  @protected
+  OptVecsTwinSyncSse dco_decode_box_autoadd_opt_vecs_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_opt_vecs_twin_sync_sse(raw);
+  }
+
+  @protected
+  RawStringMirrored dco_decode_box_autoadd_raw_string_mirrored(dynamic raw) {
+    return dco_decode_raw_string_mirrored(raw);
+  }
+
+  @protected
+  (String, int) dco_decode_box_autoadd_record_string_i_32(dynamic raw) {
+    return raw as (String, int);
+  }
+
+  @protected
+  Sequences dco_decode_box_autoadd_sequences(dynamic raw) {
+    return dco_decode_sequences(raw);
+  }
+
+  @protected
+  SomeStructTwinNormal dco_decode_box_autoadd_some_struct_twin_normal(
+      dynamic raw) {
+    return dco_decode_some_struct_twin_normal(raw);
+  }
+
+  @protected
+  SomeStructTwinRustAsync dco_decode_box_autoadd_some_struct_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_some_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  SomeStructTwinRustAsyncSse
+      dco_decode_box_autoadd_some_struct_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_some_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  SomeStructTwinSse dco_decode_box_autoadd_some_struct_twin_sse(dynamic raw) {
+    return dco_decode_some_struct_twin_sse(raw);
+  }
+
+  @protected
+  SomeStructTwinSync dco_decode_box_autoadd_some_struct_twin_sync(dynamic raw) {
+    return dco_decode_some_struct_twin_sync(raw);
+  }
+
+  @protected
+  SomeStructTwinSyncSse dco_decode_box_autoadd_some_struct_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_some_struct_twin_sync_sse(raw);
+  }
+
+  @protected
+  StructWithCommentsTwinNormal
+      dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw) {
+    return dco_decode_struct_with_comments_twin_normal(raw);
+  }
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      dco_decode_box_autoadd_struct_with_comments_twin_rust_async(dynamic raw) {
+    return dco_decode_struct_with_comments_twin_rust_async(raw);
+  }
+
+  @protected
+  StructWithCommentsTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_comments_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_struct_with_comments_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  StructWithCommentsTwinSse
+      dco_decode_box_autoadd_struct_with_comments_twin_sse(dynamic raw) {
+    return dco_decode_struct_with_comments_twin_sse(raw);
+  }
+
+  @protected
+  StructWithCommentsTwinSync
+      dco_decode_box_autoadd_struct_with_comments_twin_sync(dynamic raw) {
+    return dco_decode_struct_with_comments_twin_sync(raw);
+  }
+
+  @protected
+  StructWithCommentsTwinSyncSse
+      dco_decode_box_autoadd_struct_with_comments_twin_sync_sse(dynamic raw) {
+    return dco_decode_struct_with_comments_twin_sync_sse(raw);
+  }
+
+  @protected
+  StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
+      dynamic raw) {
+    return dco_decode_struct_with_enum_twin_normal(raw);
+  }
+
+  @protected
+  StructWithEnumTwinRustAsync
+      dco_decode_box_autoadd_struct_with_enum_twin_rust_async(dynamic raw) {
+    return dco_decode_struct_with_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  StructWithEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_enum_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_struct_with_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  StructWithEnumTwinSse dco_decode_box_autoadd_struct_with_enum_twin_sse(
+      dynamic raw) {
+    return dco_decode_struct_with_enum_twin_sse(raw);
+  }
+
+  @protected
+  StructWithEnumTwinSync dco_decode_box_autoadd_struct_with_enum_twin_sync(
+      dynamic raw) {
+    return dco_decode_struct_with_enum_twin_sync(raw);
+  }
+
+  @protected
+  StructWithEnumTwinSyncSse
+      dco_decode_box_autoadd_struct_with_enum_twin_sync_sse(dynamic raw) {
+    return dco_decode_struct_with_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  StructWithOneFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_one_field_twin_normal(dynamic raw) {
+    return dco_decode_struct_with_one_field_twin_normal(raw);
+  }
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_one_field_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_struct_with_one_field_twin_rust_async(raw);
+  }
+
+  @protected
+  StructWithOneFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_struct_with_one_field_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  StructWithOneFieldTwinSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_sse(dynamic raw) {
+    return dco_decode_struct_with_one_field_twin_sse(raw);
+  }
+
+  @protected
+  StructWithOneFieldTwinSync
+      dco_decode_box_autoadd_struct_with_one_field_twin_sync(dynamic raw) {
+    return dco_decode_struct_with_one_field_twin_sync(raw);
+  }
+
+  @protected
+  StructWithOneFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_sync_sse(dynamic raw) {
+    return dco_decode_struct_with_one_field_twin_sync_sse(raw);
+  }
+
+  @protected
+  StructWithTwoFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_two_field_twin_normal(dynamic raw) {
+    return dco_decode_struct_with_two_field_twin_normal(raw);
+  }
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_two_field_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_struct_with_two_field_twin_rust_async(raw);
+  }
+
+  @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_struct_with_two_field_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  StructWithTwoFieldTwinSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_sse(dynamic raw) {
+    return dco_decode_struct_with_two_field_twin_sse(raw);
+  }
+
+  @protected
+  StructWithTwoFieldTwinSync
+      dco_decode_box_autoadd_struct_with_two_field_twin_sync(dynamic raw) {
+    return dco_decode_struct_with_two_field_twin_sync(raw);
+  }
+
+  @protected
+  StructWithTwoFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_sync_sse(dynamic raw) {
+    return dco_decode_struct_with_two_field_twin_sync_sse(raw);
+  }
+
+  @protected
+  StructWithZeroFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_zero_field_twin_normal(dynamic raw) {
+    return dco_decode_struct_with_zero_field_twin_normal(raw);
+  }
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_struct_with_zero_field_twin_rust_async(raw);
+  }
+
+  @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_struct_with_zero_field_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  StructWithZeroFieldTwinSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sse(dynamic raw) {
+    return dco_decode_struct_with_zero_field_twin_sse(raw);
+  }
+
+  @protected
+  StructWithZeroFieldTwinSync
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sync(dynamic raw) {
+    return dco_decode_struct_with_zero_field_twin_sync(raw);
+  }
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sync_sse(dynamic raw) {
+    return dco_decode_struct_with_zero_field_twin_sync_sse(raw);
+  }
+
+  @protected
+  SumWithTwinNormal dco_decode_box_autoadd_sum_with_twin_normal(dynamic raw) {
+    return dco_decode_sum_with_twin_normal(raw);
+  }
+
+  @protected
+  SumWithTwinRustAsync dco_decode_box_autoadd_sum_with_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_sum_with_twin_rust_async(raw);
+  }
+
+  @protected
+  SumWithTwinRustAsyncSse dco_decode_box_autoadd_sum_with_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_sum_with_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  SumWithTwinSse dco_decode_box_autoadd_sum_with_twin_sse(dynamic raw) {
+    return dco_decode_sum_with_twin_sse(raw);
+  }
+
+  @protected
+  SumWithTwinSync dco_decode_box_autoadd_sum_with_twin_sync(dynamic raw) {
+    return dco_decode_sum_with_twin_sync(raw);
+  }
+
+  @protected
+  SumWithTwinSyncSse dco_decode_box_autoadd_sum_with_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_sum_with_twin_sync_sse(raw);
+  }
+
+  @protected
+  TestIdTwinNormal dco_decode_box_autoadd_test_id_twin_normal(dynamic raw) {
+    return dco_decode_test_id_twin_normal(raw);
+  }
+
+  @protected
+  TestIdTwinRustAsync dco_decode_box_autoadd_test_id_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_test_id_twin_rust_async(raw);
+  }
+
+  @protected
+  TestIdTwinRustAsyncSse dco_decode_box_autoadd_test_id_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_test_id_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  TestIdTwinSse dco_decode_box_autoadd_test_id_twin_sse(dynamic raw) {
+    return dco_decode_test_id_twin_sse(raw);
+  }
+
+  @protected
+  TestIdTwinSync dco_decode_box_autoadd_test_id_twin_sync(dynamic raw) {
+    return dco_decode_test_id_twin_sync(raw);
+  }
+
+  @protected
+  TestIdTwinSyncSse dco_decode_box_autoadd_test_id_twin_sync_sse(dynamic raw) {
+    return dco_decode_test_id_twin_sync_sse(raw);
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_one_field_twin_normal(raw);
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_one_field_twin_rust_async(raw);
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_one_field_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sse(dynamic raw) {
+    return dco_decode_tuple_struct_with_one_field_twin_sse(raw);
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_one_field_twin_sync(raw);
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_one_field_twin_sync_sse(raw);
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_two_field_twin_normal(raw);
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_two_field_twin_rust_async(raw);
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_two_field_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sse(dynamic raw) {
+    return dco_decode_tuple_struct_with_two_field_twin_sse(raw);
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_two_field_twin_sync(raw);
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+          dynamic raw) {
+    return dco_decode_tuple_struct_with_two_field_twin_sync_sse(raw);
+  }
+
+  @protected
+  int dco_decode_box_autoadd_u_16(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_box_autoadd_u_32(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_box_autoadd_u_64(dynamic raw) {
+    return dco_decode_u_64(raw);
+  }
+
+  @protected
+  int dco_decode_box_autoadd_u_8(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  UserIdTwinNormal dco_decode_box_autoadd_user_id_twin_normal(dynamic raw) {
+    return dco_decode_user_id_twin_normal(raw);
+  }
+
+  @protected
+  UserIdTwinRustAsync dco_decode_box_autoadd_user_id_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_user_id_twin_rust_async(raw);
+  }
+
+  @protected
+  UserIdTwinRustAsyncSse dco_decode_box_autoadd_user_id_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_user_id_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  UserIdTwinSse dco_decode_box_autoadd_user_id_twin_sse(dynamic raw) {
+    return dco_decode_user_id_twin_sse(raw);
+  }
+
+  @protected
+  UserIdTwinSync dco_decode_box_autoadd_user_id_twin_sync(dynamic raw) {
+    return dco_decode_user_id_twin_sync(raw);
+  }
+
+  @protected
+  UserIdTwinSyncSse dco_decode_box_autoadd_user_id_twin_sync_sse(dynamic raw) {
+    return dco_decode_user_id_twin_sync_sse(raw);
+  }
+
+  @protected
+  int dco_decode_box_autoadd_usize(dynamic raw) {
+    return dco_decode_usize(raw);
+  }
+
+  @protected
+  WeekdaysTwinNormal dco_decode_box_autoadd_weekdays_twin_normal(dynamic raw) {
+    return dco_decode_weekdays_twin_normal(raw);
+  }
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_box_autoadd_weekdays_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_weekdays_twin_rust_async(raw);
+  }
+
+  @protected
+  WeekdaysTwinRustAsyncSse dco_decode_box_autoadd_weekdays_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_weekdays_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  WeekdaysTwinSse dco_decode_box_autoadd_weekdays_twin_sse(dynamic raw) {
+    return dco_decode_weekdays_twin_sse(raw);
+  }
+
+  @protected
+  WeekdaysTwinSync dco_decode_box_autoadd_weekdays_twin_sync(dynamic raw) {
+    return dco_decode_weekdays_twin_sync(raw);
+  }
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_box_autoadd_weekdays_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_weekdays_twin_sync_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_benchmark_binary_tree_twin_normal(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_benchmark_binary_tree_twin_rust_async(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_box_benchmark_binary_tree_twin_sse(
+      dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_box_benchmark_binary_tree_twin_sync(
+      dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_benchmark_binary_tree_twin_sync_sse(dynamic raw) {
+    return dco_decode_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
+  BlobTwinNormal dco_decode_box_blob_twin_normal(dynamic raw) {
+    return dco_decode_blob_twin_normal(raw);
+  }
+
+  @protected
+  BlobTwinRustAsync dco_decode_box_blob_twin_rust_async(dynamic raw) {
+    return dco_decode_blob_twin_rust_async(raw);
+  }
+
+  @protected
+  BlobTwinRustAsyncSse dco_decode_box_blob_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_blob_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BlobTwinSse dco_decode_box_blob_twin_sse(dynamic raw) {
+    return dco_decode_blob_twin_sse(raw);
+  }
+
+  @protected
+  BlobTwinSync dco_decode_box_blob_twin_sync(dynamic raw) {
+    return dco_decode_blob_twin_sync(raw);
+  }
+
+  @protected
+  BlobTwinSyncSse dco_decode_box_blob_twin_sync_sse(dynamic raw) {
+    return dco_decode_blob_twin_sync_sse(raw);
+  }
+
+  @protected
+  bool dco_decode_box_bool(dynamic raw) {
+    return raw as bool;
+  }
+
+  @protected
+  DistanceTwinNormal dco_decode_box_distance_twin_normal(dynamic raw) {
+    return dco_decode_distance_twin_normal(raw);
+  }
+
+  @protected
+  DistanceTwinRustAsync dco_decode_box_distance_twin_rust_async(dynamic raw) {
+    return dco_decode_distance_twin_rust_async(raw);
+  }
+
+  @protected
+  DistanceTwinRustAsyncSse dco_decode_box_distance_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_distance_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  DistanceTwinSse dco_decode_box_distance_twin_sse(dynamic raw) {
+    return dco_decode_distance_twin_sse(raw);
+  }
+
+  @protected
+  DistanceTwinSync dco_decode_box_distance_twin_sync(dynamic raw) {
+    return dco_decode_distance_twin_sync(raw);
+  }
+
+  @protected
+  DistanceTwinSyncSse dco_decode_box_distance_twin_sync_sse(dynamic raw) {
+    return dco_decode_distance_twin_sync_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_box_exotic_optionals_twin_normal(
+      dynamic raw) {
+    return dco_decode_exotic_optionals_twin_normal(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsync dco_decode_box_exotic_optionals_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_exotic_optionals_twin_rust_async(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_box_exotic_optionals_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_exotic_optionals_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_box_exotic_optionals_twin_sse(dynamic raw) {
+    return dco_decode_exotic_optionals_twin_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_box_exotic_optionals_twin_sync(
+      dynamic raw) {
+    return dco_decode_exotic_optionals_twin_sync(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSyncSse dco_decode_box_exotic_optionals_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_exotic_optionals_twin_sync_sse(raw);
+  }
+
+  @protected
+  double dco_decode_box_f_64(dynamic raw) {
+    return raw as double;
+  }
+
+  @protected
+  FeedIdTwinNormal dco_decode_box_feed_id_twin_normal(dynamic raw) {
+    return dco_decode_feed_id_twin_normal(raw);
+  }
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_box_feed_id_twin_rust_async(dynamic raw) {
+    return dco_decode_feed_id_twin_rust_async(raw);
+  }
+
+  @protected
+  FeedIdTwinRustAsyncSse dco_decode_box_feed_id_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_feed_id_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  FeedIdTwinSse dco_decode_box_feed_id_twin_sse(dynamic raw) {
+    return dco_decode_feed_id_twin_sse(raw);
+  }
+
+  @protected
+  FeedIdTwinSync dco_decode_box_feed_id_twin_sync(dynamic raw) {
+    return dco_decode_feed_id_twin_sync(raw);
+  }
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_box_feed_id_twin_sync_sse(dynamic raw) {
+    return dco_decode_feed_id_twin_sync_sse(raw);
+  }
+
+  @protected
+  int dco_decode_box_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_box_i_64(dynamic raw) {
+    return dco_decode_i_64(raw);
+  }
+
+  @protected
+  int dco_decode_box_i_8(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_box_kitchen_sink_twin_normal(dynamic raw) {
+    return dco_decode_kitchen_sink_twin_normal(raw);
+  }
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_box_kitchen_sink_twin_rust_async(
+      dynamic raw) {
+    return dco_decode_kitchen_sink_twin_rust_async(raw);
+  }
+
+  @protected
+  KitchenSinkTwinRustAsyncSse dco_decode_box_kitchen_sink_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_kitchen_sink_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  KitchenSinkTwinSse dco_decode_box_kitchen_sink_twin_sse(dynamic raw) {
+    return dco_decode_kitchen_sink_twin_sse(raw);
+  }
+
+  @protected
+  KitchenSinkTwinSync dco_decode_box_kitchen_sink_twin_sync(dynamic raw) {
+    return dco_decode_kitchen_sink_twin_sync(raw);
+  }
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_box_kitchen_sink_twin_sync_sse(
+      dynamic raw) {
+    return dco_decode_kitchen_sink_twin_sync_sse(raw);
+  }
+
+  @protected
+  MySize dco_decode_box_my_size(dynamic raw) {
+    return dco_decode_my_size(raw);
+  }
+
+  @protected
+  SpeedTwinNormal dco_decode_box_speed_twin_normal(dynamic raw) {
+    return dco_decode_speed_twin_normal(raw);
+  }
+
+  @protected
+  SpeedTwinRustAsync dco_decode_box_speed_twin_rust_async(dynamic raw) {
+    return dco_decode_speed_twin_rust_async(raw);
+  }
+
+  @protected
+  SpeedTwinRustAsyncSse dco_decode_box_speed_twin_rust_async_sse(dynamic raw) {
+    return dco_decode_speed_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  SpeedTwinSse dco_decode_box_speed_twin_sse(dynamic raw) {
+    return dco_decode_speed_twin_sse(raw);
+  }
+
+  @protected
+  SpeedTwinSync dco_decode_box_speed_twin_sync(dynamic raw) {
+    return dco_decode_speed_twin_sync(raw);
+  }
+
+  @protected
+  SpeedTwinSyncSse dco_decode_box_speed_twin_sync_sse(dynamic raw) {
+    return dco_decode_speed_twin_sync_sse(raw);
+  }
+
+  @protected
+  int dco_decode_box_u_8(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  U8Array1600 dco_decode_box_u_8_array_1600(dynamic raw) {
+    return dco_decode_u_8_array_1600(raw);
+  }
+
+  @protected
+  U8Array8 dco_decode_box_u_8_array_8(dynamic raw) {
+    return dco_decode_u_8_array_8(raw);
+  }
+
+  @protected
+  WeekdaysTwinNormal dco_decode_box_weekdays_twin_normal(dynamic raw) {
+    return dco_decode_weekdays_twin_normal(raw);
+  }
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_box_weekdays_twin_rust_async(dynamic raw) {
+    return dco_decode_weekdays_twin_rust_async(raw);
+  }
+
+  @protected
+  WeekdaysTwinRustAsyncSse dco_decode_box_weekdays_twin_rust_async_sse(
+      dynamic raw) {
+    return dco_decode_weekdays_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  WeekdaysTwinSse dco_decode_box_weekdays_twin_sse(dynamic raw) {
+    return dco_decode_weekdays_twin_sse(raw);
+  }
+
+  @protected
+  WeekdaysTwinSync dco_decode_box_weekdays_twin_sync(dynamic raw) {
+    return dco_decode_weekdays_twin_sync(raw);
+  }
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_box_weekdays_twin_sync_sse(dynamic raw) {
+    return dco_decode_weekdays_twin_sync_sse(raw);
+  }
+
+  @protected
+  CTwinNormal dco_decode_c_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CTwinNormal(
+      c: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  CTwinRustAsync dco_decode_c_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CTwinRustAsync(
+      c: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  CTwinRustAsyncSse dco_decode_c_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CTwinRustAsyncSse(
+      c: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  CTwinSse dco_decode_c_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CTwinSse(
+      c: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  CTwinSync dco_decode_c_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CTwinSync(
+      c: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  CTwinSyncSse dco_decode_c_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CTwinSyncSse(
+      c: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  ConcatenateWithTwinNormal dco_decode_concatenate_with_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWithTwinNormal(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ConcatenateWithTwinRustAsync dco_decode_concatenate_with_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWithTwinRustAsync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ConcatenateWithTwinRustAsyncSse
+      dco_decode_concatenate_with_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWithTwinRustAsyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ConcatenateWithTwinSse dco_decode_concatenate_with_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWithTwinSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ConcatenateWithTwinSync dco_decode_concatenate_with_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWithTwinSync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ConcatenateWithTwinSyncSse dco_decode_concatenate_with_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWithTwinSyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  ContainsMirroredSubStructTwinNormal
+      dco_decode_contains_mirrored_sub_struct_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStructTwinNormal(
+      test: dco_decode_raw_string_mirrored(arr[0]),
+      test2: dco_decode_another_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  ContainsMirroredSubStructTwinRustAsync
+      dco_decode_contains_mirrored_sub_struct_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStructTwinRustAsync(
+      test: dco_decode_raw_string_mirrored(arr[0]),
+      test2: dco_decode_another_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  ContainsMirroredSubStructTwinRustAsyncSse
+      dco_decode_contains_mirrored_sub_struct_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStructTwinRustAsyncSse(
+      test: dco_decode_raw_string_mirrored(arr[0]),
+      test2: dco_decode_another_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  ContainsMirroredSubStructTwinSse
+      dco_decode_contains_mirrored_sub_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStructTwinSse(
+      test: dco_decode_raw_string_mirrored(arr[0]),
+      test2: dco_decode_another_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  ContainsMirroredSubStructTwinSync
+      dco_decode_contains_mirrored_sub_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStructTwinSync(
+      test: dco_decode_raw_string_mirrored(arr[0]),
+      test2: dco_decode_another_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  ContainsMirroredSubStructTwinSyncSse
+      dco_decode_contains_mirrored_sub_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStructTwinSyncSse(
+      test: dco_decode_raw_string_mirrored(arr[0]),
+      test2: dco_decode_another_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  CustomEnumErrorTwinNormal dco_decode_custom_enum_error_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomEnumErrorTwinNormal_One(
+          message: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomEnumErrorTwinNormal_Two(
+          message: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomEnumErrorTwinRustAsync dco_decode_custom_enum_error_twin_rust_async(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomEnumErrorTwinRustAsync_One(
+          message: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomEnumErrorTwinRustAsync_Two(
+          message: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomEnumErrorTwinRustAsyncSse
+      dco_decode_custom_enum_error_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomEnumErrorTwinRustAsyncSse_One(
+          message: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomEnumErrorTwinRustAsyncSse_Two(
+          message: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomEnumErrorTwinSse dco_decode_custom_enum_error_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomEnumErrorTwinSse_One(
+          message: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomEnumErrorTwinSse_Two(
+          message: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomEnumErrorTwinSync dco_decode_custom_enum_error_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomEnumErrorTwinSync_One(
+          message: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomEnumErrorTwinSync_Two(
+          message: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomEnumErrorTwinSyncSse dco_decode_custom_enum_error_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomEnumErrorTwinSyncSse_One(
+          message: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomEnumErrorTwinSyncSse_Two(
+          message: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomErrorTwinNormal dco_decode_custom_error_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomErrorTwinNormal_Error0(
+          e: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomErrorTwinNormal_Error1(
+          e: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomErrorTwinRustAsync dco_decode_custom_error_twin_rust_async(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomErrorTwinRustAsync_Error0(
+          e: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomErrorTwinRustAsync_Error1(
+          e: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomErrorTwinRustAsyncSse dco_decode_custom_error_twin_rust_async_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomErrorTwinRustAsyncSse_Error0(
+          e: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomErrorTwinRustAsyncSse_Error1(
+          e: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomErrorTwinSse dco_decode_custom_error_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomErrorTwinSse_Error0(
+          e: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomErrorTwinSse_Error1(
+          e: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomErrorTwinSync dco_decode_custom_error_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomErrorTwinSync_Error0(
+          e: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomErrorTwinSync_Error1(
+          e: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomErrorTwinSyncSse dco_decode_custom_error_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomErrorTwinSyncSse_Error0(
+          e: dco_decode_String(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      case 1:
+        return CustomErrorTwinSyncSse_Error1(
+          e: dco_decode_u_32(raw[1]),
+          backtrace: dco_decode_Backtrace(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError1TwinNormal dco_decode_custom_nested_error_1_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1TwinNormal_CustomNested1(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1TwinNormal_ErrorNested(
+          dco_decode_box_autoadd_custom_nested_error_2_twin_normal(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError1TwinRustAsync
+      dco_decode_custom_nested_error_1_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1TwinRustAsync_CustomNested1(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1TwinRustAsync_ErrorNested(
+          dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError1TwinRustAsyncSse
+      dco_decode_custom_nested_error_1_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1TwinRustAsyncSse_CustomNested1(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1TwinRustAsyncSse_ErrorNested(
+          dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+              raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError1TwinSse dco_decode_custom_nested_error_1_twin_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1TwinSse_CustomNested1(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1TwinSse_ErrorNested(
+          dco_decode_box_autoadd_custom_nested_error_2_twin_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError1TwinSync dco_decode_custom_nested_error_1_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1TwinSync_CustomNested1(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1TwinSync_ErrorNested(
+          dco_decode_box_autoadd_custom_nested_error_2_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError1TwinSyncSse dco_decode_custom_nested_error_1_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1TwinSyncSse_CustomNested1(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1TwinSyncSse_ErrorNested(
+          dco_decode_box_autoadd_custom_nested_error_2_twin_sync_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError2TwinNormal dco_decode_custom_nested_error_2_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2TwinNormal_CustomNested2(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2TwinNormal_CustomNested2Number(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      dco_decode_custom_nested_error_2_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2TwinRustAsync_CustomNested2(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2TwinRustAsync_CustomNested2Number(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError2TwinRustAsyncSse
+      dco_decode_custom_nested_error_2_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2TwinRustAsyncSse_CustomNested2(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2TwinRustAsyncSse_CustomNested2Number(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError2TwinSse dco_decode_custom_nested_error_2_twin_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2TwinSse_CustomNested2(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2TwinSse_CustomNested2Number(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError2TwinSync dco_decode_custom_nested_error_2_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2TwinSync_CustomNested2(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2TwinSync_CustomNested2Number(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedError2TwinSyncSse dco_decode_custom_nested_error_2_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2TwinSyncSse_CustomNested2(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2TwinSyncSse_CustomNested2Number(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      dco_decode_custom_nested_error_inner_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorInnerTwinNormal_Three(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorInnerTwinNormal_Four(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      dco_decode_custom_nested_error_inner_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorInnerTwinRustAsync_Three(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorInnerTwinRustAsync_Four(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      dco_decode_custom_nested_error_inner_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorInnerTwinRustAsyncSse_Three(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorInnerTwinRustAsyncSse_Four(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinSse dco_decode_custom_nested_error_inner_twin_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorInnerTwinSse_Three(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorInnerTwinSse_Four(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinSync dco_decode_custom_nested_error_inner_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorInnerTwinSync_Three(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorInnerTwinSync_Four(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      dco_decode_custom_nested_error_inner_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorInnerTwinSyncSse_Three(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorInnerTwinSyncSse_Four(
+          dco_decode_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      dco_decode_custom_nested_error_outer_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorOuterTwinNormal_One(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorOuterTwinNormal_Two(
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_normal(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      dco_decode_custom_nested_error_outer_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorOuterTwinRustAsync_One(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorOuterTwinRustAsync_Two(
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+              raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      dco_decode_custom_nested_error_outer_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorOuterTwinRustAsyncSse_One(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorOuterTwinRustAsyncSse_Two(
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
+              raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinSse dco_decode_custom_nested_error_outer_twin_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorOuterTwinSse_One(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorOuterTwinSse_Two(
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinSync dco_decode_custom_nested_error_outer_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorOuterTwinSync_One(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorOuterTwinSync_Two(
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      dco_decode_custom_nested_error_outer_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorOuterTwinSyncSse_One(
+          dco_decode_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorOuterTwinSyncSse_Two(
+          dco_decode_box_autoadd_custom_nested_error_inner_twin_sync_sse(
+              raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  CustomStructErrorAnotherTwinNormal
+      dco_decode_custom_struct_error_another_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorAnotherTwinNormal(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorAnotherTwinRustAsync
+      dco_decode_custom_struct_error_another_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorAnotherTwinRustAsync(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorAnotherTwinRustAsyncSse
+      dco_decode_custom_struct_error_another_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorAnotherTwinRustAsyncSse(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorAnotherTwinSse
+      dco_decode_custom_struct_error_another_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorAnotherTwinSse(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorAnotherTwinSync
+      dco_decode_custom_struct_error_another_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorAnotherTwinSync(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorAnotherTwinSyncSse
+      dco_decode_custom_struct_error_another_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorAnotherTwinSyncSse(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorTwinNormal dco_decode_custom_struct_error_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorTwinNormal(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorTwinRustAsync dco_decode_custom_struct_error_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorTwinRustAsync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorTwinRustAsyncSse
+      dco_decode_custom_struct_error_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorTwinRustAsyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorTwinSse dco_decode_custom_struct_error_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorTwinSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorTwinSync dco_decode_custom_struct_error_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorTwinSync(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructErrorTwinSyncSse dco_decode_custom_struct_error_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorTwinSyncSse(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructTwinNormal dco_decode_custom_struct_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructTwinNormal(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructTwinRustAsync dco_decode_custom_struct_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructTwinRustAsync(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructTwinRustAsyncSse dco_decode_custom_struct_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructTwinRustAsyncSse(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructTwinSse dco_decode_custom_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructTwinSse(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructTwinSync dco_decode_custom_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructTwinSync(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomStructTwinSyncSse dco_decode_custom_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructTwinSyncSse(
+      message: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  CustomizedTwinNormal dco_decode_customized_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinNormal(
+      finalField: dco_decode_String(arr[0]),
+      nonFinalField: dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  @protected
+  CustomizedTwinRustAsync dco_decode_customized_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinRustAsync(
+      finalField: dco_decode_String(arr[0]),
+      nonFinalField: dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  @protected
+  CustomizedTwinRustAsyncSse dco_decode_customized_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinRustAsyncSse(
+      finalField: dco_decode_String(arr[0]),
+      nonFinalField: dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  @protected
+  CustomizedTwinSse dco_decode_customized_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinSse(
+      finalField: dco_decode_String(arr[0]),
+      nonFinalField: dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  @protected
+  CustomizedTwinSync dco_decode_customized_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinSync(
+      finalField: dco_decode_String(arr[0]),
+      nonFinalField: dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  @protected
+  CustomizedTwinSyncSse dco_decode_customized_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return CustomizedTwinSyncSse(
+      finalField: dco_decode_String(arr[0]),
+      nonFinalField: dco_decode_opt_String(arr[1]),
+    );
+  }
+
+  @protected
+  DartOpaqueNestedTwinNormal dco_decode_dart_opaque_nested_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNestedTwinNormal(
+      first: dco_decode_DartOpaque(arr[0]),
+      second: dco_decode_DartOpaque(arr[1]),
+    );
+  }
+
+  @protected
+  DartOpaqueNestedTwinRustAsync dco_decode_dart_opaque_nested_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNestedTwinRustAsync(
+      first: dco_decode_DartOpaque(arr[0]),
+      second: dco_decode_DartOpaque(arr[1]),
+    );
+  }
+
+  @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      dco_decode_dart_opaque_nested_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNestedTwinRustAsyncSse(
+      first: dco_decode_DartOpaque(arr[0]),
+      second: dco_decode_DartOpaque(arr[1]),
+    );
+  }
+
+  @protected
+  DartOpaqueNestedTwinSse dco_decode_dart_opaque_nested_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNestedTwinSse(
+      first: dco_decode_DartOpaque(arr[0]),
+      second: dco_decode_DartOpaque(arr[1]),
+    );
+  }
+
+  @protected
+  DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNestedTwinSync(
+      first: dco_decode_DartOpaque(arr[0]),
+      second: dco_decode_DartOpaque(arr[1]),
+    );
+  }
+
+  @protected
+  DartOpaqueNestedTwinSyncSse dco_decode_dart_opaque_nested_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNestedTwinSyncSse(
+      first: dco_decode_DartOpaque(arr[0]),
+      second: dco_decode_DartOpaque(arr[1]),
+    );
+  }
+
+  @protected
+  dynamic dco_decode_dartabi(dynamic raw) {
+    return raw;
+  }
+
+  @protected
+  DemoStructForRustCallDartTwinNormal
+      dco_decode_demo_struct_for_rust_call_dart_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return DemoStructForRustCallDartTwinNormal(
+      name: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  DemoStructForRustCallDartTwinRustAsync
+      dco_decode_demo_struct_for_rust_call_dart_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return DemoStructForRustCallDartTwinRustAsync(
+      name: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  DemoStructForRustCallDartTwinRustAsyncSse
+      dco_decode_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+          dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return DemoStructForRustCallDartTwinRustAsyncSse(
+      name: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  DemoStructForRustCallDartTwinSse
+      dco_decode_demo_struct_for_rust_call_dart_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return DemoStructForRustCallDartTwinSse(
+      name: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return DistanceTwinNormal_Unknown();
+      case 1:
+        return DistanceTwinNormal_Map(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  DistanceTwinRustAsync dco_decode_distance_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return DistanceTwinRustAsync_Unknown();
+      case 1:
+        return DistanceTwinRustAsync_Map(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  DistanceTwinRustAsyncSse dco_decode_distance_twin_rust_async_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return DistanceTwinRustAsyncSse_Unknown();
+      case 1:
+        return DistanceTwinRustAsyncSse_Map(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  DistanceTwinSse dco_decode_distance_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return DistanceTwinSse_Unknown();
+      case 1:
+        return DistanceTwinSse_Map(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  DistanceTwinSync dco_decode_distance_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return DistanceTwinSync_Unknown();
+      case 1:
+        return DistanceTwinSync_Map(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  DistanceTwinSyncSse dco_decode_distance_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return DistanceTwinSyncSse_Unknown();
+      case 1:
+        return DistanceTwinSyncSse_Map(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  ElementTwinNormal dco_decode_element_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ElementTwinNormal(
+      tag: dco_decode_opt_String(arr[0]),
+      text: dco_decode_opt_String(arr[1]),
+      attributes: dco_decode_opt_list_attribute_twin_normal(arr[2]),
+      children: dco_decode_opt_list_element_twin_normal(arr[3]),
+    );
+  }
+
+  @protected
+  ElementTwinRustAsync dco_decode_element_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ElementTwinRustAsync(
+      tag: dco_decode_opt_String(arr[0]),
+      text: dco_decode_opt_String(arr[1]),
+      attributes: dco_decode_opt_list_attribute_twin_rust_async(arr[2]),
+      children: dco_decode_opt_list_element_twin_rust_async(arr[3]),
+    );
+  }
+
+  @protected
+  ElementTwinRustAsyncSse dco_decode_element_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ElementTwinRustAsyncSse(
+      tag: dco_decode_opt_String(arr[0]),
+      text: dco_decode_opt_String(arr[1]),
+      attributes: dco_decode_opt_list_attribute_twin_rust_async_sse(arr[2]),
+      children: dco_decode_opt_list_element_twin_rust_async_sse(arr[3]),
+    );
+  }
+
+  @protected
+  ElementTwinSse dco_decode_element_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ElementTwinSse(
+      tag: dco_decode_opt_String(arr[0]),
+      text: dco_decode_opt_String(arr[1]),
+      attributes: dco_decode_opt_list_attribute_twin_sse(arr[2]),
+      children: dco_decode_opt_list_element_twin_sse(arr[3]),
+    );
+  }
+
+  @protected
+  ElementTwinSync dco_decode_element_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ElementTwinSync(
+      tag: dco_decode_opt_String(arr[0]),
+      text: dco_decode_opt_String(arr[1]),
+      attributes: dco_decode_opt_list_attribute_twin_sync(arr[2]),
+      children: dco_decode_opt_list_element_twin_sync(arr[3]),
+    );
+  }
+
+  @protected
+  ElementTwinSyncSse dco_decode_element_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ElementTwinSyncSse(
+      tag: dco_decode_opt_String(arr[0]),
+      text: dco_decode_opt_String(arr[1]),
+      attributes: dco_decode_opt_list_attribute_twin_sync_sse(arr[2]),
+      children: dco_decode_opt_list_element_twin_sync_sse(arr[3]),
+    );
+  }
+
+  @protected
+  EmptyTwinNormal dco_decode_empty_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return EmptyTwinNormal();
+  }
+
+  @protected
+  EmptyTwinRustAsync dco_decode_empty_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return EmptyTwinRustAsync();
+  }
+
+  @protected
+  EmptyTwinRustAsyncSse dco_decode_empty_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return EmptyTwinRustAsyncSse();
+  }
+
+  @protected
+  EmptyTwinSse dco_decode_empty_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return EmptyTwinSse();
+  }
+
+  @protected
+  EmptyTwinSync dco_decode_empty_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return EmptyTwinSync();
+  }
+
+  @protected
+  EmptyTwinSyncSse dco_decode_empty_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return EmptyTwinSyncSse();
+  }
+
+  @protected
+  EnumDartOpaqueTwinNormal dco_decode_enum_dart_opaque_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaqueTwinNormal_Primitive(
+          dco_decode_i_32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaqueTwinNormal_Opaque(
+          dco_decode_DartOpaque(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumDartOpaqueTwinRustAsync dco_decode_enum_dart_opaque_twin_rust_async(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaqueTwinRustAsync_Primitive(
+          dco_decode_i_32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaqueTwinRustAsync_Opaque(
+          dco_decode_DartOpaque(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      dco_decode_enum_dart_opaque_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaqueTwinRustAsyncSse_Primitive(
+          dco_decode_i_32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaqueTwinRustAsyncSse_Opaque(
+          dco_decode_DartOpaque(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumDartOpaqueTwinSse dco_decode_enum_dart_opaque_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaqueTwinSse_Primitive(
+          dco_decode_i_32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaqueTwinSse_Opaque(
+          dco_decode_DartOpaque(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumDartOpaqueTwinSync dco_decode_enum_dart_opaque_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaqueTwinSync_Primitive(
+          dco_decode_i_32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaqueTwinSync_Opaque(
+          dco_decode_DartOpaque(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumDartOpaqueTwinSyncSse dco_decode_enum_dart_opaque_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaqueTwinSyncSse_Primitive(
+          dco_decode_i_32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaqueTwinSyncSse_Opaque(
+          dco_decode_DartOpaque(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinMoi dco_decode_enum_opaque_twin_moi(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinMoi_Struct(
+          dco_decode_RustOpaque_hide_data_twin_moi(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinMoi_Primitive(
+          dco_decode_RustOpaque_i_16(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinMoi(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinMoi(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinMoiArray5 dco_decode_enum_opaque_twin_moi_array_5(dynamic raw) {
+    return EnumOpaqueTwinMoiArray5(
+        (raw as List<dynamic>).map(dco_decode_enum_opaque_twin_moi).toList());
+  }
+
+  @protected
+  EnumOpaqueTwinNormal dco_decode_enum_opaque_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinNormal_Struct(
+          dco_decode_RustOpaque_hide_data_twin_normal(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinNormal_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinNormal_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinNormal(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinNormal_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinNormal(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinNormal_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinNormal(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinNormalArray5 dco_decode_enum_opaque_twin_normal_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinNormalArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_normal)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsync dco_decode_enum_opaque_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinRustAsync_Struct(
+          dco_decode_RustOpaque_hide_data_twin_rust_async(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinRustAsync_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinRustAsync_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinRustAsync(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinRustAsync_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsync(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinRustAsync_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncArray5 dco_decode_enum_opaque_twin_rust_async_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinRustAsyncArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoi dco_decode_enum_opaque_twin_rust_async_moi(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinRustAsyncMoi_Struct(
+          dco_decode_RustOpaque_hide_data_twin_rust_async_moi(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinRustAsyncMoi_Primitive(
+          dco_decode_RustOpaque_i_16(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinRustAsyncMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinRustAsyncMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinRustAsyncMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoiArray5
+      dco_decode_enum_opaque_twin_rust_async_moi_array_5(dynamic raw) {
+    return EnumOpaqueTwinRustAsyncMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_moi)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSse dco_decode_enum_opaque_twin_rust_async_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinRustAsyncSse_Struct(
+          dco_decode_RustOpaque_hide_data_twin_rust_async_sse(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinRustAsyncSse_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinRustAsyncSse_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinRustAsyncSse_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSse(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinRustAsyncSse_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseArray5
+      dco_decode_enum_opaque_twin_rust_async_sse_array_5(dynamic raw) {
+    return EnumOpaqueTwinRustAsyncSseArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi dco_decode_enum_opaque_twin_rust_async_sse_moi(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinRustAsyncSseMoi_Struct(
+          dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinRustAsyncSseMoi_Primitive(
+          dco_decode_RustOpaque_i_16(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinRustAsyncSseMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinRustAsyncSseMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinRustAsyncSseMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoiArray5
+      dco_decode_enum_opaque_twin_rust_async_sse_moi_array_5(dynamic raw) {
+    return EnumOpaqueTwinRustAsyncSseMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_sse_moi)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinSse dco_decode_enum_opaque_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSse_Struct(
+          dco_decode_RustOpaque_hide_data_twin_sse(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSse_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSse_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSse(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSse_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinSse(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSse_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinSse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSseArray5 dco_decode_enum_opaque_twin_sse_array_5(dynamic raw) {
+    return EnumOpaqueTwinSseArray5(
+        (raw as List<dynamic>).map(dco_decode_enum_opaque_twin_sse).toList());
+  }
+
+  @protected
+  EnumOpaqueTwinSseMoi dco_decode_enum_opaque_twin_sse_moi(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSseMoi_Struct(
+          dco_decode_RustOpaque_hide_data_twin_sse_moi(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSseMoi_Primitive(
+          dco_decode_RustOpaque_i_16(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSseMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSseMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSseMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinSseMoi(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSseMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinSseMoi(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSseMoiArray5 dco_decode_enum_opaque_twin_sse_moi_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinSseMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sse_moi)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinSync dco_decode_enum_opaque_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSync_Struct(
+          dco_decode_RustOpaque_hide_data_twin_sync(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSync_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSync_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSync(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSync_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinSync(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSync_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinSync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncArray5 dco_decode_enum_opaque_twin_sync_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinSyncArray5(
+        (raw as List<dynamic>).map(dco_decode_enum_opaque_twin_sync).toList());
+  }
+
+  @protected
+  EnumOpaqueTwinSyncMoi dco_decode_enum_opaque_twin_sync_moi(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSyncMoi_Struct(
+          dco_decode_RustOpaque_hide_data_twin_sync_moi(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSyncMoi_Primitive(
+          dco_decode_RustOpaque_i_16(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSyncMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSyncMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinSyncMoi(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSyncMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinSyncMoi(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncMoiArray5 dco_decode_enum_opaque_twin_sync_moi_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinSyncMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_moi)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSse dco_decode_enum_opaque_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSyncSse_Struct(
+          dco_decode_RustOpaque_hide_data_twin_sync_sse(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSyncSse_Primitive(
+          dco_decode_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSyncSse_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSyncSse(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSyncSse_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinSyncSse(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSyncSse_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinSyncSse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseArray5 dco_decode_enum_opaque_twin_sync_sse_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinSyncSseArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_sse)
+        .toList());
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi dco_decode_enum_opaque_twin_sync_sse_moi(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSyncSseMoi_Struct(
+          dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSyncSseMoi_Primitive(
+          dco_decode_RustOpaque_i_16(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSyncSseMoi_TraitObj(
+          dco_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSyncSseMoi_Mutex(
+          dco_decode_RustOpaque_MutexHideDataTwinSyncSseMoi(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSyncSseMoi_RwLock(
+          dco_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumOpaqueTwinSyncSseMoiArray5
+      dco_decode_enum_opaque_twin_sync_sse_moi_array_5(dynamic raw) {
+    return EnumOpaqueTwinSyncSseMoiArray5((raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_sse_moi)
+        .toList());
+  }
+
+  @protected
+  EnumSimpleTwinNormal dco_decode_enum_simple_twin_normal(dynamic raw) {
+    return EnumSimpleTwinNormal.values[raw as int];
+  }
+
+  @protected
+  EnumSimpleTwinRustAsync dco_decode_enum_simple_twin_rust_async(dynamic raw) {
+    return EnumSimpleTwinRustAsync.values[raw as int];
+  }
+
+  @protected
+  EnumSimpleTwinRustAsyncSse dco_decode_enum_simple_twin_rust_async_sse(
+      dynamic raw) {
+    return EnumSimpleTwinRustAsyncSse.values[raw as int];
+  }
+
+  @protected
+  EnumSimpleTwinSse dco_decode_enum_simple_twin_sse(dynamic raw) {
+    return EnumSimpleTwinSse.values[raw as int];
+  }
+
+  @protected
+  EnumSimpleTwinSync dco_decode_enum_simple_twin_sync(dynamic raw) {
+    return EnumSimpleTwinSync.values[raw as int];
+  }
+
+  @protected
+  EnumSimpleTwinSyncSse dco_decode_enum_simple_twin_sync_sse(dynamic raw) {
+    return EnumSimpleTwinSyncSse.values[raw as int];
+  }
+
+  @protected
+  EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemMixedTwinNormal_A();
+      case 1:
+        return EnumWithItemMixedTwinNormal_B(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 2:
+        return EnumWithItemMixedTwinNormal_C(
+          cField: dco_decode_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      dco_decode_enum_with_item_mixed_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemMixedTwinRustAsync_A();
+      case 1:
+        return EnumWithItemMixedTwinRustAsync_B(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 2:
+        return EnumWithItemMixedTwinRustAsync_C(
+          cField: dco_decode_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      dco_decode_enum_with_item_mixed_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemMixedTwinRustAsyncSse_A();
+      case 1:
+        return EnumWithItemMixedTwinRustAsyncSse_B(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 2:
+        return EnumWithItemMixedTwinRustAsyncSse_C(
+          cField: dco_decode_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemMixedTwinSse dco_decode_enum_with_item_mixed_twin_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemMixedTwinSse_A();
+      case 1:
+        return EnumWithItemMixedTwinSse_B(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 2:
+        return EnumWithItemMixedTwinSse_C(
+          cField: dco_decode_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemMixedTwinSync dco_decode_enum_with_item_mixed_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemMixedTwinSync_A();
+      case 1:
+        return EnumWithItemMixedTwinSync_B(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 2:
+        return EnumWithItemMixedTwinSync_C(
+          cField: dco_decode_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemMixedTwinSyncSse dco_decode_enum_with_item_mixed_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemMixedTwinSyncSse_A();
+      case 1:
+        return EnumWithItemMixedTwinSyncSse_B(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 2:
+        return EnumWithItemMixedTwinSyncSse_C(
+          cField: dco_decode_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemStructTwinNormal dco_decode_enum_with_item_struct_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemStructTwinNormal_A(
+          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemStructTwinNormal_B(
+          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      dco_decode_enum_with_item_struct_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemStructTwinRustAsync_A(
+          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemStructTwinRustAsync_B(
+          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemStructTwinRustAsyncSse
+      dco_decode_enum_with_item_struct_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemStructTwinRustAsyncSse_A(
+          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemStructTwinRustAsyncSse_B(
+          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemStructTwinSse dco_decode_enum_with_item_struct_twin_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemStructTwinSse_A(
+          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemStructTwinSse_B(
+          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemStructTwinSync dco_decode_enum_with_item_struct_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemStructTwinSync_A(
+          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemStructTwinSync_B(
+          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemStructTwinSyncSse dco_decode_enum_with_item_struct_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemStructTwinSyncSse_A(
+          aField: dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemStructTwinSyncSse_B(
+          bField: dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemTupleTwinNormal dco_decode_enum_with_item_tuple_twin_normal(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemTupleTwinNormal_A(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemTupleTwinNormal_B(
+          dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      dco_decode_enum_with_item_tuple_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemTupleTwinRustAsync_A(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemTupleTwinRustAsync_B(
+          dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      dco_decode_enum_with_item_tuple_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemTupleTwinRustAsyncSse_A(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemTupleTwinRustAsyncSse_B(
+          dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemTupleTwinSse dco_decode_enum_with_item_tuple_twin_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemTupleTwinSse_A(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemTupleTwinSse_B(
+          dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemTupleTwinSync dco_decode_enum_with_item_tuple_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemTupleTwinSync_A(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemTupleTwinSync_B(
+          dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EnumWithItemTupleTwinSyncSse dco_decode_enum_with_item_tuple_twin_sync_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemTupleTwinSyncSse_A(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 1:
+        return EnumWithItemTupleTwinSyncSse_B(
+          dco_decode_list_prim_i_32_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  EventTwinNormal dco_decode_event_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return EventTwinNormal(
+      address: dco_decode_String(arr[0]),
+      payload: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  EventTwinRustAsync dco_decode_event_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return EventTwinRustAsync(
+      address: dco_decode_String(arr[0]),
+      payload: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  EventTwinRustAsyncSse dco_decode_event_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return EventTwinRustAsyncSse(
+      address: dco_decode_String(arr[0]),
+      payload: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  EventTwinSse dco_decode_event_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return EventTwinSse(
+      address: dco_decode_String(arr[0]),
+      payload: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_exotic_optionals_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    return ExoticOptionalsTwinNormal(
+      int32: dco_decode_opt_box_autoadd_i_32(arr[0]),
+      int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
+      float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
+      boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
+      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      attributes: dco_decode_opt_list_attribute_twin_normal(arr[10]),
+      attributesNullable:
+          dco_decode_list_opt_box_autoadd_attribute_twin_normal(arr[11]),
+      nullableAttributes:
+          dco_decode_opt_list_opt_box_autoadd_attribute_twin_normal(arr[12]),
+      newtypeint: dco_decode_opt_box_autoadd_new_type_int_twin_normal(arr[13]),
+    );
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsync dco_decode_exotic_optionals_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    return ExoticOptionalsTwinRustAsync(
+      int32: dco_decode_opt_box_autoadd_i_32(arr[0]),
+      int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
+      float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
+      boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
+      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      attributes: dco_decode_opt_list_attribute_twin_rust_async(arr[10]),
+      attributesNullable:
+          dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(arr[11]),
+      nullableAttributes:
+          dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+              arr[12]),
+      newtypeint:
+          dco_decode_opt_box_autoadd_new_type_int_twin_rust_async(arr[13]),
+    );
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_exotic_optionals_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    return ExoticOptionalsTwinRustAsyncSse(
+      int32: dco_decode_opt_box_autoadd_i_32(arr[0]),
+      int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
+      float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
+      boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
+      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      attributes: dco_decode_opt_list_attribute_twin_rust_async_sse(arr[10]),
+      attributesNullable:
+          dco_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+              arr[11]),
+      nullableAttributes:
+          dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+              arr[12]),
+      newtypeint:
+          dco_decode_opt_box_autoadd_new_type_int_twin_rust_async_sse(arr[13]),
+    );
+  }
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_exotic_optionals_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    return ExoticOptionalsTwinSse(
+      int32: dco_decode_opt_box_autoadd_i_32(arr[0]),
+      int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
+      float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
+      boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
+      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      attributes: dco_decode_opt_list_attribute_twin_sse(arr[10]),
+      attributesNullable:
+          dco_decode_list_opt_box_autoadd_attribute_twin_sse(arr[11]),
+      nullableAttributes:
+          dco_decode_opt_list_opt_box_autoadd_attribute_twin_sse(arr[12]),
+      newtypeint: dco_decode_opt_box_autoadd_new_type_int_twin_sse(arr[13]),
+    );
+  }
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_exotic_optionals_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    return ExoticOptionalsTwinSync(
+      int32: dco_decode_opt_box_autoadd_i_32(arr[0]),
+      int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
+      float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
+      boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
+      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      attributes: dco_decode_opt_list_attribute_twin_sync(arr[10]),
+      attributesNullable:
+          dco_decode_list_opt_box_autoadd_attribute_twin_sync(arr[11]),
+      nullableAttributes:
+          dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync(arr[12]),
+      newtypeint: dco_decode_opt_box_autoadd_new_type_int_twin_sync(arr[13]),
+    );
+  }
+
+  @protected
+  ExoticOptionalsTwinSyncSse dco_decode_exotic_optionals_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    return ExoticOptionalsTwinSyncSse(
+      int32: dco_decode_opt_box_autoadd_i_32(arr[0]),
+      int64: dco_decode_opt_box_autoadd_i_64(arr[1]),
+      float64: dco_decode_opt_box_autoadd_f_64(arr[2]),
+      boolean: dco_decode_opt_box_autoadd_bool(arr[3]),
+      zerocopy: dco_decode_opt_list_prim_u_8_strict(arr[4]),
+      int8List: dco_decode_opt_list_prim_i_8_strict(arr[5]),
+      uint8List: dco_decode_opt_list_prim_u_8_strict(arr[6]),
+      int32List: dco_decode_opt_list_prim_i_32_strict(arr[7]),
+      float32List: dco_decode_opt_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_opt_list_prim_f_64_strict(arr[9]),
+      attributes: dco_decode_opt_list_attribute_twin_sync_sse(arr[10]),
+      attributesNullable:
+          dco_decode_list_opt_box_autoadd_attribute_twin_sync_sse(arr[11]),
+      nullableAttributes:
+          dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync_sse(arr[12]),
+      newtypeint:
+          dco_decode_opt_box_autoadd_new_type_int_twin_sync_sse(arr[13]),
+    );
+  }
+
+  @protected
+  double dco_decode_f_32(dynamic raw) {
+    return raw as double;
+  }
+
+  @protected
+  double dco_decode_f_64(dynamic raw) {
+    return raw as double;
+  }
+
+  @protected
+  F64Array16 dco_decode_f_64_array_16(dynamic raw) {
+    return F64Array16(dco_decode_list_prim_f_64_strict(raw));
+  }
+
+  @protected
+  FeatureChronoTwinNormal dco_decode_feature_chrono_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return FeatureChronoTwinNormal(
+      utc: dco_decode_Chrono_Utc(arr[0]),
+      local: dco_decode_Chrono_Local(arr[1]),
+      duration: dco_decode_Chrono_Duration(arr[2]),
+      naive: dco_decode_Chrono_Naive(arr[3]),
+    );
+  }
+
+  @protected
+  FeatureChronoTwinRustAsync dco_decode_feature_chrono_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return FeatureChronoTwinRustAsync(
+      utc: dco_decode_Chrono_Utc(arr[0]),
+      local: dco_decode_Chrono_Local(arr[1]),
+      duration: dco_decode_Chrono_Duration(arr[2]),
+      naive: dco_decode_Chrono_Naive(arr[3]),
+    );
+  }
+
+  @protected
+  FeatureChronoTwinSync dco_decode_feature_chrono_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return FeatureChronoTwinSync(
+      utc: dco_decode_Chrono_Utc(arr[0]),
+      local: dco_decode_Chrono_Local(arr[1]),
+      duration: dco_decode_Chrono_Duration(arr[2]),
+      naive: dco_decode_Chrono_Naive(arr[3]),
+    );
+  }
+
+  @protected
+  FeatureUuidTwinNormal dco_decode_feature_uuid_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeatureUuidTwinNormal(
+      one: dco_decode_Uuid(arr[0]),
+    );
+  }
+
+  @protected
+  FeatureUuidTwinRustAsync dco_decode_feature_uuid_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeatureUuidTwinRustAsync(
+      one: dco_decode_Uuid(arr[0]),
+    );
+  }
+
+  @protected
+  FeatureUuidTwinSync dco_decode_feature_uuid_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeatureUuidTwinSync(
+      one: dco_decode_Uuid(arr[0]),
+    );
+  }
+
+  @protected
+  FeedIdTwinNormal dco_decode_feed_id_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeedIdTwinNormal(
+      field0: dco_decode_u_8_array_8(arr[0]),
+    );
+  }
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_feed_id_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeedIdTwinRustAsync(
+      field0: dco_decode_u_8_array_8(arr[0]),
+    );
+  }
+
+  @protected
+  FeedIdTwinRustAsyncSse dco_decode_feed_id_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeedIdTwinRustAsyncSse(
+      field0: dco_decode_u_8_array_8(arr[0]),
+    );
+  }
+
+  @protected
+  FeedIdTwinSse dco_decode_feed_id_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeedIdTwinSse(
+      field0: dco_decode_u_8_array_8(arr[0]),
+    );
+  }
+
+  @protected
+  FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeedIdTwinSync(
+      field0: dco_decode_u_8_array_8(arr[0]),
+    );
+  }
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_feed_id_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeedIdTwinSyncSse(
+      field0: dco_decode_u_8_array_8(arr[0]),
+    );
+  }
+
+  @protected
+  int dco_decode_i_16(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  I32Array2 dco_decode_i_32_array_2(dynamic raw) {
+    return I32Array2(dco_decode_list_prim_i_32_strict(raw));
+  }
+
+  @protected
+  int dco_decode_i_64(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  @protected
+  int dco_decode_i_8(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_isize(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSinkTwinNormal_Empty();
+      case 1:
+        return KitchenSinkTwinNormal_Primitives(
+          int32: dco_decode_i_32(raw[1]),
+          float64: dco_decode_f_64(raw[2]),
+          boolean: dco_decode_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSinkTwinNormal_Nested(
+          dco_decode_i_32(raw[1]),
+          dco_decode_box_kitchen_sink_twin_normal(raw[2]),
+        );
+      case 3:
+        return KitchenSinkTwinNormal_Optional(
+          dco_decode_opt_box_autoadd_i_32(raw[1]),
+          dco_decode_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSinkTwinNormal_Buffer(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 5:
+        return KitchenSinkTwinNormal_Enums(
+          dco_decode_weekdays_twin_normal(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_kitchen_sink_twin_rust_async(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSinkTwinRustAsync_Empty();
+      case 1:
+        return KitchenSinkTwinRustAsync_Primitives(
+          int32: dco_decode_i_32(raw[1]),
+          float64: dco_decode_f_64(raw[2]),
+          boolean: dco_decode_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSinkTwinRustAsync_Nested(
+          dco_decode_i_32(raw[1]),
+          dco_decode_box_kitchen_sink_twin_rust_async(raw[2]),
+        );
+      case 3:
+        return KitchenSinkTwinRustAsync_Optional(
+          dco_decode_opt_box_autoadd_i_32(raw[1]),
+          dco_decode_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSinkTwinRustAsync_Buffer(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 5:
+        return KitchenSinkTwinRustAsync_Enums(
+          dco_decode_weekdays_twin_rust_async(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  KitchenSinkTwinRustAsyncSse dco_decode_kitchen_sink_twin_rust_async_sse(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSinkTwinRustAsyncSse_Empty();
+      case 1:
+        return KitchenSinkTwinRustAsyncSse_Primitives(
+          int32: dco_decode_i_32(raw[1]),
+          float64: dco_decode_f_64(raw[2]),
+          boolean: dco_decode_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSinkTwinRustAsyncSse_Nested(
+          dco_decode_i_32(raw[1]),
+          dco_decode_box_kitchen_sink_twin_rust_async_sse(raw[2]),
+        );
+      case 3:
+        return KitchenSinkTwinRustAsyncSse_Optional(
+          dco_decode_opt_box_autoadd_i_32(raw[1]),
+          dco_decode_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSinkTwinRustAsyncSse_Buffer(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 5:
+        return KitchenSinkTwinRustAsyncSse_Enums(
+          dco_decode_weekdays_twin_rust_async_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  KitchenSinkTwinSse dco_decode_kitchen_sink_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSinkTwinSse_Empty();
+      case 1:
+        return KitchenSinkTwinSse_Primitives(
+          int32: dco_decode_i_32(raw[1]),
+          float64: dco_decode_f_64(raw[2]),
+          boolean: dco_decode_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSinkTwinSse_Nested(
+          dco_decode_i_32(raw[1]),
+          dco_decode_box_kitchen_sink_twin_sse(raw[2]),
+        );
+      case 3:
+        return KitchenSinkTwinSse_Optional(
+          dco_decode_opt_box_autoadd_i_32(raw[1]),
+          dco_decode_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSinkTwinSse_Buffer(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 5:
+        return KitchenSinkTwinSse_Enums(
+          dco_decode_weekdays_twin_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  KitchenSinkTwinSync dco_decode_kitchen_sink_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSinkTwinSync_Empty();
+      case 1:
+        return KitchenSinkTwinSync_Primitives(
+          int32: dco_decode_i_32(raw[1]),
+          float64: dco_decode_f_64(raw[2]),
+          boolean: dco_decode_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSinkTwinSync_Nested(
+          dco_decode_i_32(raw[1]),
+          dco_decode_box_kitchen_sink_twin_sync(raw[2]),
+        );
+      case 3:
+        return KitchenSinkTwinSync_Optional(
+          dco_decode_opt_box_autoadd_i_32(raw[1]),
+          dco_decode_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSinkTwinSync_Buffer(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 5:
+        return KitchenSinkTwinSync_Enums(
+          dco_decode_weekdays_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_kitchen_sink_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSinkTwinSyncSse_Empty();
+      case 1:
+        return KitchenSinkTwinSyncSse_Primitives(
+          int32: dco_decode_i_32(raw[1]),
+          float64: dco_decode_f_64(raw[2]),
+          boolean: dco_decode_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSinkTwinSyncSse_Nested(
+          dco_decode_i_32(raw[1]),
+          dco_decode_box_kitchen_sink_twin_sync_sse(raw[2]),
+        );
+      case 3:
+        return KitchenSinkTwinSyncSse_Optional(
+          dco_decode_opt_box_autoadd_i_32(raw[1]),
+          dco_decode_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSinkTwinSyncSse_Buffer(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      case 5:
+        return KitchenSinkTwinSyncSse_Enums(
+          dco_decode_weekdays_twin_sync_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  List<Duration> dco_decode_list_Chrono_Duration(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_Chrono_Duration).toList();
+  }
+
+  @protected
+  List<DateTime> dco_decode_list_Chrono_Local(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_Chrono_Local).toList();
+  }
+
+  @protected
+  List<DateTime> dco_decode_list_Chrono_Naive(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_Chrono_Naive).toList();
+  }
+
+  @protected
+  List<Object> dco_decode_list_DartOpaque(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_DartOpaque).toList();
+  }
+
+  @protected
+  List<HideDataTwinMoi> dco_decode_list_RustOpaque_hide_data_twin_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinNormal> dco_decode_list_RustOpaque_hide_data_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsync>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncSse>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinRustAsyncSseMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSse> dco_decode_list_RustOpaque_hide_data_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSseMoi> dco_decode_list_RustOpaque_hide_data_twin_sse_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSync> dco_decode_list_RustOpaque_hide_data_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSyncMoi> dco_decode_list_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_moi)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSyncSse> dco_decode_list_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<HideDataTwinSyncSseMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_sync_sse_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_RustOpaque_hide_data_twin_sync_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<String> dco_decode_list_String(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_String).toList();
+  }
+
+  @protected
+  List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_application_env_var).toList();
+  }
+
+  @protected
+  List<ApplicationSettings> dco_decode_list_application_settings(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_application_settings).toList();
+  }
+
+  @protected
+  List<AttributeTwinNormal> dco_decode_list_attribute_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_attribute_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinRustAsync> dco_decode_list_attribute_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_attribute_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinRustAsyncSse> dco_decode_list_attribute_twin_rust_async_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_attribute_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinSse> dco_decode_list_attribute_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_attribute_twin_sse).toList();
+  }
+
+  @protected
+  List<AttributeTwinSync> dco_decode_list_attribute_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_attribute_twin_sync).toList();
+  }
+
+  @protected
+  List<AttributeTwinSyncSse> dco_decode_list_attribute_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_attribute_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinNormal>
+      dco_decode_list_basic_general_enum_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinRustAsync>
+      dco_decode_list_basic_general_enum_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinRustAsyncSse>
+      dco_decode_list_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSse> dco_decode_list_basic_general_enum_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSync> dco_decode_list_basic_general_enum_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<BasicGeneralEnumTwinSyncSse>
+      dco_decode_list_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_general_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinNormal>
+      dco_decode_list_basic_primitive_enum_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinRustAsync>
+      dco_decode_list_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinRustAsyncSse>
+      dco_decode_list_basic_primitive_enum_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSse> dco_decode_list_basic_primitive_enum_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSync>
+      dco_decode_list_basic_primitive_enum_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<BasicPrimitiveEnumTwinSyncSse>
+      dco_decode_list_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_primitive_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinNormal> dco_decode_list_basic_struct_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinRustAsync> dco_decode_list_basic_struct_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinRustAsyncSse>
+      dco_decode_list_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinSse> dco_decode_list_basic_struct_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinSync> dco_decode_list_basic_struct_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<BasicStructTwinSyncSse> dco_decode_list_basic_struct_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_basic_struct_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<bool> dco_decode_list_bool(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_bool).toList();
+  }
+
+  @protected
+  List<ElementTwinNormal> dco_decode_list_element_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_element_twin_normal).toList();
+  }
+
+  @protected
+  List<ElementTwinRustAsync> dco_decode_list_element_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_element_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<ElementTwinRustAsyncSse> dco_decode_list_element_twin_rust_async_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_element_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<ElementTwinSse> dco_decode_list_element_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_element_twin_sse).toList();
+  }
+
+  @protected
+  List<ElementTwinSync> dco_decode_list_element_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_element_twin_sync).toList();
+  }
+
+  @protected
+  List<ElementTwinSyncSse> dco_decode_list_element_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_element_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinMoi> dco_decode_list_enum_opaque_twin_moi(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_enum_opaque_twin_moi).toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinNormal> dco_decode_list_enum_opaque_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinRustAsync> dco_decode_list_enum_opaque_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncMoi>
+      dco_decode_list_enum_opaque_twin_rust_async_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_moi)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncSse>
+      dco_decode_list_enum_opaque_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncSseMoi>
+      dco_decode_list_enum_opaque_twin_rust_async_sse_moi(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_rust_async_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSse> dco_decode_list_enum_opaque_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_enum_opaque_twin_sse).toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSseMoi> dco_decode_list_enum_opaque_twin_sse_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSync> dco_decode_list_enum_opaque_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSyncMoi> dco_decode_list_enum_opaque_twin_sync_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_moi)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSyncSse> dco_decode_list_enum_opaque_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<EnumOpaqueTwinSyncSseMoi> dco_decode_list_enum_opaque_twin_sync_sse_moi(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_enum_opaque_twin_sync_sse_moi)
+        .toList();
+  }
+
+  @protected
+  List<MyEnum> dco_decode_list_my_enum(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_my_enum).toList();
+  }
+
+  @protected
+  List<MySize> dco_decode_list_my_size(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_my_size).toList();
+  }
+
+  @protected
+  List<MyTreeNodeTwinNormal> dco_decode_list_my_tree_node_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_my_tree_node_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<MyTreeNodeTwinRustAsync> dco_decode_list_my_tree_node_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_my_tree_node_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<MyTreeNodeTwinRustAsyncSse>
+      dco_decode_list_my_tree_node_twin_rust_async_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_my_tree_node_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<MyTreeNodeTwinSse> dco_decode_list_my_tree_node_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_my_tree_node_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<MyTreeNodeTwinSync> dco_decode_list_my_tree_node_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_my_tree_node_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<MyTreeNodeTwinSyncSse> dco_decode_list_my_tree_node_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_my_tree_node_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<NestedRawStringMirrored> dco_decode_list_nested_raw_string_mirrored(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_nested_raw_string_mirrored)
+        .toList();
+  }
+
+  @protected
+  ListOfNestedRawStringMirrored dco_decode_list_of_nested_raw_string_mirrored(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ListOfNestedRawStringMirrored(
+      raw: dco_decode_list_nested_raw_string_mirrored(arr[0]),
+    );
+  }
+
+  @protected
+  List<String?> dco_decode_list_opt_String(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_opt_String).toList();
+  }
+
+  @protected
+  List<AttributeTwinNormal?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_attribute_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinRustAsync?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_attribute_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinRustAsyncSse?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_attribute_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinSse?> dco_decode_list_opt_box_autoadd_attribute_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_attribute_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinSync?> dco_decode_list_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_attribute_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<AttributeTwinSyncSse?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_attribute_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<int?> dco_decode_list_opt_box_autoadd_i_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_opt_box_autoadd_i_32).toList();
+  }
+
+  @protected
+  List<WeekdaysTwinNormal?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_weekdays_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinRustAsync?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_weekdays_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinRustAsyncSse?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_weekdays_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinSse?> dco_decode_list_opt_box_autoadd_weekdays_twin_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_weekdays_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinSync?> dco_decode_list_opt_box_autoadd_weekdays_twin_sync(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_weekdays_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinSyncSse?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_box_autoadd_weekdays_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<Int32List?> dco_decode_list_opt_list_prim_i_32_strict(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_opt_list_prim_i_32_strict)
+        .toList();
+  }
+
+  @protected
+  List<PointTwinNormal> dco_decode_list_point_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_point_twin_normal).toList();
+  }
+
+  @protected
+  List<PointTwinRustAsync> dco_decode_list_point_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_point_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<PointTwinRustAsyncSse> dco_decode_list_point_twin_rust_async_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_point_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<PointTwinSse> dco_decode_list_point_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_point_twin_sse).toList();
+  }
+
+  @protected
+  List<PointTwinSync> dco_decode_list_point_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_point_twin_sync).toList();
+  }
+
+  @protected
+  List<PointTwinSyncSse> dco_decode_list_point_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_point_twin_sync_sse).toList();
+  }
+
+  @protected
+  List<double> dco_decode_list_prim_f_32_loose(dynamic raw) {
+    return raw as List<double>;
+  }
+
+  @protected
+  Float32List dco_decode_list_prim_f_32_strict(dynamic raw) {
+    return raw as Float32List;
+  }
+
+  @protected
+  List<double> dco_decode_list_prim_f_64_loose(dynamic raw) {
+    return raw as List<double>;
+  }
+
+  @protected
+  Float64List dco_decode_list_prim_f_64_strict(dynamic raw) {
+    return raw as Float64List;
+  }
+
+  @protected
+  List<int> dco_decode_list_prim_i_16_loose(dynamic raw) {
+    return raw as List<int>;
+  }
+
+  @protected
+  Int16List dco_decode_list_prim_i_16_strict(dynamic raw) {
+    return raw as Int16List;
+  }
+
+  @protected
+  List<int> dco_decode_list_prim_i_32_loose(dynamic raw) {
+    return raw as List<int>;
+  }
+
+  @protected
+  Int32List dco_decode_list_prim_i_32_strict(dynamic raw) {
+    return raw as Int32List;
+  }
+
+  @protected
+  Int64List dco_decode_list_prim_i_64_strict(dynamic raw) {
+    return Int64List.from(raw);
+  }
+
+  @protected
+  List<int> dco_decode_list_prim_i_8_loose(dynamic raw) {
+    return raw as List<int>;
+  }
+
+  @protected
+  Int8List dco_decode_list_prim_i_8_strict(dynamic raw) {
+    return raw as Int8List;
+  }
+
+  @protected
+  List<int> dco_decode_list_prim_u_16_loose(dynamic raw) {
+    return raw as List<int>;
+  }
+
+  @protected
+  Uint16List dco_decode_list_prim_u_16_strict(dynamic raw) {
+    return raw as Uint16List;
+  }
+
+  @protected
+  List<int> dco_decode_list_prim_u_32_loose(dynamic raw) {
+    return raw as List<int>;
+  }
+
+  @protected
+  Uint32List dco_decode_list_prim_u_32_strict(dynamic raw) {
+    return raw as Uint32List;
+  }
+
+  @protected
+  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw) {
+    return Uint64List.from(raw);
+  }
+
+  @protected
+  List<int> dco_decode_list_prim_u_8_loose(dynamic raw) {
+    return raw as List<int>;
+  }
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
+    return raw as Uint8List;
+  }
+
+  @protected
+  List<RawStringEnumMirrored> dco_decode_list_raw_string_enum_mirrored(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_raw_string_enum_mirrored)
+        .toList();
+  }
+
+  @protected
+  List<RawStringMirrored> dco_decode_list_raw_string_mirrored(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_raw_string_mirrored).toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinNormal)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_rust_async(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSync)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sync_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_general_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinNormal)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_normal(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSync)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sync_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_primitive_enum_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinNormal)>
+      dco_decode_list_record_i_32_basic_struct_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_struct_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinSync)>
+      dco_decode_list_record_i_32_basic_struct_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(int, BasicStructTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_basic_struct_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(int, bool)> dco_decode_list_record_i_32_bool(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_bool).toList();
+  }
+
+  @protected
+  List<(int, double)> dco_decode_list_record_i_32_f_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_f_32).toList();
+  }
+
+  @protected
+  List<(int, double)> dco_decode_list_record_i_32_f_64(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_f_64).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_16(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_16).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_32).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_64(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_64).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_8(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_i_8).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_isize(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_isize).toList();
+  }
+
+  @protected
+  List<(int, Uint8List)> dco_decode_list_record_i_32_list_prim_u_8_strict(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_i_32_list_prim_u_8_strict)
+        .toList();
+  }
+
+  @protected
+  List<(int, String)> dco_decode_list_record_i_32_string(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_string).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_16(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_16).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_32).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_64(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_64).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_8(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_u_8).toList();
+  }
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_usize(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_i_32_usize).toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinNormal)>
+      dco_decode_list_record_string_enum_simple_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsync)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSse)>
+      dco_decode_list_record_string_enum_simple_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSync)>
+      dco_decode_list_record_string_enum_simple_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(String, EnumSimpleTwinSyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_enum_simple_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_string_i_32).toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinNormal)>
+      dco_decode_list_record_string_kitchen_sink_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_normal)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsync)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
+          dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSync)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_sync)
+        .toList();
+  }
+
+  @protected
+  List<(String, KitchenSinkTwinSyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_kitchen_sink_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8_strict(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_list_prim_u_8_strict)
+        .toList();
+  }
+
+  @protected
+  List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_my_size)
+        .toList();
+  }
+
+  @protected
+  List<(String, String)> dco_decode_list_record_string_string(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_record_string_string).toList();
+  }
+
+  @protected
+  List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_sum_with_twin_normal).toList();
+  }
+
+  @protected
+  List<SumWithTwinRustAsync> dco_decode_list_sum_with_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_sum_with_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<SumWithTwinRustAsyncSse> dco_decode_list_sum_with_twin_rust_async_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_sum_with_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<SumWithTwinSse> dco_decode_list_sum_with_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_sum_with_twin_sse).toList();
+  }
+
+  @protected
+  List<SumWithTwinSync> dco_decode_list_sum_with_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_sum_with_twin_sync).toList();
+  }
+
+  @protected
+  List<SumWithTwinSyncSse> dco_decode_list_sum_with_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_sum_with_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<TestIdTwinNormal> dco_decode_list_test_id_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_test_id_twin_normal).toList();
+  }
+
+  @protected
+  List<TestIdTwinRustAsync> dco_decode_list_test_id_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_test_id_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<TestIdTwinRustAsyncSse> dco_decode_list_test_id_twin_rust_async_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_test_id_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<TestIdTwinSse> dco_decode_list_test_id_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_test_id_twin_sse).toList();
+  }
+
+  @protected
+  List<TestIdTwinSync> dco_decode_list_test_id_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_test_id_twin_sync).toList();
+  }
+
+  @protected
+  List<TestIdTwinSyncSse> dco_decode_list_test_id_twin_sync_sse(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_test_id_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinNormal> dco_decode_list_weekdays_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_weekdays_twin_normal).toList();
+  }
+
+  @protected
+  List<WeekdaysTwinRustAsync> dco_decode_list_weekdays_twin_rust_async(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_weekdays_twin_rust_async)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinRustAsyncSse> dco_decode_list_weekdays_twin_rust_async_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_weekdays_twin_rust_async_sse)
+        .toList();
+  }
+
+  @protected
+  List<WeekdaysTwinSse> dco_decode_list_weekdays_twin_sse(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_weekdays_twin_sse).toList();
+  }
+
+  @protected
+  List<WeekdaysTwinSync> dco_decode_list_weekdays_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(dco_decode_weekdays_twin_sync).toList();
+  }
+
+  @protected
+  List<WeekdaysTwinSyncSse> dco_decode_list_weekdays_twin_sync_sse(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(dco_decode_weekdays_twin_sync_sse)
+        .toList();
+  }
+
+  @protected
+  Log2TwinNormal dco_decode_log_2_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinNormal(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Log2TwinRustAsync dco_decode_log_2_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinRustAsync(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Log2TwinRustAsyncSse dco_decode_log_2_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinRustAsyncSse(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Log2TwinSse dco_decode_log_2_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinSse(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Log2TwinSync dco_decode_log_2_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinSync(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Log2TwinSyncSse dco_decode_log_2_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinSyncSse(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  LogTwinNormal dco_decode_log_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LogTwinNormal(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_u_32(arr[1]),
+    );
+  }
+
+  @protected
+  LogTwinRustAsync dco_decode_log_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LogTwinRustAsync(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_u_32(arr[1]),
+    );
+  }
+
+  @protected
+  LogTwinRustAsyncSse dco_decode_log_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LogTwinRustAsyncSse(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_u_32(arr[1]),
+    );
+  }
+
+  @protected
+  LogTwinSse dco_decode_log_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LogTwinSse(
+      key: dco_decode_u_32(arr[0]),
+      value: dco_decode_u_32(arr[1]),
+    );
+  }
+
+  @protected
+  MacroStruct dco_decode_macro_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MacroStruct(
+      data: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  MeasureTwinNormal dco_decode_measure_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MeasureTwinNormal_Speed(
+          dco_decode_box_speed_twin_normal(raw[1]),
+        );
+      case 1:
+        return MeasureTwinNormal_Distance(
+          dco_decode_box_distance_twin_normal(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  MeasureTwinRustAsync dco_decode_measure_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MeasureTwinRustAsync_Speed(
+          dco_decode_box_speed_twin_rust_async(raw[1]),
+        );
+      case 1:
+        return MeasureTwinRustAsync_Distance(
+          dco_decode_box_distance_twin_rust_async(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  MeasureTwinRustAsyncSse dco_decode_measure_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MeasureTwinRustAsyncSse_Speed(
+          dco_decode_box_speed_twin_rust_async_sse(raw[1]),
+        );
+      case 1:
+        return MeasureTwinRustAsyncSse_Distance(
+          dco_decode_box_distance_twin_rust_async_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  MeasureTwinSse dco_decode_measure_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MeasureTwinSse_Speed(
+          dco_decode_box_speed_twin_sse(raw[1]),
+        );
+      case 1:
+        return MeasureTwinSse_Distance(
+          dco_decode_box_distance_twin_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  MeasureTwinSync dco_decode_measure_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MeasureTwinSync_Speed(
+          dco_decode_box_speed_twin_sync(raw[1]),
+        );
+      case 1:
+        return MeasureTwinSync_Distance(
+          dco_decode_box_distance_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  MeasureTwinSyncSse dco_decode_measure_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MeasureTwinSyncSse_Speed(
+          dco_decode_box_speed_twin_sync_sse(raw[1]),
+        );
+      case 1:
+        return MeasureTwinSyncSse_Distance(
+          dco_decode_box_distance_twin_sync_sse(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  MessageIdTwinNormal dco_decode_message_id_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MessageIdTwinNormal(
+      field0: dco_decode_u_8_array_32(arr[0]),
+    );
+  }
+
+  @protected
+  MessageIdTwinRustAsync dco_decode_message_id_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MessageIdTwinRustAsync(
+      field0: dco_decode_u_8_array_32(arr[0]),
+    );
+  }
+
+  @protected
+  MessageIdTwinRustAsyncSse dco_decode_message_id_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MessageIdTwinRustAsyncSse(
+      field0: dco_decode_u_8_array_32(arr[0]),
+    );
+  }
+
+  @protected
+  MessageIdTwinSse dco_decode_message_id_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MessageIdTwinSse(
+      field0: dco_decode_u_8_array_32(arr[0]),
+    );
+  }
+
+  @protected
+  MessageIdTwinSync dco_decode_message_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MessageIdTwinSync(
+      field0: dco_decode_u_8_array_32(arr[0]),
+    );
+  }
+
+  @protected
+  MessageIdTwinSyncSse dco_decode_message_id_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MessageIdTwinSyncSse(
+      field0: dco_decode_u_8_array_32(arr[0]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinNormal dco_decode_mirror_struct_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinNormal(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinRustAsync dco_decode_mirror_struct_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinRustAsync(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinRustAsyncSse dco_decode_mirror_struct_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinRustAsyncSse(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinSse dco_decode_mirror_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinSse(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinSync(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MirrorStructTwinSyncSse dco_decode_mirror_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinSyncSse(
+      a: dco_decode_application_settings(arr[0]),
+      b: dco_decode_my_struct(arr[1]),
+      c: dco_decode_list_my_enum(arr[2]),
+      d: dco_decode_list_application_settings(arr[3]),
+    );
+  }
+
+  @protected
+  MoreThanJustOneRawStringStructTwinNormal
+      dco_decode_more_than_just_one_raw_string_struct_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStructTwinNormal(
+      regular: dco_decode_String(arr[0]),
+      type: dco_decode_String(arr[1]),
+      async: dco_decode_bool(arr[2]),
+      another: dco_decode_String(arr[3]),
+    );
+  }
+
+  @protected
+  MoreThanJustOneRawStringStructTwinRustAsync
+      dco_decode_more_than_just_one_raw_string_struct_twin_rust_async(
+          dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStructTwinRustAsync(
+      regular: dco_decode_String(arr[0]),
+      type: dco_decode_String(arr[1]),
+      async: dco_decode_bool(arr[2]),
+      another: dco_decode_String(arr[3]),
+    );
+  }
+
+  @protected
+  MoreThanJustOneRawStringStructTwinRustAsyncSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+          dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStructTwinRustAsyncSse(
+      regular: dco_decode_String(arr[0]),
+      type: dco_decode_String(arr[1]),
+      async: dco_decode_bool(arr[2]),
+      another: dco_decode_String(arr[3]),
+    );
+  }
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStructTwinSse(
+      regular: dco_decode_String(arr[0]),
+      type: dco_decode_String(arr[1]),
+      async: dco_decode_bool(arr[2]),
+      another: dco_decode_String(arr[3]),
+    );
+  }
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSync
+      dco_decode_more_than_just_one_raw_string_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStructTwinSync(
+      regular: dco_decode_String(arr[0]),
+      type: dco_decode_String(arr[1]),
+      async: dco_decode_bool(arr[2]),
+      another: dco_decode_String(arr[3]),
+    );
+  }
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSyncSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
+          dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStructTwinSyncSse(
+      regular: dco_decode_String(arr[0]),
+      type: dco_decode_String(arr[1]),
+      async: dco_decode_bool(arr[2]),
+      another: dco_decode_String(arr[3]),
+    );
+  }
+
+  @protected
+  MyEnum dco_decode_my_enum(dynamic raw) {
+    return MyEnum.values[raw as int];
+  }
+
+  @protected
+  MyNestedStructTwinNormal dco_decode_my_nested_struct_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStructTwinNormal(
+      treeNode: dco_decode_my_tree_node_twin_normal(arr[0]),
+      weekday: dco_decode_weekdays_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  MyNestedStructTwinRustAsync dco_decode_my_nested_struct_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStructTwinRustAsync(
+      treeNode: dco_decode_my_tree_node_twin_rust_async(arr[0]),
+      weekday: dco_decode_weekdays_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  MyNestedStructTwinRustAsyncSse
+      dco_decode_my_nested_struct_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStructTwinRustAsyncSse(
+      treeNode: dco_decode_my_tree_node_twin_rust_async_sse(arr[0]),
+      weekday: dco_decode_weekdays_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  MyNestedStructTwinSse dco_decode_my_nested_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStructTwinSse(
+      treeNode: dco_decode_my_tree_node_twin_sse(arr[0]),
+      weekday: dco_decode_weekdays_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  MyNestedStructTwinSync dco_decode_my_nested_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStructTwinSync(
+      treeNode: dco_decode_my_tree_node_twin_sync(arr[0]),
+      weekday: dco_decode_weekdays_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  MyNestedStructTwinSyncSse dco_decode_my_nested_struct_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStructTwinSyncSse(
+      treeNode: dco_decode_my_tree_node_twin_sync_sse(arr[0]),
+      weekday: dco_decode_weekdays_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  MySize dco_decode_my_size(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MySize(
+      width: dco_decode_i_32(arr[0]),
+      height: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  MyStreamEntryTwinNormal dco_decode_my_stream_entry_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntryTwinNormal(
+      hello: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  MyStreamEntryTwinRustAsync dco_decode_my_stream_entry_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntryTwinRustAsync(
+      hello: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  MyStreamEntryTwinRustAsyncSse dco_decode_my_stream_entry_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntryTwinRustAsyncSse(
+      hello: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  MyStreamEntryTwinSse dco_decode_my_stream_entry_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntryTwinSse(
+      hello: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  MyStruct dco_decode_my_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStruct(
+      content: dco_decode_bool(arr[0]),
+    );
+  }
+
+  @protected
+  MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNodeTwinNormal(
+      valueI32: dco_decode_i_32(arr[0]),
+      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueBoolean: dco_decode_bool(arr[2]),
+      children: dco_decode_list_my_tree_node_twin_normal(arr[3]),
+    );
+  }
+
+  @protected
+  MyTreeNodeTwinRustAsync dco_decode_my_tree_node_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNodeTwinRustAsync(
+      valueI32: dco_decode_i_32(arr[0]),
+      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueBoolean: dco_decode_bool(arr[2]),
+      children: dco_decode_list_my_tree_node_twin_rust_async(arr[3]),
+    );
+  }
+
+  @protected
+  MyTreeNodeTwinRustAsyncSse dco_decode_my_tree_node_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNodeTwinRustAsyncSse(
+      valueI32: dco_decode_i_32(arr[0]),
+      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueBoolean: dco_decode_bool(arr[2]),
+      children: dco_decode_list_my_tree_node_twin_rust_async_sse(arr[3]),
+    );
+  }
+
+  @protected
+  MyTreeNodeTwinSse dco_decode_my_tree_node_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNodeTwinSse(
+      valueI32: dco_decode_i_32(arr[0]),
+      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueBoolean: dco_decode_bool(arr[2]),
+      children: dco_decode_list_my_tree_node_twin_sse(arr[3]),
+    );
+  }
+
+  @protected
+  MyTreeNodeTwinSync dco_decode_my_tree_node_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNodeTwinSync(
+      valueI32: dco_decode_i_32(arr[0]),
+      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueBoolean: dco_decode_bool(arr[2]),
+      children: dco_decode_list_my_tree_node_twin_sync(arr[3]),
+    );
+  }
+
+  @protected
+  MyTreeNodeTwinSyncSse dco_decode_my_tree_node_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNodeTwinSyncSse(
+      valueI32: dco_decode_i_32(arr[0]),
+      valueVecU8: dco_decode_list_prim_u_8_strict(arr[1]),
+      valueBoolean: dco_decode_bool(arr[2]),
+      children: dco_decode_list_my_tree_node_twin_sync_sse(arr[3]),
+    );
+  }
+
+  @protected
+  NestedRawStringMirrored dco_decode_nested_raw_string_mirrored(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NestedRawStringMirrored(
+      raw: dco_decode_raw_string_mirrored(arr[0]),
+    );
+  }
+
+  @protected
+  NewSimpleStruct dco_decode_new_simple_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewSimpleStruct(
+      field: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  NewTypeIntTwinNormal dco_decode_new_type_int_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeIntTwinNormal(
+      field0: dco_decode_i_64(arr[0]),
+    );
+  }
+
+  @protected
+  NewTypeIntTwinRustAsync dco_decode_new_type_int_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeIntTwinRustAsync(
+      field0: dco_decode_i_64(arr[0]),
+    );
+  }
+
+  @protected
+  NewTypeIntTwinRustAsyncSse dco_decode_new_type_int_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeIntTwinRustAsyncSse(
+      field0: dco_decode_i_64(arr[0]),
+    );
+  }
+
+  @protected
+  NewTypeIntTwinSse dco_decode_new_type_int_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeIntTwinSse(
+      field0: dco_decode_i_64(arr[0]),
+    );
+  }
+
+  @protected
+  NewTypeIntTwinSync dco_decode_new_type_int_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeIntTwinSync(
+      field0: dco_decode_i_64(arr[0]),
+    );
+  }
+
+  @protected
+  NewTypeIntTwinSyncSse dco_decode_new_type_int_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeIntTwinSyncSse(
+      field0: dco_decode_i_64(arr[0]),
+    );
+  }
+
+  @protected
+  NoteTwinNormal dco_decode_note_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinNormal(
+      day: dco_decode_box_weekdays_twin_normal(arr[0]),
+      body: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  NoteTwinRustAsync dco_decode_note_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinRustAsync(
+      day: dco_decode_box_weekdays_twin_rust_async(arr[0]),
+      body: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  NoteTwinRustAsyncSse dco_decode_note_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinRustAsyncSse(
+      day: dco_decode_box_weekdays_twin_rust_async_sse(arr[0]),
+      body: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  NoteTwinSse dco_decode_note_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinSse(
+      day: dco_decode_box_weekdays_twin_sse(arr[0]),
+      body: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  NoteTwinSync dco_decode_note_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinSync(
+      day: dco_decode_box_weekdays_twin_sync(arr[0]),
+      body: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  NoteTwinSyncSse dco_decode_note_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return NoteTwinSyncSse(
+      day: dco_decode_box_weekdays_twin_sync_sse(arr[0]),
+      body: dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Numbers dco_decode_numbers(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return Numbers(
+      field0: dco_decode_list_prim_i_32_strict(arr[0]),
+    );
+  }
+
+  @protected
+  OldSimpleStruct dco_decode_old_simple_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return OldSimpleStruct(
+      field: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinMoi dco_decode_opaque_nested_twin_moi(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinMoi(
+      first: dco_decode_RustOpaque_hide_data_twin_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_moi(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinNormal dco_decode_opaque_nested_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinNormal(
+      first: dco_decode_RustOpaque_hide_data_twin_normal(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsync dco_decode_opaque_nested_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinRustAsync(
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncMoi dco_decode_opaque_nested_twin_rust_async_moi(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinRustAsyncMoi(
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async_moi(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSse dco_decode_opaque_nested_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinRustAsyncSse(
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async_sse(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      dco_decode_opaque_nested_twin_rust_async_sse_moi(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinRustAsyncSseMoi(
+      first: dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinSse dco_decode_opaque_nested_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSse(
+      first: dco_decode_RustOpaque_hide_data_twin_sse(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinSseMoi dco_decode_opaque_nested_twin_sse_moi(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSseMoi(
+      first: dco_decode_RustOpaque_hide_data_twin_sse_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sse_moi(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinSync dco_decode_opaque_nested_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSync(
+      first: dco_decode_RustOpaque_hide_data_twin_sync(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinSyncMoi dco_decode_opaque_nested_twin_sync_moi(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSyncMoi(
+      first: dco_decode_RustOpaque_hide_data_twin_sync_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync_moi(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSse dco_decode_opaque_nested_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSyncSse(
+      first: dco_decode_RustOpaque_hide_data_twin_sync_sse(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi dco_decode_opaque_nested_twin_sync_sse_moi(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSyncSseMoi(
+      first: dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(arr[0]),
+      second: dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(arr[1]),
+    );
+  }
+
+  @protected
+  String? dco_decode_opt_String(dynamic raw) {
+    return raw == null ? null : dco_decode_String(raw);
+  }
+
+  @protected
+  Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_Chrono_Duration(raw);
+  }
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_Naive(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_Chrono_Naive(raw);
+  }
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_Chrono_Utc(raw);
+  }
+
+  @protected
+  Object? dco_decode_opt_box_autoadd_DartOpaque(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_DartOpaque(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_moi(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinNormal?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_normal(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse(raw);
+  }
+
+  @protected
+  HideDataAnotherTwinSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinMoi? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_moi(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_moi(raw);
+  }
+
+  @protected
+  HideDataTwinNormal?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_normal(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsync?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  HideDataTwinRustAsyncSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+            raw);
+  }
+
+  @protected
+  HideDataTwinSse? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSync? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync(raw);
+  }
+
+  @protected
+  HideDataTwinSyncMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(raw);
+  }
+
+  @protected
+  HideDataTwinSyncSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(raw);
+  }
+
+  @protected
+  ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_application_env(raw);
+  }
+
+  @protected
+  AttributeTwinNormal? dco_decode_opt_box_autoadd_attribute_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_attribute_twin_normal(raw);
+  }
+
+  @protected
+  AttributeTwinRustAsync? dco_decode_opt_box_autoadd_attribute_twin_rust_async(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_attribute_twin_rust_async(raw);
+  }
+
+  @protected
+  AttributeTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_attribute_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_attribute_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  AttributeTwinSse? dco_decode_opt_box_autoadd_attribute_twin_sse(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_attribute_twin_sse(raw);
+  }
+
+  @protected
+  AttributeTwinSync? dco_decode_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_attribute_twin_sync(raw);
+  }
+
+  @protected
+  AttributeTwinSyncSse? dco_decode_opt_box_autoadd_attribute_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_attribute_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinNormal?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_rust_async(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSync?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicGeneralEnumTwinSyncSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sync_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_general_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinNormal?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_normal(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_sse(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSync?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_sync(raw);
+  }
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_primitive_enum_twin_sync_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinNormal? dco_decode_opt_box_autoadd_basic_struct_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_normal(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_struct_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_rust_async(raw);
+  }
+
+  @protected
+  BasicStructTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_struct_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSse? dco_decode_opt_box_autoadd_basic_struct_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_sse(raw);
+  }
+
+  @protected
+  BasicStructTwinSync? dco_decode_opt_box_autoadd_basic_struct_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_sync(raw);
+  }
+
+  @protected
+  BasicStructTwinSyncSse? dco_decode_opt_box_autoadd_basic_struct_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_basic_struct_twin_sync_sse(raw);
+  }
+
+  @protected
+  bool? dco_decode_opt_box_autoadd_bool(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_bool(raw);
+  }
+
+  @protected
+  ElementTwinNormal? dco_decode_opt_box_autoadd_element_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_element_twin_normal(raw);
+  }
+
+  @protected
+  ElementTwinRustAsync? dco_decode_opt_box_autoadd_element_twin_rust_async(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_element_twin_rust_async(raw);
+  }
+
+  @protected
+  ElementTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_element_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_element_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ElementTwinSse? dco_decode_opt_box_autoadd_element_twin_sse(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_element_twin_sse(raw);
+  }
+
+  @protected
+  ElementTwinSync? dco_decode_opt_box_autoadd_element_twin_sync(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_element_twin_sync(raw);
+  }
+
+  @protected
+  ElementTwinSyncSse? dco_decode_opt_box_autoadd_element_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_element_twin_sync_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinNormal?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_exotic_optionals_twin_normal(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_exotic_optionals_twin_rust_async(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_exotic_optionals_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSse? dco_decode_opt_box_autoadd_exotic_optionals_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_exotic_optionals_twin_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSync?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_exotic_optionals_twin_sync(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSyncSse?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_sync_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_exotic_optionals_twin_sync_sse(raw);
+  }
+
+  @protected
+  double? dco_decode_opt_box_autoadd_f_32(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_f_32(raw);
+  }
+
+  @protected
+  double? dco_decode_opt_box_autoadd_f_64(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_f_64(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_16(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_i_16(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_32(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_i_32(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_64(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_i_64(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_8(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_i_8(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_isize(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_isize(raw);
+  }
+
+  @protected
+  MeasureTwinNormal? dco_decode_opt_box_autoadd_measure_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_measure_twin_normal(raw);
+  }
+
+  @protected
+  MeasureTwinRustAsync? dco_decode_opt_box_autoadd_measure_twin_rust_async(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_measure_twin_rust_async(raw);
+  }
+
+  @protected
+  MeasureTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_measure_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_measure_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  MeasureTwinSse? dco_decode_opt_box_autoadd_measure_twin_sse(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_measure_twin_sse(raw);
+  }
+
+  @protected
+  MeasureTwinSync? dco_decode_opt_box_autoadd_measure_twin_sync(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_measure_twin_sync(raw);
+  }
+
+  @protected
+  MeasureTwinSyncSse? dco_decode_opt_box_autoadd_measure_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_measure_twin_sync_sse(raw);
+  }
+
+  @protected
+  NewTypeIntTwinNormal? dco_decode_opt_box_autoadd_new_type_int_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_new_type_int_twin_normal(raw);
+  }
+
+  @protected
+  NewTypeIntTwinRustAsync?
+      dco_decode_opt_box_autoadd_new_type_int_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_new_type_int_twin_rust_async(raw);
+  }
+
+  @protected
+  NewTypeIntTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_new_type_int_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_new_type_int_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  NewTypeIntTwinSse? dco_decode_opt_box_autoadd_new_type_int_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_new_type_int_twin_sse(raw);
+  }
+
+  @protected
+  NewTypeIntTwinSync? dco_decode_opt_box_autoadd_new_type_int_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_new_type_int_twin_sync(raw);
+  }
+
+  @protected
+  NewTypeIntTwinSyncSse? dco_decode_opt_box_autoadd_new_type_int_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_new_type_int_twin_sync_sse(raw);
+  }
+
+  @protected
+  (String, int)? dco_decode_opt_box_autoadd_record_string_i_32(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_record_string_i_32(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_16(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_u_16(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_32(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_u_32(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_64(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_u_64(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_8(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_u_8(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_autoadd_usize(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_usize(raw);
+  }
+
+  @protected
+  WeekdaysTwinNormal? dco_decode_opt_box_autoadd_weekdays_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_weekdays_twin_normal(raw);
+  }
+
+  @protected
+  WeekdaysTwinRustAsync? dco_decode_opt_box_autoadd_weekdays_twin_rust_async(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_weekdays_twin_rust_async(raw);
+  }
+
+  @protected
+  WeekdaysTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_weekdays_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_weekdays_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  WeekdaysTwinSse? dco_decode_opt_box_autoadd_weekdays_twin_sse(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_weekdays_twin_sse(raw);
+  }
+
+  @protected
+  WeekdaysTwinSync? dco_decode_opt_box_autoadd_weekdays_twin_sync(dynamic raw) {
+    return raw == null ? null : dco_decode_box_autoadd_weekdays_twin_sync(raw);
+  }
+
+  @protected
+  WeekdaysTwinSyncSse? dco_decode_opt_box_autoadd_weekdays_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_weekdays_twin_sync_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal?
+      dco_decode_opt_box_benchmark_binary_tree_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_normal(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_rust_async(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? dco_decode_opt_box_benchmark_binary_tree_twin_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_sse(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_sync(raw);
+  }
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_benchmark_binary_tree_twin_sync_sse(raw);
+  }
+
+  @protected
+  bool? dco_decode_opt_box_bool(dynamic raw) {
+    return raw == null ? null : dco_decode_box_bool(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinNormal? dco_decode_opt_box_exotic_optionals_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_exotic_optionals_twin_normal(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      dco_decode_opt_box_exotic_optionals_twin_rust_async(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_exotic_optionals_twin_rust_async(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      dco_decode_opt_box_exotic_optionals_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_exotic_optionals_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSse? dco_decode_opt_box_exotic_optionals_twin_sse(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_box_exotic_optionals_twin_sse(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSync? dco_decode_opt_box_exotic_optionals_twin_sync(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_box_exotic_optionals_twin_sync(raw);
+  }
+
+  @protected
+  ExoticOptionalsTwinSyncSse? dco_decode_opt_box_exotic_optionals_twin_sync_sse(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_box_exotic_optionals_twin_sync_sse(raw);
+  }
+
+  @protected
+  double? dco_decode_opt_box_f_64(dynamic raw) {
+    return raw == null ? null : dco_decode_box_f_64(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_i_32(dynamic raw) {
+    return raw == null ? null : dco_decode_box_i_32(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_i_64(dynamic raw) {
+    return raw == null ? null : dco_decode_box_i_64(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_i_8(dynamic raw) {
+    return raw == null ? null : dco_decode_box_i_8(raw);
+  }
+
+  @protected
+  int? dco_decode_opt_box_u_8(dynamic raw) {
+    return raw == null ? null : dco_decode_box_u_8(raw);
+  }
+
+  @protected
+  List<AttributeTwinNormal>? dco_decode_opt_list_attribute_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_list_attribute_twin_normal(raw);
+  }
+
+  @protected
+  List<AttributeTwinRustAsync>? dco_decode_opt_list_attribute_twin_rust_async(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_list_attribute_twin_rust_async(raw);
+  }
+
+  @protected
+  List<AttributeTwinRustAsyncSse>?
+      dco_decode_opt_list_attribute_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_attribute_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<AttributeTwinSse>? dco_decode_opt_list_attribute_twin_sse(dynamic raw) {
+    return raw == null ? null : dco_decode_list_attribute_twin_sse(raw);
+  }
+
+  @protected
+  List<AttributeTwinSync>? dco_decode_opt_list_attribute_twin_sync(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_list_attribute_twin_sync(raw);
+  }
+
+  @protected
+  List<AttributeTwinSyncSse>? dco_decode_opt_list_attribute_twin_sync_sse(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_list_attribute_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<ElementTwinNormal>? dco_decode_opt_list_element_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_list_element_twin_normal(raw);
+  }
+
+  @protected
+  List<ElementTwinRustAsync>? dco_decode_opt_list_element_twin_rust_async(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_list_element_twin_rust_async(raw);
+  }
+
+  @protected
+  List<ElementTwinRustAsyncSse>?
+      dco_decode_opt_list_element_twin_rust_async_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_element_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<ElementTwinSse>? dco_decode_opt_list_element_twin_sse(dynamic raw) {
+    return raw == null ? null : dco_decode_list_element_twin_sse(raw);
+  }
+
+  @protected
+  List<ElementTwinSync>? dco_decode_opt_list_element_twin_sync(dynamic raw) {
+    return raw == null ? null : dco_decode_list_element_twin_sync(raw);
+  }
+
+  @protected
+  List<ElementTwinSyncSse>? dco_decode_opt_list_element_twin_sync_sse(
+      dynamic raw) {
+    return raw == null ? null : dco_decode_list_element_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<AttributeTwinNormal?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_opt_box_autoadd_attribute_twin_normal(raw);
+  }
+
+  @protected
+  List<AttributeTwinRustAsync?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(raw);
+  }
+
+  @protected
+  List<AttributeTwinRustAsyncSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(raw);
+  }
+
+  @protected
+  List<AttributeTwinSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_opt_box_autoadd_attribute_twin_sse(raw);
+  }
+
+  @protected
+  List<AttributeTwinSync?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_opt_box_autoadd_attribute_twin_sync(raw);
+  }
+
+  @protected
+  List<AttributeTwinSyncSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync_sse(dynamic raw) {
+    return raw == null
+        ? null
+        : dco_decode_list_opt_box_autoadd_attribute_twin_sync_sse(raw);
+  }
+
+  @protected
+  Float32List? dco_decode_opt_list_prim_f_32_strict(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_f_32_strict(raw);
+  }
+
+  @protected
+  Float64List? dco_decode_opt_list_prim_f_64_strict(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_f_64_strict(raw);
+  }
+
+  @protected
+  Int32List? dco_decode_opt_list_prim_i_32_strict(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_i_32_strict(raw);
+  }
+
+  @protected
+  Int8List? dco_decode_opt_list_prim_i_8_strict(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_i_8_strict(raw);
+  }
+
+  @protected
+  Uint8List? dco_decode_opt_list_prim_u_8_strict(dynamic raw) {
+    return raw == null ? null : dco_decode_list_prim_u_8_strict(raw);
+  }
+
+  @protected
+  OptVecsTwinNormal dco_decode_opt_vecs_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecsTwinNormal(
+      i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
+      enums: dco_decode_list_opt_box_autoadd_weekdays_twin_normal(arr[1]),
+      strings: dco_decode_list_opt_String(arr[2]),
+      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+    );
+  }
+
+  @protected
+  OptVecsTwinRustAsync dco_decode_opt_vecs_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecsTwinRustAsync(
+      i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
+      enums: dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(arr[1]),
+      strings: dco_decode_list_opt_String(arr[2]),
+      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+    );
+  }
+
+  @protected
+  OptVecsTwinRustAsyncSse dco_decode_opt_vecs_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecsTwinRustAsyncSse(
+      i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
+      enums:
+          dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(arr[1]),
+      strings: dco_decode_list_opt_String(arr[2]),
+      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+    );
+  }
+
+  @protected
+  OptVecsTwinSse dco_decode_opt_vecs_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecsTwinSse(
+      i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
+      enums: dco_decode_list_opt_box_autoadd_weekdays_twin_sse(arr[1]),
+      strings: dco_decode_list_opt_String(arr[2]),
+      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+    );
+  }
+
+  @protected
+  OptVecsTwinSync dco_decode_opt_vecs_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecsTwinSync(
+      i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
+      enums: dco_decode_list_opt_box_autoadd_weekdays_twin_sync(arr[1]),
+      strings: dco_decode_list_opt_String(arr[2]),
+      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+    );
+  }
+
+  @protected
+  OptVecsTwinSyncSse dco_decode_opt_vecs_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecsTwinSyncSse(
+      i32: dco_decode_list_opt_box_autoadd_i_32(arr[0]),
+      enums: dco_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(arr[1]),
+      strings: dco_decode_list_opt_String(arr[2]),
+      buffers: dco_decode_list_opt_list_prim_i_32_strict(arr[3]),
+    );
+  }
+
+  @protected
+  PointTwinNormal dco_decode_point_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return PointTwinNormal(
+      x: dco_decode_f_32(arr[0]),
+      y: dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  PointTwinNormalArray2 dco_decode_point_twin_normal_array_2(dynamic raw) {
+    return PointTwinNormalArray2(
+        (raw as List<dynamic>).map(dco_decode_point_twin_normal).toList());
+  }
+
+  @protected
+  PointTwinRustAsync dco_decode_point_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return PointTwinRustAsync(
+      x: dco_decode_f_32(arr[0]),
+      y: dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  PointTwinRustAsyncArray2 dco_decode_point_twin_rust_async_array_2(
+      dynamic raw) {
+    return PointTwinRustAsyncArray2(
+        (raw as List<dynamic>).map(dco_decode_point_twin_rust_async).toList());
+  }
+
+  @protected
+  PointTwinRustAsyncSse dco_decode_point_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return PointTwinRustAsyncSse(
+      x: dco_decode_f_32(arr[0]),
+      y: dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  PointTwinRustAsyncSseArray2 dco_decode_point_twin_rust_async_sse_array_2(
+      dynamic raw) {
+    return PointTwinRustAsyncSseArray2((raw as List<dynamic>)
+        .map(dco_decode_point_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  PointTwinSse dco_decode_point_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return PointTwinSse(
+      x: dco_decode_f_32(arr[0]),
+      y: dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  PointTwinSseArray2 dco_decode_point_twin_sse_array_2(dynamic raw) {
+    return PointTwinSseArray2(
+        (raw as List<dynamic>).map(dco_decode_point_twin_sse).toList());
+  }
+
+  @protected
+  PointTwinSync dco_decode_point_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return PointTwinSync(
+      x: dco_decode_f_32(arr[0]),
+      y: dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  PointTwinSyncArray2 dco_decode_point_twin_sync_array_2(dynamic raw) {
+    return PointTwinSyncArray2(
+        (raw as List<dynamic>).map(dco_decode_point_twin_sync).toList());
+  }
+
+  @protected
+  PointTwinSyncSse dco_decode_point_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return PointTwinSyncSse(
+      x: dco_decode_f_32(arr[0]),
+      y: dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  PointTwinSyncSseArray2 dco_decode_point_twin_sync_sse_array_2(dynamic raw) {
+    return PointTwinSyncSseArray2(
+        (raw as List<dynamic>).map(dco_decode_point_twin_sync_sse).toList());
+  }
+
+  @protected
+  RawStringEnumMirrored dco_decode_raw_string_enum_mirrored(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return RawStringEnumMirrored_Raw(
+          dco_decode_box_autoadd_raw_string_mirrored(raw[1]),
+        );
+      case 1:
+        return RawStringEnumMirrored_Nested(
+          dco_decode_box_autoadd_nested_raw_string_mirrored(raw[1]),
+        );
+      case 2:
+        return RawStringEnumMirrored_ListOfNested(
+          dco_decode_box_autoadd_list_of_nested_raw_string_mirrored(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  RawStringItemStructTwinNormal dco_decode_raw_string_item_struct_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStructTwinNormal(
+      type: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  RawStringItemStructTwinRustAsync
+      dco_decode_raw_string_item_struct_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStructTwinRustAsync(
+      type: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  RawStringItemStructTwinRustAsyncSse
+      dco_decode_raw_string_item_struct_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStructTwinRustAsyncSse(
+      type: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  RawStringItemStructTwinSse dco_decode_raw_string_item_struct_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStructTwinSse(
+      type: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  RawStringItemStructTwinSync dco_decode_raw_string_item_struct_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStructTwinSync(
+      type: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  RawStringItemStructTwinSyncSse
+      dco_decode_raw_string_item_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStructTwinSyncSse(
+      type: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  RawStringMirrored dco_decode_raw_string_mirrored(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringMirrored(
+      value: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      dco_decode_record_application_settings_raw_string_enum_mirrored(
+          dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_application_settings(arr[0]),
+      dco_decode_raw_string_enum_mirrored(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinNormal)
+      dco_decode_record_i_32_basic_general_enum_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinRustAsync)
+      dco_decode_record_i_32_basic_general_enum_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (
+    int,
+    BasicGeneralEnumTwinRustAsyncSse
+  ) dco_decode_record_i_32_basic_general_enum_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSse)
+      dco_decode_record_i_32_basic_general_enum_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSync)
+      dco_decode_record_i_32_basic_general_enum_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicGeneralEnumTwinSyncSse)
+      dco_decode_record_i_32_basic_general_enum_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_general_enum_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinNormal)
+      dco_decode_record_i_32_basic_primitive_enum_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinRustAsync)
+      dco_decode_record_i_32_basic_primitive_enum_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinRustAsyncSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSync)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSyncSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_primitive_enum_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinNormal) dco_decode_record_i_32_basic_struct_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinRustAsync)
+      dco_decode_record_i_32_basic_struct_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinRustAsyncSse)
+      dco_decode_record_i_32_basic_struct_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinSse) dco_decode_record_i_32_basic_struct_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinSync) dco_decode_record_i_32_basic_struct_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (int, BasicStructTwinSyncSse)
+      dco_decode_record_i_32_basic_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_basic_struct_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (int, bool) dco_decode_record_i_32_bool(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_bool(arr[1]),
+    );
+  }
+
+  @protected
+  (int, double) dco_decode_record_i_32_f_32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_f_32(arr[1]),
+    );
+  }
+
+  @protected
+  (int, double) dco_decode_record_i_32_f_64(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_f_64(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_16(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_i_16(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_64(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_i_64(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_8(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_i_8(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_isize(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_isize(arr[1]),
+    );
+  }
+
+  @protected
+  (int, Uint8List) dco_decode_record_i_32_list_prim_u_8_strict(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_list_prim_u_8_strict(arr[1]),
+    );
+  }
+
+  @protected
+  (int, String) dco_decode_record_i_32_string(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_16(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_16(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_32(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_64(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_64(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_8(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_u_8(arr[1]),
+    );
+  }
+
+  @protected
+  (int, int) dco_decode_record_i_32_usize(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_i_32(arr[0]),
+      dco_decode_usize(arr[1]),
+    );
+  }
+
+  @protected
+  (String, EnumSimpleTwinNormal)
+      dco_decode_record_string_enum_simple_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_enum_simple_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (String, EnumSimpleTwinRustAsync)
+      dco_decode_record_string_enum_simple_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_enum_simple_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (String, EnumSimpleTwinRustAsyncSse)
+      dco_decode_record_string_enum_simple_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_enum_simple_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (String, EnumSimpleTwinSse) dco_decode_record_string_enum_simple_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_enum_simple_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (String, EnumSimpleTwinSync) dco_decode_record_string_enum_simple_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_enum_simple_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (String, EnumSimpleTwinSyncSse)
+      dco_decode_record_string_enum_simple_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_enum_simple_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (String, int) dco_decode_record_string_i_32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  (String, KitchenSinkTwinNormal)
+      dco_decode_record_string_kitchen_sink_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_kitchen_sink_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  (String, KitchenSinkTwinRustAsync)
+      dco_decode_record_string_kitchen_sink_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_kitchen_sink_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  (String, KitchenSinkTwinRustAsyncSse)
+      dco_decode_record_string_kitchen_sink_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_kitchen_sink_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (String, KitchenSinkTwinSse) dco_decode_record_string_kitchen_sink_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_kitchen_sink_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (String, KitchenSinkTwinSync) dco_decode_record_string_kitchen_sink_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_kitchen_sink_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  (String, KitchenSinkTwinSyncSse)
+      dco_decode_record_string_kitchen_sink_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_kitchen_sink_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  (String, Uint8List) dco_decode_record_string_list_prim_u_8_strict(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_list_prim_u_8_strict(arr[1]),
+    );
+  }
+
+  @protected
+  (String, MySize) dco_decode_record_string_my_size(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_my_size(arr[1]),
+    );
+  }
+
+  @protected
+  (String, String) dco_decode_record_string_string(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_String(arr[1]),
+    );
+  }
+
+  @protected
+  Sequences dco_decode_sequences(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return Sequences(
+      field0: dco_decode_list_prim_i_32_strict(arr[0]),
+    );
+  }
+
+  @protected
+  SomeStructTwinNormal dco_decode_some_struct_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStructTwinNormal(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SomeStructTwinRustAsync dco_decode_some_struct_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStructTwinRustAsync(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SomeStructTwinRustAsyncSse dco_decode_some_struct_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStructTwinRustAsyncSse(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SomeStructTwinSse dco_decode_some_struct_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStructTwinSse(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SomeStructTwinSync dco_decode_some_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStructTwinSync(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SomeStructTwinSyncSse dco_decode_some_struct_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStructTwinSyncSse(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SpeedTwinNormal dco_decode_speed_twin_normal(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SpeedTwinNormal_Unknown();
+      case 1:
+        return SpeedTwinNormal_GPS(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  SpeedTwinRustAsync dco_decode_speed_twin_rust_async(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SpeedTwinRustAsync_Unknown();
+      case 1:
+        return SpeedTwinRustAsync_GPS(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  SpeedTwinRustAsyncSse dco_decode_speed_twin_rust_async_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SpeedTwinRustAsyncSse_Unknown();
+      case 1:
+        return SpeedTwinRustAsyncSse_GPS(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  SpeedTwinSse dco_decode_speed_twin_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SpeedTwinSse_Unknown();
+      case 1:
+        return SpeedTwinSse_GPS(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  SpeedTwinSync dco_decode_speed_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SpeedTwinSync_Unknown();
+      case 1:
+        return SpeedTwinSync_GPS(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  SpeedTwinSyncSse dco_decode_speed_twin_sync_sse(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SpeedTwinSyncSse_Unknown();
+      case 1:
+        return SpeedTwinSyncSse_GPS(
+          dco_decode_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinNormal(
+      fieldWithComments: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      dco_decode_struct_with_comments_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinRustAsync(
+      fieldWithComments: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithCommentsTwinRustAsyncSse
+      dco_decode_struct_with_comments_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinRustAsyncSse(
+      fieldWithComments: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithCommentsTwinSse dco_decode_struct_with_comments_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinSse(
+      fieldWithComments: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithCommentsTwinSync dco_decode_struct_with_comments_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinSync(
+      fieldWithComments: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithCommentsTwinSyncSse dco_decode_struct_with_comments_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithCommentsTwinSyncSse(
+      fieldWithComments: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnumTwinNormal(
+      abc1: dco_decode_abc_twin_normal(arr[0]),
+      abc2: dco_decode_abc_twin_normal(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithEnumTwinRustAsync dco_decode_struct_with_enum_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnumTwinRustAsync(
+      abc1: dco_decode_abc_twin_rust_async(arr[0]),
+      abc2: dco_decode_abc_twin_rust_async(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithEnumTwinRustAsyncSse
+      dco_decode_struct_with_enum_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnumTwinRustAsyncSse(
+      abc1: dco_decode_abc_twin_rust_async_sse(arr[0]),
+      abc2: dco_decode_abc_twin_rust_async_sse(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithEnumTwinSse dco_decode_struct_with_enum_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnumTwinSse(
+      abc1: dco_decode_abc_twin_sse(arr[0]),
+      abc2: dco_decode_abc_twin_sse(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithEnumTwinSync dco_decode_struct_with_enum_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnumTwinSync(
+      abc1: dco_decode_abc_twin_sync(arr[0]),
+      abc2: dco_decode_abc_twin_sync(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithEnumTwinSyncSse dco_decode_struct_with_enum_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnumTwinSyncSse(
+      abc1: dco_decode_abc_twin_sync_sse(arr[0]),
+      abc2: dco_decode_abc_twin_sync_sse(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithOneFieldTwinNormal(
+      a: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      dco_decode_struct_with_one_field_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithOneFieldTwinRustAsync(
+      a: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithOneFieldTwinRustAsyncSse
+      dco_decode_struct_with_one_field_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithOneFieldTwinRustAsyncSse(
+      a: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithOneFieldTwinSse dco_decode_struct_with_one_field_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithOneFieldTwinSse(
+      a: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithOneFieldTwinSync dco_decode_struct_with_one_field_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithOneFieldTwinSync(
+      a: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithOneFieldTwinSyncSse dco_decode_struct_with_one_field_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithOneFieldTwinSyncSse(
+      a: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithTwoFieldTwinNormal(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      dco_decode_struct_with_two_field_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithTwoFieldTwinRustAsync(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      dco_decode_struct_with_two_field_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithTwoFieldTwinRustAsyncSse(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithTwoFieldTwinSse dco_decode_struct_with_two_field_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithTwoFieldTwinSse(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithTwoFieldTwinSync dco_decode_struct_with_two_field_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithTwoFieldTwinSync(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithTwoFieldTwinSyncSse dco_decode_struct_with_two_field_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithTwoFieldTwinSyncSse(
+      a: dco_decode_i_32(arr[0]),
+      b: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  StructWithZeroFieldTwinNormal dco_decode_struct_with_zero_field_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return StructWithZeroFieldTwinNormal();
+  }
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      dco_decode_struct_with_zero_field_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return StructWithZeroFieldTwinRustAsync();
+  }
+
+  @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      dco_decode_struct_with_zero_field_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return StructWithZeroFieldTwinRustAsyncSse();
+  }
+
+  @protected
+  StructWithZeroFieldTwinSse dco_decode_struct_with_zero_field_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return StructWithZeroFieldTwinSse();
+  }
+
+  @protected
+  StructWithZeroFieldTwinSync dco_decode_struct_with_zero_field_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return StructWithZeroFieldTwinSync();
+  }
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      dco_decode_struct_with_zero_field_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return StructWithZeroFieldTwinSyncSse();
+  }
+
+  @protected
+  SumWithTwinNormal dco_decode_sum_with_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWithTwinNormal(
+      x: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SumWithTwinNormalArray3 dco_decode_sum_with_twin_normal_array_3(dynamic raw) {
+    return SumWithTwinNormalArray3(
+        (raw as List<dynamic>).map(dco_decode_sum_with_twin_normal).toList());
+  }
+
+  @protected
+  SumWithTwinRustAsync dco_decode_sum_with_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWithTwinRustAsync(
+      x: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SumWithTwinRustAsyncArray3 dco_decode_sum_with_twin_rust_async_array_3(
+      dynamic raw) {
+    return SumWithTwinRustAsyncArray3((raw as List<dynamic>)
+        .map(dco_decode_sum_with_twin_rust_async)
+        .toList());
+  }
+
+  @protected
+  SumWithTwinRustAsyncSse dco_decode_sum_with_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWithTwinRustAsyncSse(
+      x: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SumWithTwinRustAsyncSseArray3 dco_decode_sum_with_twin_rust_async_sse_array_3(
+      dynamic raw) {
+    return SumWithTwinRustAsyncSseArray3((raw as List<dynamic>)
+        .map(dco_decode_sum_with_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  SumWithTwinSse dco_decode_sum_with_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWithTwinSse(
+      x: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SumWithTwinSseArray3 dco_decode_sum_with_twin_sse_array_3(dynamic raw) {
+    return SumWithTwinSseArray3(
+        (raw as List<dynamic>).map(dco_decode_sum_with_twin_sse).toList());
+  }
+
+  @protected
+  SumWithTwinSync dco_decode_sum_with_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWithTwinSync(
+      x: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SumWithTwinSyncArray3 dco_decode_sum_with_twin_sync_array_3(dynamic raw) {
+    return SumWithTwinSyncArray3(
+        (raw as List<dynamic>).map(dco_decode_sum_with_twin_sync).toList());
+  }
+
+  @protected
+  SumWithTwinSyncSse dco_decode_sum_with_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWithTwinSyncSse(
+      x: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  SumWithTwinSyncSseArray3 dco_decode_sum_with_twin_sync_sse_array_3(
+      dynamic raw) {
+    return SumWithTwinSyncSseArray3(
+        (raw as List<dynamic>).map(dco_decode_sum_with_twin_sync_sse).toList());
+  }
+
+  @protected
+  TestChronoTwinNormal dco_decode_test_chrono_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return TestChronoTwinNormal(
+      dt: dco_decode_opt_box_autoadd_Chrono_Utc(arr[0]),
+      dt2: dco_decode_opt_box_autoadd_Chrono_Naive(arr[1]),
+      du: dco_decode_opt_box_autoadd_Chrono_Duration(arr[2]),
+    );
+  }
+
+  @protected
+  TestChronoTwinRustAsync dco_decode_test_chrono_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return TestChronoTwinRustAsync(
+      dt: dco_decode_opt_box_autoadd_Chrono_Utc(arr[0]),
+      dt2: dco_decode_opt_box_autoadd_Chrono_Naive(arr[1]),
+      du: dco_decode_opt_box_autoadd_Chrono_Duration(arr[2]),
+    );
+  }
+
+  @protected
+  TestChronoTwinSync dco_decode_test_chrono_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return TestChronoTwinSync(
+      dt: dco_decode_opt_box_autoadd_Chrono_Utc(arr[0]),
+      dt2: dco_decode_opt_box_autoadd_Chrono_Naive(arr[1]),
+      du: dco_decode_opt_box_autoadd_Chrono_Duration(arr[2]),
+    );
+  }
+
+  @protected
+  TestIdTwinNormal dco_decode_test_id_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TestIdTwinNormal(
+      field0: dco_decode_i_32_array_2(arr[0]),
+    );
+  }
+
+  @protected
+  TestIdTwinNormalArray2 dco_decode_test_id_twin_normal_array_2(dynamic raw) {
+    return TestIdTwinNormalArray2(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_normal).toList());
+  }
+
+  @protected
+  TestIdTwinNormalArray4 dco_decode_test_id_twin_normal_array_4(dynamic raw) {
+    return TestIdTwinNormalArray4(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_normal).toList());
+  }
+
+  @protected
+  TestIdTwinRustAsync dco_decode_test_id_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TestIdTwinRustAsync(
+      field0: dco_decode_i_32_array_2(arr[0]),
+    );
+  }
+
+  @protected
+  TestIdTwinRustAsyncArray2 dco_decode_test_id_twin_rust_async_array_2(
+      dynamic raw) {
+    return TestIdTwinRustAsyncArray2((raw as List<dynamic>)
+        .map(dco_decode_test_id_twin_rust_async)
+        .toList());
+  }
+
+  @protected
+  TestIdTwinRustAsyncArray4 dco_decode_test_id_twin_rust_async_array_4(
+      dynamic raw) {
+    return TestIdTwinRustAsyncArray4((raw as List<dynamic>)
+        .map(dco_decode_test_id_twin_rust_async)
+        .toList());
+  }
+
+  @protected
+  TestIdTwinRustAsyncSse dco_decode_test_id_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TestIdTwinRustAsyncSse(
+      field0: dco_decode_i_32_array_2(arr[0]),
+    );
+  }
+
+  @protected
+  TestIdTwinRustAsyncSseArray2 dco_decode_test_id_twin_rust_async_sse_array_2(
+      dynamic raw) {
+    return TestIdTwinRustAsyncSseArray2((raw as List<dynamic>)
+        .map(dco_decode_test_id_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  TestIdTwinRustAsyncSseArray4 dco_decode_test_id_twin_rust_async_sse_array_4(
+      dynamic raw) {
+    return TestIdTwinRustAsyncSseArray4((raw as List<dynamic>)
+        .map(dco_decode_test_id_twin_rust_async_sse)
+        .toList());
+  }
+
+  @protected
+  TestIdTwinSse dco_decode_test_id_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TestIdTwinSse(
+      field0: dco_decode_i_32_array_2(arr[0]),
+    );
+  }
+
+  @protected
+  TestIdTwinSseArray2 dco_decode_test_id_twin_sse_array_2(dynamic raw) {
+    return TestIdTwinSseArray2(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_sse).toList());
+  }
+
+  @protected
+  TestIdTwinSseArray4 dco_decode_test_id_twin_sse_array_4(dynamic raw) {
+    return TestIdTwinSseArray4(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_sse).toList());
+  }
+
+  @protected
+  TestIdTwinSync dco_decode_test_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TestIdTwinSync(
+      field0: dco_decode_i_32_array_2(arr[0]),
+    );
+  }
+
+  @protected
+  TestIdTwinSyncArray2 dco_decode_test_id_twin_sync_array_2(dynamic raw) {
+    return TestIdTwinSyncArray2(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_sync).toList());
+  }
+
+  @protected
+  TestIdTwinSyncArray4 dco_decode_test_id_twin_sync_array_4(dynamic raw) {
+    return TestIdTwinSyncArray4(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_sync).toList());
+  }
+
+  @protected
+  TestIdTwinSyncSse dco_decode_test_id_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TestIdTwinSyncSse(
+      field0: dco_decode_i_32_array_2(arr[0]),
+    );
+  }
+
+  @protected
+  TestIdTwinSyncSseArray2 dco_decode_test_id_twin_sync_sse_array_2(
+      dynamic raw) {
+    return TestIdTwinSyncSseArray2(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_sync_sse).toList());
+  }
+
+  @protected
+  TestIdTwinSyncSseArray4 dco_decode_test_id_twin_sync_sse_array_4(
+      dynamic raw) {
+    return TestIdTwinSyncSseArray4(
+        (raw as List<dynamic>).map(dco_decode_test_id_twin_sync_sse).toList());
+  }
+
+  @protected
+  TestModelTwinNormal dco_decode_test_model_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModelTwinNormal(
+      id: dco_decode_u_64(arr[0]),
+      name: dco_decode_String(arr[1]),
+      aliasEnum: dco_decode_my_enum(arr[2]),
+      aliasStruct: dco_decode_my_struct(arr[3]),
+    );
+  }
+
+  @protected
+  TestModelTwinRustAsync dco_decode_test_model_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModelTwinRustAsync(
+      id: dco_decode_u_64(arr[0]),
+      name: dco_decode_String(arr[1]),
+      aliasEnum: dco_decode_my_enum(arr[2]),
+      aliasStruct: dco_decode_my_struct(arr[3]),
+    );
+  }
+
+  @protected
+  TestModelTwinRustAsyncSse dco_decode_test_model_twin_rust_async_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModelTwinRustAsyncSse(
+      id: dco_decode_u_64(arr[0]),
+      name: dco_decode_String(arr[1]),
+      aliasEnum: dco_decode_my_enum(arr[2]),
+      aliasStruct: dco_decode_my_struct(arr[3]),
+    );
+  }
+
+  @protected
+  TestModelTwinSse dco_decode_test_model_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModelTwinSse(
+      id: dco_decode_u_64(arr[0]),
+      name: dco_decode_String(arr[1]),
+      aliasEnum: dco_decode_my_enum(arr[2]),
+      aliasStruct: dco_decode_my_struct(arr[3]),
+    );
+  }
+
+  @protected
+  TestModelTwinSync dco_decode_test_model_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModelTwinSync(
+      id: dco_decode_u_64(arr[0]),
+      name: dco_decode_String(arr[1]),
+      aliasEnum: dco_decode_my_enum(arr[2]),
+      aliasStruct: dco_decode_my_struct(arr[3]),
+    );
+  }
+
+  @protected
+  TestModelTwinSyncSse dco_decode_test_model_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModelTwinSyncSse(
+      id: dco_decode_u_64(arr[0]),
+      name: dco_decode_String(arr[1]),
+      aliasEnum: dco_decode_my_enum(arr[2]),
+      aliasStruct: dco_decode_my_struct(arr[3]),
+    );
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      dco_decode_tuple_struct_with_one_field_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TupleStructWithOneFieldTwinNormal(
+      field0: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      dco_decode_tuple_struct_with_one_field_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TupleStructWithOneFieldTwinRustAsync(
+      field0: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      dco_decode_tuple_struct_with_one_field_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TupleStructWithOneFieldTwinRustAsyncSse(
+      field0: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      dco_decode_tuple_struct_with_one_field_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TupleStructWithOneFieldTwinSse(
+      field0: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      dco_decode_tuple_struct_with_one_field_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TupleStructWithOneFieldTwinSync(
+      field0: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      dco_decode_tuple_struct_with_one_field_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TupleStructWithOneFieldTwinSyncSse(
+      field0: dco_decode_i_32(arr[0]),
+    );
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      dco_decode_tuple_struct_with_two_field_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TupleStructWithTwoFieldTwinNormal(
+      field0: dco_decode_i_32(arr[0]),
+      field1: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      dco_decode_tuple_struct_with_two_field_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TupleStructWithTwoFieldTwinRustAsync(
+      field0: dco_decode_i_32(arr[0]),
+      field1: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      dco_decode_tuple_struct_with_two_field_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TupleStructWithTwoFieldTwinRustAsyncSse(
+      field0: dco_decode_i_32(arr[0]),
+      field1: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      dco_decode_tuple_struct_with_two_field_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TupleStructWithTwoFieldTwinSse(
+      field0: dco_decode_i_32(arr[0]),
+      field1: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      dco_decode_tuple_struct_with_two_field_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TupleStructWithTwoFieldTwinSync(
+      field0: dco_decode_i_32(arr[0]),
+      field1: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      dco_decode_tuple_struct_with_two_field_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TupleStructWithTwoFieldTwinSyncSse(
+      field0: dco_decode_i_32(arr[0]),
+      field1: dco_decode_i_32(arr[1]),
+    );
+  }
+
+  @protected
+  int dco_decode_u_16(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_u_32(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  int dco_decode_u_64(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  @protected
+  int dco_decode_u_8(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  U8Array1600 dco_decode_u_8_array_1600(dynamic raw) {
+    return U8Array1600(dco_decode_list_prim_u_8_strict(raw));
+  }
+
+  @protected
+  U8Array32 dco_decode_u_8_array_32(dynamic raw) {
+    return U8Array32(dco_decode_list_prim_u_8_strict(raw));
+  }
+
+  @protected
+  U8Array5 dco_decode_u_8_array_5(dynamic raw) {
+    return U8Array5(dco_decode_list_prim_u_8_strict(raw));
+  }
+
+  @protected
+  U8Array8 dco_decode_u_8_array_8(dynamic raw) {
+    return U8Array8(dco_decode_list_prim_u_8_strict(raw));
+  }
+
+  @protected
+  void dco_decode_unit(dynamic raw) {
+    return;
+  }
+
+  @protected
+  UserIdTwinNormal dco_decode_user_id_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserIdTwinNormal(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  UserIdTwinRustAsync dco_decode_user_id_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserIdTwinRustAsync(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  UserIdTwinRustAsyncSse dco_decode_user_id_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserIdTwinRustAsyncSse(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  UserIdTwinSse dco_decode_user_id_twin_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserIdTwinSse(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  UserIdTwinSync dco_decode_user_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserIdTwinSync(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  UserIdTwinSyncSse dco_decode_user_id_twin_sync_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserIdTwinSyncSse(
+      value: dco_decode_u_32(arr[0]),
+    );
+  }
+
+  @protected
+  int dco_decode_usize(dynamic raw) {
+    return dcoDecodeI64OrU64(raw);
+  }
+
+  @protected
+  VecOfPrimitivePackTwinNormal dco_decode_vec_of_primitive_pack_twin_normal(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePackTwinNormal(
+      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
+      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
+      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
+      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
+      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
+      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
+      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
+      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
+      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      boolList: dco_decode_list_bool(arr[10]),
+    );
+  }
+
+  @protected
+  VecOfPrimitivePackTwinRustAsync
+      dco_decode_vec_of_primitive_pack_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePackTwinRustAsync(
+      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
+      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
+      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
+      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
+      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
+      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
+      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
+      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
+      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      boolList: dco_decode_list_bool(arr[10]),
+    );
+  }
+
+  @protected
+  VecOfPrimitivePackTwinRustAsyncSse
+      dco_decode_vec_of_primitive_pack_twin_rust_async_sse(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePackTwinRustAsyncSse(
+      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
+      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
+      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
+      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
+      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
+      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
+      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
+      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
+      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      boolList: dco_decode_list_bool(arr[10]),
+    );
+  }
+
+  @protected
+  VecOfPrimitivePackTwinSse dco_decode_vec_of_primitive_pack_twin_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePackTwinSse(
+      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
+      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
+      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
+      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
+      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
+      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
+      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
+      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
+      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      boolList: dco_decode_list_bool(arr[10]),
+    );
+  }
+
+  @protected
+  VecOfPrimitivePackTwinSync dco_decode_vec_of_primitive_pack_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePackTwinSync(
+      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
+      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
+      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
+      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
+      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
+      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
+      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
+      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
+      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      boolList: dco_decode_list_bool(arr[10]),
+    );
+  }
+
+  @protected
+  VecOfPrimitivePackTwinSyncSse dco_decode_vec_of_primitive_pack_twin_sync_sse(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePackTwinSyncSse(
+      int8List: dco_decode_list_prim_i_8_strict(arr[0]),
+      uint8List: dco_decode_list_prim_u_8_strict(arr[1]),
+      int16List: dco_decode_list_prim_i_16_strict(arr[2]),
+      uint16List: dco_decode_list_prim_u_16_strict(arr[3]),
+      uint32List: dco_decode_list_prim_u_32_strict(arr[4]),
+      int32List: dco_decode_list_prim_i_32_strict(arr[5]),
+      uint64List: dco_decode_list_prim_u_64_strict(arr[6]),
+      int64List: dco_decode_list_prim_i_64_strict(arr[7]),
+      float32List: dco_decode_list_prim_f_32_strict(arr[8]),
+      float64List: dco_decode_list_prim_f_64_strict(arr[9]),
+      boolList: dco_decode_list_bool(arr[10]),
+    );
+  }
+
+  @protected
+  WeekdaysTwinNormal dco_decode_weekdays_twin_normal(dynamic raw) {
+    return WeekdaysTwinNormal.values[raw as int];
+  }
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_weekdays_twin_rust_async(dynamic raw) {
+    return WeekdaysTwinRustAsync.values[raw as int];
+  }
+
+  @protected
+  WeekdaysTwinRustAsyncSse dco_decode_weekdays_twin_rust_async_sse(
+      dynamic raw) {
+    return WeekdaysTwinRustAsyncSse.values[raw as int];
+  }
+
+  @protected
+  WeekdaysTwinSse dco_decode_weekdays_twin_sse(dynamic raw) {
+    return WeekdaysTwinSse.values[raw as int];
+  }
+
+  @protected
+  WeekdaysTwinSync dco_decode_weekdays_twin_sync(dynamic raw) {
+    return WeekdaysTwinSync.values[raw as int];
+  }
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_weekdays_twin_sync_sse(dynamic raw) {
+    return WeekdaysTwinSyncSse.values[raw as int];
+  }
+
+  @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer) {
     var inner = sse_decode_String(deserializer);
     return AnyhowException(inner);

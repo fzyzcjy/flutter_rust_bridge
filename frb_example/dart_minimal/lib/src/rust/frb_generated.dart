@@ -153,6 +153,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @protected
+  String dco_decode_String(dynamic raw) {
+    return raw as String;
+  }
+
+  @protected
+  MyEnum dco_decode_box_autoadd_my_enum(dynamic raw) {
+    return dco_decode_my_enum(raw);
+  }
+
+  @protected
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw) {
+    return dco_decode_my_struct(raw);
+  }
+
+  @protected
+  int dco_decode_i_32(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
+    return raw as Uint8List;
+  }
+
+  @protected
+  MyEnum dco_decode_my_enum(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MyEnum_Apple();
+      case 1:
+        return MyEnum_Orange(
+          dco_decode_list_prim_u_8_strict(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  MyStruct dco_decode_my_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStruct(
+      field: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
+  int dco_decode_u_8(dynamic raw) {
+    return raw as int;
+  }
+
+  @protected
+  void dco_decode_unit(dynamic raw) {
+    return;
+  }
+
+  @protected
   String sse_decode_String(SseDeserializer deserializer) {
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
     return utf8.decoder.convert(inner);
