@@ -1,7 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
-use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
@@ -9,9 +8,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
-use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::{
-    create_maybe_port_param, create_port_param,
-};
+use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::create_maybe_port_param;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
@@ -48,8 +45,9 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
         func: &IrFunc,
         context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
-        let mut params =
-            Acc::new(|target| (create_maybe_port_param(func.mode, target).iter()).collect_vec());
+        let mut params = Acc::new(|target| {
+            (create_maybe_port_param(func.mode, target).into_iter()).collect_vec()
+        });
 
         params += func
             .inputs
