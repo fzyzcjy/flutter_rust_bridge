@@ -27,9 +27,9 @@ impl WireDartCodecEntrypointTrait<'_> for PdeWireDartCodecEntrypoint {
     fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, _wire_func_name: &str) -> String {
         let serialize_inputs = generate_serialize_inputs(func);
         let (maybe_port, maybe_return, maybe_bang) = if has_port_argument(func.mode) {
-            (", port: port_", "return ", "!")
+            (", port: port_", "", "")
         } else {
-            ("", "", "")
+            ("", "return ", "!")
         };
         let func_id = func.id;
         format!(
