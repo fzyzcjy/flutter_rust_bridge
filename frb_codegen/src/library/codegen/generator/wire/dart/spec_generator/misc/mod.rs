@@ -221,25 +221,22 @@ fn generate_import_dart_api_layer(
 }
 
 fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
-    Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Web => {
-            let wire_func_name = func.func_name("");
-            let return_type = func.return_type.as_deref().unwrap_or("void");
-            let signature_args = (func.params.iter())
-                .map(|param| format!("{} {}", param.dart_type, param.name,))
-                .join(", ");
-            let body_args = (func.params.iter())
-                .map(|param| param.name.to_owned())
-                .join(", ");
+    let wire_func_name = func.func_name("");
+    let return_type = func.return_type.as_deref().unwrap_or("void");
+    let signature_args = (func.params.iter())
+        .map(|param| format!("{} {}", param.dart_type, param.name,))
+        .join(", ");
+    let body_args = (func.params.iter())
+        .map(|param| param.name.to_owned())
+        .join(", ");
 
-            vec![WireDartOutputCode {
-                api_impl_class_methods: vec![DartApiImplClassMethod {
-                    signature: format!("{return_type} {wire_func_name}({signature_args})"),
-                    body: Some(format!("return wire.{wire_func_name}({body_args});")),
-                }],
-                ..Default::default()
-            }]
-        }
-        TargetOrCommon::Common => vec![],
-    })
+    let code = vec![WireDartOutputCode {
+        api_impl_class_methods: vec![DartApiImplClassMethod {
+            signature: format!("{return_type} {wire_func_name}({signature_args})"),
+            body: Some(format!("return wire.{wire_func_name}({body_args});")),
+        }],
+        ..Default::default()
+    }];
+
+    Acc::new_target(code, func.target.into())
 }
