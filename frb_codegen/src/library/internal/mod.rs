@@ -1,8 +1,10 @@
+use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::generate_ffi_dispatcher_raw;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::library::commands::cbindgen::{cbindgen_raw, default_cbindgen_config};
 use crate::library::commands::ffigen::{
     ffigen_raw, FfigenCommandConfig, FfigenCommandConfigHeaders,
 };
+use crate::utils::file_utils::temp_change_file;
 use crate::utils::path_utils::path_to_string;
 use convert_case::{Case, Casing};
 use log::info;
@@ -31,6 +33,13 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
 
 fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
     info!("generate_frb_rust_cbindgen");
+
+    let dir_frb_rust = repo_base_dir.join("frb_rust");
+
+    temp_change_file(dir_frb_rust.join("src").join("lib.rs"), |text| {
+        text.unwrap() + &generate_frb_rust_extra_code()
+    })?;
+
     let default_config = default_cbindgen_config();
     cbindgen(
         cbindgen::Config {
@@ -48,8 +57,18 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
             ..default_config
         },
         repo_base_dir,
-        &repo_base_dir.join("frb_rust"),
+        &dir_frb_rust,
         "frb_rust",
+    )
+}
+
+fn generate_frb_rust_extra_code() -> String {
+    format!(
+        "
+        crate::frb_generated_io_extern_func!();
+        {}
+        ",
+        generate_ffi_dispatcher_raw(""),
     )
 }
 
