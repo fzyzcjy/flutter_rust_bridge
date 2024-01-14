@@ -7,9 +7,16 @@ macro_rules! frb_generated_boilerplate {
         $crate::frb_generated_moi_arc_def!();
         $crate::frb_generated_rust_opaque_dart2rust!();
         $crate::frb_generated_rust_opaque_def!();
+        $crate::frb_generated_boilerplate_cst_codec!();
+        $crate::frb_generated_boilerplate_sse_codec!();
+        $crate::frb_generated_boilerplate_stream_sink!();
+    };
+}
 
-        // -------------------------- CstCodec ------------------------
-
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_boilerplate_cst_codec {
+    () => {
         pub trait CstDecode<T> {
             fn cst_decode(self) -> T;
         }
@@ -22,9 +29,13 @@ macro_rules! frb_generated_boilerplate {
                 (!self.is_null()).then(|| self.cst_decode())
             }
         }
+    };
+}
 
-        // -------------------------- SseCodec ------------------------
-
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_boilerplate_sse_codec {
+    () => {
         pub trait SseDecode {
             fn sse_decode(deserializer: &mut $crate::for_generated::SseDeserializer) -> Self;
 
@@ -65,9 +76,13 @@ macro_rules! frb_generated_boilerplate {
                 })),
             }
         }
+    };
+}
 
-        // -------------------------- StreamSink ------------------------
-
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_boilerplate_stream_sink {
+    () => {
         #[derive(Clone)]
         pub struct StreamSink<
             T,
