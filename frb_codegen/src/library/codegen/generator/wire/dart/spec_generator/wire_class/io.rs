@@ -13,6 +13,10 @@ pub(crate) fn generate(
     c_file_content: &str,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputCode> {
+    if !config.enable_ffigen {
+        return Ok(WireDartOutputCode::default());
+    }
+
     let content = execute_ffigen(config, c_file_content, progress_bar_pack)?;
     let content = postpare_modify(&content, &config.dart_output_class_name_pack);
     sanity_check(&content, &config.dart_output_class_name_pack)?;
@@ -24,10 +28,6 @@ fn execute_ffigen(
     c_file_content: &str,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<String> {
-    if !config.enable_ffigen {
-        return Ok("".to_owned());
-    }
-
     let _pb = progress_bar_pack.generate_ffigen.start();
     ffigen(FfigenArgs {
         c_file_content,
