@@ -31,7 +31,7 @@ impl IrPack {
             &mut |ty| gatherer.add(ty),
             include_func_inputs,
             include_func_output,
-            filter_func,
+            &filter_func,
         );
         gatherer.gather()
     }
@@ -42,10 +42,10 @@ impl IrPack {
         f: &mut F,
         include_func_inputs: bool,
         include_func_output: bool,
-        filter_func: Option<impl Fn(&IrFunc) -> bool>,
+        filter_func: &Option<impl Fn(&IrFunc) -> bool>,
     ) {
         for func in &self.funcs {
-            if filter_func.is_none() || !filter_func.unwrap()(func) {
+            if filter_func.is_none() || !filter_func.as_ref().unwrap()(func) {
                 continue;
             }
             func.visit_types(f, include_func_inputs, include_func_output, self)
@@ -74,7 +74,7 @@ impl IrPackComputedCache {
                     ir_pack.distinct_types(
                         true,
                         true,
-                        Some(Box::new(|f: &IrFunc| {
+                        Some(Box::new(move |f: &IrFunc| {
                             // currently quite coarse
                             f.codec_mode_pack.dart2rust == codec
                                 || f.codec_mode_pack.rust2dart == codec
