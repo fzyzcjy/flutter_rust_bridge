@@ -18,13 +18,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  void wire_init_app() {
-    return wire.wire_init_app();
+  void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_, int data_len_) {
+    return wire.dart_fn_deliver_output(call_id, ptr_, rust_vec_len_, data_len_);
   }
 
   @protected
-  void wire_minimal_adder(int a, int b) {
-    return wire.wire_minimal_adder(a, b);
+  void wire_init_app(NativePortType port_) {
+    return wire.wire_init_app(port_);
+  }
+
+  @protected
+  void wire_minimal_adder(NativePortType port_, int a, int b) {
+    return wire.wire_minimal_adder(port_, a, b);
+  }
+
+  @protected
+  void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_, int data_len_) {
+    return wire.dart_fn_deliver_output(call_id, ptr_, rust_vec_len_, data_len_);
+  }
+
+  @protected
+  void wire_init_app(NativePortType port_) {
+    return wire.wire_init_app(port_);
+  }
+
+  @protected
+  void wire_minimal_adder(NativePortType port_, int a, int b) {
+    return wire.wire_minimal_adder(port_, a, b);
   }
 
   @protected
