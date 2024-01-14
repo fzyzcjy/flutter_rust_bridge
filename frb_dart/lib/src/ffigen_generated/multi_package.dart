@@ -220,6 +220,29 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
+  void frb_pde_ffi_dispatcher(
+    int func_id,
+    int port,
+    ffi.Pointer<ffi.Uint8> ptr,
+    int rust_vec_len,
+    int data_len,
+  ) {
+    return _frb_pde_ffi_dispatcher(
+      func_id,
+      port,
+      ptr,
+      rust_vec_len,
+      data_len,
+    );
+  }
+
+  late final _frb_pde_ffi_dispatcherPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Int64, ffi.Pointer<ffi.Uint8>,
+              ffi.Int32, ffi.Int32)>>('frb_pde_ffi_dispatcher');
+  late final _frb_pde_ffi_dispatcher = _frb_pde_ffi_dispatcherPtr
+      .asFunction<void Function(int, int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   /// # Safety
   ///
   /// This should never be called manually.

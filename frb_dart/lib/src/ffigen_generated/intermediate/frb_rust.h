@@ -16,6 +16,12 @@ typedef struct WireSyncRust2DartSse {
   int32_t len;
 } WireSyncRust2DartSse;
 
+void frb_pde_ffi_dispatcher(int32_t func_id,
+                            int64_t port,
+                            uint8_t *ptr,
+                            int32_t rust_vec_len,
+                            int32_t data_len);
+
 /**
  * # Safety
  *
