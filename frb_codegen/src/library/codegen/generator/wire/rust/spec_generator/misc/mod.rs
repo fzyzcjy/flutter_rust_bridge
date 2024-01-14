@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::generate_code_header;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
@@ -46,7 +47,7 @@ pub(crate) fn generate(
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
-        boilerplate: generate_boilerplate(),
+        boilerplate: generate_boilerplate(context.config.default_stream_sink_codec),
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
@@ -148,20 +149,27 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
     lines.join("\n")
 }
 
-fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
-    Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Web => {
-            vec![
-                // generate_boilerplate_frb_initialize_rust(target).into(),
-                generate_boilerplate_dart_fn_deliver_output(target).into(),
-                format!(
-                    "flutter_rust_bridge::frb_generated_boilerplate_{}!();",
-                    target.to_string().to_lowercase()
-                )
-                .into(),
-            ]
+fn generate_boilerplate(default_stream_sink_codec: CodecMode) -> Acc<Vec<WireRustOutputCode>> {
+    Acc::new(|target| {
+        match target {
+            TargetOrCommon::Io | TargetOrCommon::Web => {
+                vec![
+                    // generate_boilerplate_frb_initialize_rust(target).into(),
+                    generate_boilerplate_dart_fn_deliver_output(target).into(),
+                    format!(
+                        "flutter_rust_bridge::frb_generated_boilerplate_{}!();",
+                        target.to_string().to_lowercase()
+                    )
+                    .into(),
+                ]
+            }
+            TargetOrCommon::Common => vec![format!(
+                "flutter_rust_bridge::frb_generated_boilerplate!(
+                    default_stream_sink_codec = {default_stream_sink_codec}Codec
+                );"
+            )
+            .into()],
         }
-        TargetOrCommon::Common => vec!["flutter_rust_bridge::frb_generated_boilerplate!();".into()],
     })
 }
 
