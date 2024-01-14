@@ -4,10 +4,9 @@
 
 use crate::deliberate_name_conflict::StructInUpperLevel;
 
-pub struct StructInLowerLevel{
+pub struct StructInLowerLevel {
     pub inner: StructInUpperLevel,
 }
-
 
 pub fn test_duplicated_module_names(s: StructInLowerLevel) -> StructInUpperLevel {
     s.inner
