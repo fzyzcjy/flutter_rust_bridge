@@ -1,5 +1,9 @@
+use crate::codegen::generator::codec::structs::EncodeOrDecode::Encode;
+use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypoint;
+use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use serde::{Deserialize, Serialize};
+use strum::IntoEnumIterator;
 use strum_macros::{Display, EnumIter};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
@@ -92,4 +96,19 @@ pub(crate) trait BaseCodecEntrypointTrait<C, O> {
 pub(crate) enum EncodeOrDecode {
     Encode,
     Decode,
+}
+
+pub(crate) fn generate_via_codec<E, C, O, B>(
+    context: C,
+    cache: &IrPackComputedCache,
+    mode: EncodeOrDecode,
+) -> B
+where
+    E: From<CodecMode> + BaseCodecEntrypointTrait<C, O>,
+    B: FromIterator<O>,
+{
+    CodecMode::iter()
+        .map(E::from)
+        .flat_map(|codec| codec.generate(context, &cache.distinct_types, mode))
+        .collect()
 }
