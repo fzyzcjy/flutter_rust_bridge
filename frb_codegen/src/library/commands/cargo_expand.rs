@@ -63,7 +63,7 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
                     ))
                     .unwrap();
                     let start = match searched.find(expanded) {
-                        Some(m) => m.end(),
+                        Some(m) => m.end() + 1,
                         None => return (spaces, expanded),
                     };
                     let end = expanded[start..]

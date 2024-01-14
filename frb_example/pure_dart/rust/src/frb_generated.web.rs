@@ -9982,6 +9982,38 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSy
         }
     }
 }
+impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::api::deliberate_name_conflict::StructInLowerLevel {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::deliberate_name_conflict::StructInLowerLevel(self_.get(0).cst_decode())
+    }
+}
+impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn cst_decode(self) -> crate::deliberate_name_conflict::StructInUpperLevel {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::deliberate_name_conflict::StructInUpperLevel(self_.get(0).cst_decode())
+    }
+}
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -16696,6 +16728,14 @@ pub fn wire_unwrap_dart_opaque_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_unwrap_dart_opaque_twin_normal_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_duplicated_module_names(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    s: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_test_duplicated_module_names_impl(port_, s)
 }
 
 #[wasm_bindgen]
