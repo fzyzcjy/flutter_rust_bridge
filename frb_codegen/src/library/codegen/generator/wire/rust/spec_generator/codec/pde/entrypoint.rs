@@ -10,10 +10,12 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ty::IrType;
-use fern::HashMap;
+use clap::ValueEnum;
 use itertools::Itertools;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
+use strum_macros::{Display, EnumIter};
 
 pub(crate) struct PdeWireRustCodecEntrypoint;
 
@@ -39,7 +41,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
             (
                 mode,
                 (funcs.iter())
-                    .filter(|f| f.mode.into() == mode)
+                    .filter(|f| FfiDispatcherMode::from(&f.mode) == mode)
                     .map(|f| {
                         let maybe_port = if has_port_argument(f.mode) {
                             "port, "
@@ -62,7 +64,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
     }
 }
 
-#[derive(strum_macros::EnumIter)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, EnumIter, Hash)]
 pub(crate) enum FfiDispatcherMode {
     Primary,
     Sync,
@@ -111,7 +113,6 @@ pub(crate) fn generate_ffi_dispatcher_raw(
                     }}
                 }}
                 ",
-                variants[&mode]
             )
         })
         .join("")
