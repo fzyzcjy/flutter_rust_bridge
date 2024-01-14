@@ -7,6 +7,7 @@ pub(crate) enum CodecMode {
     Cst,
     Dco,
     Sse,
+    Pde,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Hash)]
@@ -27,6 +28,7 @@ macro_rules! codegen_codec_structs {
             Cst,
             Dco,
             Sse,
+            Pde,
         );
     );
     (@private $partial_name:ident, $code:ident ; $($name:ident),*,) => (
