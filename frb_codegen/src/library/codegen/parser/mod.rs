@@ -69,7 +69,12 @@ pub(crate) fn parse(
     let ir_funcs = src_fns
         .iter()
         .map(|f| {
-            function_parser.parse_function(&f.generalized_item_fn, &f.path, &config.rust_crate_dir)
+            function_parser.parse_function(
+                &f.generalized_item_fn,
+                &f.path,
+                &config.rust_crate_dir,
+                &config.default_codec_mode_pack,
+            )
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()

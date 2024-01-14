@@ -2,6 +2,7 @@ pub(crate) mod argument;
 pub(crate) mod output;
 mod transformer;
 
+use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
@@ -38,8 +39,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
+        default_codec_mode_pack: &CodecModePack,
     ) -> anyhow::Result<Option<IrFunc>> {
-        self.parse_function_inner(func, file_path, rust_crate_dir)
+        self.parse_function_inner(func, file_path, rust_crate_dir, default_codec_mode_pack)
             .with_context(|| format!("function={:?}", func.sig().ident))
     }
 
@@ -48,6 +50,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
+        default_codec_mode_pack: &CodecModePack,
     ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
@@ -80,7 +83,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = self.transform_fn_info(info, &context);
 
         let codec_mode_pack =
-            (attributes.codec_mode_pack()).unwrap_or(TODO.default_codec_mode_pack.clone());
+            (attributes.codec_mode_pack()).unwrap_or(default_codec_mode_pack.clone());
         let mode = compute_func_mode(&attributes, &info);
 
         Ok(Some(IrFunc {
