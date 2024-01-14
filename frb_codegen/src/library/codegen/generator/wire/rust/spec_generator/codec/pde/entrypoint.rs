@@ -32,7 +32,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 
 fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
     let variants = (funcs.iter())
-        .map(|f| format!("{} => {},\n", TODO, wire_func_name(f)))
+        .map(|f| format!("{} => {},\n", f.id, wire_func_name(f)))
         .join("");
     let code = format!(
         "
