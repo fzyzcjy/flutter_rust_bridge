@@ -83,8 +83,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final raw_ = serializer.intoRaw();
         return wire_init_app(port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: PdeCodec(
-        decodeSuccessData: pde_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kInitAppConstMeta,
@@ -110,8 +110,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire_minimal_adder(
             port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
-      codec: PdeCodec(
-        decodeSuccessData: pde_decode_i_32,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kMinimalAdderConstMeta,
