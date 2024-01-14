@@ -18,6 +18,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  void wire_init_app() {
+    return wire.wire_init_app();
+  }
+
+  @protected
+  int wire_minimal_adder(int a, int b) {
+    return wire.wire_minimal_adder(a, b);
+  }
+
+  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
