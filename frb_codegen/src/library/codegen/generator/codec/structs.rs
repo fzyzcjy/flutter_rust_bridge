@@ -68,6 +68,19 @@ macro_rules! codegen_codec_structs {
                 }
             }
 
+            impl<'a> [<$partial_name Entrypoint>]<'a> {
+                pub(crate) fn generate_all(
+                    context: C,
+                    cache: &IrPackComputedCache,
+                    mode: EncodeOrDecode,
+                ) -> [<$partial_name OutputSpec>] {
+                    CodecMode::iter()
+                        .map([<$partial_name Entrypoint>]::from)
+                        .flat_map(|codec| codec.generate(context, &cache.distinct_types, mode))
+                        .collect()
+                }
+            }
+
             #[derive(Clone, Serialize)]
             pub(crate) struct [<$partial_name OutputSpec>] {
                 pub(crate) inner: Acc<Vec<$code>>,

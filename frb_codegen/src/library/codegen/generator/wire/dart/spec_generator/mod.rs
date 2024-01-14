@@ -59,16 +59,12 @@ pub(crate) fn generate(
             rust_extern_funcs,
             progress_bar_pack,
         )?,
-        rust2dart: auto_add_base_class_abstract_method(
-            (CodecMode::iter().map(WireDartCodecEntrypoint::from))
-                .flat_map(|codec| codec.generate(context, &cache.distinct_types, Decode))
-                .collect(),
-        ),
-        dart2rust: auto_add_base_class_abstract_method(
-            (CodecMode::iter().map(WireDartCodecEntrypoint::from))
-                .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
-                .collect(),
-        ),
+        rust2dart: auto_add_base_class_abstract_method(WireDartCodecEntrypoint::generate_all(
+            context, &cache, Decode,
+        )),
+        dart2rust: auto_add_base_class_abstract_method(WireDartCodecEntrypoint::generate_all(
+            context, &cache, Encode,
+        )),
     })
 }
 
