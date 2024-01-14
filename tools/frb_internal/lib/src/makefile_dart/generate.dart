@@ -156,6 +156,8 @@ Future<void> generateInternalRust(GenerateConfig config) async {
       relativePwd: 'frb_codegen',
       coverage: config.coverage,
       coverageName: 'GenerateInternalRust',
+      // cbindgen needs this (e.g. https://github.com/mozilla/cbindgen/issues/674)
+      nightly: true,
     );
   });
 }
@@ -369,6 +371,7 @@ Future<RunCommandOutput> executeFrbCodegen(
   required bool coverage,
   bool postRelease = false,
   required String coverageName,
+  bool nightly = false,
 }) async {
   if (postRelease) {
     assert(!coverage);
@@ -377,7 +380,7 @@ Future<RunCommandOutput> executeFrbCodegen(
   } else {
     final outputCodecovPath = '${getCoverageDir(coverageName)}/codecov.json';
     final ans = await exec(
-      'cargo ${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+      'cargo ${nightly ? "+nightly" : ""} ${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
       extraEnv: {'RUST_BACKTRACE': '1'},
     );
