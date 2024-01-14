@@ -227,8 +227,8 @@ fn generate_wire_delegate_functions(
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Web => vec![WireDartOutputCode {
             api_impl_class_methods: vec![DartApiImplClassMethod {
-                signature: TODO,
-                body: Some(TODO),
+                signature: format!("{} {}({})"),
+                body: Some(format!("return wire.{}({});")),
             }],
             ..Default::default()
         }],
