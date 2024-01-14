@@ -5,6 +5,7 @@ use crate::codegen::config::internal_config::{
 };
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::{
@@ -101,6 +102,7 @@ impl InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
+                default_codec_mode_pack: compute_default_codec_mode_pack(full_dep),
             },
             generator: GeneratorInternalConfig {
                 api_dart: GeneratorApiDartInternalConfig {
@@ -330,6 +332,20 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
         api_impl_platform_class_name: with_postfix("ApiImplPlatform"),
         wire_class_name: with_postfix("Wire"),
         wasm_module_name: with_postfix("WasmModule"),
+    }
+}
+
+fn compute_default_codec_mode_pack(full_dep: bool) -> CodecModePack {
+    if full_dep {
+        CodecModePack {
+            dart2rust: CodecMode::Cst,
+            rust2dart: CodecMode::Dco,
+        }
+    } else {
+        CodecModePack {
+            dart2rust: CodecMode::Pde,
+            rust2dart: CodecMode::Pde,
+        }
     }
 }
 
