@@ -28,14 +28,24 @@ macro_rules! frb_generated_io_cst_codec {
 macro_rules! frb_generated_io_extern_func {
     () => {
         #[no_mangle]
-        pub extern "C" fn frb_pde_ffi_dispatcher(
+        pub extern "C" fn frb_pde_ffi_dispatcher_primary(
             func_id: i32,
             port: i64,
             ptr: *mut u8,
             rust_vec_len: i32,
             data_len: i32,
         ) {
-            pde_ffi_dispatcher_impl(func_id, port, ptr, rust_vec_len, data_len)
+            pde_ffi_dispatcher_primary_impl(func_id, port, ptr, rust_vec_len, data_len)
+        }
+
+        #[no_mangle]
+        pub extern "C" fn frb_pde_ffi_dispatcher_sync(
+            func_id: i32,
+            ptr: *mut u8,
+            rust_vec_len: i32,
+            data_len: i32,
+        ) -> $crate::for_generated::WireSyncRust2DartSse {
+            pde_ffi_dispatcher_sync_impl(func_id, ptr, rust_vec_len, data_len)
         }
     };
 }
