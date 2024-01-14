@@ -58,8 +58,8 @@ pub(crate) fn generate(
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
-        wire_delegate_functions: (context.ir_pack.funcs.iter())
-            .map(|f| generate_wire_delegate_functions(f, context))
+        wire_delegate_functions: (rust_extern_funcs.iter())
+            .map(|f| generate_wire_delegate_functions(f))
             .collect(),
         extra_functions: (cache.distinct_types.iter())
             .flat_map(|ty| WireDartGenerator::new(ty.clone(), context).generate_extra_functions())
@@ -223,29 +223,16 @@ fn generate_import_dart_api_layer(
         .join(""))
 }
 
-fn generate_wire_delegate_functions(
-    func: &IrFunc,
-    context: WireDartGeneratorContext,
-) -> Acc<Vec<WireDartOutputCode>> {
+fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Web => {
-            let target: Target = target.try_into().unwrap();
-            let context = context.as_wire_dart_codec_cst_context();
-
-            let wire_func_name = wire_func_name(func);
-            let return_type = "void"; // TODO about sync types
-            let signature_args = (func.inputs.iter())
-                .map(|field| {
-                    format!(
-                        "{} {}",
-                        WireDartCodecCstGenerator::new(field.ty.clone(), context)
-                            .dart_wire_type(target),
-                        field.name,
-                    )
-                })
+            let wire_func_name = func.func_name("");
+            let return_type = func.return_type.as_ref().unwrap_or_default();
+            let signature_args = (func.params.iter())
+                .map(|param| format!("{} {}", param.dart_type, param.name,))
                 .join(", ");
-            let body_args = (func.inputs.iter())
-                .map(|field| field.name.to_owned())
+            let body_args = (func.params.iter())
+                .map(|param| param.name.to_owned())
                 .join(", ");
 
             vec![WireDartOutputCode {
