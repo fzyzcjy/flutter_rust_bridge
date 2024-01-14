@@ -17,7 +17,6 @@ use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
 use serde::Serialize;
 use std::path::PathBuf;
-use strum::IntoEnumIterator;
 
 pub(crate) mod base;
 pub(crate) mod codec;
