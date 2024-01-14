@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::get_interest_types_for_codec;
 use crate::codegen::generator::codec::structs::EncodeOrDecode;
 use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, CodecMode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
