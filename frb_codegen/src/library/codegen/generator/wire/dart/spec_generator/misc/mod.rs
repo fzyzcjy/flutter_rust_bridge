@@ -16,6 +16,7 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
@@ -235,15 +236,18 @@ fn generate_wire_delegate_functions(
             let return_type =
                 WireDartCodecCstGenerator::new(func.output.clone(), context).dart_wire_type(target);
             let signature_args = (func.inputs.iter())
-                .map(|ty| {
+                .map(|field| {
                     format!(
                         "{} {}",
-                        WireDartCodecCstGenerator::new(ty.clone(), context).dart_wire_type(target),
-                        ty.name,
+                        WireDartCodecCstGenerator::new(field.ty.clone(), context)
+                            .dart_wire_type(target),
+                        field.name,
                     )
                 })
                 .join(", ");
-            let body_args = (func.inputs.iter()).map(|ty| ty.name.to_owned()).join(", ");
+            let body_args = (func.inputs.iter())
+                .map(|field| field.name.to_owned())
+                .join(", ");
 
             vec![WireDartOutputCode {
                 api_impl_class_methods: vec![DartApiImplClassMethod {
