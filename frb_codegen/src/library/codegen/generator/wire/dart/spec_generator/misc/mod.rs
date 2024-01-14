@@ -227,7 +227,7 @@ fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutput
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Web => {
             let wire_func_name = func.func_name("");
-            let return_type = func.return_type.clone().unwrap_or_default();
+            let return_type = func.return_type.as_deref().unwrap_or("void");
             let signature_args = (func.params.iter())
                 .map(|param| format!("{} {}", param.dart_type, param.name,))
                 .join(", ");
