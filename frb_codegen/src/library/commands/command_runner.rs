@@ -75,7 +75,7 @@ macro_rules! command_args {
 }
 
 /// Which shell to use to execute commands
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, clap::ArgEnum)]
 pub enum ShellMode {
     Powershell,
     Cmd,
