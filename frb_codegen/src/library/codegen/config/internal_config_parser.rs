@@ -335,7 +335,7 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
     }
 }
 
-fn compute_default_codec_mode_pack(full_dep: bool) -> CodecModePack {
+pub(crate) fn compute_default_codec_mode_pack(full_dep: bool) -> CodecModePack {
     if full_dep {
         CodecModePack {
             dart2rust: CodecMode::Cst,

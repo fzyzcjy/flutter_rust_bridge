@@ -134,6 +134,7 @@ fn read_files(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
+    use crate::codegen::config::internal_config_parser::compute_default_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -228,6 +229,7 @@ mod tests {
                     },
                 ),
                 rust_crate_dir: rust_crate_dir.clone(),
+                default_codec_mode_pack: compute_default_codec_mode_pack(true),
             },
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
