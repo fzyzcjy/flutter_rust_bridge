@@ -1,3 +1,4 @@
+use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter};
@@ -81,7 +82,7 @@ macro_rules! codegen_codec_structs {
                     mode: EncodeOrDecode,
                 ) -> [<$partial_name CodecOutputSpec>] {
                     CodecMode::iter()
-                        .flat_map(|codec| [<$partial_name CodecEntrypoint>]::from(codec).generate(context, &cache.distinct_types_for_codec[&codec], mode))
+                        .flat_map(|codec| [<$partial_name CodecEntrypoint>]::from(codec).generate(context, &get_types_for_codec(cache, codec), mode))
                         .collect()
                 }
             }
@@ -100,6 +101,20 @@ macro_rules! codegen_codec_structs {
             }
         }
     )
+}
+
+fn get_types_for_codec(cache: &IrPackComputedCache, codec: CodecMode) -> Vec<IrType> {
+    match codec {
+        CodecMode::Cst => cache.distinct_types_for_codec[&codec].clone(),
+        // Consider all types, since users may want IntoDart and IntoIntoDart for DartDynamic etc
+        CodecMode::Dco => cache.distinct_types.clone(),
+        CodecMode::Sse => {
+            // Consider PDE as SSE
+            cache.distinct_types_for_codec[&codec].clone()
+                + cache.distinct_types_for_codec[CodecMode::Pde]
+        }
+        CodecMode::Pde => vec![],
+    }
 }
 
 pub(crate) trait BaseCodecEntrypointTrait<C, O> {
