@@ -80,20 +80,6 @@ impl<T> Acc<T> {
         }
     }
 
-    pub fn new_target(value: T, target: TargetOrCommon) -> Acc<T>
-    where
-        T: Default,
-    {
-        let mut value = Some(value);
-        Acc::new(|t| {
-            if t == target {
-                value.take().unwrap()
-            } else {
-                T::default()
-            }
-        })
-    }
-
     pub fn map<O>(self, mut mapper: impl FnMut(T, TargetOrCommon) -> O) -> Acc<O> {
         Acc {
             common: mapper(self.common, TargetOrCommon::Common),

@@ -3,9 +3,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
 };
-use crate::codegen::generator::wire::dart::spec_generator::codec::sse::entrypoint::{
-    generate_serialize_inputs, SseWireDartCodecEntrypoint,
-};
+use crate::codegen::generator::wire::dart::spec_generator::codec::sse::entrypoint::generate_serialize_inputs;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
@@ -17,9 +15,9 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 {
     fn generate(
         &self,
-        context: WireDartGeneratorContext,
-        types: &[IrType],
-        mode: EncodeOrDecode,
+        _context: WireDartGeneratorContext,
+        _types: &[IrType],
+        _mode: EncodeOrDecode,
     ) -> Option<WireDartCodecOutputSpec> {
         None
     }

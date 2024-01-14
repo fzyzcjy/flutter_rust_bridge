@@ -6,9 +6,7 @@ use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNameP
 use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
-use crate::codegen::generator::wire::dart::spec_generator::output_code::{
-    DartApiImplClassMethod, WireDartOutputCode,
-};
+use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPackComputedCache;
