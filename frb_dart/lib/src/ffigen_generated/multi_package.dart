@@ -220,14 +220,6 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void hi_tom() {
-    return _hi_tom();
-  }
-
-  late final _hi_tomPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>('hi_tom');
-  late final _hi_tom = _hi_tomPtr.asFunction<void Function()>();
-
   /// # Safety
   ///
   /// This should never be called manually.
