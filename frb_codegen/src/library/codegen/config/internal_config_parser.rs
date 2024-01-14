@@ -138,11 +138,11 @@ impl InternalConfig {
                         c_symbol_prefix: c_symbol_prefix.clone(),
                     },
                     c: GeneratorWireCInternalConfig {
+                        enable: full_dep,
                         rust_crate_dir: rust_crate_dir.clone(),
                         rust_output_path: rust_output_path.clone(),
                         c_output_path: c_output_path.clone(),
                         c_symbol_prefix,
-                        enable_cbindgen: full_dep,
                     },
                 },
             },

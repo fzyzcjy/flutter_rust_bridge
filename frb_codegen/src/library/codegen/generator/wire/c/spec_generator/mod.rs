@@ -6,7 +6,7 @@ use serde::Serialize;
 pub(super) mod cbindgen_executor;
 pub(super) mod dummy_function;
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Default)]
 pub(super) struct WireCOutputSpec {
     pub code_cbindgen: String,
     pub code_dummy: String,
@@ -19,6 +19,10 @@ pub(super) fn generate(
     rust_output_texts: &PathTexts,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireCOutputSpec> {
+    if !config.enable {
+        return Ok(Default::default());
+    }
+
     let code_cbindgen = cbindgen_executor::execute(
         config,
         extern_struct_names,

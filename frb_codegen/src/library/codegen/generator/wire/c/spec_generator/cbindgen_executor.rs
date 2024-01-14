@@ -10,10 +10,6 @@ pub(crate) fn execute(
     rust_output_texts: &PathTexts,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<String> {
-    if !config.enable_cbindgen {
-        return Ok("".to_owned());
-    }
-
     let _pb = progress_bar_pack.generate_cbindgen.start();
 
     let changed_file_handles = rust_output_texts
