@@ -24,6 +24,10 @@ fn execute_ffigen(
     c_file_content: &str,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<String> {
+    if !config.enable_ffigen {
+        return Ok("".to_owned());
+    }
+
     let _pb = progress_bar_pack.generate_ffigen.start();
     ffigen(FfigenArgs {
         c_file_content,

@@ -8,7 +8,7 @@ pub(super) mod dummy_function;
 
 #[derive(Clone, Serialize)]
 pub(super) struct WireCOutputSpec {
-    pub code_cbindgen: String,
+    pub code_cbindgen: Option<String>,
     pub code_dummy: String,
 }
 

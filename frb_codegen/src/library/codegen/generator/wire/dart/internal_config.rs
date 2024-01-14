@@ -14,6 +14,7 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub default_external_library_loader:
         GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
     pub(crate) c_symbol_prefix: String,
+    pub(crate) enable_ffigen: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

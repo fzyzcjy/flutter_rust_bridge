@@ -9,7 +9,11 @@ pub(crate) fn execute(
     extern_struct_names: Vec<String>,
     rust_output_texts: &PathTexts,
     progress_bar_pack: &GeneratorProgressBarPack,
-) -> anyhow::Result<String> {
+) -> anyhow::Result<Option<String>> {
+    if !config.enable_cbindgen {
+        return Ok(None);
+    }
+
     let _pb = progress_bar_pack.generate_cbindgen.start();
 
     let changed_file_handles = rust_output_texts
@@ -31,7 +35,7 @@ pub(crate) fn execute(
 
     drop(changed_file_handles); // do not drop too early
 
-    Ok(ans)
+    Ok(Some(ans))
 }
 
 // Please keep in sync with frb_rust
