@@ -75,8 +75,7 @@ macro_rules! codegen_codec_structs {
                     mode: EncodeOrDecode,
                 ) -> [<$partial_name CodecOutputSpec>] {
                     CodecMode::iter()
-                        .map([<$partial_name CodecEntrypoint>]::from)
-                        .flat_map(|codec| codec.generate(context, &cache.distinct_types, mode))
+                        .flat_map(|codec| [<$partial_name CodecEntrypoint>]::from(codec).generate(context, &cache.distinct_types_for_codec[&codec], mode))
                         .collect()
                 }
             }
