@@ -57,7 +57,7 @@ impl WireDartCodecEntrypointTrait<'_> for CstWireDartCodecEntrypoint {
         .concat();
         format!(
             "{}
-            return {wire_func_name}({});
+            return wire.{wire_func_name}({});
             ",
             prepare_stmts.join("\n"),
             params.join(", ")
