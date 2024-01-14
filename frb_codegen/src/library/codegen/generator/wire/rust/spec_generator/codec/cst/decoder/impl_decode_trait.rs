@@ -13,7 +13,6 @@ pub(crate) fn generate_impl_decode(
     context: WireRustCodecCstGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let mut lines = Acc::<Vec<WireRustOutputCode>>::default();
-    lines.push_acc(generate_impl_decode_misc());
     lines += types
         .iter()
         .map(|ty| generate_impl_decode_for_type(ty, context))
@@ -23,21 +22,6 @@ pub(crate) fn generate_impl_decode(
         .map(|ty| generate_impl_decode_jsvalue_for_type(ty, context))
         .collect();
     lines
-}
-
-fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
-    Acc {
-        common: "".into(),
-        io: "".into(),
-        web: r#"
-            impl<T> CstDecode<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue where JsValue: CstDecode<T> {
-                fn cst_decode(self) -> Option<T> {
-                    (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
-                }
-            }
-        "#
-        .into(),
-    }
 }
 
 fn generate_impl_decode_for_type(
