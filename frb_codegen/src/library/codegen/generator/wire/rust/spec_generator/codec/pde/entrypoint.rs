@@ -59,7 +59,7 @@ pub(crate) fn generate_ffi_dispatcher_raw(variants: &str, crate_name: &str) -> S
             let maybe_port = if sync {
                 "".to_owned()
             } else {
-                format!("port: {crate_name}::for_generated::MessagePort,\n")
+                format!("port: {crate_name}::for_generated::MessagePort,")
             };
             let maybe_return = if sync {
                 format!("-> {crate_name}::for_generated::WireSyncRust2DartSse")
