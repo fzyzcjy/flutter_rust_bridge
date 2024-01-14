@@ -78,7 +78,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> initApp({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_init_app(port_);
+        return wire_init_app(port_);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_unit,
@@ -102,7 +102,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         var arg0 = cst_encode_i_32(a);
         var arg1 = cst_encode_i_32(b);
-        return wire.wire_minimal_adder(port_, arg0, arg1);
+        return wire_minimal_adder(port_, arg0, arg1);
       },
       codec: DcoCodec(
         decodeSuccessData: dco_decode_i_32,

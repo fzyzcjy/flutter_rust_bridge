@@ -21,8 +21,7 @@ pub(crate) fn generate_api_impl_normal_function(
     let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
     let wire_func_name = wire_func_name(func);
-    let inner_func_stmt =
-        dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &format!("wire.{wire_func_name}"));
+    let inner_func_stmt = dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &wire_func_name);
     let execute_func_name = generate_execute_func_name(func);
 
     let codec = generate_rust2dart_codec_object(func);
