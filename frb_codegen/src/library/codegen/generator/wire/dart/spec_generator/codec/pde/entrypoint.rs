@@ -18,7 +18,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
         types: &[IrType],
         mode: EncodeOrDecode,
     ) -> Option<WireDartCodecOutputSpec> {
-        SseWireDartCodecEntrypoint.generate(context, types, mode)
+        None
     }
 }
 

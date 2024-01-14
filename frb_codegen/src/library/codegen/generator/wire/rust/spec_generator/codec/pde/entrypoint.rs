@@ -20,7 +20,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
         types: &[IrType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
-        SseWireRustCodecEntrypoint.generate(context, types, mode)
+        None
     }
 }
 
