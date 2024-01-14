@@ -42,33 +42,27 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
         text.unwrap() + &extra_code
     })?;
 
-    let default_config = default_cbindgen_config();
-    cbindgen(
-        cbindgen::Config {
-            parse: cbindgen::ParseConfig {
-                expand: cbindgen::ParseExpandConfig {
-                    crates: vec!["flutter_rust_bridge".to_owned()],
-                    ..Default::default()
-                },
-                ..Default::default()
-            },
-            export: cbindgen::ExportConfig {
-                rename: HashMap::from([("DartCObject".to_owned(), "Dart_CObject".to_owned())]),
-                ..Default::default()
-            },
-            after_includes: Some(
-                default_config.after_includes.unwrap()
-                    + "\n"
-                    + r#"#include "dart_api.h""#
-                    + "\n"
-                    + r#"#include "dart_native_api.h""#,
-            ),
-            ..default_config
+    let mut config = default_cbindgen_config();
+    config.parse = cbindgen::ParseConfig {
+        expand: cbindgen::ParseExpandConfig {
+            crates: vec!["flutter_rust_bridge".to_owned()],
+            ..Default::default()
         },
-        repo_base_dir,
-        &dir_frb_rust,
-        "frb_rust",
-    )
+        ..Default::default()
+    };
+    config.export = cbindgen::ExportConfig {
+        rename: HashMap::from([("DartCObject".to_owned(), "Dart_CObject".to_owned())]),
+        ..Default::default()
+    };
+    config.after_includes = Some(
+        config.after_includes.unwrap()
+            + "\n"
+            + r#"#include "dart_api.h""#
+            + "\n"
+            + r#"#include "dart_native_api.h""#,
+    );
+
+    cbindgen(config, repo_base_dir, &dir_frb_rust, "frb_rust")
 }
 
 fn generate_frb_rust_extra_code() -> String {
@@ -92,26 +86,19 @@ fn generate_allo_isolate_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
         .unwrap();
     let rust_crate_dir = package.manifest_path.as_std_path().parent().unwrap();
 
-    let default_config = default_cbindgen_config();
-    cbindgen(
-        cbindgen::Config {
-            export: cbindgen::ExportConfig {
-                exclude: vec!["DartCObject".to_owned()],
-                ..Default::default()
-            },
-            after_includes: Some(
-                default_config.after_includes.unwrap()
-                    + "\n"
-                    + "struct DartCObject;\ntypedef struct DartCObject DartCObject;"
-                    + "\n"
-                    + r#"#include "dart_api.h""#,
-            ),
-            ..default_config
-        },
-        repo_base_dir,
-        rust_crate_dir,
-        "allo_isolate",
-    )
+    let mut config = default_cbindgen_config();
+    config.export = cbindgen::ExportConfig {
+        exclude: vec!["DartCObject".to_owned()],
+        ..Default::default()
+    };
+    config.after_includes = Some(
+        config.after_includes.unwrap()
+            + "\n"
+            + "struct DartCObject;\ntypedef struct DartCObject DartCObject;"
+            + "\n"
+            + r#"#include "dart_api.h""#,
+    );
+    cbindgen(config, repo_base_dir, rust_crate_dir, "allo_isolate")
 }
 
 fn cbindgen(
