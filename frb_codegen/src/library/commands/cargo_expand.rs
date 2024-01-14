@@ -57,16 +57,23 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
                     }
 
                     // non-empty
-                    let searched = format!("mod {module} {{\n");
-                    let start = expanded
-                        .find(&searched)
-                        .map(|n| n + searched.len())
-                        .unwrap_or_default();
-                    if start == 0 {
-                        return (spaces, expanded);
-                    }
+                    let indent = " ".repeat(spaces);
+                    warn!("extract_module pattern: {}", format!(
+                        "(?m)^{indent}(?:pub(?:\\([^\\)]+\\))?\\s+)?mod {module} \\{{$"
+                    ));
+                    let searched = regex::Regex::new(&format!(
+                        "(?m)^{indent}(?:pub(?:\\([^\\)]+\\))?\\s+)?mod {module} \\{{$"
+                    ))
+                    .unwrap();
+                    let start = match searched.find(expanded) {
+                        Some(m) => {
+                            warn!("extract_module start {}", m.end());
+                            m.end()
+                        },
+                        None => return (spaces, expanded),
+                    };
                     let end = expanded[start..]
-                        .find(&format!("\n{}}}", " ".repeat(spaces)))
+                        .find(&format!("\n{}}}", indent))
                         .map(|n| n + start)
                         .unwrap_or(expanded.len());
                     (spaces + 4, &expanded[start..end])
