@@ -10,6 +10,10 @@ use flutter_rust_bridge::for_generated::wasm_bindgen;
 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
+// Section: boilerplate
+
+flutter_rust_bridge::frb_generated_boilerplate_web!();
+
 // Section: dart2rust
 
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {

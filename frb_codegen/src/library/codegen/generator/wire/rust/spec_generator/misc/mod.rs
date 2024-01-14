@@ -154,12 +154,14 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
             vec![
                 // generate_boilerplate_frb_initialize_rust(target).into(),
                 generate_boilerplate_dart_fn_deliver_output(target).into(),
+                format!(
+                    "flutter_rust_bridge::frb_generated_boilerplate_{}!();",
+                    target.to_string().to_lowercase()
+                )
+                .into(),
             ]
         }
-        TargetOrCommon::Common => vec!["
-            flutter_rust_bridge::frb_generated_boilerplate!();
-            "
-        .into()],
+        TargetOrCommon::Common => vec!["flutter_rust_bridge::frb_generated_boilerplate!();".into()],
     })
 }
 
