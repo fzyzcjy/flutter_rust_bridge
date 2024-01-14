@@ -1,8 +1,8 @@
 use crate::codegen::ir::ty::IrType;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter};
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display, EnumIter)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
 pub(crate) enum CodecMode {
     Cst,
     Dco,
@@ -10,7 +10,7 @@ pub(crate) enum CodecMode {
     Pde,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Hash)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Hash)]
 pub(crate) struct CodecModePack {
     pub dart2rust: CodecMode,
     pub rust2dart: CodecMode,
