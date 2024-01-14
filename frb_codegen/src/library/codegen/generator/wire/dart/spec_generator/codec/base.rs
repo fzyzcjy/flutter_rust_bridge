@@ -3,6 +3,7 @@ use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, CodecM
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::entrypoint::CstWireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::entrypoint::DcoWireDartCodecEntrypoint;
+use crate::codegen::generator::wire::dart::spec_generator::codec::pde::entrypoint::PdeWireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::entrypoint::SseWireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::func::IrFunc;

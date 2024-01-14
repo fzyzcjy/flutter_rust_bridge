@@ -3,6 +3,7 @@ use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, CodecM
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::entrypoint::CstWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::entrypoint::DcoWireRustCodecEntrypoint;
+use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::PdeWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
