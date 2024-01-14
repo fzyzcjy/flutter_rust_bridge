@@ -4,7 +4,7 @@
 
 use crate::deliberate_name_conflict::StructInUpperLevel;
 
-pub struct StructInLowerLevel(StructInUpperLevel);
+pub struct StructInLowerLevel(pub StructInUpperLevel);
 
 
 pub fn test_duplicated_module_names(s: StructInLowerLevel) -> StructInUpperLevel {
