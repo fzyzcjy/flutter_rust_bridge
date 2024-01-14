@@ -34,15 +34,17 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             enable_local_dependency: args.common.local,
             rust_crate_name: compute_rust_crate_name(&args.common),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
+            shell_mode: args.common.shell,
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
             enable_integration_test: !args.no_enable_integration_test,
             enable_local_dependency: args.common.local,
             rust_crate_name: compute_rust_crate_name(&args.common),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
+            shell_mode: args.common.shell,
         })?,
         Commands::BuildWeb(args) => {
-            build_web::build(args.dart_root, args.dart_coverage, args.args)?
+            build_web::build(args.dart_root, args.dart_coverage, args.args, args.shell)?
         }
         Commands::InternalGenerate(_args) => internal::generate()?,
     }

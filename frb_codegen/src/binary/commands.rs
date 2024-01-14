@@ -174,6 +174,10 @@ pub(crate) struct CreateOrIntegrateCommandCommonArgs {
     #[arg(long)]
     pub rust_crate_dir: Option<String>,
 
+    /// The shell to use
+    #[arg(long)]
+    pub shell: Option<ShellMode>,
+
     /// Use local version instead of the release version
     #[arg(long, hide = true)]
     pub local: bool,
@@ -189,6 +193,10 @@ pub(crate) struct BuildWebCommandArgs {
     /// Run Dart code with coverage
     #[arg(long, hide = true)]
     pub dart_coverage: bool,
+
+    /// The shell to use
+    #[arg(long)]
+    pub shell: Option<ShellMode>,
 
     // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
     #[arg(trailing_var_arg = true, allow_hyphen_values = true, hide = true)]
