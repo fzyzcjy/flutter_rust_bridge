@@ -7,19 +7,19 @@ import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 class StructInUpperLevel {
-  final int field0;
+  final int upper;
 
   const StructInUpperLevel({
-    required this.field0,
+    required this.upper,
   });
 
   @override
-  int get hashCode => field0.hashCode;
+  int get hashCode => upper.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StructInUpperLevel &&
           runtimeType == other.runtimeType &&
-          field0 == other.field0;
+          upper == other.upper;
 }

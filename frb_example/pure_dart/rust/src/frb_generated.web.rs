@@ -9995,7 +9995,9 @@ impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::api::deliberate_name_conflict::StructInLowerLevel(self_.get(0).cst_decode())
+        crate::api::deliberate_name_conflict::StructInLowerLevel {
+            inner: self_.get(0).cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
@@ -10011,7 +10013,9 @@ impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
             "Expected 1 elements, got {}",
             self_.length()
         );
-        crate::deliberate_name_conflict::StructInUpperLevel(self_.get(0).cst_decode())
+        crate::deliberate_name_conflict::StructInUpperLevel {
+            upper: self_.get(0).cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>

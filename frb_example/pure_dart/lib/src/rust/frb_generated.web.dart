@@ -23301,12 +23301,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_struct_in_lower_level(StructInLowerLevel raw) {
-    return [cst_encode_struct_in_upper_level(raw.field0)];
+    return [cst_encode_struct_in_upper_level(raw.inner)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_in_upper_level(StructInUpperLevel raw) {
-    return [cst_encode_usize(raw.field0)];
+    return [cst_encode_usize(raw.upper)];
   }
 
   @protected

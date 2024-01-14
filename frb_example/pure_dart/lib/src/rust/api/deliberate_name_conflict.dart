@@ -12,19 +12,19 @@ Future<StructInUpperLevel> testDuplicatedModuleNames(
     RustLib.instance.api.testDuplicatedModuleNames(s: s, hint: hint);
 
 class StructInLowerLevel {
-  final StructInUpperLevel field0;
+  final StructInUpperLevel inner;
 
   const StructInLowerLevel({
-    required this.field0,
+    required this.inner,
   });
 
   @override
-  int get hashCode => field0.hashCode;
+  int get hashCode => inner.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StructInLowerLevel &&
           runtimeType == other.runtimeType &&
-          field0 == other.field0;
+          inner == other.inner;
 }

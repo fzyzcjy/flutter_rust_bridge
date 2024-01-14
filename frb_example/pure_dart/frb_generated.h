@@ -110,11 +110,11 @@ typedef struct wire_cst_list_DartOpaque {
 } wire_cst_list_DartOpaque;
 
 typedef struct wire_cst_struct_in_upper_level {
-  uintptr_t field0;
+  uintptr_t upper;
 } wire_cst_struct_in_upper_level;
 
 typedef struct wire_cst_struct_in_lower_level {
-  struct wire_cst_struct_in_upper_level field0;
+  struct wire_cst_struct_in_upper_level inner;
 } wire_cst_struct_in_lower_level;
 
 typedef struct wire_cst_EnumWithItemMixedTwinNormal_B {

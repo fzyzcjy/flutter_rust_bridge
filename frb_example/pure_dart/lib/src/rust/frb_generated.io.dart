@@ -28938,13 +28938,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void cst_api_fill_to_wire_struct_in_lower_level(
       StructInLowerLevel apiObj, wire_cst_struct_in_lower_level wireObj) {
-    cst_api_fill_to_wire_struct_in_upper_level(apiObj.field0, wireObj.field0);
+    cst_api_fill_to_wire_struct_in_upper_level(apiObj.inner, wireObj.inner);
   }
 
   @protected
   void cst_api_fill_to_wire_struct_in_upper_level(
       StructInUpperLevel apiObj, wire_cst_struct_in_upper_level wireObj) {
-    wireObj.field0 = cst_encode_usize(apiObj.field0);
+    wireObj.upper = cst_encode_usize(apiObj.upper);
   }
 
   @protected
@@ -95850,11 +95850,11 @@ final class wire_cst_list_DartOpaque extends ffi.Struct {
 
 final class wire_cst_struct_in_upper_level extends ffi.Struct {
   @ffi.UintPtr()
-  external int field0;
+  external int upper;
 }
 
 final class wire_cst_struct_in_lower_level extends ffi.Struct {
-  external wire_cst_struct_in_upper_level field0;
+  external wire_cst_struct_in_upper_level inner;
 }
 
 final class wire_cst_EnumWithItemMixedTwinNormal_B extends ffi.Struct {

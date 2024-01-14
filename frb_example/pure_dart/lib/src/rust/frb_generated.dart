@@ -83296,7 +83296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructInLowerLevel(
-      field0: dco_decode_struct_in_upper_level(arr[0]),
+      inner: dco_decode_struct_in_upper_level(arr[0]),
     );
   }
 
@@ -83306,7 +83306,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructInUpperLevel(
-      field0: dco_decode_usize(arr[0]),
+      upper: dco_decode_usize(arr[0]),
     );
   }
 
@@ -98397,15 +98397,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructInLowerLevel sse_decode_struct_in_lower_level(
       SseDeserializer deserializer) {
-    var var_field0 = sse_decode_struct_in_upper_level(deserializer);
-    return StructInLowerLevel(field0: var_field0);
+    var var_inner = sse_decode_struct_in_upper_level(deserializer);
+    return StructInLowerLevel(inner: var_inner);
   }
 
   @protected
   StructInUpperLevel sse_decode_struct_in_upper_level(
       SseDeserializer deserializer) {
-    var var_field0 = sse_decode_usize(deserializer);
-    return StructInUpperLevel(field0: var_field0);
+    var var_upper = sse_decode_usize(deserializer);
+    return StructInUpperLevel(upper: var_upper);
   }
 
   @protected
@@ -113934,13 +113934,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_struct_in_lower_level(
       StructInLowerLevel self, SseSerializer serializer) {
-    sse_encode_struct_in_upper_level(self.field0, serializer);
+    sse_encode_struct_in_upper_level(self.inner, serializer);
   }
 
   @protected
   void sse_encode_struct_in_upper_level(
       StructInUpperLevel self, SseSerializer serializer) {
-    sse_encode_usize(self.field0, serializer);
+    sse_encode_usize(self.upper, serializer);
   }
 
   @protected

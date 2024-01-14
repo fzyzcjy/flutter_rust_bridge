@@ -15066,14 +15066,18 @@ impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
     for wire_cst_struct_in_lower_level
 {
     fn cst_decode(self) -> crate::api::deliberate_name_conflict::StructInLowerLevel {
-        crate::api::deliberate_name_conflict::StructInLowerLevel(self.field0.cst_decode())
+        crate::api::deliberate_name_conflict::StructInLowerLevel {
+            inner: self.inner.cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
     for wire_cst_struct_in_upper_level
 {
     fn cst_decode(self) -> crate::deliberate_name_conflict::StructInUpperLevel {
-        crate::deliberate_name_conflict::StructInUpperLevel(self.field0.cst_decode())
+        crate::deliberate_name_conflict::StructInUpperLevel {
+            upper: self.upper.cst_decode(),
+        }
     }
 }
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
@@ -21378,7 +21382,7 @@ impl Default for wire_cst_speed_twin_sync_sse {
 impl NewWithNullPtr for wire_cst_struct_in_lower_level {
     fn new_with_null_ptr() -> Self {
         Self {
-            field0: Default::default(),
+            inner: Default::default(),
         }
     }
 }
@@ -21390,7 +21394,7 @@ impl Default for wire_cst_struct_in_lower_level {
 impl NewWithNullPtr for wire_cst_struct_in_upper_level {
     fn new_with_null_ptr() -> Self {
         Self {
-            field0: Default::default(),
+            upper: Default::default(),
         }
     }
 }
@@ -56738,12 +56742,12 @@ pub struct wire_cst_SpeedTwinSyncSse_GPS {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_in_lower_level {
-    field0: wire_cst_struct_in_upper_level,
+    inner: wire_cst_struct_in_upper_level,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_struct_in_upper_level {
-    field0: usize,
+    upper: usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]
