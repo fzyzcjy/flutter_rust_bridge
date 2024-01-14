@@ -1,6 +1,5 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::codec::structs::EncodeOrDecode::{Decode, Encode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{

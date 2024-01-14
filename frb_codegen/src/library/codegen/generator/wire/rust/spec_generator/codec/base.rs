@@ -8,7 +8,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoin
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen_codec_structs;
