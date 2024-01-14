@@ -120,7 +120,7 @@ impl SseDecode for bool {
     }
 }
 
-fn pde_ffi_dispatcher(
+fn pde_ffi_dispatcher_impl(
     func_id: i32,
     port: flutter_rust_bridge::for_generated::MessagePort,
     ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,

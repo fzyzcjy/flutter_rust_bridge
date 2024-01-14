@@ -35,7 +35,7 @@ macro_rules! frb_generated_io_extern_func {
             rust_vec_len: i32,
             data_len: i32,
         ) {
-            pde_ffi_dispatcher(func_id, port, ptr, rust_vec_len, data_len)
+            pde_ffi_dispatcher_impl(func_id, port, ptr, rust_vec_len, data_len)
         }
     };
 }
