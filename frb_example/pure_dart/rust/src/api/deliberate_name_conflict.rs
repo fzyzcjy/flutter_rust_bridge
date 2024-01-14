@@ -5,7 +5,7 @@
 use crate::deliberate_name_conflict::StructInUpperLevel;
 
 pub struct StructInLowerLevel{
-    pub inner: StructInUpperLevel
+    pub inner: StructInUpperLevel,
 }
 
 
