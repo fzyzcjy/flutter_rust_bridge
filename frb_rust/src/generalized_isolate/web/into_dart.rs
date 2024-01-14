@@ -138,6 +138,8 @@ macro_rules! delegate_buffer {
                 self.into_iter().collect::<Vec<_>>().into_dart()
             }
         }
+
+        impl IntoDartExceptPrimitive for HashSet<$ty> {}
     )*};
 }
 // Orphan rules disallow blanket implementations, so we have to manually delegate here.
