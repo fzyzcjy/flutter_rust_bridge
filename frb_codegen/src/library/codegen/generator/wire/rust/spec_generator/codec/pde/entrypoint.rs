@@ -8,9 +8,12 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
-use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ty::IrType;
+use fern::HashMap;
 use itertools::Itertools;
+use std::collections::HashMap;
+use strum::IntoEnumIterator;
 
 pub(crate) struct PdeWireRustCodecEntrypoint;
 
@@ -31,41 +34,69 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 }
 
 fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
-    let variants = (funcs.iter())
-        .map(|f| {
-            let maybe_port = if has_port_argument(f.mode) {
-                "port, "
-            } else {
-                ""
-            };
-            format!(
-                "{} => {}_impl({maybe_port}ptr, rust_vec_len, data_len),",
-                f.id,
-                wire_func_name(f)
+    let variants = FfiDispatcherMode::iter()
+        .map(|mode| {
+            (
+                mode,
+                (funcs.iter())
+                    .filter(|f| f.mode.into() == mode)
+                    .map(|f| {
+                        let maybe_port = if has_port_argument(f.mode) {
+                            "port, "
+                        } else {
+                            ""
+                        };
+                        format!(
+                            "{} => {}_impl({maybe_port}ptr, rust_vec_len, data_len),",
+                            f.id,
+                            wire_func_name(f)
+                        )
+                    })
+                    .join("\n"),
             )
         })
-        .join("\n");
+        .collect();
     let code = generate_ffi_dispatcher_raw(&variants, "flutter_rust_bridge");
     WireRustCodecOutputSpec {
         inner: Acc::new_common(vec![code.into()]),
     }
 }
 
-pub(crate) fn generate_ffi_dispatcher_raw(variants: &str, crate_name: &str) -> String {
-    [false, true]
-        .into_iter()
-        .map(|sync| {
-            let name = if sync { "sync" } else { "primary" };
-            let maybe_port = if sync {
-                "".to_owned()
-            } else {
-                format!("port: {crate_name}::for_generated::MessagePort,")
+#[derive(strum_macros::EnumIter)]
+pub(crate) enum FfiDispatcherMode {
+    Primary,
+    Sync,
+}
+
+impl From<&IrFuncMode> for FfiDispatcherMode {
+    fn from(value: &IrFuncMode) -> Self {
+        match value {
+            IrFuncMode::Normal | IrFuncMode::Stream { .. } => Self::Primary,
+            IrFuncMode::Sync => Self::Sync,
+        }
+    }
+}
+
+pub(crate) fn generate_ffi_dispatcher_raw(
+    variants: &HashMap<FfiDispatcherMode, String>,
+    crate_name: &str,
+) -> String {
+    FfiDispatcherMode::iter()
+        .map(|mode| {
+            let (name, maybe_port, maybe_return) = match mode {
+                FfiDispatcherMode::Primary => (
+                    "primary",
+                    format!("port: {crate_name}::for_generated::MessagePort,"),
+                    "".to_owned(),
+                ),
+                FfiDispatcherMode::Sync => (
+                    "sync",
+                    "".to_owned(),
+                    format!("-> {crate_name}::for_generated::WireSyncRust2DartSse"),
+                ),
             };
-            let maybe_return = if sync {
-                format!("-> {crate_name}::for_generated::WireSyncRust2DartSse")
-            } else {
-                "".to_owned()
-            };
+            let variants = &variants[&mode];
+
             format!(
                 "
                 fn pde_ffi_dispatcher_{name}_impl(
@@ -79,7 +110,8 @@ pub(crate) fn generate_ffi_dispatcher_raw(variants: &str, crate_name: &str) -> S
                         _ => unreachable!(),
                     }}
                 }}
-                "
+                ",
+                variants[&mode]
             )
         })
         .join("")

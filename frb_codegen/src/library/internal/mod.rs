@@ -1,4 +1,6 @@
-use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::generate_ffi_dispatcher_raw;
+use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::{
+    generate_ffi_dispatcher_raw, FfiDispatcherMode,
+};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::library::commands::cbindgen::{cbindgen_raw, default_cbindgen_config};
 use crate::library::commands::ffigen::{
@@ -11,6 +13,7 @@ use log::{debug, info};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
+use strum::IntoEnumIterator;
 
 pub fn generate() -> anyhow::Result<()> {
     let repo_base_dir = compute_repo_base_dir()?;
@@ -81,7 +84,12 @@ fn generate_frb_rust_extra_code() -> String {
         crate::frb_generated_io_extern_func!();
         {}
         ",
-        generate_ffi_dispatcher_raw("", "crate"),
+        generate_ffi_dispatcher_raw(
+            &FfiDispatcherMode::iter()
+                .map(|m| (m, "".to_owned()))
+                .collect(),
+            "crate"
+        ),
     )
 }
 
