@@ -202,7 +202,7 @@ fn generate_handler_func_name(
 ) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",
-        &func.codec_mode_pack.rust2dart
+        func.codec_mode_pack.rust2dart.delegate_or_self()
     );
 
     match func.mode {
@@ -251,7 +251,9 @@ fn generate_code_closure(
     code_inner_decode: &str,
     code_call_inner_func_result: &str,
 ) -> String {
-    let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
+    let codec = (func.codec_mode_pack.rust2dart.delegate_or_self())
+        .to_string()
+        .to_case(Case::Snake);
 
     // TODO rm
     // let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
