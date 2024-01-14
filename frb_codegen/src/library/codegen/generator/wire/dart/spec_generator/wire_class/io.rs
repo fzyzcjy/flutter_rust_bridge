@@ -58,7 +58,13 @@ fn postpare_modify(
     let ans = content_raw
         .replace(
             &format!("class {wire_class_name} {{"),
-            &generate_wire_class_partial_code(wire_class_name),
+            &format!(
+                "class {wire_class_name} implements BaseWire {{
+
+                factory {wire_class_name}.fromExternalLibrary(ExternalLibrary lib) =>
+                  {wire_class_name}(lib.ffiDynamicLibrary);
+                "
+            ),
         )
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")
@@ -70,21 +76,12 @@ fn postpare_modify(
     ans
 }
 
-fn generate_wire_class_partial_code(wire_class_name: &str) -> String {
-    format!(
-        "class {wire_class_name} implements BaseWire {{
-
-        factory {wire_class_name}.fromExternalLibrary(ExternalLibrary lib) =>
-          {wire_class_name}(lib.ffiDynamicLibrary);
-        "
-    )
-}
-
 fn generate_disabled_text(dart_output_class_name_pack: &DartOutputClassNamePack) -> String {
     format!(
-        "{}
+        "class {wire_class_name} implements BaseWire {{
+          {wire_class_name}.fromExternalLibrary(ExternalLibrary lib);
         }}",
-        generate_wire_class_partial_code(&dart_output_class_name_pack.wire_class_name),
+        wire_class_name = dart_output_class_name_pack.wire_class_name,
     )
 }
 
