@@ -138,6 +138,7 @@ impl InternalConfig {
                         web_enabled,
                         rust_output_path: rust_output_path.clone(),
                         c_symbol_prefix: c_symbol_prefix.clone(),
+                        enable_extern_func_and_class: full_dep,
                     },
                     c: GeneratorWireCInternalConfig {
                         enable: full_dep,
