@@ -84,7 +84,14 @@ impl<T> Acc<T> {
     where
         T: Default,
     {
-        Acc::new(|t| if t == target { value } else { T::default() })
+        let mut value = Some(value);
+        Acc::new(|t| {
+            if t == target {
+                value.take().unwrap()
+            } else {
+                T::default()
+            }
+        })
     }
 
     pub fn map<O>(self, mut mapper: impl FnMut(T, TargetOrCommon) -> O) -> Acc<O> {
