@@ -79,7 +79,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
         info = self.transform_fn_info(info, &context);
 
-        let codec_mode_pack = attributes.codec_mode_pack();
+        let codec_mode_pack =
+            (attributes.codec_mode_pack()).unwrap_or(TODO.default_codec_mode_pack.clone());
         let mode = compute_func_mode(&attributes, &info);
 
         Ok(Some(IrFunc {

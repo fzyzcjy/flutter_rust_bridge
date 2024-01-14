@@ -86,22 +86,19 @@ impl FrbAttributes {
         }
     }
 
-    pub(crate) fn codec_mode_pack(&self) -> CodecModePack {
+    pub(crate) fn codec_mode_pack(&self) -> Option<CodecModePack> {
         if self.any_eq(&FrbAttribute::Serialize) {
-            CodecModePack {
+            Some(CodecModePack {
                 dart2rust: CodecMode::Sse,
                 rust2dart: CodecMode::Sse,
-            }
+            })
         } else if self.any_eq(&FrbAttribute::SemiSerialize) {
-            CodecModePack {
+            Some(CodecModePack {
                 dart2rust: CodecMode::Cst,
                 rust2dart: CodecMode::Sse,
-            }
+            })
         } else {
-            CodecModePack {
-                dart2rust: CodecMode::Cst,
-                rust2dart: CodecMode::Dco,
-            }
+            None
         }
     }
 
