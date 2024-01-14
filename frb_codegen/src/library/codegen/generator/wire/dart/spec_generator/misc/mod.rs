@@ -13,7 +13,6 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
-use crate::library::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
