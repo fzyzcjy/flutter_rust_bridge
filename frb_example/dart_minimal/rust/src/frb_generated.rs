@@ -121,15 +121,16 @@ impl SseDecode for bool {
 }
 
 fn pde_ffi_dispatcher(
-    func_id_: i32,
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
+    func_id: i32,
+    port: flutter_rust_bridge::for_generated::MessagePort,
+    ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len: i32,
+    data_len: i32,
 ) {
-    match func_id_ {
-        1 => wire_init_app,
-        2 => wire_minimal_adder,
+    match func_id {
+        1 => wire_init_app_impl(port, ptr, rust_vec_len, data_len),
+        2 => wire_minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+        _ => unreachable!(),
     }
 }
 
