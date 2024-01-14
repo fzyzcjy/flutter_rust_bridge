@@ -31,19 +31,26 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
 
 fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
     let variants = (funcs.iter())
-        .map(|f| format!("{} => {},\n", f.id, wire_func_name(f)))
+        .map(|f| {
+            format!(
+                "{} => {}(port, ptr, rust_vec_len, data_len),\n",
+                f.id,
+                wire_func_name(f)
+            )
+        })
         .join("");
     let code = format!(
         "
         fn pde_ffi_dispatcher(
-            func_id_: i32,
-            port_: flutter_rust_bridge::for_generated::MessagePort,
-            ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-            rust_vec_len_: i32,
-            data_len_: i32,
+            func_id: i32,
+            port: flutter_rust_bridge::for_generated::MessagePort,
+            ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+            rust_vec_len: i32,
+            data_len: i32,
         ) {{
             match func_id_ {{
                 {variants}
+                _ => unreachable!(),
             }}
         }}
         "
