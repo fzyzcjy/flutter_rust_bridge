@@ -1,4 +1,5 @@
 use crate::codegen::ConfigDumpContent;
+use crate::commands::ShellMode;
 use clap::{Args, Parser, Subcommand};
 use std::path::PathBuf;
 

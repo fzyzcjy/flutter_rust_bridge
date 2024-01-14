@@ -8,3 +8,5 @@ pub(crate) mod ffigen;
 pub(crate) mod flutter;
 pub(crate) mod format_dart;
 pub(crate) mod format_rust;
+
+pub use command_runner::ShellMode;

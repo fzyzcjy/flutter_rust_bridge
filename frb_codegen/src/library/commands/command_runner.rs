@@ -74,7 +74,7 @@ macro_rules! command_args {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash)]
-pub(crate) enum ShellMode {
+pub enum ShellMode {
     Powershell,
     Cmd,
     Sh,

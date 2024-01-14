@@ -2,7 +2,7 @@
 
 pub mod build_web;
 pub mod codegen;
-pub(crate) mod commands;
+pub mod commands;
 pub mod integration;
 #[doc(hidden)]
 pub mod internal;
