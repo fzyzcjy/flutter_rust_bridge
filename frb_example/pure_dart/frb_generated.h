@@ -671,7 +671,7 @@ typedef struct wire_cst_list_bool {
 } wire_cst_list_bool;
 
 typedef struct wire_cst_list_list_prim_u_8_strict {
-  struct wire_cst_list_prim_u_8_strict *ptr;
+  struct wire_cst_list_prim_u_8_strict **ptr;
   int32_t len;
 } wire_cst_list_list_prim_u_8_strict;
 

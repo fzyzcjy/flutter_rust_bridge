@@ -96644,7 +96644,7 @@ final class wire_cst_list_bool extends ffi.Struct {
 }
 
 final class wire_cst_list_list_prim_u_8_strict extends ffi.Struct {
-  external ffi.Pointer<wire_cst_list_prim_u_8_strict> ptr;
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
 
   @ffi.Int32()
   external int len;

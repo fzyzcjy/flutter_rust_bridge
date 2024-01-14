@@ -49473,7 +49473,7 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_list_list_prim_u_8_strict
 ) -> *mut wire_cst_list_list_prim_u_8_strict {
     let wrap = wire_cst_list_list_prim_u_8_strict {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <wire_cst_list_prim_u_8_strict>::new_with_null_ptr(),
+            <*mut wire_cst_list_prim_u_8_strict>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -54861,7 +54861,7 @@ pub struct wire_cst_list_enum_opaque_twin_sync_sse_moi {
 #[repr(C)]
 #[derive(Clone, Copy)]
 pub struct wire_cst_list_list_prim_u_8_strict {
-    ptr: *mut wire_cst_list_prim_u_8_strict,
+    ptr: *mut *mut wire_cst_list_prim_u_8_strict,
     len: i32,
 }
 #[repr(C)]
