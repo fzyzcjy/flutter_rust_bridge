@@ -3,6 +3,7 @@
 macro_rules! frb_generated_boilerplate_web {
     () => {
         $crate::frb_generated_web_cst_codec!();
+        $crate::frb_generated_web_extern_func!();
     };
 }
 
@@ -18,5 +19,13 @@ macro_rules! frb_generated_web_cst_codec {
                 (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
             }
         }
+    };
+}
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_web_extern_func {
+    () => {
+        // TODO
     };
 }

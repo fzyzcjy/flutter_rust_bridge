@@ -3,6 +3,7 @@
 macro_rules! frb_generated_boilerplate_io {
     () => {
         $crate::frb_generated_io_cst_codec!();
+        $crate::frb_generated_io_extern_func!();
     };
 }
 
@@ -19,5 +20,13 @@ macro_rules! frb_generated_io_cst_codec {
                 std::ptr::null_mut()
             }
         }
+    };
+}
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_io_extern_func {
+    () => {
+        // TODO
     };
 }
