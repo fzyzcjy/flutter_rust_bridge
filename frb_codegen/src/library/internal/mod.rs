@@ -42,12 +42,6 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
         text.unwrap() + &extra_code
     })?;
 
-    // // cbindgen's expand requires nightly, e.g. https://github.com/mozilla/cbindgen/issues/855
-    // temp_change_file(dir_frb_rust.join("rust-toolchain.toml"), |text| {
-    //     assert!(text.is_none());
-    //     r#"[toolchain]\nchannel = "nightly""#.to_owned()
-    // })?;
-
     let default_config = default_cbindgen_config();
     cbindgen(
         cbindgen::Config {
