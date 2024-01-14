@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0-dev.19
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Use try-lock for rust auto opaque #1653
+* Improve hints when running create command #1652
+* Add MOI RustOpaqueCodec #1642
+* Add more feature flags #1658
+* Add tutorial for pure dart scenario #1661
+* Add more tests #1657
+
 ## 2.0.0-dev.18
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
