@@ -7,5 +7,5 @@ use std::path::PathBuf;
 pub(crate) struct ParserInternalConfig {
     pub rust_input_path_pack: RustInputPathPack,
     pub rust_crate_dir: PathBuf,
-    pub default_codec_mode_pack: CodecModePack,
+    pub force_codec_mode_pack: Option<CodecModePack>,
 }

@@ -102,7 +102,7 @@ impl InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
-                default_codec_mode_pack: compute_default_codec_mode_pack(full_dep),
+                force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
             },
             generator: GeneratorInternalConfig {
                 api_dart: GeneratorApiDartInternalConfig {
@@ -336,18 +336,11 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
     }
 }
 
-pub(crate) fn compute_default_codec_mode_pack(full_dep: bool) -> CodecModePack {
-    if full_dep {
-        CodecModePack {
-            dart2rust: CodecMode::Cst,
-            rust2dart: CodecMode::Dco,
-        }
-    } else {
-        CodecModePack {
-            dart2rust: CodecMode::Pde,
-            rust2dart: CodecMode::Pde,
-        }
-    }
+pub(crate) fn compute_force_codec_mode_pack(full_dep: bool) -> Option<CodecModePack> {
+    (!full_dep).then(|| CodecModePack {
+        dart2rust: CodecMode::Pde,
+        rust2dart: CodecMode::Pde,
+    })
 }
 
 #[cfg(test)]

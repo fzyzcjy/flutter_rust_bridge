@@ -74,7 +74,7 @@ pub(crate) fn parse(
                 &f.generalized_item_fn,
                 &f.path,
                 &config.rust_crate_dir,
-                &config.default_codec_mode_pack,
+                &config.force_codec_mode_pack,
                 (index + 1) as i32,
             )
         })
@@ -136,7 +136,7 @@ fn read_files(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
-    use crate::codegen::config::internal_config_parser::compute_default_codec_mode_pack;
+    use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -231,7 +231,7 @@ mod tests {
                     },
                 ),
                 rust_crate_dir: rust_crate_dir.clone(),
-                default_codec_mode_pack: compute_default_codec_mode_pack(true),
+                force_codec_mode_pack: compute_force_codec_mode_pack(true),
             },
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),

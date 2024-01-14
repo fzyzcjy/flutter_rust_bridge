@@ -2,7 +2,7 @@ pub(crate) mod argument;
 pub(crate) mod output;
 mod transformer;
 
-use crate::codegen::generator::codec::structs::CodecModePack;
+use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
@@ -17,7 +17,7 @@ use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
-use log::debug;
+use log::{debug, warn};
 use std::fmt::Debug;
 use std::path::Path;
 use syn::*;
@@ -39,14 +39,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
-        default_codec_mode_pack: &CodecModePack,
+        force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
     ) -> anyhow::Result<Option<IrFunc>> {
         self.parse_function_inner(
             func,
             file_path,
             rust_crate_dir,
-            default_codec_mode_pack,
+            force_codec_mode_pack,
             func_id,
         )
         .with_context(|| format!("function={:?}", func.sig().ident))
@@ -57,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
-        default_codec_mode_pack: &CodecModePack,
+        force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
     ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
@@ -90,8 +90,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
         info = self.transform_fn_info(info, &context);
 
-        let codec_mode_pack =
-            (attributes.codec_mode_pack()).unwrap_or(default_codec_mode_pack.clone());
+        let codec_mode_pack = compute_codec_mode_pack(&attributes, force_codec_mode_pack);
         let mode = compute_func_mode(&attributes, &info);
 
         Ok(Some(IrFunc {
@@ -212,4 +211,21 @@ fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T
         // frb-coverage:ignore-end
     }
     Ok(a.or(b))
+}
+
+fn compute_codec_mode_pack(
+    attributes: &FrbAttributes,
+    force_ans: &Option<CodecModePack>,
+) -> CodecModePack {
+    const DEFAULT_ANS: CodecModePack = CodecModePack {
+        dart2rust: CodecMode::Cst,
+        rust2dart: CodecMode::Dco,
+    };
+    let attr_ans = attributes.codec_mode_pack();
+
+    if force_ans.is_some() && attr_ans.is_some() {
+        warn!("Ignore attributes setting codec mode (e.g. when full_dep=false)");
+    }
+
+    force_ans.or(attr_ans).unwrap_or(DEFAULT_ANS)
 }
