@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPackComputedCache;
@@ -225,13 +226,16 @@ fn generate_wire_delegate_functions(
     context: WireDartGeneratorContext,
 ) -> Acc<Vec<WireDartOutputCode>> {
     Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Web => vec![WireDartOutputCode {
-            api_impl_class_methods: vec![DartApiImplClassMethod {
-                signature: format!("{} {}({})"),
-                body: Some(format!("return wire.{}({});")),
-            }],
-            ..Default::default()
-        }],
+        TargetOrCommon::Io | TargetOrCommon::Web => {
+            let wire_func_name = wire_func_name(func);
+            vec![WireDartOutputCode {
+                api_impl_class_methods: vec![DartApiImplClassMethod {
+                    signature: format!("{} {wire_func_name}({})"),
+                    body: Some(format!("return wire.{wire_func_name}({});")),
+                }],
+                ..Default::default()
+            }]
+        }
         TargetOrCommon::Common => vec![],
     })
 }
