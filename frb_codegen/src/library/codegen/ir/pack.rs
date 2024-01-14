@@ -76,8 +76,7 @@ impl IrPackComputedCache {
                         true,
                         Some(Box::new(move |f: &IrFunc| {
                             // currently quite coarse
-                            f.codec_mode_pack.dart2rust == codec
-                                || f.codec_mode_pack.rust2dart == codec
+                            (f.codec_mode_pack.all().iter()).any(|c| c.delegate_or_self() == codec)
                         })),
                     ),
                 )

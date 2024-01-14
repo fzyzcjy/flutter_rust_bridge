@@ -29,6 +29,12 @@ pub(crate) struct CodecModePack {
     pub rust2dart: CodecMode,
 }
 
+impl CodecModePack {
+    pub(crate) fn all(&self) -> Vec<CodecMode> {
+        vec![self.dart2rust, self.rust2dart]
+    }
+}
+
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_codec_structs {
