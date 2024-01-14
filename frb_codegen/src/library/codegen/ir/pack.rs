@@ -24,12 +24,14 @@ impl IrPack {
         &self,
         include_func_inputs: bool,
         include_func_output: bool,
+        filter_func: Option<Box<dyn Fn(&IrFunc) -> bool>>,
     ) -> Vec<IrType> {
         let mut gatherer = DistinctTypeGatherer::new();
         self.visit_types(
             &mut |ty| gatherer.add(ty),
             include_func_inputs,
             include_func_output,
+            filter_func,
         );
         gatherer.gather()
     }
@@ -40,8 +42,12 @@ impl IrPack {
         f: &mut F,
         include_func_inputs: bool,
         include_func_output: bool,
+        filter_func: Option<impl Fn(&IrFunc) -> bool>,
     ) {
         for func in &self.funcs {
+            if filter_func.is_none() || !filter_func.unwrap()(func) {
+                continue;
+            }
             func.visit_types(f, include_func_inputs, include_func_output, self)
         }
     }
@@ -60,8 +66,23 @@ impl IrPackComputedCache {
     pub fn compute(ir_pack: &IrPack) -> Self {
         // let distinct_input_types = ir_pack.distinct_types(true, false);
         // let distinct_output_types = ir_pack.distinct_types(false, true);
-        let distinct_types = ir_pack.distinct_types(true, true);
-        let distinct_types_for_codec = CodecMode::iter().map(|codec| (codec, TODO)).collect();
+        let distinct_types = ir_pack.distinct_types(true, true, None);
+        let distinct_types_for_codec = CodecMode::iter()
+            .map(|codec| {
+                (
+                    codec,
+                    ir_pack.distinct_types(
+                        true,
+                        true,
+                        Some(Box::new(|f: &IrFunc| {
+                            // currently quite coarse
+                            f.codec_mode_pack.dart2rust == codec
+                                || f.codec_mode_pack.rust2dart == codec
+                        })),
+                    ),
+                )
+            })
+            .collect();
         Self {
             // distinct_input_types,
             // distinct_output_types,
