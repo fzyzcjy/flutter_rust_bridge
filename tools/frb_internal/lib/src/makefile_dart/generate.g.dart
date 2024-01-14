@@ -33,6 +33,7 @@ GeneratePackageConfig _$parseGeneratePackageConfigResult(ArgResults result) =>
       setExitIfChanged: result['set-exit-if-changed'] as bool,
       package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
+      shell: result['shell'] as String?,
     );
 
 ArgParser _$populateGeneratePackageConfigParser(ArgParser parser) => parser
@@ -44,6 +45,9 @@ ArgParser _$populateGeneratePackageConfigParser(ArgParser parser) => parser
   )
   ..addOption(
     'package',
+  )
+  ..addOption(
+    'shell',
   );
 
 final _$parserForGeneratePackageConfig =

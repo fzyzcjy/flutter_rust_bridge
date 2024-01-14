@@ -93,11 +93,14 @@ class GeneratePackageConfig implements GenerateConfig {
   final String package;
   @override
   final bool coverage;
+  @override
+  final String? shell;
 
   const GeneratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
+    this.shell,
   });
 }
 
