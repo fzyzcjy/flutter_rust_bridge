@@ -1,11 +1,12 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::misc::generate_code_header;
-use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::WireDartCodecCstGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
@@ -227,10 +228,17 @@ fn generate_wire_delegate_functions(
 ) -> Acc<Vec<WireDartOutputCode>> {
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Web => {
+            let target: Target = target.try_into().unwrap();
             let wire_func_name = wire_func_name(func);
+            let return_type = WireDartCodecCstGenerator::new(
+                func.output.clone(),
+                context.as_wire_dart_codec_cst_context(),
+            )
+            .dart_wire_type(target);
+
             vec![WireDartOutputCode {
                 api_impl_class_methods: vec![DartApiImplClassMethod {
-                    signature: format!("{} {wire_func_name}({})"),
+                    signature: format!("{return_type} {wire_func_name}({})"),
                     body: Some(format!("return wire.{wire_func_name}({});")),
                 }],
                 ..Default::default()
