@@ -58,7 +58,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGe
 }
 
 /// Does it need additional indirection for types put behind a vector
-pub(crate) fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralList) -> &'static str {
+fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralList) -> &'static str {
     if matches!(
         *ir.inner,
         Optional(_) | Delegate(IrTypeDelegate::String) | IrType::PrimitiveList(_)
