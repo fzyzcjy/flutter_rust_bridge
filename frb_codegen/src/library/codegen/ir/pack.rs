@@ -1,4 +1,3 @@
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
@@ -52,7 +51,6 @@ pub(crate) struct IrPackComputedCache {
     // pub(crate) distinct_input_types: Vec<IrType>,
     // pub(crate) distinct_output_types: Vec<IrType>,
     pub(crate) distinct_types: Vec<IrType>,
-    pub(crate) distinct_types_for_codec: HashMap<CodecMode, Vec<IrType>>,
 }
 
 impl IrPackComputedCache {
