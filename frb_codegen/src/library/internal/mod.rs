@@ -7,7 +7,7 @@ use crate::library::commands::ffigen::{
 use crate::utils::file_utils::temp_change_file;
 use crate::utils::path_utils::path_to_string;
 use convert_case::{Case, Casing};
-use log::info;
+use log::{debug, info};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
@@ -36,8 +36,10 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
 
     let dir_frb_rust = repo_base_dir.join("frb_rust");
 
+    let extra_code = generate_frb_rust_extra_code();
+    debug!("extra_code={extra_code:?}");
     temp_change_file(dir_frb_rust.join("src").join("lib.rs"), |text| {
-        text.unwrap() + &generate_frb_rust_extra_code()
+        text.unwrap() + &extra_code
     })?;
 
     let default_config = default_cbindgen_config();
