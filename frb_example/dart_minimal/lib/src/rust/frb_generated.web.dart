@@ -68,44 +68,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 // Section: wire_class
 
-class RustLibWire extends BaseWire {
+class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
-
-  void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_) =>
-      wasmModule.dart_fn_deliver_output(
-          call_id, ptr_, rust_vec_len_, data_len_);
-
-  void wire_init_app(NativePortType port_, PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_) =>
-      wasmModule.wire_init_app(port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire_minimal_adder(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire_minimal_adder(port_, ptr_, rust_vec_len_, data_len_);
-}
-
-@JS('wasm_bindgen')
-external RustLibWasmModule get wasmModule;
-
-@JS()
-@anonymous
-class RustLibWasmModule implements WasmModule {
-  @override
-  external Object /* Promise */ call([String? moduleName]);
-
-  @override
-  external RustLibWasmModule bind(dynamic thisArg, String moduleName);
-
-  external void dart_fn_deliver_output(int call_id,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_init_app(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_minimal_adder(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
 }
