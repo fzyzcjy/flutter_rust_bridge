@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::{IrContext, IrType};
 crate::ir! {
 pub struct IrFunc {
     pub name: NamespacedName,
+    pub id: i32,
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub error_output: Option<IrType>,

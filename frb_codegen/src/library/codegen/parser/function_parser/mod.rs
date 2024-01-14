@@ -40,9 +40,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         file_path: &Path,
         rust_crate_dir: &Path,
         default_codec_mode_pack: &CodecModePack,
+        func_id: i32,
     ) -> anyhow::Result<Option<IrFunc>> {
-        self.parse_function_inner(func, file_path, rust_crate_dir, default_codec_mode_pack)
-            .with_context(|| format!("function={:?}", func.sig().ident))
+        self.parse_function_inner(
+            func,
+            file_path,
+            rust_crate_dir,
+            default_codec_mode_pack,
+            func_id,
+        )
+        .with_context(|| format!("function={:?}", func.sig().ident))
     }
 
     fn parse_function_inner(
@@ -51,6 +58,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         file_path: &Path,
         rust_crate_dir: &Path,
         default_codec_mode_pack: &CodecModePack,
+        func_id: i32,
     ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
@@ -88,6 +96,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace, func_name),
+            id: func_id,
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
