@@ -33,7 +33,7 @@ fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
     let variants = (funcs.iter())
         .map(|f| {
             format!(
-                "{} => {}(port, ptr, rust_vec_len, data_len),",
+                "{} => {}_impl(port, ptr, rust_vec_len, data_len),",
                 f.id,
                 wire_func_name(f)
             )
@@ -48,7 +48,7 @@ fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
             rust_vec_len: i32,
             data_len: i32,
         ) {{
-            match func_id_ {{
+            match func_id {{
                 {variants}
                 _ => unreachable!(),
             }}
