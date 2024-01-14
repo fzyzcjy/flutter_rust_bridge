@@ -24,12 +24,12 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     ) -> Option<WireRustCodecOutputSpec> {
         match mode {
             EncodeOrDecode::Encode => None,
-            EncodeOrDecode::Decode => Some(generate_func_call_dispatcher(&context.ir_pack.funcs)),
+            EncodeOrDecode::Decode => Some(generate_ffi_dispatcher(&context.ir_pack.funcs)),
         }
     }
 }
 
-fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
+fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
     let variants = (funcs.iter())
         .map(|f| {
             format!(
@@ -39,7 +39,14 @@ fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
             )
         })
         .join("\n");
-    let code = format!(
+    let code = generate_ffi_dispatcher_raw(&variants);
+    WireRustCodecOutputSpec {
+        inner: Acc::new_common(vec![code.into()]),
+    }
+}
+
+pub(crate) fn generate_ffi_dispatcher_raw(variants: &str) -> String {
+    format!(
         "
         fn pde_ffi_dispatcher_impl(
             func_id: i32,
@@ -54,10 +61,7 @@ fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
             }}
         }}
         "
-    );
-    WireRustCodecOutputSpec {
-        inner: Acc::new_common(vec![code.into()]),
-    }
+    )
 }
 
 impl WireRustCodecEntrypointTrait<'_> for PdeWireRustCodecEntrypoint {
