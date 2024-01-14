@@ -10,7 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::generate_encode_or_decode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -44,8 +44,8 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         Acc::new(|target| {
             let mut params = generate_platform_generalized_uint8list_params(target);
 
-            if has_port_argument(func.mode) {
-                params.insert(0, create_port_param(target));
+            if let Some(param) = create_maybe_port_param(func.mode, target) {
+                params.insert(0, param);
             }
 
             params
@@ -83,7 +83,14 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
     }
 }
 
-pub(crate) fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
+pub(crate) fn create_maybe_port_param(
+    mode: IrFuncMode,
+    target: TargetOrCommon,
+) -> Option<ExternFuncParam> {
+    has_port_argument(mode).then(|| create_port_param(target))
+}
+
+fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
     let rust_type = match target {
         // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
         // and ffigen and make code tricker, so we manually write down "i64" here.
