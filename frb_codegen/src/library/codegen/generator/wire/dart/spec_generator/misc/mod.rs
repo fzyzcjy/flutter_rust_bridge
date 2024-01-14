@@ -6,7 +6,9 @@ use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNameP
 use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
-use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::dart::spec_generator::output_code::{
+    DartApiImplClassMethod, WireDartOutputCode,
+};
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
@@ -221,6 +223,15 @@ fn generate_import_dart_api_layer(
 fn generate_wire_delegate_functions(
     func: &IrFunc,
     context: WireDartGeneratorContext,
-) -> WireDartOutputCode {
-    todo!()
+) -> Acc<Vec<WireDartOutputCode>> {
+    Acc::new(|target| match target {
+        TargetOrCommon::Io | TargetOrCommon::Web => vec![WireDartOutputCode {
+            api_impl_class_methods: vec![DartApiImplClassMethod {
+                signature: TODO,
+                body: Some(TODO),
+            }],
+            ..Default::default()
+        }],
+        TargetOrCommon::Common => vec![],
+    })
 }
