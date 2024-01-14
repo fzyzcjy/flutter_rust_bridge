@@ -80,7 +80,7 @@ fn generate_frb_rust_extra_code() -> String {
         crate::frb_generated_io_extern_func!();
         {}
         ",
-        generate_ffi_dispatcher_raw(""),
+        generate_ffi_dispatcher_raw("", "crate"),
     )
 }
 

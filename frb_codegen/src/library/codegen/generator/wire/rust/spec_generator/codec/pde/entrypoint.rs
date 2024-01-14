@@ -39,19 +39,19 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
             )
         })
         .join("\n");
-    let code = generate_ffi_dispatcher_raw(&variants);
+    let code = generate_ffi_dispatcher_raw(&variants, "flutter_rust_bridge");
     WireRustCodecOutputSpec {
         inner: Acc::new_common(vec![code.into()]),
     }
 }
 
-pub(crate) fn generate_ffi_dispatcher_raw(variants: &str) -> String {
+pub(crate) fn generate_ffi_dispatcher_raw(variants: &str, crate_name: &str) -> String {
     format!(
         "
         fn pde_ffi_dispatcher_impl(
             func_id: i32,
-            port: flutter_rust_bridge::for_generated::MessagePort,
-            ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+            port: {crate_name}::for_generated::MessagePort,
+            ptr: {crate_name}::for_generated::PlatformGeneralizedUint8ListPtr,
             rust_vec_len: i32,
             data_len: i32,
         ) {{
