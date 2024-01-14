@@ -73,7 +73,7 @@ macro_rules! codegen_codec_structs {
                     context: [<$partial_name GeneratorContext>],
                     cache: &IrPackComputedCache,
                     mode: EncodeOrDecode,
-                ) -> [<$partial_name OutputSpec>] {
+                ) -> [<$partial_name CodecOutputSpec>] {
                     CodecMode::iter()
                         .map([<$partial_name CodecEntrypoint>]::from)
                         .flat_map(|codec| codec.generate(context, &cache.distinct_types, mode))
