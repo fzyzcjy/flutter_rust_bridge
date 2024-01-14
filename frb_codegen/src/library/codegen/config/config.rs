@@ -25,6 +25,7 @@ pub struct Config {
     pub web: Option<bool>,
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
+    pub full_dep: Option<bool>,
     pub default_external_library_loader_web_prefix: Option<String>,
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,

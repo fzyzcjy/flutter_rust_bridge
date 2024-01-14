@@ -132,6 +132,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub no_dart3: bool,
 
+    /// Enable full dependencies
+    #[arg(long)]
+    pub full_dep: bool,
+
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDumpContent>>,
