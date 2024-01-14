@@ -16,7 +16,7 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-pub(crate) struct SseWireRustCodecEntrypoint {}
+pub(crate) struct SseWireRustCodecEntrypoint;
 
 impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputSpec>
     for SseWireRustCodecEntrypoint

@@ -8,7 +8,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
 
-pub(crate) struct PdeWireRustCodecEntrypoint {}
+pub(crate) struct PdeWireRustCodecEntrypoint;
 
 impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputSpec>
     for PdeWireRustCodecEntrypoint

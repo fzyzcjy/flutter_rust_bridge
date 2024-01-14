@@ -11,7 +11,7 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 
-pub(crate) struct SseWireDartCodecEntrypoint {}
+pub(crate) struct SseWireDartCodecEntrypoint;
 
 impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputSpec>
     for SseWireDartCodecEntrypoint

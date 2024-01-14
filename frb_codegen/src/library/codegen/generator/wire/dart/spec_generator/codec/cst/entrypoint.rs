@@ -9,7 +9,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-pub(crate) struct CstWireDartCodecEntrypoint {}
+pub(crate) struct CstWireDartCodecEntrypoint;
 
 impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputSpec>
     for CstWireDartCodecEntrypoint

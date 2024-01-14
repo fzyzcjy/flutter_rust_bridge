@@ -18,7 +18,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use std::convert::TryInto;
 
-pub(crate) struct CstWireRustCodecEntrypoint {}
+pub(crate) struct CstWireRustCodecEntrypoint;
 
 impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputSpec>
     for CstWireRustCodecEntrypoint
