@@ -3,10 +3,12 @@ use anyhow::{bail, Context};
 use itertools::Itertools;
 use log::debug;
 use log::warn;
+use serde::Serialize;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::process::Output;
+use strum_macros::{Display, EnumIter};
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
@@ -72,20 +74,37 @@ macro_rules! command_args {
     }};
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash)]
+pub(crate) enum ShellMode {
+    Powershell,
+    Cmd,
+    Sh,
+}
+
 #[allow(clippy::vec_init_then_push)]
 pub(crate) fn call_shell(
     cmd: &[PathBuf],
+    mode: Option<ShellMode>,
     pwd: Option<&Path>,
     envs: Option<HashMap<String, String>>,
 ) -> anyhow::Result<Output> {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
-    #[cfg(windows)]
-    {
-        command_run!("powershell" in pwd, envs = envs, "-noprofile", "-command", format!("& {}", cmd))
-    }
 
-    #[cfg(not(windows))]
-    command_run!("sh" in pwd, envs = envs, "-c", cmd)
+    let mode = mode.unwrap_or(if cfg!(windows) {
+        ShellMode::Powershell
+    } else {
+        ShellMode::Sh
+    });
+
+    match mode {
+        ShellMode::Powershell => {
+            command_run!("powershell" in pwd, envs = envs, "-noprofile", "-command", format!("& {}", cmd))
+        }
+        ShellMode::Cmd => {
+            command_run!("cmd" in pwd, envs = envs, "/c", cmd)
+        }
+        ShellMode::Sh => command_run!("sh" in pwd, envs = envs, "-c", cmd),
+    }
 }
 
 pub(crate) fn execute_command<'a>(
