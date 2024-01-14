@@ -41,7 +41,7 @@ fn generate_func_call_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
         .join("\n");
     let code = format!(
         "
-        fn pde_ffi_dispatcher_impl(
+        fn pde_ffi_dispatcher(
             func_id: i32,
             port: flutter_rust_bridge::for_generated::MessagePort,
             ptr: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
