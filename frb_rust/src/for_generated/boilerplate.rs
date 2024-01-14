@@ -29,6 +29,16 @@ macro_rules! frb_generated_boilerplate_cst_codec {
                 (!self.is_null()).then(|| self.cst_decode())
             }
         }
+
+        pub trait NewWithNullPtr {
+            fn new_with_null_ptr() -> Self;
+        }
+
+        impl<T> NewWithNullPtr for *mut T {
+            fn new_with_null_ptr() -> Self {
+                std::ptr::null_mut()
+            }
+        }
     };
 }
 
