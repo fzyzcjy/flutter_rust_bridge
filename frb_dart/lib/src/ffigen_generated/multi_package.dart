@@ -220,14 +220,14 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void frb_pde_ffi_dispatcher(
+  void frb_pde_ffi_dispatcher_primary(
     int func_id,
     int port,
     ffi.Pointer<ffi.Uint8> ptr,
     int rust_vec_len,
     int data_len,
   ) {
-    return _frb_pde_ffi_dispatcher(
+    return _frb_pde_ffi_dispatcher_primary(
       func_id,
       port,
       ptr,
@@ -236,12 +236,36 @@ class MultiPackageCBinding {
     );
   }
 
-  late final _frb_pde_ffi_dispatcherPtr = _lookup<
+  late final _frb_pde_ffi_dispatcher_primaryPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int32, ffi.Int64, ffi.Pointer<ffi.Uint8>,
-              ffi.Int32, ffi.Int32)>>('frb_pde_ffi_dispatcher');
-  late final _frb_pde_ffi_dispatcher = _frb_pde_ffi_dispatcherPtr
-      .asFunction<void Function(int, int, ffi.Pointer<ffi.Uint8>, int, int)>();
+              ffi.Int32, ffi.Int32)>>('frb_pde_ffi_dispatcher_primary');
+  late final _frb_pde_ffi_dispatcher_primary =
+      _frb_pde_ffi_dispatcher_primaryPtr.asFunction<
+          void Function(int, int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse frb_pde_ffi_dispatcher_sync(
+    int func_id,
+    ffi.Pointer<ffi.Uint8> ptr,
+    int rust_vec_len,
+    int data_len,
+  ) {
+    return _frb_pde_ffi_dispatcher_sync(
+      func_id,
+      ptr,
+      rust_vec_len,
+      data_len,
+    );
+  }
+
+  late final _frb_pde_ffi_dispatcher_syncPtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Int32, ffi.Pointer<ffi.Uint8>,
+              ffi.Int32, ffi.Int32)>>('frb_pde_ffi_dispatcher_sync');
+  late final _frb_pde_ffi_dispatcher_sync =
+      _frb_pde_ffi_dispatcher_syncPtr.asFunction<
+          WireSyncRust2DartSse Function(
+              int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   /// # Safety
   ///

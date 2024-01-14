@@ -5,22 +5,27 @@ typedef struct _Dart_Handle* Dart_Handle;
 #include "dart_api.h"
 #include "dart_native_api.h"
 
+typedef struct WireSyncRust2DartSse {
+  uint8_t *ptr;
+  int32_t len;
+} WireSyncRust2DartSse;
+
 typedef Dart_Handle GeneralizedDartHandle;
 
 typedef int64_t MessagePort;
 
 typedef Dart_CObject *WireSyncRust2DartDco;
 
-typedef struct WireSyncRust2DartSse {
-  uint8_t *ptr;
-  int32_t len;
-} WireSyncRust2DartSse;
+void frb_pde_ffi_dispatcher_primary(int32_t func_id,
+                                    int64_t port,
+                                    uint8_t *ptr,
+                                    int32_t rust_vec_len,
+                                    int32_t data_len);
 
-void frb_pde_ffi_dispatcher(int32_t func_id,
-                            int64_t port,
-                            uint8_t *ptr,
-                            int32_t rust_vec_len,
-                            int32_t data_len);
+struct WireSyncRust2DartSse frb_pde_ffi_dispatcher_sync(int32_t func_id,
+                                                        uint8_t *ptr,
+                                                        int32_t rust_vec_len,
+                                                        int32_t data_len);
 
 /**
  * # Safety
