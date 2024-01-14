@@ -68,7 +68,7 @@ pub fn example_basic_list_type_string_twin_sync(arg: Vec<String>) -> Vec<String>
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn example_basic_list_type_bytes_twin_sync(arg: Vec<Vec<u8>>) -> Vec<Vec<u8>> {
+pub fn example_basic_list_type_bytes_twin_sync(arg: Vec<Box<Vec<u8>>>) -> Vec<Box<Vec<u8>>> {
     arg
 }
 
