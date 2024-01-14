@@ -229,17 +229,26 @@ fn generate_wire_delegate_functions(
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Web => {
             let target: Target = target.try_into().unwrap();
+            let context = context.as_wire_dart_codec_cst_context();
+
             let wire_func_name = wire_func_name(func);
-            let return_type = WireDartCodecCstGenerator::new(
-                func.output.clone(),
-                context.as_wire_dart_codec_cst_context(),
-            )
-            .dart_wire_type(target);
+            let return_type =
+                WireDartCodecCstGenerator::new(func.output.clone(), context).dart_wire_type(target);
+            let signature_args = (func.inputs.iter())
+                .map(|ty| {
+                    format!(
+                        "{} {}",
+                        WireDartCodecCstGenerator::new(ty.clone(), context).dart_wire_type(target),
+                        ty.name,
+                    )
+                })
+                .join(", ");
+            let body_args = (func.inputs.iter()).map(|ty| ty.name.to_owned()).join(", ");
 
             vec![WireDartOutputCode {
                 api_impl_class_methods: vec![DartApiImplClassMethod {
-                    signature: format!("{return_type} {wire_func_name}({})"),
-                    body: Some(format!("return wire.{wire_func_name}({});")),
+                    signature: format!("{return_type} {wire_func_name}({signature_args})"),
+                    body: Some(format!("return wire.{wire_func_name}({body_args});")),
                 }],
                 ..Default::default()
             }]
