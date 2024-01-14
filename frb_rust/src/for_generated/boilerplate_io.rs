@@ -27,6 +27,15 @@ macro_rules! frb_generated_io_cst_codec {
 #[macro_export]
 macro_rules! frb_generated_io_extern_func {
     () => {
-        // TODO
+        #[no_mangle]
+        pub extern "C" fn frb_pde_ffi_dispatcher(
+            func_id: i32,
+            port: i64,
+            ptr: *mut u8,
+            rust_vec_len: i32,
+            data_len: i32,
+        ) {
+            pde_ffi_dispatcher(func_id, port, ptr, rust_vec_len, data_len)
+        }
     };
 }
