@@ -27,14 +27,15 @@ impl WireDartCodecEntrypointTrait<'_> for PdeWireDartCodecEntrypoint {
     fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, _wire_func_name: &str) -> String {
         let serialize_inputs = generate_serialize_inputs(func);
         let maybe_port = if has_port_argument(func.mode) {
-            "port_"
+            ", port: port_"
         } else {
-            "null"
+            ""
         };
+        let func_id = func.id;
         format!(
             "
             final serializer = SseSerializer(generalizedFrbRustBinding);{serialize_inputs}
-            pdeCallFfi(generalizedFrbRustBinding, {maybe_port}, serializer);
+            pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: {func_id}{maybe_port});
             "
         )
     }

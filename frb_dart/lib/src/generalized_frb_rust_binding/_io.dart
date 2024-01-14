@@ -29,8 +29,14 @@ class GeneralizedFrbRustBinding {
       _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void pdeFfiDispatcher() {
-    _binding.frb_pde_ffi_dispatcher(TODO);
+  void pdeFfiDispatcher({
+    required int funcId,
+    required int port,
+    required ffi.Pointer<ffi.Uint8> ptr,
+    required int rustVecLen,
+    required int dataLen,
+  }) {
+    _binding.frb_pde_ffi_dispatcher(funcId, port, ptr, rustVecLen, dataLen);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
