@@ -52,22 +52,37 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
 }
 
 pub(crate) fn generate_ffi_dispatcher_raw(variants: &str, crate_name: &str) -> String {
-    format!(
-        "
-        fn pde_ffi_dispatcher_impl(
-            func_id: i32,
-            port: {crate_name}::for_generated::MessagePort,
-            ptr: {crate_name}::for_generated::PlatformGeneralizedUint8ListPtr,
-            rust_vec_len: i32,
-            data_len: i32,
-        ) {{
-            match func_id {{
-                {variants}
-                _ => unreachable!(),
-            }}
-        }}
-        "
-    )
+    [false, true]
+        .iter()
+        .map(|sync| {
+            let name = if sync { "sync" } else { "primary" };
+            let maybe_port = if sync {
+                "".to_owned()
+            } else {
+                format!("port: {crate_name}::for_generated::MessagePort,\n")
+            };
+            let maybe_return = if sync {
+                format!("-> {crate_name}::for_generated::WireSyncRust2DartSse")
+            } else {
+                "".to_owned()
+            };
+            format!(
+                "
+                fn pde_ffi_dispatcher_{name}_impl(
+                    func_id: i32,{maybe_port}
+                    ptr: {crate_name}::for_generated::PlatformGeneralizedUint8ListPtr,
+                    rust_vec_len: i32,
+                    data_len: i32,
+                ) {maybe_return} {{
+                    match func_id {{
+                        {variants}
+                        _ => unreachable!(),
+                    }}
+                }}
+                "
+            )
+        })
+        .join("")
 }
 
 impl WireRustCodecEntrypointTrait<'_> for PdeWireRustCodecEntrypoint {
