@@ -13,10 +13,6 @@ pub(crate) fn generate(
     c_file_content: &str,
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputCode> {
-    if !config.enable {
-        return Ok(generate_disabled_text(&config.dart_output_class_name_pack).into());
-    }
-
     let content = execute_ffigen(config, c_file_content, progress_bar_pack)?;
     let content = postpare_modify(&content, &config.dart_output_class_name_pack);
     sanity_check(&content, &config.dart_output_class_name_pack)?;
@@ -74,15 +70,6 @@ fn postpare_modify(
         );
     let ans = FILTER.replace_all(&ans, "").to_string();
     ans
-}
-
-fn generate_disabled_text(dart_output_class_name_pack: &DartOutputClassNamePack) -> String {
-    format!(
-        "class {wire_class_name} implements BaseWire {{
-          {wire_class_name}.fromExternalLibrary(ExternalLibrary lib);
-        }}",
-        wire_class_name = dart_output_class_name_pack.wire_class_name,
-    )
 }
 
 fn sanity_check(
