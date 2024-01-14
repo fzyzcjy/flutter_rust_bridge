@@ -24,9 +24,18 @@ pub(super) fn generate(
     let merged_code = generate_merged_code(spec);
     let text = generate_text_from_merged_code(
         config,
-        &merged_code
-            .clone()
-            .map(|code, _| code.all_code(&config.c_symbol_prefix)),
+        &merged_code.clone().map(|code, _| {
+            let code = if config.enable_extern_func_and_class {
+                code
+            } else {
+                WireRustOutputCode {
+                    body: code.body,
+                    extern_funcs: vec![],
+                    extern_classes: vec![],
+                }
+            };
+            code.all_code(&config.c_symbol_prefix)
+        }),
     )?;
     let extern_funcs = compute_extern_funcs(merged_code);
 
