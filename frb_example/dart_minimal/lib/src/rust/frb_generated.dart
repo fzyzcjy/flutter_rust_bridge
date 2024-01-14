@@ -153,9 +153,59 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @protected
+  String sse_decode_String(SseDeserializer deserializer) {
+    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    return utf8.decoder.convert(inner);
+  }
+
+  @protected
+  MyEnum sse_decode_box_autoadd_my_enum(SseDeserializer deserializer) {
+    return (sse_decode_my_enum(deserializer));
+  }
+
+  @protected
+  MyStruct sse_decode_box_autoadd_my_struct(SseDeserializer deserializer) {
+    return (sse_decode_my_struct(deserializer));
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     return deserializer.buffer.getInt32();
   }
+
+  @protected
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
+    var len_ = sse_decode_i_32(deserializer);
+    return deserializer.buffer.getUint8List(len_);
+  }
+
+  @protected
+  MyEnum sse_decode_my_enum(SseDeserializer deserializer) {
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return MyEnum_Apple();
+      case 1:
+        var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
+        return MyEnum_Orange(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  MyStruct sse_decode_my_struct(SseDeserializer deserializer) {
+    var var_field = sse_decode_String(deserializer);
+    return MyStruct(field: var_field);
+  }
+
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer) {
+    return deserializer.buffer.getUint8();
+  }
+
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer) {}
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
@@ -163,9 +213,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_String(String self, SseSerializer serializer) {
+    sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_my_enum(MyEnum self, SseSerializer serializer) {
+    sse_encode_my_enum(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_my_struct(
+      MyStruct self, SseSerializer serializer) {
+    sse_encode_my_struct(self, serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     serializer.buffer.putInt32(self);
   }
+
+  @protected
+  void sse_encode_list_prim_u_8_strict(
+      Uint8List self, SseSerializer serializer) {
+    sse_encode_i_32(self.length, serializer);
+    serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_my_enum(MyEnum self, SseSerializer serializer) {
+    switch (self) {
+      case MyEnum_Apple():
+        sse_encode_i_32(0, serializer);
+      case MyEnum_Orange(field0: final field0):
+        sse_encode_i_32(1, serializer);
+        sse_encode_list_prim_u_8_strict(field0, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_my_struct(MyStruct self, SseSerializer serializer) {
+    sse_encode_String(self.field, serializer);
+  }
+
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer) {
+    serializer.buffer.putUint8(self);
+  }
+
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer) {}
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {
