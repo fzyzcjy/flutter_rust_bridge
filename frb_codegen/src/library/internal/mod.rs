@@ -48,10 +48,7 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
             parse: cbindgen::ParseConfig {
                 expand: cbindgen::ParseExpandConfig {
                     crates: vec!["flutter_rust_bridge".to_owned()],
-                    all_features: false,
-                    default_features: true,
-                    features: None,
-                    profile: cbindgen::Profile::Debug,
+                    ..Default::default()
                 },
                 ..Default::default()
             },
