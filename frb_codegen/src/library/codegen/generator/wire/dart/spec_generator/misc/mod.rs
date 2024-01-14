@@ -233,8 +233,7 @@ fn generate_wire_delegate_functions(
             let context = context.as_wire_dart_codec_cst_context();
 
             let wire_func_name = wire_func_name(func);
-            let return_type =
-                WireDartCodecCstGenerator::new(func.output.clone(), context).dart_wire_type(target);
+            let return_type = "void"; // TODO about sync types
             let signature_args = (func.inputs.iter())
                 .map(|field| {
                     format!(

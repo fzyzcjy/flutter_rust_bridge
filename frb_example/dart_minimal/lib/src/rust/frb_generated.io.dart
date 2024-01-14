@@ -23,7 +23,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int wire_minimal_adder(int a, int b) {
+  void wire_minimal_adder(int a, int b) {
     return wire.wire_minimal_adder(a, b);
   }
 
