@@ -20,7 +20,10 @@ pub(super) fn generate(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireCOutputSpec> {
     if !config.enable {
-        return Ok(Default::default());
+        return Ok(WireCOutputSpec {
+            code_cbindgen: "".to_string(),
+            code_dummy: "// NOTHING".to_string(),
+        });
     }
 
     let code_cbindgen = cbindgen_executor::execute(
