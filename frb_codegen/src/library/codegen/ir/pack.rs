@@ -75,8 +75,7 @@ impl IrPackComputedCache {
                         true,
                         true,
                         Some(Box::new(move |f: &IrFunc| {
-                            // currently quite coarse
-                            (f.codec_mode_pack.all().iter()).any(|c| c.delegate_or_self() == codec)
+                            (f.codec_mode_pack.all().iter()).any(|c| c == codec)
                         })),
                     ),
                 )
