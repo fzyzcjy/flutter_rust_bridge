@@ -80,9 +80,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
 
-        final raw_ = serializer.intoRaw();
-        return wire.wire_init_app(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+        return TODO_func(port_, serializer);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -107,9 +105,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
-        final raw_ = serializer.intoRaw();
-        return wire.wire_minimal_adder(
-            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
+        return TODO_func(port_, serializer);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
