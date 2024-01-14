@@ -19050,7 +19050,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_list_prim_u_8_strict(List<Uint8List> raw) {
     final ans = wire.cst_new_list_list_prim_u_8_strict(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      cst_api_fill_to_wire_list_prim_u_8_strict(raw[i], ans.ref.ptr[i]);
+      ans.ref.ptr[i] = cst_encode_list_prim_u_8_strict(raw[i]);
     }
     return ans;
   }
