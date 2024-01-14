@@ -15,6 +15,11 @@ class GeneralizedFrbRustBinding {
   void initFrbDartApiDl() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void pdeFfiDispatcher() {
+    throw UnimplementedError("TODO js");
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
       _dart_opaque_dart2rust_encode(object, dartHandlerPort);
