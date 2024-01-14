@@ -19,7 +19,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
     fn generate(
         &self,
         context: WireRustGeneratorContext,
-        types: &[IrType],
+        _types: &[IrType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
         match mode {
