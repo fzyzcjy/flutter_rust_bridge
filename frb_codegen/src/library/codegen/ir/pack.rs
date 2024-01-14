@@ -6,6 +6,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
+use strum::IntoEnumIterator;
 
 pub type IrStructPool = HashMap<IrStructIdent, IrStruct>;
 pub type IrEnumPool = HashMap<IrEnumIdent, IrEnum>;
@@ -60,10 +61,12 @@ impl IrPackComputedCache {
         // let distinct_input_types = ir_pack.distinct_types(true, false);
         // let distinct_output_types = ir_pack.distinct_types(false, true);
         let distinct_types = ir_pack.distinct_types(true, true);
+        let distinct_types_for_codec = CodecMode::iter().map(|codec| (codec, TODO)).collect();
         Self {
             // distinct_input_types,
             // distinct_output_types,
             distinct_types,
+            distinct_types_for_codec,
         }
     }
 }
