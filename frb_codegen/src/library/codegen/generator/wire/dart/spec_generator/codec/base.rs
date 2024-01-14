@@ -10,7 +10,7 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen_codec_structs;
 use serde::Serialize;
 
-codegen_codec_structs!(WireDartCodec, WireDartOutputCode);
+codegen_codec_structs!(WireDart);
 
 pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, WireDartCodecOutputSpec>

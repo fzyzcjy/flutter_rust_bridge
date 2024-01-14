@@ -11,7 +11,7 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen_codec_structs;
 use serde::Serialize;
 
-codegen_codec_structs!(WireRustCodec, WireRustOutputCode);
+codegen_codec_structs!(WireRust);
 
 pub(crate) trait WireRustCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireRustGeneratorContext<'a>, WireRustCodecOutputSpec>

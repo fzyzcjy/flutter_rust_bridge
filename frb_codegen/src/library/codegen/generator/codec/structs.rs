@@ -32,11 +32,11 @@ pub(crate) struct CodecModePack {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_codec_structs {
-    ($partial_name:ident, $code:ident) => (
+    ($partial_name:ident) => (
         $crate::codegen_codec_structs!(
             @private
 
-            $partial_name, $code;
+            $partial_name;
 
             Cst,
             Dco,
@@ -44,49 +44,49 @@ macro_rules! codegen_codec_structs {
             Pde,
         );
     );
-    (@private $partial_name:ident, $code:ident ; $($name:ident),*,) => (
+    (@private $partial_name:ident ; $($name:ident),*,) => (
         paste::paste! {
-            pub(crate) struct [<$partial_name Entrypoint>]<'a>(
-                Box<dyn [<$partial_name EntrypointTrait>]<'a>>
+            pub(crate) struct [<$partial_name CodecEntrypoint>]<'a>(
+                Box<dyn [<$partial_name CodecEntrypointTrait>]<'a>>
             );
 
-            impl<'a> From<CodecMode> for [<$partial_name Entrypoint>]<'a> {
+            impl<'a> From<CodecMode> for [<$partial_name CodecEntrypoint>]<'a> {
                 fn from(mode: CodecMode) -> Self {
                     match mode {
                         $(
-                        CodecMode::$name => Self(Box::new([<$name $partial_name Entrypoint>] {})),
+                        CodecMode::$name => Self(Box::new([<$name $partial_name CodecEntrypoint>] {})),
                         )*
                     }
                 }
             }
 
-            impl<'a> std::ops::Deref for [<$partial_name Entrypoint>]<'a> {
-                type Target = Box<dyn [<$partial_name EntrypointTrait>]<'a>>;
+            impl<'a> std::ops::Deref for [<$partial_name CodecEntrypoint>]<'a> {
+                type Target = Box<dyn [<$partial_name CodecEntrypointTrait>]<'a>>;
 
                 fn deref(&self) -> &Self::Target {
                     &self.0
                 }
             }
 
-            impl<'a> [<$partial_name Entrypoint>]<'a> {
+            impl<'a> [<$partial_name CodecEntrypoint>]<'a> {
                 pub(crate) fn generate_all(
-                    context: C,
+                    context: [<$partial_name GeneratorContext>],
                     cache: &IrPackComputedCache,
                     mode: EncodeOrDecode,
                 ) -> [<$partial_name OutputSpec>] {
                     CodecMode::iter()
-                        .map([<$partial_name Entrypoint>]::from)
+                        .map([<$partial_name CodecEntrypoint>]::from)
                         .flat_map(|codec| codec.generate(context, &cache.distinct_types, mode))
                         .collect()
                 }
             }
 
             #[derive(Clone, Serialize)]
-            pub(crate) struct [<$partial_name OutputSpec>] {
-                pub(crate) inner: Acc<Vec<$code>>,
+            pub(crate) struct [<$partial_name CodecOutputSpec>] {
+                pub(crate) inner: Acc<Vec<[<$partial_name OutputCode>]>>,
             }
 
-            impl std::iter::FromIterator<[<$partial_name OutputSpec>]> for [<$partial_name OutputSpec>] {
+            impl std::iter::FromIterator<[<$partial_name CodecOutputSpec>]> for [<$partial_name CodecOutputSpec>] {
                 fn from_iter<T: IntoIterator<Item = Self>>(iter: T) -> Self {
                     Self {
                         inner: iter.into_iter().map(|x| x.inner).collect(),
