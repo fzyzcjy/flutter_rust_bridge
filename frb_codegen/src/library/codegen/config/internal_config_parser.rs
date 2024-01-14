@@ -17,7 +17,6 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
-use crate::library::commands::command_runner::ShellMode;
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::{
     canonicalize_with_error_message, find_dart_package_dir, find_rust_crate_dir, glob_path,
