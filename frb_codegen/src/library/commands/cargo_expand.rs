@@ -179,7 +179,7 @@ mod another {}";
         assert_eq!(src, extracted);
     }
 
-        #[test]
+    #[test]
     pub fn test_extract_module_with_same_name() {
         let src = "pub mod parent {
     mod another {
@@ -188,11 +188,8 @@ mod another {}";
 }
 pub(self) mod another {
     // 12345
-}
-
-";
+}";
         let extracted = extract_module(src, Some(String::from("another"))).unwrap();
         assert_eq!(String::from("    // 12345"), extracted);
     }
-
 }
