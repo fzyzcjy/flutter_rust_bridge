@@ -32,21 +32,12 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, WireDartCodecOutputS
 
 impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
     fn generate_dart2rust_inner_func_stmt(&self, func: &IrFunc, wire_func_name: &str) -> String {
-        let serialize_inputs = (func.inputs.iter())
-            .map(|input| {
-                format!(
-                    "{};",
-                    DartLang.call_encode(&input.ty, &input.name.dart_style())
-                )
-            })
-            .join("\n");
-
+        let serialize_inputs = generate_serialize_inputs(func);
         let maybe_port = if has_port_argument(func.mode) {
             "port_, "
         } else {
             ""
         };
-
         format!(
             "
             final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -56,4 +47,15 @@ impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
             "
         )
     }
+}
+
+pub(crate) fn generate_serialize_inputs(func: &IrFunc) -> String {
+    (func.inputs.iter())
+        .map(|input| {
+            format!(
+                "{};",
+                DartLang.call_encode(&input.ty, &input.name.dart_style())
+            )
+        })
+        .join("\n")
 }
