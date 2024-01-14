@@ -129,6 +129,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub default_external_library_loader_web_prefix: Option<String>,
 
+    /// The shell to use
+    #[arg(long)]
+    pub shell: Option<ShellMode>,
+
     /// Disable language features introduced in Dart 3.
     #[arg(long)]
     pub no_dart3: bool,

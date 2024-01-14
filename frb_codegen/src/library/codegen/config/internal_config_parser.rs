@@ -86,7 +86,7 @@ impl InternalConfig {
         ];
         let controller_exclude_paths = rust_output_path.clone().into_vec();
 
-        let shell_mode: Option<ShellMode> = todo!();
+        let shell_mode = config.shell;
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {

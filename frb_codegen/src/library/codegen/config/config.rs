@@ -1,4 +1,5 @@
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
+use crate::commands::ShellMode;
 use serde::{Deserialize, Serialize};
 
 /// Configuration for code generation
@@ -26,6 +27,7 @@ pub struct Config {
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
     pub default_external_library_loader_web_prefix: Option<String>,
+    pub shell: Option<ShellMode>,
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
 }
