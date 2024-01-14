@@ -87,6 +87,11 @@ impl InternalConfig {
         let controller_exclude_paths = rust_output_path.clone().into_vec();
 
         let full_dep = config.full_dep.unwrap_or(false);
+        let default_stream_sink_codec = if full_dep {
+            CodecMode::Dco
+        } else {
+            CodecMode::Sse
+        };
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
@@ -139,6 +144,7 @@ impl InternalConfig {
                         rust_output_path: rust_output_path.clone(),
                         c_symbol_prefix: c_symbol_prefix.clone(),
                         enable_extern_func_and_class: full_dep,
+                        default_stream_sink_codec,
                     },
                     c: GeneratorWireCInternalConfig {
                         enable: full_dep,
