@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerat
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
     WireRustCodecEntrypointTrait, WireRustCodecOutputSpec,
 };
+use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::SseWireRustCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::IrType;
@@ -19,7 +20,7 @@ impl BaseCodecEntrypointTrait<WireRustGeneratorContext<'_>, WireRustCodecOutputS
         types: &[IrType],
         mode: EncodeOrDecode,
     ) -> Option<WireRustCodecOutputSpec> {
-        todo!()
+        SseWireRustCodecEntrypoint.generate(context, types, mode)
     }
 }
 
@@ -27,9 +28,9 @@ impl WireRustCodecEntrypointTrait<'_> for PdeWireRustCodecEntrypoint {
     fn generate_func_params(
         &self,
         func: &IrFunc,
-        _context: WireRustGeneratorContext,
+        context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
-        todo!()
+        SseWireRustCodecEntrypoint.generate_func_params(func, context)
     }
 
     fn generate_func_call_decode(
@@ -37,6 +38,6 @@ impl WireRustCodecEntrypointTrait<'_> for PdeWireRustCodecEntrypoint {
         func: &IrFunc,
         context: WireRustGeneratorContext,
     ) -> String {
-        todo!()
+        SseWireRustCodecEntrypoint.generate_func_call_decode(func, context)
     }
 }
