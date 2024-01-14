@@ -185,6 +185,7 @@ const sidebars = {
                         'guides/miscellaneous/expanding-macros',
                         'guides/miscellaneous/ignoring-functions',
                         'guides/miscellaneous/default',
+                        'guides/miscellaneous/pure-dart',
                         'guides/miscellaneous/safety',
                         'guides/miscellaneous/compatibility',
                         'guides/miscellaneous/deployment',
