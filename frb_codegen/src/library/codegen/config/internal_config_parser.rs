@@ -87,11 +87,7 @@ impl InternalConfig {
         let controller_exclude_paths = rust_output_path.clone().into_vec();
 
         let full_dep = config.full_dep.unwrap_or(false);
-        let default_stream_sink_codec = if full_dep {
-            CodecMode::Dco
-        } else {
-            CodecMode::Sse
-        };
+        let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
@@ -347,6 +343,14 @@ pub(crate) fn compute_force_codec_mode_pack(full_dep: bool) -> Option<CodecModeP
         dart2rust: CodecMode::Pde,
         rust2dart: CodecMode::Pde,
     })
+}
+
+fn generate_default_stream_sink_codec(full_dep: bool) -> CodecMode {
+    if full_dep {
+        CodecMode::Dco
+    } else {
+        CodecMode::Sse
+    }
 }
 
 #[cfg(test)]
