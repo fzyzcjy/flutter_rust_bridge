@@ -335,10 +335,14 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       await Directory(dirPackage).rename(dirTempOriginal);
     }
 
+    final shellRaw = config.shell ?? 'default';
+    final commonArgs =
+        '--local ${shellRaw == 'default' ? '' : '--shell $shellRaw'}';
+
     switch (config.package) {
       case 'frb_example/flutter_via_create':
         await executeFrbCodegen(
-          'create flutter_via_create --local',
+          'create flutter_via_create $commonArgs',
           relativePwd: 'frb_example',
           coverage: config.coverage,
           coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
@@ -348,7 +352,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         await exec('flutter create flutter_via_integrate',
             relativePwd: 'frb_example');
         await executeFrbCodegen(
-          'integrate --local',
+          'integrate $commonArgs',
           relativePwd: config.package,
           coverage: config.coverage,
           coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
