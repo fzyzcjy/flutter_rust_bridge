@@ -6,6 +6,7 @@ import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/main_components/port_manager.dart';
 import 'package:flutter_rust_bridge/src/main_components/wire.dart';
+import 'package:flutter_rust_bridge/src/misc/version.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
 
@@ -40,6 +41,13 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   }) async {
     if (__state != null) {
       throw StateError('Should not initialize flutter_rust_bridge twice');
+    }
+
+    if (codegenVersion != kFlutterRustBridgeRuntimeVersion) {
+      throw StateError(
+        "flutter_rust_bridge's codegen version ($codegenVersion) should be the same as runtime version ($kFlutterRustBridgeRuntimeVersion). "
+        "See https://cjycode.com/flutter_rust_bridge/guides/miscellaneous/upgrade/regular for details.",
+      );
     }
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
