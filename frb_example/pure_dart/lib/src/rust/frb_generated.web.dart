@@ -14277,41 +14277,49 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String cst_encode_AnyhowException(AnyhowException raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   String cst_encode_Backtrace(String raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   Object cst_encode_Chrono_Duration(Duration raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw.inMilliseconds);
   }
 
   @protected
   Object cst_encode_Chrono_Local(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
   Object cst_encode_Chrono_Naive(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
   Object cst_encode_Chrono_Utc(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
   List<dynamic> cst_encode_DartOpaque_array_1(ObjectArray1 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_DartOpaque(raw);
   }
 
   @protected
   List<dynamic> cst_encode_Map_String_String(Map<String, String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_string(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14319,6 +14327,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_String_enum_simple_twin_normal(
       Map<String, EnumSimpleTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_normal(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14326,6 +14335,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_String_enum_simple_twin_rust_async(
       Map<String, EnumSimpleTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_rust_async(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14333,6 +14343,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_String_enum_simple_twin_sync(
       Map<String, EnumSimpleTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_sync(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14340,6 +14351,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_String_kitchen_sink_twin_normal(
       Map<String, KitchenSinkTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_normal(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14347,6 +14359,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_String_kitchen_sink_twin_rust_async(
       Map<String, KitchenSinkTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_rust_async(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14354,6 +14367,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_String_kitchen_sink_twin_sync(
       Map<String, KitchenSinkTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_sync(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14361,18 +14375,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_String_list_prim_u_8_strict(
       Map<String, Uint8List> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_list_prim_u_8_strict(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_String_my_size(Map<String, MySize> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_my_size(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_String(Map<int, String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_string(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14380,6 +14397,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_general_enum_twin_normal(
       Map<int, BasicGeneralEnumTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_normal(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14387,6 +14405,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_general_enum_twin_rust_async(
       Map<int, BasicGeneralEnumTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_rust_async(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14394,6 +14413,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_general_enum_twin_sync(
       Map<int, BasicGeneralEnumTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_sync(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14401,6 +14421,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_primitive_enum_twin_normal(
       Map<int, BasicPrimitiveEnumTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_normal(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14408,6 +14429,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
       Map<int, BasicPrimitiveEnumTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14415,6 +14437,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_primitive_enum_twin_sync(
       Map<int, BasicPrimitiveEnumTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_sync(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14422,6 +14445,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_struct_twin_normal(
       Map<int, BasicStructTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_normal(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14429,6 +14453,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_struct_twin_rust_async(
       Map<int, BasicStructTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_rust_async(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14436,54 +14461,63 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_basic_struct_twin_sync(
       Map<int, BasicStructTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_sync(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_bool(Map<int, bool> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_bool(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_f_32(Map<int, double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_f_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_f_64(Map<int, double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_f_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_i_16(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_16(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_i_32(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_i_64(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_i_8(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_isize(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_isize(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14491,36 +14525,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_Map_i_32_list_prim_u_8_strict(
       Map<int, Uint8List> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_list_prim_u_8_strict(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_u_16(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_16(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_u_32(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_u_64(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_u_8(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
   List<dynamic> cst_encode_Map_i_32_usize(Map<int, int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_usize(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
@@ -14528,76 +14568,90 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_RustOpaque_hide_data_twin_moi_array_2(
       HideDataTwinMoiArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_hide_data_twin_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_RustOpaque_hide_data_twin_normal_array_2(
       HideDataTwinNormalArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_hide_data_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_RustOpaque_hide_data_twin_rust_async_array_2(
       HideDataTwinRustAsyncArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_hide_data_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_RustOpaque_hide_data_twin_rust_async_moi_array_2(
       HideDataTwinRustAsyncMoiArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_hide_data_twin_rust_async_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_RustOpaque_hide_data_twin_sync_array_2(
       HideDataTwinSyncArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_hide_data_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_RustOpaque_hide_data_twin_sync_moi_array_2(
       HideDataTwinSyncMoiArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_RustOpaque_hide_data_twin_sync_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_Set_String(Set<String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_String(raw.toList());
   }
 
   @protected
   Int32List cst_encode_Set_i_32(Set<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_i_32_strict(Int32List.fromList(raw.toList()));
   }
 
   @protected
   String cst_encode_String(String raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Uint8List cst_encode_Uuid(UuidValue raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_u_8_strict(raw.toBytes());
   }
 
   @protected
   List<dynamic> cst_encode_a_twin_normal(ATwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_a_twin_rust_async(ATwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_a_twin_sync(ATwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_abc_twin_normal(AbcTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is AbcTwinNormal_A) {
       return [0, cst_encode_box_autoadd_a_twin_normal(raw.field0)];
     }
@@ -14616,6 +14670,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_abc_twin_rust_async(AbcTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is AbcTwinRustAsync_A) {
       return [0, cst_encode_box_autoadd_a_twin_rust_async(raw.field0)];
     }
@@ -14634,6 +14689,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_abc_twin_sync(AbcTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is AbcTwinSync_A) {
       return [0, cst_encode_box_autoadd_a_twin_sync(raw.field0)];
     }
@@ -14653,36 +14709,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_another_macro_struct_twin_normal(
       AnotherMacroStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.data), cst_encode_i_32(raw.nonFinalData)];
   }
 
   @protected
   List<dynamic> cst_encode_another_twin_normal(AnotherTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_another_twin_rust_async(AnotherTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_another_twin_sync(AnotherTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_application_env(ApplicationEnv raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_list_application_env_var(raw.vars)];
   }
 
   @protected
   List<dynamic> cst_encode_application_env_var(ApplicationEnvVar raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.field0), cst_encode_bool(raw.field1)];
   }
 
   @protected
   List<dynamic> cst_encode_application_message(ApplicationMessage raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is ApplicationMessage_DisplayMessage) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -14698,6 +14761,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_application_settings(ApplicationSettings raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_String(raw.version),
@@ -14709,38 +14773,45 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_attribute_twin_normal(AttributeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_attribute_twin_rust_async(
       AttributeTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_attribute_twin_sync(AttributeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_b_twin_normal(BTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.b)];
   }
 
   @protected
   List<dynamic> cst_encode_b_twin_rust_async(BTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.b)];
   }
 
   @protected
   List<dynamic> cst_encode_b_twin_sync(BTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.b)];
   }
 
   @protected
   List<dynamic> cst_encode_basic_general_enum_twin_normal(
       BasicGeneralEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is BasicGeneralEnumTwinNormal_Apple) {
       return [0, cst_encode_String(raw.field)];
     }
@@ -14754,6 +14825,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_basic_general_enum_twin_rust_async(
       BasicGeneralEnumTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is BasicGeneralEnumTwinRustAsync_Apple) {
       return [0, cst_encode_String(raw.field)];
     }
@@ -14767,6 +14839,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_basic_general_enum_twin_sync(
       BasicGeneralEnumTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is BasicGeneralEnumTwinSync_Apple) {
       return [0, cst_encode_String(raw.field)];
     }
@@ -14779,6 +14852,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_normal(BasicStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.apple),
       cst_encode_opt_box_autoadd_i_32(raw.orange)
@@ -14788,6 +14862,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.apple),
       cst_encode_opt_box_autoadd_i_32(raw.orange)
@@ -14796,6 +14871,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_basic_struct_twin_sync(BasicStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.apple),
       cst_encode_opt_box_autoadd_i_32(raw.orange)
@@ -14805,6 +14881,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_opt_box_benchmark_binary_tree_twin_normal(raw.left),
@@ -14815,6 +14892,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(raw.left),
@@ -14825,6 +14903,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.name),
       cst_encode_opt_box_benchmark_binary_tree_twin_sync(raw.left),
@@ -14835,6 +14914,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_benchmark_blob_twin_normal(
       BenchmarkBlobTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_u_8_strict(raw.first),
       cst_encode_list_prim_u_8_strict(raw.second),
@@ -14845,6 +14925,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_benchmark_blob_twin_rust_async(
       BenchmarkBlobTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_u_8_strict(raw.first),
       cst_encode_list_prim_u_8_strict(raw.second),
@@ -14854,6 +14935,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_benchmark_blob_twin_sync(BenchmarkBlobTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_u_8_strict(raw.first),
       cst_encode_list_prim_u_8_strict(raw.second),
@@ -14863,6 +14945,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_big_buffers_twin_normal(BigBuffersTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_64_strict(raw.int64),
       cst_encode_list_prim_u_64_strict(raw.uint64)
@@ -14872,6 +14955,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_big_buffers_twin_rust_async(
       BigBuffersTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_64_strict(raw.int64),
       cst_encode_list_prim_u_64_strict(raw.uint64)
@@ -14880,6 +14964,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_big_buffers_twin_sync(BigBuffersTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_64_strict(raw.int64),
       cst_encode_list_prim_u_64_strict(raw.uint64)
@@ -14888,316 +14973,372 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_blob_twin_normal(BlobTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_1600(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_blob_twin_rust_async(BlobTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_1600(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_blob_twin_sync(BlobTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_1600(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_box_application_env(ApplicationEnv raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_env(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_Chrono_Duration(Duration raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Chrono_Duration(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_Chrono_Naive(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Chrono_Naive(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_Chrono_Utc(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Chrono_Utc(raw);
   }
 
   @protected
   PlatformPointer cst_encode_box_autoadd_DartOpaque(Object raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_DartOpaque(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_another_twin_moi(
       HideDataAnotherTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_another_twin_moi(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
       HideDataAnotherTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_another_twin_normal(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_twin_moi(
       HideDataTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_twin_moi(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_twin_normal(
       HideDataTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_twin_normal(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async(
       HideDataTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_twin_rust_async(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
       HideDataTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_twin_rust_async_moi(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_twin_sync(
       HideDataTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_twin_sync(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
       HideDataTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_RustOpaque_hide_data_twin_sync_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_a_twin_normal(ATwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_a_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_a_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_a_twin_sync(ATwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_a_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_abc_twin_normal(AbcTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_abc_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_abc_twin_rust_async(
       AbcTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_abc_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_abc_twin_sync(AbcTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_abc_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_application_env(ApplicationEnv raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_env(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_application_settings(
       ApplicationSettings raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_settings(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_attribute_twin_normal(
       AttributeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_attribute_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_attribute_twin_rust_async(
       AttributeTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_attribute_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_attribute_twin_sync(
       AttributeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_attribute_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_b_twin_normal(BTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_b_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_b_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_b_twin_sync(BTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_b_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_basic_general_enum_twin_normal(
       BasicGeneralEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_general_enum_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_basic_general_enum_twin_rust_async(
       BasicGeneralEnumTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_general_enum_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_basic_general_enum_twin_sync(
       BasicGeneralEnumTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_general_enum_twin_sync(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_basic_primitive_enum_twin_normal(
       BasicPrimitiveEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_primitive_enum_twin_normal(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_basic_primitive_enum_twin_rust_async(
       BasicPrimitiveEnumTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_primitive_enum_twin_rust_async(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_basic_primitive_enum_twin_sync(
       BasicPrimitiveEnumTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_primitive_enum_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_basic_struct_twin_normal(
       BasicStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_struct_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_struct_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_basic_struct_twin_sync(
       BasicStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_basic_struct_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_normal(
       BenchmarkBlobTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_blob_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_rust_async(
       BenchmarkBlobTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_blob_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_benchmark_blob_twin_sync(
       BenchmarkBlobTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_blob_twin_sync(raw);
   }
 
   @protected
   bool cst_encode_box_autoadd_bool(bool raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_bool(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_c_twin_normal(CTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_c_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_c_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_c_twin_sync(CTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_c_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_concatenate_with_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_concatenate_with_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_sync(
       ConcatenateWithTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_concatenate_with_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_normal(
       CustomNestedError2TwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_2_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_rust_async(
       CustomNestedError2TwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_2_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_2_twin_sync(
       CustomNestedError2TwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_2_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_inner_twin_normal(raw);
   }
 
@@ -15205,18 +15346,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic>
       cst_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
           CustomNestedErrorInnerTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_inner_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_inner_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_outer_twin_normal(raw);
   }
 
@@ -15224,714 +15368,837 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic>
       cst_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
           CustomNestedErrorOuterTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_outer_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_nested_error_outer_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_error_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_error_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_error_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_struct_twin_normal(
       CustomStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_custom_struct_twin_sync(
       CustomStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_custom_struct_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_customized_twin_normal(
       CustomizedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_customized_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_customized_twin_rust_async(
       CustomizedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_customized_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_customized_twin_sync(
       CustomizedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_customized_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_dart_opaque_nested_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_dart_opaque_nested_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_dart_opaque_nested_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_element_twin_normal(
       ElementTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_element_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_element_twin_rust_async(
       ElementTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_element_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_element_twin_sync(ElementTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_element_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_empty_twin_normal(EmptyTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_empty_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_empty_twin_rust_async(
       EmptyTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_empty_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_empty_twin_sync(EmptyTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_empty_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_dart_opaque_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_dart_opaque_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_sync(
       EnumDartOpaqueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_dart_opaque_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_moi(
       EnumOpaqueTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_normal(
       EnumOpaqueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_rust_async_moi(
       EnumOpaqueTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_rust_async_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_sync(
       EnumOpaqueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_sync_moi(
       EnumOpaqueTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_opaque_twin_sync_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_mixed_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_mixed_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_mixed_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_struct_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_struct_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_struct_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_tuple_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_tuple_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_enum_with_item_tuple_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_event_twin_normal(EventTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_event_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_event_twin_rust_async(
       EventTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_event_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_sync(raw);
   }
 
   @protected
   double cst_encode_box_autoadd_f_32(double raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_f_32(raw);
   }
 
   @protected
   double cst_encode_box_autoadd_f_64(double raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_f_64(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_normal(
       FeatureChronoTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_chrono_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_chrono_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_sync(
       FeatureChronoTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_chrono_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_normal(
       FeatureUuidTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_uuid_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_uuid_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_sync(
       FeatureUuidTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_uuid_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feed_id_twin_normal(
       FeedIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feed_id_twin_rust_async(
       FeedIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_feed_id_twin_sync(FeedIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_sync(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_i_16(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_16(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_32(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_i_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_8(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_isize(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_isize(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_sync(
       KitchenSinkTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(
       ListOfNestedRawStringMirrored raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_of_nested_raw_string_mirrored(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_macro_struct(MacroStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_macro_struct(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_measure_twin_normal(
       MeasureTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_measure_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_measure_twin_rust_async(
       MeasureTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_measure_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_measure_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_message_id_twin_normal(
       MessageIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_message_id_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_message_id_twin_rust_async(
       MessageIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_message_id_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_message_id_twin_sync(
       MessageIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_message_id_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_nested_struct_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_nested_struct_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_sync(
       MyNestedStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_nested_struct_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_size(MySize raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_size(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_struct(MyStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_struct(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_tree_node_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_tree_node_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_sync(
       MyTreeNodeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_tree_node_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_nested_raw_string_mirrored(
       NestedRawStringMirrored raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_nested_raw_string_mirrored(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_new_type_int_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_new_type_int_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_new_type_int_twin_sync(
       NewTypeIntTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_new_type_int_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_note_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_note_twin_rust_async(
       NoteTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_note_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_note_twin_sync(NoteTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_note_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_numbers(Numbers raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_numbers(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_moi(
       OpaqueNestedTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_rust_async_moi(
       OpaqueNestedTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_rust_async_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_sync(
       OpaqueNestedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_sync_moi(
       OpaqueNestedTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opaque_nested_twin_sync_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opt_vecs_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_rust_async(
       OptVecsTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opt_vecs_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_opt_vecs_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_raw_string_mirrored(
       RawStringMirrored raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_raw_string_mirrored(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_record_string_i_32((String, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_record_string_i_32(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_sequences(Sequences raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sequences(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_some_struct_twin_normal(
       SomeStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_some_struct_twin_rust_async(
       SomeStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_some_struct_twin_sync(
       SomeStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_comments_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_comments_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_comments_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_enum_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_enum_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_sync(
       StructWithEnumTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_enum_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_one_field_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_one_field_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_one_field_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_two_field_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_two_field_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_two_field_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_zero_field_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
       StructWithZeroFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_zero_field_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_zero_field_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_sum_with_twin_normal(
       SumWithTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sum_with_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_sum_with_twin_rust_async(
       SumWithTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sum_with_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_sum_with_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_test_id_twin_normal(
       TestIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_test_id_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_test_id_twin_rust_async(
       TestIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_test_id_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_test_id_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_one_field_twin_normal(raw);
   }
 
@@ -15939,18 +16206,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic>
       cst_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
           TupleStructWithOneFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_one_field_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_one_field_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_two_field_twin_normal(raw);
   }
 
@@ -15958,284 +16228,337 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic>
       cst_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
           TupleStructWithTwoFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_two_field_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_tuple_struct_with_two_field_twin_sync(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_u_16(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_16(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_u_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_32(raw);
   }
 
   @protected
   Object cst_encode_box_autoadd_u_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_64(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_u_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_8(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_user_id_twin_normal(
       UserIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_user_id_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_user_id_twin_rust_async(
       UserIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_user_id_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_user_id_twin_sync(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_usize(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_usize(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_weekdays_twin_normal(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_weekdays_twin_rust_async(
       WeekdaysTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_weekdays_twin_rust_async(raw);
   }
 
   @protected
   int cst_encode_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_weekdays_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_benchmark_binary_tree_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_blob_twin_normal(BlobTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_blob_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_blob_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_blob_twin_sync(BlobTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_blob_twin_sync(raw);
   }
 
   @protected
   bool cst_encode_box_bool(bool raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_bool(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_distance_twin_normal(DistanceTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_distance_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_distance_twin_rust_async(
       DistanceTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_distance_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_distance_twin_sync(DistanceTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_distance_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_exotic_optionals_twin_sync(raw);
   }
 
   @protected
   double cst_encode_box_f_64(double raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_f_64(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_feed_id_twin_normal(FeedIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_feed_id_twin_rust_async(
       FeedIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_feed_id_twin_sync(FeedIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feed_id_twin_sync(raw);
   }
 
   @protected
   int cst_encode_box_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_32(raw);
   }
 
   @protected
   Object cst_encode_box_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(raw);
   }
 
   @protected
   int cst_encode_box_i_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_8(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_kitchen_sink_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_my_size(MySize raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_my_size(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_speed_twin_normal(SpeedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_speed_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_speed_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_box_speed_twin_sync(SpeedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_speed_twin_sync(raw);
   }
 
   @protected
   int cst_encode_box_u_8(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_8(raw);
   }
 
   @protected
   Uint8List cst_encode_box_u_8_array_1600(U8Array1600 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_8_array_1600(raw);
   }
 
   @protected
   Uint8List cst_encode_box_u_8_array_8(U8Array8 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_u_8_array_8(raw);
   }
 
   @protected
   int cst_encode_box_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_weekdays_twin_normal(raw);
   }
 
   @protected
   int cst_encode_box_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_weekdays_twin_rust_async(raw);
   }
 
   @protected
   int cst_encode_box_weekdays_twin_sync(WeekdaysTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_weekdays_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_c_twin_normal(CTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_bool(raw.c)];
   }
 
   @protected
   List<dynamic> cst_encode_c_twin_rust_async(CTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_bool(raw.c)];
   }
 
   @protected
   List<dynamic> cst_encode_c_twin_sync(CTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_bool(raw.c)];
   }
 
   @protected
   List<dynamic> cst_encode_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_concatenate_with_twin_sync(
       ConcatenateWithTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_normal(
       ContainsMirroredSubStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_raw_string_mirrored(raw.test),
       cst_encode_another_twin_normal(raw.test2)
@@ -16245,6 +16568,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_rust_async(
       ContainsMirroredSubStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_raw_string_mirrored(raw.test),
       cst_encode_another_twin_rust_async(raw.test2)
@@ -16254,6 +16578,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_contains_mirrored_sub_struct_twin_sync(
       ContainsMirroredSubStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_raw_string_mirrored(raw.test),
       cst_encode_another_twin_sync(raw.test2)
@@ -16263,6 +16588,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_enum_error_twin_normal(
       CustomEnumErrorTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomEnumErrorTwinNormal_One) {
       return [
         0,
@@ -16284,6 +16610,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_enum_error_twin_rust_async(
       CustomEnumErrorTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomEnumErrorTwinRustAsync_One) {
       return [
         0,
@@ -16305,6 +16632,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_enum_error_twin_sync(
       CustomEnumErrorTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomEnumErrorTwinSync_One) {
       return [
         0,
@@ -16325,6 +16653,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_custom_error_twin_normal(CustomErrorTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomErrorTwinNormal_Error0) {
       return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
     }
@@ -16338,6 +16667,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_error_twin_rust_async(
       CustomErrorTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomErrorTwinRustAsync_Error0) {
       return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
     }
@@ -16350,6 +16680,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_custom_error_twin_sync(CustomErrorTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomErrorTwinSync_Error0) {
       return [0, cst_encode_String(raw.e), cst_encode_Backtrace(raw.backtrace)];
     }
@@ -16363,6 +16694,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_1_twin_normal(
       CustomNestedError1TwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError1TwinNormal_CustomNested1) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16379,6 +16711,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_1_twin_rust_async(
       CustomNestedError1TwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError1TwinRustAsync_CustomNested1) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16395,6 +16728,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_1_twin_sync(
       CustomNestedError1TwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError1TwinSync_CustomNested1) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16411,6 +16745,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_2_twin_normal(
       CustomNestedError2TwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError2TwinNormal_CustomNested2) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16424,6 +16759,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_2_twin_rust_async(
       CustomNestedError2TwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError2TwinRustAsync_CustomNested2) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16437,6 +16773,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_2_twin_sync(
       CustomNestedError2TwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedError2TwinSync_CustomNested2) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16450,6 +16787,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorInnerTwinNormal_Three) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16463,6 +16801,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_inner_twin_rust_async(
       CustomNestedErrorInnerTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorInnerTwinRustAsync_Three) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16476,6 +16815,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorInnerTwinSync_Three) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16489,6 +16829,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorOuterTwinNormal_One) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16505,6 +16846,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_outer_twin_rust_async(
       CustomNestedErrorOuterTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorOuterTwinRustAsync_One) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16522,6 +16864,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is CustomNestedErrorOuterTwinSync_One) {
       return [0, cst_encode_String(raw.field0)];
     }
@@ -16538,58 +16881,68 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_custom_struct_error_another_twin_normal(
       CustomStructErrorAnotherTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.message)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_error_another_twin_rust_async(
       CustomStructErrorAnotherTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.message)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_error_another_twin_sync(
       CustomStructErrorAnotherTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.message)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_twin_normal(
       CustomStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.message)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.message)];
   }
 
   @protected
   List<dynamic> cst_encode_custom_struct_twin_sync(CustomStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.message)];
   }
 
   @protected
   List<dynamic> cst_encode_customized_twin_normal(CustomizedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.finalField),
       cst_encode_opt_String(raw.nonFinalField)
@@ -16599,6 +16952,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_customized_twin_rust_async(
       CustomizedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.finalField),
       cst_encode_opt_String(raw.nonFinalField)
@@ -16607,6 +16961,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_customized_twin_sync(CustomizedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.finalField),
       cst_encode_opt_String(raw.nonFinalField)
@@ -16616,6 +16971,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_DartOpaque(raw.first),
       cst_encode_DartOpaque(raw.second)
@@ -16625,6 +16981,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_DartOpaque(raw.first),
       cst_encode_DartOpaque(raw.second)
@@ -16634,6 +16991,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_DartOpaque(raw.first),
       cst_encode_DartOpaque(raw.second)
@@ -16643,17 +17001,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_demo_struct_for_rust_call_dart_twin_normal(
       DemoStructForRustCallDartTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.name)];
   }
 
   @protected
   List<dynamic> cst_encode_demo_struct_for_rust_call_dart_twin_rust_async(
       DemoStructForRustCallDartTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.name)];
   }
 
   @protected
   List<dynamic> cst_encode_distance_twin_normal(DistanceTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is DistanceTwinNormal_Unknown) {
       return [0];
     }
@@ -16666,6 +17027,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_distance_twin_rust_async(DistanceTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is DistanceTwinRustAsync_Unknown) {
       return [0];
     }
@@ -16678,6 +17040,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_distance_twin_sync(DistanceTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is DistanceTwinSync_Unknown) {
       return [0];
     }
@@ -16690,6 +17053,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_element_twin_normal(ElementTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.tag),
       cst_encode_opt_String(raw.text),
@@ -16700,6 +17064,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_element_twin_rust_async(ElementTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.tag),
       cst_encode_opt_String(raw.text),
@@ -16710,6 +17075,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_element_twin_sync(ElementTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_String(raw.tag),
       cst_encode_opt_String(raw.text),
@@ -16720,22 +17086,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_empty_twin_normal(EmptyTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [];
   }
 
   @protected
   List<dynamic> cst_encode_empty_twin_rust_async(EmptyTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [];
   }
 
   @protected
   List<dynamic> cst_encode_empty_twin_sync(EmptyTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [];
   }
 
   @protected
   List<dynamic> cst_encode_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumDartOpaqueTwinNormal_Primitive) {
       return [0, cst_encode_i_32(raw.field0)];
     }
@@ -16749,6 +17119,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumDartOpaqueTwinRustAsync_Primitive) {
       return [0, cst_encode_i_32(raw.field0)];
     }
@@ -16762,6 +17133,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_dart_opaque_twin_sync(
       EnumDartOpaqueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumDartOpaqueTwinSync_Primitive) {
       return [0, cst_encode_i_32(raw.field0)];
     }
@@ -16774,6 +17146,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_moi(EnumOpaqueTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinMoi_Struct) {
       return [0, cst_encode_RustOpaque_hide_data_twin_moi(raw.field0)];
     }
@@ -16796,11 +17169,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_moi_array_5(
       EnumOpaqueTwinMoiArray5 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinNormal_Struct) {
       return [0, cst_encode_RustOpaque_hide_data_twin_normal(raw.field0)];
     }
@@ -16823,12 +17198,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_normal_array_5(
       EnumOpaqueTwinNormalArray5 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinRustAsync_Struct) {
       return [0, cst_encode_RustOpaque_hide_data_twin_rust_async(raw.field0)];
     }
@@ -16854,12 +17231,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_rust_async_array_5(
       EnumOpaqueTwinRustAsyncArray5 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_rust_async_moi(
       EnumOpaqueTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinRustAsyncMoi_Struct) {
       return [
         0,
@@ -16894,11 +17273,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_rust_async_moi_array_5(
       EnumOpaqueTwinRustAsyncMoiArray5 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_rust_async_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinSync_Struct) {
       return [0, cst_encode_RustOpaque_hide_data_twin_sync(raw.field0)];
     }
@@ -16921,12 +17302,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_sync_array_5(
       EnumOpaqueTwinSyncArray5 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_sync_moi(
       EnumOpaqueTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumOpaqueTwinSyncMoi_Struct) {
       return [0, cst_encode_RustOpaque_hide_data_twin_sync_moi(raw.field0)];
     }
@@ -16949,12 +17332,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_opaque_twin_sync_moi_array_5(
       EnumOpaqueTwinSyncMoiArray5 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_sync_moi(raw);
   }
 
   @protected
   List<dynamic> cst_encode_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemMixedTwinNormal_A) {
       return [0];
     }
@@ -16971,6 +17356,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemMixedTwinRustAsync_A) {
       return [0];
     }
@@ -16987,6 +17373,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemMixedTwinSync_A) {
       return [0];
     }
@@ -17003,6 +17390,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemStructTwinNormal_A) {
       return [0, cst_encode_list_prim_u_8_strict(raw.aField)];
     }
@@ -17016,6 +17404,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemStructTwinRustAsync_A) {
       return [0, cst_encode_list_prim_u_8_strict(raw.aField)];
     }
@@ -17029,6 +17418,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemStructTwinSync_A) {
       return [0, cst_encode_list_prim_u_8_strict(raw.aField)];
     }
@@ -17042,6 +17432,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemTupleTwinNormal_A) {
       return [0, cst_encode_list_prim_u_8_strict(raw.field0)];
     }
@@ -17055,6 +17446,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemTupleTwinRustAsync_A) {
       return [0, cst_encode_list_prim_u_8_strict(raw.field0)];
     }
@@ -17068,6 +17460,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is EnumWithItemTupleTwinSync_A) {
       return [0, cst_encode_list_prim_u_8_strict(raw.field0)];
     }
@@ -17080,17 +17473,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_event_twin_normal(EventTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.address), cst_encode_String(raw.payload)];
   }
 
   @protected
   List<dynamic> cst_encode_event_twin_rust_async(EventTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.address), cst_encode_String(raw.payload)];
   }
 
   @protected
   List<dynamic> cst_encode_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_i_32(raw.int32),
       cst_encode_opt_box_autoadd_i_64(raw.int64),
@@ -17114,6 +17510,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_i_32(raw.int32),
       cst_encode_opt_box_autoadd_i_64(raw.int64),
@@ -17137,6 +17534,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_i_32(raw.int32),
       cst_encode_opt_box_autoadd_i_64(raw.int64),
@@ -17159,12 +17557,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Float64List cst_encode_f_64_array_16(F64Array16 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return Float64List.fromList(raw);
   }
 
   @protected
   List<dynamic> cst_encode_feature_chrono_twin_normal(
       FeatureChronoTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
@@ -17176,6 +17576,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
@@ -17186,6 +17587,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
@@ -17196,47 +17598,56 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_Uuid(raw.one)];
   }
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_Uuid(raw.one)];
   }
 
   @protected
   List<dynamic> cst_encode_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_Uuid(raw.one)];
   }
 
   @protected
   List<dynamic> cst_encode_feed_id_twin_normal(FeedIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_8(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_8(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_feed_id_twin_sync(FeedIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_8(raw.field0)];
   }
 
   @protected
   Int32List cst_encode_i_32_array_2(I32Array2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return Int32List.fromList(raw);
   }
 
   @protected
   Object cst_encode_i_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
 
   @protected
   List<dynamic> cst_encode_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinNormal_Empty) {
       return [0];
     }
@@ -17275,6 +17686,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinRustAsync_Empty) {
       return [0];
     }
@@ -17312,6 +17724,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is KitchenSinkTwinSync_Empty) {
       return [0];
     }
@@ -17349,45 +17762,53 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_list_Chrono_Duration(List<Duration> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_Chrono_Duration).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_Chrono_Local(List<DateTime> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_Chrono_Local).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_Chrono_Naive(List<DateTime> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_Chrono_Naive).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_DartOpaque(List<Object> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_DartOpaque).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_RustOpaque_hide_data_twin_moi(
       List<HideDataTwinMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_RustOpaque_hide_data_twin_moi).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_RustOpaque_hide_data_twin_normal(
       List<HideDataTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_RustOpaque_hide_data_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_RustOpaque_hide_data_twin_rust_async(
       List<HideDataTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_RustOpaque_hide_data_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_RustOpaque_hide_data_twin_rust_async_moi(
       List<HideDataTwinRustAsyncMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_RustOpaque_hide_data_twin_rust_async_moi)
         .toList();
@@ -17396,216 +17817,253 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_RustOpaque_hide_data_twin_sync(
       List<HideDataTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_RustOpaque_hide_data_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_RustOpaque_hide_data_twin_sync_moi(
       List<HideDataTwinSyncMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_RustOpaque_hide_data_twin_sync_moi).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_String(List<String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_String).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_application_env_var(
       List<ApplicationEnvVar> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_application_env_var).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_application_settings(
       List<ApplicationSettings> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_application_settings).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_attribute_twin_normal(
       List<AttributeTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_attribute_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_attribute_twin_rust_async(
       List<AttributeTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_attribute_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_attribute_twin_sync(
       List<AttributeTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_attribute_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_general_enum_twin_normal(
       List<BasicGeneralEnumTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_general_enum_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_general_enum_twin_rust_async(
       List<BasicGeneralEnumTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_general_enum_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_general_enum_twin_sync(
       List<BasicGeneralEnumTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_general_enum_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_primitive_enum_twin_normal(
       List<BasicPrimitiveEnumTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_primitive_enum_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_primitive_enum_twin_rust_async(
       List<BasicPrimitiveEnumTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_primitive_enum_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_primitive_enum_twin_sync(
       List<BasicPrimitiveEnumTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_primitive_enum_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_struct_twin_normal(
       List<BasicStructTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_struct_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_struct_twin_rust_async(
       List<BasicStructTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_struct_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_basic_struct_twin_sync(
       List<BasicStructTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_basic_struct_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_bool(List<bool> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_bool).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_element_twin_normal(
       List<ElementTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_element_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_element_twin_rust_async(
       List<ElementTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_element_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_element_twin_sync(List<ElementTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_element_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_enum_opaque_twin_moi(
       List<EnumOpaqueTwinMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_enum_opaque_twin_moi).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_enum_opaque_twin_normal(
       List<EnumOpaqueTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_enum_opaque_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_enum_opaque_twin_rust_async(
       List<EnumOpaqueTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_enum_opaque_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_enum_opaque_twin_rust_async_moi(
       List<EnumOpaqueTwinRustAsyncMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_enum_opaque_twin_rust_async_moi).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_enum_opaque_twin_sync(
       List<EnumOpaqueTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_enum_opaque_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_enum_opaque_twin_sync_moi(
       List<EnumOpaqueTwinSyncMoi> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_enum_opaque_twin_sync_moi).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_my_enum(List<MyEnum> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_my_enum).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_my_size(List<MySize> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_my_size).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_my_tree_node_twin_normal(
       List<MyTreeNodeTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_my_tree_node_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_my_tree_node_twin_rust_async(
       List<MyTreeNodeTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_my_tree_node_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_my_tree_node_twin_sync(
       List<MyTreeNodeTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_my_tree_node_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_nested_raw_string_mirrored(
       List<NestedRawStringMirrored> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_nested_raw_string_mirrored).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_of_nested_raw_string_mirrored(
       ListOfNestedRawStringMirrored raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_list_nested_raw_string_mirrored(raw.raw)];
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_String(List<String?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_opt_String).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_opt_box_autoadd_attribute_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(
       List<AttributeTwinRustAsync?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_opt_box_autoadd_attribute_twin_rust_async)
         .toList();
@@ -17614,23 +18072,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_opt_box_autoadd_attribute_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_i_32(List<int?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_opt_box_autoadd_i_32).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_normal(
       List<WeekdaysTwinNormal?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_opt_box_autoadd_weekdays_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
       List<WeekdaysTwinRustAsync?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_opt_box_autoadd_weekdays_twin_rust_async)
         .toList();
@@ -17639,136 +18101,162 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_sync(
       List<WeekdaysTwinSync?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_opt_box_autoadd_weekdays_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_list_prim_i_32_strict(
       List<Int32List?> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_opt_list_prim_i_32_strict).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_point_twin_normal(List<PointTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_point_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_point_twin_rust_async(
       List<PointTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_point_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_point_twin_sync(List<PointTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_point_twin_sync).toList();
   }
 
   @protected
   List<double> cst_encode_list_prim_f_32_loose(List<double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Float32List cst_encode_list_prim_f_32_strict(Float32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   List<double> cst_encode_list_prim_f_64_loose(List<double> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Float64List cst_encode_list_prim_f_64_strict(Float64List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   List<int> cst_encode_list_prim_i_16_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Int16List cst_encode_list_prim_i_16_strict(Int16List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   List<int> cst_encode_list_prim_i_32_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Int32List cst_encode_list_prim_i_32_strict(Int32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Object /* BigInt64Array */ cst_encode_list_prim_i_64_strict(Int64List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.inner;
   }
 
   @protected
   List<int> cst_encode_list_prim_i_8_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Int8List cst_encode_list_prim_i_8_strict(Int8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   List<int> cst_encode_list_prim_u_16_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Uint16List cst_encode_list_prim_u_16_strict(Uint16List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   List<int> cst_encode_list_prim_u_32_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Uint32List cst_encode_list_prim_u_32_strict(Uint32List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Object /* BigInt64Array */ cst_encode_list_prim_u_64_strict(Uint64List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.inner;
   }
 
   @protected
   List<int> cst_encode_list_prim_u_8_loose(List<int> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   Uint8List cst_encode_list_prim_u_8_strict(Uint8List raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw;
   }
 
   @protected
   List<dynamic> cst_encode_list_raw_string_enum_mirrored(
       List<RawStringEnumMirrored> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_raw_string_enum_mirrored).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_raw_string_mirrored(
       List<RawStringMirrored> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_raw_string_mirrored).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_general_enum_twin_normal(
       List<(int, BasicGeneralEnumTwinNormal)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_general_enum_twin_normal)
         .toList();
@@ -17777,6 +18265,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_general_enum_twin_rust_async(
       List<(int, BasicGeneralEnumTwinRustAsync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_general_enum_twin_rust_async)
         .toList();
@@ -17785,6 +18274,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_general_enum_twin_sync(
       List<(int, BasicGeneralEnumTwinSync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_general_enum_twin_sync)
         .toList();
@@ -17793,6 +18283,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_primitive_enum_twin_normal(
       List<(int, BasicPrimitiveEnumTwinNormal)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_primitive_enum_twin_normal)
         .toList();
@@ -17802,6 +18293,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic>
       cst_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
           List<(int, BasicPrimitiveEnumTwinRustAsync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_primitive_enum_twin_rust_async)
         .toList();
@@ -17810,6 +18302,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_primitive_enum_twin_sync(
       List<(int, BasicPrimitiveEnumTwinSync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_primitive_enum_twin_sync)
         .toList();
@@ -17818,12 +18311,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_struct_twin_normal(
       List<(int, BasicStructTwinNormal)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_basic_struct_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_struct_twin_rust_async(
       List<(int, BasicStructTwinRustAsync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_i_32_basic_struct_twin_rust_async)
         .toList();
@@ -17832,94 +18327,112 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_i_32_basic_struct_twin_sync(
       List<(int, BasicStructTwinSync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_basic_struct_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_bool(List<(int, bool)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_bool).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_f_32(List<(int, double)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_f_32).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_f_64(List<(int, double)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_f_64).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_i_16(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_i_16).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_i_32(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_i_32).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_i_64(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_i_64).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_i_8(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_i_8).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_isize(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_isize).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_list_prim_u_8_strict(
       List<(int, Uint8List)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_list_prim_u_8_strict).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_string(List<(int, String)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_string).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_u_16(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_u_16).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_u_32(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_u_32).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_u_64(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_u_64).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_u_8(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_u_8).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_i_32_usize(List<(int, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_i_32_usize).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_enum_simple_twin_normal(
       List<(String, EnumSimpleTwinNormal)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_enum_simple_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_enum_simple_twin_rust_async(
       List<(String, EnumSimpleTwinRustAsync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_string_enum_simple_twin_rust_async)
         .toList();
@@ -17928,23 +18441,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_string_enum_simple_twin_sync(
       List<(String, EnumSimpleTwinSync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_enum_simple_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_i_32(List<(String, int)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_i_32).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_normal(
       List<(String, KitchenSinkTwinNormal)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_kitchen_sink_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_rust_async(
       List<(String, KitchenSinkTwinRustAsync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw
         .map(cst_encode_record_string_kitchen_sink_twin_rust_async)
         .toList();
@@ -17953,110 +18470,130 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_list_record_string_kitchen_sink_twin_sync(
       List<(String, KitchenSinkTwinSync)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_kitchen_sink_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_list_prim_u_8_strict(
       List<(String, Uint8List)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_list_prim_u_8_strict).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_my_size(
       List<(String, MySize)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_my_size).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_record_string_string(
       List<(String, String)> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_record_string_string).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_sum_with_twin_normal(
       List<SumWithTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_sum_with_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_sum_with_twin_rust_async(
       List<SumWithTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_sum_with_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_sum_with_twin_sync(List<SumWithTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_sum_with_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_test_id_twin_normal(
       List<TestIdTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_test_id_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_test_id_twin_rust_async(
       List<TestIdTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_test_id_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_test_id_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_weekdays_twin_normal(
       List<WeekdaysTwinNormal> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_weekdays_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_weekdays_twin_rust_async(
       List<WeekdaysTwinRustAsync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_weekdays_twin_rust_async).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_weekdays_twin_sync(List<WeekdaysTwinSync> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_weekdays_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_log_2_twin_normal(Log2TwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_log_2_twin_rust_async(Log2TwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_log_2_twin_sync(Log2TwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_log_twin_normal(LogTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_log_twin_rust_async(LogTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.key), cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_macro_struct(MacroStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.data)];
   }
 
   @protected
   List<dynamic> cst_encode_measure_twin_normal(MeasureTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MeasureTwinNormal_Speed) {
       return [0, cst_encode_box_speed_twin_normal(raw.field0)];
     }
@@ -18069,6 +18606,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_measure_twin_rust_async(MeasureTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MeasureTwinRustAsync_Speed) {
       return [0, cst_encode_box_speed_twin_rust_async(raw.field0)];
     }
@@ -18081,6 +18619,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_measure_twin_sync(MeasureTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is MeasureTwinSync_Speed) {
       return [0, cst_encode_box_speed_twin_sync(raw.field0)];
     }
@@ -18093,23 +18632,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_message_id_twin_normal(MessageIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_32(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_message_id_twin_rust_async(
       MessageIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_32(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_message_id_twin_sync(MessageIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_32(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_mirror_struct_twin_normal(
       MirrorStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_application_settings(raw.a),
       cst_encode_my_struct(raw.b),
@@ -18121,6 +18664,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_mirror_struct_twin_rust_async(
       MirrorStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_application_settings(raw.a),
       cst_encode_my_struct(raw.b),
@@ -18131,6 +18675,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_mirror_struct_twin_sync(MirrorStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_application_settings(raw.a),
       cst_encode_my_struct(raw.b),
@@ -18142,6 +18687,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_normal(
       MoreThanJustOneRawStringStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.regular),
       cst_encode_String(raw.type),
@@ -18153,6 +18699,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_rust_async(
       MoreThanJustOneRawStringStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.regular),
       cst_encode_String(raw.type),
@@ -18164,6 +18711,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_more_than_just_one_raw_string_struct_twin_sync(
       MoreThanJustOneRawStringStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.regular),
       cst_encode_String(raw.type),
@@ -18175,6 +18723,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_my_tree_node_twin_normal(raw.treeNode),
       cst_encode_weekdays_twin_normal(raw.weekday)
@@ -18184,6 +18733,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_my_tree_node_twin_rust_async(raw.treeNode),
       cst_encode_weekdays_twin_rust_async(raw.weekday)
@@ -18193,6 +18743,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_my_nested_struct_twin_sync(
       MyNestedStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_my_tree_node_twin_sync(raw.treeNode),
       cst_encode_weekdays_twin_sync(raw.weekday)
@@ -18201,28 +18752,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_my_size(MySize raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.width), cst_encode_i_32(raw.height)];
   }
 
   @protected
   List<dynamic> cst_encode_my_stream_entry_twin_normal(
       MyStreamEntryTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.hello)];
   }
 
   @protected
   List<dynamic> cst_encode_my_stream_entry_twin_rust_async(
       MyStreamEntryTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.hello)];
   }
 
   @protected
   List<dynamic> cst_encode_my_struct(MyStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_bool(raw.content)];
   }
 
   @protected
   List<dynamic> cst_encode_my_tree_node_twin_normal(MyTreeNodeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.valueI32),
       cst_encode_list_prim_u_8_strict(raw.valueVecU8),
@@ -18234,6 +18790,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.valueI32),
       cst_encode_list_prim_u_8_strict(raw.valueVecU8),
@@ -18244,6 +18801,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.valueI32),
       cst_encode_list_prim_u_8_strict(raw.valueVecU8),
@@ -18255,32 +18813,38 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_nested_raw_string_mirrored(
       NestedRawStringMirrored raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_raw_string_mirrored(raw.raw)];
   }
 
   @protected
   List<dynamic> cst_encode_new_simple_struct(NewSimpleStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field)];
   }
 
   @protected
   List<dynamic> cst_encode_new_type_int_twin_normal(NewTypeIntTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_64(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_64(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_64(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_note_twin_normal(NoteTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_box_weekdays_twin_normal(raw.day),
       cst_encode_String(raw.body)
@@ -18289,6 +18853,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_note_twin_rust_async(NoteTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_box_weekdays_twin_rust_async(raw.day),
       cst_encode_String(raw.body)
@@ -18297,6 +18862,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_note_twin_sync(NoteTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_box_weekdays_twin_sync(raw.day),
       cst_encode_String(raw.body)
@@ -18305,16 +18871,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_numbers(Numbers raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_list_prim_i_32_strict(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_old_simple_struct(OldSimpleStruct raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field)];
   }
 
   @protected
   List<dynamic> cst_encode_opaque_nested_twin_moi(OpaqueNestedTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_hide_data_twin_moi(raw.first),
       cst_encode_RustOpaque_hide_data_twin_moi(raw.second)
@@ -18324,6 +18893,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_hide_data_twin_normal(raw.first),
       cst_encode_RustOpaque_hide_data_twin_normal(raw.second)
@@ -18333,6 +18903,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_hide_data_twin_rust_async(raw.first),
       cst_encode_RustOpaque_hide_data_twin_rust_async(raw.second)
@@ -18342,6 +18913,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_opaque_nested_twin_rust_async_moi(
       OpaqueNestedTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_hide_data_twin_rust_async_moi(raw.first),
       cst_encode_RustOpaque_hide_data_twin_rust_async_moi(raw.second)
@@ -18350,6 +18922,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_hide_data_twin_sync(raw.first),
       cst_encode_RustOpaque_hide_data_twin_sync(raw.second)
@@ -18359,6 +18932,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_opaque_nested_twin_sync_moi(
       OpaqueNestedTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_RustOpaque_hide_data_twin_sync_moi(raw.first),
       cst_encode_RustOpaque_hide_data_twin_sync_moi(raw.second)
@@ -18367,32 +18941,38 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String? cst_encode_opt_String(String? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_String(raw);
   }
 
   @protected
   Object? cst_encode_opt_box_autoadd_Chrono_Duration(Duration? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_Chrono_Duration(raw);
   }
 
   @protected
   Object? cst_encode_opt_box_autoadd_Chrono_Naive(DateTime? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_Chrono_Naive(raw);
   }
 
   @protected
   Object? cst_encode_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_Chrono_Utc(raw);
   }
 
   @protected
   PlatformPointer? cst_encode_opt_box_autoadd_DartOpaque(Object? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_DartOpaque(raw);
   }
 
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_another_twin_moi(
       HideDataAnotherTwinMoi? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_another_twin_moi(raw);
@@ -18401,6 +18981,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_another_twin_normal(
       HideDataAnotherTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_another_twin_normal(raw);
@@ -18409,6 +18990,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_moi(
       HideDataTwinMoi? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_twin_moi(raw);
@@ -18417,6 +18999,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_normal(
       HideDataTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_twin_normal(raw);
@@ -18425,6 +19008,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async(
       HideDataTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async(raw);
@@ -18433,6 +19017,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
       HideDataTwinRustAsyncMoi? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(raw);
@@ -18441,6 +19026,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(
       HideDataTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_twin_sync(raw);
@@ -18449,6 +19035,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
       HideDataTwinSyncMoi? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(raw);
@@ -18457,12 +19044,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_application_env(
       ApplicationEnv? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_application_env(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_normal(
       AttributeTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_attribute_twin_normal(raw);
@@ -18471,6 +19060,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_rust_async(
       AttributeTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_attribute_twin_rust_async(raw);
@@ -18479,12 +19069,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_sync(
       AttributeTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_attribute_twin_sync(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_basic_general_enum_twin_normal(
       BasicGeneralEnumTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_general_enum_twin_normal(raw);
@@ -18493,6 +19085,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_basic_general_enum_twin_rust_async(
       BasicGeneralEnumTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_general_enum_twin_rust_async(raw);
@@ -18501,6 +19094,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_basic_general_enum_twin_sync(
       BasicGeneralEnumTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_general_enum_twin_sync(raw);
@@ -18509,6 +19103,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int? cst_encode_opt_box_autoadd_basic_primitive_enum_twin_normal(
       BasicPrimitiveEnumTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_primitive_enum_twin_normal(raw);
@@ -18517,6 +19112,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int? cst_encode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
       BasicPrimitiveEnumTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_primitive_enum_twin_rust_async(raw);
@@ -18525,6 +19121,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int? cst_encode_opt_box_autoadd_basic_primitive_enum_twin_sync(
       BasicPrimitiveEnumTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_primitive_enum_twin_sync(raw);
@@ -18533,6 +19130,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_basic_struct_twin_normal(
       BasicStructTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_struct_twin_normal(raw);
@@ -18541,6 +19139,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_basic_struct_twin_rust_async(
       BasicStructTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_struct_twin_rust_async(raw);
@@ -18549,6 +19148,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_basic_struct_twin_sync(
       BasicStructTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_basic_struct_twin_sync(raw);
@@ -18556,18 +19156,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   bool? cst_encode_opt_box_autoadd_bool(bool? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_bool(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_element_twin_normal(
       ElementTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_element_twin_normal(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_element_twin_rust_async(
       ElementTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_element_twin_rust_async(raw);
@@ -18576,12 +19179,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_element_twin_sync(
       ElementTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_element_twin_sync(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_exotic_optionals_twin_normal(raw);
@@ -18590,6 +19195,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_exotic_optionals_twin_rust_async(raw);
@@ -18598,6 +19204,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_exotic_optionals_twin_sync(raw);
@@ -18605,48 +19212,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   double? cst_encode_opt_box_autoadd_f_32(double? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_f_32(raw);
   }
 
   @protected
   double? cst_encode_opt_box_autoadd_f_64(double? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_f_64(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_i_16(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_i_16(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_i_32(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_i_32(raw);
   }
 
   @protected
   Object? cst_encode_opt_box_autoadd_i_64(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_i_64(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_i_8(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_i_8(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_isize(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_isize(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_normal(
       MeasureTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_measure_twin_normal(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_rust_async(
       MeasureTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_measure_twin_rust_async(raw);
@@ -18655,12 +19271,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_measure_twin_sync(
       MeasureTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_measure_twin_sync(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_new_type_int_twin_normal(raw);
@@ -18669,6 +19287,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_new_type_int_twin_rust_async(raw);
@@ -18677,6 +19296,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_sync(
       NewTypeIntTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_new_type_int_twin_sync(raw);
@@ -18685,37 +19305,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_autoadd_record_string_i_32(
       (String, int)? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_record_string_i_32(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_u_16(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_u_16(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_u_32(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_u_32(raw);
   }
 
   @protected
   Object? cst_encode_opt_box_autoadd_u_64(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_u_64(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_u_8(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_u_8(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_usize(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_usize(raw);
   }
 
   @protected
   int? cst_encode_opt_box_autoadd_weekdays_twin_normal(
       WeekdaysTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_weekdays_twin_normal(raw);
@@ -18724,6 +19351,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int? cst_encode_opt_box_autoadd_weekdays_twin_rust_async(
       WeekdaysTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_autoadd_weekdays_twin_rust_async(raw);
@@ -18731,12 +19359,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int? cst_encode_opt_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_weekdays_twin_sync(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_benchmark_binary_tree_twin_normal(raw);
@@ -18745,6 +19375,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_rust_async(
       BenchmarkBinaryTreeTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_benchmark_binary_tree_twin_rust_async(raw);
@@ -18753,6 +19384,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_benchmark_binary_tree_twin_sync(
       BenchmarkBinaryTreeTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_benchmark_binary_tree_twin_sync(raw);
@@ -18760,12 +19392,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   bool? cst_encode_opt_box_bool(bool? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_bool(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_exotic_optionals_twin_normal(raw);
@@ -18774,6 +19408,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_box_exotic_optionals_twin_rust_async(raw);
@@ -18782,73 +19417,86 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_exotic_optionals_twin_sync(raw);
   }
 
   @protected
   double? cst_encode_opt_box_f_64(double? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_f_64(raw);
   }
 
   @protected
   int? cst_encode_opt_box_i_32(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_i_32(raw);
   }
 
   @protected
   Object? cst_encode_opt_box_i_64(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_i_64(raw);
   }
 
   @protected
   int? cst_encode_opt_box_i_8(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_i_8(raw);
   }
 
   @protected
   int? cst_encode_opt_box_u_8(int? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_u_8(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_list_attribute_twin_normal(
       List<AttributeTwinNormal>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_attribute_twin_normal(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_list_attribute_twin_rust_async(
       List<AttributeTwinRustAsync>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_attribute_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_list_attribute_twin_sync(
       List<AttributeTwinSync>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_attribute_twin_sync(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_list_element_twin_normal(
       List<ElementTwinNormal>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_element_twin_normal(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_list_element_twin_rust_async(
       List<ElementTwinRustAsync>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_element_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_list_element_twin_sync(
       List<ElementTwinSync>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_element_twin_sync(raw);
   }
 
   @protected
   List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_list_opt_box_autoadd_attribute_twin_normal(raw);
@@ -18857,6 +19505,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
       List<AttributeTwinRustAsync?>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(raw);
@@ -18865,6 +19514,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
         ? null
         : cst_encode_list_opt_box_autoadd_attribute_twin_sync(raw);
@@ -18872,31 +19522,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Float32List? cst_encode_opt_list_prim_f_32_strict(Float32List? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_f_32_strict(raw);
   }
 
   @protected
   Float64List? cst_encode_opt_list_prim_f_64_strict(Float64List? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_f_64_strict(raw);
   }
 
   @protected
   Int32List? cst_encode_opt_list_prim_i_32_strict(Int32List? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_i_32_strict(raw);
   }
 
   @protected
   Int8List? cst_encode_opt_list_prim_i_8_strict(Int8List? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_i_8_strict(raw);
   }
 
   @protected
   Uint8List? cst_encode_opt_list_prim_u_8_strict(Uint8List? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_list_prim_u_8_strict(raw);
   }
 
   @protected
   List<dynamic> cst_encode_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_opt_box_autoadd_i_32(raw.i32),
       cst_encode_list_opt_box_autoadd_weekdays_twin_normal(raw.enums),
@@ -18907,6 +19563,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_opt_box_autoadd_i_32(raw.i32),
       cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(raw.enums),
@@ -18917,6 +19574,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_opt_vecs_twin_sync(OptVecsTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_opt_box_autoadd_i_32(raw.i32),
       cst_encode_list_opt_box_autoadd_weekdays_twin_sync(raw.enums),
@@ -18927,38 +19585,45 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_point_twin_normal(PointTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
   }
 
   @protected
   List<dynamic> cst_encode_point_twin_normal_array_2(
       PointTwinNormalArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_point_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_point_twin_rust_async(PointTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
   }
 
   @protected
   List<dynamic> cst_encode_point_twin_rust_async_array_2(
       PointTwinRustAsyncArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_point_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_point_twin_sync(PointTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_f_32(raw.x), cst_encode_f_32(raw.y)];
   }
 
   @protected
   List<dynamic> cst_encode_point_twin_sync_array_2(PointTwinSyncArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_point_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_raw_string_enum_mirrored(RawStringEnumMirrored raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is RawStringEnumMirrored_Raw) {
       return [0, cst_encode_box_autoadd_raw_string_mirrored(raw.field0)];
     }
@@ -18978,29 +19643,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_raw_string_item_struct_twin_normal(
       RawStringItemStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.type)];
   }
 
   @protected
   List<dynamic> cst_encode_raw_string_item_struct_twin_rust_async(
       RawStringItemStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.type)];
   }
 
   @protected
   List<dynamic> cst_encode_raw_string_item_struct_twin_sync(
       RawStringItemStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.type)];
   }
 
   @protected
   List<dynamic> cst_encode_raw_string_mirrored(RawStringMirrored raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_record_application_settings_raw_string_enum_mirrored(
       (ApplicationSettings, RawStringEnumMirrored) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_application_settings(raw.$1),
       cst_encode_raw_string_enum_mirrored(raw.$2)
@@ -19010,6 +19680,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_general_enum_twin_normal(
       (int, BasicGeneralEnumTwinNormal) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_general_enum_twin_normal(raw.$2)
@@ -19019,6 +19690,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_general_enum_twin_rust_async(
       (int, BasicGeneralEnumTwinRustAsync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_general_enum_twin_rust_async(raw.$2)
@@ -19028,6 +19700,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_general_enum_twin_sync(
       (int, BasicGeneralEnumTwinSync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_general_enum_twin_sync(raw.$2)
@@ -19037,6 +19710,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_primitive_enum_twin_normal(
       (int, BasicPrimitiveEnumTwinNormal) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_primitive_enum_twin_normal(raw.$2)
@@ -19046,6 +19720,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_primitive_enum_twin_rust_async(
       (int, BasicPrimitiveEnumTwinRustAsync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_primitive_enum_twin_rust_async(raw.$2)
@@ -19055,6 +19730,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_primitive_enum_twin_sync(
       (int, BasicPrimitiveEnumTwinSync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_primitive_enum_twin_sync(raw.$2)
@@ -19064,6 +19740,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_struct_twin_normal(
       (int, BasicStructTwinNormal) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_struct_twin_normal(raw.$2)
@@ -19073,6 +19750,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_struct_twin_rust_async(
       (int, BasicStructTwinRustAsync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_i_32(raw.$1),
       cst_encode_basic_struct_twin_rust_async(raw.$2)
@@ -19082,88 +19760,105 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_i_32_basic_struct_twin_sync(
       (int, BasicStructTwinSync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_basic_struct_twin_sync(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_bool((int, bool) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_bool(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_f_32((int, double) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_f_32(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_f_64((int, double) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_f_64(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_i_16((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_i_16(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_i_32((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_i_32(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_i_64((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_i_64(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_i_8((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_i_8(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_isize((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_isize(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_list_prim_u_8_strict(
       (int, Uint8List) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_list_prim_u_8_strict(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_string((int, String) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_String(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_u_16((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_u_16(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_u_32((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_u_32(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_u_64((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_u_64(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_u_8((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_u_8(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_i_32_usize((int, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.$1), cst_encode_usize(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_string_enum_simple_twin_normal(
       (String, EnumSimpleTwinNormal) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_enum_simple_twin_normal(raw.$2)
@@ -19173,6 +19868,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_string_enum_simple_twin_rust_async(
       (String, EnumSimpleTwinRustAsync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_enum_simple_twin_rust_async(raw.$2)
@@ -19182,6 +19878,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_string_enum_simple_twin_sync(
       (String, EnumSimpleTwinSync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_enum_simple_twin_sync(raw.$2)
@@ -19190,12 +19887,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_record_string_i_32((String, int) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.$1), cst_encode_i_32(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_string_kitchen_sink_twin_normal(
       (String, KitchenSinkTwinNormal) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_kitchen_sink_twin_normal(raw.$2)
@@ -19205,6 +19904,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_string_kitchen_sink_twin_rust_async(
       (String, KitchenSinkTwinRustAsync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_kitchen_sink_twin_rust_async(raw.$2)
@@ -19214,6 +19914,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_string_kitchen_sink_twin_sync(
       (String, KitchenSinkTwinSync) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_String(raw.$1),
       cst_encode_kitchen_sink_twin_sync(raw.$2)
@@ -19223,42 +19924,50 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_record_string_list_prim_u_8_strict(
       (String, Uint8List) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.$1), cst_encode_list_prim_u_8_strict(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_string_my_size((String, MySize) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.$1), cst_encode_my_size(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_record_string_string((String, String) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.$1), cst_encode_String(raw.$2)];
   }
 
   @protected
   List<dynamic> cst_encode_sequences(Sequences raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_list_prim_i_32_strict(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_some_struct_twin_normal(SomeStructTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_some_struct_twin_rust_async(
       SomeStructTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_some_struct_twin_sync(SomeStructTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_speed_twin_normal(SpeedTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SpeedTwinNormal_Unknown) {
       return [0];
     }
@@ -19271,6 +19980,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SpeedTwinRustAsync_Unknown) {
       return [0];
     }
@@ -19283,6 +19993,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_speed_twin_sync(SpeedTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     if (raw is SpeedTwinSync_Unknown) {
       return [0];
     }
@@ -19296,24 +20007,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.fieldWithComments)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.fieldWithComments)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.fieldWithComments)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_abc_twin_normal(raw.abc1),
       cst_encode_abc_twin_normal(raw.abc2)
@@ -19323,6 +20038,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_abc_twin_rust_async(raw.abc1),
       cst_encode_abc_twin_rust_async(raw.abc2)
@@ -19332,6 +20048,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_struct_with_enum_twin_sync(
       StructWithEnumTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_abc_twin_sync(raw.abc1),
       cst_encode_abc_twin_sync(raw.abc2)
@@ -19341,92 +20058,108 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.a)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_zero_field_twin_rust_async(
       StructWithZeroFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [];
   }
 
   @protected
   List<dynamic> cst_encode_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [];
   }
 
   @protected
   List<dynamic> cst_encode_sum_with_twin_normal(SumWithTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.x)];
   }
 
   @protected
   List<dynamic> cst_encode_sum_with_twin_normal_array_3(
       SumWithTwinNormalArray3 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_sum_with_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.x)];
   }
 
   @protected
   List<dynamic> cst_encode_sum_with_twin_rust_async_array_3(
       SumWithTwinRustAsyncArray3 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_sum_with_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_sum_with_twin_sync(SumWithTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.x)];
   }
 
   @protected
   List<dynamic> cst_encode_sum_with_twin_sync_array_3(
       SumWithTwinSyncArray3 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_sum_with_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_test_chrono_twin_normal(TestChronoTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
@@ -19437,6 +20170,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_test_chrono_twin_rust_async(
       TestChronoTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
@@ -19446,6 +20180,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_test_chrono_twin_sync(TestChronoTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
@@ -19455,55 +20190,65 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_test_id_twin_normal(TestIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32_array_2(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_normal_array_2(
       TestIdTwinNormalArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_normal_array_4(
       TestIdTwinNormalArray4 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_normal(raw);
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32_array_2(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_rust_async_array_2(
       TestIdTwinRustAsyncArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_rust_async_array_4(
       TestIdTwinRustAsyncArray4 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_rust_async(raw);
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_sync(TestIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32_array_2(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_sync_array_2(TestIdTwinSyncArray2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_test_id_twin_sync(raw);
   }
 
   @protected
   List<dynamic> cst_encode_test_model_twin_normal(TestModelTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_u_64(raw.id),
       cst_encode_String(raw.name),
@@ -19515,6 +20260,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_test_model_twin_rust_async(
       TestModelTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_u_64(raw.id),
       cst_encode_String(raw.name),
@@ -19525,6 +20271,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_test_model_twin_sync(TestModelTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_u_64(raw.id),
       cst_encode_String(raw.name),
@@ -19536,82 +20283,97 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_tuple_struct_with_one_field_twin_rust_async(
       TupleStructWithOneFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field0)];
   }
 
   @protected
   List<dynamic> cst_encode_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
   }
 
   @protected
   List<dynamic> cst_encode_tuple_struct_with_two_field_twin_rust_async(
       TupleStructWithTwoFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
   }
 
   @protected
   List<dynamic> cst_encode_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
   }
 
   @protected
   Object cst_encode_u_64(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return castNativeBigInt(raw);
   }
 
   @protected
   Uint8List cst_encode_u_8_array_1600(U8Array1600 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return Uint8List.fromList(raw);
   }
 
   @protected
   Uint8List cst_encode_u_8_array_32(U8Array32 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return Uint8List.fromList(raw);
   }
 
   @protected
   Uint8List cst_encode_u_8_array_5(U8Array5 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return Uint8List.fromList(raw);
   }
 
   @protected
   Uint8List cst_encode_u_8_array_8(U8Array8 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return Uint8List.fromList(raw);
   }
 
   @protected
   List<dynamic> cst_encode_user_id_twin_normal(UserIdTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_user_id_twin_sync(UserIdTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_32(raw.value)];
   }
 
   @protected
   List<dynamic> cst_encode_vec_of_primitive_pack_twin_normal(
       VecOfPrimitivePackTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_8_strict(raw.int8List),
       cst_encode_list_prim_u_8_strict(raw.uint8List),
@@ -19630,6 +20392,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_vec_of_primitive_pack_twin_rust_async(
       VecOfPrimitivePackTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_8_strict(raw.int8List),
       cst_encode_list_prim_u_8_strict(raw.uint8List),
@@ -19648,6 +20411,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> cst_encode_vec_of_primitive_pack_twin_sync(
       VecOfPrimitivePackTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_list_prim_i_8_strict(raw.int8List),
       cst_encode_list_prim_u_8_strict(raw.uint8List),

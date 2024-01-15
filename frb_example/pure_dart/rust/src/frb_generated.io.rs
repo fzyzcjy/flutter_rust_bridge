@@ -47,26 +47,31 @@ flutter_rust_bridge::frb_generated_boilerplate_io!();
 impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error>
     for *mut wire_cst_list_prim_u_8_strict
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
     }
 }
 impl CstDecode<backtrace::Backtrace> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> backtrace::Backtrace {
         unimplemented!()
     }
 }
 impl CstDecode<chrono::Duration> for i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
     }
 }
 impl CstDecode<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
     }
 }
 impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_cst_list_DartOpaque {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [flutter_rust_bridge::DartOpaque; 1] {
         let vec: Vec<flutter_rust_bridge::DartOpaque> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -75,6 +80,7 @@ impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_cst_list_Dart
 impl CstDecode<std::collections::HashMap<String, String>>
     for *mut wire_cst_list_record_string_string
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<String, String> {
         let vec: Vec<(String, String)> = self.cst_decode();
         vec.into_iter().collect()
@@ -83,6 +89,7 @@ impl CstDecode<std::collections::HashMap<String, String>>
 impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
     for *mut wire_cst_list_record_string_enum_simple_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal> {
@@ -98,6 +105,7 @@ impl
         >,
     > for *mut wire_cst_list_record_string_enum_simple_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -119,6 +127,7 @@ impl
         >,
     > for *mut wire_cst_list_record_string_enum_simple_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -135,6 +144,7 @@ impl
 impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
     for *mut wire_cst_list_record_string_kitchen_sink_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal> {
@@ -150,6 +160,7 @@ impl
         >,
     > for *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -171,6 +182,7 @@ impl
         >,
     > for *mut wire_cst_list_record_string_kitchen_sink_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -187,6 +199,7 @@ impl
 impl CstDecode<std::collections::HashMap<String, Vec<u8>>>
     for *mut wire_cst_list_record_string_list_prim_u_8_strict
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<String, Vec<u8>> {
         let vec: Vec<(String, Vec<u8>)> = self.cst_decode();
         vec.into_iter().collect()
@@ -195,6 +208,7 @@ impl CstDecode<std::collections::HashMap<String, Vec<u8>>>
 impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>
     for *mut wire_cst_list_record_string_my_size
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<String, crate::auxiliary::sample_types::MySize> {
@@ -203,6 +217,7 @@ impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types:
     }
 }
 impl CstDecode<std::collections::HashMap<i32, String>> for *mut wire_cst_list_record_i_32_string {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, String> {
         let vec: Vec<(i32, String)> = self.cst_decode();
         vec.into_iter().collect()
@@ -216,6 +231,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_general_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
@@ -235,6 +251,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_general_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -256,6 +273,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_general_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -277,6 +295,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_primitive_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -298,6 +317,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_primitive_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -319,6 +339,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_primitive_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -337,6 +358,7 @@ impl
         std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal>,
     > for *mut wire_cst_list_record_i_32_basic_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal>
@@ -354,6 +376,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -375,6 +398,7 @@ impl
         >,
     > for *mut wire_cst_list_record_i_32_basic_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -389,48 +413,56 @@ impl
     }
 }
 impl CstDecode<std::collections::HashMap<i32, bool>> for *mut wire_cst_list_record_i_32_bool {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, bool> {
         let vec: Vec<(i32, bool)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, f32>> for *mut wire_cst_list_record_i_32_f_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, f32> {
         let vec: Vec<(i32, f32)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, f64>> for *mut wire_cst_list_record_i_32_f_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, f64> {
         let vec: Vec<(i32, f64)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, i16>> for *mut wire_cst_list_record_i_32_i_16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i16> {
         let vec: Vec<(i32, i16)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, i32>> for *mut wire_cst_list_record_i_32_i_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i32> {
         let vec: Vec<(i32, i32)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, i64>> for *mut wire_cst_list_record_i_32_i_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i64> {
         let vec: Vec<(i32, i64)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, i8>> for *mut wire_cst_list_record_i_32_i_8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i8> {
         let vec: Vec<(i32, i8)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, isize>> for *mut wire_cst_list_record_i_32_isize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, isize> {
         let vec: Vec<(i32, isize)> = self.cst_decode();
         vec.into_iter().collect()
@@ -439,127 +471,151 @@ impl CstDecode<std::collections::HashMap<i32, isize>> for *mut wire_cst_list_rec
 impl CstDecode<std::collections::HashMap<i32, Vec<u8>>>
     for *mut wire_cst_list_record_i_32_list_prim_u_8_strict
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, Vec<u8>> {
         let vec: Vec<(i32, Vec<u8>)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, u16>> for *mut wire_cst_list_record_i_32_u_16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u16> {
         let vec: Vec<(i32, u16)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, u32>> for *mut wire_cst_list_record_i_32_u_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u32> {
         let vec: Vec<(i32, u32)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, u64>> for *mut wire_cst_list_record_i_32_u_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u64> {
         let vec: Vec<(i32, u64)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, u8>> for *mut wire_cst_list_record_i_32_u_8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u8> {
         let vec: Vec<(i32, u8)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashMap<i32, usize>> for *mut wire_cst_list_record_i_32_usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, usize> {
         let vec: Vec<(i32, usize)> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinNormal>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinNormal>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinRustAsync>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinRustAsync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSync>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinNormal>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinNormal>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinRustAsync>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinRustAsync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSync>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinNormal>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinNormal>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSync>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSync>> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
 }
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>> {
         decode_rust_opaque_moi(self as _)
     }
@@ -573,6 +629,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -590,6 +647,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -605,6 +663,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -622,6 +681,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -639,6 +699,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -654,6 +715,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -669,6 +731,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -686,6 +749,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -705,6 +769,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -724,6 +789,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -743,6 +809,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -762,6 +829,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -781,6 +849,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -798,6 +867,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinMoi>>
@@ -812,6 +882,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -827,6 +898,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -842,6 +914,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -857,6 +930,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>
@@ -871,6 +945,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -886,6 +961,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -901,6 +977,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -918,6 +995,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -935,6 +1013,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -954,6 +1033,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -973,6 +1053,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -992,6 +1073,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1011,6 +1093,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1028,6 +1111,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1046,6 +1130,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1066,6 +1151,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1086,6 +1172,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1106,6 +1193,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1117,11 +1205,13 @@ impl
     }
 }
 impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueOneTwinRustAsyncMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi,)>>> for usize {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueOneTwinRustAsyncMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi,)>> {
                 decode_rust_opaque_moi(self as _)
             }
         }
 impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi>>> for usize {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi>> {
                 decode_rust_opaque_moi(self as _)
             }
@@ -1136,6 +1226,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1156,6 +1247,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1176,6 +1268,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1196,6 +1289,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1216,6 +1310,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1236,6 +1331,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1251,6 +1347,7 @@ impl
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::FrbOpaqueReturnTwinMoi>,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::FrbOpaqueReturnTwinMoi>
@@ -1259,6 +1356,7 @@ impl
     }
 }
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1270,6 +1368,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1279,6 +1378,7 @@ impl
     }
 }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::FrbOpaqueReturnTwinRustAsyncMoi>> for usize {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::FrbOpaqueReturnTwinRustAsyncMoi> {
                 decode_rust_opaque_moi(self as _)
             }
@@ -1288,6 +1388,7 @@ impl
         RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>
@@ -1302,6 +1403,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1317,6 +1419,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1328,6 +1431,7 @@ impl
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal>>
     for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal> {
@@ -1339,6 +1443,7 @@ impl
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::HideDataAnotherTwinMoi>,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::HideDataAnotherTwinMoi>
@@ -1347,6 +1452,7 @@ impl
     }
 }
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1354,6 +1460,7 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNo
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>>
     for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi> {
@@ -1363,6 +1470,7 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::Hi
 impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>; 2]>
     for *mut wire_cst_list_RustOpaque_hide_data_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>; 2] {
@@ -1373,6 +1481,7 @@ impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::H
     }
 }
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1380,6 +1489,7 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> for u
 impl CstDecode<[RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>; 2]>
     for *mut wire_cst_list_RustOpaque_hide_data_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>; 2] {
         let vec: Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> =
             self.cst_decode();
@@ -1393,6 +1503,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>
@@ -1407,6 +1518,7 @@ impl
         >; 2],
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueNom<
@@ -1427,6 +1539,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -1442,6 +1555,7 @@ impl
         >; 2],
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_rust_async_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueMoi<
@@ -1454,6 +1568,7 @@ impl
 impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
     for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync> {
@@ -1465,6 +1580,7 @@ impl
         [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>; 2],
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>; 2]
@@ -1480,6 +1596,7 @@ impl
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>
@@ -1493,6 +1610,7 @@ impl
             2],
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>; 2]
@@ -1506,11 +1624,13 @@ impl
     }
 }
 impl CstDecode<RustOpaqueMoi<i16>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<i16> {
         decode_rust_opaque_moi(self as _)
     }
 }
 impl CstDecode<RustOpaqueNom<i32>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<i32> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1518,6 +1638,7 @@ impl CstDecode<RustOpaqueNom<i32>> for usize {
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::NonCloneDataTwinMoi>>
     for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::NonCloneDataTwinMoi> {
@@ -1525,6 +1646,7 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::No
     }
 }
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal>> for usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal> {
         unsafe { decode_rust_opaque_nom(self as _) }
     }
@@ -1536,6 +1658,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -1545,6 +1668,7 @@ impl
     }
 }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi>> for usize {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi> {
                 decode_rust_opaque_moi(self as _)
             }
@@ -1553,6 +1677,7 @@ impl
     CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync>>
     for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync> {
@@ -1566,6 +1691,7 @@ impl
         >,
     > for usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonCloneDataTwinSyncMoi>
@@ -1574,30 +1700,35 @@ impl
     }
 }
 impl CstDecode<std::collections::HashSet<String>> for *mut wire_cst_list_String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashSet<String> {
         let vec: Vec<String> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<std::collections::HashSet<i32>> for *mut wire_cst_list_prim_i_32_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashSet<i32> {
         let vec: Vec<i32> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> String {
         let vec: Vec<u8> = self.cst_decode();
         String::from_utf8(vec).unwrap()
     }
 }
 impl CstDecode<uuid::Uuid> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> uuid::Uuid {
         let single: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::decode_uuid(single)
     }
 }
 impl CstDecode<crate::api::misc_example::ATwinNormal> for wire_cst_a_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::ATwinNormal {
         crate::api::misc_example::ATwinNormal {
             a: self.a.cst_decode(),
@@ -1607,6 +1738,7 @@ impl CstDecode<crate::api::misc_example::ATwinNormal> for wire_cst_a_twin_normal
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync>
     for wire_cst_a_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
         crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
             a: self.a.cst_decode(),
@@ -1616,6 +1748,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRus
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
     for wire_cst_a_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync {
         crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync {
             a: self.a.cst_decode(),
@@ -1623,6 +1756,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
     }
 }
 impl CstDecode<crate::api::misc_example::AbcTwinNormal> for wire_cst_abc_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::AbcTwinNormal {
         match self.tag {
             0 => {
@@ -1648,6 +1782,7 @@ impl CstDecode<crate::api::misc_example::AbcTwinNormal> for wire_cst_abc_twin_no
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>
     for wire_cst_abc_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync {
@@ -1683,6 +1818,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinR
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
     for wire_cst_abc_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync {
         match self.tag {
             0 => {
@@ -1716,6 +1852,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
 impl CstDecode<crate::api::inside_macro::AnotherMacroStructTwinNormal>
     for wire_cst_another_macro_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::inside_macro::AnotherMacroStructTwinNormal {
         crate::api::inside_macro::AnotherMacroStructTwinNormal {
             data: self.data.cst_decode(),
@@ -1724,6 +1861,7 @@ impl CstDecode<crate::api::inside_macro::AnotherMacroStructTwinNormal>
     }
 }
 impl CstDecode<crate::api::mirror::AnotherTwinNormal> for wire_cst_another_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::mirror::AnotherTwinNormal {
         crate::api::mirror::AnotherTwinNormal {
             a: self.a.cst_decode(),
@@ -1733,6 +1871,7 @@ impl CstDecode<crate::api::mirror::AnotherTwinNormal> for wire_cst_another_twin_
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync>
     for wire_cst_another_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync {
         crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync {
             a: self.a.cst_decode(),
@@ -1742,6 +1881,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRus
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
     for wire_cst_another_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
         crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
             a: self.a.cst_decode(),
@@ -1751,6 +1891,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
     for wire_cst_application_env
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
             vars: self.vars.cst_decode(),
@@ -1760,6 +1901,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>
     for wire_cst_application_env_var
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar {
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar(
             self.field0.cst_decode(),
@@ -1770,6 +1912,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVa
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage>
     for wire_cst_application_message
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage {
         match self.tag {
             0 => {
@@ -1793,6 +1936,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessa
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>
     for wire_cst_application_settings
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings {
         crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings {
             name: self.name.cst_decode(),
@@ -1804,6 +1948,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSetti
     }
 }
 impl CstDecode<crate::api::optional::AttributeTwinNormal> for wire_cst_attribute_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::AttributeTwinNormal {
         crate::api::optional::AttributeTwinNormal {
             key: self.key.cst_decode(),
@@ -1814,6 +1959,7 @@ impl CstDecode<crate::api::optional::AttributeTwinNormal> for wire_cst_attribute
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>
     for wire_cst_attribute_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync {
@@ -1826,6 +1972,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwi
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
     for wire_cst_attribute_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync {
         crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync {
             key: self.key.cst_decode(),
@@ -1834,6 +1981,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
     }
 }
 impl CstDecode<crate::api::misc_example::BTwinNormal> for wire_cst_b_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::BTwinNormal {
         crate::api::misc_example::BTwinNormal {
             b: self.b.cst_decode(),
@@ -1843,6 +1991,7 @@ impl CstDecode<crate::api::misc_example::BTwinNormal> for wire_cst_b_twin_normal
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync>
     for wire_cst_b_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
         crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
             b: self.b.cst_decode(),
@@ -1852,6 +2001,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRus
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
     for wire_cst_b_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync {
         crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync {
             b: self.b.cst_decode(),
@@ -1861,6 +2011,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
 impl CstDecode<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
     for wire_cst_basic_general_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal {
         match self.tag {
             0 => {
@@ -1877,6 +2028,7 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>
     for wire_cst_basic_general_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync {
@@ -1893,6 +2045,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnu
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>
     for wire_cst_basic_general_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync {
         match self.tag {
             0 => {
@@ -1909,6 +2062,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinS
 impl CstDecode<crate::api::pseudo_manual::basic::BasicStructTwinNormal>
     for wire_cst_basic_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicStructTwinNormal {
         crate::api::pseudo_manual::basic::BasicStructTwinNormal {
             apple: self.apple.cst_decode(),
@@ -1919,6 +2073,7 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>
     for wire_cst_basic_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync {
@@ -1931,6 +2086,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwin
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>
     for wire_cst_basic_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync {
         crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync {
             apple: self.apple.cst_decode(),
@@ -1941,6 +2097,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>
 impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>
     for wire_cst_benchmark_binary_tree_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
         crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
             name: self.name.cst_decode(),
@@ -1954,6 +2111,7 @@ impl
         crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
     > for wire_cst_benchmark_binary_tree_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
@@ -1968,6 +2126,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
     for wire_cst_benchmark_binary_tree_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
@@ -1981,6 +2140,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBina
 impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>
     for wire_cst_benchmark_blob_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
         crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
             first: self.first.cst_decode(),
@@ -1992,6 +2152,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>
     for wire_cst_benchmark_blob_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
@@ -2005,6 +2166,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::Benchma
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>
     for wire_cst_benchmark_blob_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
@@ -2018,6 +2180,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlob
 impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
     for wire_cst_big_buffers_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::BigBuffersTwinNormal {
         crate::api::misc_example::BigBuffersTwinNormal {
             int64: self.int64.cst_decode(),
@@ -2028,6 +2191,7 @@ impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync>
     for wire_cst_big_buffers_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync {
@@ -2040,6 +2204,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffe
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync>
     for wire_cst_big_buffers_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync {
         crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync {
             int64: self.int64.cst_decode(),
@@ -2048,6 +2213,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwin
     }
 }
 impl CstDecode<crate::api::array::BlobTwinNormal> for wire_cst_blob_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::BlobTwinNormal {
         crate::api::array::BlobTwinNormal(self.field0.cst_decode())
     }
@@ -2055,6 +2221,7 @@ impl CstDecode<crate::api::array::BlobTwinNormal> for wire_cst_blob_twin_normal 
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>
     for wire_cst_blob_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync {
         crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync(
             self.field0.cst_decode(),
@@ -2064,6 +2231,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsy
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
     for wire_cst_blob_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
         crate::api::pseudo_manual::array_twin_sync::BlobTwinSync(self.field0.cst_decode())
     }
@@ -2071,6 +2239,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
 impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>>
     for *mut wire_cst_application_env
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>::cst_decode(
@@ -2080,24 +2249,28 @@ impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
     }
 }
 impl CstDecode<chrono::Duration> for *mut i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<chrono::Duration>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<chrono::NaiveDateTime> for *mut i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::NaiveDateTime {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<chrono::NaiveDateTime>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<chrono::DateTime<chrono::Utc>> for *mut i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::DateTime<chrono::Utc> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<chrono::DateTime<chrono::Utc>>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<flutter_rust_bridge::DartOpaque> for *mut *const std::ffi::c_void {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<flutter_rust_bridge::DartOpaque>::cst_decode(*wrap).into()
@@ -2108,6 +2281,7 @@ impl
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::HideDataAnotherTwinMoi>,
     > for *mut usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::HideDataAnotherTwinMoi>
@@ -2124,6 +2298,7 @@ impl
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>>
     for *mut usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>>::cst_decode(*wrap).into()
@@ -2132,6 +2307,7 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNo
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>>
     for *mut usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi> {
@@ -2140,6 +2316,7 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::Hi
     }
 }
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>::cst_decode(*wrap)
@@ -2153,6 +2330,7 @@ impl
         >,
     > for *mut usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>
@@ -2173,6 +2351,7 @@ impl
         >,
     > for *mut usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -2185,6 +2364,7 @@ impl
 impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
     for *mut usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync> {
@@ -2197,6 +2377,7 @@ impl
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
     > for *mut usize
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>
@@ -2211,6 +2392,7 @@ impl
     }
 }
 impl CstDecode<crate::api::misc_example::ATwinNormal> for *mut wire_cst_a_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::ATwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::ATwinNormal>::cst_decode(*wrap).into()
@@ -2219,6 +2401,7 @@ impl CstDecode<crate::api::misc_example::ATwinNormal> for *mut wire_cst_a_twin_n
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync>
     for *mut wire_cst_a_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync>::cst_decode(*wrap).into()
@@ -2227,6 +2410,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRus
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
     for *mut wire_cst_a_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>::cst_decode(*wrap)
@@ -2234,6 +2418,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
     }
 }
 impl CstDecode<crate::api::misc_example::AbcTwinNormal> for *mut wire_cst_abc_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::AbcTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::AbcTwinNormal>::cst_decode(*wrap).into()
@@ -2242,6 +2427,7 @@ impl CstDecode<crate::api::misc_example::AbcTwinNormal> for *mut wire_cst_abc_tw
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>
     for *mut wire_cst_abc_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync {
@@ -2252,6 +2438,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinR
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
     for *mut wire_cst_abc_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>::cst_decode(
@@ -2263,6 +2450,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
     for *mut wire_cst_application_env
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>::cst_decode(
@@ -2274,12 +2462,14 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>
     for *mut wire_cst_application_settings
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::optional::AttributeTwinNormal> for *mut wire_cst_attribute_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::AttributeTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::optional::AttributeTwinNormal>::cst_decode(*wrap).into()
@@ -2288,6 +2478,7 @@ impl CstDecode<crate::api::optional::AttributeTwinNormal> for *mut wire_cst_attr
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>
     for *mut wire_cst_attribute_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync {
@@ -2298,6 +2489,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwi
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
     for *mut wire_cst_attribute_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>::cst_decode(
@@ -2307,6 +2499,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
     }
 }
 impl CstDecode<crate::api::misc_example::BTwinNormal> for *mut wire_cst_b_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::BTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::BTwinNormal>::cst_decode(*wrap).into()
@@ -2315,6 +2508,7 @@ impl CstDecode<crate::api::misc_example::BTwinNormal> for *mut wire_cst_b_twin_n
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync>
     for *mut wire_cst_b_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync>::cst_decode(*wrap).into()
@@ -2323,6 +2517,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRus
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
     for *mut wire_cst_b_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>::cst_decode(*wrap)
@@ -2332,6 +2527,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
 impl CstDecode<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
     for *mut wire_cst_basic_general_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>::cst_decode(*wrap)
@@ -2341,6 +2537,7 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>
     for *mut wire_cst_basic_general_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync {
@@ -2351,12 +2548,14 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnu
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>
     for *mut wire_cst_basic_general_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal> for *mut i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>::cst_decode(
@@ -2368,6 +2567,7 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal> f
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>
     for *mut i32
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync {
@@ -2378,6 +2578,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveE
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>
     for *mut i32
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>::cst_decode(*wrap).into()
@@ -2386,6 +2587,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwi
 impl CstDecode<crate::api::pseudo_manual::basic::BasicStructTwinNormal>
     for *mut wire_cst_basic_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicStructTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::basic::BasicStructTwinNormal>::cst_decode(*wrap)
@@ -2395,6 +2597,7 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>
     for *mut wire_cst_basic_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync {
@@ -2405,6 +2608,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwin
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>
     for *mut wire_cst_basic_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>::cst_decode(
@@ -2416,6 +2620,7 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>
 impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>
     for *mut wire_cst_benchmark_binary_tree_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>::cst_decode(*wrap).into()
@@ -2426,6 +2631,7 @@ impl
         crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
     > for *mut wire_cst_benchmark_binary_tree_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
@@ -2437,6 +2643,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
     for *mut wire_cst_benchmark_binary_tree_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
@@ -2447,6 +2654,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBina
 impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>
     for *mut wire_cst_benchmark_blob_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>::cst_decode(
@@ -2458,6 +2666,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>
     for *mut wire_cst_benchmark_blob_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
@@ -2471,6 +2680,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::Benchma
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>
     for *mut wire_cst_benchmark_blob_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
@@ -2479,11 +2689,13 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlob
     }
 }
 impl CstDecode<bool> for *mut bool {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> bool {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<crate::api::misc_example::CTwinNormal> for *mut wire_cst_c_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::CTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::CTwinNormal>::cst_decode(*wrap).into()
@@ -2492,6 +2704,7 @@ impl CstDecode<crate::api::misc_example::CTwinNormal> for *mut wire_cst_c_twin_n
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync>
     for *mut wire_cst_c_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync>::cst_decode(*wrap).into()
@@ -2500,6 +2713,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRus
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
     for *mut wire_cst_c_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>::cst_decode(*wrap)
@@ -2509,6 +2723,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
 impl CstDecode<crate::api::method::ConcatenateWithTwinNormal>
     for *mut wire_cst_concatenate_with_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::ConcatenateWithTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::method::ConcatenateWithTwinNormal>::cst_decode(*wrap).into()
@@ -2517,6 +2732,7 @@ impl CstDecode<crate::api::method::ConcatenateWithTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>
     for *mut wire_cst_concatenate_with_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
@@ -2527,6 +2743,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWit
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
     for *mut wire_cst_concatenate_with_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>::cst_decode(*wrap).into()
@@ -2535,6 +2752,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinS
 impl CstDecode<crate::api::exception::CustomNestedError2TwinNormal>
     for *mut wire_cst_custom_nested_error_2_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedError2TwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::exception::CustomNestedError2TwinNormal>::cst_decode(*wrap).into()
@@ -2544,6 +2762,7 @@ impl
     CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync>
     for *mut wire_cst_custom_nested_error_2_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync {
@@ -2557,6 +2776,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>
     for *mut wire_cst_custom_nested_error_2_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync {
@@ -2567,6 +2787,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
 impl CstDecode<crate::api::exception::CustomNestedErrorInnerTwinNormal>
     for *mut wire_cst_custom_nested_error_inner_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::exception::CustomNestedErrorInnerTwinNormal>::cst_decode(*wrap)
@@ -2578,6 +2799,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync,
     > for *mut wire_cst_custom_nested_error_inner_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync
@@ -2589,6 +2811,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>
     for *mut wire_cst_custom_nested_error_inner_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
@@ -2599,6 +2822,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
 impl CstDecode<crate::api::exception::CustomNestedErrorOuterTwinNormal>
     for *mut wire_cst_custom_nested_error_outer_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::exception::CustomNestedErrorOuterTwinNormal>::cst_decode(*wrap)
@@ -2610,6 +2834,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync,
     > for *mut wire_cst_custom_nested_error_outer_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync
@@ -2621,6 +2846,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
     for *mut wire_cst_custom_nested_error_outer_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
@@ -2631,6 +2857,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
 impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal>
     for *mut wire_cst_custom_struct_error_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructErrorTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::exception::CustomStructErrorTwinNormal>::cst_decode(*wrap).into()
@@ -2639,6 +2866,7 @@ impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync>
     for *mut wire_cst_custom_struct_error_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync {
@@ -2652,6 +2880,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruc
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
     for *mut wire_cst_custom_struct_error_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
@@ -2662,6 +2891,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructError
 impl CstDecode<crate::api::exception::CustomStructTwinNormal>
     for *mut wire_cst_custom_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::exception::CustomStructTwinNormal>::cst_decode(*wrap).into()
@@ -2670,6 +2900,7 @@ impl CstDecode<crate::api::exception::CustomStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync>
     for *mut wire_cst_custom_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
@@ -2680,6 +2911,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruc
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
     for *mut wire_cst_custom_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>::cst_decode(*wrap).into()
@@ -2688,6 +2920,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinS
 impl CstDecode<crate::api::attribute::CustomizedTwinNormal>
     for *mut wire_cst_customized_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::attribute::CustomizedTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::attribute::CustomizedTwinNormal>::cst_decode(*wrap).into()
@@ -2696,6 +2929,7 @@ impl CstDecode<crate::api::attribute::CustomizedTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync>
     for *mut wire_cst_customized_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
@@ -2706,6 +2940,7 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedT
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync>
     for *mut wire_cst_customized_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync>::cst_decode(
@@ -2717,6 +2952,7 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSyn
 impl CstDecode<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
     for *mut wire_cst_dart_opaque_nested_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>::cst_decode(*wrap).into()
@@ -2726,6 +2962,7 @@ impl
     CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync>
     for *mut wire_cst_dart_opaque_nested_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync {
@@ -2739,6 +2976,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>
     for *mut wire_cst_dart_opaque_nested_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync {
@@ -2747,6 +2985,7 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNeste
     }
 }
 impl CstDecode<crate::api::optional::ElementTwinNormal> for *mut wire_cst_element_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::ElementTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::optional::ElementTwinNormal>::cst_decode(*wrap).into()
@@ -2755,6 +2994,7 @@ impl CstDecode<crate::api::optional::ElementTwinNormal> for *mut wire_cst_elemen
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>
     for *mut wire_cst_element_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
@@ -2765,6 +3005,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinR
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
     for *mut wire_cst_element_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>::cst_decode(
@@ -2774,6 +3015,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
     }
 }
 impl CstDecode<crate::api::misc_type::EmptyTwinNormal> for *mut wire_cst_empty_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_type::EmptyTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_type::EmptyTwinNormal>::cst_decode(*wrap).into()
@@ -2782,6 +3024,7 @@ impl CstDecode<crate::api::misc_type::EmptyTwinNormal> for *mut wire_cst_empty_t
 impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync>
     for *mut wire_cst_empty_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {
@@ -2792,6 +3035,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRu
 impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
     for *mut wire_cst_empty_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>::cst_decode(
@@ -2803,6 +3047,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
 impl CstDecode<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
     for *mut wire_cst_enum_dart_opaque_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_opaque::EnumDartOpaqueTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>::cst_decode(*wrap).into()
@@ -2811,6 +3056,7 @@ impl CstDecode<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync>
     for *mut wire_cst_enum_dart_opaque_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync {
@@ -2824,6 +3070,7 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartO
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync>
     for *mut wire_cst_enum_dart_opaque_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync {
@@ -2834,6 +3081,7 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueT
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi>
     for *mut wire_cst_enum_opaque_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi>::cst_decode(
@@ -2845,6 +3093,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMo
 impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal>
     for *mut wire_cst_enum_opaque_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::rust_opaque::EnumOpaqueTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::rust_opaque::EnumOpaqueTwinNormal>::cst_decode(*wrap).into()
@@ -2853,6 +3102,7 @@ impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>
     for *mut wire_cst_enum_opaque_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync {
@@ -2865,6 +3115,7 @@ impl
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi,
     > for *mut wire_cst_enum_opaque_twin_rust_async_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi
@@ -2879,6 +3130,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>
     for *mut wire_cst_enum_opaque_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>::cst_decode(*wrap).into()
@@ -2887,6 +3139,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinS
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi>
     for *mut wire_cst_enum_opaque_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi {
@@ -2897,6 +3150,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueT
 impl CstDecode<crate::api::enumeration::EnumWithItemMixedTwinNormal>
     for *mut wire_cst_enum_with_item_mixed_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::EnumWithItemMixedTwinNormal>::cst_decode(*wrap).into()
@@ -2907,6 +3161,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync,
     > for *mut wire_cst_enum_with_item_mixed_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
@@ -2921,6 +3176,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
     for *mut wire_cst_enum_with_item_mixed_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
@@ -2931,6 +3187,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMix
 impl CstDecode<crate::api::enumeration::EnumWithItemStructTwinNormal>
     for *mut wire_cst_enum_with_item_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::EnumWithItemStructTwinNormal>::cst_decode(*wrap).into()
@@ -2941,6 +3198,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync,
     > for *mut wire_cst_enum_with_item_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync
@@ -2955,6 +3213,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
     for *mut wire_cst_enum_with_item_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
@@ -2965,6 +3224,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStr
 impl CstDecode<crate::api::enumeration::EnumWithItemTupleTwinNormal>
     for *mut wire_cst_enum_with_item_tuple_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::EnumWithItemTupleTwinNormal>::cst_decode(*wrap).into()
@@ -2975,6 +3235,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync,
     > for *mut wire_cst_enum_with_item_tuple_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync
@@ -2989,6 +3250,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
     for *mut wire_cst_enum_with_item_tuple_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
@@ -2997,6 +3259,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTup
     }
 }
 impl CstDecode<crate::api::event_listener::EventTwinNormal> for *mut wire_cst_event_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::event_listener::EventTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::event_listener::EventTwinNormal>::cst_decode(*wrap).into()
@@ -3005,6 +3268,7 @@ impl CstDecode<crate::api::event_listener::EventTwinNormal> for *mut wire_cst_ev
 impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
     for *mut wire_cst_event_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync {
@@ -3015,6 +3279,7 @@ impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async::EventT
 impl CstDecode<crate::api::optional::ExoticOptionalsTwinNormal>
     for *mut wire_cst_exotic_optionals_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::ExoticOptionalsTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::optional::ExoticOptionalsTwinNormal>::cst_decode(*wrap).into()
@@ -3023,6 +3288,7 @@ impl CstDecode<crate::api::optional::ExoticOptionalsTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>
     for *mut wire_cst_exotic_optionals_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync {
@@ -3033,17 +3299,20 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOption
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>
     for *mut wire_cst_exotic_optionals_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<f32> for *mut f32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> f32 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<f64> for *mut f64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> f64 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
@@ -3051,6 +3320,7 @@ impl CstDecode<f64> for *mut f64 {
 impl CstDecode<crate::api::chrono_type::FeatureChronoTwinNormal>
     for *mut wire_cst_feature_chrono_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::chrono_type::FeatureChronoTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::chrono_type::FeatureChronoTwinNormal>::cst_decode(*wrap).into()
@@ -3059,6 +3329,7 @@ impl CstDecode<crate::api::chrono_type::FeatureChronoTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync>
     for *mut wire_cst_feature_chrono_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync {
@@ -3072,6 +3343,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureCh
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync>
     for *mut wire_cst_feature_chrono_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync>::cst_decode(*wrap).into()
@@ -3080,6 +3352,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTw
 impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal>
     for *mut wire_cst_feature_uuid_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::uuid_type::FeatureUuidTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::uuid_type::FeatureUuidTwinNormal>::cst_decode(*wrap).into()
@@ -3088,6 +3361,7 @@ impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync>
     for *mut wire_cst_feature_uuid_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
@@ -3098,12 +3372,14 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuid
 impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>
     for *mut wire_cst_feature_uuid_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::array::FeedIdTwinNormal> for *mut wire_cst_feed_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::FeedIdTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::array::FeedIdTwinNormal>::cst_decode(*wrap).into()
@@ -3112,6 +3388,7 @@ impl CstDecode<crate::api::array::FeedIdTwinNormal> for *mut wire_cst_feed_id_tw
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>
     for *mut wire_cst_feed_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>::cst_decode(*wrap).into()
@@ -3120,6 +3397,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustA
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
     for *mut wire_cst_feed_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>::cst_decode(*wrap)
@@ -3127,26 +3405,31 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
     }
 }
 impl CstDecode<i16> for *mut i16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i16 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<i32> for *mut i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i32 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<i64> for *mut i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i64 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<i8> for *mut i8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i8 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<isize> for *mut isize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> isize {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
@@ -3154,6 +3437,7 @@ impl CstDecode<isize> for *mut isize {
 impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal>
     for *mut wire_cst_kitchen_sink_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::KitchenSinkTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::KitchenSinkTwinNormal>::cst_decode(*wrap).into()
@@ -3162,6 +3446,7 @@ impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>
     for *mut wire_cst_kitchen_sink_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync {
@@ -3172,6 +3457,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSi
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
     for *mut wire_cst_kitchen_sink_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>::cst_decode(*wrap).into()
@@ -3180,6 +3466,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored>
     for *mut wire_cst_list_of_nested_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
@@ -3188,12 +3475,14 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawS
     }
 }
 impl CstDecode<crate::api::inside_macro::MacroStruct> for *mut wire_cst_macro_struct {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::inside_macro::MacroStruct {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::inside_macro::MacroStruct>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::api::enumeration::MeasureTwinNormal> for *mut wire_cst_measure_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::MeasureTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::MeasureTwinNormal>::cst_decode(*wrap).into()
@@ -3202,6 +3491,7 @@ impl CstDecode<crate::api::enumeration::MeasureTwinNormal> for *mut wire_cst_mea
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>
     for *mut wire_cst_measure_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync {
@@ -3212,6 +3502,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTw
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>
     for *mut wire_cst_measure_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>::cst_decode(
@@ -3221,6 +3512,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync
     }
 }
 impl CstDecode<crate::api::array::MessageIdTwinNormal> for *mut wire_cst_message_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::MessageIdTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::array::MessageIdTwinNormal>::cst_decode(*wrap).into()
@@ -3229,6 +3521,7 @@ impl CstDecode<crate::api::array::MessageIdTwinNormal> for *mut wire_cst_message
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync>
     for *mut wire_cst_message_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync {
@@ -3239,6 +3532,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRu
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
     for *mut wire_cst_message_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>::cst_decode(
@@ -3250,6 +3544,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
 impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
     for *mut wire_cst_my_nested_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::MyNestedStructTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::MyNestedStructTwinNormal>::cst_decode(*wrap).into()
@@ -3258,6 +3553,7 @@ impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync>
     for *mut wire_cst_my_nested_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync {
@@ -3271,6 +3567,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNested
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync>
     for *mut wire_cst_my_nested_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync {
@@ -3279,12 +3576,14 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStruct
     }
 }
 impl CstDecode<crate::auxiliary::sample_types::MySize> for *mut wire_cst_my_size {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::sample_types::MySize {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::auxiliary::sample_types::MySize>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<crate::auxiliary::sample_types::MyStruct> for *mut wire_cst_my_struct {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::sample_types::MyStruct {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::auxiliary::sample_types::MyStruct>::cst_decode(*wrap).into()
@@ -3293,6 +3592,7 @@ impl CstDecode<crate::auxiliary::sample_types::MyStruct> for *mut wire_cst_my_st
 impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
     for *mut wire_cst_my_tree_node_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::MyTreeNodeTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::MyTreeNodeTwinNormal>::cst_decode(*wrap).into()
@@ -3301,6 +3601,7 @@ impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>
     for *mut wire_cst_my_tree_node_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync {
@@ -3311,6 +3612,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNo
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>
     for *mut wire_cst_my_tree_node_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>::cst_decode(*wrap).into()
@@ -3319,6 +3621,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwin
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
     for *mut wire_cst_nested_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
@@ -3329,6 +3632,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringM
 impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
     for *mut wire_cst_new_type_int_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::newtype_pattern::NewTypeIntTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::newtype_pattern::NewTypeIntTwinNormal>::cst_decode(*wrap).into()
@@ -3337,6 +3641,7 @@ impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync>
     for *mut wire_cst_new_type_int_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync {
@@ -3350,6 +3655,7 @@ impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTy
 impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>
     for *mut wire_cst_new_type_int_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync {
@@ -3358,6 +3664,7 @@ impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntT
     }
 }
 impl CstDecode<crate::api::enumeration::NoteTwinNormal> for *mut wire_cst_note_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::NoteTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::NoteTwinNormal>::cst_decode(*wrap).into()
@@ -3366,6 +3673,7 @@ impl CstDecode<crate::api::enumeration::NoteTwinNormal> for *mut wire_cst_note_t
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync>
     for *mut wire_cst_note_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
@@ -3376,6 +3684,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinR
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
     for *mut wire_cst_note_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>::cst_decode(
@@ -3385,6 +3694,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers> for *mut wire_cst_numbers {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers>::cst_decode(*wrap)
@@ -3394,6 +3704,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers> for *mu
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi>
     for *mut wire_cst_opaque_nested_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi>::cst_decode(*wrap).into()
@@ -3402,6 +3713,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwin
 impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
     for *mut wire_cst_opaque_nested_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::rust_opaque::OpaqueNestedTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::rust_opaque::OpaqueNestedTwinNormal>::cst_decode(*wrap).into()
@@ -3410,6 +3722,7 @@ impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync>
     for *mut wire_cst_opaque_nested_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
@@ -3422,6 +3735,7 @@ impl
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi,
     > for *mut wire_cst_opaque_nested_twin_rust_async_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi
@@ -3433,6 +3747,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync>
     for *mut wire_cst_opaque_nested_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync>::cst_decode(*wrap).into()
@@ -3441,6 +3756,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwi
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi>
     for *mut wire_cst_opaque_nested_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi {
@@ -3449,6 +3765,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNeste
     }
 }
 impl CstDecode<crate::api::optional::OptVecsTwinNormal> for *mut wire_cst_opt_vecs_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::OptVecsTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::optional::OptVecsTwinNormal>::cst_decode(*wrap).into()
@@ -3457,6 +3774,7 @@ impl CstDecode<crate::api::optional::OptVecsTwinNormal> for *mut wire_cst_opt_ve
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync>
     for *mut wire_cst_opt_vecs_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync {
@@ -3467,6 +3785,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinR
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
     for *mut wire_cst_opt_vecs_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>::cst_decode(
@@ -3478,6 +3797,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
     for *mut wire_cst_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>::cst_decode(
@@ -3487,6 +3807,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrore
     }
 }
 impl CstDecode<(String, i32)> for *mut wire_cst_record_string_i_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, i32) {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<(String, i32)>::cst_decode(*wrap).into()
@@ -3495,6 +3816,7 @@ impl CstDecode<(String, i32)> for *mut wire_cst_record_string_i_32 {
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
     for *mut wire_cst_sequences
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>::cst_decode(*wrap)
@@ -3504,6 +3826,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
 impl CstDecode<crate::api::exception::SomeStructTwinNormal>
     for *mut wire_cst_some_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::SomeStructTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::exception::SomeStructTwinNormal>::cst_decode(*wrap).into()
@@ -3512,6 +3835,7 @@ impl CstDecode<crate::api::exception::SomeStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
     for *mut wire_cst_some_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
@@ -3522,6 +3846,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructT
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
     for *mut wire_cst_some_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>::cst_decode(
@@ -3533,6 +3858,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSyn
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for *mut wire_cst_struct_with_comments_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::comment::StructWithCommentsTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::comment::StructWithCommentsTwinNormal>::cst_decode(*wrap).into()
@@ -3541,6 +3867,7 @@ impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync>
     for *mut wire_cst_struct_with_comments_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync {
@@ -3554,6 +3881,7 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_rust_async::StructWithCom
 impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
     for *mut wire_cst_struct_with_comments_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
@@ -3564,6 +3892,7 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsT
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for *mut wire_cst_struct_with_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::StructWithEnumTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::StructWithEnumTwinNormal>::cst_decode(*wrap).into()
@@ -3572,6 +3901,7 @@ impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync>
     for *mut wire_cst_struct_with_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync {
@@ -3585,6 +3915,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWi
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>
     for *mut wire_cst_struct_with_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
@@ -3595,6 +3926,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnum
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for *mut wire_cst_struct_with_one_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::structure::StructWithOneFieldTwinNormal>::cst_decode(*wrap).into()
@@ -3604,6 +3936,7 @@ impl
     CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync>
     for *mut wire_cst_struct_with_one_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync {
@@ -3617,6 +3950,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
     for *mut wire_cst_struct_with_one_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
@@ -3627,6 +3961,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFiel
 impl CstDecode<crate::api::structure::StructWithTwoFieldTwinNormal>
     for *mut wire_cst_struct_with_two_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::structure::StructWithTwoFieldTwinNormal>::cst_decode(*wrap).into()
@@ -3636,6 +3971,7 @@ impl
     CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync>
     for *mut wire_cst_struct_with_two_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync {
@@ -3649,6 +3985,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
     for *mut wire_cst_struct_with_two_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
@@ -3659,6 +3996,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFiel
 impl CstDecode<crate::api::structure::StructWithZeroFieldTwinNormal>
     for *mut wire_cst_struct_with_zero_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::structure::StructWithZeroFieldTwinNormal>::cst_decode(*wrap).into()
@@ -3669,6 +4007,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync,
     > for *mut wire_cst_struct_with_zero_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync
@@ -3683,6 +4022,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
     for *mut wire_cst_struct_with_zero_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
@@ -3691,6 +4031,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFie
     }
 }
 impl CstDecode<crate::api::method::SumWithTwinNormal> for *mut wire_cst_sum_with_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::SumWithTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::method::SumWithTwinNormal>::cst_decode(*wrap).into()
@@ -3699,6 +4040,7 @@ impl CstDecode<crate::api::method::SumWithTwinNormal> for *mut wire_cst_sum_with
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>
     for *mut wire_cst_sum_with_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>::cst_decode(*wrap).into()
@@ -3707,6 +4049,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRus
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
     for *mut wire_cst_sum_with_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>::cst_decode(*wrap)
@@ -3714,6 +4057,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
     }
 }
 impl CstDecode<crate::api::array::TestIdTwinNormal> for *mut wire_cst_test_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::TestIdTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::array::TestIdTwinNormal>::cst_decode(*wrap).into()
@@ -3722,6 +4066,7 @@ impl CstDecode<crate::api::array::TestIdTwinNormal> for *mut wire_cst_test_id_tw
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>
     for *mut wire_cst_test_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>::cst_decode(*wrap).into()
@@ -3730,6 +4075,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustA
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
     for *mut wire_cst_test_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>::cst_decode(*wrap)
@@ -3739,6 +4085,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
 impl CstDecode<crate::api::structure::TupleStructWithOneFieldTwinNormal>
     for *mut wire_cst_tuple_struct_with_one_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::structure::TupleStructWithOneFieldTwinNormal>::cst_decode(*wrap)
@@ -3750,6 +4097,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync,
     > for *mut wire_cst_tuple_struct_with_one_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync
@@ -3761,6 +4109,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
     for *mut wire_cst_tuple_struct_with_one_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
@@ -3771,6 +4120,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOn
 impl CstDecode<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
     for *mut wire_cst_tuple_struct_with_two_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::structure::TupleStructWithTwoFieldTwinNormal>::cst_decode(*wrap)
@@ -3782,6 +4132,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync,
     > for *mut wire_cst_tuple_struct_with_two_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync
@@ -3793,6 +4144,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>
     for *mut wire_cst_tuple_struct_with_two_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
@@ -3801,26 +4153,31 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTw
     }
 }
 impl CstDecode<u16> for *mut u16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u16 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<u32> for *mut u32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u32 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<u64> for *mut u64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u64 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<u8> for *mut u8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u8 {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<crate::api::attribute::UserIdTwinNormal> for *mut wire_cst_user_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::attribute::UserIdTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::attribute::UserIdTwinNormal>::cst_decode(*wrap).into()
@@ -3829,6 +4186,7 @@ impl CstDecode<crate::api::attribute::UserIdTwinNormal> for *mut wire_cst_user_i
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync>
     for *mut wire_cst_user_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync {
@@ -3839,6 +4197,7 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinR
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
     for *mut wire_cst_user_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>::cst_decode(
@@ -3848,11 +4207,13 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
     }
 }
 impl CstDecode<usize> for *mut usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> usize {
         unsafe { *flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal> for *mut i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::WeekdaysTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::WeekdaysTwinNormal>::cst_decode(*wrap).into()
@@ -3861,6 +4222,7 @@ impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal> for *mut i32 {
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
     for *mut i32
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync {
@@ -3869,6 +4231,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::Weekdays
     }
 }
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> for *mut i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::cst_decode(*wrap).into()
@@ -3877,6 +4240,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSy
 impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
     for *mut wire_cst_benchmark_binary_tree_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
@@ -3885,6 +4249,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTree
     }
 }
 impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>> for *mut wire_cst_benchmark_binary_tree_twin_rust_async {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync> {
                 let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
                 CstDecode::<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>::cst_decode(*wrap).into()
@@ -3893,6 +4258,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::Ben
 impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>>
     for *mut wire_cst_benchmark_binary_tree_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync> {
@@ -3901,6 +4267,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sync::Benchmark
     }
 }
 impl CstDecode<Box<crate::api::array::BlobTwinNormal>> for *mut wire_cst_blob_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::array::BlobTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::array::BlobTwinNormal>::cst_decode(*wrap).into()
@@ -3909,6 +4276,7 @@ impl CstDecode<Box<crate::api::array::BlobTwinNormal>> for *mut wire_cst_blob_tw
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>>
     for *mut wire_cst_blob_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync> {
@@ -3919,6 +4287,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRus
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>>
     for *mut wire_cst_blob_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>::cst_decode(*wrap)
@@ -3926,6 +4295,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>>
     }
 }
 impl CstDecode<Box<bool>> for *mut bool {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<bool> {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
@@ -3933,6 +4303,7 @@ impl CstDecode<Box<bool>> for *mut bool {
 impl CstDecode<Box<crate::api::enumeration::DistanceTwinNormal>>
     for *mut wire_cst_distance_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::enumeration::DistanceTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::DistanceTwinNormal>::cst_decode(*wrap).into()
@@ -3941,6 +4312,7 @@ impl CstDecode<Box<crate::api::enumeration::DistanceTwinNormal>>
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync>>
     for *mut wire_cst_distance_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync> {
@@ -3951,6 +4323,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::Dista
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>>
     for *mut wire_cst_distance_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>::cst_decode(
@@ -3962,6 +4335,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwi
 impl CstDecode<Box<crate::api::optional::ExoticOptionalsTwinNormal>>
     for *mut wire_cst_exotic_optionals_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::optional::ExoticOptionalsTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::optional::ExoticOptionalsTwinNormal>::cst_decode(*wrap).into()
@@ -3972,6 +4346,7 @@ impl
         Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>,
     > for *mut wire_cst_exotic_optionals_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>
@@ -3983,6 +4358,7 @@ impl
 impl CstDecode<Box<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>>
     for *mut wire_cst_exotic_optionals_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync> {
@@ -3991,11 +4367,13 @@ impl CstDecode<Box<crate::api::pseudo_manual::optional_twin_sync::ExoticOptional
     }
 }
 impl CstDecode<Box<f64>> for *mut f64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<f64> {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<Box<crate::api::array::FeedIdTwinNormal>> for *mut wire_cst_feed_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::array::FeedIdTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::array::FeedIdTwinNormal>::cst_decode(*wrap).into()
@@ -4004,6 +4382,7 @@ impl CstDecode<Box<crate::api::array::FeedIdTwinNormal>> for *mut wire_cst_feed_
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>>
     for *mut wire_cst_feed_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync> {
@@ -4014,6 +4393,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinR
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>>
     for *mut wire_cst_feed_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>::cst_decode(*wrap)
@@ -4021,16 +4401,19 @@ impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>>
     }
 }
 impl CstDecode<Box<i32>> for *mut i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<i32> {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<Box<i64>> for *mut i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<i64> {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<Box<i8>> for *mut i8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<i8> {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
@@ -4038,6 +4421,7 @@ impl CstDecode<Box<i8>> for *mut i8 {
 impl CstDecode<Box<crate::api::enumeration::KitchenSinkTwinNormal>>
     for *mut wire_cst_kitchen_sink_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::enumeration::KitchenSinkTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::KitchenSinkTwinNormal>::cst_decode(*wrap).into()
@@ -4047,6 +4431,7 @@ impl
     CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>>
     for *mut wire_cst_kitchen_sink_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync> {
@@ -4057,6 +4442,7 @@ impl
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>>
     for *mut wire_cst_kitchen_sink_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync> {
@@ -4065,12 +4451,14 @@ impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSink
     }
 }
 impl CstDecode<Box<crate::auxiliary::sample_types::MySize>> for *mut wire_cst_my_size {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::auxiliary::sample_types::MySize> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::auxiliary::sample_types::MySize>::cst_decode(*wrap).into()
     }
 }
 impl CstDecode<Box<crate::api::enumeration::SpeedTwinNormal>> for *mut wire_cst_speed_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::enumeration::SpeedTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::enumeration::SpeedTwinNormal>::cst_decode(*wrap).into()
@@ -4079,6 +4467,7 @@ impl CstDecode<Box<crate::api::enumeration::SpeedTwinNormal>> for *mut wire_cst_
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync>>
     for *mut wire_cst_speed_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync> {
@@ -4089,6 +4478,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::Speed
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>>
     for *mut wire_cst_speed_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>::cst_decode(
@@ -4098,21 +4488,25 @@ impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSy
     }
 }
 impl CstDecode<Box<u8>> for *mut u8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<u8> {
         unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }
     }
 }
 impl CstDecode<Box<[u8; 1600]>> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<[u8; 1600]> {
         CstDecode::<[u8; 1600]>::cst_decode(self).into()
     }
 }
 impl CstDecode<Box<[u8; 8]>> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<[u8; 8]> {
         CstDecode::<[u8; 8]>::cst_decode(self).into()
     }
 }
 impl CstDecode<Box<crate::api::misc_example::WeekdaysTwinNormal>> for *mut i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::misc_example::WeekdaysTwinNormal> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         CstDecode::<crate::api::misc_example::WeekdaysTwinNormal>::cst_decode(*wrap).into()
@@ -4121,6 +4515,7 @@ impl CstDecode<Box<crate::api::misc_example::WeekdaysTwinNormal>> for *mut i32 {
 impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
     for *mut i32
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync> {
@@ -4131,6 +4526,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_rust_async::Week
 impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
     for *mut i32
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> {
@@ -4139,6 +4535,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTw
     }
 }
 impl CstDecode<crate::api::misc_example::CTwinNormal> for wire_cst_c_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::CTwinNormal {
         crate::api::misc_example::CTwinNormal {
             c: self.c.cst_decode(),
@@ -4148,6 +4545,7 @@ impl CstDecode<crate::api::misc_example::CTwinNormal> for wire_cst_c_twin_normal
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync>
     for wire_cst_c_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
         crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
             c: self.c.cst_decode(),
@@ -4157,6 +4555,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRus
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
     for wire_cst_c_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync {
         crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync {
             c: self.c.cst_decode(),
@@ -4166,6 +4565,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
 impl CstDecode<crate::api::method::ConcatenateWithTwinNormal>
     for wire_cst_concatenate_with_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::ConcatenateWithTwinNormal {
         crate::api::method::ConcatenateWithTwinNormal {
             a: self.a.cst_decode(),
@@ -4175,6 +4575,7 @@ impl CstDecode<crate::api::method::ConcatenateWithTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>
     for wire_cst_concatenate_with_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
@@ -4186,6 +4587,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWit
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
     for wire_cst_concatenate_with_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync {
         crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync {
             a: self.a.cst_decode(),
@@ -4195,6 +4597,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinS
 impl CstDecode<crate::api::mirror::ContainsMirroredSubStructTwinNormal>
     for wire_cst_contains_mirrored_sub_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::mirror::ContainsMirroredSubStructTwinNormal {
         crate::api::mirror::ContainsMirroredSubStructTwinNormal {
             test: self.test.cst_decode(),
@@ -4207,6 +4610,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync,
     > for wire_cst_contains_mirrored_sub_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync
@@ -4220,6 +4624,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync>
     for wire_cst_contains_mirrored_sub_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync {
@@ -4232,6 +4637,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubS
 impl CstDecode<crate::api::exception::CustomEnumErrorTwinNormal>
     for wire_cst_custom_enum_error_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomEnumErrorTwinNormal {
         match self.tag {
             0 => {
@@ -4255,6 +4661,7 @@ impl CstDecode<crate::api::exception::CustomEnumErrorTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync>
     for wire_cst_custom_enum_error_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync {
@@ -4274,6 +4681,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumE
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync>
     for wire_cst_custom_enum_error_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync {
         match self.tag {
             0 => {
@@ -4295,6 +4703,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTw
     }
 }
 impl CstDecode<crate::api::exception::CustomErrorTwinNormal> for wire_cst_custom_error_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomErrorTwinNormal {
         match self.tag {
             0 => {
@@ -4318,6 +4727,7 @@ impl CstDecode<crate::api::exception::CustomErrorTwinNormal> for wire_cst_custom
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync>
     for wire_cst_custom_error_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync {
@@ -4337,6 +4747,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomError
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync>
     for wire_cst_custom_error_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync {
         match self.tag {
             0 => {
@@ -4360,6 +4771,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSy
 impl CstDecode<crate::api::exception::CustomNestedError1TwinNormal>
     for wire_cst_custom_nested_error_1_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedError1TwinNormal {
         match self.tag {
             0 => {
@@ -4382,6 +4794,7 @@ impl
     CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync>
     for wire_cst_custom_nested_error_1_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync {
@@ -4401,6 +4814,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync>
     for wire_cst_custom_nested_error_1_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync {
@@ -4420,6 +4834,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
 impl CstDecode<crate::api::exception::CustomNestedError2TwinNormal>
     for wire_cst_custom_nested_error_2_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedError2TwinNormal {
         match self.tag {
             0 => {
@@ -4442,6 +4857,7 @@ impl
     CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync>
     for wire_cst_custom_nested_error_2_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync {
@@ -4461,6 +4877,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>
     for wire_cst_custom_nested_error_2_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync {
@@ -4480,6 +4897,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
 impl CstDecode<crate::api::exception::CustomNestedErrorInnerTwinNormal>
     for wire_cst_custom_nested_error_inner_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         match self.tag {
             0 => {
@@ -4503,6 +4921,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync,
     > for wire_cst_custom_nested_error_inner_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync
@@ -4523,6 +4942,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>
     for wire_cst_custom_nested_error_inner_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
@@ -4544,6 +4964,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
 impl CstDecode<crate::api::exception::CustomNestedErrorOuterTwinNormal>
     for wire_cst_custom_nested_error_outer_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         match self.tag {
             0 => {
@@ -4567,6 +4988,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync,
     > for wire_cst_custom_nested_error_outer_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync
@@ -4587,6 +5009,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
     for wire_cst_custom_nested_error_outer_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
@@ -4610,6 +5033,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
 impl CstDecode<crate::api::exception::CustomStructErrorAnotherTwinNormal>
     for wire_cst_custom_struct_error_another_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructErrorAnotherTwinNormal {
         crate::api::exception::CustomStructErrorAnotherTwinNormal {
             message: self.message.cst_decode(),
@@ -4621,6 +5045,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync,
     > for wire_cst_custom_struct_error_another_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync
@@ -4631,6 +5056,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync>
     for wire_cst_custom_struct_error_another_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync {
@@ -4642,6 +5068,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructError
 impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal>
     for wire_cst_custom_struct_error_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructErrorTwinNormal {
         crate::api::exception::CustomStructErrorTwinNormal {
             a: self.a.cst_decode(),
@@ -4651,6 +5078,7 @@ impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync>
     for wire_cst_custom_struct_error_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync {
@@ -4662,6 +5090,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruc
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
     for wire_cst_custom_struct_error_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
@@ -4673,6 +5102,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructError
 impl CstDecode<crate::api::exception::CustomStructTwinNormal>
     for wire_cst_custom_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructTwinNormal {
         crate::api::exception::CustomStructTwinNormal {
             message: self.message.cst_decode(),
@@ -4682,6 +5112,7 @@ impl CstDecode<crate::api::exception::CustomStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync>
     for wire_cst_custom_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
@@ -4693,6 +5124,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruc
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
     for wire_cst_custom_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync {
         crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync {
             message: self.message.cst_decode(),
@@ -4700,6 +5132,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinS
     }
 }
 impl CstDecode<crate::api::attribute::CustomizedTwinNormal> for wire_cst_customized_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::attribute::CustomizedTwinNormal {
         crate::api::attribute::CustomizedTwinNormal {
             final_field: self.final_field.cst_decode(),
@@ -4710,6 +5143,7 @@ impl CstDecode<crate::api::attribute::CustomizedTwinNormal> for wire_cst_customi
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync>
     for wire_cst_customized_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
@@ -4722,6 +5156,7 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedT
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync>
     for wire_cst_customized_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync {
         crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync {
             final_field: self.final_field.cst_decode(),
@@ -4732,6 +5167,7 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSyn
 impl CstDecode<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
     for wire_cst_dart_opaque_nested_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
         crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
             first: self.first.cst_decode(),
@@ -4743,6 +5179,7 @@ impl
     CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync>
     for wire_cst_dart_opaque_nested_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync {
@@ -4755,6 +5192,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>
     for wire_cst_dart_opaque_nested_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync {
@@ -4767,6 +5205,7 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNeste
 impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDartTwinNormal>
     for wire_cst_demo_struct_for_rust_call_dart_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
         crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
             name: self.name.cst_decode(),
@@ -4778,6 +5217,7 @@ impl
         crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
     > for wire_cst_demo_struct_for_rust_call_dart_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
@@ -4788,6 +5228,7 @@ impl
     }
 }
 impl CstDecode<crate::api::enumeration::DistanceTwinNormal> for wire_cst_distance_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::DistanceTwinNormal {
         match self.tag {
             0 => crate::api::enumeration::DistanceTwinNormal::Unknown,
@@ -4802,6 +5243,7 @@ impl CstDecode<crate::api::enumeration::DistanceTwinNormal> for wire_cst_distanc
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync>
     for wire_cst_distance_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync {
@@ -4818,6 +5260,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceT
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>
     for wire_cst_distance_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync {
         match self.tag {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync::Unknown,
@@ -4832,6 +5275,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSyn
     }
 }
 impl CstDecode<crate::api::optional::ElementTwinNormal> for wire_cst_element_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::ElementTwinNormal {
         crate::api::optional::ElementTwinNormal {
             tag: self.tag.cst_decode(),
@@ -4844,6 +5288,7 @@ impl CstDecode<crate::api::optional::ElementTwinNormal> for wire_cst_element_twi
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>
     for wire_cst_element_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
@@ -4858,6 +5303,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinR
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
     for wire_cst_element_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
         crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
             tag: self.tag.cst_decode(),
@@ -4868,6 +5314,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
     }
 }
 impl CstDecode<crate::api::misc_type::EmptyTwinNormal> for wire_cst_empty_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_type::EmptyTwinNormal {
         crate::api::misc_type::EmptyTwinNormal {}
     }
@@ -4875,6 +5322,7 @@ impl CstDecode<crate::api::misc_type::EmptyTwinNormal> for wire_cst_empty_twin_n
 impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync>
     for wire_cst_empty_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {
@@ -4884,6 +5332,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRu
 impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
     for wire_cst_empty_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {
         crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {}
     }
@@ -4891,6 +5340,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
 impl CstDecode<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
     for wire_cst_enum_dart_opaque_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_opaque::EnumDartOpaqueTwinNormal {
         match self.tag {
             0 => {
@@ -4910,6 +5360,7 @@ impl CstDecode<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync>
     for wire_cst_enum_dart_opaque_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync {
@@ -4929,6 +5380,7 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartO
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync>
     for wire_cst_enum_dart_opaque_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync {
@@ -4952,6 +5404,7 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueT
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi>
     for wire_cst_enum_opaque_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi {
         match self.tag {
             0 => {
@@ -4991,6 +5444,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMo
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi; 5]>
     for *mut wire_cst_list_enum_opaque_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi; 5] {
         let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi> =
             self.cst_decode();
@@ -4998,6 +5452,7 @@ impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinM
     }
 }
 impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal> for wire_cst_enum_opaque_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::rust_opaque::EnumOpaqueTwinNormal {
         match self.tag {
             0 => {
@@ -5027,6 +5482,7 @@ impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal> for wire_cst_enum_
 impl CstDecode<[crate::api::rust_opaque::EnumOpaqueTwinNormal; 5]>
     for *mut wire_cst_list_enum_opaque_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::rust_opaque::EnumOpaqueTwinNormal; 5] {
         let vec: Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -5035,6 +5491,7 @@ impl CstDecode<[crate::api::rust_opaque::EnumOpaqueTwinNormal; 5]>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>
     for wire_cst_enum_opaque_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync {
@@ -5066,6 +5523,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqu
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5]>
     for *mut wire_cst_list_enum_opaque_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5] {
@@ -5080,6 +5538,7 @@ impl
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi,
     > for wire_cst_enum_opaque_twin_rust_async_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi
@@ -5114,6 +5573,7 @@ impl
         [crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi; 5],
     > for *mut wire_cst_list_enum_opaque_twin_rust_async_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi; 5]
@@ -5127,6 +5587,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>
     for wire_cst_enum_opaque_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync {
         match self.tag {
             0 => {
@@ -5166,6 +5627,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinS
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5]>
     for *mut wire_cst_list_enum_opaque_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5] {
@@ -5177,6 +5639,7 @@ impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwin
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi>
     for wire_cst_enum_opaque_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi {
@@ -5214,6 +5677,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueT
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi; 5]>
     for *mut wire_cst_list_enum_opaque_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi; 5] {
@@ -5225,6 +5689,7 @@ impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaque
 impl CstDecode<crate::api::enumeration::EnumWithItemMixedTwinNormal>
     for wire_cst_enum_with_item_mixed_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         match self.tag {
             0 => crate::api::enumeration::EnumWithItemMixedTwinNormal::A,
@@ -5247,6 +5712,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync,
     > for wire_cst_enum_with_item_mixed_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
@@ -5268,6 +5734,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
     for wire_cst_enum_with_item_mixed_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
@@ -5292,6 +5759,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMix
 impl CstDecode<crate::api::enumeration::EnumWithItemStructTwinNormal>
     for wire_cst_enum_with_item_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         match self.tag {
             0 => {
@@ -5315,6 +5783,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync,
     > for wire_cst_enum_with_item_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync
@@ -5335,6 +5804,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
     for wire_cst_enum_with_item_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
@@ -5358,6 +5828,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStr
 impl CstDecode<crate::api::enumeration::EnumWithItemTupleTwinNormal>
     for wire_cst_enum_with_item_tuple_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         match self.tag {
             0 => {
@@ -5377,6 +5848,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync,
     > for wire_cst_enum_with_item_tuple_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync
@@ -5397,6 +5869,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
     for wire_cst_enum_with_item_tuple_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
@@ -5418,6 +5891,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTup
     }
 }
 impl CstDecode<crate::api::event_listener::EventTwinNormal> for wire_cst_event_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::event_listener::EventTwinNormal {
         crate::api::event_listener::EventTwinNormal {
             address: self.address.cst_decode(),
@@ -5428,6 +5902,7 @@ impl CstDecode<crate::api::event_listener::EventTwinNormal> for wire_cst_event_t
 impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
     for wire_cst_event_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync {
@@ -5440,6 +5915,7 @@ impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async::EventT
 impl CstDecode<crate::api::optional::ExoticOptionalsTwinNormal>
     for wire_cst_exotic_optionals_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::ExoticOptionalsTwinNormal {
         crate::api::optional::ExoticOptionalsTwinNormal {
             int32: self.int32.cst_decode(),
@@ -5462,6 +5938,7 @@ impl CstDecode<crate::api::optional::ExoticOptionalsTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>
     for wire_cst_exotic_optionals_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync {
@@ -5486,6 +5963,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOption
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>
     for wire_cst_exotic_optionals_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync {
         crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync {
             int32: self.int32.cst_decode(),
@@ -5506,6 +5984,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwi
     }
 }
 impl CstDecode<[f64; 16]> for *mut wire_cst_list_prim_f_64_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [f64; 16] {
         let vec: Vec<f64> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -5514,6 +5993,7 @@ impl CstDecode<[f64; 16]> for *mut wire_cst_list_prim_f_64_strict {
 impl CstDecode<crate::api::chrono_type::FeatureChronoTwinNormal>
     for wire_cst_feature_chrono_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::chrono_type::FeatureChronoTwinNormal {
         crate::api::chrono_type::FeatureChronoTwinNormal {
             utc: self.utc.cst_decode(),
@@ -5526,6 +6006,7 @@ impl CstDecode<crate::api::chrono_type::FeatureChronoTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync>
     for wire_cst_feature_chrono_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync {
@@ -5540,6 +6021,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureCh
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync>
     for wire_cst_feature_chrono_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
         crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
             utc: self.utc.cst_decode(),
@@ -5550,6 +6032,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTw
     }
 }
 impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal> for wire_cst_feature_uuid_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::uuid_type::FeatureUuidTwinNormal {
         crate::api::uuid_type::FeatureUuidTwinNormal {
             one: self.one.cst_decode(),
@@ -5559,6 +6042,7 @@ impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal> for wire_cst_featur
 impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync>
     for wire_cst_feature_uuid_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
@@ -5570,6 +6054,7 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuid
 impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>
     for wire_cst_feature_uuid_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
         crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
             one: self.one.cst_decode(),
@@ -5577,6 +6062,7 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSy
     }
 }
 impl CstDecode<crate::api::array::FeedIdTwinNormal> for wire_cst_feed_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::FeedIdTwinNormal {
         crate::api::array::FeedIdTwinNormal(self.field0.cst_decode())
     }
@@ -5584,6 +6070,7 @@ impl CstDecode<crate::api::array::FeedIdTwinNormal> for wire_cst_feed_id_twin_no
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>
     for wire_cst_feed_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync {
         crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync(
             self.field0.cst_decode(),
@@ -5593,11 +6080,13 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustA
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
     for wire_cst_feed_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync {
         crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync(self.field0.cst_decode())
     }
 }
 impl CstDecode<[i32; 2]> for *mut wire_cst_list_prim_i_32_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [i32; 2] {
         let vec: Vec<i32> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -5606,6 +6095,7 @@ impl CstDecode<[i32; 2]> for *mut wire_cst_list_prim_i_32_strict {
 impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal>
     for wire_cst_kitchen_sink_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::KitchenSinkTwinNormal {
         match self.tag {
             0 => crate::api::enumeration::KitchenSinkTwinNormal::Empty,
@@ -5646,6 +6136,7 @@ impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>
     for wire_cst_kitchen_sink_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync {
@@ -5678,6 +6169,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSi
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
     for wire_cst_kitchen_sink_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync {
         match self.tag {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Empty,
@@ -5720,6 +6212,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
     }
 }
 impl CstDecode<Vec<chrono::Duration>> for *mut wire_cst_list_Chrono_Duration {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<chrono::Duration> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5729,6 +6222,7 @@ impl CstDecode<Vec<chrono::Duration>> for *mut wire_cst_list_Chrono_Duration {
     }
 }
 impl CstDecode<Vec<chrono::DateTime<chrono::Local>>> for *mut wire_cst_list_Chrono_Local {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<chrono::DateTime<chrono::Local>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5738,6 +6232,7 @@ impl CstDecode<Vec<chrono::DateTime<chrono::Local>>> for *mut wire_cst_list_Chro
     }
 }
 impl CstDecode<Vec<chrono::NaiveDateTime>> for *mut wire_cst_list_Chrono_Naive {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<chrono::NaiveDateTime> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5747,6 +6242,7 @@ impl CstDecode<Vec<chrono::NaiveDateTime>> for *mut wire_cst_list_Chrono_Naive {
     }
 }
 impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>> for *mut wire_cst_list_DartOpaque {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<flutter_rust_bridge::DartOpaque> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5758,6 +6254,7 @@ impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>> for *mut wire_cst_list_Dart
 impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>>>
     for *mut wire_cst_list_RustOpaque_hide_data_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>> {
@@ -5771,6 +6268,7 @@ impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi
 impl CstDecode<Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>>
     for *mut wire_cst_list_RustOpaque_hide_data_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5788,6 +6286,7 @@ impl
         >,
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<
@@ -5803,6 +6302,7 @@ impl
     }
 }
 impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>> for *mut wire_cst_list_RustOpaque_hide_data_twin_rust_async_moi {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>> {
                 let vec = unsafe {
         let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5816,6 +6316,7 @@ impl
         Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>,
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
@@ -5836,6 +6337,7 @@ impl
         >,
     > for *mut wire_cst_list_RustOpaque_hide_data_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>>
@@ -5848,6 +6350,7 @@ impl
     }
 }
 impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<String> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5859,6 +6362,7 @@ impl CstDecode<Vec<String>> for *mut wire_cst_list_String {
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>>
     for *mut wire_cst_list_application_env_var
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5870,6 +6374,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
     for *mut wire_cst_list_application_settings
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
@@ -5883,6 +6388,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationS
 impl CstDecode<Vec<crate::api::optional::AttributeTwinNormal>>
     for *mut wire_cst_list_attribute_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::optional::AttributeTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5894,6 +6400,7 @@ impl CstDecode<Vec<crate::api::optional::AttributeTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>
     for *mut wire_cst_list_attribute_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync> {
@@ -5907,6 +6414,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::Attribut
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>>
     for *mut wire_cst_list_attribute_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5918,6 +6426,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinS
 impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>>
     for *mut wire_cst_list_basic_general_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5929,6 +6438,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>>
     for *mut wire_cst_list_basic_general_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync> {
@@ -5942,6 +6452,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicGenera
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>>
     for *mut wire_cst_list_basic_general_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync> {
@@ -5955,6 +6466,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumT
 impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>>
     for *mut wire_cst_list_basic_primitive_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -5968,6 +6480,7 @@ impl
         Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>,
     > for *mut wire_cst_list_basic_primitive_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>
@@ -5982,6 +6495,7 @@ impl
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>>
     for *mut wire_cst_list_basic_primitive_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync> {
@@ -5995,6 +6509,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnu
 impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal>>
     for *mut wire_cst_list_basic_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6006,6 +6521,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>>
     for *mut wire_cst_list_basic_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync> {
@@ -6019,6 +6535,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicStruct
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>>
     for *mut wire_cst_list_basic_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6028,6 +6545,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSy
     }
 }
 impl CstDecode<Vec<bool>> for *mut wire_cst_list_bool {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<bool> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6039,6 +6557,7 @@ impl CstDecode<Vec<bool>> for *mut wire_cst_list_bool {
 impl CstDecode<Vec<crate::api::optional::ElementTwinNormal>>
     for *mut wire_cst_list_element_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::optional::ElementTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6050,6 +6569,7 @@ impl CstDecode<Vec<crate::api::optional::ElementTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>>
     for *mut wire_cst_list_element_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync> {
@@ -6063,6 +6583,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementT
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>>
     for *mut wire_cst_list_element_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6074,6 +6595,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSyn
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi>>
     for *mut wire_cst_list_enum_opaque_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6085,6 +6607,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTw
 impl CstDecode<Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal>>
     for *mut wire_cst_list_enum_opaque_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6096,6 +6619,7 @@ impl CstDecode<Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>>
     for *mut wire_cst_list_enum_opaque_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync> {
@@ -6111,6 +6635,7 @@ impl
         Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi>,
     > for *mut wire_cst_list_enum_opaque_twin_rust_async_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi>
@@ -6125,6 +6650,7 @@ impl
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>>
     for *mut wire_cst_list_enum_opaque_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync> {
@@ -6138,6 +6664,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi>>
     for *mut wire_cst_list_enum_opaque_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi> {
@@ -6149,6 +6676,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpa
     }
 }
 impl CstDecode<Vec<crate::auxiliary::sample_types::MyEnum>> for *mut wire_cst_list_my_enum {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::auxiliary::sample_types::MyEnum> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6158,6 +6686,7 @@ impl CstDecode<Vec<crate::auxiliary::sample_types::MyEnum>> for *mut wire_cst_li
     }
 }
 impl CstDecode<Vec<crate::auxiliary::sample_types::MySize>> for *mut wire_cst_list_my_size {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::auxiliary::sample_types::MySize> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6169,6 +6698,7 @@ impl CstDecode<Vec<crate::auxiliary::sample_types::MySize>> for *mut wire_cst_li
 impl CstDecode<Vec<crate::api::misc_example::MyTreeNodeTwinNormal>>
     for *mut wire_cst_list_my_tree_node_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::misc_example::MyTreeNodeTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6181,6 +6711,7 @@ impl
     CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>>
     for *mut wire_cst_list_my_tree_node_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync> {
@@ -6194,6 +6725,7 @@ impl
 impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>>
     for *mut wire_cst_list_my_tree_node_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync> {
@@ -6207,6 +6739,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNode
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>>
     for *mut wire_cst_list_nested_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored> {
@@ -6220,6 +6753,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStr
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored>
     for wire_cst_list_of_nested_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
@@ -6229,6 +6763,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawS
     }
 }
 impl CstDecode<Vec<Option<String>>> for *mut wire_cst_list_opt_String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<String>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6240,6 +6775,7 @@ impl CstDecode<Vec<Option<String>>> for *mut wire_cst_list_opt_String {
 impl CstDecode<Vec<Option<crate::api::optional::AttributeTwinNormal>>>
     for *mut wire_cst_list_opt_box_autoadd_attribute_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<crate::api::optional::AttributeTwinNormal>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6253,6 +6789,7 @@ impl
         Vec<Option<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>,
     > for *mut wire_cst_list_opt_box_autoadd_attribute_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>
@@ -6267,6 +6804,7 @@ impl
 impl CstDecode<Vec<Option<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>>>
     for *mut wire_cst_list_opt_box_autoadd_attribute_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>> {
@@ -6278,6 +6816,7 @@ impl CstDecode<Vec<Option<crate::api::pseudo_manual::optional_twin_sync::Attribu
     }
 }
 impl CstDecode<Vec<Option<i32>>> for *mut wire_cst_list_opt_box_autoadd_i_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<i32>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6289,6 +6828,7 @@ impl CstDecode<Vec<Option<i32>>> for *mut wire_cst_list_opt_box_autoadd_i_32 {
 impl CstDecode<Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>>>
     for *mut wire_cst_list_opt_box_autoadd_weekdays_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6302,6 +6842,7 @@ impl
         Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>,
     > for *mut wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
@@ -6316,6 +6857,7 @@ impl
 impl CstDecode<Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>>
     for *mut wire_cst_list_opt_box_autoadd_weekdays_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>> {
@@ -6327,6 +6869,7 @@ impl CstDecode<Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::Wee
     }
 }
 impl CstDecode<Vec<Option<Vec<i32>>>> for *mut wire_cst_list_opt_list_prim_i_32_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<Vec<i32>>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6336,6 +6879,7 @@ impl CstDecode<Vec<Option<Vec<i32>>>> for *mut wire_cst_list_opt_list_prim_i_32_
     }
 }
 impl CstDecode<Vec<crate::api::array::PointTwinNormal>> for *mut wire_cst_list_point_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::array::PointTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6347,6 +6891,7 @@ impl CstDecode<Vec<crate::api::array::PointTwinNormal>> for *mut wire_cst_list_p
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>>
     for *mut wire_cst_list_point_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync> {
@@ -6360,6 +6905,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRu
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>>
     for *mut wire_cst_list_point_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6369,6 +6915,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>>
     }
 }
 impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6377,6 +6924,7 @@ impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32_loose {
     }
 }
 impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6385,6 +6933,7 @@ impl CstDecode<Vec<f32>> for *mut wire_cst_list_prim_f_32_strict {
     }
 }
 impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f64> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6393,6 +6942,7 @@ impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64_loose {
     }
 }
 impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f64> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6401,6 +6951,7 @@ impl CstDecode<Vec<f64>> for *mut wire_cst_list_prim_f_64_strict {
     }
 }
 impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i16> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6409,6 +6960,7 @@ impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16_loose {
     }
 }
 impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i16> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6417,6 +6969,7 @@ impl CstDecode<Vec<i16>> for *mut wire_cst_list_prim_i_16_strict {
     }
 }
 impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6425,6 +6978,7 @@ impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32_loose {
     }
 }
 impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6433,6 +6987,7 @@ impl CstDecode<Vec<i32>> for *mut wire_cst_list_prim_i_32_strict {
     }
 }
 impl CstDecode<Vec<i64>> for *mut wire_cst_list_prim_i_64_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i64> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6441,6 +6996,7 @@ impl CstDecode<Vec<i64>> for *mut wire_cst_list_prim_i_64_strict {
     }
 }
 impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6449,6 +7005,7 @@ impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8_loose {
     }
 }
 impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6457,6 +7014,7 @@ impl CstDecode<Vec<i8>> for *mut wire_cst_list_prim_i_8_strict {
     }
 }
 impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u16> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6465,6 +7023,7 @@ impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16_loose {
     }
 }
 impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u16> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6473,6 +7032,7 @@ impl CstDecode<Vec<u16>> for *mut wire_cst_list_prim_u_16_strict {
     }
 }
 impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6481,6 +7041,7 @@ impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32_loose {
     }
 }
 impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u32> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6489,6 +7050,7 @@ impl CstDecode<Vec<u32>> for *mut wire_cst_list_prim_u_32_strict {
     }
 }
 impl CstDecode<Vec<u64>> for *mut wire_cst_list_prim_u_64_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u64> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6497,6 +7059,7 @@ impl CstDecode<Vec<u64>> for *mut wire_cst_list_prim_u_64_strict {
     }
 }
 impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_loose {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6505,6 +7068,7 @@ impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_loose {
     }
 }
 impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u8> {
         unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6515,6 +7079,7 @@ impl CstDecode<Vec<u8>> for *mut wire_cst_list_prim_u_8_strict {
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>>
     for *mut wire_cst_list_raw_string_enum_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored> {
@@ -6528,6 +7093,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnu
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>>
     for *mut wire_cst_list_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6544,6 +7110,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_general_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6565,6 +7132,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_general_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6586,6 +7154,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_general_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6607,6 +7176,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_primitive_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6628,6 +7198,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_primitive_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6649,6 +7220,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_primitive_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6665,6 +7237,7 @@ impl
 impl CstDecode<Vec<(i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal)>>
     for *mut wire_cst_list_record_i_32_basic_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6681,6 +7254,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6702,6 +7276,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_i_32_basic_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6716,6 +7291,7 @@ impl
     }
 }
 impl CstDecode<Vec<(i32, bool)>> for *mut wire_cst_list_record_i_32_bool {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, bool)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6725,6 +7301,7 @@ impl CstDecode<Vec<(i32, bool)>> for *mut wire_cst_list_record_i_32_bool {
     }
 }
 impl CstDecode<Vec<(i32, f32)>> for *mut wire_cst_list_record_i_32_f_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, f32)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6734,6 +7311,7 @@ impl CstDecode<Vec<(i32, f32)>> for *mut wire_cst_list_record_i_32_f_32 {
     }
 }
 impl CstDecode<Vec<(i32, f64)>> for *mut wire_cst_list_record_i_32_f_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, f64)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6743,6 +7321,7 @@ impl CstDecode<Vec<(i32, f64)>> for *mut wire_cst_list_record_i_32_f_64 {
     }
 }
 impl CstDecode<Vec<(i32, i16)>> for *mut wire_cst_list_record_i_32_i_16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i16)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6752,6 +7331,7 @@ impl CstDecode<Vec<(i32, i16)>> for *mut wire_cst_list_record_i_32_i_16 {
     }
 }
 impl CstDecode<Vec<(i32, i32)>> for *mut wire_cst_list_record_i_32_i_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i32)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6761,6 +7341,7 @@ impl CstDecode<Vec<(i32, i32)>> for *mut wire_cst_list_record_i_32_i_32 {
     }
 }
 impl CstDecode<Vec<(i32, i64)>> for *mut wire_cst_list_record_i_32_i_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i64)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6770,6 +7351,7 @@ impl CstDecode<Vec<(i32, i64)>> for *mut wire_cst_list_record_i_32_i_64 {
     }
 }
 impl CstDecode<Vec<(i32, i8)>> for *mut wire_cst_list_record_i_32_i_8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i8)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6779,6 +7361,7 @@ impl CstDecode<Vec<(i32, i8)>> for *mut wire_cst_list_record_i_32_i_8 {
     }
 }
 impl CstDecode<Vec<(i32, isize)>> for *mut wire_cst_list_record_i_32_isize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, isize)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6788,6 +7371,7 @@ impl CstDecode<Vec<(i32, isize)>> for *mut wire_cst_list_record_i_32_isize {
     }
 }
 impl CstDecode<Vec<(i32, Vec<u8>)>> for *mut wire_cst_list_record_i_32_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, Vec<u8>)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6797,6 +7381,7 @@ impl CstDecode<Vec<(i32, Vec<u8>)>> for *mut wire_cst_list_record_i_32_list_prim
     }
 }
 impl CstDecode<Vec<(i32, String)>> for *mut wire_cst_list_record_i_32_string {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, String)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6806,6 +7391,7 @@ impl CstDecode<Vec<(i32, String)>> for *mut wire_cst_list_record_i_32_string {
     }
 }
 impl CstDecode<Vec<(i32, u16)>> for *mut wire_cst_list_record_i_32_u_16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u16)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6815,6 +7401,7 @@ impl CstDecode<Vec<(i32, u16)>> for *mut wire_cst_list_record_i_32_u_16 {
     }
 }
 impl CstDecode<Vec<(i32, u32)>> for *mut wire_cst_list_record_i_32_u_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u32)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6824,6 +7411,7 @@ impl CstDecode<Vec<(i32, u32)>> for *mut wire_cst_list_record_i_32_u_32 {
     }
 }
 impl CstDecode<Vec<(i32, u64)>> for *mut wire_cst_list_record_i_32_u_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u64)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6833,6 +7421,7 @@ impl CstDecode<Vec<(i32, u64)>> for *mut wire_cst_list_record_i_32_u_64 {
     }
 }
 impl CstDecode<Vec<(i32, u8)>> for *mut wire_cst_list_record_i_32_u_8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u8)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6842,6 +7431,7 @@ impl CstDecode<Vec<(i32, u8)>> for *mut wire_cst_list_record_i_32_u_8 {
     }
 }
 impl CstDecode<Vec<(i32, usize)>> for *mut wire_cst_list_record_i_32_usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, usize)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6853,6 +7443,7 @@ impl CstDecode<Vec<(i32, usize)>> for *mut wire_cst_list_record_i_32_usize {
 impl CstDecode<Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)>>
     for *mut wire_cst_list_record_string_enum_simple_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6869,6 +7460,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_string_enum_simple_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6890,6 +7482,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_string_enum_simple_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6904,6 +7497,7 @@ impl
     }
 }
 impl CstDecode<Vec<(String, i32)>> for *mut wire_cst_list_record_string_i_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, i32)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6915,6 +7509,7 @@ impl CstDecode<Vec<(String, i32)>> for *mut wire_cst_list_record_string_i_32 {
 impl CstDecode<Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)>>
     for *mut wire_cst_list_record_string_kitchen_sink_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6931,6 +7526,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_string_kitchen_sink_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6952,6 +7548,7 @@ impl
         )>,
     > for *mut wire_cst_list_record_string_kitchen_sink_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6966,6 +7563,7 @@ impl
     }
 }
 impl CstDecode<Vec<(String, Vec<u8>)>> for *mut wire_cst_list_record_string_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, Vec<u8>)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6977,6 +7575,7 @@ impl CstDecode<Vec<(String, Vec<u8>)>> for *mut wire_cst_list_record_string_list
 impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
     for *mut wire_cst_list_record_string_my_size
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, crate::auxiliary::sample_types::MySize)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6986,6 +7585,7 @@ impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
     }
 }
 impl CstDecode<Vec<(String, String)>> for *mut wire_cst_list_record_string_string {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, String)> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -6997,6 +7597,7 @@ impl CstDecode<Vec<(String, String)>> for *mut wire_cst_list_record_string_strin
 impl CstDecode<Vec<crate::api::method::SumWithTwinNormal>>
     for *mut wire_cst_list_sum_with_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::method::SumWithTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -7008,6 +7609,7 @@ impl CstDecode<Vec<crate::api::method::SumWithTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>>
     for *mut wire_cst_list_sum_with_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync> {
@@ -7021,6 +7623,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwi
 impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>>
     for *mut wire_cst_list_sum_with_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -7032,6 +7635,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
 impl CstDecode<Vec<crate::api::array::TestIdTwinNormal>>
     for *mut wire_cst_list_test_id_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::array::TestIdTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -7043,6 +7647,7 @@ impl CstDecode<Vec<crate::api::array::TestIdTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>>
     for *mut wire_cst_list_test_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> {
@@ -7056,6 +7661,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinR
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>>
     for *mut wire_cst_list_test_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -7067,6 +7673,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>>
 impl CstDecode<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
     for *mut wire_cst_list_weekdays_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::misc_example::WeekdaysTwinNormal> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
@@ -7078,6 +7685,7 @@ impl CstDecode<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
     for *mut wire_cst_list_weekdays_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync> {
@@ -7091,6 +7699,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::Week
 impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
     for *mut wire_cst_list_weekdays_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> {
@@ -7102,6 +7711,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTw
     }
 }
 impl CstDecode<crate::api::method::Log2TwinNormal> for wire_cst_log_2_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::Log2TwinNormal {
         crate::api::method::Log2TwinNormal {
             key: self.key.cst_decode(),
@@ -7112,6 +7722,7 @@ impl CstDecode<crate::api::method::Log2TwinNormal> for wire_cst_log_2_twin_norma
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>
     for wire_cst_log_2_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
         crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
             key: self.key.cst_decode(),
@@ -7122,6 +7733,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAs
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
     for wire_cst_log_2_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
         crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
             key: self.key.cst_decode(),
@@ -7130,6 +7742,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
     }
 }
 impl CstDecode<crate::api::stream::LogTwinNormal> for wire_cst_log_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::stream::LogTwinNormal {
         crate::api::stream::LogTwinNormal {
             key: self.key.cst_decode(),
@@ -7140,6 +7753,7 @@ impl CstDecode<crate::api::stream::LogTwinNormal> for wire_cst_log_twin_normal {
 impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>
     for wire_cst_log_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
         crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
             key: self.key.cst_decode(),
@@ -7148,6 +7762,7 @@ impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsy
     }
 }
 impl CstDecode<crate::api::inside_macro::MacroStruct> for wire_cst_macro_struct {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::inside_macro::MacroStruct {
         crate::api::inside_macro::MacroStruct {
             data: self.data.cst_decode(),
@@ -7155,6 +7770,7 @@ impl CstDecode<crate::api::inside_macro::MacroStruct> for wire_cst_macro_struct 
     }
 }
 impl CstDecode<crate::api::enumeration::MeasureTwinNormal> for wire_cst_measure_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::MeasureTwinNormal {
         match self.tag {
             0 => {
@@ -7172,6 +7788,7 @@ impl CstDecode<crate::api::enumeration::MeasureTwinNormal> for wire_cst_measure_
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>
     for wire_cst_measure_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync {
@@ -7193,6 +7810,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTw
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>
     for wire_cst_measure_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync {
         match self.tag {
             0 => {
@@ -7212,6 +7830,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync
     }
 }
 impl CstDecode<crate::api::array::MessageIdTwinNormal> for wire_cst_message_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::MessageIdTwinNormal {
         crate::api::array::MessageIdTwinNormal(self.field0.cst_decode())
     }
@@ -7219,6 +7838,7 @@ impl CstDecode<crate::api::array::MessageIdTwinNormal> for wire_cst_message_id_t
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync>
     for wire_cst_message_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync {
@@ -7230,11 +7850,13 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRu
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
     for wire_cst_message_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
         crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync(self.field0.cst_decode())
     }
 }
 impl CstDecode<crate::api::mirror::MirrorStructTwinNormal> for wire_cst_mirror_struct_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::mirror::MirrorStructTwinNormal {
         crate::api::mirror::MirrorStructTwinNormal {
             a: self.a.cst_decode(),
@@ -7247,6 +7869,7 @@ impl CstDecode<crate::api::mirror::MirrorStructTwinNormal> for wire_cst_mirror_s
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
     for wire_cst_mirror_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
@@ -7261,6 +7884,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTw
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>
     for wire_cst_mirror_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
         crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
             a: self.a.cst_decode(),
@@ -7273,6 +7897,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
 impl CstDecode<crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal>
     for wire_cst_more_than_just_one_raw_string_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal {
         crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal {
             regular: self.regular.cst_decode(),
@@ -7283,6 +7908,7 @@ impl CstDecode<crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal>
     }
 }
 impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync> for wire_cst_more_than_just_one_raw_string_struct_twin_rust_async {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {
                 crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync{regular:  self.regular.cst_decode(),r#type:  self.r#type.cst_decode(),r#async:  self.r#async.cst_decode(),another:  self.another.cst_decode()}
             }
@@ -7292,6 +7918,7 @@ impl
         crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync,
     > for wire_cst_more_than_just_one_raw_string_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync
@@ -7307,6 +7934,7 @@ impl
 impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
     for wire_cst_my_nested_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::MyNestedStructTwinNormal {
         crate::api::misc_example::MyNestedStructTwinNormal {
             tree_node: self.tree_node.cst_decode(),
@@ -7317,6 +7945,7 @@ impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync>
     for wire_cst_my_nested_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync {
@@ -7329,6 +7958,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNested
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync>
     for wire_cst_my_nested_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync {
@@ -7339,6 +7969,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStruct
     }
 }
 impl CstDecode<crate::auxiliary::sample_types::MySize> for wire_cst_my_size {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::sample_types::MySize {
         crate::auxiliary::sample_types::MySize {
             width: self.width.cst_decode(),
@@ -7349,6 +7980,7 @@ impl CstDecode<crate::auxiliary::sample_types::MySize> for wire_cst_my_size {
 impl CstDecode<crate::api::stream::MyStreamEntryTwinNormal>
     for wire_cst_my_stream_entry_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::stream::MyStreamEntryTwinNormal {
         crate::api::stream::MyStreamEntryTwinNormal {
             hello: self.hello.cst_decode(),
@@ -7358,6 +7990,7 @@ impl CstDecode<crate::api::stream::MyStreamEntryTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
     for wire_cst_my_stream_entry_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
@@ -7367,6 +8000,7 @@ impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryT
     }
 }
 impl CstDecode<crate::auxiliary::sample_types::MyStruct> for wire_cst_my_struct {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::sample_types::MyStruct {
         crate::auxiliary::sample_types::MyStruct {
             content: self.content.cst_decode(),
@@ -7376,6 +8010,7 @@ impl CstDecode<crate::auxiliary::sample_types::MyStruct> for wire_cst_my_struct 
 impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
     for wire_cst_my_tree_node_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::MyTreeNodeTwinNormal {
         crate::api::misc_example::MyTreeNodeTwinNormal {
             value_i32: self.value_i32.cst_decode(),
@@ -7388,6 +8023,7 @@ impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>
     for wire_cst_my_tree_node_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync {
@@ -7402,6 +8038,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNo
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>
     for wire_cst_my_tree_node_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync {
         crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync {
             value_i32: self.value_i32.cst_decode(),
@@ -7414,6 +8051,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwin
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
     for wire_cst_nested_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
@@ -7425,6 +8063,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringM
 impl CstDecode<crate::auxiliary::new_module_system::sub_module::NewSimpleStruct>
     for wire_cst_new_simple_struct
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::new_module_system::sub_module::NewSimpleStruct {
         crate::auxiliary::new_module_system::sub_module::NewSimpleStruct {
             field: self.field.cst_decode(),
@@ -7434,6 +8073,7 @@ impl CstDecode<crate::auxiliary::new_module_system::sub_module::NewSimpleStruct>
 impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
     for wire_cst_new_type_int_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::newtype_pattern::NewTypeIntTwinNormal {
         crate::api::newtype_pattern::NewTypeIntTwinNormal(self.field0.cst_decode())
     }
@@ -7441,6 +8081,7 @@ impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync>
     for wire_cst_new_type_int_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync {
@@ -7452,6 +8093,7 @@ impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTy
 impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>
     for wire_cst_new_type_int_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync {
@@ -7461,6 +8103,7 @@ impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntT
     }
 }
 impl CstDecode<crate::api::enumeration::NoteTwinNormal> for wire_cst_note_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::NoteTwinNormal {
         crate::api::enumeration::NoteTwinNormal {
             day: self.day.cst_decode(),
@@ -7471,6 +8114,7 @@ impl CstDecode<crate::api::enumeration::NoteTwinNormal> for wire_cst_note_twin_n
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync>
     for wire_cst_note_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
@@ -7483,6 +8127,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinR
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
     for wire_cst_note_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync {
         crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync {
             day: self.day.cst_decode(),
@@ -7491,6 +8136,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers> for wire_cst_numbers {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers {
         crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers(self.field0.cst_decode())
     }
@@ -7498,6 +8144,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers> for wir
 impl CstDecode<crate::auxiliary::old_module_system::sub_module::OldSimpleStruct>
     for wire_cst_old_simple_struct
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::old_module_system::sub_module::OldSimpleStruct {
         crate::auxiliary::old_module_system::sub_module::OldSimpleStruct {
             field: self.field.cst_decode(),
@@ -7507,6 +8154,7 @@ impl CstDecode<crate::auxiliary::old_module_system::sub_module::OldSimpleStruct>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi>
     for wire_cst_opaque_nested_twin_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi {
         crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi {
             first: self.first.cst_decode(),
@@ -7517,6 +8165,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwin
 impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
     for wire_cst_opaque_nested_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::rust_opaque::OpaqueNestedTwinNormal {
         crate::api::rust_opaque::OpaqueNestedTwinNormal {
             first: self.first.cst_decode(),
@@ -7527,6 +8176,7 @@ impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync>
     for wire_cst_opaque_nested_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
@@ -7541,6 +8191,7 @@ impl
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi,
     > for wire_cst_opaque_nested_twin_rust_async_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi
@@ -7554,6 +8205,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync>
     for wire_cst_opaque_nested_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
         crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
             first: self.first.cst_decode(),
@@ -7564,6 +8216,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwi
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi>
     for wire_cst_opaque_nested_twin_sync_moi
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi {
@@ -7574,6 +8227,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNeste
     }
 }
 impl CstDecode<crate::api::optional::OptVecsTwinNormal> for wire_cst_opt_vecs_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::OptVecsTwinNormal {
         crate::api::optional::OptVecsTwinNormal {
             i32: self.i32.cst_decode(),
@@ -7586,6 +8240,7 @@ impl CstDecode<crate::api::optional::OptVecsTwinNormal> for wire_cst_opt_vecs_tw
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync>
     for wire_cst_opt_vecs_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync {
@@ -7600,6 +8255,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinR
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
     for wire_cst_opt_vecs_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync {
         crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync {
             i32: self.i32.cst_decode(),
@@ -7610,6 +8266,7 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
     }
 }
 impl CstDecode<crate::api::array::PointTwinNormal> for wire_cst_point_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::PointTwinNormal {
         crate::api::array::PointTwinNormal {
             x: self.x.cst_decode(),
@@ -7618,6 +8275,7 @@ impl CstDecode<crate::api::array::PointTwinNormal> for wire_cst_point_twin_norma
     }
 }
 impl CstDecode<[crate::api::array::PointTwinNormal; 2]> for *mut wire_cst_list_point_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::array::PointTwinNormal; 2] {
         let vec: Vec<crate::api::array::PointTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -7626,6 +8284,7 @@ impl CstDecode<[crate::api::array::PointTwinNormal; 2]> for *mut wire_cst_list_p
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>
     for wire_cst_point_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync {
         crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync {
             x: self.x.cst_decode(),
@@ -7636,6 +8295,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAs
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2]>
     for *mut wire_cst_list_point_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2] {
@@ -7647,6 +8307,7 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustA
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
     for wire_cst_point_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
         crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
             x: self.x.cst_decode(),
@@ -7657,6 +8318,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2]>
     for *mut wire_cst_list_point_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -7665,6 +8327,7 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2]>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>
     for wire_cst_raw_string_enum_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored {
         match self.tag {
             0 => {
@@ -7692,6 +8355,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMir
 impl CstDecode<crate::api::raw_string::RawStringItemStructTwinNormal>
     for wire_cst_raw_string_item_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::raw_string::RawStringItemStructTwinNormal {
         crate::api::raw_string::RawStringItemStructTwinNormal {
             r#type: self.r#type.cst_decode(),
@@ -7703,6 +8367,7 @@ impl
         crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync,
     > for wire_cst_raw_string_item_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync
@@ -7715,6 +8380,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync>
     for wire_cst_raw_string_item_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync {
@@ -7726,6 +8392,7 @@ impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStr
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
     for wire_cst_raw_string_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
         crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
             value: self.value.cst_decode(),
@@ -7738,6 +8405,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
     )> for wire_cst_record_application_settings_raw_string_enum_mirrored
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7753,6 +8421,7 @@ impl
         crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal,
     )> for wire_cst_record_i_32_basic_general_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7768,6 +8437,7 @@ impl
         crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync,
     )> for wire_cst_record_i_32_basic_general_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7783,6 +8453,7 @@ impl
         crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync,
     )> for wire_cst_record_i_32_basic_general_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7798,6 +8469,7 @@ impl
         crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal,
     )> for wire_cst_record_i_32_basic_primitive_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7813,6 +8485,7 @@ impl
         crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync,
     )> for wire_cst_record_i_32_basic_primitive_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7828,6 +8501,7 @@ impl
         crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync,
     )> for wire_cst_record_i_32_basic_primitive_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7840,6 +8514,7 @@ impl
 impl CstDecode<(i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal)>
     for wire_cst_record_i_32_basic_struct_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -7850,6 +8525,7 @@ impl
         crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync,
     )> for wire_cst_record_i_32_basic_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7865,6 +8541,7 @@ impl
         crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync,
     )> for wire_cst_record_i_32_basic_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7875,76 +8552,91 @@ impl
     }
 }
 impl CstDecode<(i32, bool)> for wire_cst_record_i_32_bool {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, bool) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, f32)> for wire_cst_record_i_32_f_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, f32) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, f64)> for wire_cst_record_i_32_f_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, f64) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, i16)> for wire_cst_record_i_32_i_16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i16) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, i32)> for wire_cst_record_i_32_i_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i32) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, i64)> for wire_cst_record_i_32_i_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i64) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, i8)> for wire_cst_record_i_32_i_8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i8) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, isize)> for wire_cst_record_i_32_isize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, isize) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, Vec<u8>)> for wire_cst_record_i_32_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, Vec<u8>) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, String)> for wire_cst_record_i_32_string {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, String) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, u16)> for wire_cst_record_i_32_u_16 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u16) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, u32)> for wire_cst_record_i_32_u_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u32) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, u64)> for wire_cst_record_i_32_u_64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u64) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, u8)> for wire_cst_record_i_32_u_8 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u8) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(i32, usize)> for wire_cst_record_i_32_usize {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, usize) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -7952,6 +8644,7 @@ impl CstDecode<(i32, usize)> for wire_cst_record_i_32_usize {
 impl CstDecode<(String, crate::api::enumeration::EnumSimpleTwinNormal)>
     for wire_cst_record_string_enum_simple_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, crate::api::enumeration::EnumSimpleTwinNormal) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -7962,6 +8655,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
     )> for wire_cst_record_string_enum_simple_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7977,6 +8671,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
     )> for wire_cst_record_string_enum_simple_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -7987,6 +8682,7 @@ impl
     }
 }
 impl CstDecode<(String, i32)> for wire_cst_record_string_i_32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, i32) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -7994,6 +8690,7 @@ impl CstDecode<(String, i32)> for wire_cst_record_string_i_32 {
 impl CstDecode<(String, crate::api::enumeration::KitchenSinkTwinNormal)>
     for wire_cst_record_string_kitchen_sink_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, crate::api::enumeration::KitchenSinkTwinNormal) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -8004,6 +8701,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
     )> for wire_cst_record_string_kitchen_sink_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -8019,6 +8717,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
     )> for wire_cst_record_string_kitchen_sink_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -8029,6 +8728,7 @@ impl
     }
 }
 impl CstDecode<(String, Vec<u8>)> for wire_cst_record_string_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, Vec<u8>) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
@@ -8036,21 +8736,25 @@ impl CstDecode<(String, Vec<u8>)> for wire_cst_record_string_list_prim_u_8_stric
 impl CstDecode<(String, crate::auxiliary::sample_types::MySize)>
     for wire_cst_record_string_my_size
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, crate::auxiliary::sample_types::MySize) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<(String, String)> for wire_cst_record_string_string {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, String) {
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences> for wire_cst_sequences {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences {
         crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences(self.field0.cst_decode())
     }
 }
 impl CstDecode<crate::api::exception::SomeStructTwinNormal> for wire_cst_some_struct_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::SomeStructTwinNormal {
         crate::api::exception::SomeStructTwinNormal {
             value: self.value.cst_decode(),
@@ -8060,6 +8764,7 @@ impl CstDecode<crate::api::exception::SomeStructTwinNormal> for wire_cst_some_st
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
     for wire_cst_some_struct_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
@@ -8071,6 +8776,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructT
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
     for wire_cst_some_struct_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync {
         crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync {
             value: self.value.cst_decode(),
@@ -8078,6 +8784,7 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSyn
     }
 }
 impl CstDecode<crate::api::enumeration::SpeedTwinNormal> for wire_cst_speed_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::SpeedTwinNormal {
         match self.tag {
             0 => crate::api::enumeration::SpeedTwinNormal::Unknown,
@@ -8092,6 +8799,7 @@ impl CstDecode<crate::api::enumeration::SpeedTwinNormal> for wire_cst_speed_twin
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync>
     for wire_cst_speed_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync {
@@ -8112,6 +8820,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwin
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>
     for wire_cst_speed_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync {
         match self.tag {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync::Unknown,
@@ -8128,6 +8837,7 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for wire_cst_struct_with_comments_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::comment::StructWithCommentsTwinNormal {
         crate::api::comment::StructWithCommentsTwinNormal {
             field_with_comments: self.field_with_comments.cst_decode(),
@@ -8137,6 +8847,7 @@ impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync>
     for wire_cst_struct_with_comments_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync {
@@ -8148,6 +8859,7 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_rust_async::StructWithCom
 impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
     for wire_cst_struct_with_comments_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
@@ -8159,6 +8871,7 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsT
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for wire_cst_struct_with_enum_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::StructWithEnumTwinNormal {
         crate::api::misc_example::StructWithEnumTwinNormal {
             abc1: self.abc1.cst_decode(),
@@ -8169,6 +8882,7 @@ impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync>
     for wire_cst_struct_with_enum_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync {
@@ -8181,6 +8895,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWi
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>
     for wire_cst_struct_with_enum_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
@@ -8193,6 +8908,7 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnum
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for wire_cst_struct_with_one_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
         crate::api::structure::StructWithOneFieldTwinNormal {
             a: self.a.cst_decode(),
@@ -8203,6 +8919,7 @@ impl
     CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync>
     for wire_cst_struct_with_one_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync {
@@ -8214,6 +8931,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
     for wire_cst_struct_with_one_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
@@ -8225,6 +8943,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFiel
 impl CstDecode<crate::api::structure::StructWithTwoFieldTwinNormal>
     for wire_cst_struct_with_two_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
         crate::api::structure::StructWithTwoFieldTwinNormal {
             a: self.a.cst_decode(),
@@ -8236,6 +8955,7 @@ impl
     CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync>
     for wire_cst_struct_with_two_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync {
@@ -8248,6 +8968,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
     for wire_cst_struct_with_two_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
@@ -8260,6 +8981,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFiel
 impl CstDecode<crate::api::structure::StructWithZeroFieldTwinNormal>
     for wire_cst_struct_with_zero_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
         crate::api::structure::StructWithZeroFieldTwinNormal {}
     }
@@ -8269,6 +8991,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync,
     > for wire_cst_struct_with_zero_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync
@@ -8279,6 +9002,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
     for wire_cst_struct_with_zero_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
@@ -8286,6 +9010,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFie
     }
 }
 impl CstDecode<crate::api::method::SumWithTwinNormal> for wire_cst_sum_with_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::SumWithTwinNormal {
         crate::api::method::SumWithTwinNormal {
             x: self.x.cst_decode(),
@@ -8295,6 +9020,7 @@ impl CstDecode<crate::api::method::SumWithTwinNormal> for wire_cst_sum_with_twin
 impl CstDecode<[crate::api::method::SumWithTwinNormal; 3]>
     for *mut wire_cst_list_sum_with_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::method::SumWithTwinNormal; 3] {
         let vec: Vec<crate::api::method::SumWithTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -8303,6 +9029,7 @@ impl CstDecode<[crate::api::method::SumWithTwinNormal; 3]>
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>
     for wire_cst_sum_with_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
         crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
             x: self.x.cst_decode(),
@@ -8312,6 +9039,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRus
 impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3]>
     for *mut wire_cst_list_sum_with_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3] {
@@ -8323,6 +9051,7 @@ impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRu
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
     for wire_cst_sum_with_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync {
         crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync {
             x: self.x.cst_decode(),
@@ -8332,6 +9061,7 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
 impl CstDecode<[crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3]>
     for *mut wire_cst_list_sum_with_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3] {
         let vec: Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> =
             self.cst_decode();
@@ -8339,6 +9069,7 @@ impl CstDecode<[crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3]
     }
 }
 impl CstDecode<crate::api::chrono_type::TestChronoTwinNormal> for wire_cst_test_chrono_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::chrono_type::TestChronoTwinNormal {
         crate::api::chrono_type::TestChronoTwinNormal {
             dt: self.dt.cst_decode(),
@@ -8350,6 +9081,7 @@ impl CstDecode<crate::api::chrono_type::TestChronoTwinNormal> for wire_cst_test_
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync>
     for wire_cst_test_chrono_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
@@ -8363,6 +9095,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChron
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync>
     for wire_cst_test_chrono_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
         crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
             dt: self.dt.cst_decode(),
@@ -8372,6 +9105,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinS
     }
 }
 impl CstDecode<crate::api::array::TestIdTwinNormal> for wire_cst_test_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::TestIdTwinNormal {
         crate::api::array::TestIdTwinNormal(self.field0.cst_decode())
     }
@@ -8379,6 +9113,7 @@ impl CstDecode<crate::api::array::TestIdTwinNormal> for wire_cst_test_id_twin_no
 impl CstDecode<[crate::api::array::TestIdTwinNormal; 2]>
     for *mut wire_cst_list_test_id_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::array::TestIdTwinNormal; 2] {
         let vec: Vec<crate::api::array::TestIdTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -8387,6 +9122,7 @@ impl CstDecode<[crate::api::array::TestIdTwinNormal; 2]>
 impl CstDecode<[crate::api::array::TestIdTwinNormal; 4]>
     for *mut wire_cst_list_test_id_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::array::TestIdTwinNormal; 4] {
         let vec: Vec<crate::api::array::TestIdTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -8395,6 +9131,7 @@ impl CstDecode<[crate::api::array::TestIdTwinNormal; 4]>
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>
     for wire_cst_test_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync {
         crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync(
             self.field0.cst_decode(),
@@ -8404,6 +9141,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustA
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2]>
     for *mut wire_cst_list_test_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2] {
@@ -8415,6 +9153,7 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRust
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4]>
     for *mut wire_cst_list_test_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4] {
@@ -8426,6 +9165,7 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRust
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
     for wire_cst_test_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync {
         crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync(self.field0.cst_decode())
     }
@@ -8433,6 +9173,7 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2]>
     for *mut wire_cst_list_test_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> =
             self.cst_decode();
@@ -8442,6 +9183,7 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2]>
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
     for *mut wire_cst_list_test_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> =
             self.cst_decode();
@@ -8449,6 +9191,7 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
     }
 }
 impl CstDecode<crate::api::type_alias::TestModelTwinNormal> for wire_cst_test_model_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::type_alias::TestModelTwinNormal {
         crate::api::type_alias::TestModelTwinNormal {
             id: self.id.cst_decode(),
@@ -8461,6 +9204,7 @@ impl CstDecode<crate::api::type_alias::TestModelTwinNormal> for wire_cst_test_mo
 impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync>
     for wire_cst_test_model_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync {
@@ -8475,6 +9219,7 @@ impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelT
 impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync>
     for wire_cst_test_model_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync {
         crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync {
             id: self.id.cst_decode(),
@@ -8487,6 +9232,7 @@ impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSyn
 impl CstDecode<crate::api::structure::TupleStructWithOneFieldTwinNormal>
     for wire_cst_tuple_struct_with_one_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
         crate::api::structure::TupleStructWithOneFieldTwinNormal(self.field0.cst_decode())
     }
@@ -8496,6 +9242,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync,
     > for wire_cst_tuple_struct_with_one_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync
@@ -8508,6 +9255,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
     for wire_cst_tuple_struct_with_one_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
@@ -8519,6 +9267,7 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOn
 impl CstDecode<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
     for wire_cst_tuple_struct_with_two_field_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
         crate::api::structure::TupleStructWithTwoFieldTwinNormal(
             self.field0.cst_decode(),
@@ -8531,6 +9280,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync,
     > for wire_cst_tuple_struct_with_two_field_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync
@@ -8544,6 +9294,7 @@ impl
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>
     for wire_cst_tuple_struct_with_two_field_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
@@ -8554,30 +9305,35 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTw
     }
 }
 impl CstDecode<[u8; 1600]> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 32]> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 32] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 5]> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 5] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 8]> for *mut wire_cst_list_prim_u_8_strict {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 8] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<crate::api::attribute::UserIdTwinNormal> for wire_cst_user_id_twin_normal {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::attribute::UserIdTwinNormal {
         crate::api::attribute::UserIdTwinNormal {
             value: self.value.cst_decode(),
@@ -8587,6 +9343,7 @@ impl CstDecode<crate::api::attribute::UserIdTwinNormal> for wire_cst_user_id_twi
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync>
     for wire_cst_user_id_twin_rust_async
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync {
@@ -8598,6 +9355,7 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinR
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
     for wire_cst_user_id_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync {
         crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync {
             value: self.value.cst_decode(),
@@ -8607,6 +9365,7 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
 impl CstDecode<crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal>
     for wire_cst_vec_of_primitive_pack_twin_normal
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
         crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
             int8list: self.int8list.cst_decode(),
@@ -8624,6 +9383,7 @@ impl CstDecode<crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal>
     }
 }
 impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync> for wire_cst_vec_of_primitive_pack_twin_rust_async {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {
                 crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync{int8list:  self.int8list.cst_decode(),uint8list:  self.uint8list.cst_decode(),int16list:  self.int16list.cst_decode(),uint16list:  self.uint16list.cst_decode(),uint32list:  self.uint32list.cst_decode(),int32list:  self.int32list.cst_decode(),uint64list:  self.uint64list.cst_decode(),int64list:  self.int64list.cst_decode(),float32list:  self.float32list.cst_decode(),float64list:  self.float64list.cst_decode(),bool_list:  self.bool_list.cst_decode()}
             }
@@ -8631,6 +9391,7 @@ impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::V
 impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync>
     for wire_cst_vec_of_primitive_pack_twin_sync
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync {
