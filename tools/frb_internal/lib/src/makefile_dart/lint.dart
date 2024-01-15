@@ -4,6 +4,7 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/misc_utils.dart';
 
 part 'lint.g.dart';
 
@@ -79,13 +80,19 @@ Future<void> lintDartFfigen() async {
     final path =
         '${exec.pwd}frb_example/$name/lib/src/rust/frb_generated.io.dart';
     final text = File(path).readAsStringSync();
-    return TODO;
+
+    const startPattern = 'class RustLibWire implements BaseWire {';
+    final start = text.indexOf(startPattern) + startPattern.length - 1;
+    return text.substring(start, findMatchingBracket(text, start));
   }
 
-  final textMatcher = readText('pure_dart');
-  final textActual = readText('pure_dart_pde');
+  final textMatcher = readInterestText('pure_dart');
+  final textActual = readInterestText('pure_dart_pde');
 
-  TODO;
+  print(textMatcher);
+  print(textActual);
+
+  throw UnimplementedError();
 }
 
 Future<void> lintDartFormat(LintConfig config) async {
