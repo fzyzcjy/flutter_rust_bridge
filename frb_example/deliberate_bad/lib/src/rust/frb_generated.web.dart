@@ -30,9 +30,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  void cst_encode_unit(void raw);
-
-  @protected
   void sse_encode_unit(void self, SseSerializer serializer);
 
   @protected
@@ -44,28 +41,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 // Section: wire_class
 
-class RustLibWire extends BaseWire {
+class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
-
-  void dart_fn_deliver_output(int call_id, PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_, int data_len_) =>
-      wasmModule.dart_fn_deliver_output(
-          call_id, ptr_, rust_vec_len_, data_len_);
-
-  void wire_make_data_race(NativePortType port_) =>
-      wasmModule.wire_make_data_race(port_);
-
-  void wire_make_heap_use_after_free(NativePortType port_) =>
-      wasmModule.wire_make_heap_use_after_free(port_);
-
-  void wire_make_memory_leak(NativePortType port_) =>
-      wasmModule.wire_make_memory_leak(port_);
-
-  void wire_make_stack_buffer_overflow(NativePortType port_) =>
-      wasmModule.wire_make_stack_buffer_overflow(port_);
-
-  void wire_make_use_of_uninitialized_value(NativePortType port_) =>
-      wasmModule.wire_make_use_of_uninitialized_value(port_);
 }
 
 @JS('wasm_bindgen')
@@ -79,17 +56,4 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
-
-  external void dart_fn_deliver_output(int call_id,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire_make_data_race(NativePortType port_);
-
-  external void wire_make_heap_use_after_free(NativePortType port_);
-
-  external void wire_make_memory_leak(NativePortType port_);
-
-  external void wire_make_stack_buffer_overflow(NativePortType port_);
-
-  external void wire_make_use_of_uninitialized_value(NativePortType port_);
 }

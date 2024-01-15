@@ -82,10 +82,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> makeDataRace({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_make_data_race(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMakeDataRaceConstMeta,
@@ -104,10 +106,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> makeHeapUseAfterFree({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_make_heap_use_after_free(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 2, port: port_);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMakeHeapUseAfterFreeConstMeta,
@@ -126,10 +130,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> makeMemoryLeak({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_make_memory_leak(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMakeMemoryLeakConstMeta,
@@ -148,10 +154,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> makeStackBufferOverflow({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_make_stack_buffer_overflow(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMakeStackBufferOverflowConstMeta,
@@ -170,10 +178,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> makeUseOfUninitializedValue({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        return wire.wire_make_use_of_uninitialized_value(port_);
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
       },
-      codec: DcoCodec(
-        decodeSuccessData: dco_decode_unit,
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kMakeUseOfUninitializedValueConstMeta,
@@ -191,37 +201,41 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void dco_decode_unit(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
     return;
   }
 
   @protected
-  void sse_decode_unit(SseDeserializer deserializer) {}
+  void sse_decode_unit(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+  }
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
   }
 
   @protected
   bool sse_decode_bool(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
   }
 
   @protected
-  void cst_encode_unit(void raw) {
-    return raw;
+  void sse_encode_unit(void self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
   }
 
   @protected
-  void sse_encode_unit(void self, SseSerializer serializer) {}
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
   }
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint8(self ? 1 : 0);
   }
 }
