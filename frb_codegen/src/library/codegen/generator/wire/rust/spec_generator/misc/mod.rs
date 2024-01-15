@@ -162,8 +162,8 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
             
             const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
             const _: fn() = || {{
-                $crate::for_generated::static_assertions::const_assert_eq!(
-                    $crate::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
+                flutter_rust_bridge::for_generated::static_assertions::const_assert_eq!(
+                    flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
                     FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
                 );
             }};
