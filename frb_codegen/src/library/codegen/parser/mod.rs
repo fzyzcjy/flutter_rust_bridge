@@ -76,6 +76,7 @@ pub(crate) fn parse(
                 &config.rust_crate_dir,
                 &config.force_codec_mode_pack,
                 (index + 1) as i32,
+                config.default_rust_opaque_codec,
             )
         })
         .collect::<anyhow::Result<Vec<_>>>()?

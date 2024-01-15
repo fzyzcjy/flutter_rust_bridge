@@ -9,6 +9,7 @@ use crate::codegen::ir::func::{
 };
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
@@ -41,6 +42,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
+        default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         self.parse_function_inner(
             func,
@@ -48,6 +50,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             rust_crate_dir,
             force_codec_mode_pack,
             func_id,
+            default_rust_opaque_codec,
         )
         .with_context(|| format!("function={:?}", func.sig().ident))
     }
@@ -59,6 +62,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         rust_crate_dir: &Path,
         force_codec_mode_pack: &Option<CodecModePack>,
         func_id: i32,
+        default_rust_opaque_codec: RustOpaqueCodecMode,
     ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
@@ -69,6 +73,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let context = TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
             func_attributes: attributes.clone(),
+            default_rust_opaque_codec,
         };
 
         let owner = if let Some(owner) = self.parse_owner(func, &context)? {

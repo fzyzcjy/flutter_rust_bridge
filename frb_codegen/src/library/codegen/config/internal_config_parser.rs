@@ -106,6 +106,7 @@ impl InternalConfig {
                 rust_input_path_pack: rust_input_path_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
                 force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
+                default_rust_opaque_codec,
             },
             generator: GeneratorInternalConfig {
                 api_dart: GeneratorApiDartInternalConfig {
