@@ -23,6 +23,7 @@ Future<void> generatePureDartPde(
           'build',
           'coverage',
           'rust/target',
+          'web',
 
           // will generate separately
           'frb_generated.h',
