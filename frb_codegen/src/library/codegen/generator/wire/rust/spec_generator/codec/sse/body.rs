@@ -44,16 +44,16 @@ fn generate_encode_or_decode_for_type(
         let code  = match mode {
             EncodeOrDecode::Encode => format!(
                 "
-                {codec_comments}
                 impl SseEncode for {rust_api_type} {{
+                    {codec_comments}
                     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {{{body}}}
                 }}
                 "
             ),
             EncodeOrDecode::Decode => format!(
                 "
-                {codec_comments}
                 impl SseDecode for {rust_api_type} {{
+                    {codec_comments}
                     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{{body}}}
                 }}
                 "
