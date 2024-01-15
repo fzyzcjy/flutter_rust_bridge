@@ -56,7 +56,7 @@ fn generate_func(func: &ExternFunc, c_symbol_prefix: &str) -> String {
                 dart_type: "dynamic".to_string(),
             })
     {
-        let name = &func.func_name(c_symbol_prefix);
+        let name = &func.partial_func_name;
         format!(
             "
             void {name}(
@@ -67,7 +67,7 @@ fn generate_func(func: &ExternFunc, c_symbol_prefix: &str) -> String {
               );
             }}
 
-            late final _{name}Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('{name}');
+            late final _{name}Ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('{c_symbol_prefix}{name}');
             late final _{name} = _{name}Ptr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
             "
         )
