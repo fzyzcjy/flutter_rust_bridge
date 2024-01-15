@@ -16,6 +16,7 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand('lint-dart', lintDart, _$populateLintConfigParser,
         _$parseLintConfigResult),
     SimpleCommand('lint-rust-feature-flag', lintRustFeatureFlag),
+    SimpleCommand('lint-dart-ffigen', lintDartFfigen),
   ];
 }
 
@@ -65,9 +66,14 @@ Future<void> lintRustClippy(LintConfig config) async {
 }
 
 Future<void> lintDart(LintConfig config) async {
+  await lintDartFfigen();
   await lintDartFormat(config);
   await lintDartAnalyze(config);
   await lintDartPana(config);
+}
+
+Future<void> lintDartFfigen() async {
+  TODO;
 }
 
 Future<void> lintDartFormat(LintConfig config) async {
