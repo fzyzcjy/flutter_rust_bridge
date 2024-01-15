@@ -5,6 +5,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:yaml/yaml.dart';
 
 part 'lint.g.dart';
 
@@ -75,8 +76,10 @@ Future<void> lintDart(LintConfig config) async {
 Future<void> lintDartVersion() async {
   final path = FrbDartCodeVersionInfo.kPath;
   final actualText = File(path).readAsStringSync();
-  final matcher =
-      FrbDartCodeVersionInfo.createCode(computeVersionInfo().oldVersion);
+  final version =
+      loadYaml(File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync())[
+          'version']! as String;
+  final matcher = FrbDartCodeVersionInfo.createCode(version);
   if (!actualText.contains(matcher)) {
     throw Exception('$path should contain $matcher');
   }
