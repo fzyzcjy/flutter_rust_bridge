@@ -2,7 +2,7 @@
 
 import 'dart:io';
 
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';

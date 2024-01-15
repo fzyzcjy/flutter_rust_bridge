@@ -11,7 +11,7 @@ import 'package:path/path.dart' as path;
 
 Future<void> generateDartTestEntrypoints(Package package,
     {required Uri dartRoot}) async {
-  await _generateDartValgrindTestEntrypoint(dartRoot: dartRoot);
+  await _generateDartValgrindTestEntrypoint(package, dartRoot: dartRoot);
   await _generateDartWebTestEntrypoint(package, dartRoot: dartRoot);
 }
 
@@ -36,7 +36,7 @@ Future<void> main() async {
   await _writeToFile(dartRoot, 'test/dart_web_test_entrypoint.dart', code);
 }
 
-Future<void> _generateDartValgrindTestEntrypoint(
+Future<void> _generateDartValgrindTestEntrypoint(Package package,
     {required Uri dartRoot}) async {
   final dirTest = dartRoot.resolve('test/');
   final dirInterest = dirTest.resolve('api/');
@@ -59,7 +59,7 @@ $_kPrelude
 
 import 'dart:io';
 
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
