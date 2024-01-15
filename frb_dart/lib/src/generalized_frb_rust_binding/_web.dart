@@ -18,7 +18,7 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void pdeFfiDispatcherPrimary({
     required int funcId,
-    required int port,
+    required NativePortType port,
     required PlatformGeneralizedUint8ListPtr ptr,
     required int rustVecLen,
     required int dataLen,
@@ -70,7 +70,7 @@ class GeneralizedFrbRustBinding {
 @JS("wasm_bindgen.frb_pde_ffi_dispatcher_primary")
 external void _frb_pde_ffi_dispatcher_primary(
   int funcId,
-  int port,
+  NativePortType port,
   PlatformGeneralizedUint8ListPtr ptr,
   int rustVecLen,
   int dataLen,
