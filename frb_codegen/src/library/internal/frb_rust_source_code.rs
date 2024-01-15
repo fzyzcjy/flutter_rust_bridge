@@ -54,7 +54,7 @@ fn generate_target(target: Target) -> String {
 }
 
 fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) -> ExternFunc {
-    let partial_func_name = format!("frb_pde_ffi_dispatcher_{}", mode.to_string().to_lowercase());
+    let partial_func_name = format!("pde_ffi_dispatcher_{}", mode.to_string().to_lowercase());
 
     let mut params = vec![ExternFuncParam {
         name: "func_id".to_string(),
@@ -79,7 +79,7 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
     };
 
     ExternFunc {
-        partial_func_name,
+        partial_func_name: format!("frb_{partial_func_name}"),
         params,
         return_type,
         body,
