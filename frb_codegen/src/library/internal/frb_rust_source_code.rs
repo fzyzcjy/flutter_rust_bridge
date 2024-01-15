@@ -1,7 +1,7 @@
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::FfiDispatcherMode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::{
-    create_maybe_port_param, create_port_param, generate_platform_generalized_uint8list_params,
+    create_port_param, generate_platform_generalized_uint8list_params,
 };
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
