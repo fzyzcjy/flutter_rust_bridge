@@ -2,6 +2,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
     DartOutputClassNamePack, GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::common::generate_wire_class_header;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use anyhow::ensure;
@@ -54,13 +55,7 @@ fn postpare_modify(
     let ans = content_raw
         .replace(
             &format!("class {wire_class_name} {{"),
-            &format!(
-                "class {wire_class_name} implements BaseWire {{
-
-                factory {wire_class_name}.fromExternalLibrary(ExternalLibrary lib) =>
-                  {wire_class_name}(lib.ffiDynamicLibrary);
-                "
-            ),
+            &generate_wire_class_header(wire_class_name),
         )
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")

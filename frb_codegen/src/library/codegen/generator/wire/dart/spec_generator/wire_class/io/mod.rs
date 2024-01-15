@@ -1,3 +1,4 @@
+pub(super) mod common;
 mod via_ffigen;
 mod via_manual;
 
