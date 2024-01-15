@@ -13,9 +13,13 @@ part 'generator_utils.freezed.dart';
 abstract class BaseGenerator {
   final Uri packageRootDir;
   final Uri interestDir;
+  final Package package;
 
-  BaseGenerator({required this.packageRootDir, required String interestDir})
-      : interestDir = packageRootDir.resolve(interestDir);
+  BaseGenerator({
+    required this.packageRootDir,
+    required String interestDir,
+    required this.package,
+  }) : interestDir = packageRootDir.resolve(interestDir);
 
   Future<void> generate() async {
     _writeCodeFiles(generateDirectSources());

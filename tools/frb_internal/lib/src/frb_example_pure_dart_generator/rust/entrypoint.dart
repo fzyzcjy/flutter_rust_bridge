@@ -4,7 +4,11 @@ import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:recase/recase.dart';
 
 class RustGenerator extends BaseGenerator {
-  RustGenerator({required super.packageRootDir, required super.interestDir});
+  RustGenerator({
+    required super.packageRootDir,
+    required super.interestDir,
+    required super.package,
+  });
 
   @override
   Future<void> executeFormat() =>
