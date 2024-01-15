@@ -46,6 +46,9 @@ Future<void> generatePureDartPde({required Uri dirPureDart}) async {
         return simpleReplaceString(
             text, '"frb_example_pure_dart"', '"frb_example_pure_dart_pde"');
 
+      case 'flutter_rust_bridge.yaml':
+        return simpleReplaceString(text, '\nfull_dep: true', '');
+
       default:
         final prelude = switch (extension(file.path)) {
           '.rs' ||
