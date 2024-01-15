@@ -4,7 +4,8 @@ use crate::codegen::generator::codec::sse::lang::dart::DartLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::misc::with_sse_extra_types;
 use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext};
-use crate::codegen::generator::codec::structs::EncodeOrDecode;
+use crate::codegen::generator::codec::structs::{CodecMode, EncodeOrDecode};
+use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecOutputSpec;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
@@ -56,7 +57,10 @@ fn generate_encode_or_decode_for_type(
         Acc::new_common(WireDartOutputCode {
             api_impl_class_methods: vec![DartApiImplClassMethod {
                 signature,
-                body: Some(body),
+                body: Some(format!(
+                    "{}\n{body}",
+                    generate_codec_comments(CodecMode::Sse),
+                )),
             }],
             ..Default::default()
         })
