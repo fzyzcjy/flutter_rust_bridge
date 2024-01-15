@@ -125,26 +125,12 @@ import 'api/pseudo_manual/raw_string_twin_rust_async_test.dart'
     as raw_string_twin_rust_async_test;
 import 'api/pseudo_manual/raw_string_twin_sync_test.dart'
     as raw_string_twin_sync_test;
-import 'api/pseudo_manual/rust_auto_opaque_twin_moi_test.dart'
-    as rust_auto_opaque_twin_moi_test;
-import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_moi_test.dart'
-    as rust_auto_opaque_twin_rust_async_moi_test;
 import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_test.dart'
     as rust_auto_opaque_twin_rust_async_test;
-import 'api/pseudo_manual/rust_auto_opaque_twin_sync_moi_test.dart'
-    as rust_auto_opaque_twin_sync_moi_test;
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync_test.dart'
     as rust_auto_opaque_twin_sync_test;
-import 'api/pseudo_manual/rust_opaque_sync_twin_moi_test.dart'
-    as rust_opaque_sync_twin_moi_test;
-import 'api/pseudo_manual/rust_opaque_twin_moi_test.dart'
-    as rust_opaque_twin_moi_test;
-import 'api/pseudo_manual/rust_opaque_twin_rust_async_moi_test.dart'
-    as rust_opaque_twin_rust_async_moi_test;
 import 'api/pseudo_manual/rust_opaque_twin_rust_async_test.dart'
     as rust_opaque_twin_rust_async_test;
-import 'api/pseudo_manual/rust_opaque_twin_sync_moi_test.dart'
-    as rust_opaque_twin_sync_moi_test;
 import 'api/pseudo_manual/rust_opaque_twin_sync_test.dart'
     as rust_opaque_twin_sync_test;
 import 'api/pseudo_manual/simple_twin_rust_async_test.dart'
@@ -269,16 +255,9 @@ Future<void> callFileEntrypoints() async {
   await primitive_misc_twin_sync_test.main(skipRustLibInit: true);
   await raw_string_twin_rust_async_test.main(skipRustLibInit: true);
   await raw_string_twin_sync_test.main(skipRustLibInit: true);
-  await rust_auto_opaque_twin_moi_test.main(skipRustLibInit: true);
-  await rust_auto_opaque_twin_rust_async_moi_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_rust_async_test.main(skipRustLibInit: true);
-  await rust_auto_opaque_twin_sync_moi_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_sync_test.main(skipRustLibInit: true);
-  await rust_opaque_sync_twin_moi_test.main(skipRustLibInit: true);
-  await rust_opaque_twin_moi_test.main(skipRustLibInit: true);
-  await rust_opaque_twin_rust_async_moi_test.main(skipRustLibInit: true);
   await rust_opaque_twin_rust_async_test.main(skipRustLibInit: true);
-  await rust_opaque_twin_sync_moi_test.main(skipRustLibInit: true);
   await rust_opaque_twin_sync_test.main(skipRustLibInit: true);
   await simple_twin_rust_async_test.main(skipRustLibInit: true);
   await simple_twin_sync_test.main(skipRustLibInit: true);
