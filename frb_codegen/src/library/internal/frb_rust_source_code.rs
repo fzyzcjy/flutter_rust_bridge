@@ -118,7 +118,7 @@ fn generate_dart_fn_deliver_output(target: Target) -> ExternFunc {
         params,
         return_type: None,
         body: format!(
-            "let message = unsafe {{ flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) }};
+            "let message = unsafe {{ $crate::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) }};
             {HANDLER_NAME}.dart_fn_handle_output(call_id, message)"
         ),
         target,
