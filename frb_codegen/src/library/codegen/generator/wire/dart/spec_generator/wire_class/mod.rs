@@ -16,29 +16,9 @@ pub(super) fn generate(
     rust_extern_funcs: &[ExternFunc],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
-    if !config.has_ffigen {
-        return Ok(Acc::new(|target| {
-            vec![match target {
-                TargetOrCommon::Io | TargetOrCommon::Web => {
-                    generate_disabled_text(&config.dart_output_class_name_pack).into()
-                }
-                TargetOrCommon::Common => "".into(),
-            }]
-        }));
-    }
-
     Ok(Acc {
         io: vec![io::generate(config, c_file_content, progress_bar_pack)?],
         web: vec![web::generate(config, rust_extern_funcs)],
         ..Default::default()
     })
-}
-
-fn generate_disabled_text(dart_output_class_name_pack: &DartOutputClassNamePack) -> String {
-    format!(
-        "class {wire_class_name} implements BaseWire {{
-          {wire_class_name}.fromExternalLibrary(ExternalLibrary lib);
-        }}",
-        wire_class_name = dart_output_class_name_pack.wire_class_name,
-    )
 }
