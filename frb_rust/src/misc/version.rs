@@ -1,0 +1,1 @@
+pub(crate) const FLUTTER_RUST_BRIDGE_RUNTIME_VERSION: &str = env!("CARGO_PKG_VERSION");
