@@ -1,5 +1,7 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::codec::structs::{BaseCodecEntrypointTrait, EncodeOrDecode};
+use crate::codegen::generator::codec::structs::{
+    BaseCodecEntrypointTrait, CodecMode, EncodeOrDecode,
+};
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
@@ -39,6 +41,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
             (
                 mode,
                 (funcs.iter())
+                    .filter(|f| f.codec_mode_pack.dart2rust.delegate_or_self() == CodecMode::Sse)
                     .filter(|f| FfiDispatcherMode::from(&f.mode) == mode)
                     .map(|f| {
                         let maybe_port = if has_port_argument(f.mode) {
