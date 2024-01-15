@@ -36,18 +36,15 @@ Future<void> generatePureDartPde(
 
     switch (relativePath) {
       case 'pubspec.yaml':
-      case 'rust/Cargo.toml':
-      case 'rust/example_external_lib/Cargo.toml':
-        return simpleReplaceString(
-            text, 'frb_example_pure_dart', 'frb_example_pure_dart_pde');
+        return simpleReplaceString(text, 'name: frb_example_pure_dart',
+            'name: frb_example_pure_dart_pde');
 
+      case 'rust/Cargo.toml':
+        return simpleReplaceString(text, 'name = "frb_example_pure_dart"',
+            'name = "frb_example_pure_dart_pde"');
       case 'rust/Cargo.lock':
         return simpleReplaceString(
-          text,
-          'frb_example_pure_dart',
-          'frb_example_pure_dart_pde',
-          expectReplaceCount: 2,
-        );
+            text, '"frb_example_pure_dart"', '"frb_example_pure_dart_pde"');
 
       case 'flutter_rust_bridge.yaml':
         return simpleReplaceString(text, '\nfull_dep: true', '');
