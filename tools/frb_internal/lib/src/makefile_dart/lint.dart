@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 part 'lint.g.dart';
@@ -65,9 +66,20 @@ Future<void> lintRustClippy(LintConfig config) async {
 }
 
 Future<void> lintDart(LintConfig config) async {
+  await lintDartVersion();
   await lintDartFormat(config);
   await lintDartAnalyze(config);
   await lintDartPana(config);
+}
+
+Future<void> lintDartVersion() async {
+  final path = FrbDartCodeVersionInfo.kPath;
+  final actualText = File(path).readAsStringSync();
+  final matcher =
+      FrbDartCodeVersionInfo.createCode(computeVersionInfo().oldVersion);
+  if (!actualText.contains(matcher)) {
+    throw Exception('$path should contain $matcher');
+  }
 }
 
 Future<void> lintDartFormat(LintConfig config) async {
