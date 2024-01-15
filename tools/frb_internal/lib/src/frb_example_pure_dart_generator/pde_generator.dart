@@ -12,15 +12,10 @@ Future<void> generatePureDartPde(
       Directory(dirPureDartPde.toFilePath()), filter: (entity) {
     final relativePath = relative(entity.path, from: dirPureDart.toFilePath());
 
-    if (entity is File) {
-      final annotation = Annotation.parse(entity.readAsStringSync());
-      if (annotation.skipPde) return false;
-    }
-
-    return !const [
+    if (const [
           '.DS_Store',
-        ].contains(basename(relativePath)) &&
-        !const [
+        ].contains(basename(relativePath)) ||
+        const [
           // gitignore them
           '.dart_tool',
           '.idea',
@@ -37,7 +32,16 @@ Future<void> generatePureDartPde(
           'rust/src/frb_generated.rs',
           'rust/src/frb_generated.io.rs',
           'rust/src/frb_generated.web.rs',
-        ].contains(relativePath);
+        ].contains(relativePath)) {
+      return false;
+    }
+
+    if (entity is File) {
+      final annotation = Annotation.parse(entity.readAsStringSync());
+      if (annotation.skipPde) return false;
+    }
+
+    return true;
   }, map: (file, text) {
     final relativePath = relative(file.path, from: dirPureDart.toFilePath());
 
