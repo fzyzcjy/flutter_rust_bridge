@@ -54,7 +54,10 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
 
-flutter_rust_bridge::frb_generated_boilerplate!(default_stream_sink_codec = DcoCodec);
+flutter_rust_bridge::frb_generated_boilerplate!(
+    default_stream_sink_codec = DcoCodec,
+    default_rust_opaque = RustOpaqueNom
+);
 
 // Section: executor
 

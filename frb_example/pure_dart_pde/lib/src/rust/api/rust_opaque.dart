@@ -70,7 +70,7 @@ Future<String> unwrapRustOpaqueTwinNormal(
 Future<FrbOpaqueReturnTwinNormal> frbGeneratorTestTwinNormal({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinNormal(hint: hint);
 
-// Rust type: RustOpaqueNom<Mutex < HideDataTwinNormal >>
+// Rust type: RustOpaqueMoi<Mutex < HideDataTwinNormal >>
 @sealed
 class MutexHideDataTwinNormal extends RustOpaque {
   MutexHideDataTwinNormal.dcoDecode(List<dynamic> wire)
@@ -89,7 +89,7 @@ class MutexHideDataTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<RwLock < HideDataTwinNormal >>
+// Rust type: RustOpaqueMoi<RwLock < HideDataTwinNormal >>
 @sealed
 class RwLockHideDataTwinNormal extends RustOpaque {
   RwLockHideDataTwinNormal.dcoDecode(List<dynamic> wire)
@@ -108,7 +108,7 @@ class RwLockHideDataTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<Box<dyn DartDebugTwinNormal>>
+// Rust type: RustOpaqueMoi<Box<dyn DartDebugTwinNormal>>
 @sealed
 class BoxDartDebugTwinNormal extends RustOpaque {
   BoxDartDebugTwinNormal.dcoDecode(List<dynamic> wire)
@@ -127,7 +127,7 @@ class BoxDartDebugTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal>
+// Rust type: RustOpaqueMoi<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal>
 @sealed
 class FrbOpaqueReturnTwinNormal extends RustOpaque {
   FrbOpaqueReturnTwinNormal.dcoDecode(List<dynamic> wire)
@@ -146,7 +146,7 @@ class FrbOpaqueReturnTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>
+// Rust type: RustOpaqueMoi<crate::api::rust_opaque::HideDataTwinNormal>
 @sealed
 class HideDataTwinNormal extends RustOpaque {
   HideDataTwinNormal.dcoDecode(List<dynamic> wire)
@@ -180,7 +180,7 @@ class HideDataTwinNormalArray2 extends NonGrowableListView<HideDataTwinNormal> {
       : this(List<HideDataTwinNormal>.filled(arraySize, fill));
 }
 
-// Rust type: RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal>
+// Rust type: RustOpaqueMoi<crate::api::rust_opaque::NonCloneDataTwinNormal>
 @sealed
 class NonCloneDataTwinNormal extends RustOpaque {
   NonCloneDataTwinNormal.dcoDecode(List<dynamic> wire)
