@@ -11,8 +11,14 @@ Future<void> generatePureDartPde({required Uri dirPureDart}) async {
     filter: (entity) {
       final relativePath =
           relative(entity.path, from: dirPureDart.toFilePath());
-      print(relativePath);
-      return true;
+      return !const [
+        '.dart_tool',
+        '.idea',
+        'benchmark',
+        'build',
+        'coverage',
+        'rust/target',
+      ].contains(relativePath);
     },
   );
 }
