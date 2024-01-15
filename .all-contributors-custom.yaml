@@ -16,7 +16,7 @@
 - SoLongAndThanksForAllThePizza: Refactor and enhance SyncReturn to support more types. Refactor post-release CI.
 - hsfzxjy: Fix SyncReturn use-after-free bug.
 - Cupnfish: Support arrays as function parameters. Allow multi mirror.
-- alanlzhang: Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
+- alanlzhang: Add generation for Dart metadata. Enhance and fix module parser. Fix enum in struct. Fix linter.
 - erikas-taroza: Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
 - SiongSng: Finish implementing exception hierarchy. Fix SyncReturn bug.
 - JustSimplyKyle: Also finish implementing exception hierarchy. Allow ignore function.
