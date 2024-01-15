@@ -22,11 +22,11 @@ List<Command<void>> createCommands() {
   ];
 }
 
-class _VersionInfo {
+class VersionInfo {
   final String oldVersion;
   final String newVersion;
 
-  const _VersionInfo({required this.oldVersion, required this.newVersion});
+  const VersionInfo({required this.oldVersion, required this.newVersion});
 
   @override
   String toString() =>
@@ -34,7 +34,7 @@ class _VersionInfo {
 }
 
 Future<void> release() async {
-  print('Version info: ${_computeVersionInfo()}');
+  print('Version info: ${computeVersionInfo()}');
   await releaseUpdateVersion();
   await releaseUpdateCode();
   await releaseUpdateScoop();
@@ -44,7 +44,7 @@ Future<void> release() async {
 }
 
 Future<void> releaseUpdateVersion() async {
-  final versionInfo = _computeVersionInfo();
+  final versionInfo = computeVersionInfo();
 
   simpleReplaceFile(
     '${exec.pwd}Cargo.toml',
@@ -79,7 +79,7 @@ class FrbDartCodeVersionInfo {
 }
 
 void _updateVersionInText() {
-  final versionInfo = _computeVersionInfo();
+  final versionInfo = computeVersionInfo();
 
   simpleReplaceFile(
     FrbDartCodeVersionInfo.kPath,
@@ -118,7 +118,7 @@ Future<void> releaseUpdateScoop() async {
 }
 
 Future<void> releaseUpdateGit() async {
-  final versionInfo = _computeVersionInfo();
+  final versionInfo = computeVersionInfo();
   await exec('git add --all');
   await exec('git status && git diff --staged | grep ""');
   await exec(
@@ -127,7 +127,7 @@ Future<void> releaseUpdateGit() async {
 }
 
 Future<void> releaseUpdateGithub() async {
-  final versionInfo = _computeVersionInfo();
+  final versionInfo = computeVersionInfo();
 
   File('${exec.pwd}temp.txt').writeAsStringSync(_extractChangelog().$2);
 
@@ -148,9 +148,9 @@ Future<void> releasePublishAll() async {
       'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org');
 }
 
-_VersionInfo _computeVersionInfo() => _extractChangelog().$1;
+VersionInfo computeVersionInfo() => _extractChangelog().$1;
 
-(_VersionInfo, String) _extractChangelog() {
+(VersionInfo, String) _extractChangelog() {
   final lines = File('${exec.pwd}CHANGELOG.md').readAsStringSync().split('\n');
   final versions = lines
       .mapIndexed((index, line) {
@@ -167,7 +167,7 @@ _VersionInfo _computeVersionInfo() => _extractChangelog().$1;
   }
 
   return (
-    _VersionInfo(
+    VersionInfo(
       newVersion: newVersion.$2,
       oldVersion: oldVersion.$2,
     ),
