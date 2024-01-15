@@ -150,11 +150,16 @@ class _Duplicator {
 
 _Annotation _parseAnnotation(String fileContent) {
   const kPrefix = '// FRB_INTERNAL_GENERATOR:';
-  if (!fileContent.startsWith(kPrefix)) return const _Annotation();
 
-  final data = jsonDecode(
-          fileContent.substring(kPrefix.length, fileContent.indexOf('\n')))
-      as Map<String, Object?>;
+  final line = fileContent
+      .split('\n')
+      .where((line) => line.startsWith(kPrefix))
+      .firstOrNull;
+  if (line == null) return const _Annotation();
+
+  final data =
+      jsonDecode(line.substring(kPrefix.length, fileContent.indexOf('\n')))
+          as Map<String, Object?>;
   return _Annotation(
     forbiddenDuplicatorModes:
         ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
