@@ -1,8 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::target::TargetOrCommon;
-use crate::codegen::generator::wire::dart::internal_config::{
-    DartOutputClassNamePack, GeneratorWireDartInternalConfig,
-};
+use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::misc::GeneratorProgressBarPack;
