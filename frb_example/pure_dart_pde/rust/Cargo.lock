@@ -278,10 +278,6 @@ name = "flutter_rust_bridge_macros"
 version = "2.0.0-dev.19"
 
 [[package]]
-name = "frb_example_pure_dart_example_external_lib"
-version = "0.1.0"
-
-[[package]]
 name = "frb_example_pure_dart_pde"
 version = "0.1.0"
 dependencies = [
@@ -290,7 +286,7 @@ dependencies = [
  "byteorder",
  "chrono",
  "flutter_rust_bridge",
- "frb_example_pure_dart_example_external_lib",
+ "frb_example_pure_dart_pde_example_external_lib",
  "futures",
  "lazy_static",
  "log",
@@ -301,6 +297,10 @@ dependencies = [
  "uuid",
  "wasm-bindgen",
 ]
+
+[[package]]
+name = "frb_example_pure_dart_pde_example_external_lib"
+version = "0.1.0"
 
 [[package]]
 name = "futures"
