@@ -24,7 +24,10 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
 
-flutter_rust_bridge::frb_generated_boilerplate!(default_stream_sink_codec = SseCodec);
+flutter_rust_bridge::frb_generated_boilerplate!(
+    default_stream_sink_codec = SseCodec,
+    default_rust_opaque = RustOpaqueMoi
+);
 
 // Section: executor
 
