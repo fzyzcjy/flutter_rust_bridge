@@ -3,13 +3,13 @@
 #[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_boilerplate {
-    (default_stream_sink_codec = $stream_sink_codec:ident) => {
+    (default_stream_sink_codec = $default_stream_sink_codec:ident) => {
         $crate::frb_generated_moi_arc_def!();
         $crate::frb_generated_rust_opaque_dart2rust!();
         $crate::frb_generated_rust_opaque_def!();
         $crate::frb_generated_cst_codec!();
         $crate::frb_generated_sse_codec!();
-        $crate::frb_generated_stream_sink!(default_stream_sink_codec = $stream_sink_codec);
+        $crate::frb_generated_stream_sink!(default_stream_sink_codec = $default_stream_sink_codec);
     };
 }
 
@@ -82,11 +82,11 @@ macro_rules! frb_generated_sse_codec {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! frb_generated_stream_sink {
-    (default_stream_sink_codec = $stream_sink_codec:ident) => {
+    (default_stream_sink_codec = $default_stream_sink_codec:ident) => {
         #[derive(Clone)]
         pub struct StreamSink<
             T,
-            Rust2DartCodec: $crate::for_generated::BaseCodec = $crate::for_generated::$stream_sink_codec,
+            Rust2DartCodec: $crate::for_generated::BaseCodec = $crate::for_generated::$default_stream_sink_codec,
         > {
             base: $crate::for_generated::StreamSinkBase<T, Rust2DartCodec>,
         }
