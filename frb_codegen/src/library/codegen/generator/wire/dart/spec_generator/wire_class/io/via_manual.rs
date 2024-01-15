@@ -8,14 +8,15 @@ pub(crate) fn generate(
     config: &GeneratorWireDartInternalConfig,
     rust_extern_funcs: &[ExternFunc],
 ) -> anyhow::Result<WireDartOutputCode> {
-    let wire_class_header =
-        generate_wire_class_header(&config.dart_output_class_name_pack.wire_class_name);
+    let wire_class_name = &config.dart_output_class_name_pack.wire_class_name;
+    let wire_class_header = generate_wire_class_header(wire_class_name);
     let body = rust_extern_funcs.iter().map(|f| generate_func(f)).join("");
 
     let code = format!(
         "
         {wire_class_header}
-        {body}
+            {wire_class_name}(ffi.DynamicLibrary dynamicLibrary);
+            {body}
         }}
         "
     );
