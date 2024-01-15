@@ -73,10 +73,15 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
         params.iter().map(|p| p.name).join(", ")
     );
 
+    let return_type = match mode {
+        FfiDispatcherMode::Primary => None
+        FfiDispatcherMode::Sync => Some("$crate::for_generated::WireSyncRust2DartSse".to_owned()),
+    };
+
     ExternFunc {
         partial_func_name,
         params,
-        return_type: None,
+        return_type,
         body,
         target,
     }
