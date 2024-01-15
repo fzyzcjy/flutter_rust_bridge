@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use serde::{Deserialize, Serialize};
@@ -106,11 +107,15 @@ macro_rules! codegen_codec_structs {
 pub(crate) fn get_interest_types_for_codec(
     cache: &IrPackComputedCache,
     codec: CodecMode,
+    lang: Lang,
 ) -> Vec<IrType> {
     match codec {
         CodecMode::Cst => cache.distinct_types_for_codec[&codec].clone(),
-        // Consider all types, since users may want IntoDart and IntoIntoDart for DartDynamic etc
-        CodecMode::Dco => cache.distinct_types.clone(),
+        CodecMode::Dco => match lang {
+            Lang::DartLang(_) => cache.distinct_types_for_codec[&codec].clone(),
+            // Consider all types in Rust, since users may want IntoDart and IntoIntoDart for DartDynamic etc
+            Lang::RustLang(_) => cache.distinct_types.clone(),
+        },
         // For simplicity, consider all types, since (1) PDE needs SSE (2) non-SSE DartFn still requires SSE
         CodecMode::Sse => cache.distinct_types.clone(),
         CodecMode::Pde => vec![],
