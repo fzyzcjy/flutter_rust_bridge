@@ -87,7 +87,7 @@ external WireSyncRust2DartSse _frb_pde_ffi_dispatcher_sync(
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_fn_deliver_output")
-external WireSyncRust2DartSse _dart_fn_deliver_output(
+external void _dart_fn_deliver_output(
   int callId,
   PlatformGeneralizedUint8ListPtr ptr,
   int rustVecLen,
