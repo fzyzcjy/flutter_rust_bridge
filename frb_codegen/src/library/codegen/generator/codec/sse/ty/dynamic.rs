@@ -6,14 +6,18 @@ impl<'a> CodecSseTyTrait for DynamicCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(format!(
             "{};",
-            lang.throw_unimplemented(generate_unimplemented_in_sse_message(&self.ir.into()))
+            lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                &self.ir.clone().into()
+            ))
         ))
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
         Some(format!(
             "{};",
-            lang.throw_unimplemented(generate_unimplemented_in_sse_message(&self.ir.into()))
+            lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                &self.ir.clone().into()
+            ))
         ))
     }
 }

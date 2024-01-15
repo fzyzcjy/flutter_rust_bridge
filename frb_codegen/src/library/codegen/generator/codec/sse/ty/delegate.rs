@@ -19,8 +19,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
                     return Some(format!(
                         "{};",
-                        lang.throw_unimplemented(generate_unimplemented_in_sse_message(
-                            &self.ir.into()
+                        lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                            &self.ir.clone().into()
                         ))
                     ));
                 }
@@ -97,8 +97,8 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
                     return Some(format!(
                         "{};",
-                        lang.throw_unimplemented(generate_unimplemented_in_sse_message(
-                            &self.ir.into()
+                        lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                            &self.ir.clone().into()
                         ))
                     ));
                 }
@@ -123,7 +123,9 @@ impl<'a> DelegateCodecSseTy<'a> {
         match &self.ir {
             IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
                 "{};",
-                lang.throw_unimplemented(generate_unimplemented_in_sse_message(&self.ir.into()))
+                lang.throw_unimplemented(&generate_unimplemented_in_sse_message(
+                    &self.ir.clone().into()
+                ))
             )),
             _ => None,
         }
