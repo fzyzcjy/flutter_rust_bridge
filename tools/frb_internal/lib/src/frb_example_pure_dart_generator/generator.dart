@@ -7,19 +7,16 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/entrypoint.dart';
 
 Future<void> generate() async {
-  final dartRoot =
+  final dirPureDart =
       Directory.current.uri.resolve('../../frb_example/pure_dart/');
-  if (!Directory(dartRoot.toFilePath()).existsSync()) {
-    throw StateError('dartRoot=$dartRoot does not exist');
-  }
 
   await RustGenerator(
-          packageRootDir: dartRoot.resolve('rust/'), interestDir: 'src/api/')
+          packageRootDir: dirPureDart.resolve('rust/'), interestDir: 'src/api/')
       .generate();
-  await DartGenerator(packageRootDir: dartRoot, interestDir: 'test/api/')
+  await DartGenerator(packageRootDir: dirPureDart, interestDir: 'test/api/')
       .generate();
-  await generateDartTestEntrypoints(dartRoot: dartRoot);
-  await generateRustMod(dartRoot.resolve('rust/src/api/pseudo_manual/'));
+  await generateDartTestEntrypoints(dartRoot: dirPureDart);
+  await generateRustMod(dirPureDart.resolve('rust/src/api/pseudo_manual/'));
 
   await generatePureDartPde();
 }
