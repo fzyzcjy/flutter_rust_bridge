@@ -82,10 +82,9 @@ macro_rules! codegen_codec_structs {
                     cache: &IrPackComputedCache,
                     mode: EncodeOrDecode,
                 ) -> [<Wire $partial_name CodecOutputSpec>] {
-                    let lang = Lang::[<$partial_name Lang>]([<$partial_name Lang>]);
                     CodecMode::iter()
                         .flat_map(|codec| [<Wire $partial_name CodecEntrypoint>]::from(codec)
-                            .generate(context, &get_interest_types_for_codec(cache, codec, lang), mode))
+                            .generate(context, &get_interest_types_for_codec(cache, codec), mode))
                         .collect()
                 }
             }
@@ -109,15 +108,12 @@ macro_rules! codegen_codec_structs {
 pub(crate) fn get_interest_types_for_codec(
     cache: &IrPackComputedCache,
     codec: CodecMode,
-    lang: Lang,
 ) -> Vec<IrType> {
     match codec {
         CodecMode::Cst => cache.distinct_types_for_codec[&codec].clone(),
-        CodecMode::Dco => match lang {
-            Lang::DartLang(_) => cache.distinct_types_for_codec[&codec].clone(),
-            // Consider all types in Rust, since users may want IntoDart and IntoIntoDart for DartDynamic etc
-            Lang::RustLang(_) => cache.distinct_types.clone(),
-        },
+        // Consider all types in Rust, since users may want IntoDart and IntoIntoDart for DartDynamic etc
+        // And all types in Dart, since DartFn needs DCO
+        CodecMode::Dco => cache.distinct_types.clone(),
         // For simplicity, consider all types, since (1) PDE needs SSE (2) non-SSE DartFn still requires SSE
         CodecMode::Sse => cache.distinct_types.clone(),
         CodecMode::Pde => vec![],
