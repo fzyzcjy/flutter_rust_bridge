@@ -7,22 +7,22 @@ macro_rules! frb_generated_io_extern_func {
         #[no_mangle]
         pub extern "C" fn frb_pde_ffi_dispatcher_primary(
             func_id: i32,
-            port: i64,
-            ptr: *mut u8,
-            rust_vec_len: i32,
-            data_len: i32,
+            port_: i64,
+            ptr_: *mut u8,
+            rust_vec_len_: i32,
+            data_len_: i32,
         ) {
-            pde_ffi_dispatcher_primary_impl(func_id, port, ptr, rust_vec_len, data_len)
+            pde_ffi_dispatcher_primary_impl(func_id, port_, ptr_, rust_vec_len_, data_len_)
         }
 
         #[no_mangle]
         pub extern "C" fn frb_pde_ffi_dispatcher_sync(
             func_id: i32,
-            ptr: *mut u8,
-            rust_vec_len: i32,
-            data_len: i32,
+            ptr_: *mut u8,
+            rust_vec_len_: i32,
+            data_len_: i32,
         ) -> $crate::for_generated::WireSyncRust2DartSse {
-            pde_ffi_dispatcher_sync_impl(func_id, ptr, rust_vec_len, data_len)
+            pde_ffi_dispatcher_sync_impl(func_id, ptr_, rust_vec_len_, data_len_)
         }
     };
 }
@@ -34,22 +34,22 @@ macro_rules! frb_generated_web_extern_func {
         #[wasm_bindgen]
         pub fn frb_pde_ffi_dispatcher_primary(
             func_id: i32,
-            port: $crate::for_generated::MessagePort,
-            ptr: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
-            rust_vec_len: i32,
-            data_len: i32,
+            port_: $crate::for_generated::MessagePort,
+            ptr_: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
+            rust_vec_len_: i32,
+            data_len_: i32,
         ) {
-            pde_ffi_dispatcher_primary_impl(func_id, port, ptr, rust_vec_len, data_len)
+            pde_ffi_dispatcher_primary_impl(func_id, port_, ptr_, rust_vec_len_, data_len_)
         }
 
         #[wasm_bindgen]
         pub fn frb_pde_ffi_dispatcher_sync(
             func_id: i32,
-            ptr: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
-            rust_vec_len: i32,
-            data_len: i32,
+            ptr_: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
+            rust_vec_len_: i32,
+            data_len_: i32,
         ) -> $crate::for_generated::WireSyncRust2DartSse {
-            pde_ffi_dispatcher_sync_impl(func_id, ptr, rust_vec_len, data_len)
+            pde_ffi_dispatcher_sync_impl(func_id, ptr_, rust_vec_len_, data_len_)
         }
     };
 }

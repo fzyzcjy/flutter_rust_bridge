@@ -222,17 +222,17 @@ class MultiPackageCBinding {
 
   void frb_pde_ffi_dispatcher_primary(
     int func_id,
-    int port,
-    ffi.Pointer<ffi.Uint8> ptr,
-    int rust_vec_len,
-    int data_len,
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _frb_pde_ffi_dispatcher_primary(
       func_id,
-      port,
-      ptr,
-      rust_vec_len,
-      data_len,
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
@@ -246,15 +246,15 @@ class MultiPackageCBinding {
 
   WireSyncRust2DartSse frb_pde_ffi_dispatcher_sync(
     int func_id,
-    ffi.Pointer<ffi.Uint8> ptr,
-    int rust_vec_len,
-    int data_len,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
   ) {
     return _frb_pde_ffi_dispatcher_sync(
       func_id,
-      ptr,
-      rust_vec_len,
-      data_len,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
     );
   }
 
