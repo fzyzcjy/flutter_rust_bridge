@@ -110,15 +110,23 @@ fn generate_target(target: Target) -> String {
 }
 
 fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) -> ExternFunc {
+    let partial_func_name = format!("frb_pde_ffi_dispatcher_{}", mode.to_string().to_lowercase());
+    let params = [
+        vec![TODO_func_id, TODO_port],
+        generate_platform_generalized_uint8list_params(target.into()),
+    ]
+    .concat();
+
+    let body = format!(
+        "{partial_func_name}_impl({})",
+        params.iter().map(|p| p.name).join(", ")
+    );
+
     ExternFunc {
-        partial_func_name: "frb_pde_ffi_dispatcher_primary".to_owned(),
-        params: [
-            vec![TODO_func_id, TODO_port],
-            generate_platform_generalized_uint8list_params(target.into()),
-        ]
-        .concat(),
+        partial_func_name,
+        params,
         return_type: None,
-        body: TODO,
+        body,
         target,
     }
 }

@@ -13,7 +13,7 @@ use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
-use strum_macros::EnumIter;
+use strum_macros::{Display, EnumIter};
 
 pub(crate) struct PdeWireRustCodecEntrypoint;
 
@@ -62,7 +62,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
     }
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy, EnumIter, Hash)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, EnumIter, Display, Hash)]
 pub(crate) enum FfiDispatcherMode {
     Primary,
     Sync,
