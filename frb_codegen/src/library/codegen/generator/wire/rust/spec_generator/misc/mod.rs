@@ -5,10 +5,6 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::generate_platform_generalized_uint8list_params;
-use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
-    ExternFunc, ExternFuncParam,
-};
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
@@ -17,11 +13,9 @@ use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;
-use std::convert::TryInto;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
