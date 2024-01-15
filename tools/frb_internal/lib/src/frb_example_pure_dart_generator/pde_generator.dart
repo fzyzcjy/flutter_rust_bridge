@@ -57,8 +57,17 @@ Future<void> generatePureDartPde(
           _ => '',
         };
         return prelude +
-            text.replaceAll('package:frb_example_pure_dart',
-                'package:frb_example_pure_dart_pde');
+            text
+                .replaceAll(
+                  'package:frb_example_pure_dart',
+                  'package:frb_example_pure_dart_pde',
+                )
+                // hack (not a problem, since this script merely generates test code for bridge,
+                // but not generate anything related to real users)
+                .replaceAll(
+                  "import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_sse.dart';",
+                  "import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync.dart';",
+                );
     }
   });
 }
