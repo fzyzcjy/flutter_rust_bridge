@@ -1,8 +1,9 @@
-mod macros;
+mod frb_rust_source_code;
 
 use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::{
     generate_ffi_dispatcher_raw, FfiDispatcherMode,
 };
+use crate::internal::frb_rust_source_code::generate_frb_rust_source_code;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::library::commands::cbindgen::{cbindgen_raw, default_cbindgen_config};
 use crate::library::commands::ffigen::{
@@ -20,6 +21,8 @@ use strum::IntoEnumIterator;
 pub fn generate() -> anyhow::Result<()> {
     let repo_base_dir = compute_repo_base_dir()?;
     info!("Determine repo_base_dir={repo_base_dir:?}");
+
+    generate_frb_rust_source_code(&repo_base_dir)?;
 
     generate_frb_rust_cbindgen(&repo_base_dir)?;
     generate_allo_isolate_cbindgen(&repo_base_dir)?;
