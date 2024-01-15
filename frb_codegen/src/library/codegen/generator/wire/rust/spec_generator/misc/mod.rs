@@ -30,7 +30,6 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub file_attributes: Acc<Vec<WireRustOutputCode>>,
     pub imports: Acc<Vec<WireRustOutputCode>>,
     pub boilerplate: Acc<Vec<WireRustOutputCode>>,
-    pub version_check: Acc<Vec<WireRustOutputCode>>,
     pub executor: Acc<Vec<WireRustOutputCode>>,
     pub wire_funcs: Acc<Vec<WireRustOutputCode>>,
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
@@ -48,7 +47,6 @@ pub(crate) fn generate(
         imports: generate_imports(&cache.distinct_types, context),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
         boilerplate: generate_boilerplate(),
-        version_check: generate_version_check(),
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
@@ -163,10 +161,6 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
             "
         .into()],
     })
-}
-
-fn generate_version_check() -> Acc<Vec<WireRustOutputCode>> {
-    Acc::new_common(vec![format!(TODO).into()])
 }
 
 // fn generate_boilerplate_frb_initialize_rust(target: TargetOrCommon) -> ExternFunc {
