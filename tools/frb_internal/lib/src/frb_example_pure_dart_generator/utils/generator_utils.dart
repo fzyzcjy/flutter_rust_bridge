@@ -188,5 +188,10 @@ class _Annotation {
 
 enum Package {
   pureDart,
-  pureDartPde,
+  pureDartPde;
+
+  String get dartPackageName => switch (this) {
+        Package.pureDart => 'frb_example_pure_dart',
+        Package.pureDartPde => 'frb_example_pure_dart_pde',
+      };
 }
