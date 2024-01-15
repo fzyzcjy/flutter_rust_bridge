@@ -24,16 +24,14 @@ pub fn ensure_tools_available(
         // frb-coverage:ignore-end
     }
 
-    if enable_deps_check {
-        if needs_ffigen {
-            repo.has_specified_and_installed(
-                "ffigen",
-                DartDependencyMode::Dev,
-                &FFIGEN_REQUIREMENT,
-            )?;
-            // This empty bracket ("}") is weirdly not covered, while lines above and below it are
-            // frb-coverage:ignore-start
-        }
+    if enable_deps_check && needs_ffigen {
+        repo.has_specified_and_installed(
+            "ffigen",
+            DartDependencyMode::Dev,
+            &FFIGEN_REQUIREMENT,
+        )?;
+        // This empty bracket ("}") is weirdly not covered, while lines above and below it are
+        // frb-coverage:ignore-start
     }
     // frb-coverage:ignore-end
 

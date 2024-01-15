@@ -344,7 +344,7 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
 }
 
 pub(crate) fn compute_force_codec_mode_pack(full_dep: bool) -> Option<CodecModePack> {
-    (!full_dep).then(|| CodecModePack {
+    (!full_dep).then_some(CodecModePack {
         dart2rust: CodecMode::Pde,
         rust2dart: CodecMode::Pde,
     })

@@ -24,7 +24,7 @@ impl IrPack {
         &self,
         include_func_inputs: bool,
         include_func_output: bool,
-        filter_func: Option<Box<dyn Fn(&IrFunc) -> bool>>,
+        #[allow(clippy::type_complexity)] filter_func: Option<Box<dyn Fn(&IrFunc) -> bool>>,
     ) -> Vec<IrType> {
         let mut gatherer = DistinctTypeGatherer::new();
         self.visit_types(

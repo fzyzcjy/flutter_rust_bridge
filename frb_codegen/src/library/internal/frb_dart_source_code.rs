@@ -16,10 +16,10 @@ use std::path::Path;
 use strum::IntoEnumIterator;
 
 pub(crate) fn generate_frb_dart_source_code(repo_base_dir: &Path) -> anyhow::Result<()> {
-    generate_frb_rust_cbindgen(&repo_base_dir)?;
-    generate_allo_isolate_cbindgen(&repo_base_dir)?;
+    generate_frb_rust_cbindgen(repo_base_dir)?;
+    generate_allo_isolate_cbindgen(repo_base_dir)?;
 
-    ffigen(&repo_base_dir)?;
+    ffigen(repo_base_dir)?;
 
     Ok(())
 }

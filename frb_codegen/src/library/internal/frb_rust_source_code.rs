@@ -24,7 +24,7 @@ pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Res
         .join("mod.rs");
 
     let body = Target::iter()
-        .map(|target| generate_target(target))
+        .map(generate_target)
         .join("");
 
     let text = format!(
