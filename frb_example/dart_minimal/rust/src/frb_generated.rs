@@ -28,10 +28,12 @@ flutter_rust_bridge::frb_generated_boilerplate!();
 
 const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.19";
 const _: fn() = || {
-    flutter_rust_bridge::for_generated::static_assertions::const_assert_eq!(
-        flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
-        FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
-    );
+    // flutter_rust_bridge::for_generated::static_assertions::const_assert_eq!("what", "haha",);
+    #[allow(unknown_lints, eq_op)]
+    const _: [(); 0 - !{
+        const ASSERT: bool = ("what" == "haha");
+        ASSERT
+    } as usize] = [];
 };
 
 // Section: executor
