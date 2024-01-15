@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 
 Future<void> generatePureDartPde({required Uri dirPureDart}) async {
-  final dirPureDartPde = Directory.current.uri.resolve('../pure_dart_pde/');
+  final dirPureDartPde = dirPureDart.resolve('../pure_dart_pde/');
 
   copyRecursive(
     Directory(dirPureDart.toFilePath()),
