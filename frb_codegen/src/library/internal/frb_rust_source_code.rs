@@ -68,7 +68,7 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
         dart_type: "NOT_USED".to_string(),
     }];
     if mode == FfiDispatcherMode::Primary {
-        params.push(create_port_param(target.into()));
+        params.push(create_port_param(target.into(), "$crate"));
     }
     params.extend(generate_platform_generalized_uint8list_params(
         target.into(),

@@ -88,19 +88,18 @@ pub(crate) fn create_maybe_port_param(
     mode: IrFuncMode,
     target: TargetOrCommon,
 ) -> Option<ExternFuncParam> {
-    has_port_argument(mode).then(|| create_port_param(target))
+    has_port_argument(mode).then(|| create_port_param(target, "flutter_rust_bridge"))
 }
 
-pub(crate) fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
+pub(crate) fn create_port_param(target: TargetOrCommon, crate_name: &str) -> ExternFuncParam {
     let rust_type = match target {
         // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
         // and ffigen and make code tricker, so we manually write down "i64" here.
-        TargetOrCommon::Io => "i64",
+        TargetOrCommon::Io => "i64".to_owned(),
         TargetOrCommon::Common | TargetOrCommon::Web => {
-            "flutter_rust_bridge::for_generated::MessagePort"
+            format!("{crate_name}::for_generated::MessagePort")
         }
-    }
-    .to_owned();
+    };
     ExternFuncParam {
         name: "port_".to_owned(),
         rust_type,
