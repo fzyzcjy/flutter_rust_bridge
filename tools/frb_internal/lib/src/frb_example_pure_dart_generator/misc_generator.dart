@@ -13,7 +13,7 @@ Future<void> generateRustMod(Uri dir) async {
           return name;
         }
         if (entity is Directory) {
-          return basename(entity);
+          return basename(entity.path);
         }
         return null;
       })
