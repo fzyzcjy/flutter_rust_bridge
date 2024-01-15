@@ -118,7 +118,7 @@ macro_rules! frb_generated_default_handler {
             pub static ref FLUTTER_RUST_BRIDGE_HANDLER:$crate::DefaultHandler<$crate::for_generated::SimpleThreadPool> = {
                 assert_eq!(FLUTTER_RUST_BRIDGE_CODEGEN_VERSION, flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION);
                 $crate::DefaultHandler::new_simple(Default::default())
-            }
+            };
         }
 
         #[cfg(target_family = "wasm")]
