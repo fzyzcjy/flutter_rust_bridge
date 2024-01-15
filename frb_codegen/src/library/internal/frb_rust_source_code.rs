@@ -1,7 +1,10 @@
+use crate::codegen::generator::misc::target::Target;
 use crate::library::commands::format_rust::format_rust;
+use itertools::Itertools;
 use log::info;
 use std::fs;
 use std::path::Path;
+use strum::IntoEnumIterator;
 
 pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Result<()> {
     info!("generate_frb_rust_source_code");
@@ -11,6 +14,10 @@ pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Res
         .join("src")
         .join("internal_generated")
         .join("mod.rs");
+
+    let text = Target::iter()
+        .map(|target| generate_target(target))
+        .join("");
 
     let text = format!(
         r#"
@@ -76,4 +83,20 @@ pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Res
     format_rust(&[path_target])?;
 
     Ok(())
+}
+
+fn generate_target(target: Target) -> String {
+    let target_lowercase = target.to_string().to_lowercase();
+
+    format!(
+        r#"
+            #[doc(hidden)]
+            #[macro_export]
+            macro_rules! frb_generated_{target_lowercase}_extern_func {{
+                () => {{
+                    {body}
+                }};
+            }}
+        "#
+    )
 }
