@@ -90,7 +90,7 @@ pub(crate) fn create_maybe_port_param(
     has_port_argument(mode).then(|| create_port_param(target))
 }
 
-fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
+pub(crate) fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
     let rust_type = match target {
         // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
         // and ffigen and make code tricker, so we manually write down "i64" here.
