@@ -2,6 +2,8 @@
 
 import 'dart:io';
 
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:path/path.dart';
@@ -80,6 +82,9 @@ Future<void> generatePureDartPde(
                 .replaceAll('mirror_twin_sync_sse', 'mirror_twin_sync');
     }
   });
+
+  await runCommand('cargo fetch',
+      pwd: dirPureDartPde.resolve('rust/').toFilePath());
 }
 
 // copied and modified fromhttps://stackoverflow.com/questions/27204728
