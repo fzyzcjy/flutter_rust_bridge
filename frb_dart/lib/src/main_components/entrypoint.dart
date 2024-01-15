@@ -89,6 +89,10 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
+  String get codegenVersion;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @protected
   Future<void> executeRustInitializers();
 
   Future<ExternalLibrary> _loadDefaultExternalLibrary() async =>
