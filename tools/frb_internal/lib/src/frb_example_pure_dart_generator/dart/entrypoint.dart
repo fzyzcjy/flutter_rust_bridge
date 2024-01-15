@@ -18,7 +18,8 @@ class DartGenerator extends BaseGenerator {
   Set<String> get duplicatorBlacklistNames => {};
 
   @override
-  Map<String, String> generateDirectSources() => generateDartDirectSources();
+  Map<String, String> generateDirectSources() =>
+      generateDartDirectSources(package);
 
   @override
   String get extension => 'dart';

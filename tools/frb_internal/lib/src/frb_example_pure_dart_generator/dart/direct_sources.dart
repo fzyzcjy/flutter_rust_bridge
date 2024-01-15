@@ -1,9 +1,10 @@
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/basic_type_infos.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/benchmark.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/builder.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
 import 'package:recase/recase.dart';
 
-Map<String, String> generateDartDirectSources() {
+Map<String, String> generateDartDirectSources(Package package) {
   return {
     'pseudo_manual/basic_test.dart': _generateBasicRelated(
       postfix: '',
@@ -39,7 +40,8 @@ Map<String, String> generateDartDirectSources() {
       values: (ty) => ['{}', ...ty.interestRawValues.map((x) => '{42: $x}')],
       valueType: (ty) => 'Map<int, ${ty.dartTypeName}>',
     ),
-    '../../benchmark/src/generated.dart': generateBenchmark(),
+    if (package == Package.pureDart)
+      '../../benchmark/src/generated.dart': generateBenchmark(),
   };
 }
 
