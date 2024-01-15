@@ -83,7 +83,7 @@ Future<void> generatePureDartPde(
   });
 
   // To refresh Cargo.lock's ordering
-  await exec('cargo fetch', relativePwd: 'frb_example/pure_dart_pde');
+  await exec('cargo fetch', relativePwd: 'frb_example/pure_dart_pde/rust');
 }
 
 // copied and modified from https://stackoverflow.com/questions/27204728
