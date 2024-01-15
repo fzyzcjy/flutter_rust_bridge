@@ -3,11 +3,9 @@ mod frb_rust_source_code;
 
 use crate::internal::frb_dart_source_code::generate_frb_dart_source_code;
 use crate::internal::frb_rust_source_code::generate_frb_rust_source_code;
-use convert_case::Casing;
 use log::info;
 use std::env;
 use std::path::PathBuf;
-use strum::IntoEnumIterator;
 
 pub fn generate() -> anyhow::Result<()> {
     let repo_base_dir = compute_repo_base_dir()?;
