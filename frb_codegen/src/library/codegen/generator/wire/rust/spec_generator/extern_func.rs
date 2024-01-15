@@ -109,7 +109,9 @@ pub(crate) enum ExternClassMode {
 
 impl ExternClass {
     pub(crate) fn generate(&self) -> String {
-        let ExternClass { name, mode, body } = self;
+        let ExternClass {
+            name, mode, body, ..
+        } = self;
 
         let mode = match mode {
             ExternClassMode::Struct => "struct",

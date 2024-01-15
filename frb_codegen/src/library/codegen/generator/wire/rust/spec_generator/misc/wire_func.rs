@@ -49,6 +49,7 @@ pub(crate) fn generate_wire_func(
             return_type: return_type.clone(),
             body: generate_redirect_body(func, &params.common),
             target: target.try_into().unwrap(),
+            needs_ffigen: true,
         }
         .into(),
         TargetOrCommon::Common => format!(

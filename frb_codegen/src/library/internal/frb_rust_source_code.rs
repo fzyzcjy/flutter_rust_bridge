@@ -96,6 +96,7 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
         return_type,
         body,
         target,
+        needs_ffigen: false,
     }
 }
 
@@ -122,5 +123,6 @@ fn generate_dart_fn_deliver_output(target: Target) -> ExternFunc {
             {HANDLER_NAME}.dart_fn_handle_output(call_id, message)"
         ),
         target,
+        needs_ffigen: false,
     }
 }

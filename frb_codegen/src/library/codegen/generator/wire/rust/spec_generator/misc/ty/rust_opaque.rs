@@ -42,6 +42,7 @@ impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
                         self.ir.codec.needs_unsafe_block(),
                     ),
                     target,
+                    needs_ffigen: false,
                 })
                 .collect_vec()
                 .into()
