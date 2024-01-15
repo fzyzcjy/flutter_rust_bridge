@@ -83,7 +83,7 @@ Future<void> lintDartFfigen() async {
 
     const startPattern = 'class RustLibWire implements BaseWire {';
     final start = text.indexOf(startPattern) + startPattern.length - 1;
-    return text.substring(start, findMatchingBracket(text, start));
+    return text.substring(start, findMatchingBracket(text, start) + 1);
   }
 
   final textMatcher = readInterestText('pure_dart');
