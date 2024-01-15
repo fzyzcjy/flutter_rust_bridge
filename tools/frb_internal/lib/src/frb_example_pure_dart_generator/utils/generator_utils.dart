@@ -163,3 +163,8 @@ class _Annotation {
     this.enableAll = false,
   });
 }
+
+enum Package {
+  pureDart,
+  pureDartPde,
+}

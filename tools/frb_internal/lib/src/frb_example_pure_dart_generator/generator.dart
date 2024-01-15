@@ -18,11 +18,6 @@ Future<void> generate() async {
       dartRoot: dirPureDartPde, package: Package.pureDartPde);
 }
 
-enum Package {
-  pureDart,
-  pureDartPde,
-}
-
 Future<void> generateForPackage(
     {required Uri dartRoot, required Package package}) async {
   await RustGenerator(
