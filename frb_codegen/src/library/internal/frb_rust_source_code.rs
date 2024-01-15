@@ -62,7 +62,7 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
         dart_type: "NOT_USED".to_string(),
     }];
     if mode == FfiDispatcherMode::Primary {
-        params.push(create_port_param());
+        params.push(create_port_param(target.into()));
     }
     params.extend(generate_platform_generalized_uint8list_params(
         target.into(),
@@ -70,11 +70,11 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
 
     let body = format!(
         "{partial_func_name}_impl({})",
-        params.iter().map(|p| p.name).join(", ")
+        params.iter().map(|p| p.name.clone()).join(", ")
     );
 
     let return_type = match mode {
-        FfiDispatcherMode::Primary => None
+        FfiDispatcherMode::Primary => None,
         FfiDispatcherMode::Sync => Some("$crate::for_generated::WireSyncRust2DartSse".to_owned()),
     };
 
