@@ -1,3 +1,4 @@
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::common::generate_wire_class_header;
@@ -13,7 +14,10 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputCode> {
     let wire_class_name = &config.dart_output_class_name_pack.wire_class_name;
     let wire_class_header = generate_wire_class_header(wire_class_name);
-    let class_body = rust_extern_funcs.iter().map(|f| generate_func(f)).join("");
+    let class_body = (rust_extern_funcs.iter())
+        .filter(|f| f.target == Target::Io)
+        .map(|f| generate_func(f))
+        .join("");
 
     let body = format!(
         "
