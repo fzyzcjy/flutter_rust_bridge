@@ -23,6 +23,7 @@ Future<void> generatePureDartPde(
           'rust/target',
 
           // will generate separately
+          'frb_generated.h',
           'lib/src/rust',
           'test/api/pseudo_manual',
           'rust/src/api/pseudo_manual',
