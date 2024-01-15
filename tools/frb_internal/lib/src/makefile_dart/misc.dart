@@ -17,6 +17,8 @@ List<Command<void>> createCommands() {
     SimpleCommand('misc-normalize-pubspec', miscNormalizePubspec),
     SimpleConfigCommand('precommit', precommit, _$populatePrecommitConfigParser,
         _$parsePrecommitConfigResult),
+    SimpleCommand('precommit-generate', precommitGenerate),
+    SimpleCommand('precommit-integrate', precommitIntegrate),
     SimpleCommand('pub-get-all', pubGetAll),
     SimpleCommand('cargo-fetch-all', cargoFetchAll),
   ];
@@ -46,17 +48,8 @@ class PrecommitConfig {
 
 Future<void> precommit(PrecommitConfig config) async {
   if (config.mode == PrecommitMode.slow) {
-    await Future.wait([
-      for (final package in kDartExamplePackages)
-        generateRunFrbCodegenCommandGenerate(GeneratePackageConfig(
-            setExitIfChanged: false, package: package, coverage: false)),
-    ]);
-
-    await Future.wait([
-      for (final package in kDartExampleIntegratePackages)
-        generateRunFrbCodegenCommandIntegrate(GeneratePackageConfig(
-            setExitIfChanged: false, package: package, coverage: false)),
-    ]);
+    await precommitGenerate();
+    await precommitIntegrate();
   }
 
   // format after clippy, since cargo fix may remove a import line, but leave
@@ -82,6 +75,22 @@ Future<void> precommit(PrecommitConfig config) async {
   }
 
   await miscNormalizePubspec();
+}
+
+Future<void> precommitGenerate() async {
+  await Future.wait([
+    for (final package in kDartExamplePackages)
+      generateRunFrbCodegenCommandGenerate(GeneratePackageConfig(
+          setExitIfChanged: false, package: package, coverage: false)),
+  ]);
+}
+
+Future<void> precommitIntegrate() async {
+  await Future.wait([
+    for (final package in kDartExampleIntegratePackages)
+      generateRunFrbCodegenCommandIntegrate(GeneratePackageConfig(
+          setExitIfChanged: false, package: package, coverage: false)),
+  ]);
 }
 
 Future<void> pubGetAll() async {
