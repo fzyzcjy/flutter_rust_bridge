@@ -78,7 +78,8 @@ clippy::unit_arg,
 clippy::unused_unit,
 clippy::double_parens,
 clippy::let_and_return,
-clippy::too_many_arguments
+clippy::too_many_arguments,
+clippy::match_single_binding
 )]"#;
 
 fn generate_imports(
