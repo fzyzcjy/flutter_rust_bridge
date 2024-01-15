@@ -72,8 +72,11 @@ fn generate_func(func: &ExternFunc, c_symbol_prefix: &str) -> String {
             "
         )
     } else {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
         unreachable!(
             "Do not understand how to generate this func without ffigen yet (func={func:?})"
         )
+        // frb-coverage:ignore-end
     }
 }
