@@ -20,11 +20,12 @@ pub struct IrPack {
 }
 
 impl IrPack {
+    #[allow(clippy::type_complexity)]
     fn distinct_types(
         &self,
         include_func_inputs: bool,
         include_func_output: bool,
-        #[allow(clippy::type_complexity)] filter_func: Option<Box<dyn Fn(&IrFunc) -> bool>>,
+        filter_func: Option<Box<dyn Fn(&IrFunc) -> bool>>,
     ) -> Vec<IrType> {
         let mut gatherer = DistinctTypeGatherer::new();
         self.visit_types(
