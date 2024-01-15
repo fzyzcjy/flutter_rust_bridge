@@ -10,13 +10,16 @@ Future<void> generate() async {
   final dirPureDart =
       Directory.current.uri.resolve('../../frb_example/pure_dart/');
 
-  await RustGenerator(
-          packageRootDir: dirPureDart.resolve('rust/'), interestDir: 'src/api/')
-      .generate();
-  await DartGenerator(packageRootDir: dirPureDart, interestDir: 'test/api/')
-      .generate();
-  await generateDartTestEntrypoints(dartRoot: dirPureDart);
-  await generateRustMod(dirPureDart.resolve('rust/src/api/pseudo_manual/'));
-
+  await generateForPackage(dartRoot: dirPureDart);
   await generatePureDartPde(dirPureDart: dirPureDart);
+}
+
+Future<void> generateForPackage({required Uri dartRoot}) async {
+  await RustGenerator(
+          packageRootDir: dartRoot.resolve('rust/'), interestDir: 'src/api/')
+      .generate();
+  await DartGenerator(packageRootDir: dartRoot, interestDir: 'test/api/')
+      .generate();
+  await generateDartTestEntrypoints(dartRoot: dartRoot);
+  await generateRustMod(dartRoot.resolve('rust/src/api/pseudo_manual/'));
 }
