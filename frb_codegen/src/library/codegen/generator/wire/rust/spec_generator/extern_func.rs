@@ -19,7 +19,7 @@ pub(crate) struct ExternFunc {
     pub(crate) needs_ffigen: bool,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, PartialEq, Eq)]
 pub(crate) struct ExternFuncParam {
     pub(crate) name: String,
     pub(crate) rust_type: String,
