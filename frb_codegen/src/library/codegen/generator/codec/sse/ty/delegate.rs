@@ -19,7 +19,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
                     return Some(format!(
                         "{};",
-                        lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                        lang.throw_unimplemented(generate_unimplemented_in_sse_message(
+                            &self.ir.into()
+                        ))
                     ));
                 }
                 IrTypeDelegate::Map(_) => {
@@ -95,7 +97,9 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 IrTypeDelegate::Backtrace | IrTypeDelegate::AnyhowException => {
                     return Some(format!(
                         "{};",
-                        lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                        lang.throw_unimplemented(generate_unimplemented_in_sse_message(
+                            &self.ir.into()
+                        ))
                     ));
                 }
                 IrTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
@@ -119,7 +123,7 @@ impl<'a> DelegateCodecSseTy<'a> {
         match &self.ir {
             IrTypeDelegate::Time(_) | IrTypeDelegate::Uuid => Some(format!(
                 "{};",
-                lang.throw_unimplemented(UNIMPLEMENTED_MESSAGE)
+                lang.throw_unimplemented(generate_unimplemented_in_sse_message(&self.ir.into()))
             )),
             _ => None,
         }
@@ -159,8 +163,9 @@ pub(crate) fn rust_decode_primitive_enum(
     )
 }
 
-const UNIMPLEMENTED_MESSAGE: &str =
-    "not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue";
+pub(crate) fn generate_unimplemented_in_sse_message(ir: &IrType) -> String {
+    format!("The type {ir:?} is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue")
+}
 
 pub(crate) fn generate_set_to_list(
     ir: &IrTypeDelegateSet,
