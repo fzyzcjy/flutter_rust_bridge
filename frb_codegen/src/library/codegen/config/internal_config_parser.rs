@@ -101,6 +101,7 @@ impl InternalConfig {
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
                 deps_check: config.deps_check.unwrap_or(true),
+                needs_ffigen: full_dep,
             },
             parser: ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.clone(),
