@@ -9,6 +9,7 @@
       "comments": [],
       "error_output": null,
       "getter": false,
+      "id": 1,
       "initializer": false,
       "inputs": [
         {
@@ -64,6 +65,7 @@
         "type": "Delegate"
       },
       "getter": false,
+      "id": 2,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
