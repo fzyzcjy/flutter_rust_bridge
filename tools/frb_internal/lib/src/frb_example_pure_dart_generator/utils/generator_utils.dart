@@ -140,7 +140,9 @@ class _Duplicator {
     // In PDE mode, we use SSE by default, so cannot annotate it
     if (generator.package == Package.pureDartPde) {
       modes = modes
-          .where((m) => !m.components.contains(DuplicatorComponentMode.sse))
+          .where((m) =>
+              !m.components.contains(DuplicatorComponentMode.sse) &&
+              !m.components.contains(DuplicatorComponentMode.moi))
           .toList();
     }
 
