@@ -72,6 +72,7 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
     }
     params.extend(generate_platform_generalized_uint8list_params(
         target.into(),
+        "$crate",
     ));
 
     let body = format!(

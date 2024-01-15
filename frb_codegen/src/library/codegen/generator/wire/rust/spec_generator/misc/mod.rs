@@ -217,7 +217,10 @@ fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> Extern
             rust_type: "i32".to_owned(),
             dart_type: "int".to_owned(),
         }];
-        ans.extend(generate_platform_generalized_uint8list_params(target));
+        ans.extend(generate_platform_generalized_uint8list_params(
+            target,
+            "flutter_rust_bridge",
+        ));
         ans
     };
 

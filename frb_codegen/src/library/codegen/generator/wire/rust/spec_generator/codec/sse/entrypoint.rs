@@ -42,7 +42,8 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         _context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>> {
         Acc::new(|target| {
-            let mut params = generate_platform_generalized_uint8list_params(target);
+            let mut params =
+                generate_platform_generalized_uint8list_params(target, "flutter_rust_bridge");
 
             if let Some(param) = create_maybe_port_param(func.mode, target) {
                 params.insert(0, param);
@@ -109,13 +110,14 @@ pub(crate) fn create_port_param(target: TargetOrCommon) -> ExternFuncParam {
 
 pub(crate) fn generate_platform_generalized_uint8list_params(
     target: TargetOrCommon,
+    crate_name: &str,
 ) -> Vec<ExternFuncParam> {
     vec![
         ExternFuncParam {
             name: "ptr_".to_owned(),
             rust_type: match target {
                 TargetOrCommon::Common | TargetOrCommon::Web => {
-                    "flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr".to_owned()
+                    format!("{crate_name}::for_generated::PlatformGeneralizedUint8ListPtr")
                 }
                 TargetOrCommon::Io => "*mut u8".to_owned(),
             },
