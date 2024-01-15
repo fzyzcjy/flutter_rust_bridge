@@ -111,9 +111,7 @@ class _Duplicator {
       final fileContent = (file as File).readAsStringSync();
       final annotation = _parseAnnotation(fileContent);
 
-      final chosenModes = annotation.enableAll
-          ? DuplicatorMode.allValues
-          : DuplicatorMode.defaultValues;
+      final chosenModes = _computeModes(annotation);
 
       for (final mode in chosenModes) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
@@ -133,6 +131,13 @@ class _Duplicator {
         File(targetPath).writeAsStringSync(outputText);
       }
     }
+  }
+
+  List<DuplicatorMode> _computeModes(_Annotation annotation) {
+    var modes = annotation.enableAll
+        ? DuplicatorMode.allValues
+        : DuplicatorMode.defaultValues;
+    return modes;
   }
 }
 
