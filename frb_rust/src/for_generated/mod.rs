@@ -51,5 +51,7 @@ pub use lazy_static::lazy_static;
 #[cfg(feature = "rust-async")]
 pub use misc_rust_async::*;
 pub use pointer::*;
+#[cfg(feature = "static_assertions")]
+pub use static_assertions;
 #[cfg(wasm)]
 pub use wasm_bindgen;
