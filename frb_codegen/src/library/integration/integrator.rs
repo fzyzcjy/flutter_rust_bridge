@@ -248,8 +248,9 @@ fn pub_add_dependencies(
         vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
     })?;
 
-    // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
-    flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
+    // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
+    // flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
+
     if enable_integration_test {
         flutter_pub_add(&[
             "integration_test".into(),
