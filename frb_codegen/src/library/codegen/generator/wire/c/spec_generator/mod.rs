@@ -22,7 +22,7 @@ pub(super) fn generate(
     if !config.enable {
         return Ok(WireCOutputSpec {
             code_cbindgen: "".to_string(),
-            code_dummy: "// NOTHING".to_string(),
+            code_dummy: "// Nothing when using full_dep=false mode".to_string(),
         });
     }
 
