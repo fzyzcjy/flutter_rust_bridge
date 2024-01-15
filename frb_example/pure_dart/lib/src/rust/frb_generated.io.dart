@@ -21147,7 +21147,13 @@ class RustLibWire implements BaseWire {
   factory RustLibWire.fromExternalLibrary(ExternalLibrary lib) =>
       RustLibWire(lib.ffiDynamicLibrary);
 
-  RustLibWire(ffi.DynamicLibrary dynamicLibrary);
+  /// Holds the symbol lookup function.
+  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
+      _lookup;
+
+  /// The symbols are looked up in [dynamicLibrary].
+  RustLibWire(ffi.DynamicLibrary dynamicLibrary)
+      : _lookup = dynamicLibrary.lookup;
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideDataTwinMoi(
     ffi.Pointer<ffi.Void> ptr,
