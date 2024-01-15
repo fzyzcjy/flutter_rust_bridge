@@ -6,6 +6,7 @@
 * Fix module parsing when two modules have the same name #1664 (thanks @alanlzhang)
 * Fix integrate command's default template has rust_lib hardcoded instead of custom names #1669
 * Support `Vec<Vec<u8>>` for CST/DCO codec (SSE codec already supports it) #1663
+* Make LLVM dependency optional #1666
 * Add checks of versions #1667
 
 ## 2.0.0-dev.19
