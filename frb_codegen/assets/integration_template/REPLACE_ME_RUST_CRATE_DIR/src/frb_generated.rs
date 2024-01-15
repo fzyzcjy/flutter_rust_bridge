@@ -29,6 +29,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_stream_sink_codec = SseCodec,
     default_rust_opaque = RustOpaqueMoi
 );
+const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "REPLACE_ME_FRB_VERSION";
 
 // Section: executor
 
