@@ -14,12 +14,21 @@ Future<void> generatePureDartPde({required Uri dirPureDart}) async {
       final relativePath =
           relative(entity.path, from: dirPureDart.toFilePath());
       return !const [
+        // gitignore them
         '.dart_tool',
         '.idea',
         'benchmark',
         'build',
         'coverage',
         'rust/target',
+
+        // will generate separately
+        'lib/src/rust',
+        'test/api/pseudo_manual',
+        'rust/src/api/pseudo_manual',
+        'rust/src/frb_generated.rs',
+        'rust/src/frb_generated.io.rs',
+        'rust/src/frb_generated.web.rs',
       ].contains(relativePath);
     },
   );
