@@ -169,6 +169,7 @@ _Annotation _parseAnnotation(String fileContent) {
         .map((x) => x as String)
         .toList(),
     enableAll: data['enableAll'] as bool? ?? false,
+    skipPde: data['skipPde'] as bool? ?? false,
   );
 }
 
@@ -177,12 +178,14 @@ class _Annotation {
   final String? addCode;
   final List<String> removeCode;
   final bool enableAll;
+  final bool skipPde;
 
   const _Annotation({
     this.forbiddenDuplicatorModes = const [],
     this.addCode,
     this.removeCode = const [],
     this.enableAll = false,
+    this.skipPde = false,
   });
 }
 
