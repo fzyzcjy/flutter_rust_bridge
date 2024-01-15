@@ -171,6 +171,7 @@ fn replace_string_content(raw: &str, config: &ReplaceContentConfig) -> String {
     raw.replace("REPLACE_ME_DART_PACKAGE_NAME", config.dart_package_name)
         .replace("REPLACE_ME_RUST_CRATE_NAME", config.rust_crate_name)
         .replace("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir)
+        .replace("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"))
         .replace(
             "REPLACE_ME_RUST_FRB_DEPENDENCY",
             &if config.enable_local_dependency {
