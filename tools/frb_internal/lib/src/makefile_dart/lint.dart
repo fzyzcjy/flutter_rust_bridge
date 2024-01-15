@@ -91,9 +91,10 @@ Future<void> lintDartFfigen() async {
 
   final actualChunks = textActual.split('\n\n');
   for (final actualChunk in actualChunks) {
-    if (!textMatcher.contains(actualChunk)) {
-      throw Exception(
-          'Fail to find actualChunk in textMatcher (actualChunk=`$actualChunk`)');
+    final modifiedActualChunk = actualChunk.replaceAll(
+        'frbgen_frb_example_pure_dart_pde', 'frbgen_frb_example_pure_dart');
+    if (!textMatcher.contains(modifiedActualChunk)) {
+      throw Exception('Fail to find chunk (`$modifiedActualChunk`)');
     }
   }
 }
