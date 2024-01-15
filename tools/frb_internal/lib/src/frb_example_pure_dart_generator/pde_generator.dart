@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:path/path.dart';
 
@@ -10,6 +11,12 @@ Future<void> generatePureDartPde(
   copyRecursive(Directory(dirPureDart.toFilePath()),
       Directory(dirPureDartPde.toFilePath()), filter: (entity) {
     final relativePath = relative(entity.path, from: dirPureDart.toFilePath());
+
+    if (entity is File) {
+      final annotation = Annotation.parse(entity.readAsStringSync());
+      if (annotation.skipPde) return false;
+    }
+
     return !const [
           '.DS_Store',
         ].contains(basename(relativePath)) &&
