@@ -1,4 +1,6 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::{
     WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
@@ -71,8 +73,10 @@ fn generate_impl_decode_jsvalue_for_type(
 
 fn generate_impl_decode_code_block(api: &str, wire: &str, body: &str) -> String {
     let body = body.trim();
+    let codec_comments = generate_codec_comments(CodecMode::Cst);
     format!(
         "impl CstDecode<{api}> for {wire} {{
+            {codec_comments}
             fn cst_decode(self) -> {api} {{
                 {body}
             }}

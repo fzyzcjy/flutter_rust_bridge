@@ -1,4 +1,6 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecOutputSpec;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::{
@@ -53,7 +55,10 @@ fn generate_encode_func(
                     WireDartOutputCode {
                         api_impl_class_methods: vec![DartApiImplClassMethod {
                             signature,
-                            body: Some(body),
+                            body: Some(format!(
+                                "{}\n{body}",
+                                generate_codec_comments(CodecMode::Cst),
+                            )),
                         }],
                         ..Default::default()
                     }
