@@ -5,7 +5,16 @@ import 'package:path/path.dart';
 Future<void> generatePureDartPde({required Uri dirPureDart}) async {
   final dirPureDartPde = Directory.current.uri.resolve('../pure_dart_pde/');
 
-  TODO;
+  copyRecursive(
+    Directory(dirPureDart.toFilePath()),
+    Directory(dirPureDartPde.toFilePath()),
+    filter: (entity) {
+      final relativePath =
+          relative(entity.path, from: dirPureDart.toFilePath());
+      print(relativePath);
+      return true;
+    },
+  );
 }
 
 // copied and modified fromhttps://stackoverflow.com/questions/27204728
