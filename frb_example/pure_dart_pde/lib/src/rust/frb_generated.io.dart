@@ -8,7 +8,6 @@ import 'api/async_misc.dart';
 import 'api/async_spawn.dart';
 import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
-import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/customization.dart';
 import 'api/dart_dynamic.dart';
@@ -51,8 +50,6 @@ import 'api/pseudo_manual/basic_twin_sync.dart';
 import 'api/pseudo_manual/benchmark_api.dart';
 import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
-import 'api/pseudo_manual/chrono_type_twin_rust_async.dart';
-import 'api/pseudo_manual/chrono_type_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_rust_async.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_rust_async.dart';
@@ -109,8 +106,6 @@ import 'api/pseudo_manual/tuple_twin_rust_async.dart';
 import 'api/pseudo_manual/tuple_twin_sync.dart';
 import 'api/pseudo_manual/type_alias_twin_rust_async.dart';
 import 'api/pseudo_manual/type_alias_twin_sync.dart';
-import 'api/pseudo_manual/uuid_type_twin_rust_async.dart';
-import 'api/pseudo_manual/uuid_type_twin_sync.dart';
 import 'api/raw_string.dart';
 import 'api/rust_auto_opaque.dart';
 import 'api/rust_opaque.dart';
@@ -121,7 +116,6 @@ import 'api/stream_misc.dart';
 import 'api/structure.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
-import 'api/uuid_type.dart';
 import 'auxiliary/new_module_system/sub_module.dart';
 import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
@@ -131,7 +125,6 @@ import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:meta/meta.dart' as meta;
-import 'package:uuid/uuid.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -859,18 +852,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_Backtrace(dynamic raw);
 
   @protected
-  Duration dco_decode_Chrono_Duration(dynamic raw);
-
-  @protected
-  DateTime dco_decode_Chrono_Local(dynamic raw);
-
-  @protected
-  DateTime dco_decode_Chrono_Naive(dynamic raw);
-
-  @protected
-  DateTime dco_decode_Chrono_Utc(dynamic raw);
-
-  @protected
   FutureOr<void> Function(Object)
       dco_decode_DartFn_Inputs_DartOpaque_Output_unit(dynamic raw);
 
@@ -1428,9 +1409,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
-  UuidValue dco_decode_Uuid(dynamic raw);
-
-  @protected
   ATwinNormal dco_decode_a_twin_normal(dynamic raw);
 
   @protected
@@ -1571,15 +1549,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv dco_decode_box_application_env(dynamic raw);
-
-  @protected
-  Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
-
-  @protected
-  DateTime dco_decode_box_autoadd_Chrono_Naive(dynamic raw);
-
-  @protected
-  DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw);
 
   @protected
   Object dco_decode_box_autoadd_DartOpaque(dynamic raw);
@@ -1942,30 +1911,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   double dco_decode_box_autoadd_f_64(dynamic raw);
-
-  @protected
-  FeatureChronoTwinNormal dco_decode_box_autoadd_feature_chrono_twin_normal(
-      dynamic raw);
-
-  @protected
-  FeatureChronoTwinRustAsync
-      dco_decode_box_autoadd_feature_chrono_twin_rust_async(dynamic raw);
-
-  @protected
-  FeatureChronoTwinSync dco_decode_box_autoadd_feature_chrono_twin_sync(
-      dynamic raw);
-
-  @protected
-  FeatureUuidTwinNormal dco_decode_box_autoadd_feature_uuid_twin_normal(
-      dynamic raw);
-
-  @protected
-  FeatureUuidTwinRustAsync dco_decode_box_autoadd_feature_uuid_twin_rust_async(
-      dynamic raw);
-
-  @protected
-  FeatureUuidTwinSync dco_decode_box_autoadd_feature_uuid_twin_sync(
-      dynamic raw);
 
   @protected
   FeedIdTwinNormal dco_decode_box_autoadd_feed_id_twin_normal(dynamic raw);
@@ -2708,25 +2653,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   F64Array16 dco_decode_f_64_array_16(dynamic raw);
 
   @protected
-  FeatureChronoTwinNormal dco_decode_feature_chrono_twin_normal(dynamic raw);
-
-  @protected
-  FeatureChronoTwinRustAsync dco_decode_feature_chrono_twin_rust_async(
-      dynamic raw);
-
-  @protected
-  FeatureChronoTwinSync dco_decode_feature_chrono_twin_sync(dynamic raw);
-
-  @protected
-  FeatureUuidTwinNormal dco_decode_feature_uuid_twin_normal(dynamic raw);
-
-  @protected
-  FeatureUuidTwinRustAsync dco_decode_feature_uuid_twin_rust_async(dynamic raw);
-
-  @protected
-  FeatureUuidTwinSync dco_decode_feature_uuid_twin_sync(dynamic raw);
-
-  @protected
   FeedIdTwinNormal dco_decode_feed_id_twin_normal(dynamic raw);
 
   @protected
@@ -2761,15 +2687,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   KitchenSinkTwinSync dco_decode_kitchen_sink_twin_sync(dynamic raw);
-
-  @protected
-  List<Duration> dco_decode_list_Chrono_Duration(dynamic raw);
-
-  @protected
-  List<DateTime> dco_decode_list_Chrono_Local(dynamic raw);
-
-  @protected
-  List<DateTime> dco_decode_list_Chrono_Naive(dynamic raw);
 
   @protected
   List<Object> dco_decode_list_DartOpaque(dynamic raw);
@@ -3312,15 +3229,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String? dco_decode_opt_String(dynamic raw);
-
-  @protected
-  Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
-
-  @protected
-  DateTime? dco_decode_opt_box_autoadd_Chrono_Naive(dynamic raw);
-
-  @protected
-  DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw);
 
   @protected
   Object? dco_decode_opt_box_autoadd_DartOpaque(dynamic raw);
@@ -3873,15 +3781,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SumWithTwinSyncArray3 dco_decode_sum_with_twin_sync_array_3(dynamic raw);
 
   @protected
-  TestChronoTwinNormal dco_decode_test_chrono_twin_normal(dynamic raw);
-
-  @protected
-  TestChronoTwinRustAsync dco_decode_test_chrono_twin_rust_async(dynamic raw);
-
-  @protected
-  TestChronoTwinSync dco_decode_test_chrono_twin_sync(dynamic raw);
-
-  @protected
   TestIdTwinNormal dco_decode_test_id_twin_normal(dynamic raw);
 
   @protected
@@ -4393,18 +4292,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String sse_decode_Backtrace(SseDeserializer deserializer);
-
-  @protected
-  Duration sse_decode_Chrono_Duration(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_Chrono_Local(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer);
 
   @protected
   Object sse_decode_DartOpaque(SseDeserializer deserializer);
@@ -4954,9 +4841,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
-  UuidValue sse_decode_Uuid(SseDeserializer deserializer);
-
-  @protected
   ATwinNormal sse_decode_a_twin_normal(SseDeserializer deserializer);
 
   @protected
@@ -5117,15 +5001,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ApplicationEnv sse_decode_box_application_env(SseDeserializer deserializer);
-
-  @protected
-  Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
 
   @protected
   Object sse_decode_box_autoadd_DartOpaque(SseDeserializer deserializer);
@@ -5548,31 +5423,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   double sse_decode_box_autoadd_f_64(SseDeserializer deserializer);
-
-  @protected
-  FeatureChronoTwinNormal sse_decode_box_autoadd_feature_chrono_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureChronoTwinRustAsync
-      sse_decode_box_autoadd_feature_chrono_twin_rust_async(
-          SseDeserializer deserializer);
-
-  @protected
-  FeatureChronoTwinSync sse_decode_box_autoadd_feature_chrono_twin_sync(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureUuidTwinNormal sse_decode_box_autoadd_feature_uuid_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureUuidTwinRustAsync sse_decode_box_autoadd_feature_uuid_twin_rust_async(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureUuidTwinSync sse_decode_box_autoadd_feature_uuid_twin_sync(
-      SseDeserializer deserializer);
 
   @protected
   FeedIdTwinNormal sse_decode_box_autoadd_feed_id_twin_normal(
@@ -6418,30 +6268,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   F64Array16 sse_decode_f_64_array_16(SseDeserializer deserializer);
 
   @protected
-  FeatureChronoTwinNormal sse_decode_feature_chrono_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureChronoTwinRustAsync sse_decode_feature_chrono_twin_rust_async(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureChronoTwinSync sse_decode_feature_chrono_twin_sync(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureUuidTwinNormal sse_decode_feature_uuid_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureUuidTwinRustAsync sse_decode_feature_uuid_twin_rust_async(
-      SseDeserializer deserializer);
-
-  @protected
-  FeatureUuidTwinSync sse_decode_feature_uuid_twin_sync(
-      SseDeserializer deserializer);
-
-  @protected
   FeedIdTwinNormal sse_decode_feed_id_twin_normal(SseDeserializer deserializer);
 
   @protected
@@ -6480,15 +6306,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   KitchenSinkTwinSync sse_decode_kitchen_sink_twin_sync(
       SseDeserializer deserializer);
-
-  @protected
-  List<Duration> sse_decode_list_Chrono_Duration(SseDeserializer deserializer);
-
-  @protected
-  List<DateTime> sse_decode_list_Chrono_Local(SseDeserializer deserializer);
-
-  @protected
-  List<DateTime> sse_decode_list_Chrono_Naive(SseDeserializer deserializer);
 
   @protected
   List<Object> sse_decode_list_DartOpaque(SseDeserializer deserializer);
@@ -7121,17 +6938,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String? sse_decode_opt_String(SseDeserializer deserializer);
 
   @protected
-  Duration? sse_decode_opt_box_autoadd_Chrono_Duration(
-      SseDeserializer deserializer);
-
-  @protected
-  DateTime? sse_decode_opt_box_autoadd_Chrono_Naive(
-      SseDeserializer deserializer);
-
-  @protected
-  DateTime? sse_decode_opt_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
-
-  @protected
   Object? sse_decode_opt_box_autoadd_DartOpaque(SseDeserializer deserializer);
 
   @protected
@@ -7744,18 +7550,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  TestChronoTwinNormal sse_decode_test_chrono_twin_normal(
-      SseDeserializer deserializer);
-
-  @protected
-  TestChronoTwinRustAsync sse_decode_test_chrono_twin_rust_async(
-      SseDeserializer deserializer);
-
-  @protected
-  TestChronoTwinSync sse_decode_test_chrono_twin_sync(
-      SseDeserializer deserializer);
-
-  @protected
   TestIdTwinNormal sse_decode_test_id_twin_normal(SseDeserializer deserializer);
 
   @protected
@@ -8302,18 +8096,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_Chrono_Duration(Duration self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_DartOpaque_Output_unit(
@@ -8902,9 +8684,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Uuid(UuidValue self, SseSerializer serializer);
-
-  @protected
   void sse_encode_a_twin_normal(ATwinNormal self, SseSerializer serializer);
 
   @protected
@@ -9071,18 +8850,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_application_env(
       ApplicationEnv self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_Chrono_Duration(
-      Duration self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_Chrono_Naive(
-      DateTime self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_Chrono_Utc(
-      DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer);
@@ -9467,30 +9234,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_f_64(double self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_feature_chrono_twin_normal(
-      FeatureChronoTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_feature_chrono_twin_rust_async(
-      FeatureChronoTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_feature_chrono_twin_sync(
-      FeatureChronoTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_feature_uuid_twin_normal(
-      FeatureUuidTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_feature_uuid_twin_rust_async(
-      FeatureUuidTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_box_autoadd_feature_uuid_twin_sync(
-      FeatureUuidTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_feed_id_twin_normal(
@@ -10306,30 +10049,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_f_64_array_16(F64Array16 self, SseSerializer serializer);
 
   @protected
-  void sse_encode_feature_chrono_twin_normal(
-      FeatureChronoTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_feature_chrono_twin_rust_async(
-      FeatureChronoTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_feature_chrono_twin_sync(
-      FeatureChronoTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_feature_uuid_twin_normal(
-      FeatureUuidTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_feature_uuid_twin_rust_async(
-      FeatureUuidTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_feature_uuid_twin_sync(
-      FeatureUuidTwinSync self, SseSerializer serializer);
-
-  @protected
   void sse_encode_feed_id_twin_normal(
       FeedIdTwinNormal self, SseSerializer serializer);
 
@@ -10370,18 +10089,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_kitchen_sink_twin_sync(
       KitchenSinkTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_Chrono_Duration(
-      List<Duration> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_Chrono_Local(
-      List<DateTime> self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_Chrono_Naive(
-      List<DateTime> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_DartOpaque(List<Object> self, SseSerializer serializer);
@@ -11009,18 +10716,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_opt_String(String? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_Chrono_Duration(
-      Duration? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_opt_box_autoadd_Chrono_Naive(
-      DateTime? self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_opt_box_autoadd_Chrono_Utc(
-      DateTime? self, SseSerializer serializer);
-
-  @protected
   void sse_encode_opt_box_autoadd_DartOpaque(
       Object? self, SseSerializer serializer);
 
@@ -11603,18 +11298,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_sum_with_twin_sync_array_3(
       SumWithTwinSyncArray3 self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_test_chrono_twin_normal(
-      TestChronoTwinNormal self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_test_chrono_twin_rust_async(
-      TestChronoTwinRustAsync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_test_chrono_twin_sync(
-      TestChronoTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_test_id_twin_normal(
