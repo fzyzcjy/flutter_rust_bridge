@@ -11,6 +11,6 @@ pub(crate) struct GeneratorWireRustInternalConfig {
     pub web_enabled: bool,
     pub rust_output_path: TargetOrCommonMap<PathBuf>,
     pub c_symbol_prefix: String,
-    pub enable_extern_func_and_class: bool,
+    pub has_ffigen: bool,
     pub default_stream_sink_codec: CodecMode,
 }
