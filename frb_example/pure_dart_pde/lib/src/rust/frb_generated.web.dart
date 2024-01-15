@@ -13,6 +13,7 @@ import 'api/customization.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
+import 'api/deliberate_name_conflict.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -111,6 +112,7 @@ import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'deliberate_name_conflict.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:meta/meta.dart' as meta;
@@ -1519,6 +1521,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SomeStructTwinSync dco_decode_box_autoadd_some_struct_twin_sync(dynamic raw);
 
   @protected
+  StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw);
+
+  @protected
   StructWithCommentsTwinNormal
       dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw);
 
@@ -2187,6 +2192,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<EnumOpaqueTwinSync> dco_decode_list_enum_opaque_twin_sync(dynamic raw);
+
+  @protected
+  List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw);
 
   @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw);
@@ -3057,6 +3065,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SpeedTwinSync dco_decode_speed_twin_sync(dynamic raw);
+
+  @protected
+  StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw);
+
+  @protected
+  StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw);
 
   @protected
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
@@ -4556,6 +4570,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructInLowerLevel sse_decode_box_autoadd_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
   StructWithCommentsTwinNormal
       sse_decode_box_autoadd_struct_with_comments_twin_normal(
           SseDeserializer deserializer);
@@ -5321,6 +5339,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<EnumOpaqueTwinSync> sse_decode_list_enum_opaque_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  List<Uint8List> sse_decode_list_list_prim_u_8_strict(
       SseDeserializer deserializer);
 
   @protected
@@ -6313,6 +6335,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SpeedTwinSync sse_decode_speed_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  StructInLowerLevel sse_decode_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
+  StructInUpperLevel sse_decode_struct_in_upper_level(
+      SseDeserializer deserializer);
 
   @protected
   StructWithCommentsTwinNormal sse_decode_struct_with_comments_twin_normal(
@@ -7864,6 +7894,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SomeStructTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer);
 
@@ -8598,6 +8632,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_enum_opaque_twin_sync(
       List<EnumOpaqueTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_list_prim_u_8_strict(
+      List<Uint8List> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer);
@@ -9570,6 +9608,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_speed_twin_sync(SpeedTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_in_upper_level(
+      StructInUpperLevel self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_comments_twin_normal(

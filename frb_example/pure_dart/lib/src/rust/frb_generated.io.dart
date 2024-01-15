@@ -15,6 +15,7 @@ import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
+import 'api/deliberate_name_conflict.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -232,6 +233,7 @@ import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
+import 'deliberate_name_conflict.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:meta/meta.dart' as meta;
@@ -3968,6 +3970,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw);
+
+  @protected
   StructWithCommentsTwinNormal
       dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw);
 
@@ -5356,6 +5361,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<EnumOpaqueTwinSyncSseMoi> dco_decode_list_enum_opaque_twin_sync_sse_moi(
       dynamic raw);
+
+  @protected
+  List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw);
 
   @protected
   List<MyEnum> dco_decode_list_my_enum(dynamic raw);
@@ -6858,6 +6866,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SpeedTwinSyncSse dco_decode_speed_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw);
+
+  @protected
+  StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw);
 
   @protected
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
@@ -10522,6 +10536,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructInLowerLevel sse_decode_box_autoadd_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
   StructWithCommentsTwinNormal
       sse_decode_box_autoadd_struct_with_comments_twin_normal(
           SseDeserializer deserializer);
@@ -12122,6 +12140,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<EnumOpaqueTwinSyncSseMoi> sse_decode_list_enum_opaque_twin_sync_sse_moi(
+      SseDeserializer deserializer);
+
+  @protected
+  List<Uint8List> sse_decode_list_list_prim_u_8_strict(
       SseDeserializer deserializer);
 
   @protected
@@ -13836,6 +13858,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SpeedTwinSyncSse sse_decode_speed_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  StructInLowerLevel sse_decode_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
+  StructInUpperLevel sse_decode_struct_in_upper_level(
+      SseDeserializer deserializer);
 
   @protected
   StructWithCommentsTwinNormal sse_decode_struct_with_comments_twin_normal(
@@ -16130,6 +16160,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_struct_in_lower_level>
+      cst_encode_box_autoadd_struct_in_lower_level(StructInLowerLevel raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire.cst_new_box_autoadd_struct_in_lower_level();
+    cst_api_fill_to_wire_struct_in_lower_level(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_cst_struct_with_comments_twin_normal>
       cst_encode_box_autoadd_struct_with_comments_twin_normal(
           StructWithCommentsTwinNormal raw) {
@@ -17238,6 +17277,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.cst_new_list_enum_opaque_twin_sync_moi(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       cst_api_fill_to_wire_enum_opaque_twin_sync_moi(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_list_list_prim_u_8_strict>
+      cst_encode_list_list_prim_u_8_strict(List<Uint8List> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ans = wire.cst_new_list_list_prim_u_8_strict(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = cst_encode_list_prim_u_8_strict(raw[i]);
     }
     return ans;
   }
@@ -20279,6 +20329,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel apiObj,
+      ffi.Pointer<wire_cst_struct_in_lower_level> wireObj) {
+    cst_api_fill_to_wire_struct_in_lower_level(apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_comments_twin_normal> wireObj) {
@@ -22854,6 +22911,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.kind.GPS.field0 = pre_field0;
       return;
     }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_in_lower_level(
+      StructInLowerLevel apiObj, wire_cst_struct_in_lower_level wireObj) {
+    cst_api_fill_to_wire_struct_in_upper_level(apiObj.inner, wireObj.inner);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_in_upper_level(
+      StructInUpperLevel apiObj, wire_cst_struct_in_upper_level wireObj) {
+    wireObj.upper = cst_encode_usize(apiObj.upper);
   }
 
   @protected
@@ -27191,6 +27260,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SomeStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer);
 
@@ -28707,6 +28780,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_enum_opaque_twin_sync_sse_moi(
       List<EnumOpaqueTwinSyncSseMoi> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_list_prim_u_8_strict(
+      List<Uint8List> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_my_enum(List<MyEnum> self, SseSerializer serializer);
@@ -30344,6 +30421,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_speed_twin_sync_sse(
       SpeedTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_in_upper_level(
+      StructInUpperLevel self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_comments_twin_normal(
@@ -32029,6 +32114,25 @@ class RustLibWire implements BaseWire {
   late final _wire_unwrap_dart_opaque_twin_normal =
       _wire_unwrap_dart_opaque_twin_normalPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+
+  void wire_test_duplicated_module_names(
+    int port_,
+    ffi.Pointer<wire_cst_struct_in_lower_level> s,
+  ) {
+    return _wire_test_duplicated_module_names(
+      port_,
+      s,
+    );
+  }
+
+  late final _wire_test_duplicated_module_namesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_struct_in_lower_level>)>>(
+      'frbgen_frb_example_pure_dart_wire_test_duplicated_module_names');
+  late final _wire_test_duplicated_module_names =
+      _wire_test_duplicated_module_namesPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_struct_in_lower_level>)>();
 
   void wire_func_enum_simple_twin_normal(
     int port_,
@@ -35924,6 +36028,26 @@ class RustLibWire implements BaseWire {
       _wire_example_basic_list_type_bool_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_list_bool>)>();
 
+  void wire_example_basic_list_type_bytes_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_list_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_example_basic_list_type_bytes_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_basic_list_type_bytes_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bytes_twin_normal');
+  late final _wire_example_basic_list_type_bytes_twin_normal =
+      _wire_example_basic_list_type_bytes_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_list_prim_u_8_strict>)>();
+
   void wire_example_basic_list_type_f32_twin_normal(
     int port_,
     ffi.Pointer<wire_cst_list_prim_f_32_loose> arg,
@@ -36229,6 +36353,26 @@ class RustLibWire implements BaseWire {
       _wire_example_basic_list_type_bool_twin_rust_asyncPtr
           .asFunction<void Function(int, ffi.Pointer<wire_cst_list_bool>)>();
 
+  void wire_example_basic_list_type_bytes_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_list_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_example_basic_list_type_bytes_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_basic_list_type_bytes_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_list_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bytes_twin_rust_async');
+  late final _wire_example_basic_list_type_bytes_twin_rust_async =
+      _wire_example_basic_list_type_bytes_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_cst_list_list_prim_u_8_strict>)>();
+
   void wire_example_basic_list_type_f32_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_list_prim_f_32_loose> arg,
@@ -36533,6 +36677,29 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bool_twin_rust_async_sse');
   late final _wire_example_basic_list_type_bool_twin_rust_async_sse =
       _wire_example_basic_list_type_bool_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_example_basic_list_type_bytes_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_example_basic_list_type_bytes_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_example_basic_list_type_bytes_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bytes_twin_rust_async_sse');
+  late final _wire_example_basic_list_type_bytes_twin_rust_async_sse =
+      _wire_example_basic_list_type_bytes_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_example_basic_list_type_f32_twin_rust_async_sse(
@@ -36883,6 +37050,29 @@ class RustLibWire implements BaseWire {
       _wire_example_basic_list_type_bool_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_example_basic_list_type_bytes_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_example_basic_list_type_bytes_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_example_basic_list_type_bytes_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bytes_twin_sse');
+  late final _wire_example_basic_list_type_bytes_twin_sse =
+      _wire_example_basic_list_type_bytes_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_example_basic_list_type_f32_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -37217,6 +37407,24 @@ class RustLibWire implements BaseWire {
       _wire_example_basic_list_type_bool_twin_syncPtr.asFunction<
           WireSyncRust2DartDco Function(ffi.Pointer<wire_cst_list_bool>)>();
 
+  WireSyncRust2DartDco wire_example_basic_list_type_bytes_twin_sync(
+    ffi.Pointer<wire_cst_list_list_prim_u_8_strict> arg,
+  ) {
+    return _wire_example_basic_list_type_bytes_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_example_basic_list_type_bytes_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<wire_cst_list_list_prim_u_8_strict>)>>(
+      'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bytes_twin_sync');
+  late final _wire_example_basic_list_type_bytes_twin_sync =
+      _wire_example_basic_list_type_bytes_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<wire_cst_list_list_prim_u_8_strict>)>();
+
   WireSyncRust2DartDco wire_example_basic_list_type_f32_twin_sync(
     ffi.Pointer<wire_cst_list_prim_f_32_loose> arg,
   ) {
@@ -37508,6 +37716,27 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bool_twin_sync_sse');
   late final _wire_example_basic_list_type_bool_twin_sync_sse =
       _wire_example_basic_list_type_bool_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_example_basic_list_type_bytes_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_example_basic_list_type_bytes_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_example_basic_list_type_bytes_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_example_basic_list_type_bytes_twin_sync_sse');
+  late final _wire_example_basic_list_type_bytes_twin_sync_sse =
+      _wire_example_basic_list_type_bytes_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_example_basic_list_type_f32_twin_sync_sse(
@@ -81888,6 +82117,19 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_some_struct_twin_syncPtr
           .asFunction<ffi.Pointer<wire_cst_some_struct_twin_sync> Function()>();
 
+  ffi.Pointer<wire_cst_struct_in_lower_level>
+      cst_new_box_autoadd_struct_in_lower_level() {
+    return _cst_new_box_autoadd_struct_in_lower_level();
+  }
+
+  late final _cst_new_box_autoadd_struct_in_lower_levelPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_struct_in_lower_level> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level');
+  late final _cst_new_box_autoadd_struct_in_lower_level =
+      _cst_new_box_autoadd_struct_in_lower_levelPtr
+          .asFunction<ffi.Pointer<wire_cst_struct_in_lower_level> Function()>();
+
   ffi.Pointer<wire_cst_struct_with_comments_twin_normal>
       cst_new_box_autoadd_struct_with_comments_twin_normal() {
     return _cst_new_box_autoadd_struct_with_comments_twin_normal();
@@ -83467,6 +83709,24 @@ class RustLibWire implements BaseWire {
       _cst_new_list_enum_opaque_twin_sync_moiPtr.asFunction<
           ffi.Pointer<wire_cst_list_enum_opaque_twin_sync_moi> Function(int)>();
 
+  ffi.Pointer<wire_cst_list_list_prim_u_8_strict>
+      cst_new_list_list_prim_u_8_strict(
+    int len,
+  ) {
+    return _cst_new_list_list_prim_u_8_strict(
+      len,
+    );
+  }
+
+  late final _cst_new_list_list_prim_u_8_strictPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_list_list_prim_u_8_strict> Function(
+                  ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_cst_new_list_list_prim_u_8_strict');
+  late final _cst_new_list_list_prim_u_8_strict =
+      _cst_new_list_list_prim_u_8_strictPtr.asFunction<
+          ffi.Pointer<wire_cst_list_list_prim_u_8_strict> Function(int)>();
+
   ffi.Pointer<wire_cst_list_my_enum> cst_new_list_my_enum(
     int len,
   ) {
@@ -84999,6 +85259,15 @@ final class wire_cst_list_DartOpaque extends ffi.Struct {
   external int len;
 }
 
+final class wire_cst_struct_in_upper_level extends ffi.Struct {
+  @ffi.UintPtr()
+  external int upper;
+}
+
+final class wire_cst_struct_in_lower_level extends ffi.Struct {
+  external wire_cst_struct_in_upper_level inner;
+}
+
 final class wire_cst_EnumWithItemMixedTwinNormal_B extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> field0;
 }
@@ -85719,6 +85988,13 @@ final class wire_cst_list_basic_struct_twin_normal extends ffi.Struct {
 
 final class wire_cst_list_bool extends ffi.Struct {
   external ffi.Pointer<ffi.Bool> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_cst_list_list_prim_u_8_strict extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_cst_list_prim_u_8_strict>> ptr;
 
   @ffi.Int32()
   external int len;

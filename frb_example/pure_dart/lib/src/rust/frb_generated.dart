@@ -76182,6 +76182,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_struct_in_lower_level(raw);
   }
 
@@ -80638,6 +80639,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<Uint8List> dco_decode_list_list_prim_u_8_strict(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
     return (raw as List<dynamic>).map(dco_decode_list_prim_u_8_strict).toList();
   }
 
@@ -84818,6 +84820,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -84828,6 +84831,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -92296,6 +92300,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructInLowerLevel sse_decode_box_autoadd_struct_in_lower_level(
       SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_struct_in_lower_level(deserializer));
   }
 
@@ -97097,6 +97102,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   List<Uint8List> sse_decode_list_list_prim_u_8_strict(
       SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <Uint8List>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
@@ -101996,6 +102003,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructInLowerLevel sse_decode_struct_in_lower_level(
       SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     var var_inner = sse_decode_struct_in_upper_level(deserializer);
     return StructInLowerLevel(inner: var_inner);
   }
@@ -102003,6 +102011,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StructInUpperLevel sse_decode_struct_in_upper_level(
       SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     var var_upper = sse_decode_usize(deserializer);
     return StructInUpperLevel(upper: var_upper);
   }
@@ -110388,6 +110397,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_box_autoadd_struct_in_lower_level(
       StructInLowerLevel self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_struct_in_lower_level(self, serializer);
   }
 
@@ -114373,6 +114383,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_list_list_prim_u_8_strict(
       List<Uint8List> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
       sse_encode_list_prim_u_8_strict(item, serializer);
@@ -118425,12 +118436,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_struct_in_lower_level(
       StructInLowerLevel self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_struct_in_upper_level(self.inner, serializer);
   }
 
   @protected
   void sse_encode_struct_in_upper_level(
       StructInUpperLevel self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.upper, serializer);
   }
 

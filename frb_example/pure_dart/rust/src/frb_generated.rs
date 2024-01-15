@@ -59,6 +59,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_stream_sink_codec = DcoCodec,
     default_rust_opaque = RustOpaqueNom
 );
+const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.19";
 
 // Section: executor
 
@@ -1412,6 +1413,28 @@ fn wire_unwrap_dart_opaque_twin_normal_impl(
                     crate::api::dart_opaque_sync::unwrap_dart_opaque_twin_normal(api_opaque),
                 )
             })())
+        },
+    )
+}
+fn wire_test_duplicated_module_names_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    s: impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "test_duplicated_module_names",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::deliberate_name_conflict::test_duplicated_module_names(api_s),
+                    )
+                })())
+            }
         },
     )
 }
@@ -5487,6 +5510,16 @@ fn wire_example_basic_list_type_bool_twin_normal_impl(
                     })())
                 } })
 }
+fn wire_example_basic_list_type_bytes_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<Vec<Vec<u8>>>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_list_type_bytes_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context|  {
+                    transform_result_dco((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list::example_basic_list_type_bytes_twin_normal(api_arg))
+                    })())
+                } })
+}
 fn wire_example_basic_list_type_f32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<Vec<f32>>,
@@ -5638,6 +5671,16 @@ fn wire_example_basic_list_type_bool_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_list_type_bool_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
                     transform_result_dco((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_bool_twin_rust_async(api_arg).await)
+                    })().await)
+                } })
+}
+fn wire_example_basic_list_type_bytes_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<Vec<Vec<u8>>>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_list_type_bytes_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async::example_basic_list_type_bytes_twin_rust_async(api_arg).await)
                     })().await)
                 } })
 }
@@ -5808,6 +5851,21 @@ fn wire_example_basic_list_type_bool_twin_rust_async_sse_impl(
             let api_arg = <Vec<bool>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async_sse::example_basic_list_type_bool_twin_rust_async_sse(api_arg).await)
+                    })().await)
+                } })
+}
+fn wire_example_basic_list_type_bytes_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_list_type_bytes_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <Vec<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_rust_async_sse::example_basic_list_type_bytes_twin_rust_async_sse(api_arg).await)
                     })().await)
                 } })
 }
@@ -6036,6 +6094,21 @@ fn wire_example_basic_list_type_bool_twin_sse_impl(
                     })())
                 } })
 }
+fn wire_example_basic_list_type_bytes_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_list_type_bytes_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <Vec<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sse::example_basic_list_type_bytes_twin_sse(api_arg))
+                    })())
+                } })
+}
 fn wire_example_basic_list_type_f32_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -6233,6 +6306,14 @@ fn wire_example_basic_list_type_bool_twin_sync_impl(
                      Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_bool_twin_sync(api_arg))
                 })()) })
 }
+fn wire_example_basic_list_type_bytes_twin_sync_impl(
+    arg: impl CstDecode<Vec<Vec<u8>>>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_list_type_bytes_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
+                transform_result_dco((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync::example_basic_list_type_bytes_twin_sync(api_arg))
+                })()) })
+}
 fn wire_example_basic_list_type_f32_twin_sync_impl(
     arg: impl CstDecode<Vec<f32>>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -6371,6 +6452,19 @@ fn wire_example_basic_list_type_bool_twin_sync_sse_impl(
             let api_arg = <Vec<bool>>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync_sse::example_basic_list_type_bool_twin_sync_sse(api_arg))
+                })()) })
+}
+fn wire_example_basic_list_type_bytes_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_basic_list_type_bytes_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <Vec<Vec<u8>>>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::basic_list_twin_sync_sse::example_basic_list_type_bytes_twin_sync_sse(api_arg))
                 })()) })
 }
 fn wire_example_basic_list_type_f32_twin_sync_sse_impl(
@@ -43052,6 +43146,18 @@ impl SseDecode
     }
 }
 
+impl SseDecode for Vec<Vec<u8>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<Vec<u8>>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
 impl SseDecode for Vec<crate::auxiliary::sample_types::MyEnum> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -48786,6 +48892,23 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTw
                 unimplemented!("");
             }
         }
+    }
+}
+
+impl SseDecode for crate::api::deliberate_name_conflict::StructInLowerLevel {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_inner =
+            <crate::deliberate_name_conflict::StructInUpperLevel>::sse_decode(deserializer);
+        return crate::api::deliberate_name_conflict::StructInLowerLevel { inner: var_inner };
+    }
+}
+
+impl SseDecode for crate::deliberate_name_conflict::StructInUpperLevel {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_upper = <usize>::sse_decode(deserializer);
+        return crate::deliberate_name_conflict::StructInUpperLevel { upper: var_upper };
     }
 }
 
@@ -59393,6 +59516,40 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::deliberate_name_conflict::StructInLowerLevel {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.inner.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::deliberate_name_conflict::StructInLowerLevel
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::deliberate_name_conflict::StructInLowerLevel>
+    for crate::api::deliberate_name_conflict::StructInLowerLevel
+{
+    fn into_into_dart(self) -> crate::api::deliberate_name_conflict::StructInLowerLevel {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::deliberate_name_conflict::StructInUpperLevel {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.upper.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::deliberate_name_conflict::StructInUpperLevel
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::deliberate_name_conflict::StructInUpperLevel>
+    for crate::deliberate_name_conflict::StructInUpperLevel
+{
+    fn into_into_dart(self) -> crate::deliberate_name_conflict::StructInUpperLevel {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::comment::StructWithCommentsTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.field_with_comments.into_into_dart().into_dart()].into_dart()
@@ -68640,6 +68797,16 @@ impl SseEncode
     }
 }
 
+impl SseEncode for Vec<Vec<u8>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <Vec<u8>>::sse_encode(item, serializer);
+        }
+    }
+}
+
 impl SseEncode for Vec<crate::auxiliary::sample_types::MyEnum> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -73373,6 +73540,20 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTw
                 <f64>::sse_encode(field0, serializer);
             }
         }
+    }
+}
+
+impl SseEncode for crate::api::deliberate_name_conflict::StructInLowerLevel {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::deliberate_name_conflict::StructInUpperLevel>::sse_encode(self.inner, serializer);
+    }
+}
+
+impl SseEncode for crate::deliberate_name_conflict::StructInUpperLevel {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <usize>::sse_encode(self.upper, serializer);
     }
 }
 
