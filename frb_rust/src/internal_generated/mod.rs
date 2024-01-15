@@ -24,6 +24,23 @@ macro_rules! frb_generated_io_extern_func {
         ) -> $crate::for_generated::WireSyncRust2DartSse {
             pde_ffi_dispatcher_sync_impl(func_id, ptr_, rust_vec_len_, data_len_)
         }
+
+        #[no_mangle]
+        pub extern "C" fn dart_fn_deliver_output(
+            call_id: i32,
+            ptr_: *mut u8,
+            rust_vec_len_: i32,
+            data_len_: i32,
+        ) {
+            let message = unsafe {
+                $crate::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
+        }
     };
 }
 
@@ -50,6 +67,23 @@ macro_rules! frb_generated_web_extern_func {
             data_len_: i32,
         ) -> $crate::for_generated::WireSyncRust2DartSse {
             pde_ffi_dispatcher_sync_impl(func_id, ptr_, rust_vec_len_, data_len_)
+        }
+
+        #[wasm_bindgen]
+        pub fn dart_fn_deliver_output(
+            call_id: i32,
+            ptr_: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
+            rust_vec_len_: i32,
+            data_len_: i32,
+        ) {
+            let message = unsafe {
+                $crate::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
         }
     };
 }

@@ -27,6 +27,11 @@ struct WireSyncRust2DartSse frb_pde_ffi_dispatcher_sync(int32_t func_id,
                                                         int32_t rust_vec_len_,
                                                         int32_t data_len_);
 
+void dart_fn_deliver_output(int32_t call_id,
+                            uint8_t *ptr_,
+                            int32_t rust_vec_len_,
+                            int32_t data_len_);
+
 /**
  * # Safety
  *
