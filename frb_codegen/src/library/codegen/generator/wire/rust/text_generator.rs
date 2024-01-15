@@ -37,15 +37,22 @@ pub(super) fn generate(
             code.all_code(&config.c_symbol_prefix)
         }),
     )?;
-    let extern_funcs = compute_extern_funcs(merged_code);
+    let extern_funcs = compute_extern_funcs(merged_code, config);
 
     Ok(WireRustOutputText { text, extern_funcs })
 }
 
-fn compute_extern_funcs(merged_code: Acc<WireRustOutputCode>) -> Vec<ExternFunc> {
+fn compute_extern_funcs(
+    merged_code: Acc<WireRustOutputCode>,
+    config: &GeneratorWireRustInternalConfig,
+) -> Vec<ExternFunc> {
     let extern_funcs_acc = merged_code.map(|code, _| code.extern_funcs);
     TargetOrCommon::iter()
-        .flat_map(|target| extern_funcs_acc[target].clone())
+        .flat_map(|target| {
+            (extern_funcs_acc[target].clone().into_iter())
+                .filter(|f| filter_extern_func(f, config))
+                .collect()
+        })
         .collect_vec()
 }
 
