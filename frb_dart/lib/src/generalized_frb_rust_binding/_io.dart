@@ -1,6 +1,7 @@
 import 'dart:ffi' as ffi;
 
 import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
+import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8list.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
@@ -32,7 +33,7 @@ class GeneralizedFrbRustBinding {
   void pdeFfiDispatcherPrimary({
     required int funcId,
     required int port,
-    required ffi.Pointer<ffi.Uint8> ptr,
+    required PlatformGeneralizedUint8ListPtr ptr,
     required int rustVecLen,
     required int dataLen,
   }) {
@@ -43,7 +44,7 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WireSyncRust2DartSse pdeFfiDispatcherSync({
     required int funcId,
-    required ffi.Pointer<ffi.Uint8> ptr,
+    required PlatformGeneralizedUint8ListPtr ptr,
     required int rustVecLen,
     required int dataLen,
   }) {
