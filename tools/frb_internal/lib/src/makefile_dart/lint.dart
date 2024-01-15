@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -97,6 +99,8 @@ Future<void> lintDartFfigen() async {
       throw Exception('Fail to find chunk (`$modifiedActualChunk`)');
     }
   }
+
+  print('lintDartFfigen find all chunks and succeed');
 }
 
 Future<void> lintDartFormat(LintConfig config) async {
