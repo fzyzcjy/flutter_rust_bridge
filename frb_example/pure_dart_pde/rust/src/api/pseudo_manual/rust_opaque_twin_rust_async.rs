@@ -7,9 +7,11 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
+#[allow(unused_imports)]
+use crate::frb_generated::RustOpaque;
 use anyhow::Result;
 #[allow(unused_imports)]
-use flutter_rust_bridge::{opaque_dyn, RustOpaque, RustOpaqueNom};
+use flutter_rust_bridge::{opaque_dyn, RustOpaqueNom};
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
