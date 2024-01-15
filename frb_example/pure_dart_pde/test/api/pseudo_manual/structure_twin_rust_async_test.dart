@@ -4,8 +4,8 @@
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/structure_twin_rust_async.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/structure_twin_rust_async.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 
 import '../../test_utils.dart';
 

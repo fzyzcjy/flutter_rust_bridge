@@ -4,7 +4,7 @@
 
 @TestOn('vm')
 import 'package:flutter_rust_bridge/src/generalized_uint8list/rust_vec_u8.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main() async {

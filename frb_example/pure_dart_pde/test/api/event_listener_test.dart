@@ -4,8 +4,8 @@
 
 import 'dart:async';
 
-import 'package:frb_example_pure_dart/src/rust/api/event_listener.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/api/event_listener.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {

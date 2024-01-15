@@ -1,8 +1,8 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/api/simple.dart';
+import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main() async {
