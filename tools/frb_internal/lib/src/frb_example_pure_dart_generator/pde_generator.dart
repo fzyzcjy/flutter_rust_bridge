@@ -5,9 +5,8 @@ import 'dart:io';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:path/path.dart';
 
-Future<void> generatePureDartPde({required Uri dirPureDart}) async {
-  final dirPureDartPde = dirPureDart.resolve('../pure_dart_pde/');
-
+Future<void> generatePureDartPde(
+    {required Uri dirPureDart, required Uri dirPureDartPde}) async {
   copyRecursive(Directory(dirPureDart.toFilePath()),
       Directory(dirPureDartPde.toFilePath()), filter: (entity) {
     final relativePath = relative(entity.path, from: dirPureDart.toFilePath());

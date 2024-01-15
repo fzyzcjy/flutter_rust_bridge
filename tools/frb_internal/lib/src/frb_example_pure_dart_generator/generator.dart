@@ -9,12 +9,22 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 Future<void> generate() async {
   final dirPureDart =
       Directory.current.uri.resolve('../../frb_example/pure_dart/');
+  final dirPureDartPde = dirPureDart.resolve('../pure_dart_pde/');
 
-  await generateForPackage(dartRoot: dirPureDart);
-  await generatePureDartPde(dirPureDart: dirPureDart);
+  await generateForPackage(dartRoot: dirPureDart, package: Package.pureDart);
+  await generatePureDartPde(
+      dirPureDart: dirPureDart, dirPureDartPde: dirPureDartPde);
+  await generateForPackage(
+      dartRoot: dirPureDartPde, package: Package.pureDartPde);
 }
 
-Future<void> generateForPackage({required Uri dartRoot}) async {
+enum Package {
+  pureDart,
+  pureDartPde,
+}
+
+Future<void> generateForPackage(
+    {required Uri dartRoot, required Package package}) async {
   await RustGenerator(
           packageRootDir: dartRoot.resolve('rust/'), interestDir: 'src/api/')
       .generate();
