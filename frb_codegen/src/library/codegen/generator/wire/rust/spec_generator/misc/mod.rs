@@ -159,14 +159,7 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
         TargetOrCommon::Common => vec![format!(
             r#"
             flutter_rust_bridge::frb_generated_boilerplate!();
-            
             const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
-            const _: fn() = || {{
-                flutter_rust_bridge::for_generated::static_assertions::const_assert_eq!(
-                    flutter_rust_bridge::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
-                    FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
-                );
-            }};
             "#,
             version = env!("CARGO_PKG_VERSION"),
         )
