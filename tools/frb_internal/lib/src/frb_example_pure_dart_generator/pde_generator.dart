@@ -13,7 +13,6 @@ Future<void> generatePureDartPde({required Uri dirPureDart}) async {
     filter: (entity) {
       final relativePath =
           relative(entity.path, from: dirPureDart.toFilePath());
-      print('hi $relativePath');
       return !const [
         '.dart_tool',
         '.idea',
@@ -37,7 +36,7 @@ void copyRecursive(
   }
 
   for (final entity in src.listSync(recursive: false)) {
-    if (!filter(entity)) return;
+    if (!filter(entity)) continue;
 
     final newPath = join(dst.path, basename(entity.path));
     if (entity is File) {
