@@ -29,7 +29,6 @@ pub(crate) mod ty;
 pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) wire_class: Acc<Vec<WireDartOutputCode>>,
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
-    pub(crate) version_check: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
 }
@@ -50,7 +49,6 @@ pub(crate) fn generate(
             progress_bar_pack,
         )?,
         boilerplate: generate_boilerplate(api_dart_actual_output_paths, cache, context)?,
-        version_check: generate_version_check(),
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
@@ -193,10 +191,6 @@ fn generate_boilerplate(
             ..Default::default()
         }],
     })
-}
-
-fn generate_version_check() -> Acc<Vec<WireRustOutputCode>> {
-    Acc::new_common(vec![format!(TODO).into()])
 }
 
 fn file_stem(p: &Path) -> String {
