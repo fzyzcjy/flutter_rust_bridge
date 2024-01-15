@@ -15,6 +15,7 @@ import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
+import 'api/deliberate_name_conflict.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -232,6 +233,7 @@ import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
+import 'deliberate_name_conflict.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:meta/meta.dart' as meta;
@@ -3968,6 +3970,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw);
+
+  @protected
   StructWithCommentsTwinNormal
       dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw);
 
@@ -6858,6 +6863,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SpeedTwinSyncSse dco_decode_speed_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw);
+
+  @protected
+  StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw);
 
   @protected
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
@@ -10522,6 +10533,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructInLowerLevel sse_decode_box_autoadd_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
   StructWithCommentsTwinNormal
       sse_decode_box_autoadd_struct_with_comments_twin_normal(
           SseDeserializer deserializer);
@@ -13836,6 +13851,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SpeedTwinSyncSse sse_decode_speed_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  StructInLowerLevel sse_decode_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
+  StructInUpperLevel sse_decode_struct_in_upper_level(
+      SseDeserializer deserializer);
 
   @protected
   StructWithCommentsTwinNormal sse_decode_struct_with_comments_twin_normal(
@@ -17193,6 +17216,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SomeStructTwinSyncSse raw) {
     final ptr = wire.cst_new_box_autoadd_some_struct_twin_sync_sse();
     cst_api_fill_to_wire_some_struct_twin_sync_sse(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_struct_in_lower_level>
+      cst_encode_box_autoadd_struct_in_lower_level(StructInLowerLevel raw) {
+    final ptr = wire.cst_new_box_autoadd_struct_in_lower_level();
+    cst_api_fill_to_wire_struct_in_lower_level(raw, ptr.ref);
     return ptr;
   }
 
@@ -23997,6 +24028,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel apiObj,
+      ffi.Pointer<wire_cst_struct_in_lower_level> wireObj) {
+    cst_api_fill_to_wire_struct_in_lower_level(apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_comments_twin_normal> wireObj) {
@@ -28895,6 +28933,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.kind.GPS.field0 = pre_field0;
       return;
     }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_in_lower_level(
+      StructInLowerLevel apiObj, wire_cst_struct_in_lower_level wireObj) {
+    cst_api_fill_to_wire_struct_in_upper_level(apiObj.inner, wireObj.inner);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_in_upper_level(
+      StructInUpperLevel apiObj, wire_cst_struct_in_upper_level wireObj) {
+    wireObj.upper = cst_encode_usize(apiObj.upper);
   }
 
   @protected
@@ -34160,6 +34210,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SomeStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer);
 
@@ -37315,6 +37369,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SpeedTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_in_upper_level(
+      StructInUpperLevel self, SseSerializer serializer);
+
+  @protected
   void sse_encode_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer);
 
@@ -39020,6 +39082,25 @@ class RustLibWire implements BaseWire {
   late final _wire_unwrap_dart_opaque_twin_normal =
       _wire_unwrap_dart_opaque_twin_normalPtr
           .asFunction<WireSyncRust2DartDco Function(ffi.Pointer<ffi.Void>)>();
+
+  void wire_test_duplicated_module_names(
+    int port_,
+    ffi.Pointer<wire_cst_struct_in_lower_level> s,
+  ) {
+    return _wire_test_duplicated_module_names(
+      port_,
+      s,
+    );
+  }
+
+  late final _wire_test_duplicated_module_namesPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_cst_struct_in_lower_level>)>>(
+      'frbgen_frb_example_pure_dart_wire_test_duplicated_module_names');
+  late final _wire_test_duplicated_module_names =
+      _wire_test_duplicated_module_namesPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_cst_struct_in_lower_level>)>();
 
   void wire_func_enum_simple_twin_normal(
     int port_,
@@ -90644,6 +90725,19 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_some_struct_twin_sync_ssePtr.asFunction<
           ffi.Pointer<wire_cst_some_struct_twin_sync_sse> Function()>();
 
+  ffi.Pointer<wire_cst_struct_in_lower_level>
+      cst_new_box_autoadd_struct_in_lower_level() {
+    return _cst_new_box_autoadd_struct_in_lower_level();
+  }
+
+  late final _cst_new_box_autoadd_struct_in_lower_levelPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_cst_struct_in_lower_level> Function()>>(
+      'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level');
+  late final _cst_new_box_autoadd_struct_in_lower_level =
+      _cst_new_box_autoadd_struct_in_lower_levelPtr
+          .asFunction<ffi.Pointer<wire_cst_struct_in_lower_level> Function()>();
+
   ffi.Pointer<wire_cst_struct_with_comments_twin_normal>
       cst_new_box_autoadd_struct_with_comments_twin_normal() {
     return _cst_new_box_autoadd_struct_with_comments_twin_normal();
@@ -95752,6 +95846,15 @@ final class wire_cst_list_DartOpaque extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+final class wire_cst_struct_in_upper_level extends ffi.Struct {
+  @ffi.UintPtr()
+  external int upper;
+}
+
+final class wire_cst_struct_in_lower_level extends ffi.Struct {
+  external wire_cst_struct_in_upper_level inner;
 }
 
 final class wire_cst_EnumWithItemMixedTwinNormal_B extends ffi.Struct {
