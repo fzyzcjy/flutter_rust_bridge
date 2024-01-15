@@ -16,7 +16,7 @@ pub(crate) fn generate(
     let wire_class_header = generate_wire_class_header(wire_class_name);
     let class_body = (rust_extern_funcs.iter())
         .filter(|f| f.target == Target::Io)
-        .map(|f| generate_func(f))
+        .map(|f| generate_func(f, &config.c_symbol_prefix))
         .join("");
 
     let body = format!(
@@ -44,7 +44,7 @@ pub(crate) fn generate(
     })
 }
 
-fn generate_func(func: &ExternFunc) -> String {
+fn generate_func(func: &ExternFunc, c_symbol_prefix: &str) -> String {
     // Only know how to generate this currently
     if !func.needs_ffigen
         && func.return_type.is_none()
@@ -56,7 +56,7 @@ fn generate_func(func: &ExternFunc) -> String {
                 dart_type: "dynamic".to_string(),
             })
     {
-        let name = &func.partial_func_name;
+        let name = &func.func_name(c_symbol_prefix);
         format!(
             "
             void {name}(
