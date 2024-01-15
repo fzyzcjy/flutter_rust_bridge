@@ -160,7 +160,7 @@ pub(crate) fn rust_decode_primitive_enum(
 }
 
 const UNIMPLEMENTED_MESSAGE: &str =
-    "not yet supported in serialized mode, feel free to create an issue";
+    "not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue";
 
 pub(crate) fn generate_set_to_list(
     ir: &IrTypeDelegateSet,
