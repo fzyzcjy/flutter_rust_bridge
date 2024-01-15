@@ -15,6 +15,7 @@ import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
+import 'api/deliberate_name_conflict.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -231,6 +232,7 @@ import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'deliberate_name_conflict.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:meta/meta.dart' as meta;
@@ -480,6 +482,9 @@ abstract class RustLibApi extends BaseApi {
   Object? syncOptionLoopbackTwinNormal({Object? opaque, dynamic hint});
 
   String unwrapDartOpaqueTwinNormal({required Object opaque, dynamic hint});
+
+  Future<StructInUpperLevel> testDuplicatedModuleNames(
+      {required StructInLowerLevel s, dynamic hint});
 
   Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
       {required EnumSimpleTwinNormal arg, dynamic hint});
@@ -9976,6 +9981,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kUnwrapDartOpaqueTwinNormalConstMeta => const TaskConstMeta(
         debugName: "unwrap_dart_opaque_twin_normal",
         argNames: ["opaque"],
+      );
+
+  @override
+  Future<StructInUpperLevel> testDuplicatedModuleNames(
+      {required StructInLowerLevel s, dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_struct_in_lower_level(s);
+        return wire.wire_test_duplicated_module_names(port_, arg0);
+      },
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_struct_in_upper_level,
+        decodeErrorData: null,
+      ),
+      constMeta: kTestDuplicatedModuleNamesConstMeta,
+      argValues: [s],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestDuplicatedModuleNamesConstMeta => const TaskConstMeta(
+        debugName: "test_duplicated_module_names",
+        argNames: ["s"],
       );
 
   @override
@@ -75439,6 +75468,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw) {
+    return dco_decode_struct_in_lower_level(raw);
+  }
+
+  @protected
   StructWithCommentsTwinNormal
       dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw) {
     return dco_decode_struct_with_comments_twin_normal(raw);
@@ -83257,6 +83291,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructInLowerLevel(
+      inner: dco_decode_struct_in_upper_level(arr[0]),
+    );
+  }
+
+  @protected
+  StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructInUpperLevel(
+      upper: dco_decode_usize(arr[0]),
+    );
+  }
+
+  @protected
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -89847,6 +89901,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SomeStructTwinSyncSse sse_decode_box_autoadd_some_struct_twin_sync_sse(
       SseDeserializer deserializer) {
     return (sse_decode_some_struct_twin_sync_sse(deserializer));
+  }
+
+  @protected
+  StructInLowerLevel sse_decode_box_autoadd_struct_in_lower_level(
+      SseDeserializer deserializer) {
+    return (sse_decode_struct_in_lower_level(deserializer));
   }
 
   @protected
@@ -98335,6 +98395,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StructInLowerLevel sse_decode_struct_in_lower_level(
+      SseDeserializer deserializer) {
+    var var_inner = sse_decode_struct_in_upper_level(deserializer);
+    return StructInLowerLevel(inner: var_inner);
+  }
+
+  @protected
+  StructInUpperLevel sse_decode_struct_in_upper_level(
+      SseDeserializer deserializer) {
+    var var_upper = sse_decode_usize(deserializer);
+    return StructInUpperLevel(upper: var_upper);
+  }
+
+  @protected
   StructWithCommentsTwinNormal sse_decode_struct_with_comments_twin_normal(
       SseDeserializer deserializer) {
     var var_fieldWithComments = sse_decode_i_32(deserializer);
@@ -106776,6 +106850,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer) {
+    sse_encode_struct_in_lower_level(self, serializer);
+  }
+
+  @protected
   void sse_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer) {
     sse_encode_struct_with_comments_twin_normal(self, serializer);
@@ -113849,6 +113929,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_f_64(field0, serializer);
     }
+  }
+
+  @protected
+  void sse_encode_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer) {
+    sse_encode_struct_in_upper_level(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_struct_in_upper_level(
+      StructInUpperLevel self, SseSerializer serializer) {
+    sse_encode_usize(self.upper, serializer);
   }
 
   @protected
