@@ -158,8 +158,7 @@ _Annotation _parseAnnotation(String fileContent) {
   if (line == null) return const _Annotation();
 
   final data =
-      jsonDecode(line.substring(kPrefix.length, fileContent.indexOf('\n')))
-          as Map<String, Object?>;
+      jsonDecode(line.substring(kPrefix.length)) as Map<String, Object?>;
   return _Annotation(
     forbiddenDuplicatorModes:
         ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
