@@ -108,7 +108,7 @@ class _Duplicator {
       }
 
       final fileContent = (file as File).readAsStringSync();
-      final annotation = _parseAnnotation(fileContent);
+      final annotation = Annotation.parse(fileContent);
 
       final chosenModes = _computeModes(annotation);
 
@@ -132,7 +132,7 @@ class _Duplicator {
     }
   }
 
-  List<DuplicatorMode> _computeModes(_Annotation annotation) {
+  List<DuplicatorMode> _computeModes(Annotation annotation) {
     var modes = annotation.enableAll
         ? DuplicatorMode.allValues
         : DuplicatorMode.defaultValues;
@@ -148,45 +148,45 @@ class _Duplicator {
   }
 }
 
-_Annotation _parseAnnotation(String fileContent) {
-  const kPrefix = '// FRB_INTERNAL_GENERATOR:';
-
-  final line = fileContent
-      .split('\n')
-      .where((line) => line.startsWith(kPrefix))
-      .firstOrNull;
-  if (line == null) return const _Annotation();
-
-  final data =
-      jsonDecode(line.substring(kPrefix.length)) as Map<String, Object?>;
-  return _Annotation(
-    forbiddenDuplicatorModes:
-        ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
-            .map((x) => DuplicatorMode.parse(x as String))
-            .toList(),
-    addCode: data['addCode'] as String?,
-    removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
-        .map((x) => x as String)
-        .toList(),
-    enableAll: data['enableAll'] as bool? ?? false,
-    skipPde: data['skipPde'] as bool? ?? false,
-  );
-}
-
-class _Annotation {
+class Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
   final String? addCode;
   final List<String> removeCode;
   final bool enableAll;
   final bool skipPde;
 
-  const _Annotation({
+  const Annotation({
     this.forbiddenDuplicatorModes = const [],
     this.addCode,
     this.removeCode = const [],
     this.enableAll = false,
     this.skipPde = false,
   });
+
+  static Annotation parse(String fileContent) {
+    const kPrefix = '// FRB_INTERNAL_GENERATOR:';
+
+    final line = fileContent
+        .split('\n')
+        .where((line) => line.startsWith(kPrefix))
+        .firstOrNull;
+    if (line == null) return const Annotation();
+
+    final data =
+        jsonDecode(line.substring(kPrefix.length)) as Map<String, Object?>;
+    return Annotation(
+      forbiddenDuplicatorModes:
+          ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
+              .map((x) => DuplicatorMode.parse(x as String))
+              .toList(),
+      addCode: data['addCode'] as String?,
+      removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
+          .map((x) => x as String)
+          .toList(),
+      enableAll: data['enableAll'] as bool? ?? false,
+      skipPde: data['skipPde'] as bool? ?? false,
+    );
+  }
 }
 
 enum Package {
