@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:path/path.dart';
 
 Future<void> generatePureDartPde({required Uri dirPureDart}) async {
@@ -31,13 +32,29 @@ Future<void> generatePureDartPde({required Uri dirPureDart}) async {
           'rust/src/frb_generated.web.rs',
         ].contains(relativePath);
   }, map: (file, text) {
-    final prelude = switch (extension(file.path)) {
-      '.rs' ||
-      '.dart' =>
-        '// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\n',
-      _ => '',
-    };
-    return prelude + text;
+    final relativePath = relative(file.path, from: dirPureDart.toFilePath());
+
+    switch (relativePath) {
+      case 'pubspec.yaml':
+        return simpleReplaceString(text, 'name: frb_example_pure_dart',
+            'name: frb_example_pure_dart_pde');
+
+      case 'rust/Cargo.toml':
+        return simpleReplaceString(text, 'name = "frb_example_pure_dart"',
+            'name = "frb_example_pure_dart_pde"');
+      case 'rust/Cargo.lock':
+        return simpleReplaceString(
+            text, '"frb_example_pure_dart"', '"frb_example_pure_dart_pde"');
+
+      default:
+        final prelude = switch (extension(file.path)) {
+          '.rs' ||
+          '.dart' =>
+            '// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\n',
+          _ => '',
+        };
+        return prelude + text;
+    }
   });
 }
 
