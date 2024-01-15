@@ -2,9 +2,8 @@
 
 import 'dart:io';
 
-// ignore: implementation_imports
-import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:path/path.dart';
 
@@ -83,11 +82,11 @@ Future<void> generatePureDartPde(
     }
   });
 
-  await runCommand('cargo fetch',
-      pwd: dirPureDartPde.resolve('rust/').toFilePath());
+  // To refresh Cargo.lock's ordering
+  await exec('cargo fetch', relativePwd: 'frb_example/pure_dart_pde');
 }
 
-// copied and modified fromhttps://stackoverflow.com/questions/27204728
+// copied and modified from https://stackoverflow.com/questions/27204728
 void copyRecursive(
   Directory src,
   Directory dst, {
