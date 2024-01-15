@@ -13,6 +13,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
     GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
@@ -88,6 +89,7 @@ impl InternalConfig {
 
         let full_dep = config.full_dep.unwrap_or(false);
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
+        let default_rust_opaque_codec = generate_default_rust_opaque_codec(full_dep);
 
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
@@ -141,6 +143,7 @@ impl InternalConfig {
                         c_symbol_prefix: c_symbol_prefix.clone(),
                         has_ffigen: full_dep,
                         default_stream_sink_codec,
+                        default_rust_opaque_codec,
                     },
                     c: GeneratorWireCInternalConfig {
                         enable: full_dep,
@@ -350,6 +353,14 @@ fn generate_default_stream_sink_codec(full_dep: bool) -> CodecMode {
         CodecMode::Dco
     } else {
         CodecMode::Sse
+    }
+}
+
+fn generate_default_rust_opaque_codec(full_dep: bool) -> RustOpaqueCodecMode {
+    if full_dep {
+        RustOpaqueCodecMode::Nom
+    } else {
+        RustOpaqueCodecMode::Moi
     }
 }
 

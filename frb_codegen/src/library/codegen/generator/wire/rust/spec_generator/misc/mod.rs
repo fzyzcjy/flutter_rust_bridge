@@ -9,6 +9,7 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::gene
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -42,7 +43,10 @@ pub(crate) fn generate(
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
-        boilerplate: generate_boilerplate(context.config.default_stream_sink_codec),
+        boilerplate: generate_boilerplate(
+            context.config.default_stream_sink_codec,
+            context.config.default_rust_opaque_codec,
+        ),
         wire_funcs: (context.ir_pack.funcs.iter())
             .map(|f| generate_wire_func(f, context))
             .collect(),
@@ -144,7 +148,10 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
     lines.join("\n")
 }
 
-fn generate_boilerplate(default_stream_sink_codec: CodecMode) -> Acc<Vec<WireRustOutputCode>> {
+fn generate_boilerplate(
+    default_stream_sink_codec: CodecMode,
+    default_rust_opaque_codec: RustOpaqueCodecMode,
+) -> Acc<Vec<WireRustOutputCode>> {
     Acc::new(|target| {
         match target {
             TargetOrCommon::Io | TargetOrCommon::Web => {
@@ -160,7 +167,8 @@ fn generate_boilerplate(default_stream_sink_codec: CodecMode) -> Acc<Vec<WireRus
             }
             TargetOrCommon::Common => vec![format!(
                 "flutter_rust_bridge::frb_generated_boilerplate!(
-                    default_stream_sink_codec = {default_stream_sink_codec}Codec
+                    default_stream_sink_codec = {default_stream_sink_codec}Codec,
+                    default_rust_opaque = RustOpaque{default_rust_opaque_codec}
                 );"
             )
             .into()],
