@@ -4,7 +4,6 @@
 #[macro_export]
 macro_rules! frb_generated_boilerplate {
     () => {
-        $crate::frb_generated_version_check!();
         $crate::frb_generated_moi_arc_def!();
         $crate::frb_generated_rust_opaque_dart2rust!();
         $crate::frb_generated_rust_opaque_def!();
@@ -107,17 +106,6 @@ macro_rules! frb_generated_boilerplate {
                 ))
             }
         }
-    };
-}
-
-#[doc(hidden)]
-#[macro_export]
-macro_rules! frb_generated_version_check {
-    () => {
-        $crate::for_generated::static_assertions::const_assert_eq!(
-            $crate::for_generated::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION,
-            FLUTTER_RUST_BRIDGE_CODEGEN_VERSION,
-        );
     };
 }
 
