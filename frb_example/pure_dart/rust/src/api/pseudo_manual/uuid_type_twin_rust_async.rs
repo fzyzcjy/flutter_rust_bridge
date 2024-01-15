@@ -2,7 +2,7 @@
 // and is auto-generated from `uuid_type.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sse", "sync sse", "rustAsync sse"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sse", "sync sse", "rustAsync sse"], "skipPde": true}
 
 #[derive(Debug, Clone)]
 pub struct FeatureUuidTwinRustAsync {
