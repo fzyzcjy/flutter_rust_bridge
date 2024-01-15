@@ -1,3 +1,3 @@
-Future<void> generatePureDartPde() async {
+Future<void> generatePureDartPde({required Uri dirPureDart}) async {
   TODO;
 }

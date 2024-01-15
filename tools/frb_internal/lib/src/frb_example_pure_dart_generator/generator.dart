@@ -18,5 +18,5 @@ Future<void> generate() async {
   await generateDartTestEntrypoints(dartRoot: dirPureDart);
   await generateRustMod(dirPureDart.resolve('rust/src/api/pseudo_manual/'));
 
-  await generatePureDartPde();
+  await generatePureDartPde(dirPureDart: dirPureDart);
 }
