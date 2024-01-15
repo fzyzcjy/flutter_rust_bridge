@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:path/path.dart';
@@ -11,6 +13,7 @@ Future<void> generatePureDartPde({required Uri dirPureDart}) async {
     filter: (entity) {
       final relativePath =
           relative(entity.path, from: dirPureDart.toFilePath());
+      print('hi $relativePath');
       return !const [
         '.dart_tool',
         '.idea',
@@ -38,6 +41,7 @@ void copyRecursive(
 
     final newPath = join(dst.path, basename(entity.path));
     if (entity is File) {
+      print('Copy $entity -> $newPath');
       entity.copySync(newPath);
     } else if (entity is Directory) {
       copyRecursive(entity, Directory(newPath), filter: filter);
