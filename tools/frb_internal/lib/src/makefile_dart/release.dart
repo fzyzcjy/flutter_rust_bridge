@@ -71,8 +71,21 @@ Future<void> releaseUpdateCode() async {
   await cargoFetchAll();
 }
 
+class FrbDartCodeVersionInfo {
+  static final kPath = '${exec.pwd}frb_dart/lib/src/misc/version.dart';
+
+  static String createCode(String version) =>
+      "const kFlutterRustBridgeRuntimeVersion = '$version';";
+}
+
 void _updateVersionInText() {
   final versionInfo = _computeVersionInfo();
+
+  simpleReplaceFile(
+    FrbDartCodeVersionInfo.kPath,
+    FrbDartCodeVersionInfo.createCode(versionInfo.oldVersion),
+    FrbDartCodeVersionInfo.createCode(versionInfo.newVersion),
+  );
 
   for (final package in ['flutter_rust_bridge', 'flutter_rust_bridge_macros']) {
     simpleReplaceFile(
