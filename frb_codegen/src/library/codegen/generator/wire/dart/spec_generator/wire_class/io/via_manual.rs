@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::commo
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
+use crate::utils::basic_code::DartBasicHeaderCode;
 use itertools::Itertools;
 
 pub(crate) fn generate(
@@ -12,17 +13,24 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputCode> {
     let wire_class_name = &config.dart_output_class_name_pack.wire_class_name;
     let wire_class_header = generate_wire_class_header(wire_class_name);
-    let body = rust_extern_funcs.iter().map(|f| generate_func(f)).join("");
+    let class_body = rust_extern_funcs.iter().map(|f| generate_func(f)).join("");
 
-    let code = format!(
+    let body = format!(
         "
         {wire_class_header}
             {wire_class_name}(ffi.DynamicLibrary dynamicLibrary);
-            {body}
+            {class_body}
         }}
         "
     );
-    Ok(code.into())
+    Ok(WireDartOutputCode {
+        header: DartBasicHeaderCode {
+            import: "import 'dart:ffi' as ffi;\n".to_owned(),
+            ..Default::default()
+        },
+        body,
+        ..Default::default()
+    })
 }
 
 fn generate_func(func: &ExternFunc) -> String {
