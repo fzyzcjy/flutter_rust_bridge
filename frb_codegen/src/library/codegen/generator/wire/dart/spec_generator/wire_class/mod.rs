@@ -16,7 +16,7 @@ pub(super) fn generate(
     rust_extern_funcs: &[ExternFunc],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
-    if !config.enable {
+    if !config.has_ffigen {
         return Ok(Acc::new(|target| {
             vec![match target {
                 TargetOrCommon::Io | TargetOrCommon::Web => {

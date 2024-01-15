@@ -131,7 +131,7 @@ impl InternalConfig {
                         dart_output_class_name_pack,
                         default_external_library_loader,
                         c_symbol_prefix: c_symbol_prefix.clone(),
-                        enable: full_dep,
+                        has_ffigen: full_dep,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
