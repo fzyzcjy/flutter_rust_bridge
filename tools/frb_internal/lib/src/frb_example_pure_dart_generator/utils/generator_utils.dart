@@ -111,9 +111,11 @@ class _Duplicator {
       final fileContent = (file as File).readAsStringSync();
       final annotation = _parseAnnotation(fileContent);
 
-      for (final mode in annotation.enableAll
+      final chosenModes = annotation.enableAll
           ? DuplicatorMode.allValues
-          : DuplicatorMode.defaultValues) {
+          : DuplicatorMode.defaultValues;
+
+      for (final mode in chosenModes) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
 
         var outputText = computeDuplicatorPrelude(' from `$fileName`') +
