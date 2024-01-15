@@ -41,7 +41,7 @@ fn generate_ffi_dispatcher(funcs: &[IrFunc]) -> WireRustCodecOutputSpec {
             (
                 mode,
                 (funcs.iter())
-                    .filter(|f| f.codec_mode_pack.dart2rust.delegate_or_self() == CodecMode::Sse)
+                    .filter(|f| f.codec_mode_pack.dart2rust == CodecMode::Pde)
                     .filter(|f| FfiDispatcherMode::from(&f.mode) == mode)
                     .map(|f| {
                         let maybe_port = if has_port_argument(f.mode) {
