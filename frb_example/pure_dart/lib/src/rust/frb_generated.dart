@@ -67888,8 +67888,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -67904,8 +67907,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -67924,8 +67930,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -67945,8 +67954,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -67967,8 +67979,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -67986,8 +68001,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -68003,8 +68021,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_DartOpaque(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -68020,8 +68041,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_String(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -68037,8 +68061,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_unit(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -68058,8 +68085,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -68079,8 +68109,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -68101,8 +68134,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
@@ -68120,8 +68156,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       sse_encode_demo_struct_for_rust_call_dart_twin_sse(rawOutput, serializer);
       final output = serializer.intoRaw();
 
-      wire.dart_fn_deliver_output(
-          callId, output.ptr, output.rustVecLen, output.dataLen);
+      generalizedFrbRustBinding.dartFnDeliverOutput(
+          callId: callId,
+          ptr: output.ptr,
+          rustVecLen: output.rustVecLen,
+          dataLen: output.dataLen);
     };
   }
 
