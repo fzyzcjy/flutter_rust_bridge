@@ -180,22 +180,31 @@ void simpleReplaceFile(
   String replace, {
   int? expectReplaceCount = 1,
 }) {
-  simpleActFile(path, (x) {
-    var actualReplaceCount = 0;
-    final ans = x.replaceAllMapped(from, (match) {
-      ++actualReplaceCount;
-      return replace;
-    });
-    if (expectReplaceCount != null &&
-        expectReplaceCount != actualReplaceCount) {
-      throw Exception(
-        'expectReplaceCount=$expectReplaceCount '
-        'actualReplaceCount=$actualReplaceCount '
-        'path=$path from=$from replace=$replace',
-      );
-    }
-    return ans;
+  simpleActFile(
+      path,
+      (x) => simpleReplaceString(x, from, replace,
+          expectReplaceCount: expectReplaceCount));
+}
+
+String simpleReplaceString(
+  String text,
+  Pattern from,
+  String replace, {
+  int? expectReplaceCount = 1,
+}) {
+  var actualReplaceCount = 0;
+  final ans = text.replaceAllMapped(from, (match) {
+    ++actualReplaceCount;
+    return replace;
   });
+  if (expectReplaceCount != null && expectReplaceCount != actualReplaceCount) {
+    throw Exception(
+      'expectReplaceCount=$expectReplaceCount '
+      'actualReplaceCount=$actualReplaceCount '
+      'from=$from replace=$replace',
+    );
+  }
+  return ans;
 }
 
 void simpleActFile(String path, String Function(String) replacer) {
