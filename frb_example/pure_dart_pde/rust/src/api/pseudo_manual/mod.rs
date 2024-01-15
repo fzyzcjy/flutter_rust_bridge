@@ -20,8 +20,6 @@ pub mod benchmark_api_twin_rust_async;
 pub mod benchmark_api_twin_sync;
 pub mod comment_twin_rust_async;
 pub mod comment_twin_sync;
-pub mod dart_dynamic_twin_rust_async;
-pub mod dart_dynamic_twin_sync;
 pub mod dart_fn_twin_rust_async;
 pub mod dart_opaque_twin_rust_async;
 pub mod dart_opaque_twin_sync;
