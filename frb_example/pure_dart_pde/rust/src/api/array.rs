@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 // [T; N] example
 pub fn get_array_twin_normal() -> [u8; 5] {
     [1, 2, 3, 4, 5]

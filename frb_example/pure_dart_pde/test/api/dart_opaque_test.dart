@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';

@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 use crate::api::misc_example::WeekdaysTwinNormal;
 use crate::api::newtype_pattern::NewTypeIntTwinNormal;
 

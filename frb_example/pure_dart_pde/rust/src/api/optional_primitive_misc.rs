@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 use log::info;
 
 pub fn primitive_optional_types_twin_normal(

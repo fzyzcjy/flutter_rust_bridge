@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';

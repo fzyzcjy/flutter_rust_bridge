@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 pub mod array;
 pub mod async_misc;
 pub mod async_spawn;

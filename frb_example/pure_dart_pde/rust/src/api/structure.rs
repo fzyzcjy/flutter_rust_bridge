@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 pub struct StructWithZeroFieldTwinNormal {}
 
 pub fn func_struct_with_zero_field_twin_normal(

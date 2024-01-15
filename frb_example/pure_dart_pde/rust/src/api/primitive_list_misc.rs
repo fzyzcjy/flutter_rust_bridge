@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 pub struct VecOfPrimitivePackTwinNormal {
     pub int8list: Vec<i8>,
     pub uint8list: Vec<u8>,

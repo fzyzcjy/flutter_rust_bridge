@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sse", "sync sse", "rustAsync sse"]}
 
 pub fn datetime_utc_twin_normal(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {

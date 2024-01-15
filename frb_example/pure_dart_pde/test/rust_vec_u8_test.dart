@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 // ignore_for_file: invalid_use_of_internal_member
 
 @TestOn('vm')

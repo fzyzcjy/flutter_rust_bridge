@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 #![allow(unused)]
 
 use flutter_rust_bridge::DartOpaque;

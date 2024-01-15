@@ -1,3 +1,5 @@
+// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+
 #![allow(non_camel_case_types)]
 
 use crate::api::pseudo_manual::benchmark_api::benchmark_input_bytes_twin_normal;
