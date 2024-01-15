@@ -16,6 +16,7 @@ pub(crate) struct ExternFunc {
     pub(crate) return_type: Option<String>,
     pub(crate) body: String,
     pub(crate) target: Target,
+    pub(crate) needs_ffigen: bool,
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -97,6 +98,7 @@ pub(crate) struct ExternClass {
     pub name: String,
     pub mode: ExternClassMode,
     pub body: String,
+    pub needs_ffigen: bool,
 }
 
 #[derive(Clone, Debug, Serialize)]

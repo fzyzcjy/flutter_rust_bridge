@@ -25,14 +25,14 @@ pub(super) fn generate(
     let text = generate_text_from_merged_code(
         config,
         &merged_code.clone().map(|code, _| {
-            let code = if config.enable_extern_func_and_class {
-                code
-            } else {
-                WireRustOutputCode {
-                    body: code.body,
-                    extern_funcs: vec![],
-                    extern_classes: vec![],
-                }
+            let code = WireRustOutputCode {
+                body: code.body,
+                extern_funcs: (code.extern_funcs.into_iter())
+                    .filter(|f| config.enable_extern_func_and_class || !f.needs_ffigen)
+                    .collect(),
+                extern_classes: (code.extern_classes.into_iter())
+                    .filter(|f| config.enable_extern_func_and_class || !f.needs_ffigen)
+                    .collect(),
             };
             code.all_code(&config.c_symbol_prefix)
         }),
