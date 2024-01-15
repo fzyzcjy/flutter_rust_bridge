@@ -6,7 +6,7 @@
 
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
 #[allow(unused_imports)]
-use crate::frb_generated::RustOpaque;
+use crate::frb_generated::{RustOpaque, RustOpaqueMoi};
 use anyhow::Result;
 #[allow(unused_imports)]
 use flutter_rust_bridge::{opaque_dyn, RustOpaqueNom};
