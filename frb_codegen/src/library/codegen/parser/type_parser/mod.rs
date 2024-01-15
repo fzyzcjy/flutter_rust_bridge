@@ -19,6 +19,7 @@ pub(crate) mod unencodable;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -105,6 +106,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
     pub(crate) func_attributes: FrbAttributes,
+    pub(crate) default_rust_opaque_codec: RustOpaqueCodecMode,
 }
 
 impl IrContext for TypeParser<'_> {

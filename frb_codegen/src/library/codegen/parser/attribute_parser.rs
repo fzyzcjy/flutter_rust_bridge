@@ -78,11 +78,11 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Opaque)
     }
 
-    pub(crate) fn rust_opaque_codec(&self) -> RustOpaqueCodecMode {
+    pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
         if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
-            RustOpaqueCodecMode::Moi
+            Some(RustOpaqueCodecMode::Moi)
         } else {
-            RustOpaqueCodecMode::Nom
+            None
         }
     }
 

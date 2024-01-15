@@ -50,7 +50,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             &inner,
             RustOpaqueParserTypeInfo::new(
                 self.context.initiated_namespace.clone(),
-                self.context.func_attributes.rust_opaque_codec(),
+                (self.context.func_attributes.rust_opaque_codec())
+                    .unwrap_or(self.context.default_rust_opaque_codec),
             ),
         );
 

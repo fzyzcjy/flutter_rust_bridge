@@ -32,7 +32,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ty,
             RustOpaqueParserTypeInfo::new(
                 self.context.initiated_namespace.clone(),
-                codec.unwrap_or(self.context.func_attributes.rust_opaque_codec()),
+                codec
+                    .or(self.context.func_attributes.rust_opaque_codec())
+                    .unwrap_or(self.context.default_rust_opaque_codec),
             ),
         );
         RustOpaque(IrTypeRustOpaque::new(
