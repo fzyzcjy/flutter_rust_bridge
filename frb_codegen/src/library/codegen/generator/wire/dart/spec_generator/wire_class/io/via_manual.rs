@@ -1,7 +1,9 @@
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::wire_class::io::common::generate_wire_class_header;
-use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
+    ExternFunc, ExternFuncParam,
+};
 use itertools::Itertools;
 
 pub(crate) fn generate(
@@ -28,9 +30,14 @@ fn generate_func(func: &ExternFunc) -> String {
     if !func.needs_ffigen
         && func.return_type.is_none()
         && func.params.len() == 1
-        && func.params[0].rust_type == "*const std::ffi::c_void"
+        && func.params[0]
+            == (ExternFuncParam {
+                name: "ptr".to_string(),
+                rust_type: "*const std::ffi::c_void".to_owned(),
+                dart_type: "dynamic".to_string(),
+            })
     {
-        let name = &func.params[0].name;
+        let name = &func.partial_func_name;
         format!(
             "
             void {name}(
