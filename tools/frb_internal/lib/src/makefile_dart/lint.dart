@@ -75,9 +75,12 @@ Future<void> lintDart(LintConfig config) async {
 /// pure_dart_pde does *NOT* run ffigen, but use our codegen to directly generate.
 /// this lint ensures what we generate is *EQUAL* to what ffigen generates.
 Future<void> lintDartFfigen() async {
-  String readText(String name) =>
-      File('${exec.pwd}frb_example/$name/lib/src/rust/frb_generated.io.dart')
-          .readAsStringSync();
+  String readInterestText(String name) {
+    final path =
+        '${exec.pwd}frb_example/$name/lib/src/rust/frb_generated.io.dart';
+    final text = File(path).readAsStringSync();
+    return TODO;
+  }
 
   final textMatcher = readText('pure_dart');
   final textActual = readText('pure_dart_pde');
