@@ -2,6 +2,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
     DartOutputClassNamePack, GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use anyhow::ensure;
@@ -11,6 +12,7 @@ use regex::Regex;
 pub(crate) fn generate(
     config: &GeneratorWireDartInternalConfig,
     c_file_content: &str,
+    rust_extern_funcs: &[ExternFunc],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputCode> {
     let content = execute_ffigen(config, c_file_content, progress_bar_pack)?;

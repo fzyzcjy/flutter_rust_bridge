@@ -17,7 +17,12 @@ pub(super) fn generate(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     Ok(Acc {
-        io: vec![io::generate(config, c_file_content, progress_bar_pack)?],
+        io: vec![io::generate(
+            config,
+            c_file_content,
+            rust_extern_funcs,
+            progress_bar_pack,
+        )?],
         web: vec![web::generate(config, rust_extern_funcs)],
         ..Default::default()
     })
