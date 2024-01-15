@@ -171,17 +171,17 @@ fn generate_boilerplate(
                     .into(),
                 ]
             }
-        TargetOrCommon::Common => vec![format!(
-            r#"
+            TargetOrCommon::Common => vec![format!(
+                r#"
                 flutter_rust_bridge::frb_generated_boilerplate!(
                     default_stream_sink_codec = {default_stream_sink_codec}Codec,
                     default_rust_opaque = RustOpaque{default_rust_opaque_codec}
                 );
                 const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
             "#,
-            version = env!("CARGO_PKG_VERSION"),
-        )
-        .into()],
+                version = env!("CARGO_PKG_VERSION"),
+            )
+            .into()],
         }
     })
 }
