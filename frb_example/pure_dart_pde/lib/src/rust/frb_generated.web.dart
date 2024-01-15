@@ -457,6 +457,3445 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_non_clone_data_twin_sync_moi;
 
   @protected
+  AnyhowException dco_decode_AnyhowException(dynamic raw);
+
+  @protected
+  BoxFnStringString
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinMoiOpaqueTwoTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueOneTwinMoicrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncOpaqueTwoTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinNormalOpaqueTwoTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw);
+
+  @protected
+  StructInMiscNoTwinExampleB
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic raw);
+
+  @protected
+  String dco_decode_Backtrace(dynamic raw);
+
+  @protected
+  FutureOr<void> Function(Object)
+      dco_decode_DartFn_Inputs_DartOpaque_Output_unit(dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String) dco_decode_DartFn_Inputs_String_Output_unit(
+      dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_normal_Output_unit(
+          dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinRustAsync)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_Output_unit(
+          dynamic raw);
+
+  @protected
+  FutureOr<Object> Function() dco_decode_DartFn_Inputs__Output_DartOpaque(
+      dynamic raw);
+
+  @protected
+  FutureOr<String> Function() dco_decode_DartFn_Inputs__Output_String(
+      dynamic raw);
+
+  @protected
+  FutureOr<void> Function() dco_decode_DartFn_Inputs__Output_unit(dynamic raw);
+
+  @protected
+  FutureOr<DemoStructForRustCallDartTwinNormal> Function(
+          DemoStructForRustCallDartTwinNormal)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_normal_Output_demo_struct_for_rust_call_dart_twin_normal(
+          dynamic raw);
+
+  @protected
+  FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
+          DemoStructForRustCallDartTwinRustAsync)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_Output_demo_struct_for_rust_call_dart_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  Object dco_decode_DartOpaque(dynamic raw);
+
+  @protected
+  ObjectArray1 dco_decode_DartOpaque_array_1(dynamic raw);
+
+  @protected
+  Map<String, String> dco_decode_Map_String_String(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinNormal>
+      dco_decode_Map_String_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinRustAsync>
+      dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
+      dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinNormal>
+      dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinRustAsync>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict(
+      dynamic raw);
+
+  @protected
+  Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw);
+
+  @protected
+  Map<int, String> dco_decode_Map_i_32_String(dynamic raw);
+
+  @protected
+  Map<int, BasicGeneralEnumTwinNormal>
+      dco_decode_Map_i_32_basic_general_enum_twin_normal(dynamic raw);
+
+  @protected
+  Map<int, BasicGeneralEnumTwinRustAsync>
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSync>
+      dco_decode_Map_i_32_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinNormal>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_normal(dynamic raw);
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsync>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSync>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  Map<int, BasicStructTwinNormal> dco_decode_Map_i_32_basic_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  Map<int, BasicStructTwinRustAsync>
+      dco_decode_Map_i_32_basic_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  Map<int, bool> dco_decode_Map_i_32_bool(dynamic raw);
+
+  @protected
+  Map<int, double> dco_decode_Map_i_32_f_32(dynamic raw);
+
+  @protected
+  Map<int, double> dco_decode_Map_i_32_f_64(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_16(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_64(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_i_8(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_isize(dynamic raw);
+
+  @protected
+  Map<int, Uint8List> dco_decode_Map_i_32_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_16(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_32(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_64(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_u_8(dynamic raw);
+
+  @protected
+  Map<int, int> dco_decode_Map_i_32_usize(dynamic raw);
+
+  @protected
+  MutexHideDataTwinMoi dco_decode_RustOpaque_MutexHideDataTwinMoi(dynamic raw);
+
+  @protected
+  MutexHideDataTwinNormal dco_decode_RustOpaque_MutexHideDataTwinNormal(
+      dynamic raw);
+
+  @protected
+  MutexHideDataTwinRustAsync dco_decode_RustOpaque_MutexHideDataTwinRustAsync(
+      dynamic raw);
+
+  @protected
+  MutexHideDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(dynamic raw);
+
+  @protected
+  MutexHideDataTwinSync dco_decode_RustOpaque_MutexHideDataTwinSync(
+      dynamic raw);
+
+  @protected
+  MutexHideDataTwinSyncMoi dco_decode_RustOpaque_MutexHideDataTwinSyncMoi(
+      dynamic raw);
+
+  @protected
+  RwLockHideDataTwinMoi dco_decode_RustOpaque_RwLockHideDataTwinMoi(
+      dynamic raw);
+
+  @protected
+  RwLockHideDataTwinNormal dco_decode_RustOpaque_RwLockHideDataTwinNormal(
+      dynamic raw);
+
+  @protected
+  RwLockHideDataTwinRustAsync dco_decode_RustOpaque_RwLockHideDataTwinRustAsync(
+      dynamic raw);
+
+  @protected
+  RwLockHideDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(dynamic raw);
+
+  @protected
+  RwLockHideDataTwinSync dco_decode_RustOpaque_RwLockHideDataTwinSync(
+      dynamic raw);
+
+  @protected
+  RwLockHideDataTwinSyncMoi dco_decode_RustOpaque_RwLockHideDataTwinSyncMoi(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinMoi dco_decode_RustOpaque_box_dynDartDebugTwinMoi(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinNormal dco_decode_RustOpaque_box_dynDartDebugTwinNormal(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinRustAsync dco_decode_RustOpaque_box_dynDartDebugTwinRustAsync(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinRustAsyncMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSync dco_decode_RustOpaque_box_dynDartDebugTwinSync(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSyncMoi dco_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(
+      dynamic raw);
+
+  @protected
+  BoxFnStringString
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynFnStringStringSendSync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructInMiscNoTwinExampleA
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleA(
+          dynamic raw);
+
+  @protected
+  StructInMiscNoTwinExampleB
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructInMiscNoTwinExampleB(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithImplBlockInMultiFile
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithImplBlockInMultiFile(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinMoiOpaqueTwoTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueOneTwinMoicrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_moiOpaqueTwoTwinMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueOneTwinRustAsynccrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_asyncOpaqueTwoTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinRustAsyncMoiOpaqueTwoTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueOneTwinRustAsyncMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_moiOpaqueTwoTwinRustAsyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncOpaqueTwoTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncMoiOpaqueTwoTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueOneTwinSyncMoicrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSyncMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinNormalOpaqueTwoTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueOneTwinNormalcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapirust_auto_opaqueOpaqueTwoTwinNormal(
+          dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinMoi dco_decode_RustOpaque_frb_opaque_return_twin_moi(
+      dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinNormal dco_decode_RustOpaque_frb_opaque_return_twin_normal(
+      dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinRustAsync
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async(dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinSync dco_decode_RustOpaque_frb_opaque_return_twin_sync(
+      dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinSyncMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_moi(dynamic raw);
+
+  @protected
+  FrbOpaqueSyncReturnTwinMoi
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_moi(dynamic raw);
+
+  @protected
+  FrbOpaqueSyncReturnTwinNormal
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_normal(dynamic raw);
+
+  @protected
+  HideDataAnotherTwinMoi dco_decode_RustOpaque_hide_data_another_twin_moi(
+      dynamic raw);
+
+  @protected
+  HideDataAnotherTwinNormal dco_decode_RustOpaque_hide_data_another_twin_normal(
+      dynamic raw);
+
+  @protected
+  HideDataTwinMoi dco_decode_RustOpaque_hide_data_twin_moi(dynamic raw);
+
+  @protected
+  HideDataTwinMoiArray2 dco_decode_RustOpaque_hide_data_twin_moi_array_2(
+      dynamic raw);
+
+  @protected
+  HideDataTwinNormal dco_decode_RustOpaque_hide_data_twin_normal(dynamic raw);
+
+  @protected
+  HideDataTwinNormalArray2 dco_decode_RustOpaque_hide_data_twin_normal_array_2(
+      dynamic raw);
+
+  @protected
+  HideDataTwinRustAsync dco_decode_RustOpaque_hide_data_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_array_2(dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncMoi dco_decode_RustOpaque_hide_data_twin_rust_async_moi(
+      dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_moi_array_2(dynamic raw);
+
+  @protected
+  HideDataTwinSync dco_decode_RustOpaque_hide_data_twin_sync(dynamic raw);
+
+  @protected
+  HideDataTwinSyncArray2 dco_decode_RustOpaque_hide_data_twin_sync_array_2(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSyncMoi dco_decode_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSyncMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_moi_array_2(dynamic raw);
+
+  @protected
+  I16 dco_decode_RustOpaque_i_16(dynamic raw);
+
+  @protected
+  I32 dco_decode_RustOpaque_i_32(dynamic raw);
+
+  @protected
+  NonCloneDataTwinMoi dco_decode_RustOpaque_non_clone_data_twin_moi(
+      dynamic raw);
+
+  @protected
+  NonCloneDataTwinNormal dco_decode_RustOpaque_non_clone_data_twin_normal(
+      dynamic raw);
+
+  @protected
+  NonCloneDataTwinRustAsync
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async(dynamic raw);
+
+  @protected
+  NonCloneDataTwinRustAsyncMoi
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  NonCloneDataTwinSync dco_decode_RustOpaque_non_clone_data_twin_sync(
+      dynamic raw);
+
+  @protected
+  NonCloneDataTwinSyncMoi dco_decode_RustOpaque_non_clone_data_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  Set<String> dco_decode_Set_String(dynamic raw);
+
+  @protected
+  Set<int> dco_decode_Set_i_32(dynamic raw);
+
+  @protected
+  String dco_decode_String(dynamic raw);
+
+  @protected
+  ATwinNormal dco_decode_a_twin_normal(dynamic raw);
+
+  @protected
+  ATwinRustAsync dco_decode_a_twin_rust_async(dynamic raw);
+
+  @protected
+  ATwinSync dco_decode_a_twin_sync(dynamic raw);
+
+  @protected
+  AbcTwinNormal dco_decode_abc_twin_normal(dynamic raw);
+
+  @protected
+  AbcTwinRustAsync dco_decode_abc_twin_rust_async(dynamic raw);
+
+  @protected
+  AbcTwinSync dco_decode_abc_twin_sync(dynamic raw);
+
+  @protected
+  AnotherMacroStructTwinNormal dco_decode_another_macro_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  AnotherTwinNormal dco_decode_another_twin_normal(dynamic raw);
+
+  @protected
+  AnotherTwinRustAsync dco_decode_another_twin_rust_async(dynamic raw);
+
+  @protected
+  AnotherTwinSync dco_decode_another_twin_sync(dynamic raw);
+
+  @protected
+  ApplicationEnv dco_decode_application_env(dynamic raw);
+
+  @protected
+  ApplicationEnvVar dco_decode_application_env_var(dynamic raw);
+
+  @protected
+  ApplicationMessage dco_decode_application_message(dynamic raw);
+
+  @protected
+  ApplicationMode dco_decode_application_mode(dynamic raw);
+
+  @protected
+  ApplicationSettings dco_decode_application_settings(dynamic raw);
+
+  @protected
+  AttributeTwinNormal dco_decode_attribute_twin_normal(dynamic raw);
+
+  @protected
+  AttributeTwinRustAsync dco_decode_attribute_twin_rust_async(dynamic raw);
+
+  @protected
+  AttributeTwinSync dco_decode_attribute_twin_sync(dynamic raw);
+
+  @protected
+  BTwinNormal dco_decode_b_twin_normal(dynamic raw);
+
+  @protected
+  BTwinRustAsync dco_decode_b_twin_rust_async(dynamic raw);
+
+  @protected
+  BTwinSync dco_decode_b_twin_sync(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinNormal dco_decode_basic_general_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinRustAsync dco_decode_basic_general_enum_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSync dco_decode_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinNormal dco_decode_basic_primitive_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      dco_decode_basic_primitive_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSync dco_decode_basic_primitive_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  BasicStructTwinNormal dco_decode_basic_struct_twin_normal(dynamic raw);
+
+  @protected
+  BasicStructTwinRustAsync dco_decode_basic_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  BasicStructTwinSync dco_decode_basic_struct_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_benchmark_binary_tree_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_benchmark_blob_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsync dco_decode_benchmark_blob_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_benchmark_blob_twin_sync(dynamic raw);
+
+  @protected
+  BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw);
+
+  @protected
+  BigBuffersTwinRustAsync dco_decode_big_buffers_twin_rust_async(dynamic raw);
+
+  @protected
+  BigBuffersTwinSync dco_decode_big_buffers_twin_sync(dynamic raw);
+
+  @protected
+  BlobTwinNormal dco_decode_blob_twin_normal(dynamic raw);
+
+  @protected
+  BlobTwinRustAsync dco_decode_blob_twin_rust_async(dynamic raw);
+
+  @protected
+  BlobTwinSync dco_decode_blob_twin_sync(dynamic raw);
+
+  @protected
+  bool dco_decode_bool(dynamic raw);
+
+  @protected
+  ApplicationEnv dco_decode_box_application_env(dynamic raw);
+
+  @protected
+  Object dco_decode_box_autoadd_DartOpaque(dynamic raw);
+
+  @protected
+  HideDataAnotherTwinMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_moi(dynamic raw);
+
+  @protected
+  HideDataAnotherTwinNormal
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          dynamic raw);
+
+  @protected
+  HideDataTwinMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_moi(
+      dynamic raw);
+
+  @protected
+  HideDataTwinNormal dco_decode_box_autoadd_RustOpaque_hide_data_twin_normal(
+      dynamic raw);
+
+  @protected
+  HideDataTwinRustAsync
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async(dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          dynamic raw);
+
+  @protected
+  HideDataTwinSync dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSyncMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  ATwinNormal dco_decode_box_autoadd_a_twin_normal(dynamic raw);
+
+  @protected
+  ATwinRustAsync dco_decode_box_autoadd_a_twin_rust_async(dynamic raw);
+
+  @protected
+  ATwinSync dco_decode_box_autoadd_a_twin_sync(dynamic raw);
+
+  @protected
+  AbcTwinNormal dco_decode_box_autoadd_abc_twin_normal(dynamic raw);
+
+  @protected
+  AbcTwinRustAsync dco_decode_box_autoadd_abc_twin_rust_async(dynamic raw);
+
+  @protected
+  AbcTwinSync dco_decode_box_autoadd_abc_twin_sync(dynamic raw);
+
+  @protected
+  ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  ApplicationSettings dco_decode_box_autoadd_application_settings(dynamic raw);
+
+  @protected
+  AttributeTwinNormal dco_decode_box_autoadd_attribute_twin_normal(dynamic raw);
+
+  @protected
+  AttributeTwinRustAsync dco_decode_box_autoadd_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  AttributeTwinSync dco_decode_box_autoadd_attribute_twin_sync(dynamic raw);
+
+  @protected
+  BTwinNormal dco_decode_box_autoadd_b_twin_normal(dynamic raw);
+
+  @protected
+  BTwinRustAsync dco_decode_box_autoadd_b_twin_rust_async(dynamic raw);
+
+  @protected
+  BTwinSync dco_decode_box_autoadd_b_twin_sync(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinNormal
+      dco_decode_box_autoadd_basic_general_enum_twin_normal(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinRustAsync
+      dco_decode_box_autoadd_basic_general_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSync dco_decode_box_autoadd_basic_general_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinNormal
+      dco_decode_box_autoadd_basic_primitive_enum_twin_normal(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync
+      dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSync
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicStructTwinNormal dco_decode_box_autoadd_basic_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  BasicStructTwinRustAsync dco_decode_box_autoadd_basic_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  BasicStructTwinSync dco_decode_box_autoadd_basic_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinNormal dco_decode_box_autoadd_benchmark_blob_twin_normal(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinRustAsync
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSync dco_decode_box_autoadd_benchmark_blob_twin_sync(
+      dynamic raw);
+
+  @protected
+  bool dco_decode_box_autoadd_bool(dynamic raw);
+
+  @protected
+  CTwinNormal dco_decode_box_autoadd_c_twin_normal(dynamic raw);
+
+  @protected
+  CTwinRustAsync dco_decode_box_autoadd_c_twin_rust_async(dynamic raw);
+
+  @protected
+  CTwinSync dco_decode_box_autoadd_c_twin_sync(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinNormal dco_decode_box_autoadd_concatenate_with_twin_normal(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinRustAsync
+      dco_decode_box_autoadd_concatenate_with_twin_rust_async(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSync dco_decode_box_autoadd_concatenate_with_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinNormal
+      dco_decode_box_autoadd_custom_nested_error_2_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSync
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSync
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSync
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinNormal
+      dco_decode_box_autoadd_custom_struct_error_twin_normal(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinRustAsync
+      dco_decode_box_autoadd_custom_struct_error_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSync
+      dco_decode_box_autoadd_custom_struct_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructTwinNormal dco_decode_box_autoadd_custom_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinRustAsync
+      dco_decode_box_autoadd_custom_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomStructTwinSync dco_decode_box_autoadd_custom_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinNormal dco_decode_box_autoadd_customized_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinRustAsync dco_decode_box_autoadd_customized_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinSync dco_decode_box_autoadd_customized_twin_sync(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinNormal
+      dco_decode_box_autoadd_dart_opaque_nested_twin_normal(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinRustAsync
+      dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSync dco_decode_box_autoadd_dart_opaque_nested_twin_sync(
+      dynamic raw);
+
+  @protected
+  ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
+
+  @protected
+  ElementTwinRustAsync dco_decode_box_autoadd_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ElementTwinSync dco_decode_box_autoadd_element_twin_sync(dynamic raw);
+
+  @protected
+  EmptyTwinNormal dco_decode_box_autoadd_empty_twin_normal(dynamic raw);
+
+  @protected
+  EmptyTwinRustAsync dco_decode_box_autoadd_empty_twin_rust_async(dynamic raw);
+
+  @protected
+  EmptyTwinSync dco_decode_box_autoadd_empty_twin_sync(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinNormal dco_decode_box_autoadd_enum_dart_opaque_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinRustAsync
+      dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSync dco_decode_box_autoadd_enum_dart_opaque_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinMoi dco_decode_box_autoadd_enum_opaque_twin_moi(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinNormal dco_decode_box_autoadd_enum_opaque_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsync dco_decode_box_autoadd_enum_opaque_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoi
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSync dco_decode_box_autoadd_enum_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncMoi dco_decode_box_autoadd_enum_opaque_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinNormal
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSync
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinNormal
+      dco_decode_box_autoadd_enum_with_item_struct_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSync
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinNormal
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSync
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_sync(dynamic raw);
+
+  @protected
+  EventTwinNormal dco_decode_box_autoadd_event_twin_normal(dynamic raw);
+
+  @protected
+  EventTwinRustAsync dco_decode_box_autoadd_event_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_box_autoadd_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync
+      dco_decode_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_box_autoadd_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  double dco_decode_box_autoadd_f_32(dynamic raw);
+
+  @protected
+  double dco_decode_box_autoadd_f_64(dynamic raw);
+
+  @protected
+  FeedIdTwinNormal dco_decode_box_autoadd_feed_id_twin_normal(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_box_autoadd_feed_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  FeedIdTwinSync dco_decode_box_autoadd_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_16(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_32(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_i_8(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_isize(dynamic raw);
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_box_autoadd_kitchen_sink_twin_normal(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_box_autoadd_kitchen_sink_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSync dco_decode_box_autoadd_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  ListOfNestedRawStringMirrored
+      dco_decode_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw);
+
+  @protected
+  MacroStruct dco_decode_box_autoadd_macro_struct(dynamic raw);
+
+  @protected
+  MeasureTwinNormal dco_decode_box_autoadd_measure_twin_normal(dynamic raw);
+
+  @protected
+  MeasureTwinRustAsync dco_decode_box_autoadd_measure_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MeasureTwinSync dco_decode_box_autoadd_measure_twin_sync(dynamic raw);
+
+  @protected
+  MessageIdTwinNormal dco_decode_box_autoadd_message_id_twin_normal(
+      dynamic raw);
+
+  @protected
+  MessageIdTwinRustAsync dco_decode_box_autoadd_message_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MessageIdTwinSync dco_decode_box_autoadd_message_id_twin_sync(dynamic raw);
+
+  @protected
+  MyNestedStructTwinNormal dco_decode_box_autoadd_my_nested_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  MyNestedStructTwinRustAsync
+      dco_decode_box_autoadd_my_nested_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSync dco_decode_box_autoadd_my_nested_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  MySize dco_decode_box_autoadd_my_size(dynamic raw);
+
+  @protected
+  MyStruct dco_decode_box_autoadd_my_struct(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinNormal dco_decode_box_autoadd_my_tree_node_twin_normal(
+      dynamic raw);
+
+  @protected
+  MyTreeNodeTwinRustAsync dco_decode_box_autoadd_my_tree_node_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSync dco_decode_box_autoadd_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  NestedRawStringMirrored dco_decode_box_autoadd_nested_raw_string_mirrored(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinNormal dco_decode_box_autoadd_new_type_int_twin_normal(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsync dco_decode_box_autoadd_new_type_int_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinSync dco_decode_box_autoadd_new_type_int_twin_sync(dynamic raw);
+
+  @protected
+  NoteTwinNormal dco_decode_box_autoadd_note_twin_normal(dynamic raw);
+
+  @protected
+  NoteTwinRustAsync dco_decode_box_autoadd_note_twin_rust_async(dynamic raw);
+
+  @protected
+  NoteTwinSync dco_decode_box_autoadd_note_twin_sync(dynamic raw);
+
+  @protected
+  Numbers dco_decode_box_autoadd_numbers(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinMoi dco_decode_box_autoadd_opaque_nested_twin_moi(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinNormal dco_decode_box_autoadd_opaque_nested_twin_normal(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsync
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsyncMoi
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSync dco_decode_box_autoadd_opaque_nested_twin_sync(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncMoi dco_decode_box_autoadd_opaque_nested_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw);
+
+  @protected
+  OptVecsTwinRustAsync dco_decode_box_autoadd_opt_vecs_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OptVecsTwinSync dco_decode_box_autoadd_opt_vecs_twin_sync(dynamic raw);
+
+  @protected
+  RawStringMirrored dco_decode_box_autoadd_raw_string_mirrored(dynamic raw);
+
+  @protected
+  (String, int) dco_decode_box_autoadd_record_string_i_32(dynamic raw);
+
+  @protected
+  Sequences dco_decode_box_autoadd_sequences(dynamic raw);
+
+  @protected
+  SomeStructTwinNormal dco_decode_box_autoadd_some_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  SomeStructTwinRustAsync dco_decode_box_autoadd_some_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  SomeStructTwinSync dco_decode_box_autoadd_some_struct_twin_sync(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinNormal
+      dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      dco_decode_box_autoadd_struct_with_comments_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSync
+      dco_decode_box_autoadd_struct_with_comments_twin_sync(dynamic raw);
+
+  @protected
+  StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinRustAsync
+      dco_decode_box_autoadd_struct_with_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSync dco_decode_box_autoadd_struct_with_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_one_field_twin_normal(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_one_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSync
+      dco_decode_box_autoadd_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_two_field_twin_normal(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_two_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSync
+      dco_decode_box_autoadd_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_zero_field_twin_normal(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSync
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sync(dynamic raw);
+
+  @protected
+  SumWithTwinNormal dco_decode_box_autoadd_sum_with_twin_normal(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsync dco_decode_box_autoadd_sum_with_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  SumWithTwinSync dco_decode_box_autoadd_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  TestIdTwinNormal dco_decode_box_autoadd_test_id_twin_normal(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsync dco_decode_box_autoadd_test_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  TestIdTwinSync dco_decode_box_autoadd_test_id_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_normal(
+          dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_normal(
+          dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_16(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_32(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_64(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_u_8(dynamic raw);
+
+  @protected
+  UserIdTwinNormal dco_decode_box_autoadd_user_id_twin_normal(dynamic raw);
+
+  @protected
+  UserIdTwinRustAsync dco_decode_box_autoadd_user_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  UserIdTwinSync dco_decode_box_autoadd_user_id_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_box_autoadd_usize(dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal dco_decode_box_autoadd_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_box_autoadd_weekdays_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinSync dco_decode_box_autoadd_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal
+      dco_decode_box_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync
+      dco_decode_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync dco_decode_box_benchmark_binary_tree_twin_sync(
+      dynamic raw);
+
+  @protected
+  BlobTwinNormal dco_decode_box_blob_twin_normal(dynamic raw);
+
+  @protected
+  BlobTwinRustAsync dco_decode_box_blob_twin_rust_async(dynamic raw);
+
+  @protected
+  BlobTwinSync dco_decode_box_blob_twin_sync(dynamic raw);
+
+  @protected
+  bool dco_decode_box_bool(dynamic raw);
+
+  @protected
+  DistanceTwinNormal dco_decode_box_distance_twin_normal(dynamic raw);
+
+  @protected
+  DistanceTwinRustAsync dco_decode_box_distance_twin_rust_async(dynamic raw);
+
+  @protected
+  DistanceTwinSync dco_decode_box_distance_twin_sync(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_box_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync dco_decode_box_exotic_optionals_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_box_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  double dco_decode_box_f_64(dynamic raw);
+
+  @protected
+  FeedIdTwinNormal dco_decode_box_feed_id_twin_normal(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_box_feed_id_twin_rust_async(dynamic raw);
+
+  @protected
+  FeedIdTwinSync dco_decode_box_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_box_i_32(dynamic raw);
+
+  @protected
+  int dco_decode_box_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_box_i_8(dynamic raw);
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_box_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_box_kitchen_sink_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSync dco_decode_box_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  MySize dco_decode_box_my_size(dynamic raw);
+
+  @protected
+  SpeedTwinNormal dco_decode_box_speed_twin_normal(dynamic raw);
+
+  @protected
+  SpeedTwinRustAsync dco_decode_box_speed_twin_rust_async(dynamic raw);
+
+  @protected
+  SpeedTwinSync dco_decode_box_speed_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_box_u_8(dynamic raw);
+
+  @protected
+  U8Array1600 dco_decode_box_u_8_array_1600(dynamic raw);
+
+  @protected
+  U8Array8 dco_decode_box_u_8_array_8(dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal dco_decode_box_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_box_weekdays_twin_rust_async(dynamic raw);
+
+  @protected
+  WeekdaysTwinSync dco_decode_box_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  CTwinNormal dco_decode_c_twin_normal(dynamic raw);
+
+  @protected
+  CTwinRustAsync dco_decode_c_twin_rust_async(dynamic raw);
+
+  @protected
+  CTwinSync dco_decode_c_twin_sync(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinNormal dco_decode_concatenate_with_twin_normal(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinRustAsync dco_decode_concatenate_with_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSync dco_decode_concatenate_with_twin_sync(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinNormal
+      dco_decode_contains_mirrored_sub_struct_twin_normal(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinRustAsync
+      dco_decode_contains_mirrored_sub_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinSync
+      dco_decode_contains_mirrored_sub_struct_twin_sync(dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinNormal dco_decode_custom_enum_error_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinRustAsync dco_decode_custom_enum_error_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinSync dco_decode_custom_enum_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomErrorTwinNormal dco_decode_custom_error_twin_normal(dynamic raw);
+
+  @protected
+  CustomErrorTwinRustAsync dco_decode_custom_error_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomErrorTwinSync dco_decode_custom_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedError1TwinNormal dco_decode_custom_nested_error_1_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomNestedError1TwinRustAsync
+      dco_decode_custom_nested_error_1_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedError1TwinSync dco_decode_custom_nested_error_1_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinNormal dco_decode_custom_nested_error_2_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinRustAsync
+      dco_decode_custom_nested_error_2_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSync dco_decode_custom_nested_error_2_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinNormal
+      dco_decode_custom_nested_error_inner_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinRustAsync
+      dco_decode_custom_nested_error_inner_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSync dco_decode_custom_nested_error_inner_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinNormal
+      dco_decode_custom_nested_error_outer_twin_normal(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinRustAsync
+      dco_decode_custom_nested_error_outer_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSync dco_decode_custom_nested_error_outer_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinNormal
+      dco_decode_custom_struct_error_another_twin_normal(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinRustAsync
+      dco_decode_custom_struct_error_another_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinSync
+      dco_decode_custom_struct_error_another_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinNormal dco_decode_custom_struct_error_twin_normal(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorTwinRustAsync dco_decode_custom_struct_error_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSync dco_decode_custom_struct_error_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinNormal dco_decode_custom_struct_twin_normal(dynamic raw);
+
+  @protected
+  CustomStructTwinRustAsync dco_decode_custom_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinSync dco_decode_custom_struct_twin_sync(dynamic raw);
+
+  @protected
+  CustomizedTwinNormal dco_decode_customized_twin_normal(dynamic raw);
+
+  @protected
+  CustomizedTwinRustAsync dco_decode_customized_twin_rust_async(dynamic raw);
+
+  @protected
+  CustomizedTwinSync dco_decode_customized_twin_sync(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinNormal dco_decode_dart_opaque_nested_twin_normal(
+      dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinRustAsync dco_decode_dart_opaque_nested_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(dynamic raw);
+
+  @protected
+  DemoStructForRustCallDartTwinNormal
+      dco_decode_demo_struct_for_rust_call_dart_twin_normal(dynamic raw);
+
+  @protected
+  DemoStructForRustCallDartTwinRustAsync
+      dco_decode_demo_struct_for_rust_call_dart_twin_rust_async(dynamic raw);
+
+  @protected
+  DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw);
+
+  @protected
+  DistanceTwinRustAsync dco_decode_distance_twin_rust_async(dynamic raw);
+
+  @protected
+  DistanceTwinSync dco_decode_distance_twin_sync(dynamic raw);
+
+  @protected
+  ElementTwinNormal dco_decode_element_twin_normal(dynamic raw);
+
+  @protected
+  ElementTwinRustAsync dco_decode_element_twin_rust_async(dynamic raw);
+
+  @protected
+  ElementTwinSync dco_decode_element_twin_sync(dynamic raw);
+
+  @protected
+  EmptyTwinNormal dco_decode_empty_twin_normal(dynamic raw);
+
+  @protected
+  EmptyTwinRustAsync dco_decode_empty_twin_rust_async(dynamic raw);
+
+  @protected
+  EmptyTwinSync dco_decode_empty_twin_sync(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinNormal dco_decode_enum_dart_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinRustAsync dco_decode_enum_dart_opaque_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSync dco_decode_enum_dart_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinMoi dco_decode_enum_opaque_twin_moi(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinMoiArray5 dco_decode_enum_opaque_twin_moi_array_5(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinNormal dco_decode_enum_opaque_twin_normal(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinNormalArray5 dco_decode_enum_opaque_twin_normal_array_5(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsync dco_decode_enum_opaque_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncArray5 dco_decode_enum_opaque_twin_rust_async_array_5(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoi dco_decode_enum_opaque_twin_rust_async_moi(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncMoiArray5
+      dco_decode_enum_opaque_twin_rust_async_moi_array_5(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSync dco_decode_enum_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncArray5 dco_decode_enum_opaque_twin_sync_array_5(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncMoi dco_decode_enum_opaque_twin_sync_moi(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncMoiArray5 dco_decode_enum_opaque_twin_sync_moi_array_5(
+      dynamic raw);
+
+  @protected
+  EnumSimpleTwinNormal dco_decode_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  EnumSimpleTwinRustAsync dco_decode_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumSimpleTwinSync dco_decode_enum_simple_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinRustAsync
+      dco_decode_enum_with_item_mixed_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSync dco_decode_enum_with_item_mixed_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinNormal dco_decode_enum_with_item_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinRustAsync
+      dco_decode_enum_with_item_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSync dco_decode_enum_with_item_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinNormal dco_decode_enum_with_item_tuple_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinRustAsync
+      dco_decode_enum_with_item_tuple_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSync dco_decode_enum_with_item_tuple_twin_sync(
+      dynamic raw);
+
+  @protected
+  EventTwinNormal dco_decode_event_twin_normal(dynamic raw);
+
+  @protected
+  EventTwinRustAsync dco_decode_event_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal dco_decode_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync dco_decode_exotic_optionals_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync dco_decode_exotic_optionals_twin_sync(dynamic raw);
+
+  @protected
+  double dco_decode_f_32(dynamic raw);
+
+  @protected
+  double dco_decode_f_64(dynamic raw);
+
+  @protected
+  F64Array16 dco_decode_f_64_array_16(dynamic raw);
+
+  @protected
+  FeedIdTwinNormal dco_decode_feed_id_twin_normal(dynamic raw);
+
+  @protected
+  FeedIdTwinRustAsync dco_decode_feed_id_twin_rust_async(dynamic raw);
+
+  @protected
+  FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_i_16(dynamic raw);
+
+  @protected
+  int dco_decode_i_32(dynamic raw);
+
+  @protected
+  I32Array2 dco_decode_i_32_array_2(dynamic raw);
+
+  @protected
+  int dco_decode_i_64(dynamic raw);
+
+  @protected
+  int dco_decode_i_8(dynamic raw);
+
+  @protected
+  int dco_decode_isize(dynamic raw);
+
+  @protected
+  KitchenSinkTwinNormal dco_decode_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  KitchenSinkTwinRustAsync dco_decode_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSync dco_decode_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  List<Object> dco_decode_list_DartOpaque(dynamic raw);
+
+  @protected
+  List<HideDataTwinMoi> dco_decode_list_RustOpaque_hide_data_twin_moi(
+      dynamic raw);
+
+  @protected
+  List<HideDataTwinNormal> dco_decode_list_RustOpaque_hide_data_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<HideDataTwinRustAsync>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async(dynamic raw);
+
+  @protected
+  List<HideDataTwinRustAsyncMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  List<HideDataTwinSync> dco_decode_list_RustOpaque_hide_data_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<HideDataTwinSyncMoi> dco_decode_list_RustOpaque_hide_data_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  List<String> dco_decode_list_String(dynamic raw);
+
+  @protected
+  List<ApplicationEnvVar> dco_decode_list_application_env_var(dynamic raw);
+
+  @protected
+  List<ApplicationSettings> dco_decode_list_application_settings(dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal> dco_decode_list_attribute_twin_normal(dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync> dco_decode_list_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinSync> dco_decode_list_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<BasicGeneralEnumTwinNormal>
+      dco_decode_list_basic_general_enum_twin_normal(dynamic raw);
+
+  @protected
+  List<BasicGeneralEnumTwinRustAsync>
+      dco_decode_list_basic_general_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  List<BasicGeneralEnumTwinSync> dco_decode_list_basic_general_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<BasicPrimitiveEnumTwinNormal>
+      dco_decode_list_basic_primitive_enum_twin_normal(dynamic raw);
+
+  @protected
+  List<BasicPrimitiveEnumTwinRustAsync>
+      dco_decode_list_basic_primitive_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  List<BasicPrimitiveEnumTwinSync>
+      dco_decode_list_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  List<BasicStructTwinNormal> dco_decode_list_basic_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<BasicStructTwinRustAsync> dco_decode_list_basic_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<BasicStructTwinSync> dco_decode_list_basic_struct_twin_sync(dynamic raw);
+
+  @protected
+  List<bool> dco_decode_list_bool(dynamic raw);
+
+  @protected
+  List<ElementTwinNormal> dco_decode_list_element_twin_normal(dynamic raw);
+
+  @protected
+  List<ElementTwinRustAsync> dco_decode_list_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<ElementTwinSync> dco_decode_list_element_twin_sync(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinMoi> dco_decode_list_enum_opaque_twin_moi(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinNormal> dco_decode_list_enum_opaque_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinRustAsync> dco_decode_list_enum_opaque_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncMoi>
+      dco_decode_list_enum_opaque_twin_rust_async_moi(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSync> dco_decode_list_enum_opaque_twin_sync(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSyncMoi> dco_decode_list_enum_opaque_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  List<MyEnum> dco_decode_list_my_enum(dynamic raw);
+
+  @protected
+  List<MySize> dco_decode_list_my_size(dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinNormal> dco_decode_list_my_tree_node_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinRustAsync> dco_decode_list_my_tree_node_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinSync> dco_decode_list_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  List<NestedRawStringMirrored> dco_decode_list_nested_raw_string_mirrored(
+      dynamic raw);
+
+  @protected
+  ListOfNestedRawStringMirrored dco_decode_list_of_nested_raw_string_mirrored(
+      dynamic raw);
+
+  @protected
+  List<String?> dco_decode_list_opt_String(dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_normal(dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(dynamic raw);
+
+  @protected
+  List<AttributeTwinSync?> dco_decode_list_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<int?> dco_decode_list_opt_box_autoadd_i_32(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinNormal?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinRustAsync?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSync?> dco_decode_list_opt_box_autoadd_weekdays_twin_sync(
+      dynamic raw);
+
+  @protected
+  List<Int32List?> dco_decode_list_opt_list_prim_i_32_strict(dynamic raw);
+
+  @protected
+  List<PointTwinNormal> dco_decode_list_point_twin_normal(dynamic raw);
+
+  @protected
+  List<PointTwinRustAsync> dco_decode_list_point_twin_rust_async(dynamic raw);
+
+  @protected
+  List<PointTwinSync> dco_decode_list_point_twin_sync(dynamic raw);
+
+  @protected
+  List<double> dco_decode_list_prim_f_32_loose(dynamic raw);
+
+  @protected
+  Float32List dco_decode_list_prim_f_32_strict(dynamic raw);
+
+  @protected
+  List<double> dco_decode_list_prim_f_64_loose(dynamic raw);
+
+  @protected
+  Float64List dco_decode_list_prim_f_64_strict(dynamic raw);
+
+  @protected
+  List<int> dco_decode_list_prim_i_16_loose(dynamic raw);
+
+  @protected
+  Int16List dco_decode_list_prim_i_16_strict(dynamic raw);
+
+  @protected
+  List<int> dco_decode_list_prim_i_32_loose(dynamic raw);
+
+  @protected
+  Int32List dco_decode_list_prim_i_32_strict(dynamic raw);
+
+  @protected
+  Int64List dco_decode_list_prim_i_64_strict(dynamic raw);
+
+  @protected
+  List<int> dco_decode_list_prim_i_8_loose(dynamic raw);
+
+  @protected
+  Int8List dco_decode_list_prim_i_8_strict(dynamic raw);
+
+  @protected
+  List<int> dco_decode_list_prim_u_16_loose(dynamic raw);
+
+  @protected
+  Uint16List dco_decode_list_prim_u_16_strict(dynamic raw);
+
+  @protected
+  List<int> dco_decode_list_prim_u_32_loose(dynamic raw);
+
+  @protected
+  Uint32List dco_decode_list_prim_u_32_strict(dynamic raw);
+
+  @protected
+  Uint64List dco_decode_list_prim_u_64_strict(dynamic raw);
+
+  @protected
+  List<int> dco_decode_list_prim_u_8_loose(dynamic raw);
+
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  List<RawStringEnumMirrored> dco_decode_list_raw_string_enum_mirrored(
+      dynamic raw);
+
+  @protected
+  List<RawStringMirrored> dco_decode_list_raw_string_mirrored(dynamic raw);
+
+  @protected
+  List<(int, BasicGeneralEnumTwinNormal)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_normal(dynamic raw);
+
+  @protected
+  List<(int, BasicGeneralEnumTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSync)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinNormal)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_normal(dynamic raw);
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSync)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  List<(int, BasicStructTwinNormal)>
+      dco_decode_list_record_i_32_basic_struct_twin_normal(dynamic raw);
+
+  @protected
+  List<(int, BasicStructTwinRustAsync)>
+      dco_decode_list_record_i_32_basic_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  List<(int, BasicStructTwinSync)>
+      dco_decode_list_record_i_32_basic_struct_twin_sync(dynamic raw);
+
+  @protected
+  List<(int, bool)> dco_decode_list_record_i_32_bool(dynamic raw);
+
+  @protected
+  List<(int, double)> dco_decode_list_record_i_32_f_32(dynamic raw);
+
+  @protected
+  List<(int, double)> dco_decode_list_record_i_32_f_64(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_16(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_32(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_64(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_i_8(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_isize(dynamic raw);
+
+  @protected
+  List<(int, Uint8List)> dco_decode_list_record_i_32_list_prim_u_8_strict(
+      dynamic raw);
+
+  @protected
+  List<(int, String)> dco_decode_list_record_i_32_string(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_16(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_32(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_64(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_u_8(dynamic raw);
+
+  @protected
+  List<(int, int)> dco_decode_list_record_i_32_usize(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinNormal)>
+      dco_decode_list_record_string_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinRustAsync)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinSync)>
+      dco_decode_list_record_string_enum_simple_twin_sync(dynamic raw);
+
+  @protected
+  List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinNormal)>
+      dco_decode_list_record_string_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinRustAsync)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinSync)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8_strict(
+      dynamic raw);
+
+  @protected
+  List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw);
+
+  @protected
+  List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
+
+  @protected
+  List<SumWithTwinNormal> dco_decode_list_sum_with_twin_normal(dynamic raw);
+
+  @protected
+  List<SumWithTwinRustAsync> dco_decode_list_sum_with_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<SumWithTwinSync> dco_decode_list_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  List<TestIdTwinNormal> dco_decode_list_test_id_twin_normal(dynamic raw);
+
+  @protected
+  List<TestIdTwinRustAsync> dco_decode_list_test_id_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<TestIdTwinSync> dco_decode_list_test_id_twin_sync(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinNormal> dco_decode_list_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinRustAsync> dco_decode_list_weekdays_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSync> dco_decode_list_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  Log2TwinNormal dco_decode_log_2_twin_normal(dynamic raw);
+
+  @protected
+  Log2TwinRustAsync dco_decode_log_2_twin_rust_async(dynamic raw);
+
+  @protected
+  Log2TwinSync dco_decode_log_2_twin_sync(dynamic raw);
+
+  @protected
+  LogTwinNormal dco_decode_log_twin_normal(dynamic raw);
+
+  @protected
+  LogTwinRustAsync dco_decode_log_twin_rust_async(dynamic raw);
+
+  @protected
+  MacroStruct dco_decode_macro_struct(dynamic raw);
+
+  @protected
+  MeasureTwinNormal dco_decode_measure_twin_normal(dynamic raw);
+
+  @protected
+  MeasureTwinRustAsync dco_decode_measure_twin_rust_async(dynamic raw);
+
+  @protected
+  MeasureTwinSync dco_decode_measure_twin_sync(dynamic raw);
+
+  @protected
+  MessageIdTwinNormal dco_decode_message_id_twin_normal(dynamic raw);
+
+  @protected
+  MessageIdTwinRustAsync dco_decode_message_id_twin_rust_async(dynamic raw);
+
+  @protected
+  MessageIdTwinSync dco_decode_message_id_twin_sync(dynamic raw);
+
+  @protected
+  MirrorStructTwinNormal dco_decode_mirror_struct_twin_normal(dynamic raw);
+
+  @protected
+  MirrorStructTwinRustAsync dco_decode_mirror_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinNormal
+      dco_decode_more_than_just_one_raw_string_struct_twin_normal(dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinRustAsync
+      dco_decode_more_than_just_one_raw_string_struct_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSync
+      dco_decode_more_than_just_one_raw_string_struct_twin_sync(dynamic raw);
+
+  @protected
+  MyEnum dco_decode_my_enum(dynamic raw);
+
+  @protected
+  MyNestedStructTwinNormal dco_decode_my_nested_struct_twin_normal(dynamic raw);
+
+  @protected
+  MyNestedStructTwinRustAsync dco_decode_my_nested_struct_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyNestedStructTwinSync dco_decode_my_nested_struct_twin_sync(dynamic raw);
+
+  @protected
+  MySize dco_decode_my_size(dynamic raw);
+
+  @protected
+  MyStreamEntryTwinNormal dco_decode_my_stream_entry_twin_normal(dynamic raw);
+
+  @protected
+  MyStreamEntryTwinRustAsync dco_decode_my_stream_entry_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MyStruct dco_decode_my_struct(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinRustAsync dco_decode_my_tree_node_twin_rust_async(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSync dco_decode_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  NestedRawStringMirrored dco_decode_nested_raw_string_mirrored(dynamic raw);
+
+  @protected
+  NewSimpleStruct dco_decode_new_simple_struct(dynamic raw);
+
+  @protected
+  NewTypeIntTwinNormal dco_decode_new_type_int_twin_normal(dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsync dco_decode_new_type_int_twin_rust_async(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSync dco_decode_new_type_int_twin_sync(dynamic raw);
+
+  @protected
+  NoteTwinNormal dco_decode_note_twin_normal(dynamic raw);
+
+  @protected
+  NoteTwinRustAsync dco_decode_note_twin_rust_async(dynamic raw);
+
+  @protected
+  NoteTwinSync dco_decode_note_twin_sync(dynamic raw);
+
+  @protected
+  Numbers dco_decode_numbers(dynamic raw);
+
+  @protected
+  OldSimpleStruct dco_decode_old_simple_struct(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinMoi dco_decode_opaque_nested_twin_moi(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinNormal dco_decode_opaque_nested_twin_normal(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsync dco_decode_opaque_nested_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsyncMoi dco_decode_opaque_nested_twin_rust_async_moi(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSync dco_decode_opaque_nested_twin_sync(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncMoi dco_decode_opaque_nested_twin_sync_moi(dynamic raw);
+
+  @protected
+  String? dco_decode_opt_String(dynamic raw);
+
+  @protected
+  Object? dco_decode_opt_box_autoadd_DartOpaque(dynamic raw);
+
+  @protected
+  HideDataAnotherTwinMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_moi(
+          dynamic raw);
+
+  @protected
+  HideDataAnotherTwinNormal?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_normal(
+          dynamic raw);
+
+  @protected
+  HideDataTwinMoi? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_moi(
+      dynamic raw);
+
+  @protected
+  HideDataTwinNormal?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_normal(dynamic raw);
+
+  @protected
+  HideDataTwinRustAsync?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_moi(
+          dynamic raw);
+
+  @protected
+  HideDataTwinSync? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSyncMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+          dynamic raw);
+
+  @protected
+  ApplicationEnv? dco_decode_opt_box_autoadd_application_env(dynamic raw);
+
+  @protected
+  AttributeTwinNormal? dco_decode_opt_box_autoadd_attribute_twin_normal(
+      dynamic raw);
+
+  @protected
+  AttributeTwinRustAsync? dco_decode_opt_box_autoadd_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  AttributeTwinSync? dco_decode_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinNormal?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_normal(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSync?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinNormal?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_normal(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSync?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicStructTwinNormal? dco_decode_opt_box_autoadd_basic_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  BasicStructTwinRustAsync?
+      dco_decode_opt_box_autoadd_basic_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  BasicStructTwinSync? dco_decode_opt_box_autoadd_basic_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  bool? dco_decode_opt_box_autoadd_bool(dynamic raw);
+
+  @protected
+  ElementTwinNormal? dco_decode_opt_box_autoadd_element_twin_normal(
+      dynamic raw);
+
+  @protected
+  ElementTwinRustAsync? dco_decode_opt_box_autoadd_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ElementTwinSync? dco_decode_opt_box_autoadd_element_twin_sync(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_normal(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_sync(dynamic raw);
+
+  @protected
+  double? dco_decode_opt_box_autoadd_f_32(dynamic raw);
+
+  @protected
+  double? dco_decode_opt_box_autoadd_f_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_16(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_i_8(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_isize(dynamic raw);
+
+  @protected
+  MeasureTwinNormal? dco_decode_opt_box_autoadd_measure_twin_normal(
+      dynamic raw);
+
+  @protected
+  MeasureTwinRustAsync? dco_decode_opt_box_autoadd_measure_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  MeasureTwinSync? dco_decode_opt_box_autoadd_measure_twin_sync(dynamic raw);
+
+  @protected
+  NewTypeIntTwinNormal? dco_decode_opt_box_autoadd_new_type_int_twin_normal(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinRustAsync?
+      dco_decode_opt_box_autoadd_new_type_int_twin_rust_async(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSync? dco_decode_opt_box_autoadd_new_type_int_twin_sync(
+      dynamic raw);
+
+  @protected
+  (String, int)? dco_decode_opt_box_autoadd_record_string_i_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_16(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_u_8(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_autoadd_usize(dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal? dco_decode_opt_box_autoadd_weekdays_twin_normal(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync? dco_decode_opt_box_autoadd_weekdays_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinSync? dco_decode_opt_box_autoadd_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinNormal?
+      dco_decode_opt_box_benchmark_binary_tree_twin_normal(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinRustAsync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSync?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  bool? dco_decode_opt_box_bool(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinNormal? dco_decode_opt_box_exotic_optionals_twin_normal(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinRustAsync?
+      dco_decode_opt_box_exotic_optionals_twin_rust_async(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSync? dco_decode_opt_box_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  double? dco_decode_opt_box_f_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_i_32(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_i_64(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_i_8(dynamic raw);
+
+  @protected
+  int? dco_decode_opt_box_u_8(dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal>? dco_decode_opt_list_attribute_twin_normal(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync>? dco_decode_opt_list_attribute_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinSync>? dco_decode_opt_list_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<ElementTwinNormal>? dco_decode_opt_list_element_twin_normal(dynamic raw);
+
+  @protected
+  List<ElementTwinRustAsync>? dco_decode_opt_list_element_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  List<ElementTwinSync>? dco_decode_opt_list_element_twin_sync(dynamic raw);
+
+  @protected
+  List<AttributeTwinNormal?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_normal(dynamic raw);
+
+  @protected
+  List<AttributeTwinRustAsync?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  List<AttributeTwinSync?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync(dynamic raw);
+
+  @protected
+  Float32List? dco_decode_opt_list_prim_f_32_strict(dynamic raw);
+
+  @protected
+  Float64List? dco_decode_opt_list_prim_f_64_strict(dynamic raw);
+
+  @protected
+  Int32List? dco_decode_opt_list_prim_i_32_strict(dynamic raw);
+
+  @protected
+  Int8List? dco_decode_opt_list_prim_i_8_strict(dynamic raw);
+
+  @protected
+  Uint8List? dco_decode_opt_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  OptVecsTwinNormal dco_decode_opt_vecs_twin_normal(dynamic raw);
+
+  @protected
+  OptVecsTwinRustAsync dco_decode_opt_vecs_twin_rust_async(dynamic raw);
+
+  @protected
+  OptVecsTwinSync dco_decode_opt_vecs_twin_sync(dynamic raw);
+
+  @protected
+  PointTwinNormal dco_decode_point_twin_normal(dynamic raw);
+
+  @protected
+  PointTwinNormalArray2 dco_decode_point_twin_normal_array_2(dynamic raw);
+
+  @protected
+  PointTwinRustAsync dco_decode_point_twin_rust_async(dynamic raw);
+
+  @protected
+  PointTwinRustAsyncArray2 dco_decode_point_twin_rust_async_array_2(
+      dynamic raw);
+
+  @protected
+  PointTwinSync dco_decode_point_twin_sync(dynamic raw);
+
+  @protected
+  PointTwinSyncArray2 dco_decode_point_twin_sync_array_2(dynamic raw);
+
+  @protected
+  RawStringEnumMirrored dco_decode_raw_string_enum_mirrored(dynamic raw);
+
+  @protected
+  RawStringItemStructTwinNormal dco_decode_raw_string_item_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  RawStringItemStructTwinRustAsync
+      dco_decode_raw_string_item_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  RawStringItemStructTwinSync dco_decode_raw_string_item_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  RawStringMirrored dco_decode_raw_string_mirrored(dynamic raw);
+
+  @protected
+  (ApplicationSettings, RawStringEnumMirrored)
+      dco_decode_record_application_settings_raw_string_enum_mirrored(
+          dynamic raw);
+
+  @protected
+  (int, BasicGeneralEnumTwinNormal)
+      dco_decode_record_i_32_basic_general_enum_twin_normal(dynamic raw);
+
+  @protected
+  (int, BasicGeneralEnumTwinRustAsync)
+      dco_decode_record_i_32_basic_general_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  (int, BasicGeneralEnumTwinSync)
+      dco_decode_record_i_32_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  (int, BasicPrimitiveEnumTwinNormal)
+      dco_decode_record_i_32_basic_primitive_enum_twin_normal(dynamic raw);
+
+  @protected
+  (int, BasicPrimitiveEnumTwinRustAsync)
+      dco_decode_record_i_32_basic_primitive_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSync)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  (int, BasicStructTwinNormal) dco_decode_record_i_32_basic_struct_twin_normal(
+      dynamic raw);
+
+  @protected
+  (int, BasicStructTwinRustAsync)
+      dco_decode_record_i_32_basic_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  (int, BasicStructTwinSync) dco_decode_record_i_32_basic_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  (int, bool) dco_decode_record_i_32_bool(dynamic raw);
+
+  @protected
+  (int, double) dco_decode_record_i_32_f_32(dynamic raw);
+
+  @protected
+  (int, double) dco_decode_record_i_32_f_64(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_16(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_32(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_64(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_i_8(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_isize(dynamic raw);
+
+  @protected
+  (int, Uint8List) dco_decode_record_i_32_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  (int, String) dco_decode_record_i_32_string(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_16(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_32(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_64(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_u_8(dynamic raw);
+
+  @protected
+  (int, int) dco_decode_record_i_32_usize(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinNormal)
+      dco_decode_record_string_enum_simple_twin_normal(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinRustAsync)
+      dco_decode_record_string_enum_simple_twin_rust_async(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSync) dco_decode_record_string_enum_simple_twin_sync(
+      dynamic raw);
+
+  @protected
+  (String, int) dco_decode_record_string_i_32(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinNormal)
+      dco_decode_record_string_kitchen_sink_twin_normal(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinRustAsync)
+      dco_decode_record_string_kitchen_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSync) dco_decode_record_string_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  (String, Uint8List) dco_decode_record_string_list_prim_u_8_strict(
+      dynamic raw);
+
+  @protected
+  (String, MySize) dco_decode_record_string_my_size(dynamic raw);
+
+  @protected
+  (String, String) dco_decode_record_string_string(dynamic raw);
+
+  @protected
+  Sequences dco_decode_sequences(dynamic raw);
+
+  @protected
+  SomeStructTwinNormal dco_decode_some_struct_twin_normal(dynamic raw);
+
+  @protected
+  SomeStructTwinRustAsync dco_decode_some_struct_twin_rust_async(dynamic raw);
+
+  @protected
+  SomeStructTwinSync dco_decode_some_struct_twin_sync(dynamic raw);
+
+  @protected
+  SpeedTwinNormal dco_decode_speed_twin_normal(dynamic raw);
+
+  @protected
+  SpeedTwinRustAsync dco_decode_speed_twin_rust_async(dynamic raw);
+
+  @protected
+  SpeedTwinSync dco_decode_speed_twin_sync(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithCommentsTwinRustAsync
+      dco_decode_struct_with_comments_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSync dco_decode_struct_with_comments_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
+
+  @protected
+  StructWithEnumTwinRustAsync dco_decode_struct_with_enum_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  StructWithEnumTwinSync dco_decode_struct_with_enum_twin_sync(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinRustAsync
+      dco_decode_struct_with_one_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSync dco_decode_struct_with_one_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinRustAsync
+      dco_decode_struct_with_two_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSync dco_decode_struct_with_two_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinNormal dco_decode_struct_with_zero_field_twin_normal(
+      dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinRustAsync
+      dco_decode_struct_with_zero_field_twin_rust_async(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSync dco_decode_struct_with_zero_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  SumWithTwinNormal dco_decode_sum_with_twin_normal(dynamic raw);
+
+  @protected
+  SumWithTwinNormalArray3 dco_decode_sum_with_twin_normal_array_3(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsync dco_decode_sum_with_twin_rust_async(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsyncArray3 dco_decode_sum_with_twin_rust_async_array_3(
+      dynamic raw);
+
+  @protected
+  SumWithTwinSync dco_decode_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  SumWithTwinSyncArray3 dco_decode_sum_with_twin_sync_array_3(dynamic raw);
+
+  @protected
+  TestIdTwinNormal dco_decode_test_id_twin_normal(dynamic raw);
+
+  @protected
+  TestIdTwinNormalArray2 dco_decode_test_id_twin_normal_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinNormalArray4 dco_decode_test_id_twin_normal_array_4(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsync dco_decode_test_id_twin_rust_async(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncArray2 dco_decode_test_id_twin_rust_async_array_2(
+      dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncArray4 dco_decode_test_id_twin_rust_async_array_4(
+      dynamic raw);
+
+  @protected
+  TestIdTwinSync dco_decode_test_id_twin_sync(dynamic raw);
+
+  @protected
+  TestIdTwinSyncArray2 dco_decode_test_id_twin_sync_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinSyncArray4 dco_decode_test_id_twin_sync_array_4(dynamic raw);
+
+  @protected
+  TestModelTwinNormal dco_decode_test_model_twin_normal(dynamic raw);
+
+  @protected
+  TestModelTwinRustAsync dco_decode_test_model_twin_rust_async(dynamic raw);
+
+  @protected
+  TestModelTwinSync dco_decode_test_model_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinNormal
+      dco_decode_tuple_struct_with_one_field_twin_normal(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinRustAsync
+      dco_decode_tuple_struct_with_one_field_twin_rust_async(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSync
+      dco_decode_tuple_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinNormal
+      dco_decode_tuple_struct_with_two_field_twin_normal(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinRustAsync
+      dco_decode_tuple_struct_with_two_field_twin_rust_async(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSync
+      dco_decode_tuple_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_u_16(dynamic raw);
+
+  @protected
+  int dco_decode_u_32(dynamic raw);
+
+  @protected
+  int dco_decode_u_64(dynamic raw);
+
+  @protected
+  int dco_decode_u_8(dynamic raw);
+
+  @protected
+  U8Array1600 dco_decode_u_8_array_1600(dynamic raw);
+
+  @protected
+  U8Array32 dco_decode_u_8_array_32(dynamic raw);
+
+  @protected
+  U8Array5 dco_decode_u_8_array_5(dynamic raw);
+
+  @protected
+  U8Array8 dco_decode_u_8_array_8(dynamic raw);
+
+  @protected
+  void dco_decode_unit(dynamic raw);
+
+  @protected
+  UserIdTwinNormal dco_decode_user_id_twin_normal(dynamic raw);
+
+  @protected
+  UserIdTwinRustAsync dco_decode_user_id_twin_rust_async(dynamic raw);
+
+  @protected
+  UserIdTwinSync dco_decode_user_id_twin_sync(dynamic raw);
+
+  @protected
+  int dco_decode_usize(dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinNormal dco_decode_vec_of_primitive_pack_twin_normal(
+      dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinRustAsync
+      dco_decode_vec_of_primitive_pack_twin_rust_async(dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinSync dco_decode_vec_of_primitive_pack_twin_sync(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinNormal dco_decode_weekdays_twin_normal(dynamic raw);
+
+  @protected
+  WeekdaysTwinRustAsync dco_decode_weekdays_twin_rust_async(dynamic raw);
+
+  @protected
+  WeekdaysTwinSync dco_decode_weekdays_twin_sync(dynamic raw);
+
+  @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected

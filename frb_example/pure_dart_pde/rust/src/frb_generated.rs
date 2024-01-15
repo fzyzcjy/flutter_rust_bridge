@@ -22557,13 +22557,13 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 
 impl SseDecode for flutter_rust_bridge::for_generated::anyhow::Error {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(AnyhowException) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseDecode for backtrace::Backtrace {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Backtrace) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 

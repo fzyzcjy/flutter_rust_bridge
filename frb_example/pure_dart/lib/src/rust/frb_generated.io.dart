@@ -904,6 +904,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw);
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw);
@@ -911,6 +931,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -934,6 +964,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
+          dynamic raw);
+
+  @protected
   BoxMyTraitTwinSyncMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
           dynamic raw);
@@ -941,6 +991,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw);
 
   @protected
@@ -964,6 +1024,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw);
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
@@ -971,6 +1051,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -999,6 +1089,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw);
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
@@ -1006,6 +1116,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1039,6 +1159,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSseOpaqueTwoTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw);
+
+  @protected
   OpaqueOneTwinSyncOpaqueTwoTwinSync
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           dynamic raw);
@@ -1056,6 +1216,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSyncMoi
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1089,6 +1269,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw);
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw);
@@ -1096,6 +1296,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncMoi
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1119,6 +1329,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw);
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
@@ -1126,6 +1356,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncMoi
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1149,6 +1389,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw);
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
@@ -1156,6 +1416,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncMoi
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1179,6 +1449,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw);
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw);
@@ -1186,6 +1476,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncMoi
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1209,6 +1509,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw);
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
@@ -1216,6 +1536,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncMoi
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1249,6 +1579,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw);
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
@@ -1256,6 +1606,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncMoi
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1297,6 +1657,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinRustAsyncSse)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_unit(
+          dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse)
+      dco_decode_DartFn_Inputs_String_demo_struct_for_rust_call_dart_twin_sse_Output_unit(
+          dynamic raw);
+
+  @protected
   FutureOr<Object> Function() dco_decode_DartFn_Inputs__Output_DartOpaque(
       dynamic raw);
 
@@ -1320,6 +1690,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  FutureOr<DemoStructForRustCallDartTwinRustAsyncSse> Function(
+          DemoStructForRustCallDartTwinRustAsyncSse)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_rust_async_sse_Output_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  FutureOr<DemoStructForRustCallDartTwinSse> Function(
+          DemoStructForRustCallDartTwinSse)
+      dco_decode_DartFn_Inputs_demo_struct_for_rust_call_dart_twin_sse_Output_demo_struct_for_rust_call_dart_twin_sse(
+          dynamic raw);
+
+  @protected
   Object dco_decode_DartOpaque(dynamic raw);
 
   @protected
@@ -1337,8 +1719,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw);
 
   @protected
+  Map<String, EnumSimpleTwinRustAsyncSse>
+      dco_decode_Map_String_enum_simple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSse> dco_decode_Map_String_enum_simple_twin_sse(
+      dynamic raw);
+
+  @protected
   Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
       dynamic raw);
+
+  @protected
+  Map<String, EnumSimpleTwinSyncSse>
+      dco_decode_Map_String_enum_simple_twin_sync_sse(dynamic raw);
 
   @protected
   Map<String, KitchenSinkTwinNormal>
@@ -1349,8 +1743,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw);
 
   @protected
+  Map<String, KitchenSinkTwinRustAsyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSse> dco_decode_Map_String_kitchen_sink_twin_sse(
+      dynamic raw);
+
+  @protected
   Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
       dynamic raw);
+
+  @protected
+  Map<String, KitchenSinkTwinSyncSse>
+      dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
   Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict(
@@ -1371,8 +1777,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_i_32_basic_general_enum_twin_rust_async(dynamic raw);
 
   @protected
+  Map<int, BasicGeneralEnumTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_sse(dynamic raw);
+
+  @protected
   Map<int, BasicGeneralEnumTwinSync>
       dco_decode_Map_i_32_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  Map<int, BasicGeneralEnumTwinSyncSse>
+      dco_decode_Map_i_32_basic_general_enum_twin_sync_sse(dynamic raw);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinNormal>
@@ -1383,8 +1801,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async(dynamic raw);
 
   @protected
+  Map<int, BasicPrimitiveEnumTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sse(dynamic raw);
+
+  @protected
   Map<int, BasicPrimitiveEnumTwinSync>
       dco_decode_Map_i_32_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  Map<int, BasicPrimitiveEnumTwinSyncSse>
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync_sse(dynamic raw);
 
   @protected
   Map<int, BasicStructTwinNormal> dco_decode_Map_i_32_basic_struct_twin_normal(
@@ -1395,8 +1825,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_Map_i_32_basic_struct_twin_rust_async(dynamic raw);
 
   @protected
+  Map<int, BasicStructTwinRustAsyncSse>
+      dco_decode_Map_i_32_basic_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Map<int, BasicStructTwinSse> dco_decode_Map_i_32_basic_struct_twin_sse(
+      dynamic raw);
+
+  @protected
   Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync(
       dynamic raw);
+
+  @protected
+  Map<int, BasicStructTwinSyncSse>
+      dco_decode_Map_i_32_basic_struct_twin_sync_sse(dynamic raw);
 
   @protected
   Map<int, bool> dco_decode_Map_i_32_bool(dynamic raw);
@@ -1456,11 +1898,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_MutexHideDataTwinRustAsyncMoi(dynamic raw);
 
   @protected
+  MutexHideDataTwinRustAsyncSse
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSse(dynamic raw);
+
+  @protected
+  MutexHideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_MutexHideDataTwinRustAsyncSseMoi(dynamic raw);
+
+  @protected
+  MutexHideDataTwinSse dco_decode_RustOpaque_MutexHideDataTwinSse(dynamic raw);
+
+  @protected
+  MutexHideDataTwinSseMoi dco_decode_RustOpaque_MutexHideDataTwinSseMoi(
+      dynamic raw);
+
+  @protected
   MutexHideDataTwinSync dco_decode_RustOpaque_MutexHideDataTwinSync(
       dynamic raw);
 
   @protected
   MutexHideDataTwinSyncMoi dco_decode_RustOpaque_MutexHideDataTwinSyncMoi(
+      dynamic raw);
+
+  @protected
+  MutexHideDataTwinSyncSse dco_decode_RustOpaque_MutexHideDataTwinSyncSse(
+      dynamic raw);
+
+  @protected
+  MutexHideDataTwinSyncSseMoi dco_decode_RustOpaque_MutexHideDataTwinSyncSseMoi(
       dynamic raw);
 
   @protected
@@ -1480,12 +1945,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncMoi(dynamic raw);
 
   @protected
+  RwLockHideDataTwinRustAsyncSse
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSse(dynamic raw);
+
+  @protected
+  RwLockHideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinRustAsyncSseMoi(dynamic raw);
+
+  @protected
+  RwLockHideDataTwinSse dco_decode_RustOpaque_RwLockHideDataTwinSse(
+      dynamic raw);
+
+  @protected
+  RwLockHideDataTwinSseMoi dco_decode_RustOpaque_RwLockHideDataTwinSseMoi(
+      dynamic raw);
+
+  @protected
   RwLockHideDataTwinSync dco_decode_RustOpaque_RwLockHideDataTwinSync(
       dynamic raw);
 
   @protected
   RwLockHideDataTwinSyncMoi dco_decode_RustOpaque_RwLockHideDataTwinSyncMoi(
       dynamic raw);
+
+  @protected
+  RwLockHideDataTwinSyncSse dco_decode_RustOpaque_RwLockHideDataTwinSyncSse(
+      dynamic raw);
+
+  @protected
+  RwLockHideDataTwinSyncSseMoi
+      dco_decode_RustOpaque_RwLockHideDataTwinSyncSseMoi(dynamic raw);
 
   @protected
   BoxDartDebugTwinMoi dco_decode_RustOpaque_box_dynDartDebugTwinMoi(
@@ -1504,12 +1993,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncMoi(dynamic raw);
 
   @protected
+  BoxDartDebugTwinRustAsyncSse
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSse(dynamic raw);
+
+  @protected
+  BoxDartDebugTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinRustAsyncSseMoi(dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSse dco_decode_RustOpaque_box_dynDartDebugTwinSse(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSseMoi dco_decode_RustOpaque_box_dynDartDebugTwinSseMoi(
+      dynamic raw);
+
+  @protected
   BoxDartDebugTwinSync dco_decode_RustOpaque_box_dynDartDebugTwinSync(
       dynamic raw);
 
   @protected
   BoxDartDebugTwinSyncMoi dco_decode_RustOpaque_box_dynDartDebugTwinSyncMoi(
       dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSyncSse dco_decode_RustOpaque_box_dynDartDebugTwinSyncSse(
+      dynamic raw);
+
+  @protected
+  BoxDartDebugTwinSyncSseMoi
+      dco_decode_RustOpaque_box_dynDartDebugTwinSyncSseMoi(dynamic raw);
 
   @protected
   BoxFnStringString
@@ -1537,6 +2050,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BoxHelloTraitTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSseMoi(
+          dynamic raw);
+
+  @protected
   BoxHelloTraitTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw);
@@ -1544,6 +2077,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxHelloTraitTwinSyncMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  BoxHelloTraitTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynHelloTraitTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1567,6 +2110,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BoxMyTraitTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinRustAsyncSseSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSseSendSync(
+          dynamic raw);
+
+  @protected
   BoxMyTraitTwinSyncMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncMoiSendSync(
           dynamic raw);
@@ -1574,6 +2137,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BoxMyTraitTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseMoiSendSync(
+          dynamic raw);
+
+  @protected
+  BoxMyTraitTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockBoxdynMyTraitTwinSyncSseSendSync(
           dynamic raw);
 
   @protected
@@ -1597,6 +2170,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  NonCloneSimpleTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSseMoi(
+          dynamic raw);
+
+  @protected
   NonCloneSimpleTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
           dynamic raw);
@@ -1604,6 +2197,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   NonCloneSimpleTwinSyncMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  NonCloneSimpleTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1637,6 +2240,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSseMoi(
+          dynamic raw);
+
+  @protected
   StructWithGoodAndOpaqueFieldTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic raw);
@@ -1644,6 +2267,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithGoodAndOpaqueFieldTwinSyncMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockStructWithGoodAndOpaqueFieldTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1682,6 +2315,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueOneTwinRustAsyncSsecrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sseOpaqueTwoTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueOneTwinRustAsyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_rust_async_sse_moiOpaqueTwoTwinRustAsyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSseOpaqueTwoTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueOneTwinSsecrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sseOpaqueTwoTwinSse(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSseMoiOpaqueTwoTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueOneTwinSseMoicrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sse_moiOpaqueTwoTwinSseMoi(
+          dynamic raw);
+
+  @protected
   OpaqueOneTwinSyncOpaqueTwoTwinSync
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueOneTwinSynccrateapipseudo_manualrust_auto_opaque_twin_syncOpaqueTwoTwinSync(
           dynamic raw);
@@ -1699,6 +2372,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   OpaqueTwoTwinSyncMoi
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_moiOpaqueTwoTwinSyncMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncSseOpaqueTwoTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueOneTwinSyncSsecrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sseOpaqueTwoTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  OpaqueOneTwinSyncSseMoiOpaqueTwoTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueOneTwinSyncSseMoicrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
+          dynamic raw);
+
+  @protected
+  OpaqueTwoTwinSyncSseMoi
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockcrateapipseudo_manualrust_auto_opaque_twin_sync_sse_moiOpaqueTwoTwinSyncSseMoi(
           dynamic raw);
 
   @protected
@@ -1728,12 +2421,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_moi(dynamic raw);
 
   @protected
+  FrbOpaqueReturnTwinRustAsyncSse
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_rust_async_sse_moi(
+          dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinSse dco_decode_RustOpaque_frb_opaque_return_twin_sse(
+      dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sse_moi(dynamic raw);
+
+  @protected
   FrbOpaqueReturnTwinSync dco_decode_RustOpaque_frb_opaque_return_twin_sync(
       dynamic raw);
 
   @protected
   FrbOpaqueReturnTwinSyncMoi
       dco_decode_RustOpaque_frb_opaque_return_twin_sync_moi(dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinSyncSse
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_sse(dynamic raw);
+
+  @protected
+  FrbOpaqueReturnTwinSyncSseMoi
+      dco_decode_RustOpaque_frb_opaque_return_twin_sync_sse_moi(dynamic raw);
 
   @protected
   FrbOpaqueSyncReturnTwinMoi
@@ -1744,12 +2462,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_frb_opaque_sync_return_twin_normal(dynamic raw);
 
   @protected
+  FrbOpaqueSyncReturnTwinSse
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_sse(dynamic raw);
+
+  @protected
+  FrbOpaqueSyncReturnTwinSseMoi
+      dco_decode_RustOpaque_frb_opaque_sync_return_twin_sse_moi(dynamic raw);
+
+  @protected
   HideDataAnotherTwinMoi dco_decode_RustOpaque_hide_data_another_twin_moi(
       dynamic raw);
 
   @protected
   HideDataAnotherTwinNormal dco_decode_RustOpaque_hide_data_another_twin_normal(
       dynamic raw);
+
+  @protected
+  HideDataAnotherTwinSse dco_decode_RustOpaque_hide_data_another_twin_sse(
+      dynamic raw);
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      dco_decode_RustOpaque_hide_data_another_twin_sse_moi(dynamic raw);
 
   @protected
   HideDataTwinMoi dco_decode_RustOpaque_hide_data_twin_moi(dynamic raw);
@@ -1782,6 +2516,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_hide_data_twin_rust_async_moi_array_2(dynamic raw);
 
   @protected
+  HideDataTwinRustAsyncSse dco_decode_RustOpaque_hide_data_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncSseArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_array_2(dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncSseMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_rust_async_sse_moi_array_2(
+          dynamic raw);
+
+  @protected
+  HideDataTwinSse dco_decode_RustOpaque_hide_data_twin_sse(dynamic raw);
+
+  @protected
+  HideDataTwinSseArray2 dco_decode_RustOpaque_hide_data_twin_sse_array_2(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSseMoi dco_decode_RustOpaque_hide_data_twin_sse_moi(dynamic raw);
+
+  @protected
+  HideDataTwinSseMoiArray2 dco_decode_RustOpaque_hide_data_twin_sse_moi_array_2(
+      dynamic raw);
+
+  @protected
   HideDataTwinSync dco_decode_RustOpaque_hide_data_twin_sync(dynamic raw);
 
   @protected
@@ -1795,6 +2560,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   HideDataTwinSyncMoiArray2
       dco_decode_RustOpaque_hide_data_twin_sync_moi_array_2(dynamic raw);
+
+  @protected
+  HideDataTwinSyncSse dco_decode_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSyncSseArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_sse_array_2(dynamic raw);
+
+  @protected
+  HideDataTwinSyncSseMoi dco_decode_RustOpaque_hide_data_twin_sync_sse_moi(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSyncSseMoiArray2
+      dco_decode_RustOpaque_hide_data_twin_sync_sse_moi_array_2(dynamic raw);
 
   @protected
   I16 dco_decode_RustOpaque_i_16(dynamic raw);
@@ -1819,12 +2600,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_RustOpaque_non_clone_data_twin_rust_async_moi(dynamic raw);
 
   @protected
+  NonCloneDataTwinRustAsyncSse
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  NonCloneDataTwinRustAsyncSseMoi
+      dco_decode_RustOpaque_non_clone_data_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  NonCloneDataTwinSse dco_decode_RustOpaque_non_clone_data_twin_sse(
+      dynamic raw);
+
+  @protected
+  NonCloneDataTwinSseMoi dco_decode_RustOpaque_non_clone_data_twin_sse_moi(
+      dynamic raw);
+
+  @protected
   NonCloneDataTwinSync dco_decode_RustOpaque_non_clone_data_twin_sync(
       dynamic raw);
 
   @protected
   NonCloneDataTwinSyncMoi dco_decode_RustOpaque_non_clone_data_twin_sync_moi(
       dynamic raw);
+
+  @protected
+  NonCloneDataTwinSyncSse dco_decode_RustOpaque_non_clone_data_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  NonCloneDataTwinSyncSseMoi
+      dco_decode_RustOpaque_non_clone_data_twin_sync_sse_moi(dynamic raw);
 
   @protected
   Set<String> dco_decode_Set_String(dynamic raw);
@@ -1845,7 +2650,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ATwinRustAsync dco_decode_a_twin_rust_async(dynamic raw);
 
   @protected
+  ATwinRustAsyncSse dco_decode_a_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ATwinSse dco_decode_a_twin_sse(dynamic raw);
+
+  @protected
   ATwinSync dco_decode_a_twin_sync(dynamic raw);
+
+  @protected
+  ATwinSyncSse dco_decode_a_twin_sync_sse(dynamic raw);
 
   @protected
   AbcTwinNormal dco_decode_abc_twin_normal(dynamic raw);
@@ -1854,7 +2668,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AbcTwinRustAsync dco_decode_abc_twin_rust_async(dynamic raw);
 
   @protected
+  AbcTwinRustAsyncSse dco_decode_abc_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AbcTwinSse dco_decode_abc_twin_sse(dynamic raw);
+
+  @protected
   AbcTwinSync dco_decode_abc_twin_sync(dynamic raw);
+
+  @protected
+  AbcTwinSyncSse dco_decode_abc_twin_sync_sse(dynamic raw);
 
   @protected
   AnotherMacroStructTwinNormal dco_decode_another_macro_struct_twin_normal(
@@ -1867,7 +2690,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnotherTwinRustAsync dco_decode_another_twin_rust_async(dynamic raw);
 
   @protected
+  AnotherTwinRustAsyncSse dco_decode_another_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AnotherTwinSse dco_decode_another_twin_sse(dynamic raw);
+
+  @protected
   AnotherTwinSync dco_decode_another_twin_sync(dynamic raw);
+
+  @protected
+  AnotherTwinSyncSse dco_decode_another_twin_sync_sse(dynamic raw);
 
   @protected
   ApplicationEnv dco_decode_application_env(dynamic raw);
@@ -1891,7 +2723,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AttributeTwinRustAsync dco_decode_attribute_twin_rust_async(dynamic raw);
 
   @protected
+  AttributeTwinRustAsyncSse dco_decode_attribute_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  AttributeTwinSse dco_decode_attribute_twin_sse(dynamic raw);
+
+  @protected
   AttributeTwinSync dco_decode_attribute_twin_sync(dynamic raw);
+
+  @protected
+  AttributeTwinSyncSse dco_decode_attribute_twin_sync_sse(dynamic raw);
 
   @protected
   BTwinNormal dco_decode_b_twin_normal(dynamic raw);
@@ -1900,7 +2742,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BTwinRustAsync dco_decode_b_twin_rust_async(dynamic raw);
 
   @protected
+  BTwinRustAsyncSse dco_decode_b_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BTwinSse dco_decode_b_twin_sse(dynamic raw);
+
+  @protected
   BTwinSync dco_decode_b_twin_sync(dynamic raw);
+
+  @protected
+  BTwinSyncSse dco_decode_b_twin_sync_sse(dynamic raw);
 
   @protected
   BasicGeneralEnumTwinNormal dco_decode_basic_general_enum_twin_normal(
@@ -1911,7 +2762,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      dco_decode_basic_general_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSse dco_decode_basic_general_enum_twin_sse(dynamic raw);
+
+  @protected
   BasicGeneralEnumTwinSync dco_decode_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSyncSse dco_decode_basic_general_enum_twin_sync_sse(
+      dynamic raw);
 
   @protected
   BasicPrimitiveEnumTwinNormal dco_decode_basic_primitive_enum_twin_normal(
@@ -1922,7 +2784,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_basic_primitive_enum_twin_rust_async(dynamic raw);
 
   @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      dco_decode_basic_primitive_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSse dco_decode_basic_primitive_enum_twin_sse(
+      dynamic raw);
+
+  @protected
   BasicPrimitiveEnumTwinSync dco_decode_basic_primitive_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse dco_decode_basic_primitive_enum_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -1932,7 +2806,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BasicStructTwinRustAsync dco_decode_basic_struct_twin_rust_async(dynamic raw);
 
   @protected
+  BasicStructTwinRustAsyncSse dco_decode_basic_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  BasicStructTwinSse dco_decode_basic_struct_twin_sse(dynamic raw);
+
+  @protected
   BasicStructTwinSync dco_decode_basic_struct_twin_sync(dynamic raw);
+
+  @protected
+  BasicStructTwinSyncSse dco_decode_basic_struct_twin_sync_sse(dynamic raw);
 
   @protected
   BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
@@ -1943,7 +2827,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_benchmark_binary_tree_twin_rust_async(dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
   BenchmarkBinaryTreeTwinSync dco_decode_benchmark_binary_tree_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse dco_decode_benchmark_binary_tree_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -1954,7 +2850,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BenchmarkBlobTwinRustAsyncSse dco_decode_benchmark_blob_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_benchmark_blob_twin_sse(dynamic raw);
+
+  @protected
   BenchmarkBlobTwinSync dco_decode_benchmark_blob_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_benchmark_blob_twin_sync_sse(dynamic raw);
 
   @protected
   BigBuffersTwinNormal dco_decode_big_buffers_twin_normal(dynamic raw);
@@ -1963,7 +2869,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigBuffersTwinRustAsync dco_decode_big_buffers_twin_rust_async(dynamic raw);
 
   @protected
+  BigBuffersTwinRustAsyncSse dco_decode_big_buffers_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  BigBuffersTwinSse dco_decode_big_buffers_twin_sse(dynamic raw);
+
+  @protected
   BigBuffersTwinSync dco_decode_big_buffers_twin_sync(dynamic raw);
+
+  @protected
+  BigBuffersTwinSyncSse dco_decode_big_buffers_twin_sync_sse(dynamic raw);
 
   @protected
   BlobTwinNormal dco_decode_blob_twin_normal(dynamic raw);
@@ -1972,7 +2888,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BlobTwinRustAsync dco_decode_blob_twin_rust_async(dynamic raw);
 
   @protected
+  BlobTwinRustAsyncSse dco_decode_blob_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BlobTwinSse dco_decode_blob_twin_sse(dynamic raw);
+
+  @protected
   BlobTwinSync dco_decode_blob_twin_sync(dynamic raw);
+
+  @protected
+  BlobTwinSyncSse dco_decode_blob_twin_sync_sse(dynamic raw);
 
   @protected
   bool dco_decode_bool(dynamic raw);
@@ -2002,6 +2927,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  HideDataAnotherTwinSse
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse(dynamic raw);
+
+  @protected
+  HideDataAnotherTwinSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          dynamic raw);
+
+  @protected
   HideDataTwinMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_moi(
       dynamic raw);
 
@@ -2019,6 +2953,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  HideDataTwinRustAsyncSse
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw);
+
+  @protected
+  HideDataTwinSse dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSseMoi dco_decode_box_autoadd_RustOpaque_hide_data_twin_sse_moi(
+      dynamic raw);
+
+  @protected
   HideDataTwinSync dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync(
       dynamic raw);
 
@@ -2027,13 +2979,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  HideDataTwinSyncSse dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSyncSseMoi
+      dco_decode_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
+          dynamic raw);
+
+  @protected
   ATwinNormal dco_decode_box_autoadd_a_twin_normal(dynamic raw);
 
   @protected
   ATwinRustAsync dco_decode_box_autoadd_a_twin_rust_async(dynamic raw);
 
   @protected
+  ATwinRustAsyncSse dco_decode_box_autoadd_a_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ATwinSse dco_decode_box_autoadd_a_twin_sse(dynamic raw);
+
+  @protected
   ATwinSync dco_decode_box_autoadd_a_twin_sync(dynamic raw);
+
+  @protected
+  ATwinSyncSse dco_decode_box_autoadd_a_twin_sync_sse(dynamic raw);
 
   @protected
   AbcTwinNormal dco_decode_box_autoadd_abc_twin_normal(dynamic raw);
@@ -2042,7 +3012,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AbcTwinRustAsync dco_decode_box_autoadd_abc_twin_rust_async(dynamic raw);
 
   @protected
+  AbcTwinRustAsyncSse dco_decode_box_autoadd_abc_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  AbcTwinSse dco_decode_box_autoadd_abc_twin_sse(dynamic raw);
+
+  @protected
   AbcTwinSync dco_decode_box_autoadd_abc_twin_sync(dynamic raw);
+
+  @protected
+  AbcTwinSyncSse dco_decode_box_autoadd_abc_twin_sync_sse(dynamic raw);
 
   @protected
   ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
@@ -2058,7 +3038,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  AttributeTwinRustAsyncSse
+      dco_decode_box_autoadd_attribute_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AttributeTwinSse dco_decode_box_autoadd_attribute_twin_sse(dynamic raw);
+
+  @protected
   AttributeTwinSync dco_decode_box_autoadd_attribute_twin_sync(dynamic raw);
+
+  @protected
+  AttributeTwinSyncSse dco_decode_box_autoadd_attribute_twin_sync_sse(
+      dynamic raw);
 
   @protected
   BTwinNormal dco_decode_box_autoadd_b_twin_normal(dynamic raw);
@@ -2067,7 +3058,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BTwinRustAsync dco_decode_box_autoadd_b_twin_rust_async(dynamic raw);
 
   @protected
+  BTwinRustAsyncSse dco_decode_box_autoadd_b_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BTwinSse dco_decode_box_autoadd_b_twin_sse(dynamic raw);
+
+  @protected
   BTwinSync dco_decode_box_autoadd_b_twin_sync(dynamic raw);
+
+  @protected
+  BTwinSyncSse dco_decode_box_autoadd_b_twin_sync_sse(dynamic raw);
 
   @protected
   BasicGeneralEnumTwinNormal
@@ -2078,8 +3078,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_basic_general_enum_twin_rust_async(dynamic raw);
 
   @protected
+  BasicGeneralEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSse dco_decode_box_autoadd_basic_general_enum_twin_sse(
+      dynamic raw);
+
+  @protected
   BasicGeneralEnumTwinSync dco_decode_box_autoadd_basic_general_enum_twin_sync(
       dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSyncSse
+      dco_decode_box_autoadd_basic_general_enum_twin_sync_sse(dynamic raw);
 
   @protected
   BasicPrimitiveEnumTwinNormal
@@ -2090,8 +3103,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async(dynamic raw);
 
   @protected
+  BasicPrimitiveEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sse(dynamic raw);
+
+  @protected
   BasicPrimitiveEnumTwinSync
       dco_decode_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse
+      dco_decode_box_autoadd_basic_primitive_enum_twin_sync_sse(dynamic raw);
 
   @protected
   BasicStructTwinNormal dco_decode_box_autoadd_basic_struct_twin_normal(
@@ -2102,7 +3128,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BasicStructTwinRustAsyncSse
+      dco_decode_box_autoadd_basic_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BasicStructTwinSse dco_decode_box_autoadd_basic_struct_twin_sse(dynamic raw);
+
+  @protected
   BasicStructTwinSync dco_decode_box_autoadd_basic_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  BasicStructTwinSyncSse dco_decode_box_autoadd_basic_struct_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2114,8 +3151,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async(dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sse(dynamic raw);
+
+  @protected
   BenchmarkBinaryTreeTwinSync
       dco_decode_box_autoadd_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_autoadd_benchmark_binary_tree_twin_sync_sse(dynamic raw);
 
   @protected
   BenchmarkBlobTwinNormal dco_decode_box_autoadd_benchmark_blob_twin_normal(
@@ -2126,7 +3176,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_benchmark_blob_twin_rust_async(dynamic raw);
 
   @protected
+  BenchmarkBlobTwinRustAsyncSse
+      dco_decode_box_autoadd_benchmark_blob_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSse dco_decode_box_autoadd_benchmark_blob_twin_sse(
+      dynamic raw);
+
+  @protected
   BenchmarkBlobTwinSync dco_decode_box_autoadd_benchmark_blob_twin_sync(
+      dynamic raw);
+
+  @protected
+  BenchmarkBlobTwinSyncSse dco_decode_box_autoadd_benchmark_blob_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2139,7 +3201,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CTwinRustAsync dco_decode_box_autoadd_c_twin_rust_async(dynamic raw);
 
   @protected
+  CTwinRustAsyncSse dco_decode_box_autoadd_c_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CTwinSse dco_decode_box_autoadd_c_twin_sse(dynamic raw);
+
+  @protected
   CTwinSync dco_decode_box_autoadd_c_twin_sync(dynamic raw);
+
+  @protected
+  CTwinSyncSse dco_decode_box_autoadd_c_twin_sync_sse(dynamic raw);
 
   @protected
   ConcatenateWithTwinNormal dco_decode_box_autoadd_concatenate_with_twin_normal(
@@ -2150,8 +3221,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_concatenate_with_twin_rust_async(dynamic raw);
 
   @protected
+  ConcatenateWithTwinRustAsyncSse
+      dco_decode_box_autoadd_concatenate_with_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSse dco_decode_box_autoadd_concatenate_with_twin_sse(
+      dynamic raw);
+
+  @protected
   ConcatenateWithTwinSync dco_decode_box_autoadd_concatenate_with_twin_sync(
       dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSyncSse
+      dco_decode_box_autoadd_concatenate_with_twin_sync_sse(dynamic raw);
 
   @protected
   CustomNestedError2TwinNormal
@@ -2162,8 +3245,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async(dynamic raw);
 
   @protected
+  CustomNestedError2TwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sse(dynamic raw);
+
+  @protected
   CustomNestedError2TwinSync
       dco_decode_box_autoadd_custom_nested_error_2_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_2_twin_sync_sse(dynamic raw);
 
   @protected
   CustomNestedErrorInnerTwinNormal
@@ -2175,8 +3271,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sse(dynamic raw);
+
+  @protected
   CustomNestedErrorInnerTwinSync
       dco_decode_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_inner_twin_sync_sse(
+          dynamic raw);
 
   @protected
   CustomNestedErrorOuterTwinNormal
@@ -2188,8 +3298,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sse(dynamic raw);
+
+  @protected
   CustomNestedErrorOuterTwinSync
       dco_decode_box_autoadd_custom_nested_error_outer_twin_sync(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      dco_decode_box_autoadd_custom_nested_error_outer_twin_sync_sse(
+          dynamic raw);
 
   @protected
   CustomStructErrorTwinNormal
@@ -2200,8 +3324,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_custom_struct_error_twin_rust_async(dynamic raw);
 
   @protected
+  CustomStructErrorTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_struct_error_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSse dco_decode_box_autoadd_custom_struct_error_twin_sse(
+      dynamic raw);
+
+  @protected
   CustomStructErrorTwinSync
       dco_decode_box_autoadd_custom_struct_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSyncSse
+      dco_decode_box_autoadd_custom_struct_error_twin_sync_sse(dynamic raw);
 
   @protected
   CustomStructTwinNormal dco_decode_box_autoadd_custom_struct_twin_normal(
@@ -2212,7 +3349,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_custom_struct_twin_rust_async(dynamic raw);
 
   @protected
+  CustomStructTwinRustAsyncSse
+      dco_decode_box_autoadd_custom_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomStructTwinSse dco_decode_box_autoadd_custom_struct_twin_sse(
+      dynamic raw);
+
+  @protected
   CustomStructTwinSync dco_decode_box_autoadd_custom_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinSyncSse dco_decode_box_autoadd_custom_struct_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2224,7 +3373,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  CustomizedTwinRustAsyncSse
+      dco_decode_box_autoadd_customized_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomizedTwinSse dco_decode_box_autoadd_customized_twin_sse(dynamic raw);
+
+  @protected
   CustomizedTwinSync dco_decode_box_autoadd_customized_twin_sync(dynamic raw);
+
+  @protected
+  CustomizedTwinSyncSse dco_decode_box_autoadd_customized_twin_sync_sse(
+      dynamic raw);
 
   @protected
   DartOpaqueNestedTwinNormal
@@ -2235,8 +3395,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async(dynamic raw);
 
   @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      dco_decode_box_autoadd_dart_opaque_nested_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSse dco_decode_box_autoadd_dart_opaque_nested_twin_sse(
+      dynamic raw);
+
+  @protected
   DartOpaqueNestedTwinSync dco_decode_box_autoadd_dart_opaque_nested_twin_sync(
       dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSyncSse
+      dco_decode_box_autoadd_dart_opaque_nested_twin_sync_sse(dynamic raw);
 
   @protected
   ElementTwinNormal dco_decode_box_autoadd_element_twin_normal(dynamic raw);
@@ -2246,7 +3419,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  ElementTwinRustAsyncSse dco_decode_box_autoadd_element_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  ElementTwinSse dco_decode_box_autoadd_element_twin_sse(dynamic raw);
+
+  @protected
   ElementTwinSync dco_decode_box_autoadd_element_twin_sync(dynamic raw);
+
+  @protected
+  ElementTwinSyncSse dco_decode_box_autoadd_element_twin_sync_sse(dynamic raw);
 
   @protected
   EmptyTwinNormal dco_decode_box_autoadd_empty_twin_normal(dynamic raw);
@@ -2255,7 +3438,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   EmptyTwinRustAsync dco_decode_box_autoadd_empty_twin_rust_async(dynamic raw);
 
   @protected
+  EmptyTwinRustAsyncSse dco_decode_box_autoadd_empty_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EmptyTwinSse dco_decode_box_autoadd_empty_twin_sse(dynamic raw);
+
+  @protected
   EmptyTwinSync dco_decode_box_autoadd_empty_twin_sync(dynamic raw);
+
+  @protected
+  EmptyTwinSyncSse dco_decode_box_autoadd_empty_twin_sync_sse(dynamic raw);
 
   @protected
   EnumDartOpaqueTwinNormal dco_decode_box_autoadd_enum_dart_opaque_twin_normal(
@@ -2266,8 +3459,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async(dynamic raw);
 
   @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_dart_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSse dco_decode_box_autoadd_enum_dart_opaque_twin_sse(
+      dynamic raw);
+
+  @protected
   EnumDartOpaqueTwinSync dco_decode_box_autoadd_enum_dart_opaque_twin_sync(
       dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSyncSse
+      dco_decode_box_autoadd_enum_dart_opaque_twin_sync_sse(dynamic raw);
 
   @protected
   EnumOpaqueTwinMoi dco_decode_box_autoadd_enum_opaque_twin_moi(dynamic raw);
@@ -2285,10 +3490,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_enum_opaque_twin_rust_async_moi(dynamic raw);
 
   @protected
+  EnumOpaqueTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_enum_opaque_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSse dco_decode_box_autoadd_enum_opaque_twin_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSseMoi dco_decode_box_autoadd_enum_opaque_twin_sse_moi(
+      dynamic raw);
+
+  @protected
   EnumOpaqueTwinSync dco_decode_box_autoadd_enum_opaque_twin_sync(dynamic raw);
 
   @protected
   EnumOpaqueTwinSyncMoi dco_decode_box_autoadd_enum_opaque_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSse dco_decode_box_autoadd_enum_opaque_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi dco_decode_box_autoadd_enum_opaque_twin_sync_sse_moi(
       dynamic raw);
 
   @protected
@@ -2300,8 +3528,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async(dynamic raw);
 
   @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSse dco_decode_box_autoadd_enum_with_item_mixed_twin_sse(
+      dynamic raw);
+
+  @protected
   EnumWithItemMixedTwinSync
       dco_decode_box_autoadd_enum_with_item_mixed_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_mixed_twin_sync_sse(dynamic raw);
 
   @protected
   EnumWithItemStructTwinNormal
@@ -2312,8 +3553,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async(dynamic raw);
 
   @protected
+  EnumWithItemStructTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sse(dynamic raw);
+
+  @protected
   EnumWithItemStructTwinSync
       dco_decode_box_autoadd_enum_with_item_struct_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_struct_twin_sync_sse(dynamic raw);
 
   @protected
   EnumWithItemTupleTwinNormal
@@ -2324,14 +3578,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async(dynamic raw);
 
   @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSse dco_decode_box_autoadd_enum_with_item_tuple_twin_sse(
+      dynamic raw);
+
+  @protected
   EnumWithItemTupleTwinSync
       dco_decode_box_autoadd_enum_with_item_tuple_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSyncSse
+      dco_decode_box_autoadd_enum_with_item_tuple_twin_sync_sse(dynamic raw);
 
   @protected
   EventTwinNormal dco_decode_box_autoadd_event_twin_normal(dynamic raw);
 
   @protected
   EventTwinRustAsync dco_decode_box_autoadd_event_twin_rust_async(dynamic raw);
+
+  @protected
+  EventTwinRustAsyncSse dco_decode_box_autoadd_event_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EventTwinSse dco_decode_box_autoadd_event_twin_sse(dynamic raw);
 
   @protected
   ExoticOptionalsTwinNormal dco_decode_box_autoadd_exotic_optionals_twin_normal(
@@ -2342,8 +3616,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw);
 
   @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_box_autoadd_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_box_autoadd_exotic_optionals_twin_sse(
+      dynamic raw);
+
+  @protected
   ExoticOptionalsTwinSync dco_decode_box_autoadd_exotic_optionals_twin_sync(
       dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse
+      dco_decode_box_autoadd_exotic_optionals_twin_sync_sse(dynamic raw);
 
   @protected
   double dco_decode_box_autoadd_f_32(dynamic raw);
@@ -2383,7 +3669,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  FeedIdTwinRustAsyncSse dco_decode_box_autoadd_feed_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  FeedIdTwinSse dco_decode_box_autoadd_feed_id_twin_sse(dynamic raw);
+
+  @protected
   FeedIdTwinSync dco_decode_box_autoadd_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_box_autoadd_feed_id_twin_sync_sse(dynamic raw);
 
   @protected
   int dco_decode_box_autoadd_i_16(dynamic raw);
@@ -2409,7 +3705,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  KitchenSinkTwinRustAsyncSse
+      dco_decode_box_autoadd_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSse dco_decode_box_autoadd_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
   KitchenSinkTwinSync dco_decode_box_autoadd_kitchen_sink_twin_sync(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_box_autoadd_kitchen_sink_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2427,7 +3734,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MeasureTwinRustAsyncSse dco_decode_box_autoadd_measure_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MeasureTwinSse dco_decode_box_autoadd_measure_twin_sse(dynamic raw);
+
+  @protected
   MeasureTwinSync dco_decode_box_autoadd_measure_twin_sync(dynamic raw);
+
+  @protected
+  MeasureTwinSyncSse dco_decode_box_autoadd_measure_twin_sync_sse(dynamic raw);
 
   @protected
   MessageIdTwinNormal dco_decode_box_autoadd_message_id_twin_normal(
@@ -2438,7 +3755,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MessageIdTwinRustAsyncSse
+      dco_decode_box_autoadd_message_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MessageIdTwinSse dco_decode_box_autoadd_message_id_twin_sse(dynamic raw);
+
+  @protected
   MessageIdTwinSync dco_decode_box_autoadd_message_id_twin_sync(dynamic raw);
+
+  @protected
+  MessageIdTwinSyncSse dco_decode_box_autoadd_message_id_twin_sync_sse(
+      dynamic raw);
 
   @protected
   MyNestedStructTwinNormal dco_decode_box_autoadd_my_nested_struct_twin_normal(
@@ -2449,8 +3777,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_my_nested_struct_twin_rust_async(dynamic raw);
 
   @protected
+  MyNestedStructTwinRustAsyncSse
+      dco_decode_box_autoadd_my_nested_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSse dco_decode_box_autoadd_my_nested_struct_twin_sse(
+      dynamic raw);
+
+  @protected
   MyNestedStructTwinSync dco_decode_box_autoadd_my_nested_struct_twin_sync(
       dynamic raw);
+
+  @protected
+  MyNestedStructTwinSyncSse
+      dco_decode_box_autoadd_my_nested_struct_twin_sync_sse(dynamic raw);
 
   @protected
   MySize dco_decode_box_autoadd_my_size(dynamic raw);
@@ -2467,7 +3807,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MyTreeNodeTwinRustAsyncSse
+      dco_decode_box_autoadd_my_tree_node_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSse dco_decode_box_autoadd_my_tree_node_twin_sse(dynamic raw);
+
+  @protected
   MyTreeNodeTwinSync dco_decode_box_autoadd_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSyncSse dco_decode_box_autoadd_my_tree_node_twin_sync_sse(
+      dynamic raw);
 
   @protected
   NestedRawStringMirrored dco_decode_box_autoadd_nested_raw_string_mirrored(
@@ -2482,7 +3833,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  NewTypeIntTwinRustAsyncSse
+      dco_decode_box_autoadd_new_type_int_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSse dco_decode_box_autoadd_new_type_int_twin_sse(dynamic raw);
+
+  @protected
   NewTypeIntTwinSync dco_decode_box_autoadd_new_type_int_twin_sync(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSyncSse dco_decode_box_autoadd_new_type_int_twin_sync_sse(
+      dynamic raw);
 
   @protected
   NoteTwinNormal dco_decode_box_autoadd_note_twin_normal(dynamic raw);
@@ -2491,7 +3853,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NoteTwinRustAsync dco_decode_box_autoadd_note_twin_rust_async(dynamic raw);
 
   @protected
+  NoteTwinRustAsyncSse dco_decode_box_autoadd_note_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  NoteTwinSse dco_decode_box_autoadd_note_twin_sse(dynamic raw);
+
+  @protected
   NoteTwinSync dco_decode_box_autoadd_note_twin_sync(dynamic raw);
+
+  @protected
+  NoteTwinSyncSse dco_decode_box_autoadd_note_twin_sync_sse(dynamic raw);
 
   @protected
   Numbers dco_decode_box_autoadd_numbers(dynamic raw);
@@ -2513,12 +3885,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_opaque_nested_twin_rust_async_moi(dynamic raw);
 
   @protected
+  OpaqueNestedTwinRustAsyncSse
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_opaque_nested_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSse dco_decode_box_autoadd_opaque_nested_twin_sse(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSseMoi dco_decode_box_autoadd_opaque_nested_twin_sse_moi(
+      dynamic raw);
+
+  @protected
   OpaqueNestedTwinSync dco_decode_box_autoadd_opaque_nested_twin_sync(
       dynamic raw);
 
   @protected
   OpaqueNestedTwinSyncMoi dco_decode_box_autoadd_opaque_nested_twin_sync_moi(
       dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncSse dco_decode_box_autoadd_opaque_nested_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi
+      dco_decode_box_autoadd_opaque_nested_twin_sync_sse_moi(dynamic raw);
 
   @protected
   OptVecsTwinNormal dco_decode_box_autoadd_opt_vecs_twin_normal(dynamic raw);
@@ -2528,7 +3924,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  OptVecsTwinRustAsyncSse dco_decode_box_autoadd_opt_vecs_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OptVecsTwinSse dco_decode_box_autoadd_opt_vecs_twin_sse(dynamic raw);
+
+  @protected
   OptVecsTwinSync dco_decode_box_autoadd_opt_vecs_twin_sync(dynamic raw);
+
+  @protected
+  OptVecsTwinSyncSse dco_decode_box_autoadd_opt_vecs_twin_sync_sse(dynamic raw);
 
   @protected
   RawStringMirrored dco_decode_box_autoadd_raw_string_mirrored(dynamic raw);
@@ -2548,7 +3954,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  SomeStructTwinRustAsyncSse
+      dco_decode_box_autoadd_some_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SomeStructTwinSse dco_decode_box_autoadd_some_struct_twin_sse(dynamic raw);
+
+  @protected
   SomeStructTwinSync dco_decode_box_autoadd_some_struct_twin_sync(dynamic raw);
+
+  @protected
+  SomeStructTwinSyncSse dco_decode_box_autoadd_some_struct_twin_sync_sse(
+      dynamic raw);
 
   @protected
   StructWithCommentsTwinNormal
@@ -2559,8 +3976,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_struct_with_comments_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithCommentsTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_comments_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSse
+      dco_decode_box_autoadd_struct_with_comments_twin_sse(dynamic raw);
+
+  @protected
   StructWithCommentsTwinSync
       dco_decode_box_autoadd_struct_with_comments_twin_sync(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSyncSse
+      dco_decode_box_autoadd_struct_with_comments_twin_sync_sse(dynamic raw);
 
   @protected
   StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
@@ -2571,8 +4001,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_struct_with_enum_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithEnumTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSse dco_decode_box_autoadd_struct_with_enum_twin_sse(
+      dynamic raw);
+
+  @protected
   StructWithEnumTwinSync dco_decode_box_autoadd_struct_with_enum_twin_sync(
       dynamic raw);
+
+  @protected
+  StructWithEnumTwinSyncSse
+      dco_decode_box_autoadd_struct_with_enum_twin_sync_sse(dynamic raw);
 
   @protected
   StructWithOneFieldTwinNormal
@@ -2583,8 +4025,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_struct_with_one_field_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithOneFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_sse(dynamic raw);
+
+  @protected
   StructWithOneFieldTwinSync
       dco_decode_box_autoadd_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_one_field_twin_sync_sse(dynamic raw);
 
   @protected
   StructWithTwoFieldTwinNormal
@@ -2595,8 +4050,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_struct_with_two_field_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_sse(dynamic raw);
+
+  @protected
   StructWithTwoFieldTwinSync
       dco_decode_box_autoadd_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_two_field_twin_sync_sse(dynamic raw);
 
   @protected
   StructWithZeroFieldTwinNormal
@@ -2608,8 +4076,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sse(dynamic raw);
+
+  @protected
   StructWithZeroFieldTwinSync
       dco_decode_box_autoadd_struct_with_zero_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_zero_field_twin_sync_sse(dynamic raw);
 
   @protected
   SumWithTwinNormal dco_decode_box_autoadd_sum_with_twin_normal(dynamic raw);
@@ -2619,7 +4100,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  SumWithTwinRustAsyncSse dco_decode_box_autoadd_sum_with_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  SumWithTwinSse dco_decode_box_autoadd_sum_with_twin_sse(dynamic raw);
+
+  @protected
   SumWithTwinSync dco_decode_box_autoadd_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  SumWithTwinSyncSse dco_decode_box_autoadd_sum_with_twin_sync_sse(dynamic raw);
 
   @protected
   TestIdTwinNormal dco_decode_box_autoadd_test_id_twin_normal(dynamic raw);
@@ -2629,7 +4120,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  TestIdTwinRustAsyncSse dco_decode_box_autoadd_test_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  TestIdTwinSse dco_decode_box_autoadd_test_id_twin_sse(dynamic raw);
+
+  @protected
   TestIdTwinSync dco_decode_box_autoadd_test_id_twin_sync(dynamic raw);
+
+  @protected
+  TestIdTwinSyncSse dco_decode_box_autoadd_test_id_twin_sync_sse(dynamic raw);
 
   @protected
   TupleStructWithOneFieldTwinNormal
@@ -2642,8 +4143,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sse(dynamic raw);
+
+  @protected
   TupleStructWithOneFieldTwinSync
       dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      dco_decode_box_autoadd_tuple_struct_with_one_field_twin_sync_sse(
+          dynamic raw);
 
   @protected
   TupleStructWithTwoFieldTwinNormal
@@ -2656,8 +4171,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sse(dynamic raw);
+
+  @protected
   TupleStructWithTwoFieldTwinSync
       dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      dco_decode_box_autoadd_tuple_struct_with_two_field_twin_sync_sse(
+          dynamic raw);
 
   @protected
   int dco_decode_box_autoadd_u_16(dynamic raw);
@@ -2679,7 +4208,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  UserIdTwinRustAsyncSse dco_decode_box_autoadd_user_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  UserIdTwinSse dco_decode_box_autoadd_user_id_twin_sse(dynamic raw);
+
+  @protected
   UserIdTwinSync dco_decode_box_autoadd_user_id_twin_sync(dynamic raw);
+
+  @protected
+  UserIdTwinSyncSse dco_decode_box_autoadd_user_id_twin_sync_sse(dynamic raw);
 
   @protected
   int dco_decode_box_autoadd_usize(dynamic raw);
@@ -2692,7 +4231,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  WeekdaysTwinRustAsyncSse dco_decode_box_autoadd_weekdays_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinSse dco_decode_box_autoadd_weekdays_twin_sse(dynamic raw);
+
+  @protected
   WeekdaysTwinSync dco_decode_box_autoadd_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_box_autoadd_weekdays_twin_sync_sse(
+      dynamic raw);
 
   @protected
   BenchmarkBinaryTreeTwinNormal
@@ -2703,8 +4253,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse
+      dco_decode_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse dco_decode_box_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
   BenchmarkBinaryTreeTwinSync dco_decode_box_benchmark_binary_tree_twin_sync(
       dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse
+      dco_decode_box_benchmark_binary_tree_twin_sync_sse(dynamic raw);
 
   @protected
   BlobTwinNormal dco_decode_box_blob_twin_normal(dynamic raw);
@@ -2713,7 +4275,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BlobTwinRustAsync dco_decode_box_blob_twin_rust_async(dynamic raw);
 
   @protected
+  BlobTwinRustAsyncSse dco_decode_box_blob_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BlobTwinSse dco_decode_box_blob_twin_sse(dynamic raw);
+
+  @protected
   BlobTwinSync dco_decode_box_blob_twin_sync(dynamic raw);
+
+  @protected
+  BlobTwinSyncSse dco_decode_box_blob_twin_sync_sse(dynamic raw);
 
   @protected
   bool dco_decode_box_bool(dynamic raw);
@@ -2725,7 +4296,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DistanceTwinRustAsync dco_decode_box_distance_twin_rust_async(dynamic raw);
 
   @protected
+  DistanceTwinRustAsyncSse dco_decode_box_distance_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  DistanceTwinSse dco_decode_box_distance_twin_sse(dynamic raw);
+
+  @protected
   DistanceTwinSync dco_decode_box_distance_twin_sync(dynamic raw);
+
+  @protected
+  DistanceTwinSyncSse dco_decode_box_distance_twin_sync_sse(dynamic raw);
 
   @protected
   ExoticOptionalsTwinNormal dco_decode_box_exotic_optionals_twin_normal(
@@ -2736,7 +4317,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_box_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_box_exotic_optionals_twin_sse(dynamic raw);
+
+  @protected
   ExoticOptionalsTwinSync dco_decode_box_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse dco_decode_box_exotic_optionals_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2749,7 +4341,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinRustAsync dco_decode_box_feed_id_twin_rust_async(dynamic raw);
 
   @protected
+  FeedIdTwinRustAsyncSse dco_decode_box_feed_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  FeedIdTwinSse dco_decode_box_feed_id_twin_sse(dynamic raw);
+
+  @protected
   FeedIdTwinSync dco_decode_box_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_box_feed_id_twin_sync_sse(dynamic raw);
 
   @protected
   int dco_decode_box_i_32(dynamic raw);
@@ -2768,7 +4370,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  KitchenSinkTwinRustAsyncSse dco_decode_box_kitchen_sink_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSse dco_decode_box_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
   KitchenSinkTwinSync dco_decode_box_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_box_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
   MySize dco_decode_box_my_size(dynamic raw);
@@ -2780,7 +4392,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SpeedTwinRustAsync dco_decode_box_speed_twin_rust_async(dynamic raw);
 
   @protected
+  SpeedTwinRustAsyncSse dco_decode_box_speed_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SpeedTwinSse dco_decode_box_speed_twin_sse(dynamic raw);
+
+  @protected
   SpeedTwinSync dco_decode_box_speed_twin_sync(dynamic raw);
+
+  @protected
+  SpeedTwinSyncSse dco_decode_box_speed_twin_sync_sse(dynamic raw);
 
   @protected
   int dco_decode_box_u_8(dynamic raw);
@@ -2798,7 +4419,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   WeekdaysTwinRustAsync dco_decode_box_weekdays_twin_rust_async(dynamic raw);
 
   @protected
+  WeekdaysTwinRustAsyncSse dco_decode_box_weekdays_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  WeekdaysTwinSse dco_decode_box_weekdays_twin_sse(dynamic raw);
+
+  @protected
   WeekdaysTwinSync dco_decode_box_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_box_weekdays_twin_sync_sse(dynamic raw);
 
   @protected
   CTwinNormal dco_decode_c_twin_normal(dynamic raw);
@@ -2807,7 +4438,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CTwinRustAsync dco_decode_c_twin_rust_async(dynamic raw);
 
   @protected
+  CTwinRustAsyncSse dco_decode_c_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CTwinSse dco_decode_c_twin_sse(dynamic raw);
+
+  @protected
   CTwinSync dco_decode_c_twin_sync(dynamic raw);
+
+  @protected
+  CTwinSyncSse dco_decode_c_twin_sync_sse(dynamic raw);
 
   @protected
   ConcatenateWithTwinNormal dco_decode_concatenate_with_twin_normal(
@@ -2818,7 +4458,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  ConcatenateWithTwinRustAsyncSse
+      dco_decode_concatenate_with_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSse dco_decode_concatenate_with_twin_sse(dynamic raw);
+
+  @protected
   ConcatenateWithTwinSync dco_decode_concatenate_with_twin_sync(dynamic raw);
+
+  @protected
+  ConcatenateWithTwinSyncSse dco_decode_concatenate_with_twin_sync_sse(
+      dynamic raw);
 
   @protected
   ContainsMirroredSubStructTwinNormal
@@ -2829,8 +4480,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_contains_mirrored_sub_struct_twin_rust_async(dynamic raw);
 
   @protected
+  ContainsMirroredSubStructTwinRustAsyncSse
+      dco_decode_contains_mirrored_sub_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinSse
+      dco_decode_contains_mirrored_sub_struct_twin_sse(dynamic raw);
+
+  @protected
   ContainsMirroredSubStructTwinSync
       dco_decode_contains_mirrored_sub_struct_twin_sync(dynamic raw);
+
+  @protected
+  ContainsMirroredSubStructTwinSyncSse
+      dco_decode_contains_mirrored_sub_struct_twin_sync_sse(dynamic raw);
 
   @protected
   CustomEnumErrorTwinNormal dco_decode_custom_enum_error_twin_normal(
@@ -2841,7 +4504,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  CustomEnumErrorTwinRustAsyncSse
+      dco_decode_custom_enum_error_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinSse dco_decode_custom_enum_error_twin_sse(dynamic raw);
+
+  @protected
   CustomEnumErrorTwinSync dco_decode_custom_enum_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomEnumErrorTwinSyncSse dco_decode_custom_enum_error_twin_sync_sse(
+      dynamic raw);
 
   @protected
   CustomErrorTwinNormal dco_decode_custom_error_twin_normal(dynamic raw);
@@ -2850,7 +4524,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CustomErrorTwinRustAsync dco_decode_custom_error_twin_rust_async(dynamic raw);
 
   @protected
+  CustomErrorTwinRustAsyncSse dco_decode_custom_error_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  CustomErrorTwinSse dco_decode_custom_error_twin_sse(dynamic raw);
+
+  @protected
   CustomErrorTwinSync dco_decode_custom_error_twin_sync(dynamic raw);
+
+  @protected
+  CustomErrorTwinSyncSse dco_decode_custom_error_twin_sync_sse(dynamic raw);
 
   @protected
   CustomNestedError1TwinNormal dco_decode_custom_nested_error_1_twin_normal(
@@ -2861,7 +4545,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_custom_nested_error_1_twin_rust_async(dynamic raw);
 
   @protected
+  CustomNestedError1TwinRustAsyncSse
+      dco_decode_custom_nested_error_1_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedError1TwinSse dco_decode_custom_nested_error_1_twin_sse(
+      dynamic raw);
+
+  @protected
   CustomNestedError1TwinSync dco_decode_custom_nested_error_1_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedError1TwinSyncSse dco_decode_custom_nested_error_1_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2873,7 +4569,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_custom_nested_error_2_twin_rust_async(dynamic raw);
 
   @protected
+  CustomNestedError2TwinRustAsyncSse
+      dco_decode_custom_nested_error_2_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSse dco_decode_custom_nested_error_2_twin_sse(
+      dynamic raw);
+
+  @protected
   CustomNestedError2TwinSync dco_decode_custom_nested_error_2_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomNestedError2TwinSyncSse dco_decode_custom_nested_error_2_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2885,8 +4593,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_custom_nested_error_inner_twin_rust_async(dynamic raw);
 
   @protected
+  CustomNestedErrorInnerTwinRustAsyncSse
+      dco_decode_custom_nested_error_inner_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSse dco_decode_custom_nested_error_inner_twin_sse(
+      dynamic raw);
+
+  @protected
   CustomNestedErrorInnerTwinSync dco_decode_custom_nested_error_inner_twin_sync(
       dynamic raw);
+
+  @protected
+  CustomNestedErrorInnerTwinSyncSse
+      dco_decode_custom_nested_error_inner_twin_sync_sse(dynamic raw);
 
   @protected
   CustomNestedErrorOuterTwinNormal
@@ -2897,8 +4617,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_custom_nested_error_outer_twin_rust_async(dynamic raw);
 
   @protected
+  CustomNestedErrorOuterTwinRustAsyncSse
+      dco_decode_custom_nested_error_outer_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSse dco_decode_custom_nested_error_outer_twin_sse(
+      dynamic raw);
+
+  @protected
   CustomNestedErrorOuterTwinSync dco_decode_custom_nested_error_outer_twin_sync(
       dynamic raw);
+
+  @protected
+  CustomNestedErrorOuterTwinSyncSse
+      dco_decode_custom_nested_error_outer_twin_sync_sse(dynamic raw);
 
   @protected
   CustomStructErrorAnotherTwinNormal
@@ -2909,8 +4641,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_custom_struct_error_another_twin_rust_async(dynamic raw);
 
   @protected
+  CustomStructErrorAnotherTwinRustAsyncSse
+      dco_decode_custom_struct_error_another_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinSse
+      dco_decode_custom_struct_error_another_twin_sse(dynamic raw);
+
+  @protected
   CustomStructErrorAnotherTwinSync
       dco_decode_custom_struct_error_another_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructErrorAnotherTwinSyncSse
+      dco_decode_custom_struct_error_another_twin_sync_sse(dynamic raw);
 
   @protected
   CustomStructErrorTwinNormal dco_decode_custom_struct_error_twin_normal(
@@ -2921,7 +4665,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  CustomStructErrorTwinRustAsyncSse
+      dco_decode_custom_struct_error_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSse dco_decode_custom_struct_error_twin_sse(dynamic raw);
+
+  @protected
   CustomStructErrorTwinSync dco_decode_custom_struct_error_twin_sync(
+      dynamic raw);
+
+  @protected
+  CustomStructErrorTwinSyncSse dco_decode_custom_struct_error_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -2932,7 +4687,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  CustomStructTwinRustAsyncSse dco_decode_custom_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  CustomStructTwinSse dco_decode_custom_struct_twin_sse(dynamic raw);
+
+  @protected
   CustomStructTwinSync dco_decode_custom_struct_twin_sync(dynamic raw);
+
+  @protected
+  CustomStructTwinSyncSse dco_decode_custom_struct_twin_sync_sse(dynamic raw);
 
   @protected
   CustomizedTwinNormal dco_decode_customized_twin_normal(dynamic raw);
@@ -2941,7 +4706,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CustomizedTwinRustAsync dco_decode_customized_twin_rust_async(dynamic raw);
 
   @protected
+  CustomizedTwinRustAsyncSse dco_decode_customized_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  CustomizedTwinSse dco_decode_customized_twin_sse(dynamic raw);
+
+  @protected
   CustomizedTwinSync dco_decode_customized_twin_sync(dynamic raw);
+
+  @protected
+  CustomizedTwinSyncSse dco_decode_customized_twin_sync_sse(dynamic raw);
 
   @protected
   DartOpaqueNestedTwinNormal dco_decode_dart_opaque_nested_twin_normal(
@@ -2952,7 +4727,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  DartOpaqueNestedTwinRustAsyncSse
+      dco_decode_dart_opaque_nested_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSse dco_decode_dart_opaque_nested_twin_sse(dynamic raw);
+
+  @protected
   DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(dynamic raw);
+
+  @protected
+  DartOpaqueNestedTwinSyncSse dco_decode_dart_opaque_nested_twin_sync_sse(
+      dynamic raw);
 
   @protected
   dynamic dco_decode_dartabi(dynamic raw);
@@ -2966,13 +4752,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_demo_struct_for_rust_call_dart_twin_rust_async(dynamic raw);
 
   @protected
+  DemoStructForRustCallDartTwinRustAsyncSse
+      dco_decode_demo_struct_for_rust_call_dart_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  DemoStructForRustCallDartTwinSse
+      dco_decode_demo_struct_for_rust_call_dart_twin_sse(dynamic raw);
+
+  @protected
   DistanceTwinNormal dco_decode_distance_twin_normal(dynamic raw);
 
   @protected
   DistanceTwinRustAsync dco_decode_distance_twin_rust_async(dynamic raw);
 
   @protected
+  DistanceTwinRustAsyncSse dco_decode_distance_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  DistanceTwinSse dco_decode_distance_twin_sse(dynamic raw);
+
+  @protected
   DistanceTwinSync dco_decode_distance_twin_sync(dynamic raw);
+
+  @protected
+  DistanceTwinSyncSse dco_decode_distance_twin_sync_sse(dynamic raw);
 
   @protected
   ElementTwinNormal dco_decode_element_twin_normal(dynamic raw);
@@ -2981,7 +4785,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ElementTwinRustAsync dco_decode_element_twin_rust_async(dynamic raw);
 
   @protected
+  ElementTwinRustAsyncSse dco_decode_element_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ElementTwinSse dco_decode_element_twin_sse(dynamic raw);
+
+  @protected
   ElementTwinSync dco_decode_element_twin_sync(dynamic raw);
+
+  @protected
+  ElementTwinSyncSse dco_decode_element_twin_sync_sse(dynamic raw);
 
   @protected
   EmptyTwinNormal dco_decode_empty_twin_normal(dynamic raw);
@@ -2990,7 +4803,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   EmptyTwinRustAsync dco_decode_empty_twin_rust_async(dynamic raw);
 
   @protected
+  EmptyTwinRustAsyncSse dco_decode_empty_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EmptyTwinSse dco_decode_empty_twin_sse(dynamic raw);
+
+  @protected
   EmptyTwinSync dco_decode_empty_twin_sync(dynamic raw);
+
+  @protected
+  EmptyTwinSyncSse dco_decode_empty_twin_sync_sse(dynamic raw);
 
   @protected
   EnumDartOpaqueTwinNormal dco_decode_enum_dart_opaque_twin_normal(dynamic raw);
@@ -3000,7 +4822,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  EnumDartOpaqueTwinRustAsyncSse
+      dco_decode_enum_dart_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSse dco_decode_enum_dart_opaque_twin_sse(dynamic raw);
+
+  @protected
   EnumDartOpaqueTwinSync dco_decode_enum_dart_opaque_twin_sync(dynamic raw);
+
+  @protected
+  EnumDartOpaqueTwinSyncSse dco_decode_enum_dart_opaque_twin_sync_sse(
+      dynamic raw);
 
   @protected
   EnumOpaqueTwinMoi dco_decode_enum_opaque_twin_moi(dynamic raw);
@@ -3031,6 +4864,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_enum_opaque_twin_rust_async_moi_array_5(dynamic raw);
 
   @protected
+  EnumOpaqueTwinRustAsyncSse dco_decode_enum_opaque_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseArray5
+      dco_decode_enum_opaque_twin_rust_async_sse_array_5(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoi dco_decode_enum_opaque_twin_rust_async_sse_moi(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinRustAsyncSseMoiArray5
+      dco_decode_enum_opaque_twin_rust_async_sse_moi_array_5(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSse dco_decode_enum_opaque_twin_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSseArray5 dco_decode_enum_opaque_twin_sse_array_5(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSseMoi dco_decode_enum_opaque_twin_sse_moi(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSseMoiArray5 dco_decode_enum_opaque_twin_sse_moi_array_5(
+      dynamic raw);
+
+  @protected
   EnumOpaqueTwinSync dco_decode_enum_opaque_twin_sync(dynamic raw);
 
   @protected
@@ -3045,13 +4907,38 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  EnumOpaqueTwinSyncSse dco_decode_enum_opaque_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSseArray5 dco_decode_enum_opaque_twin_sync_sse_array_5(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSseMoi dco_decode_enum_opaque_twin_sync_sse_moi(
+      dynamic raw);
+
+  @protected
+  EnumOpaqueTwinSyncSseMoiArray5
+      dco_decode_enum_opaque_twin_sync_sse_moi_array_5(dynamic raw);
+
+  @protected
   EnumSimpleTwinNormal dco_decode_enum_simple_twin_normal(dynamic raw);
 
   @protected
   EnumSimpleTwinRustAsync dco_decode_enum_simple_twin_rust_async(dynamic raw);
 
   @protected
+  EnumSimpleTwinRustAsyncSse dco_decode_enum_simple_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  EnumSimpleTwinSse dco_decode_enum_simple_twin_sse(dynamic raw);
+
+  @protected
   EnumSimpleTwinSync dco_decode_enum_simple_twin_sync(dynamic raw);
+
+  @protected
+  EnumSimpleTwinSyncSse dco_decode_enum_simple_twin_sync_sse(dynamic raw);
 
   @protected
   EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
@@ -3062,7 +4949,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_enum_with_item_mixed_twin_rust_async(dynamic raw);
 
   @protected
+  EnumWithItemMixedTwinRustAsyncSse
+      dco_decode_enum_with_item_mixed_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSse dco_decode_enum_with_item_mixed_twin_sse(
+      dynamic raw);
+
+  @protected
   EnumWithItemMixedTwinSync dco_decode_enum_with_item_mixed_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemMixedTwinSyncSse dco_decode_enum_with_item_mixed_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3074,7 +4973,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_enum_with_item_struct_twin_rust_async(dynamic raw);
 
   @protected
+  EnumWithItemStructTwinRustAsyncSse
+      dco_decode_enum_with_item_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSse dco_decode_enum_with_item_struct_twin_sse(
+      dynamic raw);
+
+  @protected
   EnumWithItemStructTwinSync dco_decode_enum_with_item_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemStructTwinSyncSse dco_decode_enum_with_item_struct_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3086,7 +4997,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_enum_with_item_tuple_twin_rust_async(dynamic raw);
 
   @protected
+  EnumWithItemTupleTwinRustAsyncSse
+      dco_decode_enum_with_item_tuple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSse dco_decode_enum_with_item_tuple_twin_sse(
+      dynamic raw);
+
+  @protected
   EnumWithItemTupleTwinSync dco_decode_enum_with_item_tuple_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithItemTupleTwinSyncSse dco_decode_enum_with_item_tuple_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3094,6 +5017,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   EventTwinRustAsync dco_decode_event_twin_rust_async(dynamic raw);
+
+  @protected
+  EventTwinRustAsyncSse dco_decode_event_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EventTwinSse dco_decode_event_twin_sse(dynamic raw);
 
   @protected
   ExoticOptionalsTwinNormal dco_decode_exotic_optionals_twin_normal(
@@ -3104,7 +5033,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  ExoticOptionalsTwinRustAsyncSse
+      dco_decode_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse dco_decode_exotic_optionals_twin_sse(dynamic raw);
+
+  @protected
   ExoticOptionalsTwinSync dco_decode_exotic_optionals_twin_sync(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse dco_decode_exotic_optionals_twin_sync_sse(
+      dynamic raw);
 
   @protected
   double dco_decode_f_32(dynamic raw);
@@ -3141,7 +5081,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinRustAsync dco_decode_feed_id_twin_rust_async(dynamic raw);
 
   @protected
+  FeedIdTwinRustAsyncSse dco_decode_feed_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FeedIdTwinSse dco_decode_feed_id_twin_sse(dynamic raw);
+
+  @protected
   FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  FeedIdTwinSyncSse dco_decode_feed_id_twin_sync_sse(dynamic raw);
 
   @protected
   int dco_decode_i_16(dynamic raw);
@@ -3168,7 +5117,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   KitchenSinkTwinRustAsync dco_decode_kitchen_sink_twin_rust_async(dynamic raw);
 
   @protected
+  KitchenSinkTwinRustAsyncSse dco_decode_kitchen_sink_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  KitchenSinkTwinSse dco_decode_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
   KitchenSinkTwinSync dco_decode_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  KitchenSinkTwinSyncSse dco_decode_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
   List<Duration> dco_decode_list_Chrono_Duration(dynamic raw);
@@ -3199,12 +5158,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_RustOpaque_hide_data_twin_rust_async_moi(dynamic raw);
 
   @protected
+  List<HideDataTwinRustAsyncSse>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<HideDataTwinRustAsyncSseMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  List<HideDataTwinSse> dco_decode_list_RustOpaque_hide_data_twin_sse(
+      dynamic raw);
+
+  @protected
+  List<HideDataTwinSseMoi> dco_decode_list_RustOpaque_hide_data_twin_sse_moi(
+      dynamic raw);
+
+  @protected
   List<HideDataTwinSync> dco_decode_list_RustOpaque_hide_data_twin_sync(
       dynamic raw);
 
   @protected
   List<HideDataTwinSyncMoi> dco_decode_list_RustOpaque_hide_data_twin_sync_moi(
       dynamic raw);
+
+  @protected
+  List<HideDataTwinSyncSse> dco_decode_list_RustOpaque_hide_data_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  List<HideDataTwinSyncSseMoi>
+      dco_decode_list_RustOpaque_hide_data_twin_sync_sse_moi(dynamic raw);
 
   @protected
   List<String> dco_decode_list_String(dynamic raw);
@@ -3223,7 +5206,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<AttributeTwinRustAsyncSse> dco_decode_list_attribute_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<AttributeTwinSse> dco_decode_list_attribute_twin_sse(dynamic raw);
+
+  @protected
   List<AttributeTwinSync> dco_decode_list_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse> dco_decode_list_attribute_twin_sync_sse(
+      dynamic raw);
 
   @protected
   List<BasicGeneralEnumTwinNormal>
@@ -3234,8 +5228,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_basic_general_enum_twin_rust_async(dynamic raw);
 
   @protected
+  List<BasicGeneralEnumTwinRustAsyncSse>
+      dco_decode_list_basic_general_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<BasicGeneralEnumTwinSse> dco_decode_list_basic_general_enum_twin_sse(
+      dynamic raw);
+
+  @protected
   List<BasicGeneralEnumTwinSync> dco_decode_list_basic_general_enum_twin_sync(
       dynamic raw);
+
+  @protected
+  List<BasicGeneralEnumTwinSyncSse>
+      dco_decode_list_basic_general_enum_twin_sync_sse(dynamic raw);
 
   @protected
   List<BasicPrimitiveEnumTwinNormal>
@@ -3246,8 +5252,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_basic_primitive_enum_twin_rust_async(dynamic raw);
 
   @protected
+  List<BasicPrimitiveEnumTwinRustAsyncSse>
+      dco_decode_list_basic_primitive_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<BasicPrimitiveEnumTwinSse> dco_decode_list_basic_primitive_enum_twin_sse(
+      dynamic raw);
+
+  @protected
   List<BasicPrimitiveEnumTwinSync>
       dco_decode_list_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  List<BasicPrimitiveEnumTwinSyncSse>
+      dco_decode_list_basic_primitive_enum_twin_sync_sse(dynamic raw);
 
   @protected
   List<BasicStructTwinNormal> dco_decode_list_basic_struct_twin_normal(
@@ -3258,7 +5276,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<BasicStructTwinRustAsyncSse>
+      dco_decode_list_basic_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<BasicStructTwinSse> dco_decode_list_basic_struct_twin_sse(dynamic raw);
+
+  @protected
   List<BasicStructTwinSync> dco_decode_list_basic_struct_twin_sync(dynamic raw);
+
+  @protected
+  List<BasicStructTwinSyncSse> dco_decode_list_basic_struct_twin_sync_sse(
+      dynamic raw);
 
   @protected
   List<bool> dco_decode_list_bool(dynamic raw);
@@ -3271,7 +5300,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<ElementTwinRustAsyncSse> dco_decode_list_element_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<ElementTwinSse> dco_decode_list_element_twin_sse(dynamic raw);
+
+  @protected
   List<ElementTwinSync> dco_decode_list_element_twin_sync(dynamic raw);
+
+  @protected
+  List<ElementTwinSyncSse> dco_decode_list_element_twin_sync_sse(dynamic raw);
 
   @protected
   List<EnumOpaqueTwinMoi> dco_decode_list_enum_opaque_twin_moi(dynamic raw);
@@ -3289,10 +5328,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_enum_opaque_twin_rust_async_moi(dynamic raw);
 
   @protected
+  List<EnumOpaqueTwinRustAsyncSse>
+      dco_decode_list_enum_opaque_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinRustAsyncSseMoi>
+      dco_decode_list_enum_opaque_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSse> dco_decode_list_enum_opaque_twin_sse(dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSseMoi> dco_decode_list_enum_opaque_twin_sse_moi(
+      dynamic raw);
+
+  @protected
   List<EnumOpaqueTwinSync> dco_decode_list_enum_opaque_twin_sync(dynamic raw);
 
   @protected
   List<EnumOpaqueTwinSyncMoi> dco_decode_list_enum_opaque_twin_sync_moi(
+      dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSyncSse> dco_decode_list_enum_opaque_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  List<EnumOpaqueTwinSyncSseMoi> dco_decode_list_enum_opaque_twin_sync_sse_moi(
       dynamic raw);
 
   @protected
@@ -3310,7 +5372,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<MyTreeNodeTwinRustAsyncSse>
+      dco_decode_list_my_tree_node_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinSse> dco_decode_list_my_tree_node_twin_sse(dynamic raw);
+
+  @protected
   List<MyTreeNodeTwinSync> dco_decode_list_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  List<MyTreeNodeTwinSyncSse> dco_decode_list_my_tree_node_twin_sync_sse(
+      dynamic raw);
 
   @protected
   List<NestedRawStringMirrored> dco_decode_list_nested_raw_string_mirrored(
@@ -3332,8 +5405,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(dynamic raw);
 
   @protected
+  List<AttributeTwinRustAsyncSse?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<AttributeTwinSse?> dco_decode_list_opt_box_autoadd_attribute_twin_sse(
+      dynamic raw);
+
+  @protected
   List<AttributeTwinSync?> dco_decode_list_opt_box_autoadd_attribute_twin_sync(
       dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse?>
+      dco_decode_list_opt_box_autoadd_attribute_twin_sync_sse(dynamic raw);
 
   @protected
   List<int?> dco_decode_list_opt_box_autoadd_i_32(dynamic raw);
@@ -3347,8 +5433,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(dynamic raw);
 
   @protected
+  List<WeekdaysTwinRustAsyncSse?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSse?> dco_decode_list_opt_box_autoadd_weekdays_twin_sse(
+      dynamic raw);
+
+  @protected
   List<WeekdaysTwinSync?> dco_decode_list_opt_box_autoadd_weekdays_twin_sync(
       dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSyncSse?>
+      dco_decode_list_opt_box_autoadd_weekdays_twin_sync_sse(dynamic raw);
 
   @protected
   List<Int32List?> dco_decode_list_opt_list_prim_i_32_strict(dynamic raw);
@@ -3360,7 +5458,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<PointTwinRustAsync> dco_decode_list_point_twin_rust_async(dynamic raw);
 
   @protected
+  List<PointTwinRustAsyncSse> dco_decode_list_point_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<PointTwinSse> dco_decode_list_point_twin_sse(dynamic raw);
+
+  @protected
   List<PointTwinSync> dco_decode_list_point_twin_sync(dynamic raw);
+
+  @protected
+  List<PointTwinSyncSse> dco_decode_list_point_twin_sync_sse(dynamic raw);
 
   @protected
   List<double> dco_decode_list_prim_f_32_loose(dynamic raw);
@@ -3433,8 +5541,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  List<(int, BasicGeneralEnumTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sse(dynamic raw);
+
+  @protected
   List<(int, BasicGeneralEnumTwinSync)>
       dco_decode_list_record_i_32_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  List<(int, BasicGeneralEnumTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_general_enum_twin_sync_sse(dynamic raw);
 
   @protected
   List<(int, BasicPrimitiveEnumTwinNormal)>
@@ -3446,8 +5567,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  List<(int, BasicPrimitiveEnumTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sse(dynamic raw);
+
+  @protected
   List<(int, BasicPrimitiveEnumTwinSync)>
       dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  List<(int, BasicPrimitiveEnumTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_primitive_enum_twin_sync_sse(
+          dynamic raw);
 
   @protected
   List<(int, BasicStructTwinNormal)>
@@ -3458,8 +5593,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_record_i_32_basic_struct_twin_rust_async(dynamic raw);
 
   @protected
+  List<(int, BasicStructTwinRustAsyncSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<(int, BasicStructTwinSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_sse(dynamic raw);
+
+  @protected
   List<(int, BasicStructTwinSync)>
       dco_decode_list_record_i_32_basic_struct_twin_sync(dynamic raw);
+
+  @protected
+  List<(int, BasicStructTwinSyncSse)>
+      dco_decode_list_record_i_32_basic_struct_twin_sync_sse(dynamic raw);
 
   @protected
   List<(int, bool)> dco_decode_list_record_i_32_bool(dynamic raw);
@@ -3516,8 +5663,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_record_string_enum_simple_twin_rust_async(dynamic raw);
 
   @protected
+  List<(String, EnumSimpleTwinRustAsyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinSse)>
+      dco_decode_list_record_string_enum_simple_twin_sse(dynamic raw);
+
+  @protected
   List<(String, EnumSimpleTwinSync)>
       dco_decode_list_record_string_enum_simple_twin_sync(dynamic raw);
+
+  @protected
+  List<(String, EnumSimpleTwinSyncSse)>
+      dco_decode_list_record_string_enum_simple_twin_sync_sse(dynamic raw);
 
   @protected
   List<(String, int)> dco_decode_list_record_string_i_32(dynamic raw);
@@ -3531,8 +5691,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_list_record_string_kitchen_sink_twin_rust_async(dynamic raw);
 
   @protected
+  List<(String, KitchenSinkTwinRustAsyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sse(dynamic raw);
+
+  @protected
   List<(String, KitchenSinkTwinSync)>
       dco_decode_list_record_string_kitchen_sink_twin_sync(dynamic raw);
+
+  @protected
+  List<(String, KitchenSinkTwinSyncSse)>
+      dco_decode_list_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
   List<(String, Uint8List)> dco_decode_list_record_string_list_prim_u_8_strict(
@@ -3552,7 +5725,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<SumWithTwinRustAsyncSse> dco_decode_list_sum_with_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<SumWithTwinSse> dco_decode_list_sum_with_twin_sse(dynamic raw);
+
+  @protected
   List<SumWithTwinSync> dco_decode_list_sum_with_twin_sync(dynamic raw);
+
+  @protected
+  List<SumWithTwinSyncSse> dco_decode_list_sum_with_twin_sync_sse(dynamic raw);
 
   @protected
   List<TestIdTwinNormal> dco_decode_list_test_id_twin_normal(dynamic raw);
@@ -3562,7 +5745,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<TestIdTwinRustAsyncSse> dco_decode_list_test_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<TestIdTwinSse> dco_decode_list_test_id_twin_sse(dynamic raw);
+
+  @protected
   List<TestIdTwinSync> dco_decode_list_test_id_twin_sync(dynamic raw);
+
+  @protected
+  List<TestIdTwinSyncSse> dco_decode_list_test_id_twin_sync_sse(dynamic raw);
 
   @protected
   List<WeekdaysTwinNormal> dco_decode_list_weekdays_twin_normal(dynamic raw);
@@ -3572,7 +5765,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<WeekdaysTwinRustAsyncSse> dco_decode_list_weekdays_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSse> dco_decode_list_weekdays_twin_sse(dynamic raw);
+
+  @protected
   List<WeekdaysTwinSync> dco_decode_list_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  List<WeekdaysTwinSyncSse> dco_decode_list_weekdays_twin_sync_sse(dynamic raw);
 
   @protected
   Log2TwinNormal dco_decode_log_2_twin_normal(dynamic raw);
@@ -3581,13 +5784,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Log2TwinRustAsync dco_decode_log_2_twin_rust_async(dynamic raw);
 
   @protected
+  Log2TwinRustAsyncSse dco_decode_log_2_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  Log2TwinSse dco_decode_log_2_twin_sse(dynamic raw);
+
+  @protected
   Log2TwinSync dco_decode_log_2_twin_sync(dynamic raw);
+
+  @protected
+  Log2TwinSyncSse dco_decode_log_2_twin_sync_sse(dynamic raw);
 
   @protected
   LogTwinNormal dco_decode_log_twin_normal(dynamic raw);
 
   @protected
   LogTwinRustAsync dco_decode_log_twin_rust_async(dynamic raw);
+
+  @protected
+  LogTwinRustAsyncSse dco_decode_log_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  LogTwinSse dco_decode_log_twin_sse(dynamic raw);
 
   @protected
   MacroStruct dco_decode_macro_struct(dynamic raw);
@@ -3599,7 +5817,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MeasureTwinRustAsync dco_decode_measure_twin_rust_async(dynamic raw);
 
   @protected
+  MeasureTwinRustAsyncSse dco_decode_measure_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MeasureTwinSse dco_decode_measure_twin_sse(dynamic raw);
+
+  @protected
   MeasureTwinSync dco_decode_measure_twin_sync(dynamic raw);
+
+  @protected
+  MeasureTwinSyncSse dco_decode_measure_twin_sync_sse(dynamic raw);
 
   @protected
   MessageIdTwinNormal dco_decode_message_id_twin_normal(dynamic raw);
@@ -3608,7 +5835,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MessageIdTwinRustAsync dco_decode_message_id_twin_rust_async(dynamic raw);
 
   @protected
+  MessageIdTwinRustAsyncSse dco_decode_message_id_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MessageIdTwinSse dco_decode_message_id_twin_sse(dynamic raw);
+
+  @protected
   MessageIdTwinSync dco_decode_message_id_twin_sync(dynamic raw);
+
+  @protected
+  MessageIdTwinSyncSse dco_decode_message_id_twin_sync_sse(dynamic raw);
 
   @protected
   MirrorStructTwinNormal dco_decode_mirror_struct_twin_normal(dynamic raw);
@@ -3618,7 +5855,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MirrorStructTwinRustAsyncSse dco_decode_mirror_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MirrorStructTwinSse dco_decode_mirror_struct_twin_sse(dynamic raw);
+
+  @protected
   MirrorStructTwinSync dco_decode_mirror_struct_twin_sync(dynamic raw);
+
+  @protected
+  MirrorStructTwinSyncSse dco_decode_mirror_struct_twin_sync_sse(dynamic raw);
 
   @protected
   MoreThanJustOneRawStringStructTwinNormal
@@ -3630,8 +5877,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  MoreThanJustOneRawStringStructTwinRustAsyncSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_sse(dynamic raw);
+
+  @protected
   MoreThanJustOneRawStringStructTwinSync
       dco_decode_more_than_just_one_raw_string_struct_twin_sync(dynamic raw);
+
+  @protected
+  MoreThanJustOneRawStringStructTwinSyncSse
+      dco_decode_more_than_just_one_raw_string_struct_twin_sync_sse(
+          dynamic raw);
 
   @protected
   MyEnum dco_decode_my_enum(dynamic raw);
@@ -3644,7 +5905,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MyNestedStructTwinRustAsyncSse
+      dco_decode_my_nested_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSse dco_decode_my_nested_struct_twin_sse(dynamic raw);
+
+  @protected
   MyNestedStructTwinSync dco_decode_my_nested_struct_twin_sync(dynamic raw);
+
+  @protected
+  MyNestedStructTwinSyncSse dco_decode_my_nested_struct_twin_sync_sse(
+      dynamic raw);
 
   @protected
   MySize dco_decode_my_size(dynamic raw);
@@ -3657,6 +5929,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MyStreamEntryTwinRustAsyncSse dco_decode_my_stream_entry_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MyStreamEntryTwinSse dco_decode_my_stream_entry_twin_sse(dynamic raw);
+
+  @protected
   MyStruct dco_decode_my_struct(dynamic raw);
 
   @protected
@@ -3666,7 +5945,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyTreeNodeTwinRustAsync dco_decode_my_tree_node_twin_rust_async(dynamic raw);
 
   @protected
+  MyTreeNodeTwinRustAsyncSse dco_decode_my_tree_node_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSse dco_decode_my_tree_node_twin_sse(dynamic raw);
+
+  @protected
   MyTreeNodeTwinSync dco_decode_my_tree_node_twin_sync(dynamic raw);
+
+  @protected
+  MyTreeNodeTwinSyncSse dco_decode_my_tree_node_twin_sync_sse(dynamic raw);
 
   @protected
   NestedRawStringMirrored dco_decode_nested_raw_string_mirrored(dynamic raw);
@@ -3681,7 +5970,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NewTypeIntTwinRustAsync dco_decode_new_type_int_twin_rust_async(dynamic raw);
 
   @protected
+  NewTypeIntTwinRustAsyncSse dco_decode_new_type_int_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinSse dco_decode_new_type_int_twin_sse(dynamic raw);
+
+  @protected
   NewTypeIntTwinSync dco_decode_new_type_int_twin_sync(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSyncSse dco_decode_new_type_int_twin_sync_sse(dynamic raw);
 
   @protected
   NoteTwinNormal dco_decode_note_twin_normal(dynamic raw);
@@ -3690,7 +5989,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   NoteTwinRustAsync dco_decode_note_twin_rust_async(dynamic raw);
 
   @protected
+  NoteTwinRustAsyncSse dco_decode_note_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  NoteTwinSse dco_decode_note_twin_sse(dynamic raw);
+
+  @protected
   NoteTwinSync dco_decode_note_twin_sync(dynamic raw);
+
+  @protected
+  NoteTwinSyncSse dco_decode_note_twin_sync_sse(dynamic raw);
 
   @protected
   Numbers dco_decode_numbers(dynamic raw);
@@ -3713,10 +6021,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  OpaqueNestedTwinRustAsyncSse dco_decode_opaque_nested_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  OpaqueNestedTwinRustAsyncSseMoi
+      dco_decode_opaque_nested_twin_rust_async_sse_moi(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSse dco_decode_opaque_nested_twin_sse(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSseMoi dco_decode_opaque_nested_twin_sse_moi(dynamic raw);
+
+  @protected
   OpaqueNestedTwinSync dco_decode_opaque_nested_twin_sync(dynamic raw);
 
   @protected
   OpaqueNestedTwinSyncMoi dco_decode_opaque_nested_twin_sync_moi(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncSse dco_decode_opaque_nested_twin_sync_sse(dynamic raw);
+
+  @protected
+  OpaqueNestedTwinSyncSseMoi dco_decode_opaque_nested_twin_sync_sse_moi(
+      dynamic raw);
 
   @protected
   String? dco_decode_opt_String(dynamic raw);
@@ -3744,6 +6073,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  HideDataAnotherTwinSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse(
+          dynamic raw);
+
+  @protected
+  HideDataAnotherTwinSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_another_twin_sse_moi(
+          dynamic raw);
+
+  @protected
   HideDataTwinMoi? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_moi(
       dynamic raw);
 
@@ -3762,12 +6101,40 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  HideDataTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  HideDataTwinRustAsyncSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_rust_async_sse_moi(
+          dynamic raw);
+
+  @protected
+  HideDataTwinSse? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse(
+      dynamic raw);
+
+  @protected
+  HideDataTwinSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sse_moi(dynamic raw);
+
+  @protected
   HideDataTwinSync? dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync(
       dynamic raw);
 
   @protected
   HideDataTwinSyncMoi?
       dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_moi(
+          dynamic raw);
+
+  @protected
+  HideDataTwinSyncSse?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  HideDataTwinSyncSseMoi?
+      dco_decode_opt_box_autoadd_RustOpaque_hide_data_twin_sync_sse_moi(
           dynamic raw);
 
   @protected
@@ -3782,7 +6149,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  AttributeTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_attribute_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  AttributeTwinSse? dco_decode_opt_box_autoadd_attribute_twin_sse(dynamic raw);
+
+  @protected
   AttributeTwinSync? dco_decode_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw);
+
+  @protected
+  AttributeTwinSyncSse? dco_decode_opt_box_autoadd_attribute_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3795,8 +6173,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BasicGeneralEnumTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sse(dynamic raw);
+
+  @protected
   BasicGeneralEnumTwinSync?
       dco_decode_opt_box_autoadd_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicGeneralEnumTwinSyncSse?
+      dco_decode_opt_box_autoadd_basic_general_enum_twin_sync_sse(dynamic raw);
 
   @protected
   BasicPrimitiveEnumTwinNormal?
@@ -3808,8 +6199,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  BasicPrimitiveEnumTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sse(dynamic raw);
+
+  @protected
   BasicPrimitiveEnumTwinSync?
       dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  BasicPrimitiveEnumTwinSyncSse?
+      dco_decode_opt_box_autoadd_basic_primitive_enum_twin_sync_sse(
+          dynamic raw);
 
   @protected
   BasicStructTwinNormal? dco_decode_opt_box_autoadd_basic_struct_twin_normal(
@@ -3820,7 +6225,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_opt_box_autoadd_basic_struct_twin_rust_async(dynamic raw);
 
   @protected
+  BasicStructTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_basic_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BasicStructTwinSse? dco_decode_opt_box_autoadd_basic_struct_twin_sse(
+      dynamic raw);
+
+  @protected
   BasicStructTwinSync? dco_decode_opt_box_autoadd_basic_struct_twin_sync(
+      dynamic raw);
+
+  @protected
+  BasicStructTwinSyncSse? dco_decode_opt_box_autoadd_basic_struct_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3835,7 +6252,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  ElementTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_element_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ElementTwinSse? dco_decode_opt_box_autoadd_element_twin_sse(dynamic raw);
+
+  @protected
   ElementTwinSync? dco_decode_opt_box_autoadd_element_twin_sync(dynamic raw);
+
+  @protected
+  ElementTwinSyncSse? dco_decode_opt_box_autoadd_element_twin_sync_sse(
+      dynamic raw);
 
   @protected
   ExoticOptionalsTwinNormal?
@@ -3846,8 +6274,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async(dynamic raw);
 
   @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse? dco_decode_opt_box_autoadd_exotic_optionals_twin_sse(
+      dynamic raw);
+
+  @protected
   ExoticOptionalsTwinSync?
       dco_decode_opt_box_autoadd_exotic_optionals_twin_sync(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse?
+      dco_decode_opt_box_autoadd_exotic_optionals_twin_sync_sse(dynamic raw);
 
   @protected
   double? dco_decode_opt_box_autoadd_f_32(dynamic raw);
@@ -3879,7 +6320,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  MeasureTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_measure_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  MeasureTwinSse? dco_decode_opt_box_autoadd_measure_twin_sse(dynamic raw);
+
+  @protected
   MeasureTwinSync? dco_decode_opt_box_autoadd_measure_twin_sync(dynamic raw);
+
+  @protected
+  MeasureTwinSyncSse? dco_decode_opt_box_autoadd_measure_twin_sync_sse(
+      dynamic raw);
 
   @protected
   NewTypeIntTwinNormal? dco_decode_opt_box_autoadd_new_type_int_twin_normal(
@@ -3890,7 +6342,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_opt_box_autoadd_new_type_int_twin_rust_async(dynamic raw);
 
   @protected
+  NewTypeIntTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_new_type_int_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  NewTypeIntTwinSse? dco_decode_opt_box_autoadd_new_type_int_twin_sse(
+      dynamic raw);
+
+  @protected
   NewTypeIntTwinSync? dco_decode_opt_box_autoadd_new_type_int_twin_sync(
+      dynamic raw);
+
+  @protected
+  NewTypeIntTwinSyncSse? dco_decode_opt_box_autoadd_new_type_int_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3920,7 +6384,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  WeekdaysTwinRustAsyncSse?
+      dco_decode_opt_box_autoadd_weekdays_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSse? dco_decode_opt_box_autoadd_weekdays_twin_sse(dynamic raw);
+
+  @protected
   WeekdaysTwinSync? dco_decode_opt_box_autoadd_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse? dco_decode_opt_box_autoadd_weekdays_twin_sync_sse(
+      dynamic raw);
 
   @protected
   BenchmarkBinaryTreeTwinNormal?
@@ -3931,8 +6406,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_opt_box_benchmark_binary_tree_twin_rust_async(dynamic raw);
 
   @protected
+  BenchmarkBinaryTreeTwinRustAsyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSse? dco_decode_opt_box_benchmark_binary_tree_twin_sse(
+      dynamic raw);
+
+  @protected
   BenchmarkBinaryTreeTwinSync?
       dco_decode_opt_box_benchmark_binary_tree_twin_sync(dynamic raw);
+
+  @protected
+  BenchmarkBinaryTreeTwinSyncSse?
+      dco_decode_opt_box_benchmark_binary_tree_twin_sync_sse(dynamic raw);
 
   @protected
   bool? dco_decode_opt_box_bool(dynamic raw);
@@ -3946,7 +6433,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_opt_box_exotic_optionals_twin_rust_async(dynamic raw);
 
   @protected
+  ExoticOptionalsTwinRustAsyncSse?
+      dco_decode_opt_box_exotic_optionals_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSse? dco_decode_opt_box_exotic_optionals_twin_sse(
+      dynamic raw);
+
+  @protected
   ExoticOptionalsTwinSync? dco_decode_opt_box_exotic_optionals_twin_sync(
+      dynamic raw);
+
+  @protected
+  ExoticOptionalsTwinSyncSse? dco_decode_opt_box_exotic_optionals_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -3973,7 +6472,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<AttributeTwinRustAsyncSse>?
+      dco_decode_opt_list_attribute_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<AttributeTwinSse>? dco_decode_opt_list_attribute_twin_sse(dynamic raw);
+
+  @protected
   List<AttributeTwinSync>? dco_decode_opt_list_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse>? dco_decode_opt_list_attribute_twin_sync_sse(
+      dynamic raw);
 
   @protected
   List<ElementTwinNormal>? dco_decode_opt_list_element_twin_normal(dynamic raw);
@@ -3983,7 +6493,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  List<ElementTwinRustAsyncSse>?
+      dco_decode_opt_list_element_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  List<ElementTwinSse>? dco_decode_opt_list_element_twin_sse(dynamic raw);
+
+  @protected
   List<ElementTwinSync>? dco_decode_opt_list_element_twin_sync(dynamic raw);
+
+  @protected
+  List<ElementTwinSyncSse>? dco_decode_opt_list_element_twin_sync_sse(
+      dynamic raw);
 
   @protected
   List<AttributeTwinNormal?>?
@@ -3995,8 +6516,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  List<AttributeTwinRustAsyncSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  List<AttributeTwinSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sse(dynamic raw);
+
+  @protected
   List<AttributeTwinSync?>?
       dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync(dynamic raw);
+
+  @protected
+  List<AttributeTwinSyncSse?>?
+      dco_decode_opt_list_opt_box_autoadd_attribute_twin_sync_sse(dynamic raw);
 
   @protected
   Float32List? dco_decode_opt_list_prim_f_32_strict(dynamic raw);
@@ -4020,7 +6554,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   OptVecsTwinRustAsync dco_decode_opt_vecs_twin_rust_async(dynamic raw);
 
   @protected
+  OptVecsTwinRustAsyncSse dco_decode_opt_vecs_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  OptVecsTwinSse dco_decode_opt_vecs_twin_sse(dynamic raw);
+
+  @protected
   OptVecsTwinSync dco_decode_opt_vecs_twin_sync(dynamic raw);
+
+  @protected
+  OptVecsTwinSyncSse dco_decode_opt_vecs_twin_sync_sse(dynamic raw);
 
   @protected
   PointTwinNormal dco_decode_point_twin_normal(dynamic raw);
@@ -4036,10 +6579,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  PointTwinRustAsyncSse dco_decode_point_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  PointTwinRustAsyncSseArray2 dco_decode_point_twin_rust_async_sse_array_2(
+      dynamic raw);
+
+  @protected
+  PointTwinSse dco_decode_point_twin_sse(dynamic raw);
+
+  @protected
+  PointTwinSseArray2 dco_decode_point_twin_sse_array_2(dynamic raw);
+
+  @protected
   PointTwinSync dco_decode_point_twin_sync(dynamic raw);
 
   @protected
   PointTwinSyncArray2 dco_decode_point_twin_sync_array_2(dynamic raw);
+
+  @protected
+  PointTwinSyncSse dco_decode_point_twin_sync_sse(dynamic raw);
+
+  @protected
+  PointTwinSyncSseArray2 dco_decode_point_twin_sync_sse_array_2(dynamic raw);
 
   @protected
   RawStringEnumMirrored dco_decode_raw_string_enum_mirrored(dynamic raw);
@@ -4053,8 +6615,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_raw_string_item_struct_twin_rust_async(dynamic raw);
 
   @protected
+  RawStringItemStructTwinRustAsyncSse
+      dco_decode_raw_string_item_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RawStringItemStructTwinSse dco_decode_raw_string_item_struct_twin_sse(
+      dynamic raw);
+
+  @protected
   RawStringItemStructTwinSync dco_decode_raw_string_item_struct_twin_sync(
       dynamic raw);
+
+  @protected
+  RawStringItemStructTwinSyncSse
+      dco_decode_raw_string_item_struct_twin_sync_sse(dynamic raw);
 
   @protected
   RawStringMirrored dco_decode_raw_string_mirrored(dynamic raw);
@@ -4073,8 +6647,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_i_32_basic_general_enum_twin_rust_async(dynamic raw);
 
   @protected
+  (
+    int,
+    BasicGeneralEnumTwinRustAsyncSse
+  ) dco_decode_record_i_32_basic_general_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (int, BasicGeneralEnumTwinSse)
+      dco_decode_record_i_32_basic_general_enum_twin_sse(dynamic raw);
+
+  @protected
   (int, BasicGeneralEnumTwinSync)
       dco_decode_record_i_32_basic_general_enum_twin_sync(dynamic raw);
+
+  @protected
+  (int, BasicGeneralEnumTwinSyncSse)
+      dco_decode_record_i_32_basic_general_enum_twin_sync_sse(dynamic raw);
 
   @protected
   (int, BasicPrimitiveEnumTwinNormal)
@@ -4085,8 +6673,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_i_32_basic_primitive_enum_twin_rust_async(dynamic raw);
 
   @protected
+  (int, BasicPrimitiveEnumTwinRustAsyncSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sse(dynamic raw);
+
+  @protected
   (int, BasicPrimitiveEnumTwinSync)
       dco_decode_record_i_32_basic_primitive_enum_twin_sync(dynamic raw);
+
+  @protected
+  (int, BasicPrimitiveEnumTwinSyncSse)
+      dco_decode_record_i_32_basic_primitive_enum_twin_sync_sse(dynamic raw);
 
   @protected
   (int, BasicStructTwinNormal) dco_decode_record_i_32_basic_struct_twin_normal(
@@ -4097,8 +6698,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_i_32_basic_struct_twin_rust_async(dynamic raw);
 
   @protected
+  (int, BasicStructTwinRustAsyncSse)
+      dco_decode_record_i_32_basic_struct_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (int, BasicStructTwinSse) dco_decode_record_i_32_basic_struct_twin_sse(
+      dynamic raw);
+
+  @protected
   (int, BasicStructTwinSync) dco_decode_record_i_32_basic_struct_twin_sync(
       dynamic raw);
+
+  @protected
+  (int, BasicStructTwinSyncSse)
+      dco_decode_record_i_32_basic_struct_twin_sync_sse(dynamic raw);
 
   @protected
   (int, bool) dco_decode_record_i_32_bool(dynamic raw);
@@ -4154,8 +6767,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_string_enum_simple_twin_rust_async(dynamic raw);
 
   @protected
+  (String, EnumSimpleTwinRustAsyncSse)
+      dco_decode_record_string_enum_simple_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSse) dco_decode_record_string_enum_simple_twin_sse(
+      dynamic raw);
+
+  @protected
   (String, EnumSimpleTwinSync) dco_decode_record_string_enum_simple_twin_sync(
       dynamic raw);
+
+  @protected
+  (String, EnumSimpleTwinSyncSse)
+      dco_decode_record_string_enum_simple_twin_sync_sse(dynamic raw);
 
   @protected
   (String, int) dco_decode_record_string_i_32(dynamic raw);
@@ -4169,8 +6794,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_record_string_kitchen_sink_twin_rust_async(dynamic raw);
 
   @protected
+  (String, KitchenSinkTwinRustAsyncSse)
+      dco_decode_record_string_kitchen_sink_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSse) dco_decode_record_string_kitchen_sink_twin_sse(
+      dynamic raw);
+
+  @protected
   (String, KitchenSinkTwinSync) dco_decode_record_string_kitchen_sink_twin_sync(
       dynamic raw);
+
+  @protected
+  (String, KitchenSinkTwinSyncSse)
+      dco_decode_record_string_kitchen_sink_twin_sync_sse(dynamic raw);
 
   @protected
   (String, Uint8List) dco_decode_record_string_list_prim_u_8_strict(
@@ -4192,7 +6829,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SomeStructTwinRustAsync dco_decode_some_struct_twin_rust_async(dynamic raw);
 
   @protected
+  SomeStructTwinRustAsyncSse dco_decode_some_struct_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  SomeStructTwinSse dco_decode_some_struct_twin_sse(dynamic raw);
+
+  @protected
   SomeStructTwinSync dco_decode_some_struct_twin_sync(dynamic raw);
+
+  @protected
+  SomeStructTwinSyncSse dco_decode_some_struct_twin_sync_sse(dynamic raw);
 
   @protected
   SpeedTwinNormal dco_decode_speed_twin_normal(dynamic raw);
@@ -4201,7 +6848,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SpeedTwinRustAsync dco_decode_speed_twin_rust_async(dynamic raw);
 
   @protected
+  SpeedTwinRustAsyncSse dco_decode_speed_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SpeedTwinSse dco_decode_speed_twin_sse(dynamic raw);
+
+  @protected
   SpeedTwinSync dco_decode_speed_twin_sync(dynamic raw);
+
+  @protected
+  SpeedTwinSyncSse dco_decode_speed_twin_sync_sse(dynamic raw);
 
   @protected
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
@@ -4212,7 +6868,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_struct_with_comments_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithCommentsTwinRustAsyncSse
+      dco_decode_struct_with_comments_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSse dco_decode_struct_with_comments_twin_sse(
+      dynamic raw);
+
+  @protected
   StructWithCommentsTwinSync dco_decode_struct_with_comments_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithCommentsTwinSyncSse dco_decode_struct_with_comments_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -4223,7 +6891,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  StructWithEnumTwinRustAsyncSse
+      dco_decode_struct_with_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSse dco_decode_struct_with_enum_twin_sse(dynamic raw);
+
+  @protected
   StructWithEnumTwinSync dco_decode_struct_with_enum_twin_sync(dynamic raw);
+
+  @protected
+  StructWithEnumTwinSyncSse dco_decode_struct_with_enum_twin_sync_sse(
+      dynamic raw);
 
   @protected
   StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
@@ -4234,7 +6913,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_struct_with_one_field_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithOneFieldTwinRustAsyncSse
+      dco_decode_struct_with_one_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSse dco_decode_struct_with_one_field_twin_sse(
+      dynamic raw);
+
+  @protected
   StructWithOneFieldTwinSync dco_decode_struct_with_one_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithOneFieldTwinSyncSse dco_decode_struct_with_one_field_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -4246,7 +6937,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_struct_with_two_field_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithTwoFieldTwinRustAsyncSse
+      dco_decode_struct_with_two_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSse dco_decode_struct_with_two_field_twin_sse(
+      dynamic raw);
+
+  @protected
   StructWithTwoFieldTwinSync dco_decode_struct_with_two_field_twin_sync(
+      dynamic raw);
+
+  @protected
+  StructWithTwoFieldTwinSyncSse dco_decode_struct_with_two_field_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -4258,8 +6961,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_struct_with_zero_field_twin_rust_async(dynamic raw);
 
   @protected
+  StructWithZeroFieldTwinRustAsyncSse
+      dco_decode_struct_with_zero_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSse dco_decode_struct_with_zero_field_twin_sse(
+      dynamic raw);
+
+  @protected
   StructWithZeroFieldTwinSync dco_decode_struct_with_zero_field_twin_sync(
       dynamic raw);
+
+  @protected
+  StructWithZeroFieldTwinSyncSse
+      dco_decode_struct_with_zero_field_twin_sync_sse(dynamic raw);
 
   @protected
   SumWithTwinNormal dco_decode_sum_with_twin_normal(dynamic raw);
@@ -4275,10 +6990,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  SumWithTwinRustAsyncSse dco_decode_sum_with_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  SumWithTwinRustAsyncSseArray3 dco_decode_sum_with_twin_rust_async_sse_array_3(
+      dynamic raw);
+
+  @protected
+  SumWithTwinSse dco_decode_sum_with_twin_sse(dynamic raw);
+
+  @protected
+  SumWithTwinSseArray3 dco_decode_sum_with_twin_sse_array_3(dynamic raw);
+
+  @protected
   SumWithTwinSync dco_decode_sum_with_twin_sync(dynamic raw);
 
   @protected
   SumWithTwinSyncArray3 dco_decode_sum_with_twin_sync_array_3(dynamic raw);
+
+  @protected
+  SumWithTwinSyncSse dco_decode_sum_with_twin_sync_sse(dynamic raw);
+
+  @protected
+  SumWithTwinSyncSseArray3 dco_decode_sum_with_twin_sync_sse_array_3(
+      dynamic raw);
 
   @protected
   TestChronoTwinNormal dco_decode_test_chrono_twin_normal(dynamic raw);
@@ -4310,6 +7045,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  TestIdTwinRustAsyncSse dco_decode_test_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncSseArray2 dco_decode_test_id_twin_rust_async_sse_array_2(
+      dynamic raw);
+
+  @protected
+  TestIdTwinRustAsyncSseArray4 dco_decode_test_id_twin_rust_async_sse_array_4(
+      dynamic raw);
+
+  @protected
+  TestIdTwinSse dco_decode_test_id_twin_sse(dynamic raw);
+
+  @protected
+  TestIdTwinSseArray2 dco_decode_test_id_twin_sse_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinSseArray4 dco_decode_test_id_twin_sse_array_4(dynamic raw);
+
+  @protected
   TestIdTwinSync dco_decode_test_id_twin_sync(dynamic raw);
 
   @protected
@@ -4319,13 +7074,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   TestIdTwinSyncArray4 dco_decode_test_id_twin_sync_array_4(dynamic raw);
 
   @protected
+  TestIdTwinSyncSse dco_decode_test_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  TestIdTwinSyncSseArray2 dco_decode_test_id_twin_sync_sse_array_2(dynamic raw);
+
+  @protected
+  TestIdTwinSyncSseArray4 dco_decode_test_id_twin_sync_sse_array_4(dynamic raw);
+
+  @protected
   TestModelTwinNormal dco_decode_test_model_twin_normal(dynamic raw);
 
   @protected
   TestModelTwinRustAsync dco_decode_test_model_twin_rust_async(dynamic raw);
 
   @protected
+  TestModelTwinRustAsyncSse dco_decode_test_model_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  TestModelTwinSse dco_decode_test_model_twin_sse(dynamic raw);
+
+  @protected
   TestModelTwinSync dco_decode_test_model_twin_sync(dynamic raw);
+
+  @protected
+  TestModelTwinSyncSse dco_decode_test_model_twin_sync_sse(dynamic raw);
 
   @protected
   TupleStructWithOneFieldTwinNormal
@@ -4336,8 +7110,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_tuple_struct_with_one_field_twin_rust_async(dynamic raw);
 
   @protected
+  TupleStructWithOneFieldTwinRustAsyncSse
+      dco_decode_tuple_struct_with_one_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSse
+      dco_decode_tuple_struct_with_one_field_twin_sse(dynamic raw);
+
+  @protected
   TupleStructWithOneFieldTwinSync
       dco_decode_tuple_struct_with_one_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithOneFieldTwinSyncSse
+      dco_decode_tuple_struct_with_one_field_twin_sync_sse(dynamic raw);
 
   @protected
   TupleStructWithTwoFieldTwinNormal
@@ -4348,8 +7134,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_tuple_struct_with_two_field_twin_rust_async(dynamic raw);
 
   @protected
+  TupleStructWithTwoFieldTwinRustAsyncSse
+      dco_decode_tuple_struct_with_two_field_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSse
+      dco_decode_tuple_struct_with_two_field_twin_sse(dynamic raw);
+
+  @protected
   TupleStructWithTwoFieldTwinSync
       dco_decode_tuple_struct_with_two_field_twin_sync(dynamic raw);
+
+  @protected
+  TupleStructWithTwoFieldTwinSyncSse
+      dco_decode_tuple_struct_with_two_field_twin_sync_sse(dynamic raw);
 
   @protected
   int dco_decode_u_16(dynamic raw);
@@ -4385,7 +7183,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   UserIdTwinRustAsync dco_decode_user_id_twin_rust_async(dynamic raw);
 
   @protected
+  UserIdTwinRustAsyncSse dco_decode_user_id_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  UserIdTwinSse dco_decode_user_id_twin_sse(dynamic raw);
+
+  @protected
   UserIdTwinSync dco_decode_user_id_twin_sync(dynamic raw);
+
+  @protected
+  UserIdTwinSyncSse dco_decode_user_id_twin_sync_sse(dynamic raw);
 
   @protected
   int dco_decode_usize(dynamic raw);
@@ -4399,7 +7206,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_vec_of_primitive_pack_twin_rust_async(dynamic raw);
 
   @protected
+  VecOfPrimitivePackTwinRustAsyncSse
+      dco_decode_vec_of_primitive_pack_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinSse dco_decode_vec_of_primitive_pack_twin_sse(
+      dynamic raw);
+
+  @protected
   VecOfPrimitivePackTwinSync dco_decode_vec_of_primitive_pack_twin_sync(
+      dynamic raw);
+
+  @protected
+  VecOfPrimitivePackTwinSyncSse dco_decode_vec_of_primitive_pack_twin_sync_sse(
       dynamic raw);
 
   @protected
@@ -4409,7 +7228,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   WeekdaysTwinRustAsync dco_decode_weekdays_twin_rust_async(dynamic raw);
 
   @protected
+  WeekdaysTwinRustAsyncSse dco_decode_weekdays_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  WeekdaysTwinSse dco_decode_weekdays_twin_sse(dynamic raw);
+
+  @protected
   WeekdaysTwinSync dco_decode_weekdays_twin_sync(dynamic raw);
+
+  @protected
+  WeekdaysTwinSyncSse dco_decode_weekdays_twin_sync_sse(dynamic raw);
 
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);

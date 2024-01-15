@@ -34399,37 +34399,37 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSy
 }
 impl SseDecode for flutter_rust_bridge::for_generated::anyhow::Error {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(AnyhowException) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseDecode for backtrace::Backtrace {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Backtrace) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseDecode for chrono::Duration {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Duration)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Local> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Local)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseDecode for chrono::NaiveDateTime {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Naive)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseDecode for chrono::DateTime<chrono::Utc> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Utc)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
@@ -36741,7 +36741,7 @@ impl SseDecode for String {
 
 impl SseDecode for uuid::Uuid {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Uuid) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
@@ -39460,7 +39460,7 @@ impl SseDecode
 
 impl SseDecode for flutter_rust_bridge::for_generated::DartAbi {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        unimplemented!("");
+        unimplemented!("The type Dynamic(IrTypeDynamic) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
@@ -59713,25 +59713,25 @@ impl SseEncode for backtrace::Backtrace {
 
 impl SseEncode for chrono::Duration {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Duration)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Local> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Local)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseEncode for chrono::NaiveDateTime {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Naive)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
 impl SseEncode for chrono::DateTime<chrono::Utc> {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Time(Utc)) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
@@ -62165,7 +62165,7 @@ impl SseEncode for String {
 
 impl SseEncode for uuid::Uuid {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
+        unimplemented!("The type Delegate(Uuid) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
@@ -64197,7 +64197,7 @@ impl SseEncode
 
 impl SseEncode for flutter_rust_bridge::for_generated::DartAbi {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        unimplemented!("");
+        unimplemented!("The type Dynamic(IrTypeDynamic) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue");
     }
 }
 
