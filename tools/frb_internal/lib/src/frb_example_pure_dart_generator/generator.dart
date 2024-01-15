@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/misc_generator.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/pde_generator.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/entrypoint.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
 
 Future<void> generate() async {
   final dirPureDart =
@@ -21,10 +22,15 @@ Future<void> generate() async {
 Future<void> generateForPackage(
     {required Uri dartRoot, required Package package}) async {
   await RustGenerator(
-          packageRootDir: dartRoot.resolve('rust/'), interestDir: 'src/api/')
-      .generate();
-  await DartGenerator(packageRootDir: dartRoot, interestDir: 'test/api/')
-      .generate();
+    packageRootDir: dartRoot.resolve('rust/'),
+    interestDir: 'src/api/',
+    package: package,
+  ).generate();
+  await DartGenerator(
+    packageRootDir: dartRoot,
+    interestDir: 'test/api/',
+    package: package,
+  ).generate();
   await generateDartTestEntrypoints(dartRoot: dartRoot);
   await generateRustMod(dartRoot.resolve('rust/src/api/pseudo_manual/'));
 }
