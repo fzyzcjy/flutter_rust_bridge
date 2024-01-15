@@ -180,10 +180,6 @@ or use `--watch` to automatically re-generate when code changes:
 flutter_rust_bridge_codegen generate --watch
 ```
 
-If you need to install LLVM,
-which is required by the popular Google official package `ffigen`,
-please refer to [this doc](manual/ffigen-troubleshooting).
-
 ## What's next
 
 On one hand, if you like to see a live demo, please visit [the next page](demo).
