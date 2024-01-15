@@ -1,3 +1,4 @@
+use crate::library::commands::format_rust::format_rust;
 use std::fs;
 use std::path::Path;
 
@@ -68,6 +69,8 @@ pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Res
         "#
     );
 
-    fs::write(path_target, text)?;
+    fs::write(&path_target, text)?;
+    format_rust(&[path_target])?;
+
     Ok(())
 }
