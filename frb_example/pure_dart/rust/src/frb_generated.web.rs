@@ -5357,6 +5357,15 @@ impl
             .collect()
     }
 }
+impl CstDecode<Vec<Vec<u8>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    fn cst_decode(self) -> Vec<Vec<u8>> {
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap()
+            .iter()
+            .map(CstDecode::cst_decode)
+            .collect()
+    }
+}
 impl CstDecode<Vec<crate::auxiliary::sample_types::MyEnum>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -18397,6 +18406,14 @@ pub fn wire_example_basic_list_type_bool_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_example_basic_list_type_bytes_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_basic_list_type_bytes_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_example_basic_list_type_f32_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: Box<[f32]>,
@@ -18516,6 +18533,14 @@ pub fn wire_example_basic_list_type_bool_twin_rust_async(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_example_basic_list_type_bool_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bytes_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_example_basic_list_type_bytes_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -18659,6 +18684,21 @@ pub fn wire_example_basic_list_type_bool_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_example_basic_list_type_bool_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bytes_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_bytes_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -18837,6 +18877,16 @@ pub fn wire_example_basic_list_type_bool_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_example_basic_list_type_bytes_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_example_basic_list_type_bytes_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_example_basic_list_type_f32_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -18975,6 +19025,13 @@ pub fn wire_example_basic_list_type_bool_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_example_basic_list_type_bytes_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_example_basic_list_type_bytes_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_example_basic_list_type_f32_twin_sync(
     arg: Box<[f32]>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -19097,6 +19154,15 @@ pub fn wire_example_basic_list_type_bool_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_example_basic_list_type_bool_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_basic_list_type_bytes_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_example_basic_list_type_bytes_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]

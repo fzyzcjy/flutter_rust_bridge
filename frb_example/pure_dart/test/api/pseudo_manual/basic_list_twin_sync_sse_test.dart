@@ -96,6 +96,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
       ["😂"]
     ]);
     addTestsIdentityFunctionCall(
+        exampleBasicListTypeBytesTwinSyncSse, <List<Uint8List>>[
+      [],
+      [Uint8List.fromList([])],
+      [
+        Uint8List.fromList([255, 0])
+      ],
+      [
+        Uint8List.fromList([10, 20, 30, 40])
+      ]
+    ]);
+    addTestsIdentityFunctionCall(
         exampleBasicListTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse,
         <List<BasicPrimitiveEnumTwinSyncSse>>[
           [],

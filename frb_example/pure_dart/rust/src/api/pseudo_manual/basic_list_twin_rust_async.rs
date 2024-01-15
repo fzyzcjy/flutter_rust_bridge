@@ -55,6 +55,10 @@ pub async fn example_basic_list_type_string_twin_rust_async(arg: Vec<String>) ->
     arg
 }
 
+pub async fn example_basic_list_type_bytes_twin_rust_async(arg: Vec<Vec<u8>>) -> Vec<Vec<u8>> {
+    arg
+}
+
 pub async fn example_basic_list_type_basic_primitive_enum_twin_rust_async_twin_rust_async(
     arg: Vec<BasicPrimitiveEnumTwinRustAsync>,
 ) -> Vec<BasicPrimitiveEnumTwinRustAsync> {

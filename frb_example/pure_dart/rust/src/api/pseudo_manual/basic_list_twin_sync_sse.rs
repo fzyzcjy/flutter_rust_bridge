@@ -81,6 +81,12 @@ pub fn example_basic_list_type_string_twin_sync_sse(arg: Vec<String>) -> Vec<Str
 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
+pub fn example_basic_list_type_bytes_twin_sync_sse(arg: Vec<Vec<u8>>) -> Vec<Vec<u8>> {
+    arg
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
 pub fn example_basic_list_type_basic_primitive_enum_twin_sync_sse_twin_sync_sse(
     arg: Vec<BasicPrimitiveEnumTwinSyncSse>,
 ) -> Vec<BasicPrimitiveEnumTwinSyncSse> {

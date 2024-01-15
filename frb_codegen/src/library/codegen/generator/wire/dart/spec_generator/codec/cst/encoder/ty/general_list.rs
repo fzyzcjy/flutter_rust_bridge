@@ -25,6 +25,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGe
                         IrType::Optional(_)
                             | IrType::RustOpaque(_)
                             | IrType::DartOpaque(_)
+                            | IrType::PrimitiveList(_)
                             | IrType::Delegate(IrTypeDelegate::String)
                             | IrType::Delegate(IrTypeDelegate::Time(_))
                             | IrType::Delegate(IrTypeDelegate::Uuid)
