@@ -7,7 +7,7 @@ pub(crate) mod dart;
 pub(crate) mod rust;
 
 #[enum_dispatch]
-#[derive(Clone, Debug)]
+#[derive(Clone, Copy, Debug)]
 pub(crate) enum Lang {
     DartLang,
     RustLang,
