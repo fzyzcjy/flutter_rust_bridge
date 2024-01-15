@@ -47,32 +47,31 @@ impl CachedCargoExpand {
 
 fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
     if let Some(module) = module {
-        let (_, extracted) =
-            module
-                .split("::")
-                .fold((0, raw_expanded), |(spaces, expanded), module| {
-                    // empty module scenario
-                    if expanded.contains(&format!("mod {module} {{}}")) {
-                        return (spaces, "");
-                    }
+        let mut spaces = 0;
+        let mut expanded = raw_expanded;
 
-                    // non-empty
-                    let indent = " ".repeat(spaces);
-                    let searched = regex::Regex::new(&format!(
-                        "(?m)^{indent}(?:pub(?:\\([^\\)]+\\))?\\s+)?mod {module} \\{{$"
-                    ))
-                    .unwrap();
-                    let start = match searched.find(expanded) {
-                        Some(m) => m.end() + 1,
-                        None => return (spaces, expanded),
-                    };
-                    let end = expanded[start..]
-                        .find(&format!("\n{}}}", indent))
-                        .map(|n| n + start)
-                        .unwrap_or(expanded.len());
-                    (spaces + 4, &expanded[start..end])
-                });
-        return Ok(extracted.to_owned());
+        for module in module.split("::") {
+            if expanded.contains(&format!("mod {module} {{}}")) {
+                return Ok("".to_owned());
+            }
+
+            let indent = " ".repeat(spaces);
+            let searched = regex::Regex::new(&format!(
+                "(?m)^{indent}(?:pub(?:\\([^\\)]+\\))?\\s+)?mod {module} \\{{$"
+            ))
+            .unwrap();
+            let start = match searched.find(expanded) {
+                Some(m) => m.end() + 1,
+                None => bail!("Module not found: {}", module),
+            };
+            let end = expanded[start..]
+                .find(&format!("\n{}}}", indent))
+                .map(|n| n + start)
+                .unwrap_or(expanded.len());
+            spaces += 4;
+            expanded = &expanded[start..end];
+        }
+        return Ok(expanded.to_owned());
     }
     Ok(raw_expanded.to_owned())
 }
@@ -175,8 +174,8 @@ mod another {}";
         // some code
     }
 }";
-        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
-        assert_eq!(src, extracted);
+        let extracted = extract_module(src, Some(String::from("another")));
+        assert!(extracted.is_err());
     }
 
     #[test]
@@ -188,7 +187,7 @@ mod another {}";
 }
 pub(self) mod another {
     // 12345
-}";
+}                                                                                                                                      ";
         let extracted = extract_module(src, Some(String::from("another"))).unwrap();
         assert_eq!(String::from("    // 12345"), extracted);
     }
