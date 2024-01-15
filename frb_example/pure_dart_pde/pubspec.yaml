@@ -1,4 +1,4 @@
-name: frb_example_pure_dart
+name: frb_example_pure_dart_pde
 description: flutter rust bridge example
 version: 1.0.0
 publish_to: none
