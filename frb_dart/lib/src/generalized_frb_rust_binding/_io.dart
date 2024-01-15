@@ -52,6 +52,16 @@ class GeneralizedFrbRustBinding {
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void dartFnDeliverOutput({
+    required int callId,
+    required ffi.Pointer<ffi.Uint8> ptr,
+    required int rustVecLen,
+    required int dataLen,
+  }) {
+    return _binding.dart_fn_deliver_output(callId, ptr, rustVecLen, dataLen);
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
       _binding.dart_opaque_dart2rust_encode(object, dartHandlerPort);
