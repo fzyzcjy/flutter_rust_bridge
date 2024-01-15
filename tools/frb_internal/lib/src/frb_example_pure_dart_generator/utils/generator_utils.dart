@@ -24,7 +24,6 @@ abstract class BaseGenerator {
   Future<void> generate() async {
     _writeCodeFiles(generateDirectSources());
     _Duplicator(this)._generate();
-    await executeFormat();
   }
 
   @protected

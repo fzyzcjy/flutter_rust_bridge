@@ -21,16 +21,23 @@ Future<void> generate() async {
 
 Future<void> generateForPackage(
     {required Uri dartRoot, required Package package}) async {
-  await RustGenerator(
+  final rust = RustGenerator(
     packageRootDir: dartRoot.resolve('rust/'),
     interestDir: 'src/api/',
     package: package,
-  ).generate();
-  await DartGenerator(
+  );
+  final dart = DartGenerator(
     packageRootDir: dartRoot,
     interestDir: 'test/api/',
     package: package,
-  ).generate();
+  );
+
+  await rust.generate();
+  await dart.generate();
+
   await generateDartTestEntrypoints(dartRoot: dartRoot);
   await generateRustMod(dartRoot.resolve('rust/src/api/pseudo_manual/'));
+
+  await rust.executeFormat();
+  await dart.executeFormat();
 }
