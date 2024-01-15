@@ -55,6 +55,7 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 // Section: boilerplate
 
 flutter_rust_bridge::frb_generated_boilerplate!();
+const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.19";
 
 // Section: executor
 
@@ -1408,6 +1409,28 @@ fn wire_unwrap_dart_opaque_twin_normal_impl(
                     crate::api::dart_opaque_sync::unwrap_dart_opaque_twin_normal(api_opaque),
                 )
             })())
+        },
+    )
+}
+fn wire_test_duplicated_module_names_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    s: impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "test_duplicated_module_names",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::deliberate_name_conflict::test_duplicated_module_names(api_s),
+                    )
+                })())
+            }
         },
     )
 }
@@ -47926,6 +47949,21 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTw
     }
 }
 
+impl SseDecode for crate::api::deliberate_name_conflict::StructInLowerLevel {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_inner =
+            <crate::deliberate_name_conflict::StructInUpperLevel>::sse_decode(deserializer);
+        return crate::api::deliberate_name_conflict::StructInLowerLevel { inner: var_inner };
+    }
+}
+
+impl SseDecode for crate::deliberate_name_conflict::StructInUpperLevel {
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_upper = <usize>::sse_decode(deserializer);
+        return crate::deliberate_name_conflict::StructInUpperLevel { upper: var_upper };
+    }
+}
+
 impl SseDecode for crate::api::comment::StructWithCommentsTwinNormal {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_fieldWithComments = <i32>::sse_decode(deserializer);
@@ -58024,6 +58062,38 @@ impl
     fn into_into_dart(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::deliberate_name_conflict::StructInLowerLevel {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.inner.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::deliberate_name_conflict::StructInLowerLevel
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::deliberate_name_conflict::StructInLowerLevel>
+    for crate::api::deliberate_name_conflict::StructInLowerLevel
+{
+    fn into_into_dart(self) -> crate::api::deliberate_name_conflict::StructInLowerLevel {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::deliberate_name_conflict::StructInUpperLevel {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.upper.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::deliberate_name_conflict::StructInUpperLevel
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::deliberate_name_conflict::StructInUpperLevel>
+    for crate::deliberate_name_conflict::StructInUpperLevel
+{
+    fn into_into_dart(self) -> crate::deliberate_name_conflict::StructInUpperLevel {
         self
     }
 }
@@ -70897,6 +70967,18 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTw
                 <f64>::sse_encode(field0, serializer);
             }
         }
+    }
+}
+
+impl SseEncode for crate::api::deliberate_name_conflict::StructInLowerLevel {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <crate::deliberate_name_conflict::StructInUpperLevel>::sse_encode(self.inner, serializer);
+    }
+}
+
+impl SseEncode for crate::deliberate_name_conflict::StructInUpperLevel {
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <usize>::sse_encode(self.upper, serializer);
     }
 }
 

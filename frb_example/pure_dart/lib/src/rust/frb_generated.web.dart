@@ -15,6 +15,7 @@ import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
+import 'api/deliberate_name_conflict.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -231,6 +232,7 @@ import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'deliberate_name_conflict.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:meta/meta.dart' as meta;
@@ -3967,6 +3969,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  StructInLowerLevel dco_decode_box_autoadd_struct_in_lower_level(dynamic raw);
+
+  @protected
   StructWithCommentsTwinNormal
       dco_decode_box_autoadd_struct_with_comments_twin_normal(dynamic raw);
 
@@ -6860,6 +6865,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SpeedTwinSyncSse dco_decode_speed_twin_sync_sse(dynamic raw);
+
+  @protected
+  StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw);
+
+  @protected
+  StructInUpperLevel dco_decode_struct_in_upper_level(dynamic raw);
 
   @protected
   StructWithCommentsTwinNormal dco_decode_struct_with_comments_twin_normal(
@@ -10524,6 +10535,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructInLowerLevel sse_decode_box_autoadd_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
   StructWithCommentsTwinNormal
       sse_decode_box_autoadd_struct_with_comments_twin_normal(
           SseDeserializer deserializer);
@@ -13844,6 +13859,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   SpeedTwinSyncSse sse_decode_speed_twin_sync_sse(SseDeserializer deserializer);
 
   @protected
+  StructInLowerLevel sse_decode_struct_in_lower_level(
+      SseDeserializer deserializer);
+
+  @protected
+  StructInUpperLevel sse_decode_struct_in_upper_level(
+      SseDeserializer deserializer);
+
+  @protected
   StructWithCommentsTwinNormal sse_decode_struct_with_comments_twin_normal(
       SseDeserializer deserializer);
 
@@ -16983,6 +17006,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> cst_encode_box_autoadd_some_struct_twin_sync_sse(
       SomeStructTwinSyncSse raw) {
     return cst_encode_some_struct_twin_sync_sse(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel raw) {
+    return cst_encode_struct_in_lower_level(raw);
   }
 
   @protected
@@ -23283,6 +23312,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> cst_encode_struct_in_lower_level(StructInLowerLevel raw) {
+    return [cst_encode_struct_in_upper_level(raw.inner)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_struct_in_upper_level(StructInUpperLevel raw) {
+    return [cst_encode_usize(raw.upper)];
+  }
+
+  @protected
   List<dynamic> cst_encode_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
     return [cst_encode_i_32(raw.fieldWithComments)];
@@ -28640,6 +28679,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SomeStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer);
 
@@ -31799,6 +31842,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SpeedTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_struct_in_lower_level(
+      StructInLowerLevel self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_in_upper_level(
+      StructInUpperLevel self, SseSerializer serializer);
+
+  @protected
   void sse_encode_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal self, SseSerializer serializer);
 
@@ -32490,6 +32541,10 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_unwrap_dart_opaque_twin_normal(PlatformPointer opaque) =>
           wasmModule.wire_unwrap_dart_opaque_twin_normal(opaque);
+
+  void wire_test_duplicated_module_names(
+          NativePortType port_, List<dynamic> s) =>
+      wasmModule.wire_test_duplicated_module_names(port_, s);
 
   void wire_func_enum_simple_twin_normal(NativePortType port_, int arg) =>
       wasmModule.wire_func_enum_simple_twin_normal(port_, arg);
@@ -47791,6 +47846,9 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire_unwrap_dart_opaque_twin_normal(PlatformPointer opaque);
+
+  external void wire_test_duplicated_module_names(
+      NativePortType port_, List<dynamic> s);
 
   external void wire_func_enum_simple_twin_normal(
       NativePortType port_, int arg);

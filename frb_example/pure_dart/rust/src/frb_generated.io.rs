@@ -6583,6 +6583,15 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::SomeStructTwi
         CstDecode::<crate::api::pseudo_manual::exception_twin_sync_sse::SomeStructTwinSyncSse>::cst_decode(*wrap).into()
     }
 }
+impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
+    for *mut wire_cst_struct_in_lower_level
+{
+    fn cst_decode(self) -> crate::api::deliberate_name_conflict::StructInLowerLevel {
+        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
+        CstDecode::<crate::api::deliberate_name_conflict::StructInLowerLevel>::cst_decode(*wrap)
+            .into()
+    }
+}
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for *mut wire_cst_struct_with_comments_twin_normal
 {
@@ -15062,6 +15071,24 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSy
         }
     }
 }
+impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
+    for wire_cst_struct_in_lower_level
+{
+    fn cst_decode(self) -> crate::api::deliberate_name_conflict::StructInLowerLevel {
+        crate::api::deliberate_name_conflict::StructInLowerLevel {
+            inner: self.inner.cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
+    for wire_cst_struct_in_upper_level
+{
+    fn cst_decode(self) -> crate::deliberate_name_conflict::StructInUpperLevel {
+        crate::deliberate_name_conflict::StructInUpperLevel {
+            upper: self.upper.cst_decode(),
+        }
+    }
+}
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for wire_cst_struct_with_comments_twin_normal
 {
@@ -21361,6 +21388,30 @@ impl Default for wire_cst_speed_twin_sync_sse {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_cst_struct_in_lower_level {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            inner: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_struct_in_lower_level {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_cst_struct_in_upper_level {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            upper: Default::default(),
+        }
+    }
+}
+impl Default for wire_cst_struct_in_upper_level {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_cst_struct_with_comments_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -22857,6 +22908,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_wire_unwrap_dart_opaque_twin_norm
     opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_unwrap_dart_opaque_twin_normal_impl(opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_wire_test_duplicated_module_names(
+    port_: i64,
+    s: *mut wire_cst_struct_in_lower_level,
+) {
+    wire_test_duplicated_module_names_impl(port_, s)
 }
 
 #[no_mangle]
@@ -47709,6 +47768,14 @@ pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_t
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level(
+) -> *mut wire_cst_struct_in_lower_level {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(
+        wire_cst_struct_in_lower_level::new_with_null_ptr(),
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_normal(
 ) -> *mut wire_cst_struct_with_comments_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
@@ -56757,6 +56824,16 @@ pub union SpeedTwinSyncSseKind {
 #[derive(Clone, Copy)]
 pub struct wire_cst_SpeedTwinSyncSse_GPS {
     field0: f64,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_struct_in_lower_level {
+    inner: wire_cst_struct_in_upper_level,
+}
+#[repr(C)]
+#[derive(Clone, Copy)]
+pub struct wire_cst_struct_in_upper_level {
+    upper: usize,
 }
 #[repr(C)]
 #[derive(Clone, Copy)]

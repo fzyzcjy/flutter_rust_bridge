@@ -25,6 +25,7 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 // Section: boilerplate
 
 flutter_rust_bridge::frb_generated_boilerplate!();
+const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.19";
 
 // Section: executor
 

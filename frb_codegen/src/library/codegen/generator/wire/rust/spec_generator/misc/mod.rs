@@ -156,9 +156,13 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
                 generate_boilerplate_dart_fn_deliver_output(target).into(),
             ]
         }
-        TargetOrCommon::Common => vec!["
+        TargetOrCommon::Common => vec![format!(
+            r#"
             flutter_rust_bridge::frb_generated_boilerplate!();
-            "
+            const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
+            "#,
+            version = env!("CARGO_PKG_VERSION"),
+        )
         .into()],
     })
 }
