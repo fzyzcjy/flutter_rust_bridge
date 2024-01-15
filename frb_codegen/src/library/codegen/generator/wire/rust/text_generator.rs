@@ -28,7 +28,7 @@ pub(super) fn generate(
             let code = WireRustOutputCode {
                 body: code.body,
                 extern_funcs: (code.extern_funcs.into_iter())
-                    .filter(|f| config.has_ffigen || !f.needs_ffigen)
+                    .filter(|f| filter_extern_func(f, config))
                     .collect(),
                 extern_classes: (code.extern_classes.into_iter())
                     .filter(|f| config.has_ffigen || !f.needs_ffigen)
@@ -47,6 +47,10 @@ fn compute_extern_funcs(merged_code: Acc<WireRustOutputCode>) -> Vec<ExternFunc>
     TargetOrCommon::iter()
         .flat_map(|target| extern_funcs_acc[target].clone())
         .collect_vec()
+}
+
+fn filter_extern_func(f: &ExternFunc, config: &GeneratorWireRustInternalConfig) -> bool {
+    config.has_ffigen || !f.needs_ffigen
 }
 
 fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
