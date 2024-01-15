@@ -4,14 +4,13 @@
 
 import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync.dart'; // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
-// FRB_INTERNAL_GENERATOR: {"removeCode":["import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_rust_async_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_sse_twin_sync_twin_rust_async.dart';\n"],"addCode":"import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_rust_async.dart';"}
+// FRB_INTERNAL_GENERATOR: {"removeCode":["import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_rust_async_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_rust_async_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync_sse_twin_rust_async.dart';\n","import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync_twin_rust_async.dart';\n"],"addCode":"import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_rust_async.dart';"}
 
 // ignore_for_file: duplicate_import
 
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_rust_async.dart';
-import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/mirror_twin_sync_twin_rust_async.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
