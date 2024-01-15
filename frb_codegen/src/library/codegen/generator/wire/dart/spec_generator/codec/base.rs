@@ -14,7 +14,7 @@ use crate::codegen_codec_structs;
 use serde::Serialize;
 use strum::IntoEnumIterator;
 
-codegen_codec_structs!(WireDart);
+codegen_codec_structs!(Dart);
 
 pub(crate) trait WireDartCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, WireDartCodecOutputSpec>

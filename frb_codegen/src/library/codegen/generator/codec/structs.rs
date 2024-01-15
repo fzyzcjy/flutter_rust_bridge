@@ -82,8 +82,10 @@ macro_rules! codegen_codec_structs {
                     cache: &IrPackComputedCache,
                     mode: EncodeOrDecode,
                 ) -> [<$partial_name CodecOutputSpec>] {
+                    let lang = Lang::[<$partial_name Lang>]([<$partial_name Lang>]);
                     CodecMode::iter()
-                        .flat_map(|codec| [<$partial_name CodecEntrypoint>]::from(codec).generate(context, &get_interest_types_for_codec(cache, codec), mode))
+                        .flat_map(|codec| [<$partial_name CodecEntrypoint>]::from(codec)
+                            .generate(context, &get_interest_types_for_codec(cache, codec, lang), mode))
                         .collect()
                 }
             }

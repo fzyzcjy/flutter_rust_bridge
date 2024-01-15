@@ -15,7 +15,7 @@ use crate::codegen_codec_structs;
 use serde::Serialize;
 use strum::IntoEnumIterator;
 
-codegen_codec_structs!(WireRust);
+codegen_codec_structs!(Rust);
 
 pub(crate) trait WireRustCodecEntrypointTrait<'a>:
     BaseCodecEntrypointTrait<WireRustGeneratorContext<'a>, WireRustCodecOutputSpec>
