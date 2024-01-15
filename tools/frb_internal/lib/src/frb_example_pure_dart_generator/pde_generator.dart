@@ -74,6 +74,7 @@ Future<void> generatePureDartPde(
                   'package:frb_example_pure_dart',
                   'package:frb_example_pure_dart_pde',
                 )
+                .replaceAll('RustOpaqueNom<', 'RustOpaqueMoi<')
                 // hack (not a problem, since this script merely generates test code for bridge,
                 // but not generate anything related to real users)
                 .replaceAll('mirror_twin_sync_sse', 'mirror_twin_sync');

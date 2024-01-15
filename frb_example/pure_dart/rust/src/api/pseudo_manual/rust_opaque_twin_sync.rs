@@ -37,7 +37,7 @@ pub enum EnumOpaqueTwinSync {
 /// [`HideDataTwinSync`] has private fields.
 pub struct OpaqueNestedTwinSync {
     pub first: RustOpaque<HideDataTwinSync>,
-    // Randomly use "nom" postfix here once, in order to test they are equivalent (just type alias)
+    // Randomly use postfix here once, in order to test they are equivalent (just type alias)
     pub second: RustOpaqueNom<HideDataTwinSync>,
 }
 

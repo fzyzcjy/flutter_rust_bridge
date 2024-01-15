@@ -35,8 +35,8 @@ pub enum EnumOpaqueTwinNormal {
 /// [`HideDataTwinNormal`] has private fields.
 pub struct OpaqueNestedTwinNormal {
     pub first: RustOpaque<HideDataTwinNormal>,
-    // Randomly use "nom" postfix here once, in order to test they are equivalent (just type alias)
-    pub second: RustOpaqueNom<HideDataTwinNormal>,
+    // Randomly use postfix here once, in order to test they are equivalent (just type alias)
+    pub second: RustOpaqueMoi<HideDataTwinNormal>,
 }
 
 pub fn create_opaque_twin_normal() -> RustOpaque<HideDataTwinNormal> {

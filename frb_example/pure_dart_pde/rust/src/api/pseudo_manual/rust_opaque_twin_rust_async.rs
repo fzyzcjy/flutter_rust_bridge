@@ -39,8 +39,8 @@ pub enum EnumOpaqueTwinRustAsync {
 /// [`HideDataTwinRustAsync`] has private fields.
 pub struct OpaqueNestedTwinRustAsync {
     pub first: RustOpaque<HideDataTwinRustAsync>,
-    // Randomly use "nom" postfix here once, in order to test they are equivalent (just type alias)
-    pub second: RustOpaqueNom<HideDataTwinRustAsync>,
+    // Randomly use postfix here once, in order to test they are equivalent (just type alias)
+    pub second: RustOpaqueMoi<HideDataTwinRustAsync>,
 }
 
 pub async fn create_opaque_twin_rust_async() -> RustOpaque<HideDataTwinRustAsync> {

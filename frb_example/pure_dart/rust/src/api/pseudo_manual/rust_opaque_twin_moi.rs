@@ -37,7 +37,7 @@ pub enum EnumOpaqueTwinMoi {
 /// [`HideDataTwinMoi`] has private fields.
 pub struct OpaqueNestedTwinMoi {
     pub first: crate::frb_generated::RustOpaqueMoi<HideDataTwinMoi>,
-    // Randomly use "nom" postfix here once, in order to test they are equivalent (just type alias)
+    // Randomly use postfix here once, in order to test they are equivalent (just type alias)
     pub second: crate::frb_generated::RustOpaqueMoi<HideDataTwinMoi>,
 }
 
