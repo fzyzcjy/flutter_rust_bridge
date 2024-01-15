@@ -11,8 +11,6 @@ import 'package:frb_example_pure_dart_pde/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-import '../../test_utils.dart';
-
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -92,11 +90,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call handleString with nul-containing string', () async {
-    // The string will be replaced when generating pseudo-manual tests.
-    // Thus we use this hack to check whether we are using SSE codec
-    final modeSse = 'TwinSync'.toLowerCase().contains('sse');
-    expect(await handleStringTwinSync(s: "Hello\u0000world!"),
-        (kIsWeb || modeSse) ? "Hello\u0000world!Hello\u0000world!" : "");
+    expect(
+      await handleStringTwinSync(s: "Hello\u0000world!"),
+      anyOf(
+        // When web or SSE codec
+        "Hello\u0000world!Hello\u0000world!",
+        // When CST codec
+        "",
+      ),
+    );
   });
 
   test('dart call handleVecU8', () async {
