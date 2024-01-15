@@ -89,10 +89,13 @@ Future<void> lintDartFfigen() async {
   final textMatcher = readInterestText('pure_dart');
   final textActual = readInterestText('pure_dart_pde');
 
-  print(textMatcher);
-  print(textActual);
-
-  throw UnimplementedError();
+  final actualChunks = textActual.split('\n\n');
+  for (final actualChunk in actualChunks) {
+    if (!textMatcher.contains(actualChunk)) {
+      throw Exception(
+          'Fail to find actualChunk in textMatcher (actualChunk=`$actualChunk`)');
+    }
+  }
 }
 
 Future<void> lintDartFormat(LintConfig config) async {
