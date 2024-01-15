@@ -96,6 +96,8 @@ fn generate_boilerplate(
         .map(|f| format!("await api.{}();\n", f.name.name.to_case(Case::Camel)))
         .join("");
 
+    let codegen_version = env!("CARGO_PKG_VERSION");
+
     Ok(Acc {
         common: vec![WireDartOutputCode {
             header: DartBasicHeaderCode {
@@ -150,6 +152,9 @@ fn generate_boilerplate(
 
                   @override
                   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => kDefaultExternalLibraryLoaderConfig;
+
+                  @override
+                  String get codegenVersion => '{codegen_version}';
                   
                   static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
                     stem: '{stem}',

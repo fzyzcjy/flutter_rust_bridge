@@ -65,6 +65,11 @@ Future<List<String>> exampleBasicListTypeStringTwinNormal(
     RustLib.instance.api
         .exampleBasicListTypeStringTwinNormal(arg: arg, hint: hint);
 
+Future<List<Uint8List>> exampleBasicListTypeBytesTwinNormal(
+        {required List<Uint8List> arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleBasicListTypeBytesTwinNormal(arg: arg, hint: hint);
+
 Future<List<BasicPrimitiveEnumTwinNormal>>
     exampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormal(
             {required List<BasicPrimitiveEnumTwinNormal> arg, dynamic hint}) =>
