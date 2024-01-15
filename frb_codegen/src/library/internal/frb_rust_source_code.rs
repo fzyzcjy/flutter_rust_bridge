@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::FfiDispatcherMode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::{
     create_port_param, generate_platform_generalized_uint8list_params,
