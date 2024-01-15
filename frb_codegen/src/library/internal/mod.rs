@@ -1,3 +1,5 @@
+mod macros;
+
 use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::{
     generate_ffi_dispatcher_raw, FfiDispatcherMode,
 };
