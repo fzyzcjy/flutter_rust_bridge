@@ -10,7 +10,6 @@ import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
 import 'api/comment.dart';
 import 'api/customization.dart';
-import 'api/dart_dynamic.dart';
 import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
@@ -52,8 +51,6 @@ import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_rust_async.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_rust_async.dart';
-import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
 import 'api/pseudo_manual/dart_fn_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_sync.dart';
@@ -2489,9 +2486,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DartOpaqueNestedTwinSync dco_decode_dart_opaque_nested_twin_sync(dynamic raw);
-
-  @protected
-  dynamic dco_decode_dartabi(dynamic raw);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -6080,9 +6074,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   DartOpaqueNestedTwinSync sse_decode_dart_opaque_nested_twin_sync(
       SseDeserializer deserializer);
-
-  @protected
-  dynamic sse_decode_dartabi(SseDeserializer deserializer);
 
   @protected
   DemoStructForRustCallDartTwinNormal
@@ -9863,9 +9854,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_dartabi(dynamic self, SseSerializer serializer);
 
   @protected
   void sse_encode_demo_struct_for_rust_call_dart_twin_normal(
