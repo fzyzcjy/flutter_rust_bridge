@@ -22,7 +22,7 @@ pub(super) fn generate(
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<WireRustOutputText> {
     let merged_code_raw = generate_merged_code(spec);
-    let merged_code = merged_code_raw.map(|code| WireRustOutputCode {
+    let merged_code = merged_code_raw.map(|code, _| WireRustOutputCode {
         body: code.body,
         extern_funcs: (code.extern_funcs.into_iter())
             .filter(|f| config.has_ffigen || !f.needs_ffigen)
