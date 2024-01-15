@@ -1,4 +1,7 @@
 use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::FfiDispatcherMode;
+use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::generate_platform_generalized_uint8list_params;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::library::commands::format_rust::format_rust;
 use itertools::Itertools;
 use log::info;
@@ -88,6 +91,11 @@ pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Res
 fn generate_target(target: Target) -> String {
     let target_lowercase = target.to_string().to_lowercase();
 
+    let funcs = FfiDispatcherMode::iter()
+        .map(|mode| generate_target_pde_dispatcher_mode(target, mode))
+        .collect_vec();
+    let body = funcs.iter().map(|f| f.generate("")).join("\n");
+
     format!(
         r#"
             #[doc(hidden)]
@@ -99,4 +107,18 @@ fn generate_target(target: Target) -> String {
             }}
         "#
     )
+}
+
+fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) -> ExternFunc {
+    ExternFunc {
+        partial_func_name: "frb_pde_ffi_dispatcher_primary".to_owned(),
+        params: [
+            vec![TODO_func_id, TODO_port],
+            generate_platform_generalized_uint8list_params(target.into()),
+        ]
+        .concat(),
+        return_type: None,
+        body: TODO,
+        target,
+    }
 }
