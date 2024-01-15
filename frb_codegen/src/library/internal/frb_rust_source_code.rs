@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::spec_generator::codec::pde::entrypoint::FfiDispatcherMode;
 use crate::codegen::generator::wire::rust::spec_generator::codec::sse::entrypoint::{
     create_port_param, generate_platform_generalized_uint8list_params,
@@ -7,6 +7,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::library::commands::format_rust::format_rust;
+use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use log::info;
 use std::fs;
@@ -41,9 +42,13 @@ pub(crate) fn generate_frb_rust_source_code(repo_base_dir: &Path) -> anyhow::Res
 fn generate_target(target: Target) -> String {
     let target_lowercase = target.to_string().to_lowercase();
 
-    let funcs = FfiDispatcherMode::iter()
-        .map(|mode| generate_target_pde_dispatcher_mode(target, mode))
-        .collect_vec();
+    let funcs = [
+        FfiDispatcherMode::iter()
+            .map(|mode| generate_target_pde_dispatcher_mode(target, mode))
+            .collect_vec(),
+        vec![generate_dart_fn_deliver_output(target)],
+    ]
+    .concat();
     let body = funcs.iter().map(|f| f.generate("")).join("\n");
 
     format!(
@@ -90,6 +95,32 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
         params,
         return_type,
         body,
+        target,
+    }
+}
+
+fn generate_dart_fn_deliver_output(target: Target) -> ExternFunc {
+    let params = {
+        let mut ans = vec![ExternFuncParam {
+            name: "call_id".to_owned(),
+            rust_type: "i32".to_owned(),
+            dart_type: "int".to_owned(),
+        }];
+        ans.extend(generate_platform_generalized_uint8list_params(
+            target.into(),
+            "$crate",
+        ));
+        ans
+    };
+
+    ExternFunc {
+        partial_func_name: "dart_fn_deliver_output".into(),
+        params,
+        return_type: None,
+        body: format!(
+            "let message = unsafe {{ flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) }};
+            {HANDLER_NAME}.dart_fn_handle_output(call_id, message)"
+        ),
         target,
     }
 }

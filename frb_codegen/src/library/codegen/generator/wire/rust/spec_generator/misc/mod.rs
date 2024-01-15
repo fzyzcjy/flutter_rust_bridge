@@ -155,7 +155,7 @@ fn generate_boilerplate(default_stream_sink_codec: CodecMode) -> Acc<Vec<WireRus
             TargetOrCommon::Io | TargetOrCommon::Web => {
                 vec![
                     // generate_boilerplate_frb_initialize_rust(target).into(),
-                    generate_boilerplate_dart_fn_deliver_output(target).into(),
+                    // generate_boilerplate_dart_fn_deliver_output(target).into(),
                     format!(
                         "flutter_rust_bridge::frb_generated_boilerplate_{}!();",
                         target.to_string().to_lowercase()
@@ -209,32 +209,6 @@ fn generate_boilerplate(default_stream_sink_codec: CodecMode) -> Acc<Vec<WireRus
 //         target: target.try_into().unwrap(),
 //     }
 // }
-
-fn generate_boilerplate_dart_fn_deliver_output(target: TargetOrCommon) -> ExternFunc {
-    let params = {
-        let mut ans = vec![ExternFuncParam {
-            name: "call_id".to_owned(),
-            rust_type: "i32".to_owned(),
-            dart_type: "int".to_owned(),
-        }];
-        ans.extend(generate_platform_generalized_uint8list_params(
-            target,
-            "flutter_rust_bridge",
-        ));
-        ans
-    };
-
-    ExternFunc {
-        partial_func_name: "dart_fn_deliver_output".into(),
-        params,
-        return_type: None,
-        body: format!(
-            "let message = unsafe {{ flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) }};
-            {HANDLER_NAME}.dart_fn_handle_output(call_id, message)"
-        ),
-        target: target.try_into().unwrap(),
-    }
-}
 
 fn generate_executor(ir_pack: &IrPack) -> String {
     if ir_pack.has_executor {
