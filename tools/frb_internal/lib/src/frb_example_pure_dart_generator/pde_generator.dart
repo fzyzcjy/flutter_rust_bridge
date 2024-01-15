@@ -56,7 +56,9 @@ Future<void> generatePureDartPde(
             '// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\n',
           _ => '',
         };
-        return prelude + text;
+        return prelude +
+            text.replaceAll('package:frb_example_pure_dart',
+                'package:frb_example_pure_dart_pde');
     }
   });
 }
