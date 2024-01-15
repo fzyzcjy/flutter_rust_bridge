@@ -15,10 +15,29 @@ pub(crate) fn generate(
     rust_extern_funcs: &[ExternFunc],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<WireDartOutputCode> {
+    if config.has_ffigen {
+        generate_via_ffigen(config, c_file_content, progress_bar_pack)
+    } else {
+        generate_via_manual(config, rust_extern_funcs)
+    }
+}
+
+pub(crate) fn generate_via_ffigen(
+    config: &GeneratorWireDartInternalConfig,
+    c_file_content: &str,
+    progress_bar_pack: &GeneratorProgressBarPack,
+) -> anyhow::Result<WireDartOutputCode> {
     let content = execute_ffigen(config, c_file_content, progress_bar_pack)?;
     let content = postpare_modify(&content, &config.dart_output_class_name_pack);
     sanity_check(&content, &config.dart_output_class_name_pack)?;
     Ok(WireDartOutputCode::parse(&content))
+}
+
+pub(crate) fn generate_via_manual(
+    config: &GeneratorWireDartInternalConfig,
+    rust_extern_funcs: &[ExternFunc],
+) -> anyhow::Result<WireDartOutputCode> {
+    TODO
 }
 
 fn execute_ffigen(
