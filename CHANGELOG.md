@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.0-dev.20
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Fix module parsing when two modules have the same name #1664 (thanks @alanlzhang)
