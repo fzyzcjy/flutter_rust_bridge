@@ -4,7 +4,11 @@ import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:recase/recase.dart';
 
 class DartGenerator extends BaseGenerator {
-  DartGenerator({required super.packageRootDir, required super.interestDir});
+  DartGenerator({
+    required super.packageRootDir,
+    required super.interestDir,
+    required super.package,
+  });
 
   @override
   Future<void> executeFormat() =>
@@ -14,7 +18,8 @@ class DartGenerator extends BaseGenerator {
   Set<String> get duplicatorBlacklistNames => {};
 
   @override
-  Map<String, String> generateDirectSources() => generateDartDirectSources();
+  Map<String, String> generateDirectSources() =>
+      generateDartDirectSources(package);
 
   @override
   String get extension => 'dart';

@@ -68,8 +68,16 @@ pub(crate) fn parse(
 
     let ir_funcs = src_fns
         .iter()
-        .map(|f| {
-            function_parser.parse_function(&f.generalized_item_fn, &f.path, &config.rust_crate_dir)
+        .enumerate()
+        .map(|(index, f)| {
+            function_parser.parse_function(
+                &f.generalized_item_fn,
+                &f.path,
+                &config.rust_crate_dir,
+                &config.force_codec_mode_pack,
+                (index + 1) as i32,
+                config.default_rust_opaque_codec,
+            )
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
@@ -129,7 +137,9 @@ fn read_files(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
+    use crate::codegen::config::internal_config_parser::compute_force_codec_mode_pack;
     use crate::codegen::dumper::Dumper;
+    use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
     use crate::codegen::parser::parse;
@@ -223,6 +233,8 @@ mod tests {
                     },
                 ),
                 rust_crate_dir: rust_crate_dir.clone(),
+                force_codec_mode_pack: compute_force_codec_mode_pack(true),
+                default_rust_opaque_codec: RustOpaqueCodecMode::Nom,
             },
             &mut CachedRustReader::default(),
             &Dumper(&Default::default()),

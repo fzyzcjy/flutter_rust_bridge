@@ -13,6 +13,7 @@ exclude = [
   "frb_example/flutter_via_integrate/rust",
   "frb_example/gallery/rust",
   "frb_example/pure_dart/rust",
+  "frb_example/pure_dart_pde/rust",
 ]
 resolver = "2"
 

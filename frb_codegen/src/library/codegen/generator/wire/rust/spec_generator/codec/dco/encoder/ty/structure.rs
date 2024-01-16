@@ -1,3 +1,5 @@
+use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::generator::misc::comments::generate_codec_comments;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
@@ -49,8 +51,12 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
         };
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
+
+        let codec_comments = generate_codec_comments(CodecMode::Dco);
+
         Some(format!(
-            "impl flutter_rust_bridge::IntoDart for {name} {{
+            "{codec_comments}
+            impl flutter_rust_bridge::IntoDart for {name} {{
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
                     {vec}
                 }}

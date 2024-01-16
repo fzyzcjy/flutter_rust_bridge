@@ -294,7 +294,10 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       if (dartMode == DartMode.dart) {
         extraFlags += '--enable-experiment=native-assets ';
       }
-      if (config.package == 'frb_example/pure_dart') {
+      if (const {
+        'frb_example/pure_dart',
+        'frb_example/pure_dart_pde',
+      }.contains(config.package)) {
         extraFlags += '--enable-vm-service ';
       }
 

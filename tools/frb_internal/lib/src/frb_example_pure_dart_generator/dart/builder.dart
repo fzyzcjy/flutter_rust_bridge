@@ -1,11 +1,13 @@
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/preludes.dart';
 
 class DartFileBuilder {
+  final Package package;
   final String importName;
   String imports = '';
   String body = '';
 
-  DartFileBuilder({required this.importName});
+  DartFileBuilder(this.package, {required this.importName});
 
   void addTestsIdentityFunctionCall(
     String funcName,
@@ -21,8 +23,8 @@ class DartFileBuilder {
   @override
   String toString() {
     return '''$kDirectSourcesPrelude
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/$importName.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/$importName.dart';
+import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 import '../../test_utils.dart';
 $imports

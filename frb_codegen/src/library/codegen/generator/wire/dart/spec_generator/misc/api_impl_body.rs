@@ -21,8 +21,7 @@ pub(crate) fn generate_api_impl_normal_function(
     let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
     let wire_func_name = wire_func_name(func);
-    let inner_func_stmt =
-        dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &format!("wire.{wire_func_name}"));
+    let inner_func_stmt = dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &wire_func_name);
     let execute_func_name = generate_execute_func_name(func);
 
     let codec = generate_rust2dart_codec_object(func);
@@ -108,7 +107,7 @@ fn generate_arg_values(func: &IrFunc) -> String {
 
 fn generate_rust2dart_codec_object(func: &IrFunc) -> String {
     let codec_mode = func.codec_mode_pack.rust2dart;
-    let codec_name_pascal = codec_mode.to_string();
+    let codec_name_pascal = codec_mode.delegate_or_self().to_string();
     let codec_name_snake = codec_name_pascal.to_case(Case::Snake);
 
     let parse_success_data = format!("{codec_name_snake}_decode_{}", func.output.safe_ident());

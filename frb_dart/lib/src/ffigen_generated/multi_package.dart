@@ -220,6 +220,74 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
+  void frb_pde_ffi_dispatcher_primary(
+    int func_id,
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _frb_pde_ffi_dispatcher_primary(
+      func_id,
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _frb_pde_ffi_dispatcher_primaryPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Int64, ffi.Pointer<ffi.Uint8>,
+              ffi.Int32, ffi.Int32)>>('frb_pde_ffi_dispatcher_primary');
+  late final _frb_pde_ffi_dispatcher_primary =
+      _frb_pde_ffi_dispatcher_primaryPtr.asFunction<
+          void Function(int, int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse frb_pde_ffi_dispatcher_sync(
+    int func_id,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _frb_pde_ffi_dispatcher_sync(
+      func_id,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _frb_pde_ffi_dispatcher_syncPtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncRust2DartSse Function(ffi.Int32, ffi.Pointer<ffi.Uint8>,
+              ffi.Int32, ffi.Int32)>>('frb_pde_ffi_dispatcher_sync');
+  late final _frb_pde_ffi_dispatcher_sync =
+      _frb_pde_ffi_dispatcher_syncPtr.asFunction<
+          WireSyncRust2DartSse Function(
+              int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void dart_fn_deliver_output(
+    int call_id,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _dart_fn_deliver_output(
+      call_id,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _dart_fn_deliver_outputPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
+              ffi.Int32)>>('dart_fn_deliver_output');
+  late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   /// # Safety
   ///
   /// This should never be called manually.

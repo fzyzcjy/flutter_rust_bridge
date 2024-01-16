@@ -49,6 +49,7 @@ pub(crate) fn generate_wire_func(
             return_type: return_type.clone(),
             body: generate_redirect_body(func, &params.common),
             target: target.try_into().unwrap(),
+            needs_ffigen: true,
         }
         .into(),
         TargetOrCommon::Common => format!(
@@ -202,7 +203,7 @@ fn generate_handler_func_name(
 ) -> String {
     let codec = format!(
         "flutter_rust_bridge::for_generated::{}Codec",
-        &func.codec_mode_pack.rust2dart
+        func.codec_mode_pack.rust2dart.delegate_or_self()
     );
 
     match func.mode {
@@ -239,7 +240,7 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
     match func.mode {
         IrFuncMode::Sync => Some(format!(
             "flutter_rust_bridge::for_generated::WireSyncRust2Dart{}",
-            func.codec_mode_pack.rust2dart,
+            func.codec_mode_pack.rust2dart.delegate_or_self(),
         )),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
     }
@@ -251,7 +252,9 @@ fn generate_code_closure(
     code_inner_decode: &str,
     code_call_inner_func_result: &str,
 ) -> String {
-    let codec = (func.codec_mode_pack.rust2dart.to_string()).to_case(Case::Snake);
+    let codec = (func.codec_mode_pack.rust2dart.delegate_or_self())
+        .to_string()
+        .to_case(Case::Snake);
 
     // TODO rm
     // let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {

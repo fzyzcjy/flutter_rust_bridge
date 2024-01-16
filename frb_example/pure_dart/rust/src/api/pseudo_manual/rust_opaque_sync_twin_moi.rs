@@ -6,9 +6,10 @@
 
 use super::rust_opaque_twin_moi::NonCloneDataTwinMoi;
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
-use anyhow::Result;
 #[allow(unused_imports)]
-use flutter_rust_bridge::{frb, RustOpaque};
+use crate::frb_generated::RustOpaque;
+use anyhow::Result;
+use flutter_rust_bridge::frb;
 
 pub struct HideDataAnotherTwinMoi(HideDataRaw);
 

@@ -5,6 +5,7 @@ use crate::codegen::config::internal_config::{
 };
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::{
@@ -12,6 +13,7 @@ use crate::codegen::generator::wire::dart::internal_config::{
     GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
+use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
@@ -85,6 +87,10 @@ impl InternalConfig {
         ];
         let controller_exclude_paths = rust_output_path.clone().into_vec();
 
+        let full_dep = config.full_dep.unwrap_or(false);
+        let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
+        let default_rust_opaque_codec = generate_default_rust_opaque_codec(full_dep);
+
         Ok(InternalConfig {
             controller: ControllerInternalConfig {
                 watch: meta_config.watch,
@@ -95,10 +101,13 @@ impl InternalConfig {
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
                 deps_check: config.deps_check.unwrap_or(true),
+                needs_ffigen: full_dep,
             },
             parser: ParserInternalConfig {
                 rust_input_path_pack: rust_input_path_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
+                force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
+                default_rust_opaque_codec,
             },
             generator: GeneratorInternalConfig {
                 api_dart: GeneratorApiDartInternalConfig {
@@ -126,6 +135,7 @@ impl InternalConfig {
                         dart_output_class_name_pack,
                         default_external_library_loader,
                         c_symbol_prefix: c_symbol_prefix.clone(),
+                        has_ffigen: full_dep,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
@@ -133,8 +143,12 @@ impl InternalConfig {
                         web_enabled,
                         rust_output_path: rust_output_path.clone(),
                         c_symbol_prefix: c_symbol_prefix.clone(),
+                        has_ffigen: full_dep,
+                        default_stream_sink_codec,
+                        default_rust_opaque_codec,
                     },
                     c: GeneratorWireCInternalConfig {
+                        enable: full_dep,
                         rust_crate_dir: rust_crate_dir.clone(),
                         rust_output_path: rust_output_path.clone(),
                         c_output_path: c_output_path.clone(),
@@ -326,6 +340,29 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
         api_impl_platform_class_name: with_postfix("ApiImplPlatform"),
         wire_class_name: with_postfix("Wire"),
         wasm_module_name: with_postfix("WasmModule"),
+    }
+}
+
+pub(crate) fn compute_force_codec_mode_pack(full_dep: bool) -> Option<CodecModePack> {
+    (!full_dep).then_some(CodecModePack {
+        dart2rust: CodecMode::Pde,
+        rust2dart: CodecMode::Pde,
+    })
+}
+
+fn generate_default_stream_sink_codec(full_dep: bool) -> CodecMode {
+    if full_dep {
+        CodecMode::Dco
+    } else {
+        CodecMode::Sse
+    }
+}
+
+fn generate_default_rust_opaque_codec(full_dep: bool) -> RustOpaqueCodecMode {
+    if full_dep {
+        RustOpaqueCodecMode::Nom
+    } else {
+        RustOpaqueCodecMode::Moi
     }
 }
 

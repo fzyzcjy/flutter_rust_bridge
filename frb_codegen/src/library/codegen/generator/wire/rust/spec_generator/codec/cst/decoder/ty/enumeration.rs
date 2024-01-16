@@ -45,11 +45,13 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
                 name: rust_wire_type,
                 mode: ExternClassMode::Struct,
                 body: format!("tag: i32, kind: {union_kind},"),
+                needs_ffigen: true,
             },
             ExternClass {
                 name: union_kind,
                 mode: ExternClassMode::Union,
                 body: union_fields,
+                needs_ffigen: true,
             },
         ];
 
@@ -142,6 +144,7 @@ impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
             name: format!("wire_cst_{}_{}", self.ir.ident.0.name, variant_name),
             mode: ExternClassMode::Struct,
             body: fields.join("\n"),
+            needs_ffigen: true,
         }
     }
 }

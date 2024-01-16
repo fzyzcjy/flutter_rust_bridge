@@ -3,7 +3,7 @@
 pub(crate) mod config;
 mod controller;
 pub(crate) mod dumper;
-mod generator;
+pub(crate) mod generator;
 pub(crate) mod ir;
 mod misc;
 pub(crate) mod parser;

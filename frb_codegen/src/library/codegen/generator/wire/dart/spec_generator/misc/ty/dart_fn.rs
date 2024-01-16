@@ -40,7 +40,8 @@ impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
                 sse_encode_{return_type_safe_ident}(rawOutput, serializer);
                 final output = serializer.intoRaw();
 
-                wire.dart_fn_deliver_output(callId, output.ptr, output.rustVecLen, output.dataLen);
+                generalizedFrbRustBinding.dartFnDeliverOutput(
+                  callId: callId, ptr: output.ptr, rustVecLen: output.rustVecLen, dataLen: output.dataLen);
               }};
             }}
             ",

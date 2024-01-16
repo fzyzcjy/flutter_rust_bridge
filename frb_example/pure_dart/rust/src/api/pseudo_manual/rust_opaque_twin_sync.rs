@@ -5,9 +5,11 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};
+#[allow(unused_imports)]
+use crate::frb_generated::{RustOpaque, RustOpaqueMoi};
 use anyhow::Result;
 #[allow(unused_imports)]
-use flutter_rust_bridge::{opaque_dyn, RustOpaque, RustOpaqueNom};
+use flutter_rust_bridge::{opaque_dyn, RustOpaqueNom};
 use std::fmt::Debug;
 use std::ops::Deref;
 pub use std::sync::{Mutex, RwLock};
@@ -35,7 +37,7 @@ pub enum EnumOpaqueTwinSync {
 /// [`HideDataTwinSync`] has private fields.
 pub struct OpaqueNestedTwinSync {
     pub first: RustOpaque<HideDataTwinSync>,
-    // Randomly use "nom" postfix here once, in order to test they are equivalent (just type alias)
+    // Randomly use postfix here once, in order to test they are equivalent (just type alias)
     pub second: RustOpaqueNom<HideDataTwinSync>,
 }
 

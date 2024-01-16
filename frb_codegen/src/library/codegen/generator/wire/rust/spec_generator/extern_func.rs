@@ -16,9 +16,10 @@ pub(crate) struct ExternFunc {
     pub(crate) return_type: Option<String>,
     pub(crate) body: String,
     pub(crate) target: Target,
+    pub(crate) needs_ffigen: bool,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, PartialEq, Eq)]
 pub(crate) struct ExternFuncParam {
     pub(crate) name: String,
     pub(crate) rust_type: String,
@@ -97,6 +98,7 @@ pub(crate) struct ExternClass {
     pub name: String,
     pub mode: ExternClassMode,
     pub body: String,
+    pub needs_ffigen: bool,
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -107,7 +109,9 @@ pub(crate) enum ExternClassMode {
 
 impl ExternClass {
     pub(crate) fn generate(&self) -> String {
-        let ExternClass { name, mode, body } = self;
+        let ExternClass {
+            name, mode, body, ..
+        } = self;
 
         let mode = match mode {
             ExternClassMode::Struct => "struct",

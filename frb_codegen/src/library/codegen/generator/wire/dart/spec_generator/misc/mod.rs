@@ -51,6 +51,9 @@ pub(crate) fn generate(
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
+        // wire_delegate_functions: (rust_extern_funcs.iter())
+        //     .map(|f| generate_wire_delegate_functions(f))
+        //     .collect(),
         extra_functions: (cache.distinct_types.iter())
             .flat_map(|ty| WireDartGenerator::new(ty.clone(), context).generate_extra_functions())
             .collect(),
@@ -71,7 +74,7 @@ fn generate_boilerplate(
     } = &context.config.dart_output_class_name_pack;
 
     let file_top = generate_code_header()
-        + "\n\n// ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables\n";
+        + "\n\n// ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field\n";
 
     let mut universal_imports = generate_import_dart_api_layer(
         &context.config.dart_impl_output_path,
@@ -217,3 +220,24 @@ fn generate_import_dart_api_layer(
         .collect::<anyhow::Result<Vec<_>>>()?
         .join(""))
 }
+
+// fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
+//     let wire_func_name = func.func_name("");
+//     let return_type = func.return_type.as_deref().unwrap_or("void");
+//     let signature_args = (func.params.iter())
+//         .map(|param| format!("{} {}", param.dart_type, param.name,))
+//         .join(", ");
+//     let body_args = (func.params.iter())
+//         .map(|param| param.name.to_owned())
+//         .join(", ");
+//
+//     let code = vec![WireDartOutputCode {
+//         api_impl_class_methods: vec![DartApiImplClassMethod {
+//             signature: format!("{return_type} {wire_func_name}({signature_args})"),
+//             body: Some(format!("return wire.{wire_func_name}({body_args});")),
+//         }],
+//         ..Default::default()
+//     }];
+//
+//     Acc::new_target(code, func.target.into())
+// }

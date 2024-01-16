@@ -40,27 +40,26 @@ use flutter_rust_bridge::for_generated::wasm_bindgen;
 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
+// Section: boilerplate
+
+flutter_rust_bridge::frb_generated_boilerplate_web!();
+
 // Section: dart2rust
 
-impl<T> CstDecode<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-where
-    JsValue: CstDecode<T>,
-{
-    fn cst_decode(self) -> Option<T> {
-        (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
-    }
-}
 impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
     }
 }
 impl CstDecode<backtrace::Backtrace> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> backtrace::Backtrace {
         unimplemented!()
     }
 }
 impl CstDecode<chrono::Duration> for i64 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
         chrono::Duration::milliseconds(self)
     }
@@ -68,22 +67,26 @@ impl CstDecode<chrono::Duration> for i64 {
 impl CstDecode<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> flutter_rust_bridge::DartOpaque {
         unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self as _) }
     }
 }
 impl CstDecode<std::collections::HashSet<i32>> for Box<[i32]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashSet<i32> {
         let vec: Vec<i32> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<String> for String {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> String {
         self
     }
 }
 impl CstDecode<uuid::Uuid> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> uuid::Uuid {
         let single: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::decode_uuid(single)
@@ -92,6 +95,7 @@ impl CstDecode<uuid::Uuid> for Box<[u8]> {
 impl CstDecode<crate::api::misc_example::ATwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::ATwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -110,6 +114,7 @@ impl CstDecode<crate::api::misc_example::ATwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -125,47 +130,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRus
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::ATwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::ATwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::ATwinRustAsyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::ATwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::ATwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sse::ATwinSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -181,27 +149,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::ATwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::ATwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync_sse::ATwinSyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::misc_example::AbcTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::AbcTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -216,6 +167,7 @@ impl CstDecode<crate::api::misc_example::AbcTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync {
@@ -239,47 +191,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinR
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::A( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::B( self_.get(1).cst_decode()) },
-2 => { crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::C( self_.get(1).cst_decode()) },
-3 => { crate::api::pseudo_manual::misc_example_twin_rust_async_sse::AbcTwinRustAsyncSse::JustInt( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::A(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::B(
-                self_.get(1).cst_decode(),
-            ),
-            2 => crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::C(
-                self_.get(1).cst_decode(),
-            ),
-            3 => crate::api::pseudo_manual::misc_example_twin_sse::AbcTwinSse::JustInt(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -299,31 +214,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::A(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::B(
-                self_.get(1).cst_decode(),
-            ),
-            2 => crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::C(
-                self_.get(1).cst_decode(),
-            ),
-            3 => crate::api::pseudo_manual::misc_example_twin_sync_sse::AbcTwinSyncSse::JustInt(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::inside_macro::AnotherMacroStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::inside_macro::AnotherMacroStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -343,6 +237,7 @@ impl CstDecode<crate::api::inside_macro::AnotherMacroStructTwinNormal>
 impl CstDecode<crate::api::mirror::AnotherTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::mirror::AnotherTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -361,6 +256,7 @@ impl CstDecode<crate::api::mirror::AnotherTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -376,47 +272,10 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRus
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_rust_async_sse::AnotherTwinRustAsyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_sse::AnotherTwinSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -432,27 +291,10 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::AnotherTwinSyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -471,6 +313,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -490,6 +333,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVa
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessage {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -510,6 +354,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMessa
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -532,6 +377,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSetti
 impl CstDecode<crate::api::optional::AttributeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::AttributeTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -551,6 +397,7 @@ impl CstDecode<crate::api::optional::AttributeTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync {
@@ -569,49 +416,10 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwi
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -628,28 +436,10 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::misc_example::BTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::BTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -668,6 +458,7 @@ impl CstDecode<crate::api::misc_example::BTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -683,47 +474,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRus
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BTwinRustAsyncSse {
-            b: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::BTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::BTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sse::BTwinSse {
-            b: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -739,27 +493,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync_sse::BTwinSyncSse {
-            b: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -774,6 +511,7 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync {
@@ -785,40 +523,10 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnu
                 }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse
-    {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse::Apple{field:  self_.get(1).cst_decode()} },
-1 => crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse::Orange,
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse::Apple {
-                field: self_.get(1).cst_decode(),
-            },
-            1 => crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse::Orange,
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -830,29 +538,10 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinS
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => {
-                crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse::Apple {
-                    field: self_.get(1).cst_decode(),
-                }
-            }
-            1 => {
-                crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse::Orange
-            }
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::basic::BasicStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -872,6 +561,7 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync {
@@ -890,49 +580,10 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwin
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse {
-            apple: self_.get(0).cst_decode(),
-            orange: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse {
-            apple: self_.get(0).cst_decode(),
-            orange: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -949,28 +600,10 @@ impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse {
-            apple: self_.get(0).cst_decode(),
-            orange: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -993,6 +626,7 @@ impl
         crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync
@@ -1013,38 +647,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 3, "Expected 3 elements, got {}", self_.length());
-                crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse{name:  self_.get(0).cst_decode(),left:  self_.get(1).cst_decode(),right:  self_.get(2).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            3,
-            "Expected 3 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse {
-            name: self_.get(0).cst_decode(),
-            left: self_.get(1).cst_decode(),
-            right: self_.get(2).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync {
@@ -1064,34 +670,10 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBina
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            3,
-            "Expected 3 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse {
-            name: self_.get(0).cst_decode(),
-            left: self_.get(1).cst_decode(),
-            right: self_.get(2).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1112,6 +694,7 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api::BenchmarkBlobTwinNormal
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBlobTwinRustAsync {
@@ -1131,50 +714,10 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_rust_async::Benchma
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            3,
-            "Expected 3 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBlobTwinRustAsyncSse{first:  self_.get(0).cst_decode(),second:  self_.get(1).cst_decode(),third:  self_.get(2).cst_decode()}
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            3,
-            "Expected 3 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBlobTwinSse {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-            third: self_.get(2).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlobTwinSync {
@@ -1194,31 +737,10 @@ impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBlob
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            3,
-            "Expected 3 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBlobTwinSyncSse {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-            third: self_.get(2).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::BigBuffersTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1238,6 +760,7 @@ impl CstDecode<crate::api::misc_example::BigBuffersTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync {
@@ -1256,52 +779,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffe
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::BigBuffersTwinRustAsyncSse {
-            int64: self_.get(0).cst_decode(),
-            uint64: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sse::BigBuffersTwinSse {
-            int64: self_.get(0).cst_decode(),
-            uint64: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1318,30 +799,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwin
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync_sse::BigBuffersTwinSyncSse {
-            int64: self_.get(0).cst_decode(),
-            uint64: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::array::BlobTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::BlobTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1358,6 +819,7 @@ impl CstDecode<crate::api::array::BlobTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1373,45 +835,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsy
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::BlobTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::array_twin_rust_async_sse::BlobTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_rust_async_sse::BlobTwinRustAsyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::array_twin_sse::BlobTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sse::BlobTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sse::BlobTwinSse(self_.get(0).cst_decode())
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1425,28 +852,14 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
         crate::api::pseudo_manual::array_twin_sync::BlobTwinSync(self_.get(0).cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::BlobTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync_sse::BlobTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sync_sse::BlobTwinSyncSse(self_.get(0).cst_decode())
-    }
-}
 impl CstDecode<Box<[u8; 1600]>> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<[u8; 1600]> {
         CstDecode::<[u8; 1600]>::cst_decode(self).into()
     }
 }
 impl CstDecode<Box<[u8; 8]>> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<[u8; 8]> {
         CstDecode::<[u8; 8]>::cst_decode(self).into()
     }
@@ -1454,6 +867,7 @@ impl CstDecode<Box<[u8; 8]>> for Box<[u8]> {
 impl CstDecode<crate::api::misc_example::CTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::CTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1472,6 +886,7 @@ impl CstDecode<crate::api::misc_example::CTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1487,47 +902,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRus
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::CTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::CTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::CTwinRustAsyncSse {
-            c: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::CTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::CTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sse::CTwinSse {
-            c: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1543,27 +921,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::CTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::CTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync_sse::CTwinSyncSse {
-            c: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::method::ConcatenateWithTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::ConcatenateWithTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1582,6 +943,7 @@ impl CstDecode<crate::api::method::ConcatenateWithTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
@@ -1599,50 +961,10 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWit
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::method_twin_rust_async_sse::ConcatenateWithTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::method_twin_rust_async_sse::ConcatenateWithTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_rust_async_sse::ConcatenateWithTwinRustAsyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::method_twin_sse::ConcatenateWithTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sse::ConcatenateWithTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_sse::ConcatenateWithTwinSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1658,29 +980,10 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinS
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_sync_sse::ConcatenateWithTwinSyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::mirror::ContainsMirroredSubStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::mirror::ContainsMirroredSubStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -1702,6 +1005,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync
@@ -1721,37 +1025,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::mirror_twin_rust_async_sse::ContainsMirroredSubStructTwinRustAsyncSse{test:  self_.get(0).cst_decode(),test2:  self_.get(1).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_sse::ContainsMirroredSubStructTwinSse {
-            test: self_.get(0).cst_decode(),
-            test2: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync {
@@ -1770,31 +1047,10 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubS
         }
     }
 }
-impl
-    CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::ContainsMirroredSubStructTwinSyncSse {
-            test: self_.get(0).cst_decode(),
-            test2: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::exception::CustomEnumErrorTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomEnumErrorTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -1813,6 +1069,7 @@ impl CstDecode<crate::api::exception::CustomEnumErrorTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync {
@@ -1824,44 +1081,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumE
                 }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse
-    {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::One{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
-1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomEnumErrorTwinRustAsyncSse::Two{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse::One {
-                message: self_.get(1).cst_decode(),
-                backtrace: self_.get(2).cst_decode(),
-            },
-            1 => crate::api::pseudo_manual::exception_twin_sse::CustomEnumErrorTwinSse::Two {
-                message: self_.get(1).cst_decode(),
-                backtrace: self_.get(2).cst_decode(),
-            },
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -1877,23 +1100,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTw
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::One{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
-1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomEnumErrorTwinSyncSse::Two{message:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::exception::CustomErrorTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomErrorTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -1912,6 +1122,7 @@ impl CstDecode<crate::api::exception::CustomErrorTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync {
@@ -1923,42 +1134,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomError
                 }
     }
 }
-impl
-    CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error0{e:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
-1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomErrorTwinRustAsyncSse::Error1{e:  self_.get(1).cst_decode(),backtrace:  self_.get(2).cst_decode()} },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse::Error0 {
-                e: self_.get(1).cst_decode(),
-                backtrace: self_.get(2).cst_decode(),
-            },
-            1 => crate::api::pseudo_manual::exception_twin_sse::CustomErrorTwinSse::Error1 {
-                e: self_.get(1).cst_decode(),
-                backtrace: self_.get(2).cst_decode(),
-            },
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -1974,33 +1153,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSy
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => {
-                crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error0 {
-                    e: self_.get(1).cst_decode(),
-                    backtrace: self_.get(2).cst_decode(),
-                }
-            }
-            1 => {
-                crate::api::pseudo_manual::exception_twin_sync_sse::CustomErrorTwinSyncSse::Error1 {
-                    e: self_.get(1).cst_decode(),
-                    backtrace: self_.get(2).cst_decode(),
-                }
-            }
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::exception::CustomNestedError1TwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedError1TwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -2018,6 +1174,7 @@ impl
     CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync {
@@ -2029,32 +1186,10 @@ impl
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::CustomNested1( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError1TwinRustAsyncSse::ErrorNested( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::CustomNested1( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError1TwinSse::ErrorNested( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync {
@@ -2066,23 +1201,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::CustomNested1( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError1TwinSyncSse::ErrorNested( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::exception::CustomNestedError2TwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedError2TwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -2100,6 +1222,7 @@ impl
     CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync {
@@ -2111,32 +1234,10 @@ impl
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedError2TwinRustAsyncSse::CustomNested2Number( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_sse::CustomNestedError2TwinSse::CustomNested2Number( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync {
@@ -2148,23 +1249,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedError2TwinSyncSse::CustomNested2Number( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::exception::CustomNestedErrorInnerTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -2183,6 +1271,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync
@@ -2195,40 +1284,10 @@ impl
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse::Three( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorInnerTwinRustAsyncSse::Four( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorInnerTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorInnerTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => {
-                crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorInnerTwinSse::Three(
-                    self_.get(1).cst_decode(),
-                )
-            }
-            1 => {
-                crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorInnerTwinSse::Four(
-                    self_.get(1).cst_decode(),
-                )
-            }
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
@@ -2240,24 +1299,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
                 }
     }
 }
-impl
-    CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorInnerTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorInnerTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorInnerTwinSyncSse::Three( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorInnerTwinSyncSse::Four( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::exception::CustomNestedErrorOuterTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -2276,6 +1321,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync
@@ -2288,36 +1334,10 @@ impl
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse::One( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomNestedErrorOuterTwinRustAsyncSse::Two( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorOuterTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorOuterTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorOuterTwinSse::One(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::exception_twin_sse::CustomNestedErrorOuterTwinSse::Two(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
@@ -2337,24 +1357,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomNestedError
         }
     }
 }
-impl
-    CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse::One( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::exception_twin_sync_sse::CustomNestedErrorOuterTwinSyncSse::Two( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::exception::CustomStructErrorAnotherTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructErrorAnotherTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2375,6 +1381,7 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync
@@ -2391,36 +1398,10 @@ impl
         crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync{message:  self_.get(0).cst_decode()}
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
-                crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorAnotherTwinRustAsyncSse{message:  self_.get(0).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorAnotherTwinSse {
-            message: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync {
@@ -2438,32 +1419,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructError
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorAnotherTwinSyncSse {
-            message: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructErrorTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2482,6 +1441,7 @@ impl CstDecode<crate::api::exception::CustomStructErrorTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync {
@@ -2499,48 +1459,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruc
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructErrorTwinRustAsyncSse{a:  self_.get(0).cst_decode()}
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sse::CustomStructErrorTwinSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
@@ -2558,29 +1480,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructError
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructErrorTwinSyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::exception::CustomStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::CustomStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2599,6 +1502,7 @@ impl CstDecode<crate::api::exception::CustomStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
@@ -2616,50 +1520,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruc
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_rust_async_sse::CustomStructTwinRustAsyncSse {
-            message: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::CustomStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::CustomStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sse::CustomStructTwinSse {
-            message: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2675,29 +1539,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinS
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sync_sse::CustomStructTwinSyncSse {
-            message: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::attribute::CustomizedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::attribute::CustomizedTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2717,6 +1562,7 @@ impl CstDecode<crate::api::attribute::CustomizedTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
@@ -2735,49 +1581,10 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedT
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async_sse::CustomizedTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::attribute_twin_rust_async_sse::CustomizedTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::attribute_twin_rust_async_sse::CustomizedTwinRustAsyncSse {
-            final_field: self_.get(0).cst_decode(),
-            non_final_field: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::attribute_twin_sse::CustomizedTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sse::CustomizedTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::attribute_twin_sse::CustomizedTwinSse {
-            final_field: self_.get(0).cst_decode(),
-            non_final_field: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2794,30 +1601,10 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSyn
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync_sse::CustomizedTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::attribute_twin_sync_sse::CustomizedTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::attribute_twin_sync_sse::CustomizedTwinSyncSse {
-            final_field: self_.get(0).cst_decode(),
-            non_final_field: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2838,6 +1625,7 @@ impl
     CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync {
@@ -2856,37 +1644,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::DartOpaqueNestedTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::DartOpaqueNestedTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::DartOpaqueNestedTwinRustAsyncSse{first:  self_.get(0).cst_decode(),second:  self_.get(1).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sse::DartOpaqueNestedTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::dart_opaque_twin_sse::DartOpaqueNestedTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::dart_opaque_twin_sse::DartOpaqueNestedTwinSse {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync {
@@ -2905,30 +1666,10 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNeste
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueNestedTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueNestedTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::dart_opaque_twin_sync_sse::DartOpaqueNestedTwinSyncSse {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::dart_fn::DemoStructForRustCallDartTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_fn::DemoStructForRustCallDartTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -2949,6 +1690,7 @@ impl
         crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_fn_twin_rust_async::DemoStructForRustCallDartTwinRustAsync
@@ -2967,36 +1709,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
-                crate::api::pseudo_manual::dart_fn_twin_rust_async_sse::DemoStructForRustCallDartTwinRustAsyncSse{name:  self_.get(0).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::dart_fn_twin_sse::DemoStructForRustCallDartTwinSse {
-            name: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::enumeration::DistanceTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::DistanceTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3009,6 +1725,7 @@ impl CstDecode<crate::api::enumeration::DistanceTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync {
@@ -3020,37 +1737,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceT
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse::Unknown,
-1 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse::Map( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse::Unknown,
-            1 => crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse::Map(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3062,25 +1752,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSyn
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse::Unknown,
-            1 => crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse::Map(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::optional::ElementTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::ElementTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -3102,6 +1777,7 @@ impl CstDecode<crate::api::optional::ElementTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync {
@@ -3122,53 +1798,10 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinR
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse {
-            tag: self_.get(0).cst_decode(),
-            text: self_.get(1).cst_decode(),
-            attributes: self_.get(2).cst_decode(),
-            children: self_.get(3).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse {
-            tag: self_.get(0).cst_decode(),
-            text: self_.get(1).cst_decode(),
-            attributes: self_.get(2).cst_decode(),
-            children: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -3187,30 +1820,10 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse {
-            tag: self_.get(0).cst_decode(),
-            text: self_.get(1).cst_decode(),
-            attributes: self_.get(2).cst_decode(),
-            children: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::misc_type::EmptyTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_type::EmptyTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -3227,6 +1840,7 @@ impl CstDecode<crate::api::misc_type::EmptyTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {
@@ -3242,43 +1856,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRu
         crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {}
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_type_twin_rust_async_sse::EmptyTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_type_twin_rust_async_sse::EmptyTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            0,
-            "Expected 0 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_type_twin_rust_async_sse::EmptyTwinRustAsyncSse {}
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sse::EmptyTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_type_twin_sse::EmptyTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            0,
-            "Expected 0 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_type_twin_sse::EmptyTwinSse {}
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -3292,25 +1873,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
         crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {}
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_type_twin_sync_sse::EmptyTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_type_twin_sync_sse::EmptyTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            0,
-            "Expected 0 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_type_twin_sync_sse::EmptyTwinSyncSse {}
-    }
-}
 impl CstDecode<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::dart_opaque::EnumDartOpaqueTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3327,6 +1893,7 @@ impl CstDecode<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync {
@@ -3338,42 +1905,10 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartO
                 }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::EnumDartOpaqueTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::EnumDartOpaqueTwinRustAsyncSse
-    {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::EnumDartOpaqueTwinRustAsyncSse::Primitive( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::dart_opaque_twin_rust_async_sse::EnumDartOpaqueTwinRustAsyncSse::Opaque( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sse::EnumDartOpaqueTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::dart_opaque_twin_sse::EnumDartOpaqueTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::dart_opaque_twin_sse::EnumDartOpaqueTwinSse::Primitive(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::dart_opaque_twin_sse::EnumDartOpaqueTwinSse::Opaque(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync {
@@ -3391,23 +1926,10 @@ impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueT
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::dart_opaque_twin_sync_sse::EnumDartOpaqueTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::dart_opaque_twin_sync_sse::EnumDartOpaqueTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::dart_opaque_twin_sync_sse::EnumDartOpaqueTwinSyncSse::Primitive( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::dart_opaque_twin_sync_sse::EnumDartOpaqueTwinSyncSse::Opaque( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3433,6 +1955,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMo
 impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::rust_opaque::EnumOpaqueTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3450,6 +1973,7 @@ impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync {
@@ -3469,6 +1993,7 @@ impl
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi
@@ -3484,97 +2009,10 @@ impl
                 }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse
-    {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Struct( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Primitive( self_.get(1).cst_decode()) },
-2 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::TraitObj( self_.get(1).cst_decode()) },
-3 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::Mutex( self_.get(1).cst_decode()) },
-4 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse::RwLock( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Struct( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Primitive( self_.get(1).cst_decode()) },
-2 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::TraitObj( self_.get(1).cst_decode()) },
-3 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::Mutex( self_.get(1).cst_decode()) },
-4 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi::RwLock( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Struct(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Primitive(
-                self_.get(1).cst_decode(),
-            ),
-            2 => crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::TraitObj(
-                self_.get(1).cst_decode(),
-            ),
-            3 => crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::Mutex(
-                self_.get(1).cst_decode(),
-            ),
-            4 => crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse::RwLock(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Struct(
-                self_.get(1).cst_decode(),
-            ),
-            1 => {
-                crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Primitive(
-                    self_.get(1).cst_decode(),
-                )
-            }
-            2 => {
-                crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::TraitObj(
-                    self_.get(1).cst_decode(),
-                )
-            }
-            3 => crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::Mutex(
-                self_.get(1).cst_decode(),
-            ),
-            4 => crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi::RwLock(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3600,6 +2038,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinS
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi {
@@ -3614,43 +2053,10 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueT
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Struct( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Primitive( self_.get(1).cst_decode()) },
-2 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::TraitObj( self_.get(1).cst_decode()) },
-3 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::Mutex( self_.get(1).cst_decode()) },
-4 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse::RwLock( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Struct( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Primitive( self_.get(1).cst_decode()) },
-2 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::TraitObj( self_.get(1).cst_decode()) },
-3 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::Mutex( self_.get(1).cst_decode()) },
-4 => { crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi::RwLock( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::enumeration::EnumWithItemMixedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3668,6 +2074,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
@@ -3681,38 +2088,10 @@ impl
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse::A,
-1 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse::B( self_.get(1).cst_decode()) },
-2 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemMixedTwinRustAsyncSse::C{c_field:  self_.get(1).cst_decode()} },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse::A,
-            1 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse::B(
-                self_.get(1).cst_decode(),
-            ),
-            2 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemMixedTwinSse::C {
-                c_field: self_.get(1).cst_decode(),
-            },
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
@@ -3729,24 +2108,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMix
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse::A,
-1 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse::B( self_.get(1).cst_decode()) },
-2 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemMixedTwinSyncSse::C{c_field:  self_.get(1).cst_decode()} },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::enumeration::EnumWithItemStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3765,6 +2130,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync
@@ -3777,36 +2143,10 @@ impl
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse::A{a_field:  self_.get(1).cst_decode()} },
-1 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemStructTwinRustAsyncSse::B{b_field:  self_.get(1).cst_decode()} },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemStructTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemStructTwinSse::A {
-                a_field: self_.get(1).cst_decode(),
-            },
-            1 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemStructTwinSse::B {
-                b_field: self_.get(1).cst_decode(),
-            },
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
@@ -3822,23 +2162,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStr
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemStructTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemStructTwinSyncSse::A{a_field:  self_.get(1).cst_decode()} },
-1 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemStructTwinSyncSse::B{b_field:  self_.get(1).cst_decode()} },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::enumeration::EnumWithItemTupleTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -3853,6 +2180,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync
@@ -3865,36 +2193,10 @@ impl
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse {
-                let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse::A( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithItemTupleTwinRustAsyncSse::B( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemTupleTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemTupleTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemTupleTwinSse::A(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithItemTupleTwinSse::B(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
@@ -3910,23 +2212,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTup
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemTupleTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemTupleTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemTupleTwinSyncSse::A( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithItemTupleTwinSyncSse::B( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<crate::api::event_listener::EventTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::event_listener::EventTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -3946,6 +2235,7 @@ impl CstDecode<crate::api::event_listener::EventTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync {
@@ -3964,49 +2254,10 @@ impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async::EventT
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::event_listener_twin_rust_async_sse::EventTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::event_listener_twin_rust_async_sse::EventTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::event_listener_twin_rust_async_sse::EventTwinRustAsyncSse {
-            address: self_.get(0).cst_decode(),
-            payload: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::event_listener_twin_sse::EventTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::event_listener_twin_sse::EventTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::event_listener_twin_sse::EventTwinSse {
-            address: self_.get(0).cst_decode(),
-            payload: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::optional::ExoticOptionalsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::ExoticOptionalsTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4038,6 +2289,7 @@ impl CstDecode<crate::api::optional::ExoticOptionalsTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync {
@@ -4068,76 +2320,10 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOption
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::optional_twin_rust_async_sse::ExoticOptionalsTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::optional_twin_rust_async_sse::ExoticOptionalsTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            14,
-            "Expected 14 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_rust_async_sse::ExoticOptionalsTwinRustAsyncSse {
-            int32: self_.get(0).cst_decode(),
-            int64: self_.get(1).cst_decode(),
-            float64: self_.get(2).cst_decode(),
-            boolean: self_.get(3).cst_decode(),
-            zerocopy: self_.get(4).cst_decode(),
-            int8list: self_.get(5).cst_decode(),
-            uint8list: self_.get(6).cst_decode(),
-            int32list: self_.get(7).cst_decode(),
-            float32list: self_.get(8).cst_decode(),
-            float64list: self_.get(9).cst_decode(),
-            attributes: self_.get(10).cst_decode(),
-            attributes_nullable: self_.get(11).cst_decode(),
-            nullable_attributes: self_.get(12).cst_decode(),
-            newtypeint: self_.get(13).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sse::ExoticOptionalsTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sse::ExoticOptionalsTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            14,
-            "Expected 14 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sse::ExoticOptionalsTwinSse {
-            int32: self_.get(0).cst_decode(),
-            int64: self_.get(1).cst_decode(),
-            float64: self_.get(2).cst_decode(),
-            boolean: self_.get(3).cst_decode(),
-            zerocopy: self_.get(4).cst_decode(),
-            int8list: self_.get(5).cst_decode(),
-            uint8list: self_.get(6).cst_decode(),
-            int32list: self_.get(7).cst_decode(),
-            float32list: self_.get(8).cst_decode(),
-            float64list: self_.get(9).cst_decode(),
-            attributes: self_.get(10).cst_decode(),
-            attributes_nullable: self_.get(11).cst_decode(),
-            nullable_attributes: self_.get(12).cst_decode(),
-            newtypeint: self_.get(13).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4166,40 +2352,8 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwi
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::ExoticOptionalsTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::optional_twin_sync_sse::ExoticOptionalsTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            14,
-            "Expected 14 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sync_sse::ExoticOptionalsTwinSyncSse {
-            int32: self_.get(0).cst_decode(),
-            int64: self_.get(1).cst_decode(),
-            float64: self_.get(2).cst_decode(),
-            boolean: self_.get(3).cst_decode(),
-            zerocopy: self_.get(4).cst_decode(),
-            int8list: self_.get(5).cst_decode(),
-            uint8list: self_.get(6).cst_decode(),
-            int32list: self_.get(7).cst_decode(),
-            float32list: self_.get(8).cst_decode(),
-            float64list: self_.get(9).cst_decode(),
-            attributes: self_.get(10).cst_decode(),
-            attributes_nullable: self_.get(11).cst_decode(),
-            nullable_attributes: self_.get(12).cst_decode(),
-            newtypeint: self_.get(13).cst_decode(),
-        }
-    }
-}
 impl CstDecode<[f64; 16]> for Box<[f64]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [f64; 16] {
         let vec: Vec<f64> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -4208,6 +2362,7 @@ impl CstDecode<[f64; 16]> for Box<[f64]> {
 impl CstDecode<crate::api::chrono_type::FeatureChronoTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::chrono_type::FeatureChronoTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4229,6 +2384,7 @@ impl CstDecode<crate::api::chrono_type::FeatureChronoTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync {
@@ -4252,6 +2408,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureCh
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4273,6 +2430,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTw
 impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::uuid_type::FeatureUuidTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4291,6 +2449,7 @@ impl CstDecode<crate::api::uuid_type::FeatureUuidTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
@@ -4311,6 +2470,7 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuid
 impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4329,6 +2489,7 @@ impl CstDecode<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSy
 impl CstDecode<crate::api::array::FeedIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::FeedIdTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4345,6 +2506,7 @@ impl CstDecode<crate::api::array::FeedIdTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4360,45 +2522,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustA
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse(self_.get(0).cst_decode())
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -4412,23 +2539,8 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
         crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync(self_.get(0).cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse(self_.get(0).cst_decode())
-    }
-}
 impl CstDecode<[i32; 2]> for Box<[i32]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [i32; 2] {
         let vec: Vec<i32> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -4437,6 +2549,7 @@ impl CstDecode<[i32; 2]> for Box<[i32]> {
 impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::KitchenSinkTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -4463,6 +2576,7 @@ impl CstDecode<crate::api::enumeration::KitchenSinkTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync {
@@ -4478,60 +2592,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSi
                 }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse
-    {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Empty,
-1 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Primitives{int32:  self_.get(1).cst_decode(),float64:  self_.get(2).cst_decode(),boolean:  self_.get(3).cst_decode()} },
-2 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Nested( self_.get(1).cst_decode(), self_.get(2).cst_decode()) },
-3 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Optional( self_.get(1).cst_decode(), self_.get(2).cst_decode()) },
-4 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Buffer( self_.get(1).cst_decode()) },
-5 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse::Enums( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Empty,
-            1 => crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Primitives {
-                int32: self_.get(1).cst_decode(),
-                float64: self_.get(2).cst_decode(),
-                boolean: self_.get(3).cst_decode(),
-            },
-            2 => crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Nested(
-                self_.get(1).cst_decode(),
-                self_.get(2).cst_decode(),
-            ),
-            3 => crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Optional(
-                self_.get(1).cst_decode(),
-                self_.get(2).cst_decode(),
-            ),
-            4 => crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Buffer(
-                self_.get(1).cst_decode(),
-            ),
-            5 => crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse::Enums(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -4561,27 +2625,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwin
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Empty,
-1 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Primitives{int32:  self_.get(1).cst_decode(),float64:  self_.get(2).cst_decode(),boolean:  self_.get(3).cst_decode()} },
-2 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Nested( self_.get(1).cst_decode(), self_.get(2).cst_decode()) },
-3 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Optional( self_.get(1).cst_decode(), self_.get(2).cst_decode()) },
-4 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Buffer( self_.get(1).cst_decode()) },
-5 => { crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse::Enums( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
 impl CstDecode<Vec<chrono::Duration>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<chrono::Duration> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4593,6 +2640,7 @@ impl CstDecode<Vec<chrono::Duration>>
 impl CstDecode<Vec<chrono::DateTime<chrono::Local>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<chrono::DateTime<chrono::Local>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4604,6 +2652,7 @@ impl CstDecode<Vec<chrono::DateTime<chrono::Local>>>
 impl CstDecode<Vec<chrono::NaiveDateTime>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<chrono::NaiveDateTime> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4615,6 +2664,7 @@ impl CstDecode<Vec<chrono::NaiveDateTime>>
 impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<flutter_rust_bridge::DartOpaque> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4626,6 +2676,7 @@ impl CstDecode<Vec<flutter_rust_bridge::DartOpaque>>
 impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>> {
@@ -4639,6 +2690,7 @@ impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi
 impl CstDecode<Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4656,6 +2708,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<
@@ -4671,54 +2724,17 @@ impl
     }
 }
 impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::HideDataTwinRustAsyncMoi>> {
                 self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
             }
         }
-impl CstDecode<Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> {
-                self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl CstDecode<Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> {
-                self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl CstDecode<Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl
     CstDecode<
         Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
@@ -4739,6 +2755,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>>
@@ -4750,50 +2767,8 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<
-            RustOpaqueNom<
-                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<
-            RustOpaqueMoi<
-                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
-        >,
-    > {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<String> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4805,6 +2780,7 @@ impl CstDecode<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnvVar> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4816,6 +2792,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationSettings> {
@@ -4829,6 +2806,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationS
 impl CstDecode<Vec<crate::api::optional::AttributeTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::optional::AttributeTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4840,6 +2818,7 @@ impl CstDecode<Vec<crate::api::optional::AttributeTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync> {
@@ -4850,50 +2829,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::Attribut
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -4904,6 +2844,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeT
 impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4915,6 +2856,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync> {
@@ -4925,36 +2867,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicGenera
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync> {
@@ -4965,22 +2881,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumT
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -4994,6 +2898,7 @@ impl
         Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>
@@ -5005,27 +2910,10 @@ impl
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse> {
-                self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync> {
@@ -5036,22 +2924,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnu
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5063,6 +2939,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync> {
@@ -5073,36 +2950,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicStruct
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5111,20 +2962,8 @@ impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSy
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<bool>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<bool> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5136,6 +2975,7 @@ impl CstDecode<Vec<bool>> for flutter_rust_bridge::for_generated::wasm_bindgen::
 impl CstDecode<Vec<crate::api::optional::ElementTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::optional::ElementTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5147,6 +2987,7 @@ impl CstDecode<Vec<crate::api::optional::ElementTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync> {
@@ -5157,48 +2998,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async::ElementT
             .collect()
     }
 }
-impl
-    CstDecode<Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async_sse::ElementTwinRustAsyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sse::ElementTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwinSyncSse> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -5209,6 +3013,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::optional_twin_sync_sse::ElementTwi
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5220,6 +3025,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTw
 impl CstDecode<Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5231,6 +3037,7 @@ impl CstDecode<Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync> {
@@ -5246,6 +3053,7 @@ impl
         Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi>
@@ -5257,54 +3065,10 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi> {
-                self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync> {
@@ -5318,6 +3082,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
 impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi> {
@@ -5328,36 +3093,8 @@ impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpa
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<Vec<u8>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Vec<u8>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5369,6 +3106,7 @@ impl CstDecode<Vec<Vec<u8>>> for flutter_rust_bridge::for_generated::wasm_bindge
 impl CstDecode<Vec<crate::auxiliary::sample_types::MyEnum>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::auxiliary::sample_types::MyEnum> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5380,6 +3118,7 @@ impl CstDecode<Vec<crate::auxiliary::sample_types::MyEnum>>
 impl CstDecode<Vec<crate::auxiliary::sample_types::MySize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::auxiliary::sample_types::MySize> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5391,6 +3130,7 @@ impl CstDecode<Vec<crate::auxiliary::sample_types::MySize>>
 impl CstDecode<Vec<crate::api::misc_example::MyTreeNodeTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::misc_example::MyTreeNodeTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5403,6 +3143,7 @@ impl
     CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync> {
@@ -5413,40 +3154,10 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<
-            crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyTreeNodeTwinRustAsyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyTreeNodeTwinRustAsyncSse>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sse::MyTreeNodeTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sse::MyTreeNodeTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync> {
@@ -5457,22 +3168,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNode
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNodeTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNodeTwinSyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored> {
@@ -5486,6 +3185,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStr
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawStringMirrored {
@@ -5504,6 +3204,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ListOfNestedRawS
     }
 }
 impl CstDecode<Vec<Option<String>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<String>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5515,6 +3216,7 @@ impl CstDecode<Vec<Option<String>>> for flutter_rust_bridge::for_generated::wasm
 impl CstDecode<Vec<Option<crate::api::optional::AttributeTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<crate::api::optional::AttributeTwinNormal>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5528,6 +3230,7 @@ impl
         Vec<Option<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>
@@ -5539,43 +3242,10 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<
-            Option<
-                crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<
-        Option<crate::api::pseudo_manual::optional_twin_rust_async_sse::AttributeTwinRustAsyncSse>,
-    > {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<Option<crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_sse::AttributeTwinSse>> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<Option<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>> {
@@ -5586,20 +3256,8 @@ impl CstDecode<Vec<Option<crate::api::pseudo_manual::optional_twin_sync::Attribu
             .collect()
     }
 }
-impl CstDecode<Vec<Option<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_sync_sse::AttributeTwinSyncSse>> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<Option<i32>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<i32>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5611,6 +3269,7 @@ impl CstDecode<Vec<Option<i32>>> for flutter_rust_bridge::for_generated::wasm_bi
 impl CstDecode<Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5624,6 +3283,7 @@ impl
         Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
@@ -5635,27 +3295,10 @@ impl
             .collect()
     }
 }
-impl CstDecode<Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>> {
-                self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl CstDecode<Vec<Option<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse>> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>> {
@@ -5666,25 +3309,10 @@ impl CstDecode<Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::Wee
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<Option<Vec<i32>>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<Option<Vec<i32>>> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5696,6 +3324,7 @@ impl CstDecode<Vec<Option<Vec<i32>>>>
 impl CstDecode<Vec<crate::api::array::PointTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::array::PointTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5707,6 +3336,7 @@ impl CstDecode<Vec<crate::api::array::PointTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync> {
@@ -5717,33 +3347,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRu
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5752,63 +3359,62 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>>
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<f32>> for Box<[f32]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f32> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<f64>> for Box<[f64]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f64> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<i16>> for Box<[i16]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i16> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<i32>> for Box<[i32]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i32> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<i64>> for Box<[i64]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i64> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<i8>> for Box<[i8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i8> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<u16>> for Box<[u16]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u16> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<u32>> for Box<[u32]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u32> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<u64>> for Box<[u64]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u64> {
         self.into_vec()
     }
 }
 impl CstDecode<Vec<u8>> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u8> {
         self.into_vec()
     }
@@ -5816,6 +3422,7 @@ impl CstDecode<Vec<u8>> for Box<[u8]> {
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored> {
@@ -5829,6 +3436,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnu
 impl CstDecode<Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -5845,6 +3453,7 @@ impl
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -5866,6 +3475,7 @@ impl
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -5883,52 +3493,11 @@ impl
     CstDecode<
         Vec<(
             i32,
-            crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            i32,
             crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync,
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -5946,31 +3515,11 @@ impl
     CstDecode<
         Vec<(
             i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            i32,
             crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal,
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -5992,37 +3541,12 @@ impl
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
         i32,
         crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<(i32,crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse,)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Vec<(i32,crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse,)> {
-                self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()
-            }
-        }
-impl
-    CstDecode<
-        Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse,
     )> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6039,6 +3563,7 @@ impl
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6052,30 +3577,10 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<(i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal)>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6092,6 +3597,7 @@ impl
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6109,52 +3615,11 @@ impl
     CstDecode<
         Vec<(
             i32,
-            crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            i32,
             crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync,
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6168,28 +3633,8 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<(i32, bool)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, bool)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6199,6 +3644,7 @@ impl CstDecode<Vec<(i32, bool)>> for flutter_rust_bridge::for_generated::wasm_bi
     }
 }
 impl CstDecode<Vec<(i32, f32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, f32)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6208,6 +3654,7 @@ impl CstDecode<Vec<(i32, f32)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, f64)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, f64)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6217,6 +3664,7 @@ impl CstDecode<Vec<(i32, f64)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, i16)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i16)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6226,6 +3674,7 @@ impl CstDecode<Vec<(i32, i16)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, i32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i32)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6235,6 +3684,7 @@ impl CstDecode<Vec<(i32, i32)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, i64)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i64)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6244,6 +3694,7 @@ impl CstDecode<Vec<(i32, i64)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, i8)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, i8)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6253,6 +3704,7 @@ impl CstDecode<Vec<(i32, i8)>> for flutter_rust_bridge::for_generated::wasm_bind
     }
 }
 impl CstDecode<Vec<(i32, isize)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, isize)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6262,6 +3714,7 @@ impl CstDecode<Vec<(i32, isize)>> for flutter_rust_bridge::for_generated::wasm_b
     }
 }
 impl CstDecode<Vec<(i32, Vec<u8>)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, Vec<u8>)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6271,6 +3724,7 @@ impl CstDecode<Vec<(i32, Vec<u8>)>> for flutter_rust_bridge::for_generated::wasm
     }
 }
 impl CstDecode<Vec<(i32, String)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, String)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6280,6 +3734,7 @@ impl CstDecode<Vec<(i32, String)>> for flutter_rust_bridge::for_generated::wasm_
     }
 }
 impl CstDecode<Vec<(i32, u16)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u16)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6289,6 +3744,7 @@ impl CstDecode<Vec<(i32, u16)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, u32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u32)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6298,6 +3754,7 @@ impl CstDecode<Vec<(i32, u32)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, u64)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u64)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6307,6 +3764,7 @@ impl CstDecode<Vec<(i32, u64)>> for flutter_rust_bridge::for_generated::wasm_bin
     }
 }
 impl CstDecode<Vec<(i32, u8)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, u8)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6316,6 +3774,7 @@ impl CstDecode<Vec<(i32, u8)>> for flutter_rust_bridge::for_generated::wasm_bind
     }
 }
 impl CstDecode<Vec<(i32, usize)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(i32, usize)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6327,6 +3786,7 @@ impl CstDecode<Vec<(i32, usize)>> for flutter_rust_bridge::for_generated::wasm_b
 impl CstDecode<Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6343,6 +3803,7 @@ impl
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6360,52 +3821,11 @@ impl
     CstDecode<
         Vec<(
             String,
-            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            String,
             crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6419,28 +3839,8 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<(String, i32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, i32)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6452,6 +3852,7 @@ impl CstDecode<Vec<(String, i32)>> for flutter_rust_bridge::for_generated::wasm_
 impl CstDecode<Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6468,6 +3869,7 @@ impl
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6485,52 +3887,11 @@ impl
     CstDecode<
         Vec<(
             String,
-            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl
-    CstDecode<
-        Vec<(
-            String,
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
         )>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<(
@@ -6544,30 +3905,10 @@ impl
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
-        )>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
-    )> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<(String, Vec<u8>)>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, Vec<u8>)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6579,6 +3920,7 @@ impl CstDecode<Vec<(String, Vec<u8>)>>
 impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, crate::auxiliary::sample_types::MySize)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6590,6 +3932,7 @@ impl CstDecode<Vec<(String, crate::auxiliary::sample_types::MySize)>>
 impl CstDecode<Vec<(String, String)>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<(String, String)> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6601,6 +3944,7 @@ impl CstDecode<Vec<(String, String)>>
 impl CstDecode<Vec<crate::api::method::SumWithTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::method::SumWithTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6612,6 +3956,7 @@ impl CstDecode<Vec<crate::api::method::SumWithTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync> {
@@ -6622,47 +3967,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwi
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -6673,6 +3982,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinS
 impl CstDecode<Vec<crate::api::array::TestIdTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::array::TestIdTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6684,6 +3994,7 @@ impl CstDecode<Vec<crate::api::array::TestIdTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> {
@@ -6694,45 +4005,11 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinR
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
@@ -6743,6 +4020,7 @@ impl CstDecode<Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyn
 impl CstDecode<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<crate::api::misc_example::WeekdaysTwinNormal> {
         self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
@@ -6754,6 +4032,7 @@ impl CstDecode<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
 impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync> {
@@ -6764,36 +4043,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::Week
             .collect()
     }
 }
-impl
-    CstDecode<
-        Vec<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>
-    {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
-impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Vec<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> {
@@ -6804,22 +4057,10 @@ impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTw
             .collect()
     }
 }
-impl CstDecode<Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse> {
-        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap()
-            .iter()
-            .map(CstDecode::cst_decode)
-            .collect()
-    }
-}
 impl CstDecode<crate::api::method::Log2TwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::Log2TwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -6839,6 +4080,7 @@ impl CstDecode<crate::api::method::Log2TwinNormal>
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -6855,49 +4097,10 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAs
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_rust_async_sse::Log2TwinRustAsyncSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::method_twin_sse::Log2TwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sse::Log2TwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_sse::Log2TwinSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -6914,28 +4117,10 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_sync_sse::Log2TwinSyncSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::stream::LogTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::stream::LogTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -6955,6 +4140,7 @@ impl CstDecode<crate::api::stream::LogTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -6971,49 +4157,10 @@ impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsy
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::stream_twin_rust_async_sse::LogTwinRustAsyncSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::stream_twin_sse::LogTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_sse::LogTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::stream_twin_sse::LogTwinSse {
-            key: self_.get(0).cst_decode(),
-            value: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::inside_macro::MacroStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::inside_macro::MacroStruct {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7032,6 +4179,7 @@ impl CstDecode<crate::api::inside_macro::MacroStruct>
 impl CstDecode<crate::api::enumeration::MeasureTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::MeasureTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -7044,6 +4192,7 @@ impl CstDecode<crate::api::enumeration::MeasureTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync {
@@ -7055,39 +4204,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTw
                 }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::MeasureTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::MeasureTwinRustAsyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::MeasureTwinRustAsyncSse::Speed( self_.get(1).cst_decode()) },
-1 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::MeasureTwinRustAsyncSse::Distance( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::MeasureTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sse::MeasureTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sse::MeasureTwinSse::Speed(
-                self_.get(1).cst_decode(),
-            ),
-            1 => crate::api::pseudo_manual::enumeration_twin_sse::MeasureTwinSse::Distance(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -7101,29 +4221,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::MeasureTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::MeasureTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sync_sse::MeasureTwinSyncSse::Speed(
-                self_.get(1).cst_decode(),
-            ),
-            1 => {
-                crate::api::pseudo_manual::enumeration_twin_sync_sse::MeasureTwinSyncSse::Distance(
-                    self_.get(1).cst_decode(),
-                )
-            }
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::array::MessageIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::MessageIdTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7140,6 +4241,7 @@ impl CstDecode<crate::api::array::MessageIdTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync {
@@ -7157,45 +4259,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRu
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::MessageIdTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::array_twin_rust_async_sse::MessageIdTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_rust_async_sse::MessageIdTwinRustAsyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::array_twin_sse::MessageIdTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sse::MessageIdTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sse::MessageIdTwinSse(self_.get(0).cst_decode())
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7209,27 +4276,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
         crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync(self_.get(0).cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::MessageIdTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync_sse::MessageIdTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sync_sse::MessageIdTwinSyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
 impl CstDecode<crate::api::mirror::MirrorStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::mirror::MirrorStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7251,6 +4301,7 @@ impl CstDecode<crate::api::mirror::MirrorStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync {
@@ -7271,53 +4322,10 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTw
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_rust_async_sse::MirrorStructTwinRustAsyncSse {
-            a: self_.get(0).cst_decode(),
-            b: self_.get(1).cst_decode(),
-            c: self_.get(2).cst_decode(),
-            d: self_.get(3).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_sse::MirrorStructTwinSse {
-            a: self_.get(0).cst_decode(),
-            b: self_.get(1).cst_decode(),
-            c: self_.get(2).cst_decode(),
-            d: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7336,32 +4344,10 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::mirror_twin_sync_sse::MirrorStructTwinSyncSse {
-            a: self_.get(0).cst_decode(),
-            b: self_.get(1).cst_decode(),
-            c: self_.get(2).cst_decode(),
-            d: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7381,48 +4367,19 @@ impl CstDecode<crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal>
     }
 }
 impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {
                 let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
                 assert_eq!(self_.length(), 4, "Expected 4 elements, got {}", self_.length());
                 crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync{regular:  self_.get(0).cst_decode(),r#type:  self_.get(1).cst_decode(),r#async:  self_.get(2).cst_decode(),another:  self_.get(3).cst_decode()}
             }
         }
-impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 4, "Expected 4 elements, got {}", self_.length());
-                crate::api::pseudo_manual::raw_string_twin_rust_async_sse::MoreThanJustOneRawStringStructTwinRustAsyncSse{regular:  self_.get(0).cst_decode(),r#type:  self_.get(1).cst_decode(),r#async:  self_.get(2).cst_decode(),another:  self_.get(3).cst_decode()}
-            }
-        }
-impl
-    CstDecode<crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::raw_string_twin_sse::MoreThanJustOneRawStringStructTwinSse {
-            regular: self_.get(0).cst_decode(),
-            r#type: self_.get(1).cst_decode(),
-            r#async: self_.get(2).cst_decode(),
-            another: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl
     CstDecode<
         crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync
@@ -7444,16 +4401,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 4, "Expected 4 elements, got {}", self_.length());
-                crate::api::pseudo_manual::raw_string_twin_sync_sse::MoreThanJustOneRawStringStructTwinSyncSse{regular:  self_.get(0).cst_decode(),r#type:  self_.get(1).cst_decode(),r#async:  self_.get(2).cst_decode(),another:  self_.get(3).cst_decode()}
-            }
-        }
 impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::MyNestedStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7473,6 +4424,7 @@ impl CstDecode<crate::api::misc_example::MyNestedStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync {
@@ -7491,49 +4443,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNested
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyNestedStructTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyNestedStructTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyNestedStructTwinRustAsyncSse{tree_node:  self_.get(0).cst_decode(),weekday:  self_.get(1).cst_decode()}
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::MyNestedStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::MyNestedStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sse::MyNestedStructTwinSse {
-            tree_node: self_.get(0).cst_decode(),
-            weekday: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync {
@@ -7552,30 +4465,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStruct
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyNestedStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::MyNestedStructTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync_sse::MyNestedStructTwinSyncSse {
-            tree_node: self_.get(0).cst_decode(),
-            weekday: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::auxiliary::sample_types::MySize>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::sample_types::MySize {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7595,6 +4488,7 @@ impl CstDecode<crate::auxiliary::sample_types::MySize>
 impl CstDecode<crate::api::stream::MyStreamEntryTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::stream::MyStreamEntryTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7613,6 +4507,7 @@ impl CstDecode<crate::api::stream::MyStreamEntryTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
@@ -7630,47 +4525,10 @@ impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryT
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::stream_twin_rust_async_sse::MyStreamEntryTwinRustAsyncSse {
-            hello: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::stream_twin_sse::MyStreamEntryTwinSse {
-            hello: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::auxiliary::sample_types::MyStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::sample_types::MyStruct {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7689,6 +4547,7 @@ impl CstDecode<crate::auxiliary::sample_types::MyStruct>
 impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::MyTreeNodeTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7710,6 +4569,7 @@ impl CstDecode<crate::api::misc_example::MyTreeNodeTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync {
@@ -7730,56 +4590,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNo
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyTreeNodeTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyTreeNodeTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::MyTreeNodeTwinRustAsyncSse {
-            value_i32: self_.get(0).cst_decode(),
-            value_vec_u8: self_.get(1).cst_decode(),
-            value_boolean: self_.get(2).cst_decode(),
-            children: self_.get(3).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::MyTreeNodeTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::MyTreeNodeTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sse::MyTreeNodeTwinSse {
-            value_i32: self_.get(0).cst_decode(),
-            value_vec_u8: self_.get(1).cst_decode(),
-            value_boolean: self_.get(2).cst_decode(),
-            children: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7798,32 +4612,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwin
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNodeTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNodeTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync_sse::MyTreeNodeTwinSyncSse {
-            value_i32: self_.get(0).cst_decode(),
-            value_vec_u8: self_.get(1).cst_decode(),
-            value_boolean: self_.get(2).cst_decode(),
-            children: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringMirrored {
@@ -7844,6 +4636,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::NestedRawStringM
 impl CstDecode<crate::auxiliary::new_module_system::sub_module::NewSimpleStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::new_module_system::sub_module::NewSimpleStruct {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7862,6 +4655,7 @@ impl CstDecode<crate::auxiliary::new_module_system::sub_module::NewSimpleStruct>
 impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::newtype_pattern::NewTypeIntTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7878,6 +4672,7 @@ impl CstDecode<crate::api::newtype_pattern::NewTypeIntTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync {
@@ -7895,50 +4690,10 @@ impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTy
         )
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::newtype_pattern_twin_rust_async_sse::NewTypeIntTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::newtype_pattern_twin_rust_async_sse::NewTypeIntTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::newtype_pattern_twin_rust_async_sse::NewTypeIntTwinRustAsyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sse::NewTypeIntTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::newtype_pattern_twin_sse::NewTypeIntTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::newtype_pattern_twin_sse::NewTypeIntTwinSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync {
@@ -7956,29 +4711,10 @@ impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntT
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::newtype_pattern_twin_sync_sse::NewTypeIntTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::newtype_pattern_twin_sync_sse::NewTypeIntTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::newtype_pattern_twin_sync_sse::NewTypeIntTwinSyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
 impl CstDecode<crate::api::enumeration::NoteTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::NoteTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -7998,6 +4734,7 @@ impl CstDecode<crate::api::enumeration::NoteTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
@@ -8016,49 +4753,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinR
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::NoteTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::NoteTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::NoteTwinRustAsyncSse {
-            day: self_.get(0).cst_decode(),
-            body: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::NoteTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sse::NoteTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::enumeration_twin_sse::NoteTwinSse {
-            day: self_.get(0).cst_decode(),
-            body: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8075,28 +4773,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::NoteTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::NoteTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::NoteTwinSyncSse {
-            day: self_.get(0).cst_decode(),
-            body: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8113,6 +4793,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Numbers>
 impl CstDecode<crate::auxiliary::old_module_system::sub_module::OldSimpleStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::old_module_system::sub_module::OldSimpleStruct {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8131,6 +4812,7 @@ impl CstDecode<crate::auxiliary::old_module_system::sub_module::OldSimpleStruct>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwinMoi {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8150,6 +4832,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::OpaqueNestedTwin
 impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::rust_opaque::OpaqueNestedTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8169,6 +4852,7 @@ impl CstDecode<crate::api::rust_opaque::OpaqueNestedTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
@@ -8192,6 +4876,7 @@ impl
         crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::OpaqueNestedTwinRustAsyncMoi
@@ -8211,80 +4896,10 @@ impl
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::OpaqueNestedTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::OpaqueNestedTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::OpaqueNestedTwinRustAsyncSse {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::OpaqueNestedTwinRustAsyncSseMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::OpaqueNestedTwinRustAsyncSseMoi {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::OpaqueNestedTwinRustAsyncSseMoi{first:  self_.get(0).cst_decode(),second:  self_.get(1).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sse::OpaqueNestedTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sse::OpaqueNestedTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::rust_opaque_twin_sse::OpaqueNestedTwinSse {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::OpaqueNestedTwinSseMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_sse_moi::OpaqueNestedTwinSseMoi {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::rust_opaque_twin_sse_moi::OpaqueNestedTwinSseMoi {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8304,6 +4919,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwi
 impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNestedTwinSyncMoi {
@@ -8322,74 +4938,38 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::OpaqueNeste
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::OpaqueNestedTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_sse::OpaqueNestedTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::rust_opaque_twin_sync_sse::OpaqueNestedTwinSyncSse {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::OpaqueNestedTwinSyncSseMoi>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::OpaqueNestedTwinSyncSseMoi {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::OpaqueNestedTwinSyncSseMoi {
-            first: self_.get(0).cst_decode(),
-            second: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<Option<String>> for Option<String> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Option<String> {
         self.map(CstDecode::cst_decode)
     }
 }
 impl CstDecode<Option<Vec<f32>>> for Option<Box<[f32]>> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Option<Vec<f32>> {
         self.map(CstDecode::cst_decode)
     }
 }
 impl CstDecode<Option<Vec<f64>>> for Option<Box<[f64]>> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Option<Vec<f64>> {
         self.map(CstDecode::cst_decode)
     }
 }
 impl CstDecode<Option<Vec<i32>>> for Option<Box<[i32]>> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Option<Vec<i32>> {
         self.map(CstDecode::cst_decode)
     }
 }
 impl CstDecode<Option<Vec<i8>>> for Option<Box<[i8]>> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Option<Vec<i8>> {
         self.map(CstDecode::cst_decode)
     }
 }
 impl CstDecode<Option<Vec<u8>>> for Option<Box<[u8]>> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Option<Vec<u8>> {
         self.map(CstDecode::cst_decode)
     }
@@ -8397,6 +4977,7 @@ impl CstDecode<Option<Vec<u8>>> for Option<Box<[u8]>> {
 impl CstDecode<crate::api::optional::OptVecsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::optional::OptVecsTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8418,6 +4999,7 @@ impl CstDecode<crate::api::optional::OptVecsTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync {
@@ -8438,53 +5020,10 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinR
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::optional_twin_rust_async_sse::OptVecsTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::optional_twin_rust_async_sse::OptVecsTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_rust_async_sse::OptVecsTwinRustAsyncSse {
-            i32: self_.get(0).cst_decode(),
-            enums: self_.get(1).cst_decode(),
-            strings: self_.get(2).cst_decode(),
-            buffers: self_.get(3).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sse::OptVecsTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sse::OptVecsTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sse::OptVecsTwinSse {
-            i32: self_.get(0).cst_decode(),
-            enums: self_.get(1).cst_decode(),
-            strings: self_.get(2).cst_decode(),
-            buffers: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8503,30 +5042,10 @@ impl CstDecode<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::optional_twin_sync_sse::OptVecsTwinSyncSse {
-            i32: self_.get(0).cst_decode(),
-            enums: self_.get(1).cst_decode(),
-            strings: self_.get(2).cst_decode(),
-            buffers: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::array::PointTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::PointTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8546,6 +5065,7 @@ impl CstDecode<crate::api::array::PointTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8562,49 +5082,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAs
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse {
-            x: self_.get(0).cst_decode(),
-            y: self_.get(1).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::array_twin_sse::PointTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sse::PointTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sse::PointTwinSse {
-            x: self_.get(0).cst_decode(),
-            y: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8621,28 +5102,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse {
-            x: self_.get(0).cst_decode(),
-            y: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -8664,6 +5127,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMir
 impl CstDecode<crate::api::raw_string::RawStringItemStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::raw_string::RawStringItemStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8684,6 +5148,7 @@ impl
         crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync
@@ -8702,36 +5167,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
-                crate::api::pseudo_manual::raw_string_twin_rust_async_sse::RawStringItemStructTwinRustAsyncSse{r#type:  self_.get(0).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::raw_string_twin_sse::RawStringItemStructTwinSse {
-            r#type: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync {
@@ -8749,29 +5188,10 @@ impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStr
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::raw_string_twin_sync_sse::RawStringItemStructTwinSyncSse {
-            r#type: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringMirrored {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8793,6 +5213,7 @@ impl
         crate::api::pseudo_manual::mirror_twin_sync_sse::RawStringEnumMirrored,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -8817,6 +5238,7 @@ impl
         crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -8841,6 +5263,7 @@ impl
         crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -8862,86 +5285,15 @@ impl
 impl
     CstDecode<(
         i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
         crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
         i32,
         crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -8961,6 +5313,7 @@ impl
         crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -8985,6 +5338,7 @@ impl
         crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -9006,86 +5360,15 @@ impl
 impl
     CstDecode<(
         i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
         crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
         i32,
         crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9102,6 +5385,7 @@ impl
 impl CstDecode<(i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal)>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9121,6 +5405,7 @@ impl
         crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -9142,86 +5427,15 @@ impl
 impl
     CstDecode<(
         i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
         crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
         i32,
         crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9236,6 +5450,7 @@ impl
     }
 }
 impl CstDecode<(i32, bool)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, bool) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9250,6 +5465,7 @@ impl CstDecode<(i32, bool)> for flutter_rust_bridge::for_generated::wasm_bindgen
     }
 }
 impl CstDecode<(i32, f32)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, f32) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9264,6 +5480,7 @@ impl CstDecode<(i32, f32)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, f64)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, f64) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9278,6 +5495,7 @@ impl CstDecode<(i32, f64)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, i16)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i16) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9292,6 +5510,7 @@ impl CstDecode<(i32, i16)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, i32)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i32) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9306,6 +5525,7 @@ impl CstDecode<(i32, i32)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, i64)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i64) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9320,6 +5540,7 @@ impl CstDecode<(i32, i64)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, i8)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, i8) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9334,6 +5555,7 @@ impl CstDecode<(i32, i8)> for flutter_rust_bridge::for_generated::wasm_bindgen::
     }
 }
 impl CstDecode<(i32, isize)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, isize) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9348,6 +5570,7 @@ impl CstDecode<(i32, isize)> for flutter_rust_bridge::for_generated::wasm_bindge
     }
 }
 impl CstDecode<(i32, Vec<u8>)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, Vec<u8>) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9362,6 +5585,7 @@ impl CstDecode<(i32, Vec<u8>)> for flutter_rust_bridge::for_generated::wasm_bind
     }
 }
 impl CstDecode<(i32, String)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, String) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9376,6 +5600,7 @@ impl CstDecode<(i32, String)> for flutter_rust_bridge::for_generated::wasm_bindg
     }
 }
 impl CstDecode<(i32, u16)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u16) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9390,6 +5615,7 @@ impl CstDecode<(i32, u16)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, u32)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u32) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9404,6 +5630,7 @@ impl CstDecode<(i32, u32)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, u64)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u64) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9418,6 +5645,7 @@ impl CstDecode<(i32, u64)> for flutter_rust_bridge::for_generated::wasm_bindgen:
     }
 }
 impl CstDecode<(i32, u8)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, u8) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9432,6 +5660,7 @@ impl CstDecode<(i32, u8)> for flutter_rust_bridge::for_generated::wasm_bindgen::
     }
 }
 impl CstDecode<(i32, usize)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (i32, usize) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9448,6 +5677,7 @@ impl CstDecode<(i32, usize)> for flutter_rust_bridge::for_generated::wasm_bindge
 impl CstDecode<(String, crate::api::enumeration::EnumSimpleTwinNormal)>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, crate::api::enumeration::EnumSimpleTwinNormal) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9467,6 +5697,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -9488,86 +5719,15 @@ impl
 impl
     CstDecode<(
         String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        String,
         crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
         String,
         crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9582,6 +5742,7 @@ impl
     }
 }
 impl CstDecode<(String, i32)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, i32) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9598,6 +5759,7 @@ impl CstDecode<(String, i32)> for flutter_rust_bridge::for_generated::wasm_bindg
 impl CstDecode<(String, crate::api::enumeration::KitchenSinkTwinNormal)>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, crate::api::enumeration::KitchenSinkTwinNormal) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9617,6 +5779,7 @@ impl
         crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
@@ -9638,86 +5801,15 @@ impl
 impl
     CstDecode<(
         String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        String,
         crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
     )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> (
         String,
         crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
-    ) {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        (self_.get(0).cst_decode(), self_.get(1).cst_decode())
-    }
-}
-impl
-    CstDecode<(
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> (
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
     ) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9732,6 +5824,7 @@ impl
     }
 }
 impl CstDecode<(String, Vec<u8>)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, Vec<u8>) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9748,6 +5841,7 @@ impl CstDecode<(String, Vec<u8>)> for flutter_rust_bridge::for_generated::wasm_b
 impl CstDecode<(String, crate::auxiliary::sample_types::MySize)>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, crate::auxiliary::sample_types::MySize) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9762,6 +5856,7 @@ impl CstDecode<(String, crate::auxiliary::sample_types::MySize)>
     }
 }
 impl CstDecode<(String, String)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> (String, String) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9778,6 +5873,7 @@ impl CstDecode<(String, String)> for flutter_rust_bridge::for_generated::wasm_bi
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9794,6 +5890,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::Sequences>
 impl CstDecode<crate::api::exception::SomeStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::exception::SomeStructTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9812,6 +5909,7 @@ impl CstDecode<crate::api::exception::SomeStructTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
@@ -9829,47 +5927,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructT
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_rust_async_sse::SomeStructTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_rust_async_sse::SomeStructTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_rust_async_sse::SomeStructTwinRustAsyncSse {
-            value: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sse::SomeStructTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sse::SomeStructTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sse::SomeStructTwinSse {
-            value: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -9885,29 +5946,10 @@ impl CstDecode<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSyn
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::exception_twin_sync_sse::SomeStructTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::exception_twin_sync_sse::SomeStructTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::exception_twin_sync_sse::SomeStructTwinSyncSse {
-            value: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::enumeration::SpeedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::SpeedTwinNormal {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -9920,6 +5962,7 @@ impl CstDecode<crate::api::enumeration::SpeedTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync {
@@ -9935,37 +5978,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwin
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-                    0 => crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse::Unknown,
-1 => { crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse::GPS( self_.get(1).cst_decode()) },
-                    _ => unreachable!(),
-                }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse::Unknown,
-            1 => crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse::GPS(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync {
         let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
@@ -9977,23 +5993,10 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse::Unknown,
-            1 => crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse::GPS(
-                self_.get(1).cst_decode(),
-            ),
-            _ => unreachable!(),
-        }
-    }
-}
 impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::deliberate_name_conflict::StructInLowerLevel {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10012,6 +6015,7 @@ impl CstDecode<crate::api::deliberate_name_conflict::StructInLowerLevel>
 impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::deliberate_name_conflict::StructInUpperLevel {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10030,6 +6034,7 @@ impl CstDecode<crate::deliberate_name_conflict::StructInUpperLevel>
 impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::comment::StructWithCommentsTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10048,6 +6053,7 @@ impl CstDecode<crate::api::comment::StructWithCommentsTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync {
@@ -10065,50 +6071,10 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_rust_async::StructWithCom
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::comment_twin_rust_async_sse::StructWithCommentsTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::comment_twin_rust_async_sse::StructWithCommentsTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::comment_twin_rust_async_sse::StructWithCommentsTwinRustAsyncSse {
-            field_with_comments: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::comment_twin_sse::StructWithCommentsTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::comment_twin_sse::StructWithCommentsTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::comment_twin_sse::StructWithCommentsTwinSse {
-            field_with_comments: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
@@ -10126,29 +6092,10 @@ impl CstDecode<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsT
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::comment_twin_sync_sse::StructWithCommentsTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::comment_twin_sync_sse::StructWithCommentsTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::comment_twin_sync_sse::StructWithCommentsTwinSyncSse {
-            field_with_comments: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::StructWithEnumTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10168,6 +6115,7 @@ impl CstDecode<crate::api::misc_example::StructWithEnumTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync {
@@ -10186,49 +6134,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWi
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::StructWithEnumTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::StructWithEnumTwinRustAsyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async_sse::StructWithEnumTwinRustAsyncSse{abc1:  self_.get(0).cst_decode(),abc2:  self_.get(1).cst_decode()}
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::StructWithEnumTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::StructWithEnumTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sse::StructWithEnumTwinSse {
-            abc1: self_.get(0).cst_decode(),
-            abc2: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
@@ -10247,30 +6156,10 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnum
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::StructWithEnumTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::StructWithEnumTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync_sse::StructWithEnumTwinSyncSse {
-            abc1: self_.get(0).cst_decode(),
-            abc2: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10290,6 +6179,7 @@ impl
     CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync {
@@ -10307,36 +6197,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithOneFieldTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithOneFieldTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
-                crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithOneFieldTwinRustAsyncSse{a:  self_.get(0).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sse::StructWithOneFieldTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sse::StructWithOneFieldTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sse::StructWithOneFieldTwinSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
@@ -10354,29 +6218,10 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFiel
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sync_sse::StructWithOneFieldTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sync_sse::StructWithOneFieldTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sync_sse::StructWithOneFieldTwinSyncSse {
-            a: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::structure::StructWithTwoFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10397,6 +6242,7 @@ impl
     CstDecode<crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync {
@@ -10415,37 +6261,10 @@ impl
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithTwoFieldTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithTwoFieldTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithTwoFieldTwinRustAsyncSse{a:  self_.get(0).cst_decode(),b:  self_.get(1).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sse::StructWithTwoFieldTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sse::StructWithTwoFieldTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sse::StructWithTwoFieldTwinSse {
-            a: self_.get(0).cst_decode(),
-            b: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
@@ -10464,30 +6283,10 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFiel
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sync_sse::StructWithTwoFieldTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sync_sse::StructWithTwoFieldTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sync_sse::StructWithTwoFieldTwinSyncSse {
-            a: self_.get(0).cst_decode(),
-            b: self_.get(1).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::structure::StructWithZeroFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10506,6 +6305,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync
@@ -10522,34 +6322,10 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync {}
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithZeroFieldTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithZeroFieldTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 0, "Expected 0 elements, got {}", self_.length());
-                crate::api::pseudo_manual::structure_twin_rust_async_sse::StructWithZeroFieldTwinRustAsyncSse{}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sse::StructWithZeroFieldTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sse::StructWithZeroFieldTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            0,
-            "Expected 0 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sse::StructWithZeroFieldTwinSse {}
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
@@ -10565,27 +6341,10 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFie
         crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {}
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sync_sse::StructWithZeroFieldTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sync_sse::StructWithZeroFieldTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            0,
-            "Expected 0 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sync_sse::StructWithZeroFieldTwinSyncSse {}
-    }
-}
 impl CstDecode<crate::api::method::SumWithTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::method::SumWithTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10604,6 +6363,7 @@ impl CstDecode<crate::api::method::SumWithTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10619,47 +6379,10 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRus
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse {
-            x: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse {
-            x: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10675,27 +6398,10 @@ impl CstDecode<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse {
-            x: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::chrono_type::TestChronoTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::chrono_type::TestChronoTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10716,6 +6422,7 @@ impl CstDecode<crate::api::chrono_type::TestChronoTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync {
@@ -10738,6 +6445,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChron
 impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10758,6 +6466,7 @@ impl CstDecode<crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinS
 impl CstDecode<crate::api::array::TestIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::array::TestIdTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10774,6 +6483,7 @@ impl CstDecode<crate::api::array::TestIdTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10789,45 +6499,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustA
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse(self_.get(0).cst_decode())
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10841,25 +6516,10 @@ impl CstDecode<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
         crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync(self_.get(0).cst_decode())
     }
 }
-impl CstDecode<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse(self_.get(0).cst_decode())
-    }
-}
 impl CstDecode<crate::api::type_alias::TestModelTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::type_alias::TestModelTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10881,6 +6541,7 @@ impl CstDecode<crate::api::type_alias::TestModelTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync {
@@ -10901,53 +6562,10 @@ impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelT
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::type_alias_twin_rust_async_sse::TestModelTwinRustAsyncSse {
-            id: self_.get(0).cst_decode(),
-            name: self_.get(1).cst_decode(),
-            alias_enum: self_.get(2).cst_decode(),
-            alias_struct: self_.get(3).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::type_alias_twin_sse::TestModelTwinSse {
-            id: self_.get(0).cst_decode(),
-            name: self_.get(1).cst_decode(),
-            alias_enum: self_.get(2).cst_decode(),
-            alias_struct: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -10966,32 +6584,10 @@ impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSyn
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            4,
-            "Expected 4 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::type_alias_twin_sync_sse::TestModelTwinSyncSse {
-            id: self_.get(0).cst_decode(),
-            name: self_.get(1).cst_decode(),
-            alias_enum: self_.get(2).cst_decode(),
-            alias_struct: self_.get(3).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::structure::TupleStructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -11010,6 +6606,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync
@@ -11028,36 +6625,10 @@ impl
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async_sse::TupleStructWithOneFieldTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::structure_twin_rust_async_sse::TupleStructWithOneFieldTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 1, "Expected 1 elements, got {}", self_.length());
-                crate::api::pseudo_manual::structure_twin_rust_async_sse::TupleStructWithOneFieldTwinRustAsyncSse( self_.get(0).cst_decode())
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sse::TupleStructWithOneFieldTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sse::TupleStructWithOneFieldTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sse::TupleStructWithOneFieldTwinSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
@@ -11075,32 +6646,10 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOn
         )
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::structure_twin_sync_sse::TupleStructWithOneFieldTwinSyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sync_sse::TupleStructWithOneFieldTwinSyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sync_sse::TupleStructWithOneFieldTwinSyncSse(
-            self_.get(0).cst_decode(),
-        )
-    }
-}
 impl CstDecode<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -11122,6 +6671,7 @@ impl
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync
@@ -11141,37 +6691,10 @@ impl
         )
     }
 }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_rust_async_sse::TupleStructWithTwoFieldTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::structure_twin_rust_async_sse::TupleStructWithTwoFieldTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
-                crate::api::pseudo_manual::structure_twin_rust_async_sse::TupleStructWithTwoFieldTwinRustAsyncSse( self_.get(0).cst_decode(), self_.get(1).cst_decode())
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::structure_twin_sse::TupleStructWithTwoFieldTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sse::TupleStructWithTwoFieldTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sse::TupleStructWithTwoFieldTwinSse(
-            self_.get(0).cst_decode(),
-            self_.get(1).cst_decode(),
-        )
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
@@ -11190,49 +6713,29 @@ impl CstDecode<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTw
         )
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::structure_twin_sync_sse::TupleStructWithTwoFieldTwinSyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::structure_twin_sync_sse::TupleStructWithTwoFieldTwinSyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::structure_twin_sync_sse::TupleStructWithTwoFieldTwinSyncSse(
-            self_.get(0).cst_decode(),
-            self_.get(1).cst_decode(),
-        )
-    }
-}
 impl CstDecode<[u8; 1600]> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 32]> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 32] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 5]> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 5] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 8]> for Box<[u8]> {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 8] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -11241,6 +6744,7 @@ impl CstDecode<[u8; 8]> for Box<[u8]> {
 impl CstDecode<crate::api::attribute::UserIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::attribute::UserIdTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -11259,6 +6763,7 @@ impl CstDecode<crate::api::attribute::UserIdTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync {
@@ -11276,47 +6781,10 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinR
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::attribute_twin_rust_async_sse::UserIdTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::attribute_twin_rust_async_sse::UserIdTwinRustAsyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::attribute_twin_rust_async_sse::UserIdTwinRustAsyncSse {
-            value: self_.get(0).cst_decode(),
-        }
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::attribute_twin_sse::UserIdTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sse::UserIdTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::attribute_twin_sse::UserIdTwinSse {
-            value: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -11332,27 +6800,10 @@ impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
         }
     }
 }
-impl CstDecode<crate::api::pseudo_manual::attribute_twin_sync_sse::UserIdTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::attribute_twin_sync_sse::UserIdTwinSyncSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::attribute_twin_sync_sse::UserIdTwinSyncSse {
-            value: self_.get(0).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
@@ -11379,52 +6830,17 @@ impl CstDecode<crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal>
     }
 }
 impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {
                 let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
                 assert_eq!(self_.length(), 11, "Expected 11 elements, got {}", self_.length());
                 crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync{int8list:  self_.get(0).cst_decode(),uint8list:  self_.get(1).cst_decode(),int16list:  self_.get(2).cst_decode(),uint16list:  self_.get(3).cst_decode(),uint32list:  self_.get(4).cst_decode(),int32list:  self_.get(5).cst_decode(),uint64list:  self_.get(6).cst_decode(),int64list:  self_.get(7).cst_decode(),float32list:  self_.get(8).cst_decode(),float64list:  self_.get(9).cst_decode(),bool_list:  self_.get(10).cst_decode()}
             }
         }
-impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse {
-                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
-                assert_eq!(self_.length(), 11, "Expected 11 elements, got {}", self_.length());
-                crate::api::pseudo_manual::primitive_list_misc_twin_rust_async_sse::VecOfPrimitivePackTwinRustAsyncSse{int8list:  self_.get(0).cst_decode(),uint8list:  self_.get(1).cst_decode(),int16list:  self_.get(2).cst_decode(),uint16list:  self_.get(3).cst_decode(),uint32list:  self_.get(4).cst_decode(),int32list:  self_.get(5).cst_decode(),uint64list:  self_.get(6).cst_decode(),int64list:  self_.get(7).cst_decode(),float32list:  self_.get(8).cst_decode(),float64list:  self_.get(9).cst_decode(),bool_list:  self_.get(10).cst_decode()}
-            }
-        }
-impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            11,
-            "Expected 11 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::primitive_list_misc_twin_sse::VecOfPrimitivePackTwinSse {
-            int8list: self_.get(0).cst_decode(),
-            uint8list: self_.get(1).cst_decode(),
-            int16list: self_.get(2).cst_decode(),
-            uint16list: self_.get(3).cst_decode(),
-            uint32list: self_.get(4).cst_decode(),
-            int32list: self_.get(5).cst_decode(),
-            uint64list: self_.get(6).cst_decode(),
-            int64list: self_.get(7).cst_decode(),
-            float32list: self_.get(8).cst_decode(),
-            float64list: self_.get(9).cst_decode(),
-            bool_list: self_.get(10).cst_decode(),
-        }
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync {
@@ -11452,40 +6868,22 @@ impl CstDecode<crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPr
         }
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse
-    {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            11,
-            "Expected 11 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::primitive_list_misc_twin_sync_sse::VecOfPrimitivePackTwinSyncSse{int8list:  self_.get(0).cst_decode(),uint8list:  self_.get(1).cst_decode(),int16list:  self_.get(2).cst_decode(),uint16list:  self_.get(3).cst_decode(),uint32list:  self_.get(4).cst_decode(),int32list:  self_.get(5).cst_decode(),uint64list:  self_.get(6).cst_decode(),int64list:  self_.get(7).cst_decode(),float32list:  self_.get(8).cst_decode(),float64list:  self_.get(9).cst_decode(),bool_list:  self_.get(10).cst_decode()}
-    }
-}
 impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
         unimplemented!()
     }
 }
 impl CstDecode<backtrace::Backtrace> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> backtrace::Backtrace {
         unimplemented!()
     }
 }
 impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::Duration {
         CstDecode::<i64>::cst_decode(self).cst_decode()
     }
@@ -11493,6 +6891,7 @@ impl CstDecode<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bi
 impl CstDecode<chrono::DateTime<chrono::Local>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::DateTime<chrono::Local> {
         CstDecode::<i64>::cst_decode(self).cst_decode()
     }
@@ -11500,6 +6899,7 @@ impl CstDecode<chrono::DateTime<chrono::Local>>
 impl CstDecode<chrono::NaiveDateTime>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::NaiveDateTime {
         CstDecode::<i64>::cst_decode(self).cst_decode()
     }
@@ -11507,6 +6907,7 @@ impl CstDecode<chrono::NaiveDateTime>
 impl CstDecode<chrono::DateTime<chrono::Utc>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> chrono::DateTime<chrono::Utc> {
         CstDecode::<i64>::cst_decode(self).cst_decode()
     }
@@ -11514,6 +6915,7 @@ impl CstDecode<chrono::DateTime<chrono::Utc>>
 impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [flutter_rust_bridge::DartOpaque; 1] {
         let vec: Vec<flutter_rust_bridge::DartOpaque> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -11522,6 +6924,7 @@ impl CstDecode<[flutter_rust_bridge::DartOpaque; 1]>
 impl CstDecode<std::collections::HashMap<String, String>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<String, String> {
         let vec: Vec<(String, String)> = self.cst_decode();
         vec.into_iter().collect()
@@ -11530,6 +6933,7 @@ impl CstDecode<std::collections::HashMap<String, String>>
 impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<String, crate::api::enumeration::EnumSimpleTwinNormal> {
@@ -11545,6 +6949,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11562,52 +6967,11 @@ impl
     CstDecode<
         std::collections::HashMap<
             String,
-            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-    > {
-        let vec: Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
-    > {
-        let vec: Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            String,
             crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11621,30 +6985,10 @@ impl
         vec.into_iter().collect()
     }
 }
-impl
-    CstDecode<
-        std::collections::HashMap<
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
-    > {
-        let vec: Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
 impl CstDecode<std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<String, crate::api::enumeration::KitchenSinkTwinNormal> {
@@ -11660,6 +7004,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11677,52 +7022,11 @@ impl
     CstDecode<
         std::collections::HashMap<
             String,
-            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-    > {
-        let vec: Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
-    > {
-        let vec: Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            String,
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11736,30 +7040,10 @@ impl
         vec.into_iter().collect()
     }
 }
-impl
-    CstDecode<
-        std::collections::HashMap<
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        String,
-        crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
-    > {
-        let vec: Vec<(
-            String,
-            crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
 impl CstDecode<std::collections::HashMap<String, Vec<u8>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<String, Vec<u8>> {
         let vec: Vec<(String, Vec<u8>)> = self.cst_decode();
         vec.into_iter().collect()
@@ -11768,6 +7052,7 @@ impl CstDecode<std::collections::HashMap<String, Vec<u8>>>
 impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types::MySize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<String, crate::auxiliary::sample_types::MySize> {
@@ -11778,6 +7063,7 @@ impl CstDecode<std::collections::HashMap<String, crate::auxiliary::sample_types:
 impl CstDecode<std::collections::HashMap<i32, String>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, String> {
         let vec: Vec<(i32, String)> = self.cst_decode();
         vec.into_iter().collect()
@@ -11791,6 +7077,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>
@@ -11810,6 +7097,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11827,52 +7115,11 @@ impl
     CstDecode<
         std::collections::HashMap<
             i32,
-            crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-    > {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicGeneralEnumTwinRustAsyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse,
-    > {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicGeneralEnumTwinSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            i32,
             crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11890,31 +7137,11 @@ impl
     CstDecode<
         std::collections::HashMap<
             i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse,
-    > {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicGeneralEnumTwinSyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            i32,
             crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11936,6 +7163,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11949,32 +7177,6 @@ impl
         vec.into_iter().collect()
     }
 }
-impl CstDecode<std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse> {
-                let vec: Vec<(i32, crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse)> = self.cst_decode(); vec.into_iter().collect()
-            }
-        }
-impl
-    CstDecode<
-        std::collections::HashMap<
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        i32,
-        crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse,
-    > {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
 impl
     CstDecode<
         std::collections::HashMap<
@@ -11983,6 +7185,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -11998,30 +7201,10 @@ impl
 }
 impl
     CstDecode<
-        std::collections::HashMap<
-            i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse,
-    > {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
         std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<i32, crate::api::pseudo_manual::basic::BasicStructTwinNormal>
@@ -12039,6 +7222,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -12056,50 +7240,11 @@ impl
     CstDecode<
         std::collections::HashMap<
             i32,
-            crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        i32,
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse,
-    > {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicStructTwinRustAsyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<i32, crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse>
-    {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sse::BasicStructTwinSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
-impl
-    CstDecode<
-        std::collections::HashMap<
-            i32,
             crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> std::collections::HashMap<
@@ -12113,30 +7258,10 @@ impl
         vec.into_iter().collect()
     }
 }
-impl
-    CstDecode<
-        std::collections::HashMap<
-            i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> std::collections::HashMap<
-        i32,
-        crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse,
-    > {
-        let vec: Vec<(
-            i32,
-            crate::api::pseudo_manual::basic_twin_sync_sse::BasicStructTwinSyncSse,
-        )> = self.cst_decode();
-        vec.into_iter().collect()
-    }
-}
 impl CstDecode<std::collections::HashMap<i32, bool>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, bool> {
         let vec: Vec<(i32, bool)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12145,6 +7270,7 @@ impl CstDecode<std::collections::HashMap<i32, bool>>
 impl CstDecode<std::collections::HashMap<i32, f32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, f32> {
         let vec: Vec<(i32, f32)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12153,6 +7279,7 @@ impl CstDecode<std::collections::HashMap<i32, f32>>
 impl CstDecode<std::collections::HashMap<i32, f64>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, f64> {
         let vec: Vec<(i32, f64)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12161,6 +7288,7 @@ impl CstDecode<std::collections::HashMap<i32, f64>>
 impl CstDecode<std::collections::HashMap<i32, i16>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i16> {
         let vec: Vec<(i32, i16)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12169,6 +7297,7 @@ impl CstDecode<std::collections::HashMap<i32, i16>>
 impl CstDecode<std::collections::HashMap<i32, i32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i32> {
         let vec: Vec<(i32, i32)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12177,6 +7306,7 @@ impl CstDecode<std::collections::HashMap<i32, i32>>
 impl CstDecode<std::collections::HashMap<i32, i64>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i64> {
         let vec: Vec<(i32, i64)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12185,6 +7315,7 @@ impl CstDecode<std::collections::HashMap<i32, i64>>
 impl CstDecode<std::collections::HashMap<i32, i8>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, i8> {
         let vec: Vec<(i32, i8)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12193,6 +7324,7 @@ impl CstDecode<std::collections::HashMap<i32, i8>>
 impl CstDecode<std::collections::HashMap<i32, isize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, isize> {
         let vec: Vec<(i32, isize)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12201,6 +7333,7 @@ impl CstDecode<std::collections::HashMap<i32, isize>>
 impl CstDecode<std::collections::HashMap<i32, Vec<u8>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, Vec<u8>> {
         let vec: Vec<(i32, Vec<u8>)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12209,6 +7342,7 @@ impl CstDecode<std::collections::HashMap<i32, Vec<u8>>>
 impl CstDecode<std::collections::HashMap<i32, u16>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u16> {
         let vec: Vec<(i32, u16)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12217,6 +7351,7 @@ impl CstDecode<std::collections::HashMap<i32, u16>>
 impl CstDecode<std::collections::HashMap<i32, u32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u32> {
         let vec: Vec<(i32, u32)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12225,6 +7360,7 @@ impl CstDecode<std::collections::HashMap<i32, u32>>
 impl CstDecode<std::collections::HashMap<i32, u64>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u64> {
         let vec: Vec<(i32, u64)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12233,6 +7369,7 @@ impl CstDecode<std::collections::HashMap<i32, u64>>
 impl CstDecode<std::collections::HashMap<i32, u8>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, u8> {
         let vec: Vec<(i32, u8)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12241,6 +7378,7 @@ impl CstDecode<std::collections::HashMap<i32, u8>>
 impl CstDecode<std::collections::HashMap<i32, usize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashMap<i32, usize> {
         let vec: Vec<(i32, usize)> = self.cst_decode();
         vec.into_iter().collect()
@@ -12249,6 +7387,7 @@ impl CstDecode<std::collections::HashMap<i32, usize>>
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12260,6 +7399,7 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinMoi>>>
 impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinNormal>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12271,6 +7411,7 @@ impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinNormal>>>
 impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinRustAsync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinRustAsync>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12282,51 +7423,8 @@ impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinRustAsync>>>
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinRustAsyncMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinRustAsyncSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinRustAsyncSseMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSseMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -12337,6 +7435,7 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSseMoi>>>
 impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSync>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12348,29 +7447,8 @@ impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSync>>>
 impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<Mutex<HideDataTwinSyncSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<Mutex<HideDataTwinSyncSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -12381,6 +7459,7 @@ impl CstDecode<RustOpaqueMoi<Mutex<HideDataTwinSyncSseMoi>>>
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12392,6 +7471,7 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinMoi>>>
 impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinNormal>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12403,6 +7483,7 @@ impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinNormal>>>
 impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinRustAsync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinRustAsync>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12414,51 +7495,8 @@ impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinRustAsync>>>
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinRustAsyncMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinRustAsyncSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinRustAsyncSseMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSseMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -12469,6 +7507,7 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSseMoi>>>
 impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSync>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12480,29 +7519,8 @@ impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSync>>>
 impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<RwLock<HideDataTwinSyncSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<RwLock<HideDataTwinSyncSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -12513,6 +7531,7 @@ impl CstDecode<RustOpaqueMoi<RwLock<HideDataTwinSyncSseMoi>>>
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12524,6 +7543,7 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinMoi>>>
 impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinNormal>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12535,6 +7555,7 @@ impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinNormal>>>
 impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12546,51 +7567,8 @@ impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinRustAsync>>>
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinRustAsyncSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinRustAsyncSseMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -12601,6 +7579,7 @@ impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>>>
 impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSync>> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12612,29 +7591,8 @@ impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSync>>>
 impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl CstDecode<RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueNom<Box<dyn DartDebugTwinSyncSse>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<Box<dyn DartDebugTwinSyncSseMoi>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> RustOpaqueMoi<Box<dyn DartDebugTwinSyncSseMoi>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -12651,6 +7609,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -12672,6 +7631,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -12691,6 +7651,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -12712,6 +7673,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -12733,6 +7695,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -12748,92 +7711,11 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn HelloTraitTwinRustAsyncSse>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsyncSse>>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn HelloTraitTwinRustAsyncSseMoi>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            Box<dyn HelloTraitTwinRustAsyncSseMoi>,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSseMoi>>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSseMoi>>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -12853,50 +7735,11 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
         flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncMoi>>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSse>>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn HelloTraitTwinSyncSseMoi>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSyncSseMoi>>,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -12914,6 +7757,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -12937,6 +7781,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -12960,6 +7805,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -12983,6 +7829,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13001,103 +7848,12 @@ impl
     CstDecode<
         RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn MyTraitTwinRustAsyncSseMoi + Send + Sync>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            Box<dyn MyTraitTwinRustAsyncSseMoi + Send + Sync>,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn MyTraitTwinSseMoi + Send + Sync>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            Box<dyn MyTraitTwinSseMoi + Send + Sync>,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn MyTraitTwinSse + Send + Sync>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            Box<dyn MyTraitTwinSse + Send + Sync>,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
                 Box<dyn MyTraitTwinSyncMoi + Send + Sync>,
             >,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13121,6 +7877,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13138,56 +7895,11 @@ impl
 impl
     CstDecode<
         RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn MyTraitTwinSyncSseMoi + Send + Sync>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            Box<dyn MyTraitTwinSyncSseMoi + Send + Sync>,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                Box<dyn MyTraitTwinSyncSse + Send + Sync>,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            Box<dyn MyTraitTwinSyncSse + Send + Sync>,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinMoi>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinMoi>>
@@ -13206,6 +7918,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13225,6 +7938,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13244,6 +7958,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13259,87 +7974,11 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSse>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                NonCloneSimpleTwinRustAsyncSseMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinRustAsyncSseMoi>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSse>>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSseMoi>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSseMoi>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSync>>
@@ -13358,6 +7997,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13373,48 +8013,11 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSse>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSseMoi>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<NonCloneSimpleTwinSyncSseMoi>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructInMiscNoTwinExampleA>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13434,6 +8037,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13455,6 +8059,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13476,6 +8081,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13499,6 +8105,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13522,6 +8129,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13540,101 +8148,12 @@ impl
     CstDecode<
         RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsyncSse,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSse,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSse>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSseMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSseMoi,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
                 StructWithGoodAndOpaqueFieldTwinSync,
             >,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13658,6 +8177,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13675,56 +8195,11 @@ impl
 impl
     CstDecode<
         RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSyncSse,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSyncSse,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                StructWithGoodAndOpaqueFieldTwinSyncSseMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            StructWithGoodAndOpaqueFieldTwinSyncSseMoi,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithImplBlockInMultiFile>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13747,6 +8222,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13771,6 +8247,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -13795,6 +8272,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13819,6 +8297,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -13834,6 +8313,7 @@ impl
     }
 }
 impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueOneTwinRustAsyncMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi,)>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueOneTwinRustAsyncMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi,)>> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
@@ -13841,136 +8321,13 @@ impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwL
             }
         }
 impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::OpaqueTwoTwinRustAsyncMoi>> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
                 decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
             }
         }
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueOneTwinRustAsyncSse,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse,)>> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-            }
-        }
-impl CstDecode<RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse::OpaqueTwoTwinRustAsyncSse>> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-            }
-        }
-impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::OpaqueOneTwinRustAsyncSseMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::OpaqueTwoTwinRustAsyncSseMoi,)>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::OpaqueOneTwinRustAsyncSseMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::OpaqueTwoTwinRustAsyncSseMoi,)>> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-            }
-        }
-impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::OpaqueTwoTwinRustAsyncSseMoi>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_sse_moi::OpaqueTwoTwinRustAsyncSseMoi>> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-            }
-        }
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<(
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
-            )>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
-        )>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<(
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::OpaqueOneTwinSseMoi,
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::OpaqueTwoTwinSseMoi,
-            )>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::OpaqueOneTwinSseMoi,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::OpaqueTwoTwinSseMoi,
-        )>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::OpaqueTwoTwinSseMoi,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sse_moi::OpaqueTwoTwinSseMoi,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
 impl
     CstDecode<
         RustOpaqueNom<
@@ -13981,6 +8338,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -14005,6 +8363,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -14029,6 +8388,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -14053,6 +8413,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -14071,74 +8432,13 @@ impl
     CstDecode<
         RustOpaqueNom<
             flutter_rust_bridge::for_generated::rust_async::RwLock<(
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
-            )>,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<(
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueOneTwinSyncSse,
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
-        )>,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<
-                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
-            >,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        flutter_rust_bridge::for_generated::rust_async::RwLock<
-            crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse::OpaqueTwoTwinSyncSse,
-        >,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::OpaqueOneTwinSyncSseMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::OpaqueTwoTwinSyncSseMoi,)>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::OpaqueOneTwinSyncSseMoi,crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::OpaqueTwoTwinSyncSseMoi,)>> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-            }
-        }
-impl CstDecode<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::OpaqueTwoTwinSyncSseMoi>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_sse_moi::OpaqueTwoTwinSyncSseMoi>> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-            }
-        }
-impl
-    CstDecode<
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<(
                 crate::api::rust_auto_opaque::OpaqueOneTwinNormal,
                 crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,
             )>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -14163,6 +8463,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -14182,6 +8483,7 @@ impl
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::FrbOpaqueReturnTwinMoi>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::FrbOpaqueReturnTwinMoi>
@@ -14196,6 +8498,7 @@ impl
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::FrbOpaqueReturnTwinNormal> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -14211,6 +8514,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -14224,65 +8528,19 @@ impl
     }
 }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::FrbOpaqueReturnTwinRustAsyncMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::FrbOpaqueReturnTwinRustAsyncMoi> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
                 decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
             }
         }
-impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::FrbOpaqueReturnTwinRustAsyncSse> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-            }
-        }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::FrbOpaqueReturnTwinRustAsyncSseMoi> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-            }
-        }
-impl
-    CstDecode<
-        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_twin_sse_moi::FrbOpaqueReturnTwinSseMoi,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::FrbOpaqueReturnTwinSseMoi>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
 impl
     CstDecode<
         RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::FrbOpaqueReturnTwinSync>
@@ -14301,48 +8559,11 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
         crate::api::pseudo_manual::rust_opaque_twin_sync_moi::FrbOpaqueReturnTwinSyncMoi,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueNom<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        crate::api::pseudo_manual::rust_opaque_twin_sync_sse::FrbOpaqueReturnTwinSyncSse,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::FrbOpaqueReturnTwinSyncSseMoi,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::FrbOpaqueReturnTwinSyncSseMoi,
     > {
         #[cfg(target_pointer_width = "64")]
         {
@@ -14358,6 +8579,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -14373,6 +8595,7 @@ impl
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTwinNormal> {
@@ -14385,47 +8608,10 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::FrbOpaqueSyncReturnTw
 }
 impl
     CstDecode<
-        RustOpaqueNom<
-            crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse::FrbOpaqueSyncReturnTwinSse,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::FrbOpaqueSyncReturnTwinSseMoi,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::FrbOpaqueSyncReturnTwinSseMoi,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::HideDataAnotherTwinMoi>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::HideDataAnotherTwinMoi>
@@ -14440,6 +8626,7 @@ impl
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNormal> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -14448,44 +8635,10 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque_sync::HideDataAnotherTwinNo
         unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
     }
 }
-impl
-    CstDecode<
-        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_sync_twin_sse::HideDataAnotherTwinSse>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_sync_twin_sse_moi::HideDataAnotherTwinSseMoi,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi> {
@@ -14499,6 +8652,7 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::Hi
 impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::HideDataTwinMoi>; 2] {
@@ -14511,6 +8665,7 @@ impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::H
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -14522,6 +8677,7 @@ impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>>
 impl CstDecode<[RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>; 2] {
         let vec: Vec<RustOpaqueNom<crate::api::rust_opaque::HideDataTwinNormal>> =
             self.cst_decode();
@@ -14535,6 +8691,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async::HideDataTwinRustAsync>
@@ -14553,6 +8710,7 @@ impl
         >; 2],
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueNom<
@@ -14573,6 +8731,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<
@@ -14592,6 +8751,7 @@ impl
         >; 2],
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueMoi<
@@ -14601,112 +8761,10 @@ impl
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl
-    CstDecode<
-        RustOpaqueNom<
-            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        [RustOpaqueNom<
-            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
-        >; 2],
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [RustOpaqueNom<
-        crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse,
-    >; 2] {
-        let vec: Vec<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::HideDataTwinRustAsyncSse>> = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-            }
-        }
-impl CstDecode<[RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>; 2]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>; 2] {
-                let vec: Vec<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::HideDataTwinRustAsyncSseMoi>> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-            }
-        }
-impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl CstDecode<[RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>; 2] {
-        let vec: Vec<
-            RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>; 2],
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>; 2]
-    {
-        let vec: Vec<
-            RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync> {
@@ -14722,6 +8780,7 @@ impl
         [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>; 2],
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::HideDataTwinSync>; 2]
@@ -14737,6 +8796,7 @@ impl
         RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>
@@ -14754,6 +8814,7 @@ impl
             2],
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::HideDataTwinSyncMoi>; 2]
@@ -14766,80 +8827,8 @@ impl
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl
-    CstDecode<
-        RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>;
-            2],
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse>; 2]
-    {
-        let vec: Vec<
-            RustOpaqueNom<
-                crate::api::pseudo_manual::rust_opaque_twin_sync_sse::HideDataTwinSyncSse,
-            >,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
-impl
-    CstDecode<
-        [RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
-        >; 2],
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
-    >; 2] {
-        let vec: Vec<
-            RustOpaqueMoi<
-                crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::HideDataTwinSyncSseMoi,
-            >,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<RustOpaqueMoi<i16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueMoi<i16> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -14849,6 +8838,7 @@ impl CstDecode<RustOpaqueMoi<i16>> for flutter_rust_bridge::for_generated::wasm_
     }
 }
 impl CstDecode<RustOpaqueNom<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<i32> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -14860,6 +8850,7 @@ impl CstDecode<RustOpaqueNom<i32>> for flutter_rust_bridge::for_generated::wasm_
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::NonCloneDataTwinMoi>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::NonCloneDataTwinMoi> {
@@ -14873,6 +8864,7 @@ impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::No
 impl CstDecode<RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> RustOpaqueNom<crate::api::rust_opaque::NonCloneDataTwinNormal> {
         #[cfg(target_pointer_width = "64")]
         {
@@ -14888,6 +8880,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<
@@ -14901,59 +8894,18 @@ impl
     }
 }
 impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::NonCloneDataTwinRustAsyncMoi> {
                 #[cfg(target_pointer_width = "64")]
                 { compile_error!("64-bit pointers are not supported."); }
                 decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
             }
         }
-impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::NonCloneDataTwinRustAsyncSse> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-            }
-        }
-impl CstDecode<RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::NonCloneDataTwinRustAsyncSseMoi> {
-                #[cfg(target_pointer_width = "64")]
-                { compile_error!("64-bit pointers are not supported."); }
-                decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-            }
-        }
-impl CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::NonCloneDataTwinSse> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::NonCloneDataTwinSseMoi>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
 impl
     CstDecode<RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync::NonCloneDataTwinSync> {
@@ -14971,6 +8923,7 @@ impl
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::NonCloneDataTwinSyncMoi>
@@ -14982,46 +8935,10 @@ impl
         decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
     }
 }
-impl
-    CstDecode<
-        RustOpaqueNom<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::NonCloneDataTwinSyncSse>
-    {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        unsafe { decode_rust_opaque_nom((self.as_f64().unwrap() as usize) as _) }
-    }
-}
-impl
-    CstDecode<
-        RustOpaqueMoi<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonCloneDataTwinSyncSseMoi,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> RustOpaqueMoi<
-        crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::NonCloneDataTwinSyncSseMoi,
-    > {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-        decode_rust_opaque_moi((self.as_f64().unwrap() as usize) as _)
-    }
-}
 impl CstDecode<std::collections::HashSet<String>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashSet<String> {
         let vec: Vec<String> = self.cst_decode();
         vec.into_iter().collect()
@@ -15030,17 +8947,20 @@ impl CstDecode<std::collections::HashSet<String>>
 impl CstDecode<std::collections::HashSet<i32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> std::collections::HashSet<i32> {
         let vec: Vec<i32> = self.cst_decode();
         vec.into_iter().collect()
     }
 }
 impl CstDecode<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
     }
 }
 impl CstDecode<uuid::Uuid> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> uuid::Uuid {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
             .to_vec()
@@ -15051,6 +8971,7 @@ impl CstDecode<uuid::Uuid> for flutter_rust_bridge::for_generated::wasm_bindgen:
 impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
@@ -15058,6 +8979,7 @@ impl CstDecode<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationMode>
 impl CstDecode<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
@@ -15065,48 +8987,23 @@ impl CstDecode<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::basic_twin_rust_async_sse::BasicPrimitiveEnumTwinRustAsyncSse
-    {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sse::BasicPrimitiveEnumTwinSse {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::basic_twin_sync_sse::BasicPrimitiveEnumTwinSyncSse {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
 impl CstDecode<bool> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> bool {
         self.is_truthy()
     }
@@ -15114,6 +9011,7 @@ impl CstDecode<bool> for flutter_rust_bridge::for_generated::wasm_bindgen::JsVal
 impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationEnv> {
         Box::new(self.cst_decode())
     }
@@ -15121,6 +9019,7 @@ impl CstDecode<Box<crate::api::pseudo_manual::mirror_twin_sync_sse::ApplicationE
 impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTreeTwinNormal> {
@@ -15128,48 +9027,25 @@ impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api::BenchmarkBinaryTree
     }
 }
 impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
             fn cst_decode(self) -> Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async::BenchmarkBinaryTreeTwinRustAsync> {
                 Box::new(self.cst_decode())
             }
         }
-impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Box<crate::api::pseudo_manual::benchmark_api_twin_rust_async_sse::BenchmarkBinaryTreeTwinRustAsyncSse> {
-                Box::new(self.cst_decode())
-            }
-        }
-impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sse::BenchmarkBinaryTreeTwinSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sync::BenchmarkBinaryTreeTwinSync> {
         Box::new(self.cst_decode())
     }
 }
-impl
-    CstDecode<
-        Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::benchmark_api_twin_sync_sse::BenchmarkBinaryTreeTwinSyncSse>
-    {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::array::BlobTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::array::BlobTwinNormal> {
         Box::new(self.cst_decode())
     }
@@ -15177,43 +9053,23 @@ impl CstDecode<Box<crate::api::array::BlobTwinNormal>>
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync> {
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async_sse::BlobTwinRustAsyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::array_twin_rust_async_sse::BlobTwinRustAsyncSse> {
-        Box::new(self.cst_decode())
-    }
-}
-impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sse::BlobTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sse::BlobTwinSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync> {
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync_sse::BlobTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync_sse::BlobTwinSyncSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<bool>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<bool> {
         Box::new(self.cst_decode())
     }
@@ -15221,6 +9077,7 @@ impl CstDecode<Box<bool>> for flutter_rust_bridge::for_generated::wasm_bindgen::
 impl CstDecode<Box<crate::api::enumeration::DistanceTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::enumeration::DistanceTwinNormal> {
         Box::new(self.cst_decode())
     }
@@ -15228,50 +9085,25 @@ impl CstDecode<Box<crate::api::enumeration::DistanceTwinNormal>>
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync> {
         Box::new(self.cst_decode())
     }
 }
-impl
-    CstDecode<
-        Box<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::DistanceTwinRustAsyncSse>
-    {
-        Box::new(self.cst_decode())
-    }
-}
-impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::enumeration_twin_sse::DistanceTwinSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync> {
-        Box::new(self.cst_decode())
-    }
-}
-impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::enumeration_twin_sync_sse::DistanceTwinSyncSse> {
         Box::new(self.cst_decode())
     }
 }
 impl CstDecode<Box<crate::api::optional::ExoticOptionalsTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::optional::ExoticOptionalsTwinNormal> {
         Box::new(self.cst_decode())
     }
@@ -15281,6 +9113,7 @@ impl
         Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>
@@ -15288,39 +9121,18 @@ impl
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::optional_twin_rust_async_sse::ExoticOptionalsTwinRustAsyncSse>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> Box<crate::api::pseudo_manual::optional_twin_rust_async_sse::ExoticOptionalsTwinRustAsyncSse> {
-                Box::new(self.cst_decode())
-            }
-        }
-impl CstDecode<Box<crate::api::pseudo_manual::optional_twin_sse::ExoticOptionalsTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::optional_twin_sse::ExoticOptionalsTwinSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync> {
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::optional_twin_sync_sse::ExoticOptionalsTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::optional_twin_sync_sse::ExoticOptionalsTwinSyncSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<f64> {
         Box::new(self.cst_decode())
     }
@@ -15328,6 +9140,7 @@ impl CstDecode<Box<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
 impl CstDecode<Box<crate::api::array::FeedIdTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::array::FeedIdTwinNormal> {
         Box::new(self.cst_decode())
     }
@@ -15335,53 +9148,35 @@ impl CstDecode<Box<crate::api::array::FeedIdTwinNormal>>
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync> {
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::array_twin_rust_async_sse::FeedIdTwinRustAsyncSse> {
-        Box::new(self.cst_decode())
-    }
-}
-impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sse::FeedIdTwinSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync> {
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::array_twin_sync_sse::FeedIdTwinSyncSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<i32> {
         Box::new(self.cst_decode())
     }
 }
 impl CstDecode<Box<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<i64> {
         Box::new(self.cst_decode())
     }
 }
 impl CstDecode<Box<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<i8> {
         Box::new(self.cst_decode())
     }
@@ -15389,6 +9184,7 @@ impl CstDecode<Box<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::Js
 impl CstDecode<Box<crate::api::enumeration::KitchenSinkTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::enumeration::KitchenSinkTwinNormal> {
         Box::new(self.cst_decode())
     }
@@ -15397,56 +9193,27 @@ impl
     CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync> {
         Box::new(self.cst_decode())
     }
 }
-impl
-    CstDecode<
-        Box<
-            crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse,
-        >,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::KitchenSinkTwinRustAsyncSse>
-    {
-        Box::new(self.cst_decode())
-    }
-}
-impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::enumeration_twin_sse::KitchenSinkTwinSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync> {
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::enumeration_twin_sync_sse::KitchenSinkTwinSyncSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::auxiliary::sample_types::MySize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::auxiliary::sample_types::MySize> {
         Box::new(self.cst_decode())
     }
@@ -15454,6 +9221,7 @@ impl CstDecode<Box<crate::auxiliary::sample_types::MySize>>
 impl CstDecode<Box<crate::api::enumeration::SpeedTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::enumeration::SpeedTwinNormal> {
         Box::new(self.cst_decode())
     }
@@ -15461,59 +9229,36 @@ impl CstDecode<Box<crate::api::enumeration::SpeedTwinNormal>>
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync> {
         Box::new(self.cst_decode())
     }
 }
-impl
-    CstDecode<
-        Box<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::SpeedTwinRustAsyncSse>
-    {
-        Box::new(self.cst_decode())
-    }
-}
-impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::enumeration_twin_sse::SpeedTwinSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync> {
         Box::new(self.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::enumeration_twin_sync_sse::SpeedTwinSyncSse> {
-        Box::new(self.cst_decode())
-    }
-}
 impl CstDecode<Box<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<u8> {
         Box::new(self.cst_decode())
     }
 }
 impl CstDecode<Box<[u8; 1600]>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<[u8; 1600]> {
         let vec: Vec<u8> = self.cst_decode();
         Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))
     }
 }
 impl CstDecode<Box<[u8; 8]>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<[u8; 8]> {
         let vec: Vec<u8> = self.cst_decode();
         Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))
@@ -15522,6 +9267,7 @@ impl CstDecode<Box<[u8; 8]>> for flutter_rust_bridge::for_generated::wasm_bindge
 impl CstDecode<Box<crate::api::misc_example::WeekdaysTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Box<crate::api::misc_example::WeekdaysTwinNormal> {
         let ptr: Box<i32> = self.cst_decode();
         Box::new(ptr.cst_decode())
@@ -15530,6 +9276,7 @@ impl CstDecode<Box<crate::api::misc_example::WeekdaysTwinNormal>>
 impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync> {
@@ -15537,30 +9284,10 @@ impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_rust_async::Week
         Box::new(ptr.cst_decode())
     }
 }
-impl
-    CstDecode<
-        Box<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>
-    {
-        let ptr: Box<i32> = self.cst_decode();
-        Box::new(ptr.cst_decode())
-    }
-}
-impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> Box<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse> {
-        let ptr: Box<i32> = self.cst_decode();
-        Box::new(ptr.cst_decode())
-    }
-}
 impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> {
@@ -15568,19 +9295,10 @@ impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTw
         Box::new(ptr.cst_decode())
     }
 }
-impl CstDecode<Box<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> Box<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse> {
-        let ptr: Box<i32> = self.cst_decode();
-        Box::new(ptr.cst_decode())
-    }
-}
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi; 5]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi; 5] {
         let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi> =
             self.cst_decode();
@@ -15590,6 +9308,7 @@ impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinM
 impl CstDecode<[crate::api::rust_opaque::EnumOpaqueTwinNormal; 5]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::rust_opaque::EnumOpaqueTwinNormal; 5] {
         let vec: Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -15598,6 +9317,7 @@ impl CstDecode<[crate::api::rust_opaque::EnumOpaqueTwinNormal; 5]>
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync; 5] {
@@ -15612,6 +9332,7 @@ impl
         [crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi; 5],
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi; 5]
@@ -15622,49 +9343,10 @@ impl
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl
-    CstDecode<
-        [crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse; 5],
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse; 5]
-    {
-        let vec: Vec<
-            crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse::EnumOpaqueTwinRustAsyncSse,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi; 5]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-            fn cst_decode(self) -> [crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi; 5] {
-                let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_rust_async_sse_moi::EnumOpaqueTwinRustAsyncSseMoi> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-            }
-        }
-impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse; 5]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse; 5] {
-        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sse::EnumOpaqueTwinSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi; 5]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi; 5] {
-        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::EnumOpaqueTwinSseMoi> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync; 5] {
@@ -15676,6 +9358,7 @@ impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwin
 impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi; 5]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi; 5] {
@@ -15684,35 +9367,10 @@ impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaque
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse; 5]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse; 5] {
-        let vec: Vec<crate::api::pseudo_manual::rust_opaque_twin_sync_sse::EnumOpaqueTwinSyncSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl
-    CstDecode<
-        [crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi; 5],
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi; 5]
-    {
-        let vec: Vec<
-            crate::api::pseudo_manual::rust_opaque_twin_sync_sse_moi::EnumOpaqueTwinSyncSseMoi,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<crate::api::enumeration::EnumSimpleTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::enumeration::EnumSimpleTwinNormal {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
@@ -15720,80 +9378,61 @@ impl CstDecode<crate::api::enumeration::EnumSimpleTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
-impl
-    CstDecode<
-        crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse,
-    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse
-    {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sse::EnumSimpleTwinSse {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
-impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
 impl CstDecode<f32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> f32 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<f64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> f64 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<[f64; 16]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [f64; 16] {
         let vec: Vec<f64> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<i16> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i16 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i32 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<[i32; 2]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [i32; 2] {
         let vec: Vec<i32> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i64 {
         ::std::convert::TryInto::try_into(
             self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
@@ -15803,16 +9442,19 @@ impl CstDecode<i64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
     }
 }
 impl CstDecode<i8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> i8 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<isize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> isize {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<Vec<f32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f32> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Float32Array>()
             .to_vec()
@@ -15820,6 +9462,7 @@ impl CstDecode<Vec<f32>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<f64> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Float64Array>()
             .to_vec()
@@ -15827,6 +9470,7 @@ impl CstDecode<Vec<f64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<i16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i16> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int16Array>()
             .to_vec()
@@ -15834,6 +9478,7 @@ impl CstDecode<Vec<i16>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i32> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int32Array>()
             .to_vec()
@@ -15841,6 +9486,7 @@ impl CstDecode<Vec<i32>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i64> {
         let buf = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>()
@@ -15850,6 +9496,7 @@ impl CstDecode<Vec<i64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<i8> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Int8Array>()
             .to_vec()
@@ -15857,6 +9504,7 @@ impl CstDecode<Vec<i8>> for flutter_rust_bridge::for_generated::wasm_bindgen::Js
     }
 }
 impl CstDecode<Vec<u16>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u16> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint16Array>()
             .to_vec()
@@ -15864,6 +9512,7 @@ impl CstDecode<Vec<u16>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<u32>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u32> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint32Array>()
             .to_vec()
@@ -15871,6 +9520,7 @@ impl CstDecode<Vec<u32>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<u64>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u64> {
         let buf = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigUint64Array>()
@@ -15880,6 +9530,7 @@ impl CstDecode<Vec<u64>> for flutter_rust_bridge::for_generated::wasm_bindgen::J
     }
 }
 impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> Vec<u8> {
         self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>()
             .to_vec()
@@ -15889,6 +9540,7 @@ impl CstDecode<Vec<u8>> for flutter_rust_bridge::for_generated::wasm_bindgen::Js
 impl CstDecode<crate::auxiliary::sample_types::MyEnum>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::auxiliary::sample_types::MyEnum {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
@@ -15896,6 +9548,7 @@ impl CstDecode<crate::auxiliary::sample_types::MyEnum>
 impl CstDecode<[crate::api::array::PointTwinNormal; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::array::PointTwinNormal; 2] {
         let vec: Vec<crate::api::array::PointTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -15904,6 +9557,7 @@ impl CstDecode<[crate::api::array::PointTwinNormal; 2]>
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync; 2] {
@@ -15912,45 +9566,19 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustA
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse; 2]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse; 2] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::PointTwinRustAsyncSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::PointTwinSse; 2]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sse::PointTwinSse; 2] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_sse::PointTwinSse> = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::PointTwinSync; 2] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync> = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse; 2]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse; 2] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::PointTwinSyncSse> =
-            self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[crate::api::method::SumWithTwinNormal; 3]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::method::SumWithTwinNormal; 3] {
         let vec: Vec<crate::api::method::SumWithTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -15959,6 +9587,7 @@ impl CstDecode<[crate::api::method::SumWithTwinNormal; 3]>
 impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync; 3] {
@@ -15967,43 +9596,12 @@ impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRu
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse; 3]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse; 3] {
-        let vec: Vec<
-            crate::api::pseudo_manual::method_twin_rust_async_sse::SumWithTwinRustAsyncSse,
-        > = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse; 3]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse; 3] {
-        let vec: Vec<crate::api::pseudo_manual::method_twin_sse::SumWithTwinSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<[crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync; 3] {
         let vec: Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse; 3]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse; 3] {
-        let vec: Vec<crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSyncSse> =
             self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
@@ -16011,6 +9609,7 @@ impl CstDecode<[crate::api::pseudo_manual::method_twin_sync_sse::SumWithTwinSync
 impl CstDecode<[crate::api::array::TestIdTwinNormal; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::array::TestIdTwinNormal; 2] {
         let vec: Vec<crate::api::array::TestIdTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -16019,6 +9618,7 @@ impl CstDecode<[crate::api::array::TestIdTwinNormal; 2]>
 impl CstDecode<[crate::api::array::TestIdTwinNormal; 4]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::array::TestIdTwinNormal; 4] {
         let vec: Vec<crate::api::array::TestIdTwinNormal> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
@@ -16027,6 +9627,7 @@ impl CstDecode<[crate::api::array::TestIdTwinNormal; 4]>
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 2] {
@@ -16038,6 +9639,7 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRust
 impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4] {
@@ -16046,47 +9648,10 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRust
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 2]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 2] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 4]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> [crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse; 4] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async_sse::TestIdTwinRustAsyncSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 2]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 2] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse> = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 4]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse; 4] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_sse::TestIdTwinSse> = self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> =
             self.cst_decode();
@@ -16096,41 +9661,27 @@ impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 2]>
 impl CstDecode<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4] {
         let vec: Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> =
             self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 2]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 2] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl CstDecode<[crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 4]>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> [crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse; 4] {
-        let vec: Vec<crate::api::pseudo_manual::array_twin_sync_sse::TestIdTwinSyncSse> =
-            self.cst_decode();
-        flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
 impl CstDecode<u16> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u16 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<u32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u32 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u64 {
         ::std::convert::TryInto::try_into(
             self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::BigInt>()
@@ -16140,35 +9691,41 @@ impl CstDecode<u64> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValu
     }
 }
 impl CstDecode<u8> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> u8 {
         self.unchecked_into_f64() as _
     }
 }
 impl CstDecode<[u8; 1600]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 32]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 32] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 5]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 5] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<[u8; 8]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> [u8; 8] {
         let vec: Vec<u8> = self.cst_decode();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
 impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> usize {
         self.unchecked_into_f64() as _
     }
@@ -16176,6 +9733,7 @@ impl CstDecode<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsVa
 impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::misc_example::WeekdaysTwinNormal {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
@@ -16183,61 +9741,20 @@ impl CstDecode<crate::api::misc_example::WeekdaysTwinNormal>
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
-impl
-    CstDecode<crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sse::WeekdaysTwinSse {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
 impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync {
         (self.unchecked_into_f64() as i32).cst_decode()
     }
-}
-impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn cst_decode(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync_sse::WeekdaysTwinSyncSse {
-        (self.unchecked_into_f64() as i32).cst_decode()
-    }
-}
-
-#[wasm_bindgen]
-pub fn dart_fn_deliver_output(
-    call_id: i32,
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    let message = unsafe {
-        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-            ptr_,
-            rust_vec_len_,
-            data_len_,
-        )
-    };
-    FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
 }
 
 #[wasm_bindgen]

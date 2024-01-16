@@ -4,21 +4,24 @@ import 'package:collection/collection.dart';
 
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:path/path.dart' as path;
 
-Future<void> generateDartTestEntrypoints({required Uri dartRoot}) async {
-  await _generateDartValgrindTestEntrypoint(dartRoot: dartRoot);
-  await _generateDartWebTestEntrypoint(dartRoot: dartRoot);
+Future<void> generateDartTestEntrypoints(Package package,
+    {required Uri dartRoot}) async {
+  await _generateDartValgrindTestEntrypoint(package, dartRoot: dartRoot);
+  await _generateDartWebTestEntrypoint(package, dartRoot: dartRoot);
 }
 
-Future<void> _generateDartWebTestEntrypoint({required Uri dartRoot}) async {
-  const code = '''
+Future<void> _generateDartWebTestEntrypoint(Package package,
+    {required Uri dartRoot}) async {
+  final code = '''
 $_kPrelude
 
 import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils_web.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
 import 'dart_valgrind_test_entrypoint.dart' as dart_valgrind_test_entrypoint;
 
 Future<void> main() async {
@@ -33,7 +36,7 @@ Future<void> main() async {
   await _writeToFile(dartRoot, 'test/dart_web_test_entrypoint.dart', code);
 }
 
-Future<void> _generateDartValgrindTestEntrypoint(
+Future<void> _generateDartValgrindTestEntrypoint(Package package,
     {required Uri dartRoot}) async {
   final dirTest = dartRoot.resolve('test/');
   final dirInterest = dirTest.resolve('api/');
@@ -56,7 +59,7 @@ $_kPrelude
 
 import 'dart:io';
 
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:${package.dartPackageName}/src/rust/frb_generated.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';

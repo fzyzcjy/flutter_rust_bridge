@@ -12,26 +12,11 @@ pub(crate) fn generate_impl_new_with_nullptr(
 ) -> Vec<WireRustOutputCode> {
     let mut ans = vec![];
 
-    ans.push(generate_impl_new_with_nullptr_misc().to_string().into());
-
     ans.extend(types.iter().filter_map(|ty| {
         WireRustCodecCstGenerator::new(ty.clone(), context).generate_impl_new_with_nullptr()
     }));
 
     ans
-}
-
-fn generate_impl_new_with_nullptr_misc() -> &'static str {
-    "pub trait NewWithNullPtr {
-        fn new_with_null_ptr() -> Self;
-    }
-
-    impl<T> NewWithNullPtr for *mut T {
-        fn new_with_null_ptr() -> Self {
-            std::ptr::null_mut()
-        }
-    }
-    "
 }
 
 pub(crate) fn generate_impl_new_with_nullptr_code_block(

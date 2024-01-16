@@ -8,41 +8,6 @@ use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, 
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
-// Section: dart2rust
+// Section: boilerplate
 
-pub trait NewWithNullPtr {
-    fn new_with_null_ptr() -> Self;
-}
-
-impl<T> NewWithNullPtr for *mut T {
-    fn new_with_null_ptr() -> Self {
-        std::ptr::null_mut()
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_dart_fn_deliver_output(
-    call_id: i32,
-    ptr_: *mut u8,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) {
-    let message = unsafe {
-        flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-            ptr_,
-            rust_vec_len_,
-            data_len_,
-        )
-    };
-    FLUTTER_RUST_BRIDGE_HANDLER.dart_fn_handle_output(call_id, message)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_wire_init_app(port_: i64) {
-    wire_init_app_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn frbgen_frb_example_dart_minimal_wire_minimal_adder(port_: i64, a: i32, b: i32) {
-    wire_minimal_adder_impl(port_, a, b)
-}
+flutter_rust_bridge::frb_generated_boilerplate_io!();

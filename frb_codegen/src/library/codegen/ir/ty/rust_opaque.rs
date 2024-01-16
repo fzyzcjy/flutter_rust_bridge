@@ -1,7 +1,7 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter};
 
 crate::ir! {
@@ -13,7 +13,7 @@ pub struct IrTypeRustOpaque {
 }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display, EnumIter)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
 pub(crate) enum RustOpaqueCodecMode {
     Nom,
     Moi,

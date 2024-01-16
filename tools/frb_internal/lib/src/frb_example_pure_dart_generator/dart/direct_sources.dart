@@ -1,24 +1,28 @@
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/basic_type_infos.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/benchmark.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/builder.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
 import 'package:recase/recase.dart';
 
-Map<String, String> generateDartDirectSources() {
+Map<String, String> generateDartDirectSources(Package package) {
   return {
     'pseudo_manual/basic_test.dart': _generateBasicRelated(
+      package,
       postfix: '',
       values: (ty) => ty.interestRawValues,
       valueType: (ty) => ty.dartTypeName,
     ),
     'pseudo_manual/basic_optional_test.dart': _generateBasicRelated(
+      package,
       postfix: '_optional',
       imports: """
-      import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
+      import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
       values: (ty) => ["null", ...ty.interestRawValues],
       valueType: (ty) => '${ty.dartTypeName}?',
     ),
     'pseudo_manual/basic_list_test.dart': _generateBasicRelated(
+      package,
       postfix: '_list',
       values: (ty) => [
         ty.listWrapper(ty, ''),
@@ -26,31 +30,34 @@ Map<String, String> generateDartDirectSources() {
       ],
       imports: """
       import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-      import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
+      import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
       enable: (ty) => ty.enableList,
       valueType: (ty) => ty.listName,
     ),
     'pseudo_manual/basic_map_test.dart': _generateBasicRelated(
+      package,
       postfix: '_map',
       imports: """
-      import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/basic.dart';
+      import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
       values: (ty) => ['{}', ...ty.interestRawValues.map((x) => '{42: $x}')],
       valueType: (ty) => 'Map<int, ${ty.dartTypeName}>',
     ),
-    '../../benchmark/src/generated.dart': generateBenchmark(),
+    if (package == Package.pureDart)
+      '../../benchmark/src/generated.dart': generateBenchmark(),
   };
 }
 
-String _generateBasicRelated({
+String _generateBasicRelated(
+  Package package, {
   required String postfix,
   required List<String> Function(BasicTypeInfo) values,
   required String? Function(BasicTypeInfo) valueType,
   String imports = '',
   bool Function(BasicTypeInfo)? enable,
 }) {
-  final builder = DartFileBuilder(importName: 'basic$postfix');
+  final builder = DartFileBuilder(package, importName: 'basic$postfix');
   builder.imports += '''
   import 'dart:typed_data';
   $imports

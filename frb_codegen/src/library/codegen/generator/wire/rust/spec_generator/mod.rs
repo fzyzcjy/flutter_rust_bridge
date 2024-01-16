@@ -1,5 +1,4 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::codec::structs::EncodeOrDecode::{Decode, Encode};
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::codec::base::{
@@ -11,7 +10,6 @@ use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use itertools::Itertools;
 use serde::Serialize;
-use strum::IntoEnumIterator;
 
 pub(crate) mod base;
 pub(crate) mod codec;
@@ -40,14 +38,8 @@ pub(super) fn generate(
         &generate_dump_info(&cache, context),
     )?;
 
-    let dart2rust = CodecMode::iter()
-        .map(WireRustCodecEntrypoint::from)
-        .flat_map(|codec| codec.generate(context, &cache.distinct_types, Decode))
-        .collect();
-    let rust2dart = CodecMode::iter()
-        .map(WireRustCodecEntrypoint::from)
-        .flat_map(|codec| codec.generate(context, &cache.distinct_types, Encode))
-        .collect();
+    let dart2rust = WireRustCodecEntrypoint::generate_all(context, &cache, Decode);
+    let rust2dart = WireRustCodecEntrypoint::generate_all(context, &cache, Encode);
     let extern_struct_names = generate_extern_struct_names(&dart2rust, &rust2dart);
 
     Ok(WireRustOutputSpec {

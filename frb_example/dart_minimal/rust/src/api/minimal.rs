@@ -1,5 +1,4 @@
 use flutter_rust_bridge::frb;
-pub use std::panic::{RefUnwindSafe, UnwindSafe};
 
 #[frb(init)]
 pub fn init_app() {

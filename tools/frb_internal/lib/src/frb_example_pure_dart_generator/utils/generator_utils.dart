@@ -13,14 +13,17 @@ part 'generator_utils.freezed.dart';
 abstract class BaseGenerator {
   final Uri packageRootDir;
   final Uri interestDir;
+  final Package package;
 
-  BaseGenerator({required this.packageRootDir, required String interestDir})
-      : interestDir = packageRootDir.resolve(interestDir);
+  BaseGenerator({
+    required this.packageRootDir,
+    required String interestDir,
+    required this.package,
+  }) : interestDir = packageRootDir.resolve(interestDir);
 
   Future<void> generate() async {
     _writeCodeFiles(generateDirectSources());
     _Duplicator(this)._generate();
-    await executeFormat();
   }
 
   @protected
@@ -105,11 +108,11 @@ class _Duplicator {
       }
 
       final fileContent = (file as File).readAsStringSync();
-      final annotation = _parseAnnotation(fileContent);
+      final annotation = Annotation.parse(fileContent);
 
-      for (final mode in annotation.enableAll
-          ? DuplicatorMode.allValues
-          : DuplicatorMode.defaultValues) {
+      final chosenModes = _computeModes(annotation);
+
+      for (final mode in chosenModes) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
 
         var outputText = computeDuplicatorPrelude(' from `$fileName`') +
@@ -128,38 +131,72 @@ class _Duplicator {
       }
     }
   }
+
+  List<DuplicatorMode> _computeModes(Annotation annotation) {
+    var modes = annotation.enableAll
+        ? DuplicatorMode.allValues
+        : DuplicatorMode.defaultValues;
+
+    // In PDE mode, we use SSE by default, so cannot annotate it
+    if (generator.package == Package.pureDartPde) {
+      modes = modes
+          .where((m) =>
+              !m.components.contains(DuplicatorComponentMode.sse) &&
+              !m.components.contains(DuplicatorComponentMode.moi))
+          .toList();
+    }
+
+    return modes;
+  }
 }
 
-_Annotation _parseAnnotation(String fileContent) {
-  const kPrefix = '// FRB_INTERNAL_GENERATOR:';
-  if (!fileContent.startsWith(kPrefix)) return const _Annotation();
-
-  final data = jsonDecode(
-          fileContent.substring(kPrefix.length, fileContent.indexOf('\n')))
-      as Map<String, Object?>;
-  return _Annotation(
-    forbiddenDuplicatorModes:
-        ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
-            .map((x) => DuplicatorMode.parse(x as String))
-            .toList(),
-    addCode: data['addCode'] as String?,
-    removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
-        .map((x) => x as String)
-        .toList(),
-    enableAll: data['enableAll'] as bool? ?? false,
-  );
-}
-
-class _Annotation {
+class Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
   final String? addCode;
   final List<String> removeCode;
   final bool enableAll;
+  final bool skipPde;
 
-  const _Annotation({
+  const Annotation({
     this.forbiddenDuplicatorModes = const [],
     this.addCode,
     this.removeCode = const [],
     this.enableAll = false,
+    this.skipPde = false,
   });
+
+  static Annotation parse(String fileContent) {
+    const kPrefix = '// FRB_INTERNAL_GENERATOR:';
+
+    final line = fileContent
+        .split('\n')
+        .where((line) => line.startsWith(kPrefix))
+        .firstOrNull;
+    if (line == null) return const Annotation();
+
+    final data =
+        jsonDecode(line.substring(kPrefix.length)) as Map<String, Object?>;
+    return Annotation(
+      forbiddenDuplicatorModes:
+          ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
+              .map((x) => DuplicatorMode.parse(x as String))
+              .toList(),
+      addCode: data['addCode'] as String?,
+      removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
+          .map((x) => x as String)
+          .toList(),
+      enableAll: data['enableAll'] as bool? ?? false,
+      skipPde: data['skipPde'] as bool? ?? false,
+    );
+  }
+}
+
+enum Package {
+  pureDart,
+  pureDartPde;
+
+  String get dartPackageName => switch (this) {
+        Package.pureDart => 'frb_example_pure_dart',
+        Package.pureDartPde => 'frb_example_pure_dart_pde',
+      };
 }

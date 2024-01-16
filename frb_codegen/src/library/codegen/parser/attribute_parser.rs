@@ -78,30 +78,27 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Opaque)
     }
 
-    pub(crate) fn rust_opaque_codec(&self) -> RustOpaqueCodecMode {
+    pub(crate) fn rust_opaque_codec(&self) -> Option<RustOpaqueCodecMode> {
         if self.any_eq(&FrbAttribute::RustOpaqueCodecMoi) {
-            RustOpaqueCodecMode::Moi
+            Some(RustOpaqueCodecMode::Moi)
         } else {
-            RustOpaqueCodecMode::Nom
+            None
         }
     }
 
-    pub(crate) fn codec_mode_pack(&self) -> CodecModePack {
+    pub(crate) fn codec_mode_pack(&self) -> Option<CodecModePack> {
         if self.any_eq(&FrbAttribute::Serialize) {
-            CodecModePack {
+            Some(CodecModePack {
                 dart2rust: CodecMode::Sse,
                 rust2dart: CodecMode::Sse,
-            }
+            })
         } else if self.any_eq(&FrbAttribute::SemiSerialize) {
-            CodecModePack {
+            Some(CodecModePack {
                 dart2rust: CodecMode::Cst,
                 rust2dart: CodecMode::Sse,
-            }
+            })
         } else {
-            CodecModePack {
-                dart2rust: CodecMode::Cst,
-                rust2dart: CodecMode::Dco,
-            }
+            None
         }
     }
 
@@ -436,7 +433,7 @@ mod tests {
     #[test]
     fn test_error() -> anyhow::Result<()> {
         let result = parse("#[frb(what_is_this)]");
-        assert_eq!(result.err().is_some(), true);
+        assert!(result.err().is_some());
         Ok(())
     }
 
