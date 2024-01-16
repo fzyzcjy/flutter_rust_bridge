@@ -59,7 +59,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_stream_sink_codec = DcoCodec,
     default_rust_opaque = RustOpaqueNom
 );
-const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.19";
+const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.20";
 
 // Section: executor
 

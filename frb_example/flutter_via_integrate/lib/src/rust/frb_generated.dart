@@ -53,7 +53,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       kDefaultExternalLibraryLoaderConfig;
 
   @override
-  String get codegenVersion => '2.0.0-dev.19';
+  String get codegenVersion => '2.0.0-dev.20';
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
