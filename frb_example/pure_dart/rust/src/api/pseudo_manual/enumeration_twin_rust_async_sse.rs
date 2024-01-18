@@ -55,6 +55,19 @@ pub async fn func_enum_with_item_struct_twin_rust_async_sse(
     arg
 }
 
+// #1674
+pub enum EnumWithDiscriminantTwinRustAsyncSse {
+    A = 100,
+    B = 50,
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_enum_with_discriminant_twin_rust_async_sse(
+    arg: EnumWithDiscriminantTwinRustAsyncSse,
+) -> EnumWithDiscriminantTwinRustAsyncSse {
+    arg
+}
+
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinRustAsyncSse {

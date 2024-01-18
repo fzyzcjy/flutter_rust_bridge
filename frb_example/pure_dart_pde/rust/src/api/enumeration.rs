@@ -47,6 +47,18 @@ pub fn func_enum_with_item_struct_twin_normal(
     arg
 }
 
+// #1674
+pub enum EnumWithDiscriminantTwinNormal {
+    A = 100,
+    B = 50,
+}
+
+pub fn func_enum_with_discriminant_twin_normal(
+    arg: EnumWithDiscriminantTwinNormal,
+) -> EnumWithDiscriminantTwinNormal {
+    arg
+}
+
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinNormal {

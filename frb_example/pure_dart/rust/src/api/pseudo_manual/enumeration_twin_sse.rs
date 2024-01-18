@@ -53,6 +53,19 @@ pub fn func_enum_with_item_struct_twin_sse(
     arg
 }
 
+// #1674
+pub enum EnumWithDiscriminantTwinSse {
+    A = 100,
+    B = 50,
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn func_enum_with_discriminant_twin_sse(
+    arg: EnumWithDiscriminantTwinSse,
+) -> EnumWithDiscriminantTwinSse {
+    arg
+}
+
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinSse {
