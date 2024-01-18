@@ -3,7 +3,6 @@ use crate::rust_async::RwLock;
 use crate::rust_opaque::RustOpaqueBase;
 
 pub(crate) mod dart2rust;
-pub(crate) mod utils;
 
 pub type RustAutoOpaqueBase<T, A> = RustOpaqueBase<RwLock<T>, A>;
 
