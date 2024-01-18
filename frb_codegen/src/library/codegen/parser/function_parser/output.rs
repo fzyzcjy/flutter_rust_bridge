@@ -30,12 +30,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ir = self.type_parser.parse_type(ty, context)?;
 
-        if let IrType::Unencodable(IrTypeUnencodable { segments, .. }) = ir {
-            match splay_segments(&segments).last() {
-                Some(("Result", Some(ArgsRefs::Generic(args)))) => {
-                    return parse_fn_output_type_result(args);
+        if let IrType::RustAutoOpaque(inner) = ir {
+            if let IrType::Unencodable(IrTypeUnencodable { segments, .. }) = &inner.raw {
+                match splay_segments(&segments).last() {
+                    Some(("Result", Some(ArgsRefs::Generic(args)))) => {
+                        return parse_fn_output_type_result(args);
+                    }
+                    _ => {}
                 }
-                _ => {}
             }
         }
 
@@ -50,9 +52,13 @@ fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartia
     let ok_output = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
-        || args.iter().any(|x| match x {
-            IrType::Unencodable(IrTypeUnencodable { string, .. }) => string == "anyhow :: Error",
-            _ => false,
+        || args.iter().any(|x| {
+            if let IrType::RustAutoOpaque(inner) = x {
+                if let IrType::Unencodable(IrTypeUnencodable { string, .. }) = &inner.raw {
+                    return string == "anyhow :: Error";
+                }
+            }
+            false
         });
 
     let error_output = if is_anyhow {
