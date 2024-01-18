@@ -1,5 +1,6 @@
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
+#[allow(unused_imports)]
 use crate::frb_generated::RustAutoOpaque;
 use flutter_rust_bridge::frb;
 use flutter_rust_bridge::rust_async::RwLock;
