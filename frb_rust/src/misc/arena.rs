@@ -17,7 +17,7 @@ impl Default for Arena {
 
 impl Arena {
     pub fn put<T: ArenaItem>(&mut self, value: T) -> &mut T {
-        self.values.push(value);
+        self.values.push(Box::new(value));
         self.values.last_mut().unwrap()
     }
 }
