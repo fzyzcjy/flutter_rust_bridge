@@ -165,22 +165,6 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
         ans = format!("{ans}.await");
     }
 
-    if let IrType::RustAutoOpaque(ty) = &func.output {
-        if func.fallible() {
-            ans = format!("{ans}?");
-        }
-
-        ans = format!(
-            "flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>({ans})",
-            arc = ty.inner.codec.arc_ty(),
-        );
-
-        if func.fallible() {
-            ans =
-                format!("Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>::Ok({ans})");
-        }
-    }
-
     if !func.fallible() {
         ans = format!("Result::<_,()>::Ok({ans})");
     }
