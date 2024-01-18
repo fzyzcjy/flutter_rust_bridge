@@ -11,7 +11,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
-            (name, None) if matches!(parse_primitive(name), Some(..)) => {
+            (name, []) if matches!(parse_primitive(name), Some(..)) => {
                 Primitive(parse_primitive(name).unwrap())
             }
 

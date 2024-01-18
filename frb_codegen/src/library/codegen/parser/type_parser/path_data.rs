@@ -1,4 +1,4 @@
-use crate::codegen::ir::ty::rust_opaque::{Args, NameComponent};
+use crate::codegen::ir::ty::rust_opaque::NameComponent;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
@@ -18,17 +18,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     fn parse_path_segment(&mut self, path: &Path, segment: &PathSegment) -> Result<NameComponent> {
         let ident = segment.ident.to_string();
         let args = match &segment.arguments {
-            PathArguments::None => None,
+            PathArguments::None => vec![],
             PathArguments::AngleBracketed(args) => {
-                let ir_types = self
-                    .parse_angle_bracketed_generic_arguments(args)
+                self.parse_angle_bracketed_generic_arguments(args)
                     .with_context(|| {
                         // This will stop the whole generator and tell the users, so we do not care about testing it
                         // frb-coverage:ignore-start
                         anyhow!("\"{ident}\" of \"{}\" is not valid", path.to_token_stream())
                         // frb-coverage:ignore-end
-                    })?;
-                Some(Args::Generic(ir_types))
+                    })?
             }
             // frb-coverage:ignore-start
             _ => unreachable!(),

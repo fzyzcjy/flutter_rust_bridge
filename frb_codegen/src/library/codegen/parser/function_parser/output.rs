@@ -3,7 +3,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
-use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
+use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use syn::*;
 
@@ -31,7 +31,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         if let IrType::RustAutoOpaque(inner) = ir {
             match splay_segments(&inner.raw.segments).last() {
-                Some(("Result", Some(ArgsRefs::Generic(args)))) => {
+                Some(("Result", args)) => {
                     return parse_fn_output_type_result(args);
                 }
                 _ => {}

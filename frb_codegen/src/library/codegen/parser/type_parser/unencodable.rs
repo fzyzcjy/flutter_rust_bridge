@@ -1,27 +1,15 @@
-use crate::codegen::ir::ty::rust_opaque::{Args, NameComponent};
+use crate::codegen::ir::ty::rust_opaque::NameComponent;
 use crate::codegen::ir::ty::IrType;
 use quote::ToTokens;
 use syn::TypePath;
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
-pub(crate) enum ArgsRefs<'a> {
-    Generic(&'a [IrType]),
-}
-
-pub(crate) type SplayedSegment<'a> = (&'a str, Option<ArgsRefs<'a>>);
+pub(crate) type SplayedSegment<'a> = (&'a str, &'a [IrType]);
 
 /// Spread and turn out the data of a fully qualified name for structural pattern matching.
 pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> {
     segments
         .iter()
-        .map(|NameComponent { ident, args }| {
-            (
-                &ident[..],
-                args.as_ref().map(|args| match &args {
-                    Args::Generic(types) => ArgsRefs::Generic(&types[..]),
-                }),
-            )
-        })
+        .map(|NameComponent { ident, args }| (&ident[..], &args[..]))
         .collect()
 }
 

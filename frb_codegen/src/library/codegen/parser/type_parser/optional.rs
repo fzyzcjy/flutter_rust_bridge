@@ -5,7 +5,6 @@ use crate::codegen::ir::ty::IrType::{
     Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Primitive,
     PrimitiveList, Record, RustAutoOpaque, RustOpaque, StructRef,
 };
-use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
@@ -21,12 +20,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         Ok(Some(match last_segment {
             // This will stop the whole generator and tell the users, so we do not care about testing it
             // frb-coverage:ignore-start
-            ("Option", Some(Generic([Optional(_)]))) => bail!(
+            ("Option", [Optional(_)]) => bail!(
                 "Nested optionals without indirection are not supported. {}",
                 type_path.to_token_stream()
             ),
             // frb-coverage:ignore-end
-            ("Option", Some(Generic([inner]))) => Optional(match inner {
+            ("Option", [inner]) => Optional(match inner {
                 StructRef(..)
                 | EnumRef(..)
                 | RustAutoOpaque(..)

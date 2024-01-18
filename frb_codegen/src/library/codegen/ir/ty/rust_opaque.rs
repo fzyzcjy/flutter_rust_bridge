@@ -99,10 +99,5 @@ impl IrRustOpaqueInner {
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
 pub struct NameComponent {
     pub ident: String,
-    pub args: Option<Args>,
-}
-
-#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
-pub enum Args {
-    Generic(Vec<IrType>),
+    pub args: Vec<IrType>,
 }

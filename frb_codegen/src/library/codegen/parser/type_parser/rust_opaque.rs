@@ -4,7 +4,6 @@ use crate::codegen::ir::ty::rust_opaque::{
 };
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::RustOpaque;
-use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -17,21 +16,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            ("RustOpaque", Some(Generic([ty]))) => self.parse_rust_opaque(ty, None),
-            ("RustOpaqueNom", Some(Generic([ty]))) => {
-                self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Nom))
-            }
-            ("RustOpaqueMoi", Some(Generic([ty]))) => {
-                self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi))
-            }
+            ("RustOpaque", [ty]) => self.parse_rust_opaque(ty, None),
+            ("RustOpaqueNom", [ty]) => self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Nom)),
+            ("RustOpaqueMoi", [ty]) => self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi)),
 
-            ("RustAutoOpaque", Some(Generic([ty]))) => {
-                self.parse_rust_auto_opaque_explicit(ty, None)
-            }
-            ("RustAutoOpaqueNom", Some(Generic([ty]))) => {
+            ("RustAutoOpaque", [ty]) => self.parse_rust_auto_opaque_explicit(ty, None),
+            ("RustAutoOpaqueNom", [ty]) => {
                 self.parse_rust_auto_opaque_explicit(ty, Some(RustOpaqueCodecMode::Nom))
             }
-            ("RustAutoOpaqueMoi", Some(Generic([ty]))) => {
+            ("RustAutoOpaqueMoi", [ty]) => {
                 self.parse_rust_auto_opaque_explicit(ty, Some(RustOpaqueCodecMode::Moi))
             }
 
