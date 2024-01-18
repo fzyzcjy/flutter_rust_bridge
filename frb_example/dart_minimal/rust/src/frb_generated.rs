@@ -193,6 +193,19 @@ impl SseDecode for MyOpaqueType {
     }
 }
 
+impl SseDecode for &MyOpaqueType {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(
+        deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+        arena: &flutter_rust_bridge::for_generated::Arena,
+    ) -> Self {
+        let mut inner = <RustOpaqueMoi<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
+        >>::sse_decode(deserializer, arena);
+        return inner.rust_auto_opaque_decode_ref();
+    }
+}
+
 impl SseDecode
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>
 {
