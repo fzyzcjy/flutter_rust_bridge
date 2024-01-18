@@ -30,7 +30,11 @@ pub(super) fn generate_encode_or_decode(
         .flat_map(|ty| {
             vec![
                 generate_encode_or_decode_for_type(ty, context, mode),
-                create_codec_sse_ty(ty, context).generate_extra(&Lang::DartLang(DartLang)),
+                Acc::new_common(
+                    create_codec_sse_ty(ty, context)
+                        .generate_extra(&Lang::DartLang(DartLang))
+                        .into(),
+                ),
             ]
         })
         .collect();
@@ -72,7 +76,10 @@ fn generate_encode_or_decode_for_type(
     }
 }
 
-fn create_codec_sse_ty(ty: &IrType, context: WireDartCodecSseGeneratorContext) -> CodecSseTy {
+fn create_codec_sse_ty<'a>(
+    ty: &'a IrType,
+    context: WireDartCodecSseGeneratorContext<'a>,
+) -> CodecSseTy<'a> {
     CodecSseTy::new(
         ty.clone(),
         CodecSseTyContext::new(context.ir_pack, context.api_dart_config),

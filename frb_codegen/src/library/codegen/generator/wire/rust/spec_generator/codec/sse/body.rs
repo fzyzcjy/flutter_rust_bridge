@@ -24,7 +24,11 @@ pub(super) fn generate_encode_or_decode(
         .flat_map(|ty| {
             vec![
                 generate_encode_or_decode_for_type(ty, context, mode),
-                create_codec_sse_ty(ty, context).generate_extra(&Lang::RustLang(RustLang)),
+                Acc::new_common(
+                    create_codec_sse_ty(ty, context)
+                        .generate_extra(&Lang::RustLang(RustLang))
+                        .into(),
+                ),
             ]
         })
         .collect();
@@ -40,13 +44,18 @@ fn generate_encode_or_decode_for_type(
     let body = create_codec_sse_ty(ty, context).generate(&Lang::RustLang(RustLang), mode);
 
     if let Some(body) = body {
-        Acc::new_common(generate_sse_encode_or_decode_impl(&rust_api_type, body.trim()).into())
+        Acc::new_common(
+            generate_sse_encode_or_decode_impl(&rust_api_type, body.trim(), mode).into(),
+        )
     } else {
         Acc::default()
     }
 }
 
-fn create_codec_sse_ty(ty: &IrType, context: WireRustCodecSseGeneratorContext) -> CodecSseTy {
+fn create_codec_sse_ty<'a>(
+    ty: &'a IrType,
+    context: WireRustCodecSseGeneratorContext<'a>,
+) -> CodecSseTy<'a> {
     CodecSseTy::new(
         ty.clone(),
         CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
