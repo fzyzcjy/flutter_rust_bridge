@@ -3,6 +3,7 @@ use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
@@ -16,12 +17,16 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                 ))
             }
             Lang::RustLang(_) => {
-                let arc = self.ir.inner.codec.arc_ty();
-                Some(simple_delegate_encode(
-                    lang,
-                    &RustOpaque(self.ir.inner.to_owned()),
-                    &format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"),
-                ))
+                if self.ir.ownership_mode == OwnershipMode::Owned {
+                    let arc = self.ir.inner.codec.arc_ty();
+                    Some(simple_delegate_encode(
+                        lang,
+                        &RustOpaque(self.ir.inner.to_owned()),
+                        &format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"),
+                    ))
+                } else {
+                    None
+                }
             }
         }
     }
