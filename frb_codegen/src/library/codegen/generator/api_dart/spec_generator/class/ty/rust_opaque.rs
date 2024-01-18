@@ -61,6 +61,5 @@ fn compute_api_method_query_name(
             Regex::new(r"^flutter_rust_bridge::for_generated::rust_async::RwLock<(.*)>$").unwrap();
     }
 
-    let inner_dart_api_type: String = ir.inner.0;
-    FILTER.replace_all(&inner_dart_api_type, "$1").to_string()
+    FILTER.replace_all(&ir.inner.0, "$1").to_string()
 }
