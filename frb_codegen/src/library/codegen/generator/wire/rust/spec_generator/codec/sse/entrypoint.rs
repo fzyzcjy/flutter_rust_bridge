@@ -67,7 +67,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
                     .unwrap_or_else(|| field.ty.rust_api_type());
 
                 let mut expr =
-                    format!("<{effective_rust_api_type}>::sse_decode(&mut deserializer, &arena)");
+                    format!("<{effective_rust_api_type}>::sse_decode(&mut deserializer)");
                 if let Some(wrapper) = gen.generate_wire_func_call_decode_wrapper() {
                     expr = format!("{wrapper}({expr})");
                 }
