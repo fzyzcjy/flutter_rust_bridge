@@ -44,15 +44,21 @@ macro_rules! frb_generated_cst_codec {
 macro_rules! frb_generated_sse_codec {
     () => {
         pub trait SseDecode {
-            fn sse_decode(deserializer: &mut $crate::for_generated::SseDeserializer) -> Self;
+            fn sse_decode(
+                deserializer: &mut $crate::for_generated::SseDeserializer,
+                arena: &$crate::for_generated::Arena,
+            ) -> Self;
 
             // just syntax sugar
-            fn sse_decode_single(message: $crate::for_generated::Dart2RustMessageSse) -> Self
+            fn sse_decode_single(
+                message: $crate::for_generated::Dart2RustMessageSse,
+                arena: &$crate::for_generated::Arena,
+            ) -> Self
             where
                 Self: Sized,
             {
                 let mut deserializer = $crate::for_generated::SseDeserializer::new(message);
-                let ans = Self::sse_decode(&mut deserializer);
+                let ans = Self::sse_decode(&mut deserializer, arena);
                 deserializer.end();
                 ans
             }
