@@ -22,7 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ("RustOpaqueMoi", Some(Generic([ty]))) => {
                 self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi))
             }
-            ("RustAutoOpaque", Some(Generic([ty]))) => self.parse_rust_auto_opaque(ty),
+            ("RustAutoOpaque", Some(Generic([ty]))) => self.parse_rust_auto_opaque_explicit(ty),
 
             _ => return Ok(None),
         }))
@@ -46,8 +46,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         ))
     }
 
-    fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
-        TODO
+    fn parse_rust_auto_opaque_explicit(&mut self, inner: &IrType) -> IrType {
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner);
+
+        RustOpaque(IrTypeRustOpaque {
+            namespace: info.namespace,
+            inner: TODO,
+            codec: info.codec,
+            brief_name: true,
+        })
     }
 }
 
