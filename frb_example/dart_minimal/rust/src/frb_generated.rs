@@ -22,7 +22,6 @@
 use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
-use flutter_rust_bridge::rust_async::RwLock;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 use std::thread::panicking;
 
@@ -69,7 +68,7 @@ fn my_sse_decode<'a>(
     let inner_raw = <RustOpaqueMoi<
         flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
     >>::sse_decode(arena, deserializer);
-    let inner: &'a mut RustOpaqueMoi<RwLock<MyOpaqueType>> = arena.alloc(inner_raw);
+    let inner = arena.alloc(inner_raw);
     return arena.alloc(inner.rust_auto_opaque_decode_ref()); // TODO hack
 }
 
