@@ -78,7 +78,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
         format!(
             "
             let message = unsafe {{ flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) }};
-            let arena = Arena::default();
+            let arena = Arena::new();
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             {primary}deserializer.end();"
         )
