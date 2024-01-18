@@ -53,9 +53,7 @@ fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartia
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
             if let IrType::RustAutoOpaque(inner) = x {
-                if let IrType::Unencodable(IrTypeUnencodable { string, .. }) = &*inner.raw {
-                    return string == "anyhow :: Error";
-                }
+                return inner.raw == "anyhow :: Error";
             }
             false
         });

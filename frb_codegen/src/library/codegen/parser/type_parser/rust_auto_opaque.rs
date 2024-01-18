@@ -36,18 +36,19 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })
     }
 
-    pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(&self, inner: &IrType) -> IrType {
-        IrType::Unencodable(IrTypeUnencodable {
-            namespace: None,
-            // TODO when all usages of a type do not require `&mut`, can drop this Mutex
-            // TODO similarly, can use std instead of `tokio`'s lock
-            string: format!(
-                "flutter_rust_bridge::for_generated::rust_async::RwLock<{}>",
-                inner.rust_api_type()
-            ),
-            segments: vec![],
-        })
-    }
+    // TODO
+    // pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(&self, inner: &IrType) -> IrType {
+    //     IrType::Unencodable(IrTypeUnencodable {
+    //         namespace: None,
+    //         // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+    //         // TODO similarly, can use std instead of `tokio`'s lock
+    //         string: format!(
+    //             "flutter_rust_bridge::for_generated::rust_async::RwLock<{}>",
+    //             inner.rust_api_type()
+    //         ),
+    //         segments: vec![],
+    //     })
+    // }
 
     pub(super) fn get_or_insert_rust_auto_opaque_info(
         &mut self,
