@@ -132,12 +132,13 @@ fn wire_minimal_adder_impl(
             let api_b = 100;
 
             let opaque = RustAutoOpaque::new(RwLock::new(MyOpaqueType));
-            let lock = opaque.try_read().unwrap();
+            // let lock = opaque.try_read().unwrap();
 
             move |context| {
                 // let what = arena; // trigger move?
                 let opaque2 = opaque; // trigger move?
-                let lock2 = lock; // trigger move?
+                                      // let lock2 = lock; // trigger move?
+                let lock = opaque2.try_read().unwrap();
 
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
