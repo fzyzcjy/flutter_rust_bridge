@@ -1,20 +1,13 @@
 use std::any::Any;
 
-// ref: (1) "scoped" things (e.g. scoped-threads) (2) "arena" things (e.g. typed_arena and many others)
-pub struct Arena {
-    values: Vec<Box<dyn Any>>,
-}
-
-impl Default for Arena {
-    fn default() -> Self {
-        Self { values: vec![] }
-    }
-}
+// TODO improve performance later
+#[derive(Debug, Default)]
+pub struct Arena(typed_arena::Arena<Box<dyn Any>>);
 
 impl Arena {
-    pub fn put<T: 'static>(&mut self, value: T) -> &mut T {
-        self.values.push(Box::new(value));
-        self.values.last_mut().unwrap().downcast_mut().unwrap()
+    pub fn alloc<T: 'static>(&self, value: T) -> &mut T {
+        let ans = self.0.alloc(Box::new(value));
+        ans.downcast_mut().unwrap()
     }
 }
 
@@ -26,8 +19,8 @@ mod tests {
     #[test]
     fn test_simple() {
         let mut arena = Arena::default();
-        let apple = arena.put("Apple".to_owned());
-        let orange = arena.put(PathBuf::new());
+        let apple = arena.alloc("Apple".to_owned());
+        let orange = arena.alloc(PathBuf::new());
         assert_eq!(apple, "Apple");
         drop(arena);
     }
