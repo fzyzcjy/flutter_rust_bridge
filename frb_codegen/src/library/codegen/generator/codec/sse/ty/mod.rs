@@ -61,7 +61,7 @@ pub(crate) trait CodecSseTyTrait {
 
     fn generate_decode(&self, lang: &Lang) -> Option<String>;
 
-    fn generate_extra(&self, _lang: &Lang) -> String {
+    fn generate_extra(&self, _lang: &Lang, _mode: EncodeOrDecode) -> String {
         "".to_owned()
     }
 }

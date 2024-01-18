@@ -23,7 +23,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
         })
     }
 
-    fn generate_extra(&self, lang: &Lang) -> String {
+    fn generate_extra(&self, lang: &Lang, mode: EncodeOrDecode) -> String {
         match lang {
             Lang::DartLang(_) => "".to_owned(),
             Lang::RustLang(_) => {
