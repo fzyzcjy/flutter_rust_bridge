@@ -40,23 +40,11 @@ flutter_rust_bridge::frb_generated_default_handler!();
 // Section: arena
 
 enum ArenaItem<'a> {
-    RustAutoOpaque_Opaque_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
+    Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+        MyOpaqueType,
     ),
-    RustAutoOpaque_Lock_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
-        flutter_rust_bridge::rust_async::RwLockReadGuard<
-            'a,
-            RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
-        >,
-    ),
-    RustAutoOpaque_Opaque_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
-    ),
-    RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
-        flutter_rust_bridge::rust_async::RwLockReadGuard<
-            'a,
-            RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
-        >,
+    Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+        &'a MyOpaqueType,
     ),
 }
 
