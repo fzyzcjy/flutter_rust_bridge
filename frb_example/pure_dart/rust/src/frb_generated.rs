@@ -1460,6 +1460,28 @@ fn wire_func_enum_simple_twin_normal_impl(
         },
     )
 }
+fn wire_func_enum_with_discriminant_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<crate::api::enumeration::EnumWithDiscriminantTwinNormal>,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "func_enum_with_discriminant_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.cst_decode();
+            move |context| {
+                transform_result_dco((move || {
+                    Result::<_, ()>::Ok(
+                        crate::api::enumeration::func_enum_with_discriminant_twin_normal(api_arg),
+                    )
+                })())
+            }
+        },
+    )
+}
 fn wire_func_enum_with_item_mixed_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<crate::api::enumeration::EnumWithItemMixedTwinNormal>,
@@ -14168,6 +14190,18 @@ fn wire_func_enum_simple_twin_rust_async_impl(
                     })().await)
                 } })
 }
+fn wire_func_enum_with_discriminant_twin_rust_async_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl CstDecode<
+        crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync,
+    >,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::DcoCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_discriminant_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.cst_decode(); move |context| async move {
+                    transform_result_dco((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async::func_enum_with_discriminant_twin_rust_async(api_arg).await)
+                    })().await)
+                } })
+}
 fn wire_func_enum_with_item_mixed_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl CstDecode<
@@ -14272,6 +14306,21 @@ fn wire_func_enum_simple_twin_rust_async_sse_impl(
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumSimpleTwinRustAsyncSse>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
                     transform_result_sse((move || async move {
                          Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async_sse::func_enum_simple_twin_rust_async_sse(api_arg).await)
+                    })().await)
+                } })
+}
+fn wire_func_enum_with_discriminant_twin_rust_async_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_discriminant_twin_rust_async_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse>::sse_decode(&mut deserializer);deserializer.end(); move |context| async move {
+                    transform_result_sse((move || async move {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_rust_async_sse::func_enum_with_discriminant_twin_rust_async_sse(api_arg).await)
                     })().await)
                 } })
 }
@@ -14433,6 +14482,21 @@ fn wire_func_enum_simple_twin_sse_impl(
             }
         },
     )
+}
+fn wire_func_enum_with_discriminant_twin_sse_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_discriminant_twin_sse", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse>::sse_decode(&mut deserializer);deserializer.end(); move |context|  {
+                    transform_result_sse((move ||  {
+                         Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sse::func_enum_with_discriminant_twin_sse(api_arg))
+                    })())
+                } })
 }
 fn wire_func_enum_with_item_mixed_twin_sse_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -14623,6 +14687,14 @@ fn wire_func_enum_simple_twin_sync_impl(
         },
     )
 }
+fn wire_func_enum_with_discriminant_twin_sync_impl(
+    arg: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync>,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::DcoCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_discriminant_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_arg = arg.cst_decode();
+                transform_result_dco((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync::func_enum_with_discriminant_twin_sync(api_arg))
+                })()) })
+}
 fn wire_func_enum_with_item_mixed_twin_sync_impl(
     arg: impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -14750,6 +14822,19 @@ fn wire_func_enum_simple_twin_sync_sse_impl(
             let api_arg = <crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse>::sse_decode(&mut deserializer);deserializer.end();
                 transform_result_sse((move || {
                      Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync_sse::func_enum_simple_twin_sync_sse(api_arg))
+                })()) })
+}
+fn wire_func_enum_with_discriminant_twin_sync_sse_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_enum_with_discriminant_twin_sync_sse", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse>::sse_decode(&mut deserializer);deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::pseudo_manual::enumeration_twin_sync_sse::func_enum_with_discriminant_twin_sync_sse(api_arg))
                 })()) })
 }
 fn wire_func_enum_with_item_mixed_twin_sync_sse_impl(
@@ -34391,6 +34476,50 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinS
         }
     }
 }
+impl CstDecode<crate::api::enumeration::EnumWithDiscriminantTwinNormal> for i32 {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::enumeration::EnumWithDiscriminantTwinNormal {
+        match self {
+            0 => crate::api::enumeration::EnumWithDiscriminantTwinNormal::A,
+            1 => crate::api::enumeration::EnumWithDiscriminantTwinNormal::B,
+            _ => unreachable!(
+                "Invalid variant for EnumWithDiscriminantTwinNormal: {}",
+                self
+            ),
+        }
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync,
+    > for i32
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+    {
+        match self {
+            0 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync::A,
+1 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync::B,
+            _ => unreachable!("Invalid variant for EnumWithDiscriminantTwinRustAsync: {}", self),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync>
+    for i32
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync {
+        match self {
+            0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync::A,
+            1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync::B,
+            _ => unreachable!("Invalid variant for EnumWithDiscriminantTwinSync: {}", self),
+        }
+    }
+}
 impl CstDecode<f32> for f32 {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> f32 {
@@ -41124,6 +41253,86 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSim
             0 => crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse::A,
             1 => crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse::B,
             _ => unreachable!("Invalid variant for EnumSimpleTwinSyncSse: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for crate::api::enumeration::EnumWithDiscriminantTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::enumeration::EnumWithDiscriminantTwinNormal::A,
+            1 => crate::api::enumeration::EnumWithDiscriminantTwinNormal::B,
+            _ => unreachable!(
+                "Invalid variant for EnumWithDiscriminantTwinNormal: {}",
+                inner
+            ),
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync::A,
+1 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync::B,
+            _ => unreachable!("Invalid variant for EnumWithDiscriminantTwinRustAsync: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
+                    // Codec=Sse (Serialization based), see doc to use other codecs
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse::A,
+1 => crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse::B,
+            _ => unreachable!("Invalid variant for EnumWithDiscriminantTwinRustAsyncSse: {}", inner),
+        };}
+                }
+
+impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse::A,
+            1 => crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse::B,
+            _ => unreachable!("Invalid variant for EnumWithDiscriminantTwinSse: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync::A,
+            1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync::B,
+            _ => unreachable!(
+                "Invalid variant for EnumWithDiscriminantTwinSync: {}",
+                inner
+            ),
+        };
+    }
+}
+
+impl SseDecode
+    for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse::A,
+1 => crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse::B,
+            _ => unreachable!("Invalid variant for EnumWithDiscriminantTwinSyncSse: {}", inner),
         };
     }
 }
@@ -55410,6 +55619,147 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithDiscriminantTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::enumeration::EnumWithDiscriminantTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::EnumWithDiscriminantTwinNormal>
+    for crate::api::enumeration::EnumWithDiscriminantTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::enumeration::EnumWithDiscriminantTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync,
+    >
+    for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+    {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
+                    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+                        match self {
+                            Self::A => 0.into_dart(),
+Self::B => 1.into_dart(),
+                        }
+                    }
+                }
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse> for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
+            fn into_into_dart(self) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
+                self
+            }
+        }
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse,
+    > for crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync,
+    > for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::A => 0.into_dart(),
+            Self::B => 1.into_dart(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse,
+    > for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemMixedTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
@@ -67190,6 +67540,50 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleT
 }
 
 impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumSimpleTwinSyncSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self as _, serializer);
+    }
+}
+
+impl SseEncode for crate::api::enumeration::EnumWithDiscriminantTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self as _, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self as _, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
+                    // Codec=Sse (Serialization based), see doc to use other codecs
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<i32>::sse_encode(self as _, serializer);}
+                }
+
+impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sse::EnumWithDiscriminantTwinSse {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self as _, serializer);
+    }
+}
+
+impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self as _, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::pseudo_manual::enumeration_twin_sync_sse::EnumWithDiscriminantTwinSyncSse
+{
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self as _, serializer);

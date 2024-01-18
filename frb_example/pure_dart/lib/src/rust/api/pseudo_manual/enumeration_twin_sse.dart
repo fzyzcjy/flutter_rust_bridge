@@ -25,6 +25,10 @@ Future<EnumWithItemStructTwinSse> funcEnumWithItemStructTwinSse(
         {required EnumWithItemStructTwinSse arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemStructTwinSse(arg: arg, hint: hint);
 
+Future<EnumWithDiscriminantTwinSse> funcEnumWithDiscriminantTwinSse(
+        {required EnumWithDiscriminantTwinSse arg, dynamic hint}) =>
+    RustLib.instance.api.funcEnumWithDiscriminantTwinSse(arg: arg, hint: hint);
+
 Future<Uint8List> printNoteTwinSse({required NoteTwinSse note, dynamic hint}) =>
     RustLib.instance.api.printNoteTwinSse(note: note, hint: hint);
 
@@ -54,6 +58,11 @@ sealed class DistanceTwinSse with _$DistanceTwinSse {
 }
 
 enum EnumSimpleTwinSse {
+  a,
+  b,
+}
+
+enum EnumWithDiscriminantTwinSse {
   a,
   b,
 }

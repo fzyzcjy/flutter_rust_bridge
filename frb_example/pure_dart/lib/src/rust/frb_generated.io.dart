@@ -4946,6 +4946,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   EnumSimpleTwinSyncSse dco_decode_enum_simple_twin_sync_sse(dynamic raw);
 
   @protected
+  EnumWithDiscriminantTwinNormal dco_decode_enum_with_discriminant_twin_normal(
+      dynamic raw);
+
+  @protected
+  EnumWithDiscriminantTwinRustAsync
+      dco_decode_enum_with_discriminant_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithDiscriminantTwinRustAsyncSse
+      dco_decode_enum_with_discriminant_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithDiscriminantTwinSse dco_decode_enum_with_discriminant_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithDiscriminantTwinSync dco_decode_enum_with_discriminant_twin_sync(
+      dynamic raw);
+
+  @protected
+  EnumWithDiscriminantTwinSyncSse
+      dco_decode_enum_with_discriminant_twin_sync_sse(dynamic raw);
+
+  @protected
   EnumWithItemMixedTwinNormal dco_decode_enum_with_item_mixed_twin_normal(
       dynamic raw);
 
@@ -11668,6 +11692,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumSimpleTwinSyncSse sse_decode_enum_simple_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinNormal sse_decode_enum_with_discriminant_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinRustAsync
+      sse_decode_enum_with_discriminant_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinRustAsyncSse
+      sse_decode_enum_with_discriminant_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinSse sse_decode_enum_with_discriminant_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinSync sse_decode_enum_with_discriminant_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithDiscriminantTwinSyncSse
+      sse_decode_enum_with_discriminant_twin_sync_sse(
+          SseDeserializer deserializer);
 
   @protected
   EnumWithItemMixedTwinNormal sse_decode_enum_with_item_mixed_twin_normal(
@@ -23932,6 +23983,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int cst_encode_enum_simple_twin_sync(EnumSimpleTwinSync raw);
 
   @protected
+  int cst_encode_enum_with_discriminant_twin_normal(
+      EnumWithDiscriminantTwinNormal raw);
+
+  @protected
+  int cst_encode_enum_with_discriminant_twin_rust_async(
+      EnumWithDiscriminantTwinRustAsync raw);
+
+  @protected
+  int cst_encode_enum_with_discriminant_twin_sync(
+      EnumWithDiscriminantTwinSync raw);
+
+  @protected
   double cst_encode_f_32(double raw);
 
   @protected
@@ -28327,6 +28390,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumSimpleTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_enum_with_discriminant_twin_normal(
+      EnumWithDiscriminantTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_rust_async(
+      EnumWithDiscriminantTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_rust_async_sse(
+      EnumWithDiscriminantTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_sse(
+      EnumWithDiscriminantTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_sync(
+      EnumWithDiscriminantTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_discriminant_twin_sync_sse(
+      EnumWithDiscriminantTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal self, SseSerializer serializer);
 
@@ -32149,6 +32236,23 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_normal');
   late final _wire_func_enum_simple_twin_normal =
       _wire_func_enum_simple_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_func_enum_with_discriminant_twin_normal(
+    int port_,
+    int arg,
+  ) {
+    return _wire_func_enum_with_discriminant_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_discriminant_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_normal');
+  late final _wire_func_enum_with_discriminant_twin_normal =
+      _wire_func_enum_with_discriminant_twin_normalPtr
           .asFunction<void Function(int, int)>();
 
   void wire_func_enum_with_item_mixed_twin_normal(
@@ -49257,6 +49361,23 @@ class RustLibWire implements BaseWire {
       _wire_func_enum_simple_twin_rust_asyncPtr
           .asFunction<void Function(int, int)>();
 
+  void wire_func_enum_with_discriminant_twin_rust_async(
+    int port_,
+    int arg,
+  ) {
+    return _wire_func_enum_with_discriminant_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_discriminant_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_rust_async');
+  late final _wire_func_enum_with_discriminant_twin_rust_async =
+      _wire_func_enum_with_discriminant_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
   void wire_func_enum_with_item_mixed_twin_rust_async(
     int port_,
     ffi.Pointer<wire_cst_enum_with_item_mixed_twin_rust_async> arg,
@@ -49434,6 +49555,29 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_rust_async_sse');
   late final _wire_func_enum_simple_twin_rust_async_sse =
       _wire_func_enum_simple_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_func_enum_with_discriminant_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_enum_with_discriminant_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_enum_with_discriminant_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_rust_async_sse');
+  late final _wire_func_enum_with_discriminant_twin_rust_async_sse =
+      _wire_func_enum_with_discriminant_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_func_enum_with_item_mixed_twin_rust_async_sse(
@@ -49643,6 +49787,29 @@ class RustLibWire implements BaseWire {
       _wire_func_enum_simple_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_func_enum_with_discriminant_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_enum_with_discriminant_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_enum_with_discriminant_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sse');
+  late final _wire_func_enum_with_discriminant_twin_sse =
+      _wire_func_enum_with_discriminant_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_func_enum_with_item_mixed_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -49840,6 +50007,21 @@ class RustLibWire implements BaseWire {
       _wire_func_enum_simple_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function(int)>();
 
+  WireSyncRust2DartDco wire_func_enum_with_discriminant_twin_sync(
+    int arg,
+  ) {
+    return _wire_func_enum_with_discriminant_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_discriminant_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sync');
+  late final _wire_func_enum_with_discriminant_twin_sync =
+      _wire_func_enum_with_discriminant_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
   WireSyncRust2DartDco wire_func_enum_with_item_mixed_twin_sync(
     ffi.Pointer<wire_cst_enum_with_item_mixed_twin_sync> arg,
   ) {
@@ -50000,6 +50182,27 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_sync_sse');
   late final _wire_func_enum_simple_twin_sync_sse =
       _wire_func_enum_simple_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_func_enum_with_discriminant_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_func_enum_with_discriminant_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_func_enum_with_discriminant_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sync_sse');
+  late final _wire_func_enum_with_discriminant_twin_sync_sse =
+      _wire_func_enum_with_discriminant_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse wire_func_enum_with_item_mixed_twin_sync_sse(
