@@ -22,6 +22,7 @@
 use crate::api::minimal::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
+use flutter_rust_bridge::rust_async::RwLock;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: boilerplate
@@ -130,8 +131,13 @@ fn wire_minimal_adder_impl(
             let api_a = 100;
             let api_b = 100;
 
+            let opaque = RustAutoOpaque::new(RwLock::new(MyOpaqueType));
+            let lock = opaque.try_read().unwrap();
+
             move |context| {
                 // let what = arena; // trigger move?
+                let opaque2 = opaque; // trigger move?
+                let lock2 = lock; // trigger move?
 
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
