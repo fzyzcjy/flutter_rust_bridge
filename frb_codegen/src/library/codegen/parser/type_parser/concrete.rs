@@ -41,10 +41,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("Box", [inner]) => {
                 let inner = self.parse_type(inner)?;
-                Boxed(IrTypeBoxed {
-                    exist_in_real_api: true,
-                    inner: Box::new(inner),
-                })
+                match inner {
+                    IrType::RustAutoOpaque(ty_raw) => self.transform_rust_auto_opaque(
+                        &ty_raw,
+                        |raw| format!("Box<{raw}>"),
+                    )?,
+                    _ => Boxed(IrTypeBoxed {
+                        exist_in_real_api: true,
+                        inner: Box::new(inner),
+                    })
+                }
             },
 
             ("Vec", [element]) => ir_list(self.parse_type(element)?, true),
