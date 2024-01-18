@@ -52,12 +52,24 @@ impl<'a> SseDecode<'a> for &'a MyOpaqueType {
         arena: &'a flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
     ) -> Self {
-        let inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
-        >>::sse_decode(arena, deserializer);
-        let inner = arena.alloc(inner);
-        return arena.alloc(inner.rust_auto_opaque_decode_ref()); // TODO hack
+        // let inner_raw = <RustOpaqueMoi<
+        //     flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
+        // >>::sse_decode(arena, deserializer);
+        // let inner = arena.alloc(inner_raw);
+        // return arena.alloc(inner.rust_auto_opaque_decode_ref()); // TODO hack
+        todo!()
     }
+}
+
+fn my_sse_decode<'a>(
+    arena: &'a flutter_rust_bridge::for_generated::Arena,
+    deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
+) -> &'a MyOpaqueType {
+    let inner_raw = <RustOpaqueMoi<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
+    >>::sse_decode(arena, deserializer);
+    let inner = arena.alloc(inner_raw);
+    return arena.alloc(inner.rust_auto_opaque_decode_ref()); // TODO hack
 }
 
 impl SseDecode<'_>
