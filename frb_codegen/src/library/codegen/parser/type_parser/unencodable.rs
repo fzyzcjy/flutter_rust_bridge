@@ -1,9 +1,7 @@
 use crate::codegen::ir::ty::rust_opaque::NameComponent;
-use crate::codegen::ir::ty::IrType;
-use quote::ToTokens;
-use syn::TypePath;
+use syn::Type;
 
-pub(crate) type SplayedSegment<'a> = (&'a str, &'a [IrType]);
+pub(crate) type SplayedSegment<'a> = (&'a str, &'a [Type]);
 
 /// Spread and turn out the data of a fully qualified name for structural pattern matching.
 pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> {

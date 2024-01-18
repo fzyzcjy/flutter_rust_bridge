@@ -1,10 +1,13 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use itertools::Itertools;
 use lazy_static::lazy_static;
+use quote::ToTokens;
 use regex::Regex;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, Serializer};
 use strum_macros::{Display, EnumIter};
+use syn::Type;
 
 crate::ir! {
 pub struct IrTypeRustOpaque {
@@ -99,5 +102,13 @@ impl IrRustOpaqueInner {
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
 pub struct NameComponent {
     pub ident: String,
-    pub args: Vec<IrType>,
+    #[serde(serialize_with = "serialize_vec_syn")]
+    pub args: Vec<Type>,
+}
+
+fn serialize_vec_syn<T: ToTokens, S: Serializer>(values: &[T], s: S) -> Result<S::Ok, S::Error> {
+    let str = (values.iter())
+        .map(|value| quote::quote!(#value).to_string())
+        .join(", ");
+    str.serialize(s)
 }
