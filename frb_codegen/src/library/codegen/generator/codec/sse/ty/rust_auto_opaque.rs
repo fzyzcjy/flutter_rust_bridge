@@ -1,5 +1,5 @@
 use crate::codegen::generator::codec::sse::ty::delegate::{
-    simple_delegate_decode, simple_delegate_decode_raw, simple_delegate_encode,
+    simple_delegate_decode, simple_delegate_encode,
 };
 use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
@@ -40,29 +40,14 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                 self.ir.inner.codec,
                 self.context,
             )),
-            Lang::RustLang(_) => {
-                let ownership_mode = self.ir.ownership_mode.to_string().to_case(Case::Snake);
-
-                let wrapper_stmt = match self.ir.ownership_mode {
-                    OwnershipMode::Owned => {
-                        format!("return inner.rust_auto_opaque_decode_{ownership_mode}();")
-                    }
-                    OwnershipMode::Ref | OwnershipMode::RefMut => {
-                        format!(
-                            "
-                            let inner_ref = arena.alloc(inner);
-                            return arena.alloc(inner_ref.rust_auto_opaque_decode_{ownership_mode}());
-                            "
-                        )
-                    }
-                };
-
-                Some(simple_delegate_decode_raw(
-                    lang,
-                    &RustOpaque(self.ir.inner.to_owned()),
-                    &wrapper_stmt,
-                ))
-            }
+            Lang::RustLang(_) => Some(simple_delegate_decode(
+                lang,
+                &RustOpaque(self.ir.inner.to_owned()),
+                &format!(
+                    "inner.rust_auto_opaque_decode_{}()",
+                    self.ir.ownership_mode.to_string().to_case(Case::Snake)
+                ),
+            )),
         }
     }
 }
