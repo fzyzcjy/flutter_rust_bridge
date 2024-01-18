@@ -9,6 +9,7 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use std::collections::HashMap;
 use std::fmt::Debug;
+use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_opaque(
@@ -32,7 +33,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }))
     }
 
-    fn parse_rust_opaque(&mut self, ty: &IrType, codec: Option<RustOpaqueCodecMode>) -> IrType {
+    fn parse_rust_opaque(&mut self, ty: &Type, codec: Option<RustOpaqueCodecMode>) -> IrType {
         let info = self.inner.rust_opaque_parser_info.get_or_insert(
             ty.safe_ident(),
             RustOpaqueParserTypeInfo::new(
@@ -52,7 +53,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_rust_auto_opaque_explicit(
         &mut self,
-        inner: &IrType,
+        inner: &Type,
         codec: Option<RustOpaqueCodecMode>,
     ) -> IrType {
         let info = self.get_or_insert_rust_auto_opaque_info(&inner.safe_ident(), None, codec);
