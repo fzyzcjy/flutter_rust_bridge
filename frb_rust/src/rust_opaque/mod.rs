@@ -49,6 +49,11 @@ macro_rules! frb_generated_rust_opaque_def {
         /// pub struct DebugWrapper2(pub RustOpaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
         /// ```
         pub type RustOpaque<T> = $default_rust_opaque<T>;
+
+        /// Usually this is unneeded, and just write down arbitrary types.
+        /// However, when you need arbitrary types at places that are not supported yet,
+        /// use `RustOpaqueOpaque<YourArbitraryType>`.
+        pub type RustAutoOpaque<T> = RustOpaque<$crate::for_generated::rust_async::RwLock<T>>;
     };
 }
 
