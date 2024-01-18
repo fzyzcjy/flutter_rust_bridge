@@ -61,14 +61,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let name = "that".to_owned();
 
         partial_info_for_normal_type_raw(
-            self.type_parser.parse_type(&ty, context)?,
-            // TODO
-            // parse_receiver_ownership(
-            //     self.type_parser.parse_type(&ty, context)?,
-            //     receiver,
-            //     self.type_parser,
-            //     context,
-            // ),
+            parse_receiver_ownership(
+                self.type_parser.parse_type(&ty, context)?,
+                receiver,
+                self.type_parser,
+                context,
+            ),
             &receiver.attrs,
             name,
         )
@@ -167,27 +165,26 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     }
 }
 
-// TODO
-// fn parse_receiver_ownership(
-//     inner: IrType,
-//     receiver: &Receiver,
-//     type_parser: &mut TypeParser,
-//     context: &TypeParserParsingContext,
-// ) -> IrType {
-//     let should_parse_ownership = type_parser.check_candidate_rust_auto_opaque(&inner, context);
-//
-//     if receiver.reference.is_none() || !should_parse_ownership {
-//         return inner;
-//     }
-//
-//     let mode = if receiver.mutability.is_some() {
-//         IrTypeOwnershipMode::RefMut
-//     } else {
-//         IrTypeOwnershipMode::Ref
-//     };
-//
-//     IrType::Ownership(IrTypeOwnership {
-//         mode,
-//         inner: Box::new(inner),
-//     })
-// }
+fn parse_receiver_ownership(
+    inner: IrType,
+    receiver: &Receiver,
+    type_parser: &mut TypeParser,
+    context: &TypeParserParsingContext,
+) -> IrType {
+    let should_parse_ownership = type_parser.check_candidate_rust_auto_opaque(&inner, context);
+
+    if receiver.reference.is_none() || !should_parse_ownership {
+        return inner;
+    }
+
+    let mode = if receiver.mutability.is_some() {
+        IrTypeOwnershipMode::RefMut
+    } else {
+        IrTypeOwnershipMode::Ref
+    };
+
+    IrType::Ownership(IrTypeOwnership {
+        mode,
+        inner: Box::new(inner),
+    })
+}
