@@ -17,37 +17,29 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         ty: &Type,
     ) -> IrType {
         let (ownership_mode, inner) = match ty {
-            IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
-            _ => (OwnershipMode::Owned, ty.clone()),
+            Type::Reference(_) => (TODO, TODO),
+            _ => (OwnershipMode::Owned, TODO),
         };
 
         let info = self.get_or_insert_rust_auto_opaque_info(&inner, namespace, None);
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
-            raw: Box::new(ty.to_owned()),
+            raw: TODO,
             inner: IrTypeRustOpaque {
                 namespace: info.namespace,
-                inner: Box::new(self.create_rust_opaque_type_for_rust_auto_opaque(&inner)),
+                inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner),
                 codec: info.codec,
                 brief_name: true,
             },
         })
     }
 
-    // TODO
-    // pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(&self, inner: &IrType) -> IrType {
-    //     IrType::Unencodable(IrTypeUnencodable {
-    //         namespace: None,
-    //         // TODO when all usages of a type do not require `&mut`, can drop this Mutex
-    //         // TODO similarly, can use std instead of `tokio`'s lock
-    //         string: format!(
-    //             "flutter_rust_bridge::for_generated::rust_async::RwLock<{}>",
-    //             inner.rust_api_type()
-    //         ),
-    //         segments: vec![],
-    //     })
-    // }
+    pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(&self, inner: &str) -> String {
+        // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+        // TODO similarly, can use std instead of `tokio`'s lock
+        format!("flutter_rust_bridge::for_generated::rust_async::RwLock<{inner}>")
+    }
 
     pub(super) fn get_or_insert_rust_auto_opaque_info(
         &mut self,
