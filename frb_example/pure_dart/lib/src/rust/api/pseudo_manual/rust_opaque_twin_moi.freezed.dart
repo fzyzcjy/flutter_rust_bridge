@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EnumOpaqueTwinMoi {
-  RustOpaque get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideDataTwinMoi field0) struct,
@@ -24,6 +23,7 @@ mixin _$EnumOpaqueTwinMoi {
     required TResult Function(BoxDartDebugTwinMoi field0) traitObj,
     required TResult Function(MutexHideDataTwinMoi field0) mutex,
     required TResult Function(RwLockHideDataTwinMoi field0) rwLock,
+    required TResult Function() nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,6 +33,7 @@ mixin _$EnumOpaqueTwinMoi {
     TResult? Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult? Function(MutexHideDataTwinMoi field0)? mutex,
     TResult? Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult? Function()? nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +43,7 @@ mixin _$EnumOpaqueTwinMoi {
     TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult Function(MutexHideDataTwinMoi field0)? mutex,
     TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +54,7 @@ mixin _$EnumOpaqueTwinMoi {
     required TResult Function(EnumOpaqueTwinMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinMoi_Nothing value) nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +64,7 @@ mixin _$EnumOpaqueTwinMoi {
     TResult? Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$EnumOpaqueTwinMoi {
     TResult Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -166,6 +171,7 @@ class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
     required TResult Function(BoxDartDebugTwinMoi field0) traitObj,
     required TResult Function(MutexHideDataTwinMoi field0) mutex,
     required TResult Function(RwLockHideDataTwinMoi field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return struct(field0);
   }
@@ -178,6 +184,7 @@ class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
     TResult? Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult? Function(MutexHideDataTwinMoi field0)? mutex,
     TResult? Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return struct?.call(field0);
   }
@@ -190,6 +197,7 @@ class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
     TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult Function(MutexHideDataTwinMoi field0)? mutex,
     TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -206,6 +214,7 @@ class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
     required TResult Function(EnumOpaqueTwinMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinMoi_Nothing value) nothing,
   }) {
     return struct(this);
   }
@@ -218,6 +227,7 @@ class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
     TResult? Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
   }) {
     return struct?.call(this);
   }
@@ -230,6 +240,7 @@ class _$EnumOpaqueTwinMoi_StructImpl implements EnumOpaqueTwinMoi_Struct {
     TResult Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -243,7 +254,6 @@ abstract class EnumOpaqueTwinMoi_Struct implements EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_Struct(final HideDataTwinMoi field0) =
       _$EnumOpaqueTwinMoi_StructImpl;
 
-  @override
   HideDataTwinMoi get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinMoi_StructImplCopyWith<_$EnumOpaqueTwinMoi_StructImpl>
@@ -323,6 +333,7 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
     required TResult Function(BoxDartDebugTwinMoi field0) traitObj,
     required TResult Function(MutexHideDataTwinMoi field0) mutex,
     required TResult Function(RwLockHideDataTwinMoi field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return primitive(field0);
   }
@@ -335,6 +346,7 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
     TResult? Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult? Function(MutexHideDataTwinMoi field0)? mutex,
     TResult? Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return primitive?.call(field0);
   }
@@ -347,6 +359,7 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
     TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult Function(MutexHideDataTwinMoi field0)? mutex,
     TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (primitive != null) {
@@ -363,6 +376,7 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
     required TResult Function(EnumOpaqueTwinMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinMoi_Nothing value) nothing,
   }) {
     return primitive(this);
   }
@@ -375,6 +389,7 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
     TResult? Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
   }) {
     return primitive?.call(this);
   }
@@ -387,6 +402,7 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl implements EnumOpaqueTwinMoi_Primitive {
     TResult Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (primitive != null) {
@@ -400,7 +416,6 @@ abstract class EnumOpaqueTwinMoi_Primitive implements EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_Primitive(final I16 field0) =
       _$EnumOpaqueTwinMoi_PrimitiveImpl;
 
-  @override
   I16 get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinMoi_PrimitiveImplCopyWith<_$EnumOpaqueTwinMoi_PrimitiveImpl>
@@ -480,6 +495,7 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
     required TResult Function(BoxDartDebugTwinMoi field0) traitObj,
     required TResult Function(MutexHideDataTwinMoi field0) mutex,
     required TResult Function(RwLockHideDataTwinMoi field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return traitObj(field0);
   }
@@ -492,6 +508,7 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
     TResult? Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult? Function(MutexHideDataTwinMoi field0)? mutex,
     TResult? Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return traitObj?.call(field0);
   }
@@ -504,6 +521,7 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
     TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult Function(MutexHideDataTwinMoi field0)? mutex,
     TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (traitObj != null) {
@@ -520,6 +538,7 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
     required TResult Function(EnumOpaqueTwinMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinMoi_Nothing value) nothing,
   }) {
     return traitObj(this);
   }
@@ -532,6 +551,7 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
     TResult? Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
   }) {
     return traitObj?.call(this);
   }
@@ -544,6 +564,7 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl implements EnumOpaqueTwinMoi_TraitObj {
     TResult Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (traitObj != null) {
@@ -557,7 +578,6 @@ abstract class EnumOpaqueTwinMoi_TraitObj implements EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_TraitObj(final BoxDartDebugTwinMoi field0) =
       _$EnumOpaqueTwinMoi_TraitObjImpl;
 
-  @override
   BoxDartDebugTwinMoi get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinMoi_TraitObjImplCopyWith<_$EnumOpaqueTwinMoi_TraitObjImpl>
@@ -636,6 +656,7 @@ class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
     required TResult Function(BoxDartDebugTwinMoi field0) traitObj,
     required TResult Function(MutexHideDataTwinMoi field0) mutex,
     required TResult Function(RwLockHideDataTwinMoi field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return mutex(field0);
   }
@@ -648,6 +669,7 @@ class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
     TResult? Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult? Function(MutexHideDataTwinMoi field0)? mutex,
     TResult? Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return mutex?.call(field0);
   }
@@ -660,6 +682,7 @@ class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
     TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult Function(MutexHideDataTwinMoi field0)? mutex,
     TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (mutex != null) {
@@ -676,6 +699,7 @@ class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
     required TResult Function(EnumOpaqueTwinMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinMoi_Nothing value) nothing,
   }) {
     return mutex(this);
   }
@@ -688,6 +712,7 @@ class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
     TResult? Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
   }) {
     return mutex?.call(this);
   }
@@ -700,6 +725,7 @@ class _$EnumOpaqueTwinMoi_MutexImpl implements EnumOpaqueTwinMoi_Mutex {
     TResult Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (mutex != null) {
@@ -713,7 +739,6 @@ abstract class EnumOpaqueTwinMoi_Mutex implements EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_Mutex(final MutexHideDataTwinMoi field0) =
       _$EnumOpaqueTwinMoi_MutexImpl;
 
-  @override
   MutexHideDataTwinMoi get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinMoi_MutexImplCopyWith<_$EnumOpaqueTwinMoi_MutexImpl>
@@ -793,6 +818,7 @@ class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
     required TResult Function(BoxDartDebugTwinMoi field0) traitObj,
     required TResult Function(MutexHideDataTwinMoi field0) mutex,
     required TResult Function(RwLockHideDataTwinMoi field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return rwLock(field0);
   }
@@ -805,6 +831,7 @@ class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
     TResult? Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult? Function(MutexHideDataTwinMoi field0)? mutex,
     TResult? Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return rwLock?.call(field0);
   }
@@ -817,6 +844,7 @@ class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
     TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
     TResult Function(MutexHideDataTwinMoi field0)? mutex,
     TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (rwLock != null) {
@@ -833,6 +861,7 @@ class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
     required TResult Function(EnumOpaqueTwinMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinMoi_Nothing value) nothing,
   }) {
     return rwLock(this);
   }
@@ -845,6 +874,7 @@ class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
     TResult? Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
   }) {
     return rwLock?.call(this);
   }
@@ -857,6 +887,7 @@ class _$EnumOpaqueTwinMoi_RwLockImpl implements EnumOpaqueTwinMoi_RwLock {
     TResult Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (rwLock != null) {
@@ -870,9 +901,138 @@ abstract class EnumOpaqueTwinMoi_RwLock implements EnumOpaqueTwinMoi {
   const factory EnumOpaqueTwinMoi_RwLock(final RwLockHideDataTwinMoi field0) =
       _$EnumOpaqueTwinMoi_RwLockImpl;
 
-  @override
   RwLockHideDataTwinMoi get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinMoi_RwLockImplCopyWith<_$EnumOpaqueTwinMoi_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaqueTwinMoi_NothingImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinMoi_NothingImplCopyWith(
+          _$EnumOpaqueTwinMoi_NothingImpl value,
+          $Res Function(_$EnumOpaqueTwinMoi_NothingImpl) then) =
+      __$$EnumOpaqueTwinMoi_NothingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EnumOpaqueTwinMoi_NothingImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinMoi_NothingImpl>
+    implements _$$EnumOpaqueTwinMoi_NothingImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinMoi_NothingImplCopyWithImpl(
+      _$EnumOpaqueTwinMoi_NothingImpl _value,
+      $Res Function(_$EnumOpaqueTwinMoi_NothingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EnumOpaqueTwinMoi_NothingImpl implements EnumOpaqueTwinMoi_Nothing {
+  const _$EnumOpaqueTwinMoi_NothingImpl();
+
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinMoi.nothing()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaqueTwinMoi_NothingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return nothing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return nothing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (nothing != null) {
+      return nothing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinMoi_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinMoi_Nothing value) nothing,
+  }) {
+    return nothing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
+  }) {
+    return nothing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (nothing != null) {
+      return nothing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaqueTwinMoi_Nothing implements EnumOpaqueTwinMoi {
+  const factory EnumOpaqueTwinMoi_Nothing() = _$EnumOpaqueTwinMoi_NothingImpl;
 }

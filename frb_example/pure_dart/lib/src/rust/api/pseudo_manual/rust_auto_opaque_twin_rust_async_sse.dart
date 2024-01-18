@@ -136,6 +136,25 @@ Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSse>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSse(
                 hint: hint);
 
+Future<void> rustAutoOpaqueExplicitArgTwinRustAsyncSse(
+        {required NonCloneSimpleTwinRustAsyncSse arg,
+        required int expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueExplicitArgTwinRustAsyncSse(
+        arg: arg, expect: expect, hint: hint);
+
+Future<void> rustAutoOpaqueExplicitStructTwinRustAsyncSse(
+        {required StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueExplicitStructTwinRustAsyncSse(arg: arg, hint: hint);
+
+Future<NonCloneSimpleTwinRustAsyncSse>
+    rustAutoOpaqueExplicitReturnTwinRustAsyncSse(
+            {required int initial, dynamic hint}) =>
+        RustLib.instance.api.rustAutoOpaqueExplicitReturnTwinRustAsyncSse(
+            initial: initial, hint: hint);
+
 Future<OpaqueOneTwinRustAsyncSseOpaqueTwoTwinRustAsyncSse>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSse({dynamic hint}) =>
         RustLib.instance.api
@@ -350,4 +369,25 @@ class OpaqueTwoTwinRustAsyncSse extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSsePtr,
   );
+}
+
+class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse {
+  final NonCloneSimpleTwinRustAsyncSse autoOpaque;
+  final int normal;
+
+  const StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse({
+    required this.autoOpaque,
+    required this.normal,
+  });
+
+  @override
+  int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          autoOpaque == other.autoOpaque &&
+          normal == other.normal;
 }

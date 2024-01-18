@@ -120,6 +120,24 @@ Future<StructWithGoodAndOpaqueFieldTwinMoi>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi(
                 hint: hint);
 
+Future<void> rustAutoOpaqueExplicitArgTwinMoi(
+        {required NonCloneSimpleTwinMoi arg,
+        required int expect,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueExplicitArgTwinMoi(arg: arg, expect: expect, hint: hint);
+
+Future<void> rustAutoOpaqueExplicitStructTwinMoi(
+        {required StructWithExplicitAutoOpaqueFieldTwinMoi arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueExplicitStructTwinMoi(arg: arg, hint: hint);
+
+Future<NonCloneSimpleTwinMoi> rustAutoOpaqueExplicitReturnTwinMoi(
+        {required int initial, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueExplicitReturnTwinMoi(initial: initial, hint: hint);
+
 Future<OpaqueOneTwinMoiOpaqueTwoTwinMoi>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinMoi({dynamic hint}) =>
         RustLib.instance.api
@@ -335,4 +353,25 @@ class OpaqueTwoTwinMoi extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinMoiPtr,
   );
+}
+
+class StructWithExplicitAutoOpaqueFieldTwinMoi {
+  final NonCloneSimpleTwinMoi autoOpaque;
+  final int normal;
+
+  const StructWithExplicitAutoOpaqueFieldTwinMoi({
+    required this.autoOpaque,
+    required this.normal,
+  });
+
+  @override
+  int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithExplicitAutoOpaqueFieldTwinMoi &&
+          runtimeType == other.runtimeType &&
+          autoOpaque == other.autoOpaque &&
+          normal == other.normal;
 }

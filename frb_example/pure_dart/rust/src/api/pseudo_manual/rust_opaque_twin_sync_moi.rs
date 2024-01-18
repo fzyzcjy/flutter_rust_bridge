@@ -32,6 +32,7 @@ pub enum EnumOpaqueTwinSyncMoi {
     TraitObj(crate::frb_generated::RustOpaqueMoi<Box<dyn DartDebugTwinSyncMoi>>),
     Mutex(crate::frb_generated::RustOpaqueMoi<Mutex<HideDataTwinSyncMoi>>),
     RwLock(crate::frb_generated::RustOpaqueMoi<RwLock<HideDataTwinSyncMoi>>),
+    Nothing,
 }
 
 /// [`HideDataTwinSyncMoi`] has private fields.
@@ -91,6 +92,7 @@ pub fn run_enum_opaque_twin_sync_moi(opaque: EnumOpaqueTwinSyncMoi) -> String {
         EnumOpaqueTwinSyncMoi::RwLock(r) => {
             format!("{:?}", r.read().unwrap().0.hide_data())
         }
+        _ => "nothing".to_owned(),
     }
 }
 

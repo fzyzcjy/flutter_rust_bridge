@@ -195,6 +195,7 @@ sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
   const factory EnumOpaqueTwinSse.rwLock(
     RwLockHideDataTwinSse field0,
   ) = EnumOpaqueTwinSse_RwLock;
+  const factory EnumOpaqueTwinSse.nothing() = EnumOpaqueTwinSse_Nothing;
 }
 
 class EnumOpaqueTwinSseArray5 extends NonGrowableListView<EnumOpaqueTwinSse> {

@@ -212,6 +212,7 @@ sealed class EnumOpaqueTwinSync with _$EnumOpaqueTwinSync {
   const factory EnumOpaqueTwinSync.rwLock(
     RwLockHideDataTwinSync field0,
   ) = EnumOpaqueTwinSync_RwLock;
+  const factory EnumOpaqueTwinSync.nothing() = EnumOpaqueTwinSync_Nothing;
 }
 
 class EnumOpaqueTwinSyncArray5 extends NonGrowableListView<EnumOpaqueTwinSync> {

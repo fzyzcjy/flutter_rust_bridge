@@ -32,6 +32,7 @@ pub enum EnumOpaqueTwinRustAsyncSse {
     TraitObj(RustOpaque<Box<dyn DartDebugTwinRustAsyncSse>>),
     Mutex(RustOpaque<Mutex<HideDataTwinRustAsyncSse>>),
     RwLock(RustOpaque<RwLock<HideDataTwinRustAsyncSse>>),
+    Nothing,
 }
 
 /// [`HideDataTwinRustAsyncSse`] has private fields.
@@ -87,6 +88,7 @@ pub async fn run_enum_opaque_twin_rust_async_sse(opaque: EnumOpaqueTwinRustAsync
         EnumOpaqueTwinRustAsyncSse::RwLock(r) => {
             format!("{:?}", r.read().unwrap().0.hide_data())
         }
+        _ => "nothing".to_owned(),
     }
 }
 

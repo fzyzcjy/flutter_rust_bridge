@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EnumOpaqueTwinNormal {
-  RustOpaque get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideDataTwinNormal field0) struct,
@@ -24,6 +23,7 @@ mixin _$EnumOpaqueTwinNormal {
     required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideDataTwinNormal field0) mutex,
     required TResult Function(RwLockHideDataTwinNormal field0) rwLock,
+    required TResult Function() nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,6 +33,7 @@ mixin _$EnumOpaqueTwinNormal {
     TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideDataTwinNormal field0)? mutex,
     TResult? Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult? Function()? nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +43,7 @@ mixin _$EnumOpaqueTwinNormal {
     TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideDataTwinNormal field0)? mutex,
     TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +54,7 @@ mixin _$EnumOpaqueTwinNormal {
     required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Nothing value) nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +64,7 @@ mixin _$EnumOpaqueTwinNormal {
     TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$EnumOpaqueTwinNormal {
     TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +172,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
     required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideDataTwinNormal field0) mutex,
     required TResult Function(RwLockHideDataTwinNormal field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return struct(field0);
   }
@@ -179,6 +185,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
     TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideDataTwinNormal field0)? mutex,
     TResult? Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return struct?.call(field0);
   }
@@ -191,6 +198,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
     TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideDataTwinNormal field0)? mutex,
     TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -207,6 +215,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
     required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Nothing value) nothing,
   }) {
     return struct(this);
   }
@@ -219,6 +228,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
     TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
   }) {
     return struct?.call(this);
   }
@@ -231,6 +241,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
     TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -244,7 +255,6 @@ abstract class EnumOpaqueTwinNormal_Struct implements EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_Struct(final HideDataTwinNormal field0) =
       _$EnumOpaqueTwinNormal_StructImpl;
 
-  @override
   HideDataTwinNormal get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinNormal_StructImplCopyWith<_$EnumOpaqueTwinNormal_StructImpl>
@@ -326,6 +336,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
     required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideDataTwinNormal field0) mutex,
     required TResult Function(RwLockHideDataTwinNormal field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return primitive(field0);
   }
@@ -338,6 +349,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
     TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideDataTwinNormal field0)? mutex,
     TResult? Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return primitive?.call(field0);
   }
@@ -350,6 +362,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
     TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideDataTwinNormal field0)? mutex,
     TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (primitive != null) {
@@ -366,6 +379,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
     required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Nothing value) nothing,
   }) {
     return primitive(this);
   }
@@ -378,6 +392,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
     TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
   }) {
     return primitive?.call(this);
   }
@@ -390,6 +405,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
     TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (primitive != null) {
@@ -403,7 +419,6 @@ abstract class EnumOpaqueTwinNormal_Primitive implements EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_Primitive(final I32 field0) =
       _$EnumOpaqueTwinNormal_PrimitiveImpl;
 
-  @override
   I32 get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith<
@@ -486,6 +501,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
     required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideDataTwinNormal field0) mutex,
     required TResult Function(RwLockHideDataTwinNormal field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return traitObj(field0);
   }
@@ -498,6 +514,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
     TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideDataTwinNormal field0)? mutex,
     TResult? Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return traitObj?.call(field0);
   }
@@ -510,6 +527,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
     TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideDataTwinNormal field0)? mutex,
     TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (traitObj != null) {
@@ -526,6 +544,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
     required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Nothing value) nothing,
   }) {
     return traitObj(this);
   }
@@ -538,6 +557,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
     TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
   }) {
     return traitObj?.call(this);
   }
@@ -550,6 +570,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
     TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (traitObj != null) {
@@ -564,7 +585,6 @@ abstract class EnumOpaqueTwinNormal_TraitObj implements EnumOpaqueTwinNormal {
           final BoxDartDebugTwinNormal field0) =
       _$EnumOpaqueTwinNormal_TraitObjImpl;
 
-  @override
   BoxDartDebugTwinNormal get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<
@@ -645,6 +665,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
     required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideDataTwinNormal field0) mutex,
     required TResult Function(RwLockHideDataTwinNormal field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return mutex(field0);
   }
@@ -657,6 +678,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
     TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideDataTwinNormal field0)? mutex,
     TResult? Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return mutex?.call(field0);
   }
@@ -669,6 +691,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
     TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideDataTwinNormal field0)? mutex,
     TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (mutex != null) {
@@ -685,6 +708,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
     required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Nothing value) nothing,
   }) {
     return mutex(this);
   }
@@ -697,6 +721,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
     TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
   }) {
     return mutex?.call(this);
   }
@@ -709,6 +734,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
     TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (mutex != null) {
@@ -722,7 +748,6 @@ abstract class EnumOpaqueTwinNormal_Mutex implements EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal_Mutex(
       final MutexHideDataTwinNormal field0) = _$EnumOpaqueTwinNormal_MutexImpl;
 
-  @override
   MutexHideDataTwinNormal get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinNormal_MutexImplCopyWith<_$EnumOpaqueTwinNormal_MutexImpl>
@@ -802,6 +827,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
     required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideDataTwinNormal field0) mutex,
     required TResult Function(RwLockHideDataTwinNormal field0) rwLock,
+    required TResult Function() nothing,
   }) {
     return rwLock(field0);
   }
@@ -814,6 +840,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
     TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideDataTwinNormal field0)? mutex,
     TResult? Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult? Function()? nothing,
   }) {
     return rwLock?.call(field0);
   }
@@ -826,6 +853,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
     TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideDataTwinNormal field0)? mutex,
     TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
     required TResult orElse(),
   }) {
     if (rwLock != null) {
@@ -842,6 +870,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
     required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Nothing value) nothing,
   }) {
     return rwLock(this);
   }
@@ -854,6 +883,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
     TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
   }) {
     return rwLock?.call(this);
   }
@@ -866,6 +896,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
     TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
     TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
     TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
     required TResult orElse(),
   }) {
     if (rwLock != null) {
@@ -880,9 +911,140 @@ abstract class EnumOpaqueTwinNormal_RwLock implements EnumOpaqueTwinNormal {
           final RwLockHideDataTwinNormal field0) =
       _$EnumOpaqueTwinNormal_RwLockImpl;
 
-  @override
   RwLockHideDataTwinNormal get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinNormal_RwLockImplCopyWith<_$EnumOpaqueTwinNormal_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaqueTwinNormal_NothingImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinNormal_NothingImplCopyWith(
+          _$EnumOpaqueTwinNormal_NothingImpl value,
+          $Res Function(_$EnumOpaqueTwinNormal_NothingImpl) then) =
+      __$$EnumOpaqueTwinNormal_NothingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EnumOpaqueTwinNormal_NothingImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
+        _$EnumOpaqueTwinNormal_NothingImpl>
+    implements _$$EnumOpaqueTwinNormal_NothingImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinNormal_NothingImplCopyWithImpl(
+      _$EnumOpaqueTwinNormal_NothingImpl _value,
+      $Res Function(_$EnumOpaqueTwinNormal_NothingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EnumOpaqueTwinNormal_NothingImpl
+    implements EnumOpaqueTwinNormal_Nothing {
+  const _$EnumOpaqueTwinNormal_NothingImpl();
+
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinNormal.nothing()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaqueTwinNormal_NothingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinNormal field0) struct,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
+    required TResult Function(MutexHideDataTwinNormal field0) mutex,
+    required TResult Function(RwLockHideDataTwinNormal field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return nothing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinNormal field0)? struct,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
+    TResult? Function(MutexHideDataTwinNormal field0)? mutex,
+    TResult? Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return nothing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinNormal field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
+    TResult Function(MutexHideDataTwinNormal field0)? mutex,
+    TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (nothing != null) {
+      return nothing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinNormal_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinNormal_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Nothing value) nothing,
+  }) {
+    return nothing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
+  }) {
+    return nothing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (nothing != null) {
+      return nothing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaqueTwinNormal_Nothing implements EnumOpaqueTwinNormal {
+  const factory EnumOpaqueTwinNormal_Nothing() =
+      _$EnumOpaqueTwinNormal_NothingImpl;
 }

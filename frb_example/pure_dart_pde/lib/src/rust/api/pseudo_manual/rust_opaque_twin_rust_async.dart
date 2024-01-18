@@ -238,6 +238,8 @@ sealed class EnumOpaqueTwinRustAsync with _$EnumOpaqueTwinRustAsync {
   const factory EnumOpaqueTwinRustAsync.rwLock(
     RwLockHideDataTwinRustAsync field0,
   ) = EnumOpaqueTwinRustAsync_RwLock;
+  const factory EnumOpaqueTwinRustAsync.nothing() =
+      EnumOpaqueTwinRustAsync_Nothing;
 }
 
 class EnumOpaqueTwinRustAsyncArray5

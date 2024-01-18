@@ -128,6 +128,24 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
                 hint: hint);
 
+Future<void> rustAutoOpaqueExplicitArgTwinNormal(
+        {required NonCloneSimpleTwinNormal arg,
+        required int expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueExplicitArgTwinNormal(
+        arg: arg, expect: expect, hint: hint);
+
+Future<void> rustAutoOpaqueExplicitStructTwinNormal(
+        {required StructWithExplicitAutoOpaqueFieldTwinNormal arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueExplicitStructTwinNormal(arg: arg, hint: hint);
+
+Future<NonCloneSimpleTwinNormal> rustAutoOpaqueExplicitReturnTwinNormal(
+        {required int initial, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueExplicitReturnTwinNormal(initial: initial, hint: hint);
+
 Future<OpaqueOneTwinNormalOpaqueTwoTwinNormal>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal({dynamic hint}) =>
         RustLib.instance.api
@@ -333,4 +351,25 @@ class OpaqueTwoTwinNormal extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinNormalPtr,
   );
+}
+
+class StructWithExplicitAutoOpaqueFieldTwinNormal {
+  final NonCloneSimpleTwinNormal autoOpaque;
+  final int normal;
+
+  const StructWithExplicitAutoOpaqueFieldTwinNormal({
+    required this.autoOpaque,
+    required this.normal,
+  });
+
+  @override
+  int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithExplicitAutoOpaqueFieldTwinNormal &&
+          runtimeType == other.runtimeType &&
+          autoOpaque == other.autoOpaque &&
+          normal == other.normal;
 }
