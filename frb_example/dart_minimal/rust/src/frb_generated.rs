@@ -92,8 +92,8 @@ fn wire_minimal_adder_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_a = <i32>::sse_decode(&mut deserializer, &arena);
-            let api_b = <i32>::sse_decode(&mut deserializer, &arena);
+            let api_a = <i32>::sse_decode(&mut deserializer);
+            let api_b = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -125,7 +125,7 @@ fn wire_my_func_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Vec<MyOpaqueType>>::sse_decode(&mut deserializer, &arena);
+            let api_arg = <Vec<MyOpaqueType>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -152,7 +152,7 @@ impl SseDecode for MyOpaqueType {
     ) -> Self {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
-        >>::sse_decode(deserializer, arena);
+        >>::sse_decode(deserializer);
         return inner.rust_auto_opaque_decode_owned();
     }
 }
@@ -165,7 +165,7 @@ impl SseDecode
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
         arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
-        let mut inner = <usize>::sse_decode(deserializer, arena);
+        let mut inner = <usize>::sse_decode(deserializer);
         return decode_rust_opaque_moi(inner);
     }
 }
@@ -186,10 +186,10 @@ impl SseDecode for Vec<MyOpaqueType> {
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
         arena: &flutter_rust_bridge::for_generated::Arena,
     ) -> Self {
-        let mut len_ = <i32>::sse_decode(deserializer, arena);
+        let mut len_ = <i32>::sse_decode(deserializer);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<MyOpaqueType>::sse_decode(deserializer, arena));
+            ans_.push(<MyOpaqueType>::sse_decode(deserializer));
         }
         return ans_;
     }
