@@ -45,10 +45,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                     Some(simple_delegate_decode(
                         lang,
                         &RustOpaque(self.ir.inner.to_owned()),
-                        &format!(
-                            "inner.rust_auto_opaque_decode_{}()",
-                            self.ir.ownership_mode.to_string().to_case(Case::Snake)
-                        ),
+                        &generate_decode_rust_auto_opaque(&self.ir, "inner"),
                     ))
                 } else {
                     None
@@ -65,5 +62,15 @@ pub(crate) fn generate_encode_rust_auto_opaque(
     let arc = ir.inner.codec.arc_ty();
     format!(
         "flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>({variable})"
+    )
+}
+
+pub(crate) fn generate_decode_rust_auto_opaque(
+    ir: &IrTypeRustAutoOpaque,
+    variable: &str,
+) -> String {
+    format!(
+        "{variable}.rust_auto_opaque_decode_{}()",
+        ir.ownership_mode.to_string().to_case(Case::Snake)
     )
 }
