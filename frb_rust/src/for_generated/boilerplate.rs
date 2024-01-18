@@ -44,10 +44,12 @@ macro_rules! frb_generated_cst_codec {
 macro_rules! frb_generated_sse_codec {
     () => {
         pub trait SseDecode {
-            fn sse_decode(
-                arena: &$crate::for_generated::Arena,
+            fn sse_decode<'a>(
+                arena: &'a $crate::for_generated::Arena,
                 deserializer: &mut $crate::for_generated::SseDeserializer,
-            ) -> Self;
+            ) -> Self
+            where
+                Self: 'a;
 
             // just syntax sugar
             fn sse_decode_single(
