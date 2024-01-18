@@ -26,6 +26,11 @@ EnumWithItemStructTwinSyncSse funcEnumWithItemStructTwinSyncSse(
     RustLib.instance.api
         .funcEnumWithItemStructTwinSyncSse(arg: arg, hint: hint);
 
+EnumWithDiscriminantTwinSyncSse funcEnumWithDiscriminantTwinSyncSse(
+        {required EnumWithDiscriminantTwinSyncSse arg, dynamic hint}) =>
+    RustLib.instance.api
+        .funcEnumWithDiscriminantTwinSyncSse(arg: arg, hint: hint);
+
 Uint8List printNoteTwinSyncSse({required NoteTwinSyncSse note, dynamic hint}) =>
     RustLib.instance.api.printNoteTwinSyncSse(note: note, hint: hint);
 
@@ -57,6 +62,11 @@ sealed class DistanceTwinSyncSse with _$DistanceTwinSyncSse {
 enum EnumSimpleTwinSyncSse {
   a,
   b,
+}
+
+enum EnumWithDiscriminantTwinSyncSse {
+  oneHundred,
+  fifty,
 }
 
 @freezed

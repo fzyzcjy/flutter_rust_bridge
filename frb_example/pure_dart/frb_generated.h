@@ -3030,6 +3030,9 @@ void frbgen_frb_example_pure_dart_wire_test_duplicated_module_names(int64_t port
 
 void frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
 
+void frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_normal(int64_t port_,
+                                                                               int32_t arg);
+
 void frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_normal(int64_t port_,
                                                                              struct wire_cst_enum_with_item_mixed_twin_normal *arg);
 
@@ -6054,6 +6057,9 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_set_static_dart_opaque_tw
 
 void frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_rust_async(int64_t port_, int32_t arg);
 
+void frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_rust_async(int64_t port_,
+                                                                                   int32_t arg);
+
 void frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_rust_async(int64_t port_,
                                                                                  struct wire_cst_enum_with_item_mixed_twin_rust_async *arg);
 
@@ -6082,6 +6088,11 @@ void frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_rust_async_sse(int6
                                                                             uint8_t *ptr_,
                                                                             int32_t rust_vec_len_,
                                                                             int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_rust_async_sse(int64_t port_,
+                                                                                       uint8_t *ptr_,
+                                                                                       int32_t rust_vec_len_,
+                                                                                       int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_rust_async_sse(int64_t port_,
                                                                                      uint8_t *ptr_,
@@ -6128,6 +6139,11 @@ void frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_sse(int64_t port_,
                                                                  int32_t rust_vec_len_,
                                                                  int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sse(int64_t port_,
+                                                                            uint8_t *ptr_,
+                                                                            int32_t rust_vec_len_,
+                                                                            int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_sse(int64_t port_,
                                                                           uint8_t *ptr_,
                                                                           int32_t rust_vec_len_,
@@ -6170,6 +6186,8 @@ void frbgen_frb_example_pure_dart_wire_print_note_twin_sse(int64_t port_,
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_sync(int32_t arg);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sync(int32_t arg);
+
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_sync(struct wire_cst_enum_with_item_mixed_twin_sync *arg);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_func_enum_with_item_struct_twin_sync(struct wire_cst_enum_with_item_struct_twin_sync *arg);
@@ -6189,6 +6207,10 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire_print_note_twin_sync(stru
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_sync_sse(uint8_t *ptr_,
                                                                                       int32_t rust_vec_len_,
                                                                                       int32_t data_len_);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sync_sse(uint8_t *ptr_,
+                                                                                                 int32_t rust_vec_len_,
+                                                                                                 int32_t data_len_);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_sync_sse(uint8_t *ptr_,
                                                                                                int32_t rust_vec_len_,
@@ -13781,6 +13803,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_simple_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_discriminant_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire_func_enum_with_item_mixed_twin_rust_async_sse);

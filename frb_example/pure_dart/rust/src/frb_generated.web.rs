@@ -9393,6 +9393,37 @@ impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinS
         (self.unchecked_into_f64() as i32).cst_decode()
     }
 }
+impl CstDecode<crate::api::enumeration::EnumWithDiscriminantTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(self) -> crate::api::enumeration::EnumWithDiscriminantTwinNormal {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl
+    CstDecode<
+        crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithDiscriminantTwinRustAsync
+    {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithDiscriminantTwinSync {
+        (self.unchecked_into_f64() as i32).cst_decode()
+    }
+}
 impl CstDecode<f32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     // Codec=Cst (C-struct based), see doc to use other codecs
     fn cst_decode(self) -> f32 {
@@ -10274,6 +10305,14 @@ pub fn wire_func_enum_simple_twin_normal(
     arg: i32,
 ) {
     wire_func_enum_simple_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_discriminant_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i32,
+) {
+    wire_func_enum_with_discriminant_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -17903,6 +17942,14 @@ pub fn wire_func_enum_simple_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_enum_with_discriminant_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: i32,
+) {
+    wire_func_enum_with_discriminant_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_enum_with_item_mixed_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -17974,6 +18021,16 @@ pub fn wire_func_enum_simple_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_func_enum_simple_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_discriminant_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_func_enum_with_discriminant_twin_rust_async_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -18067,6 +18124,16 @@ pub fn wire_func_enum_simple_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_enum_with_discriminant_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_func_enum_with_discriminant_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_enum_with_item_mixed_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -18154,6 +18221,13 @@ pub fn wire_func_enum_simple_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_enum_with_discriminant_twin_sync(
+    arg: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_func_enum_with_discriminant_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_enum_with_item_mixed_twin_sync(
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -18216,6 +18290,15 @@ pub fn wire_func_enum_simple_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_func_enum_simple_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_discriminant_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_func_enum_with_discriminant_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
