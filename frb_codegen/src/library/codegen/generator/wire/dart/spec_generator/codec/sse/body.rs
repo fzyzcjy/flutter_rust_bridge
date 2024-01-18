@@ -1,7 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::dart::DartLang;
-use crate::codegen::generator::codec::sse::lang::rust::RustLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
 use crate::codegen::generator::codec::sse::misc::with_sse_extra_types;
 use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext};
@@ -12,7 +11,6 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::Wir
 use crate::codegen::generator::wire::dart::spec_generator::output_code::{
     DartApiImplClassMethod, WireDartOutputCode,
 };
-use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::WireRustCodecSseGeneratorContext;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
@@ -27,12 +25,7 @@ pub(super) fn generate_encode_or_decode(
 
     let mut inner = Default::default();
     inner += (types.iter())
-        .flat_map(|ty| {
-            vec![
-                generate_encode_or_decode_for_type(ty, context, mode),
-                create_codec_sse_ty(ty, context).generate_extra(&Lang::DartLang(DartLang)),
-            ]
-        })
+        .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
         .collect();
     WireDartCodecOutputSpec { inner }
 }
@@ -45,7 +38,11 @@ fn generate_encode_or_decode_for_type(
     let dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
     let safe_ident = ty.safe_ident();
-    let body = create_codec_sse_ty(ty, context).generate(&Lang::DartLang(DartLang), mode);
+    let body = CodecSseTy::new(
+        ty.clone(),
+        CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
+    )
+    .generate(&Lang::DartLang(DartLang), mode);
 
     if let Some(body) = body {
         let signature = match mode {
@@ -70,11 +67,4 @@ fn generate_encode_or_decode_for_type(
     } else {
         Acc::default()
     }
-}
-
-fn create_codec_sse_ty(ty: &IrType, context: WireDartCodecSseGeneratorContext) -> CodecSseTy {
-    CodecSseTy::new(
-        ty.clone(),
-        CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
-    )
 }

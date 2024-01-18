@@ -60,8 +60,4 @@ pub(crate) trait CodecSseTyTrait {
     fn generate_encode(&self, lang: &Lang) -> Option<String>;
 
     fn generate_decode(&self, lang: &Lang) -> Option<String>;
-
-    fn generate_extra(&self, _lang: &Lang) -> Option<String> {
-        None
-    }
 }

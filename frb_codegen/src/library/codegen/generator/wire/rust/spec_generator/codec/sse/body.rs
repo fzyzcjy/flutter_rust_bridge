@@ -21,12 +21,7 @@ pub(super) fn generate_encode_or_decode(
 
     let mut inner = Default::default();
     inner += (types.iter())
-        .flat_map(|ty| {
-            vec![
-                generate_encode_or_decode_for_type(ty, context, mode),
-                create_codec_sse_ty(ty, context).generate_extra(&Lang::RustLang(RustLang)),
-            ]
-        })
+        .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
         .collect();
     WireRustCodecOutputSpec { inner }
 }
@@ -37,7 +32,11 @@ fn generate_encode_or_decode_for_type(
     mode: EncodeOrDecode,
 ) -> Acc<WireRustOutputCode> {
     let rust_api_type = ty.rust_api_type();
-    let body = create_codec_sse_ty(ty, context).generate(&Lang::RustLang(RustLang), mode);
+    let body = CodecSseTy::new(
+        ty.clone(),
+        CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
+    )
+    .generate(&Lang::RustLang(RustLang), mode);
     let codec_comments = generate_codec_comments(CodecMode::Sse);
 
     if let Some(body) = body {
@@ -65,11 +64,4 @@ fn generate_encode_or_decode_for_type(
     } else {
         Acc::default()
     }
-}
-
-fn create_codec_sse_ty(ty: &IrType, context: WireRustCodecSseGeneratorContext) -> CodecSseTy {
-    CodecSseTy::new(
-        ty.clone(),
-        CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
-    )
 }
