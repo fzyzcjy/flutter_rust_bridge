@@ -52,6 +52,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         args.args
             .iter()
             .filter_map(|arg| if_then_some!(let GenericArgument::Type(ty) = arg, ty.to_owned()))
+            // .map(|ty| self.parse_type(ty))
             .collect()
     }
 

@@ -5,6 +5,7 @@ use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
+use itertools::Itertools;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -32,7 +33,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         if let IrType::RustAutoOpaque(inner) = ir {
             match splay_segments(&inner.raw.segments).last() {
                 Some(("Result", args)) => {
-                    return parse_fn_output_type_result(args);
+                    return parse_fn_output_type_result(
+                        &(args.iter())
+                            .map(|arg| self.type_parser.parse_type(arg, context))
+                            .collect::<anyhow::Result<Vec<_>>>()?,
+                    );
                 }
                 _ => {}
             }
