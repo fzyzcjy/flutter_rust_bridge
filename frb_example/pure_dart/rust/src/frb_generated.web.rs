@@ -5216,19 +5216,11 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
-impl
-    CstDecode<(
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinMoi>>,
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinMoi>>,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<(OpaqueOneTwinMoi, OpaqueTwoTwinMoi)>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> (
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinMoi>>,
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinMoi>>,
-    ) {
+    fn cst_decode(self) -> (OpaqueOneTwinMoi, OpaqueTwoTwinMoi) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -5241,19 +5233,11 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
-impl
-    CstDecode<(
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>,
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<(OpaqueOneTwinNormal, OpaqueTwoTwinNormal)>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> (
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>,
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>,
-    ) {
+    fn cst_decode(self) -> (OpaqueOneTwinNormal, OpaqueTwoTwinNormal) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -5266,27 +5250,11 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
-impl
-    CstDecode<(
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>,
-        >,
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsync>,
-        >,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<(OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync)>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> (
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>,
-        >,
-        RustOpaqueNom<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsync>,
-        >,
-    ) {
+    fn cst_decode(self) -> (OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -5299,27 +5267,11 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
-impl
-    CstDecode<(
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsyncMoi>,
-        >,
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsyncMoi>,
-        >,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<(OpaqueOneTwinRustAsyncMoi, OpaqueTwoTwinRustAsyncMoi)>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> (
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsyncMoi>,
-        >,
-        RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsyncMoi>,
-        >,
-    ) {
+    fn cst_decode(self) -> (OpaqueOneTwinRustAsyncMoi, OpaqueTwoTwinRustAsyncMoi) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -5332,19 +5284,11 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
-impl
-    CstDecode<(
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>,
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSync>>,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<(OpaqueOneTwinSync, OpaqueTwoTwinSync)>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> (
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>,
-        RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSync>>,
-    ) {
+    fn cst_decode(self) -> (OpaqueOneTwinSync, OpaqueTwoTwinSync) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();
@@ -5357,19 +5301,11 @@ impl
         (self_.get(0).cst_decode(), self_.get(1).cst_decode())
     }
 }
-impl
-    CstDecode<(
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSyncMoi>>,
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSyncMoi>>,
-    )> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+impl CstDecode<(OpaqueOneTwinSyncMoi, OpaqueTwoTwinSyncMoi)>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(
-        self,
-    ) -> (
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSyncMoi>>,
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSyncMoi>>,
-    ) {
+    fn cst_decode(self) -> (OpaqueOneTwinSyncMoi, OpaqueTwoTwinSyncMoi) {
         let self_ = self
             .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap();

@@ -8189,39 +8189,39 @@ impl
         (self.field0.cst_decode(), self.field1.cst_decode())
     }
 }
-impl CstDecode<(RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinMoi>>,RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinMoi>>,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_moi {
+impl CstDecode<(OpaqueOneTwinMoi,OpaqueTwoTwinMoi,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_moi {
             // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> (RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinMoi>>,RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinMoi>>,) {
+            fn cst_decode(self) -> (OpaqueOneTwinMoi,OpaqueTwoTwinMoi,) {
                 (self.field0.cst_decode(),self.field1.cst_decode(),)
             }
         }
-impl CstDecode<(RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>,RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_normal_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_normal {
+impl CstDecode<(OpaqueOneTwinNormal,OpaqueTwoTwinNormal,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_normal_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_normal {
             // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> (RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>,RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>,) {
+            fn cst_decode(self) -> (OpaqueOneTwinNormal,OpaqueTwoTwinNormal,) {
                 (self.field0.cst_decode(),self.field1.cst_decode(),)
             }
         }
-impl CstDecode<(RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>>,RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsync>>,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_rust_async_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_rust_async {
+impl CstDecode<(OpaqueOneTwinRustAsync,OpaqueTwoTwinRustAsync,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_rust_async_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_rust_async {
             // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> (RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>>,RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsync>>,) {
+            fn cst_decode(self) -> (OpaqueOneTwinRustAsync,OpaqueTwoTwinRustAsync,) {
                 (self.field0.cst_decode(),self.field1.cst_decode(),)
             }
         }
-impl CstDecode<(RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsyncMoi>>,RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsyncMoi>>,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_rust_async_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_rust_async_moi {
+impl CstDecode<(OpaqueOneTwinRustAsyncMoi,OpaqueTwoTwinRustAsyncMoi,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_rust_async_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_rust_async_moi {
             // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> (RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsyncMoi>>,RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsyncMoi>>,) {
+            fn cst_decode(self) -> (OpaqueOneTwinRustAsyncMoi,OpaqueTwoTwinRustAsyncMoi,) {
                 (self.field0.cst_decode(),self.field1.cst_decode(),)
             }
         }
-impl CstDecode<(RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>,RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSync>>,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_sync {
+impl CstDecode<(OpaqueOneTwinSync,OpaqueTwoTwinSync,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_sync {
             // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> (RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>,RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSync>>,) {
+            fn cst_decode(self) -> (OpaqueOneTwinSync,OpaqueTwoTwinSync,) {
                 (self.field0.cst_decode(),self.field1.cst_decode(),)
             }
         }
-impl CstDecode<(RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSyncMoi>>,RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSyncMoi>>,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_sync_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_sync_moi {
+impl CstDecode<(OpaqueOneTwinSyncMoi,OpaqueTwoTwinSyncMoi,)> for wire_cst_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_one_twin_sync_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generatedrust_async_rw_lock_opaque_two_twin_sync_moi {
             // Codec=Cst (C-struct based), see doc to use other codecs
-            fn cst_decode(self) -> (RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSyncMoi>>,RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSyncMoi>>,) {
+            fn cst_decode(self) -> (OpaqueOneTwinSyncMoi,OpaqueTwoTwinSyncMoi,) {
                 (self.field0.cst_decode(),self.field1.cst_decode(),)
             }
         }
