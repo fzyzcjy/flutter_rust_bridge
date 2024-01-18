@@ -22,7 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
 
-        let info = self.get_or_insert_rust_auto_opaque_info(&inner, None);
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner, namespace, None);
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
@@ -53,12 +53,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(super) fn get_or_insert_rust_auto_opaque_info(
         &mut self,
         inner: &IrType,
+        namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
     ) -> RustOpaqueParserTypeInfo {
         self.inner.rust_auto_opaque_parser_info.get_or_insert(
             inner,
             RustOpaqueParserTypeInfo::new(
-                self.context.initiated_namespace.clone(),
+                namespace.unwrap_or(self.context.initiated_namespace.clone()),
                 codec
                     .or(self.context.func_attributes.rust_opaque_codec())
                     .unwrap_or(self.context.default_rust_opaque_codec),
