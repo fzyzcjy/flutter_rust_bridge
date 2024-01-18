@@ -12,7 +12,10 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueWireRustCodecDc
         if self.ir.ownership_mode == OwnershipMode::Owned {
             let rust_api_type = self.ir.rust_api_type();
             let local_struct_type = format!("Local_{}", self.ir.safe_ident()); // Similar to "mirror"
-            let body = format!("{}.into_dart()", generate_encode_rust_auto_opaque(&self.ir));
+            let body = format!(
+                "{}.into_dart()",
+                generate_encode_rust_auto_opaque(&self.ir, "self.0")
+            );
             Some(
                 format!("struct {local_struct_type}({rust_api_type});\n")
                     + &generate_impl_into_dart(&local_struct_type, &body)

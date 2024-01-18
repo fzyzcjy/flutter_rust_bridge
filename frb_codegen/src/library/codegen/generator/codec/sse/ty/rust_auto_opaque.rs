@@ -23,7 +23,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                     Some(simple_delegate_encode(
                         lang,
                         &RustOpaque(self.ir.inner.to_owned()),
-                        &generate_encode_rust_auto_opaque(&self.ir),
+                        &generate_encode_rust_auto_opaque(&self.ir, "self"),
                     ))
                 } else {
                     None
@@ -58,7 +58,12 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
     }
 }
 
-pub(crate) fn generate_encode_rust_auto_opaque(ir: &IrTypeRustAutoOpaque) -> String {
+pub(crate) fn generate_encode_rust_auto_opaque(
+    ir: &IrTypeRustAutoOpaque,
+    variable: &str,
+) -> String {
     let arc = ir.inner.codec.arc_ty();
-    format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)")
+    format!(
+        "flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>({variable})"
+    )
 }
