@@ -193,10 +193,10 @@ impl SseDecode for MyOpaqueType {
     }
 }
 
-impl<'a> SseDecode for &'a MyOpaqueType {
+impl SseDecode for &MyOpaqueType {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
-        arena: &'a flutter_rust_bridge::for_generated::Arena,
+        arena: &flutter_rust_bridge::for_generated::Arena,
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
     ) -> Self {
         let mut inner = <RustOpaqueMoi<
