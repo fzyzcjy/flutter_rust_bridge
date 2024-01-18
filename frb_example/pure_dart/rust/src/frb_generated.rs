@@ -56281,13 +56281,13 @@ impl
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
-                    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-                        match self {
-                            Self::OneHundred => 0.into_dart(),
+                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+                    match self {
+                    Self::OneHundred => 0.into_dart(),
 Self::Fifty => 1.into_dart(),
-                        }
-                    }
                 }
+                }
+            }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {}
 impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse> for crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
             fn into_into_dart(self) -> crate::api::pseudo_manual::enumeration_twin_rust_async_sse::EnumWithDiscriminantTwinRustAsyncSse {
