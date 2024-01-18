@@ -27,7 +27,8 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 flutter_rust_bridge::frb_generated_boilerplate!(
     default_stream_sink_codec = SseCodec,
-    default_rust_opaque = RustOpaqueMoi
+    default_rust_opaque = RustOpaqueMoi,
+    default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.20";
 

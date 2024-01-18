@@ -232,6 +232,8 @@ sealed class EnumOpaqueTwinRustAsyncSseMoi
   const factory EnumOpaqueTwinRustAsyncSseMoi.rwLock(
     RwLockHideDataTwinRustAsyncSseMoi field0,
   ) = EnumOpaqueTwinRustAsyncSseMoi_RwLock;
+  const factory EnumOpaqueTwinRustAsyncSseMoi.nothing() =
+      EnumOpaqueTwinRustAsyncSseMoi_Nothing;
 }
 
 class EnumOpaqueTwinRustAsyncSseMoiArray5

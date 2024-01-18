@@ -5,11 +5,15 @@
 macro_rules! frb_generated_boilerplate {
     (
         default_stream_sink_codec = $default_stream_sink_codec:ident,
-        default_rust_opaque = $default_rust_opaque:ident
+        default_rust_opaque = $default_rust_opaque:ident,
+        default_rust_auto_opaque = $default_rust_auto_opaque:ident,
     ) => {
         $crate::frb_generated_moi_arc_def!();
         $crate::frb_generated_rust_opaque_dart2rust!();
         $crate::frb_generated_rust_opaque_def!(default_rust_opaque = $default_rust_opaque);
+        $crate::frb_generated_rust_auto_opaque_def!(
+            default_rust_auto_opaque = $default_rust_auto_opaque
+        );
         $crate::frb_generated_cst_codec!();
         $crate::frb_generated_sse_codec!();
         $crate::frb_generated_stream_sink!(default_stream_sink_codec = $default_stream_sink_codec);

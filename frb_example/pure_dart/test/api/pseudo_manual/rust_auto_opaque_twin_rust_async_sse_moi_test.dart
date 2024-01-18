@@ -288,6 +288,41 @@ Future<void> main({bool skipRustLibInit = false}) async {
             arg: obj));
   });
 
+  group('Explicit rust-auto-opaque types', () {
+    test('it can be created and used', () async {
+      final obj =
+          await rustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi(initial: 100);
+      await futurizeVoidTwinRustAsyncSseMoi(
+          rustAutoOpaqueExplicitArgTwinRustAsyncSseMoi(arg: obj, expect: 100));
+    });
+
+    test('it can be inside a struct', () async {
+      final obj =
+          await rustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi(initial: 100);
+      await futurizeVoidTwinRustAsyncSseMoi(
+          rustAutoOpaqueExplicitStructTwinRustAsyncSseMoi(
+              arg: StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi(
+                  autoOpaque: obj, normal: 100)));
+    });
+
+    group('it can be used with automatic (implicit) ones', () {
+      test('create by explicit, use by implicit', () async {
+        final obj =
+            await rustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi(initial: 100);
+        await futurizeVoidTwinRustAsyncSseMoi(
+            rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(arg: obj, expect: 100));
+      });
+
+      test('create by implicit, use by explicit', () async {
+        final obj =
+            await rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(initial: 100);
+        await futurizeVoidTwinRustAsyncSseMoi(
+            rustAutoOpaqueExplicitArgTwinRustAsyncSseMoi(
+                arg: obj, expect: 100));
+      });
+    });
+  });
+
   group('borrow + mut borrow', () {
     test('when same object', () async {
       final obj =

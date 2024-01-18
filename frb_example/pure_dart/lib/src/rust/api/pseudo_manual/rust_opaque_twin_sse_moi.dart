@@ -198,6 +198,7 @@ sealed class EnumOpaqueTwinSseMoi with _$EnumOpaqueTwinSseMoi {
   const factory EnumOpaqueTwinSseMoi.rwLock(
     RwLockHideDataTwinSseMoi field0,
   ) = EnumOpaqueTwinSseMoi_RwLock;
+  const factory EnumOpaqueTwinSseMoi.nothing() = EnumOpaqueTwinSseMoi_Nothing;
 }
 
 class EnumOpaqueTwinSseMoiArray5

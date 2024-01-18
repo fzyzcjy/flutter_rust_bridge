@@ -1948,6 +1948,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMo
             4 => crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::RwLock(
                 self_.get(1).cst_decode(),
             ),
+            5 => crate::api::pseudo_manual::rust_opaque_twin_moi::EnumOpaqueTwinMoi::Nothing,
             _ => unreachable!(),
         }
     }
@@ -1966,6 +1967,7 @@ impl CstDecode<crate::api::rust_opaque::EnumOpaqueTwinNormal>
             2 => crate::api::rust_opaque::EnumOpaqueTwinNormal::TraitObj(self_.get(1).cst_decode()),
             3 => crate::api::rust_opaque::EnumOpaqueTwinNormal::Mutex(self_.get(1).cst_decode()),
             4 => crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(self_.get(1).cst_decode()),
+            5 => crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing,
             _ => unreachable!(),
         }
     }
@@ -1984,6 +1986,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqu
 2 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj( self_.get(1).cst_decode()) },
 3 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex( self_.get(1).cst_decode()) },
 4 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock( self_.get(1).cst_decode()) },
+5 => crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing,
                     _ => unreachable!(),
                 }
     }
@@ -2005,6 +2008,7 @@ impl
 2 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::TraitObj( self_.get(1).cst_decode()) },
 3 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Mutex( self_.get(1).cst_decode()) },
 4 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::RwLock( self_.get(1).cst_decode()) },
+5 => crate::api::pseudo_manual::rust_opaque_twin_rust_async_moi::EnumOpaqueTwinRustAsyncMoi::Nothing,
                     _ => unreachable!(),
                 }
     }
@@ -2031,6 +2035,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinS
             4 => crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::RwLock(
                 self_.get(1).cst_decode(),
             ),
+            5 => crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing,
             _ => unreachable!(),
         }
     }
@@ -2049,6 +2054,7 @@ impl CstDecode<crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueT
 2 => { crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::TraitObj( self_.get(1).cst_decode()) },
 3 => { crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Mutex( self_.get(1).cst_decode()) },
 4 => { crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::RwLock( self_.get(1).cst_decode()) },
+5 => crate::api::pseudo_manual::rust_opaque_twin_sync_moi::EnumOpaqueTwinSyncMoi::Nothing,
                     _ => unreachable!(),
                 }
     }
@@ -6156,6 +6162,68 @@ impl CstDecode<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnum
         }
     }
 }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithExplicitAutoOpaqueFieldTwinMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithExplicitAutoOpaqueFieldTwinMoi {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_moi::StructWithExplicitAutoOpaqueFieldTwinMoi{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::rust_auto_opaque::StructWithExplicitAutoOpaqueFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    fn cst_decode(
+        self,
+    ) -> crate::api::rust_auto_opaque::StructWithExplicitAutoOpaqueFieldTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::rust_auto_opaque::StructWithExplicitAutoOpaqueFieldTwinNormal {
+            auto_opaque: self_.get(0).cst_decode(),
+            normal: self_.get(1).cst_decode(),
+        }
+    }
+}
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithExplicitAutoOpaqueFieldTwinRustAsync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithExplicitAutoOpaqueFieldTwinRustAsync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::StructWithExplicitAutoOpaqueFieldTwinRustAsync{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async_moi::StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithExplicitAutoOpaqueFieldTwinSync> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithExplicitAutoOpaqueFieldTwinSync {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_sync::StructWithExplicitAutoOpaqueFieldTwinSync{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
+            }
+        }
+impl CstDecode<crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithExplicitAutoOpaqueFieldTwinSyncMoi> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
+            // Codec=Cst (C-struct based), see doc to use other codecs
+            fn cst_decode(self) -> crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
+                let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
+                assert_eq!(self_.length(), 2, "Expected 2 elements, got {}", self_.length());
+                crate::api::pseudo_manual::rust_auto_opaque_twin_sync_moi::StructWithExplicitAutoOpaqueFieldTwinSyncMoi{auto_opaque:  self_.get(0).cst_decode(),normal:  self_.get(1).cst_decode()}
+            }
+        }
 impl CstDecode<crate::api::structure::StructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -23208,6 +23276,31 @@ pub fn wire_rust_auto_opaque_callable_return_twin_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_moi_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    initial: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_moi_impl(port_, initial)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_moi_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -23495,6 +23588,31 @@ pub fn wire_rust_auto_opaque_callable_return_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_rust_auto_opaque_callable_return_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    initial: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_rust_async_impl(port_, initial)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -23799,6 +23917,31 @@ pub fn wire_rust_auto_opaque_callable_return_twin_rust_async_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_rust_auto_opaque_callable_return_twin_rust_async_moi_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_rust_async_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    initial: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_rust_async_moi_impl(port_, initial)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_rust_async_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_rust_async_moi_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -24219,6 +24362,51 @@ pub fn wire_rust_auto_opaque_callable_return_twin_rust_async_sse(
     data_len_: i32,
 ) {
     wire_rust_auto_opaque_callable_return_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_impl(
         port_,
         ptr_,
         rust_vec_len_,
@@ -24752,6 +24940,51 @@ pub fn wire_rust_auto_opaque_callable_return_twin_rust_async_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi_impl(
+        port_,
+        ptr_,
+        rust_vec_len_,
+        data_len_,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -25237,6 +25470,36 @@ pub fn wire_rust_auto_opaque_callable_return_twin_sse(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_sse(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_sse_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -25707,6 +25970,36 @@ pub fn wire_rust_auto_opaque_callable_return_twin_sse_moi(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_sse_moi(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_sse_moi_impl(port_, ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse_moi(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -26063,6 +26356,28 @@ pub fn wire_rust_auto_opaque_callable_return_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_explicit_arg_twin_sync_impl(arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_sync(
+    initial: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_explicit_return_twin_sync_impl(initial)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_sync(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_explicit_struct_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
@@ -26312,6 +26627,28 @@ pub fn wire_rust_auto_opaque_callable_arg_twin_sync_moi(
 pub fn wire_rust_auto_opaque_callable_return_twin_sync_moi(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
     wire_rust_auto_opaque_callable_return_twin_sync_moi_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_sync_moi(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_explicit_arg_twin_sync_moi_impl(arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_sync_moi(
+    initial: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_explicit_return_twin_sync_moi_impl(initial)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_sync_moi(
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
+    wire_rust_auto_opaque_explicit_struct_twin_sync_moi_impl(arg)
 }
 
 #[wasm_bindgen]
@@ -26647,6 +26984,33 @@ pub fn wire_rust_auto_opaque_callable_return_twin_sync_sse(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_callable_return_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_explicit_arg_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_explicit_return_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_sync_sse(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_explicit_struct_twin_sync_sse_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -27055,6 +27419,33 @@ pub fn wire_rust_auto_opaque_callable_return_twin_sync_sse_moi(
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     wire_rust_auto_opaque_callable_return_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_sync_sse_moi(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_explicit_return_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moi_impl(ptr_, rust_vec_len_, data_len_)
 }
 
 #[wasm_bindgen]
@@ -29645,6 +30036,31 @@ pub fn wire_rust_auto_opaque_callable_return_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_rust_auto_opaque_callable_return_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_arg_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: i32,
+) {
+    wire_rust_auto_opaque_explicit_arg_twin_normal_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_return_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    initial: i32,
+) {
+    wire_rust_auto_opaque_explicit_return_twin_normal_impl(port_, initial)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_explicit_struct_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_explicit_struct_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]

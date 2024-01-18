@@ -142,6 +142,25 @@ Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoi(
                 hint: hint);
 
+Future<void> rustAutoOpaqueExplicitArgTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+        required int expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueExplicitArgTwinRustAsyncSseMoi(
+        arg: arg, expect: expect, hint: hint);
+
+Future<void> rustAutoOpaqueExplicitStructTwinRustAsyncSseMoi(
+        {required StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueExplicitStructTwinRustAsyncSseMoi(arg: arg, hint: hint);
+
+Future<NonCloneSimpleTwinRustAsyncSseMoi>
+    rustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi(
+            {required int initial, dynamic hint}) =>
+        RustLib.instance.api.rustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi(
+            initial: initial, hint: hint);
+
 Future<OpaqueOneTwinRustAsyncSseMoiOpaqueTwoTwinRustAsyncSseMoi>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseMoi({dynamic hint}) =>
         RustLib.instance.api
@@ -355,4 +374,25 @@ class OpaqueTwoTwinRustAsyncSseMoi extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OpaqueTwoTwinRustAsyncSseMoiPtr,
   );
+}
+
+class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {
+  final NonCloneSimpleTwinRustAsyncSseMoi autoOpaque;
+  final int normal;
+
+  const StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi({
+    required this.autoOpaque,
+    required this.normal,
+  });
+
+  @override
+  int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi &&
+          runtimeType == other.runtimeType &&
+          autoOpaque == other.autoOpaque &&
+          normal == other.normal;
 }
