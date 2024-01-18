@@ -59,7 +59,6 @@ fn wire_init_app_impl(
                     data_len_,
                 )
             };
-            let arena = flutter_rust_bridge::for_generated::Arena::default();
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
@@ -91,7 +90,6 @@ fn wire_minimal_adder_impl(
                     data_len_,
                 )
             };
-            let arena = flutter_rust_bridge::for_generated::Arena::default();
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_a = <i32>::sse_decode(&mut deserializer, &arena);
@@ -125,7 +123,6 @@ fn wire_my_func_impl(
                     data_len_,
                 )
             };
-            let arena = flutter_rust_bridge::for_generated::Arena::default();
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_arg = <Vec<MyOpaqueType>>::sse_decode(&mut deserializer, &arena);
