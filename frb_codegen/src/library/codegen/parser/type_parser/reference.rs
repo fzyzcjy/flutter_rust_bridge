@@ -13,9 +13,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             IrTypeOwnershipMode::Ref
         };
 
-        Ok(IrType::Ownership(IrTypeOwnership {
-            mode,
-            inner: Box::new(self.parse_type(&type_reference.elem)?),
-        }))
+        Ok(
+            self.parse_type_rust_auto_opaque(&IrType::Ownership(IrTypeOwnership {
+                mode,
+                inner: Box::new(self.parse_type(&type_reference.elem)?),
+            })),
+        )
     }
 }
