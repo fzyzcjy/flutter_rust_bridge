@@ -341,8 +341,11 @@ pub async fn rust_auto_opaque_explicit_return_twin_rust_async_moi(
 // ================ misc ===================
 
 // #1577 - this should generate valid Dart code without name collisions
+#[frb(opaque)]
 pub struct OpaqueOneTwinRustAsyncMoi(PathBuf);
+#[frb(opaque)]
 pub struct OpaqueTwoTwinRustAsyncMoi(PathBuf);
+
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 pub async fn rust_auto_opaque_return_opaque_one_and_two_twin_rust_async_moi(
 ) -> (OpaqueOneTwinRustAsyncMoi, OpaqueTwoTwinRustAsyncMoi) {
