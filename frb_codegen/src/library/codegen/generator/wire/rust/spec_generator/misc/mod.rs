@@ -230,15 +230,13 @@ fn generate_executor(ir_pack: &IrPack) -> String {
 }
 
 fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
-    let variants = (distinct_types.iter())
+    let interest_types = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let IrType::RustAutoOpaque(inner) = ty, inner.clone()))
-        .map(|ty| format!("{}({})", ty.safe_ident(), ty.rust_api_type()))
-        .join("");
-
+        .collect_vec();
     let code = format!(
         "
-        enum ArenaItem<'a> {{
-            {variants}
+        enum ArenaItem {{
+            // TODO
         }}
         "
     );
