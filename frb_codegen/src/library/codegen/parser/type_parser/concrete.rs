@@ -39,10 +39,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             //     primitive.clone(),
             // )),
 
-            ("Box", [inner]) => Boxed(IrTypeBoxed {
-                exist_in_real_api: true,
-                inner: Box::new(self.parse_type(inner)?),
-            }),
+            ("Box", [inner]) => {
+                let inner = self.parse_type(inner)?;
+                Boxed(IrTypeBoxed {
+                    exist_in_real_api: true,
+                    inner: Box::new(inner),
+                })
+            },
 
             ("Vec", [element]) => ir_list(self.parse_type(element)?, true),
 
