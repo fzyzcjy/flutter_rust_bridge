@@ -2,7 +2,7 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::ownership::{IrTypeOwnership, IrTypeOwnershipMode};
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -179,9 +179,9 @@ fn parse_receiver_ownership(
     }
 
     let mode = if receiver.mutability.is_some() {
-        IrTypeOwnershipMode::RefMut
+        OwnershipMode::RefMut
     } else {
-        IrTypeOwnershipMode::Ref
+        OwnershipMode::Ref
     };
 
     IrType::Ownership(IrTypeOwnership {

@@ -1,6 +1,5 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, OwnershipMode};
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::rust_opaque::{
@@ -19,7 +18,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     ) -> IrType {
         let (ownership_mode, inner) = match ty {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
-            _ => (IrTypeOwnershipMode::Owned, ty.clone()),
+            _ => (OwnershipMode::Owned, ty.clone()),
         };
 
         let info = self.get_or_insert_rust_auto_opaque_info(&inner, namespace, None);

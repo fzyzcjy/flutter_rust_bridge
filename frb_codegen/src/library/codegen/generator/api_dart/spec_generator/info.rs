@@ -140,16 +140,6 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for OwnershipApiDartGenerator<'a> {
-    // frb-coverage:ignore-start
-    fn dart_api_type(&self) -> String {
-        unreachable!()
-        // let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
-        // format!("{}_{}", self.ir.mode, inner.dart_api_type())
-    }
-    // frb-coverage:ignore-end
-}
-
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {

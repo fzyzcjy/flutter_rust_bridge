@@ -33,7 +33,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
         IrType::Optional(inner) => is_js_value(&inner.inner),
         IrType::Primitive(_) | IrType::PrimitiveList(_) => false,
         // frb-coverage:ignore-start
-        IrType::Dynamic(_) | IrType::Ownership(_) => unreachable!(),
+        IrType::Dynamic(_) => unreachable!(),
         // frb-coverage:ignore-end
     }
 }

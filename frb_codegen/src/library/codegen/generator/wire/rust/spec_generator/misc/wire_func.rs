@@ -11,7 +11,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::misc::consts::HANDLER_NAME;
@@ -83,8 +83,8 @@ fn generate_inner_func_args(
             let mut ans = format!("api_{}", field.name.rust_style());
             if let IrType::RustAutoOpaque(o) = &field.ty {
                 ans = match o.ownership_mode {
-                    IrTypeOwnershipMode::Ref => format!("&{ans}"),
-                    IrTypeOwnershipMode::RefMut => format!("&mut {ans}"),
+                    OwnershipMode::Ref => format!("&{ans}"),
+                    OwnershipMode::RefMut => format!("&mut {ans}"),
                     _ => ans,
                 };
             } else if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
@@ -130,7 +130,7 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
         .filter_map(|field| {
             if let IrType::RustAutoOpaque(o) = &field.ty {
                 let mode = o.ownership_mode.to_string().to_case(Case::Snake);
-                let mutability = if o.ownership_mode == IrTypeOwnershipMode::RefMut {
+                let mutability = if o.ownership_mode == OwnershipMode::RefMut {
                     "mut "
                 } else {
                     ""

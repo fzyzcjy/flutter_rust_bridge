@@ -6,7 +6,6 @@ mod dynamic;
 pub(crate) mod enumeration;
 mod general_list;
 mod optional;
-mod ownership;
 mod primitive;
 mod primitive_list;
 mod record;

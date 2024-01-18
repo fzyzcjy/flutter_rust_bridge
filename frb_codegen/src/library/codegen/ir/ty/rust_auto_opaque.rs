@@ -1,15 +1,25 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use serde::Serialize;
 
 crate::ir! {
 pub struct IrTypeRustAutoOpaque {
-    pub ownership_mode: IrTypeOwnershipMode,
+    pub ownership_mode: OwnershipMode,
     pub inner: IrTypeRustOpaque,
     /// Original type without any transformation
     pub raw: String,
 }
+}
+
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, strum_macros::Display)]
+pub enum OwnershipMode {
+    /// "T"
+    Owned,
+    /// "&T"
+    Ref,
+    /// "&mut T"
+    RefMut,
 }
 
 impl IrTypeTrait for IrTypeRustAutoOpaque {
@@ -36,7 +46,7 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
 
 impl IrTypeRustAutoOpaque {
     pub(crate) fn needs_move(&self) -> bool {
-        self.ownership_mode == IrTypeOwnershipMode::Owned
+        self.ownership_mode == OwnershipMode::Owned
     }
 
     pub(crate) fn raw_segments(&self) -> Vec<NameComponent> {
