@@ -2,7 +2,6 @@ use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
-use crate::codegen::generator::wire::rust::spec_generator::codec::sse::body::generate_sse_encode_or_decode_impl;
 
 impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
@@ -27,11 +26,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
             Lang::DartLang(_) => None,
             Lang::RustLang(_) => {
                 let arc = self.ir.inner.codec.arc_ty();
-                Some(generate_sse_encode_or_decode_impl(
-                    TODO,
-                    &format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"),
-                    EncodeOrDecode::Encode,
-                ))
+                Some(format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"))
             }
         }
     }
