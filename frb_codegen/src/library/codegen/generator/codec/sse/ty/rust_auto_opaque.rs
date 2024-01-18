@@ -1,10 +1,11 @@
-use crate::codegen::generator::codec::sse::ty::delegate::simple_delegate_encode;
+use crate::codegen::generator::codec::sse::ty::delegate::{
+    simple_delegate_decode, simple_delegate_encode,
+};
 use crate::codegen::generator::codec::sse::ty::rust_opaque::{
     generate_generalized_rust_opaque_decode, generate_generalized_rust_opaque_encode,
 };
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
-use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
 impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
@@ -41,7 +42,11 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
             )),
             Lang::RustLang(_) => {
                 if self.ir.ownership_mode == OwnershipMode::Owned {
-                    Some(lang.throw_unimplemented(""))
+                    Some(simple_delegate_decode(
+                        lang,
+                        &RustOpaque(self.ir.inner.to_owned()),
+                        &format!("TODO_wrapper_expr"),
+                    ))
                 } else {
                     None
                 }
