@@ -74,8 +74,8 @@ enum EnumSimpleTwinRustAsyncSse {
 }
 
 enum EnumWithDiscriminantTwinRustAsyncSse {
-  a,
-  b,
+  oneHundred,
+  fifty,
 }
 
 @freezed

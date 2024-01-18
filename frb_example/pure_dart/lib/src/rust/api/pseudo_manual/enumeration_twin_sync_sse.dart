@@ -65,8 +65,8 @@ enum EnumSimpleTwinSyncSse {
 }
 
 enum EnumWithDiscriminantTwinSyncSse {
-  a,
-  b,
+  oneHundred,
+  fifty,
 }
 
 @freezed

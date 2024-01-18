@@ -65,8 +65,8 @@ enum EnumSimpleTwinNormal {
 }
 
 enum EnumWithDiscriminantTwinNormal {
-  a,
-  b,
+  oneHundred,
+  fifty,
 }
 
 @freezed

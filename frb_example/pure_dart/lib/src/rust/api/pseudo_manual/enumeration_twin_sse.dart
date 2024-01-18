@@ -63,8 +63,8 @@ enum EnumSimpleTwinSse {
 }
 
 enum EnumWithDiscriminantTwinSse {
-  a,
-  b,
+  oneHundred,
+  fifty,
 }
 
 @freezed

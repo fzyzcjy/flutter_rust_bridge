@@ -70,8 +70,8 @@ enum EnumSimpleTwinRustAsync {
 }
 
 enum EnumWithDiscriminantTwinRustAsync {
-  a,
-  b,
+  oneHundred,
+  fifty,
 }
 
 @freezed
