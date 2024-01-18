@@ -120,19 +120,14 @@ fn wire_minimal_adder_impl(
                     data_len_,
                 )
             };
-
-            // let arena = Arena::default();
-            // let mut deserializer =
-            //     flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            // let api_a = <i32>::sse_decode(&arena, &mut deserializer);
-            // let api_b = <i32>::sse_decode(&arena, &mut deserializer);
-            // deserializer.end();
-            let api_a = 100;
-            let api_b = 100;
-
+            let arena = Arena::default();
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_a = <i32>::sse_decode(&arena, &mut deserializer);
+            let api_b = <i32>::sse_decode(&arena, &mut deserializer);
+            deserializer.end();
             move |context| {
-                // let what = arena; // trigger move?
-
+                let what = arena; // trigger move?
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
                 })())
