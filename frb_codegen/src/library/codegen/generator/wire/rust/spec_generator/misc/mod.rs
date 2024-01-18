@@ -231,7 +231,7 @@ fn generate_executor(ir_pack: &IrPack) -> String {
 }
 
 fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
-    let variants = (distinct_types.iter())
+    let raw_variants = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let IrType::RustAutoOpaque(inner) = ty, inner.clone()))
         .flat_map(|ty| {
             let guard_mode = match ty.ownership_mode {
@@ -253,13 +253,36 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
                 ),
             ]
         })
+        .collect_vec();
+
+    let variant_definitions = raw_variants
+        .iter()
         .map(|(lhs, rhs)| format!("{lhs}({rhs}),"))
+        .join("");
+
+    let functions = raw_variants
+        .iter()
+        .map(|(lhs, rhs)| {
+            format!(
+                "fn into_{lhs}(self) -> {rhs} {{
+                    if let Self::{lhs}(inner) = self {{
+                        inner
+                    }} else {{
+                        panic!()
+                    }}
+                }}"
+            )
+        })
         .join("");
 
     let code = format!(
         "
         enum ArenaItem<'a> {{
-            {variants}
+            {variant_definitions}
+        }}
+
+        impl<'a> ArenaItem<'a> {{
+            {functions}
         }}
         "
     );
