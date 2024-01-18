@@ -129,16 +129,20 @@ fn generate_code_inner_decode(func: &IrFunc) -> String {
         .iter()
         .filter_map(|field| {
             if let IrType::RustAutoOpaque(o) = &field.ty {
-                let mode = o.ownership_mode.to_string().to_case(Case::Snake);
-                let mutability = if o.ownership_mode == OwnershipMode::RefMut {
-                    "mut "
+                if o.ownership_mode != OwnershipMode::Owned {
+                    let mode = o.ownership_mode.to_string().to_case(Case::Snake);
+                    let mutability = if o.ownership_mode == OwnershipMode::RefMut {
+                        "mut "
+                    } else {
+                        ""
+                    };
+                    Some(format!(
+                        "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}();\n",
+                        name = field.name.rust_style()
+                    ))
                 } else {
-                    ""
-                };
-                Some(format!(
-                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}();\n",
-                    name = field.name.rust_style()
-                ))
+                    None
+                }
             } else {
                 None
             }
