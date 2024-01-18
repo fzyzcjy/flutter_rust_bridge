@@ -37,6 +37,17 @@ const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.0.0-dev.20";
 
 flutter_rust_bridge::frb_generated_default_handler!();
 
+// Section: arena
+
+enum ArenaItem<'a> {
+    Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+        MyOpaqueType,
+    ),
+    Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+        &'a MyOpaqueType,
+    ),
+}
+
 // Section: wire_funcs
 
 fn wire_init_app_impl(
