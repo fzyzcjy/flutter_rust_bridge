@@ -18,16 +18,18 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                     &format!("{needs_move}"),
                 ))
             }
-            Lang::RustLang(_) => Some(if self.ir.ownership_mode == OwnershipMode::Owned {
-                let arc = self.ir.inner.codec.arc_ty();
-                simple_delegate_encode(
+            Lang::RustLang(_) => {
+                if self.ir.ownership_mode == OwnershipMode::Owned {
+                    let arc = self.ir.inner.codec.arc_ty();
+                    Some(simple_delegate_encode(
                         lang,
                         &RustOpaque(self.ir.inner.to_owned()),
                         &format!("flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, {arc}<_>>(self)"),
-                    )
-            } else {
-                lang.throw_unimplemented("")
-            }),
+                    ))
+                } else {
+                    None
+                }
+            }
         }
     }
 
