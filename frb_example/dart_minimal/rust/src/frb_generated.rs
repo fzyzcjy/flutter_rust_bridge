@@ -44,10 +44,7 @@ enum ArenaItem<'a> {
         RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
     ),
     RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
-        flutter_rust_bridge::rust_async::RwLockReadGuard<
-            'a,
-            RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
-        >,
+        flutter_rust_bridge::rust_async::RwLockReadGuard<'a, MyOpaqueType>,
     ),
 }
 
@@ -62,14 +59,8 @@ impl<'a> Arena<'a> {
     }
     fn alloc_RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
         &'a self,
-        value: flutter_rust_bridge::rust_async::RwLockReadGuard<
-            'a,
-            RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
-        >,
-    ) -> &'a mut flutter_rust_bridge::rust_async::RwLockReadGuard<
-        'a,
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
-    > {
+        value: flutter_rust_bridge::rust_async::RwLockReadGuard<'a, MyOpaqueType>,
+    ) -> &'a mut flutter_rust_bridge::rust_async::RwLockReadGuard<'a, MyOpaqueType> {
         let output = self.0.alloc(ArenaItem::RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(value));
         if let ArenaItem::RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(inner) = output { inner } else { panic!() }
     }
