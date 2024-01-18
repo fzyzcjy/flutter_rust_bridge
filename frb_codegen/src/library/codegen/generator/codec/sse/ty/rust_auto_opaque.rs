@@ -20,13 +20,6 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
             )
         })
     }
-
-    fn generate_extra(&self, lang: &Lang) -> Option<String> {
-        match lang {
-            Lang::DartLang(_) => None,
-            Lang::RustLang(_) => Some(TODO),
-        }
-    }
 }
 
 impl<'a> RustAutoOpaqueCodecSseTy<'a> {
