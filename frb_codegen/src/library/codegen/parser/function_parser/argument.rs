@@ -71,11 +71,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let name = "that".to_owned();
 
-        partial_info_for_normal_type_raw(
-            self.type_parser.parse_type(&ty_chosen, context)?,
-            &receiver.attrs,
-            name,
-        )
+        partial_info_for_normal_type_raw(ty_chosen, &receiver.attrs, name)
     }
 
     fn parse_fn_arg_receiver_attempt(
