@@ -7,6 +7,7 @@ use crate::codegen::parser::type_parser::rust_opaque::{
 };
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use quote::ToTokens;
 use syn::Type;
 use IrType::RustAutoOpaque;
 
@@ -28,14 +29,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => (OwnershipMode::Owned, ty.clone()),
         };
 
-        let info = self.get_or_insert_rust_auto_opaque_info(&inner, namespace, None);
+        let inner_str = inner.to_token_stream().to_string();
+
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, None);
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
             raw: TODO,
             inner: IrTypeRustOpaque {
                 namespace: info.namespace,
-                inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner),
+                inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
                 codec: info.codec,
                 brief_name: true,
             },
@@ -50,12 +53,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     pub(super) fn get_or_insert_rust_auto_opaque_info(
         &mut self,
-        inner: &IrType,
+        inner: &str,
         namespace: Option<Namespace>,
         codec: Option<RustOpaqueCodecMode>,
     ) -> RustOpaqueParserTypeInfo {
         self.inner.rust_auto_opaque_parser_info.get_or_insert(
-            inner,
+            inner.to_owned(),
             RustOpaqueParserTypeInfo::new(
                 namespace.unwrap_or(self.context.initiated_namespace.clone()),
                 codec

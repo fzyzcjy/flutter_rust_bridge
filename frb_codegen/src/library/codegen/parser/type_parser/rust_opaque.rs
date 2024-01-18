@@ -39,7 +39,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_rust_opaque(&mut self, ty: &IrType, codec: Option<RustOpaqueCodecMode>) -> IrType {
         let info = self.inner.rust_opaque_parser_info.get_or_insert(
-            ty,
+            ty.safe_ident(),
             RustOpaqueParserTypeInfo::new(
                 self.context.initiated_namespace.clone(),
                 codec
@@ -60,11 +60,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         inner: &IrType,
         codec: Option<RustOpaqueCodecMode>,
     ) -> IrType {
-        let info = self.get_or_insert_rust_auto_opaque_info(inner, None, codec);
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner.safe_ident(), None, codec);
 
         RustOpaque(IrTypeRustOpaque {
             namespace: info.namespace,
-            inner: Box::new(self.create_rust_opaque_type_for_rust_auto_opaque(inner)),
+            inner: Box::new(self.create_rust_opaque_type_for_rust_auto_opaque(&inner.safe_ident())),
             codec: info.codec,
             brief_name: true,
         })
@@ -91,9 +91,9 @@ pub(super) struct GeneralizedRustOpaqueParserInfo(HashMap<String, RustOpaquePars
 impl GeneralizedRustOpaqueParserInfo {
     pub fn get_or_insert(
         &mut self,
-        ty: &IrType,
+        type_safe_ident: String,
         insert_value: RustOpaqueParserTypeInfo,
     ) -> RustOpaqueParserTypeInfo {
-        (self.0.entry(ty.safe_ident()).or_insert(insert_value)).clone()
+        (self.0.entry(type_safe_ident).or_insert(insert_value)).clone()
     }
 }
