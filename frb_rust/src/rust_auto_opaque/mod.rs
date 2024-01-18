@@ -15,12 +15,14 @@ pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<RwLock<T>>>;
 macro_rules! frb_generated_rust_auto_opaque_def {
     (default_rust_auto_opaque = $default_rust_auto_opaque:ident) => {
         /// Please refer to `RustAutoOpaque` for doc.
-        pub type RustAutoOpaqueMoi<T> =
-            $crate::for_generated::RustAutoOpaqueBase<T, MoiArc<RwLock<T>>>;
+        pub type RustAutoOpaqueMoi<T> = $crate::for_generated::RustAutoOpaqueBase<
+            T,
+            MoiArc<$crate::for_generated::rust_async::RwLock<T>>,
+        >;
 
         /// Usually this is unneeded, and just write down arbitrary types.
         /// However, when you need arbitrary types at places that are not supported yet,
         /// use `RustOpaqueOpaque<YourArbitraryType>`.
-        pub type RustAutoOpaque<T> = RustOpaque<$crate::for_generated::rust_async::RwLock<T>>;
+        pub type RustAutoOpaque<T> = $default_rust_auto_opaque<T>;
     };
 }
