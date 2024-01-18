@@ -41,20 +41,14 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                 self.ir.inner.codec,
                 self.context,
             )),
-            Lang::RustLang(_) => {
-                if self.ir.ownership_mode == OwnershipMode::Owned {
-                    Some(simple_delegate_decode(
-                        lang,
-                        &RustOpaque(self.ir.inner.to_owned()),
-                        &format!(
-                            "inner.rust_auto_opaque_decode_{}()",
-                            self.ir.ownership_mode.to_string().to_case(Case::Snake)
-                        ),
-                    ))
-                } else {
-                    None
-                }
-            }
+            Lang::RustLang(_) => Some(simple_delegate_decode(
+                lang,
+                &RustOpaque(self.ir.inner.to_owned()),
+                &format!(
+                    "inner.rust_auto_opaque_decode_{}()",
+                    self.ir.ownership_mode.to_string().to_case(Case::Snake)
+                ),
+            )),
         }
     }
 }
