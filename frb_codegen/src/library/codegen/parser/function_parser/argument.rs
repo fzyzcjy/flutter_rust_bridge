@@ -56,21 +56,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty_name = &method.enum_or_struct_name.name;
-
-        let ty_direct = self.parse_fn_arg_receiver_attempt(ty_name, context)?;
-        let ty_chosen = if matches!(ty_direct, IrType::RustAutoOpaque(_)) {
-            self.parse_fn_arg_receiver_attempt(
-                &generate_ref_type_considering_reference(&ty_name, receiver),
-                context,
-            )?
-        } else {
-            ty_direct
-        };
+        let ty = self.type_parser.transform_if_rust_auto_opaque(
+            &self.parse_fn_arg_receiver_attempt(&method.enum_or_struct_name.name, context)?,
+            |raw| generate_ref_type_considering_reference(raw, receiver),
+            context,
+        )?;
 
         let name = "that".to_owned();
 
-        partial_info_for_normal_type_raw(ty_chosen, &receiver.attrs, name)
+        partial_info_for_normal_type_raw(ty, &receiver.attrs, name)
     }
 
     fn parse_fn_arg_receiver_attempt(

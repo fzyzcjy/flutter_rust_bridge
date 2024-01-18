@@ -5,7 +5,7 @@ use crate::codegen::ir::ty::rust_auto_opaque::{
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::codegen::parser::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
 };
@@ -83,6 +83,21 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     .unwrap_or(self.context.default_rust_opaque_codec),
             ),
         )
+    }
+
+    pub(crate) fn transform_if_rust_auto_opaque(
+        &mut self,
+        ty_raw: &IrType,
+        transform_if_rust_auto_opaque: impl FnOnce(&str) -> String,
+    ) -> Result<IrType> {
+        if let RustAutoOpaque(ty_raw) = ty_raw {
+            self.parse_type_rust_auto_opaque(
+                ty_raw.self_namespace(),
+                syn::parse_str(&transform_if_rust_auto_opaque(&ty_raw.raw.string))?,
+            )
+        } else {
+            Ok(ty_raw.to_owned())
+        }
     }
 }
 
