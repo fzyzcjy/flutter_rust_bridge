@@ -17,6 +17,7 @@ macro_rules! frb_generated_boilerplate {
         $crate::frb_generated_cst_codec!();
         $crate::frb_generated_sse_codec!();
         $crate::frb_generated_stream_sink!(default_stream_sink_codec = $default_stream_sink_codec);
+        $crate::frb_generated_arena!();
     };
 }
 

@@ -12,6 +12,14 @@ impl<'a, T: 'a> ArenaBase<T> {
     }
 }
 
+#[doc(hidden)]
+#[macro_export]
+macro_rules! frb_generated_arena {
+    () => {
+        type Arena = $crate::for_generated::ArenaBase<ArenaItem>;
+    };
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
