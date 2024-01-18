@@ -50965,6 +50965,1157 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn Fn(String) -> String + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn Fn(String) -> String + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn Fn(String) -> String + Send + Sync>>
+    for Box<dyn Fn(String) -> String + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn Fn(String) -> String + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinMoi> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Box<dyn HelloTraitTwinMoi> {}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinMoi>> for Box<dyn HelloTraitTwinMoi> {
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinMoi> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinNormal> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Box<dyn HelloTraitTwinNormal> {}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinNormal>>
+    for Box<dyn HelloTraitTwinNormal>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinNormal> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinRustAsync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn HelloTraitTwinRustAsync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinRustAsync>>
+    for Box<dyn HelloTraitTwinRustAsync>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinRustAsync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinRustAsyncMoi> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn HelloTraitTwinRustAsyncMoi>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinRustAsyncMoi>>
+    for Box<dyn HelloTraitTwinRustAsyncMoi>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinRustAsyncMoi> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinRustAsyncSse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn HelloTraitTwinRustAsyncSse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinRustAsyncSse>>
+    for Box<dyn HelloTraitTwinRustAsyncSse>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinRustAsyncSse> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinRustAsyncSseMoi> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn HelloTraitTwinRustAsyncSseMoi>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinRustAsyncSseMoi>>
+    for Box<dyn HelloTraitTwinRustAsyncSseMoi>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinRustAsyncSseMoi> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinSse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Box<dyn HelloTraitTwinSse> {}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinSse>> for Box<dyn HelloTraitTwinSse> {
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinSse> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinSseMoi> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Box<dyn HelloTraitTwinSseMoi> {}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinSseMoi>>
+    for Box<dyn HelloTraitTwinSseMoi>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinSseMoi> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinSync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for Box<dyn HelloTraitTwinSync> {}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinSync>>
+    for Box<dyn HelloTraitTwinSync>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinSync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinSyncMoi> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn HelloTraitTwinSyncMoi>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinSyncMoi>>
+    for Box<dyn HelloTraitTwinSyncMoi>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinSyncMoi> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinSyncSse> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn HelloTraitTwinSyncSse>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinSyncSse>>
+    for Box<dyn HelloTraitTwinSyncSse>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinSyncSse> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn HelloTraitTwinSyncSseMoi> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn HelloTraitTwinSyncSseMoi>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn HelloTraitTwinSyncSseMoi>>
+    for Box<dyn HelloTraitTwinSyncSseMoi>
+{
+    fn into_into_dart(self) -> Box<dyn HelloTraitTwinSyncSseMoi> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinMoi + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinMoi + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinMoi + Send + Sync>>
+    for Box<dyn MyTraitTwinMoi + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinMoi + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinNormal + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinNormal + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinNormal + Send + Sync>>
+    for Box<dyn MyTraitTwinNormal + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinNormal + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync>>
+    for Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinRustAsyncMoi + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinRustAsync + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinRustAsync + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinRustAsync + Send + Sync>>
+    for Box<dyn MyTraitTwinRustAsync + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinRustAsync + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinRustAsyncSseMoi + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinRustAsyncSseMoi + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinRustAsyncSseMoi + Send + Sync>>
+    for Box<dyn MyTraitTwinRustAsyncSseMoi + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinRustAsyncSseMoi + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinRustAsyncSse + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>>
+    for Box<dyn MyTraitTwinRustAsyncSse + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinRustAsyncSse + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinSseMoi + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinSseMoi + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinSseMoi + Send + Sync>>
+    for Box<dyn MyTraitTwinSseMoi + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinSseMoi + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinSse + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinSse + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinSse + Send + Sync>>
+    for Box<dyn MyTraitTwinSse + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinSse + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinSyncMoi + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinSyncMoi + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinSyncMoi + Send + Sync>>
+    for Box<dyn MyTraitTwinSyncMoi + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinSyncMoi + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinSync + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinSync + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinSync + Send + Sync>>
+    for Box<dyn MyTraitTwinSync + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinSync + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinSyncSseMoi + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinSyncSseMoi + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinSyncSseMoi + Send + Sync>>
+    for Box<dyn MyTraitTwinSyncSseMoi + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinSyncSseMoi + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for Box<dyn MyTraitTwinSyncSse + Send + Sync> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for Box<dyn MyTraitTwinSyncSse + Send + Sync>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<Box<dyn MyTraitTwinSyncSse + Send + Sync>>
+    for Box<dyn MyTraitTwinSyncSse + Send + Sync>
+{
+    fn into_into_dart(self) -> Box<dyn MyTraitTwinSyncSse + Send + Sync> {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinMoi {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinMoi> for NonCloneSimpleTwinMoi {
+    fn into_into_dart(self) -> NonCloneSimpleTwinMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinNormal {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinNormal> for NonCloneSimpleTwinNormal {
+    fn into_into_dart(self) -> NonCloneSimpleTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinRustAsync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinRustAsync {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinRustAsync>
+    for NonCloneSimpleTwinRustAsync
+{
+    fn into_into_dart(self) -> NonCloneSimpleTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinRustAsyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for NonCloneSimpleTwinRustAsyncMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinRustAsyncMoi>
+    for NonCloneSimpleTwinRustAsyncMoi
+{
+    fn into_into_dart(self) -> NonCloneSimpleTwinRustAsyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinRustAsyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for NonCloneSimpleTwinRustAsyncSse
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinRustAsyncSse>
+    for NonCloneSimpleTwinRustAsyncSse
+{
+    fn into_into_dart(self) -> NonCloneSimpleTwinRustAsyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinRustAsyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for NonCloneSimpleTwinRustAsyncSseMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinRustAsyncSseMoi>
+    for NonCloneSimpleTwinRustAsyncSseMoi
+{
+    fn into_into_dart(self) -> NonCloneSimpleTwinRustAsyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinSse {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinSse> for NonCloneSimpleTwinSse {
+    fn into_into_dart(self) -> NonCloneSimpleTwinSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinSseMoi> for NonCloneSimpleTwinSseMoi {
+    fn into_into_dart(self) -> NonCloneSimpleTwinSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinSync {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinSync> for NonCloneSimpleTwinSync {
+    fn into_into_dart(self) -> NonCloneSimpleTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinSyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinSyncMoi {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinSyncMoi> for NonCloneSimpleTwinSyncMoi {
+    fn into_into_dart(self) -> NonCloneSimpleTwinSyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinSyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinSyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinSyncSse> for NonCloneSimpleTwinSyncSse {
+    fn into_into_dart(self) -> NonCloneSimpleTwinSyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for NonCloneSimpleTwinSyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for NonCloneSimpleTwinSyncSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<NonCloneSimpleTwinSyncSseMoi>
+    for NonCloneSimpleTwinSyncSseMoi
+{
+    fn into_into_dart(self) -> NonCloneSimpleTwinSyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinMoi> for OpaqueOneTwinMoi {
+    fn into_into_dart(self) -> OpaqueOneTwinMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinNormal {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinNormal> for OpaqueOneTwinNormal {
+    fn into_into_dart(self) -> OpaqueOneTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinRustAsync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinRustAsync {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinRustAsync> for OpaqueOneTwinRustAsync {
+    fn into_into_dart(self) -> OpaqueOneTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinRustAsyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinRustAsyncMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinRustAsyncMoi> for OpaqueOneTwinRustAsyncMoi {
+    fn into_into_dart(self) -> OpaqueOneTwinRustAsyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinRustAsyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinRustAsyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinRustAsyncSse> for OpaqueOneTwinRustAsyncSse {
+    fn into_into_dart(self) -> OpaqueOneTwinRustAsyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinRustAsyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinRustAsyncSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinRustAsyncSseMoi>
+    for OpaqueOneTwinRustAsyncSseMoi
+{
+    fn into_into_dart(self) -> OpaqueOneTwinRustAsyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinSse {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinSse> for OpaqueOneTwinSse {
+    fn into_into_dart(self) -> OpaqueOneTwinSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinSseMoi> for OpaqueOneTwinSseMoi {
+    fn into_into_dart(self) -> OpaqueOneTwinSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinSync {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinSync> for OpaqueOneTwinSync {
+    fn into_into_dart(self) -> OpaqueOneTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinSyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinSyncMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinSyncMoi> for OpaqueOneTwinSyncMoi {
+    fn into_into_dart(self) -> OpaqueOneTwinSyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinSyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinSyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinSyncSse> for OpaqueOneTwinSyncSse {
+    fn into_into_dart(self) -> OpaqueOneTwinSyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueOneTwinSyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueOneTwinSyncSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueOneTwinSyncSseMoi> for OpaqueOneTwinSyncSseMoi {
+    fn into_into_dart(self) -> OpaqueOneTwinSyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinMoi> for OpaqueTwoTwinMoi {
+    fn into_into_dart(self) -> OpaqueTwoTwinMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinNormal {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinNormal> for OpaqueTwoTwinNormal {
+    fn into_into_dart(self) -> OpaqueTwoTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinRustAsync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinRustAsync {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinRustAsync> for OpaqueTwoTwinRustAsync {
+    fn into_into_dart(self) -> OpaqueTwoTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinRustAsyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinRustAsyncMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinRustAsyncMoi> for OpaqueTwoTwinRustAsyncMoi {
+    fn into_into_dart(self) -> OpaqueTwoTwinRustAsyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinRustAsyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinRustAsyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinRustAsyncSse> for OpaqueTwoTwinRustAsyncSse {
+    fn into_into_dart(self) -> OpaqueTwoTwinRustAsyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinRustAsyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinRustAsyncSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinRustAsyncSseMoi>
+    for OpaqueTwoTwinRustAsyncSseMoi
+{
+    fn into_into_dart(self) -> OpaqueTwoTwinRustAsyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinSse {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinSse> for OpaqueTwoTwinSse {
+    fn into_into_dart(self) -> OpaqueTwoTwinSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinSseMoi> for OpaqueTwoTwinSseMoi {
+    fn into_into_dart(self) -> OpaqueTwoTwinSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinSync {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinSync> for OpaqueTwoTwinSync {
+    fn into_into_dart(self) -> OpaqueTwoTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinSyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinSyncMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinSyncMoi> for OpaqueTwoTwinSyncMoi {
+    fn into_into_dart(self) -> OpaqueTwoTwinSyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinSyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinSyncSse {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinSyncSse> for OpaqueTwoTwinSyncSse {
+    fn into_into_dart(self) -> OpaqueTwoTwinSyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for OpaqueTwoTwinSyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for OpaqueTwoTwinSyncSseMoi {}
+impl flutter_rust_bridge::IntoIntoDart<OpaqueTwoTwinSyncSseMoi> for OpaqueTwoTwinSyncSseMoi {
+    fn into_into_dart(self) -> OpaqueTwoTwinSyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructInMiscNoTwinExampleA {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for StructInMiscNoTwinExampleA {}
+impl flutter_rust_bridge::IntoIntoDart<StructInMiscNoTwinExampleA> for StructInMiscNoTwinExampleA {
+    fn into_into_dart(self) -> StructInMiscNoTwinExampleA {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinMoi>
+    for StructWithGoodAndOpaqueFieldTwinMoi
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinNormal>
+    for StructWithGoodAndOpaqueFieldTwinNormal
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinRustAsync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinRustAsync
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinRustAsync>
+    for StructWithGoodAndOpaqueFieldTwinRustAsync
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinRustAsync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinRustAsyncMoi>
+    for StructWithGoodAndOpaqueFieldTwinRustAsyncMoi
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinRustAsyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinRustAsyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinRustAsyncSse>
+    for StructWithGoodAndOpaqueFieldTwinRustAsyncSse
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinRustAsyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi>
+    for StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinSse
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinSse>
+    for StructWithGoodAndOpaqueFieldTwinSse
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinSseMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinSseMoi>
+    for StructWithGoodAndOpaqueFieldTwinSseMoi
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinSync
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinSync>
+    for StructWithGoodAndOpaqueFieldTwinSync
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinSync {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinSyncMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinSyncMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinSyncMoi>
+    for StructWithGoodAndOpaqueFieldTwinSyncMoi
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinSyncMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinSyncSse {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, StdArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinSyncSse
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinSyncSse>
+    for StructWithGoodAndOpaqueFieldTwinSyncSse
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinSyncSse {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self)
+            .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<StructWithGoodAndOpaqueFieldTwinSyncSseMoi>
+    for StructWithGoodAndOpaqueFieldTwinSyncSseMoi
+{
+    fn into_into_dart(self) -> StructWithGoodAndOpaqueFieldTwinSyncSseMoi {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::misc_example::ATwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.a.into_into_dart().into_dart()].into_dart()
