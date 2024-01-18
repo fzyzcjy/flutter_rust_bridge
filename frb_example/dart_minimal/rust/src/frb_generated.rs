@@ -51,30 +51,6 @@ enum ArenaItem<'a> {
     ),
 }
 
-impl<'a> ArenaItem<'a> {
-    fn into_RustAutoOpaque_Opaque_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
-        self,
-    ) -> RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>> {
-        if let Self::RustAutoOpaque_Opaque_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(inner) = self {
-                        inner
-                    } else {
-                        panic!()
-                    }
-    }
-    fn into_RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
-        self,
-    ) -> flutter_rust_bridge::rust_async::RwLockReadGuard<
-        'a,
-        RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>,
-    > {
-        if let Self::RustAutoOpaque_Lock_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(inner) = self {
-                        inner
-                    } else {
-                        panic!()
-                    }
-    }
-}
-
 // Section: wire_funcs
 
 fn wire_init_app_impl(
