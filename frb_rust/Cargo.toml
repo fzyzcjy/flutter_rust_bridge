@@ -19,7 +19,6 @@ flutter_rust_bridge_macros = { workspace = true }
 futures = { version = "0.3.29", optional = true }
 lazy_static = { workspace = true }
 log = { version = "0.4", optional = true }
-typed-arena = { version = "2.0.2", optional = true }
 uuid = { workspace = true, optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
