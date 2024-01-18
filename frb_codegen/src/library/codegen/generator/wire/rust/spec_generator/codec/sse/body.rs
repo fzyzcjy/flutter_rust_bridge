@@ -38,9 +38,30 @@ fn generate_encode_or_decode_for_type(
 ) -> Acc<WireRustOutputCode> {
     let rust_api_type = ty.rust_api_type();
     let body = create_codec_sse_ty(ty, context).generate(&Lang::RustLang(RustLang), mode);
+    let codec_comments = generate_codec_comments(CodecMode::Sse);
 
     if let Some(body) = body {
-        Acc::new_common(generate_sse_encode_or_decode_impl(&rust_api_type, body.trim()).into())
+        let body = body.trim();
+        let code  = match mode {
+            EncodeOrDecode::Encode => format!(
+                "
+                impl SseEncode for {rust_api_type} {{
+                    {codec_comments}
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {{{body}}}
+                }}
+                "
+            ),
+            EncodeOrDecode::Decode => format!(
+                "
+                impl SseDecode for {rust_api_type} {{
+                    {codec_comments}
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{{body}}}
+                }}
+                "
+            ),
+        };
+
+        Acc::new_common(code.into())
     } else {
         Acc::default()
     }
@@ -51,30 +72,4 @@ fn create_codec_sse_ty(ty: &IrType, context: WireRustCodecSseGeneratorContext) -
         ty.clone(),
         CodecSseTyContext::new(context.ir_pack, context.api_dart_config),
     )
-}
-
-pub(crate) fn generate_sse_encode_or_decode_impl(
-    rust_api_type: &str,
-    body: &str,
-    mode: EncodeOrDecode,
-) -> String {
-    let codec_comments = generate_codec_comments(CodecMode::Sse);
-    match mode {
-        EncodeOrDecode::Encode => format!(
-            "
-            impl SseEncode for {rust_api_type} {{
-                {codec_comments}
-                fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {{{body}}}
-            }}
-            "
-        ),
-        EncodeOrDecode::Decode => format!(
-            "
-            impl SseDecode for {rust_api_type} {{
-                {codec_comments}
-                fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{{body}}}
-            }}
-            "
-        ),
-    }
 }
