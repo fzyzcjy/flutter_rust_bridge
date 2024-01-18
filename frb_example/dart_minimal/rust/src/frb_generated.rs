@@ -191,7 +191,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 
 // Section: dart2rust
 
-impl SseDecode for MyOpaqueType {
+impl<'a> SseDecode<'a> for MyOpaqueType {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
@@ -204,7 +204,7 @@ impl SseDecode for MyOpaqueType {
     }
 }
 
-impl SseDecode for &MyOpaqueType {
+impl<'a> SseDecode<'a> for &MyOpaqueType {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
@@ -217,7 +217,7 @@ impl SseDecode for &MyOpaqueType {
     }
 }
 
-impl SseDecode
+impl<'a> SseDecode<'a>
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -230,7 +230,7 @@ impl SseDecode
     }
 }
 
-impl SseDecode for i32 {
+impl<'a> SseDecode<'a> for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
@@ -240,7 +240,7 @@ impl SseDecode for i32 {
     }
 }
 
-impl SseDecode for Vec<MyOpaqueType> {
+impl<'a> SseDecode<'a> for Vec<MyOpaqueType> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
@@ -255,7 +255,7 @@ impl SseDecode for Vec<MyOpaqueType> {
     }
 }
 
-impl SseDecode for Vec<&MyOpaqueType> {
+impl<'a> SseDecode<'a> for Vec<&MyOpaqueType> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
@@ -270,7 +270,7 @@ impl SseDecode for Vec<&MyOpaqueType> {
     }
 }
 
-impl SseDecode for () {
+impl<'a> SseDecode<'a> for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
@@ -279,7 +279,7 @@ impl SseDecode for () {
     }
 }
 
-impl SseDecode for usize {
+impl<'a> SseDecode<'a> for usize {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
@@ -289,7 +289,7 @@ impl SseDecode for usize {
     }
 }
 
-impl SseDecode for bool {
+impl<'a> SseDecode<'a> for bool {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &Arena,
