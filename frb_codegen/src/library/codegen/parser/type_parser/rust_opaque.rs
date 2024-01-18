@@ -51,7 +51,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         RustOpaque(IrTypeRustOpaque {
             namespace: info.namespace,
-            inner: TODO,
+            inner: Box::new(self.create_rust_opaque_type_for_rust_auto_opaque(&inner)),
             codec: info.codec,
             brief_name: true,
         })
