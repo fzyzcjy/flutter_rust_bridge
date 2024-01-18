@@ -127,7 +127,6 @@ fn wire_minimal_adder_impl(
             let api_b = <i32>::sse_decode(&arena, &mut deserializer);
             deserializer.end();
             move |context| {
-                let what = arena; // trigger move?
                 transform_result_sse((move || {
                     Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
                 })())
