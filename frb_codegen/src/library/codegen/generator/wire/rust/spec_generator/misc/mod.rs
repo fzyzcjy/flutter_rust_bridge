@@ -9,6 +9,7 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::gene
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
 use crate::if_then_some;
@@ -233,6 +234,12 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
     let variants = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let IrType::RustAutoOpaque(inner) = ty, inner.clone()))
         .flat_map(|ty| {
+            let guard_mode = match ty.ownership_mode {
+                OwnershipMode::Owned => return vec![],
+                OwnershipMode::Ref => "Read",
+                OwnershipMode::RefMut => "Write",
+            };
+
             let ident = ty.safe_ident();
             let inner_rust_api_type = ty.inner.rust_api_type();
             vec![
@@ -242,7 +249,7 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
                 ),
                 (
                     format!("RustAutoOpaque_Lock_{ident}"),
-                    format!("flutter_rust_bridge::rust_async::RwLockReadGuard<'a, {inner_rust_api_type}>"),
+                    format!("flutter_rust_bridge::rust_async::RwLock{guard_mode}Guard<'a, {inner_rust_api_type}>"),
                 ),
             ]
         })
