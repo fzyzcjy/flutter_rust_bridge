@@ -25,6 +25,11 @@ Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
         {required EnumWithItemStructTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemStructTwinNormal(arg: arg, hint: hint);
 
+Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal(
+        {required EnumWithDiscriminantTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api
+        .funcEnumWithDiscriminantTwinNormal(arg: arg, hint: hint);
+
 Future<Uint8List> printNoteTwinNormal(
         {required NoteTwinNormal note, dynamic hint}) =>
     RustLib.instance.api.printNoteTwinNormal(note: note, hint: hint);
@@ -57,6 +62,11 @@ sealed class DistanceTwinNormal with _$DistanceTwinNormal {
 enum EnumSimpleTwinNormal {
   a,
   b,
+}
+
+enum EnumWithDiscriminantTwinNormal {
+  oneHundred,
+  fifty,
 }
 
 @freezed
