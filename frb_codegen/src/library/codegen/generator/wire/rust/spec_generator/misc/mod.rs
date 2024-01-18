@@ -257,19 +257,16 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
 
     let variant_definitions = raw_variants
         .iter()
-        .map(|(lhs, rhs)| format!("{lhs}({rhs}),"))
+        .map(|(safe_ident, ty)| format!("{safe_ident}({ty}),"))
         .join("");
 
-    let functions = raw_variants
+    let arena_functions = raw_variants
         .iter()
-        .map(|(lhs, rhs)| {
+        .map(|(safe_ident, ty)| {
             format!(
-                "fn into_{lhs}(self) -> {rhs} {{
-                    if let Self::{lhs}(inner) = self {{
-                        inner
-                    }} else {{
-                        panic!()
-                    }}
+                "fn alloc_{safe_ident}(self, value: {ty}) -> {ty} {{
+                    let output = self.0.alloc(ArenaItem::{safe_ident}(value));
+                    if let ArenaItem::{safe_ident}(inner) = output {{ inner }} else {{ panic!() }}
                 }}"
             )
         })
@@ -281,8 +278,8 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
             {variant_definitions}
         }}
 
-        impl<'a> ArenaItem<'a> {{
-            {functions}
+        impl Arena {{
+            {arena_functions}
         }}
         "
     );
