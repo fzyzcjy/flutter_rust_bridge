@@ -11,6 +11,7 @@ use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::IrType;
+use crate::if_then_some;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
@@ -229,5 +230,8 @@ fn generate_executor(ir_pack: &IrPack) -> String {
 }
 
 fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
+    let interest_types = (distinct_types.iter())
+        .filter_map(|ty| if_then_some!(let IrType::RustAutoOpaque(inner) = ty, inner.clone()))
+        .collect_vec();
     todo!()
 }
