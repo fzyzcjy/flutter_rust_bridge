@@ -239,7 +239,6 @@ impl NonCloneSimpleTwinSync {
 
 // ================ types with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinSync {
     pub good: String,
     pub opaque: NonCloneSimpleTwinSync,
@@ -254,28 +253,29 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
-    arg: &StructWithGoodAndOpaqueFieldTwinSync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(sync)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinSync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
 ) -> StructWithGoodAndOpaqueFieldTwinSync {
     StructWithGoodAndOpaqueFieldTwinSync {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSync { inner: 42 },
     }
+}
+
+// ================ vec of opaque ===================
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_vec_own_twin_sync(arg: Vec<NonCloneSimpleTwinSync>, expect: Vec<i32>) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_vec_own_twin_sync() -> Vec<NonCloneSimpleTwinSync> {
+    vec![
+        NonCloneSimpleTwinSync { inner: 10 },
+        NonCloneSimpleTwinSync { inner: 20 },
+    ]
 }
 
 // ================ use explicit type ===================

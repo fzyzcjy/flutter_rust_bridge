@@ -243,14 +243,24 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('types with both encodable and opaque fields', () async {
     final obj =
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoi();
+    expect(obj.good, 'hello');
     await futurizeVoidTwinSseMoi(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSseMoi(
-            arg: obj));
-    await futurizeVoidTwinSseMoi(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSseMoi(
-            arg: obj));
+        rustAutoOpaqueArgBorrowTwinSseMoi(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinSseMoi(
         rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoi(arg: obj));
+  });
+
+  test('vec of opaque', () async {
+    final vec = await rustAutoOpaqueReturnVecOwnTwinSseMoi();
+
+    expect(vec.length, 2);
+    await futurizeVoidTwinSseMoi(
+        rustAutoOpaqueArgBorrowTwinSseMoi(arg: vec[0], expect: 10));
+    await futurizeVoidTwinSseMoi(
+        rustAutoOpaqueArgBorrowTwinSseMoi(arg: vec[1], expect: 20));
+
+    await futurizeVoidTwinSseMoi(
+        rustAutoOpaqueArgVecOwnTwinSseMoi(arg: vec, expect: [10, 20]));
   });
 
   group('Explicit rust-auto-opaque types', () {

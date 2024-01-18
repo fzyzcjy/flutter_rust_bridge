@@ -299,7 +299,6 @@ impl NonCloneSimpleTwinRustAsyncSseMoi {
 
 // ================ types with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
     pub good: String,
     pub opaque: NonCloneSimpleTwinRustAsyncSseMoi,
@@ -316,30 +315,35 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rus
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_sse_moi(
-    arg: &StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_sse_moi(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_sse_moi(
 ) -> StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
     StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsyncSseMoi { inner: 42 },
     }
+}
+
+// ================ vec of opaque ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_arg_vec_own_twin_rust_async_sse_moi(
+    arg: Vec<NonCloneSimpleTwinRustAsyncSseMoi>,
+    expect: Vec<i32>,
+) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_auto_opaque_return_vec_own_twin_rust_async_sse_moi(
+) -> Vec<NonCloneSimpleTwinRustAsyncSseMoi> {
+    vec![
+        NonCloneSimpleTwinRustAsyncSseMoi { inner: 10 },
+        NonCloneSimpleTwinRustAsyncSseMoi { inner: 20 },
+    ]
 }
 
 // ================ use explicit type ===================

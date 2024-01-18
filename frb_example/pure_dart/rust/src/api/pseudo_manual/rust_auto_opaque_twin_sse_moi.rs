@@ -276,7 +276,6 @@ impl NonCloneSimpleTwinSseMoi {
 
 // ================ types with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinSseMoi {
     pub good: String,
     pub opaque: NonCloneSimpleTwinSseMoi,
@@ -293,30 +292,34 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse_moi(
 
 #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
 #[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sse_moi(
-    arg: &StructWithGoodAndOpaqueFieldTwinSseMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sse_moi(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinSseMoi,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
-#[flutter_rust_bridge::frb(serialize)]
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse_moi(
 ) -> StructWithGoodAndOpaqueFieldTwinSseMoi {
     StructWithGoodAndOpaqueFieldTwinSseMoi {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinSseMoi { inner: 42 },
     }
+}
+
+// ================ vec of opaque ===================
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub fn rust_auto_opaque_arg_vec_own_twin_sse_moi(
+    arg: Vec<NonCloneSimpleTwinSseMoi>,
+    expect: Vec<i32>,
+) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(serialize)]
+pub fn rust_auto_opaque_return_vec_own_twin_sse_moi() -> Vec<NonCloneSimpleTwinSseMoi> {
+    vec![
+        NonCloneSimpleTwinSseMoi { inner: 10 },
+        NonCloneSimpleTwinSseMoi { inner: 20 },
+    ]
 }
 
 // ================ use explicit type ===================

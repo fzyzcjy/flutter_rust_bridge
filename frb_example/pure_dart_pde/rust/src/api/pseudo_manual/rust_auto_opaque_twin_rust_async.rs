@@ -237,7 +237,6 @@ impl NonCloneSimpleTwinRustAsync {
 
 // ================ types with both encodable and opaque fields ===================
 
-#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinRustAsync {
     pub good: String,
     pub opaque: NonCloneSimpleTwinRustAsync,
@@ -250,26 +249,30 @@ pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rus
     assert_eq!(arg.opaque.inner, 42);
 }
 
-pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
-    arg: &StructWithGoodAndOpaqueFieldTwinRustAsync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
-pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
-    arg: &mut StructWithGoodAndOpaqueFieldTwinRustAsync,
-) {
-    assert_eq!(&arg.good, "hello");
-    assert_eq!(arg.opaque.inner, 42);
-}
-
 pub async fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
 ) -> StructWithGoodAndOpaqueFieldTwinRustAsync {
     StructWithGoodAndOpaqueFieldTwinRustAsync {
         good: "hello".to_string(),
         opaque: NonCloneSimpleTwinRustAsync { inner: 42 },
     }
+}
+
+// ================ vec of opaque ===================
+
+pub async fn rust_auto_opaque_arg_vec_own_twin_rust_async(
+    arg: Vec<NonCloneSimpleTwinRustAsync>,
+    expect: Vec<i32>,
+) {
+    for i in 0..expect.len() {
+        assert_eq!(arg[i].inner, expect[i]);
+    }
+}
+
+pub async fn rust_auto_opaque_return_vec_own_twin_rust_async() -> Vec<NonCloneSimpleTwinRustAsync> {
+    vec![
+        NonCloneSimpleTwinRustAsync { inner: 10 },
+        NonCloneSimpleTwinRustAsync { inner: 20 },
+    ]
 }
 
 // ================ use explicit type ===================
