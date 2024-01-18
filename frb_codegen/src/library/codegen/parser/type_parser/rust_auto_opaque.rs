@@ -1,7 +1,6 @@
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,

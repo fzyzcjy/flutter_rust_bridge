@@ -1,5 +1,4 @@
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;

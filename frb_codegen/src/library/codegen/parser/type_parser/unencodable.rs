@@ -1,6 +1,5 @@
-use crate::codegen::ir::ty::unencodable::{Args, IrTypeUnencodable, NameComponent};
+use crate::codegen::ir::ty::rust_opaque::{Args, NameComponent};
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::Unencodable;
 use quote::ToTokens;
 use syn::TypePath;
 

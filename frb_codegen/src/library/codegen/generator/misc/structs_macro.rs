@@ -23,7 +23,6 @@ macro_rules! codegen_generator_structs {
             RustAutoOpaque,
             RustOpaque,
             StructRef,
-            Unencodable,
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
@@ -43,7 +42,6 @@ macro_rules! codegen_generator_structs {
         use $crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
         use $crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
         use $crate::codegen::ir::ty::structure::IrTypeStructRef;
-        use $crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
         use $crate::codegen::ir::ty::IrType;
         // cargo fix wrongly removes this import
         #[allow(unused_imports)]

@@ -13,7 +13,6 @@ mod record;
 mod rust_auto_opaque;
 mod rust_opaque;
 mod structure;
-mod unencodable;
 
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
 use enum_dispatch::enum_dispatch;

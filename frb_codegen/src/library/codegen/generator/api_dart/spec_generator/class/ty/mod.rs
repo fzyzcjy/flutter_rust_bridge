@@ -30,4 +30,3 @@ impl<'a> ApiDartGeneratorClassTrait for OwnershipApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for PrimitiveApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for PrimitiveListApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for RecordApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for UnencodableApiDartGenerator<'a> {}

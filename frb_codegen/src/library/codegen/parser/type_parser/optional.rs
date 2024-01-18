@@ -3,7 +3,7 @@ use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
     Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, Ownership,
-    Primitive, PrimitiveList, Record, RustAutoOpaque, RustOpaque, StructRef, Unencodable,
+    Primitive, PrimitiveList, Record, RustAutoOpaque, RustOpaque, StructRef,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
@@ -42,7 +42,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     IrTypeOptional::new_with_boxed_wrapper(inner.clone())
                 }
                 PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Ownership(_)
-                | Unencodable(_) | Delegate(_) => IrTypeOptional::new(inner.clone()),
+                | Delegate(_) => IrTypeOptional::new(inner.clone()),
                 // frb-coverage:ignore-start
                 Optional(_) => unreachable!(),
                 // frb-coverage:ignore-end

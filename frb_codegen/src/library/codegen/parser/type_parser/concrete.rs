@@ -5,9 +5,8 @@ use crate::codegen::ir::ty::delegate::{
 };
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
 use crate::codegen::ir::ty::general_list::ir_list;
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic, Unencodable};
+use crate::codegen::ir::ty::IrType::{Boxed, DartOpaque, Delegate, Dynamic};
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;

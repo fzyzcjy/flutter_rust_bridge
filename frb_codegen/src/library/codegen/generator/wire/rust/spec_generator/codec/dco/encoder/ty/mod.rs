@@ -13,7 +13,6 @@ mod record;
 mod rust_auto_opaque;
 mod rust_opaque;
 mod structure;
-mod unencodable;
 
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use crate::codegen::ir::pack::IrPack;

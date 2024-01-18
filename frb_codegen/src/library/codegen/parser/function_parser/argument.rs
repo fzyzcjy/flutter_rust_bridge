@@ -2,6 +2,7 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
+use crate::codegen::ir::ty::ownership::{IrTypeOwnership, IrTypeOwnershipMode};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -9,7 +10,7 @@ use crate::codegen::parser::function_parser::{
     FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::TypeParserParsingContext;
+use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
 use anyhow::{bail, Context};
 use syn::*;

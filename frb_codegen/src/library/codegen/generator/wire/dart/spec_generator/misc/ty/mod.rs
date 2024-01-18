@@ -15,7 +15,6 @@ mod record;
 mod rust_auto_opaque;
 mod rust_opaque;
 mod structure;
-mod unencodable;
 
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;

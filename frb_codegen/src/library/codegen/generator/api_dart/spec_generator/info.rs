@@ -243,15 +243,6 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
-    // frb-coverage:ignore-start
-    fn dart_api_type(&self) -> String {
-        // Do not throw error, since when dumping we may call this function
-        "NOT_IMPLEMENTED".into()
-    }
-    // frb-coverage:ignore-end
-}
-
 fn rust_type_to_dart_type(rust: &str, brief_name: bool) -> String {
     lazy_static! {
         static ref OPAQUE_FILTER: Regex =Regex::new(r"((\bdyn|'static|\bDartSafe|\bAssertUnwindSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b)|([a-zA-Z0-9_]+::)").unwrap();

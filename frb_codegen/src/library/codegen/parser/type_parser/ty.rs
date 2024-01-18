@@ -1,4 +1,3 @@
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use crate::codegen::parser::type_parser::TypeParserWithContext;

@@ -13,7 +13,6 @@ pub(crate) mod record;
 pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
-pub(crate) mod unencodable;
 
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrPack, IrStructPool};
@@ -44,7 +43,6 @@ pub enum IrType {
     RustAutoOpaque(rust_auto_opaque::IrTypeRustAutoOpaque),
     RustOpaque(rust_opaque::IrTypeRustOpaque),
     StructRef(structure::IrTypeStructRef),
-    Unencodable(unencodable::IrTypeUnencodable),
 }
 }
 
@@ -141,7 +139,6 @@ impl Serialize for IrType {
             IrType::RustAutoOpaque(inner) => ser::<S, _>(&mut state, "RustAutoOpaque", inner),
             IrType::RustOpaque(inner) => ser::<S, _>(&mut state, "RustOpaque", inner),
             IrType::StructRef(inner) => ser::<S, _>(&mut state, "StructRef", inner),
-            IrType::Unencodable(inner) => ser::<S, _>(&mut state, "Unencodable", inner),
         }?;
 
         state.end()
