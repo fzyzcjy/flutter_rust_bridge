@@ -1,4 +1,3 @@
-pub(crate) mod arena;
 pub(crate) mod dart_dynamic;
 pub(crate) mod into_into_dart;
 pub(crate) mod logs;
