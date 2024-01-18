@@ -4022,6 +4022,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_struct_with_enum_twin_sync_sse(dynamic raw);
 
   @protected
+  StructWithExplicitAutoOpaqueFieldTwinMoi
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinNormal
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsync
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_sse_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSse
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sse(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSseMoi
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sse_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSync
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncMoi
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSse
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi
+      dco_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_sse_moi(
+          dynamic raw);
+
+  @protected
   StructWithOneFieldTwinNormal
       dco_decode_box_autoadd_struct_with_one_field_twin_normal(dynamic raw);
 
@@ -6917,6 +6977,63 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithEnumTwinSyncSse dco_decode_struct_with_enum_twin_sync_sse(
       dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinMoi
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_moi(dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinNormal
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsync
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_rust_async_sse_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSse
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_sse(dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSseMoi
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_sse_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSync
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_sync(dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncMoi
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSse
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_sync_sse(
+          dynamic raw);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi
+      dco_decode_struct_with_explicit_auto_opaque_field_twin_sync_sse_moi(
+          dynamic raw);
 
   @protected
   StructWithOneFieldTwinNormal dco_decode_struct_with_one_field_twin_normal(
@@ -10597,6 +10714,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithExplicitAutoOpaqueFieldTwinMoi
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinNormal
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsync
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSse
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSseMoi
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSync
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncMoi
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSse
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi
+      sse_decode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithOneFieldTwinNormal
       sse_decode_box_autoadd_struct_with_one_field_twin_normal(
           SseDeserializer deserializer);
@@ -13919,6 +14096,66 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StructWithExplicitAutoOpaqueFieldTwinMoi
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinNormal
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsync
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_rust_async_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSse
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSseMoi
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSync
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncMoi
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSse
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi
+      sse_decode_struct_with_explicit_auto_opaque_field_twin_sync_sse_moi(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithOneFieldTwinNormal sse_decode_struct_with_one_field_twin_normal(
       SseDeserializer deserializer);
 
@@ -16225,6 +16462,79 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     final ptr = wire.cst_new_box_autoadd_struct_with_enum_twin_sync();
     cst_api_fill_to_wire_struct_with_enum_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_moi>
+      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+          StructWithExplicitAutoOpaqueFieldTwinMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi();
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_moi(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>
+      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+          StructWithExplicitAutoOpaqueFieldTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal();
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_normal(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>
+      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async();
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_rust_async(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<
+          wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>
+      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi();
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_sync>
+      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+          StructWithExplicitAutoOpaqueFieldTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync();
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_sync(
+        raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>
+      cst_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSyncMoi raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    final ptr = wire
+        .cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi();
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+        raw, ptr.ref);
     return ptr;
   }
 
@@ -20379,6 +20689,68 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+          StructWithExplicitAutoOpaqueFieldTwinMoi apiObj,
+          ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_moi>
+              wireObj) {
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_moi(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+          StructWithExplicitAutoOpaqueFieldTwinNormal apiObj,
+          ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>
+              wireObj) {
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsync apiObj,
+      ffi.Pointer<
+              wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>
+          wireObj) {
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_rust_async(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi apiObj,
+      ffi.Pointer<
+              wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>
+          wireObj) {
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+          StructWithExplicitAutoOpaqueFieldTwinSync apiObj,
+          ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_sync>
+              wireObj) {
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_sync(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSyncMoi apiObj,
+          ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>
+              wireObj) {
+    cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+        apiObj, wireObj.ref);
+  }
+
+  @protected
   void cst_api_fill_to_wire_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal apiObj,
       ffi.Pointer<wire_cst_struct_with_one_field_twin_normal> wireObj) {
@@ -22968,6 +23340,72 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wire_cst_struct_with_enum_twin_sync wireObj) {
     cst_api_fill_to_wire_abc_twin_sync(apiObj.abc1, wireObj.abc1);
     cst_api_fill_to_wire_abc_twin_sync(apiObj.abc2, wireObj.abc2);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi apiObj,
+      wire_cst_struct_with_explicit_auto_opaque_field_twin_moi wireObj) {
+    wireObj.auto_opaque =
+        cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinMoi(
+            apiObj.autoOpaque);
+    wireObj.normal = cst_encode_i_32(apiObj.normal);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_normal(
+      StructWithExplicitAutoOpaqueFieldTwinNormal apiObj,
+      wire_cst_struct_with_explicit_auto_opaque_field_twin_normal wireObj) {
+    wireObj.auto_opaque =
+        cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinNormal(
+            apiObj.autoOpaque);
+    wireObj.normal = cst_encode_i_32(apiObj.normal);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsync apiObj,
+          wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async
+              wireObj) {
+    wireObj.auto_opaque =
+        cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsync(
+            apiObj.autoOpaque);
+    wireObj.normal = cst_encode_i_32(apiObj.normal);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi apiObj,
+          wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi
+              wireObj) {
+    wireObj.auto_opaque =
+        cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinRustAsyncMoi(
+            apiObj.autoOpaque);
+    wireObj.normal = cst_encode_i_32(apiObj.normal);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_sync(
+      StructWithExplicitAutoOpaqueFieldTwinSync apiObj,
+      wire_cst_struct_with_explicit_auto_opaque_field_twin_sync wireObj) {
+    wireObj.auto_opaque =
+        cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSync(
+            apiObj.autoOpaque);
+    wireObj.normal = cst_encode_i_32(apiObj.normal);
+  }
+
+  @protected
+  void
+      cst_api_fill_to_wire_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSyncMoi apiObj,
+          wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi
+              wireObj) {
+    wireObj.auto_opaque =
+        cst_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockNonCloneSimpleTwinSyncMoi(
+            apiObj.autoOpaque);
+    wireObj.normal = cst_encode_i_32(apiObj.normal);
   }
 
   @protected
@@ -27312,6 +27750,72 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithEnumTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal(
+          StructWithExplicitAutoOpaqueFieldTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsync self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_sse(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_sse_moi(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sse(
+      StructWithExplicitAutoOpaqueFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sse_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSseMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync(
+      StructWithExplicitAutoOpaqueFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSyncMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_sse(
+          StructWithExplicitAutoOpaqueFieldTwinSyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_sse_moi(
+          StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi self,
+          SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal self, SseSerializer serializer);
 
@@ -30477,6 +30981,64 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_enum_twin_sync_sse(
       StructWithEnumTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_moi(
+      StructWithExplicitAutoOpaqueFieldTwinMoi self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_normal(
+      StructWithExplicitAutoOpaqueFieldTwinNormal self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_rust_async(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsync self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_rust_async_moi(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsyncMoi self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_rust_async_sse(
+      StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_struct_with_explicit_auto_opaque_field_twin_rust_async_sse_moi(
+          StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_sse(
+      StructWithExplicitAutoOpaqueFieldTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_sse_moi(
+      StructWithExplicitAutoOpaqueFieldTwinSseMoi self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_sync(
+      StructWithExplicitAutoOpaqueFieldTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_sync_moi(
+      StructWithExplicitAutoOpaqueFieldTwinSyncMoi self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_sync_sse(
+      StructWithExplicitAutoOpaqueFieldTwinSyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_explicit_auto_opaque_field_twin_sync_sse_moi(
+      StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_one_field_twin_normal(
@@ -60746,6 +61308,67 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_moiPtr
           .asFunction<void Function(int)>();
 
+  void wire_rust_auto_opaque_explicit_arg_twin_moi(
+    int port_,
+    int arg,
+    int expect,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_moi(
+      port_,
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_moi');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_moi =
+      _wire_rust_auto_opaque_explicit_arg_twin_moiPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_moi(
+    int port_,
+    int initial,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_moi(
+      port_,
+      initial,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_moiPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_moi');
+  late final _wire_rust_auto_opaque_explicit_return_twin_moi =
+      _wire_rust_auto_opaque_explicit_return_twin_moiPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_moi(
+    int port_,
+    ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_moi> arg,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_moi(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_moi>)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_moi');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_moi =
+      _wire_rust_auto_opaque_explicit_struct_twin_moiPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_moi>)>();
+
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_moi(
     int port_,
     int a,
@@ -61386,6 +62009,68 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_callable_return_twin_rust_async =
       _wire_rust_auto_opaque_callable_return_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_explicit_arg_twin_rust_async(
+    int port_,
+    int arg,
+    int expect,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_rust_async(
+      port_,
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_rust_async');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_async =
+      _wire_rust_auto_opaque_explicit_arg_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_rust_async(
+    int port_,
+    int initial,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_rust_async(
+      port_,
+      initial,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_rust_async');
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_async =
+      _wire_rust_auto_opaque_explicit_return_twin_rust_asyncPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>
+        arg,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_rust_async');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_async =
+      _wire_rust_auto_opaque_explicit_struct_twin_rust_asyncPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>)>();
 
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
     int port_,
@@ -62038,6 +62723,69 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_callable_return_twin_rust_async_moi =
       _wire_rust_auto_opaque_callable_return_twin_rust_async_moiPtr
           .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi(
+    int port_,
+    int arg,
+    int expect,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi(
+      port_,
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_async_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_async_moi =
+      _wire_rust_auto_opaque_explicit_arg_twin_rust_async_moiPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_rust_async_moi(
+    int port_,
+    int initial,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_rust_async_moi(
+      port_,
+      initial,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_async_moiPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_async_moi =
+      _wire_rust_auto_opaque_explicit_return_twin_rust_async_moiPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_rust_async_moi(
+    int port_,
+    ffi.Pointer<
+            wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>
+        arg,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_rust_async_moi(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_async_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_rust_async_moi');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_async_moi =
+      _wire_rust_auto_opaque_explicit_struct_twin_rust_async_moiPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>)>();
 
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_moi(
     int port_,
@@ -62817,6 +63565,77 @@ class RustLibWire implements BaseWire {
           'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_rust_async_sse');
   late final _wire_rust_auto_opaque_callable_return_twin_rust_async_sse =
       _wire_rust_auto_opaque_callable_return_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_async_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse =
+      _wire_rust_auto_opaque_explicit_arg_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_async_sse =
+      _wire_rust_auto_opaque_explicit_return_twin_rust_async_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_async_ssePtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse =
+      _wire_rust_auto_opaque_explicit_struct_twin_rust_async_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse(
@@ -63693,6 +64512,78 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_rust_async_sse_moiPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_explicit_arg_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_explicit_return_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>,
+                      ffi.Int32, ffi.Int32)>>(
+          'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moi =
+      _wire_rust_auto_opaque_explicit_struct_twin_rust_async_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_sse_moi(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -64551,6 +65442,75 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_ssePtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_explicit_arg_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_sse');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sse =
+      _wire_rust_auto_opaque_explicit_arg_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_sse');
+  late final _wire_rust_auto_opaque_explicit_return_twin_sse =
+      _wire_rust_auto_opaque_explicit_return_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_sse(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_sse(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_ssePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_sse');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sse =
+      _wire_rust_auto_opaque_explicit_struct_twin_ssePtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -65402,6 +66362,75 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_sse_moiPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
+  void wire_rust_auto_opaque_explicit_arg_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sse_moi =
+      _wire_rust_auto_opaque_explicit_arg_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_return_twin_sse_moi =
+      _wire_rust_auto_opaque_explicit_return_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_sse_moi(
+    int port_,
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_sse_moi(
+      port_,
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sse_moi =
+      _wire_rust_auto_opaque_explicit_struct_twin_sse_moiPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
+
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_sse_moi(
     int port_,
     ffi.Pointer<ffi.Uint8> ptr_,
@@ -66090,6 +67119,59 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_callable_return_twin_syncPtr
           .asFunction<WireSyncRust2DartDco Function()>();
 
+  WireSyncRust2DartDco wire_rust_auto_opaque_explicit_arg_twin_sync(
+    int arg,
+    int expect,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_sync(
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_sync');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sync =
+      _wire_rust_auto_opaque_explicit_arg_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_explicit_return_twin_sync(
+    int initial,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_sync(
+      initial,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_sync');
+  late final _wire_rust_auto_opaque_explicit_return_twin_sync =
+      _wire_rust_auto_opaque_explicit_return_twin_syncPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_explicit_struct_twin_sync(
+    ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_sync> arg,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_sync>)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_sync');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sync =
+      _wire_rust_auto_opaque_explicit_struct_twin_syncPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_sync>)>();
+
   WireSyncRust2DartDco wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
     int a,
     ffi.Pointer<wire_cst_list_prim_u_8_strict> b,
@@ -66650,6 +67732,60 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_callable_return_twin_sync_moi =
       _wire_rust_auto_opaque_callable_return_twin_sync_moiPtr
           .asFunction<WireSyncRust2DartDco Function()>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_explicit_arg_twin_sync_moi(
+    int arg,
+    int expect,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_sync_moi(
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sync_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(ffi.UintPtr, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_sync_moi');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sync_moi =
+      _wire_rust_auto_opaque_explicit_arg_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function(int, int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_explicit_return_twin_sync_moi(
+    int initial,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_sync_moi(
+      initial,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_sync_moiPtr = _lookup<
+          ffi.NativeFunction<WireSyncRust2DartDco Function(ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_sync_moi');
+  late final _wire_rust_auto_opaque_explicit_return_twin_sync_moi =
+      _wire_rust_auto_opaque_explicit_return_twin_sync_moiPtr
+          .asFunction<WireSyncRust2DartDco Function(int)>();
+
+  WireSyncRust2DartDco wire_rust_auto_opaque_explicit_struct_twin_sync_moi(
+    ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>
+        arg,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_sync_moi(
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sync_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartDco Function(
+                  ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_sync_moi');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sync_moi =
+      _wire_rust_auto_opaque_explicit_struct_twin_sync_moiPtr.asFunction<
+          WireSyncRust2DartDco Function(
+              ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>)>();
 
   WireSyncRust2DartDco
       wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(
@@ -67371,6 +68507,69 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_sync_sse');
   late final _wire_rust_auto_opaque_callable_return_twin_sync_sse =
       _wire_rust_auto_opaque_callable_return_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_explicit_arg_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_sync_sse');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sync_sse =
+      _wire_rust_auto_opaque_explicit_arg_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_explicit_return_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_sync_sse');
+  late final _wire_rust_auto_opaque_explicit_return_twin_sync_sse =
+      _wire_rust_auto_opaque_explicit_return_twin_sync_ssePtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_explicit_struct_twin_sync_sse(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_sync_sse(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sync_ssePtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_sync_sse');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sync_sse =
+      _wire_rust_auto_opaque_explicit_struct_twin_sync_ssePtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse
@@ -68219,6 +69418,69 @@ class RustLibWire implements BaseWire {
       'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_callable_return_twin_sync_sse_moi');
   late final _wire_rust_auto_opaque_callable_return_twin_sync_sse_moi =
       _wire_rust_auto_opaque_callable_return_twin_sync_sse_moiPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_explicit_arg_twin_sync_sse_moiPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_explicit_return_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_sync_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_return_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_explicit_return_twin_sync_sse_moiPtr.asFunction<
+          WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+
+  WireSyncRust2DartSse wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
+    ffi.Pointer<ffi.Uint8> ptr_,
+    int rust_vec_len_,
+    int data_len_,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
+      ptr_,
+      rust_vec_len_,
+      data_len_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moiPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncRust2DartSse Function(
+                  ffi.Pointer<ffi.Uint8>, ffi.Int32, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moi');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moi =
+      _wire_rust_auto_opaque_explicit_struct_twin_sync_sse_moiPtr.asFunction<
           WireSyncRust2DartSse Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
   WireSyncRust2DartSse
@@ -74079,6 +75341,68 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_callable_return_twin_normal =
       _wire_rust_auto_opaque_callable_return_twin_normalPtr
           .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_explicit_arg_twin_normal(
+    int port_,
+    int arg,
+    int expect,
+  ) {
+    return _wire_rust_auto_opaque_explicit_arg_twin_normal(
+      port_,
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_arg_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.UintPtr, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_arg_twin_normal');
+  late final _wire_rust_auto_opaque_explicit_arg_twin_normal =
+      _wire_rust_auto_opaque_explicit_arg_twin_normalPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_rust_auto_opaque_explicit_return_twin_normal(
+    int port_,
+    int initial,
+  ) {
+    return _wire_rust_auto_opaque_explicit_return_twin_normal(
+      port_,
+      initial,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_return_twin_normalPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_return_twin_normal');
+  late final _wire_rust_auto_opaque_explicit_return_twin_normal =
+      _wire_rust_auto_opaque_explicit_return_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_rust_auto_opaque_explicit_struct_twin_normal(
+    int port_,
+    ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>
+        arg,
+  ) {
+    return _wire_rust_auto_opaque_explicit_struct_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_explicit_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64,
+                  ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>)>>(
+      'frbgen_frb_example_pure_dart_wire_rust_auto_opaque_explicit_struct_twin_normal');
+  late final _wire_rust_auto_opaque_explicit_struct_twin_normal =
+      _wire_rust_auto_opaque_explicit_struct_twin_normalPtr.asFunction<
+          void Function(
+              int,
+              ffi.Pointer<
+                  wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>)>();
 
   void wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
     int port_,
@@ -82212,6 +83536,121 @@ class RustLibWire implements BaseWire {
       _cst_new_box_autoadd_struct_with_enum_twin_syncPtr.asFunction<
           ffi.Pointer<wire_cst_struct_with_enum_twin_sync> Function()>();
 
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_moi>
+      cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi() {
+    return _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_struct_with_explicit_auto_opaque_field_twin_moi>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi');
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moi =
+      _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_moiPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_moi>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>
+      cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal() {
+    return _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal');
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normal =
+      _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_normalPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_normal>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>
+      cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async() {
+    return _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_asyncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async');
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async =
+      _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_asyncPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async>
+                  Function()>();
+
+  ffi.Pointer<
+          wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>
+      cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi() {
+    return _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi');
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moi =
+      _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_rust_async_moiPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_sync>
+      cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync() {
+    return _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_syncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_struct_with_explicit_auto_opaque_field_twin_sync>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync');
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync =
+      _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_syncPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_sync>
+                  Function()>();
+
+  ffi.Pointer<wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>
+      cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi() {
+    return _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi();
+  }
+
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moiPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<
+                          wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>
+                      Function()>>(
+          'frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi');
+  late final _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moi =
+      _cst_new_box_autoadd_struct_with_explicit_auto_opaque_field_twin_sync_moiPtr
+          .asFunction<
+              ffi.Pointer<
+                      wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi>
+                  Function()>();
+
   ffi.Pointer<wire_cst_struct_with_one_field_twin_normal>
       cst_new_box_autoadd_struct_with_one_field_twin_normal() {
     return _cst_new_box_autoadd_struct_with_one_field_twin_normal();
@@ -87529,6 +88968,51 @@ final class wire_cst_opt_vecs_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_opt_list_prim_i_32_strict> buffers;
 }
 
+final class wire_cst_struct_with_explicit_auto_opaque_field_twin_moi
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int auto_opaque;
+
+  @ffi.Int32()
+  external int normal;
+}
+
+final class wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int auto_opaque;
+
+  @ffi.Int32()
+  external int normal;
+}
+
+final class wire_cst_struct_with_explicit_auto_opaque_field_twin_rust_async_moi
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int auto_opaque;
+
+  @ffi.Int32()
+  external int normal;
+}
+
+final class wire_cst_struct_with_explicit_auto_opaque_field_twin_sync
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int auto_opaque;
+
+  @ffi.Int32()
+  external int normal;
+}
+
+final class wire_cst_struct_with_explicit_auto_opaque_field_twin_sync_moi
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int auto_opaque;
+
+  @ffi.Int32()
+  external int normal;
+}
+
 final class wire_cst_list_RustOpaque_hide_data_twin_moi extends ffi.Struct {
   external ffi.Pointer<ffi.UintPtr> ptr;
 
@@ -87906,6 +89390,15 @@ final class wire_cst_feature_uuid_twin_rust_async extends ffi.Struct {
 
 final class wire_cst_feature_uuid_twin_sync extends ffi.Struct {
   external ffi.Pointer<wire_cst_list_prim_u_8_strict> one;
+}
+
+final class wire_cst_struct_with_explicit_auto_opaque_field_twin_normal
+    extends ffi.Struct {
+  @ffi.UintPtr()
+  external int auto_opaque;
+
+  @ffi.Int32()
+  external int normal;
 }
 
 final class wire_cst_list_RustOpaque_hide_data_twin_normal extends ffi.Struct {
