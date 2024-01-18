@@ -364,14 +364,14 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_s
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_explicit_arg_twin_sync_sse_moi(
-    arg: RustAutoOpaque<NonCloneSimpleTwinSyncSseMoi>,
+    arg: crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncSseMoi>,
     expect: i32,
 ) {
     assert_eq!((*arg).try_read().unwrap().inner, expect);
 }
 
 pub struct StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi {
-    pub auto_opaque: RustAutoOpaque<NonCloneSimpleTwinSyncSseMoi>,
+    pub auto_opaque: crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncSseMoi>,
     pub normal: i32,
 }
 
@@ -389,8 +389,10 @@ pub fn rust_auto_opaque_explicit_struct_twin_sync_sse_moi(
 #[flutter_rust_bridge::frb(sync)]
 pub fn rust_auto_opaque_explicit_return_twin_sync_sse_moi(
     initial: i32,
-) -> RustAutoOpaque<NonCloneSimpleTwinSyncSseMoi> {
-    RustAutoOpaque::new(RwLock::new(NonCloneSimpleTwinSyncSseMoi { inner: initial }))
+) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncSseMoi> {
+    crate::frb_generated::RustAutoOpaqueMoi::new(RwLock::new(NonCloneSimpleTwinSyncSseMoi {
+        inner: initial,
+    }))
 }
 
 // ================ misc ===================
