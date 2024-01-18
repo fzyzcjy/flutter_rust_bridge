@@ -139,7 +139,7 @@ Future<NonCloneSimpleTwinSse> rustAutoOpaqueExplicitReturnTwinSse(
     RustLib.instance.api
         .rustAutoOpaqueExplicitReturnTwinSse(initial: initial, hint: hint);
 
-Future<OpaqueOneTwinSseOpaqueTwoTwinSse>
+Future<(OpaqueOneTwinSse, OpaqueTwoTwinSse)>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinSse({dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueReturnOpaqueOneAndTwoTwinSse(hint: hint);
@@ -161,7 +161,7 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinSse(
     RustLib.instance.api
         .rustAutoOpaqueBorrowAndBorrowTwinSse(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSse>>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinSse >>>
 @sealed
 class BoxHelloTraitTwinSse extends RustOpaque {
   BoxHelloTraitTwinSse.dcoDecode(List<dynamic> wire)
@@ -180,7 +180,7 @@ class BoxHelloTraitTwinSse extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinSse + Send + Sync>>>
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn MyTraitTwinSse + Send + Sync >>>
 @sealed
 class BoxMyTraitTwinSse extends RustOpaque {
   BoxMyTraitTwinSse.dcoDecode(List<dynamic> wire)
@@ -279,6 +279,44 @@ class NonCloneSimpleTwinSse extends RustOpaque {
           .nonCloneSimpleTwinSseStaticMethodReturnOwnTwinSse(hint: hint);
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSse>>
+@sealed
+class OpaqueOneTwinSse extends RustOpaque {
+  OpaqueOneTwinSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueOneTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueOneTwinSse,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSsePtr,
+  );
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSse>>
+@sealed
+class OpaqueTwoTwinSse extends RustOpaque {
+  OpaqueTwoTwinSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  OpaqueTwoTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinSse,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSsePtr,
+  );
+}
+
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSse>>
 @sealed
 class StructWithGoodAndOpaqueFieldTwinSse extends RustOpaque {
@@ -296,44 +334,6 @@ class StructWithGoodAndOpaqueFieldTwinSse extends RustOpaque {
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSse,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSsePtr,
-  );
-}
-
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueOneTwinSse,crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse,)>>
-@sealed
-class OpaqueOneTwinSseOpaqueTwoTwinSse extends RustOpaque {
-  OpaqueOneTwinSseOpaqueTwoTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  OpaqueOneTwinSseOpaqueTwoTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinSseOpaqueTwoTwinSsePtr,
-  );
-}
-
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_sse::OpaqueTwoTwinSse>>
-@sealed
-class OpaqueTwoTwinSse extends RustOpaque {
-  OpaqueTwoTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  OpaqueTwoTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueTwoTwinSse,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_OpaqueTwoTwinSsePtr,
   );
 }
 

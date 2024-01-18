@@ -21,7 +21,7 @@ NonCloneDataTwinMoi syncCreateNonCloneTwinMoi({dynamic hint}) =>
 FrbOpaqueSyncReturnTwinMoi frbSyncGeneratorTestTwinMoi({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTestTwinMoi(hint: hint);
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::FrbOpaqueSyncReturnTwinMoi>
+// Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinMoi>
 @sealed
 class FrbOpaqueSyncReturnTwinMoi extends RustOpaque {
   FrbOpaqueSyncReturnTwinMoi.dcoDecode(List<dynamic> wire)
@@ -40,7 +40,7 @@ class FrbOpaqueSyncReturnTwinMoi extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_sync_twin_moi::HideDataAnotherTwinMoi>
+// Rust type: RustOpaqueMoi<HideDataAnotherTwinMoi>
 @sealed
 class HideDataAnotherTwinMoi extends RustOpaque {
   HideDataAnotherTwinMoi.dcoDecode(List<dynamic> wire)
@@ -59,7 +59,7 @@ class HideDataAnotherTwinMoi extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_moi::NonCloneDataTwinMoi>
+// Rust type: RustOpaqueMoi<NonCloneDataTwinMoi>
 @sealed
 class NonCloneDataTwinMoi extends RustOpaque {
   NonCloneDataTwinMoi.dcoDecode(List<dynamic> wire)

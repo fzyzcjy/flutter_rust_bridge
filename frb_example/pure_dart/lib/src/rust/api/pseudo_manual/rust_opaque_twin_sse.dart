@@ -68,6 +68,78 @@ Future<String> unwrapRustOpaqueTwinSse(
 Future<FrbOpaqueReturnTwinSse> frbGeneratorTestTwinSse({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinSse(hint: hint);
 
+// Rust type: RustOpaqueNom<Box < dyn DartDebugTwinSse >>
+@sealed
+class BoxDartDebugTwinSse extends RustOpaque {
+  BoxDartDebugTwinSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  BoxDartDebugTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSse,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSsePtr,
+  );
+}
+
+// Rust type: RustOpaqueNom<FrbOpaqueReturnTwinSse>
+@sealed
+class FrbOpaqueReturnTwinSse extends RustOpaque {
+  FrbOpaqueReturnTwinSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  FrbOpaqueReturnTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinSse,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSse,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSsePtr,
+  );
+}
+
+// Rust type: RustOpaqueNom<HideDataTwinSse>
+@sealed
+class HideDataTwinSse extends RustOpaque {
+  HideDataTwinSse.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  HideDataTwinSse.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinSse,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSse,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSsePtr,
+  );
+}
+
+class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
+  static const arraySize = 2;
+
+  @internal
+  List<HideDataTwinSse> get inner => _inner;
+  final List<HideDataTwinSse> _inner;
+
+  HideDataTwinSseArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  HideDataTwinSseArray2.init(HideDataTwinSse fill)
+      : this(List<HideDataTwinSse>.filled(arraySize, fill));
+}
+
 // Rust type: RustOpaqueNom<Mutex < HideDataTwinSse >>
 @sealed
 class MutexHideDataTwinSse extends RustOpaque {
@@ -104,78 +176,6 @@ class RwLockHideDataTwinSse extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib
         .instance.api.rust_arc_decrement_strong_count_RwLockHideDataTwinSsePtr,
   );
-}
-
-// Rust type: RustOpaqueNom<Box<dyn DartDebugTwinSse>>
-@sealed
-class BoxDartDebugTwinSse extends RustOpaque {
-  BoxDartDebugTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  BoxDartDebugTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSsePtr,
-  );
-}
-
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::FrbOpaqueReturnTwinSse>
-@sealed
-class FrbOpaqueReturnTwinSse extends RustOpaque {
-  FrbOpaqueReturnTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  FrbOpaqueReturnTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinSse,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSse,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSsePtr,
-  );
-}
-
-// Rust type: RustOpaqueNom<crate::api::pseudo_manual::rust_opaque_twin_sse::HideDataTwinSse>
-@sealed
-class HideDataTwinSse extends RustOpaque {
-  HideDataTwinSse.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  HideDataTwinSse.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinSse,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSse,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSsePtr,
-  );
-}
-
-class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
-  static const arraySize = 2;
-
-  @internal
-  List<HideDataTwinSse> get inner => _inner;
-  final List<HideDataTwinSse> _inner;
-
-  HideDataTwinSseArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
-
-  HideDataTwinSseArray2.init(HideDataTwinSse fill)
-      : this(List<HideDataTwinSse>.filled(arraySize, fill));
 }
 
 @freezed

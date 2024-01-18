@@ -71,6 +71,78 @@ Future<String> unwrapRustOpaqueTwinSseMoi(
 Future<FrbOpaqueReturnTwinSseMoi> frbGeneratorTestTwinSseMoi({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinSseMoi(hint: hint);
 
+// Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinSseMoi >>
+@sealed
+class BoxDartDebugTwinSseMoi extends RustOpaque {
+  BoxDartDebugTwinSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  BoxDartDebugTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<FrbOpaqueReturnTwinSseMoi>
+@sealed
+class FrbOpaqueReturnTwinSseMoi extends RustOpaque {
+  FrbOpaqueReturnTwinSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  FrbOpaqueReturnTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinSseMoi,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSseMoiPtr,
+  );
+}
+
+// Rust type: RustOpaqueMoi<HideDataTwinSseMoi>
+@sealed
+class HideDataTwinSseMoi extends RustOpaque {
+  HideDataTwinSseMoi.dcoDecode(List<dynamic> wire)
+      : super.dcoDecode(wire, _kStaticData);
+
+  HideDataTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinSseMoi,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSseMoi,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_HideDataTwinSseMoiPtr,
+  );
+}
+
+class HideDataTwinSseMoiArray2 extends NonGrowableListView<HideDataTwinSseMoi> {
+  static const arraySize = 2;
+
+  @internal
+  List<HideDataTwinSseMoi> get inner => _inner;
+  final List<HideDataTwinSseMoi> _inner;
+
+  HideDataTwinSseMoiArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  HideDataTwinSseMoiArray2.init(HideDataTwinSseMoi fill)
+      : this(List<HideDataTwinSseMoi>.filled(arraySize, fill));
+}
+
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinSseMoi >>
 @sealed
 class MutexHideDataTwinSseMoi extends RustOpaque {
@@ -107,78 +179,6 @@ class RwLockHideDataTwinSseMoi extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_RwLockHideDataTwinSseMoiPtr,
   );
-}
-
-// Rust type: RustOpaqueMoi<Box<dyn DartDebugTwinSseMoi>>
-@sealed
-class BoxDartDebugTwinSseMoi extends RustOpaque {
-  BoxDartDebugTwinSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  BoxDartDebugTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSseMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSseMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSseMoiPtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::FrbOpaqueReturnTwinSseMoi>
-@sealed
-class FrbOpaqueReturnTwinSseMoi extends RustOpaque {
-  FrbOpaqueReturnTwinSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  FrbOpaqueReturnTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_FrbOpaqueReturnTwinSseMoi,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSseMoi,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_FrbOpaqueReturnTwinSseMoiPtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<crate::api::pseudo_manual::rust_opaque_twin_sse_moi::HideDataTwinSseMoi>
-@sealed
-class HideDataTwinSseMoi extends RustOpaque {
-  HideDataTwinSseMoi.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  HideDataTwinSseMoi.sseDecode(int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_HideDataTwinSseMoi,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataTwinSseMoi,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_HideDataTwinSseMoiPtr,
-  );
-}
-
-class HideDataTwinSseMoiArray2 extends NonGrowableListView<HideDataTwinSseMoi> {
-  static const arraySize = 2;
-
-  @internal
-  List<HideDataTwinSseMoi> get inner => _inner;
-  final List<HideDataTwinSseMoi> _inner;
-
-  HideDataTwinSseMoiArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
-
-  HideDataTwinSseMoiArray2.init(HideDataTwinSseMoi fill)
-      : this(List<HideDataTwinSseMoi>.filled(arraySize, fill));
 }
 
 @freezed
