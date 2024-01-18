@@ -2,9 +2,7 @@ use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
-use crate::codegen::parser::type_parser::unencodable::{
-    parse_path_type_to_unencodable, SplayedSegment,
-};
+use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;

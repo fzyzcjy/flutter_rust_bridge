@@ -1,7 +1,5 @@
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::type_parser::unencodable::{
-    parse_path_type_to_unencodable, splay_segments,
-};
+use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use quote::ToTokens;
