@@ -29,7 +29,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             raw: Box::new(ty.to_owned()),
             inner: IrTypeRustOpaque {
                 namespace: info.namespace,
-                inner: Box::new(self.create_rust_opaque_type_for_rust_auto_opaque(&inner)),
+                // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+                // TODO similarly, can use std instead of `tokio`'s lock
+                inner: format!(
+                    "flutter_rust_bridge::for_generated::rust_async::RwLock<{}>",
+                    inner.rust_api_type()
+                ),
+                // TODO rm
+                // inner: Box::new(self.create_rust_opaque_type_for_rust_auto_opaque(&inner)),
                 codec: info.codec,
                 brief_name: true,
             },
