@@ -7,9 +7,8 @@ pub struct Arena<'a>(typed_arena::Arena<Box<dyn Any>>, PhantomData<&'a ()>);
 
 impl<'a> Arena<'a> {
     pub fn alloc<T: 'a>(&'a self, value: T) -> &'a mut T {
-        todo!()
-        // let ans = self.0.alloc(Box::new(value));
-        // ans.downcast_mut().unwrap()
+        let ans = self.0.alloc(Box::new(value));
+        ans.downcast_mut().unwrap()
     }
 }
 
