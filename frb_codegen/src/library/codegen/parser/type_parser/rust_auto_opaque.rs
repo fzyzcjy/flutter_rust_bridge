@@ -1,7 +1,7 @@
 use crate::codegen::ir::pack::DistinctTypeGatherer;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::rust_opaque::{
@@ -46,7 +46,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
 
-        let info = self.get_or_insert_rust_auto_opaque_info(&inner);
+        let info = self.get_or_insert_rust_auto_opaque_info(&inner, None);
 
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
@@ -75,12 +75,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(super) fn get_or_insert_rust_auto_opaque_info(
         &mut self,
         inner: &IrType,
+        codec: Option<RustOpaqueCodecMode>,
     ) -> RustOpaqueParserTypeInfo {
         self.inner.rust_auto_opaque_parser_info.get_or_insert(
             inner,
             RustOpaqueParserTypeInfo::new(
                 self.context.initiated_namespace.clone(),
-                (self.context.func_attributes.rust_opaque_codec())
+                codec
+                    .or(self.context.func_attributes.rust_opaque_codec())
                     .unwrap_or(self.context.default_rust_opaque_codec),
             ),
         )
