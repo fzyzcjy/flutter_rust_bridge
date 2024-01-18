@@ -22,8 +22,6 @@ pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
-#[cfg(feature = "rust-async")]
-pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
 pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
 pub use crate::platform_types::{
     DartAbi, MessagePort, PlatformGeneralizedUint8ListPtr, WireSyncRust2DartDco,
@@ -33,7 +31,8 @@ pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust2dart::stream_sink::StreamSinkBase;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
-pub use crate::rust_auto_opaque::RustAutoOpaqueBase;
+#[cfg(feature = "rust-async")]
+pub use crate::rust_auto_opaque::{dart2rust::rust_auto_opaque_encode, RustAutoOpaqueBase};
 pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
