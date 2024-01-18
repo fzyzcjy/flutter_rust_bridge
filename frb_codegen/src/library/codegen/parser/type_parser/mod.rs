@@ -18,6 +18,7 @@ pub(crate) mod unencodable;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
+use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrType::RustAutoOpaque;
@@ -75,14 +76,13 @@ impl<'a> TypeParser<'a> {
         TypeParserWithContext::new(self, context).parse_type(ty)
     }
 
-    pub(crate) fn transform_if_rust_auto_opaque(
+    pub(crate) fn transform_rust_auto_opaque(
         &mut self,
-        ty_raw: &IrType,
-        transform_if_rust_auto_opaque: impl FnOnce(&str) -> String,
+        ty_raw: &IrTypeRustAutoOpaque,
+        transform: impl FnOnce(&str) -> String,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<IrType> {
-        TypeParserWithContext::new(self, context)
-            .transform_if_rust_auto_opaque(ty_raw, transform_if_rust_auto_opaque)
+        TypeParserWithContext::new(self, context).transform_rust_auto_opaque(ty_raw, transform)
     }
 }
 

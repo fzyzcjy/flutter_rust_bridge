@@ -85,19 +85,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         )
     }
 
-    pub(crate) fn transform_if_rust_auto_opaque(
+    pub(crate) fn transform_rust_auto_opaque(
         &mut self,
-        ty_raw: &IrType,
-        transform_if_rust_auto_opaque: impl FnOnce(&str) -> String,
+        ty_raw: &IrTypeRustAutoOpaque,
+        transform: impl FnOnce(&str) -> String,
     ) -> Result<IrType> {
-        if let RustAutoOpaque(ty_raw) = ty_raw {
-            self.parse_type_rust_auto_opaque(
-                ty_raw.self_namespace(),
-                &syn::parse_str(&transform_if_rust_auto_opaque(&ty_raw.raw.string))?,
-            )
-        } else {
-            Ok(ty_raw.to_owned())
-        }
+        self.parse_type_rust_auto_opaque(
+            ty_raw.self_namespace(),
+            &syn::parse_str(&transform(&ty_raw.raw.string))?,
+        )
     }
 }
 

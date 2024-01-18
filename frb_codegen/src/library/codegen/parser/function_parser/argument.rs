@@ -58,11 +58,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let ty_raw =
             self.parse_fn_arg_receiver_attempt(&method.enum_or_struct_name.name, context)?;
-        let ty = self.type_parser.transform_if_rust_auto_opaque(
-            &ty_raw,
-            |raw| generate_ref_type_considering_reference(raw, receiver),
-            context,
-        )?;
+        let ty = match ty_raw {
+            IrType::RustAutoOpaque(ty_raw) => self.type_parser.transform_rust_auto_opaque(
+                &ty_raw,
+                |raw| generate_ref_type_considering_reference(raw, receiver),
+                context,
+            )?,
+            _ => ty_raw,
+        };
 
         let name = "that".to_owned();
 
