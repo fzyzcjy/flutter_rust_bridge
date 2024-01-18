@@ -41,13 +41,8 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        let prefix = match self.ownership_mode {
-            OwnershipMode::Owned => "",
-            OwnershipMode::Ref => "&",
-            OwnershipMode::RefMut => "&mut ",
-        };
-        let raw = &self.raw.string;
-        format!("{prefix}{raw}")
+        self.raw.string.clone()
+        // self.inner.rust_api_type()
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
