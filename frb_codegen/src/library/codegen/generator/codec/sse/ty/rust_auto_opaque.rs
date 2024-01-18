@@ -42,7 +42,6 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
             )),
             Lang::RustLang(_) => {
                 let ownership_mode = self.ir.ownership_mode.to_string().to_case(Case::Snake);
-                let safe_ident = self.ir.safe_ident();
 
                 let wrapper_stmt = match self.ir.ownership_mode {
                     OwnershipMode::Owned => {
@@ -50,8 +49,8 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                     }
                     OwnershipMode::Ref | OwnershipMode::RefMut => {
                         format!(
-                            "let inner_ref = arena.alloc_RustAutoOpaque_Opaque_{safe_ident}(inner);
-                            return arena.alloc_RustAutoOpaque_Lock_{safe_ident}(inner_ref.rust_auto_opaque_decode_{ownership_mode}());"
+                            "let inner_ref = arena.alloc(inner);
+                            return arena.alloc(inner_ref.rust_auto_opaque_decode_{ownership_mode}());"
                         )
                     }
                 };
