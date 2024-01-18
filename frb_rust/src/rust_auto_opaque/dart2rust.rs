@@ -24,5 +24,5 @@ impl<T, A: BaseArc<RwLock<T>>> RustAutoOpaqueBase<T, A> {
 }
 
 pub fn rust_auto_opaque_encode<T, A: BaseArc<RwLock<T>>>(value: T) -> RustAutoOpaqueBase<T, A> {
-    RustOpaqueBase::new(RwLock::new(value))
+    RustAutoOpaqueBase::new(RwLock::new(value))
 }
