@@ -60,7 +60,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         inner: &IrType,
         codec: Option<RustOpaqueCodecMode>,
     ) -> IrType {
-        let info = self.get_or_insert_rust_auto_opaque_info(&inner, codec);
+        let info = self.get_or_insert_rust_auto_opaque_info(inner, codec);
 
         RustOpaque(IrTypeRustOpaque {
             namespace: info.namespace,
