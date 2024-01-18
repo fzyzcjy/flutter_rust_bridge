@@ -4,20 +4,20 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::rust_opaque::generalized_rust_opaque_rust_wire_type;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
+use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, OwnershipMode};
 use crate::codegen::ir::ty::IrTypeTrait;
 use std::borrow::Cow;
 
 impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustAutoOpaqueWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: Some(generate_decode(&self.ir)),
+            io: generate_decode(&self.ir),
             ..Default::default()
         }
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
-        Some(generate_decode(&self.ir).into())
+        generate_decode(&self.ir).map(Cow::from)
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
@@ -25,10 +25,14 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustAutoOpaqueWireRustCodecCs
     }
 }
 
-fn generate_decode(ir: &IrTypeRustAutoOpaque) -> String {
-    let inner = format!(
-        "CstDecode::<{}>::cst_decode(self)",
-        ir.inner.rust_api_type()
-    );
-    generate_decode_rust_auto_opaque(ir, &inner)
+fn generate_decode(ir: &IrTypeRustAutoOpaque) -> Option<String> {
+    if ir.ownership_mode == OwnershipMode::Owned {
+        let inner = format!(
+            "CstDecode::<{}>::cst_decode(self)",
+            ir.inner.rust_api_type()
+        );
+        Some(generate_decode_rust_auto_opaque(ir, &inner))
+    } else {
+        None
+    }
 }
