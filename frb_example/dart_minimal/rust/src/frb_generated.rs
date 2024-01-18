@@ -127,13 +127,9 @@ fn wire_my_func_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(
-                        flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(
-                            crate::api::minimal::my_func(),
-                        ),
-                    )
-                })())
+                transform_result_sse(
+                    (move || Result::<_, ()>::Ok(crate::api::minimal::my_func()))(),
+                )
             }
         },
     )
@@ -142,13 +138,13 @@ fn wire_my_func_impl(
 // Section: related_funcs
 
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::rust_async::RwLock<Vec<MyOpaqueType>>
+    flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>
 );
 
 // Section: dart2rust
 
 impl SseDecode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Vec<MyOpaqueType>>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -161,6 +157,22 @@ impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode
+    for Vec<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
+            >>::sse_decode(deserializer));
+        }
+        return ans_;
     }
 }
 
@@ -212,7 +224,7 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 impl SseEncode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Vec<MyOpaqueType>>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -226,6 +238,18 @@ impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode
+    for Vec<RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>>
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>>::sse_encode(item, serializer);
+        }
     }
 }
 

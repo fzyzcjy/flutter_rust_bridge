@@ -68,16 +68,15 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 
-  Future<VecMyOpaqueType> myFunc({dynamic hint});
+  Future<List<MyOpaqueType>> myFunc({dynamic hint});
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_VecMyOpaqueType;
+      get rust_arc_increment_strong_count_MyOpaqueType;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_VecMyOpaqueType;
+      get rust_arc_decrement_strong_count_MyOpaqueType;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_VecMyOpaqueTypePtr;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MyOpaqueTypePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -139,7 +138,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<VecMyOpaqueType> myFunc({dynamic hint}) {
+  Future<List<MyOpaqueType>> myFunc({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -148,7 +147,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType,
+            sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType,
         decodeErrorData: null,
       ),
       constMeta: kMyFuncConstMeta,
@@ -164,33 +163,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_VecMyOpaqueType => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType;
+      get rust_arc_increment_strong_count_MyOpaqueType => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_VecMyOpaqueType => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType;
+      get rust_arc_decrement_strong_count_MyOpaqueType => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType;
 
   @protected
-  VecMyOpaqueType
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return VecMyOpaqueType.dcoDecode(raw as List<dynamic>);
+    return MyOpaqueType.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  VecMyOpaqueType
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return VecMyOpaqueType.dcoDecode(raw as List<dynamic>);
+    return MyOpaqueType.dcoDecode(raw as List<dynamic>);
   }
 
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
+  }
+
+  @protected
+  List<MyOpaqueType>
+      dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>)
+        .map(
+            dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType)
+        .toList();
   }
 
   @protected
@@ -206,20 +216,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  VecMyOpaqueType
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return VecMyOpaqueType.sseDecode(
+    return MyOpaqueType.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  VecMyOpaqueType
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return VecMyOpaqueType.sseDecode(
+    return MyOpaqueType.sseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -227,6 +237,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  List<MyOpaqueType>
+      sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <MyOpaqueType>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(
+          sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+              deserializer));
+    }
+    return ans_;
   }
 
   @protected
@@ -248,16 +274,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
-          VecMyOpaqueType self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          MyOpaqueType self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.sseEncode(move: true), serializer);
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
-          VecMyOpaqueType self, SseSerializer serializer) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          MyOpaqueType self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(self.sseEncode(move: null), serializer);
   }
@@ -266,6 +292,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void
+      sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          List<MyOpaqueType> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          item, serializer);
+    }
   }
 
   @protected

@@ -18,21 +18,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_VecMyOpaqueTypePtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType;
+      get rust_arc_decrement_strong_count_MyOpaqueTypePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType;
 
   @protected
-  VecMyOpaqueType
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic raw);
 
   @protected
-  VecMyOpaqueType
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic raw);
 
   @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  List<MyOpaqueType>
+      dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
@@ -41,17 +46,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int dco_decode_usize(dynamic raw);
 
   @protected
-  VecMyOpaqueType
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           SseDeserializer deserializer);
 
   @protected
-  VecMyOpaqueType
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  MyOpaqueType
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           SseDeserializer deserializer);
 
   @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  List<MyOpaqueType>
+      sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -64,16 +74,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
-          VecMyOpaqueType self, SseSerializer serializer);
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          MyOpaqueType self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
-          VecMyOpaqueType self, SseSerializer serializer);
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          MyOpaqueType self, SseSerializer serializer);
 
   @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          List<MyOpaqueType> self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -90,16 +105,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
               ptr);
 }
 
@@ -116,10 +131,10 @@ class RustLibWasmModule implements WasmModule {
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic ptr);
 }

@@ -16,15 +16,15 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 flutter_rust_bridge::frb_generated_boilerplate_web!();
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Vec<MyOpaqueType>>>::increment_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>::increment_strong_count(ptr as _);
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockVecMyOpaqueType(
+pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
     ptr: *const std::ffi::c_void,
 ) {
-    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<Vec<MyOpaqueType>>>::decrement_strong_count(ptr as _);
+    MoiArc::<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>::decrement_strong_count(ptr as _);
 }
