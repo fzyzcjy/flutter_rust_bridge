@@ -232,13 +232,6 @@ fn generate_code_closure(
         .to_string()
         .to_case(Case::Snake);
 
-    // TODO rm
-    // let maybe_result = if matches!(&func.output, IrType::RustAutoOpaque(_)) && func.fallible() {
-    //     "-> Result::<_,flutter_rust_bridge::for_generated::anyhow::Error>".to_string()
-    // } else {
-    //     "".to_string()
-    // };
-
     match func.mode {
         IrFuncMode::Sync => {
             format!(
