@@ -11,10 +11,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
-use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use std::convert::TryInto;
@@ -30,16 +27,10 @@ pub(crate) fn generate_wire_func(
     let inner_func_args = generate_inner_func_args(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
-    let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
     let handler_func_name = generate_handler_func_name(func, ir_pack, context);
     let return_type = generate_return_type(func);
-    let code_closure = generate_code_closure(
-        func,
-        &code_decode,
-        &code_inner_decode,
-        &code_call_inner_func_result,
-    );
+    let code_closure = generate_code_closure(func, &code_decode, &code_call_inner_func_result);
     let func_name = wire_func_name(func);
 
     Acc::new(|target| match target {
@@ -81,13 +72,7 @@ fn generate_inner_func_args(
         .enumerate()
         .map(|(index, field)| {
             let mut ans = format!("api_{}", field.name.rust_style());
-            if let IrType::RustAutoOpaque(o) = &field.ty {
-                ans = match o.ownership_mode {
-                    OwnershipMode::Ref => format!("&{ans}"),
-                    OwnershipMode::RefMut => format!("&mut {ans}"),
-                    _ => ans,
-                };
-            } else if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
+            if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
                 ans = format!("&{ans}");
             }
             ans
@@ -122,28 +107,6 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
         },
         mode = ffi_call_mode(func.mode),
     )
-}
-
-fn generate_code_inner_decode(func: &IrFunc) -> String {
-    func.inputs
-        .iter()
-        .filter_map(|field| {
-            if let IrType::RustAutoOpaque(o) = &field.ty {
-                let mode = o.ownership_mode.to_string().to_case(Case::Snake);
-                let mutability = if o.ownership_mode == OwnershipMode::RefMut {
-                    "mut "
-                } else {
-                    ""
-                };
-                Some(format!(
-                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}();\n",
-                    name = field.name.rust_style()
-                ))
-            } else {
-                None
-            }
-        })
-        .join("")
 }
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<String>) -> String {
@@ -225,7 +188,6 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
 fn generate_code_closure(
     func: &IrFunc,
     code_decode: &str,
-    code_inner_decode: &str,
     code_call_inner_func_result: &str,
 ) -> String {
     let codec = (func.codec_mode_pack.rust2dart.delegate_or_self())
@@ -237,7 +199,7 @@ fn generate_code_closure(
             format!(
                 "{code_decode}
                 transform_result_{codec}((move || {{
-                    {code_inner_decode} {code_call_inner_func_result}
+                    {code_call_inner_func_result}
                 }})())"
             )
         }
@@ -247,7 +209,7 @@ fn generate_code_closure(
             format!(
                 "{code_decode} move |context| {maybe_async_move} {{
                     transform_result_{codec}((move || {maybe_async_move} {{
-                        {code_inner_decode} {code_call_inner_func_result}
+                        {code_call_inner_func_result}
                     }})(){maybe_await})
                 }}"
             )
