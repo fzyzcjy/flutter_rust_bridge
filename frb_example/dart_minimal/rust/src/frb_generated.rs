@@ -61,7 +61,9 @@ fn wire_another_func_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <MyOpaqueType>::sse_decode(&mut deserializer);
+            let api_arg = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
+            >>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {

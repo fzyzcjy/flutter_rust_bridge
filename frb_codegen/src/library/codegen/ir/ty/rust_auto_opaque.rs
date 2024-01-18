@@ -41,8 +41,11 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        self.raw.string.clone()
-        // self.inner.rust_api_type()
+        match self.ownership_mode {
+            // Different mechanisms for Owned vs Ref/RefMut
+            OwnershipMode::Owned => self.raw.string.clone(),
+            OwnershipMode::Ref | OwnershipMode::RefMut => self.inner.rust_api_type(),
+        }
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
