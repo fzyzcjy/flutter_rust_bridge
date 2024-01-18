@@ -46,13 +46,13 @@ macro_rules! frb_generated_sse_codec {
     () => {
         pub trait SseDecode<'a> {
             fn sse_decode(
-                arena: &'a Arena,
+                arena: &'a $crate::for_generated::ArenaBase,
                 deserializer: &mut $crate::for_generated::SseDeserializer,
             ) -> Self;
 
             // just syntax sugar
             fn sse_decode_single(
-                arena: &'a Arena,
+                arena: &'a $crate::for_generated::ArenaBase,
                 message: $crate::for_generated::Dart2RustMessageSse,
             ) -> Self
             where
