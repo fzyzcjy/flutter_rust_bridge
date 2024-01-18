@@ -1,5 +1,7 @@
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, OwnershipMode};
+use crate::codegen::ir::ty::rust_auto_opaque::{
+    IrRustAutoOpaqueRaw, IrTypeRustAutoOpaque, OwnershipMode,
+};
 use crate::codegen::ir::ty::rust_opaque::{
     IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
 };
@@ -35,9 +37,17 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let info = self.get_or_insert_rust_auto_opaque_info(&inner_str, namespace, None);
 
+        let raw_segments = match inner {
+            Type::Path(inner) => self.extract_path_data(&inner.path)?,
+            _ => vec![],
+        };
+
         RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
-            raw: inner_str.clone(),
+            raw: IrRustAutoOpaqueRaw {
+                string: inner_str.clone(),
+                segments: raw_segments,
+            },
             inner: IrTypeRustOpaque {
                 namespace: info.namespace,
                 inner: self.create_rust_opaque_type_for_rust_auto_opaque(&inner_str),
