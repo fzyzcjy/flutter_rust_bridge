@@ -110,27 +110,24 @@ Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
         .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
             arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsync(
-        {required StructWithGoodAndOpaqueFieldTwinRustAsync arg,
-        dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsync(
-            arg: arg, hint: hint);
-
-Future<
-    void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsync(
-        {required StructWithGoodAndOpaqueFieldTwinRustAsync arg,
-        dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsync(
-            arg: arg, hint: hint);
-
 Future<StructWithGoodAndOpaqueFieldTwinRustAsync>
     rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
                 hint: hint);
+
+Future<void> rustAutoOpaqueArgVecOwnTwinRustAsync(
+        {required List<NonCloneSimpleTwinRustAsync> arg,
+        required List<int> expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueArgVecOwnTwinRustAsync(
+        arg: arg, expect: expect, hint: hint);
+
+Future<List<NonCloneSimpleTwinRustAsync>>
+    rustAutoOpaqueReturnVecOwnTwinRustAsync({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueReturnVecOwnTwinRustAsync(hint: hint);
 
 Future<void> rustAutoOpaqueExplicitArgTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg,
@@ -150,7 +147,7 @@ Future<NonCloneSimpleTwinRustAsync> rustAutoOpaqueExplicitReturnTwinRustAsync(
     RustLib.instance.api.rustAutoOpaqueExplicitReturnTwinRustAsync(
         initial: initial, hint: hint);
 
-Future<OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync>
+Future<(OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync)>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync({dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync(hint: hint);
@@ -173,7 +170,7 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsync(
     RustLib.instance.api
         .rustAutoOpaqueBorrowAndBorrowTwinRustAsync(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn Fn (String) -> String + Send + Sync>>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn Fn (String) -> String + Send + Sync >>>
 @sealed
 class BoxFnStringString extends RustOpaque {
   BoxFnStringString.dcoDecode(List<dynamic> wire)
@@ -192,7 +189,7 @@ class BoxFnStringString extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinRustAsync>>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinRustAsync >>>
 @sealed
 class BoxHelloTraitTwinRustAsync extends RustOpaque {
   BoxHelloTraitTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -211,7 +208,7 @@ class BoxHelloTraitTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn MyTraitTwinRustAsync + Send + Sync >>>
 @sealed
 class BoxMyTraitTwinRustAsync extends RustOpaque {
   BoxMyTraitTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -320,47 +317,26 @@ class NonCloneSimpleTwinRustAsync extends RustOpaque {
               hint: hint);
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinRustAsync>>
 @sealed
-class StructWithGoodAndOpaqueFieldTwinRustAsync extends RustOpaque {
-  StructWithGoodAndOpaqueFieldTwinRustAsync.dcoDecode(List<dynamic> wire)
+class OpaqueOneTwinRustAsync extends RustOpaque {
+  OpaqueOneTwinRustAsync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StructWithGoodAndOpaqueFieldTwinRustAsync.sseDecode(
-      int ptr, int externalSizeOnNative)
+  OpaqueOneTwinRustAsync.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinRustAsyncPtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueOneTwinRustAsync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinRustAsync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncPtr,
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueOneTwinRustAsync,crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync,)>>
-@sealed
-class OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync extends RustOpaque {
-  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync.sseDecode(
-      int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinRustAsyncOpaqueTwoTwinRustAsyncPtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::OpaqueTwoTwinRustAsync>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinRustAsync>>
 @sealed
 class OpaqueTwoTwinRustAsync extends RustOpaque {
   OpaqueTwoTwinRustAsync.dcoDecode(List<dynamic> wire)
@@ -398,4 +374,25 @@ class StructWithExplicitAutoOpaqueFieldTwinRustAsync {
           runtimeType == other.runtimeType &&
           autoOpaque == other.autoOpaque &&
           normal == other.normal;
+}
+
+class StructWithGoodAndOpaqueFieldTwinRustAsync {
+  final String good;
+  final NonCloneSimpleTwinRustAsync opaque;
+
+  const StructWithGoodAndOpaqueFieldTwinRustAsync({
+    required this.good,
+    required this.opaque,
+  });
+
+  @override
+  int get hashCode => good.hashCode ^ opaque.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithGoodAndOpaqueFieldTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          good == other.good &&
+          opaque == other.opaque;
 }

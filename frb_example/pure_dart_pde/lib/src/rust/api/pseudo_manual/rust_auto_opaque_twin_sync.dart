@@ -104,24 +104,23 @@ void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
         .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
             arg: arg, hint: hint);
 
-void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSync(
-        {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSync(
-            arg: arg, hint: hint);
-
-void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSync(
-        {required StructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSync(
-            arg: arg, hint: hint);
-
 StructWithGoodAndOpaqueFieldTwinSync
     rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
                 hint: hint);
+
+void rustAutoOpaqueArgVecOwnTwinSync(
+        {required List<NonCloneSimpleTwinSync> arg,
+        required List<int> expect,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueArgVecOwnTwinSync(arg: arg, expect: expect, hint: hint);
+
+List<NonCloneSimpleTwinSync> rustAutoOpaqueReturnVecOwnTwinSync(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueReturnVecOwnTwinSync(hint: hint);
 
 void rustAutoOpaqueExplicitArgTwinSync(
         {required NonCloneSimpleTwinSync arg,
@@ -141,10 +140,10 @@ NonCloneSimpleTwinSync rustAutoOpaqueExplicitReturnTwinSync(
     RustLib.instance.api
         .rustAutoOpaqueExplicitReturnTwinSync(initial: initial, hint: hint);
 
-OpaqueOneTwinSyncOpaqueTwoTwinSync rustAutoOpaqueReturnOpaqueOneAndTwoTwinSync(
-        {dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueReturnOpaqueOneAndTwoTwinSync(hint: hint);
+(OpaqueOneTwinSync, OpaqueTwoTwinSync)
+    rustAutoOpaqueReturnOpaqueOneAndTwoTwinSync({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueReturnOpaqueOneAndTwoTwinSync(hint: hint);
 
 OpaqueTwoTwinSync rustAutoOpaqueReturnOpaqueTwoTwinSync({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOpaqueTwoTwinSync(hint: hint);
@@ -163,7 +162,7 @@ int rustAutoOpaqueBorrowAndBorrowTwinSync(
     RustLib.instance.api
         .rustAutoOpaqueBorrowAndBorrowTwinSync(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinSync>>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinSync >>>
 @sealed
 class BoxHelloTraitTwinSync extends RustOpaque {
   BoxHelloTraitTwinSync.dcoDecode(List<dynamic> wire)
@@ -182,7 +181,7 @@ class BoxHelloTraitTwinSync extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn MyTraitTwinSync + Send + Sync >>>
 @sealed
 class BoxMyTraitTwinSync extends RustOpaque {
   BoxMyTraitTwinSync.dcoDecode(List<dynamic> wire)
@@ -281,47 +280,26 @@ class NonCloneSimpleTwinSync extends RustOpaque {
           .nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync(hint: hint);
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinSync>>
 @sealed
-class StructWithGoodAndOpaqueFieldTwinSync extends RustOpaque {
-  StructWithGoodAndOpaqueFieldTwinSync.dcoDecode(List<dynamic> wire)
+class OpaqueOneTwinSync extends RustOpaque {
+  OpaqueOneTwinSync.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StructWithGoodAndOpaqueFieldTwinSync.sseDecode(
-      int ptr, int externalSizeOnNative)
+  OpaqueOneTwinSync.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinSync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinSyncPtr,
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_OpaqueOneTwinSync,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinSyncPtr,
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueOneTwinSync,crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync,)>>
-@sealed
-class OpaqueOneTwinSyncOpaqueTwoTwinSync extends RustOpaque {
-  OpaqueOneTwinSyncOpaqueTwoTwinSync.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  OpaqueOneTwinSyncOpaqueTwoTwinSync.sseDecode(
-      int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_OpaqueOneTwinSyncOpaqueTwoTwinSync,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinSyncOpaqueTwoTwinSync,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinSyncOpaqueTwoTwinSyncPtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::pseudo_manual::rust_auto_opaque_twin_sync::OpaqueTwoTwinSync>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinSync>>
 @sealed
 class OpaqueTwoTwinSync extends RustOpaque {
   OpaqueTwoTwinSync.dcoDecode(List<dynamic> wire)
@@ -359,4 +337,25 @@ class StructWithExplicitAutoOpaqueFieldTwinSync {
           runtimeType == other.runtimeType &&
           autoOpaque == other.autoOpaque &&
           normal == other.normal;
+}
+
+class StructWithGoodAndOpaqueFieldTwinSync {
+  final String good;
+  final NonCloneSimpleTwinSync opaque;
+
+  const StructWithGoodAndOpaqueFieldTwinSync({
+    required this.good,
+    required this.opaque,
+  });
+
+  @override
+  int get hashCode => good.hashCode ^ opaque.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithGoodAndOpaqueFieldTwinSync &&
+          runtimeType == other.runtimeType &&
+          good == other.good &&
+          opaque == other.opaque;
 }

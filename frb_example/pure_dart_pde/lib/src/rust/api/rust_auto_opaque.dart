@@ -109,24 +109,23 @@ Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
         .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
             arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
-        {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
-            arg: arg, hint: hint);
-
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
-        {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
-            arg: arg, hint: hint);
-
 Future<StructWithGoodAndOpaqueFieldTwinNormal>
     rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
             {dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
                 hint: hint);
+
+Future<void> rustAutoOpaqueArgVecOwnTwinNormal(
+        {required List<NonCloneSimpleTwinNormal> arg,
+        required List<int> expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueArgVecOwnTwinNormal(
+        arg: arg, expect: expect, hint: hint);
+
+Future<List<NonCloneSimpleTwinNormal>> rustAutoOpaqueReturnVecOwnTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueReturnVecOwnTwinNormal(hint: hint);
 
 Future<void> rustAutoOpaqueExplicitArgTwinNormal(
         {required NonCloneSimpleTwinNormal arg,
@@ -146,7 +145,7 @@ Future<NonCloneSimpleTwinNormal> rustAutoOpaqueExplicitReturnTwinNormal(
     RustLib.instance.api
         .rustAutoOpaqueExplicitReturnTwinNormal(initial: initial, hint: hint);
 
-Future<OpaqueOneTwinNormalOpaqueTwoTwinNormal>
+Future<(OpaqueOneTwinNormal, OpaqueTwoTwinNormal)>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal({dynamic hint}) =>
         RustLib.instance.api
             .rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal(hint: hint);
@@ -169,7 +168,7 @@ Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal(
     RustLib.instance.api
         .rustAutoOpaqueBorrowAndBorrowTwinNormal(a: a, b: b, hint: hint);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn HelloTraitTwinNormal>>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn HelloTraitTwinNormal >>>
 @sealed
 class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.dcoDecode(List<dynamic> wire)
@@ -188,7 +187,7 @@ class BoxHelloTraitTwinNormal extends RustOpaque {
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<Box < dyn MyTraitTwinNormal + Send + Sync >>>
 @sealed
 class BoxMyTraitTwinNormal extends RustOpaque {
   BoxMyTraitTwinNormal.dcoDecode(List<dynamic> wire)
@@ -294,47 +293,26 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
           .nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal(hint: hint);
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueOneTwinNormal>>
 @sealed
-class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
-  StructWithGoodAndOpaqueFieldTwinNormal.dcoDecode(List<dynamic> wire)
+class OpaqueOneTwinNormal extends RustOpaque {
+  OpaqueOneTwinNormal.dcoDecode(List<dynamic> wire)
       : super.dcoDecode(wire, _kStaticData);
 
-  StructWithGoodAndOpaqueFieldTwinNormal.sseDecode(
-      int ptr, int externalSizeOnNative)
+  OpaqueOneTwinNormal.sseDecode(int ptr, int externalSizeOnNative)
       : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_OpaqueOneTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_OpaqueOneTwinNormalPtr,
   );
 }
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<(crate::api::rust_auto_opaque::OpaqueOneTwinNormal,crate::api::rust_auto_opaque::OpaqueTwoTwinNormal,)>>
-@sealed
-class OpaqueOneTwinNormalOpaqueTwoTwinNormal extends RustOpaque {
-  OpaqueOneTwinNormalOpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
-      : super.dcoDecode(wire, _kStaticData);
-
-  OpaqueOneTwinNormalOpaqueTwoTwinNormal.sseDecode(
-      int ptr, int externalSizeOnNative)
-      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_OpaqueOneTwinNormalOpaqueTwoTwinNormalPtr,
-  );
-}
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<crate::api::rust_auto_opaque::OpaqueTwoTwinNormal>>
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<OpaqueTwoTwinNormal>>
 @sealed
 class OpaqueTwoTwinNormal extends RustOpaque {
   OpaqueTwoTwinNormal.dcoDecode(List<dynamic> wire)
@@ -372,4 +350,25 @@ class StructWithExplicitAutoOpaqueFieldTwinNormal {
           runtimeType == other.runtimeType &&
           autoOpaque == other.autoOpaque &&
           normal == other.normal;
+}
+
+class StructWithGoodAndOpaqueFieldTwinNormal {
+  final String good;
+  final NonCloneSimpleTwinNormal opaque;
+
+  const StructWithGoodAndOpaqueFieldTwinNormal({
+    required this.good,
+    required this.opaque,
+  });
+
+  @override
+  int get hashCode => good.hashCode ^ opaque.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithGoodAndOpaqueFieldTwinNormal &&
+          runtimeType == other.runtimeType &&
+          good == other.good &&
+          opaque == other.opaque;
 }
