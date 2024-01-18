@@ -43,15 +43,15 @@ macro_rules! frb_generated_cst_codec {
 #[macro_export]
 macro_rules! frb_generated_sse_codec {
     () => {
-        pub trait SseDecode<'a> {
+        pub trait SseDecode<A> {
             fn sse_decode(
-                arena: &'a $crate::for_generated::Arena,
+                arena: &A,
                 deserializer: &mut $crate::for_generated::SseDeserializer,
             ) -> Self;
 
             // just syntax sugar
             fn sse_decode_single(
-                arena: &'a $crate::for_generated::Arena,
+                arena: &A,
                 message: $crate::for_generated::Dart2RustMessageSse,
             ) -> Self
             where
