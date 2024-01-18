@@ -1,5 +1,25 @@
 # Troubleshooting
 
+## Linker complains undefined symbols 
+
+e.g. `ld: Undefined symbols: std::__1::basic_string ...`
+
+Please change the following line in iOS/macos podspec file:
+
+```
+'OTHER_LDFLAGS' => '-force_load ${BUILT_PRODUCTS_DIR}/librust_lib.a',
+```
+
+To something like:
+
+```
+'OTHER_LDFLAGS' => '-force_load ${BUILT_PRODUCTS_DIR}/librust_lib.a -lc++',
+```
+
+Or other libraries that you need (e.g. `-framework SystemConfiguration`, `-framework AudioToolbox`, etc).
+
+Please refer to these issues for more details: [cargokit#52](https://github.com/irondash/cargokit/issues/52), [bridge#1610](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1610).
+
 ## Issue with `store_dart_post_cobject`
 
 If calling rust function gives the error below, please consider running **cargo build** again. This can happen when the generated rs file is not included when building is being done.
