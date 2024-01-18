@@ -152,9 +152,17 @@ pub(super) fn simple_delegate_encode(lang: &Lang, inner_ty: &IrType, inner_expr:
 }
 
 pub(super) fn simple_delegate_decode(lang: &Lang, inner_ty: &IrType, wrapper_expr: &str) -> String {
+    simple_delegate_decode_raw(lang, inner_ty, &format!("return {wrapper_expr};"))
+}
+
+pub(super) fn simple_delegate_decode_raw(
+    lang: &Lang,
+    inner_ty: &IrType,
+    wrapper_stmt: &str,
+) -> String {
     format!(
         "{var_decl} inner = {};
-        return {wrapper_expr};",
+        {wrapper_stmt}",
         lang.call_decode(inner_ty),
         var_decl = lang.var_decl()
     )
