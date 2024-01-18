@@ -62,6 +62,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         }
         // frb-coverage:ignore-end
 
-        Ok(parse_path_type_to_unencodable(type_path, &splayed_segments))
+        Ok(
+            self.parse_type_rust_auto_opaque(&parse_path_type_to_unencodable(
+                type_path,
+                &splayed_segments,
+            )),
+        )
     }
 }

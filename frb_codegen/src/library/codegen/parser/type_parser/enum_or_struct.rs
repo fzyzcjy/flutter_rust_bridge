@@ -56,9 +56,8 @@ where
                         (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
                     }
                     None => {
-                        return Ok(Some(parse_path_type_to_unencodable(
-                            type_path,
-                            splayed_segments,
+                        return Ok(Some(self.parse_type_rust_auto_opaque(
+                            &parse_path_type_to_unencodable(type_path, splayed_segments),
                         )))
                     }
                 };
