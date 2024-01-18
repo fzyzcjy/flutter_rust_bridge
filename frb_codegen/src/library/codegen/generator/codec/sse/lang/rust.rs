@@ -17,7 +17,10 @@ impl LangTrait for RustLang {
     }
 
     fn call_decode(&self, var_ty: &IrType) -> String {
-        format!("<{}>::sse_decode(deserializer)", var_ty.rust_api_type())
+        format!(
+            "<{}>::sse_decode(deserializer, arena)",
+            var_ty.rust_api_type()
+        )
     }
 
     fn call_constructor(
