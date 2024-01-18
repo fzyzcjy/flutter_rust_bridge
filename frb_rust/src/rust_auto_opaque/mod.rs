@@ -13,6 +13,8 @@ pub type RustAutoOpaqueNom<T> = RustAutoOpaqueBase<T, StdArc<RwLock<T>>>;
 #[macro_export]
 macro_rules! frb_generated_rust_auto_opaque_def {
     (default_rust_auto_opaque = $default_rust_auto_opaque:ident) => {
+        use $crate::for_generated::RustAutoOpaqueNom;
+
         /// Please refer to `RustAutoOpaque` for doc.
         pub type RustAutoOpaqueMoi<T> = $crate::for_generated::RustAutoOpaqueBase<
             T,

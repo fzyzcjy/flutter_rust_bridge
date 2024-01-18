@@ -32,8 +32,10 @@ pub use crate::rust2dart::stream_sink::StreamSinkBase;
 pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 #[cfg(feature = "rust-async")]
-pub use crate::rust_auto_opaque::{dart2rust::rust_auto_opaque_encode, RustAutoOpaqueBase};
-pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
+pub use crate::rust_auto_opaque::{
+    dart2rust::rust_auto_opaque_encode, RustAutoOpaqueBase, RustAutoOpaqueNom,
+};
+pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase, RustOpaqueNom};
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;

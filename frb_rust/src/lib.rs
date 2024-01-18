@@ -43,5 +43,5 @@ pub use crate::rust_async::spawn_blocking_with;
 #[cfg(feature = "rust-async")]
 pub use crate::rust_async::{spawn, spawn_local, JoinHandle};
 #[allow(deprecated)]
-pub use crate::rust_opaque::{DartSafe, RustOpaqueNom};
+pub use crate::rust_opaque::DartSafe;
 pub use flutter_rust_bridge_macros::frb;
