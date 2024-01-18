@@ -46,7 +46,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
 
 // Section: dart2rust
 
-impl<'a> SseDecode for &'a MyOpaqueType {
+impl<'a> SseDecode<'a> for &'a MyOpaqueType {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         arena: &'a flutter_rust_bridge::for_generated::Arena,
@@ -59,7 +59,7 @@ impl<'a> SseDecode for &'a MyOpaqueType {
     }
 }
 
-impl SseDecode
+impl SseDecode<'_>
     for RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
