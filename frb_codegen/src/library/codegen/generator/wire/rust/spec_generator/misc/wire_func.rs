@@ -182,13 +182,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_args: Vec<Stri
     }
 
     if !func.fallible() {
-        let error_type = if (func.inputs.iter()).any(|x| matches!(x.ty, IrType::RustAutoOpaque(_)))
-        {
-            "flutter_rust_bridge::for_generated::anyhow::Error"
-        } else {
-            "()"
-        };
-        ans = format!("Result::<_,{error_type}>::Ok({ans})");
+        ans = format!("Result::<_,()>::Ok({ans})");
     }
 
     ans
