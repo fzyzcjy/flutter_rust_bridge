@@ -7,10 +7,11 @@ use crate::codegen::parser::type_parser::rust_opaque::{
 };
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use syn::Type;
 use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn parse_type_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
+    pub(crate) fn parse_type_rust_auto_opaque(&mut self, ty: &Type) -> IrType {
         let (ownership_mode, inner) = match ty {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),

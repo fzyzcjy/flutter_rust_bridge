@@ -9,7 +9,7 @@ use log::debug;
 use std::collections::{HashMap, HashSet};
 use std::fmt::Debug;
 use std::hash::Hash;
-use syn::{Ident, TypePath};
+use syn::{Ident, Type, TypePath};
 
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where
@@ -81,7 +81,7 @@ where
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
-    fn parse_type_rust_auto_opaque(&mut self, ty: &IrType) -> IrType;
+    fn parse_type_rust_auto_opaque(&mut self, ty: &Type) -> IrType;
 }
 
 fn pop_last(mut v: Vec<String>) -> Vec<String> {
