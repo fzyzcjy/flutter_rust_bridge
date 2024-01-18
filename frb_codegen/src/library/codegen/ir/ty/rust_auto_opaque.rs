@@ -41,7 +41,8 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        self.inner.rust_api_type()
+        self.raw.string.clone()
+        // self.inner.rust_api_type()
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
