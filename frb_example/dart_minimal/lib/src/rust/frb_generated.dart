@@ -68,7 +68,8 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> minimalAdder({required int a, required int b, dynamic hint});
 
-  Future<List<MyOpaqueType>> myFunc({dynamic hint});
+  Future<List<MyOpaqueType>> myFunc(
+      {required List<MyOpaqueType> arg, dynamic hint});
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MyOpaqueType;
@@ -138,10 +139,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<MyOpaqueType>> myFunc({dynamic hint}) {
+  Future<List<MyOpaqueType>> myFunc(
+      {required List<MyOpaqueType> arg, dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
       },
@@ -151,7 +155,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta: kMyFuncConstMeta,
-      argValues: [],
+      argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
@@ -159,7 +163,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kMyFuncConstMeta => const TaskConstMeta(
         debugName: "my_func",
-        argNames: [],
+        argNames: ["arg"],
       );
 
   RustArcIncrementStrongCountFnType

@@ -125,11 +125,12 @@ fn wire_my_func_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_arg = <Vec<MyOpaqueType>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
-                transform_result_sse(
-                    (move || Result::<_, ()>::Ok(crate::api::minimal::my_func()))(),
-                )
+                transform_result_sse((move || {
+                    Result::<_, ()>::Ok(crate::api::minimal::my_func(api_arg))
+                })())
             }
         },
     )

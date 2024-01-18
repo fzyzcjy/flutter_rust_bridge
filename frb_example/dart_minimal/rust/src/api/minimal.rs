@@ -13,6 +13,6 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 pub struct MyOpaqueType;
 
 // TODO temp
-pub fn my_func() -> Vec<MyOpaqueType> {
+pub fn my_func(arg: Vec<MyOpaqueType>) -> Vec<MyOpaqueType> {
     vec![]
 }
