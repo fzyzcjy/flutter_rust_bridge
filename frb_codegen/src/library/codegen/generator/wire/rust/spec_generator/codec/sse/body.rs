@@ -54,7 +54,7 @@ fn generate_encode_or_decode_for_type(
                 "
                 impl SseDecode for {rust_api_type} {{
                     {codec_comments}
-                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer, arena: &flutter_rust_bridge::for_generated::Arena) -> Self {{{body}}}
+                    fn sse_decode(arena: &flutter_rust_bridge::for_generated::Arena, deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {{{body}}}
                 }}
                 "
             ),
