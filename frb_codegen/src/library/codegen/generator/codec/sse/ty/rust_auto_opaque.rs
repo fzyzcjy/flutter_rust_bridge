@@ -24,7 +24,7 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
     }
 
     fn generate_extra(&self, lang: &Lang, mode: EncodeOrDecode) -> String {
-        if lang == Lang::RustLang(_)
+        if matches!(lang, Lang::RustLang(_))
             && mode == EncodeOrDecode::Encode
             && self.ir.ownership_mode == OwnershipMode::Owned
         {
