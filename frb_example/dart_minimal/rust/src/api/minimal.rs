@@ -16,3 +16,7 @@ pub struct MyOpaqueType;
 pub fn my_func(arg: Vec<MyOpaqueType>) -> Vec<MyOpaqueType> {
     vec![]
 }
+
+pub fn another_func(arg: &MyOpaqueType) -> MyOpaqueType {
+    panic!()
+}

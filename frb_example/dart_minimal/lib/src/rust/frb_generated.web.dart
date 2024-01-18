@@ -28,6 +28,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyOpaqueType
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          dynamic raw);
+
+  @protected
+  MyOpaqueType
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           dynamic raw);
 
@@ -48,6 +53,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyOpaqueType
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          SseDeserializer deserializer);
+
+  @protected
+  MyOpaqueType
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           SseDeserializer deserializer);
 
   @protected
@@ -75,6 +85,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
+          MyOpaqueType self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockMyOpaqueType(
           MyOpaqueType self, SseSerializer serializer);
 
   @protected

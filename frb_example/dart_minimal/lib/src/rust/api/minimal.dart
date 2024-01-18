@@ -13,6 +13,9 @@ Future<List<MyOpaqueType>> myFunc(
         {required List<MyOpaqueType> arg, dynamic hint}) =>
     RustLib.instance.api.myFunc(arg: arg, hint: hint);
 
+Future<MyOpaqueType> anotherFunc({required MyOpaqueType arg, dynamic hint}) =>
+    RustLib.instance.api.anotherFunc(arg: arg, hint: hint);
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>>
 @sealed
 class MyOpaqueType extends RustOpaque {
