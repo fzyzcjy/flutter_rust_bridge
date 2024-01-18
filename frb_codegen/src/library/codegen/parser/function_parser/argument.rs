@@ -56,8 +56,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
+        let ty_raw =
+            self.parse_fn_arg_receiver_attempt(&method.enum_or_struct_name.name, context)?;
         let ty = self.type_parser.transform_if_rust_auto_opaque(
-            &self.parse_fn_arg_receiver_attempt(&method.enum_or_struct_name.name, context)?,
+            &ty_raw,
             |raw| generate_ref_type_considering_reference(raw, receiver),
             context,
         )?;

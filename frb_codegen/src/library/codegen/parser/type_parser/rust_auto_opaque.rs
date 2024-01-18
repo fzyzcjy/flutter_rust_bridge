@@ -93,7 +93,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         if let RustAutoOpaque(ty_raw) = ty_raw {
             self.parse_type_rust_auto_opaque(
                 ty_raw.self_namespace(),
-                syn::parse_str(&transform_if_rust_auto_opaque(&ty_raw.raw.string))?,
+                &syn::parse_str(&transform_if_rust_auto_opaque(&ty_raw.raw.string))?,
             )
         } else {
             Ok(ty_raw.to_owned())
