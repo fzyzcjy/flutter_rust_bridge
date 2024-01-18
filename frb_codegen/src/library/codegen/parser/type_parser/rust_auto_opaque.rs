@@ -17,7 +17,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         ty: &Type,
     ) -> IrType {
         let (ownership_mode, inner) = match ty {
-            Type::Reference(_) => (TODO, TODO),
+            Type::Reference(ty) => (
+                if ty.mutability {
+                    OwnershipMode::RefMut
+                } else {
+                    OwnershipMode::Ref
+                },
+                TODO,
+            ),
             _ => (OwnershipMode::Owned, TODO),
         };
 
