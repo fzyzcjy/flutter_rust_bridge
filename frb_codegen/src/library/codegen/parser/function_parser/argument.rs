@@ -57,17 +57,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty: Type = parse_str(&method.enum_or_struct_name.name)?;
+        let ty: Type = parse_str(&generate_effective_receiver_type(
+            &method.enum_or_struct_name.name,
+            receiver,
+        ))?;
 
         let name = "that".to_owned();
 
         partial_info_for_normal_type_raw(
-            parse_receiver_ownership(
-                self.type_parser.parse_type(&ty, context)?,
-                receiver,
-                self.type_parser,
-                context,
-            ),
+            self.type_parser.parse_type(&ty, context)?,
             &receiver.attrs,
             name,
         )
@@ -166,26 +164,14 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     }
 }
 
-fn parse_receiver_ownership(
-    inner: IrType,
-    receiver: &Receiver,
-    type_parser: &mut TypeParser,
-    context: &TypeParserParsingContext,
-) -> IrType {
-    let should_parse_ownership = type_parser.check_candidate_rust_auto_opaque(&inner, context);
-
-    if receiver.reference.is_none() || !should_parse_ownership {
-        return inner;
-    }
-
-    let mode = if receiver.mutability.is_some() {
-        OwnershipMode::RefMut
+fn generate_effective_receiver_type(raw: &str, receiver: &Receiver) -> String {
+    if receiver.reference.is_some() {
+        if receiver.mutability.is_some() {
+            format!("&mut {raw}")
+        } else {
+            format!("&{raw}")
+        }
     } else {
-        OwnershipMode::Ref
-    };
-
-    IrType::Ownership(IrTypeOwnership {
-        mode,
-        inner: Box::new(inner),
-    })
+        raw.to_owned()
+    }
 }
