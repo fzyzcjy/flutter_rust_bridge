@@ -57,18 +57,34 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty: Type = parse_str(&generate_effective_receiver_type(
-            &method.enum_or_struct_name.name,
-            receiver,
-        ))?;
+        let ty_name = &method.enum_or_struct_name.name;
+
+        let ty_direct = self.parse_fn_arg_receiver_attempt(ty_name, context)?;
+        let ty_chosen = if matches!(ty_direct, IrType::RustAutoOpaque(_)) {
+            self.parse_fn_arg_receiver_attempt(
+                &generate_ref_type_considering_reference(&ty_name, receiver),
+                context,
+            )?
+        } else {
+            ty_direct
+        };
 
         let name = "that".to_owned();
 
         partial_info_for_normal_type_raw(
-            self.type_parser.parse_type(&ty, context)?,
+            self.type_parser.parse_type(&ty_chosen, context)?,
             &receiver.attrs,
             name,
         )
+    }
+
+    fn parse_fn_arg_receiver_attempt(
+        &mut self,
+        ty: &str,
+        context: &TypeParserParsingContext,
+    ) -> anyhow::Result<IrType> {
+        let ty: Type = parse_str(ty)?;
+        self.type_parser.parse_type(&ty, context)
     }
 
     fn parse_fn_arg_type_stream_sink(
@@ -164,7 +180,7 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     }
 }
 
-fn generate_effective_receiver_type(raw: &str, receiver: &Receiver) -> String {
+fn generate_ref_type_considering_reference(raw: &str, receiver: &Receiver) -> String {
     if receiver.reference.is_some() {
         if receiver.mutability.is_some() {
             format!("&mut {raw}")
