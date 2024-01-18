@@ -33,7 +33,7 @@ where
                 return Ok(Some(self.parse_type_rust_auto_opaque(
                     Some(namespaced_name.namespace),
                     &syn::parse_str(&namespaced_name.name)?,
-                )));
+                )?));
             }
 
             let ident: Id = namespaced_name.clone().into();
@@ -53,7 +53,7 @@ where
                         return Ok(Some(self.parse_type_rust_auto_opaque(
                             None,
                             &Type::Path(type_path.to_owned()),
-                        )))
+                        )?))
                     }
                 };
             }
@@ -77,7 +77,11 @@ where
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
-    fn parse_type_rust_auto_opaque(&mut self, namespace: Option<Namespace>, ty: &Type) -> IrType;
+    fn parse_type_rust_auto_opaque(
+        &mut self,
+        namespace: Option<Namespace>,
+        ty: &Type,
+    ) -> anyhow::Result<IrType>;
 }
 
 fn pop_last(mut v: Vec<String>) -> Vec<String> {

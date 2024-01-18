@@ -11,6 +11,7 @@ use crate::codegen::parser::type_parser::rust_opaque::{
 };
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;
 use IrType::RustAutoOpaque;
@@ -20,7 +21,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         namespace: Option<Namespace>,
         ty: &Type,
-    ) -> IrType {
+    ) -> Result<IrType> {
         let (ownership_mode, inner) = match ty {
             Type::Reference(ty) => (
                 if ty.mutability.is_some() {
@@ -42,7 +43,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => vec![],
         };
 
-        RustAutoOpaque(IrTypeRustAutoOpaque {
+        Ok(RustAutoOpaque(IrTypeRustAutoOpaque {
             ownership_mode,
             raw: IrRustAutoOpaqueRaw {
                 string: inner_str.clone(),
@@ -54,7 +55,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 codec: info.codec,
                 brief_name: true,
             },
-        })
+        }))
     }
 
     pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(
