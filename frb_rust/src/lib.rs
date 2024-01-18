@@ -20,6 +20,8 @@ pub(crate) mod generalized_arc;
 pub(crate) mod internal_generated;
 #[doc(hidden)] // only to be used as `for_generated::rust_async`
 pub mod rust_async;
+#[cfg(feature = "rust-async")]
+pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod web_transfer;
 
