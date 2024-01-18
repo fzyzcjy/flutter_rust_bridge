@@ -239,16 +239,17 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
                 OwnershipMode::Ref => "Read",
                 OwnershipMode::RefMut => "Write",
             };
-            let guard_inner = &ty.raw.string;
+
             let ident = ty.safe_ident();
+            let inner_rust_api_type = ty.inner.rust_api_type();
             vec![
                 (
                     format!("RustAutoOpaque_Opaque_{ident}"),
-                    ty.inner.rust_api_type(),
+                    inner_rust_api_type.clone(),
                 ),
                 (
                     format!("RustAutoOpaque_Lock_{ident}"),
-                    format!("flutter_rust_bridge::rust_async::RwLock{guard_mode}Guard<'a, {guard_inner}>"),
+                    format!("flutter_rust_bridge::rust_async::RwLock{guard_mode}Guard<'a, {inner_rust_api_type}>"),
                 ),
             ]
         })
