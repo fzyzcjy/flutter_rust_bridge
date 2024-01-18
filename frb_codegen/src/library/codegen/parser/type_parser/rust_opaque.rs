@@ -22,6 +22,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ("RustOpaqueMoi", Some(Generic([ty]))) => {
                 self.parse_rust_opaque(ty, Some(RustOpaqueCodecMode::Moi))
             }
+            ("RustAutoOpaque", Some(Generic([ty]))) => self.parse_rust_auto_opaque(ty),
 
             _ => return Ok(None),
         }))
@@ -43,6 +44,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             info.codec,
             false,
         ))
+    }
+
+    fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
+        TODO
     }
 }
 
