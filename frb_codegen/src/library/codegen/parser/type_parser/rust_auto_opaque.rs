@@ -46,6 +46,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
 
+        self.parse_rust_auto_opaque_raw(ownership_mode, inner)
+    }
+
+    pub(super) fn parse_rust_auto_opaque_raw(
+        &mut self,
+        ownership_mode: IrTypeOwnershipMode,
+        inner: IrType,
+    ) -> IrType {
         let info = self.inner.rust_auto_opaque_parser_info.get_or_insert(
             &inner,
             RustOpaqueParserTypeInfo::new(
