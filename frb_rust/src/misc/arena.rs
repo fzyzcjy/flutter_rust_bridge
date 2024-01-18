@@ -25,7 +25,7 @@ mod tests {
 
     #[test]
     fn test_simple() {
-        let arena = Arena::default();
+        let mut arena = Arena::default();
         let apple = arena.put("Apple".to_owned());
         let orange = arena.put(PathBuf::new());
         assert_eq!(apple, "Apple");
