@@ -232,7 +232,7 @@ fn generate_executor(ir_pack: &IrPack) -> String {
 fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
     let variants = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let IrType::RustAutoOpaque(inner) = ty, inner.clone()))
-        .map(|ty| format!("{}({})", ty.safe_ident(), ty.rust_api_type_detailed(true)))
+        .map(|ty| format!("{}({})", ty.safe_ident(), ty.rust_api_type()))
         .join("");
 
     let code = format!(

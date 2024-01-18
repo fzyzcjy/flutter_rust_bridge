@@ -41,7 +41,13 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        self.rust_api_type_detailed(false)
+        let prefix = match self.ownership_mode {
+            OwnershipMode::Owned => "",
+            OwnershipMode::Ref => "&",
+            OwnershipMode::RefMut => "&mut ",
+        };
+        let raw = &self.raw.string;
+        format!("{prefix}{raw}")
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
@@ -52,27 +58,5 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
 impl IrTypeRustAutoOpaque {
     pub(crate) fn needs_move(&self) -> bool {
         self.ownership_mode == OwnershipMode::Owned
-    }
-
-    pub(crate) fn rust_api_type_detailed(&self, lifetime_specifier: bool) -> String {
-        let prefix = match self.ownership_mode {
-            OwnershipMode::Owned => "",
-            OwnershipMode::Ref => {
-                if lifetime_specifier {
-                    "&'a "
-                } else {
-                    "&"
-                }
-            }
-            OwnershipMode::RefMut => {
-                if lifetime_specifier {
-                    "&'a mut "
-                } else {
-                    "&mut "
-                }
-            }
-        };
-        let raw = &self.raw.string;
-        format!("{prefix}{raw}")
     }
 }
