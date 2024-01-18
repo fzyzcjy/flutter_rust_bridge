@@ -68,7 +68,6 @@ default = [
     "rust-async",
     "user-utils",
     "dart-opaque",
-    "typed-arena",
 ]
 backtrace = ["dep:backtrace", "allo-isolate/backtrace"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
