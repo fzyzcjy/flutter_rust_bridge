@@ -30,13 +30,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let ir = self.type_parser.parse_type(ty, context)?;
 
         if let IrType::RustAutoOpaque(inner) = ir {
-            if let IrType::Unencodable(IrTypeUnencodable { segments, .. }) = &*inner.raw {
-                match splay_segments(&segments).last() {
-                    Some(("Result", Some(ArgsRefs::Generic(args)))) => {
-                        return parse_fn_output_type_result(args);
-                    }
-                    _ => {}
+            match splay_segments(&inner.raw_segments()).last() {
+                Some(("Result", Some(ArgsRefs::Generic(args)))) => {
+                    return parse_fn_output_type_result(args);
                 }
+                _ => {}
             }
         }
 

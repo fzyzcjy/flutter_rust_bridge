@@ -1,6 +1,6 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, NameComponent};
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
@@ -37,5 +37,9 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
 impl IrTypeRustAutoOpaque {
     pub(crate) fn needs_move(&self) -> bool {
         self.ownership_mode == IrTypeOwnershipMode::Owned
+    }
+
+    pub(crate) fn raw_segments(&self) -> Vec<NameComponent> {
+        todo!()
     }
 }
