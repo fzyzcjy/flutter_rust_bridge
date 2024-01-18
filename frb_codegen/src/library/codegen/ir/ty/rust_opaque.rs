@@ -7,10 +7,12 @@ use strum_macros::{Display, EnumIter};
 crate::ir! {
 pub struct IrTypeRustOpaque {
     pub namespace: Namespace,
-    pub inner: Box<IrType>,
+    pub inner: IrRustOpaqueInner,
     pub codec: RustOpaqueCodecMode,
     pub brief_name: bool,
 }
+
+pub struct IrRustOpaqueInner(pub String);
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
@@ -68,7 +70,7 @@ impl IrTypeTrait for IrTypeRustOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        format!("RustOpaque{}<{}>", self.codec, self.inner.rust_api_type(),)
+        format!("RustOpaque{}<{}>", self.codec, self.inner.0)
     }
 
     fn self_namespace(&self) -> Option<Namespace> {

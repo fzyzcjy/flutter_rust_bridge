@@ -1,6 +1,8 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::rust_auto_opaque::{IrTypeRustAutoOpaque, OwnershipMode};
-use crate::codegen::ir::ty::rust_opaque::{IrTypeRustOpaque, RustOpaqueCodecMode};
+use crate::codegen::ir::ty::rust_opaque::{
+    IrRustOpaqueInner, IrTypeRustOpaque, RustOpaqueCodecMode,
+};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
@@ -45,10 +47,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })
     }
 
-    pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(&self, inner: &str) -> String {
+    pub(super) fn create_rust_opaque_type_for_rust_auto_opaque(
+        &self,
+        inner: &str,
+    ) -> IrRustOpaqueInner {
         // TODO when all usages of a type do not require `&mut`, can drop this Mutex
         // TODO similarly, can use std instead of `tokio`'s lock
-        format!("flutter_rust_bridge::for_generated::rust_async::RwLock<{inner}>")
+        IrRustOpaqueInner(format!(
+            "flutter_rust_bridge::for_generated::rust_async::RwLock<{inner}>"
+        ))
     }
 
     pub(super) fn get_or_insert_rust_auto_opaque_info(

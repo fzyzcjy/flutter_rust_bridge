@@ -212,7 +212,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        rust_type_to_dart_type(&self.ir.inner.rust_api_type(), self.ir.brief_name)
+        rust_type_to_dart_type(&self.ir.inner.0, self.ir.brief_name)
     }
 }
 
