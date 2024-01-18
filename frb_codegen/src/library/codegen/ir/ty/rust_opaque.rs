@@ -93,3 +93,15 @@ impl IrRustOpaqueInner {
         NEG_FILTER.replace_all(&self.0, "").into_owned()
     }
 }
+
+// TODO move
+/// A component of a fully qualified name and any type arguments for it
+pub struct NameComponent {
+    pub ident: String,
+    pub args: Option<Args>,
+}
+
+pub enum Args {
+    Generic(Vec<IrType>),
+    Signature(Vec<IrType>),
+}
