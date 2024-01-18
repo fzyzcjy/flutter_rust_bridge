@@ -5,7 +5,6 @@ use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::unencodable::splay_segments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
-use itertools::Itertools;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {

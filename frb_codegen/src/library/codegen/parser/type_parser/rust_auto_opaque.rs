@@ -10,7 +10,6 @@ use crate::codegen::parser::type_parser::rust_opaque::{
     GeneralizedRustOpaqueParserInfo, RustOpaqueParserTypeInfo,
 };
 use crate::codegen::parser::type_parser::TypeParserWithContext;
-use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::Result;
 use quote::ToTokens;
 use syn::Type;

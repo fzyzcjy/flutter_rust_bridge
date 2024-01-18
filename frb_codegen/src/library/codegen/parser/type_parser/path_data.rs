@@ -1,10 +1,7 @@
 use crate::codegen::ir::ty::rust_opaque::NameComponent;
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::Result;
-use anyhow::{anyhow, Context};
-use quote::ToTokens;
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, Path, PathArguments, PathSegment, Type,
 };
@@ -13,11 +10,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn extract_path_data(&mut self, path: &Path) -> Result<Vec<NameComponent>> {
         path.segments
             .iter()
-            .map(|segment| self.parse_path_segment(path, segment))
+            .map(|segment| self.parse_path_segment(segment))
             .collect()
     }
 
-    fn parse_path_segment(&mut self, path: &Path, segment: &PathSegment) -> Result<NameComponent> {
+    fn parse_path_segment(&mut self, segment: &PathSegment) -> Result<NameComponent> {
         let ident = segment.ident.to_string();
         let args = match &segment.arguments {
             PathArguments::None => vec![],

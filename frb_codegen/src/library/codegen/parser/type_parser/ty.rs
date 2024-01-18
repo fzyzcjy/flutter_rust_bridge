@@ -2,7 +2,6 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::Context;
-use quote::ToTokens;
 use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {

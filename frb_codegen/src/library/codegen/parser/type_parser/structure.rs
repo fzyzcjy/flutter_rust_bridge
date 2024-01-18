@@ -19,10 +19,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserStruct(self).parse(type_path, splayed_segments, last_segment)
+        EnumOrStructParserStruct(self).parse(type_path, last_segment)
     }
 
     fn parse_struct(

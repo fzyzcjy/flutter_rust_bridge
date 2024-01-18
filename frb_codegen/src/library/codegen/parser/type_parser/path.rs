@@ -35,14 +35,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(ans) = self.parse_type_path_data_primitive(last_segment)? {
                 return Ok(ans);
             }
-            if let Some(ans) =
-                self.parse_type_path_data_struct(type_path, &splayed_segments, last_segment)?
-            {
+            if let Some(ans) = self.parse_type_path_data_struct(type_path, last_segment)? {
                 return Ok(ans);
             }
-            if let Some(ans) =
-                self.parse_type_path_data_enum(type_path, &splayed_segments, last_segment)?
-            {
+            if let Some(ans) = self.parse_type_path_data_enum(type_path, last_segment)? {
                 return Ok(ans);
             }
             if let Some(ans) = self.parse_type_path_data_rust_opaque(last_segment)? {

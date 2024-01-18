@@ -7,7 +7,7 @@ use crate::codegen::ir::ty::IrType::{
 };
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
-use anyhow::{bail, ensure};
+use anyhow::ensure;
 use quote::ToTokens;
 use syn::TypePath;
 
