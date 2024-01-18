@@ -7,8 +7,13 @@ crate::ir! {
 pub struct IrTypeRustAutoOpaque {
     pub ownership_mode: OwnershipMode,
     pub inner: IrTypeRustOpaque,
-    /// Original type without any transformation
-    pub raw: String,
+    pub raw: IrRustAutoOpaqueRaw,
+}
+
+/// Original type without any transformation
+pub struct IrRustAutoOpaqueRaw {
+    pub string: String,
+    pub segments: Vec<NameComponent>,
 }
 }
 
@@ -47,9 +52,5 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
 impl IrTypeRustAutoOpaque {
     pub(crate) fn needs_move(&self) -> bool {
         self.ownership_mode == OwnershipMode::Owned
-    }
-
-    pub(crate) fn raw_segments(&self) -> Vec<NameComponent> {
-        todo!()
     }
 }

@@ -30,7 +30,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let ir = self.type_parser.parse_type(ty, context)?;
 
         if let IrType::RustAutoOpaque(inner) = ir {
-            match splay_segments(&inner.raw_segments()).last() {
+            match splay_segments(&inner.raw.segments).last() {
                 Some(("Result", Some(ArgsRefs::Generic(args)))) => {
                     return parse_fn_output_type_result(args);
                 }
@@ -51,7 +51,7 @@ fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartia
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| {
             if let IrType::RustAutoOpaque(inner) = x {
-                return inner.raw == "anyhow :: Error";
+                return inner.raw.string == "anyhow :: Error";
             }
             false
         });

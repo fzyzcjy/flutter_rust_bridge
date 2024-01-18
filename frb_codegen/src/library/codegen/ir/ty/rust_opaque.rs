@@ -96,11 +96,13 @@ impl IrRustOpaqueInner {
 
 // TODO move
 /// A component of a fully qualified name and any type arguments for it
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
 pub struct NameComponent {
     pub ident: String,
     pub args: Option<Args>,
 }
 
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
 pub enum Args {
     Generic(Vec<IrType>),
     Signature(Vec<IrType>),
