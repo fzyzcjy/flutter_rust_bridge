@@ -1,6 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::generator::misc::comments::generate_codec_comments;
-use crate::codegen::ir::namespace::NamespacedName;
 
 pub(crate) fn generate_impl_into_dart(name: &str, body: &str) -> String {
     let codec_comments = generate_codec_comments(CodecMode::Dco);
@@ -16,18 +15,14 @@ pub(crate) fn generate_impl_into_dart(name: &str, body: &str) -> String {
     )
 }
 
-pub(crate) fn generate_impl_into_into_dart(
-    name: &NamespacedName,
-    wrapper_name: &Option<String>,
-) -> String {
+pub(crate) fn generate_impl_into_into_dart(name: &str, wrapper_name: &Option<String>) -> String {
     let body = if let Some(wrapper_name) = wrapper_name {
         format!("{wrapper_name}(self)")
     } else {
         "self".to_owned()
     };
 
-    let wrapper_name = wrapper_name.clone().unwrap_or(name.rust_style());
-    let name = &name.rust_style();
+    let wrapper_name = wrapper_name.clone().unwrap_or(name.to_owned());
 
     format!(
         "impl flutter_rust_bridge::IntoIntoDart<{wrapper_name}> for {name} {{

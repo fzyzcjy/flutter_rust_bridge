@@ -52,7 +52,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
 
         Some(
             generate_impl_into_dart(&name, &body)
-                + &generate_impl_into_into_dart(&src.name, &src.wrapper_name),
+                + &generate_impl_into_into_dart(&src.name.rust_style(), &src.wrapper_name),
         )
     }
 }
