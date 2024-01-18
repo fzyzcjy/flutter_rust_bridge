@@ -233,5 +233,12 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
     let interest_types = (distinct_types.iter())
         .filter_map(|ty| if_then_some!(let IrType::RustAutoOpaque(inner) = ty, inner.clone()))
         .collect_vec();
-    todo!()
+    let code = format!(
+        "
+        enum ArenaItem {{
+            // TODO
+        }}
+        "
+    );
+    Acc::new_common(code.into())
 }
