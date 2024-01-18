@@ -1,7 +1,7 @@
 use std::any::Any;
 
 // TODO improve performance later
-#[derive(Debug, Default)]
+#[derive(Default)]
 pub struct Arena(typed_arena::Arena<Box<dyn Any>>);
 
 impl Arena {
