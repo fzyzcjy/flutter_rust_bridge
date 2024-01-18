@@ -74,14 +74,6 @@ impl<'a> TypeParser<'a> {
     ) -> anyhow::Result<IrType> {
         TypeParserWithContext::new(self, context).parse_type(ty)
     }
-
-    pub(crate) fn check_candidate_rust_auto_opaque(
-        &mut self,
-        ty: &IrType,
-        context: &TypeParserParsingContext,
-    ) -> bool {
-        TypeParserWithContext::new(self, context).check_candidate_rust_auto_opaque(ty)
-    }
 }
 
 pub(crate) struct TypeParserWithContext<'a, 'b, 'c> {
