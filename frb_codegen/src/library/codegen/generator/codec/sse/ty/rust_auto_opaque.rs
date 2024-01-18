@@ -39,7 +39,13 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                 self.ir.inner.codec,
                 self.context,
             )),
-            Lang::RustLang(_) => Some(lang.throw_unimplemented("")),
+            Lang::RustLang(_) => {
+                if self.ir.ownership_mode == OwnershipMode::Owned {
+                    Some(lang.throw_unimplemented(""))
+                } else {
+                    None
+                }
+            }
         }
     }
 }
