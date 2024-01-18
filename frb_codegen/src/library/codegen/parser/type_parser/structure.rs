@@ -1,6 +1,6 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
@@ -105,7 +105,7 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         &mut self.0.inner.struct_parser_info
     }
 
-    fn parse_type_rust_auto_opaque(&mut self, ty: &Type) -> IrType {
-        self.0.parse_type_rust_auto_opaque(ty)
+    fn parse_type_rust_auto_opaque(&mut self, namespace: Option<Namespace>, ty: &Type) -> IrType {
+        self.0.parse_type_rust_auto_opaque(namespace, ty)
     }
 }

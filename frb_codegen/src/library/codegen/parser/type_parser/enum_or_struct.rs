@@ -33,11 +33,8 @@ where
             if attrs.opaque() {
                 debug!("Recognize {name} has opaque attribute");
                 return Ok(Some(self.parse_type_rust_auto_opaque(
-                    &IrType::Unencodable(IrTypeUnencodable {
-                        namespace: Some(namespaced_name.namespace),
-                        string: namespaced_name.name,
-                        segments: vec![],
-                    }),
+                    Some(namespaced_name.namespace),
+                    &syn::parse_str(&namespaced_name.name),
                 )));
             }
 
@@ -55,9 +52,9 @@ where
                         (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
                     }
                     None => {
-                        return Ok(Some(self.parse_type_rust_auto_opaque(
-                            &parse_path_type_to_unencodable(type_path, splayed_segments),
-                        )))
+                        return Ok(Some(
+                            self.parse_type_rust_auto_opaque(&Type::Path(type_path.to_owned())),
+                        ))
                     }
                 };
             }
@@ -81,7 +78,7 @@ where
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 
-    fn parse_type_rust_auto_opaque(&mut self, ty: &Type) -> IrType;
+    fn parse_type_rust_auto_opaque(&mut self, namespace: Option<Namespace>, ty: &Type) -> IrType;
 }
 
 fn pop_last(mut v: Vec<String>) -> Vec<String> {
