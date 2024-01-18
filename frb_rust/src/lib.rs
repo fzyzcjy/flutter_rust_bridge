@@ -42,6 +42,7 @@ pub use crate::rust2dart::sender::Rust2DartSendError;
 pub use crate::rust_async::spawn_blocking_with;
 #[cfg(feature = "rust-async")]
 pub use crate::rust_async::{spawn, spawn_local, JoinHandle};
+#[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::RustAutoOpaqueNom;
 #[allow(deprecated)]
 pub use crate::rust_opaque::{DartSafe, RustOpaqueNom};
