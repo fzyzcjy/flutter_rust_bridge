@@ -30,7 +30,7 @@ pub(super) fn generate_encode_or_decode(
                 generate_encode_or_decode_for_type(ty, context, mode),
                 Acc::new_common(
                     create_codec_sse_ty(ty, context)
-                        .generate_extra(&Lang::DartLang(DartLang), mode)
+                        .generate_extra(&Lang::DartLang(DartLang))
                         .into(),
                 ),
             ]
