@@ -6,6 +6,7 @@ use crate::codegen::generator::codec::sse::ty::rust_opaque::{
 };
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::ty::rust_auto_opaque::OwnershipMode;
+use convert_case::{Case, Casing};
 
 impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
@@ -45,7 +46,10 @@ impl<'a> CodecSseTyTrait for RustAutoOpaqueCodecSseTy<'a> {
                     Some(simple_delegate_decode(
                         lang,
                         &RustOpaque(self.ir.inner.to_owned()),
-                        &format!("TODO_wrapper_expr"),
+                        &format!(
+                            "inner.rust_auto_opaque_decode_{}()",
+                            self.ir.ownership_mode.to_string().to_case(Case::Snake)
+                        ),
                     ))
                 } else {
                     None

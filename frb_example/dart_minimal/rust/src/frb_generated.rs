@@ -150,7 +150,7 @@ impl SseDecode for MyOpaqueType {
         let mut inner = <RustOpaqueMoi<
             flutter_rust_bridge::for_generated::rust_async::RwLock<MyOpaqueType>,
         >>::sse_decode(deserializer);
-        return TODO_wrapper_expr;
+        return inner.rust_auto_opaque_decode_owned();
     }
 }
 
