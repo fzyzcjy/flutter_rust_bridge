@@ -128,7 +128,7 @@ fn wire_my_func_borrowed_impl(
             let arena = flutter_rust_bridge::for_generated::Arena::default();
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_arg = <Vec<&MyOpaqueType>>::sse_decode(&mut deserializer, &arena);
+            let api_arg = <Vec<MyOpaqueType>>::sse_decode(&mut deserializer, &arena);
             deserializer.end();
             move |context| {
                 transform_result_sse((move || {
@@ -231,7 +231,7 @@ impl SseDecode for Vec<MyOpaqueType> {
     }
 }
 
-impl SseDecode for Vec<&MyOpaqueType> {
+impl SseDecode for Vec<MyOpaqueType> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(
         deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer,
@@ -240,7 +240,7 @@ impl SseDecode for Vec<&MyOpaqueType> {
         let mut len_ = <i32>::sse_decode(deserializer, arena);
         let mut ans_ = vec![];
         for idx_ in 0..len_ {
-            ans_.push(<&MyOpaqueType>::sse_decode(deserializer, arena));
+            ans_.push(<MyOpaqueType>::sse_decode(deserializer, arena));
         }
         return ans_;
     }
@@ -339,12 +339,12 @@ impl SseEncode for Vec<MyOpaqueType> {
     }
 }
 
-impl SseEncode for Vec<&MyOpaqueType> {
+impl SseEncode for Vec<MyOpaqueType> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i32>::sse_encode(self.len() as _, serializer);
         for item in self {
-            <&MyOpaqueType>::sse_encode(item, serializer);
+            <MyOpaqueType>::sse_encode(item, serializer);
         }
     }
 }
