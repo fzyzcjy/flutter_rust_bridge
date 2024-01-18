@@ -17,11 +17,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::ImplTrait(type_impl_trait) => self
                 .parse_type_impl_trait_dart_fn(&type_impl_trait)
                 .context("when trying to parse DartFn")?,
-            _ => self.parse_type_rust_auto_opaque(&IrType::Unencodable(IrTypeUnencodable {
-                namespace: None,
-                string: resolve_ty.to_token_stream().to_string(),
-                segments: vec![],
-            })),
+            _ => self.parse_type_rust_auto_opaque(None, &resolve_ty),
         })
     }
 
