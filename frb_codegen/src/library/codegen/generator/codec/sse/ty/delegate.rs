@@ -40,7 +40,15 @@ impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
                 }
                 IrTypeDelegate::String => "self.into_bytes()".to_owned(),
                 IrTypeDelegate::PrimitiveEnum(ir) => {
-                    let variants = TODO;
+                    let src = ir.ir.get(self.context.ir_pack);
+                    let variants = (src.variants.iter().enumerate())
+                        .map(|(idx, variant)| {
+                            (
+                                format!("{}::{}", src.name.rust_style(), variant.name),
+                                format!("{idx}"),
+                            )
+                        })
+                        .collect_vec();
                     lang.switch_expr(
                         "self",
                         &variants,
