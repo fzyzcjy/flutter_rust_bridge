@@ -242,7 +242,7 @@ fn generate_arena(distinct_types: &[IrType]) -> Acc<Vec<WireRustOutputCode>> {
                 ),
                 (
                     format!("RustAutoOpaque_Lock_{ident}"),
-                    format!("RwLockReadGuard<'a, {inner_rust_api_type}>"),
+                    format!("flutter_rust_bridge::rust_async::RwLockReadGuard<'a, {inner_rust_api_type}>"),
                 ),
             ]
         })
